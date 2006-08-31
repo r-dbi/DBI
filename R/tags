@@ -1,0 +1,57 @@
+!_TAG_FILE_FORMAT	1	original (simple) ctag(1) format
+!_TAG_FILE_SORTED	1	yes, file is sorted
+!_TAG_PROGRAM_NAME	rtags.py	python implementation
+!_TAG_PROGRAM_VERSION	$Id: rtags.py,v 1.3 2001/11/19 16:40:23 dj Exp dj $	
+.First.lib	zzz.R	/".First.lib" <- /
+DBIConnection	DBI.R	/setClass("DBIConnection"/
+DBIDriver	DBI.R	/setClass("DBIDriver"/
+DBIObject	DBI.R	/setClass("DBIObject"/
+DBIResult	DBI.R	/setClass("DBIResult"/
+SQLKeywords	Util.R	/setGeneric("SQLKeywords"/
+SQLKeywords	Util.R	/setMethod("SQLKeywords"/
+SQLKeywords	Util.R	/setMethod("SQLKeywords"/
+dbCallProc	DBI.R	/setGeneric("dbCallProc"/
+dbClearResult	DBI.R	/setGeneric("dbClearResult"/
+dbColumnInfo	DBI.R	/setGeneric("dbColumnInfo"/
+dbCommit	DBI.R	/setGeneric("dbCommit"/
+dbConnect	DBI.R	/setGeneric("dbConnect"/
+dbDataType	Util.R	/setGeneric("dbDataType"/
+dbDataType	Util.R	/setMethod("dbDataType"/
+dbDataType.default	Util.R	/"dbDataType.default" <-/
+dbDisconnect	DBI.R	/setGeneric("dbDisconnect"/
+dbDriver	DBI.R	/"dbDriver" <- /
+dbExistsTable	DBI.R	/setGeneric("dbExistsTable"/
+dbGetDBIVersion	Util.R	/"dbGetDBIVersion" <-/
+dbGetException	DBI.R	/setGeneric("dbGetException"/
+dbGetInfo	DBI.R	/setGeneric("dbGetInfo"/
+dbGetQuery	DBI.R	/setGeneric("dbGetQuery"/
+dbGetRowCount	DBI.R	/setGeneric("dbGetRowCount"/
+dbGetRowsAffected	DBI.R	/setGeneric("dbGetRowsAffected"/
+dbGetStatement	DBI.R	/setGeneric("dbGetStatement"/
+dbHasCompleted	DBI.R	/setGeneric("dbHasCompleted"/
+dbListConnections	DBI.R	/setGeneric("dbListConnections"/
+dbListFields	DBI.R	/setGeneric("dbListFields"/
+dbListResults	DBI.R	/setGeneric("dbListResults"/
+dbListTables	DBI.R	/setGeneric("dbListTables"/
+dbReadTable	DBI.R	/setGeneric("dbReadTable"/
+dbRemoveTable	DBI.R	/setGeneric("dbRemoveTable"/
+dbRollback	DBI.R	/setGeneric("dbRollback"/
+dbSendQuery	DBI.R	/setGeneric("dbSendQuery"/
+dbSetDataMappings	DBI.R	/setGeneric("dbSetDataMappings"/
+dbUnloadDriver	DBI.R	/setGeneric("dbUnloadDriver"/
+dbWriteTable	DBI.R	/setGeneric("dbWriteTable"/
+fetch	DBI.R	/setGeneric("fetch"/
+format	DBI.R	/setGeneric("format"/
+isSQLKeyword	Util.R	/setGeneric("isSQLKeyword"/
+isSQLKeyword	Util.R	/setMethod("isSQLKeyword"/
+isSQLKeyword.default	Util.R	/"isSQLKeyword.default" <-/
+make.db.names	Util.R	/setGeneric("make.db.names"/
+make.db.names	Util.R	/setMethod("make.db.names"/
+make.db.names.default	Util.R	/"make.db.names.default" <- /
+makeUnique	Util.R	/"makeUnique" <- function/
+print	DBI.R	/setGeneric("print"/
+print.list.pairs	Util.R	/"print.list.pairs" <- function/
+show	DBI.R	/setGeneric("show"/
+summary	DBI.R	/setGeneric("summary"/
+summary	DBI.R	/setMethod("summary"/
+varchar	Util.R	/varchar <- function/

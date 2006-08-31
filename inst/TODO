@@ -1,0 +1,73 @@
+Issues that R-SIG-DB hasn't addressed.
+
+1. Should we define separate classes for SQL queries that return data
+   from those that don't return data?  E.g., the "DBIResult" could
+   represent the result of non-data queries (INSERT, DELETE, CREATE,
+   etc.) while "DBIResultSet" (or perhaps "DBICursor") could extend
+   "DBIResult" to represent results of queries that generate data
+   (primarily SELECT).
+
+2. (See ROracle version 0.5-3 for an initial implementation.)
+   Prepare statements need to be defined and methods for executing
+   them with S bindings.  A mechanism to hook data in SQL
+   statements and, say, fields in data.frames needs to be defined.
+   Some databases' API explicitly defined these as placeholders,
+   e.g., ODBC identifies these as "?var" in dynamic SQL, Oracle as
+   ":var" --- in both of these cases "var" refers to a C variable,
+   possibly an array.  An obvious R/S-Plus implementation would
+   be to interpret "?var" in SQL statements as variable "var"
+   in some data.frame.  E.g., say,
+
+        ps <- dbPrepare(connection =con, 
+                 statement = "select * from big_table where id = ?sample",
+                 data = signature(sample = "numeric"))
+
+        rs <- dbExecStatement(ps, data = mySampleIds1)  # copy data to DBMS
+        data1 <- fetch(rs, n = -1)
+        rs <- dbExecStatement(ps, data = mySampleIds2)  # copy more data
+        data2 <- fetch(rs, n = -1)
+        rs <- dbExecStatement(ps, data = mySampleIds3)  # copy more data
+        data3 <- fetch(rs, n = -1)
+        ....
+
+3. Data conversion.  We need a general method for specifying data 
+   conversion.  
+
+   The data conversion mechanism used in other inter system packages
+   (e.g., RSPython, RSPerl) does not seem to be suitable without
+   modification.  Those mechanism seem to be geared for converting
+   in one operation whole objects, while in the R/S-Plus DBMS case we
+   need to be able to allocate containers as columns of the R/S-Plus
+   result list/data.frame, and then transfer individual objects
+   (dates, BLOBS, CLOBS, numbers, strings) one at a time from the
+   DBMS into the container class inside the C fetching looping.
+
+4. Do we need more metadata? (e.g., table indices, privileges).
+
+5. (See ROracle version 0.5-3 for an initial implementation.)
+   Transaction management needs to be fully described.
+
+6. How do we run SQL scripts (not just single statements) and
+   stored procedures.
+
+7. Asynchronous operations (not only queries).  Given current
+   limitations in both R and S-Plus implementations of S (e.g.,
+   lack of threads), we probably should be thinking of some kind of
+   polling mechanism with which users specify whether an operation
+   should be asynchronous (say, through a flag to dbConnect,
+   dbSendQuery, etc.) and then define one of more methods, say,
+   dbHasCompleted, to poll the DBMS or driver for the status of
+   the operation.  Another possibility could be to register S
+   callbacks for certain events, but it may be more complicated to
+   code events in the various drivers than simply poll [not if the
+   event identification and callback dispatching is centralized in
+   the RS_DBI level, above the actual R/C drivers code].
+
+8. Additional helper functions.
+
+   * dbBuildTableDefinition(con, name, obj, field.types, ....)
+     Then we could have methods for obj="data.frame", obj="array", etc.
+     By default the DBI method con=DBIObject would construct the 
+     definition acording to the SQL92 or SQL99 standard(s), but 
+     individual implementations could overwrite the methods.
+
