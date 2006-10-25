@@ -1,24 +1,23 @@
 % $Id$
 \name{make.db.names}
 \alias{make.db.names}
+\alias{make.db.names,DBIObject,character-method}
 \alias{SQLKeywords}
+\alias{SQLKeywords,DBIObject-method}
+\alias{SQLKeywords,missing-method}
 \alias{isSQLKeyword}
+\alias{isSQLKeyword,DBIObject,character-method}
 \title{
   Make R/Splus identifiers into legal SQL identifiers
 }
 \description{
   Produce legal SQL identifiers from a character vector.
 }
-\synopsis{
-  make.db.names(dbObj, snames, ...)
-  SQLKeywords(dbObj, ...)
-  isSQLKeyword(dbObj, name, ...)
-}
 \usage{
-  make.db.names(dbObj, snames, unique=T, allow.keywords=T)
+  make.db.names(dbObj, snames, keywords, unique=TRUE, allow.keywords=TRUE, ...)
   SQLKeywords(dbObj, ...)
-  isSQLKeyword(dbObj, keywords=.SQL92Keywords, 
-                  case=c("lower", "upper", "any")[3])
+  isSQLKeyword(dbObj, name, keywords=.SQL92Keywords, 
+                  case=c("lower", "upper", "any")[3], ...)
 }
 \arguments{
 \item{dbObj}{

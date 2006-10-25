@@ -52,7 +52,7 @@
   The authorization mechanism is left unspecified, so check the 
   documentation of individual drivers for details.
 }
-\notes{
+\section{notes}{
   Make sure you close the connection using \code{dbDisconnect(conn)}
   when it is not longer needed.
 }

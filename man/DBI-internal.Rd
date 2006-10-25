@@ -1,5 +1,5 @@
 \name{DBI-internal}
-\alias{dbDataType.default}
+%\alias{dbDataType.default}
 \alias{make.db.names.default}
 \alias{isSQLKeyword.default}
 \alias{.SQL92Keywords}

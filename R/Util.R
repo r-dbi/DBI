@@ -57,17 +57,22 @@ function(obj, ...)
 }
 
 ## map R/S identifiers into SQL identifiers (careful with keywords)
-setGeneric("make.db.names", 
-   def = function(dbObj, snames, ...) standardGeneric("make.db.names"),
+setGeneric("make.db.names",
+   signature=c("dbObj", "snames"),        
+   def = function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
+     allow.keywords = TRUE, ...) standardGeneric("make.db.names"),
    valueClass = "character"
 )
 setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
-   def = function(dbObj, snames, ...) make.db.names.default(snames,...),
+   def = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
+       make.db.names.default(snames, keywords, unique, allow.keywords)
+       },
    valueClass = "character"
 )
 
 "make.db.names.default" <- 
-function(snames, keywords = .SQL92Keywords, unique = T, allow.keywords = T)
+function(snames, keywords = .SQL92Keywords, unique = TRUE,
+         allow.keywords = TRUE)
 ## produce legal SQL identifiers from strings in a character vector
 ## unique, in this function, means unique regardless of lower/upper case
 {
@@ -94,12 +99,17 @@ function(snames, keywords = .SQL92Keywords, unique = T, allow.keywords = T)
    gsub("\\.", "_", snames)
 }
 
-setGeneric("isSQLKeyword", 
-   def = function(dbObj, name, ...) standardGeneric("isSQLKeyword"),
+setGeneric("isSQLKeyword",
+   signature = c("dbObj", "name"),
+   def = function(dbObj, name, keywords = .SQL92Keywords,
+                  case = c("lower", "upper", "any")[3], ...) {
+       standardGeneric("isSQLKeyword")
+       },
    valueClass = "logical"
 )
 setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
-   def = function(dbObj, name, ...) isSQLKeyword.default(name, ...),
+   def = function(dbObj, name, keywords, case, ...)
+          isSQLKeyword.default(name, keywords, case),
    valueClass = "logical"
 )
 

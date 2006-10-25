@@ -1,6 +1,7 @@
 % $Id$
 \name{dbDriver}
 \alias{dbDriver}
+\alias{dbDriver,character-method}
 \alias{dbUnloadDriver}
 \title{
   Database Interface (DBI) Classes and drivers

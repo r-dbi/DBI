@@ -1,6 +1,7 @@
 % $Id$
 \name{dbDataType}
 \alias{dbDataType}
+\alias{dbDataType,DBIObject-method}
 \alias{dbDataType.default}
 \title{
   Determine the SQL Data Type of an S object
