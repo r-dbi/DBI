@@ -1,6 +1,6 @@
-\documentclass[graphics,times,psfig,dvips,hyper]{article}
+\documentclass{article}
 % $Id$
-\usepackage{graphics,times,psfig}
+\usepackage{graphicx,times}
 \usepackage[%
   bookmarks=true,
   colorlinks=true,
@@ -153,7 +153,7 @@ The DBI classes are \sclass{DBIObject}, \sclass{DBIDriver},
 these, e.g., \sclass{PgSQLDriver}, \sclass{PgSQLConnection}, and
 so on.
 \begin{figure}
-\psfig{figure=figure1.eps,width=\textwidth,silent=}
+\includegraphics[width=\textwidth]{fig1.pdf}
 \caption{Class hierarchy for the DBI. The top two layers
 are comprised of virtual classes and each lower layer represents
 a set of driver-specific implementation classes that provide
