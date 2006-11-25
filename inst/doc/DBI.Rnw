@@ -162,7 +162,7 @@ The DBI classes are \sclass{DBIObject}, \sclass{DBIDriver},
 these, e.g., \sclass{PgSQLDriver}, \sclass{PgSQLConnection}, and
 so on.
 \begin{figure}
-\includegraphics[width=\textwidth]{fig1.pdf}
+\includegraphics[width=\textwidth]{figure1}
 \caption{Class hierarchy for the DBI. The top two layers
 are comprised of virtual classes and each lower layer represents
 a set of driver-specific implementation classes that provide
