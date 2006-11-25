@@ -1,5 +1,14 @@
+%
+% NOTE -- ONLY EDIT THE .Rnw FILE!!!  The .tex file is
+% likely to be overwritten.
+%
+%\VignetteIndexEntry{A Common Database Interface (DBI)}
+%\VignetteDepends{}
+%\VignetteKeywords{Databases, Relational DBMS, MySQL, SQLite, Oracle, PostgreSQL}
+%\VignettePackage{DBI}
 \documentclass{article}
 % $Id$
+
 \usepackage{graphicx,times}
 \usepackage[%
   bookmarks=true,
