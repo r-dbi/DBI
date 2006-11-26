@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.1-11
+Version: 0.1-12
 Title: R Database Interface 
 Author: R Special Interest Group on Databases (R-SIG-DB)
 Maintainer: David A. James <daj025@gmail.com>
@@ -10,5 +10,4 @@ Description: A database interface (DBI) definition for
    to be extended by the various R/DBMS implementations.  
 SaveImage: yes
 License: GPL (version 2 or later)
-URL: http://stat.bell-labs.com/RS-DBI http://developer.r-project.org/db
 Collate: setup.R DBI.R Util.R zzz.R
