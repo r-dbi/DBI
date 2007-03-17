@@ -1,8 +1,8 @@
-## $Id$
-
 .conflicts.OK <- TRUE
 ".First.lib" <- 
-function(lib, pkg)
+function(libname, pkgname)
 {
    require(methods, quietly = TRUE, warn.conflicts = FALSE)
 }
+
+.onLoad <- .First.lib
