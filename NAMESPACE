@@ -20,8 +20,6 @@ exportClasses(
 
 ## Methods/Generics
 exportMethods(
-   coerce,
-   show,
    summary,
    dbGetInfo,
    dbListConnections,
