@@ -2,53 +2,53 @@ import(methods)
 
 ## regular functions:
 export(
+   dbDataType.default,
    dbDriver,
    dbGetDBIVersion,
-   print.list.pairs,
-   dbDataType.default,
+   isSQLKeyword.default,
    make.db.names.default,
-   isSQLKeyword.default
+   print.list.pairs,
 )
 
 ## Classes
 exportClasses(
-   DBIObject,
-   DBIDriver,
    DBIConnection,
+   DBIDriver,
+   DBIObject,
    DBIResult 
 )
 
 ## Methods/Generics
 exportMethods(
-   summary,
-   dbGetInfo,
-   dbListConnections,
-   dbUnloadDriver,
+   dbCallProc,
+   dbClearResult,
+   dbColumnInfo,
+   dbCommit,
    dbConnect,
+   dbDataType,
    dbDisconnect,
-   dbSendQuery,
-   dbGetQuery,
+   dbExistsTable,
    dbGetException,
+   dbGetInfo,
+   dbGetQuery,
+   dbGetRowCount,
+   dbGetRowsAffected,
+   dbGetStatement,
+   dbHasCompleted,
+   dbListConnections,
+   dbListFields,
    dbListResults,
    dbListTables,
    dbReadTable,
-   dbWriteTable,
-   dbExistsTable,
    dbRemoveTable,
-   dbListFields,
-   dbSetDataMappings,
-   dbCommit,
    dbRollback,
-   dbCallProc,
+   dbSendQuery,
+   dbSetDataMappings,
+   dbUnloadDriver,
+   dbWriteTable,
    fetch,
-   dbClearResult,
-   dbColumnInfo,
-   dbGetStatement,
-   dbHasCompleted,
-   dbGetRowsAffected,
-   dbGetRowCount,
-   dbDataType,
-   make.db.names,
    isSQLKeyword,
-   SQLKeywords 
+   make.db.names,
+   SQLKeywords,
+   summary
 )
