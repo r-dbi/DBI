@@ -2,12 +2,12 @@ import(methods)
 
 ## regular functions:
 export(
+   .SQL92Keywords,
    dbDataType.default,
-   dbDriver,
    dbGetDBIVersion,
    isSQLKeyword.default,
    make.db.names.default,
-   print.list.pairs,
+   print.list.pairs
 )
 
 ## Classes
@@ -15,7 +15,7 @@ exportClasses(
    DBIConnection,
    DBIDriver,
    DBIObject,
-   DBIResult 
+   DBIResult
 )
 
 ## Methods/Generics
@@ -27,6 +27,7 @@ exportMethods(
    dbConnect,
    dbDataType,
    dbDisconnect,
+   dbDriver,
    dbExistsTable,
    dbGetException,
    dbGetInfo,
