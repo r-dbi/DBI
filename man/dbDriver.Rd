@@ -57,7 +57,7 @@
   of \code{DBIObject}, which serves as the root or parent of the
   class hierarchy.
 }
-}
+
 \references{
   See the Database Interface definition document
   \code{DBI.pdf} in the base directory of this package

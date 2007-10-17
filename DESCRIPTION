@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.2-3
+Version: 0.2-4
 Title: R Database Interface 
 Author: R Special Interest Group on Databases (R-SIG-DB)
 Maintainer: David A. James <daj025@gmail.com>
@@ -10,5 +10,5 @@ Description: A database interface (DBI) definition for
    systems.  All classes in this package are virtual and need 
    to be extended by the various R/DBMS implementations.  
 LazyLoad: yes
-License: GPL (version 2 or later)
+License: LGPL (version 2 or later)
 Collate: DBI.R Util.R zzz.R

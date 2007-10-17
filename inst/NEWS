@@ -1,3 +1,9 @@
+Version 0.2-4
+
+* Changed license from GPL to LPGL
+
+* Fixed a trivial typo in documentation
+
 Version 0.1-10
 
 * Fixed documentation typos.
