@@ -29,7 +29,7 @@ setGeneric("dbDataType",
 ## by defualt use the SQL92 data types -- individual drivers may need to
 ## overload this 
 setMethod("dbDataType", signature(dbObj="DBIObject", obj="ANY"),
-   def = function(dbObj, obj, ...) dbDataType.default(obj, ...),
+   definition = function(dbObj, obj, ...) dbDataType.default(obj, ...),
    valueClass = "character"
 )
 
@@ -64,7 +64,7 @@ setGeneric("make.db.names",
    valueClass = "character"
 )
 setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
-   def = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
+   definition = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
        make.db.names.default(snames, keywords, unique, allow.keywords)
        },
    valueClass = "character"
@@ -79,9 +79,9 @@ function(snames, keywords = .SQL92Keywords, unique = TRUE,
    "makeUnique" <- function(x, sep="_"){
       if(length(x)==0) return(x)
       out <- x
-      lc <- make.names(tolower(x), unique=F)
+      lc <- make.names(tolower(x), unique=FALSE)
       i <- duplicated(lc)
-      lc <- make.names(lc, unique = T)
+      lc <- make.names(lc, unique = TRUE)
       out[i] <- paste(out[i], substring(lc[i], first=nchar(out[i])+1), sep=sep)
       out
    }
@@ -90,11 +90,11 @@ function(snames, keywords = .SQL92Keywords, unique = TRUE,
    fc <- substring(snames, 1, 1)
    lc <- substring(snames, nchar(snames))
    i <- match(fc, c("'", '"'), 0)>0 & match(lc, c("'", '"'), 0)>0
-   snames[!i]  <- make.names(snames[!i], unique=F)
+   snames[!i]  <- make.names(snames[!i], unique=FALSE)
    if(unique) 
       snames[!i] <- makeUnique(snames[!i])
    if(!allow.keywords){
-      snames[!i] <- makeUnique(c(keywords, snames[!i]))[-seq(along = keywords)]
+      snames[!i] <- makeUnique(c(keywords, snames[!i]))[-seq(along.with=keywords)]
    } 
    gsub("\\.", "_", snames)
 }
@@ -108,7 +108,7 @@ setGeneric("isSQLKeyword",
    valueClass = "logical"
 )
 setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
-   def = function(dbObj, name, keywords, case, ...)
+   definition = function(dbObj, name, keywords, case, ...)
           isSQLKeyword.default(name, keywords, case),
    valueClass = "logical"
 )
@@ -136,11 +136,11 @@ setGeneric("SQLKeywords",
    valueClass = "character"
 )
 setMethod("SQLKeywords", "DBIObject", 
-   def = function(dbObj, ...) .SQL92Keywords,
+   definition = function(dbObj, ...) .SQL92Keywords,
    valueClass = "character"
 )
 setMethod("SQLKeywords", "missing",
-   def = function(dbObj, ...) .SQL92Keywords,
+   definition = function(dbObj, ...) .SQL92Keywords,
    valueClass = "character"
 )
 ".SQL92Keywords" <- 

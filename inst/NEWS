@@ -1,3 +1,8 @@
+Version 0.2-5
+
+* Code cleanups contributed by Matthias Burger: avoid partial argument
+  name matching and use TRUE/FALSE, not T/F.
+
 Version 0.2-4
 
 * Changed license from GPL to LPGL
@@ -53,4 +58,3 @@ Version 0.1-2
 
 * An implementation based on version 4 classes and methods.
 * Incorporated (mostly Tim Keitt's) comments.
-
