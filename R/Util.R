@@ -94,7 +94,8 @@ function(snames, keywords = .SQL92Keywords, unique = TRUE,
    if(unique) 
       snames[!i] <- makeUnique(snames[!i])
    if(!allow.keywords){
-      snames[!i] <- makeUnique(c(keywords, snames[!i]))[-seq(along.with=keywords)]
+      kwi <- match(keywords, toupper(snames), nomatch = 0L)
+      snames[kwi] <- paste('"', snames[kwi], '"', sep='')
    } 
    gsub("\\.", "_", snames)
 }

@@ -3,6 +3,11 @@ Version 0.2-5
 * Code cleanups contributed by Matthias Burger: avoid partial argument
   name matching and use TRUE/FALSE, not T/F.
 
+* Change behavior of make.db.names.default to quote SQL keywords if
+  allow.keywords is FALSE.  Previously, SQL keywords would be name
+  mangled with underscores and a digit.  Now they are quoted using
+  '"'.
+
 Version 0.2-4
 
 * Changed license from GPL to LPGL
