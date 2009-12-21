@@ -15,7 +15,7 @@
 }
 \usage{
   dbGetInfo(dbObj, ...)       # meta-data for any DBIObject
-  dbGetDBIVersion(...)           # DBI version 
+  dbGetDBIVersion()           # DBI version 
   dbGetStatement(res, ...)    # statement that produced result "res"
   dbGetRowCount(res, ...)     # number of rows fetched so far
   dbGetRowsAffected(res, ...) # number of affected rows (e.g., DELETE)
