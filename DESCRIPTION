@@ -1,8 +1,9 @@
 Package: DBI
-Version: 0.2-6
+Version: 0.2-7
+Date: 2013-05-08
 Title: R Database Interface
 Author: R Special Interest Group on Databases (R-SIG-DB)
-Maintainer: ORPHANED
+Maintainer: David A. James <daj025@gmail.com>
 Depends: R (>= 2.15.0), methods
 Imports: methods
 Description: A database interface (DBI) definition for communication
@@ -11,10 +12,7 @@ Description: A database interface (DBI) definition for communication
         the various R/DBMS implementations.
 License: LGPL (>= 2)
 Collate: DBI.R Util.R zzz.R
-Packaged: 2013-04-21 06:40:49 UTC; ripley
 NeedsCompilation: no
-X-CRAN-Original-Maintainer: David A. James <daj025@gmail.com>
-X-CRAN-Comment: Updates since 2009 have been done by other people as
-        the maintainer was unresponsive.
+Packaged: 2013-05-08 23:44:25 UTC; jamesda4
 Repository: CRAN
-Date/Publication: 2013-04-21 09:13:41
+Date/Publication: 2013-05-09 12:09:19

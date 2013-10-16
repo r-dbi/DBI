@@ -1,3 +1,11 @@
+Version 0.2-7
+
+* Trivial changes (updated package fields, daj)
+
+Version 0.2-6
+
+* Removed deprecated \synopsis in some Rd files (thanks to Prof. Ripley)
+
 Version 0.2-5
 
 * Code cleanups contributed by Matthias Burger: avoid partial argument
