@@ -1,9 +1,8 @@
 Package: DBI
-Version: 0.2-7
-Date: 2013-05-08
+Version: 0.3.0
 Title: R Database Interface
 Author: R Special Interest Group on Databases (R-SIG-DB)
-Maintainer: David A. James <daj025@gmail.com>
+Maintainer: Hadley Wickham <h.wickham@gmail.com>
 Depends: R (>= 2.15.0), methods
 Imports: methods
 Description: A database interface (DBI) definition for communication
