@@ -12,3 +12,5 @@ inst\/doc\/DBI\.out$
 inst\/doc\/DBI\.ps$
 inst\/doc\/.*\.tmp$
 inst\/doc\/DBI\.b..$
+^.*\.Rproj$
+^\.Rproj\.user$
