@@ -1,7 +1,7 @@
-## 
+##
 ## $Id$
 ##
-## Utilities.  These actually have been implemented by the DBI, 
+## Utilities.  These actually have been implemented by the DBI,
 ## but individual driver could overload them;  for instance, the
 ## set of SQL keywords should be extended by the various packages.
 ##
@@ -9,7 +9,8 @@
 "dbGetDBIVersion" <-
 function()
 {
-   packageDescription("DBI", field="Version")
+##   packageDescription("DBI", fields = "Version")
+    packageVersion("DBI")
 }
 
 "print.list.pairs" <- function(x, ...)
@@ -17,7 +18,7 @@ function()
    for(key in names(x)){
       value <- format(x[[key]])
       if(value=="") next
-      cat(key, "=", value, "\n")  
+      cat(key, "=", value, "\n")
    }
    invisible(x)
 }
@@ -27,7 +28,7 @@ setGeneric("dbDataType",
    valueClass = "character"
 )
 ## by defualt use the SQL92 data types -- individual drivers may need to
-## overload this 
+## overload this
 setMethod("dbDataType", signature(dbObj="DBIObject", obj="ANY"),
    definition = function(dbObj, obj, ...) dbDataType.default(obj, ...),
    valueClass = "character"
@@ -43,7 +44,7 @@ function(obj, ...)
    rs.mode <- storage.mode(obj)
    if(rs.class=="numeric" || rs.class=="integer"){
       sql.type <- if(rs.mode=="integer") "int" else  "double precision"
-   } 
+   }
    else {
       varchar <- function(x, width=0){
          nc <- ifelse(width>0, width, max(nchar(as.character(x))))
@@ -58,7 +59,7 @@ function(obj, ...)
 
 ## map R/S identifiers into SQL identifiers (careful with keywords)
 setGeneric("make.db.names",
-   signature=c("dbObj", "snames"),        
+   signature=c("dbObj", "snames"),
    def = function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
      allow.keywords = TRUE, ...) standardGeneric("make.db.names"),
    valueClass = "character"
@@ -70,7 +71,7 @@ setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
    valueClass = "character"
 )
 
-"make.db.names.default" <- 
+"make.db.names.default" <-
 function(snames, keywords = .SQL92Keywords, unique = TRUE,
          allow.keywords = TRUE)
 ## produce legal SQL identifiers from strings in a character vector
@@ -91,12 +92,12 @@ function(snames, keywords = .SQL92Keywords, unique = TRUE,
    lc <- substring(snames, nchar(snames))
    i <- match(fc, c("'", '"'), 0)>0 & match(lc, c("'", '"'), 0)>0
    snames[!i]  <- make.names(snames[!i], unique=FALSE)
-   if(unique) 
+   if(unique)
       snames[!i] <- makeUnique(snames[!i])
    if(!allow.keywords){
       kwi <- match(keywords, toupper(snames), nomatch = 0L)
       snames[kwi] <- paste('"', snames[kwi], '"', sep='')
-   } 
+   }
    gsub("\\.", "_", snames)
 }
 
@@ -132,11 +133,11 @@ function(name, keywords = .SQL92Keywords, case = c("lower", "upper", "any")[3])
 ## SQL ANSI 92 (plus ISO's) keywords --- all 220 of them!
 ## (See pp. 22 and 23 in X/Open SQL and RDA, 1994, isbn 1-872630-68-8)
 
-setGeneric("SQLKeywords", 
+setGeneric("SQLKeywords",
    def = function(dbObj, ...)  standardGeneric("SQLKeywords"),
    valueClass = "character"
 )
-setMethod("SQLKeywords", "DBIObject", 
+setMethod("SQLKeywords", "DBIObject",
    definition = function(dbObj, ...) .SQL92Keywords,
    valueClass = "character"
 )
@@ -144,24 +145,24 @@ setMethod("SQLKeywords", "missing",
    definition = function(dbObj, ...) .SQL92Keywords,
    valueClass = "character"
 )
-".SQL92Keywords" <- 
+".SQL92Keywords" <-
 c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY", "ARE", "AS",
    "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN", "BETWEEN",
-   "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST", 
+   "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST",
    "CATALOG", "CHAR", "CHARACTER", "CHARACTER_LENGTH", "CHAR_LENGTH",
-   "CHECK", "CLOSE", "COALESCE", "COLLATE", "COLLATION", "COLUMN", 
-   "COMMIT", "CONNECT", "CONNECTION", "CONSTRAINT", "CONSTRAINTS", 
+   "CHECK", "CLOSE", "COALESCE", "COLLATE", "COLLATION", "COLUMN",
+   "COMMIT", "CONNECT", "CONNECTION", "CONSTRAINT", "CONSTRAINTS",
    "CONTINUE", "CONVERT", "CORRESPONDING", "COUNT", "CREATE", "CURRENT",
    "CURRENT_DATE", "CURRENT_TIMESTAMP", "CURRENT_TYPE", "CURSOR", "DATE",
-   "DAY", "DEALLOCATE", "DEC", "DECIMAL", "DECLARE", "DEFAULT", 
+   "DAY", "DEALLOCATE", "DEC", "DECIMAL", "DECLARE", "DEFAULT",
    "DEFERRABLE", "DEFERRED", "DELETE", "DESC", "DESCRIBE", "DESCRIPTOR",
    "DIAGNOSTICS", "DICONNECT", "DICTIONATRY", "DISPLACEMENT", "DISTINCT",
-   "DOMAIN", "DOUBLE", "DROP", "ELSE", "END", "END-EXEC", "ESCAPE", 
-   "EXCEPT", "EXCEPTION", "EXEC", "EXECUTE", "EXISTS", "EXTERNAL", 
-   "EXTRACT", "FALSE", "FETCH", "FIRST", "FLOAT", "FOR", "FOREIGN", 
-   "FOUND", "FROM", "FULL", "GET", "GLOBAL", "GO", "GOTO", "GRANT", 
+   "DOMAIN", "DOUBLE", "DROP", "ELSE", "END", "END-EXEC", "ESCAPE",
+   "EXCEPT", "EXCEPTION", "EXEC", "EXECUTE", "EXISTS", "EXTERNAL",
+   "EXTRACT", "FALSE", "FETCH", "FIRST", "FLOAT", "FOR", "FOREIGN",
+   "FOUND", "FROM", "FULL", "GET", "GLOBAL", "GO", "GOTO", "GRANT",
    "GROUP", "HAVING", "HOUR", "IDENTITY", "IGNORE", "IMMEDIATE", "IN",
-   "INCLUDE", "INDEX", "INDICATOR", "INITIALLY", "INNER", "INPUT", 
+   "INCLUDE", "INDEX", "INDICATOR", "INITIALLY", "INNER", "INPUT",
    "INSENSITIVE", "INSERT", "INT", "INTEGER", "INTERSECT", "INTERVAL",
    "INTO", "IS", "ISOLATION", "JOIN", "KEY", "LANGUAGE", "LAST", "LEFT",
    "LEVEL", "LIKE", "LOCAL", "LOWER", "MATCH", "MAX", "MIN", "MINUTE",

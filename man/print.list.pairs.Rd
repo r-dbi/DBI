@@ -1,4 +1,3 @@
-% $Id$
 \name{print.list.pairs}
 \alias{print.list.pairs}
 \alias{print}
@@ -11,7 +10,7 @@
   Others are low-level support functions.
 }
 \usage{
-print.list.pairs(x, ...)
+\method{print}{list.pairs}(x, ...)
 }
 \arguments{
   \item{x}{a list of key, value pairs}
@@ -31,7 +30,7 @@ print.list.pairs(x, ...)
   \code{\link{cat}}.
 }
 \examples{\dontrun{
-print.list.pairs(list(a =1, b = 2))
+print.list.pairs(list(a = 1, b = 2))
 }
 }
 \keyword{interface}
