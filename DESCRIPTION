@@ -3,7 +3,7 @@ Version: 0.3.0
 Title: R Database Interface
 Author: R Special Interest Group on Databases (R-SIG-DB)
 Maintainer: Hadley Wickham <h.wickham@gmail.com>
-Depends: R (>= 2.15.0), methods
+Depends: R (>= 2.15.0)
 Imports: methods
 Description: A database interface (DBI) definition for communication
         between R and relational database management systems.  All
