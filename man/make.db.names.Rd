@@ -1,4 +1,3 @@
-% $Id$
 \name{make.db.names}
 \alias{make.db.names}
 \alias{make.db.names,DBIObject,character-method}

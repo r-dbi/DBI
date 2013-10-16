@@ -1,4 +1,3 @@
-% $Id$
 \name{DBIConnection-class}
 \docType{class}
 \alias{DBIConnection-class}

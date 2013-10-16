@@ -1,4 +1,3 @@
-% $Id$
 \name{DBIDriver-class}
 \docType{class}
 

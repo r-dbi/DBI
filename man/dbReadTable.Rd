@@ -1,4 +1,3 @@
-% $Id$
 \name{dbReadTable}
 \alias{dbReadTable}
 \alias{dbWriteTable}

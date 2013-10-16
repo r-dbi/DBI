@@ -1,4 +1,3 @@
-% $Id$
 \name{dbCommit}
 \alias{dbCommit}
 \alias{dbRollback}

@@ -1,4 +1,3 @@
-% $Id$
 \name{dbGetInfo}
 \alias{dbGetInfo}
 \alias{dbGetDBIVersion}

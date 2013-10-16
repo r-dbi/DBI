@@ -7,7 +7,6 @@
 %\VignetteKeywords{Databases, Relational DBMS, MySQL, SQLite, Oracle, PostgreSQL}
 %\VignettePackage{DBI}
 \documentclass{article}
-% $Id$
 
 \usepackage{graphicx,times}
 \usepackage[%

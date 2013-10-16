@@ -1,4 +1,3 @@
-% $Id$
 \name{DBIResult-class}
 \docType{class}
 \alias{DBIResult-class}

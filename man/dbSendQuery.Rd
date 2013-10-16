@@ -1,4 +1,3 @@
-% $Id$
 \name{dbSendQuery}
 \alias{dbSendQuery}
 \alias{dbGetQuery}

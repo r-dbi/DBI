@@ -1,4 +1,3 @@
-% $Id$
 \name{dbDataType}
 \alias{dbDataType}
 \alias{dbDataType,DBIObject-method}

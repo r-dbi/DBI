@@ -1,4 +1,3 @@
-% $Id$
 \name{fetch}
 \alias{fetch}
 \title{

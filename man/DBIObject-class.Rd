@@ -1,4 +1,3 @@
-% $Id$
 \name{DBIObject-class}
 \docType{class}
 \alias{DBIObject-class}

@@ -1,4 +1,3 @@
-% $Id$
 \name{dbSetDataMappings}
 \alias{dbSetDataMappings}
 \title{

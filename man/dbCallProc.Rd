@@ -1,4 +1,3 @@
-% $Id$
 \name{dbCallProc}
 \alias{dbCallProc}
 \title{

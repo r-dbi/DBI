@@ -1,6 +1,3 @@
-## $Id$
-##
-## 
 ## Database Interface Definition
 ## 
 ##   Define all the classes and methods to be used by an implementation

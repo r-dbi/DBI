@@ -1,4 +1,3 @@
-% $Id$
 \name{dbConnect}
 \alias{dbDisconnect}
 \alias{dbConnect}

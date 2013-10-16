@@ -1,4 +1,3 @@
-% $Id$
 \name{dbDriver}
 \alias{dbDriver}
 \alias{dbDriver,character-method}

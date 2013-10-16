@@ -1,4 +1,3 @@
-% $Id$
 \name{dbListTables}
 \alias{dbListTables}
 \alias{dbListFields}
