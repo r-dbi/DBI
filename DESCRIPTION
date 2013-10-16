@@ -12,7 +12,3 @@ Description: A database interface (DBI) definition for communication
         the various R/DBMS implementations.
 License: LGPL (>= 2)
 Collate: DBI.R Util.R zzz.R
-NeedsCompilation: no
-Packaged: 2013-05-08 23:44:25 UTC; jamesda4
-Repository: CRAN
-Date/Publication: 2013-05-09 12:09:19
