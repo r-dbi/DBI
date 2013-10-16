@@ -31,6 +31,7 @@
 \newcommand{\sclass}[1]{\mbox{\tt #1}}  % print arg as an R/S class
 \newcommand{\smethod}[1]{\mbox{\tt #1}} % print arg as an R/S method
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 
 \title{A Common Database Interface (DBI)}
 \author{
