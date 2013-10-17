@@ -11,31 +11,12 @@
 ## *DBIObject
 ##    |
 ##    |- *DBIDriver
-##    |     |- ODBCDriver
-##    |     |- PgSQLDriver
-##    |     |- MySQLDriver
-##    |     |- ...
 ##    |- *DBIConnection
-##    |     |- ODBCConnection
-##    |     |- PgSQLDConnection
-##    |     |- MySQLDConnection
-##    |     |- ....
 ##    |- *DBIResult
-##          |  |- ODBCResult
-##          |  |- PgSQLResult
-##          |  |- MySQLResult
-##          |  |- ...
-##          |- *DBIResultSet    (NOTE: this has not been agreed upon)
-##                |- ODBCResultSet
-##                |- PgSQLResultSet
-##                |- MySQLResultSet
-##                |- ...
-## 
 
-##
 ## DBIObject and its methods (generics, to be more precise). This is
 ## the base class for all objects that implement R/S DBMS connectivity
-##
+
 #' @export
 setClass("DBIObject", "VIRTUAL")
 

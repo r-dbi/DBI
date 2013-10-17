@@ -1,8 +1,5 @@
 #' @include DBObject.R
 
-##
-## DBIConnection class and methods
-##
 #' @export
 setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 

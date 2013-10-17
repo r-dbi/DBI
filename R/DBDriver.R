@@ -1,14 +1,5 @@
 #' @include DBObject.R
 
-##
-## DBIDriver class and its methods.
-##
-## Should we define methods for querying the interface API to find what
-## drivers are available on the current R/Splus instance?  Perhaps something 
-## reminescent of library()?  DBIDriver() and DBIDriver(help = "RODBC"), say?
-## (JDBC driver manager's class idea would be cleaner.)
-##
-
 #' @export
 setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 

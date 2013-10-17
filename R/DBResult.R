@@ -1,10 +1,7 @@
 #' @include DBObject.R
-
-##
-## Class: dbResult
+## Class: DBIResult
 ## This is a base class for arbitrary results from the DBMS 
-## Shoud we also define dbResultSets/dbCursors?
-##
+
 #' @export
 setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 
