@@ -3,10 +3,12 @@
 ## set of SQL keywords should be extended by the various packages.
 ##
 
+#' @export
 dbGetDBIVersion <- function() {
   packageVersion("DBI")
 }
 
+#' @export
 print.list.pairs <- function(x, ...) {
   for(key in names(x)){
     value <- format(x[[key]])

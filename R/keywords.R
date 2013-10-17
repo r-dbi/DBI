@@ -1,4 +1,5 @@
 ## map R/S identifiers into SQL identifiers (careful with keywords)
+#' @export
 setGeneric("make.db.names",
   signature=c("dbObj", "snames"),
   def = function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
@@ -40,6 +41,7 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
   gsub("\\.", "_", snames)
 }
 
+#' @export
 setGeneric("isSQLKeyword",
   signature = c("dbObj", "name"),
   def = function(dbObj, name, keywords = .SQL92Keywords,
@@ -71,6 +73,7 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
 ## SQL ANSI 92 (plus ISO's) keywords --- all 220 of them!
 ## (See pp. 22 and 23 in X/Open SQL and RDA, 1994, isbn 1-872630-68-8)
 
+#' @export
 setGeneric("SQLKeywords",
   def = function(dbObj, ...)  standardGeneric("SQLKeywords"),
   valueClass = "character"
@@ -83,6 +86,7 @@ setMethod("SQLKeywords", "missing",
   definition = function(dbObj, ...) .SQL92Keywords,
   valueClass = "character"
 )
+#' @export
 .SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY", 
   "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN", 
   "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST",

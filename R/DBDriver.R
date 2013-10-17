@@ -9,6 +9,7 @@
 ## (JDBC driver manager's class idea would be cleaner.)
 ##
 
+#' @export
 setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 
 ## The following function "loads" the specific "driver" or package, e.g.,
@@ -17,6 +18,7 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 ## that does the actual initialization, e.g., Oracle(), MySQL(), ODBC(),
 ## SQLite(), ....
 
+#' @export
 setGeneric("dbDriver", 
   def = function(drvName, ...) standardGeneric("dbDriver"),
   valueClass = "DBIDriver")
@@ -26,15 +28,18 @@ setMethod("dbDriver", "character",
     do.call(as.character(drvName), list(...))
   }
 )
+#' @export
 setGeneric("dbListConnections", 
   def = function(drv, ...) standardGeneric("dbListConnections")
 )
+#' @export
 setGeneric("dbUnloadDriver", 
   def = function(drv, ...) standardGeneric("dbUnloadDriver"),
   valueClass = "logical"
 )
 
 ## return a string indicating the "closest" SQL type for an R/S object
+#' @export
 setGeneric("dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),
   valueClass = "character"

@@ -36,11 +36,13 @@
 ## DBIObject and its methods (generics, to be more precise). This is
 ## the base class for all objects that implement R/S DBMS connectivity
 ##
+#' @export
 setClass("DBIObject", "VIRTUAL")
 
 ## this is the main meta-data function; each DBI class should have
 ## this method return version info, and whatever other info is
 ## relevant (e.g., user, password(?), dbname for connections)
+#' @export
 setGeneric("dbGetInfo", 
    def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
