@@ -3,19 +3,15 @@
 ## set of SQL keywords should be extended by the various packages.
 ##
 
-"dbGetDBIVersion" <-
-function()
-{
-##   packageDescription("DBI", fields = "Version")
-    packageVersion("DBI")
+dbGetDBIVersion <- function() {
+  packageVersion("DBI")
 }
 
-"print.list.pairs" <- function(x, ...)
-{
-   for(key in names(x)){
-      value <- format(x[[key]])
-      if(value=="") next
-      cat(key, "=", value, "\n")
-   }
-   invisible(x)
+print.list.pairs <- function(x, ...) {
+  for(key in names(x)){
+    value <- format(x[[key]])
+    if(value=="") next
+    cat(key, "=", value, "\n")
+  }
+  invisible(x)
 }

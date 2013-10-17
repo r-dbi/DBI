@@ -46,25 +46,23 @@ setMethod("dbDataType", signature(dbObj="DBIObject", obj="ANY"),
   valueClass = "character"
 )
 
-"dbDataType.default" <-
-  function(obj, ...)
-    ## find a suitable SQL data type for the R/S object obj
-    ## (this method most likely should be overriden by each driver)
-    ## TODO: Lots and lots!! (this is a very rough first draft)
-  {
-    rs.class <- data.class(obj)
-    rs.mode <- storage.mode(obj)
-    if(rs.class=="numeric" || rs.class=="integer"){
-      sql.type <- if(rs.mode=="integer") "int" else  "double precision"
-    }
-    else {
-      varchar <- function(x, width=0){
-        nc <- ifelse(width>0, width, max(nchar(as.character(x))))
-        paste("varchar(", nc, ")", sep="")
-      }
-      sql.type <- switch(rs.class,
-        logical = "smallint",
-        factor = , character = , ordered = , varchar(obj))
-    }
-    sql.type
+## find a suitable SQL data type for the R/S object obj
+## (this method most likely should be overriden by each driver)
+## TODO: Lots and lots!! (this is a very rough first draft)
+dbDataType.default <- function(obj, ...) {  
+  rs.class <- data.class(obj)
+  rs.mode <- storage.mode(obj)
+  if(rs.class=="numeric" || rs.class=="integer"){
+    sql.type <- if(rs.mode=="integer") "int" else  "double precision"
   }
+  else {
+    varchar <- function(x, width=0){
+      nc <- ifelse(width>0, width, max(nchar(as.character(x))))
+      paste("varchar(", nc, ")", sep="")
+    }
+    sql.type <- switch(rs.class,
+      logical = "smallint",
+      factor = , character = , ordered = , varchar(obj))
+  }
+  sql.type
+}
