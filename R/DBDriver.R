@@ -76,6 +76,7 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 #' pcon <- dbConnect(p, "user", "password", "dbname")
 #' dbListTables(pcon)
 #' }
+#' @aliases dbDriver,character-method
 #' @export
 setGeneric("dbDriver", 
   def = function(drvName, ...) standardGeneric("dbDriver"),

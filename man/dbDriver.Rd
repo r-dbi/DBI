@@ -1,5 +1,6 @@
 \name{dbDriver}
 \alias{dbDriver}
+\alias{dbDriver,character-method}
 \alias{dbUnloadDriver}
 \title{Load and unload database drivers.}
 \arguments{
