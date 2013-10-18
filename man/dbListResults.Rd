@@ -1,20 +1,17 @@
-\name{dbListTables}
-\alias{dbListTables}
-\title{List remote tables.}
+\name{dbListResults}
+\alias{dbListResults}
+\title{A list of all pending results.}
 \arguments{
-  \item{...}{other arguments passed on to methods}
-}
-\value{
-  a character vector
+  \item{}{}
 }
 \description{
-  This should, where possible, include temporary tables.
+  A list of all pending results.
 }
 \seealso{
   Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
-  \code{\link{dbListFields}}, \code{\link{dbListResults}},
+  \code{\link{dbListFields}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
   \code{\link{dbSendQuery}}, \code{\link{dbWriteTable}}
 }

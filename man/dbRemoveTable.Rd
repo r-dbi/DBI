@@ -1,21 +1,22 @@
-\name{dbListTables}
-\alias{dbListTables}
-\title{List remote tables.}
+\name{dbRemoveTable}
+\alias{dbRemoveTable}
+\title{Remove a table from the database.}
 \arguments{
-  \item{...}{other arguments passed on to methods}
+  \item{}{}
 }
 \value{
-  a character vector
+  a logical vector of length 1 indicating success or
+  failure.
 }
 \description{
-  This should, where possible, include temporary tables.
+  Executes the sql \code{DROP TABLE name}.
 }
 \seealso{
   Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbSendQuery}}, \code{\link{dbWriteTable}}
 }
 

@@ -1,38 +1,23 @@
 \name{print.list.pairs}
 \alias{print.list.pairs}
-\alias{print}
-\alias{summary}
-\alias{format}
-\title{Support functions}
-\description{
-  Some of these functions are conditionally elevated to 
-  generic functions (e.g., \code{print}, \code{summary}).
-  Others are low-level support functions.
-}
+\title{Print a list of pairs.}
 \usage{
-\method{print}{list.pairs}(x, ...)
+  print.list.pairs(x, ...)
 }
 \arguments{
   \item{x}{a list of key, value pairs}
-  \item{\dots}{additional arguments to be passed to \code{cat}}
+
+  \item{...}{additional arguments to be passed to
+  \code{cat}}
 }
 \value{
   the (invisible) value of x.
 }
-\references{
-  See the Database Interface definition document
-  \code{DBI.pdf} in the base directory of this package
-  or \url{http://developer.r-project.org/db}.
+\description{
+  Print a list of pairs.
 }
-\seealso{ 
-  \code{\link{print.default}},
-  \code{\link{summary.default}},
-  \code{\link{cat}}.
-}
-\examples{\dontrun{
+\examples{
 print.list.pairs(list(a = 1, b = 2))
 }
-}
-\keyword{interface}
-\keyword{database}
-% vim: syntax=tex
+\keyword{internal}
+

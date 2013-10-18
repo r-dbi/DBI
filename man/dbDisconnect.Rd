@@ -1,0 +1,25 @@
+\name{dbDisconnect}
+\alias{dbDisconnect}
+\title{Disconnect (close) a connection}
+\arguments{
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
+}
+\value{
+  a logical vector of length 1, indicating success or
+  failure.
+}
+\description{
+  Disconnect (close) a connection
+}
+\seealso{
+  Other connection methods: \code{\link{dbExistsTable}},
+  \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
+  \code{\link{dbListFields}}, \code{\link{dbListResults}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbWriteTable}}
+}
+

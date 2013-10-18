@@ -1,28 +1,43 @@
-## Database Interface Definition
-## 
-##   Define all the classes and methods to be used by an implementation
-##   of the Database Interface (DBI).  All these classes are virtual and
-##   each driver should extend them to provide the actual implementation.
-##   See the files DBI.RODBC, DBI.PgSQL, and DBI.RMySQL for concrete
-##   implementations.  
-##
-## Class hierarchy: (the "*" prefix indicates a virtual class.)
-## 
-## *DBIObject
-##    |
-##    |- *DBIDriver
-##    |- *DBIConnection
-##    |- *DBIResult
-
-## DBIObject and its methods (generics, to be more precise). This is
-## the base class for all objects that implement R/S DBMS connectivity
-
+#' DBIObject class.
+#' 
+#' Base class for all other DBI classes (e.g., drivers, connections). This
+#' is a virtual Class: No objects may be created from it.
+#' 
+#' @docType class
+#' @family DBI classes
+#' @examples
+#' \dontrun{
+#' drv <- dbDriver("MySQL")
+#' con <- dbConnect(drv, group = "rs-dbi")
+#' res <- dbSendQuery(con, "select * from vitalSuite")
+#' is(drv, "DBIObject")   ## True
+#' is(con, "DBIObject")   ## True
+#' is(res, "DBIObject")
+#' }
 #' @export
+#' @name DBIObject-class
 setClass("DBIObject", "VIRTUAL")
 
-## this is the main meta-data function; each DBI class should have
-## this method return version info, and whatever other info is
-## relevant (e.g., user, password(?), dbname for connections)
+#' Get DBMS metadata.
+#' 
+#' @section Implementation notes:
+#' For \code{DBIDriver} subclasses, this should include the version of the 
+#' package, and the version of the underlying client library. 
+#' 
+#' For \code{DBIConnection} objects this should report the version of 
+#' the DBMS engine, database name, username, host, port, etc. It MUST NOT
+#' include the password. 
+#' 
+#' For \code{DBIResult} objects, this should include the statement
+#' being executed, how many rows have been fetched so far (in the case of
+#' queries), how many rows were affected (deleted, inserted, changed, or total
+#' number of records to be fetched).
+#' 
+#' @param dbObj An object inheriting from \code{\linkS4class{DBIObject}}, 
+#'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
+#'  or a \code{\linkS4class{DBIResult}}
+#' @param ... Other arguments to methods.
+#' @return a list
 #' @export
 setGeneric("dbGetInfo", 
    def = function(dbObj, ...) standardGeneric("dbGetInfo")

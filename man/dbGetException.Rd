@@ -1,0 +1,23 @@
+\name{dbGetException}
+\alias{dbGetException}
+\title{Get DBMS exceptions.}
+\arguments{
+  \item{}{}
+}
+\value{
+  a list with elements \code{errNum} (an integer error
+  number) and \code{errMsg} (a character string) describing
+  the last error in the connection \code{conn}.
+}
+\description{
+  Get DBMS exceptions.
+}
+\seealso{
+  Other connection methods: \code{\link{dbDisconnect}},
+  \code{\link{dbExistsTable}}, \code{\link{dbGetQuery}},
+  \code{\link{dbListFields}}, \code{\link{dbListResults}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbWriteTable}}
+}
+

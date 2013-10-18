@@ -1,20 +1,21 @@
-\name{dbListTables}
-\alias{dbListTables}
-\title{List remote tables.}
+\name{dbListFields}
+\alias{dbListFields}
+\title{List field names of a remote table.}
 \arguments{
-  \item{...}{other arguments passed on to methods}
+  \item{name}{a character string with the name of the
+  remote table.}
 }
 \value{
   a character vector
 }
 \description{
-  This should, where possible, include temporary tables.
+  List field names of a remote table.
 }
 \seealso{
   Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
-  \code{\link{dbListFields}}, \code{\link{dbListResults}},
+  \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
   \code{\link{dbSendQuery}}, \code{\link{dbWriteTable}}
 }
