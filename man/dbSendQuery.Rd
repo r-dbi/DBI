@@ -2,6 +2,11 @@
 \alias{dbSendQuery}
 \title{Execute a statement on a given database connection.}
 \arguments{
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
+
   \item{statement}{a character vector of length 1
   containing SQL.}
 }

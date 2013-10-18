@@ -2,6 +2,14 @@
 \alias{dbWriteTable}
 \title{Create a database table from data frame.}
 \arguments{
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{name}{A character string specifying a DBMS table
+  name.}
+
+  \item{...}{Other parameters passed on to methods.}
+
   \item{value}{a data.frame (or coercible to data.frame).}
 }
 \value{

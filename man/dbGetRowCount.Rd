@@ -2,7 +2,10 @@
 \alias{dbGetRowCount}
 \title{The number of rows fetched so far.}
 \arguments{
-  \item{}{}
+  \item{res}{An object inheriting from
+  \code{\linkS4class{DBIResult}}.}
+
+  \item{...}{Other arguments passed on to methods.}
 }
 \value{
   a numeric vector of length 1

@@ -2,7 +2,10 @@
 \alias{dbHasCompleted}
 \title{Has the operation completed?}
 \arguments{
-  \item{}{}
+  \item{res}{An object inheriting from
+  \code{\linkS4class{DBIResult}}.}
+
+  \item{...}{Other arguments passed on to methods.}
 }
 \value{
   a logical vector of length 1

@@ -2,6 +2,11 @@
 \alias{dbSetDataMappings}
 \title{Set data mappings between an DBMS and R/Splus.}
 \arguments{
+  \item{res}{An object inheriting from
+  \code{\linkS4class{DBIResult}}.}
+
+  \item{...}{Other arguments passed on to methods.}
+
   \item{flds}{a field description object as returned by
   \code{dbColumnInfo}.}
 }

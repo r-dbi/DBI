@@ -2,7 +2,10 @@
 \alias{dbGetStatement}
 \title{Get the statement associated with a result set}
 \arguments{
-  \item{}{}
+  \item{res}{An object inheriting from
+  \code{\linkS4class{DBIResult}}.}
+
+  \item{...}{Other arguments passed on to methods.}
 }
 \value{
   a character vector

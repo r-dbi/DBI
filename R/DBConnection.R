@@ -40,7 +40,9 @@ setGeneric("dbDisconnect",
 #' then you must call \code{\link{dbClearResult}} when you finish fetching the 
 #' records you need.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}. 
 #'   If the statement generates output (e.g., a \code{SELECT} statement) the 
@@ -71,7 +73,9 @@ setGeneric("dbSendQuery",
 
 #' Send query, retrieve results and then clear result set.
 #' 
-#' @inheritParams dbSendQuery
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @family connection methods
 #' @export
 setGeneric("dbGetQuery", 
@@ -80,7 +84,9 @@ setGeneric("dbGetQuery",
 
 #' Get DBMS exceptions.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @family connection methods
 #' @return a list with elements \code{errNum} (an integer error number) and 
 #'   \code{errMsg} (a character string) describing the last error in the 
@@ -92,7 +98,9 @@ setGeneric("dbGetException",
 
 #' A list of all pending results.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @family connection methods
 #' @export
 setGeneric("dbListResults", 
@@ -101,7 +109,9 @@ setGeneric("dbListResults",
 
 #' List field names of a remote table.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @param name a character string with the name of the remote table.
 #' @return a character vector
 #' @family connection methods
@@ -115,7 +125,9 @@ setGeneric("dbListFields",
 #' 
 #' This should, where possible, include temporary tables.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @param ... other arguments passed on to methods
 #' @return a character vector
 #' @family connection methods
@@ -168,6 +180,10 @@ setGeneric("dbReadTable",
 #'     table in the DBMS.  Its default is \code{FALSE}.  
 #' }
 #' @inheritParams dbReadTable
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param name A character string specifying a DBMS table name.
+#' @param ... Other parameters passed on to methods.
 #' @param value a data.frame (or coercible to data.frame).
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.
@@ -179,7 +195,10 @@ setGeneric("dbWriteTable",
 
 #' Does a table exist?
 #' 
-#' @inheritParams dbReadTable
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param name A character string specifying a DBMS table name.
+#' @param ... Other parameters passed on to methods.
 #' @family connection methods
 #' @return a logical vector of length 1.
 #' @export
@@ -192,7 +211,10 @@ setGeneric("dbExistsTable",
 #' 
 #' Executes the sql \code{DROP TABLE name}.
 #' 
-#' @inheritParams dbReadTable
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param name A character string specifying a DBMS table name.
+#' @param ... Other parameters passed on to methods.
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.
 #' @export
@@ -205,13 +227,15 @@ setGeneric("dbRemoveTable",
 #' 
 #' Not all database engines implement transaction management, in which case
 #' these methods should not be implemented for the specific 
-#' \linkS4clas{DBIConnection} subclass.
+#' \code{\linkS4class{DBIConnection}} subclass.
 #' 
 #' @section Side Effects: 
 #' The current transaction on the connections \code{con} is committed or rolled 
 #' back.
 #' 
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
+#'   \code{\link{dbConnect}}.
+#' @param ... Other parameters passed on to methods.
 #' @return a logical indicating whether the operation succeeded or not.
 #' @examples
 #' \dontrun{

@@ -2,7 +2,10 @@
 \alias{dbGetException}
 \title{Get DBMS exceptions.}
 \arguments{
-  \item{}{}
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
 }
 \value{
   a list with elements \code{errNum} (an integer error

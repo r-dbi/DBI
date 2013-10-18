@@ -4,7 +4,10 @@
 \alias{transactions}
 \title{Commit/rollback SQL transactions}
 \arguments{
-  \item{}{}
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
 }
 \value{
   a logical indicating whether the operation succeeded or
@@ -13,8 +16,8 @@
 \description{
   Not all database engines implement transaction
   management, in which case these methods should not be
-  implemented for the specific \linkS4clas{DBIConnection}
-  subclass.
+  implemented for the specific
+  \code{\linkS4class{DBIConnection}} subclass.
 }
 \section{Side Effects}{
   The current transaction on the connections \code{con} is

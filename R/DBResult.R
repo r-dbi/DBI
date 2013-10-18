@@ -9,7 +9,7 @@
 #' @examples
 #' \dontrun{
 #'  drv <- dbDriver("Oracle")
-#'  con <- dbConnect(drv, "user/password@dbname")
+#'  con <- dbConnect(drv, "user/password@@dbname")
 #'  res <- dbSendQuery(con, "select * from LASERS where prdata > '2002-05-01'")
 #'  summary(res)
 #'  while(dbHasCompleted(res)){
@@ -96,7 +96,8 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #' 
-#' @inheritParams dbColumnInfo
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
 #' @return a character vector
 #' @family DBIResult generics
 #' @export
@@ -107,7 +108,8 @@ setGeneric("dbGetStatement",
 
 #' Has the operation completed?
 #' 
-#' @inheritParams dbColumnInfo
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
 #' @return a logical vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -118,7 +120,8 @@ setGeneric("dbHasCompleted",
 
 #' The number of rows affected by data modifying query.
 #' 
-#' @inheritParams dbColumnInfo
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -129,7 +132,8 @@ setGeneric("dbGetRowsAffected",
 
 #' The number of rows fetched so far.
 #' 
-#' @inheritParams dbColumnInfo
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -150,7 +154,8 @@ setGeneric("dbGetRowCount",
 #' The details on conversion functions (e.g., arguments, whether they can
 #' invoke initializers and/or destructors) have not been specified.
 #' 
-#' @inheritParams dbColumnInfo
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
 #' @keywords internal
 #' @param flds a field description object as returned by \code{dbColumnInfo}.
 #' @examples

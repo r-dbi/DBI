@@ -2,7 +2,10 @@
 \alias{dbGetQuery}
 \title{Send query, retrieve results and then clear result set.}
 \arguments{
-  \item{}{}
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
 }
 \description{
   Send query, retrieve results and then clear result set.

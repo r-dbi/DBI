@@ -2,6 +2,11 @@
 \alias{dbListFields}
 \title{List field names of a remote table.}
 \arguments{
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
+
   \item{name}{a character string with the name of the
   remote table.}
 }
