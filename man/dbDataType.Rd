@@ -3,9 +3,9 @@
 \alias{dbDataType,DBIObject,Date-method}
 \alias{dbDataType,DBIObject,POSIXct-method}
 \alias{dbDataType,DBIObject,character-method}
+\alias{dbDataType,DBIObject,data.frame-method}
 \alias{dbDataType,DBIObject,factor-method}
 \alias{dbDataType,DBIObject,integer-method}
-\alias{dbDataType,DBIObject,list-method}
 \alias{dbDataType,DBIObject,logical-method}
 \alias{dbDataType,DBIObject,numeric-method}
 \title{Determine the SQL data type of an object.}
@@ -13,7 +13,10 @@
   dbDataType(dbObj, obj, ...)
 }
 \arguments{
-  \item{obj}{R/Splus object whose SQL type we want to
+  \item{dbObj}{A object inheriting from
+  \code{\linkS4class{DBIDriver}}}
+
+  \item{obj}{An R object whose SQL type we want to
   determine.}
 
   \item{...}{Other arguments passed on to methods.}
