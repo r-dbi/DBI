@@ -1,6 +1,9 @@
 \name{dbSetDataMappings}
 \alias{dbSetDataMappings}
 \title{Set data mappings between an DBMS and R/Splus.}
+\usage{
+  dbSetDataMappings(res, flds, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

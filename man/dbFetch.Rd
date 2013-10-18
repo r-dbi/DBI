@@ -3,6 +3,11 @@
 \alias{dbFetch,DBIResult-method}
 \alias{fetch}
 \title{Fetch records from a previously executed query.}
+\usage{
+  dbFetch(res, n = -1, ...)
+
+  fetch(res, n = -1, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

@@ -1,6 +1,9 @@
 \name{dbColumnInfo}
 \alias{dbColumnInfo}
 \title{Information about result types.}
+\usage{
+  dbColumnInfo(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

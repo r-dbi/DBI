@@ -1,6 +1,9 @@
 \name{dbDisconnect}
 \alias{dbDisconnect}
 \title{Disconnect (close) a connection}
+\usage{
+  dbDisconnect(conn, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

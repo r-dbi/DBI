@@ -1,6 +1,9 @@
 \name{dbGetInfo}
 \alias{dbGetInfo}
 \title{Get DBMS metadata.}
+\usage{
+  dbGetInfo(dbObj, ...)
+}
 \arguments{
   \item{dbObj}{An object inheriting from
   \code{\linkS4class{DBIObject}}, i.e.

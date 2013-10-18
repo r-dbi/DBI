@@ -1,6 +1,9 @@
 \name{dbListFields}
 \alias{dbListFields}
 \title{List field names of a remote table.}
+\usage{
+  dbListFields(conn, name, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

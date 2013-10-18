@@ -1,6 +1,9 @@
 \name{dbCallProc}
 \alias{dbCallProc}
 \title{Call an SQL stored procedure}
+\usage{
+  dbCallProc(conn, ...)
+}
 \arguments{
   \item{conn}{a \code{DBIConnection} object.}
 

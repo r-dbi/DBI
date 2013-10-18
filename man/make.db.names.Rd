@@ -7,6 +7,10 @@
 \alias{make.db.names}
 \alias{make.db.names,DBIObject,character-method}
 \title{Make R/Splus identifiers into legal SQL identifiers}
+\usage{
+  make.db.names(dbObj, snames, keywords = .SQL92Keywords,
+    unique = TRUE, allow.keywords = TRUE, ...)
+}
 \arguments{
   \item{dbObj}{any DBI object (e.g., \code{DBIDriver}).}
 

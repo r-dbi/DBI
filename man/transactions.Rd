@@ -3,6 +3,11 @@
 \alias{dbRollback}
 \alias{transactions}
 \title{Commit/rollback SQL transactions}
+\usage{
+  dbCommit(conn, ...)
+
+  dbRollback(conn, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

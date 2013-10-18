@@ -1,6 +1,9 @@
 \name{dbHasCompleted}
 \alias{dbHasCompleted}
 \title{Has the operation completed?}
+\usage{
+  dbHasCompleted(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

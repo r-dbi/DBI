@@ -1,6 +1,9 @@
 \name{dbListTables}
 \alias{dbListTables}
 \title{List remote tables.}
+\usage{
+  dbListTables(conn, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

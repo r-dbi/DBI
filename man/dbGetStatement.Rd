@@ -1,6 +1,9 @@
 \name{dbGetStatement}
 \alias{dbGetStatement}
 \title{Get the statement associated with a result set}
+\usage{
+  dbGetStatement(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

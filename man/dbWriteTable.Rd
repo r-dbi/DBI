@@ -1,6 +1,9 @@
 \name{dbWriteTable}
 \alias{dbWriteTable}
 \title{Create a database table from data frame.}
+\usage{
+  dbWriteTable(conn, name, value, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

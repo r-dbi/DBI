@@ -1,6 +1,9 @@
 \name{dbReadTable}
 \alias{dbReadTable}
 \title{Create a data frame from a database table.}
+\usage{
+  dbReadTable(conn, name, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

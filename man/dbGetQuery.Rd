@@ -2,6 +2,9 @@
 \alias{dbGetQuery}
 \alias{dbGetQuery,DBIConnection,character-method}
 \title{Send query, retrieve results and then clear result set.}
+\usage{
+  dbGetQuery(conn, statement, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

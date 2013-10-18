@@ -1,6 +1,9 @@
 \name{dbRemoveTable}
 \alias{dbRemoveTable}
 \title{Remove a table from the database.}
+\usage{
+  dbRemoveTable(conn, name, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

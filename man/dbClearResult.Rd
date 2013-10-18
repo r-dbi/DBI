@@ -1,6 +1,9 @@
 \name{dbClearResult}
 \alias{dbClearResult}
 \title{Clear a result set.}
+\usage{
+  dbClearResult(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

@@ -1,6 +1,9 @@
 \name{dbGetException}
 \alias{dbGetException}
 \title{Get DBMS exceptions.}
+\usage{
+  dbGetException(conn, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

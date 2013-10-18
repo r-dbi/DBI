@@ -1,6 +1,9 @@
 \name{dbSendQuery}
 \alias{dbSendQuery}
 \title{Execute a statement on a given database connection.}
+\usage{
+  dbSendQuery(conn, statement, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

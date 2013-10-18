@@ -1,6 +1,9 @@
 \name{dbListResults}
 \alias{dbListResults}
 \title{A list of all pending results.}
+\usage{
+  dbListResults(conn, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

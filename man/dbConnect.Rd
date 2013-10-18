@@ -1,6 +1,9 @@
 \name{dbConnect}
 \alias{dbConnect}
 \title{Create a connection to a DBMS.}
+\usage{
+  dbConnect(drv, ...)
+}
 \arguments{
   \item{drv}{an object that inherits from
   \code{\linkS4class{DBIDriver}}, or a character string

@@ -1,6 +1,9 @@
 \name{dbExistsTable}
 \alias{dbExistsTable}
 \title{Does a table exist?}
+\usage{
+  dbExistsTable(conn, name, ...)
+}
 \arguments{
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}

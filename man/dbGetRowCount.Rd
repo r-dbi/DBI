@@ -1,6 +1,9 @@
 \name{dbGetRowCount}
 \alias{dbGetRowCount}
 \title{The number of rows fetched so far.}
+\usage{
+  dbGetRowCount(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

@@ -8,9 +8,14 @@
 \alias{dbDataType,DBIObject,logical-method}
 \alias{dbDataType,DBIObject,numeric-method}
 \title{Determine the SQL data type of an object.}
+\usage{
+  dbDataType(dbObj, obj, ...)
+}
 \arguments{
   \item{obj}{R/Splus object whose SQL type we want to
   determine.}
+
+  \item{...}{Other arguments passed on to methods.}
 }
 \value{
   A character string specifying the SQL data type for

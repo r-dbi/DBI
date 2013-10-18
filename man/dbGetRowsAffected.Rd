@@ -1,6 +1,9 @@
 \name{dbGetRowsAffected}
 \alias{dbGetRowsAffected}
 \title{The number of rows affected by data modifying query.}
+\usage{
+  dbGetRowsAffected(res, ...)
+}
 \arguments{
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}

@@ -3,6 +3,11 @@
 \alias{dbDriver,character-method}
 \alias{dbUnloadDriver}
 \title{Load and unload database drivers.}
+\usage{
+  dbDriver(drvName, ...)
+
+  dbUnloadDriver(drv, ...)
+}
 \arguments{
   \item{drvName}{character name of the driver to
   instantiate.}
