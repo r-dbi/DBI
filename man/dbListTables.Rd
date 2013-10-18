@@ -11,7 +11,8 @@
   \item{...}{Other parameters passed on to methods.}
 }
 \value{
-  a character vector
+  a character vector. If no tables present, a character
+  vector of length 0.
 }
 \description{
   This should, where possible, include temporary tables.

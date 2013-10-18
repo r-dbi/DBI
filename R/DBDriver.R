@@ -102,11 +102,9 @@ setGeneric("dbUnloadDriver",
 #' objects. The authorization mechanism is left unspecified, so check the 
 #' documentation of individual drivers for details.
 #' 
-#' @section Side Effects: 
-#' A connection between R/Splus and the database server
-#' is established, and the R/Splus program becomes a client of the database
-#' engine.  Typically the connections is through the TCP/IP protocol, but this
-#' will depend on vendor-specific details.
+#' Each driver will define what other arguments are required, e.g., 
+#' \code{"dbname"} for the database name, \code{"username"}, and 
+#' \code{"password"}.
 
 #' @param drv an object that inherits from \code{\linkS4class{DBIDriver}}, or 
 #'   a character string specifying the name of DBMS driver, e.g., "RSQLite", 
@@ -147,8 +145,9 @@ setGeneric("dbConnect",
 
 #' List currently open connections.
 #' 
-#' Drivers that implement single connections should return a list containing 
-#' a single element.
+#' Drivers that implement only a single connections MUST return a list 
+#' containing a single element. If no connection are open, methods MUST 
+#' return an empty list.
 #' 
 #' @param drv A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param ... Other arguments passed on to methods.
@@ -166,6 +165,16 @@ setGeneric("dbListConnections",
 #' a method for data.frame which will return a character vector giving the
 #' type for each column in the dataframe.
 #' 
+#' The data types supported by databases are different than the
+#' data types in R, but the mapping between the primitve
+#' types is straightforward:  Any of the many fixed and varying
+#' length character types are mapped to character vectors.
+#' Fixed-precision (non-IEEE) numbers are mapped into either numeric
+#' or integer vectors.
+#' 
+#' Notice that many DBMS do not follow IEEE arithmetic, so there are
+#' potential problems with under/overflows and loss of precision.
+#'
 #' @section Implementation notes:
 #' Implementations should provide methods (if different from the default)
 #' for: logical, integer, numeric, character, factor, Date, and POSIXct.

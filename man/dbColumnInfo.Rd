@@ -12,13 +12,18 @@
 }
 \value{
   A data.frame with one row per output field in \code{res}.
-  Methods MUST include \code{name} and \code{type} columns,
-  and MAY contain other database specific information like
-  scale and precision or whether the field can store
-  \code{NULL}s.
+  Methods MUST include \code{name}, \code{field.type} (the
+  SQL type), and \code{data.type} (the R data type)
+  columns, and MAY contain other database specific
+  information like scale and precision or whether the field
+  can store \code{NULL}s.
 }
 \description{
-  Information about result types.
+  Produces a data.frame that describes the output of a
+  query. The data.frame should have as many rows as there
+  are output fields in the result set, and each column in
+  the data.frame should describe an aspect of the result
+  set field (field name, type, etc.)
 }
 \seealso{
   Other DBIResult generics: \code{\link{dbClearResult}},

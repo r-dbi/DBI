@@ -1,8 +1,12 @@
 #' DBIConnection class.
 #' 
-#' Base class for all DBMS connection classes.  Individual drivers (ODBC,
-#' Oracle, PostgreSQL, MySQL, etc.)  extend this class in a database-specific
-#' manner.
+#' This virtual class encapsulates the connection to a DBMS, and it provides 
+#' access to dynamic queries, result sets, DBMS session management
+#' (transactions), etc.
+#' 
+#' @section Implementation note:
+#' Individual drivers are free to implement single or multiple simultaneous 
+#' connections.
 #' 
 #' @docType class
 #' @name DBIConnection-class
@@ -20,6 +24,9 @@
 setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 
 #' Disconnect (close) a connection
+#' 
+#' This closes the connection, discards all pending work, and frees
+#' resources (e.g., memory, sockets).
 #' 
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
 #'   \code{\link{dbConnect}}.
@@ -117,8 +124,12 @@ setGeneric("dbGetException",
 
 #' A list of all pending results.
 #' 
+#' List of \linkS4class{DBIResult} objects currently active on the connection.
+#'
 #' @inheritParams dbDisconnect
 #' @family connection methods
+#' @return a list. If no results are active, an empty list. If only
+#'   a single result is active, a list with one element.
 #' @export
 setGeneric("dbListResults", 
   def = function(conn, ...) standardGeneric("dbListResults")
@@ -130,6 +141,7 @@ setGeneric("dbListResults",
 #' @param name a character string with the name of the remote table.
 #' @return a character vector
 #' @family connection methods
+#' @seealso \code{\link{dbColumnInfo}} to get the type of the fields.
 #' @export
 setGeneric("dbListFields", 
   def = function(conn, name, ...) standardGeneric("dbListFields"),
@@ -141,7 +153,8 @@ setGeneric("dbListFields",
 #' This should, where possible, include temporary tables.
 #' 
 #' @inheritParams dbDisconnect
-#' @return a character vector
+#' @return a character vector. If no tables present, a character vector
+#'   of length 0.
 #' @family connection methods
 #' @export
 setGeneric("dbListTables",
@@ -150,6 +163,9 @@ setGeneric("dbListTables",
 )
 
 #' Create a data frame from a database table.
+#' 
+#' Imports the data stored remotely in the table \code{name} on connection 
+#' \code{conn}.
 #' 
 #' @note The translation of identifiers between R/Splus and SQL is done through
 #' calls to \code{\link{make.names}} and \code{\link{make.db.names}}, but we
@@ -174,6 +190,9 @@ setGeneric("dbReadTable",
 )
 
 #' Create a database table from data frame.
+#' 
+#' Write the \code{\link{data.frame}} \code{value} into the remote 
+#' table \code{name} in connection \code{conn}. 
 #' 
 #' @section Implementation notes:
 #' 

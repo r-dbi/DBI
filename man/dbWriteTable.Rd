@@ -20,7 +20,8 @@
   failure.
 }
 \description{
-  Create a database table from data frame.
+  Write the \code{\link{data.frame}} \code{value} into the
+  remote table \code{name} in connection \code{conn}.
 }
 \section{Implementation notes}{
   Method should also accept:

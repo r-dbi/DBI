@@ -17,7 +17,8 @@
   a data.frame.
 }
 \description{
-  Create a data frame from a database table.
+  Imports the data stored remotely in the table \code{name}
+  on connection \code{conn}.
 }
 \note{
   The translation of identifiers between R/Splus and SQL is

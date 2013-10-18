@@ -7,6 +7,20 @@
   connections). This is a virtual Class: No objects may be
   created from it.
 }
+\section{Implementation notes}{
+  An implementation MUST provide methods for the following
+  generics:
+
+  \itemize{ \item \code{\link{dbGetInfo}}. }
+
+  It MAY also provide methods for:
+
+  \itemize{ \item \code{\link{summary}}. Print a concise
+  description of the object. The default method invokes
+  \code{dbGetInfo(dbObj)} and prints the name-value pairs
+  one per line.  Individual implementations may tailor this
+  appropriately. }
+}
 \examples{
 \dontrun{
 drv <- dbDriver("MySQL")

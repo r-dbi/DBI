@@ -14,25 +14,34 @@
   \item{...}{Other arguments to methods.}
 }
 \value{
-  a list
+  a named list
 }
 \description{
   Get DBMS metadata.
 }
 \section{Implementation notes}{
   For \code{DBIDriver} subclasses, this should include the
-  version of the package, and the version of the underlying
-  client library.
+  version of the package (\code{driver.version}), the
+  version of the underlying client library
+  (\code{client.version}), and the maximum number of
+  connections (\code{max.connections}).
 
   For \code{DBIConnection} objects this should report the
-  version of the DBMS engine, database name, username,
-  host, port, etc. It MUST NOT include the password.
+  version of the DBMS engine (\code{db.version}), database
+  name (\code{dbname}), username, (\code{username}), host
+  (\code{host}), port (\code{port}), etc. It MAY also
+  include any other arguments related to the connection
+  (e.g., thread id, socket or TCP connection type). It MUST
+  NOT include the password.
 
   For \code{DBIResult} objects, this should include the
-  statement being executed, how many rows have been fetched
-  so far (in the case of queries), how many rows were
-  affected (deleted, inserted, changed, or total number of
-  records to be fetched).
+  statement being executed (\code{statement}), how many
+  rows have been fetched so far (in the case of queries)
+  (\code{row.count}), how many rows were affected (deleted,
+  inserted, changed, or total number of records to be
+  fetched). (\code{rows.affected}), if the query is
+  complete (\code{has.completed}), and whether or not the
+  query generates output (\code{is.select}).
 }
 \seealso{
   Other DBObject methods: \code{\link{dbIsValid}}

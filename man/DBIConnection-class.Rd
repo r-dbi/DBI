@@ -3,9 +3,13 @@
 \alias{DBIConnection-class}
 \title{DBIConnection class.}
 \description{
-  Base class for all DBMS connection classes.  Individual
-  drivers (ODBC, Oracle, PostgreSQL, MySQL, etc.)  extend
-  this class in a database-specific manner.
+  This virtual class encapsulates the connection to a DBMS,
+  and it provides access to dynamic queries, result sets,
+  DBMS session management (transactions), etc.
+}
+\section{Implementation note}{
+  Individual drivers are free to implement single or
+  multiple simultaneous connections.
 }
 \examples{
 \dontrun{

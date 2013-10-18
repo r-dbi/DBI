@@ -33,12 +33,10 @@
   unspecified, so check the documentation of individual
   drivers for details.
 }
-\section{Side Effects}{
-  A connection between R/Splus and the database server is
-  established, and the R/Splus program becomes a client of
-  the database engine.  Typically the connections is
-  through the TCP/IP protocol, but this will depend on
-  vendor-specific details.
+\details{
+  Each driver will define what other arguments are
+  required, e.g., \code{"dbname"} for the database name,
+  \code{"username"}, and \code{"password"}.
 }
 \examples{
 \dontrun{

@@ -10,8 +10,13 @@
 
   \item{...}{Other parameters passed on to methods.}
 }
+\value{
+  a list. If no results are active, an empty list. If only
+  a single result is active, a list with one element.
+}
 \description{
-  A list of all pending results.
+  List of \linkS4class{DBIResult} objects currently active
+  on the connection.
 }
 \seealso{
   Other connection methods: \code{\link{dbDisconnect}},

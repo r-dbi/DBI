@@ -20,6 +20,8 @@
   List field names of a remote table.
 }
 \seealso{
+  \code{\link{dbColumnInfo}} to get the type of the fields.
+
   Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},

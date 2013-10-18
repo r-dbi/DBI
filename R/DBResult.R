@@ -1,7 +1,14 @@
 #' DBIResult class.
 #' 
-#' Base class for all DBMS-specific result objects. This is a virtual class: 
-#' No objects may be created from it.
+#' This virtual class describes the result and state of execution of
+#' a DBMS statement (any statement, query or non-query).  The result set
+#' \code{res} keeps track of whether the statement produces output
+#' how many rows were affected by the operation, how many rows have been 
+#' fetched (if statement is a query), whether there are more rows to fetch, 
+#' etc.  
+#'
+#' Individual drivers are free to allow single or multiple
+#' active results per connection.
 #' 
 #' @name DBIResult-class
 #' @docType class
@@ -22,6 +29,9 @@
 setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 
 #' Fetch records from a previously executed query.
+#' 
+#' Fetch the next \code{n} elements (rows) from the result set
+#' and return them as a data.frame.
 #' 
 #' \code{fetch} is provided for compatibility with older DBI clients - for all
 #' new code you are strongly encouraged to use \code{dbFetch}. The default 
@@ -96,9 +106,16 @@ setGeneric("dbClearResult",
 
 #' Information about result types.
 #' 
+#' Produces a data.frame that describes the output of a query. 
+#' The data.frame should have as many rows as there are output
+#' fields in the result set, and each column in the data.frame
+#' should describe an aspect of the result set field (field name,
+#' type, etc.)
+#' 
 #' @inheritParams dbClearResult
 #' @return A data.frame with one row per output field in \code{res}. Methods 
-#'   MUST include \code{name} and \code{type} columns, and MAY contain other
+#'   MUST include \code{name}, \code{field.type} (the SQL type), 
+#'   and \code{data.type} (the R data type) columns, and MAY contain other
 #'   database specific information like scale and precision or whether the 
 #'   field can store \code{NULL}s.
 #' @family DBIResult generics

@@ -15,7 +15,8 @@
   failure.
 }
 \description{
-  Disconnect (close) a connection
+  This closes the connection, discards all pending work,
+  and frees resources (e.g., memory, sockets).
 }
 \seealso{
   Other connection methods: \code{\link{dbExistsTable}},

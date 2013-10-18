@@ -3,6 +3,22 @@
 #' Base class for all other DBI classes (e.g., drivers, connections). This
 #' is a virtual Class: No objects may be created from it.
 #' 
+#' @section Implementation notes:
+#' An implementation MUST provide methods for the following generics:
+#' 
+#' \itemize{
+#'   \item \code{\link{dbGetInfo}}. 
+#' }
+#' 
+#' It MAY also provide methods for:
+#' 
+#' \itemize{
+#'   \item \code{\link{summary}}. Print a concise description of the 
+#'     object. The default method invokes \code{dbGetInfo(dbObj)} and prints 
+#'     the name-value pairs one per line.  Individual implementations may 
+#'     tailor this appropriately.
+#' }
+#' 
 #' @docType class
 #' @family DBI classes
 #' @examples
@@ -22,23 +38,30 @@ setClass("DBIObject", "VIRTUAL")
 #' 
 #' @section Implementation notes:
 #' For \code{DBIDriver} subclasses, this should include the version of the 
-#' package, and the version of the underlying client library. 
+#' package (\code{driver.version}), the version of the underlying client 
+#' library (\code{client.version}), and the maximum number of connections
+#' (\code{max.connections}).
 #' 
 #' For \code{DBIConnection} objects this should report the version of 
-#' the DBMS engine, database name, username, host, port, etc. It MUST NOT
-#' include the password. 
+#' the DBMS engine (\code{db.version}), database name (\code{dbname}),
+#' username, (\code{username}), host (\code{host}), port (\code{port}), etc. 
+#' It MAY also include any other arguments related to the connection 
+#' (e.g., thread id, socket or TCP connection type). It MUST NOT include the 
+#' password. 
 #' 
 #' For \code{DBIResult} objects, this should include the statement
-#' being executed, how many rows have been fetched so far (in the case of
-#' queries), how many rows were affected (deleted, inserted, changed, or total
-#' number of records to be fetched).
+#' being executed (\code{statement}), how many rows have been fetched so far 
+#' (in the case of queries) (\code{row.count}), how many rows were affected 
+#' (deleted, inserted, changed, or total number of records to be fetched).
+#' (\code{rows.affected}), if the query is complete (\code{has.completed}),
+#' and whether or not the query generates output (\code{is.select}).
 #' 
 #' @param dbObj An object inheriting from \code{\linkS4class{DBIObject}}, 
 #'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
 #'  or a \code{\linkS4class{DBIResult}}
 #' @param ... Other arguments to methods.
 #' @family DBObject methods
-#' @return a list
+#' @return a named list
 #' @export
 setGeneric("dbGetInfo", 
    def = function(dbObj, ...) standardGeneric("dbGetInfo")

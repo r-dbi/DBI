@@ -14,7 +14,8 @@
   a list
 }
 \description{
-  Drivers that implement single connections should return a
-  list containing a single element.
+  Drivers that implement only a single connections MUST
+  return a list containing a single element. If no
+  connection are open, methods MUST return an empty list.
 }
 

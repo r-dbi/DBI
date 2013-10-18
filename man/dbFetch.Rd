@@ -23,6 +23,10 @@
   and as many columns as fields in the result set.
 }
 \description{
+  Fetch the next \code{n} elements (rows) from the result
+  set and return them as a data.frame.
+}
+\details{
   \code{fetch} is provided for compatibility with older DBI
   clients - for all new code you are strongly encouraged to
   use \code{dbFetch}. The default method for \code{dbFetch}
