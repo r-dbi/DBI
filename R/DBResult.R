@@ -23,29 +23,15 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 
 #' Fetch records from a previously executed query.
 #' 
-#' See the notes for the various database server implementations.
-#' 
-#' \code{dbClearResult} frees all resources (local and remote) associated with
-#' a result set.  It some cases (e.g., very large result sets) this can be a
-#' critical step to avoid exhausting resources (memory, file descriptors, etc.)
-#' 
-#' @param res a result set object (one whose class extends \code{DBIResult}).
-#'   This object needs to be the result of a statement that produces output, 
-#'   such as SQL's \code{SELECT} or \code{SELECT}-like statement, this object
-#'   \code{res} is typically produced by a call to or \code{dbSendQuery}.
-#' @param n maximum number of records to retrieve per fetch.  Use \code{n = -1}
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
 #'   to retrieve all pending records.  Some implementations may recognize other
 #'   special values.
-#' @param ... any other database-engine specific arguments.
-#' @return \code{fetch}: a data.frame with as many rows as records were fetched and as many
+#' @param ... Other arguments passed on to methods.
+#' @return a data.frame with as many rows as records were fetched and as many
 #'   columns as fields in the result set.
-#'   
-#'   \code{dbClearResult} returns a logical indicating whether clearing the
-#'   result set was successful or not.
-#' @note Make sure you close the result set with \code{\link{dbClearResult}} as
-#' soon as you finish retrieving the records you want.
-#' @section Side Effects: As the R/Splus client fetches records the remote
-#'   database server updates its cursor accordingly.
+#' @seealso close the result set with \code{\link{dbClearResult}} as
+#'   soon as you finish retrieving the records you want.
 #' @family DBIResult generics
 #' @examples
 #' \dontrun{
@@ -72,8 +58,18 @@ setGeneric("fetch",
   valueClass = "data.frame"
 )
 
+#' Clear a result set.
+#' 
+#' Frees all resources (local and remote) associated with
+#' a result set.  It some cases (e.g., very large result sets) this can be a
+#' critical step to avoid exhausting resources (memory, file descriptors, etc.)
+#' 
+#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param ... Other arguments passed on to methods.
+#' @return a logical indicating whether clearing the
+#'   result set was successful or not.
+#' @family DBIResult generics
 #' @export
-#' @rdname fetch
 setGeneric("dbClearResult", 
   def = function(res, ...) standardGeneric("dbClearResult"),
   valueClass = "logical"

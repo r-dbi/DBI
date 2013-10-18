@@ -14,7 +14,9 @@
   \code{\link{dbHasCompleted}} is TRUE, it uses
   \code{\link{fetch}} to return the results.
   \code{\link{on.exit}} is used to ensure the result set is
-  always freed by \code{\link{dbClearResult}}.
+  always freed by \code{\link{dbClearResult}}.  Subclasses
+  should override this method only if they provide some
+  sort of performance optimisation.
 }
 \seealso{
   Other connection methods: \code{\link{dbDisconnect}},

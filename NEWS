@@ -1,5 +1,8 @@
 Version 0.3.0
 
+* `dbFetch()` added as alias to `fetch()` to be consistent with every other
+  function in the package. You will still need to define methods for 
+
 * `dbGetQuery()` gains a default method for `DBIConnection` which uses
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
 
