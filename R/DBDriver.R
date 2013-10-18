@@ -162,13 +162,16 @@ setGeneric("dbListConnections",
 #' 
 #' This is a generic function. The default method determines the SQL type of
 #' an R/Splus object according to the SQL 92 specification, which may serve as
-#' a starting point for driver implementations.
+#' a starting point for driver implementations. The default method also provides
+#' a method for data.frame which will return a character vector giving the
+#' type for each column in the dataframe.
 #' 
 #' @section Implementation notes:
 #' Implementations should provide methods (if different from the default)
 #' for: logical, integer, numeric, character, factor, Date, and POSIXct.
 #' 
 #' @aliases
+#'   dbDataType,DBIObject,list-method
 #'   dbDataType,DBIObject,logical-method
 #'   dbDataType,DBIObject,integer-method
 #'   dbDataType,DBIObject,numeric-method
@@ -189,6 +192,12 @@ setGeneric("dbListConnections",
 setGeneric("dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),
   valueClass = "character"
+)
+
+setMethod("dbDataType", signature("DBIObject", "data.frame"), 
+  function(dbObj, obj, ...) {
+    vapply(obj, dbDataType, dbObj = dbObj, ..., FUN.VALUE = character(1))  
+  }
 )
 
 setMethod("dbDataType", signature("DBIObject", "integer"), 

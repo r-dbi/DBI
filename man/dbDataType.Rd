@@ -5,6 +5,7 @@
 \alias{dbDataType,DBIObject,character-method}
 \alias{dbDataType,DBIObject,factor-method}
 \alias{dbDataType,DBIObject,integer-method}
+\alias{dbDataType,DBIObject,list-method}
 \alias{dbDataType,DBIObject,logical-method}
 \alias{dbDataType,DBIObject,numeric-method}
 \title{Determine the SQL data type of an object.}
@@ -25,7 +26,9 @@
   This is a generic function. The default method determines
   the SQL type of an R/Splus object according to the SQL 92
   specification, which may serve as a starting point for
-  driver implementations.
+  driver implementations. The default method also provides
+  a method for data.frame which will return a character
+  vector giving the type for each column in the dataframe.
 }
 \section{Implementation notes}{
   Implementations should provide methods (if different from

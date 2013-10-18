@@ -15,7 +15,8 @@ Version 0.3.0
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
 
 * `dbDataType()` now uses dispatch on both argument to determine the SQL type
-  of an R vector. (#5)
+  of an R vector (#5). It also gains a data frame method which returns a vector 
+  giving the type of each column.
 
 * `dbGetDBIVersion()` has been deprecated since it's now a thin wrapper
   around `packageVersion().
