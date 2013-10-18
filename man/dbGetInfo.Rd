@@ -34,4 +34,7 @@
   affected (deleted, inserted, changed, or total number of
   records to be fetched).
 }
+\seealso{
+  Other DBObject methods: \code{\link{dbIsValid}}
+}
 

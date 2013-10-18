@@ -37,11 +37,24 @@ setClass("DBIObject", "VIRTUAL")
 #'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
 #'  or a \code{\linkS4class{DBIResult}}
 #' @param ... Other arguments to methods.
+#' @family DBObject methods
 #' @return a list
 #' @export
 setGeneric("dbGetInfo", 
    def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
+
+#' Is this DBMS object still valid?
+#' 
+#' This generic tests whether a database object is still valid (i.e. it hasn't
+#' been disconnected or cleared).
+#' 
+#' @inheritParams dbGetInfo
+#' @return a logical of length 1
+#' @family DBObject methods
+setGeneric("dbIsValid", 
+  def = function(dbObj, ...) standardGeneric("dbIsValid"),
+  valueClass = "logical")
 
 setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {

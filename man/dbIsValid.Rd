@@ -1,0 +1,26 @@
+\name{dbIsValid}
+\alias{dbIsValid}
+\title{Is this DBMS object still valid?}
+\usage{
+  dbIsValid(dbObj, ...)
+}
+\arguments{
+  \item{dbObj}{An object inheriting from
+  \code{\linkS4class{DBIObject}}, i.e.
+  \code{\linkS4class{DBIDriver}},
+  \code{\linkS4class{DBIConnection}}, or a
+  \code{\linkS4class{DBIResult}}}
+
+  \item{...}{Other arguments to methods.}
+}
+\value{
+  a logical of length 1
+}
+\description{
+  This generic tests whether a database object is still
+  valid (i.e. it hasn't been disconnected or cleared).
+}
+\seealso{
+  Other DBObject methods: \code{\link{dbGetInfo}}
+}
+
