@@ -5,7 +5,7 @@ The DBI package provides a common set of classes and methods used to provide a c
 To install DBI:
 
 * Get the released version from CRAN: `install.packages("DBI")`
-* Get the development version from github: `devtools::install_github("DBI", "R-DBI")`
+* Get the development version from github: `devtools::install_github("DBI", "rstats-db")`
 
 Discussions associated with DBI and related database packages take place on [R-SIG-DB](https://stat.ethz.ch/mailman/listinfo/r-sig-db).
 
