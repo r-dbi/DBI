@@ -5,13 +5,13 @@
   dbSetDataMappings(res, flds, ...)
 }
 \arguments{
+  \item{flds}{a field description object as returned by
+  \code{dbColumnInfo}.}
+
   \item{res}{An object inheriting from
   \code{\linkS4class{DBIResult}}.}
 
   \item{...}{Other arguments passed on to methods.}
-
-  \item{flds}{a field description object as returned by
-  \code{dbColumnInfo}.}
 }
 \description{
   NOT YET IMPLEMENTED.

@@ -5,15 +5,15 @@
   dbWriteTable(conn, name, value, ...)
 }
 \arguments{
-  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
-  as produced by \code{\link{dbConnect}}.}
-
   \item{name}{A character string specifying a DBMS table
   name.}
 
-  \item{...}{Other parameters passed on to methods.}
-
   \item{value}{a data.frame (or coercible to data.frame).}
+
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
+
+  \item{...}{Other parameters passed on to methods.}
 }
 \value{
   a logical vector of length 1 indicating success or

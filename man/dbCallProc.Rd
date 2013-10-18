@@ -5,10 +5,10 @@
   dbCallProc(conn, ...)
 }
 \arguments{
-  \item{conn}{a \code{DBIConnection} object.}
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
 
-  \item{...}{additional arguments are passed to the
-  implementing method.}
+  \item{...}{Other parameters passed on to methods.}
 }
 \description{
   Not yet implemented.

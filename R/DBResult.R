@@ -96,8 +96,7 @@ setGeneric("dbClearResult",
 
 #' Information about result types.
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @return A data.frame with one row per output field in \code{res}. Methods 
 #'   MUST include \code{name} and \code{type} columns, and MAY contain other
 #'   database specific information like scale and precision or whether the 
@@ -111,8 +110,7 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @return a character vector
 #' @family DBIResult generics
 #' @export
@@ -123,8 +121,7 @@ setGeneric("dbGetStatement",
 
 #' Has the operation completed?
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @return a logical vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -135,8 +132,7 @@ setGeneric("dbHasCompleted",
 
 #' The number of rows affected by data modifying query.
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -147,8 +143,7 @@ setGeneric("dbGetRowsAffected",
 
 #' The number of rows fetched so far.
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -169,8 +164,7 @@ setGeneric("dbGetRowCount",
 #' The details on conversion functions (e.g., arguments, whether they can
 #' invoke initializers and/or destructors) have not been specified.
 #' 
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param ... Other arguments passed on to methods.
+#' @inheritParams dbClearResult
 #' @keywords internal
 #' @param flds a field description object as returned by \code{dbColumnInfo}.
 #' @examples

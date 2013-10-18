@@ -5,11 +5,11 @@
   dbRemoveTable(conn, name, ...)
 }
 \arguments{
-  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
-  as produced by \code{\link{dbConnect}}.}
-
   \item{name}{A character string specifying a DBMS table
   name.}
+
+  \item{conn}{A \code{\linkS4class{DBIConnection}} object,
+  as produced by \code{\link{dbConnect}}.}
 
   \item{...}{Other parameters passed on to methods.}
 }

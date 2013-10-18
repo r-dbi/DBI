@@ -9,8 +9,6 @@
   as produced by \code{\link{dbConnect}}.}
 
   \item{...}{Other parameters passed on to methods.}
-
-  \item{...}{other arguments passed on to methods}
 }
 \value{
   a character vector

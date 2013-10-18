@@ -5,13 +5,13 @@
   dbListFields(conn, name, ...)
 }
 \arguments{
+  \item{name}{a character string with the name of the
+  remote table.}
+
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}
 
   \item{...}{Other parameters passed on to methods.}
-
-  \item{name}{a character string with the name of the
-  remote table.}
 }
 \value{
   a character vector

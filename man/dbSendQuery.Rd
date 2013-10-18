@@ -5,13 +5,13 @@
   dbSendQuery(conn, statement, ...)
 }
 \arguments{
+  \item{statement}{a character vector of length 1
+  containing SQL.}
+
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
   as produced by \code{\link{dbConnect}}.}
 
   \item{...}{Other parameters passed on to methods.}
-
-  \item{statement}{a character vector of length 1
-  containing SQL.}
 }
 \value{
   An object that inherits from
