@@ -73,13 +73,37 @@ setGeneric("dbSendQuery",
 
 #' Send query, retrieve results and then clear result set.
 #' 
+#' \code{dbGetQuery} comes with a default implementation that calls
+#' \code{\link{dbSendQuery}}, then if \code{\link{dbHasCompleted}} is TRUE,
+#' it uses \code{\link{fetch}} to return the results. \code{\link{on.exit}}
+#' is used to ensure the result set is always freed by
+#' \code{\link{dbClearResult}}.  Subclasses should override this method
+#' only if they provide some sort of performance optimisation.
+#' 
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by 
 #'   \code{\link{dbConnect}}.
 #' @param ... Other parameters passed on to methods.
+#' @aliases dbGetQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
 setGeneric("dbGetQuery", 
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
+)
+
+setMethod("dbGetQuery", signature("DBIConnection", "character"), 
+  function(conn, statement, ...) {
+    rs <- dbSendQuery(con, statement, ...)
+    on.exit(dbClearResult(rs))
+    
+    # no records to fetch, we're done
+    if (dbHasCompleted(rs)) return(NULL)
+    
+    res <- fetch(rs, n = -1, ...)
+    
+    if (!dbHasCompleted(rs)) warning("pending rows")
+    
+    res
+  }
 )
 
 #' Get DBMS exceptions.

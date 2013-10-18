@@ -1,5 +1,8 @@
 Version 0.3.0
 
+* `dbGetQuery()` gains a default method for `DBIConnection` which uses
+  `dbSendQuery()`, `fetch()` and `dbClearResult()`.
+
 * `dbDataType()` now uses dispatch on both argument to determine the SQL type
   of an R vector. (#5)
 
