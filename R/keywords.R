@@ -89,6 +89,9 @@ setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
 
 ## produce legal SQL identifiers from strings in a character vector
 ## unique, in this function, means unique regardless of lower/upper case
+
+#' @rdname make.db.names
+#' @export
 make.db.names.default <- function(snames, keywords = .SQL92Keywords, 
                                   unique = TRUE, allow.keywords = TRUE) {
   makeUnique <- function(x, sep = "_") {

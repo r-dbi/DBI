@@ -1,5 +1,6 @@
 export(.SQL92Keywords)
 export(dbGetDBIVersion)
+export(make.db.names.default)
 export(print.list.pairs)
 exportClasses(DBIConnection)
 exportClasses(DBIDriver)
