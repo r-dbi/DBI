@@ -1,5 +1,8 @@
 Version 0.3.0
 
+* `dbDataType()` now uses dispatch on both argument to determine the SQL type
+  of an R vector. (#5)
+
 Version 0.2-7
 
 * Trivial changes (updated package fields, daj)

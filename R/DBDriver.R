@@ -164,7 +164,18 @@ setGeneric("dbListConnections",
 #' an R/Splus object according to the SQL 92 specification, which may serve as
 #' a starting point for driver implementations.
 #' 
-#' @aliases dbDataType,DBIObject-method
+#' @section Implementation notes:
+#' Implementations should provide methods (if different from the default)
+#' for: logical, integer, numeric, character, factor, Date, and POSIXct.
+#' 
+#' @aliases
+#'   dbDataType,DBIObject,logical-method
+#'   dbDataType,DBIObject,integer-method
+#'   dbDataType,DBIObject,numeric-method
+#'   dbDataType,DBIObject,character-method
+#'   dbDataType,DBIObject,factor-method
+#'   dbDataType,DBIObject,Date-method
+#'   dbDataType,DBIObject,POSIXct-method
 #' @inheritParams dbListConnections
 #' @param obj R/Splus object whose SQL type we want to determine.
 #' @return A character string specifying the SQL data type for \code{obj}.
@@ -179,30 +190,24 @@ setGeneric("dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),
   valueClass = "character"
 )
-## by defualt use the SQL92 data types -- individual drivers may need to
-## overload this
-setMethod("dbDataType", signature(dbObj="DBIObject", obj="ANY"),
-  definition = function(dbObj, obj, ...) dbDataType.default(obj, ...),
-  valueClass = "character"
-)
 
-## find a suitable SQL data type for the R/S object obj
-## (this method most likely should be overriden by each driver)
-## TODO: Lots and lots!! (this is a very rough first draft)
-dbDataType.default <- function(obj, ...) {  
-  rs.class <- data.class(obj)
-  rs.mode <- storage.mode(obj)
-  if(rs.class=="numeric" || rs.class=="integer"){
-    sql.type <- if(rs.mode=="integer") "int" else  "double precision"
-  }
-  else {
-    varchar <- function(x, width=0){
-      nc <- ifelse(width>0, width, max(nchar(as.character(x))))
-      paste("varchar(", nc, ")", sep="")
-    }
-    sql.type <- switch(rs.class,
-      logical = "smallint",
-      factor = , character = , ordered = , varchar(obj))
-  }
-  sql.type
+setMethod("dbDataType", signature("DBIObject", "integer"), 
+  function(dbObj, obj, ...) "int"
+)
+setMethod("dbDataType", signature("DBIObject", "numeric"), 
+  function(dbObj, obj, ...) "double"
+)
+setMethod("dbDataType", signature("DBIObject", "logical"), 
+  function(dbObj, obj, ...) "smallint"
+)
+setMethod("dbDataType", signature("DBIObject", "Date"), 
+  function(dbObj, obj, ...) "date"
+)
+setMethod("dbDataType", signature("DBIObject", "POSIXct"), 
+  function(dbObj, obj, ...) "timestamp"
+)
+varchar <- function(dbObj, obj, ...) {
+  paste0("varchar(", nchar(as.character(obj)), ")")
 }
+setMethod("dbDataType", signature("DBIObject", "character"), varchar)
+setMethod("dbDataType", signature("DBIObject", "factor"), varchar)
