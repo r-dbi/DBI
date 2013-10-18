@@ -3,6 +3,7 @@
 #' @export
 #' @keywords internal
 dbGetDBIVersion <- function() {
+  .Deprecated("packageVersion('DBI')")
   packageVersion("DBI")
 }
 
