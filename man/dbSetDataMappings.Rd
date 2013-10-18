@@ -14,7 +14,8 @@
   \item{...}{Other arguments passed on to methods.}
 }
 \description{
-  NOT YET IMPLEMENTED.
+  This generic is deprecated since no working
+  implementation was ever produced.
 }
 \details{
   Sets one or more conversion functions to handle the

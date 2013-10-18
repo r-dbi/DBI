@@ -154,7 +154,8 @@ setGeneric("dbGetRowCount",
 
 #' Set data mappings between an DBMS and R/Splus.
 #' 
-#' NOT YET IMPLEMENTED.
+#' This generic is deprecated since no working implementation was ever
+#' produced.
 #' 
 #' Sets one or more conversion functions to handle the translation of DBMS data
 #' types to R/Splus objects.  This is only needed for non-primitive data, since
@@ -183,6 +184,9 @@ setGeneric("dbGetRowCount",
 #' }
 #' @export
 setGeneric("dbSetDataMappings", 
-  def = function(res, flds, ...) standardGeneric("dbSetDataMappings"),
+  def = function(res, flds, ...) {
+    .Deprecated()
+    standardGeneric("dbSetDataMappings")
+  },
   valueClass = "logical"
 )
