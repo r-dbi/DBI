@@ -11,6 +11,13 @@ Version 0.3.0
 * `dbDataType()` now uses dispatch on both argument to determine the SQL type
   of an R vector. (#5)
 
+* `dbGetDBIVersion()` has been deprecated since it's now a thin wrapper
+  around `packageVersion().
+
+* DBI has been converted to use roxygen2 for documentation, and now most
+  functions have their own documentation files. I would love your feedback
+  on how we could make the documentation better!
+
 Version 0.2-7
 
 * Trivial changes (updated package fields, daj)
