@@ -19,7 +19,7 @@
 }
 \seealso{
   Other DBIResult generics: \code{\link{dbClearResult}},
-  \code{\link{dbGetRowCount}},
+  \code{\link{dbFetch}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{fetch}}

@@ -23,6 +23,13 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 
 #' Fetch records from a previously executed query.
 #' 
+#' \code{fetch} is provided for compatibility with older DBI clients - for all
+#' new code you are strongly encouraged to use \code{dbFetch}. The default 
+#' method for \code{dbFetch} calls \code{fetch} so that it is compatible with
+#' existing code. Implementors should provide methods for both \code{fetch}
+#' and \code{dbFetch} until \code{fetch} is deprecated in 2015.
+#' 
+#' @aliases dbFetch,DBIResult-method
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
 #'   to retrieve all pending records.  Some implementations may recognize other
@@ -50,13 +57,25 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 #' dbHasCompleted(res)
 #' 
 #' # let's get all remaining records
-#' data2 <- fetch(res, n = -1)
+#' data2 <- dbFetch(res, n = -1)
 #' }
+#' @export
+setGeneric("dbFetch", 
+  def = function(res, n = -1, ...) standardGeneric("dbFetch"),
+  valueClass = "data.frame"
+)
+
+setMethod("dbFetch", "DBIResult", function(res, n = -1, ...) {
+  fetch(res, n = n, ...)
+})
+
+#' @rdname dbFetch
 #' @export
 setGeneric("fetch", 
   def = function(res, n = -1, ...) standardGeneric("fetch"),
   valueClass = "data.frame"
 )
+
 
 #' Clear a result set.
 #' 

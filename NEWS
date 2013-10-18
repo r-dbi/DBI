@@ -1,7 +1,9 @@
 Version 0.3.0
 
 * `dbFetch()` added as alias to `fetch()` to be consistent with every other
-  function in the package. You will still need to define methods for 
+  function in the package. Implementers should define methods for both `fetch()`
+  and `dbFetch()` until `fetch()` is deprecated in 2015. For now, the default
+  method for `dbFetch()` calls `fetch()`.
 
 * `dbGetQuery()` gains a default method for `DBIConnection` which uses
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
