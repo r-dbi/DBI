@@ -1,5 +1,6 @@
 \name{dbGetStatement}
 \alias{dbGetStatement}
+\alias{dbGetStatement,DBIResult-method}
 \title{Get the statement associated with a result set}
 \usage{
   dbGetStatement(res, ...)
@@ -14,7 +15,8 @@
   a character vector
 }
 \description{
-  Get the statement associated with a result set
+  The default method extracts \code{statement} from the
+  result of \code{\link{dbGetInfo}(res)}.
 }
 \seealso{
   Other DBIResult generics: \code{\link{dbClearResult}},

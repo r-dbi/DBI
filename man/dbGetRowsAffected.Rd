@@ -1,5 +1,6 @@
 \name{dbGetRowsAffected}
 \alias{dbGetRowsAffected}
+\alias{dbGetRowsAffected,DBIResult-method}
 \title{The number of rows affected by data modifying query.}
 \usage{
   dbGetRowsAffected(res, ...)
@@ -14,7 +15,8 @@
   a numeric vector of length 1
 }
 \description{
-  The number of rows affected by data modifying query.
+  The default method extracts \code{rows.affected} from the
+  result of \code{\link{dbGetInfo}(res)}.
 }
 \seealso{
   Other DBIResult generics: \code{\link{dbClearResult}},

@@ -127,7 +127,11 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #' 
+#' The default method extracts \code{statement} from the result of
+#' \code{\link{dbGetInfo}(res)}.
+#' 
 #' @inheritParams dbClearResult
+#' @aliases dbGetStatement,DBIResult-method
 #' @return a character vector
 #' @family DBIResult generics
 #' @export
@@ -136,9 +140,18 @@ setGeneric("dbGetStatement",
   valueClass = "character"
 )
 
+setMethod("dbGetStatement", "DBIResult", function(res, ...) {
+  dbGetInfo(res)$statement
+})
+
+
 #' Has the operation completed?
 #' 
+#' The default method extracts \code{has.completed} from the result of
+#' \code{\link{dbGetInfo}(res)}.
+#' 
 #' @inheritParams dbClearResult
+#' @aliases dbHasCompleted,DBIResult-method
 #' @return a logical vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -147,9 +160,17 @@ setGeneric("dbHasCompleted",
   valueClass = "logical"
 )
 
+setMethod("dbHasCompleted", "DBIResult", function(res, ...) {
+  dbGetInfo(res)$has.completed
+})
+
 #' The number of rows affected by data modifying query.
 #' 
+#' The default method extracts \code{rows.affected} from the result of
+#' \code{\link{dbGetInfo}(res)}.
+#' 
 #' @inheritParams dbClearResult
+#' @aliases dbGetRowsAffected,DBIResult-method
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -158,9 +179,18 @@ setGeneric("dbGetRowsAffected",
   valueClass = "numeric"
 )
 
+setMethod("dbGetRowsAffected", "DBIResult", function(res, ...) {
+  dbGetInfo(res)$rows.affected
+})
+
+
 #' The number of rows fetched so far.
 #' 
+#' The default method extracts \code{row.count} from the result of
+#' \code{\link{dbGetInfo}(res)}.
+#' 
 #' @inheritParams dbClearResult
+#' @aliases dbGetRowCount,DBIResult-method
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -168,6 +198,10 @@ setGeneric("dbGetRowCount",
   def = function(res, ...) standardGeneric("dbGetRowCount"),
   valueClass = "numeric"
 )
+
+setMethod("dbGetRowCount", "DBIResult", function(res, ...) {
+  dbGetInfo(res)$row.count
+})
 
 #' Set data mappings between an DBMS and R/Splus.
 #' 

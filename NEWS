@@ -1,5 +1,10 @@
 Version 0.3.0
 
+* `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()` gain default methods that extract the appropriate elements
+  from `dbGetInfo()`. This means that most drivers should no longer need to
+  implement these methods. (#13)
+
 * New generic `dbIsValid()` returns a logical value describing whether a 
   connection or result set (or other object) is still valid. (#12).
 
