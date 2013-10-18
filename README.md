@@ -23,7 +23,7 @@ dbListTables(con)
 dbListFields(con, "mtcars")
 dbReadTable(con, "mtcars")
 
-## The interface allows lower-level interface to the DBMS
+# The interface allows lower-level interface to the DBMS
 res <- dbSendQuery("SELECT * FROM mtcars WHERE cyl = 4")
 fetch(res)
 while(!dbHasCompleted(res)){
@@ -31,7 +31,7 @@ while(!dbHasCompleted(res)){
    out <- c(out, doit(chunk))
 }
 
-## Free up resources
+# Free up resources
 dbClearResult(res)
 dbDisconnect(con)
 ```
