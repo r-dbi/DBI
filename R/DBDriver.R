@@ -196,7 +196,8 @@ setGeneric("dbDataType",
 
 setMethod("dbDataType", signature("DBIObject", "data.frame"), 
   function(dbObj, obj, ...) {
-    vapply(obj, dbDataType, dbObj = dbObj, ..., FUN.VALUE = character(1))  
+    vapply(obj, dbDataType, dbObj = dbObj, ..., FUN.VALUE = character(1),
+      USE.NAMES = FALSE)  
   }
 )
 
