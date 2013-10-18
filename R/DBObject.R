@@ -43,12 +43,10 @@ setGeneric("dbGetInfo",
    def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
 
-## implementations may overload this method for all or some of its classes
-setMethod("summary", "DBIObject", 
-   definition = function(object, ...){
-      info <- dbGetInfo(dbObj = object, ...)
-      cat(class(object),"\n")
-      print.list.pairs(info)
-      invisible(info)
-   }
-)
+setGeneric("summary")
+setMethod("summary", "DBIObject", function(object, ...) {
+  info <- dbGetInfo(dbObj = object, ...)
+  cat(class(object), "\n")
+  print.list.pairs(info)
+  invisible(info)
+})
