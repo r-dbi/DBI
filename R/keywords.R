@@ -1,6 +1,6 @@
 #' Make R/Splus identifiers into legal SQL identifiers
 #' 
-#' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifer}}
+#' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
 #' (or possibly \code{\link{dbQuoteString}}) instead.
 #' 
 #' The algorithm in \code{make.db.names} first invokes \code{make.names} and

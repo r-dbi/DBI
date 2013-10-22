@@ -2,7 +2,9 @@ Version 0.3.0
 
 * `make.db.names()`, `isSQLKeyword()` and `SQLKeywords()` are now deprecated.
   Instead of munging valid R names to make valid DB names, DBI now quotes all
-  variable names so the database preserves as is (as much as possible).
+  variable names so the database preserves as is (as much as possible). Instead
+  use `dbQuoteString()` and `dbQuoteIdentifier()`, which will escape any
+  special characters using appropriate technique for your database.
 
 * All examples now use the RSQLite package so that you can easily try out
   the code samples. (#4)

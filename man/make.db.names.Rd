@@ -62,7 +62,7 @@
 }
 \description{
   These methods are DEPRECATED. Please use
-  \code{\link{dbQuoteIdentifer}} (or possibly
+  \code{\link{dbQuoteIdentifier}} (or possibly
   \code{\link{dbQuoteString}}) instead.
 }
 \details{
