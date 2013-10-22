@@ -74,14 +74,14 @@ findDriver <- function(drvName) {
   if (!is.null(d)) return(d)
   
   # Otherwise, see if the appropriately named package is available
-  if (has_namespace(drvName)) {
+  if (is_attached(drvName)) {
     d <- get2(drvName, asNamespace(drvName))
     if (!is.null(d)) return(d)
   }
 
   pkgName <- paste0("R", drvName)
   # First, see if package with name R + drvName is available
-  if (has_namespace(pkgName)) {
+  if (is_attached(pkgName)) {
     d <- get2(drvName, asNamespace(pkgName))
     if (!is.null(d)) return(d)
   }
@@ -99,8 +99,9 @@ get2 <- function(x, env) {
   get(x, envir = env)
 }
 
-has_namespace <- function(x) {
-  suppressMessages(requireNamespace(x, quietly = TRUE))
+
+is_attached <- function(x) {
+  x %in% loadedNamespaces()
 }
 
 #' @rdname dbDriver
