@@ -51,9 +51,13 @@
   factor, Date, and POSIXct.
 }
 \examples{
-\dontrun{
-ora <- dbDriver("Oracle")
-sql.type <- dbDataType(ora, x)
+if (require("RSQLite")) {
+con <- dbConnect(, tempfile())
+
+dbDataType(con, 1:5)
+dbDataType(con, 1L)
+dbDataType(con, TRUE)
+dbDataType(con, c("x", "abc"))
 }
 }
 \seealso{

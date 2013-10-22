@@ -10,13 +10,6 @@
   instance \code{RPgSQL}, \code{RMySQL}, etc. implement
   these operations in a DBMS-specific manner.
 }
-\examples{
-\dontrun{
-drv <- dbDriver("ODBC")
-summary(drv)
-dbListConnections(drv)
-}
-}
 \seealso{
   Other DBI classes: \code{\link{DBIConnection-class}},
   \code{\link{DBIObject-class}},

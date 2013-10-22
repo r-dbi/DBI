@@ -39,23 +39,14 @@
   \code{"username"}, and \code{"password"}.
 }
 \examples{
-\dontrun{
-# create an RODBC instance and create one connection.
-m <- dbDriver("RODBC")
+if (require("RSQLite")) {
+# SQLite only needs a path to the database. Other database drivers
+# will require more details (like username, password, host, port etc)
+con <- dbConnect(SQLite(), tempfile())
+con
 
-# open the connection using user, passsword, etc., as
-# specified in the file \\file{\\$HOME/.my.cnf}
-con <- dbConnect(m, dsn="data.source", uid="user", pwd="password"))
-
-# Run an SQL statement by creating first a resultSet object
-rs <- dbSendQuery(con, statement = paste(
-                      "SELECT w.laser_id, w.wavelength, p.cut_off",
-                      "FROM WL w, PURGE P",
-                      "WHERE w.laser_id = p.laser_id",
-                      "SORT BY w.laser_id")
-# we now fetch records from the resultSet into a data.frame
-data <- fetch(rs, n = -1)   # extract all rows
-dim(data)
+dbListTables(con)
+dbDisconnect(con)
 }
 }
 \seealso{

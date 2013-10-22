@@ -1,5 +1,8 @@
 Version 0.3.0
 
+* All examples now use the RSQLite package so that you can easily try out
+  the code samples. (#4)
+
 * `dbDriver()` gains a more effective search mechanism that doesn't rely on
   packages being loaded. (#1)
 

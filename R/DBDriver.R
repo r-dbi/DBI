@@ -9,12 +9,6 @@
 #' @docType class
 #' @name DBIDriver-class
 #' @family DBI classes
-#' @examples
-#' \dontrun{
-#' drv <- dbDriver("ODBC")
-#' summary(drv)
-#' dbListConnections(drv)
-#' }
 #' @export
 #' @include DBObject.R
 setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
@@ -122,7 +116,7 @@ setGeneric("dbUnloadDriver",
 #' Each driver will define what other arguments are required, e.g., 
 #' \code{"dbname"} for the database name, \code{"username"}, and 
 #' \code{"password"}.
-
+#'
 #' @param drv an object that inherits from \code{\linkS4class{DBIDriver}}, or 
 #'   a character string specifying the name of DBMS driver, e.g., "RSQLite", 
 #'   "RMySQL", "RPostgreSQL", or an existing \code{\linkS4class{DBIConnection}}
@@ -137,23 +131,14 @@ setGeneric("dbUnloadDriver",
 #' @seealso \code{\link{dbDisconnect}} to disconnect from a database.
 #' @export
 #' @examples
-#' \dontrun{
-#' # create an RODBC instance and create one connection.
-#' m <- dbDriver("RODBC")
+#' if (require("RSQLite")) {
+#' # SQLite only needs a path to the database. Other database drivers
+#' # will require more details (like username, password, host, port etc)
+#' con <- dbConnect(SQLite(), tempfile())
+#' con
 #' 
-#' # open the connection using user, passsword, etc., as
-#' # specified in the file \file{\$HOME/.my.cnf}
-#' con <- dbConnect(m, dsn="data.source", uid="user", pwd="password"))    
-#' 
-#' # Run an SQL statement by creating first a resultSet object
-#' rs <- dbSendQuery(con, statement = paste(
-#'                       "SELECT w.laser_id, w.wavelength, p.cut_off",
-#'                       "FROM WL w, PURGE P", 
-#'                       "WHERE w.laser_id = p.laser_id", 
-#'                       "SORT BY w.laser_id")
-#' # we now fetch records from the resultSet into a data.frame
-#' data <- fetch(rs, n = -1)   # extract all rows
-#' dim(data)
+#' dbListTables(con)
+#' dbDisconnect(con)
 #' }
 setGeneric("dbConnect", 
   def = function(drv, ...) standardGeneric("dbConnect"),
@@ -211,9 +196,15 @@ setGeneric("dbListConnections",
 #' @return A character string specifying the SQL data type for \code{obj}.
 #' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' sql.type <- dbDataType(ora, x)
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite(), tempfile())
+#' 
+#' dbDataType(con, 1:5)
+#' dbDataType(con, 1L)
+#' dbDataType(con, TRUE)
+#' dbDataType(con, c("x", "abc"))
+#' 
+#' dbDataType(con, mtcars)
 #' }
 #' @export
 setGeneric("dbDataType",
