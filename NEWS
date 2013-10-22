@@ -1,5 +1,9 @@
 Version 0.3.0
 
+* Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
+  document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
+  signature to ensure that dispatch only occurs on `conn`. (#10)
+
 * `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
   `dbGetRowCount()` gain default methods that extract the appropriate elements
   from `dbGetInfo()`. This means that most drivers should no longer need to

@@ -172,21 +172,20 @@ setGeneric("dbListTables",
 #' cannot guarantee that the conversion is reversible.  For details see
 #' \code{\link{make.db.names}}.
 #'
-#' @section Implementation notes:
-#' 
-#' Method should also accept the \code{row.names} argument. This can be a 
-#' string or an index specifying the column in the DBMS table to be used as
-#' \code{row.names} in the output data.frame (a \code{NULL}, \code{""}, or 0 
-#' specifies that no column should be used as \code{row.names} in the output).
-#' 
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
+#' @param row.names  An index (string or character) specifying the DBMS column
+#'   to use for row names. A \code{NULL}, \code{""}, or 0 specifies that no
+#'   column should be used. Alternatively, a logical flag, where \code{TRUE} 
+#'   means uses the \code{row.names} column, and \code{FALSE} means don't use
+#'   row names.
 #' @family connection methods
 #' @return a data.frame.
 #' @export
-setGeneric("dbReadTable", 
-  def = function(conn, name, ...) standardGeneric("dbReadTable"),
-  valueClass = "data.frame"
+setGeneric("dbReadTable", valueClass = "data.frame", signature = "conn",
+  function(conn, name, row.names = FALSE, ...) {
+    standardGeneric("dbReadTable")
+  }
 )
 
 #' Create a database table from data frame.
@@ -194,29 +193,29 @@ setGeneric("dbReadTable",
 #' Write the \code{\link{data.frame}} \code{value} into the remote 
 #' table \code{name} in connection \code{conn}. 
 #' 
-#' @section Implementation notes:
-#' 
-#' Method should also accept:
-#' 
-#' \itemize{
-#'   \item \code{row.names}: A logical specifying whether the \code{row.names} 
-#'     should be output to the output DBMS table; if \code{TRUE}, the extra 
-#'     field name will be whatever the S identifier \code{"row.names"} maps to 
-#'     the DBMS (see \code{\link{make.db.names}}).
-#'   \item \code{overwrite}: a logical specifying whether to overwrite an 
-#'     existing table or not. Its default is \code{FALSE}
-#'   \item \code{append}: a logical specifying whether to append to an existing 
-#'     table in the DBMS.  Its default is \code{FALSE}.  
-#' }
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
+#' @param row.names An string giving the DBMS column name to use for row
+#'   names. Alternatively, a logical flag, where \code{TRUE} means use a 
+#'   column called \code{row.names}, and \code{FALSE} means don't store
+#'   row names.
+#' @param row.names A logical specifying whether the \code{row.names} 
+#'   should be output to the output DBMS table; if \code{TRUE}, the extra 
+#'   field name will be whatever the S identifier \code{"row.names"} maps to 
+#'   the DBMS (see \code{\link{make.db.names}}).
+#' @param overwrite a logical specifying whether to overwrite an 
+#'   existing table or not. Its default is \code{FALSE}
+#' @param a logical specifying whether to append to an existing 
+#'   table in the DBMS.  Its default is \code{FALSE}.  
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.
 #' @export
-setGeneric("dbWriteTable",
-  def = function(conn, name, value, ...) standardGeneric("dbWriteTable"),
-  valueClass = "logical"
+setGeneric("dbWriteTable", valueClass = "logical", signature = "conn",
+  function(conn, name, value, row.names = FALSE,
+           overwrite = FALSE, append = FALSE, ...) {
+    standardGeneric("dbWriteTable")
+  }
 )
 
 #' Does a table exist?
