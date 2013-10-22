@@ -36,23 +36,22 @@
   deprecated in 2015.
 }
 \examples{
-\dontrun{
-# Run an SQL statement by creating first a resultSet object
-drv <- dbDriver("ODBC")
-con <- dbConnect(drv, ...)
-res <- dbSendQuery(con, statement = paste(
-                      "SELECT w.laser_id, w.wavelength, p.cut_off",
-                      "FROM WL w, PURGE P",
-                      "WHERE w.laser_id = p.laser_id",
-                      "ORDER BY w.laser_id"))
-# we now fetch the first 100 records from the resultSet into a data.frame
-data1 <- fetch(res, n = 100)
-dim(data1)
+if (!require("RSQLite")) {
+con <- dbConnect(SQLite(), tempfile())
+dbWriteTable(con, "mtcars", mtcars)
 
-dbHasCompleted(res)
+# Fetch all results
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(res)
+dbClearResult(res)
 
-# let's get all remaining records
-data2 <- dbFetch(res, n = -1)
+# Fetch in chunks
+res <- dbSendQuery(con, "SELECT * FROM mtcars")
+while (!dbHasCompleted(res)) {
+  chunk <- fetch(res, 10)
+  print(nrow(chunk))
+}
+dbClearResult(res)
 }
 }
 \seealso{
