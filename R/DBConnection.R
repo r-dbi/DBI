@@ -96,7 +96,7 @@ setGeneric("dbGetQuery",
 
 setMethod("dbGetQuery", signature("DBIConnection", "character"), 
   function(conn, statement, ...) {
-    rs <- dbSendQuery(con, statement, ...)
+    rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
     
     # no records to fetch, we're done
