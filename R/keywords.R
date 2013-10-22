@@ -1,6 +1,7 @@
 #' Make R/Splus identifiers into legal SQL identifiers
 #' 
-#' Produce legal SQL identifiers from a character vector.
+#' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifer}}
+#' (or possibly \code{\link{dbQuoteString}}) instead.
 #' 
 #' The algorithm in \code{make.db.names} first invokes \code{make.names} and
 #' then replaces each occurrence of a dot ``.'' by an underscore ``\_''.  If
@@ -56,10 +57,12 @@
 #' 
 #'   \code{isSQLKeyword} returns a logical vector parallel to \code{name}.
 #' @export
-setGeneric("make.db.names",
-  signature=c("dbObj", "snames"),
-  def = function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
-    allow.keywords = TRUE, ...) standardGeneric("make.db.names"),
+setGeneric("make.db.names", signature = c("dbObj", "snames"),
+  function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
+           allow.keywords = TRUE, ...) {
+    .Deprecated("dbQuoteIdentifier")
+    standardGeneric("make.db.names")
+  },
   valueClass = "character"
 )
 setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
@@ -102,10 +105,10 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
 
 #' @rdname make.db.names
 #' @export
-setGeneric("isSQLKeyword",
-  signature = c("dbObj", "name"),
-  def = function(dbObj, name, keywords = .SQL92Keywords,
-    case = c("lower", "upper", "any")[3], ...) {
+setGeneric("isSQLKeyword", signature = c("dbObj", "name"),
+  function(dbObj, name, keywords = .SQL92Keywords,
+           case = c("lower", "upper", "any")[3], ...) {
+    .Deprecated("dbQuoteIdentifier")
     standardGeneric("isSQLKeyword")
   },
   valueClass = "logical"
@@ -135,7 +138,10 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
 
 #' @export
 setGeneric("SQLKeywords",
-  def = function(dbObj, ...)  standardGeneric("SQLKeywords"),
+  function(dbObj, ...) {
+    .Deprecated("dbQuoteIdentifier")
+    standardGeneric("SQLKeywords")
+  },
   valueClass = "character"
 )
 setMethod("SQLKeywords", "DBIObject",

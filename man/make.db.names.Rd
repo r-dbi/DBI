@@ -61,7 +61,9 @@
   \code{name}.
 }
 \description{
-  Produce legal SQL identifiers from a character vector.
+  These methods are DEPRECATED. Please use
+  \code{\link{dbQuoteIdentifer}} (or possibly
+  \code{\link{dbQuoteString}}) instead.
 }
 \details{
   The algorithm in \code{make.db.names} first invokes
