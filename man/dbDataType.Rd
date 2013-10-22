@@ -52,12 +52,14 @@
 }
 \examples{
 if (require("RSQLite")) {
-con <- dbConnect(, tempfile())
+con <- dbConnect(RSQLite(), tempfile())
 
 dbDataType(con, 1:5)
 dbDataType(con, 1L)
 dbDataType(con, TRUE)
 dbDataType(con, c("x", "abc"))
+
+dbDataType(con, mtcars)
 }
 }
 \seealso{

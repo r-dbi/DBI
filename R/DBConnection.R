@@ -200,13 +200,9 @@ setGeneric("dbReadTable", valueClass = "data.frame", signature = "conn",
 #'   names. Alternatively, a logical flag, where \code{TRUE} means use a 
 #'   column called \code{row.names}, and \code{FALSE} means don't store
 #'   row names.
-#' @param row.names A logical specifying whether the \code{row.names} 
-#'   should be output to the output DBMS table; if \code{TRUE}, the extra 
-#'   field name will be whatever the S identifier \code{"row.names"} maps to 
-#'   the DBMS (see \code{\link{make.db.names}}).
 #' @param overwrite a logical specifying whether to overwrite an 
 #'   existing table or not. Its default is \code{FALSE}
-#' @param a logical specifying whether to append to an existing 
+#' @param append a logical specifying whether to append to an existing 
 #'   table in the DBMS.  Its default is \code{FALSE}.  
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.

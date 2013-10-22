@@ -16,18 +16,12 @@
   \code{TRUE} means use a column called \code{row.names},
   and \code{FALSE} means don't store row names.}
 
-  \item{row.names}{A logical specifying whether the
-  \code{row.names} should be output to the output DBMS
-  table; if \code{TRUE}, the extra field name will be
-  whatever the S identifier \code{"row.names"} maps to the
-  DBMS (see \code{\link{make.db.names}}).}
-
   \item{overwrite}{a logical specifying whether to
   overwrite an existing table or not. Its default is
   \code{FALSE}}
 
-  \item{a}{logical specifying whether to append to an
-  existing table in the DBMS.  Its default is
+  \item{append}{a logical specifying whether to append to
+  an existing table in the DBMS.  Its default is
   \code{FALSE}.}
 
   \item{conn}{A \code{\linkS4class{DBIConnection}} object,
