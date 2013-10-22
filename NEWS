@@ -1,5 +1,8 @@
 Version 0.3.0
 
+* `dbDriver()` gains a more effective search mechanism that doesn't rely on
+  packages being loaded. (#1)
+
 * Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
   document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
   signature to ensure that dispatch only occurs on `conn`. (#10)

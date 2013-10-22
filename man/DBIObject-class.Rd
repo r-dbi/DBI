@@ -7,6 +7,17 @@
   connections). This is a virtual Class: No objects may be
   created from it.
 }
+\details{
+  More generally, the DBI defines a very small set of
+  classes and methods that allows users and applications
+  access DBMS with a common interface.  The virtual classes
+  are \code{DBIDriver} that individual drivers extend,
+  \code{DBIConnection} that represent instances of DBMS
+  connections, and \code{DBIResult} that represent the
+  result of a DBMS statement.  These three classes extend
+  the basic class of \code{DBIObject}, which serves as the
+  root or parent of the class hierarchy.
+}
 \section{Implementation notes}{
   An implementation MUST provide methods for the following
   generics:

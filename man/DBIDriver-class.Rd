@@ -4,14 +4,11 @@
 \title{DBIDriver class.}
 \description{
   Base class for all DBMS drivers (e.g., ODBC, Oracle,
-  MySQL, PostgreSQL). This is a virtual class: No objects
-  may be created from it. The function
-  \code{\link{dbConnect}} is the main generator.
-}
-\details{
-  Typically, drivers are expected to have a function of the
-  same name that does the actual initialization, e.g.,
-  \code{MySQL()}, \code{ODBC()}, \code{SQLite()},
+  MySQL, PostgreSQL). The virtual class \code{DBIDriver}
+  defines the operations for creating connections and
+  defining data type mappings.  Actual driver classes, for
+  instance \code{RPgSQL}, \code{RMySQL}, etc. implement
+  these operations in a DBMS-specific manner.
 }
 \examples{
 \dontrun{
