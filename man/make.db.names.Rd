@@ -14,6 +14,9 @@
 
   make.db.names.default(snames, keywords = .SQL92Keywords,
     unique = TRUE, allow.keywords = TRUE)
+
+  isSQLKeyword(dbObj, name, keywords = .SQL92Keywords,
+    case = c("lower", "upper", "any")[3], ...)
 }
 \arguments{
   \item{dbObj}{any DBI object (e.g., \code{DBIDriver}).}
@@ -83,42 +86,11 @@
   of the form \code{username.tablename} will loose the dot
   ``.'').
 }
-\examples{
-\dontrun{
-# This example shows how we could export a bunch of data.frames
-# into tables on a remote database.
-
-con <- dbConnect("Oracle", user="iptraffic", pass = pwd)
-
-export <- c("trantime.email", "trantime.print", "round.trip.time.email")
-tabs <- make.db.names(export, unique = T, allow.keywords = T)
-
-for(i in seq(along = export) )
-   dbWriteTable(con, name = tabs[i],  get(export[i]))
-
-# Oracle's extensions to SQL keywords
-oracle.keywords <- c("CLUSTER", "COLUMN", "MINUS", "DBNAME")
-isSQLKeyword(nam, c(.SQL92Keywords, oracle.keywords))
-[1]  T  T  T  F
-}
-#'
-}
 \references{
   The set of SQL keywords is stored in the character vector
   \code{.SQL92Keywords} and reflects the SQL ANSI/ISO
   standard as documented in "X/Open SQL and RDA", 1994,
   ISBN 1-872630-68-8.  Users can easily override or update
   this vector.
-
-  See the Database Interface definition document
-  \code{DBI.pdf} in the base directory of this package or
-  \url{http://developer.r-project.org/db}.
 }
-\seealso{
-  \code{\link{dbReadTable}}, \code{\link{dbWriteTable}},
-  \code{\link{dbExistsTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbListTables}}.
-}
-\keyword{database}
-\keyword{interface}
 
