@@ -243,7 +243,7 @@ setMethod("dbDataType", signature("DBIObject", "POSIXct"),
   function(dbObj, obj, ...) "timestamp"
 )
 varchar <- function(dbObj, obj, ...) {
-  paste0("varchar(", nchar(as.character(obj)), ")")
+  paste0("varchar(", max(nchar(as.character(obj))), ")")
 }
 setMethod("dbDataType", signature("DBIObject", "character"), varchar)
 setMethod("dbDataType", signature("DBIObject", "factor"), varchar)
