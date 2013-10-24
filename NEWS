@@ -1,9 +1,5 @@
 Version 0.3.0
 
-* New methods make it possible to generate a number of basic SQL queries:
-  `sqlCreateTable()`, `sqlDropTable()`, `sqlDeleteFrom()`, `sqlInsertInto()`,
-  `sqlUpdate()`
-
 * `make.db.names()`, `isSQLKeyword()` and `SQLKeywords()` are now deprecated.
   Instead of munging valid R names to make valid DB names, DBI now quotes all
   variable names so the database preserves as is (as much as possible). Instead
