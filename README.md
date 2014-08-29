@@ -59,10 +59,6 @@ There are four main DBI classes. Three which are each extended by individual dat
 
 All classes are _virtual_: they cannot be instantiated directly and instead must be subclassed.
 
-## Development notes
-
-To correctly build the documentation for DBI you'll need the development version of roxygen, which you can get with `devtools::install_github("roxygen", "klutometis")`.
-
 ## History
 
 The following history of DBI was contributed by David James, the driving force behind the development of DBI, and many of the packages that implement it.
