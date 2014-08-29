@@ -16,6 +16,7 @@ Check a driver for compliance with DBI.
 \examples{
 if (require("RSQLite")) {
 dbiCheckCompliance("SQLite")
+dbiCheckCompliance("NoDriver", "RSQLite")
 }
 }
 

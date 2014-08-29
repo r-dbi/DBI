@@ -6,6 +6,7 @@
 #' @examples
 #' if (require("RSQLite")) {
 #' dbiCheckCompliance("SQLite")
+#' dbiCheckCompliance("NoDriver", "RSQLite")
 #' }
 dbiCheckCompliance <- function(driver, pkg = paste0("R", driver)) {
   cat("Compliance check for ", driver, "\n", sep = "")
