@@ -35,8 +35,10 @@ has_methods <- function(generic, class, where) {
 
 compliance_message <- function(methods, name) {
   if (all(methods)) return(paste0(name, ": OK"))
+  
+  methods <- paste0(names(methods)[!methods], collapse = ", ")
   paste0(name, ": NOT OK\n", 
-    "  ", paste0(names(methods)[!methods], collapse = ", "))
+    paste0(strwrap(methods, indent = 2, exdent = 2), collapse = "\n"))
 }
 
 key_methods <- list(
@@ -61,7 +63,9 @@ key_methods <- list(
     "dbRemoveTable", 
     "dbCommit", 
     "dbRollback", 
-    "dbIsValid"
+    "dbIsValid",
+    "dbQuoteString",
+    "dbQuoteIdentifier"
   ), 
   Result = c(
     "dbIsValid", 
