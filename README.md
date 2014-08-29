@@ -15,8 +15,8 @@ DBI separates the connectivity to the DBMS into a "front-end" and a "back-end". 
 
 ```R
 library(DBI)
-# Create a temporary RSQLite database
-con <- dbConnect(RSQLite::SQLite(), dbname = tempfile())
+# Create an ephemeral in-memory RSQLite database
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
 
 dbListTables(con)
 dbWriteTable(con, "mtcars", mtcars)
@@ -26,7 +26,7 @@ dbListFields(con, "mtcars")
 dbReadTable(con, "mtcars")
 
 # The interface allows lower-level interface to the DBMS
-res <- dbSendQuery("SELECT * FROM mtcars WHERE cyl = 4")
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 dbFetch(res)
 while(!dbHasCompleted(res)){
   chunk <- dbFetch(res, n = 10000)
