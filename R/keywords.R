@@ -1,4 +1,4 @@
-#' Make R/Splus identifiers into legal SQL identifiers
+#' Make R identifiers into legal SQL identifiers.
 #' 
 #' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
 #' (or possibly \code{\link{dbQuoteString}}) instead.
@@ -15,16 +15,16 @@
 #' override or update this vector.
 #' 
 #' @section Bugs: 
-#' The current mapping is not guaranteed to be fully reversible:
-#' some SQL identifiers that get mapped into S identifiers with
-#' \code{make.names} and then back to SQL with \code{\link{make.db.names}} will
-#' not be equal to the original SQL identifiers (e.g., compound SQL identifiers
-#' of the form \code{username.tablename} will loose the dot ``.'').
-#' @references The set of SQL keywords is stored in the character vector
-#' \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
-#' in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
-#' override or update this vector.
+#' The current mapping is not guaranteed to be fully reversible: some SQL
+#' identifiers that get mapped into R identifiers with \code{make.names} and
+#' then back to SQL with \code{\link{make.db.names}} will not be equal to the
+#' original SQL identifiers (e.g., compound SQL identifiers of the form
+#' \code{username.tablename} will loose the dot ``.'').
 #' 
+#' @references The set of SQL keywords is stored in the character vector 
+#'   \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented 
+#'   in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily 
+#'   override or update this vector.
 #' @aliases 
 #'    make.db.names 
 #'    make.db.names,DBIObject,character-method 
@@ -34,8 +34,8 @@
 #'    isSQLKeyword
 #'    isSQLKeyword,DBIObject,character-method
 #' @param dbObj any DBI object (e.g., \code{DBIDriver}).
-#' @param snames a character vector of R/Splus identifiers (symbols) from which
-#'   we need to make SQL identifiers.
+#' @param snames a character vector of R identifiers (symbols) from which we
+#'   need to make SQL identifiers.
 #' @param name a character vector with database identifier candidates we need
 #'   to determine whether they are legal SQL identifiers or not.
 #' @param unique logical describing whether the resulting set of SQL names

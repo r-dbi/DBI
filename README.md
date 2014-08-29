@@ -14,9 +14,9 @@ The DBI package defines a common interface between the R and database management
 DBI separates the connectivity to the DBMS into a "front-end" and a "back-end".  Applications use only the exposed "front-end"" API.  The facilities that communicate with specific DBMS (SQLite, MySQL, PostgreSQL, MonetDB, etc.) are provided by "drivers" (other packages) that get invoked automatically through S4 methods. The following example illustrates some of the DBI capabilities:
 
 ```R
-library(RSQLite)
+library(DBI)
 # Create a temporary RSQLite database
-con <- dbConnect(dbDriver("SQLite"), dbname = tempfile())
+con <- dbConnect(RSQLite::SQLite(), dbname = tempfile())
 
 dbListTables(con)
 dbWriteTable(con, "mtcars", mtcars)

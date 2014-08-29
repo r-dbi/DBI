@@ -27,10 +27,10 @@ Imports the data stored remotely in the table \code{name} on connection
 \code{conn}.
 }
 \note{
-The translation of identifiers between R/Splus and SQL is done through
-calls to \code{\link{make.names}} and \code{\link{make.db.names}}, but we
-cannot guarantee that the conversion is reversible.  For details see
-\code{\link{make.db.names}}.
+The translation of identifiers between R and SQL is done through calls
+  to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
+  guarantee that the conversion is reversible.  For details see
+  \code{\link{make.db.names}}.
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}};

@@ -159,21 +159,20 @@ setGeneric("dbListConnections",
 
 #' Determine the SQL data type of an object.
 #' 
-#' This is a generic function. The default method determines the SQL type of
-#' an R/Splus object according to the SQL 92 specification, which may serve as
-#' a starting point for driver implementations. The default method also provides
-#' a method for data.frame which will return a character vector giving the
-#' type for each column in the dataframe.
+#' This is a generic function. The default method determines the SQL type of an
+#' R object according to the SQL 92 specification, which may serve as a starting
+#' point for driver implementations. The default method also provides a method
+#' for data.frame which will return a character vector giving the type for each
+#' column in the dataframe.
 #' 
-#' The data types supported by databases are different than the
-#' data types in R, but the mapping between the primitve
-#' types is straightforward:  Any of the many fixed and varying
-#' length character types are mapped to character vectors.
-#' Fixed-precision (non-IEEE) numbers are mapped into either numeric
-#' or integer vectors.
+#' The data types supported by databases are different than the data types in R,
+#' but the mapping between the primitve types is straightforward:  Any of the
+#' many fixed and varying length character types are mapped to character
+#' vectors. Fixed-precision (non-IEEE) numbers are mapped into either numeric or
+#' integer vectors.
 #' 
-#' Notice that many DBMS do not follow IEEE arithmetic, so there are
-#' potential problems with under/overflows and loss of precision.
+#' Notice that many DBMS do not follow IEEE arithmetic, so there are potential
+#' problems with under/overflows and loss of precision.
 #'
 #' @aliases dbDataType,DBIObject-method
 #' @inheritParams dbListConnections

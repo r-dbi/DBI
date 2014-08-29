@@ -54,14 +54,13 @@ setGeneric("dbDisconnect",
 #'   result set can be used with \code{\link{fetch}} to extract records.
 #' 
 #' @section Side Effects: 
-#' The statement is submitted for synchronous execution
-#' to the server connected through the \code{conn} object.  The DBMS executes
-#' the statement, possibly generating vast amounts of data.  Where these data
-#' reside is driver-specific: some drivers may choose to leave the output on
-#' the server and transfer them piecemeal to R/Splus, others may transfer all
-#' the data to the client -- but not necessarily to the memory that R/Splus
-#' manages.  See the individual drivers' \code{\link{dbSendQuery}} method for
-#' implementation details.
+#' The statement is submitted for synchronous execution to the server connected
+#' through the \code{conn} object.  The DBMS executes the statement, possibly
+#' generating vast amounts of data.  Where these data reside is driver-specific:
+#' some drivers may choose to leave the output on the server and transfer them
+#' piecemeal to R, others may transfer all the data to the client -- but not
+#' necessarily to the memory that R manages.  See the individual drivers'
+#' \code{\link{dbSendQuery}} method for implementation details.
 #' @family connection methods
 #' @examples
 #' \dontrun{
@@ -167,11 +166,10 @@ setGeneric("dbListTables",
 #' Imports the data stored remotely in the table \code{name} on connection 
 #' \code{conn}.
 #' 
-#' @note The translation of identifiers between R/Splus and SQL is done through
-#' calls to \code{\link{make.names}} and \code{\link{make.db.names}}, but we
-#' cannot guarantee that the conversion is reversible.  For details see
-#' \code{\link{make.db.names}}.
-#'
+#' @note The translation of identifiers between R and SQL is done through calls
+#'   to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
+#'   guarantee that the conversion is reversible.  For details see 
+#'   \code{\link{make.db.names}}.
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
 #' @param row.names  An index (string or character) specifying the DBMS column

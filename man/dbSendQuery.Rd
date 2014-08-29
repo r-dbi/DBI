@@ -27,14 +27,13 @@ records you need.
 }
 \section{Side Effects}{
 
-The statement is submitted for synchronous execution
-to the server connected through the \code{conn} object.  The DBMS executes
-the statement, possibly generating vast amounts of data.  Where these data
-reside is driver-specific: some drivers may choose to leave the output on
-the server and transfer them piecemeal to R/Splus, others may transfer all
-the data to the client -- but not necessarily to the memory that R/Splus
-manages.  See the individual drivers' \code{\link{dbSendQuery}} method for
-implementation details.
+The statement is submitted for synchronous execution to the server connected
+through the \code{conn} object.  The DBMS executes the statement, possibly
+generating vast amounts of data.  Where these data reside is driver-specific:
+some drivers may choose to leave the output on the server and transfer them
+piecemeal to R, others may transfer all the data to the client -- but not
+necessarily to the memory that R manages.  See the individual drivers'
+\code{\link{dbSendQuery}} method for implementation details.
 }
 \examples{
 \dontrun{
