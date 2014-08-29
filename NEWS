@@ -1,4 +1,4 @@
-Version 0.3.0
+# Version 0.3.0
 
 * `make.db.names()`, `isSQLKeyword()` and `SQLKeywords()` are now deprecated.
   Instead of munging valid R names to make valid DB names, DBI now quotes all
@@ -46,15 +46,15 @@ Version 0.3.0
   functions have their own documentation files. I would love your feedback
   on how we could make the documentation better!
 
-Version 0.2-7
+# Version 0.2-7
 
 * Trivial changes (updated package fields, daj)
 
-Version 0.2-6
+# Version 0.2-6
 
 * Removed deprecated \synopsis in some Rd files (thanks to Prof. Ripley)
 
-Version 0.2-5
+# Version 0.2-5
 
 * Code cleanups contributed by Matthias Burger: avoid partial argument
   name matching and use TRUE/FALSE, not T/F.
@@ -64,25 +64,25 @@ Version 0.2-5
   mangled with underscores and a digit.  Now they are quoted using
   '"'.
 
-Version 0.2-4
+# Version 0.2-4
 
 * Changed license from GPL to LPGL
 
 * Fixed a trivial typo in documentation
 
-Version 0.1-10
+# Version 0.1-10
 
 * Fixed documentation typos.
 
-Version 0.1-9
+# Version 0.1-9
 
 * Trivial changes.
 
-Version 0.1-8
+# Version 0.1-8
 
 * A trivial change due to package.description() being deprecated in 1.9.0.
 
-Version 0.1-7
+# Version 0.1-7
 
 * Had to do a substantial re-formatting of the documentation
   due to incompatibilities introduced in 1.8.0 S4 method
@@ -90,15 +90,15 @@ Version 0.1-7
   a few typos).  Thanks to Kurt Hornik and John Chambers for
   their help.
 
-Version 0.1-6
+# Version 0.1-6
 
 * Trivial documentation changes (for R CMD check's sake)
 
-Version 0.1-5
+# Version 0.1-5
 
 * Removed duplicated setGeneric("dbSetDataMappings") 
 
-Version 0.1-4
+# Version 0.1-4
 
 * Removed the "valueClass" from some generic functions, namely,
   dbListConnections, dbListResults, dbGetException, dbGetQuery,
@@ -111,11 +111,11 @@ Version 0.1-4
 
 * Added dbGetDBIVersion() (simple wrapper to package.description).
 
-Version 0.1-3
+# Version 0.1-3
 
 * ??? Minor changes?
 
-Version 0.1-2
+# Version 0.1-2
 
 * An implementation based on version 4 classes and methods.
 * Incorporated (mostly Tim Keitt's) comments.
