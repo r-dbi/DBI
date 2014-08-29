@@ -48,6 +48,9 @@
 
 ## Other improvements
 
+* `dbiCheckCompliance()` makes it easier for implementors to check that their
+  package is in compliance with the DBI specification.
+
 * All examples now use the RSQLite package so that you can easily try out
   the code samples. (#4)
 

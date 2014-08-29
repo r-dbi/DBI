@@ -21,6 +21,7 @@ Collate:
     'DBConnection.R'
     'DBDriver.R'
     'DBResult.R'
+    'compliance.R'
     'keywords.R'
     'quote.R'
     'util.R'
