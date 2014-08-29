@@ -1,10 +1,50 @@
 # Version 0.3.0
 
+## New and enhanced generics
+
+* New generic `dbIsValid()` returns a logical value describing whether a 
+  connection or result set (or other object) is still valid. (#12).
+
+* `dbQuoteString()` and `dbQuoteIdentifier()` to implement database specific
+  quoting mechanisms.
+
+* `dbFetch()` added as alias to `fetch()` to be consistent with every other
+  function in the package. Implementers should define methods for both `fetch()`
+  and `dbFetch()` until `fetch()` is deprecated in 2015. For now, the default
+  method for `dbFetch()` calls `fetch()`.
+
+* Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
+  document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
+  signature to ensure that dispatch only occurs on `conn`. (#10)
+
+## New default methods
+
+* `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()` gain default methods that extract the appropriate elements
+  from `dbGetInfo()`. This means that most drivers should no longer need to
+  implement these methods. (#13)
+
+* `dbGetQuery()` gains a default method for `DBIConnection` which uses
+  `dbSendQuery()`, `fetch()` and `dbClearResult()`.
+
+## Deprecated features
+
+* The following functions are soft-deprecated: `fetch()`. They are going away, 
+  and developers who use the DBI should begin preparing. The formal deprecation
+  process will begin in July 2015, where these function will emit warnings 
+  on use.
+
 * `make.db.names()`, `isSQLKeyword()` and `SQLKeywords()` are now deprecated.
-  Instead of munging valid R names to make valid DB names, DBI now quotes all
-  variable names so the database preserves as is (as much as possible). Instead
-  use `dbQuoteString()` and `dbQuoteIdentifier()`, which will escape any
-  special characters using appropriate technique for your database.
+  A black list based approach is fundamentally flawed; instead quote all 
+  strings and identifiers by default.
+  
+* `dbGetDBIVersion()` has been deprecated since it's now a thin wrapper
+  around `packageVersion().
+
+* `dbSetDataMappings()` (#9) and `dbCallProc()` (#7) are deprecated as no 
+  working implementation were ever provided.
+
+## Other improvements
 
 * All examples now use the RSQLite package so that you can easily try out
   the code samples. (#4)
@@ -12,35 +52,9 @@
 * `dbDriver()` gains a more effective search mechanism that doesn't rely on
   packages being loaded. (#1)
 
-* Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
-  document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
-  signature to ensure that dispatch only occurs on `conn`. (#10)
-
-* `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
-  `dbGetRowCount()` gain default methods that extract the appropriate elements
-  from `dbGetInfo()`. This means that most drivers should no longer need to
-  implement these methods. (#13)
-
-* New generic `dbIsValid()` returns a logical value describing whether a 
-  connection or result set (or other object) is still valid. (#12).
-
-* `dbSetDataMappings()` (#9) and `dbCallProc()` (#7) are deprecated as no 
-  working implementation were ever provided.
-
-* `dbFetch()` added as alias to `fetch()` to be consistent with every other
-  function in the package. Implementers should define methods for both `fetch()`
-  and `dbFetch()` until `fetch()` is deprecated in 2015. For now, the default
-  method for `dbFetch()` calls `fetch()`.
-
-* `dbGetQuery()` gains a default method for `DBIConnection` which uses
-  `dbSendQuery()`, `fetch()` and `dbClearResult()`.
-
 * `dbDataType()` now uses dispatch on both argument to determine the SQL type
   of an R vector (#5). It also gains a data frame method which returns a vector 
   giving the type of each column.
-
-* `dbGetDBIVersion()` has been deprecated since it's now a thin wrapper
-  around `packageVersion().
 
 * DBI has been converted to use roxygen2 for documentation, and now most
   functions have their own documentation files. I would love your feedback
