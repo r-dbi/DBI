@@ -172,16 +172,12 @@ setGeneric("dbListTables",
 #'   \code{\link{make.db.names}}.
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
-#' @param row.names  An index (string or character) specifying the DBMS column
-#'   to use for row names. A \code{NULL}, \code{""}, or 0 specifies that no
-#'   column should be used. Alternatively, a logical flag, where \code{TRUE} 
-#'   means uses the \code{row.names} column, and \code{FALSE} means don't use
-#'   row names.
 #' @family connection methods
 #' @return a data.frame.
 #' @export
-setGeneric("dbReadTable", valueClass = "data.frame", signature = "conn",
-  function(conn, name, row.names = FALSE, ...) {
+setGeneric("dbReadTable", valueClass = "data.frame",
+  signature = c("conn", "name"),
+  function(conn, name, ...) {
     standardGeneric("dbReadTable")
   }
 )
@@ -194,20 +190,12 @@ setGeneric("dbReadTable", valueClass = "data.frame", signature = "conn",
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
-#' @param row.names An string giving the DBMS column name to use for row
-#'   names. Alternatively, a logical flag, where \code{TRUE} means use a 
-#'   column called \code{row.names}, and \code{FALSE} means don't store
-#'   row names.
-#' @param overwrite a logical specifying whether to overwrite an 
-#'   existing table or not. Its default is \code{FALSE}
-#' @param append a logical specifying whether to append to an existing 
-#'   table in the DBMS.  Its default is \code{FALSE}.  
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.
 #' @export
-setGeneric("dbWriteTable", valueClass = "logical", signature = "conn",
-  function(conn, name, value, row.names = FALSE,
-           overwrite = FALSE, append = FALSE, ...) {
+setGeneric("dbWriteTable", valueClass = "logical", 
+  signature = c("conn", "name", "value"),
+  function(conn, name, value, ...) {
     standardGeneric("dbWriteTable")
   }
 )

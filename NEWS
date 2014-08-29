@@ -16,11 +16,6 @@
 * `dbBegin()` begins a transaction (#17). If not supported, DB specific
   methods should throw an error (as should `dbCommit()` and `dbRollback()`).
 
-* The `dbWriteTable()` and `dbReadTable()` generics have been revised to include
-  all documented parameters (e.g. `row.names`, `overwrite`, `append`) and 
-  the signature has been clarified to to ensure that dispatch only occurs on 
-  `conn` (#10).
-
 ## New default methods
 
 * `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
