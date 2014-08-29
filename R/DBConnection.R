@@ -240,7 +240,7 @@ setGeneric("dbRemoveTable",
   valueClass = "logical"
 )
 
-#' Commit/rollback SQL transactions
+#' Begin/commit/rollback SQL transactions
 #' 
 #' Not all database engines implement transaction management, in which case
 #' these methods should not be implemented for the specific 
@@ -265,6 +265,13 @@ setGeneric("dbRemoveTable",
 #' }
 #' @name transactions
 NULL
+
+#' @export
+#' @rdname transactions
+setGeneric("dbBegin", 
+  def = function(conn, ...) standardGeneric("dbBegin"),
+  valueClass = "logical"
+)
 
 #' @export
 #' @rdname transactions

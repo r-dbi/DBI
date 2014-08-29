@@ -61,6 +61,7 @@ key_methods <- list(
     "dbWriteTable", 
     "dbExistsTable", 
     "dbRemoveTable", 
+    "dbBegin",
     "dbCommit", 
     "dbRollback", 
     "dbIsValid",

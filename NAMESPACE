@@ -3,6 +3,7 @@
 export(.SQL92Keywords)
 export(SQL)
 export(SQLKeywords)
+export(dbBegin)
 export(dbCallProc)
 export(dbClearResult)
 export(dbColumnInfo)

@@ -13,6 +13,8 @@
   and `dbFetch()` until `fetch()` is deprecated in 2015. For now, the default
   method for `dbFetch()` calls `fetch()`.
 
+* `dbBegin()` to start a transaction, where supported by the database (#17).
+
 * Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
   document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
   signature to ensure that dispatch only occurs on `conn`. (#10)
@@ -49,7 +51,7 @@
 ## Other improvements
 
 * `dbiCheckCompliance()` makes it easier for implementors to check that their
-  package is in compliance with the DBI specification.
+  package is in compliance with the DBI specification
 
 * All examples now use the RSQLite package so that you can easily try out
   the code samples. (#4)
