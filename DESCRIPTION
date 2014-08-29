@@ -14,6 +14,8 @@ Description: A database interface (DBI) definition for communication
     classes in this package are virtual and need to be extended by
     the various R/DBMS implementations.
 License: LGPL (>= 2)
+Url: https://github.com/rstats-db/DBI
+BugReports: https://github.com/rstats-db/DBI/issues
 Collate:
     'DBObject.R'
     'DBConnection.R'
