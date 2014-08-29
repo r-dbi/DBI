@@ -14,3 +14,4 @@ inst\/doc\/.*\.tmp$
 inst\/doc\/DBI\.b..$
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
