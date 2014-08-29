@@ -21,7 +21,7 @@ An object that inherits from \code{\linkS4class{DBIResult}}.
 \description{
 The function \code{dbSendQuery} only submits and synchronously executes the
 SQL statement to the database engine.  It does \emph{not} extracts any
-records --- for that you need to use the function \code{\link{fetch}}, and
+records --- for that you need to use the function \code{\link{dbFetch}}, and
 then you must call \code{\link{dbClearResult}} when you finish fetching the
 records you need.
 }
