@@ -38,6 +38,7 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 #' 
 #'   In the case of \code{dbUnloadDriver}, a logical indicating whether the
 #'   operation succeeded or not.
+#' @import methods
 #' @examples
 #' if (require("RSQLite")) {
 #' # Create a RSQLite driver with a string
