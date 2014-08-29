@@ -15,11 +15,11 @@ connections.
 }
 \examples{
 \dontrun{
-ora <- dbDriver("Oracle")
-con <- dbConnect(ora, "user/password@dbname")
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbDisconnect(con)
 
-pg <- dbDriver("PostgreSQL")
-con <- dbConnect(pg, "user", "password")
+con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
+dbDisconnect(con)
 }
 }
 \seealso{

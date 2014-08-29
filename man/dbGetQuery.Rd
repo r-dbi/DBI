@@ -22,6 +22,18 @@ is used to ensure the result set is always freed by
 \code{\link{dbClearResult}}.  Subclasses should override this method
 only if they provide some sort of performance optimisation.
 }
+\examples{
+if (require("RSQLite")) {
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+dbFetch(res)
+dbClearResult(res)
+
+dbDisconnect(con)
+}
+}
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}};
   \code{\link{dbExistsTable}};

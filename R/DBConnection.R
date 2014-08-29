@@ -13,11 +13,11 @@
 #' @family DBI classes
 #' @examples
 #' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora, "user/password@@dbname")
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbDisconnect(con)
 #' 
-#' pg <- dbDriver("PostgreSQL")
-#' con <- dbConnect(pg, "user", "password")
+#' con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
+#' dbDisconnect(con)
 #' }
 #' @export
 #' @include DBObject.R
@@ -34,6 +34,11 @@ setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 #' @return a logical vector of length 1, indicating success or failure.
 #' @export
 #' @family connection methods
+#' @examples
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbDisconnect(con)
+#' }
 setGeneric("dbDisconnect", 
   def = function(conn, ...) standardGeneric("dbDisconnect"),
   valueClass = "logical"
@@ -63,11 +68,15 @@ setGeneric("dbDisconnect",
 #' \code{\link{dbSendQuery}} method for implementation details.
 #' @family connection methods
 #' @examples
-#' \dontrun{
-#' drv <- dbDriver("MySQL")
-#' con <- dbConnect(drv)
-#' res <- dbSendQuery(con, "SELECT * from liv25")
-#' data <- fetch(res, n = -1)
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' 
+#' dbWriteTable(con, "mtcars", mtcars)
+#' res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+#' dbFetch(res)
+#' dbClearResult(res)
+#' 
+#' dbDisconnect(con)
 #' }
 #' @export
 setGeneric("dbSendQuery", 
@@ -89,6 +98,17 @@ setGeneric("dbSendQuery",
 #' @aliases dbGetQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
+#' @examples
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' 
+#' dbWriteTable(con, "mtcars", mtcars)
+#' res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+#' dbFetch(res)
+#' dbClearResult(res)
+#' 
+#' dbDisconnect(con)
+#' }
 setGeneric("dbGetQuery", 
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )

@@ -36,11 +36,15 @@ necessarily to the memory that R manages.  See the individual drivers'
 \code{\link{dbSendQuery}} method for implementation details.
 }
 \examples{
-\dontrun{
-drv <- dbDriver("MySQL")
-con <- dbConnect(drv)
-res <- dbSendQuery(con, "SELECT * from liv25")
-data <- fetch(res, n = -1)
+if (require("RSQLite")) {
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+dbFetch(res)
+dbClearResult(res)
+
+dbDisconnect(con)
 }
 }
 \seealso{
