@@ -11,7 +11,9 @@ The DBI package defines a common interface between the R and database management
 * information (meta-data) from database objects
 * transaction management (optional)
 
-DBI separates the connectivity to the DBMS into a "front-end" and a "back-end".  Applications use only the exposed "front-end"" API.  The facilities that communicate with specific DBMS (SQLite, MySQL, PostgreSQL, MonetDB, etc.) are provided by "drivers" (other packages) that get invoked automatically through S4 methods. The following example illustrates some of the DBI capabilities:
+DBI separates the connectivity to the DBMS into a "front-end" and a "back-end".  Applications use only the exposed "front-end" API. The facilities that communicate with specific DBMSs (SQLite, MySQL, PostgreSQL, MonetDB, etc.) are provided by "drivers" (other packages) that get invoked automatically through S4 methods. 
+
+The following example illustrates some of the DBI capabilities:
 
 ```R
 library(DBI)
