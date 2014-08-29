@@ -175,19 +175,7 @@ setGeneric("dbListConnections",
 #' Notice that many DBMS do not follow IEEE arithmetic, so there are
 #' potential problems with under/overflows and loss of precision.
 #'
-#' @section Implementation notes:
-#' Implementations should provide methods (if different from the default)
-#' for: logical, integer, numeric, character, factor, Date, and POSIXct.
-#' 
-#' @aliases
-#'   dbDataType,DBIObject,data.frame-method
-#'   dbDataType,DBIObject,logical-method
-#'   dbDataType,DBIObject,integer-method
-#'   dbDataType,DBIObject,numeric-method
-#'   dbDataType,DBIObject,character-method
-#'   dbDataType,DBIObject,factor-method
-#'   dbDataType,DBIObject,Date-method
-#'   dbDataType,DBIObject,POSIXct-method
+#' @aliases dbDataType,DBIObject-method
 #' @inheritParams dbListConnections
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param obj An R object whose SQL type we want to determine.
@@ -210,30 +198,21 @@ setGeneric("dbDataType",
   valueClass = "character"
 )
 
-setMethod("dbDataType", signature("DBIObject", "data.frame"), 
-  function(dbObj, obj, ...) {
-    vapply(obj, dbDataType, dbObj = dbObj, ..., FUN.VALUE = character(1),
-      USE.NAMES = FALSE)  
-  }
-)
-
-setMethod("dbDataType", signature("DBIObject", "integer"), 
-  function(dbObj, obj, ...) "int"
-)
-setMethod("dbDataType", signature("DBIObject", "numeric"), 
-  function(dbObj, obj, ...) "double"
-)
-setMethod("dbDataType", signature("DBIObject", "logical"), 
-  function(dbObj, obj, ...) "smallint"
-)
-setMethod("dbDataType", signature("DBIObject", "Date"), 
-  function(dbObj, obj, ...) "date"
-)
-setMethod("dbDataType", signature("DBIObject", "POSIXct"), 
-  function(dbObj, obj, ...) "timestamp"
-)
-varchar <- function(dbObj, obj, ...) {
-  paste0("varchar(", max(nchar(as.character(obj))), ")")
+setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
+  dbiDataType(obj)
+})
+setGeneric("dbiDataType", function(x) standardGeneric("dbiDataType"))
+setMethod("dbiDataType", "data.frame", function(x) {
+  vapply(x, dbiDataType, FUN.VALUE = character(1), USE.NAMES = FALSE)  
+})
+setMethod("dbiDataType", "integer",  function(x) "int")
+setMethod("dbiDataType", "numeric",  function(x) "double")
+setMethod("dbiDataType", "logical",  function(x) "smallint")
+setMethod("dbiDataType", "Date",     function(x) "date")
+setMethod("dbiDataType", "POSIXct",  function(x) "timestamp")
+varchar <- function(x) {
+  paste0("varchar(", max(nchar(as.character(x))), ")")
 }
-setMethod("dbDataType", signature("DBIObject", "character"), varchar)
-setMethod("dbDataType", signature("DBIObject", "factor"), varchar)
+setMethod("dbiDataType", "character", varchar)
+setMethod("dbiDataType", "factor",    varchar)
+  
