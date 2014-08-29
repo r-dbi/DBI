@@ -47,8 +47,6 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 #' 
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-#' 
-#' dbUnloadDriver(RSQLite::SQLite())
 #' }
 #' @aliases dbDriver,character-method
 #' @export

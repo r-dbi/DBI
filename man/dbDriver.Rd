@@ -48,8 +48,6 @@ d
 
 # But better, access the object directly
 RSQLite::SQLite()
-
-dbUnloadDriver(RSQLite::SQLite())
 }
 }
 
