@@ -2,29 +2,31 @@
 
 ## New and enhanced generics
 
-* New generic `dbIsValid()` returns a logical value describing whether a 
-  connection or result set (or other object) is still valid. (#12).
+* `dbIsValid()` returns a logical value describing whether a connection or 
+  result set (or other object) is still valid. (#12).
 
 * `dbQuoteString()` and `dbQuoteIdentifier()` to implement database specific
   quoting mechanisms.
 
-* `dbFetch()` added as alias to `fetch()` to be consistent with every other
-  function in the package. Implementers should define methods for both `fetch()`
-  and `dbFetch()` until `fetch()` is deprecated in 2015. For now, the default
-  method for `dbFetch()` calls `fetch()`.
+* `dbFetch()` added as alias to `fetch()` to provide consistent name. 
+  Implementers should define methods for both `fetch()` and `dbFetch()` until 
+  `fetch()` is deprecated in 2015. For now, the default method for `dbFetch()` 
+  calls `fetch()`.
 
-* `dbBegin()` to start a transaction, where supported by the database (#17).
+* `dbBegin()` begins a transaction (#17). If not supported, DB specific
+  methods should throw an error (as should `dbCommit()` and `dbRollback()`).
 
-* Revise the `dbWriteTable()` and `dbReadTable()` generics to include all
-  document parameters (e.g. `row.names`, `overwrite`, `append`) and clarify the
-  signature to ensure that dispatch only occurs on `conn`. (#10)
+* The `dbWriteTable()` and `dbReadTable()` generics have been revised to include
+  all documented parameters (e.g. `row.names`, `overwrite`, `append`) and 
+  the signature has been clarified to to ensure that dispatch only occurs on 
+  `conn` (#10).
 
 ## New default methods
 
 * `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
   `dbGetRowCount()` gain default methods that extract the appropriate elements
   from `dbGetInfo()`. This means that most drivers should no longer need to
-  implement these methods. (#13)
+  implement these methods (#13).
 
 * `dbGetQuery()` gains a default method for `DBIConnection` which uses
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
@@ -36,28 +38,28 @@
   process will begin in July 2015, where these function will emit warnings 
   on use.
 
-    * `fetch()` is replaced by `dbFetch()`
+    * `fetch()` is replaced by `dbFetch()`.
 
     * `make.db.names()`, `isSQLKeyword()` and `SQLKeywords()`: a black list 
       based approach is fundamentally flawed; instead quote strings and 
       identifiers with `dbQuoteIdentifier()` and `dbQuoteString()`.
   
-* `dbGetDBIVersion()` has been deprecated since it's now a thin wrapper
-  around `packageVersion().
+* `dbGetDBIVersion()` is deprecated since it's now just a thin wrapper
+  around `packageVersion("DBI")`.
 
 * `dbSetDataMappings()` (#9) and `dbCallProc()` (#7) are deprecated as no 
-  working implementation were ever provided.
+  implementations were ever provided.
 
 ## Other improvements
 
 * `dbiCheckCompliance()` makes it easier for implementors to check that their
-  package is in compliance with the DBI specification
+  package is in compliance with the DBI specification.
 
 * All examples now use the RSQLite package so that you can easily try out
-  the code samples. (#4)
+  the code samples (#4).
 
 * `dbDriver()` gains a more effective search mechanism that doesn't rely on
-  packages being loaded. (#1)
+  packages being loaded (#1).
 
 * DBI has been converted to use roxygen2 for documentation, and now most
   functions have their own documentation files. I would love your feedback
