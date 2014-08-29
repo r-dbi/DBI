@@ -5,6 +5,7 @@
 \alias{SQLKeywords,missing-method}
 \alias{isSQLKeyword}
 \alias{isSQLKeyword,DBIObject,character-method}
+\alias{isSQLKeyword.default}
 \alias{make.db.names}
 \alias{make.db.names,DBIObject,character-method}
 \alias{make.db.names.default}
@@ -18,6 +19,9 @@ make.db.names.default(snames, keywords = .SQL92Keywords, unique = TRUE,
 
 isSQLKeyword(dbObj, name, keywords = .SQL92Keywords, case = c("lower",
   "upper", "any")[3], ...)
+
+isSQLKeyword.default(name, keywords = .SQL92Keywords, case = c("lower",
+  "upper", "any")[3])
 }
 \arguments{
 \item{dbObj}{any DBI object (e.g., \code{DBIDriver}).}

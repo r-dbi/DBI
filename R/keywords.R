@@ -117,6 +117,8 @@ setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
   valueClass = "logical"
 )
 
+#' @rdname make.db.names
+#' @export
 isSQLKeyword.default <- function(name, keywords = .SQL92Keywords, 
                                  case = c("lower", "upper", "any")[3]) {
   n <- pmatch(case, c("lower", "upper", "any"), nomatch=0)
