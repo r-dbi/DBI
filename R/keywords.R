@@ -60,7 +60,6 @@
 setGeneric("make.db.names", signature = c("dbObj", "snames"),
   function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
            allow.keywords = TRUE, ...) {
-    .Deprecated("dbQuoteIdentifier")
     standardGeneric("make.db.names")
   },
   valueClass = "character"
@@ -108,7 +107,6 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
 setGeneric("isSQLKeyword", signature = c("dbObj", "name"),
   function(dbObj, name, keywords = .SQL92Keywords,
            case = c("lower", "upper", "any")[3], ...) {
-    .Deprecated("dbQuoteIdentifier")
     standardGeneric("isSQLKeyword")
   },
   valueClass = "logical"
@@ -139,7 +137,6 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
 #' @export
 setGeneric("SQLKeywords",
   function(dbObj, ...) {
-    .Deprecated("dbQuoteIdentifier")
     standardGeneric("SQLKeywords")
   },
   valueClass = "character"
