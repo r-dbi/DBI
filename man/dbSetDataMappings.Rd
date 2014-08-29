@@ -23,20 +23,5 @@ DBI drivers handle the common base types (integers, numeric, strings, etc.)
 The details on conversion functions (e.g., arguments, whether they can invoke
 initializers and/or destructors) have not been specified.
 }
-\examples{
-\dontrun{
-makeImage <- function(x) {
-  .C("make_Image", as.integer(x), length(x))
-}
-
-res <- dbSendQuery(con, statement)
-flds <- dbColumnInfo(res)
-flds[3, "Sclass"] <- makeImage
-
-dbSetDataMappings(rs, flds)
-
-im <- fetch(rs, n = -1)
-}
-}
 \keyword{internal}
 

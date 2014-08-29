@@ -19,29 +19,29 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 
 #' Fetch records from a previously executed query.
 #' 
-#' Fetch the next \code{n} elements (rows) from the result set
-#' and return them as a data.frame.
+#' Fetch the next \code{n} elements (rows) from the result set and return them
+#' as a data.frame.
 #' 
-#' \code{fetch} is provided for compatibility with older DBI clients - for all
+#' \code{fetch} is provided for compatibility with older DBI clients - for all 
 #' new code you are strongly encouraged to use \code{dbFetch}. The default 
-#' method for \code{dbFetch} calls \code{fetch} so that it is compatible with
-#' existing code. Implementors should provide methods for both \code{fetch}
-#' and \code{dbFetch} until \code{fetch} is deprecated in 2015.
+#' method for \code{dbFetch} calls \code{fetch} so that it is compatible with 
+#' existing code. Implementors should provide methods for both \code{fetch} and
+#' \code{dbFetch} until \code{fetch} is deprecated in 2015.
 #' 
 #' @aliases dbFetch,DBIResult-method
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
-#'   to retrieve all pending records.  Some implementations may recognize other
+#' @param n maximum number of records to retrieve per fetch. Use \code{n = -1} 
+#'   to retrieve all pending records.  Some implementations may recognize other 
 #'   special values.
 #' @param ... Other arguments passed on to methods.
-#' @return a data.frame with as many rows as records were fetched and as many
+#' @return a data.frame with as many rows as records were fetched and as many 
 #'   columns as fields in the result set.
-#' @seealso close the result set with \code{\link{dbClearResult}} as
-#'   soon as you finish retrieving the records you want.
+#' @seealso close the result set with \code{\link{dbClearResult}} as soon as you
+#'   finish retrieving the records you want.
 #' @family DBIResult generics
 #' @examples
 #' if (!require("RSQLite")) {
-#' con <- dbConnect(SQLite(), tempfile())
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbWriteTable(con, "mtcars", mtcars)
 #' 
 #' # Fetch all results
@@ -56,6 +56,7 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 #'   print(nrow(chunk))
 #' }
 #' dbClearResult(res)
+#' dbDisconnect(con)
 #' }
 #' @export
 setGeneric("dbFetch", 
@@ -76,9 +77,9 @@ setGeneric("fetch",
 
 #' Clear a result set.
 #' 
-#' Frees all resources (local and remote) associated with
-#' a result set.  It some cases (e.g., very large result sets) this can be a
-#' critical step to avoid exhausting resources (memory, file descriptors, etc.)
+#' Frees all resources (local and remote) associated with a result set.  It some
+#' cases (e.g., very large result sets) this can be a critical step to avoid
+#' exhausting resources (memory, file descriptors, etc.)
 #' 
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param ... Other arguments passed on to methods.
@@ -93,11 +94,10 @@ setGeneric("dbClearResult",
 
 #' Information about result types.
 #' 
-#' Produces a data.frame that describes the output of a query. 
-#' The data.frame should have as many rows as there are output
-#' fields in the result set, and each column in the data.frame
-#' should describe an aspect of the result set field (field name,
-#' type, etc.)
+#' Produces a data.frame that describes the output of a query. The data.frame
+#' should have as many rows as there are output fields in the result set, and
+#' each column in the data.frame should describe an aspect of the result set
+#' field (field name, type, etc.)
 #' 
 #' @inheritParams dbClearResult
 #' @return A data.frame with one row per output field in \code{res}. Methods 
@@ -204,20 +204,6 @@ setMethod("dbGetRowCount", "DBIResult", function(res, ...) {
 #' @inheritParams dbClearResult
 #' @keywords internal
 #' @param flds a field description object as returned by \code{dbColumnInfo}.
-#' @examples
-#' \dontrun{
-#' makeImage <- function(x) {
-#'   .C("make_Image", as.integer(x), length(x))
-#' }
-#' 
-#' res <- dbSendQuery(con, statement)
-#' flds <- dbColumnInfo(res)
-#' flds[3, "Sclass"] <- makeImage
-#' 
-#' dbSetDataMappings(rs, flds)
-#' 
-#' im <- fetch(rs, n = -1)
-#' }
 #' @export
 setGeneric("dbSetDataMappings", 
   def = function(res, flds, ...) {

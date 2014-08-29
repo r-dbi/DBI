@@ -15,9 +15,9 @@ a logical indicating whether clearing the
   result set was successful or not.
 }
 \description{
-Frees all resources (local and remote) associated with
-a result set.  It some cases (e.g., very large result sets) this can be a
-critical step to avoid exhausting resources (memory, file descriptors, etc.)
+Frees all resources (local and remote) associated with a result set.  It some
+cases (e.g., very large result sets) this can be a critical step to avoid
+exhausting resources (memory, file descriptors, etc.)
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbColumnInfo}};

@@ -35,7 +35,7 @@ problems with under/overflows and loss of precision.
 }
 \examples{
 if (require("RSQLite")) {
-con <- dbConnect(SQLite(), tempfile())
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbDataType(con, 1:5)
 dbDataType(con, 1L)

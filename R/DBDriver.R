@@ -47,6 +47,8 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 #' 
 #' # But better, access the object directly
 #' RSQLite::SQLite()
+#' 
+#' dbUnloadDriver(RSQLite::SQLite())
 #' }
 #' @aliases dbDriver,character-method
 #' @export
@@ -132,7 +134,7 @@ setGeneric("dbUnloadDriver",
 #' if (require("RSQLite")) {
 #' # SQLite only needs a path to the database. Other database drivers
 #' # will require more details (like username, password, host, port etc)
-#' con <- dbConnect(SQLite(), tempfile())
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' con
 #' 
 #' dbListTables(con)
@@ -182,7 +184,7 @@ setGeneric("dbListConnections",
 #' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
 #' if (require("RSQLite")) {
-#' con <- dbConnect(SQLite(), tempfile())
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' 
 #' dbDataType(con, 1:5)
 #' dbDataType(con, 1L)

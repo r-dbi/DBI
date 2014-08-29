@@ -37,7 +37,7 @@ Each driver will define what other arguments are required, e.g.,
 if (require("RSQLite")) {
 # SQLite only needs a path to the database. Other database drivers
 # will require more details (like username, password, host, port etc)
-con <- dbConnect(SQLite(), tempfile())
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
 con
 
 dbListTables(con)

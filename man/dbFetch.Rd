@@ -23,19 +23,19 @@ a data.frame with as many rows as records were fetched and as many
   columns as fields in the result set.
 }
 \description{
-Fetch the next \code{n} elements (rows) from the result set
-and return them as a data.frame.
+Fetch the next \code{n} elements (rows) from the result set and return them
+as a data.frame.
 }
 \details{
 \code{fetch} is provided for compatibility with older DBI clients - for all
 new code you are strongly encouraged to use \code{dbFetch}. The default
 method for \code{dbFetch} calls \code{fetch} so that it is compatible with
-existing code. Implementors should provide methods for both \code{fetch}
-and \code{dbFetch} until \code{fetch} is deprecated in 2015.
+existing code. Implementors should provide methods for both \code{fetch} and
+\code{dbFetch} until \code{fetch} is deprecated in 2015.
 }
 \examples{
 if (!require("RSQLite")) {
-con <- dbConnect(SQLite(), tempfile())
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbWriteTable(con, "mtcars", mtcars)
 
 # Fetch all results
@@ -50,11 +50,12 @@ while (!dbHasCompleted(res)) {
   print(nrow(chunk))
 }
 dbClearResult(res)
+dbDisconnect(con)
 }
 }
 \seealso{
-close the result set with \code{\link{dbClearResult}} as
-  soon as you finish retrieving the records you want.
+close the result set with \code{\link{dbClearResult}} as soon as you
+  finish retrieving the records you want.
 
 Other DBIResult generics: \code{\link{dbClearResult}};
   \code{\link{dbColumnInfo}}; \code{\link{dbGetRowCount}},
