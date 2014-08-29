@@ -181,10 +181,10 @@ setGeneric("dbListTables",
   valueClass = "character"
 )
 
-#' Create a data frame from a database table.
+#' Copy data frames to and from database tables.
 #' 
-#' Imports the data stored remotely in the table \code{name} on connection 
-#' \code{conn}.
+#' \code{dbReadTable}: database table -> data frame; \code{dbWriteTable}: 
+#' data frame -> database table.
 #' 
 #' @note The translation of identifiers between R and SQL is done through calls
 #'   to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
@@ -192,9 +192,19 @@ setGeneric("dbListTables",
 #'   \code{\link{make.db.names}}.
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
+#' @param value a data.frame (or coercible to data.frame).
 #' @family connection methods
 #' @return a data.frame.
 #' @export
+#' @examples
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' 
+#' dbWriteTable(con, "mtcars", mtcars[1:10, ])
+#' dbReadTable(con, "mtcars")
+#' 
+#' dbDisconnect(con)
+#' }
 setGeneric("dbReadTable", valueClass = "data.frame",
   signature = c("conn", "name"),
   function(conn, name, ...) {
@@ -202,16 +212,7 @@ setGeneric("dbReadTable", valueClass = "data.frame",
   }
 )
 
-#' Create a database table from data frame.
-#' 
-#' Write the \code{\link{data.frame}} \code{value} into the remote 
-#' table \code{name} in connection \code{conn}. 
-#' 
-#' @inheritParams dbDisconnect
-#' @param name A character string specifying a DBMS table name.
-#' @param value a data.frame (or coercible to data.frame).
-#' @family connection methods
-#' @return a logical vector of length 1 indicating success or failure.
+#' @rdname dbReadTable
 #' @export
 setGeneric("dbWriteTable", valueClass = "logical", 
   signature = c("conn", "name", "value"),

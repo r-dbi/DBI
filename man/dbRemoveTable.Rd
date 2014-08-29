@@ -25,7 +25,7 @@ Other connection methods: \code{\link{dbDisconnect}};
   \code{\link{dbGetException}}; \code{\link{dbGetQuery}},
   \code{\link{dbGetQuery,DBIConnection,character-method}};
   \code{\link{dbListFields}}; \code{\link{dbListResults}};
-  \code{\link{dbListTables}}; \code{\link{dbReadTable}};
-  \code{\link{dbSendQuery}}; \code{\link{dbWriteTable}}
+  \code{\link{dbListTables}}; \code{\link{dbReadTable}},
+  \code{\link{dbWriteTable}}; \code{\link{dbSendQuery}}
 }
 

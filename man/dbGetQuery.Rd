@@ -39,7 +39,7 @@ Other connection methods: \code{\link{dbDisconnect}};
   \code{\link{dbExistsTable}};
   \code{\link{dbGetException}}; \code{\link{dbListFields}};
   \code{\link{dbListResults}}; \code{\link{dbListTables}};
-  \code{\link{dbReadTable}}; \code{\link{dbRemoveTable}};
-  \code{\link{dbSendQuery}}; \code{\link{dbWriteTable}}
+  \code{\link{dbReadTable}}, \code{\link{dbWriteTable}};
+  \code{\link{dbRemoveTable}}; \code{\link{dbSendQuery}}
 }
 

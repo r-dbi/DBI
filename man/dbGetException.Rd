@@ -24,8 +24,8 @@ Other connection methods: \code{\link{dbDisconnect}};
   \code{\link{dbExistsTable}}; \code{\link{dbGetQuery}},
   \code{\link{dbGetQuery,DBIConnection,character-method}};
   \code{\link{dbListFields}}; \code{\link{dbListResults}};
-  \code{\link{dbListTables}}; \code{\link{dbReadTable}};
-  \code{\link{dbRemoveTable}}; \code{\link{dbSendQuery}};
-  \code{\link{dbWriteTable}}
+  \code{\link{dbListTables}}; \code{\link{dbReadTable}},
+  \code{\link{dbWriteTable}}; \code{\link{dbRemoveTable}};
+  \code{\link{dbSendQuery}}
 }
 
