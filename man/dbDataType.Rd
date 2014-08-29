@@ -48,7 +48,7 @@ for: logical, integer, numeric, character, factor, Date, and POSIXct.
 }
 \examples{
 if (require("RSQLite")) {
-con <- dbConnect(RSQLite(), tempfile())
+con <- dbConnect(SQLite(), tempfile())
 
 dbDataType(con, 1:5)
 dbDataType(con, 1L)

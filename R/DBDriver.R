@@ -46,9 +46,6 @@ setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
 #' 
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-#' 
-#' dbUnloadDriver(d)
-#' d
 #' }
 #' @aliases dbDriver,character-method
 #' @export
@@ -197,7 +194,7 @@ setGeneric("dbListConnections",
 #' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
 #' if (require("RSQLite")) {
-#' con <- dbConnect(RSQLite(), tempfile())
+#' con <- dbConnect(SQLite(), tempfile())
 #' 
 #' dbDataType(con, 1:5)
 #' dbDataType(con, 1L)

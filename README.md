@@ -14,7 +14,7 @@ DBI separates the connectivity to the DBMS into a "front-end" and a "back-end". 
 ```R
 library(RSQLite)
 # Create a temporary RSQLite database
-con <- dbConnect(dbDriver("RSQLite"), dbname = tempfile())
+con <- dbConnect(dbDriver("SQLite"), dbname = tempfile())
 
 dbListTables(con)
 dbWriteTable(con, "mtcars", mtcars)
@@ -27,8 +27,8 @@ dbReadTable(con, "mtcars")
 res <- dbSendQuery("SELECT * FROM mtcars WHERE cyl = 4")
 fetch(res)
 while(!dbHasCompleted(res)){
-   chunk <- fetch(res, n = 10000)
-   out <- c(out, doit(chunk))
+  chunk <- fetch(res, n = 10000)
+  out <- c(out, doit(chunk))
 }
 
 # Free up resources
