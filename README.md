@@ -27,9 +27,9 @@ dbReadTable(con, "mtcars")
 
 # The interface allows lower-level interface to the DBMS
 res <- dbSendQuery("SELECT * FROM mtcars WHERE cyl = 4")
-fetch(res)
+dbFetch(res)
 while(!dbHasCompleted(res)){
-  chunk <- fetch(res, n = 10000)
+  chunk <- dbFetch(res, n = 10000)
   out <- c(out, doit(chunk))
 }
 
