@@ -282,12 +282,15 @@ setGeneric("dbRollback",
 
 #' Call an SQL stored procedure
 #' 
-#' Not yet implemented.
+#' DEPRECATED
 #' 
 #' @inheritParams dbDisconnect
 #' @keywords internal
 #' @export
 setGeneric("dbCallProc", 
-  def = function(conn, ...) standardGeneric("dbCallProc"),
+  def = function(conn, ...) {
+    .Deprecated()
+    standardGeneric("dbCallProc")
+  },
   valueClass = "logical"
 )

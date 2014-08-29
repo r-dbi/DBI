@@ -12,7 +12,7 @@ dbCallProc(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \description{
-Not yet implemented.
+DEPRECATED
 }
 \keyword{internal}
 

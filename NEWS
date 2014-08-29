@@ -24,8 +24,8 @@ Version 0.3.0
 * New generic `dbIsValid()` returns a logical value describing whether a 
   connection or result set (or other object) is still valid. (#12).
 
-* `dbSetDataMappings()` is deprecated as no working implementation was ever
-  provided and it's unlikely to the be the approach we take going forward. (#9)
+* `dbSetDataMappings()` (#9) and `dbCallProc()` (#7) are deprecated as no 
+  working implementation were ever provided.
 
 * `dbFetch()` added as alias to `fetch()` to be consistent with every other
   function in the package. Implementers should define methods for both `fetch()`
