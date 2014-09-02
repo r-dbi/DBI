@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.3.0
+Version: 0.3.0.9000
 Title: R Database Interface
 Author: R Special Interest Group on Databases (R-SIG-DB)
 Maintainer: Hadley Wickham <hadley@rstudio.com>
