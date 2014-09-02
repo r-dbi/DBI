@@ -15,3 +15,4 @@ inst\/doc\/DBI\.b..$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
+^cran-comments\.md$
