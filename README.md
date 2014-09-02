@@ -27,16 +27,19 @@ dbListTables(con)
 dbListFields(con, "mtcars")
 dbReadTable(con, "mtcars")
 
-# The interface allows lower-level interface to the DBMS
+# You can fetch all results:
 res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 dbFetch(res)
-while(!dbHasCompleted(res)){
-  chunk <- dbFetch(res, n = 10000)
-  out <- c(out, doit(chunk))
-}
-
-# Free up resources
 dbClearResult(res)
+
+# Or a chunk at a time
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+while(!dbHasCompleted(res)){
+  chunk <- dbFetch(res, n = 5)
+  print(nrow(chunk))
+}
+dbClearResult(res)
+
 dbDisconnect(con)
 ```
 
