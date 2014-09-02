@@ -1,4 +1,7 @@
-This is the first release of DBI with me as a maintainer (as noted in email thread last week). It basically brings DBI up to a modern package development spec, and adds a few new generics. I have been careful not to add any backward incompatible changes.
+This is a re-submission. Compare to the previous submission:
+
+* I have made `print.list.pairs()` more robust so that rangeMapper
+  no longer fails R CMD check.
 
 The following notes were generated across my local OS X install, ubuntu running on travis-ci and win builder (devel and release):
 
