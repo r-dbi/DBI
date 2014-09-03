@@ -83,6 +83,7 @@ setGeneric("dbGetInfo",
 #' @inheritParams dbGetInfo
 #' @return a logical of length 1
 #' @family DBObject methods
+#' @export
 setGeneric("dbIsValid", 
   def = function(dbObj, ...) standardGeneric("dbIsValid"),
   valueClass = "logical")

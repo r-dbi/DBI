@@ -1,5 +1,7 @@
 # Version 0.3.0.9000
 
+* Actually export `dbIsValid()` :/
+
 # Version 0.3.0
 
 ## New and enhanced generics
