@@ -121,7 +121,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
     # no records to fetch, we're done
     if (dbHasCompleted(rs)) return(NULL)
     
-    res <- fetch(rs, n = -1, ...)
+    res <- dbFetch(rs, n = -1, ...)
     
     if (!dbHasCompleted(rs)) warning("pending rows")
     
