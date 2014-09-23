@@ -2,6 +2,8 @@
 
 * Actually export `dbIsValid()` :/
 
+* `dbGetQuery()` uses `dbFetch()` in the default implementation.
+
 # Version 0.3.0
 
 ## New and enhanced generics
