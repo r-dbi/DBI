@@ -1,7 +1,4 @@
-This is a re-submission. Compare to the previous submission:
-
-* I have made `print.list.pairs()` more robust so that rangeMapper
-  no longer fails R CMD check.
+This is a patch release to fix two very minor problems (failed to export generic, used wrong method in default implementation of dbGetQuery).
 
 The following notes were generated across my local OS X install, ubuntu running on travis-ci and win builder (devel and release):
 
@@ -11,8 +8,4 @@ The following notes were generated across my local OS X install, ubuntu running 
   
   These are correctly spelled.
 
-I have also run R CMD check on downstream dependencies of DBI. Results are available at R release: https://github.com/wch/checkresults/blob/master/DBI/r-release. Potential problems:
-
-* aroma.affymetrix: I couldn't check because of BioC deps.
-* ora, ROracle: I couldn't check because I don't have Oracle license
-
+I did not run R CMD check on downstream dependencies of DBI because the change is tiny.
