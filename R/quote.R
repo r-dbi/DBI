@@ -71,7 +71,7 @@ setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"), 
   function(conn, x, ...) {
     x <- gsub('"', '""', x, fixed = TRUE)
-    SQL(paste('"', x, '"', sep = ""))
+    SQL(paste('"', encodeString(x), '"', sep = ""))
   }
 )
 setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), 
@@ -91,7 +91,7 @@ setGeneric("dbQuoteString", function(conn, x, ...) {
 setMethod("dbQuoteString", c("DBIConnection", "character"), 
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
-    SQL(paste("'", x, "'", sep = ""))
+    SQL(paste("'", encodeString(x), "'", sep = ""))
   }
 )
 setMethod("dbQuoteString", c("DBIConnection", "SQL"), 

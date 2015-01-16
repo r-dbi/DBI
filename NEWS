@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* Default `dbQuoteString()` and `dbQuoteIdentifer()` methods now use 
+  `encodeString()` so that special characters like `\n` are correctly escaped.
+
 # Version 0.3.1
 
 * Actually export `dbIsValid()` :/
