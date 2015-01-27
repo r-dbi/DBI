@@ -8,7 +8,8 @@ Depends:
     methods
 Suggests:
     testthat,
-    RSQLite
+    RSQLite,
+    knitr
 Description: A database interface (DBI) definition for communication
     between R and relational database management systems.  All
     classes in this package are virtual and need to be extended by
@@ -25,3 +26,4 @@ Collate:
     'keywords.R'
     'quote.R'
     'util.R'
+VignetteBuilder: knitr
