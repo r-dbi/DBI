@@ -52,7 +52,7 @@ key_methods <- list(
   Connection = c(
     "dbDisconnect", 
     "dbGetInfo", 
-    "dbGetQuery", 
+    "dbSendQuery", 
     "dbGetException", 
     "dbListResults", 
     "dbListFields", 
