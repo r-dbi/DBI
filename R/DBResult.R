@@ -212,3 +212,16 @@ setGeneric("dbSetDataMappings",
   },
   valueClass = "logical"
 )
+
+#' Bind values to a parameterised/prepared statement.
+#' 
+#' @inheritParams dbClearResult
+#' @param params A list of bindings. Named values should be matched to
+#'   named paramters (if supported by the DBI backend). Unnamed values
+#'   will be matched by position. I don't recommend mixing named and unnamed
+#'   values.
+#' @export
+setGeneric("dbBind", function(res, params, ...) {
+  standardGeneric("dbBind")
+})
+

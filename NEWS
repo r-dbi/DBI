@@ -1,5 +1,7 @@
 # Version 0.3.X
 
+* New generic `dbBind()` for binding values to a parameterised query.
+
 * New concrete `ANSIConnection` class and `ANSI()` function to generate a dummy
   ANSI compliant connection useful for testing.
 
