@@ -2,6 +2,7 @@
 
 * Default `dbQuoteString()` and `dbQuoteIdentifer()` methods now use 
   `encodeString()` so that special characters like `\n` are correctly escaped.
+  `dbQuoteString()` converts `NA` to (unquoted) NULL.
 
 # Version 0.3.1
 

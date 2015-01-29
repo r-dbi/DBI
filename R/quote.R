@@ -91,7 +91,10 @@ setGeneric("dbQuoteString", function(conn, x, ...) {
 setMethod("dbQuoteString", c("DBIConnection", "character"), 
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
-    SQL(paste("'", encodeString(x), "'", sep = ""))
+    
+    str <- paste("'", encodeString(x), "'", sep = "")
+    str[is.na(x)] <- "NULL"
+    SQL(str)
   }
 )
 setMethod("dbQuoteString", c("DBIConnection", "SQL"), 
