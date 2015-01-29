@@ -181,22 +181,20 @@ setGeneric("dbListConnections",
 #' @return A character string specifying the SQL data type for \code{obj}.
 #' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
-#' if (require("RSQLite")) {
-#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbDataType(ANSI(), 1:5)
+#' dbDataType(ANSI(), 1L)
+#' dbDataType(ANSI(), TRUE)
+#' dbDataType(ANSI(), c("x", "abc"))
 #' 
-#' dbDataType(con, 1:5)
-#' dbDataType(con, 1L)
-#' dbDataType(con, TRUE)
-#' dbDataType(con, c("x", "abc"))
-#' 
-#' dbDataType(con, mtcars)
-#' }
+#' sapply(iris, dbDataType, dbObj = ANSI())
 #' @export
 setGeneric("dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),
   valueClass = "character"
 )
 
+#' @export
+#' @rdname dbDataType
 setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
   dbiDataType(obj)
 })

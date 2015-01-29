@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* New concrete `ANSIConnection` class and `ANSI()` function to generate a dummy
+  ANSI compliant connection useful for testing.
+
 * Default `dbQuoteString()` and `dbQuoteIdentifer()` methods now use 
   `encodeString()` so that special characters like `\n` are correctly escaped.
   `dbQuoteString()` converts `NA` to (unquoted) NULL.

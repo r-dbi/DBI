@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.3.1.9002
+Version: 0.3.1.9003
 Title: R Database Interface
 Author: R Special Interest Group on Databases (R-SIG-DB)
 Maintainer: Hadley Wickham <hadley@rstudio.com>
@@ -19,8 +19,9 @@ URL: https://github.com/rstats-db/DBI
 BugReports: https://github.com/rstats-db/DBI/issues
 Collate:
     'DBObject.R'
-    'DBConnection.R'
     'DBDriver.R'
+    'DBConnection.R'
+    'ANSI.R'
     'DBResult.R'
     'compliance.R'
     'keywords.R'
