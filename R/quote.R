@@ -57,7 +57,7 @@ SQL <- function(x) new("SQL", x)
 #'   show,SQL-method
 setClass("SQL", contains = "character")
 setMethod("show", "SQL", function(object) {
-  cat(paste0("<SQL> ", object@.Data, collapse = "\n"))
+  cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
 })
 
 
