@@ -17,20 +17,24 @@ dbGetQuery(conn, statement, ...)
 }
 \description{
 \code{dbGetQuery} comes with a default implementation that calls
-\code{\link{dbSendQuery}}, then if \code{\link{dbHasCompleted}} is TRUE,
-it uses \code{\link{fetch}} to return the results. \code{\link{on.exit}}
-is used to ensure the result set is always freed by
-\code{\link{dbClearResult}}.  Subclasses should override this method
-only if they provide some sort of performance optimisation.
+\code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
+the result is always free-d by \code{\link{dbClearResult}}.
+}
+\section{Implementation notes}{
+
+Subclasses should override this method only if they provide some sort of
+performance optimisation.
 }
 \examples{
 if (require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
-res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
-dbFetch(res)
-dbClearResult(res)
+dbGetQuery(con, "SELECT * FROM mtcars")
+
+dbBegin(con)
+dbGetQuery(con, "DELETE FROM mtcars WHERE cyl == 4")
+dbRollback(con)
 
 dbDisconnect(con)
 }

@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* Default `dbGetQuery()` method now always calls fetch. It's also exported
+  which should increase the chances of it working!
+
 * DBI gains a number of SQL generation functions. These make it easier to 
   write backends by implementing common operations that are slightly
   tricky to do absolutely correctly. 

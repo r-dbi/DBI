@@ -50,22 +50,25 @@ setGeneric("dbDisconnect",
 #' SQL statement to the database engine.  It does \emph{not} extracts any
 #' records --- for that you need to use the function \code{\link{dbFetch}}, and
 #' then you must call \code{\link{dbClearResult}} when you finish fetching the 
-#' records you need.
+#' records you need. For interactive use, you should almost always prefer
+#' \code{\link{dbGetQuery}}.
 #' 
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}. 
 #'   If the statement generates output (e.g., a \code{SELECT} statement) the 
-#'   result set can be used with \code{\link{fetch}} to extract records.
+#'   result set can be used with \code{\link{dbFetch}} to extract records.
+#'   
+#'   Once you have finished using a result, make sure to disconnect it
+#'   with \code{\link{dbClearResult}}.
 #' 
 #' @section Side Effects: 
-#' The statement is submitted for synchronous execution to the server connected
-#' through the \code{conn} object.  The DBMS executes the statement, possibly
-#' generating vast amounts of data.  Where these data reside is driver-specific:
-#' some drivers may choose to leave the output on the server and transfer them
-#' piecemeal to R, others may transfer all the data to the client -- but not
-#' necessarily to the memory that R manages.  See the individual drivers'
-#' \code{\link{dbSendQuery}} method for implementation details.
+#' The statement is submitted to the database server and the DBMS executes the 
+#' statement, possibly generating vast amounts of data. Where these data live 
+#' is driver-specific: some drivers may choose to leave the output on the server 
+#' and transfer them piecemeal to R, others may transfer all the data to the 
+#' client -- but not necessarily to the memory that R manages. See individual 
+#' drivers \code{dbSendQuery} documentation for details.
 #' @family connection methods
 #' @examples
 #' if (require("RSQLite")) {
@@ -87,11 +90,12 @@ setGeneric("dbSendQuery",
 #' Send query, retrieve results and then clear result set.
 #' 
 #' \code{dbGetQuery} comes with a default implementation that calls
-#' \code{\link{dbSendQuery}}, then if \code{\link{dbHasCompleted}} is TRUE,
-#' it uses \code{\link{fetch}} to return the results. \code{\link{on.exit}}
-#' is used to ensure the result set is always freed by
-#' \code{\link{dbClearResult}}.  Subclasses should override this method
-#' only if they provide some sort of performance optimisation.
+#' \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
+#' the result is always free-d by \code{\link{dbClearResult}}. 
+#' 
+#' @section Implementation notes:
+#' Subclasses should override this method only if they provide some sort of 
+#' performance optimisation.
 #' 
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
@@ -103,9 +107,11 @@ setGeneric("dbSendQuery",
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' 
 #' dbWriteTable(con, "mtcars", mtcars)
-#' res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
-#' dbFetch(res)
-#' dbClearResult(res)
+#' dbGetQuery(con, "SELECT * FROM mtcars")
+#' 
+#' dbBegin(con)
+#' dbGetQuery(con, "DELETE FROM mtcars WHERE cyl == 4")
+#' dbRollback(con)
 #' 
 #' dbDisconnect(con)
 #' }
@@ -113,13 +119,11 @@ setGeneric("dbGetQuery",
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )
 
+#' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"), 
   function(conn, statement, ...) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-    
-    # no records to fetch, we're done
-    if (dbHasCompleted(rs)) return(NULL)
     
     res <- dbFetch(rs, n = -1, ...)
     
