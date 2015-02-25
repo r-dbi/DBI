@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* The initial DBI proposal is now included as a vignette. This is there
+  mostly for historical interest.
+
 * Added default show methods for driver, connection and results.
 
 * Default `dbGetQuery()` method now always calls fetch.
