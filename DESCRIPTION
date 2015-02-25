@@ -23,8 +23,19 @@ Collate:
     'DBConnection.R'
     'ANSI.R'
     'DBResult.R'
+    'RcppExports.R'
     'compliance.R'
-    'keywords.R'
+    'data.R'
+    'deprecated.R'
+    'interpolate.R'
     'quote.R'
+    'rownames.R'
+    'table-create.R'
+    'table-insert.R'
+    'table.R'
+    'transactions.R'
     'util.R'
 VignetteBuilder: knitr
+LinkingTo: Rcpp
+Imports:
+    Rcpp

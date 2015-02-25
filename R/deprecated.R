@@ -187,3 +187,28 @@ setMethod("SQLKeywords", "missing",
   "VIEW", "WHEN", "WHENEVER", "WHERE", "WITH", "WORK", "WRITE", "YEAR",
   "ZONE"
 )
+
+
+#' Call an SQL stored procedure
+#' 
+#' DEPRECATED
+#' 
+#' @inheritParams dbDisconnect
+#' @keywords internal
+#' @export
+setGeneric("dbCallProc", 
+  def = function(conn, ...) {
+    .Deprecated()
+    standardGeneric("dbCallProc")
+  },
+  valueClass = "logical"
+)
+
+#' Determine the current version of the package.
+#' 
+#' @export
+#' @keywords internal
+dbGetDBIVersion <- function() {
+  .Deprecated("packageVersion('DBI')")
+  packageVersion("DBI")
+}

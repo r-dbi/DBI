@@ -1,3 +1,7 @@
+#' @useDynLib DBI
+#' @importFrom Rcpp sourceCpp
+NULL
+
 #' DBIObject class.
 #' 
 #' Base class for all other DBI classes (e.g., drivers, connections). This

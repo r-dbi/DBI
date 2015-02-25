@@ -1,5 +1,26 @@
 # Version 0.3.X
 
+* DBI gains a number of SQL generation functions. These make it easier to 
+  write backends by implementing common operations that are slightly
+  tricky to do absolutely correctly. 
+  
+    * `sqlCreateTable()` and `sqlAppendTable()` create tables from a data
+      frame and insert rows into an existing table. These will power most
+      implementations of `dbWriteTable()`. `sqlAppendTable()` is useful
+      for databases that support parameterised queries.
+      
+    * `rownamesToColumn()` and `columnToRownames()` provide a standard
+      way of translating row names to and from the database.
+      
+    * `sqlInterpolate()` and `sqlParseVariables()` allows databases without
+      native parameterised queries to use parameterised queries to avoid
+      SQL injection attacks.
+      
+    * `sqlData()` is a new generic that converts a data frame into a data
+      frame suitable for sending to the database. This is used to (e.g.) 
+      ensure all character vectors are encoded as UTF-8, or to convert
+      R varible types (like factor) to types supported by the database.
+      
 * New generic `dbBind()` for binding values to a parameterised query.
 
 * New concrete `ANSIConnection` class and `ANSI()` function to generate a dummy

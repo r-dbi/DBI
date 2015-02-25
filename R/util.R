@@ -1,12 +1,3 @@
-#' Determine the current version of the package.
-#' 
-#' @export
-#' @keywords internal
-dbGetDBIVersion <- function() {
-  .Deprecated("packageVersion('DBI')")
-  packageVersion("DBI")
-}
-
 #' Print a list of pairs.
 #' 
 #' @param x a list of key, value pairs
