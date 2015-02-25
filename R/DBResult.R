@@ -2,13 +2,16 @@
 #' 
 #' This virtual class describes the result and state of execution of
 #' a DBMS statement (any statement, query or non-query).  The result set
-#' \code{res} keeps track of whether the statement produces output
-#' how many rows were affected by the operation, how many rows have been 
-#' fetched (if statement is a query), whether there are more rows to fetch, 
-#' etc.  
-#'
+#' keeps track of whether the statement produces output how many rows were 
+#' affected by the operation, how many rows have been fetched (if statement is 
+#' a query), whether there are more rows to fetch, etc.
+#' 
+#' @section Implementation notes:
 #' Individual drivers are free to allow single or multiple
 #' active results per connection.
+#' 
+#' The default show method displays a summary of the query using other
+#' DBI generics.
 #' 
 #' @name DBIResult-class
 #' @docType class
@@ -16,6 +19,23 @@
 #' @export
 #' @include DBObject.R
 setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
+
+#' @param object Object to display
+#' @rdname DBIResult-class
+#' @export
+setMethod("show", "DBIResult", function(object) {
+  cat("<", is(object)[1], ">\n", sep = "")
+  if(!dbIsValid(object)){
+    cat("EXPIRED\n")
+  } else {  
+    cat("  SQL  ", dbGetStatement(object), "\n", sep = "")
+    
+    done <- if (dbHasCompleted(object)) "complete" else "incomplete"
+    cat("  ROWS Fetched: ", dbGetRowCount(object), " [", done, "]\n", sep = "")
+    cat("       Changed: ", dbGetRowsAffected(object), "\n", sep = "")
+  }
+  invisible(NULL)  
+})
 
 #' Fetch records from a previously executed query.
 #' 

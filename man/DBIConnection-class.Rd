@@ -3,7 +3,14 @@
 \docType{class}
 \name{DBIConnection-class}
 \alias{DBIConnection-class}
+\alias{show,DBIConnection-method}
 \title{DBIConnection class.}
+\usage{
+\S4method{show}{DBIConnection}(object)
+}
+\arguments{
+\item{object}{Object to display}
+}
 \description{
 This virtual class encapsulates the connection to a DBMS, and it provides
 access to dynamic queries, result sets, DBMS session management
@@ -24,8 +31,10 @@ dbDisconnect(con)
 }
 }
 \seealso{
-Other DBI classes: \code{\link{DBIDriver-class}};
+Other DBI classes: \code{\link{DBIDriver-class}},
+  \code{\link{show,DBIDriver-method}};
   \code{\link{DBIObject-class}};
-  \code{\link{DBIResult-class}}
+  \code{\link{DBIResult-class}},
+  \code{\link{show,DBIResult-method}}
 }
 

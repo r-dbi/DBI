@@ -23,6 +23,16 @@
 #' @include DBObject.R
 setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 
+#' @param object Object to display
+#' @rdname DBIConnection-class
+#' @export
+setMethod("show", "DBIConnection", function(object) {
+  cat("<", is(object)[1], ">\n", sep = "")
+  if (!dbIsValid(object)) {
+    cat("  DISCONNECTED\n")
+  }
+})
+
 #' Disconnect (close) a connection
 #' 
 #' This closes the connection, discards all pending work, and frees
@@ -297,4 +307,3 @@ setGeneric("dbRollback",
   def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )
-

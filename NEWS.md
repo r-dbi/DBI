@@ -1,5 +1,7 @@
 # Version 0.3.X
 
+* Added default show methods for driver, connection and results.
+
 * Default `dbGetQuery()` method now always calls fetch. It's also exported
   which should increase the chances of it working!
 

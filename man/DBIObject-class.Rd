@@ -45,8 +45,11 @@ is(res, "DBIObject")
 }
 }
 \seealso{
-Other DBI classes: \code{\link{DBIConnection-class}};
-  \code{\link{DBIDriver-class}};
-  \code{\link{DBIResult-class}}
+Other DBI classes: \code{\link{DBIConnection-class}},
+  \code{\link{show,DBIConnection-method}};
+  \code{\link{DBIDriver-class}},
+  \code{\link{show,DBIDriver-method}};
+  \code{\link{DBIResult-class}},
+  \code{\link{show,DBIResult-method}}
 }
 
