@@ -132,14 +132,15 @@ setGeneric("dbGetQuery",
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"), 
   function(conn, statement, ...) {
-    rs <- dbSendQuery(conn, statement, ...)
+    rs <- dbSendQuery(conn, statement)
     on.exit(dbClearResult(rs))
     
-    res <- dbFetch(rs, n = -1, ...)
+    df <- dbFetch(rs, n = -1, ...)
+    if (!dbHasCompleted(rs)) {
+      warning("Pending rows", call. = FALSE)
+    }
     
-    if (!dbHasCompleted(rs)) warning("pending rows")
-    
-    res
+    df
   }
 )
 

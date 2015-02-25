@@ -2,8 +2,7 @@
 
 * Added default show methods for driver, connection and results.
 
-* Default `dbGetQuery()` method now always calls fetch. It's also exported
-  which should increase the chances of it working!
+* Default `dbGetQuery()` method now always calls fetch.
 
 * DBI gains a number of SQL generation functions. These make it easier to 
   write backends by implementing common operations that are slightly
