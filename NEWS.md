@@ -1,7 +1,7 @@
 # Version 0.3.X
 
-* The initial DBI proposal is now included as a vignette. This is there
-  mostly for historical interest.
+* The initial DBI proposal and DBI version 1 specification are now included as 
+  a vignette. These are there mostly for historical interest.
 
 * Added default show methods for driver, connection and results.
 
