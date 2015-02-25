@@ -16,3 +16,4 @@ inst\/doc\/DBI\.b..$
 ^\.Rproj\.user$
 ^\.travis\.yml$
 ^cran-comments\.md$
+^NEWS\.md$
