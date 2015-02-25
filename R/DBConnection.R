@@ -132,7 +132,7 @@ setGeneric("dbGetQuery",
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"), 
   function(conn, statement, ...) {
-    rs <- dbSendQuery(conn, statement)
+    rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
     
     df <- dbFetch(rs, n = -1, ...)
