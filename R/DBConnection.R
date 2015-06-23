@@ -144,6 +144,51 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
+#' Build an index
+#' 
+#' \code{dbBuildIndex} uses the SQL CREATE INDEX syntax to build an index on a
+#' specified column. 
+#' 
+#' @section Implementation notes:
+#' Subclasses should override this method only if they provide some sort of 
+#' performance optimisation.
+#' 
+#' @inheritParams dbDisconnect
+#' @param tablename The name of the table you want to build an index on
+#' @param cols A character vector of column names in the table on which to build
+#' the index
+#' @param indexname The name of the index to be created (default NULL)
+#' @family connection methods
+#' @export
+#' @examples
+#' if (require("RSQLite")) {
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' 
+#' dbWriteTable(con, "mtcars", mtcars)
+#' dbGetQuery(con, "SELECT * FROM mtcars")
+#' 
+#' dbBuildIndex(con, "mtcars", c("cyl", "am"))
+#' 
+#' dbDisconnect(con)
+#' }
+setGeneric("dbBuildIndex", 
+           def = function(conn, tablename, cols, indexname = NULL, ...) standardGeneric("dbBuildIndex")
+)
+
+#' @export
+setMethod("dbBuildIndex", signature("DBIConnection", "character"), 
+          function(conn, tablename, cols, indexname = NULL, ...) {
+            if (is.null(indexname)) {
+              indexname <- paste(paste0(cols, collapse = ""), "idx", sep = "_")
+            }
+            statement = paste("CREATE INDEX", indexname, "ON", tablename, 
+                              "(", paste0(cols, collapse=","), ")", sep = " ")
+            rs <- dbGetQuery(conn, statement, ...)
+          }
+)
+
+
+
 #' Get DBMS exceptions.
 #' 
 #' @inheritParams dbDisconnect
