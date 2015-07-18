@@ -144,46 +144,62 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
-#' Build an index
+#' Create an index
 #' 
-#' \code{dbBuildIndex} uses the SQL CREATE INDEX syntax to build an index on a
-#' specified column. 
+#' \code{dbCreateIndex} uses the SQL CREATE INDEX syntax to build an index on a
+#' specified column or collection of columns. If no \code{indexname} is provided, 
+#' one will be created automatically using the convention: \code{ix_tablename_col1_col2}.
 #' 
-#' @section Implementation notes:
-#' Subclasses should override this method only if they provide some sort of 
-#' performance optimisation.
+#' 
+#' 
+#' @description Create an index on an SQL table
 #' 
 #' @inheritParams dbDisconnect
 #' @param tablename The name of the table you want to build an index on
 #' @param cols A character vector of column names in the table on which to build
 #' the index
-#' @param indexname The name of the index to be created (default NULL)
+#' @param indexname The name of the index to be created (NULL by default)
+#' @aliases dbCreateIndex,DBIConnection,character-method
 #' @family connection methods
 #' @export
+#' @author Ben Baumer
 #' @examples
 #' if (require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' 
 #' dbWriteTable(con, "mtcars", mtcars)
-#' dbGetQuery(con, "SELECT * FROM mtcars")
-#' 
-#' dbBuildIndex(con, "mtcars", c("cyl", "am"))
-#' 
+#' # check to confirm that no indexes exist
+#' dbGetQuery(con, "SELECT 8 FROM SQLite_master WHERE type = 'index' AND tbl_name = 'mtcars'")
+#' dbCreateIndex(con, "mtcars", c("cyl", "am"))
+#' # reveal the index that was created
+#' dbGetQuery(con, "SELECT * FROM SQLite_master WHERE type = 'index' AND tbl_name = 'mtcars'")
 #' dbDisconnect(con)
 #' }
-setGeneric("dbBuildIndex", 
-           def = function(conn, tablename, cols, indexname = NULL, ...) standardGeneric("dbBuildIndex")
+#' 
+#' \dontrun{
+#' if(require("RMySQL")) {
+#' # assumes that database "Lahman" exists on the localhost MySQL server
+#' con <- dbConnect(RMySQL::MySQL(), dbname = "lahman", user = "you", password = "yourpass")
+#' dbGetQuery(con, "SHOW INDEX FROM Batting")
+#' dbCreateIndex(con, "Batting", cols = "teamid")
+#' dbGetQuery(con, "SHOW INDEX FROM Batting")
+#' }
+#' }
+setGeneric("dbCreateIndex", 
+           def = function(conn, tablename, cols, indexname = NULL, ...) standardGeneric("dbCreateIndex")
 )
 
 #' @export
-setMethod("dbBuildIndex", signature("DBIConnection", "character"), 
+setMethod("dbCreateIndex", signature("DBIConnection", "character"), 
           function(conn, tablename, cols, indexname = NULL, ...) {
+            # following naming conventions here:
+            # http://stackoverflow.com/questions/2783495/sql-server-index-naming-conventions
             if (is.null(indexname)) {
-              indexname <- paste(paste0(cols, collapse = ""), "idx", sep = "_")
+              indexname <- paste("ix", tablename, paste0(cols, collapse = "_"), sep = "_")
             }
             statement = paste("CREATE INDEX", indexname, "ON", tablename, 
-                              "(", paste0(cols, collapse=","), ")", sep = " ")
-            rs <- dbGetQuery(conn, statement, ...)
+                              "(", paste0(cols, collapse = ","), ")", sep = " ")
+            rs <- dbSendQuery(conn, statement, ...)
           }
 )
 
