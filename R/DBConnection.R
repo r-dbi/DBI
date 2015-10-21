@@ -308,3 +308,43 @@ setGeneric("dbRollback",
   def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )
+
+#' Execute an SQL script
+#'
+#' @param con a \code{DBIConnection-class} object
+#' @param script path to an SQL script file
+#' @param delim delimiter to split the script into SQL statements. Default is 
+#' "\code{;}"
+#' @param ... currently ignored
+#' @details The SQL script file must be \code{;} delimited.
+#' @return a list of results from \code{dbGetQuery} for each of the individual
+#' SQL statements in \code{script}.
+#' @export
+#' @author Ben Baumer
+#' @importFrom stringr str_split
+#' 
+#' @examples 
+#' sql <- "SHOW TABLES; SHOW DATABASES;\nSELECT host,user FROM mysql.user;"
+#' tmpfile <- tempfile()
+#' write(sql, file = tmpfile)
+#' 
+#' \dontrun{
+#' if (require(RMySQL)) {
+#'  con <- dbConnect(RMySQL::MySQL(), user = "r-user", password = "mypass", 
+#'    dbname = "mysql")
+#'  dbRunScript(con, script = tmpfile)
+#'  dbDisconnect(con)
+#' }
+#' }
+
+dbRunScript <- function(con, script, delim = ";", ...) {
+  if (!file.exists(script)) {
+    stop("The specified file does not exist.")
+  }
+  sql_text <- paste0(readLines(script), collapse = " ")
+  sql <- unlist(stringr::str_split(sql_text, pattern = delim))
+  # strip out any blank lines -- these will produce an error
+  good <- sql[grepl(".+", sql)]
+  sapply(good, dbGetQuery, conn = con)
+}
+
