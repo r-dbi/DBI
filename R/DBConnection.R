@@ -57,7 +57,7 @@ setGeneric("dbDisconnect",
 #' Execute a statement on a given database connection.
 #' 
 #' The function \code{dbSendQuery} only submits and synchronously executes the
-#' SQL statement to the database engine.  It does \emph{not} extracts any
+#' SQL statement to the database engine.  It does \emph{not} extract any
 #' records --- for that you need to use the function \code{\link{dbFetch}}, and
 #' then you must call \code{\link{dbClearResult}} when you finish fetching the 
 #' records you need. For interactive use, you should almost always prefer
