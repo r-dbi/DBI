@@ -12,10 +12,10 @@ dbColumnInfo(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-A data.frame with one row per output field in \code{res}. Methods 
-  MUST include \code{name}, \code{field.type} (the SQL type), 
+A data.frame with one row per output field in \code{res}. Methods
+  MUST include \code{name}, \code{field.type} (the SQL type),
   and \code{data.type} (the R data type) columns, and MAY contain other
-  database specific information like scale and precision or whether the 
+  database specific information like scale and precision or whether the
   field can store \code{NULL}s.
 }
 \description{

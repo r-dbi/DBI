@@ -7,7 +7,7 @@
 dbSendQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by 
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
@@ -15,10 +15,10 @@ dbSendQuery(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-An object that inherits from \code{\linkS4class{DBIResult}}. 
-  If the statement generates output (e.g., a \code{SELECT} statement) the 
+An object that inherits from \code{\linkS4class{DBIResult}}.
+  If the statement generates output (e.g., a \code{SELECT} statement) the
   result set can be used with \code{\link{dbFetch}} to extract records.
-  
+
   Once you have finished using a result, make sure to disconnect it
   with \code{\link{dbClearResult}}.
 }
@@ -26,17 +26,17 @@ An object that inherits from \code{\linkS4class{DBIResult}}.
 The function \code{dbSendQuery} only submits and synchronously executes the
 SQL statement to the database engine.  It does \emph{not} extracts any
 records --- for that you need to use the function \code{\link{dbFetch}}, and
-then you must call \code{\link{dbClearResult}} when you finish fetching the 
+then you must call \code{\link{dbClearResult}} when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 \code{\link{dbGetQuery}}.
 }
 \section{Side Effects}{
- 
-The statement is submitted to the database server and the DBMS executes the 
-statement, possibly generating vast amounts of data. Where these data live 
-is driver-specific: some drivers may choose to leave the output on the server 
-and transfer them piecemeal to R, others may transfer all the data to the 
-client -- but not necessarily to the memory that R manages. See individual 
+
+The statement is submitted to the database server and the DBMS executes the
+statement, possibly generating vast amounts of data. Where these data live
+is driver-specific: some drivers may choose to leave the output on the server
+and transfer them piecemeal to R, others may transfer all the data to the
+client -- but not necessarily to the memory that R manages. See individual
 drivers \code{dbSendQuery} documentation for details.
 }
 \examples{

@@ -12,13 +12,13 @@
 \item{object}{Object to display}
 }
 \description{
-This virtual class encapsulates the connection to a DBMS, and it provides 
+This virtual class encapsulates the connection to a DBMS, and it provides
 access to dynamic queries, result sets, DBMS session management
 (transactions), etc.
 }
 \section{Implementation note}{
 
-Individual drivers are free to implement single or multiple simultaneous 
+Individual drivers are free to implement single or multiple simultaneous
 connections.
 }
 \examples{

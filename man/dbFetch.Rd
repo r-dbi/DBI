@@ -13,14 +13,14 @@ fetch(res, n = -1, ...)
 \arguments{
 \item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
 
-\item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1} 
-to retrieve all pending records.  Some implementations may recognize other 
+\item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1}
+to retrieve all pending records.  Some implementations may recognize other
 special values.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a data.frame with as many rows as records were fetched and as many 
+a data.frame with as many rows as records were fetched and as many
   columns as fields in the result set.
 }
 \description{
@@ -28,9 +28,9 @@ Fetch the next \code{n} elements (rows) from the result set and return them
 as a data.frame.
 }
 \details{
-\code{fetch} is provided for compatibility with older DBI clients - for all 
-new code you are strongly encouraged to use \code{dbFetch}. The default 
-method for \code{dbFetch} calls \code{fetch} so that it is compatible with 
+\code{fetch} is provided for compatibility with older DBI clients - for all
+new code you are strongly encouraged to use \code{dbFetch}. The default
+method for \code{dbFetch} calls \code{fetch} so that it is compatible with
 existing code. Implementors should provide methods for both \code{fetch} and
 \code{dbFetch} until \code{fetch} is deprecated in 2015.
 }

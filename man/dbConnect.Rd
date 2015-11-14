@@ -7,8 +7,8 @@
 dbConnect(drv, ...)
 }
 \arguments{
-\item{drv}{an object that inherits from \code{\linkS4class{DBIDriver}}, or 
-a character string specifying the name of DBMS driver, e.g., "RSQLite", 
+\item{drv}{an object that inherits from \code{\linkS4class{DBIDriver}}, or
+a character string specifying the name of DBMS driver, e.g., "RSQLite",
 "RMySQL", "RPostgreSQL", or an existing \code{\linkS4class{DBIConnection}}
 object (in order to clone an existing connection).}
 
@@ -17,21 +17,21 @@ typically include \code{user}, \code{password}, \code{dbname}, \code{host},
 \code{port}, etc.  For details see the appropriate \code{DBIDriver}.}
 }
 \value{
-An object that extends \code{\linkS4class{DBIConnection}} in a 
-  database-specific manner. For instance \code{dbConnect("MySQL")} produces 
-  an object of class \code{MySQLConnection}. This object is used to direct 
+An object that extends \code{\linkS4class{DBIConnection}} in a
+  database-specific manner. For instance \code{dbConnect("MySQL")} produces
+  an object of class \code{MySQLConnection}. This object is used to direct
   commands to the database engine.
 }
 \description{
 Connect to a DBMS going through the appropriate authorization procedure.
 Some implementations may allow you to have multiple connections open, so you
 may invoke this function repeatedly assigning its output to different
-objects. The authorization mechanism is left unspecified, so check the 
+objects. The authorization mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 }
 \details{
-Each driver will define what other arguments are required, e.g., 
-\code{"dbname"} for the database name, \code{"username"}, and 
+Each driver will define what other arguments are required, e.g.,
+\code{"dbname"} for the database name, \code{"username"}, and
 \code{"password"}.
 }
 \examples{

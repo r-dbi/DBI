@@ -10,7 +10,7 @@ dbReadTable(conn, name, ...)
 dbWriteTable(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by 
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
 \item{name}{A character string specifying a DBMS table name.}
@@ -23,13 +23,13 @@ dbWriteTable(conn, name, value, ...)
 a data.frame.
 }
 \description{
-\code{dbReadTable}: database table -> data frame; \code{dbWriteTable}: 
+\code{dbReadTable}: database table -> data frame; \code{dbWriteTable}:
 data frame -> database table.
 }
 \note{
 The translation of identifiers between R and SQL is done through calls
   to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
-  guarantee that the conversion is reversible.  For details see 
+  guarantee that the conversion is reversible.  For details see
   \code{\link{make.db.names}}.
 }
 \examples{

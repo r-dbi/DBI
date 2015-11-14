@@ -7,7 +7,7 @@
 dbIsValid(dbObj, ...)
 }
 \arguments{
-\item{dbObj}{An object inheriting from \code{\linkS4class{DBIObject}}, 
+\item{dbObj}{An object inheriting from \code{\linkS4class{DBIObject}},
 i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
 or a \code{\linkS4class{DBIResult}}}
 

@@ -28,14 +28,14 @@ In the case of \code{dbDriver}, an driver object whose class extends
 }
 \description{
 \code{dbDriver} is a helper method used to create an new driver object
-given the name of a database or the corresponding R package. It works 
+given the name of a database or the corresponding R package. It works
 through convention: all DBI-extending packages should provide an exported
 object with the same name as the package. \code{dbDriver} just looks for
 this object in the right places: if you know what database you are connecting
 to, you should call the function directly.
 }
 \section{Side Effects}{
- 
+
 The client part of the database communication is
 initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to

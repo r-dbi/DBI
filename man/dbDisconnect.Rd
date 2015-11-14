@@ -7,7 +7,7 @@
 dbDisconnect(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by 
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
 \item{...}{Other parameters passed on to methods.}

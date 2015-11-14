@@ -40,7 +40,7 @@ Character vectors will be escaped with \code{\link[DBI]{dbQuoteString}}.}
 \item{prefix}{Parameter prefix to put in front of column id.}
 }
 \description{
-\code{sqlAppendTable} generates a single SQL string that inserts a 
+\code{sqlAppendTable} generates a single SQL string that inserts a
 data frame into an existing table. \code{sqlAppendTableTemplate} generates
 a template suitable for use with \code{\link{dbBind}}.
 }

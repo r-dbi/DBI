@@ -8,7 +8,7 @@
 dbGetQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by 
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
@@ -22,7 +22,7 @@ the result is always free-d by \code{\link{dbClearResult}}.
 }
 \section{Implementation notes}{
 
-Subclasses should override this method only if they provide some sort of 
+Subclasses should override this method only if they provide some sort of
 performance optimisation.
 }
 \examples{
