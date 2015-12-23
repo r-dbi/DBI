@@ -29,14 +29,13 @@ In your `DESCRIPTION`, make sure to include:
 
 ```yaml
 Imports:
+  DBI (>= 0.3.0),
   methods
-Depends:
-  DBI (>= 0.3.0)
 Suggests:
   DBItest, testthat
 ```
 
-This is one of the few situations in which using depends (instead of imports) is correct, because you want to make sure the generics from the DBI package (like `dbConnect()`, `dbGetQuery()` etc) are available.
+Importing `DBI` is fine, because your users are not supposed to *attach* your package anyway; the preferred method is to attach `DBI` and use explicit qualification via `::` to access the driver in your package (which needs to be done only once).
 
 
 ## Testing
@@ -61,6 +60,8 @@ Start by making a driver class which inherits from `DBIDriver`. This class doesn
 #' 
 #' @keywords internal
 #' @export
+#' @import DBI
+#' @import methods
 setClass("KazamDriver", contains = "DBIDriver")
 ```
 
