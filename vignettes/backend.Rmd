@@ -235,6 +235,8 @@ You're now on the home stretch, and can make your wrapper substantially more use
   available. If not provided by your database's API, you may need to generate
   sql that inspects the system tables.
   
+* `dbListFields()` shows which fields are available in a given table.
+
 * `dbRemoveTable()` wraps around `DROP TABLE`. Start with `SQL::sqlTableDrop()`.
 
 * `dbBegin()`, `dbCommit()` and `dbRollback()`: implement these three functions
@@ -253,8 +255,8 @@ There are a lot of extra metadata methods for result sets (and one for the conne
 
 * `dbColumnInfo()` lists the names and types of the result set's columns.
 
-* `dbRowCount()` and `dbGetRowsAffected()` returns the number of rows returned
-  or altered in a `SELECT` or `INSERT`/`UPDATE` query, respectively.
+* `dbGetRowCount()` and `dbGetRowsAffected()` returns the number of rows
+  returned or altered in a `SELECT` or `INSERT`/`UPDATE` query, respectively.
 
 * `dbBind()` allows using parametrised queries. Take a look at
   `sqlInterpolate()` and `sqlParseVariables()` if your SQL engine doesn't
