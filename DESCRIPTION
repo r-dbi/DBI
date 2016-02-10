@@ -39,3 +39,4 @@ VignetteBuilder: knitr
 LinkingTo: Rcpp
 Imports:
     Rcpp
+RoxygenNote: 5.0.1

@@ -1,18 +1,18 @@
 #' DBIResult class.
-#' 
+#'
 #' This virtual class describes the result and state of execution of
 #' a DBMS statement (any statement, query or non-query).  The result set
-#' keeps track of whether the statement produces output how many rows were 
-#' affected by the operation, how many rows have been fetched (if statement is 
+#' keeps track of whether the statement produces output how many rows were
+#' affected by the operation, how many rows have been fetched (if statement is
 #' a query), whether there are more rows to fetch, etc.
-#' 
+#'
 #' @section Implementation notes:
 #' Individual drivers are free to allow single or multiple
 #' active results per connection.
-#' 
+#'
 #' The default show method displays a summary of the query using other
 #' DBI generics.
-#' 
+#'
 #' @name DBIResult-class
 #' @docType class
 #' @family DBI classes
@@ -27,34 +27,34 @@ setMethod("show", "DBIResult", function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
   if(!dbIsValid(object)){
     cat("EXPIRED\n")
-  } else {  
+  } else {
     cat("  SQL  ", dbGetStatement(object), "\n", sep = "")
-    
+
     done <- if (dbHasCompleted(object)) "complete" else "incomplete"
     cat("  ROWS Fetched: ", dbGetRowCount(object), " [", done, "]\n", sep = "")
     cat("       Changed: ", dbGetRowsAffected(object), "\n", sep = "")
   }
-  invisible(NULL)  
+  invisible(NULL)
 })
 
 #' Fetch records from a previously executed query.
-#' 
+#'
 #' Fetch the next \code{n} elements (rows) from the result set and return them
 #' as a data.frame.
-#' 
-#' \code{fetch} is provided for compatibility with older DBI clients - for all 
-#' new code you are strongly encouraged to use \code{dbFetch}. The default 
-#' method for \code{dbFetch} calls \code{fetch} so that it is compatible with 
+#'
+#' \code{fetch} is provided for compatibility with older DBI clients - for all
+#' new code you are strongly encouraged to use \code{dbFetch}. The default
+#' method for \code{dbFetch} calls \code{fetch} so that it is compatible with
 #' existing code. Implementors should provide methods for both \code{fetch} and
 #' \code{dbFetch} until \code{fetch} is deprecated in 2015.
-#' 
+#'
 #' @aliases dbFetch,DBIResult-method
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
-#' @param n maximum number of records to retrieve per fetch. Use \code{n = -1} 
-#'   to retrieve all pending records.  Some implementations may recognize other 
+#' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
+#'   to retrieve all pending records.  Some implementations may recognize other
 #'   special values.
 #' @param ... Other arguments passed on to methods.
-#' @return a data.frame with as many rows as records were fetched and as many 
+#' @return a data.frame with as many rows as records were fetched and as many
 #'   columns as fields in the result set.
 #' @seealso close the result set with \code{\link{dbClearResult}} as soon as you
 #'   finish retrieving the records you want.
@@ -63,12 +63,12 @@ setMethod("show", "DBIResult", function(object) {
 #' if (!require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbWriteTable(con, "mtcars", mtcars)
-#' 
+#'
 #' # Fetch all results
 #' res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 #' dbFetch(res)
 #' dbClearResult(res)
-#' 
+#'
 #' # Fetch in chunks
 #' res <- dbSendQuery(con, "SELECT * FROM mtcars")
 #' while (!dbHasCompleted(res)) {
@@ -79,7 +79,7 @@ setMethod("show", "DBIResult", function(object) {
 #' dbDisconnect(con)
 #' }
 #' @export
-setGeneric("dbFetch", 
+setGeneric("dbFetch",
   def = function(res, n = -1, ...) standardGeneric("dbFetch"),
   valueClass = "data.frame"
 )
@@ -90,59 +90,59 @@ setMethod("dbFetch", "DBIResult", function(res, n = -1, ...) {
 
 #' @rdname dbFetch
 #' @export
-setGeneric("fetch", 
+setGeneric("fetch",
   def = function(res, n = -1, ...) standardGeneric("fetch"),
   valueClass = "data.frame"
 )
 
 #' Clear a result set.
-#' 
+#'
 #' Frees all resources (local and remote) associated with a result set.  It some
 #' cases (e.g., very large result sets) this can be a critical step to avoid
 #' exhausting resources (memory, file descriptors, etc.)
-#' 
+#'
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param ... Other arguments passed on to methods.
 #' @return a logical indicating whether clearing the
 #'   result set was successful or not.
 #' @family DBIResult generics
 #' @export
-setGeneric("dbClearResult", 
+setGeneric("dbClearResult",
   def = function(res, ...) standardGeneric("dbClearResult"),
   valueClass = "logical"
 )
 
 #' Information about result types.
-#' 
+#'
 #' Produces a data.frame that describes the output of a query. The data.frame
 #' should have as many rows as there are output fields in the result set, and
 #' each column in the data.frame should describe an aspect of the result set
 #' field (field name, type, etc.)
-#' 
+#'
 #' @inheritParams dbClearResult
-#' @return A data.frame with one row per output field in \code{res}. Methods 
-#'   MUST include \code{name}, \code{field.type} (the SQL type), 
+#' @return A data.frame with one row per output field in \code{res}. Methods
+#'   MUST include \code{name}, \code{field.type} (the SQL type),
 #'   and \code{data.type} (the R data type) columns, and MAY contain other
-#'   database specific information like scale and precision or whether the 
+#'   database specific information like scale and precision or whether the
 #'   field can store \code{NULL}s.
 #' @family DBIResult generics
 #' @export
-setGeneric("dbColumnInfo", 
+setGeneric("dbColumnInfo",
   def = function(res, ...) standardGeneric("dbColumnInfo"),
   valueClass = "data.frame"
 )
 
 #' Get the statement associated with a result set
-#' 
+#'
 #' The default method extracts \code{statement} from the result of
 #' \code{\link{dbGetInfo}(res)}.
-#' 
+#'
 #' @inheritParams dbClearResult
 #' @aliases dbGetStatement,DBIResult-method
 #' @return a character vector
 #' @family DBIResult generics
 #' @export
-setGeneric("dbGetStatement", 
+setGeneric("dbGetStatement",
   def = function(res, ...) standardGeneric("dbGetStatement"),
   valueClass = "character"
 )
@@ -153,10 +153,10 @@ setMethod("dbGetStatement", "DBIResult", function(res, ...) {
 
 
 #' Has the operation completed?
-#' 
+#'
 #' The default method extracts \code{has.completed} from the result of
 #' \code{\link{dbGetInfo}(res)}.
-#' 
+#'
 #' @inheritParams dbClearResult
 #' @aliases dbHasCompleted,DBIResult-method
 #' @return a logical vector of length 1
@@ -172,10 +172,10 @@ setMethod("dbHasCompleted", "DBIResult", function(res, ...) {
 })
 
 #' The number of rows affected by data modifying query.
-#' 
+#'
 #' The default method extracts \code{rows.affected} from the result of
 #' \code{\link{dbGetInfo}(res)}.
-#' 
+#'
 #' @inheritParams dbClearResult
 #' @aliases dbGetRowsAffected,DBIResult-method
 #' @return a numeric vector of length 1
@@ -192,10 +192,10 @@ setMethod("dbGetRowsAffected", "DBIResult", function(res, ...) {
 
 
 #' The number of rows fetched so far.
-#' 
+#'
 #' The default method extracts \code{row.count} from the result of
 #' \code{\link{dbGetInfo}(res)}.
-#' 
+#'
 #' @inheritParams dbClearResult
 #' @aliases dbGetRowCount,DBIResult-method
 #' @return a numeric vector of length 1
@@ -211,7 +211,7 @@ setMethod("dbGetRowCount", "DBIResult", function(res, ...) {
 })
 
 #' Bind values to a parameterised/prepared statement.
-#' 
+#'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings. Named values should be matched to
 #'   named paramters (if supported by the DBI backend). Unnamed values

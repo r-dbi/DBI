@@ -40,16 +40,16 @@ setGeneric("sqlCreateTable", function(con, table, fields, row.names = NA,
 setMethod("sqlCreateTable", "DBIConnection",
   function(con, table, fields, row.names = NA, temporary = FALSE...) {
     table <- dbQuoteIdentifier(con, table)
-    
+
     if (is.data.frame(fields)) {
       fields <- rownamesToColumn(fields, row.names)
       fields <- vapply(fields, function(x) DBI::dbDataType(con, x), character(1))
     }
-    
+
     field_names <- dbQuoteIdentifier(con, names(fields))
     field_types <- unname(fields)
     fields <- paste0(field_names, " ", field_types)
-    
+
     SQL(paste0(
       "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
       "  ", paste(fields, collapse = ",\n  "), "\n)\n"
