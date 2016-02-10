@@ -63,10 +63,9 @@ setClass("DBIObject", "VIRTUAL")
 #'
 #' For \code{DBIResult} objects, this should include the statement
 #' being executed (\code{statement}), how many rows have been fetched so far
-#' (in the case of queries) (\code{row.count}), how many rows were affected
-#' (deleted, inserted, changed, or total number of records to be fetched).
-#' (\code{rows.affected}), if the query is complete (\code{has.completed}),
-#' and whether or not the query generates output (\code{is.select}).
+#' (in the case of queries, \code{row.count}), how many rows were affected
+#' (deleted, inserted, changed,
+#' (\code{rows.affected}), and if the query is complete (\code{has.completed}).
 #'
 #' @param dbObj An object inheriting from \code{\linkS4class{DBIObject}},
 #'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
