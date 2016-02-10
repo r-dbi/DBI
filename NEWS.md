@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* `dbiCheckCompliance()` has been removed, the functionality is now available
+  in the `DBItest` package (#80).
+
 * The initial DBI proposal and DBI version 1 specification are now included as 
   a vignette. These are there mostly for historical interest.
 
