@@ -3,7 +3,7 @@
 \name{dbGetRowCount}
 \alias{dbGetRowCount}
 \alias{dbGetRowCount,DBIResult-method}
-\title{The number of rows fetched so far.}
+\title{The number of rows fetched so far}
 \usage{
 dbGetRowCount(res, ...)
 }
@@ -16,8 +16,8 @@ dbGetRowCount(res, ...)
 a numeric vector of length 1
 }
 \description{
-The default method extracts \code{row.count} from the result of
-\code{\link{dbGetInfo}(res)}.
+This value is increased by calls to \code{\link{dbFetch}}. For a data
+modifying query, the return value is 0.
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},
