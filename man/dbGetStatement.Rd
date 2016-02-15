@@ -16,8 +16,7 @@ dbGetStatement(res, ...)
 a character vector
 }
 \description{
-The default method extracts \code{statement} from the result of
-\code{\link{dbGetInfo}(res)}.
+Returns the statement that was passed to \code{\link{dbSendQuery}}.
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},

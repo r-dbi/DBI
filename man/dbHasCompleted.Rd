@@ -3,7 +3,7 @@
 \name{dbHasCompleted}
 \alias{dbHasCompleted}
 \alias{dbHasCompleted,DBIResult-method}
-\title{Has the operation completed?}
+\title{Completion status}
 \usage{
 dbHasCompleted(res, ...)
 }
@@ -16,8 +16,7 @@ dbHasCompleted(res, ...)
 a logical vector of length 1
 }
 \description{
-The default method extracts \code{has.completed} from the result of
-\code{\link{dbGetInfo}(res)}.
+This method returns if the operation has completed.
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},

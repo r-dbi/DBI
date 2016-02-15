@@ -17,23 +17,39 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 
 The goal of this document is to help you implement a new backend for DBI. 
 
-If you are writing a package that connects a database to R, I highly recommend that you make it DBI compatible because it makes your life easier by spelling out exactly what you need to do. The consistent interface provided by DBI makes it easier for your implement the package (because you have fewer arbitrary choices to make), and easier for your users (because it follows a familiar pattern).
+If you are writing a package that connects a database to R, I highly recommend that you make it DBI compatible because it makes your life easier by spelling out exactly what you need to do. The consistent interface provided by DBI makes it easier for you to implement the package (because you have fewer arbitrary choices to make), and easier for your users (because it follows a familiar pattern). In addition, the `DBItest` package provides test cases which you can easily incorporate in your package.
 
-I'll illustrate the process using a fictional database called Kazam. 
+I'll illustrate the process using a fictional database called Kazam.
 
 ## Getting started
 
-Start by creating a package. It's up to you what to call the package, but following the existing pattern of RSQLite, RMySQL, RPostgreSQL and ROracle will make it easier for people to find it. For this example, I'll call my package RKazam.
+Start by creating a package. It's up to you what to call the package, but following the existing pattern of `RSQLite`, `RMySQL`, `RPostgres` and `ROracle` will make it easier for people to find it. For this example, I'll call my package `RKazam`.
 
-In your DESCRIPTION, make sure to include:
+In your `DESCRIPTION`, make sure to include:
 
 ```yaml
-Depends:
+Imports:
   DBI (>= 0.3.0),
   methods
+Suggests:
+  DBItest, testthat
 ```
 
-This is one of the few situations in which using depends (instead of imports) is correct, because you want to make sure the generics from the DBI package (like `dbConnect()`, `dbGetQuery()` etc) are available.
+Importing `DBI` is fine, because your users are not supposed to *attach* your package anyway; the preferred method is to attach `DBI` and use explicit qualification via `::` to access the driver in your package (which needs to be done only once).
+
+
+## Testing
+
+Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don't worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.
+
+Take the time now to head over to the `DBItest` vignette. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.
+
+```r
+vignette("test", package = "DBItest")
+```
+
+Add custom tests that are not covered by `DBItest` at your discretion, or enhance `DBItest` and file a pull request if the test is generic enough to be useful for many DBI backends.
+
 
 ## Driver
 
@@ -44,6 +60,8 @@ Start by making a driver class which inherits from `DBIDriver`. This class doesn
 #' 
 #' @keywords internal
 #' @export
+#' @import DBI
+#' @import methods
 setClass("KazamDriver", contains = "DBIDriver")
 ```
 
@@ -128,6 +146,7 @@ setMethod("dbConnect", "KazamDriver", function(drv, ...) {
 
 Next, implement `show()` and `dbDisconnect()` methods. 
 
+
 ## Results
 
 Finally, you're ready to implement the meat of the system: fetching results of a query into a data frame. First define a results class:
@@ -157,7 +176,17 @@ setMethod("dbSendQuery", "KazamConnection", function(conn, statement, ...) {
 })
 ```
 
-The hardest part of every DBI package is writing the `dbFetch()` method. This needs to take a result set and (optionally) number of records to return, and create a dataframe:
+Next, implement `dbClearResult()`, which should close the result set and free all resources associated with it:
+
+```{r}
+#' @export
+setMethod("dbClearResult", "KazamResult", function(res, ...) {
+  # free resources
+  TRUE
+})
+```
+
+The hardest part of every DBI package is writing the `dbFetch()` method. This needs to take a result set and (optionally) number of records to return, and create a dataframe. Mapping R's data types to those of your database may require a custom implementation of the `dbDataType()` method for your connection class:
 
 ```{r}
 #' Retrieve records from Kazam query
@@ -165,18 +194,17 @@ The hardest part of every DBI package is writing the `dbFetch()` method. This ne
 setMethod("dbFetch", "KazamResult", function(res, n = -1, ...) {
   ...
 })
-```
 
-Finally implement, `dbClearResult()`:
+# (optionally)
 
-```{r}
+#' Find the database data type associated with an R object
 #' @export
-setMethod("dbClearResult", "KazamResult", function(res, ...) { 
-  
+setMethod("dbDataType", "KazamConnection", function(dbObj, obj, ...) {
+  ...
 })
 ```
 
-Next implement `dbHasCompleted()` which should return a boolean indicating if there are any rows remaining to be fetched.
+Next, implement `dbHasCompleted()` which should return a `logical` indicating if there are any rows remaining to be fetched.
 
 ```{r}
 #' @export
@@ -185,33 +213,57 @@ setMethod("dbHasCompleted", "KazamResult", function(res, ...) {
 })
 ```
 
-With these four methods in place, you can now use the default `dbGetQuery()` to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database.
+With these four methods in place, you can now use the default `dbGetQuery()` to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database, or relax and let the `DBItest` package do the work for you.
 
 ## SQL methods
 
 You're now on the home stretch, and can make your wrapper substantially more useful by implementing methods that wrap around variations in SQL across databases:
 
 * `dbQuoteString()` and `dbQuoteIdentifer()` are used to safely quote strings
-  and identifiers to avoid SQL injection attacks.
+  and identifiers to avoid SQL injection attacks.  Note that the former must be
+  vectorized, but not the latter.
 
 * `dbWriteTable()` creates a database table given an R dataframe. I'd recommend
-  using the methods in the  [SQL package](http://github.com/rstats-db/SQL) to 
-  generate the SQL. This package is still a work in progress so please let me
+  using the functions prefixed with `sql` in this package to generate the SQL.
+  These functions are still a work in progress so please let me
   know if you have problems.
   
 * `dbReadTable()`: a simple wrapper around `SELECT * FROM table`. Use 
   `dbQuoteIdentifer()` to safely quote the table name and prevent mismatches
   between the names allowed by R and the database.
   
-* `dbBegin()`, `dbCommit()` and `dbRollback()`: implement these three functions
-  to provide basic transaction support.
-  
 * `dbListTables()` and `dbExistsTable()` let you determine what tables are
   available. If not provided by your database's API, you may need to generate
   sql that inspects the system tables.
   
+* `dbListFields()` shows which fields are available in a given table.
+
 * `dbRemoveTable()` wraps around `DROP TABLE`. Start with `SQL::sqlTableDrop()`.
+
+* `dbBegin()`, `dbCommit()` and `dbRollback()`: implement these three functions
+  to provide basic transaction support. This functionality is currently not
+  tested in the `DBItest` package.
 
 ## Metadata methods
 
-Finally there are a lot of extra metadata methods that you might want to implement. However, I've run out of energy to list them all - instead look at the source code for the DBI package.
+There are a lot of extra metadata methods for result sets (and one for the connection) that you might want to implement. They are described in the following.
+
+* `dbIsValid()` returns if a connection or a result set is open (`TRUE`) or
+  closed (`FALSE`). All further methods in this section are valid for result
+  sets only.
+
+* `dbGetStatement()` returns the issued query as a character value.
+
+* `dbColumnInfo()` lists the names and types of the result set's columns.
+
+* `dbGetRowCount()` and `dbGetRowsAffected()` returns the number of rows
+  returned or altered in a `SELECT` or `INSERT`/`UPDATE` query, respectively.
+
+* `dbBind()` allows using parametrised queries. Take a look at
+  `sqlInterpolate()` and `sqlParseVariables()` if your SQL engine doesn't
+  offer native parametrised queries.
+
+
+## Full DBI compliance
+
+By now, your package should implement all methods defined in the DBI specification.  If you want to walk the extra mile, offer a read-only mode that allows your users to be sure that their valuable data doesn't get destroyed inadvertently.

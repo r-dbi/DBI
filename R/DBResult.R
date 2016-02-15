@@ -134,8 +134,7 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #'
-#' The default method extracts \code{statement} from the result of
-#' \code{\link{dbGetInfo}(res)}.
+#' Returns the statement that was passed to \code{\link{dbSendQuery}}.
 #'
 #' @inheritParams dbClearResult
 #' @aliases dbGetStatement,DBIResult-method
@@ -147,15 +146,10 @@ setGeneric("dbGetStatement",
   valueClass = "character"
 )
 
-setMethod("dbGetStatement", "DBIResult", function(res, ...) {
-  dbGetInfo(res)$statement
-})
 
-
-#' Has the operation completed?
-#'
-#' The default method extracts \code{has.completed} from the result of
-#' \code{\link{dbGetInfo}(res)}.
+#' Completion status
+#' 
+#' This method returns if the operation has completed.
 #'
 #' @inheritParams dbClearResult
 #' @aliases dbHasCompleted,DBIResult-method
@@ -167,14 +161,11 @@ setGeneric("dbHasCompleted",
   valueClass = "logical"
 )
 
-setMethod("dbHasCompleted", "DBIResult", function(res, ...) {
-  dbGetInfo(res)$has.completed
-})
 
-#' The number of rows affected by data modifying query.
+#' The number of rows affected
 #'
-#' The default method extracts \code{rows.affected} from the result of
-#' \code{\link{dbGetInfo}(res)}.
+#' This function returns the number of rows that were added, deleted, or updated
+#' by data modifying query. For a selection query, this function returns 0.
 #'
 #' @inheritParams dbClearResult
 #' @aliases dbGetRowsAffected,DBIResult-method
@@ -186,15 +177,11 @@ setGeneric("dbGetRowsAffected",
   valueClass = "numeric"
 )
 
-setMethod("dbGetRowsAffected", "DBIResult", function(res, ...) {
-  dbGetInfo(res)$rows.affected
-})
 
-
-#' The number of rows fetched so far.
-#'
-#' The default method extracts \code{row.count} from the result of
-#' \code{\link{dbGetInfo}(res)}.
+#' The number of rows fetched so far
+#' 
+#' This value is increased by calls to \code{\link{dbFetch}}. For a data
+#' modifying query, the return value is 0.
 #'
 #' @inheritParams dbClearResult
 #' @aliases dbGetRowCount,DBIResult-method
@@ -206,9 +193,22 @@ setGeneric("dbGetRowCount",
   valueClass = "numeric"
 )
 
-setMethod("dbGetRowCount", "DBIResult", function(res, ...) {
-  dbGetInfo(res)$row.count
+
+#' @rdname dbGetInfo
+#' @section Implementation notes:
+#' The default implementation for \code{DBIResult objects}
+#' constructs such a list from the return values of the corresponding methods,
+#' \code{\link{dbGetStatement}}, \code{\link{dbGetRowCount}},
+#' \code{\link{dbGetRowsAffected}}, and \code{\link{dbHasCompleted}}.
+setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
+  list(
+    statement = dbGetStatement(dbObj),
+    row.count = dbGetRowCount(dbObj),
+    rows.affected = dbGetRowsAffected(dbObj),
+    has.completed = dbHasCompleted(dbObj)
+  )
 })
+
 
 #' Bind values to a parameterised/prepared statement.
 #'

@@ -1,5 +1,8 @@
 # Version 0.3.X
 
+* `dbiCheckCompliance()` has been removed, the functionality is now available
+  in the `DBItest` package (#80).
+
 * The initial DBI proposal and DBI version 1 specification are now included as 
   a vignette. These are there mostly for historical interest.
 
@@ -63,10 +66,10 @@
 
 ## New default methods
 
-* `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
-  `dbGetRowCount()` gain default methods that extract the appropriate elements
-  from `dbGetInfo()`. This means that most drivers should no longer need to
-  implement these methods (#13).
+* `dbGetInfo()` gains a default method that extracts the information from
+  `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()`. This means that most drivers should no longer need to
+  implement `dbGetInfo()` (which may be deprecated anyway at some point) (#13, #55).
 
 * `dbGetQuery()` gains a default method for `DBIConnection` which uses
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
