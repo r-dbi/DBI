@@ -118,7 +118,8 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
   list(start, end, escape, doubleEscape)
 }
 
-
+#' @export
+#' @rdname sqlParseVariables
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
   sql_string <- as.character(sql)
   var_pos_start <- integer()
