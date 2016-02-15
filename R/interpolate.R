@@ -34,7 +34,6 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
     return(SQL(sql))
 
   vars <- substring(sql, pos$start + 1, pos$end)
-
   values <- list(...)
   if (!setequal(vars, names(values))) {
     stop("Supplied vars don't match vars to interpolate", call. = FALSE)
@@ -97,7 +96,7 @@ setGeneric("sqlParseVariables", function(con, sql, ...) {
 setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
   sqlParseVariablesImpl(sql,
     list(
-      sqlQuoteSpec('"', "'"),
+      sqlQuoteSpec('"', '"'),
       sqlQuoteSpec("'", "'")
     ),
     list(
@@ -117,4 +116,76 @@ sqlCommentSpec <- function(start, end, endRequired) {
 #' @rdname sqlParseVariables
 sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
   list(start, end, escape, doubleEscape)
+}
+
+
+sqlParseVariablesImpl <- function(sql, quotes, comments) {
+  sql_string <- as.character(sql)
+  var_pos_start <- integer()
+  var_pos_end <- integer()
+
+  in_quote <- 0L
+  in_comment <- 0L
+  i <- 1
+  while(i < nchar(sql_string)) {
+    # only check for variables if neither commented nor quoted
+    if (in_quote == 0L && in_comment == 0L) {
+      if (substr(sql_string, i, i) == "?") {
+        # consume everything alphanumeric and _ up to end of variable
+        m <- regexpr("[a-z][a-z0-9_]*", substr(sql_string, i + 1, nchar(sql_string)), perl=T, ignore.case=T)
+        var_len <- attr(m, "match.length")
+        var_pos_start <- c(var_pos_start, i)
+        var_pos_end <- c(var_pos_end, i + var_len)
+        i <- i + var_len
+        next
+      }
+    }
+    # only check for quoted strings when not in commented section
+    if (in_comment == 0L) {
+      # check all quote defintions, they can only be single characters
+      for(q in seq_along(quotes)) {
+        if (in_quote == 0L) {
+          quote_start_char <- quotes[[q]][[1]]
+          if (substr(sql_string, i, i) == quote_start_char)  {
+            in_quote <- q
+            break
+          }
+      } else {
+        # only check the end of the active quote definition
+        # TODO: support end quote escaping (e.g. \")
+        quote_end_char <- quotes[[in_quote]][[2]]
+        if (substr(sql_string, i, i) == quote_end_char)  {
+            in_quote <- 0L
+            break
+          }
+      }
+      } 
+    } 
+    # only check for comments when not in quoted section
+    if (in_quote == 0L) {
+    # check all comment defintions, they can have arbitrary lengths
+      for(c in seq_along(comments)) {
+        if (in_comment == 0L) {
+          comment_start_string <- comments[[c]][[1]]
+          comment_start_length <- nchar(comment_start_string) - 1
+          if (substr(sql_string, i, i + comment_start_length) == comment_start_string)  {
+            in_comment <- c
+            i <- i + comment_start_length
+            break
+          }
+      } else {
+        # only check the end of the active comment definition
+        comment_end_string <- comments[[in_comment]][[2]]
+          comment_end_length <- nchar(comment_end_string) - 1
+        if (substr(sql_string, i, i + comment_end_length) == comment_end_string)  {
+            in_comment <- 0L
+            i <- i + comment_end_length
+            break
+          }
+      }
+      } 
+    }
+    i <- i + 1
+  }
+  list(start=var_pos_start, end=var_pos_end)
 }
