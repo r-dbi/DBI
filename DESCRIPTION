@@ -24,7 +24,6 @@ Collate:
     'DBConnection.R'
     'ANSI.R'
     'DBResult.R'
-    'compliance.R'
     'data.R'
     'deprecated.R'
     'interpolate.R'
