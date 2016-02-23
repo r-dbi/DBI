@@ -29,17 +29,17 @@ setGeneric("sqlInterpolate", function(`_con`, `_sql`, ...) {
 setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
   sql <- `_sql`
   pos <- sqlParseVariables(`_con`, sql)
-
+  
   if (length(pos$start) == 0)
     return(SQL(sql))
-
+  
   vars <- substring(sql, pos$start + 1, pos$end)
   values <- list(...)
   if (!setequal(vars, names(values))) {
     stop("Supplied vars don't match vars to interpolate", call. = FALSE)
   }
   values <- values[vars]
-
+  
   safe_values <- vapply(values, function(x) {
     if (is.character(x)) {
       dbQuoteString(`_con`, x)
@@ -47,7 +47,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
       as.character(x)
     }
   }, character(1))
-
+  
   for (i in rev(seq_along(vars))) {
     sql <- paste0(
       substring(sql, 0, pos$start[i] - 1),
@@ -55,7 +55,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
       substring(sql, pos$end[i] + 1, nchar(sql))
     )
   }
-
+  
   SQL(sql)
 })
 
@@ -95,14 +95,14 @@ setGeneric("sqlParseVariables", function(con, sql, ...) {
 #' @rdname sqlParseVariables
 setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
   sqlParseVariablesImpl(sql,
-    list(
-      sqlQuoteSpec('"', '"'),
-      sqlQuoteSpec("'", "'")
-    ),
-    list(
-      sqlCommentSpec("/*", "*/", TRUE),
-      sqlCommentSpec("--", "\n", FALSE)
-    )
+                        list(
+                          sqlQuoteSpec('"', '"'),
+                          sqlQuoteSpec("'", "'")
+                        ),
+                        list(
+                          sqlCommentSpec("/*", "*/", TRUE),
+                          sqlCommentSpec("--", "\n", FALSE)
+                        )
   )
 })
 
@@ -124,7 +124,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   sql_string <- as.character(sql)
   var_pos_start <- integer()
   var_pos_end <- integer()
-
+  
   in_quote <- 0L
   in_comment <- 0L
   i <- 1
@@ -151,20 +151,20 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
             in_quote <- q
             break
           }
-      } else {
-        # only check the end of the active quote definition
-        # TODO: support end quote escaping (e.g. \")
-        quote_end_char <- quotes[[in_quote]][[2]]
-        if (substr(sql_string, i, i) == quote_end_char)  {
+        } else {
+          # only check the end of the active quote definition
+          # TODO: support end quote escaping (e.g. \")
+          quote_end_char <- quotes[[in_quote]][[2]]
+          if (substr(sql_string, i, i) == quote_end_char)  {
             in_quote <- 0L
             break
           }
-      }
+        }
       } 
     } 
     # only check for comments when not in quoted section
     if (in_quote == 0L) {
-    # check all comment defintions, they can have arbitrary lengths
+      # check all comment defintions, they can have arbitrary lengths
       for(c in seq_along(comments)) {
         if (in_comment == 0L) {
           comment_start_string <- comments[[c]][[1]]
@@ -174,16 +174,16 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
             i <- i + comment_start_length
             break
           }
-      } else {
-        # only check the end of the active comment definition
-        comment_end_string <- comments[[in_comment]][[2]]
+        } else {
+          # only check the end of the active comment definition
+          comment_end_string <- comments[[in_comment]][[2]]
           comment_end_length <- nchar(comment_end_string) - 1
-        if (substr(sql_string, i, i + comment_end_length) == comment_end_string)  {
+          if (substr(sql_string, i, i + comment_end_length) == comment_end_string)  {
             in_comment <- 0L
             i <- i + comment_end_length
             break
           }
-      }
+        }
       } 
     }
     i <- i + 1
