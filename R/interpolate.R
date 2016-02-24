@@ -121,14 +121,14 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @export
 #' @rdname sqlParseVariables
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
-  sql_arr <- strsplit(as.character(sql), "", fixed=T)[[1]]
+  sql_arr <- strsplit(as.character(sql), "", fixed=TRUE)[[1]]
   var_pos_start <- integer()
   var_pos_end <- integer()
 
   # prepare comments
   for(c in seq_along(comments)) {
-    comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed=T)[[1]]
-    comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed=T)[[1]]
+    comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed=TRUE)[[1]]
+    comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed=TRUE)[[1]]
   }
   
   var_chars <- c(LETTERS, tolower(LETTERS), 0:9, "_")
