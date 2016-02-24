@@ -126,14 +126,14 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @param comments A list of \code{CommentSpec} calls defining the commenting
 #'   specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
-  sql_arr <- strsplit(as.character(sql), "", fixed=TRUE)[[1]]
+  sql_arr <- strsplit(as.character(sql), "", fixed = TRUE)[[1]]
   var_pos_start <- integer()
   var_pos_end <- integer()
 
   # prepare comments
   for(c in seq_along(comments)) {
-    comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed=TRUE)[[1]]
-    comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed=TRUE)[[1]]
+    comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed = TRUE)[[1]]
+    comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed = TRUE)[[1]]
   }
   
   var_chars <- c(LETTERS, letters, 0:9, "_")
@@ -162,7 +162,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
       for(q in seq_along(quotes)) {
         if (in_quote == 0L) {
           quote_start_char <- quotes[[q]][[1]]
-          if (identical(sql_arr[[i]], quote_start_char))  {
+          if (identical(sql_arr[[i]], quote_start_char)) {
             in_quote <- q
             break
           }
@@ -170,13 +170,13 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
           # only check the end of the active quote definition
           # TODO: support end quote escaping (e.g. \")
           quote_end_char <- quotes[[in_quote]][[2]]
-          if (identical(sql_arr[[i]], quote_end_char))  {
+          if (identical(sql_arr[[i]], quote_end_char)) {
             in_quote <- 0L
             break
           }
         }
-      } 
-    } 
+      }
+    }
     # only check for comments when not in quoted section
     if (in_quote == 0L) {
       # check all comment defintions, they can have arbitrary lengths
@@ -184,7 +184,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
         if (in_comment == 0L) {
           comment_start_arr <- comments[[c]][[1]]
           comment_start_length <- length(comment_start_arr)
-          if (identical(sql_arr[i:(i + comment_start_length - 1)], comment_start_arr))  {
+          if (identical(sql_arr[i:(i + comment_start_length - 1)], comment_start_arr)) {
             in_comment <- c
             i <- i + comment_start_length
             break
@@ -193,15 +193,15 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
           # only check the end of the active comment definition
           comment_end_arr <- comments[[in_comment]][[2]]
           comment_end_length <- length(comment_end_arr)
-          if (identical(sql_arr[i:(i + comment_end_length - 1)], comment_end_arr))  {
+          if (identical(sql_arr[i:(i + comment_end_length - 1)], comment_end_arr)) {
             in_comment <- 0L
             i <- i + comment_end_length
             break
           }
         }
-      } 
+      }
     }
     i <- i + 1
   }
-  list(start=as.integer(var_pos_start), end=as.integer(var_pos_end))
+  list(start = as.integer(var_pos_start), end = as.integer(var_pos_end))
 }
