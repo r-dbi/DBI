@@ -131,7 +131,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed=TRUE)[[1]]
   }
   
-  var_chars <- c(LETTERS, tolower(LETTERS), 0:9, "_")
+  var_chars <- c(LETTERS, letters, 0:9, "_")
   in_quote <- 0L
   in_comment <- 0L
   i <- 1
