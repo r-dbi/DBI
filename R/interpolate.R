@@ -120,6 +120,11 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 
 #' @export
 #' @rdname sqlParseVariables
+#' @param sql SQL to parse (a character vector of length 1)
+#' @param quotes A list of \code{QuoteSpec} calls defining the quoting
+#'   specification.
+#' @param comments A list of \code{CommentSpec} calls defining the commenting
+#'   specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
   sql_arr <- strsplit(as.character(sql), "", fixed=TRUE)[[1]]
   var_pos_start <- integer()

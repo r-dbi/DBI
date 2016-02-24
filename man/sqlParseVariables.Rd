@@ -20,6 +20,8 @@ sqlQuoteSpec(start, end, escape = "", doubleEscape = TRUE)
 sqlParseVariablesImpl(sql, quotes, comments)
 }
 \arguments{
+\item{sql}{SQL to parse (a character vector of length 1)}
+
 \item{start, end}{Start and end characters for quotes and comments}
 
 \item{endRequired}{Is the ending character of a comment required?}
@@ -29,6 +31,12 @@ Defaults to \code{""}, i.e. nothing.}
 
 \item{doubleEscape}{Can quoting characters be escaped by doubling them?
 Defaults to \code{TRUE}.}
+
+\item{quotes}{A list of \code{QuoteSpec} calls defining the quoting
+specification.}
+
+\item{comments}{A list of \code{CommentSpec} calls defining the commenting
+specification.}
 }
 \description{
 If you're implementing a backend that uses non-ANSI quoting or commenting
