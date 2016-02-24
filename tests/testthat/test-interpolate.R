@@ -34,8 +34,8 @@ test_that("strings are quoted", {
 
 test_that("some more complex case works as well", {
   expect_equal(
-    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- bar", faa = "abc", fuu=42L),
-    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- bar")
+    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ?bar", faa = "abc", fuu=42L),
+    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ?bar")
   )
 })
 
