@@ -45,3 +45,30 @@ test_that("escaping quotes with doubling works", {
     SQL("'this is a single '' one ?quoted string' 42 ")
   )
 })
+
+test_that("corner cases work", {
+  expect_equal(
+    sqlInterpolate(ANSI(), ""),
+    SQL("")
+  )
+  expect_equal(
+    sqlInterpolate(ANSI(), "?"),
+    SQL("?")
+  )
+  expect_equal(
+    sqlInterpolate(ANSI(), "?a", a = 1),
+    SQL("1")
+  )
+  expect_equal(
+    sqlInterpolate(ANSI(), "\"\""),
+    SQL("\"\"")
+  )
+  expect_equal(
+    sqlInterpolate(ANSI(), "?a\"\"?b", a = 1, b = 2),
+    SQL("1\"\"2")
+  )
+  expect_equal(
+    sqlInterpolate(ANSI(), "--"),
+    SQL("--")
+  )
+})
