@@ -51,9 +51,9 @@ test_that("corner cases work", {
     sqlInterpolate(ANSI(), ""),
     SQL("")
   )
-  expect_equal(
+  expect_error(
     sqlInterpolate(ANSI(), "?"),
-    SQL("?")
+    "Length 0 variable"
   )
   expect_equal(
     sqlInterpolate(ANSI(), "?a", a = 1),
