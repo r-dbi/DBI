@@ -170,7 +170,6 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
             quote_spec_offset <- q
             state <- 'quote'
             break
-            # TODO: terminate for and switch here
           }
         }
         # we can abort here if the state has changed
