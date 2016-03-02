@@ -221,7 +221,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
         comment_end_arr <- comments[[comment_spec_offset]][[2]]
         comment_end_length <- length(comment_end_arr)
         if (identical(sql_arr[i:(i + comment_end_length - 1)], comment_end_arr)) {
-          i <- i + comment_end_length - 1
+          i <- i + comment_end_length
           comment_spec_offset <- 0L
           state <- 'default'
         }
