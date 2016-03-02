@@ -97,7 +97,7 @@ setGeneric("sqlParseVariables", function(con, sql, ...) {
 setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
   sqlParseVariablesImpl(sql,
     list(
-      sqlQuoteSpec('"', "'"),
+      sqlQuoteSpec('"', '"'),
       sqlQuoteSpec("'", "'")
     ),
     list(

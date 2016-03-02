@@ -19,7 +19,7 @@ namespace {
 	template <class T>
 	bool hasPrefix(T begin, T end, const std::string& prefix) {
 		if (prefix.size() == 0) {
-			return false;
+			return false; // # nocov
 		}
 
 		if (end - begin < prefix.size()) {
@@ -74,7 +74,7 @@ namespace {
 				break;
 			default:
 				assert(false);
-				return false;
+				return false; // # nocov
 			}
 		}
 
