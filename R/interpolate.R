@@ -138,8 +138,6 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   for(q in seq_along(quotes)) {
    quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
   }
-
-  print(quotes)
   
   var_chars <- c(LETTERS, letters, 0:9, "_")
   in_quote <- 0L
