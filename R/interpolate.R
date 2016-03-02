@@ -136,7 +136,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed = TRUE)[[1]]
   }
   for(q in seq_along(quotes)) {
-   quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
+    quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
   }
 
   var_chars <- c(LETTERS, letters, 0:9, "_")
