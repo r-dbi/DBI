@@ -126,7 +126,7 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @param comments A list of \code{CommentSpec} calls defining the commenting
 #'   specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
-  sql_arr <- c(strsplit(as.character(sql), "", fixed = TRUE)[[1]], " ", " ")
+  sql_arr <- c(strsplit(as.character(sql), "", fixed = TRUE)[[1]], " ")
 
   # characters valid in variable names
   var_chars <- c(LETTERS, letters, 0:9, "_")
@@ -150,7 +150,6 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
   }
 
-  # state can be: default, comment, quote, variable
   state <- 'default'
   i <- 0
   while(i < length(sql_arr)) {
