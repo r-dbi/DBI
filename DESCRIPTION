@@ -24,7 +24,6 @@ Collate:
     'DBConnection.R'
     'ANSI.R'
     'DBResult.R'
-    'RcppExports.R'
     'data.R'
     'deprecated.R'
     'interpolate.R'
@@ -36,7 +35,4 @@ Collate:
     'transactions.R'
     'util.R'
 VignetteBuilder: knitr
-LinkingTo: Rcpp
-Imports:
-    Rcpp
 RoxygenNote: 5.0.1
