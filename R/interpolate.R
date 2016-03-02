@@ -126,11 +126,22 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @param comments A list of \code{CommentSpec} calls defining the commenting
 #'   specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
-  sql_arr <- strsplit(as.character(sql), "", fixed = TRUE)[[1]]
+  sql_arr <- c(strsplit(as.character(sql), "", fixed = TRUE)[[1]], " ", " ")
+
+  # characters valid in variable names
+  var_chars <- c(LETTERS, letters, 0:9, "_")
+
+  # return values
   var_pos_start <- integer()
   var_pos_end <- integer()
 
-  # prepare comments
+  # internal helper variables
+  quote_spec_offset <- 0L
+  comment_spec_offset <- 0L
+  sql_variable_start <- 0L
+  sql_variable_end <- 0L
+
+  # prepare comments & quotes for quicker comparisions
   for(c in seq_along(comments)) {
     comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed = TRUE)[[1]]
     comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed = TRUE)[[1]]
@@ -139,82 +150,89 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
   }
 
-  var_chars <- c(LETTERS, letters, 0:9, "_")
-  in_quote <- 0L
-  in_comment <- 0L
-  i <- 1
-  while(i <= length(sql_arr)) {
-    # only check for variables if neither commented nor quoted
-     if (in_quote == 0L && in_comment == 0L) {
-      if (sql_arr[[i]] == "?") {
-        # consume everything alphanumeric and _ up to end of variable
-        this_var_start <- i
-        repeat {
-          i <- i + 1
-          if (i > length(sql_arr) || !(sql_arr[[i]] %in% var_chars)) {
-            break
-          }
+  # state can be: default, comment, quote, variable
+  state <- 'default'
+  i <- 0
+  while(i < length(sql_arr)) {
+    i <- i + 1
+    switch(state,
+
+      default = {
+        # variable?
+        if (sql_arr[[i]] == "?") {
+          sql_variable_start <- i
+          state <- 'variable'
+          next
         }
-        if (i - this_var_start < 2) {
-          stop("Length 0 variable")
-        }
-        var_pos_start <- c(var_pos_start, this_var_start)
-        var_pos_end <- c(var_pos_end, i - 1)
-        next
-      }
-    }
-    # only check for quoted strings when not in commented section
-    if (in_comment == 0L) {
-      # check all quote defintions, they can only be single characters
-      for(q in seq_along(quotes)) {
-        if (in_quote == 0L) {
+        # starting quoted area?
+        for(q in seq_along(quotes)) {
           if (identical(sql_arr[[i]], quotes[[q]][[1]])) {
-            in_quote <- q
+            quote_spec_offset <- q
+            state <- 'quote'
             break
-          }
-        } else {
-          # only check the end of the active quote definition
-          if (quotes[[in_quote]][[5]] && identical(sql_arr[[i]], quotes[[in_quote]][[3]])) {
-            i <- i + 1
-            break
-          }
-          if (identical(sql_arr[[i]], quotes[[in_quote]][[2]])) {
-            in_quote <- 0L
-            break
+            # TODO: terminate for and switch here
           }
         }
-      }
-    }
-    # only check for comments when not in quoted section
-    if (in_quote == 0L) {
-      # check all comment defintions, they can have arbitrary lengths
-      for(c in seq_along(comments)) {
-        if (in_comment == 0L) {
+        # we can abort here if the state has changed
+        if (state != 'default') next
+        # starting comment?
+        for(c in seq_along(comments)) {
           comment_start_arr <- comments[[c]][[1]]
           comment_start_length <- length(comment_start_arr)
           if (identical(sql_arr[i:(i + comment_start_length - 1)], comment_start_arr)) {
-            in_comment <- c
+            comment_spec_offset <- c
             i <- i + comment_start_length
-            break
-          }
-        } else {
-          # only check the end of the active comment definition
-          comment_end_arr <- comments[[in_comment]][[2]]
-          comment_end_length <- length(comment_end_arr)
-          if (identical(sql_arr[i:(i + comment_end_length - 1)], comment_end_arr)) {
-            in_comment <- 0L
-            i <- i + comment_end_length
+            state <- 'comment'
             break
           }
         }
+      },
+
+      variable = {
+        if (!(sql_arr[[i]] %in% var_chars)) {
+          # make sure variable has at least one character after the '?'
+          if (i - sql_variable_start < 2) {
+            stop("Length 0 variable")
+          }
+          # append current variable offsets to return vectors
+          var_pos_start <- c(var_pos_start, sql_variable_start)
+          var_pos_end <- c(var_pos_end, i - 1)
+          # we have already read too much, go back
+          i <- i - 1
+          state <- 'default'
+        }
+      },
+
+      quote = {
+        # if we see backslash-like escapes, ignore next character
+        if (quotes[[quote_spec_offset]][[5]] && identical(sql_arr[[i]], quotes[[quote_spec_offset]][[3]])) {
+          i <- i + 1
+          next
+        }
+        # end quoted area?
+        if (identical(sql_arr[[i]], quotes[[quote_spec_offset]][[2]])) {
+          quote_spec_offset <- 0L
+          state <- 'default'
+        }
+      },
+
+      comment = {
+        # end commented area?
+        comment_end_arr <- comments[[comment_spec_offset]][[2]]
+        comment_end_length <- length(comment_end_arr)
+        if (identical(sql_arr[i:(i + comment_end_length - 1)], comment_end_arr)) {
+          i <- i + comment_end_length - 1
+          comment_spec_offset <- 0L
+          state <- 'default'
+        }
       }
-    }
-    i <- i + 1
+    ) # </switch>
+  } # </while>
+
+  if (quote_spec_offset > 0L) {
+    stop("Unterminated literal")
   }
-  if (in_quote > 0L) {
-    stop("Unterminated literal in ", sql)
-  }
-  if (in_comment > 0L && comments[[in_comment]][[3]]) {
+  if (comment_spec_offset > 0L && comments[[comment_spec_offset]][[3]]) {
     stop("Unterminated comment")
   }
   list(start = as.integer(var_pos_start), end = as.integer(var_pos_end))
