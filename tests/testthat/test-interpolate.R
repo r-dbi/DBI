@@ -51,9 +51,9 @@ test_that("corner cases work", {
     sqlInterpolate(ANSI(), ""),
     SQL("")
   )
-  expect_equal(
+  expect_error(
     sqlInterpolate(ANSI(), "?"),
-    SQL("?")
+    "Length 0 variable"
   )
   expect_equal(
     sqlInterpolate(ANSI(), "?a", a = 1),
@@ -63,6 +63,10 @@ test_that("corner cases work", {
     sqlInterpolate(ANSI(), "\"\""),
     SQL("\"\"")
   )
+  expect_error(
+    sqlInterpolate(ANSI(), "\""),
+    "Unterminated literal"
+  )
   expect_equal(
     sqlInterpolate(ANSI(), "?a\"\"?b", a = 1, b = 2),
     SQL("1\"\"2")
@@ -70,5 +74,25 @@ test_that("corner cases work", {
   expect_equal(
     sqlInterpolate(ANSI(), "--"),
     SQL("--")
+  )
+  expect_error(
+    sqlInterpolate(ANSI(), "/*"),
+    "Unterminated comment"
+  )
+
+  # Test escaping rules
+  expect_identical(
+    sqlParseVariablesImpl(
+      "?a '?b\\'?c' ?d '''' ?e",
+      list(
+        sqlQuoteSpec("'", "'", escape = "\\", doubleEscape = FALSE)
+      ),
+      list(
+      )
+    ),
+    list(
+      start = c(1L, 13L, 21L),
+      end = c(2L, 14L, 22L)
+    )
   )
 })

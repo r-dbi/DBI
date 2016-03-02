@@ -95,14 +95,14 @@ setGeneric("sqlParseVariables", function(con, sql, ...) {
 #' @rdname sqlParseVariables
 setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
   sqlParseVariablesImpl(sql,
-                        list(
-                          sqlQuoteSpec('"', '"'),
-                          sqlQuoteSpec("'", "'")
-                        ),
-                        list(
-                          sqlCommentSpec("/*", "*/", TRUE),
-                          sqlCommentSpec("--", "\n", FALSE)
-                        )
+    list(
+      sqlQuoteSpec('"', '"'),
+      sqlQuoteSpec("'", "'")
+    ),
+    list(
+      sqlCommentSpec("/*", "*/", TRUE),
+      sqlCommentSpec("--", "\n", FALSE)
+    )
   )
 })
 
@@ -135,24 +135,33 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     comments[[c]][[1]] <- strsplit(comments[[c]][[1]], "", fixed = TRUE)[[1]]
     comments[[c]][[2]] <- strsplit(comments[[c]][[2]], "", fixed = TRUE)[[1]]
   }
+  for(q in seq_along(quotes)) {
+   quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
+  }
+
+  print(quotes)
   
   var_chars <- c(LETTERS, letters, 0:9, "_")
   in_quote <- 0L
   in_comment <- 0L
   i <- 1
-  while(i < length(sql_arr)) {
+  while(i <= length(sql_arr)) {
     # only check for variables if neither commented nor quoted
-    if (in_quote == 0L && in_comment == 0L) {
+     if (in_quote == 0L && in_comment == 0L) {
       if (sql_arr[[i]] == "?") {
         # consume everything alphanumeric and _ up to end of variable
-        var_pos_start <- c(var_pos_start, i)
+        this_var_start <- i
         repeat {
           i <- i + 1
           if (i > length(sql_arr) || !(sql_arr[[i]] %in% var_chars)) {
             break
           }
         }
-        var_pos_end <- c(var_pos_end, i-1)
+        if (i - this_var_start < 2) {
+          stop("Length 0 variable")
+        }
+        var_pos_start <- c(var_pos_start, this_var_start)
+        var_pos_end <- c(var_pos_end, i - 1)
         next
       }
     }
@@ -161,16 +170,17 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
       # check all quote defintions, they can only be single characters
       for(q in seq_along(quotes)) {
         if (in_quote == 0L) {
-          quote_start_char <- quotes[[q]][[1]]
-          if (identical(sql_arr[[i]], quote_start_char)) {
+          if (identical(sql_arr[[i]], quotes[[q]][[1]])) {
             in_quote <- q
             break
           }
         } else {
           # only check the end of the active quote definition
-          # TODO: support end quote escaping (e.g. \")
-          quote_end_char <- quotes[[in_quote]][[2]]
-          if (identical(sql_arr[[i]], quote_end_char)) {
+          if (quotes[[in_quote]][[5]] && identical(sql_arr[[i]], quotes[[in_quote]][[3]])) {
+            i <- i + 1
+            break
+          }
+          if (identical(sql_arr[[i]], quotes[[in_quote]][[2]])) {
             in_quote <- 0L
             break
           }
@@ -202,6 +212,12 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
       }
     }
     i <- i + 1
+  }
+  if (in_quote > 0L) {
+    stop("Unterminated literal in ", sql)
+  }
+  if (in_comment > 0L && comments[[in_comment]][[3]]) {
+    stop("Unterminated comment")
   }
   list(start = as.integer(var_pos_start), end = as.integer(var_pos_end))
 }

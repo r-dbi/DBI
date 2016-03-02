@@ -1,5 +1,10 @@
 # Version 0.3.X
 
+* `dbGetInfo()` gains a default method that extracts the information from
+  `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()`. This means that most drivers should no longer need to
+  implement `dbGetInfo()` (which may be deprecated anyway at some point) (#55).
+
 * `dbiCheckCompliance()` has been removed, the functionality is now available
   in the `DBItest` package (#80).
 
@@ -66,10 +71,10 @@
 
 ## New default methods
 
-* `dbGetInfo()` gains a default method that extracts the information from
-  `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
-  `dbGetRowCount()`. This means that most drivers should no longer need to
-  implement `dbGetInfo()` (which may be deprecated anyway at some point) (#13, #55).
+* `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()` gain default methods that extract the appropriate elements
+  from `dbGetInfo()`. This means that most drivers should no longer need to
+  implement these methods (#13).
 
 * `dbGetQuery()` gains a default method for `DBIConnection` which uses
   `dbSendQuery()`, `fetch()` and `dbClearResult()`.
