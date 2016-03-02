@@ -29,17 +29,17 @@ setGeneric("sqlInterpolate", function(`_con`, `_sql`, ...) {
 setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
   sql <- `_sql`
   pos <- sqlParseVariables(`_con`, sql)
-  
+
   if (length(pos$start) == 0)
     return(SQL(sql))
-  
+
   vars <- substring(sql, pos$start + 1, pos$end)
   values <- list(...)
   if (!setequal(vars, names(values))) {
     stop("Supplied vars don't match vars to interpolate", call. = FALSE)
   }
   values <- values[vars]
-  
+
   safe_values <- vapply(values, function(x) {
     if (is.character(x)) {
       dbQuoteString(`_con`, x)
@@ -47,7 +47,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
       as.character(x)
     }
   }, character(1))
-  
+
   for (i in rev(seq_along(vars))) {
     sql <- paste0(
       substring(sql, 0, pos$start[i] - 1),
@@ -55,7 +55,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
       substring(sql, pos$end[i] + 1, nchar(sql))
     )
   }
-  
+
   SQL(sql)
 })
 
@@ -138,7 +138,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   for(q in seq_along(quotes)) {
    quotes[[q]][[5]] <- nchar(quotes[[q]][[3]]) > 0L
   }
-  
+
   var_chars <- c(LETTERS, letters, 0:9, "_")
   in_quote <- 0L
   in_comment <- 0L
