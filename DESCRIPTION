@@ -7,8 +7,8 @@ Description: A database interface (DBI) definition for communication
     classes in this package are virtual and need to be extended by
     the various R/DBMS implementations.
 Authors@R: c(
-    person("R Special Interest Group on Databases (R-SIG-DB)", role = "cre"),
-    person("Hadley", "Wickham", role = "cre"),
+    person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
+    person("Hadley", "Wickham", role = "aut"),
     person("Kirill", "Müller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre"))
     )
 Depends:
