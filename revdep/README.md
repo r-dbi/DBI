@@ -425,18 +425,18 @@ Bug reports: https://github.com/rstats-db/rmysql/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-         .Internal(.dfltWarn(message, call))
-     }, muffleWarning = function() NULL)
-  15: withOneRestart(expr, restarts[[1L]])
+  1. Failure (at test-dbWriteTable.R#16): options work ---------------------------
+  dbReadTable(con, "dat") not equal to expected
+  Attributes: < Component "row.names": Numeric: lengths (0, 4) differ >
+  Component "a": Numeric: lengths (0, 4) differ
+  Component "b": Lengths (0, 4) differ (string compare on first 0)
   
   testthat results ================================================================
-  OK: 0 SKIPPED: 0 FAILED: 4
-  1. Error: options work 
-  2. Error: query returns expected number of rows 
-  3. Error: correctly computes affected rows 
-  4. Error: basic roundtrip is succesful 
+  OK: 4 SKIPPED: 0 FAILED: 1
+  1. Failure (at test-dbWriteTable.R#16): options work 
   
   Error: testthat unit tests failed
+  In addition: There were 11 warnings (use warnings() to see them)
   Execution halted
 
 checking for missing documentation entries ... WARNING
@@ -692,38 +692,31 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Mar 29, 2016 6:13:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:29:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 6:13:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:29:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
-... 6 lines ...
-  ...
-
-> user <- Sys.getenv("MYSQL_USER")
-
-> setup <- RMySQL::dbConnect(RMySQL::MySQL(), dbname = "test")
-
-> TSsql::removeTSdbTables(setup, yesIknowWhatIamDoing = TRUE)
-
-  When sourcing ‘GuideAppendix.R’:
-Error: corrupt resultSet, missing fieldDescription
+  When sourcing ‘Guide.R’:
+Error: QNA.CAN.PPPGDP.CARSA.Q error: it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
+SDMX meaning: No results matching the query.
 Execution halted
+
 
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Mar 29, 2016 6:13:18 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 29, 2016 7:30:07 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Mar 29, 2016 6:13:18 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:30:07 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:30:08 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:30:10 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 7:30:10 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
