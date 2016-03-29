@@ -1,4 +1,3 @@
-#' @export
 #' @rdname Table
 setClass("Table", slots = list(name = "character"))
 
@@ -10,7 +9,6 @@ setClass("Table", slots = list(name = "character"))
 #'   \url{http://stackoverflow.com/questions/7022755/}
 #' @param conn,x Connection and Table used when escaping.
 #' @param object Table object to print
-#' @export
 #' @examples
 #' x <- Table("a", "b")
 #' x
