@@ -14,10 +14,11 @@
 
 ## Packages
 
-|package  |*  |version |date       |source         |
-|:--------|:--|:-------|:----------|:--------------|
-|DBI      |   |0.3.1   |2016-03-29 |local (NA/NA)  |
-|testthat |   |0.11.0  |2015-10-14 |CRAN (R 3.2.3) |
+|package  |*  |version    |date       |source         |
+|:--------|:--|:----------|:----------|:--------------|
+|DBI      |   |0.3.1.9008 |2016-03-29 |local (NA/NA)  |
+|knitr    |   |1.12.3     |2016-01-22 |CRAN (R 3.2.3) |
+|testthat |   |0.11.0     |2015-10-14 |CRAN (R 3.2.3) |
 
 # Check results
 61 packages
@@ -202,7 +203,6 @@ Error: processing vignette 'databases.Rmd' failed with diagnostics:
 RS-DBI driver: (could not connect muelleki@local on dbname "nycflights13"
 )
 Execution halted
-Auto-disconnecting postgres connection (962, 0)
 
 ```
 
@@ -399,9 +399,17 @@ Maintainer: Wolfgang Kaisers <kaisers@med.uni-duesseldorf.de>
 ## RJDBC (0.2-5)
 Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 
-0 errors | 0 warnings | 1 note 
+0 errors | 1 warning  | 1 note 
 
 ```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'JDBCConnection,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
   ‘java-src’
@@ -411,7 +419,58 @@ Non-standard file/directory found at top level:
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/rstats-db/rmysql/issues
 
-0 errors | 0 warnings | 0 notes
+2 errors | 1 warning  | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘RMySQL-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: MySQLDriver-class
+> ### Title: Class MySQLDriver with constructor MySQL.
+> ### Aliases: MySQL MySQLDriver-class RMySQL RMySQL-package
+> 
+> ### ** Examples
+... 13 lines ...
++ dbClearResult(rs)
++ dbListTables(con)
++ 
++ # clean up
++ dbRemoveTable(con, "USArrests")
++ dbDisconnect(con)
++ }
+Error in dbFetch(rs, n = -1, ...) : 
+  corrupt resultSet, missing fieldDescription
+Calls: dbWriteTable ... dbGetQuery -> dbGetQuery -> dbFetch -> dbFetch -> .Call
+Execution halted
+
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  8: dbGetQuery(conn, sql) at /home/muelleki/git/R/DBI/R/DBConnection.R:129
+  9: dbFetch(rs, n = -1, ...) at /home/muelleki/git/R/DBI/R/DBConnection.R:138
+  10: dbFetch(rs, n = -1, ...)
+  
+  testthat results ================================================================
+  OK: 0 SKIPPED: 0 FAILED: 4
+  1. Error: options work 
+  2. Error: query returns expected number of rows 
+  3. Error: correctly computes affected rows 
+  4. Error: basic roundtrip is succesful 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'MySQLConnection,ANY'
+  generic 'dbDataType' and siglist 'MySQLDriver,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+```
 
 ## RObsDat (15.08)
 Maintainer: Dominik Reusser <reusser@pik-potsdam.de>
@@ -448,9 +507,17 @@ Bug reports: https://github.com/NREL/rplexos/issues
 ## RPostgreSQL (0.4)
 Maintainer: Tomoaki Nishiyama <tomoakin@staff.kanazawa-u.ac.jp>
 
-0 errors | 0 warnings | 2 notes
+0 errors | 1 warning  | 2 notes
 
 ```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'PostgreSQLObject,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+
 checking top-level files ... NOTE
 Non-standard files/directories found at top level:
   ‘config.guess’ ‘config.sub’ ‘install-sh’
@@ -471,7 +538,7 @@ These lines will be truncated in the PDF manual.
 Maintainer: Onur Ismail Filiz <onur@fb.com>  
 Bug reports: https://github.com/prestodb/RPresto/issues
 
-1 error  | 0 warnings | 0 notes
+1 error  | 1 warning  | 0 notes
 
 ```
 checking tests ... ERROR
@@ -490,6 +557,14 @@ Last 13 lines of output:
   Error: testthat unit tests failed
   In addition: There were 22 warnings (use warnings() to see them)
   Execution halted
+
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'PrestoDriver,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
 ```
 
 ## RQDA (0.2-7)
@@ -511,13 +586,34 @@ Packages which this enhances but not available for checking:
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/rstats-db/RSQLite/issues
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'SQLiteConnection,ANY'
+  generic 'dbDataType' and siglist 'SQLiteDriver,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+```
 
 ## RSQLServer (0.2.0)
 Maintainer: Imanuel Costigan <i.costigan@me.com>  
 Bug reports: https://github.com/imanuelcostigan/RSQLServer/issues
 
-0 errors | 0 warnings | 0 notes
+0 errors | 1 warning  | 0 notes
+
+```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbDataType' and siglist 'SQLServerConnection,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+```
 
 ## SEERaBomb (2015.2)
 Maintainer: Tomas Radivoyevitch <radivot@ccf.org>
@@ -619,31 +715,38 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Mar 29, 2016 10:46:30 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:25 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 10:46:30 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:25 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
-  When sourcing ‘Guide.R’:
-Error: QNA.CAN.PPPGDP.CARSA.Q error: it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
-SDMX meaning: No results matching the query.
-Execution halted
+... 6 lines ...
+  ...
 
+> user <- Sys.getenv("MYSQL_USER")
+
+> setup <- RMySQL::dbConnect(RMySQL::MySQL(), dbname = "test")
+
+> TSsql::removeTSdbTables(setup, yesIknowWhatIamDoing = TRUE)
+
+  When sourcing ‘GuideAppendix.R’:
+Error: corrupt resultSet, missing fieldDescription
+Execution halted
 
 checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 29, 2016 3:29:28 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:28 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:29 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 10:46:36 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:29 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 10:46:36 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 3:29:30 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
