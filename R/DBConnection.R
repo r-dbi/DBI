@@ -138,7 +138,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
     df <- tryCatch(
       dbFetch(rs, n = -1, ...),
       error = function(e) {
-        warning(e)
+        warning(conditionMessage(e), call. = conditionCall(e))
         NULL
       }
     )
