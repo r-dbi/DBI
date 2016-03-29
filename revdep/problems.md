@@ -14,11 +14,11 @@
 
 ## Packages
 
-|package  |*  |version    |date       |source         |
-|:--------|:--|:----------|:----------|:--------------|
-|DBI      |   |0.3.1.9008 |2016-03-29 |local (NA/NA)  |
-|knitr    |   |1.12.3     |2016-01-22 |CRAN (R 3.2.3) |
-|testthat |   |0.11.0     |2015-10-14 |CRAN (R 3.2.3) |
+|package  |*  |version    |date       |source                |
+|:--------|:--|:----------|:----------|:---------------------|
+|DBI      |   |0.3.1.9008 |2016-03-29 |local (rstats-db/DBI) |
+|knitr    |   |1.12.3     |2016-01-22 |CRAN (R 3.2.3)        |
+|testthat |   |0.11.0     |2015-10-14 |CRAN (R 3.2.3)        |
 
 # Check results
 14 packages with problems
@@ -113,38 +113,15 @@ Non-standard file/directory found at top level:
 Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
 Bug reports: https://github.com/rstats-db/rmysql/issues
 
-2 errors | 1 warning  | 0 notes
+1 error  | 1 warning  | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘RMySQL-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: MySQLDriver-class
-> ### Title: Class MySQLDriver with constructor MySQL.
-> ### Aliases: MySQL MySQLDriver-class RMySQL RMySQL-package
-> 
-> ### ** Examples
-... 13 lines ...
-+ dbClearResult(rs)
-+ dbListTables(con)
-+ 
-+ # clean up
-+ dbRemoveTable(con, "USArrests")
-+ dbDisconnect(con)
-+ }
-Error in dbFetch(rs, n = -1, ...) : 
-  corrupt resultSet, missing fieldDescription
-Calls: dbWriteTable ... dbGetQuery -> dbGetQuery -> dbFetch -> dbFetch -> .Call
-Execution halted
-
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  8: dbGetQuery(conn, sql) at /home/muelleki/git/R/DBI/R/DBConnection.R:129
-  9: dbFetch(rs, n = -1, ...) at /home/muelleki/git/R/DBI/R/DBConnection.R:138
-  10: dbFetch(rs, n = -1, ...)
+         .Internal(.dfltWarn(message, call))
+     }, muffleWarning = function() NULL)
+  15: withOneRestart(expr, restarts[[1L]])
   
   testthat results ================================================================
   OK: 0 SKIPPED: 0 FAILED: 4
@@ -316,9 +293,9 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Mar 29, 2016 3:29:25 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 3:29:25 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
@@ -339,15 +316,15 @@ checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Mar 29, 2016 3:29:28 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 29, 2016 6:13:18 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Mar 29, 2016 3:29:28 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:18 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 3:29:29 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 3:29:29 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 3:29:30 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 29, 2016 6:13:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
