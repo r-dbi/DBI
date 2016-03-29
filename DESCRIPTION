@@ -6,8 +6,11 @@ Description: A database interface (DBI) definition for communication
     between R and relational database management systems.  All
     classes in this package are virtual and need to be extended by
     the various R/DBMS implementations.
-Author: R Special Interest Group on Databases (R-SIG-DB)
-Maintainer: Hadley Wickham <hadley@rstudio.com>
+Authors@R: c(
+    person("R Special Interest Group on Databases (R-SIG-DB)", role = "cre"),
+    person("Hadley", "Wickham", role = "cre"),
+    person("Kirill", "Müller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre"))
+    )
 Depends:
     R (>= 2.15.0),
     methods
@@ -16,6 +19,7 @@ Suggests:
     RSQLite,
     knitr,
     covr
+Encoding: UTF-8
 License: LGPL (>= 2)
 URL: https://github.com/rstats-db/DBI
 BugReports: https://github.com/rstats-db/DBI/issues
