@@ -10,7 +10,7 @@
 |language |en_US:en                                    |
 |collate  |en_US.UTF-8                                 |
 |tz       |NA                                          |
-|date     |2016-03-29                                  |
+|date     |2016-03-30                                  |
 
 ## Packages
 
@@ -692,9 +692,9 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Mar 29, 2016 7:29:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:43 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 7:29:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:43 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
@@ -708,15 +708,15 @@ checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Mar 29, 2016 7:30:07 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 30, 2016 1:34:52 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Mar 29, 2016 7:30:07 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:53 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 7:30:08 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:53 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 7:30:10 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 7:30:10 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 30, 2016 1:34:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
