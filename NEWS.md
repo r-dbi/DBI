@@ -5,15 +5,11 @@
   `dbGetRowCount()`. This means that most drivers should no longer need to
   implement `dbGetInfo()` (which may be deprecated anyway at some point) (#55).
 
-* `dbiCheckCompliance()` has been removed, the functionality is now available
-  in the `DBItest` package (#80).
+* `dbDataType()` and `dbQuoteString()` are now properly exported.
 
-* The initial DBI proposal and DBI version 1 specification are now included as 
-  a vignette. These are there mostly for historical interest.
+* Default `dbGetQuery()` method now always calls `dbFetch()`.
 
-* Added default show methods for driver, connection and results.
-
-* Default `dbGetQuery()` method now always calls fetch.
+* New generic `dbBind()` for binding values to a parameterised query.
 
 * DBI gains a number of SQL generation functions. These make it easier to 
   write backends by implementing common operations that are slightly
@@ -35,8 +31,11 @@
       frame suitable for sending to the database. This is used to (e.g.) 
       ensure all character vectors are encoded as UTF-8, or to convert
       R varible types (like factor) to types supported by the database.
-      
-* New generic `dbBind()` for binding values to a parameterised query.
+
+* `dbiCheckCompliance()` has been removed, the functionality is now available
+  in the `DBItest` package (#80).
+
+* Added default `show()` methods for driver, connection and results.
 
 * New concrete `ANSIConnection` class and `ANSI()` function to generate a dummy
   ANSI compliant connection useful for testing.
@@ -44,6 +43,9 @@
 * Default `dbQuoteString()` and `dbQuoteIdentifer()` methods now use 
   `encodeString()` so that special characters like `\n` are correctly escaped.
   `dbQuoteString()` converts `NA` to (unquoted) NULL.
+
+* The initial DBI proposal and DBI version 1 specification are now included as 
+  a vignette. These are there mostly for historical interest.
 
 # Version 0.3.1
 
