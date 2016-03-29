@@ -20,6 +20,9 @@
       implementations of `dbWriteTable()`. `sqlAppendTable()` is useful
       for databases that support parameterised queries.
       
+    * `rownamesToColumn()` and `columnToRownames()` provide a standard
+      way of translating row names to and from the database.
+      
     * `sqlInterpolate()` and `sqlParseVariables()` allows databases without
       native parameterised queries to use parameterised queries to avoid
       SQL injection attacks.
@@ -29,9 +32,6 @@
       ensure all character vectors are encoded as UTF-8, or to convert
       R varible types (like factor) to types supported by the database.
 
-    * Use `tibble::column_to_rownames()` and `tibble::rownames_to_column()`
-      to translate between row names and an explicit column.
-      
 * `dbiCheckCompliance()` has been removed, the functionality is now available
   in the `DBItest` package (#80).
 
