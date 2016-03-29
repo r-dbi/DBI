@@ -135,7 +135,14 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
 
-    df <- dbFetch(rs, n = -1, ...)
+    df <- tryCatch(
+      dbFetch(rs, n = -1, ...),
+      error = function(e) {
+        warning(conditionMessage(e), call. = conditionCall(e))
+        NULL
+      }
+    )
+
     if (!dbHasCompleted(rs)) {
       warning("Pending rows", call. = FALSE)
     }
