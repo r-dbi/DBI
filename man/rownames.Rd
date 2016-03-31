@@ -33,14 +33,14 @@ will have those automatically set as row names.
 }
 \examples{
 # If have row names
-rownamesToColumn(head(mtcars))
-rownamesToColumn(head(mtcars), FALSE)
-rownamesToColumn(head(mtcars), "ROWNAMES")
+sqlRownamesToColumn(head(mtcars))
+sqlRownamesToColumn(head(mtcars), FALSE)
+sqlRownamesToColumn(head(mtcars), "ROWNAMES")
 
 # If don't have
-rownamesToColumn(head(iris))
-rownamesToColumn(head(iris), TRUE)
-rownamesToColumn(head(iris), "ROWNAMES")
+sqlRownamesToColumn(head(iris))
+sqlRownamesToColumn(head(iris), TRUE)
+sqlRownamesToColumn(head(iris), "ROWNAMES")
 
 }
 
