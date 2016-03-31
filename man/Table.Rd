@@ -28,8 +28,6 @@ For more on these concepts, see
 Refer to a table nested in a hierarchy (e.g. within a schema)
 }
 \examples{
-x <- Table("a", "b")
-x
 dbQuoteIdentifier(ANSI(), x)
 }
 
