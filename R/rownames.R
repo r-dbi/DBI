@@ -20,20 +20,20 @@
 #' @name rownames
 #' @examples
 #' # If have row names
-#' rownamesToColumn(head(mtcars))
-#' rownamesToColumn(head(mtcars), FALSE)
-#' rownamesToColumn(head(mtcars), "ROWNAMES")
+#' sqlRownamesToColumn(head(mtcars))
+#' sqlRownamesToColumn(head(mtcars), FALSE)
+#' sqlRownamesToColumn(head(mtcars), "ROWNAMES")
 #'
 #' # If don't have
-#' rownamesToColumn(head(iris))
-#' rownamesToColumn(head(iris), TRUE)
-#' rownamesToColumn(head(iris), "ROWNAMES")
+#' sqlRownamesToColumn(head(iris))
+#' sqlRownamesToColumn(head(iris), TRUE)
+#' sqlRownamesToColumn(head(iris), "ROWNAMES")
 #'
 NULL
 
 #' @export
 #' @rdname rownames
-rownamesToColumn <- function(df, row.names = NA) {
+sqlRownamesToColumn <- function(df, row.names = NA) {
   name <- guessRowName(df, row.names)
   if (is.null(name)) {
     rownames(df) <- NULL
@@ -51,7 +51,7 @@ rownamesToColumn <- function(df, row.names = NA) {
 
 #' @export
 #' @rdname rownames
-columnToRownames <- function(df, row.names = NA) {
+sqlColumnToRownames <- function(df, row.names = NA) {
   name <- guessColName(df, row.names)
   if (is.null(name)) return(df)
 
