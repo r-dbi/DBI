@@ -20,7 +20,7 @@
       implementations of `dbWriteTable()`. `sqlAppendTable()` is useful
       for databases that support parameterised queries.
       
-    * `rownamesToColumn()` and `columnToRownames()` provide a standard
+    * `sqlRownamesToColumn()` and `sqlColumnToRownames()` provide a standard
       way of translating row names to and from the database.
       
     * `sqlInterpolate()` and `sqlParseVariables()` allows databases without
