@@ -10,8 +10,6 @@ setClass("Table", slots = list(name = "character"))
 #' @param conn,x Connection and Table used when escaping.
 #' @param object Table object to print
 #' @examples
-#' x <- Table("a", "b")
-#' x
 #' dbQuoteIdentifier(ANSI(), x)
 Table <- function(...) {
   new("Table", name = c(...))
