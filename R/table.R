@@ -9,8 +9,6 @@ setClass("Table", slots = list(name = "character"))
 #'   \url{http://stackoverflow.com/questions/7022755/}
 #' @param conn,x Connection and Table used when escaping.
 #' @param object Table object to print
-#' @examples
-#' dbQuoteIdentifier(ANSI(), x)
 Table <- function(...) {
   new("Table", name = c(...))
 }
