@@ -55,7 +55,7 @@ setMethod("sqlAppendTable", "DBIConnection",
 sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ...) {
   table <- dbQuoteIdentifier(con, table)
 
-  values <- rownamesToColumn(values[0, , drop = FALSE], row.names)
+  values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)
   fields <- dbQuoteIdentifier(con, names(values))
 
   # Convert fields into a character matrix

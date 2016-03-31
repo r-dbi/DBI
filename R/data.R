@@ -24,7 +24,7 @@ setGeneric("sqlData", function(con, value, row.names = NA, ...) {
 #' @rdname sqlData
 #' @export
 setMethod("sqlData", "DBIConnection", function(con, value, row.names = NA, ...) {
-  value <- rownamesToColumn(value, row.names)
+  value <- sqlRownamesToColumn(value, row.names)
 
   # Convert factors to strings
   is_factor <- vapply(value, is.factor, logical(1))

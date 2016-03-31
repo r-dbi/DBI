@@ -42,7 +42,7 @@ setMethod("sqlCreateTable", "DBIConnection",
     table <- dbQuoteIdentifier(con, table)
 
     if (is.data.frame(fields)) {
-      fields <- rownamesToColumn(fields, row.names)
+      fields <- sqlRownamesToColumn(fields, row.names)
       fields <- vapply(fields, function(x) DBI::dbDataType(con, x), character(1))
     }
 
