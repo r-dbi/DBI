@@ -10,14 +10,14 @@
 |language |en_US:en                                    |
 |collate  |en_US.UTF-8                                 |
 |tz       |NA                                          |
-|date     |2016-03-29                                  |
+|date     |2016-04-18                                  |
 
 ## Packages
 
-|package  |*  |version |date       |source         |
-|:--------|:--|:-------|:----------|:--------------|
-|DBI      |   |0.3.1   |2016-03-29 |local (NA/NA)  |
-|testthat |   |0.11.0  |2015-10-14 |CRAN (R 3.2.3) |
+|package  |*  |version |date       |source                |
+|:--------|:--|:-------|:----------|:---------------------|
+|DBI      |   |0.3.1   |2016-04-18 |local (rstats-db/DBI) |
+|testthat |   |1.0.0   |2016-04-14 |CRAN (R 3.2.4)        |
 
 # Check results
 61 packages
@@ -202,11 +202,11 @@ Error: processing vignette 'databases.Rmd' failed with diagnostics:
 RS-DBI driver: (could not connect muelleki@local on dbname "nycflights13"
 )
 Execution halted
-Auto-disconnecting postgres connection (962, 0)
+Auto-disconnecting postgres connection (15691, 0)
 
 ```
 
-## emuR (0.1.6)
+## emuR (0.1.7)
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
 Bug reports: https://github.com/IPS-LMU/emuR/issues
 
@@ -288,7 +288,26 @@ Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>
 Bug reports: https://github.com/dankelley/oce/issues?
         sort=created&direction=desc&state=open
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  `cs` not equal to `cs2`.
+  Component "longitude": names for current but not for target
+  Component "latitude": names for current but not for target
+  
+  
+  testthat results ================================================================
+  OK: 538 SKIPPED: 1 FAILED: 1
+  1. Failure: lonlat2map() near Cape Split (@test_map.R#62) 
+  
+  Error: testthat unit tests failed
+  In addition: Warning message:
+  Deprecated: please use `expect_lt()` instead 
+  Execution halted
+```
 
 ## ODB (1.1.1)
 Maintainer: Sylvain Mareschal <maressyl@gmail.com>
@@ -358,9 +377,26 @@ join,Database : .local: no visible binding for global variable
 Maintainer: Kirill Mueller <krlmlr+r@mailbox.org>  
 Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
 
-0 errors | 0 warnings | 1 note 
+1 error  | 0 warnings | 1 note 
 
 ```
+checking tests ... ERROR
+Running the tests in ‘tests/run-all.R’ failed.
+Last 13 lines of output:
+  
+  
+  testthat results ================================================================
+  OK: 307 SKIPPED: 0 FAILED: 6
+  1. Error: All elements have length 1 (@test-load.R#4) 
+  2. Failure: Test full project into existing directory (@test-overwrite.R#5) 
+  3. Error: Test full project into existing directory (@test-overwrite.R#9) 
+  4. Failure: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#45) 
+  5. Error: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#53) 
+  6. Failure: Test failure creating project into existing directory with an unrelated entry if merge.existing is not set (@test-overwrite.R#75) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
 checking DESCRIPTION meta-information ... NOTE
 Malformed Title field: should not end in a period.
 ```
@@ -413,7 +449,7 @@ Bug reports: https://github.com/rstats-db/rmysql/issues
 
 0 errors | 0 warnings | 0 notes
 
-## RObsDat (15.08)
+## RObsDat (16.03)
 Maintainer: Dominik Reusser <reusser@pik-potsdam.de>
 
 0 errors | 0 warnings | 1 note 
@@ -467,30 +503,11 @@ Rd file 'postgresqlSupport.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## RPresto (1.2.0)
+## RPresto (1.2.1)
 Maintainer: Onur Ismail Filiz <onur@fb.com>  
 Bug reports: https://github.com/prestodb/RPresto/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  Component "<odd_name>": 1 string mismatch
-  
-  testthat results ================================================================
-  OK: 203 SKIPPED: 24 FAILED: 5
-  1. Failure (at test-dbFetch.R#211): dbFetch rbind works correctly 
-  2. Failure (at test-dbFetch.R#260): dbFetch rbind works with zero row chunks 
-  3. Failure (at test-extract.data.R#67): extract.data works 
-  4. Failure (at test-json_tabular_to_data_frame.R#129): regular data is converted correctly 
-  5. Failure (at test-json_tabular_to_data_frame.R#163): regular data is converted correctly 
-  
-  Error: testthat unit tests failed
-  In addition: There were 22 warnings (use warnings() to see them)
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## RQDA (0.2-7)
 Maintainer: HUANG Ronggui <ronggui.huang@gmail.com>
@@ -583,7 +600,38 @@ checking dependencies in R code ... NOTE
 ## storr (1.0.0)
 Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 1 note 
+
+```
+checking examples ... ERROR
+Running examples in ‘storr-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: test_driver
+> ### Title: Test a storr driver
+> ### Aliases: test_driver
+> 
+> ### ** Examples
+> 
+> ## Testing the environment driver is nice and fast:
+> if (requireNamespace("testthat")) {
++   test_driver(function() driver_environment())
++ }
+Loading required namespace: testthat
+Error in test_driver(function() driver_environment()) : 
+  attempt to apply non-function
+Execution halted
+
+checking re-building of vignette outputs ... NOTE
+Error in re-building vignettes:
+  ...
+Quitting from lines 419-420 (drivers.Rmd) 
+Error: processing vignette 'drivers.Rmd' failed with diagnostics:
+attempt to apply non-function
+Execution halted
+
+```
 
 ## stream (1.2-2)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
@@ -619,9 +667,9 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Mar 29, 2016 10:46:30 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 10:46:30 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
@@ -635,15 +683,15 @@ checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Apr 18, 2016 3:28:19 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 10:46:35 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 29, 2016 10:46:36 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:19 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Mar 29, 2016 10:46:36 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 18, 2016 3:28:20 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
