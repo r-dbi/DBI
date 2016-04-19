@@ -1,36 +1,36 @@
 #' Make R identifiers into legal SQL identifiers.
-#' 
+#'
 #' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
 #' (or possibly \code{\link{dbQuoteString}}) instead.
-#' 
+#'
 #' The algorithm in \code{make.db.names} first invokes \code{make.names} and
 #' then replaces each occurrence of a dot ``.'' by an underscore ``\_''.  If
 #' \code{allow.keywords} is \code{FALSE} and identifiers collide with SQL
 #' keywords, a small integer is appended to the identifier in the form of
 #' \code{"_n"}.
-#' 
+#'
 #' The set of SQL keywords is stored in the character vector
 #' \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
 #' in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 #' override or update this vector.
-#' 
-#' @section Bugs: 
+#'
+#' @section Bugs:
 #' The current mapping is not guaranteed to be fully reversible: some SQL
 #' identifiers that get mapped into R identifiers with \code{make.names} and
 #' then back to SQL with \code{\link{make.db.names}} will not be equal to the
 #' original SQL identifiers (e.g., compound SQL identifiers of the form
 #' \code{username.tablename} will loose the dot ``.'').
-#' 
-#' @references The set of SQL keywords is stored in the character vector 
-#'   \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented 
-#'   in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily 
+#'
+#' @references The set of SQL keywords is stored in the character vector
+#'   \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
+#'   in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 #'   override or update this vector.
-#' @aliases 
-#'    make.db.names 
-#'    make.db.names,DBIObject,character-method 
+#' @aliases
+#'    make.db.names
+#'    make.db.names,DBIObject,character-method
 #'    SQLKeywords
-#'    SQLKeywords,DBIObject-method 
-#'    SQLKeywords,missing-method 
+#'    SQLKeywords,DBIObject-method
+#'    SQLKeywords,missing-method
 #'    isSQLKeyword
 #'    isSQLKeyword,DBIObject,character-method
 #' @param dbObj any DBI object (e.g., \code{DBIDriver}).
@@ -51,10 +51,10 @@
 #' @param \dots any other argument are passed to the driver implementation.
 #' @return \code{make.db.names} returns a character vector of legal SQL
 #'   identifiers corresponding to its \code{snames} argument.
-#' 
+#'
 #'   \code{SQLKeywords} returns a character vector of all known keywords for the
 #'   database-engine associated with \code{dbObj}.
-#' 
+#'
 #'   \code{isSQLKeyword} returns a logical vector parallel to \code{name}.
 #' @export
 setGeneric("make.db.names", signature = c("dbObj", "snames"),
@@ -76,7 +76,7 @@ setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
 
 #' @rdname make.db.names
 #' @export
-make.db.names.default <- function(snames, keywords = .SQL92Keywords, 
+make.db.names.default <- function(snames, keywords = .SQL92Keywords,
                                   unique = TRUE, allow.keywords = TRUE) {
   makeUnique <- function(x, sep = "_") {
     if(length(x)==0) return(x)
@@ -119,7 +119,7 @@ setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
 
 #' @rdname make.db.names
 #' @export
-isSQLKeyword.default <- function(name, keywords = .SQL92Keywords, 
+isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
                                  case = c("lower", "upper", "any")[3]) {
   n <- pmatch(case, c("lower", "upper", "any"), nomatch=0)
   if(n==0)
@@ -152,8 +152,8 @@ setMethod("SQLKeywords", "missing",
   valueClass = "character"
 )
 #' @export
-.SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY", 
-  "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN", 
+.SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
+  "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN",
   "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST",
   "CATALOG", "CHAR", "CHARACTER", "CHARACTER_LENGTH", "CHAR_LENGTH",
   "CHECK", "CLOSE", "COALESCE", "COLLATE", "COLLATION", "COLUMN",
@@ -186,4 +186,67 @@ setMethod("SQLKeywords", "missing",
   "USAGE", "USER", "USING", "VALUE", "VALUES", "VARCHAR", "VARYING",
   "VIEW", "WHEN", "WHENEVER", "WHERE", "WITH", "WORK", "WRITE", "YEAR",
   "ZONE"
+)
+
+
+#' Call an SQL stored procedure
+#'
+#' DEPRECATED
+#'
+#' @inheritParams dbDisconnect
+#' @keywords internal
+#' @export
+setGeneric("dbCallProc",
+  def = function(conn, ...) {
+    .Deprecated()
+    standardGeneric("dbCallProc")
+  },
+  valueClass = "logical"
+)
+
+#' Determine the current version of the package.
+#'
+#' @export
+#' @keywords internal
+dbGetDBIVersion <- function() {
+  .Deprecated("packageVersion('DBI')")
+  packageVersion("DBI")
+}
+
+#' Call an SQL stored procedure
+#'
+#' DEPRECATED
+#'
+#' @inheritParams dbDisconnect
+#' @keywords internal
+#' @export
+setGeneric("dbCallProc",
+  def = function(conn, ...) {
+    .Deprecated()
+    standardGeneric("dbCallProc")
+  },
+  valueClass = "logical"
+)
+
+#' Set data mappings between an DBMS and R.
+#'
+#' This generic is deprecated since no working implementation was ever produced.
+#'
+#' Sets one or more conversion functions to handle the translation of DBMS data
+#' types to R objects.  This is only needed for non-primitive data, since all
+#' DBI drivers handle the common base types (integers, numeric, strings, etc.)
+#'
+#' The details on conversion functions (e.g., arguments, whether they can invoke
+#' initializers and/or destructors) have not been specified.
+#'
+#' @inheritParams dbClearResult
+#' @keywords internal
+#' @param flds a field description object as returned by \code{dbColumnInfo}.
+#' @export
+setGeneric("dbSetDataMappings",
+  def = function(res, flds, ...) {
+    .Deprecated()
+    standardGeneric("dbSetDataMappings")
+  },
+  valueClass = "logical"
 )

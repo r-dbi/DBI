@@ -1,3 +1,64 @@
+# DBI 0.3.1.9009 (2016-04-19)
+
+* New package maintainer: Kirill Müller.
+
+* `dbGetInfo()` gains a default method that extracts the information from
+  `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
+  `dbGetRowCount()`. This means that most drivers should no longer need to
+  implement `dbGetInfo()` (which may be deprecated anyway at some point) (#55).
+
+* `dbDataType()` and `dbQuoteString()` are now properly exported.
+
+* Default `dbGetQuery()` method now always calls `dbFetch()`, in a `tryCatch()`
+  block.
+
+* New generic `dbBind()` for binding values to a parameterised query.
+
+* DBI gains a number of SQL generation functions. These make it easier to 
+  write backends by implementing common operations that are slightly
+  tricky to do absolutely correctly. 
+  
+    * `sqlCreateTable()` and `sqlAppendTable()` create tables from a data
+      frame and insert rows into an existing table. These will power most
+      implementations of `dbWriteTable()`. `sqlAppendTable()` is useful
+      for databases that support parameterised queries.
+      
+    * `sqlRownamesToColumn()` and `sqlColumnToRownames()` provide a standard
+      way of translating row names to and from the database.
+      
+    * `sqlInterpolate()` and `sqlParseVariables()` allows databases without
+      native parameterised queries to use parameterised queries to avoid
+      SQL injection attacks.
+      
+    * `sqlData()` is a new generic that converts a data frame into a data
+      frame suitable for sending to the database. This is used to (e.g.) 
+      ensure all character vectors are encoded as UTF-8, or to convert
+      R varible types (like factor) to types supported by the database.
+
+    * The `sqlParseVariablesImpl()` is now implemented purely in R, with full
+      test coverage (#83, @hannesmuehleisen).
+
+* `dbiCheckCompliance()` has been removed, the functionality is now available
+  in the `DBItest` package (#80).
+
+* Added default `show()` methods for driver, connection and results.
+
+* New concrete `ANSIConnection` class and `ANSI()` function to generate a dummy
+  ANSI compliant connection useful for testing.
+
+* Default `dbQuoteString()` and `dbQuoteIdentifer()` methods now use 
+  `encodeString()` so that special characters like `\n` are correctly escaped.
+  `dbQuoteString()` converts `NA` to (unquoted) NULL.
+
+* The initial DBI proposal and DBI version 1 specification are now included as 
+  a vignette. These are there mostly for historical interest.
+
+* The new `DBItest` package is described in the vignette.
+
+* Removed unused `dbi_dep()` and `print.list.names()`.
+
+
+
 # Version 0.3.1
 
 * Actually export `dbIsValid()` :/
