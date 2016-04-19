@@ -1,4 +1,6 @@
-# Version 0.3.X
+# DBI 0.3.1.9009 (2016-04-19)
+
+* New package maintainer: Kirill Müller.
 
 * `dbGetInfo()` gains a default method that extracts the information from
   `dbGetStatement()`, `dbGetRowsAffected()`, `dbHasCompleted()`, and 
@@ -7,7 +9,8 @@
 
 * `dbDataType()` and `dbQuoteString()` are now properly exported.
 
-* Default `dbGetQuery()` method now always calls `dbFetch()`.
+* Default `dbGetQuery()` method now always calls `dbFetch()`, in a `tryCatch()`
+  block.
 
 * New generic `dbBind()` for binding values to a parameterised query.
 
@@ -32,6 +35,9 @@
       ensure all character vectors are encoded as UTF-8, or to convert
       R varible types (like factor) to types supported by the database.
 
+    * The `sqlParseVariablesImpl()` is now implemented purely in R, with full
+      test coverage (#83, @hannesmuehleisen).
+
 * `dbiCheckCompliance()` has been removed, the functionality is now available
   in the `DBItest` package (#80).
 
@@ -46,6 +52,12 @@
 
 * The initial DBI proposal and DBI version 1 specification are now included as 
   a vignette. These are there mostly for historical interest.
+
+* The new `DBItest` package is described in the vignette.
+
+* Removed unused `dbi_dep()` and `print.list.names()`.
+
+
 
 # Version 0.3.1
 
