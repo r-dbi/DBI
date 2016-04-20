@@ -3,13 +3,12 @@
 \docType{methods}
 \name{dbDataType}
 \alias{dbDataType}
-\alias{dbDataType,DBIObject,ANY-method}
 \alias{dbDataType,DBIObject-method}
 \title{Determine the SQL data type of an object.}
 \usage{
 dbDataType(dbObj, obj, ...)
 
-\S4method{dbDataType}{DBIObject,ANY}(dbObj, obj, ...)
+\S4method{dbDataType}{DBIObject}(dbObj, obj, ...)
 }
 \arguments{
 \item{dbObj}{A object inheriting from \code{\linkS4class{DBIDriver}}}
