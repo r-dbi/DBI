@@ -38,7 +38,7 @@ setGeneric("sqlCreateTable", function(con, table, fields, row.names = NA,
 #' @export
 #' @rdname sqlCreateTable
 setMethod("sqlCreateTable", "DBIConnection",
-  function(con, table, fields, row.names = NA, temporary = FALSE...) {
+  function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
     table <- dbQuoteIdentifier(con, table)
 
     if (is.data.frame(fields)) {

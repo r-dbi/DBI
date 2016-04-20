@@ -55,7 +55,9 @@
 
 * The new `DBItest` package is described in the vignette.
 
-* Removed unused `dbi_dep()` and `print.list.names()`.
+* Deprecated `print.list.pairs()`.
+
+* Removed unused `dbi_dep()`.
 
 
 
