@@ -9,7 +9,7 @@
 sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 
 \S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
-  temporary = FALSE...)
+  temporary = FALSE, ...)
 }
 \arguments{
 \item{con}{A database connection.}
