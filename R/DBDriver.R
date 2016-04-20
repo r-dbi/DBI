@@ -205,18 +205,3 @@ setGeneric("dbDataType",
 setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
   dbiDataType(obj)
 })
-setGeneric("dbiDataType", function(x) standardGeneric("dbiDataType"))
-setMethod("dbiDataType", "data.frame", function(x) {
-  vapply(x, dbiDataType, FUN.VALUE = character(1), USE.NAMES = FALSE)
-})
-setMethod("dbiDataType", "integer",  function(x) "int")
-setMethod("dbiDataType", "numeric",  function(x) "double")
-setMethod("dbiDataType", "logical",  function(x) "smallint")
-setMethod("dbiDataType", "Date",     function(x) "date")
-setMethod("dbiDataType", "POSIXct",  function(x) "timestamp")
-varchar <- function(x) {
-  paste0("varchar(", max(nchar(as.character(x))), ")")
-}
-setMethod("dbiDataType", "character", varchar)
-setMethod("dbiDataType", "factor",    varchar)
-

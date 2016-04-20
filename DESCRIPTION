@@ -29,6 +29,7 @@ Collate:
     'DBConnection.R'
     'ANSI.R'
     'DBResult.R'
+    'data-types.R'
     'data.R'
     'deprecated.R'
     'interpolate.R'
