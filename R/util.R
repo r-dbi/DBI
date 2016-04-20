@@ -11,7 +11,7 @@
 #' @examples
 #' print.list.pairs(list(a = 1, b = 2))
 print.list.pairs <- function(x, ...) {
-  warning("print.list.pairs is deprecated and will be removed.", call. = FALSE)
+  .Deprecated()
   print_list_pairs(x, ...)
 }
 
