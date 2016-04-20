@@ -15,7 +15,8 @@
 the (invisible) value of x.
 }
 \description{
-Print a list of pairs.
+DEPRECATED, do not use. Use \code{\link[base]{summary}} to print output of
+\code{\link{dbGetInfo}}.
 }
 \examples{
 print.list.pairs(list(a = 1, b = 2))

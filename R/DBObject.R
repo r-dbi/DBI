@@ -91,6 +91,6 @@ setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {
   info <- dbGetInfo(dbObj = object, ...)
   cat(class(object), "\n")
-  print.list.pairs(info)
+  print_list_pairs(info)
   invisible(info)
 })
