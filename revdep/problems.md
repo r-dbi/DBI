@@ -259,9 +259,9 @@ checking running R code from vignettes ... ERROR
 Errors in running code in vignettes:
 when running code in ‘Guide.Stex’
   ...
-Apr 20, 2016 11:50:31 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:34 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Apr 20, 2016 11:50:31 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:34 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
@@ -275,15 +275,15 @@ checking re-building of vignette outputs ... NOTE
 Error in re-building vignettes:
   ...
 Loading required package: TSdbi
-Apr 20, 2016 11:50:41 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Apr 20, 2016 9:55:43 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Apr 20, 2016 11:50:41 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:43 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Apr 20, 2016 11:50:42 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:44 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Apr 20, 2016 11:50:42 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:45 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Apr 20, 2016 11:50:42 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Apr 20, 2016 9:55:45 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
 
