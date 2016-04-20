@@ -5,12 +5,12 @@ data_frame_data_type <- function(x) {
 }
 
 varchar_data_type <- function(x) {
-  paste0("varchar(", max(nchar(as.character(x))), ")")
+  paste0("VARCHAR(", max(nchar(as.character(x))), ")")
 }
 
 list_data_type <- function(x) {
   check_raw_list(x)
-  "blob"
+  "BLOB"
 }
 
 check_raw_list <- function(x) {
@@ -28,12 +28,12 @@ setOldClass("difftime")
 setOldClass("AsIs")
 
 setMethod("dbiDataType", "data.frame", data_frame_data_type)
-setMethod("dbiDataType", "integer",    function(x) "int")
-setMethod("dbiDataType", "numeric",    function(x) "double")
-setMethod("dbiDataType", "logical",    function(x) "smallint")
-setMethod("dbiDataType", "Date",       function(x) "date")
-setMethod("dbiDataType", "difftime",   function(x) "time")
-setMethod("dbiDataType", "POSIXct",    function(x) "timestamp")
+setMethod("dbiDataType", "integer",    function(x) "INT")
+setMethod("dbiDataType", "numeric",    function(x) "DOUBLE")
+setMethod("dbiDataType", "logical",    function(x) "SMALLINT")
+setMethod("dbiDataType", "Date",       function(x) "DATE")
+setMethod("dbiDataType", "difftime",   function(x) "TIME")
+setMethod("dbiDataType", "POSIXct",    function(x) "TIMESTAMP")
 setMethod("dbiDataType", "character",  varchar_data_type)
 setMethod("dbiDataType", "factor",     varchar_data_type)
 setMethod("dbiDataType", "list",       list_data_type)
