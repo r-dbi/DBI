@@ -8,8 +8,6 @@
 #' @return the (invisible) value of x.
 #' @keywords internal
 #' @export print.list.pairs
-#' @examples
-#' print.list.pairs(list(a = 1, b = 2))
 print.list.pairs <- function(x, ...) {
   .Deprecated()
   print_list_pairs(x, ...)
