@@ -38,5 +38,6 @@ Collate:
     'table-insert.R'
     'table.R'
     'transactions.R'
+    'util.R'
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
