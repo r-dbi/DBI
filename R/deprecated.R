@@ -210,7 +210,7 @@ setGeneric("dbCallProc",
 #' @keywords internal
 dbGetDBIVersion <- function() {
   .Deprecated("packageVersion('DBI')")
-  packageVersion("DBI")
+  utils::packageVersion("DBI")
 }
 
 #' Call an SQL stored procedure
