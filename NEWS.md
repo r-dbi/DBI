@@ -1,3 +1,11 @@
+# DBI 0.3.1.9010 (2016-04-30)
+
+- The default implementation for `dbDataType()` (powered by `dbiDataType()`) now also supports `difftime` and `AsIs` objects and lists of `raw` (#70).
+- The `ANSI` dummy driver does not provide its own implementation of `dbDataType()` anymore, this removes the necessity to update many downstream packages.
+- Fix CRAN check.
+- Fix inteface for `sqlCreateTable()`.
+
+
 # DBI 0.3.1.9009 (2016-04-19)
 
 * New package maintainer: Kirill Müller.
