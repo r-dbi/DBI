@@ -3,33 +3,12 @@
 \docType{methods}
 \name{ANSI}
 \alias{ANSI}
-\alias{dbDataType,AnsiConnection,Date-method}
-\alias{dbDataType,AnsiConnection,POSIXct-method}
-\alias{dbDataType,AnsiConnection,character-method}
-\alias{dbDataType,AnsiConnection,factor-method}
-\alias{dbDataType,AnsiConnection,integer-method}
-\alias{dbDataType,AnsiConnection,logical-method}
-\alias{dbDataType,AnsiConnection,numeric-method}
 \alias{show,AnsiConnection-method}
 \title{A dummy DBI connector that simulates ANSI-SQL compliance}
 \usage{
 ANSI()
 
 \S4method{show}{AnsiConnection}(object)
-
-\S4method{dbDataType}{AnsiConnection,integer}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,numeric}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,logical}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,Date}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,POSIXct}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,character}(dbObj, obj, ...)
-
-\S4method{dbDataType}{AnsiConnection,factor}(dbObj, obj, ...)
 }
 \description{
 A dummy DBI connector that simulates ANSI-SQL compliance
