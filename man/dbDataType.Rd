@@ -3,13 +3,12 @@
 \docType{methods}
 \name{dbDataType}
 \alias{dbDataType}
-\alias{dbDataType,DBIObject,ANY-method}
 \alias{dbDataType,DBIObject-method}
 \title{Determine the SQL data type of an object.}
 \usage{
 dbDataType(dbObj, obj, ...)
 
-\S4method{dbDataType}{DBIObject,ANY}(dbObj, obj, ...)
+\S4method{dbDataType}{DBIObject}(dbObj, obj, ...)
 }
 \arguments{
 \item{dbObj}{A object inheriting from \code{\linkS4class{DBIDriver}}}
@@ -40,11 +39,16 @@ problems with under/overflows and loss of precision.
 }
 \examples{
 dbDataType(ANSI(), 1:5)
-dbDataType(ANSI(), 1L)
+dbDataType(ANSI(), 1)
 dbDataType(ANSI(), TRUE)
+dbDataType(ANSI(), Sys.Date())
+dbDataType(ANSI(), Sys.time())
+dbDataType(ANSI(), Sys.time() - as.POSIXct(Sys.Date()))
 dbDataType(ANSI(), c("x", "abc"))
+dbDataType(ANSI(), list(raw(10), raw(20)))
+dbDataType(ANSI(), I(3))
 
-sapply(iris, dbDataType, dbObj = ANSI())
+dbDataType(ANSI(), iris)
 }
 \seealso{
 \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
