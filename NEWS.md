@@ -1,12 +1,4 @@
-# DBI 0.3.1.9010 (2016-04-30)
-
-- The default implementation for `dbDataType()` (powered by `dbiDataType()`) now also supports `difftime` and `AsIs` objects and lists of `raw` (#70).
-- The `ANSI` dummy driver does not provide its own implementation of `dbDataType()` anymore, this removes the necessity to update many downstream packages.
-- Fix CRAN check.
-- Fix inteface for `sqlCreateTable()`.
-
-
-# DBI 0.3.1.9009 (2016-04-19)
+# DBI 0.4 (2016-04-30)
 
 * New package maintainer: Kirill Müller.
 
@@ -16,6 +8,9 @@
   implement `dbGetInfo()` (which may be deprecated anyway at some point) (#55).
 
 * `dbDataType()` and `dbQuoteString()` are now properly exported.
+
+* The default implementation for `dbDataType()` (powered by `dbiDataType()`) now
+  also supports `difftime` and `AsIs` objects and lists of `raw` (#70).
 
 * Default `dbGetQuery()` method now always calls `dbFetch()`, in a `tryCatch()`
   block.
