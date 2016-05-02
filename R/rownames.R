@@ -40,7 +40,7 @@ sqlRownamesToColumn <- function(df, row.names = NA) {
     return(df)
   }
 
-  rn <- setNames(list(row.names(df)), name)
+  rn <- stats::setNames(list(row.names(df)), name)
 
   df <- c(rn, df)
   class(df) <- "data.frame"
