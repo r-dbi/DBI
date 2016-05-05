@@ -24,6 +24,13 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 #' @rdname DBIResult-class
 #' @export
 setMethod("show", "DBIResult", function(object) {
+  tryCatch(
+    show_result(object),
+    error = function(e) NULL)
+  invisible(object)
+})
+
+show_result <- function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
   if(!dbIsValid(object)){
     cat("EXPIRED\n")
@@ -34,8 +41,7 @@ setMethod("show", "DBIResult", function(object) {
     cat("  ROWS Fetched: ", dbGetRowCount(object), " [", done, "]\n", sep = "")
     cat("       Changed: ", dbGetRowsAffected(object), "\n", sep = "")
   }
-  invisible(NULL)
-})
+}
 
 #' Fetch records from a previously executed query.
 #'
