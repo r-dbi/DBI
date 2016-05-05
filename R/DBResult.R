@@ -154,7 +154,7 @@ setGeneric("dbGetStatement",
 
 
 #' Completion status
-#' 
+#'
 #' This method returns if the operation has completed.
 #'
 #' @inheritParams dbClearResult
@@ -185,7 +185,7 @@ setGeneric("dbGetRowsAffected",
 
 
 #' The number of rows fetched so far
-#' 
+#'
 #' This value is increased by calls to \code{\link{dbFetch}}. For a data
 #' modifying query, the return value is 0.
 #'
