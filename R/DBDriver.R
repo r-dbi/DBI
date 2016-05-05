@@ -64,8 +64,15 @@ setMethod("dbDriver", "character",
 #' @rdname DBIDriver-class
 #' @export
 setMethod("show", "DBIDriver", function(object) {
-  cat("<", is(object)[1], ">\n", sep = "")
+  tryCatch(
+    show_driver(object),
+    error = function(e) NULL)
+  invisible(object)
 })
+
+show_driver <- function(object) {
+  cat("<", is(object)[1], ">\n", sep = "")
+}
 
 findDriver <- function(drvName) {
   # If it exists in the global environment, use that
