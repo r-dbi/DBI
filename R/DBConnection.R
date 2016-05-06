@@ -27,10 +27,12 @@ setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 #' @rdname DBIConnection-class
 #' @export
 setMethod("show", "DBIConnection", function(object) {
+  # to protect drivers that fail to implement the required methods (e.g.,
+  # RPostgreSQL)
   tryCatch(
     show_connection(object),
     error = function(e) NULL)
-  invisible(object)
+  invisible(NULL)
 })
 
 show_connection <- function(object) {s

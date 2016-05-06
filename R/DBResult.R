@@ -24,10 +24,12 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 #' @rdname DBIResult-class
 #' @export
 setMethod("show", "DBIResult", function(object) {
+  # to protect drivers that fail to implement the required methods (e.g.,
+  # RPostgreSQL)
   tryCatch(
     show_result(object),
     error = function(e) NULL)
-  invisible(object)
+  invisible(NULL)
 })
 
 show_result <- function(object) {
