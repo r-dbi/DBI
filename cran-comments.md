@@ -22,4 +22,4 @@ Found the following apparent S3 methods exported but not registered:
 
 ## Reverse dependencies
 
-* I have run R CMD check on RPostgreSQL with `Sys.setenv("POSTGRES_USER" = "muelleki", "POSTGRES_HOST" = "/run/postgresql", "POSTGRES_DATABASE" = "muelleki")` to run the tests against a database, this now succeeds. The change to 0.4 should not affect other packages.
+* I have run R CMD check on RPostgreSQL with `Sys.setenv("POSTGRES_USER" = "muelleki", "POSTGRES_HOST" = "/run/postgresql", "POSTGRES_DATABASE" = "muelleki")` to run the tests against a database, this now succeeds. The difference to the released version 0.4 is minor and should not affect other packages.
