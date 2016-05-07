@@ -1,7 +1,7 @@
 Follow-up release because R CMD check now fails for RPostgreSQL. An update to RMySQL will be released to address the regressions in that package.
 
 ## Test environments
-* ubuntu 15.10 (local install), R 3.2.5
+* ubuntu 15.10 (local install), R 3.3.0
 * ubuntu 12.04 (on travis-ci), R devel, release, and oldrel
 * win-builder (release and devel)
 
