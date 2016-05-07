@@ -1,3 +1,8 @@
+# DBI 0.4-1 (2016-05-07)
+
+- The default `show()` implementations silently ignore all errors.  Some DBI drivers (e.g., RPostgreSQL) might fail to implement `dbIsValid()` or the other methods used.
+
+
 # DBI 0.4 (2016-04-30)
 
 * New package maintainer: Kirill Müller.
