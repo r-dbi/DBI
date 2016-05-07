@@ -35,7 +35,7 @@ setMethod("show", "DBIConnection", function(object) {
   invisible(NULL)
 })
 
-show_connection <- function(object) {s
+show_connection <- function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
   if (!dbIsValid(object)) {
     cat("  DISCONNECTED\n")
