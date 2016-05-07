@@ -8,10 +8,14 @@ Follow-up release because R CMD check now fails for RPostgreSQL. An update to RM
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 2 notes
+
+5 days since last update
 
 Found the following apparent S3 methods exported but not registered:
   print.list.pairs
+
+- Bugfix release to fix regression in RPostgreSQL
 
 - print.list.pairs() has been deprecated and will be removed soon.
 
