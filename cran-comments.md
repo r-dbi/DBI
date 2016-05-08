@@ -1,31 +1,25 @@
+Follow-up release because R CMD check now fails for RPostgreSQL. An update to RMySQL will be released to address the regressions in that package.
+
 ## Test environments
-* ubuntu 15.10 (local install), R 3.2.5
-* ubuntu 12.04 (on travis-ci), R 3.2.5
-* win-builder (devel)
+* ubuntu 15.10 (local install), R 3.3.0
+* ubuntu 12.04 (on travis-ci), R devel, release, and oldrel
+* win-builder (release and devel)
+
 
 ## R CMD check results
 
 0 errors | 0 warnings | 2 notes
 
-New maintainer:
-  Kirill Müller <krlmlr+r@mailbox.org>
-Old maintainer(s):
-  Hadley Wickham <hadley@rstudio.com>
-
+5 days since last update
 
 Found the following apparent S3 methods exported but not registered:
   print.list.pairs
 
-- Hadley agrees that I act as maintainer: https://github.com/rstats-db/DBI/commit/278f233c15ea629db8cc9ccd156d236d0a815cdd#commitcomment-16886895
+- Bugfix release to fix regression in RPostgreSQL
 
 - print.list.pairs() has been deprecated and will be removed soon.
 
 
 ## Reverse dependencies
 
-* I have run R CMD check on the 61 downstream dependencies.
-  (Summary at https://github.com/rstats-db/DBI/tree/0066ef1d03afc0c0caaf2436fa898755a2dba89f/revdep). 
-  
-* There were failures and packages I could not install. For those packages that I could install, the DBI changes only seemed to trigger a regression in RMySQL, which will be investigated.
-
-* All revdep maintainers were notified of the release on 2016-03-30.
+* I have run R CMD check on RPostgreSQL with `Sys.setenv("POSTGRES_USER" = "muelleki", "POSTGRES_HOST" = "/run/postgresql", "POSTGRES_DATABASE" = "muelleki")` to run the tests against a database, this now succeeds. The difference to the released version 0.4 is minor and should not affect other packages.

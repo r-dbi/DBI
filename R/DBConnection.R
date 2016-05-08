@@ -27,11 +27,20 @@ setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
 #' @rdname DBIConnection-class
 #' @export
 setMethod("show", "DBIConnection", function(object) {
+  # to protect drivers that fail to implement the required methods (e.g.,
+  # RPostgreSQL)
+  tryCatch(
+    show_connection(object),
+    error = function(e) NULL)
+  invisible(NULL)
+})
+
+show_connection <- function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
   if (!dbIsValid(object)) {
     cat("  DISCONNECTED\n")
   }
-})
+}
 
 #' Disconnect (close) a connection
 #'

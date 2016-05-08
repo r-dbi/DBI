@@ -24,6 +24,15 @@ setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
 #' @rdname DBIResult-class
 #' @export
 setMethod("show", "DBIResult", function(object) {
+  # to protect drivers that fail to implement the required methods (e.g.,
+  # RPostgreSQL)
+  tryCatch(
+    show_result(object),
+    error = function(e) NULL)
+  invisible(NULL)
+})
+
+show_result <- function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
   if(!dbIsValid(object)){
     cat("EXPIRED\n")
@@ -34,8 +43,7 @@ setMethod("show", "DBIResult", function(object) {
     cat("  ROWS Fetched: ", dbGetRowCount(object), " [", done, "]\n", sep = "")
     cat("       Changed: ", dbGetRowsAffected(object), "\n", sep = "")
   }
-  invisible(NULL)
-})
+}
 
 #' Fetch records from a previously executed query.
 #'
@@ -148,7 +156,7 @@ setGeneric("dbGetStatement",
 
 
 #' Completion status
-#' 
+#'
 #' This method returns if the operation has completed.
 #'
 #' @inheritParams dbClearResult
@@ -179,7 +187,7 @@ setGeneric("dbGetRowsAffected",
 
 
 #' The number of rows fetched so far
-#' 
+#'
 #' This value is increased by calls to \code{\link{dbFetch}}. For a data
 #' modifying query, the return value is 0.
 #'
