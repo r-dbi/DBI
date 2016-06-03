@@ -106,6 +106,132 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' Execute an SQL statement that does not produce a result set.
+#'
+#' This function should be used when you want to execute a non-
+#' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
+#' the query and return the number of rows affected by the operation.
+#' (If the return value is 0 or -1, you're using it wrong.)
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return The number of rows affected by the \code{statement}
+#' @aliases dbExecute,DBIConnection,character-method
+#' @family connection methods
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", head(cars, 3))
+#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbExecute(con, "INSERT INTO cars (speed, dist)
+#'                 VALUES (1, 1), (2, 2), (3, 3);")
+#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbDisconnect(con)
+setGeneric("dbExecute",
+  def = function(conn, statement, ...) standardGeneric("dbExecute")
+)
+
+#' @export
+setMethod("dbExecute", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbGetRowsAffected(rs)
+  }
+)
+
+#' Sentinel value to indicate the early termination of
+#' \code{\link{dbGetChunkedQuery}}
+#' @export
+dbBreak <- structure(list(), class = "dbi_break_sentinel")
+
+dbFetchChunked <- function(rs, n, callback) {
+  while (TRUE) {
+    chunk <- dbFetch(rs, n = n)
+    if (nrow(chunk) == 0) {
+      return(chunk)
+    }
+    result <- callback(chunk)
+    if (identical(result, dbBreak)) {
+      return(chunk)
+    }
+  }
+}
+
+#' Fetch data in chunks and access it with a callback
+#'
+#' This function allows you to fetch data in chunks of \code{n}
+#' rows at a time and acess that chunk using a callback. This is
+#' meant as a safer and more efficient alternative to
+#' \code{\link{dbSendQuery}}. On one hand, it does not keep the
+#' result set open, so you don't have to worry about
+#' \code{\link{dbClearResult}}. On the other hand, you never need
+#' to have all of the data on your machine at once (each chunk
+#' comes and goes), but you can still produce global results.
+#'
+#' For most use cases, you will want to actually loop through all
+#' of the data. But there are some cases for which this is not true
+#' (for example, if you just want to locate a particular row). In
+#' these situations, you can stop the function from continuing to
+#' execute once your terminating condition is met. To do so, use:
+#' \code{if (terminatingCondition) return(dbBreak)}. \code{dbBreak}
+#' is a sentinel value that \code{DBI} recognizes and knows how
+#' to interpret correctly.
+#'
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
+#'   \code{\link{dbConnect}}.
+#' @param statement A character vector of length 1 containing SQL.
+#' @param n The number of rows to fetch in each chunk.
+#' @param callback A callback function whose only argument must be
+#'  the (partial) result set returned by the \code{statement} (dataframe).
+#' @param ... Other parameters passed on to methods.
+#'
+#' @return The last chunk of data fetched.
+#'
+#' @aliases dbGetChunkedQuery,DBIConnection,character-method
+#' @family connection methods
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", cars)
+#'
+#' ## Want to loop through all chunks to produce a global result
+#' distSum <- 0
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT dist FROM cars", 10, function(df) {
+#'   distSum <<- distSum + sum(df$dist)
+#'   rowCount <<- rowCount + nrow(df)
+#' })
+#'
+#' (distAvg <- distSum / rowCount)
+#'
+#' ## Want to stop once we find the row we're looking for
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT * FROM cars", 1, function(df) {
+#'   rowCount <<- rowCount + nrow(df)
+#'   if (df$speed == 19 && df$dist == 46) {
+#'     print(paste("Your row is number", rowCount))
+#'     return(dbBreak)
+#'   }
+#' })
+#'
+#' dbDisconnect(con)
+setGeneric("dbGetChunkedQuery", function(conn, statement, n, callback, ...) {
+  standardGeneric("dbGetChunkedQuery")
+})
+
+#' @export
+setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
+  function(conn, statement, n, callback, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbFetchChunked(rs, n, callback)
+  }
+)
+
 #' Send query, retrieve results and then clear result set.
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
@@ -275,52 +401,5 @@ setGeneric("dbExistsTable",
 #' @export
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
-  valueClass = "logical"
-)
-
-#' Begin/commit/rollback SQL transactions
-#'
-#' Not all database engines implement transaction management, in which case
-#' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
-#'
-#' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
-#' back.
-#'
-#' @inheritParams dbDisconnect
-#' @return a logical indicating whether the operation succeeded or not.
-#' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if(dbGetInfo(rs, what = "rowsAffected") > 250){
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' }
-#' }
-#' @name transactions
-NULL
-
-#' @export
-#' @rdname transactions
-setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )
