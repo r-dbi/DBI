@@ -26,7 +26,7 @@ dbDisconnect(con)
 }
 }
 \seealso{
-Other connection methods: \code{\link{dbExecQuery}},
+Other connection methods: \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetChunkedQuery}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},

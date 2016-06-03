@@ -3,45 +3,77 @@
 \name{dbGetChunkedQuery}
 \alias{dbGetChunkedQuery}
 \alias{dbGetChunkedQuery,DBIConnection,character-method}
-\title{Use a callback to access the result of a query}
+\title{Fetch data in chunks and access it with a callback}
 \usage{
-dbGetChunkedQuery(conn, statement, callback, ...)
+dbGetChunkedQuery(conn, statement, n, callback, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
-\item{statement}{a character vector of length 1 containing SQL.}
+\item{statement}{A character vector of length 1 containing SQL.}
 
-\item{callback}{a callback function whose first argument must be
-the result set returned by the \code{statement}.}
+\item{n}{The number of rows to fetch in each chunk.}
+
+\item{callback}{A callback function whose only argument must be
+the (partial) result set returned by the \code{statement} (dataframe).}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-A function that accepts the same arguments as the
- \code{callback} (except the first one, which the result set).
+The last chunk of data fetched.
 }
 \description{
-This function allows you to get the result of a query according
-to a callback you specify. This is meant as a more efficient and
-more general alternative to \code{\link{dbSendQuery}}. On one
-hand, it does not keep the result set open, so you don't have to
-worry about \code{\link{dbClearResult}}. On the other hand, you
-can fetch the result according to your own liking, not only by
-fetching an x number of consecutive rows.
+This function allows you to fetch data in chunks of \code{n}
+rows at a time and acess that chunk using a callback. This is
+meant as a safer and more efficient alternative to
+\code{\link{dbSendQuery}}. On one hand, it does not keep the
+result set open, so you don't have to worry about
+\code{\link{dbClearResult}}. On the other hand, you never need
+to have all of the data on your machine at once (each chunk
+comes and goes), but you can still produce global results.
+}
+\details{
+For most use cases, you will want to actually loop through all
+of the data. But there are some cases for which this is not true
+(for example, if you just want to locate a particular row). In
+these situations, you can stop the function from continuing to
+execute once your terminating condition is met. To do so, use:
+\code{if (terminatingCondition) return(dbBreak)}. \code{dbBreak}
+is a sentinel value that \code{DBI} recognizes and knows how
+to interpret correctly.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbWriteTable(con, "cars", cars)
-res <- dbGetChunkedQuery(con, "SELECT * FROM cars", `[`)
-res(1:3,)   # get the first 3 rows
-res(15,)    # get the 15th row
+
+## Want to loop through all chunks to produce a global result
+distSum <- 0
+rowCount <- 0
+
+dbGetChunkedQuery(con, "SELECT dist FROM cars", 10, function(df) {
+  distSum <<- distSum + sum(df$dist)
+  rowCount <<- rowCount + nrow(df)
+})
+
+(distAvg <- distSum / rowCount)
+
+## Want to stop once we find the row we're looking for
+rowCount <- 0
+
+dbGetChunkedQuery(con, "SELECT * FROM cars", 1, function(df) {
+  rowCount <<- rowCount + nrow(df)
+  if (df$speed == 19 && df$dist == 46) {
+    print(paste("Your row is number", rowCount))
+    return(dbBreak)
+  }
+})
+
 dbDisconnect(con)
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExecQuery}}, \code{\link{dbExistsTable}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},

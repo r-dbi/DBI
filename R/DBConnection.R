@@ -106,100 +106,129 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
-#' Execute a non-select query
+#' Execute an SQL statement that does not produce a result set.
 #'
 #' This function should be used when you want to execute a non-
 #' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
 #' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
 #' the query and return the number of rows affected by the operation.
+#' (If the return value is 0 or -1, you're using it wrong.)
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
-#' @aliases dbExecQuery,DBIConnection,character-method
+#' @aliases dbExecute,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbWriteTable(con, "cars", head(cars, 3))
 #' dbReadTable(con, "cars")   # there's 3 rows!
-#' dbExecQuery(con, "INSERT INTO cars (speed, dist)
-#'                   VALUES (1, 1), (2, 2), (3, 3);")
+#' dbExecute(con, "INSERT INTO cars (speed, dist)
+#'                 VALUES (1, 1), (2, 2), (3, 3);")
 #' dbReadTable(con, "cars")   # there's now 6 rows!
 #' dbDisconnect(con)
-setGeneric("dbExecQuery",
-  def = function(conn, statement, ...) standardGeneric("dbExecQuery")
+setGeneric("dbExecute",
+  def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
 #' @export
-setMethod("dbExecQuery", signature("DBIConnection", "character"),
+setMethod("dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
-    if (grepl("select", tolower(statement))) {
-      stop("Only use this function for non-SELECT SQL statements.")
-    }
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-
-    ## do we need this check in this case?
-    if (!dbHasCompleted(rs)) {
-      warning("Pending rows", call. = FALSE)
-    }
-
     dbGetRowsAffected(rs)
   }
 )
 
-#' Use a callback to access the result of a query
+#' Sentinel value to indicate the early termination of
+#' \code{\link{dbGetChunkedQuery}}
+#' @export
+dbBreak <- structure(list(), class = "dbi_break_sentinel")
+
+dbFetchChunked <- function(rs, n, callback) {
+  while (TRUE) {
+    chunk <- dbFetch(rs, n = n)
+    if (nrow(chunk) == 0) {
+      return(chunk)
+    }
+    result <- callback(chunk)
+    if (identical(result, dbBreak)) {
+      return(chunk)
+    }
+  }
+}
+
+#' Fetch data in chunks and access it with a callback
 #'
-#' This function allows you to get the result of a query according
-#' to a callback you specify. This is meant as a more efficient and
-#' more general alternative to \code{\link{dbSendQuery}}. On one
-#' hand, it does not keep the result set open, so you don't have to
-#' worry about \code{\link{dbClearResult}}. On the other hand, you
-#' can fetch the result according to your own liking, not only by
-#' fetching an x number of consecutive rows.
+#' This function allows you to fetch data in chunks of \code{n}
+#' rows at a time and acess that chunk using a callback. This is
+#' meant as a safer and more efficient alternative to
+#' \code{\link{dbSendQuery}}. On one hand, it does not keep the
+#' result set open, so you don't have to worry about
+#' \code{\link{dbClearResult}}. On the other hand, you never need
+#' to have all of the data on your machine at once (each chunk
+#' comes and goes), but you can still produce global results.
 #'
-#' @inheritParams dbDisconnect
-#' @param statement a character vector of length 1 containing SQL.
-#' @param callback a callback function whose first argument must be
-#'  the result set returned by the \code{statement}.
-#' @return A function that accepts the same arguments as the
-#'  \code{callback} (except the first one, which the result set).
+#' For most use cases, you will want to actually loop through all
+#' of the data. But there are some cases for which this is not true
+#' (for example, if you just want to locate a particular row). In
+#' these situations, you can stop the function from continuing to
+#' execute once your terminating condition is met. To do so, use:
+#' \code{if (terminatingCondition) return(dbBreak)}. \code{dbBreak}
+#' is a sentinel value that \code{DBI} recognizes and knows how
+#' to interpret correctly.
+#'
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
+#'   \code{\link{dbConnect}}.
+#' @param statement A character vector of length 1 containing SQL.
+#' @param n The number of rows to fetch in each chunk.
+#' @param callback A callback function whose only argument must be
+#'  the (partial) result set returned by the \code{statement} (dataframe).
+#' @param ... Other parameters passed on to methods.
+#'
+#' @return The last chunk of data fetched.
+#'
 #' @aliases dbGetChunkedQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbWriteTable(con, "cars", cars)
-#' res <- dbGetChunkedQuery(con, "SELECT * FROM cars", `[`)
-#' res(1:3,)   # get the first 3 rows
-#' res(15,)    # get the 15th row
+#'
+#' ## Want to loop through all chunks to produce a global result
+#' distSum <- 0
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT dist FROM cars", 10, function(df) {
+#'   distSum <<- distSum + sum(df$dist)
+#'   rowCount <<- rowCount + nrow(df)
+#' })
+#'
+#' (distAvg <- distSum / rowCount)
+#'
+#' ## Want to stop once we find the row we're looking for
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT * FROM cars", 1, function(df) {
+#'   rowCount <<- rowCount + nrow(df)
+#'   if (df$speed == 19 && df$dist == 46) {
+#'     print(paste("Your row is number", rowCount))
+#'     return(dbBreak)
+#'   }
+#' })
+#'
 #' dbDisconnect(con)
-setGeneric("dbGetChunkedQuery",
-  def = function(conn, statement, callback, ...) standardGeneric("dbGetChunkedQuery")
-)
+setGeneric("dbGetChunkedQuery", function(conn, statement, n, callback, ...) {
+  standardGeneric("dbGetChunkedQuery")
+})
 
 #' @export
 setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
-  function(conn, statement, callback, ...) {
+  function(conn, statement, n, callback, ...) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-
-    df <- tryCatch(
-      dbFetch(rs, n = -1, ...),
-      error = function(e) {
-        warning(conditionMessage(e), call. = conditionCall(e))
-        NULL
-      }
-    )
-
-    if (!dbHasCompleted(rs)) {
-      warning("Pending rows", call. = FALSE)
-    }
-
-    function(...) {
-      callback(df, ...)
-    }
+    dbFetchChunked(rs, n, callback)
   }
 )
 

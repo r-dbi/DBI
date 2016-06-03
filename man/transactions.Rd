@@ -5,8 +5,6 @@
 \alias{dbCommit}
 \alias{dbRollback}
 \alias{transactions}
-\alias{withTransaction}
-\alias{withTransaction,DBIConnection-method}
 \title{Begin/commit/rollback SQL transactions}
 \usage{
 dbBegin(conn, ...)
@@ -14,16 +12,12 @@ dbBegin(conn, ...)
 dbCommit(conn, ...)
 
 dbRollback(conn, ...)
-
-withTransaction(conn, statement, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
 \code{\link{dbConnect}}.}
 
 \item{...}{Other parameters passed on to methods.}
-
-\item{statement}{a character vector of length 1 containing SQL.}
 }
 \value{
 a logical indicating whether the operation succeeded or not.
@@ -50,18 +44,5 @@ if(dbGetInfo(rs, what = "rowsAffected") > 250){
 }
 dbDisconnect(con)
 }
-
-con <- dbConnect(RSQLite::SQLite(), ":memory:")
-dbWriteTable(con, "cars", head(cars, 3))
-dbReadTable(con, "cars")   # there's 3 rows!
-## successful transaction
-withTransaction(con, "INSERT INTO cars (speed, dist)
-                      VALUES (1, 1), (2, 2), (3, 3);")
-dbReadTable(con, "cars")   # there's now 6 rows!
-## unsuccessful transaction -- note the missing comma
-withTransaction(con, "INSERT INTO cars (speed, dist)
-                      VALUES (1, 1) (2, 2), (3, 3);")
-dbReadTable(con, "cars")   # nothing was changed
-dbDisconnect(con)
 }
 

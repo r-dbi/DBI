@@ -24,7 +24,7 @@ List field names of a remote table.
 \code{\link{dbColumnInfo}} to get the type of the fields.
 
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExecQuery}}, \code{\link{dbExistsTable}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetChunkedQuery}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},

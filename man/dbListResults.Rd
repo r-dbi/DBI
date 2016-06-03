@@ -21,7 +21,7 @@ List of \linkS4class{DBIResult} objects currently active on the connection.
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExecQuery}}, \code{\link{dbExistsTable}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetChunkedQuery}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListTables}},
