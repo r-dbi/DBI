@@ -155,7 +155,8 @@ setGeneric("dbUnloadDriver",
 #' dbDisconnect(con)
 #' }
 setGeneric("dbConnect",
-  def = function(drv, ...) standardGeneric("dbConnect")
+  def = function(drv, ...) standardGeneric("dbConnect"),
+  valueClass = "DBIConnection"
 )
 
 #' List currently open connections.

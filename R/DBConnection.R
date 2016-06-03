@@ -106,6 +106,103 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' Execute a non-select query
+#'
+#' This function should be used when you want to execute a non-
+#' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
+#' the query and return the number of rows affected by the operation.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return The number of rows affected by the \code{statement}
+#' @aliases dbExecQuery,DBIConnection,character-method
+#' @family connection methods
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", head(cars, 3))
+#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbExecQuery(con, "INSERT INTO cars (speed, dist)
+#'                   VALUES (1, 1), (2, 2), (3, 3);")
+#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbDisconnect(con)
+setGeneric("dbExecQuery",
+  def = function(conn, statement, ...) standardGeneric("dbExecQuery")
+)
+
+#' @export
+setMethod("dbExecQuery", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
+    if (grepl("select", tolower(statement))) {
+      stop("Only use this function for non-SELECT SQL statements.")
+    }
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+
+    ## do we need this check in this case?
+    if (!dbHasCompleted(rs)) {
+      warning("Pending rows", call. = FALSE)
+    }
+
+    dbGetRowsAffected(rs)
+  }
+)
+
+#' Use a callback to access the result of a query
+#'
+#' This function allows you to get the result of a query according
+#' to a callback you specify. This is meant as a more efficient and
+#' more general alternative to \code{\link{dbSendQuery}}. On one
+#' hand, it does not keep the result set open, so you don't have to
+#' worry about \code{\link{dbClearResult}}. On the other hand, you
+#' can fetch the result according to your own liking, not only by
+#' fetching an x number of consecutive rows.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @param callback a callback function whose first argument must be
+#'  the result set returned by the \code{statement}.
+#' @return A function that accepts the same arguments as the
+#'  \code{callback} (except the first one, which the result set).
+#' @aliases dbGetChunkedQuery,DBIConnection,character-method
+#' @family connection methods
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", cars)
+#' res <- dbGetChunkedQuery(con, "SELECT * FROM cars", `[`)
+#' res(1:3,)   # get the first 3 rows
+#' res(15,)    # get the 15th row
+#' dbDisconnect(con)
+setGeneric("dbGetChunkedQuery",
+  def = function(conn, statement, callback, ...) standardGeneric("dbGetChunkedQuery")
+)
+
+#' @export
+setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
+  function(conn, statement, callback, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+
+    df <- tryCatch(
+      dbFetch(rs, n = -1, ...),
+      error = function(e) {
+        warning(conditionMessage(e), call. = conditionCall(e))
+        NULL
+      }
+    )
+
+    if (!dbHasCompleted(rs)) {
+      warning("Pending rows", call. = FALSE)
+    }
+
+    function(...) {
+      callback(df, ...)
+    }
+  }
+)
+
 #' Send query, retrieve results and then clear result set.
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
@@ -275,52 +372,5 @@ setGeneric("dbExistsTable",
 #' @export
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
-  valueClass = "logical"
-)
-
-#' Begin/commit/rollback SQL transactions
-#'
-#' Not all database engines implement transaction management, in which case
-#' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
-#'
-#' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
-#' back.
-#'
-#' @inheritParams dbDisconnect
-#' @return a logical indicating whether the operation succeeded or not.
-#' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if(dbGetInfo(rs, what = "rowsAffected") > 250){
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' }
-#' }
-#' @name transactions
-NULL
-
-#' @export
-#' @rdname transactions
-setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )

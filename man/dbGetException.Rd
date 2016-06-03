@@ -22,9 +22,11 @@ Get DBMS exceptions.
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExistsTable}}, \code{\link{dbGetQuery}},
-  \code{\link{dbListFields}}, \code{\link{dbListResults}},
-  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}}
+  \code{\link{dbExecQuery}}, \code{\link{dbExistsTable}},
+  \code{\link{dbGetChunkedQuery}},
+  \code{\link{dbGetQuery}}, \code{\link{dbListFields}},
+  \code{\link{dbListResults}}, \code{\link{dbListTables}},
+  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+  \code{\link{dbSendQuery}}
 }
 
