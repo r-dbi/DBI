@@ -25,7 +25,6 @@ List field names of a remote table.
 
 Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},

@@ -28,7 +28,6 @@ dbDisconnect(con)
 \seealso{
 Other connection methods: \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
