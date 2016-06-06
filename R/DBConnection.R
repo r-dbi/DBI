@@ -112,7 +112,6 @@ setGeneric("dbSendQuery",
 #' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
 #' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
 #' the query and return the number of rows affected by the operation.
-#' (If the return value is 0 or -1, you're using it wrong.)
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
