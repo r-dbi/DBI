@@ -8,10 +8,8 @@
 #' The current transaction on the connections \code{con} is committed or rolled
 #' back.
 #'
-#' @inheritParams dbGetQuery
-#'
+#' @inheritParams dbDisconnect
 #' @return a logical indicating whether the operation succeeded or not.
-#'
 #' @examples
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
@@ -22,7 +20,6 @@
 #'   warning("dubious deletion -- rolling back transaction")
 #'   dbRollback(con)
 #' }
-#' dbDisconnect(con)
 #' }
 #' @name transactions
 NULL
@@ -30,84 +27,20 @@ NULL
 #' @export
 #' @rdname transactions
 setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
+           def = function(conn, ...) standardGeneric("dbBegin"),
+           valueClass = "logical"
 )
 
 #' @export
 #' @rdname transactions
 setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
+           def = function(conn, ...) standardGeneric("dbCommit"),
+           valueClass = "logical"
 )
 
 #' @export
 #' @rdname transactions
 setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
-  valueClass = "logical"
+           def = function(conn, ...) standardGeneric("dbRollback"),
+           valueClass = "logical"
 )
-
-#' Self-contained SQL transactions.
-#'
-#' Given that \code{\link{transactions}} are implemented, then this function
-#' allows you pass in code that is treated as a transaction. The advantage is
-#' that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
-#' \code{dbRollback} -- that is all taken care of.
-#'
-#' @section Side Effects:
-#' The transaction in \code{code} on the connection \code{conn} is committed
-#' or rolled back. The \code{code} chunk may also also modify the local R
-#' environment.
-#'
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
-#'   \code{\link{dbConnect}}.
-#' @param code An arbitrary block of R code
-#'
-#' @return The result of the evaluation of \code{code}
-#' @aliases dbWithTransaction,DBIConnection-method
-#' @export
-#' @examples
-#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
-#' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there's 3 rows!
-#' ## successful transaction
-#' dbWithTransaction(con, {
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # there's now 6 rows!
-#'
-#' \dontrun{
-#' ## unsuccessful transaction -- note the missing comma
-#' dbWithTransaction(con,{
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # nothing was changed
-#' }
-#' dbDisconnect(con)
-setGeneric("dbWithTransaction",
-  def = function(conn, code) standardGeneric("dbWithTransaction")
-)
-
-#' @export
-setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
-  ## check if each operation is successful
-  success <- dbBegin(conn)
-  if (!success) stop("`dbBegin` was not successful")
-  tryCatch({
-    res <- force(code)
-    success <- dbCommit(conn)
-    if (!success) stop("`dbCommit` was not successful")
-    res
-  },
-  error = function(e) {
-    success <- dbRollback(conn)
-    if (!success) stop("`dbRollback` was not successful")
-    stop(e)
-  }
-  )
-})

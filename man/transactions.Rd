@@ -68,7 +68,6 @@ if(dbGetInfo(rs, what = "rowsAffected") > 250){
   warning("dubious deletion -- rolling back transaction")
   dbRollback(con)
 }
-dbDisconnect(con)
 }
 }
 
