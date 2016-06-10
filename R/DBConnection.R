@@ -106,6 +106,40 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' Execute an SQL statement that does not produce a result set.
+#'
+#' This function should be used when you want to execute a non-
+#' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
+#' the query and return the number of rows affected by the operation.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return The number of rows affected by the \code{statement}
+#' @aliases dbExecute,DBIConnection,character-method
+#' @family connection methods
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", head(cars, 3))
+#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbExecute(con, "INSERT INTO cars (speed, dist)
+#'                 VALUES (1, 1), (2, 2), (3, 3);")
+#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbDisconnect(con)
+setGeneric("dbExecute",
+  def = function(conn, statement, ...) standardGeneric("dbExecute")
+)
+
+#' @export
+setMethod("dbExecute", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbGetRowsAffected(rs)
+  }
+)
+
 #' Send query, retrieve results and then clear result set.
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
@@ -275,52 +309,5 @@ setGeneric("dbExistsTable",
 #' @export
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
-  valueClass = "logical"
-)
-
-#' Begin/commit/rollback SQL transactions
-#'
-#' Not all database engines implement transaction management, in which case
-#' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
-#'
-#' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
-#' back.
-#'
-#' @inheritParams dbDisconnect
-#' @return a logical indicating whether the operation succeeded or not.
-#' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if(dbGetInfo(rs, what = "rowsAffected") > 250){
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' }
-#' }
-#' @name transactions
-NULL
-
-#' @export
-#' @rdname transactions
-setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )
