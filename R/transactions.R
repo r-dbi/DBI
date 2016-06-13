@@ -96,19 +96,22 @@ setGeneric("dbWithTransaction",
 #' @export
 setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
   ## check if each operation is successful
-  if (!dbBegin(conn)) {
+  call <- dbBegin(conn)
+  if (identical(call, FALSE)) {
     stop("Failed to begin transaction", call. = FALSE)
   }
   tryCatch({
     res <- force(code)
-    if (!dbCommit(conn)) {
+    call <- dbCommit(conn)
+    if (identical(call, FALSE)) {
       stop("Failed to commit transaction", call. = FALSE)
     }
     res
   },
   error = function(e) {
-    if (!dbRollback(conn)) {
-      stop(paste("Failed to rollback transaction",
+    call <- dbRollback(conn)
+    if (identical(call, FALSE)) {
+      stop(paste("Failed to rollback transaction.",
                  "Tried to roll back because an error",
                  "occurred:", conditionMessage(e)),
            call. = FALSE)
