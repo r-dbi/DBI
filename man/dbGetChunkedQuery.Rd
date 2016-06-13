@@ -15,11 +15,11 @@ dbGetChunkedQuery(conn, statement, n, callback, ...)
 
 \item{statement}{A character vector of length 1 containing SQL.}
 
-\item{n}{The number of rows to fetch in each chunk.}
-
 \item{callback}{A callback function whose only argument, \code{df},
 must be the (partial) result set (expressed as a dataframe) returned
 by the \code{statement}.}
+
+\item{n}{The number of rows to fetch in each chunk.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -54,23 +54,23 @@ dbWriteTable(con, "cars", cars)
 distSum <- 0
 rowCount <- 0
 
-dbGetChunkedQuery(con, "SELECT dist FROM cars", 10, function(df) {
+dbGetChunkedQuery(con, "SELECT dist FROM cars", function(df) {
   distSum <<- distSum + sum(df$dist)
   rowCount <<- rowCount + nrow(df)
-})
+}, n = 10)
 
 (distAvg <- distSum / rowCount)
 
 ## Want to stop once we find the row we're looking for
 rowCount <- 0
 
-dbGetChunkedQuery(con, "SELECT * FROM cars", 1, function(df) {
+dbGetChunkedQuery(con, "SELECT * FROM cars", function(df) {
   rowCount <<- rowCount + nrow(df)
   if (df$speed == 19 && df$dist == 46) {
     print(paste("Your row is number", rowCount))
     return(dbBreak)
   }
-})
+}, n = 1)
 
 dbDisconnect(con)
 }

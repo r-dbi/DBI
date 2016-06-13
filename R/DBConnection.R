@@ -109,13 +109,15 @@ setGeneric("dbSendQuery",
 #' @export
 dbBreak <- structure(list(), class = "dbi_break_sentinel")
 
-dbFetchChunked <- function(rs, n, callback) {
+dbFetchChunked <- function(rs, callback, n) {
+  rowsSoFar <- 0
   while (TRUE) {
     chunk <- dbFetch(rs, n = n)
     if (nrow(chunk) == 0) {
       return(chunk)
     }
-    result <- callback(df = chunk)
+    rowsSoFar <<- rowsSoFar + nrow(chunk)
+    result <- callback(df = chunk, index = rowsSoFar, ...)
     if (identical(result, dbBreak)) {
       return(chunk)
     }
@@ -124,7 +126,7 @@ dbFetchChunked <- function(rs, n, callback) {
 
 #' @export
 setGeneric("dbGetChunkedQuery",
-  function(conn, statement, n, callback, ...) {
+  function(conn, statement, callback, n = 10000L, ...) {
     standardGeneric("dbGetChunkedQuery")
   },
   signature = c("conn", "statement")
@@ -132,10 +134,10 @@ setGeneric("dbGetChunkedQuery",
 
 #' @export
 setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
-  function(conn, statement, n, callback, ...) {
+  function(conn, statement, callback, n, ...) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-    dbFetchChunked(rs, n, callback)
+    dbFetchChunked(rs, callback, n)
   }
 )
 
