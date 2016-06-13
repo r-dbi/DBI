@@ -7,7 +7,7 @@
 \usage{
 dbBreak
 
-dbGetChunkedQuery(conn, statement, n, callback, ...)
+dbGetChunkedQuery(conn, statement, callback, n, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
@@ -15,9 +15,10 @@ dbGetChunkedQuery(conn, statement, n, callback, ...)
 
 \item{statement}{A character vector of length 1 containing SQL.}
 
-\item{callback}{A callback function whose only argument, \code{df},
-must be the (partial) result set (expressed as a dataframe) returned
-by the \code{statement}.}
+\item{callback}{A callback function whose signature must be:
+\code{function(df, index)}, where \code{df} is be the (partial)
+result set (expressed as a dataframe) returned by the \code{statement},
+and \code{index} is the cumulative number of rows fetched so far.}
 
 \item{n}{The number of rows to fetch in each chunk.}
 
@@ -54,7 +55,7 @@ dbWriteTable(con, "cars", cars)
 distSum <- 0
 rowCount <- 0
 
-dbGetChunkedQuery(con, "SELECT dist FROM cars", function(df) {
+dbGetChunkedQuery(con, "SELECT dist FROM cars", function(df, index) {
   distSum <<- distSum + sum(df$dist)
   rowCount <<- rowCount + nrow(df)
 }, n = 10)
@@ -64,7 +65,7 @@ dbGetChunkedQuery(con, "SELECT dist FROM cars", function(df) {
 ## Want to stop once we find the row we're looking for
 rowCount <- 0
 
-dbGetChunkedQuery(con, "SELECT * FROM cars", function(df) {
+dbGetChunkedQuery(con, "SELECT * FROM cars", function(df, index) {
   rowCount <<- rowCount + nrow(df)
   if (df$speed == 19 && df$dist == 46) {
     print(paste("Your row is number", rowCount))

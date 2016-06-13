@@ -107,21 +107,21 @@ setGeneric("dbSendQuery",
 )
 
 #' @export
-dbBreak <- structure(list(), class = "dbi_break_sentinel")
+dbBreak <- structure(list(), class = "dbiAbort")
 
 dbFetchChunked <- function(rs, callback, n) {
   rowsSoFar <- 0
-  while (TRUE) {
+  continueLoop <- TRUE
+  while (continueLoop) {
     chunk <- dbFetch(rs, n = n)
-    if (nrow(chunk) == 0) {
-      return(chunk)
-    }
+    if (nrow(chunk) == 0) break
     rowsSoFar <<- rowsSoFar + nrow(chunk)
-    result <- callback(df = chunk, index = rowsSoFar, ...)
-    if (identical(result, dbBreak)) {
-      return(chunk)
-    }
+    continueLoop <<- tryCatch({
+      result <- callback(df = chunk, index = rowsSoFar)
+      TRUE
+    }, dbiAbort = function(e) FALSE)
   }
+  return(chunk)
 }
 
 #' @export
