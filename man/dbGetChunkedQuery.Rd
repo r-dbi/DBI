@@ -25,7 +25,7 @@ and \code{index} is the cumulative number of rows fetched so far.}
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-The last chunk of data fetched.
+The last chunk of data fetched (invisibly).
 }
 \description{
 This function allows you to fetch data in chunks of \code{n}

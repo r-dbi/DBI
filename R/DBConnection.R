@@ -109,7 +109,7 @@ setGeneric("dbSendQuery",
 #' @export
 dbBreak <- structure(list(), class = "dbiAbort")
 
-dbFetchChunked <- function(rs, callback, n) {
+dbFetchChunkedQuery <- function(rs, callback, n) {
   rowsSoFar <- 0
   continueLoop <- TRUE
   while (continueLoop) {
@@ -121,7 +121,7 @@ dbFetchChunked <- function(rs, callback, n) {
       TRUE
     }, dbiAbort = function(e) FALSE)
   }
-  return(chunk)
+  invisible(chunk)
 }
 
 #' @export
@@ -137,7 +137,7 @@ setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
   function(conn, statement, callback, n, ...) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-    dbFetchChunked(rs, callback, n)
+    dbFetchChunkedQuery(rs, callback, n)
   }
 )
 
