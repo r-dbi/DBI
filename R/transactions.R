@@ -108,9 +108,11 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
   },
   error = function(e) {
     if (!dbRollback(conn)) {
-      stop("Failed to rollback transaction", call. = FALSE)
+      stop(paste("Failed to rollback transaction",
+                 "Tried to roll back because an error",
+                 "occurred:", conditionMessage(e)),
+           call. = FALSE)
     }
     stop(e)
-  }
-  )
+  })
 })
