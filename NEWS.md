@@ -1,8 +1,7 @@
 # DBI 0.4-2 (2016-06-08)
 
-- Remove redundant declaration of transaction methods (#110, @@bborgesr).
+- Remove redundant declaration of transaction methods (#110, @bborgesr).
 - New `dbExecute()`, forwards to `dbSendQuery()` by default (#109, @bborgesr).
-
 
 # DBI 0.4-1 (2016-05-07)
 
