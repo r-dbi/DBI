@@ -3,6 +3,7 @@
 - Remove redundant declaration of transaction methods (#110, @bborgesr).
 - New `dbExecute()`, forwards to `dbSendQuery()` by default (#109, @bborgesr).
 
+
 # DBI 0.4-1 (2016-05-07)
 
 - The default `show()` implementations silently ignore all errors.  Some DBI drivers (e.g., RPostgreSQL) might fail to implement `dbIsValid()` or the other methods used.
