@@ -8,10 +8,8 @@
 #' The current transaction on the connections \code{con} is committed or rolled
 #' back.
 #'
-#' @inheritParams dbGetQuery
-#'
+#' @inheritParams dbDisconnect
 #' @return a logical indicating whether the operation succeeded or not.
-#'
 #' @examples
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
@@ -22,7 +20,6 @@
 #'   warning("dubious deletion -- rolling back transaction")
 #'   dbRollback(con)
 #' }
-#' dbDisconnect(con)
 #' }
 #' @name transactions
 NULL
