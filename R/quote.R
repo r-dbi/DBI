@@ -93,7 +93,7 @@ setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
 
-    str <- paste("'", encodeString(x), "'", sep = "")
+    str <- paste("'", x, "'", sep = "")
     str[is.na(x)] <- "NULL"
     SQL(str)
   }
