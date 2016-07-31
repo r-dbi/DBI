@@ -1,3 +1,9 @@
+# DBI 0.4-3 (2016-07-31)
+
+- The default implementation of `dbQuoteString()` doesn't call `encodeString()` anymore: Neither SQLite nor Postgres understand e.g. `\n` in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (#121).
+- New `dbWithTransaction()` that calls `dbBegin()` and `dbCommit()`, and `dbRollback()` on failure (#110, @bborgesr).
+
+
 # DBI 0.4-2 (2016-06-08)
 
 - Remove redundant declaration of transaction methods (#110, @bborgesr).
