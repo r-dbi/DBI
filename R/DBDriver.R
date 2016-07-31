@@ -11,7 +11,7 @@
 #' @family DBI classes
 #' @export
 #' @include DBObject.R
-setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
+setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
 #' Load and unload database drivers.
 #'
@@ -131,15 +131,14 @@ setGeneric("dbUnloadDriver",
 #' \code{"dbname"} for the database name, \code{"username"}, and
 #' \code{"password"}.
 #'
-#' @param drv an object that inherits from \code{\linkS4class{DBIDriver}}, or
-#'   a character string specifying the name of DBMS driver, e.g., "RSQLite",
-#'   "RMySQL", "RPostgreSQL", or an existing \code{\linkS4class{DBIConnection}}
+#' @param drv an object that inherits from \code{\linkS4class{DBIDriver}},
+#'   or an existing \code{\linkS4class{DBIConnection}}
 #'   object (in order to clone an existing connection).
 #' @param ... authorization arguments needed by the DBMS instance; these
 #'   typically include \code{user}, \code{password}, \code{dbname}, \code{host},
 #'   \code{port}, etc.  For details see the appropriate \code{DBIDriver}.
 #' @return An object that extends \code{\linkS4class{DBIConnection}} in a
-#'   database-specific manner. For instance \code{dbConnect("MySQL")} produces
+#'   database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
 #'   an object of class \code{MySQLConnection}. This object is used to direct
 #'   commands to the database engine.
 #' @seealso \code{\link{dbDisconnect}} to disconnect from a database.
@@ -195,7 +194,6 @@ setGeneric("dbListConnections",
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param obj An R object whose SQL type we want to determine.
 #' @return A character string specifying the SQL data type for \code{obj}.
-#' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
 #' dbDataType(ANSI(), 1:5)
 #' dbDataType(ANSI(), 1)

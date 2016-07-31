@@ -1,3 +1,11 @@
+# DBI 0.4-4 (2016-08-01)
+
+- Remove misleading parts in `dbConnect()` documentation (#118).
+- Use `contains` argument instead of `representation()` to denote base classes (#93).
+- `dbDataType()` maps `character` values to `"TEXT"` by default (#102).
+- Remove misleading link in `dbDataType()` documentation.
+
+
 # DBI 0.4-3 (2016-07-31)
 
 - The default implementation of `dbQuoteString()` doesn't call `encodeString()` anymore: Neither SQLite nor Postgres understand e.g. `\n` in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (#121).
