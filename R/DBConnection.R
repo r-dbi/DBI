@@ -21,7 +21,7 @@
 #' }
 #' @export
 #' @include DBObject.R
-setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
+setClass("DBIConnection", contains = c("DBIObject", "VIRTUAL"))
 
 #' @param object Object to display
 #' @rdname DBIConnection-class

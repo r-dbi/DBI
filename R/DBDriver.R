@@ -11,7 +11,7 @@
 #' @family DBI classes
 #' @export
 #' @include DBObject.R
-setClass("DBIDriver", representation("DBIObject", "VIRTUAL"))
+setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
 #' Load and unload database drivers.
 #'

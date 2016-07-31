@@ -18,7 +18,7 @@
 #' @family DBI classes
 #' @export
 #' @include DBObject.R
-setClass("DBIResult", representation("DBIObject", "VIRTUAL"))
+setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
 
 #' @param object Object to display
 #' @rdname DBIResult-class
