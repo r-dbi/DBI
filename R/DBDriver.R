@@ -195,7 +195,6 @@ setGeneric("dbListConnections",
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param obj An R object whose SQL type we want to determine.
 #' @return A character string specifying the SQL data type for \code{obj}.
-#' @seealso \code{\link{isSQLKeyword}} \code{\link{make.db.names}}
 #' @examples
 #' dbDataType(ANSI(), 1:5)
 #' dbDataType(ANSI(), 1)

@@ -50,7 +50,4 @@ dbDataType(ANSI(), I(3))
 
 dbDataType(ANSI(), iris)
 }
-\seealso{
-\code{\link{isSQLKeyword}} \code{\link{make.db.names}}
-}
 
