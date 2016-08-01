@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBDriver.R
 \name{dbListConnections}
 \alias{dbListConnections}
-\title{List currently open connections.}
+\title{List currently open connections}
 \usage{
 dbListConnections(drv, ...)
 }

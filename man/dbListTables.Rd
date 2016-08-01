@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbListTables}
 \alias{dbListTables}
-\title{List remote tables.}
+\title{List remote tables}
 \usage{
 dbListTables(conn, ...)
 }

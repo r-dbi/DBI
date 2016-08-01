@@ -3,14 +3,7 @@
 \docType{class}
 \name{DBIConnection-class}
 \alias{DBIConnection-class}
-\alias{show,DBIConnection-method}
-\title{DBIConnection class.}
-\usage{
-\S4method{show}{DBIConnection}(object)
-}
-\arguments{
-\item{object}{Object to display}
-}
+\title{DBIConnection class}
 \description{
 This virtual class encapsulates the connection to a DBMS, and it provides
 access to dynamic queries, result sets, DBMS session management

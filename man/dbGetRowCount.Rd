@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBResult.R
 \name{dbGetRowCount}
 \alias{dbGetRowCount}
-\alias{dbGetRowCount,DBIResult-method}
 \title{The number of rows fetched so far}
 \usage{
 dbGetRowCount(res, ...)

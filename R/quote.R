@@ -1,17 +1,17 @@
 #' @include DBConnection.R
 NULL
 
-#' SQL quoting.
+#' SQL quoting
 #'
 #' This set of classes and generics make it possible to flexibly deal with SQL
 #' escaping needs. By default, any user supplied input to a query should be
 #' escaped using either \code{dbQuoteIdentifier} or \code{dbQuoteString}
 #' depending on whether it refers to a table or variable name, or is a literal
 #' string.
-#'
-#' The SQL class has associated \code{SQL()} constructor function. This class
-#' is used to prevent double escaping of SQL strings, and to make it possible
-#' to tell DBI functions that you've done the escaping yourself.
+#' These functions return an object of the \code{SQL} class,
+#' which tells DBI functions that a character string does not need to be escaped
+#' anymore, to prevent double escaping.
+#' The \code{SQL} class has associated the \code{SQL()} constructor function.
 #'
 #' @section Implementation notes:
 #'
@@ -29,6 +29,7 @@ NULL
 #'   an active connection to an DBMS.
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
+#' @return An object of class \code{SQL}.
 #' @export
 #' @examples
 #' # Quoting ensures that arbitrary input is safe for use in a query
@@ -54,8 +55,10 @@ SQL <- function(x) new("SQL", x)
 #' @export
 #' @aliases
 #'   SQL-class
-#'   show,SQL-method
 setClass("SQL", contains = "character")
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("show", "SQL", function(object) {
   cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
 })
@@ -63,18 +66,21 @@ setMethod("show", "SQL", function(object) {
 
 #' @rdname SQL
 #' @export
-#' @aliases
-#'   dbQuoteIdentifier,DBIConnection,character-method
-#'   dbQuoteIdentifier,DBIConnection,SQL-method
 setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
   standardGeneric("dbQuoteIdentifier")
 })
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub('"', '""', x, fixed = TRUE)
     SQL(paste('"', encodeString(x), '"', sep = ""))
   }
 )
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
   function(conn, x, ...) {
     x
@@ -83,12 +89,12 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 
 #' @rdname SQL
 #' @export
-#' @aliases
-#'   dbQuoteString,DBIConnection,character-method
-#'   dbQuoteString,DBIConnection,SQL-method
 setGeneric("dbQuoteString", function(conn, x, ...) {
   standardGeneric("dbQuoteString")
 })
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
@@ -100,6 +106,9 @@ setMethod("dbQuoteString", c("DBIConnection", "character"),
     SQL(str)
   }
 )
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteString", c("DBIConnection", "SQL"),
   function(conn, x, ...) {
     x

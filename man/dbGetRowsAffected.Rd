@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBResult.R
 \name{dbGetRowsAffected}
 \alias{dbGetRowsAffected}
-\alias{dbGetRowsAffected,DBIResult-method}
 \title{The number of rows affected}
 \usage{
 dbGetRowsAffected(res, ...)

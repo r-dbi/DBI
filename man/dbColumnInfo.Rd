@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBResult.R
 \name{dbColumnInfo}
 \alias{dbColumnInfo}
-\title{Information about result types.}
+\title{Information about result types}
 \usage{
 dbColumnInfo(res, ...)
 }

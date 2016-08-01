@@ -1,4 +1,4 @@
-#' DBIObject class.
+#' DBIObject class
 #'
 #' Base class for all other DBI classes (e.g., drivers, connections). This
 #' is a virtual Class: No objects may be created from it.
@@ -42,7 +42,7 @@
 #' @name DBIObject-class
 setClass("DBIObject", "VIRTUAL")
 
-#' Get DBMS metadata.
+#' Get DBMS metadata
 #'
 #' @section Implementation notes:
 #' For \code{DBIDriver} subclasses, this should include the version of the

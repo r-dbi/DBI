@@ -1,4 +1,4 @@
-#' DBIConnection class.
+#' DBIConnection class
 #'
 #' This virtual class encapsulates the connection to a DBMS, and it provides
 #' access to dynamic queries, result sets, DBMS session management
@@ -23,8 +23,8 @@
 #' @include DBObject.R
 setClass("DBIConnection", contains = c("DBIObject", "VIRTUAL"))
 
+#' @rdname hidden_aliases
 #' @param object Object to display
-#' @rdname DBIConnection-class
 #' @export
 setMethod("show", "DBIConnection", function(object) {
   # to protect drivers that fail to implement the required methods (e.g.,
@@ -63,7 +63,7 @@ setGeneric("dbDisconnect",
   valueClass = "logical"
 )
 
-#' Execute a statement on a given database connection.
+#' Execute a statement on a given database connection
 #'
 #' The function \code{dbSendQuery} only submits and synchronously executes the
 #' SQL statement to the database engine.  It does \emph{not} extract any
@@ -106,17 +106,19 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
-#' Execute an SQL statement that does not produce a result set.
+#' Execute an SQL statement that does not produce a result set
 #'
-#' This function should be used when you want to execute a non-
-#' \code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' This function should be used when you want to execute a
+#' non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
 #' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
 #' the query and return the number of rows affected by the operation.
+#' The default implementation calls \code{\link{dbSendQuery}} and
+#' \code{\link{dbGetRowsAffected}}, which is useful if a backend does not
+#' distinguish between \code{SELECT} and non-\code{SELECT} queries.
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
-#' @aliases dbExecute,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
@@ -131,6 +133,7 @@ setGeneric("dbExecute",
   def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
@@ -140,7 +143,7 @@ setMethod("dbExecute", signature("DBIConnection", "character"),
   }
 )
 
-#' Send query, retrieve results and then clear result set.
+#' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
 #' \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
@@ -152,7 +155,6 @@ setMethod("dbExecute", signature("DBIConnection", "character"),
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
-#' @aliases dbGetQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
@@ -172,6 +174,7 @@ setGeneric("dbGetQuery",
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
@@ -194,7 +197,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
-#' Get DBMS exceptions.
+#' Get DBMS exceptions
 #'
 #' @inheritParams dbDisconnect
 #' @family connection methods
@@ -206,7 +209,7 @@ setGeneric("dbGetException",
   def = function(conn, ...) standardGeneric("dbGetException")
 )
 
-#' A list of all pending results.
+#' A list of all pending results
 #'
 #' List of \linkS4class{DBIResult} objects currently active on the connection.
 #'
@@ -219,7 +222,7 @@ setGeneric("dbListResults",
   def = function(conn, ...) standardGeneric("dbListResults")
 )
 
-#' List field names of a remote table.
+#' List field names of a remote table
 #'
 #' @inheritParams dbDisconnect
 #' @param name a character string with the name of the remote table.
@@ -232,7 +235,7 @@ setGeneric("dbListFields",
   valueClass = "character"
 )
 
-#' List remote tables.
+#' List remote tables
 #'
 #' This should, where possible, include temporary tables.
 #'
@@ -246,7 +249,7 @@ setGeneric("dbListTables",
   valueClass = "character"
 )
 
-#' Copy data frames to and from database tables.
+#' Copy data frames to and from database tables
 #'
 #' \code{dbReadTable}: database table -> data frame; \code{dbWriteTable}:
 #' data frame -> database table.
@@ -298,7 +301,7 @@ setGeneric("dbExistsTable",
   valueClass = "logical"
 )
 
-#' Remove a table from the database.
+#' Remove a table from the database
 #'
 #' Executes the sql \code{DROP TABLE name}.
 #'

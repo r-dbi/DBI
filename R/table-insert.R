@@ -1,13 +1,14 @@
-#' Insert rows into a table.
+#' Insert rows into a table
 #'
 #' \code{sqlAppendTable} generates a single SQL string that inserts a
 #' data frame into an existing table. \code{sqlAppendTableTemplate} generates
 #' a template suitable for use with \code{\link{dbBind}}.
+#' These methods are mostly useful for backend implementers.
 #'
 #' @inheritParams sqlCreateTable
 #' @inheritParams rownames
 #' @param values A data frame. Factors will be converted to character vectors.
-#'   Character vectors will be escaped with \code{\link[DBI]{dbQuoteString}}.
+#'   Character vectors will be escaped with \code{\link{dbQuoteString}}.
 #' @family SQL generation
 #' @export
 #' @examples
@@ -20,8 +21,8 @@ setGeneric("sqlAppendTable", function(con, table, values, row.names = NA,
   standardGeneric("sqlAppendTable")
 })
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname sqlAppendTable
 setMethod("sqlAppendTable", "DBIConnection",
   function(con, table, values, row.names = NA, ...) {
     stopifnot(is.data.frame(values))
