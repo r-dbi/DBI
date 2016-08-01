@@ -106,6 +106,41 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' @export
+dbBreak <- structure(list(), class = "dbiAbort")
+
+dbFetchChunkedQuery <- function(rs, callback, n) {
+  rowsSoFar <- 0
+  continueLoop <- TRUE
+  while (continueLoop) {
+    chunk <- dbFetch(rs, n = n)
+    if (nrow(chunk) == 0) break
+    rowsSoFar <<- rowsSoFar + nrow(chunk)
+    continueLoop <<- tryCatch({
+      result <- callback(df = chunk, index = rowsSoFar)
+      TRUE
+    }, dbiAbort = function(e) FALSE)
+  }
+  invisible(chunk)
+}
+
+#' @export
+setGeneric("dbGetChunkedQuery",
+  function(conn, statement, callback, n = 10000L, ...) {
+   standardGeneric("dbGetChunkedQuery")
+  },
+  signature = c("conn", "statement")
+)
+
+#' @export
+setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
+  function(conn, statement, callback, n, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbFetchChunkedQuery(rs, callback, n)
+  }
+)
+
 #' Execute an SQL statement that does not produce a result set
 #'
 #' This function should be used when you want to execute a
