@@ -29,6 +29,7 @@ NULL
 #'   an active connection to an DBMS.
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
+#' @return An object of class \code{SQL}.
 #' @export
 #' @examples
 #' # Quoting ensures that arbitrary input is safe for use in a query
