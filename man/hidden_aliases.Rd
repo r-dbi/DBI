@@ -93,9 +93,13 @@
 \arguments{
 \item{object}{Object to display}
 
+\item{conn, x}{Connection and Table used when escaping.}
+
 \item{object}{Object to display}
 
 \item{object}{Object to display}
+
+\item{object}{Table object to print}
 }
 \description{
 For S4 methods that require a documentation entry but only clutter the index.

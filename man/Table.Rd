@@ -13,10 +13,6 @@ Table(...)
 or \code{cluster}, \code{catalog}, \code{schema}, \code{table}.
 For more on these concepts, see
 \url{http://stackoverflow.com/questions/7022755/}}
-
-\item{conn, x}{Connection and Table used when escaping.}
-
-\item{object}{Table object to print}
 }
 \description{
 Refer to a table nested in a hierarchy (e.g. within a schema)
