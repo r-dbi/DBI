@@ -38,6 +38,7 @@ Character vectors will be escaped with \code{\link[DBI]{dbQuoteString}}.}
 \code{sqlAppendTable} generates a single SQL string that inserts a
 data frame into an existing table. \code{sqlAppendTableTemplate} generates
 a template suitable for use with \code{\link{dbBind}}.
+These methods are mostly useful for backend implementers.
 }
 \examples{
 sqlAppendTable(ANSI(), "iris", head(iris))

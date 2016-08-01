@@ -5,6 +5,7 @@
 #' By default, row names will be converted to an explicit column
 #' called "row_names", and any query returning a column called "row_names"
 #' will have those automatically set as row names.
+#' These methods are mostly useful for backend implementers.
 #'
 #' @param df A data frame
 #' @param row.names Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.

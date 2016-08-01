@@ -2,6 +2,7 @@
 #'
 #' Exposes interface to simple \code{CREATE TABLE} commands. The default
 #' method is ANSI SQL 99 compliant.
+#' This method is mostly useful for backend implementers.
 #'
 #' @section DBI-backends:
 #' If you implement one method (i.e. for strings or data frames), you need
