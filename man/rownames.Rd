@@ -4,7 +4,7 @@
 \alias{rownames}
 \alias{sqlColumnToRownames}
 \alias{sqlRownamesToColumn}
-\title{Convert row names back and forth between columns.}
+\title{Convert row names back and forth between columns}
 \usage{
 sqlRownamesToColumn(df, row.names = NA)
 
@@ -30,6 +30,7 @@ names of data frame during back-and-forth translation to a SQL table.
 By default, row names will be converted to an explicit column
 called "row_names", and any query returning a column called "row_names"
 will have those automatically set as row names.
+These methods are mostly useful for backend implementers.
 }
 \examples{
 # If have row names

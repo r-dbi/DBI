@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBResult.R
 \name{dbBind}
 \alias{dbBind}
-\title{Bind values to a parameterised/prepared statement.}
+\title{Bind values to a parameterised/prepared statement}
 \usage{
 dbBind(res, params, ...)
 }
@@ -17,6 +17,6 @@ values.}
 \item{...}{Other arguments passed on to methods.}
 }
 \description{
-Bind values to a parameterised/prepared statement.
+Bind values to a parameterised/prepared statement
 }
 

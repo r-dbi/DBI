@@ -1,4 +1,4 @@
-#' Make R identifiers into legal SQL identifiers.
+#' Make R identifiers into legal SQL identifiers
 #'
 #' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
 #' (or possibly \code{\link{dbQuoteString}}) instead.
@@ -27,12 +27,8 @@
 #'   override or update this vector.
 #' @aliases
 #'    make.db.names
-#'    make.db.names,DBIObject,character-method
 #'    SQLKeywords
-#'    SQLKeywords,DBIObject-method
-#'    SQLKeywords,missing-method
 #'    isSQLKeyword
-#'    isSQLKeyword,DBIObject,character-method
 #' @param dbObj any DBI object (e.g., \code{DBIDriver}).
 #' @param snames a character vector of R identifiers (symbols) from which we
 #'   need to make SQL identifiers.
@@ -64,6 +60,8 @@ setGeneric("make.db.names", signature = c("dbObj", "snames"),
   },
   valueClass = "character"
 )
+
+#' @rdname hidden_aliases
 setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
   definition = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
     make.db.names.default(snames, keywords, unique, allow.keywords)
@@ -111,6 +109,8 @@ setGeneric("isSQLKeyword", signature = c("dbObj", "name"),
   },
   valueClass = "logical"
 )
+
+#' @rdname hidden_aliases
 setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
   definition = function(dbObj, name, keywords, case, ...)
     isSQLKeyword.default(name, keywords, case),
@@ -143,14 +143,19 @@ setGeneric("SQLKeywords",
   },
   valueClass = "character"
 )
+
+#' @rdname hidden_aliases
 setMethod("SQLKeywords", "DBIObject",
   definition = function(dbObj, ...) .SQL92Keywords,
   valueClass = "character"
 )
+
+#' @rdname hidden_aliases
 setMethod("SQLKeywords", "missing",
   definition = function(dbObj, ...) .SQL92Keywords,
   valueClass = "character"
 )
+
 #' @export
 .SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
   "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN",

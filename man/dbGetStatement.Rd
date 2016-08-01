@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBResult.R
 \name{dbGetStatement}
 \alias{dbGetStatement}
-\alias{dbGetStatement,DBIResult-method}
 \title{Get the statement associated with a result set}
 \usage{
 dbGetStatement(res, ...)

@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBResult.R
 \name{dbHasCompleted}
 \alias{dbHasCompleted}
-\alias{dbHasCompleted,DBIResult-method}
 \title{Completion status}
 \usage{
 dbHasCompleted(res, ...)

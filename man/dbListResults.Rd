@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbListResults}
 \alias{dbListResults}
-\title{A list of all pending results.}
+\title{A list of all pending results}
 \usage{
 dbListResults(conn, ...)
 }

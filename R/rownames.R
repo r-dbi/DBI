@@ -1,10 +1,11 @@
-#' Convert row names back and forth between columns.
+#' Convert row names back and forth between columns
 #'
 #' These functions provide a reasonably automatic way of preserving the row
 #' names of data frame during back-and-forth translation to a SQL table.
 #' By default, row names will be converted to an explicit column
 #' called "row_names", and any query returning a column called "row_names"
 #' will have those automatically set as row names.
+#' These methods are mostly useful for backend implementers.
 #'
 #' @param df A data frame
 #' @param row.names Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.

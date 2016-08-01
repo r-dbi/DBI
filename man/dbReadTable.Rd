@@ -3,7 +3,7 @@
 \name{dbReadTable}
 \alias{dbReadTable}
 \alias{dbWriteTable}
-\title{Copy data frames to and from database tables.}
+\title{Copy data frames to and from database tables}
 \usage{
 dbReadTable(conn, name, ...)
 
