@@ -28,6 +28,7 @@ Collate:
     'DBDriver.R'
     'DBConnection.R'
     'ANSI.R'
+    'DBI-package.R'
     'DBResult.R'
     'data-types.R'
     'data.R'
