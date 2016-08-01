@@ -11,15 +11,15 @@
 #'
 #' @param con A database connection.
 #' @param table Name of the table. Escaped with
-#'   \code{\link[DBI]{dbQuoteIdentifier}}.
+#'   \code{\link{dbQuoteIdentifier}}.
 #' @param fields Either a character vector or a data frame.
 #'
 #'   A named character vector: Names are column names, values are types.
-#'   Names are escaped with \code{\link[DBI]{dbQuoteIdentifier}}.
+#'   Names are escaped with \code{\link{dbQuoteIdentifier}}.
 #'   Field types are unescaped.
 #'
 #'   A data frame: field types are generated using
-#'   \code{\link[DBI]{dbDataType}}.
+#'   \code{\link{dbDataType}}.
 #' @param temporary If \code{TRUE}, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.

@@ -10,16 +10,16 @@ sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 \item{con}{A database connection.}
 
 \item{table}{Name of the table. Escaped with
-\code{\link[DBI]{dbQuoteIdentifier}}.}
+\code{\link{dbQuoteIdentifier}}.}
 
 \item{fields}{Either a character vector or a data frame.
 
   A named character vector: Names are column names, values are types.
-  Names are escaped with \code{\link[DBI]{dbQuoteIdentifier}}.
+  Names are escaped with \code{\link{dbQuoteIdentifier}}.
   Field types are unescaped.
 
   A data frame: field types are generated using
-  \code{\link[DBI]{dbDataType}}.}
+  \code{\link{dbDataType}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 

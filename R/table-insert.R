@@ -8,7 +8,7 @@
 #' @inheritParams sqlCreateTable
 #' @inheritParams rownames
 #' @param values A data frame. Factors will be converted to character vectors.
-#'   Character vectors will be escaped with \code{\link[DBI]{dbQuoteString}}.
+#'   Character vectors will be escaped with \code{\link{dbQuoteString}}.
 #' @family SQL generation
 #' @export
 #' @examples

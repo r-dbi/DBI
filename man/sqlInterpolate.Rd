@@ -10,7 +10,7 @@ sqlInterpolate(`_con`, `_sql`, ...)
 \item{_con}{A database connection.}
 
 \item{...}{Named values to interpolate into string. All strings
-will be first escaped with \code{\link[DBI]{dbQuoteString}} prior
+will be first escaped with \code{\link{dbQuoteString}} prior
 to interpolation to protect against SQL injection attacks.}
 
 \item{`_sql`}{A SQL string containing containing variables to interpolate.
