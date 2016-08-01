@@ -2,13 +2,9 @@
 % Please edit documentation in R/deprecated.R
 \name{make.db.names}
 \alias{SQLKeywords}
-\alias{SQLKeywords,DBIObject-method}
-\alias{SQLKeywords,missing-method}
 \alias{isSQLKeyword}
-\alias{isSQLKeyword,DBIObject,character-method}
 \alias{isSQLKeyword.default}
 \alias{make.db.names}
-\alias{make.db.names,DBIObject,character-method}
 \alias{make.db.names.default}
 \title{Make R identifiers into legal SQL identifiers.}
 \usage{

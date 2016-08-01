@@ -5,12 +5,7 @@
 \alias{SQL}
 \alias{SQL-class}
 \alias{dbQuoteIdentifier}
-\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection,character-method}
 \alias{dbQuoteString}
-\alias{dbQuoteString,DBIConnection,SQL-method}
-\alias{dbQuoteString,DBIConnection,character-method}
-\alias{show,SQL-method}
 \title{SQL quoting.}
 \usage{
 SQL(x)

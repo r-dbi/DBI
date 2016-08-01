@@ -13,16 +13,16 @@ Table <- function(...) {
   new("Table", name = c(...))
 }
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname Table
 setMethod("dbQuoteIdentifier", c("DBIConnection", "Table"),
   function(conn, x, ...) {
     SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = "."))
   }
 )
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname Table
 setMethod("show", "Table", function(object) {
   cat("<Table> ", paste0(object@name, collapse = "."), "\n", sep = "")
 })

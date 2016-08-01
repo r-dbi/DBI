@@ -20,8 +20,8 @@ setGeneric("sqlAppendTable", function(con, table, values, row.names = NA,
   standardGeneric("sqlAppendTable")
 })
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname sqlAppendTable
 setMethod("sqlAppendTable", "DBIConnection",
   function(con, table, values, row.names = NA, ...) {
     stopifnot(is.data.frame(values))

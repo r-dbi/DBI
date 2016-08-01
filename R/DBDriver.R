@@ -48,20 +48,20 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #' # But better, access the object directly
 #' RSQLite::SQLite()
 #' }
-#' @aliases dbDriver,character-method
 #' @export
 setGeneric("dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
   valueClass = "DBIDriver")
 
+#' @rdname hidden_aliases
 setMethod("dbDriver", "character",
   definition = function(drvName, ...) {
     findDriver(drvName)(...)
   }
 )
 
+#' @rdname hidden_aliases
 #' @param object Object to display
-#' @rdname DBIDriver-class
 #' @export
 setMethod("show", "DBIDriver", function(object) {
   tryCatch(
@@ -189,7 +189,6 @@ setGeneric("dbListConnections",
 #' Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 #' problems with under/overflows and loss of precision.
 #'
-#' @aliases dbDataType,DBIObject-method
 #' @inheritParams dbListConnections
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param obj An R object whose SQL type we want to determine.
@@ -212,8 +211,8 @@ setGeneric("dbDataType",
   valueClass = "character"
 )
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname dbDataType
 setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
   dbiDataType(obj)
 })

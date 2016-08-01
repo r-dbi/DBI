@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbGetQuery}
 \alias{dbGetQuery}
-\alias{dbGetQuery,DBIConnection,character-method}
 \title{Send query, retrieve results and then clear result set.}
 \usage{
 dbGetQuery(conn, statement, ...)

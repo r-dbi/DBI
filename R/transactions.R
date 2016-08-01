@@ -62,7 +62,6 @@ setGeneric("dbRollback",
 #' @param code An arbitrary block of R code
 #'
 #' @return The result of the evaluation of \code{code}
-#' @aliases dbWithTransaction,DBIConnection-method
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -90,6 +89,7 @@ setGeneric("dbWithTransaction",
   def = function(conn, code) standardGeneric("dbWithTransaction")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
   ## check if each operation is successful

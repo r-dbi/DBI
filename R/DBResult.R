@@ -20,8 +20,8 @@
 #' @include DBObject.R
 setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
 
+#' @rdname hidden_aliases
 #' @param object Object to display
-#' @rdname DBIResult-class
 #' @export
 setMethod("show", "DBIResult", function(object) {
   # to protect drivers that fail to implement the required methods (e.g.,
@@ -56,7 +56,6 @@ show_result <- function(object) {
 #' existing code. Implementors should provide methods for both \code{fetch} and
 #' \code{dbFetch} until \code{fetch} is deprecated in 2015.
 #'
-#' @aliases dbFetch,DBIResult-method
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
 #'   to retrieve all pending records.  Some implementations may recognize other
@@ -92,6 +91,8 @@ setGeneric("dbFetch",
   valueClass = "data.frame"
 )
 
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbFetch", "DBIResult", function(res, n = -1, ...) {
   fetch(res, n = n, ...)
 })
@@ -145,7 +146,6 @@ setGeneric("dbColumnInfo",
 #' Returns the statement that was passed to \code{\link{dbSendQuery}}.
 #'
 #' @inheritParams dbClearResult
-#' @aliases dbGetStatement,DBIResult-method
 #' @return a character vector
 #' @family DBIResult generics
 #' @export
@@ -160,7 +160,6 @@ setGeneric("dbGetStatement",
 #' This method returns if the operation has completed.
 #'
 #' @inheritParams dbClearResult
-#' @aliases dbHasCompleted,DBIResult-method
 #' @return a logical vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -176,7 +175,6 @@ setGeneric("dbHasCompleted",
 #' by data modifying query. For a selection query, this function returns 0.
 #'
 #' @inheritParams dbClearResult
-#' @aliases dbGetRowsAffected,DBIResult-method
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -192,7 +190,6 @@ setGeneric("dbGetRowsAffected",
 #' modifying query, the return value is 0.
 #'
 #' @inheritParams dbClearResult
-#' @aliases dbGetRowCount,DBIResult-method
 #' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
@@ -202,12 +199,14 @@ setGeneric("dbGetRowCount",
 )
 
 
-#' @rdname dbGetInfo
+#' @name dbGetInfo
 #' @section Implementation notes:
 #' The default implementation for \code{DBIResult objects}
 #' constructs such a list from the return values of the corresponding methods,
 #' \code{\link{dbGetStatement}}, \code{\link{dbGetRowCount}},
 #' \code{\link{dbGetRowsAffected}}, and \code{\link{dbHasCompleted}}.
+NULL
+#' @rdname hidden_aliases
 setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
   list(
     statement = dbGetStatement(dbObj),

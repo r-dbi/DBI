@@ -21,7 +21,7 @@ setGeneric("sqlData", function(con, value, row.names = NA, ...) {
   standardGeneric("sqlData")
 })
 
-#' @rdname sqlData
+#' @rdname hidden_aliases
 #' @export
 setMethod("sqlData", "DBIConnection", function(con, value, row.names = NA, ...) {
   value <- sqlRownamesToColumn(value, row.names)

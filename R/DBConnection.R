@@ -23,8 +23,8 @@
 #' @include DBObject.R
 setClass("DBIConnection", contains = c("DBIObject", "VIRTUAL"))
 
+#' @rdname hidden_aliases
 #' @param object Object to display
-#' @rdname DBIConnection-class
 #' @export
 setMethod("show", "DBIConnection", function(object) {
   # to protect drivers that fail to implement the required methods (e.g.,
@@ -116,7 +116,6 @@ setGeneric("dbSendQuery",
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
-#' @aliases dbExecute,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
@@ -131,6 +130,7 @@ setGeneric("dbExecute",
   def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
@@ -152,7 +152,6 @@ setMethod("dbExecute", signature("DBIConnection", "character"),
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
-#' @aliases dbGetQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
@@ -172,6 +171,7 @@ setGeneric("dbGetQuery",
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
   function(conn, statement, ...) {

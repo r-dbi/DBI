@@ -2,7 +2,6 @@
 % Please edit documentation in R/transactions.R
 \name{dbWithTransaction}
 \alias{dbWithTransaction}
-\alias{dbWithTransaction,DBIConnection-method}
 \title{Self-contained SQL transactions.}
 \usage{
 dbWithTransaction(conn, code)

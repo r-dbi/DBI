@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBResult.R
 \name{dbFetch}
 \alias{dbFetch}
-\alias{dbFetch,DBIResult-method}
 \alias{fetch}
 \title{Fetch records from a previously executed query.}
 \usage{

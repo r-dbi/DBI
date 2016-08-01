@@ -54,8 +54,10 @@ SQL <- function(x) new("SQL", x)
 #' @export
 #' @aliases
 #'   SQL-class
-#'   show,SQL-method
 setClass("SQL", contains = "character")
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("show", "SQL", function(object) {
   cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
 })
@@ -63,18 +65,21 @@ setMethod("show", "SQL", function(object) {
 
 #' @rdname SQL
 #' @export
-#' @aliases
-#'   dbQuoteIdentifier,DBIConnection,character-method
-#'   dbQuoteIdentifier,DBIConnection,SQL-method
 setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
   standardGeneric("dbQuoteIdentifier")
 })
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub('"', '""', x, fixed = TRUE)
     SQL(paste('"', encodeString(x), '"', sep = ""))
   }
 )
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
   function(conn, x, ...) {
     x
@@ -83,12 +88,12 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 
 #' @rdname SQL
 #' @export
-#' @aliases
-#'   dbQuoteString,DBIConnection,character-method
-#'   dbQuoteString,DBIConnection,SQL-method
 setGeneric("dbQuoteString", function(conn, x, ...) {
   standardGeneric("dbQuoteString")
 })
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
@@ -100,6 +105,9 @@ setMethod("dbQuoteString", c("DBIConnection", "character"),
     SQL(str)
   }
 )
+
+#' @rdname hidden_aliases
+#' @export
 setMethod("dbQuoteString", c("DBIConnection", "SQL"),
   function(conn, x, ...) {
     x

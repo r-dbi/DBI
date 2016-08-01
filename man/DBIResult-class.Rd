@@ -3,14 +3,7 @@
 \docType{class}
 \name{DBIResult-class}
 \alias{DBIResult-class}
-\alias{show,DBIResult-method}
 \title{DBIResult class.}
-\usage{
-\S4method{show}{DBIResult}(object)
-}
-\arguments{
-\item{object}{Object to display}
-}
 \description{
 This virtual class describes the result and state of execution of
 a DBMS statement (any statement, query or non-query).  The result set

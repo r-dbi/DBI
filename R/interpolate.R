@@ -24,8 +24,8 @@ setGeneric("sqlInterpolate", function(`_con`, `_sql`, ...) {
   standardGeneric("sqlInterpolate")
 })
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname sqlInterpolate
 setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
   sql <- `_sql`
   pos <- sqlParseVariables(`_con`, sql)
@@ -91,8 +91,8 @@ setGeneric("sqlParseVariables", function(con, sql, ...) {
   standardGeneric("sqlParseVariables")
 })
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname sqlParseVariables
 setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
   sqlParseVariablesImpl(sql,
     list(
