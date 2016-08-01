@@ -12,8 +12,8 @@ ANSI <- function() {
   new("AnsiConnection")
 }
 
+#' @rdname hidden_aliases
 #' @export
-#' @rdname ANSI
 setMethod("show", "AnsiConnection", function(object) {
   cat("<AnsiConnection>\n")
 })

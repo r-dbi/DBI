@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbListFields}
 \alias{dbListFields}
-\title{List field names of a remote table.}
+\title{List field names of a remote table}
 \usage{
 dbListFields(conn, name, ...)
 }
@@ -18,14 +18,13 @@ dbListFields(conn, name, ...)
 a character vector
 }
 \description{
-List field names of a remote table.
+List field names of a remote table
 }
 \seealso{
 \code{\link{dbColumnInfo}} to get the type of the fields.
 
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},

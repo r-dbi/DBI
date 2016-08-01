@@ -13,5 +13,5 @@ test_that("single quotes are doubled surrounded by '", {
 })
 
 test_that("special chars are escaped", {
-  expect_equal(dbQuoteString(ANSI(), "\n"), SQL("'\\n'"))
+  expect_equal(dbQuoteString(ANSI(), "\n"), SQL("'\n'"))
 })

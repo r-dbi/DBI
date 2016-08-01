@@ -138,7 +138,7 @@ setMethod("dbConnect", "KazamDriver", function(drv, ...) {
   always need to include `...` in the arguments, even if you don't use it,
   for compatibility with the generic.
   
-* This is likely to where people first come for help, so the examples so show 
+* This is likely to be where people first come for help, so the examples should show 
   how to connect to the database, and how to query it. (Obviously these examples 
   won't work yet.) Ideally, include examples that can be run right away 
   (perhaps relying on a publicly hosted database), but failing that surround

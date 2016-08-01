@@ -1,4 +1,4 @@
-#' DBIConnection class.
+#' DBIConnection class
 #'
 #' This virtual class encapsulates the connection to a DBMS, and it provides
 #' access to dynamic queries, result sets, DBMS session management
@@ -21,10 +21,10 @@
 #' }
 #' @export
 #' @include DBObject.R
-setClass("DBIConnection", representation("DBIObject", "VIRTUAL"))
+setClass("DBIConnection", contains = c("DBIObject", "VIRTUAL"))
 
+#' @rdname hidden_aliases
 #' @param object Object to display
-#' @rdname DBIConnection-class
 #' @export
 setMethod("show", "DBIConnection", function(object) {
   # to protect drivers that fail to implement the required methods (e.g.,
@@ -63,7 +63,7 @@ setGeneric("dbDisconnect",
   valueClass = "logical"
 )
 
-#' Execute a statement on a given database connection.
+#' Execute a statement on a given database connection
 #'
 #' The function \code{dbSendQuery} only submits and synchronously executes the
 #' SQL statement to the database engine.  It does \emph{not} extract any
@@ -106,42 +106,44 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' Execute an SQL statement that does not produce a result set
+#'
+#' This function should be used when you want to execute a
+#' non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
+#' the query and return the number of rows affected by the operation.
+#' The default implementation calls \code{\link{dbSendQuery}} and
+#' \code{\link{dbGetRowsAffected}}, which is useful if a backend does not
+#' distinguish between \code{SELECT} and non-\code{SELECT} queries.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return The number of rows affected by the \code{statement}
+#' @family connection methods
 #' @export
-dbBreak <- structure(list(), class = "dbiAbort")
-
-dbFetchChunkedQuery <- function(rs, callback, n) {
-  rowsSoFar <- 0
-  continueLoop <- TRUE
-  while (continueLoop) {
-    chunk <- dbFetch(rs, n = n)
-    if (nrow(chunk) == 0) break
-    rowsSoFar <<- rowsSoFar + nrow(chunk)
-    continueLoop <<- tryCatch({
-      result <- callback(df = chunk, index = rowsSoFar)
-      TRUE
-    }, dbiAbort = function(e) FALSE)
-  }
-  invisible(chunk)
-}
-
-#' @export
-setGeneric("dbGetChunkedQuery",
-  function(conn, statement, callback, n = 10000L, ...) {
-    standardGeneric("dbGetChunkedQuery")
-  },
-  signature = c("conn", "statement")
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", head(cars, 3))
+#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbExecute(con, "INSERT INTO cars (speed, dist)
+#'                 VALUES (1, 1), (2, 2), (3, 3);")
+#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbDisconnect(con)
+setGeneric("dbExecute",
+  def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
+#' @rdname hidden_aliases
 #' @export
-setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
-  function(conn, statement, callback, n, ...) {
+setMethod("dbExecute", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
-    dbFetchChunkedQuery(rs, callback, n)
+    dbGetRowsAffected(rs)
   }
 )
 
-#' Send query, retrieve results and then clear result set.
+#' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
 #' \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
@@ -153,7 +155,6 @@ setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
-#' @aliases dbGetQuery,DBIConnection,character-method
 #' @family connection methods
 #' @export
 #' @examples
@@ -173,6 +174,7 @@ setGeneric("dbGetQuery",
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )
 
+#' @rdname hidden_aliases
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
@@ -195,7 +197,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
-#' Get DBMS exceptions.
+#' Get DBMS exceptions
 #'
 #' @inheritParams dbDisconnect
 #' @family connection methods
@@ -207,7 +209,7 @@ setGeneric("dbGetException",
   def = function(conn, ...) standardGeneric("dbGetException")
 )
 
-#' A list of all pending results.
+#' A list of all pending results
 #'
 #' List of \linkS4class{DBIResult} objects currently active on the connection.
 #'
@@ -220,7 +222,7 @@ setGeneric("dbListResults",
   def = function(conn, ...) standardGeneric("dbListResults")
 )
 
-#' List field names of a remote table.
+#' List field names of a remote table
 #'
 #' @inheritParams dbDisconnect
 #' @param name a character string with the name of the remote table.
@@ -233,7 +235,7 @@ setGeneric("dbListFields",
   valueClass = "character"
 )
 
-#' List remote tables.
+#' List remote tables
 #'
 #' This should, where possible, include temporary tables.
 #'
@@ -247,7 +249,7 @@ setGeneric("dbListTables",
   valueClass = "character"
 )
 
-#' Copy data frames to and from database tables.
+#' Copy data frames to and from database tables
 #'
 #' \code{dbReadTable}: database table -> data frame; \code{dbWriteTable}:
 #' data frame -> database table.
@@ -299,7 +301,7 @@ setGeneric("dbExistsTable",
   valueClass = "logical"
 )
 
-#' Remove a table from the database.
+#' Remove a table from the database
 #'
 #' Executes the sql \code{DROP TABLE name}.
 #'
@@ -310,52 +312,5 @@ setGeneric("dbExistsTable",
 #' @export
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
-  valueClass = "logical"
-)
-
-#' Begin/commit/rollback SQL transactions
-#'
-#' Not all database engines implement transaction management, in which case
-#' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
-#'
-#' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
-#' back.
-#'
-#' @inheritParams dbDisconnect
-#' @return a logical indicating whether the operation succeeded or not.
-#' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if(dbGetInfo(rs, what = "rowsAffected") > 250){
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' }
-#' }
-#' @name transactions
-NULL
-
-#' @export
-#' @rdname transactions
-setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
-)
-
-#' @export
-#' @rdname transactions
-setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )

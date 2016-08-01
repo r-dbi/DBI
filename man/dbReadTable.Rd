@@ -3,7 +3,7 @@
 \name{dbReadTable}
 \alias{dbReadTable}
 \alias{dbWriteTable}
-\title{Copy data frames to and from database tables.}
+\title{Copy data frames to and from database tables}
 \usage{
 dbReadTable(conn, name, ...)
 
@@ -44,8 +44,7 @@ dbDisconnect(con)
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbRemoveTable}},

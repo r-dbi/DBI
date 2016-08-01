@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbListResults}
 \alias{dbListResults}
-\title{A list of all pending results.}
+\title{A list of all pending results}
 \usage{
 dbListResults(conn, ...)
 }
@@ -21,8 +21,7 @@ List of \linkS4class{DBIResult} objects currently active on the connection.
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},

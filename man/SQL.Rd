@@ -5,13 +5,8 @@
 \alias{SQL}
 \alias{SQL-class}
 \alias{dbQuoteIdentifier}
-\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection,character-method}
 \alias{dbQuoteString}
-\alias{dbQuoteString,DBIConnection,SQL-method}
-\alias{dbQuoteString,DBIConnection,character-method}
-\alias{show,SQL-method}
-\title{SQL quoting.}
+\title{SQL quoting}
 \usage{
 SQL(x)
 
@@ -27,17 +22,19 @@ an active connection to an DBMS.}
 
 \item{...}{Other arguments passed on to methods. Not otherwise used.}
 }
+\value{
+An object of class \code{SQL}.
+}
 \description{
 This set of classes and generics make it possible to flexibly deal with SQL
 escaping needs. By default, any user supplied input to a query should be
 escaped using either \code{dbQuoteIdentifier} or \code{dbQuoteString}
 depending on whether it refers to a table or variable name, or is a literal
 string.
-}
-\details{
-The SQL class has associated \code{SQL()} constructor function. This class
-is used to prevent double escaping of SQL strings, and to make it possible
-to tell DBI functions that you've done the escaping yourself.
+These functions return an object of the \code{SQL} class,
+which tells DBI functions that a character string does not need to be escaped
+anymore, to prevent double escaping.
+The \code{SQL} class has associated the \code{SQL()} constructor function.
 }
 \section{Implementation notes}{
 

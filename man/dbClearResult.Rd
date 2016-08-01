@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBResult.R
 \name{dbClearResult}
 \alias{dbClearResult}
-\title{Clear a result set.}
+\title{Clear a result set}
 \usage{
 dbClearResult(res, ...)
 }

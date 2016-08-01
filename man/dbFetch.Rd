@@ -2,9 +2,8 @@
 % Please edit documentation in R/DBResult.R
 \name{dbFetch}
 \alias{dbFetch}
-\alias{dbFetch,DBIResult-method}
 \alias{fetch}
-\title{Fetch records from a previously executed query.}
+\title{Fetch records from a previously executed query}
 \usage{
 dbFetch(res, n = -1, ...)
 
@@ -31,8 +30,8 @@ as a data.frame.
 \code{fetch} is provided for compatibility with older DBI clients - for all
 new code you are strongly encouraged to use \code{dbFetch}. The default
 method for \code{dbFetch} calls \code{fetch} so that it is compatible with
-existing code. Implementors should provide methods for both \code{fetch} and
-\code{dbFetch} until \code{fetch} is deprecated in 2015.
+existing code. Implementors are free to provide methods for \code{dbFetch}
+only.
 }
 \examples{
 if (!require("RSQLite")) {

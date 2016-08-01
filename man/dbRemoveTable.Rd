@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbRemoveTable}
 \alias{dbRemoveTable}
-\title{Remove a table from the database.}
+\title{Remove a table from the database}
 \usage{
 dbRemoveTable(conn, name, ...)
 }
@@ -22,8 +22,7 @@ Executes the sql \code{DROP TABLE name}.
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetChunkedQuery}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},

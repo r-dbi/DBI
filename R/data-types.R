@@ -5,7 +5,7 @@ data_frame_data_type <- function(x) {
 }
 
 varchar_data_type <- function(x) {
-  paste0("VARCHAR(", max(nchar(as.character(x))), ")")
+  "TEXT"
 }
 
 list_data_type <- function(x) {
