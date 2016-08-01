@@ -17,14 +17,18 @@ The result of the evaluation of \code{code}
 }
 \description{
 Given that \code{\link{transactions}} are implemented, then this function
-allows you pass in code that is treated as a transaction. The advantage is
+allows you pass in code that is treated as a transaction.
+The default method calls \code{\link{dbBegin}} before executing the code,
+and \code{\link{dbCommit}} after successful completion,
+or \code{\link{dbRollback}} in case of an error.
+The advantage is
 that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
 \code{dbRollback} -- that is all taken care of.
 }
 \section{Side Effects}{
 
 The transaction in \code{code} on the connection \code{conn} is committed
-or rolled back. The \code{code} chunk may also also modify the local R
+or rolled back. The \code{code} chunk may also modify the local R
 environment.
 }
 \examples{

@@ -11,7 +11,7 @@ sqlInterpolate(`_con`, `_sql`, ...)
 
 \item{...}{Named values to interpolate into string. All strings
 will be first escaped with \code{\link[DBI]{dbQuoteString}} prior
-to interpolation to protect against SQL interpolation attacks.}
+to interpolation to protect against SQL injection attacks.}
 
 \item{`_sql`}{A SQL string containing containing variables to interpolate.
 Variables must start with a question mark and can be any valid R

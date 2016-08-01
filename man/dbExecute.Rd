@@ -18,10 +18,13 @@ dbExecute(conn, statement, ...)
 The number of rows affected by the \code{statement}
 }
 \description{
-This function should be used when you want to execute a non-
-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+This function should be used when you want to execute a
+non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
 \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
 the query and return the number of rows affected by the operation.
+The default implementation calls \code{\link{dbSendQuery}} and
+\code{\link{dbGetRowsAffected}}, which is useful if a backend does not
+distinguish between \code{SELECT} and non-\code{SELECT} queries.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

@@ -8,10 +8,10 @@ NULL
 #' escaped using either \code{dbQuoteIdentifier} or \code{dbQuoteString}
 #' depending on whether it refers to a table or variable name, or is a literal
 #' string.
-#'
-#' The SQL class has associated \code{SQL()} constructor function. This class
-#' is used to prevent double escaping of SQL strings, and to make it possible
-#' to tell DBI functions that you've done the escaping yourself.
+#' These functions return an object of the \code{SQL} class,
+#' which tells DBI functions that a character string does not need to be escaped
+#' anymore, to prevent double escaping.
+#' The \code{SQL} class has associated the \code{SQL()} constructor function.
 #'
 #' @section Implementation notes:
 #'

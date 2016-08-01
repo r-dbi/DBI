@@ -13,7 +13,7 @@
 #'   by a letter, digit, \code{.} or \code{_}.
 #' @param ... Named values to interpolate into string. All strings
 #'   will be first escaped with \code{\link[DBI]{dbQuoteString}} prior
-#'   to interpolation to protect against SQL interpolation attacks.
+#'   to interpolation to protect against SQL injection attacks.
 #' @export
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"

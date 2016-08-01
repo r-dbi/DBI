@@ -53,8 +53,8 @@ show_result <- function(object) {
 #' \code{fetch} is provided for compatibility with older DBI clients - for all
 #' new code you are strongly encouraged to use \code{dbFetch}. The default
 #' method for \code{dbFetch} calls \code{fetch} so that it is compatible with
-#' existing code. Implementors should provide methods for both \code{fetch} and
-#' \code{dbFetch} until \code{fetch} is deprecated in 2015.
+#' existing code. Implementors are free to provide methods for \code{dbFetch}
+#' only.
 #'
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param n maximum number of records to retrieve per fetch. Use \code{n = -1}
