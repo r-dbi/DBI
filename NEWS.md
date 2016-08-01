@@ -1,3 +1,14 @@
+# DBI 0.4-5 (2016-08-01)
+
+- Clean up documentation.
+    - Direct S4 documentation to a hidden page to unclutter documentation index (#59).
+    - Export `dbFetch()` and `dbQuoteString()` methods.
+    - Add package documentation.
+    - Remove full stop from documentation titles.
+    - Minor documentation fixes.
+- Fix two minor vignette typos (#124, @mdsumner).
+
+
 # DBI 0.4-4 (2016-08-01)
 
 - Remove misleading parts in `dbConnect()` documentation (#118).
