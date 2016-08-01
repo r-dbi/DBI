@@ -1,4 +1,4 @@
-#' DBIDriver class.
+#' DBIDriver class
 #'
 #' Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 #' The virtual class \code{DBIDriver} defines the operations for creating
@@ -13,7 +13,7 @@
 #' @include DBObject.R
 setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
-#' Load and unload database drivers.
+#' Load and unload database drivers
 #'
 #' \code{dbDriver} is a helper method used to create an new driver object
 #' given the name of a database or the corresponding R package. It works
@@ -119,7 +119,7 @@ setGeneric("dbUnloadDriver",
   valueClass = "logical"
 )
 
-#' Create a connection to a DBMS.
+#' Create a connection to a DBMS
 #'
 #' Connect to a DBMS going through the appropriate authorization procedure.
 #' Some implementations may allow you to have multiple connections open, so you
@@ -158,7 +158,7 @@ setGeneric("dbConnect",
   valueClass = "DBIConnection"
 )
 
-#' List currently open connections.
+#' List currently open connections
 #'
 #' Drivers that implement only a single connections MUST return a list
 #' containing a single element. If no connection are open, methods MUST
@@ -172,7 +172,7 @@ setGeneric("dbListConnections",
   def = function(drv, ...) standardGeneric("dbListConnections")
 )
 
-#' Determine the SQL data type of an object.
+#' Determine the SQL data type of an object
 #'
 #' This is a generic function. The default method determines the SQL type of an
 #' R object according to the SQL 92 specification, which may serve as a starting

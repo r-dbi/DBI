@@ -6,7 +6,7 @@
 \alias{SQL-class}
 \alias{dbQuoteIdentifier}
 \alias{dbQuoteString}
-\title{SQL quoting.}
+\title{SQL quoting}
 \usage{
 SQL(x)
 

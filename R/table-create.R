@@ -1,4 +1,4 @@
-#' Create a simple table.
+#' Create a simple table
 #'
 #' Exposes interface to simple \code{CREATE TABLE} commands. The default
 #' method is ANSI SQL 99 compliant.

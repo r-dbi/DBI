@@ -1,4 +1,4 @@
-#' Convert row names back and forth between columns.
+#' Convert row names back and forth between columns
 #'
 #' These functions provide a reasonably automatic way of preserving the row
 #' names of data frame during back-and-forth translation to a SQL table.

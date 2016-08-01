@@ -3,7 +3,7 @@
 \docType{class}
 \name{DBIDriver-class}
 \alias{DBIDriver-class}
-\title{DBIDriver class.}
+\title{DBIDriver class}
 \description{
 Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 The virtual class \code{DBIDriver} defines the operations for creating

@@ -3,7 +3,7 @@
 \name{dbFetch}
 \alias{dbFetch}
 \alias{fetch}
-\title{Fetch records from a previously executed query.}
+\title{Fetch records from a previously executed query}
 \usage{
 dbFetch(res, n = -1, ...)
 

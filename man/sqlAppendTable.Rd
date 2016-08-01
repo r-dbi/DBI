@@ -3,7 +3,7 @@
 \name{sqlAppendTable}
 \alias{sqlAppendTable}
 \alias{sqlAppendTableTemplate}
-\title{Insert rows into a table.}
+\title{Insert rows into a table}
 \usage{
 sqlAppendTable(con, table, values, row.names = NA, ...)
 

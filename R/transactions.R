@@ -45,7 +45,7 @@ setGeneric("dbRollback",
   valueClass = "logical"
 )
 
-#' Self-contained SQL transactions.
+#' Self-contained SQL transactions
 #'
 #' Given that \code{\link{transactions}} are implemented, then this function
 #' allows you pass in code that is treated as a transaction.

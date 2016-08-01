@@ -1,4 +1,4 @@
-#' Insert rows into a table.
+#' Insert rows into a table
 #'
 #' \code{sqlAppendTable} generates a single SQL string that inserts a
 #' data frame into an existing table. \code{sqlAppendTableTemplate} generates

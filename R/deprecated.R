@@ -1,4 +1,4 @@
-#' Make R identifiers into legal SQL identifiers.
+#' Make R identifiers into legal SQL identifiers
 #'
 #' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
 #' (or possibly \code{\link{dbQuoteString}}) instead.

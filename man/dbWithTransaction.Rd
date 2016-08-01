@@ -2,7 +2,7 @@
 % Please edit documentation in R/transactions.R
 \name{dbWithTransaction}
 \alias{dbWithTransaction}
-\title{Self-contained SQL transactions.}
+\title{Self-contained SQL transactions}
 \usage{
 dbWithTransaction(conn, code)
 }

@@ -4,7 +4,7 @@
 \alias{rownames}
 \alias{sqlColumnToRownames}
 \alias{sqlRownamesToColumn}
-\title{Convert row names back and forth between columns.}
+\title{Convert row names back and forth between columns}
 \usage{
 sqlRownamesToColumn(df, row.names = NA)
 

@@ -1,7 +1,7 @@
 #' @include DBConnection.R
 NULL
 
-#' SQL quoting.
+#' SQL quoting
 #'
 #' This set of classes and generics make it possible to flexibly deal with SQL
 #' escaping needs. By default, any user supplied input to a query should be

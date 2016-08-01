@@ -3,7 +3,7 @@
 \docType{class}
 \name{DBIObject-class}
 \alias{DBIObject-class}
-\title{DBIObject class.}
+\title{DBIObject class}
 \description{
 Base class for all other DBI classes (e.g., drivers, connections). This
 is a virtual Class: No objects may be created from it.

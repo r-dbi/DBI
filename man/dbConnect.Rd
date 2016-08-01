@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBDriver.R
 \name{dbConnect}
 \alias{dbConnect}
-\title{Create a connection to a DBMS.}
+\title{Create a connection to a DBMS}
 \usage{
 dbConnect(drv, ...)
 }

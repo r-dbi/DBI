@@ -2,7 +2,7 @@
 % Please edit documentation in R/interpolate.R
 \name{sqlInterpolate}
 \alias{sqlInterpolate}
-\title{Safely interpolate values into an SQL string.}
+\title{Safely interpolate values into an SQL string}
 \usage{
 sqlInterpolate(`_con`, `_sql`, ...)
 }
@@ -19,7 +19,7 @@ identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
 }
 \description{
-Safely interpolate values into an SQL string.
+Safely interpolate values into an SQL string
 }
 \section{Backend authors}{
 

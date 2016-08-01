@@ -3,7 +3,7 @@
 \name{dbDriver}
 \alias{dbDriver}
 \alias{dbUnloadDriver}
-\title{Load and unload database drivers.}
+\title{Load and unload database drivers}
 \usage{
 dbDriver(drvName, ...)
 

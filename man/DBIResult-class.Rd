@@ -3,7 +3,7 @@
 \docType{class}
 \name{DBIResult-class}
 \alias{DBIResult-class}
-\title{DBIResult class.}
+\title{DBIResult class}
 \description{
 This virtual class describes the result and state of execution of
 a DBMS statement (any statement, query or non-query).  The result set

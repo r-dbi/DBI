@@ -1,4 +1,4 @@
-#' DBIResult class.
+#' DBIResult class
 #'
 #' This virtual class describes the result and state of execution of
 #' a DBMS statement (any statement, query or non-query).  The result set
@@ -45,7 +45,7 @@ show_result <- function(object) {
   }
 }
 
-#' Fetch records from a previously executed query.
+#' Fetch records from a previously executed query
 #'
 #' Fetch the next \code{n} elements (rows) from the result set and return them
 #' as a data.frame.
@@ -104,7 +104,7 @@ setGeneric("fetch",
   valueClass = "data.frame"
 )
 
-#' Clear a result set.
+#' Clear a result set
 #'
 #' Frees all resources (local and remote) associated with a result set.  It some
 #' cases (e.g., very large result sets) this can be a critical step to avoid
@@ -121,7 +121,7 @@ setGeneric("dbClearResult",
   valueClass = "logical"
 )
 
-#' Information about result types.
+#' Information about result types
 #'
 #' Produces a data.frame that describes the output of a query. The data.frame
 #' should have as many rows as there are output fields in the result set, and
@@ -217,7 +217,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 })
 
 
-#' Bind values to a parameterised/prepared statement.
+#' Bind values to a parameterised/prepared statement
 #'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings. Named values should be matched to

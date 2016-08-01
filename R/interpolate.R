@@ -1,4 +1,4 @@
-#' Safely interpolate values into an SQL string.
+#' Safely interpolate values into an SQL string
 #'
 #' @section Backend authors:
 #' If you are implementing a SQL backend with non-ANSI quoting rules, you'll

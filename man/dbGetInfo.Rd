@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBObject.R, R/DBResult.R
 \name{dbGetInfo}
 \alias{dbGetInfo}
-\title{Get DBMS metadata.}
+\title{Get DBMS metadata}
 \usage{
 dbGetInfo(dbObj, ...)
 }
@@ -17,7 +17,7 @@ or a \code{\linkS4class{DBIResult}}}
 a named list
 }
 \description{
-Get DBMS metadata.
+Get DBMS metadata
 }
 \section{Implementation notes}{
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/table-create.R
 \name{sqlCreateTable}
 \alias{sqlCreateTable}
-\title{Create a simple table.}
+\title{Create a simple table}
 \usage{
 sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 }

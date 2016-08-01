@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbRemoveTable}
 \alias{dbRemoveTable}
-\title{Remove a table from the database.}
+\title{Remove a table from the database}
 \usage{
 dbRemoveTable(conn, name, ...)
 }

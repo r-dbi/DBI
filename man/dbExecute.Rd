@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbExecute}
 \alias{dbExecute}
-\title{Execute an SQL statement that does not produce a result set.}
+\title{Execute an SQL statement that does not produce a result set}
 \usage{
 dbExecute(conn, statement, ...)
 }

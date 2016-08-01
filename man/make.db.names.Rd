@@ -6,7 +6,7 @@
 \alias{isSQLKeyword.default}
 \alias{make.db.names}
 \alias{make.db.names.default}
-\title{Make R identifiers into legal SQL identifiers.}
+\title{Make R identifiers into legal SQL identifiers}
 \usage{
 make.db.names(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
   allow.keywords = TRUE, ...)

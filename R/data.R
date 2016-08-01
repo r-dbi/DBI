@@ -1,4 +1,4 @@
-#' Convert a data frame into form suitable for upload to a SQL database.
+#' Convert a data frame into form suitable for upload to a SQL database
 #'
 #' This is a generic method that coerces R objects into vectors suitable for
 #' upload to the database. The output will vary a little from method to

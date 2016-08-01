@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBDriver.R
 \name{dbDataType}
 \alias{dbDataType}
-\title{Determine the SQL data type of an object.}
+\title{Determine the SQL data type of an object}
 \usage{
 dbDataType(dbObj, obj, ...)
 }

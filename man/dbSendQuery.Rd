@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbSendQuery}
 \alias{dbSendQuery}
-\title{Execute a statement on a given database connection.}
+\title{Execute a statement on a given database connection}
 \usage{
 dbSendQuery(conn, statement, ...)
 }
