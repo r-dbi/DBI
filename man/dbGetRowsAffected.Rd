@@ -18,6 +18,17 @@ a numeric vector of length 1
 This function returns the number of rows that were added, deleted, or updated
 by data modifying query. For a selection query, this function returns 0.
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+rs <- dbSendQuery(con, "DELETE FROM mtcars")
+dbGetRowsAffected(rs)
+nrow(mtcars)
+
+dbClearResult(rs)
+dbDisconnect(con)
+}
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},
   \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},

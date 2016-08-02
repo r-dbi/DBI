@@ -41,13 +41,11 @@ connecting to the database engine itself needs to be done through calls to
 \code{dbConnect}.
 }
 \examples{
-if (require("RSQLite")) {
 # Create a RSQLite driver with a string
 d <- dbDriver("SQLite")
 d
 
 # But better, access the object directly
 RSQLite::SQLite()
-}
 }
 

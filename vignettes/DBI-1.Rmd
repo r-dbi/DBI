@@ -2,8 +2,11 @@
 title: "A Common Database Interface (DBI)"
 author: "R-Databases Special Interest Group"
 date: "16 June 2003"
-output: html_document
+output: rmarkdown::html_vignette
 bibliography: biblio.bib
+vignette: >
+  %\VignetteIndexEntry{A Common Database Interface (DBI)}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 This document describes a common interface between the S language (in

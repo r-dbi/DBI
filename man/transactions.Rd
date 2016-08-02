@@ -36,12 +36,18 @@ back.
 \dontrun{
 ora <- dbDriver("Oracle")
 con <- dbConnect(ora)
+
 rs <- dbSendQuery(con,
       "delete * from PURGE as p where p.wavelength<0.03")
-if(dbGetInfo(rs, what = "rowsAffected") > 250){
+if (dbGetRowsAffected(rs) > 250) {
   warning("dubious deletion -- rolling back transaction")
   dbRollback(con)
+} else {
+  dbCommit(con)
 }
+
+dbClearResult(rs)
+dbDisconnect(con)
 }
 }
 

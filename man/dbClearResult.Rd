@@ -16,9 +16,18 @@ a logical indicating whether clearing the
   result set was successful or not.
 }
 \description{
-Frees all resources (local and remote) associated with a result set.  It some
+Frees all resources (local and remote) associated with a result set.  In some
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)
+}
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+rs <- dbSendQuery(con, "SELECT 1")
+print(dbFetch(rs))
+
+dbClearResult(rs)
+dbDisconnect(con)
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbColumnInfo}},

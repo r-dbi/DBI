@@ -20,6 +20,15 @@ a logical vector of length 1.
 \description{
 Does a table exist?
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbExistsTable(con, "iris")
+dbWriteTable(con, "iris", iris)
+dbExistsTable(con, "iris")
+
+dbDisconnect(con)
+}
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbGetException}},

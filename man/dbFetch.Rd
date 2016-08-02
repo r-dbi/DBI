@@ -34,24 +34,24 @@ existing code. Implementors are free to provide methods for \code{dbFetch}
 only.
 }
 \examples{
-if (!require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
 dbWriteTable(con, "mtcars", mtcars)
 
 # Fetch all results
-res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
-dbFetch(res)
-dbClearResult(res)
+rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(rs)
+dbClearResult(rs)
 
 # Fetch in chunks
-res <- dbSendQuery(con, "SELECT * FROM mtcars")
-while (!dbHasCompleted(res)) {
-  chunk <- fetch(res, 10)
+rs <- dbSendQuery(con, "SELECT * FROM mtcars")
+while (!dbHasCompleted(rs)) {
+  chunk <- fetch(rs, 10)
   print(nrow(chunk))
 }
-dbClearResult(res)
+
+dbClearResult(rs)
 dbDisconnect(con)
-}
 }
 \seealso{
 close the result set with \code{\link{dbClearResult}} as soon as you

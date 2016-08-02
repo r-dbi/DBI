@@ -20,6 +20,14 @@ a character vector
 \description{
 List field names of a remote table
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+dbListFields(con, "mtcars")
+
+dbDisconnect(con)
+}
 \seealso{
 \code{\link{dbColumnInfo}} to get the type of the fields.
 

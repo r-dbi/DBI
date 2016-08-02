@@ -18,6 +18,13 @@
 #' @inheritParams rownames
 #' @param value A data frame
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' sqlData(con, head(iris))
+#' sqlData(con, head(mtcars))
+#'
+#' dbDisconnect(con)
 setGeneric("sqlData", function(con, value, row.names = NA, ...) {
   standardGeneric("sqlData")
 })

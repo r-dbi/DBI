@@ -33,25 +33,29 @@ environment.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
 dbWriteTable(con, "cars", head(cars, 3))
-dbReadTable(con, "cars")   # there's 3 rows!
+dbReadTable(con, "cars")   # there are 3 rows
+
 ## successful transaction
 dbWithTransaction(con, {
   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
 })
-dbReadTable(con, "cars")   # there's now 6 rows!
+dbReadTable(con, "cars")   # there are now 6 rows
 
-\dontrun{
 ## unsuccessful transaction -- note the missing comma
-dbWithTransaction(con,{
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-  dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-})
-dbReadTable(con, "cars")   # nothing was changed
-}
+tryCatch(
+  dbWithTransaction(con, {
+    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
+    dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
+    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
+  }),
+  error = identity
+)
+dbReadTable(con, "cars")   # still 6 rows
+
 dbDisconnect(con)
 }
 

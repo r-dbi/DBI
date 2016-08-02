@@ -20,6 +20,21 @@ a logical of length 1
 This generic tests whether a database object is still valid (i.e. it hasn't
 been disconnected or cleared).
 }
+\examples{
+dbIsValid(RSQLite::SQLite())
+
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+dbIsValid(con)
+
+rs <- dbSendQuery(con, "SELECT 1")
+dbIsValid(rs)
+
+dbClearResult(rs)
+dbIsValid(rs)
+
+dbDisconnect(con)
+dbIsValid(con)
+}
 \seealso{
 Other DBObject methods: \code{\link{dbGetInfo}}
 }
