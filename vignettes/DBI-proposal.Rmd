@@ -2,8 +2,11 @@
 title: "A Common Interface to Relational Databases from R and S -- A Proposal"
 author: "David James"
 date: "March 16, 2000"
-output: html_document
+output: rmarkdown::html_vignette
 bibliography: biblio.bib
+vignette: >
+  %\VignetteIndexEntry{A Common Interface to Relational Databases from R and S -- A Proposal}
+  %\VignetteEngine{knitr::rmarkdown}
 ---
 
 For too long S and similar data analysis environments have lacked good
