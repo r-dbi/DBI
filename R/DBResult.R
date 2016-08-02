@@ -313,6 +313,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' @param params A list of bindings
 #' @export
 #' @examples
+#' \dontrun{
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "iris", iris)
@@ -324,6 +325,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' dbClearResult(iris_result)
 #' dbDisconnect(con)
+#' }
 setGeneric("dbBind", function(res, params, ...) {
   standardGeneric("dbBind")
 })
