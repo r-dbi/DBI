@@ -18,6 +18,7 @@ Suggests:
     testthat,
     RSQLite,
     knitr,
+    rmarkdown,
     covr
 Encoding: UTF-8
 License: LGPL (>= 2)
