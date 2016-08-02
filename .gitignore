@@ -3,3 +3,4 @@
 .RData
 inst/doc
 inst/web
+.httr-oauth
