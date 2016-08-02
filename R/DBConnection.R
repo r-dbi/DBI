@@ -12,11 +12,13 @@
 #' @name DBIConnection-class
 #' @family DBI classes
 #' @examples
-#' \dontrun{
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' con
 #' dbDisconnect(con)
 #'
+#' \dontrun{
 #' con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
+#' con
 #' dbDisconnect(con)
 #' }
 #' @export
@@ -54,10 +56,8 @@ show_connection <- function(object) {
 #' @export
 #' @family connection methods
 #' @examples
-#' if (require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
-#' }
 setGeneric("dbDisconnect",
   def = function(conn, ...) standardGeneric("dbDisconnect"),
   valueClass = "logical"
@@ -90,16 +90,14 @@ setGeneric("dbDisconnect",
 #' drivers \code{dbSendQuery} documentation for details.
 #' @family connection methods
 #' @examples
-#' if (require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
-#' dbFetch(res)
-#' dbClearResult(res)
+#' rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+#' dbFetch(rs)
+#' dbClearResult(rs)
 #'
 #' dbDisconnect(con)
-#' }
 #' @export
 setGeneric("dbSendQuery",
   def = function(conn, statement, ...) standardGeneric("dbSendQuery"),
@@ -123,11 +121,13 @@ setGeneric("dbSendQuery",
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
 #' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbReadTable(con, "cars")   # there are 3 rows
 #' dbExecute(con, "INSERT INTO cars (speed, dist)
 #'                 VALUES (1, 1), (2, 2), (3, 3);")
-#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbReadTable(con, "cars")   # there are now 6 rows
+#'
 #' dbDisconnect(con)
 setGeneric("dbExecute",
   def = function(conn, statement, ...) standardGeneric("dbExecute")
@@ -158,18 +158,12 @@ setMethod("dbExecute", signature("DBIConnection", "character"),
 #' @family connection methods
 #' @export
 #' @examples
-#' if (require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
 #' dbGetQuery(con, "SELECT * FROM mtcars")
 #'
-#' dbBegin(con)
-#' dbGetQuery(con, "DELETE FROM mtcars WHERE cyl == 4")
-#' dbRollback(con)
-#'
 #' dbDisconnect(con)
-#' }
 setGeneric("dbGetQuery",
   def = function(conn, statement, ...) standardGeneric("dbGetQuery")
 )
@@ -230,6 +224,13 @@ setGeneric("dbListResults",
 #' @family connection methods
 #' @seealso \code{\link{dbColumnInfo}} to get the type of the fields.
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbWriteTable(con, "mtcars", mtcars)
+#' dbListFields(con, "mtcars")
+#'
+#' dbDisconnect(con)
 setGeneric("dbListFields",
   def = function(conn, name, ...) standardGeneric("dbListFields"),
   valueClass = "character"
@@ -244,6 +245,14 @@ setGeneric("dbListFields",
 #'   of length 0.
 #' @family connection methods
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbListTables(con)
+#' dbWriteTable(con, "mtcars", mtcars)
+#' dbListTables(con)
+#'
+#' dbDisconnect(con)
 setGeneric("dbListTables",
   def = function(conn, ...) standardGeneric("dbListTables"),
   valueClass = "character"
@@ -265,14 +274,12 @@ setGeneric("dbListTables",
 #' @return a data.frame.
 #' @export
 #' @examples
-#' if (require("RSQLite")) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ])
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-#' }
 setGeneric("dbReadTable", valueClass = "data.frame",
   signature = c("conn", "name"),
   function(conn, name, ...) {
@@ -296,6 +303,14 @@ setGeneric("dbWriteTable", valueClass = "logical",
 #' @family connection methods
 #' @return a logical vector of length 1.
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbExistsTable(con, "iris")
+#' dbWriteTable(con, "iris", iris)
+#' dbExistsTable(con, "iris")
+#'
+#' dbDisconnect(con)
 setGeneric("dbExistsTable",
   def = function(conn, name, ...) standardGeneric("dbExistsTable"),
   valueClass = "logical"
@@ -310,6 +325,16 @@ setGeneric("dbExistsTable",
 #' @family connection methods
 #' @return a logical vector of length 1 indicating success or failure.
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbExistsTable(con, "iris")
+#' dbWriteTable(con, "iris", iris)
+#' dbExistsTable(con, "iris")
+#' dbRemoveTable(con, "iris")
+#' dbExistsTable(con, "iris")
+#'
+#' dbDisconnect(con)
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
   valueClass = "logical"

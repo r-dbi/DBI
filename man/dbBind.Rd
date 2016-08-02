@@ -9,14 +9,47 @@ dbBind(res, params, ...)
 \arguments{
 \item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
 
-\item{params}{A list of bindings. Named values should be matched to
-named paramters (if supported by the DBI backend). Unnamed values
-will be matched by position. I don't recommend mixing named and unnamed
-values.}
+\item{params}{A list of bindings}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \description{
-Bind values to a parameterised/prepared statement
+The \code{\link{dbSendQuery}} function can be called with queries
+that contain placeholders for values. This function binds these placeholders
+to actual values, and is intended to be called on the result of
+\code{\link{dbSendQuery}} before calling \code{\link{dbFetch}}.
+}
+\details{
+Parametrised or prepared statements are executed as follows:
+
+\enumerate{
+  \item Call \code{\link{dbSendQuery}} with a query that contains placeholders,
+    store the returned \code{\linkS4class{DBIResult}} object in a variable.
+    Currently, the syntax for the placeholders is backend-specific,
+    e.g., \code{?}, \code{$}, \code{$name} and \code{:name}.
+    Mixing placeholders (in particular, named and unnamed ones) is not
+    recommended.
+  \item Call \code{\link{dbBind}} on the \code{DBIResult} object with a list
+    that specifies actual values for the placeholders.  The list must be
+    named or unnamed, depending on the kind of placeholders used.
+    Named values are matched to named paramters, unnamed values
+    are matched by position.
+  \item Call \code{\link{dbFetch}} on the same \code{DBIResult} object.
+  \item Repeat 2. and 3. as necessary.
+  \item Close the result set via \code{\link{dbClearResult}}.
+}
+}
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "iris", iris)
+iris_result <- dbSendQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > ?")
+dbBind(iris_result, list(2.3))
+dbFetch(iris_result)
+dbBind(iris_result, list(3))
+dbFetch(iris_result)
+
+dbClearResult(iris_result)
+dbDisconnect(con)
 }
 

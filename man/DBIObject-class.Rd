@@ -35,14 +35,16 @@ It MAY also provide methods for:
 }
 }
 \examples{
-\dontrun{
-drv <- dbDriver("MySQL")
-con <- dbConnect(drv, group = "rs-dbi")
-res <- dbSendQuery(con, "select * from vitalSuite")
+drv <- RSQLite::SQLite()
+con <- dbConnect(drv)
+
+rs <- dbSendQuery(con, "SELECT 1")
 is(drv, "DBIObject")   ## True
 is(con, "DBIObject")   ## True
-is(res, "DBIObject")
-}
+is(rs, "DBIObject")
+
+dbClearResult(rs)
+dbDisconnect(con)
 }
 \seealso{
 Other DBI classes: \code{\link{DBIConnection-class}},

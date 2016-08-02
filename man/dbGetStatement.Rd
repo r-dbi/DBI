@@ -17,6 +17,16 @@ a character vector
 \description{
 Returns the statement that was passed to \code{\link{dbSendQuery}}.
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+rs <- dbSendQuery(con, "SELECT * FROM mtcars")
+dbGetStatement(rs)
+
+dbClearResult(rs)
+dbDisconnect(con)
+}
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},
   \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},

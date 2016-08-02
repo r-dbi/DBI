@@ -40,4 +40,12 @@ The default method:
   \item Replaces NA with NULL
 }
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+sqlData(con, head(iris))
+sqlData(con, head(mtcars))
+
+dbDisconnect(con)
+}
 

@@ -28,11 +28,13 @@ distinguish between \code{SELECT} and non-\code{SELECT} queries.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
 dbWriteTable(con, "cars", head(cars, 3))
-dbReadTable(con, "cars")   # there's 3 rows!
+dbReadTable(con, "cars")   # there are 3 rows
 dbExecute(con, "INSERT INTO cars (speed, dist)
                 VALUES (1, 1), (2, 2), (3, 3);")
-dbReadTable(con, "cars")   # there's now 6 rows!
+dbReadTable(con, "cars")   # there are now 6 rows
+
 dbDisconnect(con)
 }
 \seealso{

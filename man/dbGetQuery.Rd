@@ -25,18 +25,12 @@ Subclasses should override this method only if they provide some sort of
 performance optimisation.
 }
 \examples{
-if (require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
 dbGetQuery(con, "SELECT * FROM mtcars")
 
-dbBegin(con)
-dbGetQuery(con, "DELETE FROM mtcars WHERE cyl == 4")
-dbRollback(con)
-
 dbDisconnect(con)
-}
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},

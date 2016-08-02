@@ -16,6 +16,22 @@ a logical vector of length 1
 }
 \description{
 This method returns if the operation has completed.
+A \code{SELECT} query is completed if all rows have been fetched.
+}
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+rs <- dbSendQuery(con, "SELECT * FROM mtcars")
+
+dbHasCompleted(rs)
+ret1 <- dbFetch(rs, 10)
+dbHasCompleted(rs)
+ret2 <- dbFetch(rs)
+dbHasCompleted(rs)
+
+dbClearResult(rs)
+dbDisconnect(con)
 }
 \seealso{
 Other DBIResult generics: \code{\link{dbClearResult}},
