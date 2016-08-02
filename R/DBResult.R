@@ -106,7 +106,7 @@ setGeneric("fetch",
 
 #' Clear a result set
 #'
-#' Frees all resources (local and remote) associated with a result set.  It some
+#' Frees all resources (local and remote) associated with a result set.  In some
 #' cases (e.g., very large result sets) this can be a critical step to avoid
 #' exhausting resources (memory, file descriptors, etc.)
 #'
