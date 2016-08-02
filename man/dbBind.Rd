@@ -40,6 +40,7 @@ Parametrised or prepared statements are executed as follows:
 }
 }
 \examples{
+\dontrun{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "iris", iris)
@@ -51,5 +52,6 @@ dbFetch(iris_result)
 
 dbClearResult(iris_result)
 dbDisconnect(con)
+}
 }
 
