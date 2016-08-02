@@ -1,3 +1,11 @@
+# DBI 0.4-6 (2016-08-02)
+
+- Documentation improvements:
+    - One example per function (except functions scheduled for deprecation) (#67).
+    - Consistent layout and identifier naming.
+    - Minor changes.
+
+
 # DBI 0.4-5 (2016-08-01)
 
 - Clean up documentation.
