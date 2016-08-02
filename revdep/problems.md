@@ -4,24 +4,26 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.2.5 (2016-04-14) |
+|version  |R version 3.3.1 (2016-06-21) |
 |system   |x86_64, linux-gnu            |
 |ui       |X11                          |
 |language |en_US:en                     |
 |collate  |en_US.UTF-8                  |
-|tz       |NA                           |
-|date     |2016-04-20                   |
+|tz       |Europe/Zurich                |
+|date     |2016-08-02                   |
 
 ## Packages
 
-|package  |*  |version    |date       |source                |
-|:--------|:--|:----------|:----------|:---------------------|
-|DBI      |   |0.3.1.9009 |2016-04-20 |local (rstats-db/DBI) |
-|knitr    |   |1.12.3     |2016-01-22 |CRAN (R 3.2.3)        |
-|testthat |   |1.0.0      |2016-04-14 |CRAN (R 3.2.4)        |
+|package  |*  |version    |date       |source                           |
+|:--------|:--|:----------|:----------|:--------------------------------|
+|covr     |   |2.1.0      |2016-06-21 |cran (@2.1.0)                    |
+|DBI      |   |0.4-6      |2016-08-02 |local (rstats-db/DBI@NA)         |
+|knitr    |   |1.13       |2016-05-09 |cran (@1.13)                     |
+|RSQLite  |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
+|testthat |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
 
 # Check results
-12 packages with problems
+15 packages with problems
 
 ## aroma.affymetrix (3.0.0)
 Maintainer: Henrik Bengtsson <henrikb@braju.com>  
@@ -36,11 +38,11 @@ See ‘/home/muelleki/git/R/DBI/revdep/checks/aroma.affymetrix.Rcheck/00install.
 
 checking package dependencies ... NOTE
 Packages suggested but not available for checking:
-  ‘affxparser’ ‘affyPLM’ ‘gcrma’ ‘oligo’ ‘oligoClasses’ ‘pdInfoBuilder’
-  ‘AffymetrixDataTestFiles’
+  ‘affxparser’ ‘affyPLM’ ‘aroma.light’ ‘gcrma’ ‘limma’ ‘oligo’
+  ‘oligoClasses’ ‘pdInfoBuilder’ ‘AffymetrixDataTestFiles’
 ```
 
-## dplyr (0.4.3)
+## dplyr (0.5.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/hadley/dplyr/issues
 
@@ -51,36 +53,17 @@ checking Rd cross-references ... WARNING
 package ‘microbenchmark’ exists but was not installed under R >= 2.10.0 so xrefs cannot be checked
 
 checking installed package size ... NOTE
-  installed size is 22.6Mb
+  installed size is 15.9Mb
   sub-directories of 1Mb or more:
-    libs  20.5Mb
+    libs  13.9Mb
 
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-
-Attaching package: 'dplyr'
-
-The following objects are masked from 'package:stats':
-
-    filter, lag
-
-The following objects are masked from 'package:base':
-
-    intersect, setdiff, setequal, union
-
-Quitting from lines 217-220 (databases.Rmd) 
-Error: processing vignette 'databases.Rmd' failed with diagnostics:
-RS-DBI driver: (could not connect muelleki@local on dbname "nycflights13"
-)
-Execution halted
-
+checking dependencies in R code ... NOTE
+Missing or unexported object: ‘RSQLite::rsqliteVersion’
 ```
 
-## oce (0.9-18)
-Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>  
-Bug reports: https://github.com/dankelley/oce/issues?
-        sort=created&direction=desc&state=open
+## etl (0.3.3)
+Maintainer: Ben Baumer <ben.baumer@gmail.com>  
+Bug reports: https://github.com/beanumber/etl/issues
 
 1 error  | 0 warnings | 0 notes
 
@@ -88,96 +71,120 @@ Bug reports: https://github.com/dankelley/oce/issues?
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  `cs` not equal to `cs2`.
-  Component "longitude": names for current but not for target
-  Component "latitude": names for current but not for target
+         password = password, ...) at /tmp/Rtmp7CN18V/devtools79ac6736fd85/dplyr/R/src-mysql.r:101
+  3: dbConnect(RMySQL::MySQL(), dbname = dbname, host = host, port = port, username = user, 
+         password = password, ...)
+  4: .local(drv, ...)
+  5: stop(sprintf("mysql default file %s does not exist", default.file)) at /tmp/RtmpOE7VhR/devtools5878507a462d/RMySQL/R/connection.R:94
   
-  
+  Failed with error:  'there is no package called 'willywonka''
   testthat results ================================================================
-  OK: 538 SKIPPED: 1 FAILED: 1
-  1. Failure: lonlat2map() near Cape Split (@test_map.R#62) 
+  OK: 25 SKIPPED: 0 FAILED: 1
+  1. Error: mysql works (@test-etl.R#40) 
   
   Error: testthat unit tests failed
-  In addition: Warning message:
-  Deprecated: please use `expect_lt()` instead 
   Execution halted
 ```
 
-## ora (2.0-1)
-Maintainer: Arni Magnusson <arnima@hafro.is>
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking package dependencies ... ERROR
-Package required but not available: ‘ROracle’
-
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
-
-## ProjectTemplate (0.6)
-Maintainer: Kirill Mueller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
+## oce (0.9-19)
+Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>  
+Bug reports: https://github.com/dankelley/oce/issues
 
 1 error  | 0 warnings | 1 note 
 
 ```
-checking tests ... ERROR
-Running the tests in ‘tests/run-all.R’ failed.
-Last 13 lines of output:
-  
-  
-  testthat results ================================================================
-  OK: 307 SKIPPED: 0 FAILED: 6
-  1. Error: All elements have length 1 (@test-load.R#4) 
-  2. Failure: Test full project into existing directory (@test-overwrite.R#5) 
-  3. Error: Test full project into existing directory (@test-overwrite.R#9) 
-  4. Failure: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#45) 
-  5. Error: Test minimal project into existing directory with an unrelated entry (@test-overwrite.R#53) 
-  6. Failure: Test failure creating project into existing directory with an unrelated entry if merge.existing is not set (@test-overwrite.R#75) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+checking examples ... ERROR
+Running examples in ‘oce-Ex.R’ failed
+The error most likely occurred in:
 
-checking DESCRIPTION meta-information ... NOTE
-Malformed Title field: should not end in a period.
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: read.oce
+> ### Title: Read an Oceanographic Data File
+> ### Aliases: read.oce
+> 
+> ### ** Examples
+> 
+> 
+> library(oce)
+> x <- read.oce(system.file("extdata", "ctd.cnv", package="oce"))
+> plot(x) # summary with TS and profiles
+Error in if (!is.null(x@metadata$startTime) && 4 < nchar(x@metadata$startTime,  : 
+  missing value where TRUE/FALSE needed
+Calls: plot -> plot -> .local
+Execution halted
+
+checking installed package size ... NOTE
+  installed size is  5.1Mb
+  sub-directories of 1Mb or more:
+    help   2.0Mb
 ```
 
-## RMySQL (0.10.8)
-Maintainer: Jeroen Ooms <jeroen.ooms@stat.ucla.edu>  
-Bug reports: https://github.com/rstats-db/rmysql/issues
+## pitchRx (1.8.2)
+Maintainer: Carson Sievert <cpsievert1@gmail.com>  
+Bug reports: http://github.com/cpsievert/pitchRx/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Failure: options work (@test-dbWriteTable.R#16) -----------------------------
-  dbReadTable(con, "dat") not equal to `expected`.
-  Attributes: < Component "row.names": Numeric: lengths (0, 4) differ >
-  Component "a": Numeric: lengths (0, 4) differ
-  Component "b": Lengths (0, 4) differ (string compare on first 0)
-  
-  
-  testthat results ================================================================
-  OK: 15 SKIPPED: 0 FAILED: 1
-  1. Failure: options work (@test-dbWriteTable.R#16) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-```
-
-## ROracle (1.2-2)
-Maintainer: Rajendra S. Pingte <rajendra.pingte@oracle.com>
-
-1 error  | 0 warnings | 0 notes
+1 error  | 0 warnings | 1 note 
 
 ```
-checking whether package ‘ROracle’ can be installed ... ERROR
+checking whether package ‘pitchRx’ can be installed ... ERROR
 Installation failed.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/ROracle.Rcheck/00install.out’ for details.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/pitchRx.Rcheck/00install.out’ for details.
+
+checking package dependencies ... NOTE
+Package suggested but not available for checking: ‘ggsubplot’
+```
+
+## redcapAPI (1.3)
+Maintainer: Stephen Lane <stephen.lane@barwonhealth.org.au>  
+Bug reports: https://github.com/nutterb/redcapAPI/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘redcapAPI’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/redcapAPI.Rcheck/00install.out’ for details.
+```
+
+## rplexos (1.1.4)
+Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
+Bug reports: https://github.com/NREL/rplexos/issues
+
+1 error  | 1 warning  | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘rplexos-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: process_folder
+> ### Title: Convert PLEXOS files to SQLite databases
+> ### Aliases: process_folder process_input process_solution
+> 
+> ### ** Examples
+> 
+> # Process the folder with the solution file provided by rplexos
+> location <- location_solution_rplexos()
+> process_folder(location)
+Warning: `rbind_list()` is deprecated. Please use `bind_rows()` instead.
+> 
+> # Process the folder with the input file provided by rplexos
+> location2 <- location_input_rplexos()
+> process_folder(location2)
+Error in sqliteSendQuery(con, statement, bind.data) : 
+  error in statement: no such column: comp_collection
+Calls: process_folder ... .local -> sqliteGetQuery -> sqliteSendQuery -> .Call
+Execution halted
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Quitting from lines 186-187 (rplexos.Rmd) 
+Error: processing vignette 'rplexos.Rmd' failed with diagnostics:
+error in statement: no such column: comp_collection
+Execution halted
+
 ```
 
 ## RQDA (0.2-7)
@@ -191,15 +198,37 @@ Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/RQDA.Rcheck/00install.out’ for details.
 
 checking package dependencies ... NOTE
-Packages which this enhances but not available for checking:
-  ‘rjpod’ ‘d3Network’
+Package which this enhances but not available for checking: ‘rjpod’
+```
+
+## RSQLServer (0.2.0)
+Maintainer: Imanuel Costigan <i.costigan@me.com>  
+Bug reports: https://github.com/imanuelcostigan/RSQLServer/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘RSQLServer’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/RSQLServer.Rcheck/00install.out’ for details.
+```
+
+## smnet (2.0)
+Maintainer: Alastair Rushworth <alastair.rushworth@strath.ac.uk>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘smnet’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/smnet.Rcheck/00install.out’ for details.
 ```
 
 ## sqldf (0.4-10)
 Maintainer: G. Grothendieck <ggrothendieck@gmail.com>  
 Bug reports: http://groups.google.com/group/sqldf
 
-0 errors | 1 warning  | 1 note 
+0 errors | 1 warning  | 2 notes
 
 ```
 checking whether package ‘sqldf’ can be installed ... WARNING
@@ -211,92 +240,72 @@ checking dependencies in R code ... NOTE
 'library' or 'require' call to ‘tcltk’ in package code.
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
+
+checking R code for possible problems ... NOTE
+read.csv.sql: no visible global function definition for ‘download.file’
+sqldf: no visible global function definition for ‘modifyList’
+sqldf: no visible global function definition for ‘head’
+Undefined global functions or variables:
+  download.file head modifyList
+Consider adding
+  importFrom("utils", "download.file", "head", "modifyList")
+to your NAMESPACE file.
 ```
 
-## storr (1.0.0)
-Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
+## stream (1.2-2)
+Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
+Bug reports: https://r-forge.r-project.org/projects/clusterds/
 
-1 error  | 0 warnings | 1 note 
+1 error  | 0 warnings | 0 notes
 
 ```
-checking examples ... ERROR
-Running examples in ‘storr-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: test_driver
-> ### Title: Test a storr driver
-> ### Aliases: test_driver
-> 
-> ### ** Examples
-> 
-> ## Testing the environment driver is nice and fast:
-> if (requireNamespace("testthat")) {
-+   test_driver(function() driver_environment())
-+ }
-Loading required namespace: testthat
-Error in test_driver(function() driver_environment()) : 
-  attempt to apply non-function
-Execution halted
-
-checking re-building of vignette outputs ... NOTE
-Error in re-building vignettes:
-  ...
-Quitting from lines 419-420 (drivers.Rmd) 
-Error: processing vignette 'drivers.Rmd' failed with diagnostics:
-attempt to apply non-function
-Execution halted
-
+checking whether package ‘stream’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/stream.Rcheck/00install.out’ for details.
 ```
 
 ## TSdata (2015.4-2)
 Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 
-1 error  | 0 warnings | 1 note 
+0 errors | 1 warning  | 0 notes
 
 ```
-checking running R code from vignettes ... ERROR
-Errors in running code in vignettes:
-when running code in ‘Guide.Stex’
-  ...
-Apr 20, 2016 9:55:34 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Apr 20, 2016 9:55:34 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-SEVERE: Connection failed. HTTP error code : 404, message: Not Found
-SDMX meaning: No results matching the query.
-
-  When sourcing ‘Guide.R’:
-Error: QNA.CAN.PPPGDP.CARSA.Q error: it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
-SDMX meaning: No results matching the query.
-Execution halted
-
-
-checking re-building of vignette outputs ... NOTE
+checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Loading required package: TSdbi
-Apr 20, 2016 9:55:43 PM it.bancaditalia.oss.sdmx.util.Configuration init
-INFO: Configuration file: /home/muelleki/R-revdep/RJSDMX/configuration.properties
-Apr 20, 2016 9:55:43 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Apr 20, 2016 9:55:44 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Apr 20, 2016 9:55:45 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetData/QNA/CAN.PPPGDP.CARSA.Q?format=compact_v2
-Apr 20, 2016 9:55:45 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-SEVERE: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
+Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+SEVERE: Exception caught parsing results from call to provider OECD
+Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+INFO: Exception: 
+it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
+SDMX meaning: No results matching the query.
+... 8 lines ...
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at RJavaTools.invokeMethod(RJavaTools.java:386)
+
 
 Error: processing vignette 'Guide.Stex' failed with diagnostics:
  chunk 3 
 Error in .local(serIDs, con, ...) : 
-  QNA.CAN.PPPGDP.CARSA.Q error: it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
-SDMX meaning: No results matching the query.
+  QNA.CAN.PPPGDP.CARSA.Q error: java.lang.NullPointerException
 Execution halted
-
 ```
 
-## vmsbase (2.1)
+## TSmisc (2015.1-3)
+Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘TSmisc’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/TSmisc.Rcheck/00install.out’ for details.
+```
+
+## vmsbase (2.1.3)
 Maintainer: Lorenzo D'Andrea <support@vmsbase.org>
 
 1 error  | 0 warnings | 0 notes
