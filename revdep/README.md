@@ -17,7 +17,7 @@
 |package  |*  |version    |date       |source                           |
 |:--------|:--|:----------|:----------|:--------------------------------|
 |covr     |   |2.1.0      |2016-06-21 |cran (@2.1.0)                    |
-|DBI      |   |0.4-5      |2016-08-02 |local (rstats-db/DBI@NA)         |
+|DBI      |   |0.4-6      |2016-08-02 |local (rstats-db/DBI@NA)         |
 |knitr    |   |1.13       |2016-05-09 |cran (@1.13)                     |
 |RSQLite  |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
 |testthat |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
@@ -931,9 +931,9 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 SDMX meaning: No results matching the query.
-Aug 02, 2016 3:11:21 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 SEVERE: Exception caught parsing results from call to provider OECD
-Aug 02, 2016 3:11:21 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 INFO: Exception: 
 it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
