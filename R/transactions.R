@@ -14,12 +14,18 @@
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
 #' con <- dbConnect(ora)
+#'
 #' rs <- dbSendQuery(con,
 #'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if(dbGetInfo(rs, what = "rowsAffected") > 250){
+#' if (dbGetRowsAffected(rs) > 250) {
 #'   warning("dubious deletion -- rolling back transaction")
 #'   dbRollback(con)
+#' } else {
+#'   dbCommit(con)
 #' }
+#'
+#' dbClearResult(rs)
+#' dbDisconnect(con)
 #' }
 #' @name transactions
 NULL
@@ -69,25 +75,29 @@ setGeneric("dbRollback",
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
 #' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there's 3 rows!
+#' dbReadTable(con, "cars")   # there are 3 rows
+#'
 #' ## successful transaction
 #' dbWithTransaction(con, {
 #'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
 #'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
 #'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
 #' })
-#' dbReadTable(con, "cars")   # there's now 6 rows!
+#' dbReadTable(con, "cars")   # there are now 6 rows
 #'
-#' \dontrun{
 #' ## unsuccessful transaction -- note the missing comma
-#' dbWithTransaction(con,{
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # nothing was changed
-#' }
+#' tryCatch(
+#'   dbWithTransaction(con, {
+#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
+#'     dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
+#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
+#'   }),
+#'   error = identity
+#' )
+#' dbReadTable(con, "cars")   # still 6 rows
+#'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",
   def = function(conn, code) standardGeneric("dbWithTransaction")

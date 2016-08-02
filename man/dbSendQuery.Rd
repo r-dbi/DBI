@@ -40,16 +40,14 @@ client -- but not necessarily to the memory that R manages. See individual
 drivers \code{dbSendQuery} documentation for details.
 }
 \examples{
-if (require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
-res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
-dbFetch(res)
-dbClearResult(res)
+rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+dbFetch(rs)
+dbClearResult(rs)
 
 dbDisconnect(con)
-}
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},

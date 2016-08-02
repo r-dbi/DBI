@@ -33,14 +33,12 @@ The translation of identifiers between R and SQL is done through calls
   \code{\link{make.db.names}}.
 }
 \examples{
-if (require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:10, ])
 dbReadTable(con, "mtcars")
 
 dbDisconnect(con)
-}
 }
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},

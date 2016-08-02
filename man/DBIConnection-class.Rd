@@ -15,11 +15,13 @@ Individual drivers are free to implement single or multiple simultaneous
 connections.
 }
 \examples{
-\dontrun{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
+con
 dbDisconnect(con)
 
+\dontrun{
 con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
+con
 dbDisconnect(con)
 }
 }

@@ -40,14 +40,12 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'   operation succeeded or not.
 #' @import methods
 #' @examples
-#' if (require("RSQLite")) {
 #' # Create a RSQLite driver with a string
 #' d <- dbDriver("SQLite")
 #' d
 #'
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-#' }
 #' @export
 setGeneric("dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
@@ -144,15 +142,14 @@ setGeneric("dbUnloadDriver",
 #' @seealso \code{\link{dbDisconnect}} to disconnect from a database.
 #' @export
 #' @examples
-#' if (require("RSQLite")) {
 #' # SQLite only needs a path to the database. Other database drivers
 #' # will require more details (like username, password, host, port etc)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' con
 #'
 #' dbListTables(con)
+#'
 #' dbDisconnect(con)
-#' }
 setGeneric("dbConnect",
   def = function(drv, ...) standardGeneric("dbConnect"),
   valueClass = "DBIConnection"
@@ -205,6 +202,22 @@ setGeneric("dbListConnections",
 #' dbDataType(ANSI(), I(3))
 #'
 #' dbDataType(ANSI(), iris)
+#'
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbDataType(con, 1:5)
+#' dbDataType(con, 1)
+#' dbDataType(con, TRUE)
+#' dbDataType(con, Sys.Date())
+#' dbDataType(con, Sys.time())
+#' dbDataType(con, Sys.time() - as.POSIXct(Sys.Date()))
+#' dbDataType(con, c("x", "abc"))
+#' dbDataType(con, list(raw(10), raw(20)))
+#' dbDataType(con, I(3))
+#'
+#' dbDataType(con, iris)
+#'
+#' dbDisconnect(con)
 #' @export
 setGeneric("dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),

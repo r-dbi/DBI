@@ -19,6 +19,15 @@ a character vector. If no tables present, a character vector
 \description{
 This should, where possible, include temporary tables.
 }
+\examples{
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbListTables(con)
+dbWriteTable(con, "mtcars", mtcars)
+dbListTables(con)
+
+dbDisconnect(con)
+}
 \seealso{
 Other connection methods: \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},

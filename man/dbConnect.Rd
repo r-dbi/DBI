@@ -34,15 +34,14 @@ Each driver will define what other arguments are required, e.g.,
 \code{"password"}.
 }
 \examples{
-if (require("RSQLite")) {
 # SQLite only needs a path to the database. Other database drivers
 # will require more details (like username, password, host, port etc)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 con
 
 dbListTables(con)
+
 dbDisconnect(con)
-}
 }
 \seealso{
 \code{\link{dbDisconnect}} to disconnect from a database.

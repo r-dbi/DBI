@@ -20,10 +20,8 @@ This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
 }
 \examples{
-if (require("RSQLite")) {
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
-}
 }
 \seealso{
 Other connection methods: \code{\link{dbExecute}},

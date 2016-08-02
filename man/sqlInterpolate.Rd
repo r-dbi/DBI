@@ -31,6 +31,7 @@ in errors matching supplied and interpolated variables.
 \examples{
 sql <- "SELECT * FROM X WHERE name = ?name"
 sqlInterpolate(ANSI(), sql, name = "Hadley")
+
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 }
