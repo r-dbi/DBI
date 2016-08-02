@@ -7,7 +7,8 @@
 dbDataType(dbObj, obj, ...)
 }
 \arguments{
-\item{dbObj}{A object inheriting from \code{\linkS4class{DBIDriver}}}
+\item{dbObj}{A object inheriting from \code{\linkS4class{DBIDriver}}
+or \code{\linkS4class{DBIConnection}}}
 
 \item{obj}{An R object whose SQL type we want to determine.}
 
