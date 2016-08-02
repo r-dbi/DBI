@@ -37,7 +37,7 @@
 - New `dbExecute()`, forwards to `dbSendQuery()` by default (#109, @bborgesr).
 
 
-# DBI 0.4-1 (2016-05-07)
+# DBI 0.4-1 (2016-05-07, CRAN release)
 
 - The default `show()` implementations silently ignore all errors.  Some DBI drivers (e.g., RPostgreSQL) might fail to implement `dbIsValid()` or the other methods used.
 
