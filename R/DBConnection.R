@@ -185,7 +185,7 @@ dbFetchChunkedQuery <- function(rs, callback, n) {
 #'   rowCount <<- rowCount + nrow(df)
 #'   if (df$speed == 19 && df$dist == 46) {
 #'     print(paste("Your row is number", rowCount))
-#'     return(dbBreak)
+#'     dbBreak
 #'   }
 #' }, n = 1)
 #'
