@@ -112,14 +112,12 @@ dbBreak <- structure(list(), class = "dbiAbort")
 dbFetchChunkedQuery <- function(rs, callback, n) {
   rowsSoFar <- 0
   continueLoop <- TRUE
-  while (continueLoop) {
+  while (TRUE) {
     chunk <- dbFetch(rs, n = n)
     if (nrow(chunk) == 0) break
     rowsSoFar <<- rowsSoFar + nrow(chunk)
-    continueLoop <<- tryCatch({
-      result <- callback(df = chunk, index = rowsSoFar)
-      TRUE
-    }, dbiAbort = function(e) FALSE)
+    result <- callback(df = chunk, index = rowsSoFar)
+    if (inherits(result, "dbiAbort")) break
   }
   invisible(chunk)
 }
