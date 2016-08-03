@@ -104,6 +104,106 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' @export
+dbBreak <- structure(list(), class = "dbiAbort")
+
+dbFetchChunkedQuery <- function(rs, callback, n) {
+  rowsSoFar <- 0
+  continueLoop <- TRUE
+  while (TRUE) {
+    chunk <- dbFetch(rs, n = n)
+    if (nrow(chunk) == 0) break
+    rowsSoFar <<- rowsSoFar + nrow(chunk)
+    result <- callback(df = chunk, index = rowsSoFar)
+    if (inherits(result, "dbiAbort")) break
+  }
+  invisible(chunk)
+}
+
+#' Fetch data in chunks and access it with a callback
+#'
+#' This function allows you to fetch data in chunks of \code{n} rows at a time
+#' and acess that chunk using a callback. This is meant as a safer and more
+#' efficient alternative to \code{\link{dbSendQuery}}. On one hand, it does not
+#' keep the result set open, so you don't have to worry about
+#' \code{\link{dbClearResult}}. On the other hand, you never need to have all
+#' of the data on your machine at once (each chunk comes and goes), but you can
+#' still produce global results.
+#'
+#' For most use cases, you will want to actually loop through all of the data.
+#' But there are some cases for which this is not true (for example, if you
+#' just want to locate a particular row). In these situations, you can stop the
+#' function from continuing to execute once your terminating condition is met.
+#' To do so, use: \code{if (terminatingCondition) return(dbBreak)}.
+#' \code{dbBreak} is a sentinel value that \code{DBI} recognizes and knows how
+#' to interpret correctly.
+#'
+#' @name dbGetChunkedQuery
+#' @aliases dbBreak dbGetChunkedQuery
+#' dbGetChunkedQuery,DBIConnection,character-method
+#' @docType data
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
+#' \code{\link{dbConnect}}.
+#' @param statement A character vector of length 1 containing SQL.
+#' @param callback A callback function whose signature must be:
+#' \code{function(df, index)}, where \code{df} is be the (partial) result set
+#' (expressed as a dataframe) returned by the \code{statement}, and
+#' \code{index} is the cumulative number of rows fetched so far.
+#' @param n The number of rows to fetch in each chunk.
+#' @param ... Other parameters passed on to methods.
+#' @return The last chunk of data fetched (invisibly).
+#' @seealso Other connection methods: \code{\link{dbDisconnect}},
+#' \code{\link{dbExistsTable}}, \code{\link{dbGetException}},
+#' \code{\link{dbGetQuery}}, \code{\link{dbListFields}},
+#' \code{\link{dbListResults}}, \code{\link{dbListTables}},
+#' \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+#' \code{\link{dbSendQuery}}
+#' @keywords datasets
+#' @export
+#' @examples
+#'
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbWriteTable(con, "cars", cars)
+#'
+#' ## Want to loop through all chunks to produce a global result
+#' distSum <- 0
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT dist FROM cars", function(df, index) {
+#'   distSum <<- distSum + sum(df$dist)
+#'   rowCount <<- rowCount + nrow(df)
+#' }, n = 10)
+#'
+#' (distAvg <- distSum / rowCount)
+#'
+#' ## Want to stop once we find the row we're looking for
+#' rowCount <- 0
+#'
+#' dbGetChunkedQuery(con, "SELECT * FROM cars", function(df, index) {
+#'   rowCount <<- rowCount + nrow(df)
+#'   if (df$speed == 19 && df$dist == 46) {
+#'     print(paste("Your row is number", rowCount))
+#'     dbBreak
+#'   }
+#' }, n = 1)
+#'
+#' dbDisconnect(con)
+setGeneric("dbGetChunkedQuery",
+  function(conn, statement, callback, n = 10000L, ...) {
+   standardGeneric("dbGetChunkedQuery")
+  },
+  signature = c("conn", "statement")
+)
+
+#' @export
+setMethod("dbGetChunkedQuery", signature("DBIConnection", "character"),
+  function(conn, statement, callback, n, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbFetchChunkedQuery(rs, callback, n)
+  }
+)
+
 #' Execute an SQL statement that does not produce a result set
 #'
 #' This function should be used when you want to execute a
