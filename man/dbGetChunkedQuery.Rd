@@ -68,7 +68,7 @@ dbGetChunkedQuery(con, "SELECT * FROM cars", function(df, index) {
   rowCount <<- rowCount + nrow(df)
   if (df$speed == 19 && df$dist == 46) {
     print(paste("Your row is number", rowCount))
-    dbBreak
+    FALSE
   }
 }, n = 1)
 

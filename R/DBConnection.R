@@ -106,20 +106,34 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
-#' @export
-dbBreak <- structure(list(), class = "dbiAbort")
+# #' @export
+# dbBreak <- structure(list(), class = "dbiAbort")
+
+# dbFetchChunkedQuery <- function(rs, callback, n) {
+#   rowsSoFar <- 0
+#   while (TRUE) {
+#     chunk <- dbFetch(rs, n = n)
+#     if (nrow(chunk) == 0) break
+#     rowsSoFar <<- rowsSoFar + nrow(chunk)
+#     result <- callback(df = chunk, index = rowsSoFar)
+#     if (inherits(result, "dbiAbort")) break
+#   }
+#   invisible(chunk)
+# }
 
 dbFetchChunkedQuery <- function(rs, callback, n) {
+  callback <- as_chunk_callback(callback)
+  on.exit(callback$finally(), add = TRUE)
   rowsSoFar <- 0
-  continueLoop <- TRUE
-  while (TRUE) {
-    chunk <- dbFetch(rs, n = n)
-    if (nrow(chunk) == 0) break
+
+  chunk <- dbFetch(rs, n = n)
+  while (callback$continue() && nrow(chunk) > 0) {
+    callback$receive(chunk, rowsSoFar)
     rowsSoFar <<- rowsSoFar + nrow(chunk)
-    result <- callback(df = chunk, index = rowsSoFar)
-    if (inherits(result, "dbiAbort")) break
+    chunk <- dbFetch(rs, n = n)
   }
-  invisible(chunk)
+
+  return(invisible(callback$result()))
 }
 
 #' Fetch data in chunks and access it with a callback
@@ -185,7 +199,7 @@ dbFetchChunkedQuery <- function(rs, callback, n) {
 #'   rowCount <<- rowCount + nrow(df)
 #'   if (df$speed == 19 && df$dist == 46) {
 #'     print(paste("Your row is number", rowCount))
-#'     dbBreak
+#'     FALSE
 #'   }
 #' }, n = 1)
 #'

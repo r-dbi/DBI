@@ -2,11 +2,12 @@
 
 export(.SQL92Keywords)
 export(ANSI)
+export(DataFrameCallback)
 export(SQL)
 export(SQLKeywords)
+export(SideEffectChunkCallback)
 export(dbBegin)
 export(dbBind)
-export(dbBreak)
 export(dbCallProc)
 export(dbClearResult)
 export(dbColumnInfo)

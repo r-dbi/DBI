@@ -18,7 +18,8 @@ Suggests:
     testthat,
     RSQLite,
     knitr,
-    covr
+    covr,
+    R6
 Encoding: UTF-8
 License: LGPL (>= 2)
 URL: https://github.com/rstats-db/DBI
@@ -30,6 +31,7 @@ Collate:
     'ANSI.R'
     'DBI-package.R'
     'DBResult.R'
+    'callback.R'
     'data-types.R'
     'data.R'
     'deprecated.R'
