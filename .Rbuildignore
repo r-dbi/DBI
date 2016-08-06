@@ -18,3 +18,4 @@ inst\/doc\/DBI\.b..$
 ^cran-comments\.md$
 ^revdep$
 ^\.httr-oauth$
+^scripts$
