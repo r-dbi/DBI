@@ -1,34 +1,45 @@
 #!/bin/bash
 
-# adapted from https://github.com/RyanHope/gazetools/blob/master/staticdocs-gh_pages.sh 
+set -e
+set -x
+
+doc_dir=inst/web
+
+# adapted from https://github.com/tjmahr/rprime/blob/1e756aea85677ebcbe785e4d3bd65e3b367e0660/deploy-pages.sh
+# and https://github.com/RyanHope/gazetools/blob/master/staticdocs-gh_pages.sh
 # and https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 
-if [ "$TRAVIS_REPO_SLUG" == "${GH_REF}" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ]; then
+echo "Job number: ${TRAVIS_JOB_NUMBER}"
 
-  echo -e "Publishing staticdocs...\n"
-  
-  # Extract the generated static docs
-  cp -r inst/web ${HOME}
-  cd $HOME
-  
+if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "master" ] && [ "$GITHUB_PAT" != "" ]; then
+  rm -rf $doc_dir
+  mkdir -p $doc_dir
+
   # We'll pretend to be a new user. Clone the current docs.
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "travis-ci"
-  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/${GH_REF} gh-pages > /dev/null
-  
-  # Overwrite the current docs with the newly generated ones
-  cd gh-pages
-  git rm -rf *
-  cp -Rf $HOME/web/* .
-  
+  git clone --quiet --branch=gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG} $doc_dir > /dev/null
+
+  echo -e "Building staticdocs...\n"
+  R -q -e "staticdocs::build_site()"
+
+  echo -e "Publishing staticdocs...\n"
+  cd $doc_dir
+
   # Include .nojekyll as a directive for github
   touch .nojekyll
-  
+
   # Commit and publish
   git add -A
-  git commit -m "Travis build $TRAVIS_BUILD_NUMBER succeeded. Auto-pushed staticdocs to gh-pages"
-  git push --force --quiet origin gh-pages
-  
-  echo -e "Published staticdocs to gh-pages.\n"
 
+  git commit --allow-empty -F /dev/stdin <<EOF
+Deploy pages from Travis build ${TRAVIS_BUILD_NUMBER}
+
+Build URL: https://travis-ci.org/${TRAVIS_REPO_SLUG}/${TRAVIS_BUILD_ID}
+Commit: ${TRAVIS_COMMIT}
+EOF
+
+  git push --quiet origin gh-pages
+
+  echo -e "Published staticdocs to gh-pages.\n"
 fi
