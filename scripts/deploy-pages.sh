@@ -20,7 +20,8 @@ if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && 
   git config --global user.name "travis-ci"
   git clone --quiet --branch=gh-pages https://${GITHUB_PAT}@github.com/${TRAVIS_REPO_SLUG} $doc_dir > /dev/null
 
-  echo -e "Building staticdocs...\n"
+  echo -e "Building staticdocs without DBIspec.Rd...\n"
+  rm -f man/DBIspec.Rd
   R -q -e "staticdocs::build_site()"
 
   echo -e "Publishing staticdocs...\n"
