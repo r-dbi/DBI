@@ -10,8 +10,11 @@ r:
 
 r_packages: covr
 
+r_github_packages: krlmlr/staticdocs@devel
+
 after_success:
   - Rscript -e 'covr::codecov()'
+  - scripts/deploy-pages.sh
 
 notifications:
   email:
