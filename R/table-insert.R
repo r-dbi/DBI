@@ -42,12 +42,12 @@ setMethod("sqlAppendTable", "DBIConnection",
   }
 )
 
+#' @rdname sqlAppendTable
 #' @inheritParams sqlCreateTable
 #' @inheritParams sqlAppendTable
 #' @inheritParams rownames
 #' @param prefix Parameter prefix to put in front of column id.
 #' @export
-#' @rdname sqlAppendTable
 #' @examples
 #' sqlAppendTableTemplate(ANSI(), "iris", iris)
 #'

@@ -9,7 +9,7 @@ Base class for all other DBI classes (e.g., drivers, connections). This
 is a virtual Class: No objects may be created from it.
 }
 \details{
-More generally, the DBI defines a very small set of classes and methods that
+More generally, the DBI defines a very small set of classes and generics that
 allows users and applications access DBMS with a common interface.  The
 virtual classes are \code{DBIDriver} that individual drivers extend,
 \code{DBIConnection} that represent instances of DBMS connections, and

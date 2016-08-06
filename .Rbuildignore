@@ -17,3 +17,5 @@ inst\/doc\/DBI\.b..$
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^revdep$
+^\.httr-oauth$
+^scripts$

@@ -16,6 +16,7 @@
 #' @name DBIResult-class
 #' @docType class
 #' @family DBI classes
+#' @family DBIResult generics
 #' @export
 #' @include DBObject.R
 setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
@@ -311,8 +312,10 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings
+#' @family DBIResult generics
 #' @export
 #' @examples
+#' \dontrun{
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "iris", iris)
@@ -324,7 +327,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' dbClearResult(iris_result)
 #' dbDisconnect(con)
+#' }
 setGeneric("dbBind", function(res, params, ...) {
   standardGeneric("dbBind")
 })
-

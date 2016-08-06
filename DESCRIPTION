@@ -1,6 +1,6 @@
 Package: DBI
-Version: 0.4-6
-Date: 2016-08-02
+Version: 0.4-7
+Date: 2016-08-07
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All
@@ -18,10 +18,12 @@ Suggests:
     testthat,
     RSQLite,
     knitr,
+    rmarkdown,
     covr
 Encoding: UTF-8
 License: LGPL (>= 2)
-URL: https://github.com/rstats-db/DBI
+URL: http://rstats-db.github.io/DBI
+URLNote: https://github.com/rstats-db/DBI
 BugReports: https://github.com/rstats-db/DBI/issues
 Collate:
     'DBObject.R'

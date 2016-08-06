@@ -46,6 +46,26 @@ constructs such a list from the return values of the corresponding methods,
 \code{\link{dbGetRowsAffected}}, and \code{\link{dbHasCompleted}}.
 }
 \seealso{
-Other DBObject methods: \code{\link{dbIsValid}}
+Other DBIConnection generics: \code{\link{DBIConnection-class}},
+  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
+  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
+  \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
+  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
+  \code{\link{dbListResults}}, \code{\link{dbListTables}},
+  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+  \code{\link{dbSendQuery}}
+
+Other DBIDriver generics: \code{\link{DBIDriver-class}},
+  \code{\link{dbConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbDriver}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
+
+Other DBIResult generics: \code{\link{DBIResult-class}},
+  \code{\link{SQL}}, \code{\link{dbBind}},
+  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
+  \code{\link{dbFetch}}, \code{\link{dbGetRowCount}},
+  \code{\link{dbGetRowsAffected}},
+  \code{\link{dbGetStatement}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
 

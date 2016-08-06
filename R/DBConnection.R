@@ -11,6 +11,7 @@
 #' @docType class
 #' @name DBIConnection-class
 #' @family DBI classes
+#' @family DBIConnection generics
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' con
@@ -53,8 +54,8 @@ show_connection <- function(object) {
 #'   \code{\link{dbConnect}}.
 #' @param ... Other parameters passed on to methods.
 #' @return a logical vector of length 1, indicating success or failure.
+#' @family DBIConnection generics
 #' @export
-#' @family connection methods
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
@@ -88,7 +89,7 @@ setGeneric("dbDisconnect",
 #' and transfer them piecemeal to R, others may transfer all the data to the
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers \code{dbSendQuery} documentation for details.
-#' @family connection methods
+#' @family DBIConnection generics
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -117,7 +118,7 @@ setGeneric("dbSendQuery",
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
-#' @family connection methods
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -155,7 +156,7 @@ setMethod("dbExecute", signature("DBIConnection", "character"),
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
-#' @family connection methods
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -194,7 +195,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' Get DBMS exceptions
 #'
 #' @inheritParams dbDisconnect
-#' @family connection methods
+#' @family DBIConnection generics
 #' @return a list with elements \code{errNum} (an integer error number) and
 #'   \code{errMsg} (a character string) describing the last error in the
 #'   connection \code{conn}.
@@ -208,7 +209,7 @@ setGeneric("dbGetException",
 #' List of \linkS4class{DBIResult} objects currently active on the connection.
 #'
 #' @inheritParams dbDisconnect
-#' @family connection methods
+#' @family DBIConnection generics
 #' @return a list. If no results are active, an empty list. If only
 #'   a single result is active, a list with one element.
 #' @export
@@ -221,7 +222,7 @@ setGeneric("dbListResults",
 #' @inheritParams dbDisconnect
 #' @param name a character string with the name of the remote table.
 #' @return a character vector
-#' @family connection methods
+#' @family DBIConnection generics
 #' @seealso \code{\link{dbColumnInfo}} to get the type of the fields.
 #' @export
 #' @examples
@@ -243,7 +244,7 @@ setGeneric("dbListFields",
 #' @inheritParams dbDisconnect
 #' @return a character vector. If no tables present, a character vector
 #'   of length 0.
-#' @family connection methods
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -270,7 +271,7 @@ setGeneric("dbListTables",
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
-#' @family connection methods
+#' @family DBIConnection generics
 #' @return a data.frame.
 #' @export
 #' @examples
@@ -300,7 +301,7 @@ setGeneric("dbWriteTable", valueClass = "logical",
 #'
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
-#' @family connection methods
+#' @family DBIConnection generics
 #' @return a logical vector of length 1.
 #' @export
 #' @examples
@@ -322,7 +323,7 @@ setGeneric("dbExistsTable",
 #'
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
-#' @family connection methods
+#' @family DBIConnection generics
 #' @return a logical vector of length 1 indicating success or failure.
 #' @export
 #' @examples
