@@ -7,6 +7,9 @@ doc_dir=inst/web
 # adapted from https://github.com/tjmahr/rprime/blob/1e756aea85677ebcbe785e4d3bd65e3b367e0660/deploy-pages.sh
 # and https://github.com/RyanHope/gazetools/blob/master/staticdocs-gh_pages.sh
 # and https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
+#
+# For local testing use:
+# TRAVIS_OS_NAME=linux TRAVIS_PULL_REQUEST=false TRAVIS_BRANCH=master TRAVIS_REPO_SLUG=rstats-db/DBI TRAVIS_COMMIT=$(git rev-parse HEAD) GITHUB_PAT=<your-PAT> scripts/deploy-pages.sh
 
 echo "Job number: ${TRAVIS_JOB_NUMBER}"
 
