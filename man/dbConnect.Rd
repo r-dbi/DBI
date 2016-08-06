@@ -45,5 +45,10 @@ dbDisconnect(con)
 }
 \seealso{
 \code{\link{dbDisconnect}} to disconnect from a database.
+
+Other DBIDriver generics: \code{\link{DBIDriver-class}},
+  \code{\link{dbDataType}}, \code{\link{dbDriver}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
 }
 

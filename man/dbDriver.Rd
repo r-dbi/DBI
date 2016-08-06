@@ -48,4 +48,15 @@ d
 # But better, access the object directly
 RSQLite::SQLite()
 }
+\seealso{
+Other DBIDriver generics: \code{\link{DBIDriver-class}},
+  \code{\link{dbConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
+
+Other DBIDriver generics: \code{\link{DBIDriver-class}},
+  \code{\link{dbConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
+}
 

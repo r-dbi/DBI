@@ -15,5 +15,10 @@ DBMS-specific manner.
 Other DBI classes: \code{\link{DBIConnection-class}},
   \code{\link{DBIObject-class}},
   \code{\link{DBIResult-class}}
+
+Other DBIDriver generics: \code{\link{dbConnect}},
+  \code{\link{dbDataType}}, \code{\link{dbDriver}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
 }
 

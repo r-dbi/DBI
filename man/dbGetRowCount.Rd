@@ -35,10 +35,12 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-Other DBIResult generics: \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
+Other DBIResult generics: \code{\link{DBIResult-class}},
+  \code{\link{SQL}}, \code{\link{dbBind}},
+  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
+  \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
 

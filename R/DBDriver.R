@@ -9,6 +9,7 @@
 #' @docType class
 #' @name DBIDriver-class
 #' @family DBI classes
+#' @family DBIDriver generics
 #' @export
 #' @include DBObject.R
 setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
@@ -39,6 +40,7 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'   In the case of \code{dbUnloadDriver}, a logical indicating whether the
 #'   operation succeeded or not.
 #' @import methods
+#' @family DBIDriver generics
 #' @examples
 #' # Create a RSQLite driver with a string
 #' d <- dbDriver("SQLite")
@@ -111,6 +113,7 @@ is_attached <- function(x) {
 }
 
 #' @rdname dbDriver
+#' @family DBIDriver generics
 #' @export
 setGeneric("dbUnloadDriver",
   def = function(drv, ...) standardGeneric("dbUnloadDriver"),
@@ -140,6 +143,7 @@ setGeneric("dbUnloadDriver",
 #'   an object of class \code{MySQLConnection}. This object is used to direct
 #'   commands to the database engine.
 #' @seealso \code{\link{dbDisconnect}} to disconnect from a database.
+#' @family DBIDriver generics
 #' @export
 #' @examples
 #' # SQLite only needs a path to the database. Other database drivers
@@ -163,6 +167,7 @@ setGeneric("dbConnect",
 #'
 #' @param drv A object inheriting from \code{\linkS4class{DBIDriver}}
 #' @param ... Other arguments passed on to methods.
+#' @family DBIDriver generics
 #' @export
 #' @return a list
 setGeneric("dbListConnections",
@@ -191,6 +196,8 @@ setGeneric("dbListConnections",
 #'   or \code{\linkS4class{DBIConnection}}
 #' @param obj An R object whose SQL type we want to determine.
 #' @return A character string specifying the SQL data type for \code{obj}.
+#' @family DBIDriver generics
+#' @family DBIConnection generics
 #' @examples
 #' dbDataType(ANSI(), 1:5)
 #' dbDataType(ANSI(), 1)

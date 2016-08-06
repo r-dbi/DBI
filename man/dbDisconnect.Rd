@@ -24,9 +24,11 @@ con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
 }
 \seealso{
-Other connection methods: \code{\link{dbExecute}},
+Other DBIConnection generics: \code{\link{DBIConnection-class}},
+  \code{\link{dbDataType}}, \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
+  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
+  \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}}

@@ -21,9 +21,11 @@ a list with elements \code{errNum} (an integer error number) and
 Get DBMS exceptions
 }
 \seealso{
-Other connection methods: \code{\link{dbDisconnect}},
+Other DBIConnection generics: \code{\link{DBIConnection-class}},
+  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetQuery}}, \code{\link{dbListFields}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetQuery}},
+  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
   \code{\link{dbSendQuery}}
