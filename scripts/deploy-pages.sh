@@ -22,6 +22,7 @@ if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && 
 
   echo -e "Building staticdocs without DBIspec.Rd...\n"
   rm -f man/DBIspec.Rd
+  rm -r $doc_dir/*
   R -q -e "staticdocs::build_site()"
 
   echo -e "Publishing staticdocs...\n"
