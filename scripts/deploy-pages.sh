@@ -13,7 +13,7 @@ doc_dir=inst/web
 
 echo "Job number: ${TRAVIS_JOB_NUMBER}"
 
-if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ] && [ "$GITHUB_PAT" != "" ]; then
+if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "f-#131-staticdocs" ] && [ "$GITHUB_PAT" != "" ]; then
   rm -rf $doc_dir
   mkdir -p $doc_dir
 
