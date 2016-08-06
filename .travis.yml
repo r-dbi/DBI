@@ -8,10 +8,17 @@ r:
   - release
   - devel
 
-r_packages: covr
+r_packages:
+  - covr
+  - roxygen2
+
+r_github_packages:
+  - krlmlr/staticdocs@devel
+  - rstats-db/RSQLite@production
 
 after_success:
   - Rscript -e 'covr::codecov()'
+  - scripts/deploy-pages.sh
 
 notifications:
   email:
