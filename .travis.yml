@@ -8,9 +8,12 @@ r:
   - release
   - devel
 
-r_packages: covr
+r_packages:
+  - covr
+  - roxygen2
 
-r_github_packages: krlmlr/staticdocs@devel
+r_github_packages:
+  - krlmlr/staticdocs@devel
 
 after_success:
   - Rscript -e 'covr::codecov()'
