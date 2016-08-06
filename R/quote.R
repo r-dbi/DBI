@@ -15,7 +15,7 @@ NULL
 #'
 #' @section Implementation notes:
 #'
-#' DBI provides default methods for SQL-92 compatible quoting. If the database
+#' DBI provides default generics for SQL-92 compatible quoting. If the database
 #' uses a different convention, you will need to provide your own methods.
 #' Note that because of the way that S4 dispatch finds methods and because
 #' SQL inherits from character, if you implement (e.g.) a method for
@@ -65,6 +65,7 @@ setMethod("show", "SQL", function(object) {
 
 
 #' @rdname SQL
+#' @family DBIResult generics
 #' @export
 setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
   standardGeneric("dbQuoteIdentifier")
@@ -88,6 +89,7 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 )
 
 #' @rdname SQL
+#' @family DBIResult generics
 #' @export
 setGeneric("dbQuoteString", function(conn, x, ...) {
   standardGeneric("dbQuoteString")

@@ -57,10 +57,12 @@ dbDisconnect(con)
 close the result set with \code{\link{dbClearResult}} as soon as you
   finish retrieving the records you want.
 
-Other DBIResult generics: \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbGetRowCount}},
+Other DBIResult generics: \code{\link{DBIResult-class}},
+  \code{\link{SQL}}, \code{\link{dbBind}},
+  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
 

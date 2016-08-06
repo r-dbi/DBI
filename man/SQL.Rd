@@ -39,7 +39,7 @@ The \code{SQL} class has associated the \code{SQL()} constructor function.
 \section{Implementation notes}{
 
 
-DBI provides default methods for SQL-92 compatible quoting. If the database
+DBI provides default generics for SQL-92 compatible quoting. If the database
 uses a different convention, you will need to provide your own methods.
 Note that because of the way that S4 dispatch finds methods and because
 SQL inherits from character, if you implement (e.g.) a method for
@@ -67,5 +67,22 @@ dbQuoteString(ANSI(), var_name)
 
 # This mechanism is used to prevent double escaping
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
+}
+\seealso{
+Other DBIResult generics: \code{\link{DBIResult-class}},
+  \code{\link{dbBind}}, \code{\link{dbClearResult}},
+  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
+  \code{\link{dbGetRowsAffected}},
+  \code{\link{dbGetStatement}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+
+Other DBIResult generics: \code{\link{DBIResult-class}},
+  \code{\link{dbBind}}, \code{\link{dbClearResult}},
+  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
+  \code{\link{dbGetRowsAffected}},
+  \code{\link{dbGetStatement}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
 

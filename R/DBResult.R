@@ -16,6 +16,7 @@
 #' @name DBIResult-class
 #' @docType class
 #' @family DBI classes
+#' @family DBIResult generics
 #' @export
 #' @include DBObject.R
 setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
@@ -311,6 +312,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings
+#' @family DBIResult generics
 #' @export
 #' @examples
 #' \dontrun{
@@ -329,4 +331,3 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 setGeneric("dbBind", function(res, params, ...) {
   standardGeneric("dbBind")
 })
-

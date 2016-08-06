@@ -32,9 +32,11 @@ dbExistsTable(con, "iris")
 dbDisconnect(con)
 }
 \seealso{
-Other connection methods: \code{\link{dbDisconnect}},
+Other DBIConnection generics: \code{\link{DBIConnection-class}},
+  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
+  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
+  \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbSendQuery}}
