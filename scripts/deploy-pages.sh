@@ -11,7 +11,7 @@ doc_dir=inst/web
 # For local testing use:
 # TRAVIS_OS_NAME=linux TRAVIS_PULL_REQUEST=false TRAVIS_BRANCH=master TRAVIS_REPO_SLUG=rstats-db/DBI TRAVIS_COMMIT=$(git rev-parse HEAD) GITHUB_PAT=<your-PAT> scripts/deploy-pages.sh
 
-if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "f-#131-staticdocs" ] && [ "$GITHUB_PAT" != "" ]; then
+if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ] && [ "$GITHUB_PAT" != "" ]; then
   rm -rf $doc_dir
   mkdir -p $doc_dir
 
