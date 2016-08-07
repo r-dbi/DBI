@@ -173,8 +173,8 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #'
 #' dbWriteTable(con, "cars", head(cars, 3))
 #' dbReadTable(con, "cars")   # there are 3 rows
-#' dbExecute(con, "INSERT INTO cars (speed, dist)
-#'                 VALUES (1, 1), (2, 2), (3, 3);")
+#' dbExecute(con,
+#'   "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
 #' dbReadTable(con, "cars")   # there are now 6 rows
 #'
 #' dbDisconnect(con)
