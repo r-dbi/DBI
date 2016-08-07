@@ -16,9 +16,7 @@ dbSendQuery(conn, statement, ...)
 }
 \value{
 An object that inherits from \code{\linkS4class{DBIResult}}.
-  If the query generates output (e.g., a \code{SELECT} statement) the
-  result set can be used with \code{\link{dbFetch}} to extract records.
-
+  The result set can be used with \code{\link{dbFetch}} to extract records.
   Once you have finished using a result, make sure to disconnect it
   with \code{\link{dbClearResult}}.
 }
@@ -29,6 +27,12 @@ records --- for that you need to use the function \code{\link{dbFetch}}, and
 then you must call \code{\link{dbClearResult}} when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 \code{\link{dbGetQuery}}.
+}
+\details{
+This function is for \code{SELECT} queries only.  Some backends may
+support data manipulation queries through this function for compatibility
+reasons.  However, callers are strongly advised to use
+\code{\link{dbSendUpdate}} for data manipulation statements.
 }
 \section{Side Effects}{
 
@@ -50,6 +54,8 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
+For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
+
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
@@ -57,6 +63,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendUpdate}}
 }
 

@@ -73,12 +73,15 @@ setGeneric("dbDisconnect",
 #' records you need. For interactive use, you should almost always prefer
 #' \code{\link{dbGetQuery}}.
 #'
+#' This function is for \code{SELECT} queries only.  Some backends may
+#' support data manipulation queries through this function for compatibility
+#' reasons.  However, callers are strongly advised to use
+#' \code{\link{dbSendUpdate}} for data manipulation statements.
+#'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.
-#'   If the query generates output (e.g., a \code{SELECT} statement) the
-#'   result set can be used with \code{\link{dbFetch}} to extract records.
-#'
+#'   The result set can be used with \code{\link{dbFetch}} to extract records.
 #'   Once you have finished using a result, make sure to disconnect it
 #'   with \code{\link{dbClearResult}}.
 #'
@@ -90,6 +93,7 @@ setGeneric("dbDisconnect",
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers' \code{dbSendQuery} documentation for details.
 #' @family DBIConnection generics
+#' @seealso For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -105,11 +109,53 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' Execute a data manipulation statement on a given database connection
+#'
+#' The function \code{dbSendUpdate} only submits and synchronously executes the
+#' SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
+#' the number of affected rows, call \code{\link{dbGetRowsAffected}} on the
+#' returned result object.  You must also call \code{\link{dbClearResult}} after
+#' that. For interactive use, you should almost always prefer
+#' \code{\link{dbExecute}}.
+#'
+#' \code{\link{dbSendUpdate}} comes with a default implementation that simply
+#' forwards to \code{\link{dbSendQuery}}, to support backends that only
+#' implement the latter.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return An object that inherits from \code{\linkS4class{DBIResult}}.
+#'   Once you have finished using a result, make sure to disconnect it
+#'   with \code{\link{dbClearResult}}.
+#'
+#' @family DBIConnection generics
+#' @seealso For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbWriteTable(con, "mtcars", mtcars)
+#' rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+#' dbFetch(rs)
+#' dbClearResult(rs)
+#'
+#' dbDisconnect(con)
+#' @export
+setGeneric("dbSendUpdate",
+           def = function(conn, statement, ...) standardGeneric("dbSendUpdate"),
+           valueClass = "DBIResult"
+)
+
 #' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
 #' \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
 #' the result is always free-d by \code{\link{dbClearResult}}.
+#'
+#' This function is for \code{SELECT} queries only.  Some backends may
+#' support data manipulation statements through this function for compatibility
+#' reasons.  However callers are strongly advised to use
+#' \code{\link{dbExecute}} for data manipulation statements.
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
@@ -118,6 +164,7 @@ setGeneric("dbSendQuery",
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @family DBIConnection generics
+#' @seealso For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -153,20 +200,18 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
-#' Execute an SQL statement that does not produce a result set
+#' Execute an update statement, query number of rows affected, and then close result set
 #'
-#' This function should be used when you want to execute a
-#' non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
-#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
-#' the query and return the number of rows affected by the operation.
-#' The default implementation calls \code{\link{dbSendQuery}} and
-#' \code{\link{dbGetRowsAffected}}, which is useful if a backend does not
-#' distinguish between \code{SELECT} and non-\code{SELECT} queries.
+#' \code{dbExecute} comes with a default implementation
+#' (which should work with most backends) that calls
+#' \code{\link{dbSendUpdate}}, then \code{\link{dbGetRowsAffected}}, ensuring that
+#' the result is always free-d by \code{\link{dbClearResult}}.
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
 #' @family DBIConnection generics
+#' @seealso For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -188,7 +233,7 @@ setGeneric(
 setMethod(
   "dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
-    rs <- dbSendQuery(conn, statement, ...)
+    rs <- dbSendUpdate(conn, statement, ...)
     on.exit(dbClearResult(rs))
     dbGetRowsAffected(rs)
   }

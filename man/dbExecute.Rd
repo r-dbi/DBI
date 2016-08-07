@@ -2,7 +2,7 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbExecute}
 \alias{dbExecute}
-\title{Execute an SQL statement that does not produce a result set}
+\title{Execute an update statement, query number of rows affected, and then close result set}
 \usage{
 dbExecute(conn, statement, ...)
 }
@@ -18,13 +18,10 @@ dbExecute(conn, statement, ...)
 The number of rows affected by the \code{statement}
 }
 \description{
-This function should be used when you want to execute a
-non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
-\code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
-the query and return the number of rows affected by the operation.
-The default implementation calls \code{\link{dbSendQuery}} and
-\code{\link{dbGetRowsAffected}}, which is useful if a backend does not
-distinguish between \code{SELECT} and non-\code{SELECT} queries.
+\code{dbExecute} comes with a default implementation
+(which should work with most backends) that calls
+\code{\link{dbSendUpdate}}, then \code{\link{dbGetRowsAffected}}, ensuring that
+the result is always free-d by \code{\link{dbClearResult}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -38,6 +35,8 @@ dbReadTable(con, "cars")   # there are now 6 rows
 dbDisconnect(con)
 }
 \seealso{
+For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
@@ -45,6 +44,7 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}}
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendUpdate}}
 }
 
