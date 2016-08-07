@@ -146,6 +146,15 @@ setGeneric("dbSendUpdate",
            valueClass = "DBIResult"
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod(
+  "dbSendUpdate", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
+    dbSendQuery(conn, statement, ...)
+  }
+)
+
 #' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls

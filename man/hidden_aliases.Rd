@@ -15,6 +15,7 @@
 \alias{dbQuoteIdentifier,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
 \alias{dbQuoteString,DBIConnection,character-method}
+\alias{dbSendUpdate,DBIConnection,character-method}
 \alias{dbWithTransaction,DBIConnection-method}
 \alias{hidden_aliases}
 \alias{isSQLKeyword,DBIObject,character-method}
@@ -39,6 +40,8 @@
 \S4method{dbDataType}{DBIObject}(dbObj, obj, ...)
 
 \S4method{show}{DBIConnection}(object)
+
+\S4method{dbSendUpdate}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...)
 
