@@ -40,9 +40,9 @@
 
 \S4method{show}{DBIConnection}(object)
 
-\S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
-
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...)
+
+\S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{show}{AnsiConnection}(object)
 

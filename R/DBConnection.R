@@ -105,45 +105,6 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
-#' Execute an SQL statement that does not produce a result set
-#'
-#' This function should be used when you want to execute a
-#' non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
-#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
-#' the query and return the number of rows affected by the operation.
-#' The default implementation calls \code{\link{dbSendQuery}} and
-#' \code{\link{dbGetRowsAffected}}, which is useful if a backend does not
-#' distinguish between \code{SELECT} and non-\code{SELECT} queries.
-#'
-#' @inheritParams dbDisconnect
-#' @param statement a character vector of length 1 containing SQL.
-#' @return The number of rows affected by the \code{statement}
-#' @family DBIConnection generics
-#' @export
-#' @examples
-#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
-#'
-#' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there are 3 rows
-#' dbExecute(con, "INSERT INTO cars (speed, dist)
-#'                 VALUES (1, 1), (2, 2), (3, 3);")
-#' dbReadTable(con, "cars")   # there are now 6 rows
-#'
-#' dbDisconnect(con)
-setGeneric("dbExecute",
-  def = function(conn, statement, ...) standardGeneric("dbExecute")
-)
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbExecute", signature("DBIConnection", "character"),
-  function(conn, statement, ...) {
-    rs <- dbSendQuery(conn, statement, ...)
-    on.exit(dbClearResult(rs))
-    dbGetRowsAffected(rs)
-  }
-)
-
 #' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
@@ -189,6 +150,47 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
     }
 
     df
+  }
+)
+
+#' Execute an SQL statement that does not produce a result set
+#'
+#' This function should be used when you want to execute a
+#' non-\code{SELECT} query on table (ex: \code{UPDATE}, \code{DELETE},
+#' \code{INSERT INTO}, \code{DROP TABLE}, ...). It will execute
+#' the query and return the number of rows affected by the operation.
+#' The default implementation calls \code{\link{dbSendQuery}} and
+#' \code{\link{dbGetRowsAffected}}, which is useful if a backend does not
+#' distinguish between \code{SELECT} and non-\code{SELECT} queries.
+#'
+#' @inheritParams dbDisconnect
+#' @param statement a character vector of length 1 containing SQL.
+#' @return The number of rows affected by the \code{statement}
+#' @family DBIConnection generics
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbWriteTable(con, "cars", head(cars, 3))
+#' dbReadTable(con, "cars")   # there are 3 rows
+#' dbExecute(con, "INSERT INTO cars (speed, dist)
+#'                 VALUES (1, 1), (2, 2), (3, 3);")
+#' dbReadTable(con, "cars")   # there are now 6 rows
+#'
+#' dbDisconnect(con)
+setGeneric(
+  "dbExecute",
+  def = function(conn, statement, ...) standardGeneric("dbExecute")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod(
+  "dbExecute", signature("DBIConnection", "character"),
+  function(conn, statement, ...) {
+    rs <- dbSendQuery(conn, statement, ...)
+    on.exit(dbClearResult(rs))
+    dbGetRowsAffected(rs)
   }
 )
 
