@@ -10,20 +10,21 @@
 |language |en_US:en                     |
 |collate  |en_US.UTF-8                  |
 |tz       |Europe/Zurich                |
-|date     |2016-08-02                   |
+|date     |2016-08-08                   |
 
 ## Packages
 
-|package  |*  |version    |date       |source                           |
-|:--------|:--|:----------|:----------|:--------------------------------|
-|covr     |   |2.1.0      |2016-06-21 |cran (@2.1.0)                    |
-|DBI      |   |0.4-6      |2016-08-02 |local (rstats-db/DBI@NA)         |
-|knitr    |   |1.13       |2016-05-09 |cran (@1.13)                     |
-|RSQLite  |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
-|testthat |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
+|package   |*  |version    |date       |source                           |
+|:---------|:--|:----------|:----------|:--------------------------------|
+|covr      |   |2.2.0      |2016-08-04 |cran (@2.2.0)                    |
+|DBI       |   |0.4-8      |2016-08-07 |local (rstats-db/DBI@NA)         |
+|knitr     |   |1.13       |2016-05-09 |cran (@1.13)                     |
+|rmarkdown |   |1.0        |2016-07-08 |cran (@1.0)                      |
+|RSQLite   |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
+|testthat  |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
 
 # Check results
-72 packages
+76 packages
 
 ## archivist (2.1)
 Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
@@ -254,7 +255,7 @@ checking dependencies in R code ... NOTE
 Missing or unexported object: ‘RSQLite::rsqliteVersion’
 ```
 
-## emuR (0.1.8)
+## emuR (0.1.9)
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
 Bug reports: https://github.com/IPS-LMU/emuR/issues
 
@@ -278,7 +279,7 @@ Last 13 lines of output:
   
   Failed with error:  'there is no package called 'willywonka''
   testthat results ================================================================
-  OK: 25 SKIPPED: 0 FAILED: 1
+  OK: 26 SKIPPED: 0 FAILED: 1
   1. Error: mysql works (@test-etl.R#40) 
   
   Error: testthat unit tests failed
@@ -362,6 +363,19 @@ Maintainer: Eric Pante <pante.eric@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
+## MetaIntegrator (1.0.0)
+Maintainer: Winston A. Haynes <hayneswa@stanford.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘multtest’ ‘GEOquery’ ‘GEOmetadb’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## mitools (2.3)
 Maintainer: Thomas Lumley <t.lumley@auckland.ac.nz>
 
@@ -401,9 +415,49 @@ Maintainer: Hannes Muehleisen <hannes@cwi.nl>
 Maintainer: Hannes Muehleisen <hannes@cwi.nl>  
 Bug reports: https://github.com/hannesmuehleisen/MonetDBLite/issues
 
-0 errors | 0 warnings | 1 note 
+2 errors | 0 warnings | 1 note 
 
 ```
+checking examples ... ERROR
+Running examples in ‘MonetDBLite-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: dbSendUpdate
+> ### Title: Send a data-altering SQL statement to the database.
+> ### Aliases: dbSendUpdate dbSendUpdateAsync
+> ###   dbSendUpdate,MonetDBConnection,character-method
+> ###   dbSendUpdateAsync,MonetDBConnection,character-method
+... 6 lines ...
+> # initiate a MonetDBLite server
+> library(DBI)
+> dbdir <- file.path( tempdir() , "sendupdate" )
+> con <- dbConnect(MonetDBLite::MonetDBLite(), dbdir)
+> 
+> # create table
+> dbSendUpdate(con, "CREATE TABLE foo(a INT,b VARCHAR(100))")
+Error in .valueClassTest(ans, "DBIResult", "dbSendUpdate") : 
+  invalid value from generic function ‘dbSendUpdate’, class “logical”, expected “DBIResult”
+Calls: dbSendUpdate -> .valueClassTest
+Execution halted
+
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1. Error: raw table creation and inserts work (@test_02_dbi.R#40) 
+  2. Error: dbWriteTable works (@test_02_dbi.R#47) 
+  3. Error: results are correct (@test_02_dbi.R#54) 
+  4. Error: csv import works (@test_02_dbi.R#89) 
+  5. Error: fwf import works (@test_02_dbi.R#123) 
+  6. Error: various parameters to dbWriteTable work as expected (@test_02_dbi.R#133) 
+  7. Error: transactions are on ACID (@test_02_dbi.R#166) 
+  8. Error: strings can have exotic characters (@test_02_dbi.R#177) 
+  9. Error: columns can have reserved names (@test_02_dbi.R#185) 
+  1. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
+
 checking installed package size ... NOTE
   installed size is 24.6Mb
   sub-directories of 1Mb or more:
@@ -452,9 +506,14 @@ checking installed package size ... NOTE
 ## ODB (1.1.1)
 Maintainer: Sylvain Mareschal <maressyl@gmail.com>
 
-0 errors | 0 warnings | 2 notes
+0 errors | 1 warning  | 2 notes
 
 ```
+checking whether package ‘ODB’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: multiple methods tables found for ‘dbSendUpdate’
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ODB.Rcheck/00install.out’ for details.
+
 checking dependencies in R code ... NOTE
 Packages in Depends field not imported from:
   ‘DBI’ ‘RJDBC’ ‘methods’
@@ -483,6 +542,19 @@ Consider adding
   importFrom("utils", "flush.console", "tail", "unzip")
 to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
 contains 'methods').
+```
+
+## ora (2.0-1)
+Maintainer: Arni Magnusson <arnima@hafro.is>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘ROracle’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pitchRx (1.8.2)
@@ -633,6 +705,17 @@ Package suggested but not available for checking: ‘SSOAP’
 Maintainer: Nagi Teramo <teramonagi@gmail.com>
 
 0 errors | 0 warnings | 0 notes
+
+## ROracle (1.2-2)
+Maintainer: Rajendra S. Pingte <rajendra.pingte@oracle.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ROracle’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ROracle.Rcheck/00install.out’ for details.
+```
 
 ## rplexos (1.1.4)
 Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
@@ -863,6 +946,11 @@ Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/stream.Rcheck/00install.out’ for details.
 ```
 
+## survey (3.31)
+Maintainer: "Thomas Lumley" <t.lumley@auckland.ac.nz>
+
+0 errors | 0 warnings | 0 notes
+
 ## tcpl (1.2.2)
 Maintainer: Dayne L Filer <dayne.filer@gmail.com>
 
@@ -931,9 +1019,9 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 SDMX meaning: No results matching the query.
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 1:29:35 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 SEVERE: Exception caught parsing results from call to provider OECD
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 1:29:35 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 INFO: Exception: 
 it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
