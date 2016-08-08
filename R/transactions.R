@@ -63,6 +63,8 @@ setGeneric("dbRollback",
 #' The advantage is
 #' that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
 #' \code{dbRollback} -- that is all taken care of.
+#' The special function \code{dbBreak} allows an early exit with rollback,
+#' it can be called only inside \code{dbWithTransaction}.
 #'
 #' @section Side Effects:
 #' The transaction in \code{code} on the connection \code{conn} is committed
@@ -100,6 +102,18 @@ setGeneric("dbRollback",
 #' )
 #' dbReadTable(con, "cars")   # still 6 rows
 #'
+#' ## early exit, silently
+#' tryCatch(
+#'   dbWithTransaction(con, {
+#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
+#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
+#'     if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
+#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
+#'   }),
+#'   error = identity
+#' )
+#' dbReadTable(con, "cars")   # still 6 rows
+#'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",
   def = function(conn, code) standardGeneric("dbWithTransaction")
@@ -108,20 +122,8 @@ setGeneric("dbWithTransaction",
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
-  ## check if each operation is successful
-  call <- dbBegin(conn)
-  if (identical(call, FALSE)) {
-    stop("Failed to begin transaction", call. = FALSE)
-  }
-  tryCatch({
-    res <- force(code)
-    call <- dbCommit(conn)
-    if (identical(call, FALSE)) {
-      stop("Failed to commit transaction", call. = FALSE)
-    }
-    res
-  },
-  error = function(e) {
+  ## needs to be a closure, because it accesses conn
+  rollback_because <- function(e) {
     call <- dbRollback(conn)
     if (identical(call, FALSE)) {
       stop(paste("Failed to rollback transaction.",
@@ -129,6 +131,35 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
                  "occurred:", conditionMessage(e)),
            call. = FALSE)
     }
-    stop(e)
-  })
+    if (inherits(e, "error")) {
+      stop(e)
+    }
+  }
+
+  ## check if each operation is successful
+  call <- dbBegin(conn)
+  if (identical(call, FALSE)) {
+    stop("Failed to begin transaction", call. = FALSE)
+  }
+  tryCatch(
+    {
+      res <- force(code)
+      call <- dbCommit(conn)
+      if (identical(call, FALSE)) {
+        stop("Failed to commit transaction", call. = FALSE)
+      }
+      res
+    },
+    dbi_abort = rollback_because,
+    error = rollback_because)
 })
+
+#' @export
+#' @rdname dbWithTransaction
+dbBreak <- function() {
+  signalCondition(
+    structure(
+      list(message = "Aborting DBI processing", call = NULL),
+      class = c("dbi_abort", "condition")))
+  stop("Invalid usage of dbBreak().", call. = FALSE)
+}
