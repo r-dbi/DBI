@@ -36,10 +36,13 @@ implement the latter.
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
-dbWriteTable(con, "mtcars", mtcars)
-rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
-dbFetch(rs)
+dbWriteTable(con, "cars", head(cars, 3))
+rs <- dbSendManip(con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+dbHasCompleted(rs)
+dbGetRowsAffected(rs)
 dbClearResult(rs)
+dbReadTable(con, "cars")   # there are now 6 rows
 
 dbDisconnect(con)
 }
