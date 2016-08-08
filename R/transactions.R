@@ -5,11 +5,12 @@
 #' \code{\linkS4class{DBIConnection}} subclass.
 #'
 #' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
+#' The current transaction on the connection \code{con} is committed or rolled
 #' back.
 #'
 #' @inheritParams dbDisconnect
 #' @return a logical indicating whether the operation succeeded or not.
+#' @seealso Self-contained transactions: \code{\link{dbWithTransaction}}
 #' @examples
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
@@ -53,9 +54,10 @@ setGeneric("dbRollback",
 
 #' Self-contained SQL transactions
 #'
-#' Given that \code{\link{transactions}} are implemented, then this function
-#' allows you pass in code that is treated as a transaction.
-#' The default method calls \code{\link{dbBegin}} before executing the code,
+#' Given that \link{transactions} are implemented, this function
+#' allows you to pass in code that is run in a transaction.
+#' The default method of \code{dbWithTransaction} calls \code{\link{dbBegin}}
+#' before executing the code,
 #' and \code{\link{dbCommit}} after successful completion,
 #' or \code{\link{dbRollback}} in case of an error.
 #' The advantage is
@@ -87,7 +89,7 @@ setGeneric("dbRollback",
 #' })
 #' dbReadTable(con, "cars")   # there are now 6 rows
 #'
-#' ## unsuccessful transaction -- note the missing comma
+#' ## failed transaction -- note the missing comma
 #' tryCatch(
 #'   dbWithTransaction(con, {
 #'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")

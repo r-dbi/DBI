@@ -16,9 +16,10 @@ dbWithTransaction(conn, code)
 The result of the evaluation of \code{code}
 }
 \description{
-Given that \code{\link{transactions}} are implemented, then this function
-allows you pass in code that is treated as a transaction.
-The default method calls \code{\link{dbBegin}} before executing the code,
+Given that \link{transactions} are implemented, this function
+allows you to pass in code that is run in a transaction.
+The default method of \code{dbWithTransaction} calls \code{\link{dbBegin}}
+before executing the code,
 and \code{\link{dbCommit}} after successful completion,
 or \code{\link{dbRollback}} in case of an error.
 The advantage is
@@ -45,7 +46,7 @@ dbWithTransaction(con, {
 })
 dbReadTable(con, "cars")   # there are now 6 rows
 
-## unsuccessful transaction -- note the missing comma
+## failed transaction -- note the missing comma
 tryCatch(
   dbWithTransaction(con, {
     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")

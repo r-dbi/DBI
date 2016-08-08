@@ -29,7 +29,7 @@ these methods should not be implemented for the specific
 }
 \section{Side Effects}{
 
-The current transaction on the connections \code{con} is committed or rolled
+The current transaction on the connection \code{con} is committed or rolled
 back.
 }
 \examples{
@@ -49,5 +49,8 @@ if (dbGetRowsAffected(rs) > 250) {
 dbClearResult(rs)
 dbDisconnect(con)
 }
+}
+\seealso{
+Self-contained transactions: \code{\link{dbWithTransaction}}
 }
 
