@@ -9,7 +9,7 @@ doc_dir=inst/web
 # and https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 #
 # For local testing use:
-# TRAVIS_OS_NAME=linux TRAVIS_PULL_REQUEST=false TRAVIS_BRANCH=master TRAVIS_REPO_SLUG=rstats-db/DBI TRAVIS_COMMIT=$(git rev-parse HEAD) GITHUB_PAT=<your-PAT> scripts/deploy-pages.sh
+# TRAVIS_OS_NAME=linux TRAVIS_PULL_REQUEST=false TRAVIS_BRANCH=production TRAVIS_REPO_SLUG=rstats-db/DBI TRAVIS_COMMIT=$(git rev-parse HEAD) GITHUB_PAT=<your-PAT> scripts/deploy-pages.sh
 
 if [ "$TRAVIS_OS_NAME" == "linux" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_BRANCH" == "production" ] && [ "$GITHUB_PAT" != "" ]; then
   # Query name and e-mail of current author
