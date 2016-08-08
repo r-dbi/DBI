@@ -22,7 +22,7 @@ by data modifying query. For a selection query, this function returns 0.
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
-rs <- dbSendQuery(con, "DELETE FROM mtcars")
+rs <- dbSendManip(con, "DELETE FROM mtcars")
 dbGetRowsAffected(rs)
 nrow(mtcars)
 
