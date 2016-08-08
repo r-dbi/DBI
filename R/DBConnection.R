@@ -76,7 +76,7 @@ setGeneric("dbDisconnect",
 #' This function is for \code{SELECT} queries only.  Some backends may
 #' support data manipulation queries through this function for compatibility
 #' reasons.  However, callers are strongly advised to use
-#' \code{\link{dbSendUpdate}} for data manipulation statements.
+#' \code{\link{dbSendManip}} for data manipulation statements.
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
@@ -93,7 +93,7 @@ setGeneric("dbDisconnect",
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers' \code{dbSendQuery} documentation for details.
 #' @family DBIConnection generics
-#' @seealso For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
+#' @seealso For updates: \code{\link{dbSendManip}} and \code{\link{dbExecute}}.
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -111,7 +111,7 @@ setGeneric("dbSendQuery",
 
 #' Execute a data manipulation statement on a given database connection
 #'
-#' The function \code{dbSendUpdate} only submits and synchronously executes the
+#' The function \code{dbSendManip} only submits and synchronously executes the
 #' SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
 #' \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
 #' the number of affected rows, call \code{\link{dbGetRowsAffected}} on the
@@ -119,7 +119,7 @@ setGeneric("dbSendQuery",
 #' that. For interactive use, you should almost always prefer
 #' \code{\link{dbExecute}}.
 #'
-#' \code{\link{dbSendUpdate}} comes with a default implementation that simply
+#' \code{\link{dbSendManip}} comes with a default implementation that simply
 #' forwards to \code{\link{dbSendQuery}}, to support backends that only
 #' implement the latter.
 #'
@@ -141,15 +141,15 @@ setGeneric("dbSendQuery",
 #'
 #' dbDisconnect(con)
 #' @export
-setGeneric("dbSendUpdate",
-           def = function(conn, statement, ...) standardGeneric("dbSendUpdate"),
+setGeneric("dbSendManip",
+           def = function(conn, statement, ...) standardGeneric("dbSendManip"),
            valueClass = "DBIResult"
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod(
-  "dbSendUpdate", signature("DBIConnection", "character"),
+  "dbSendManip", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
     dbSendQuery(conn, statement, ...)
   }
@@ -173,7 +173,7 @@ setMethod(
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @family DBIConnection generics
-#' @seealso For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
+#' @seealso For updates: \code{\link{dbSendManip}} and \code{\link{dbExecute}}.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -213,7 +213,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #'
 #' \code{dbExecute} comes with a default implementation
 #' (which should work with most backends) that calls
-#' \code{\link{dbSendUpdate}}, then \code{\link{dbGetRowsAffected}}, ensuring that
+#' \code{\link{dbSendManip}}, then \code{\link{dbGetRowsAffected}}, ensuring that
 #' the result is always free-d by \code{\link{dbClearResult}}.
 #'
 #' @inheritParams dbDisconnect
@@ -242,7 +242,7 @@ setGeneric(
 setMethod(
   "dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
-    rs <- dbSendUpdate(conn, statement, ...)
+    rs <- dbSendManip(conn, statement, ...)
     on.exit(dbClearResult(rs))
     dbGetRowsAffected(rs)
   }

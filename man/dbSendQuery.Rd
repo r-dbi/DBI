@@ -32,7 +32,7 @@ records you need. For interactive use, you should almost always prefer
 This function is for \code{SELECT} queries only.  Some backends may
 support data manipulation queries through this function for compatibility
 reasons.  However, callers are strongly advised to use
-\code{\link{dbSendUpdate}} for data manipulation statements.
+\code{\link{dbSendManip}} for data manipulation statements.
 }
 \section{Side Effects}{
 
@@ -54,7 +54,7 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
+For updates: \code{\link{dbSendManip}} and \code{\link{dbExecute}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
@@ -63,6 +63,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendUpdate}}
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendManip}}
 }
 

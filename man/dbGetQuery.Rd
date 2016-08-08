@@ -39,7 +39,7 @@ dbGetQuery(con, "SELECT * FROM mtcars")
 dbDisconnect(con)
 }
 \seealso{
-For updates: \code{\link{dbSendUpdate}} and \code{\link{dbExecute}}.
+For updates: \code{\link{dbSendManip}} and \code{\link{dbExecute}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
@@ -48,6 +48,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendUpdate}}
+  \code{\link{dbSendManip}}, \code{\link{dbSendQuery}}
 }
 
