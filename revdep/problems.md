@@ -10,20 +10,21 @@
 |language |en_US:en                     |
 |collate  |en_US.UTF-8                  |
 |tz       |Europe/Zurich                |
-|date     |2016-08-02                   |
+|date     |2016-08-08                   |
 
 ## Packages
 
-|package  |*  |version    |date       |source                           |
-|:--------|:--|:----------|:----------|:--------------------------------|
-|covr     |   |2.1.0      |2016-06-21 |cran (@2.1.0)                    |
-|DBI      |   |0.4-6      |2016-08-02 |local (rstats-db/DBI@NA)         |
-|knitr    |   |1.13       |2016-05-09 |cran (@1.13)                     |
-|RSQLite  |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
-|testthat |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
+|package   |*  |version    |date       |source                           |
+|:---------|:--|:----------|:----------|:--------------------------------|
+|covr      |   |2.2.0      |2016-08-04 |cran (@2.2.0)                    |
+|DBI       |   |0.4-8      |2016-08-08 |local (rstats-db/DBI@NA)         |
+|knitr     |   |1.13       |2016-05-09 |cran (@1.13)                     |
+|rmarkdown |   |1.0        |2016-07-08 |cran (@1.0)                      |
+|RSQLite   |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
+|testthat  |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
 
 # Check results
-15 packages with problems
+18 packages with problems
 
 ## aroma.affymetrix (3.0.0)
 Maintainer: Henrik Bengtsson <henrikb@braju.com>  
@@ -86,6 +87,19 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## MetaIntegrator (1.0.0)
+Maintainer: Winston A. Haynes <hayneswa@stanford.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘multtest’ ‘GEOquery’ ‘GEOmetadb’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## oce (0.9-19)
 Maintainer: Dan Kelley <Dan.Kelley@Dal.Ca>  
 Bug reports: https://github.com/dankelley/oce/issues
@@ -119,6 +133,19 @@ checking installed package size ... NOTE
     help   2.0Mb
 ```
 
+## ora (2.0-1)
+Maintainer: Arni Magnusson <arnima@hafro.is>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘ROracle’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
 ## pitchRx (1.8.2)
 Maintainer: Carson Sievert <cpsievert1@gmail.com>  
 Bug reports: http://github.com/cpsievert/pitchRx/issues
@@ -144,6 +171,17 @@ Bug reports: https://github.com/nutterb/redcapAPI/issues
 checking whether package ‘redcapAPI’ can be installed ... ERROR
 Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/redcapAPI.Rcheck/00install.out’ for details.
+```
+
+## ROracle (1.2-2)
+Maintainer: Rajendra S. Pingte <rajendra.pingte@oracle.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ROracle’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ROracle.Rcheck/00install.out’ for details.
 ```
 
 ## rplexos (1.1.4)
@@ -252,9 +290,9 @@ Consider adding
 to your NAMESPACE file.
 ```
 
-## stream (1.2-2)
+## stream (1.2-3)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://r-forge.r-project.org/projects/clusterds/
+Bug reports: https://github.com/mhahsler/stream/issues
 
 1 error  | 0 warnings | 0 notes
 
@@ -274,9 +312,9 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 SDMX meaning: No results matching the query.
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 SEVERE: Exception caught parsing results from call to provider OECD
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 INFO: Exception: 
 it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.

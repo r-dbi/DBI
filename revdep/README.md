@@ -10,20 +10,21 @@
 |language |en_US:en                     |
 |collate  |en_US.UTF-8                  |
 |tz       |Europe/Zurich                |
-|date     |2016-08-02                   |
+|date     |2016-08-08                   |
 
 ## Packages
 
-|package  |*  |version    |date       |source                           |
-|:--------|:--|:----------|:----------|:--------------------------------|
-|covr     |   |2.1.0      |2016-06-21 |cran (@2.1.0)                    |
-|DBI      |   |0.4-6      |2016-08-02 |local (rstats-db/DBI@NA)         |
-|knitr    |   |1.13       |2016-05-09 |cran (@1.13)                     |
-|RSQLite  |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
-|testthat |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
+|package   |*  |version    |date       |source                           |
+|:---------|:--|:----------|:----------|:--------------------------------|
+|covr      |   |2.2.0      |2016-08-04 |cran (@2.2.0)                    |
+|DBI       |   |0.4-8      |2016-08-08 |local (rstats-db/DBI@NA)         |
+|knitr     |   |1.13       |2016-05-09 |cran (@1.13)                     |
+|rmarkdown |   |1.0        |2016-07-08 |cran (@1.0)                      |
+|RSQLite   |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
+|testthat  |   |1.0.2.9000 |2016-08-01 |Github (hadley/testthat@46d15da) |
 
 # Check results
-72 packages
+76 packages
 
 ## archivist (2.1)
 Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
@@ -254,7 +255,7 @@ checking dependencies in R code ... NOTE
 Missing or unexported object: ‘RSQLite::rsqliteVersion’
 ```
 
-## emuR (0.1.8)
+## emuR (0.1.9)
 Maintainer: Raphael Winkelmann <raphael@phonetik.uni-muenchen.de>  
 Bug reports: https://github.com/IPS-LMU/emuR/issues
 
@@ -361,6 +362,19 @@ Maintainer: Ben Baumer <ben.baumer@gmail.com>
 Maintainer: Eric Pante <pante.eric@gmail.com>
 
 0 errors | 0 warnings | 0 notes
+
+## MetaIntegrator (1.0.0)
+Maintainer: Winston A. Haynes <hayneswa@stanford.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Packages required but not available: ‘multtest’ ‘GEOquery’ ‘GEOmetadb’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
 
 ## mitools (2.3)
 Maintainer: Thomas Lumley <t.lumley@auckland.ac.nz>
@@ -483,6 +497,19 @@ Consider adding
   importFrom("utils", "flush.console", "tail", "unzip")
 to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
 contains 'methods').
+```
+
+## ora (2.0-1)
+Maintainer: Arni Magnusson <arnima@hafro.is>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required but not available: ‘ROracle’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
 ```
 
 ## pitchRx (1.8.2)
@@ -633,6 +660,17 @@ Package suggested but not available for checking: ‘SSOAP’
 Maintainer: Nagi Teramo <teramonagi@gmail.com>
 
 0 errors | 0 warnings | 0 notes
+
+## ROracle (1.2-2)
+Maintainer: Rajendra S. Pingte <rajendra.pingte@oracle.com>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ROracle’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ROracle.Rcheck/00install.out’ for details.
+```
 
 ## rplexos (1.1.4)
 Maintainer: Eduardo Ibanez <edu.ibanez@gmail.com>  
@@ -851,9 +889,9 @@ Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## stream (1.2-2)
+## stream (1.2-3)
 Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>  
-Bug reports: https://r-forge.r-project.org/projects/clusterds/
+Bug reports: https://github.com/mhahsler/stream/issues
 
 1 error  | 0 warnings | 0 notes
 
@@ -862,6 +900,11 @@ checking whether package ‘stream’ can be installed ... ERROR
 Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/stream.Rcheck/00install.out’ for details.
 ```
+
+## survey (3.31)
+Maintainer: "Thomas Lumley" <t.lumley@auckland.ac.nz>
+
+0 errors | 0 warnings | 0 notes
 
 ## tcpl (1.2.2)
 Maintainer: Dayne L Filer <dayne.filer@gmail.com>
@@ -931,9 +974,9 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 SDMX meaning: No results matching the query.
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 SEVERE: Exception caught parsing results from call to provider OECD
-Aug 02, 2016 12:15:30 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 INFO: Exception: 
 it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.
