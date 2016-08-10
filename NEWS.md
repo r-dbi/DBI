@@ -1,3 +1,9 @@
+## DBI 0.4-9 (2016-08-11)
+
+- New `dbBreak()` function which allows aborting from within `dbWithTransaction()` (#115, #133).
+- Add `dbSendStatement()` generic, which forwards to `dbSendQuery()` by default. `dbExecute()` now calls `dbSendStatement()` (#20, #132).
+
+
 ## DBI 0.4-8 (2016-08-07)
 
 - Include DBI specification in online documentation.
