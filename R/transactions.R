@@ -5,11 +5,12 @@
 #' \code{\linkS4class{DBIConnection}} subclass.
 #'
 #' @section Side Effects:
-#' The current transaction on the connections \code{con} is committed or rolled
+#' The current transaction on the connection \code{con} is committed or rolled
 #' back.
 #'
 #' @inheritParams dbDisconnect
 #' @return a logical indicating whether the operation succeeded or not.
+#' @seealso Self-contained transactions: \code{\link{dbWithTransaction}}
 #' @examples
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
@@ -53,14 +54,17 @@ setGeneric("dbRollback",
 
 #' Self-contained SQL transactions
 #'
-#' Given that \code{\link{transactions}} are implemented, then this function
-#' allows you pass in code that is treated as a transaction.
-#' The default method calls \code{\link{dbBegin}} before executing the code,
+#' Given that \link{transactions} are implemented, this function
+#' allows you to pass in code that is run in a transaction.
+#' The default method of \code{dbWithTransaction} calls \code{\link{dbBegin}}
+#' before executing the code,
 #' and \code{\link{dbCommit}} after successful completion,
 #' or \code{\link{dbRollback}} in case of an error.
 #' The advantage is
 #' that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
 #' \code{dbRollback} -- that is all taken care of.
+#' The special function \code{dbBreak} allows an early exit with rollback,
+#' it can be called only inside \code{dbWithTransaction}.
 #'
 #' @section Side Effects:
 #' The transaction in \code{code} on the connection \code{conn} is committed
@@ -87,7 +91,7 @@ setGeneric("dbRollback",
 #' })
 #' dbReadTable(con, "cars")   # there are now 6 rows
 #'
-#' ## unsuccessful transaction -- note the missing comma
+#' ## failed transaction -- note the missing comma
 #' tryCatch(
 #'   dbWithTransaction(con, {
 #'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
@@ -98,6 +102,15 @@ setGeneric("dbRollback",
 #' )
 #' dbReadTable(con, "cars")   # still 6 rows
 #'
+#' ## early exit, silently
+#' dbWithTransaction(con, {
+#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
+#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
+#'   if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
+#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
+#' })
+#' dbReadTable(con, "cars")   # still 6 rows
+#'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",
   def = function(conn, code) standardGeneric("dbWithTransaction")
@@ -106,20 +119,8 @@ setGeneric("dbWithTransaction",
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
-  ## check if each operation is successful
-  call <- dbBegin(conn)
-  if (identical(call, FALSE)) {
-    stop("Failed to begin transaction", call. = FALSE)
-  }
-  tryCatch({
-    res <- force(code)
-    call <- dbCommit(conn)
-    if (identical(call, FALSE)) {
-      stop("Failed to commit transaction", call. = FALSE)
-    }
-    res
-  },
-  error = function(e) {
+  ## needs to be a closure, because it accesses conn
+  rollback_because <- function(e) {
     call <- dbRollback(conn)
     if (identical(call, FALSE)) {
       stop(paste("Failed to rollback transaction.",
@@ -127,6 +128,35 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
                  "occurred:", conditionMessage(e)),
            call. = FALSE)
     }
-    stop(e)
-  })
+    if (inherits(e, "error")) {
+      stop(e)
+    }
+  }
+
+  ## check if each operation is successful
+  call <- dbBegin(conn)
+  if (identical(call, FALSE)) {
+    stop("Failed to begin transaction", call. = FALSE)
+  }
+  tryCatch(
+    {
+      res <- force(code)
+      call <- dbCommit(conn)
+      if (identical(call, FALSE)) {
+        stop("Failed to commit transaction", call. = FALSE)
+      }
+      res
+    },
+    dbi_abort = rollback_because,
+    error = rollback_because)
 })
+
+#' @export
+#' @rdname dbWithTransaction
+dbBreak <- function() {
+  signalCondition(
+    structure(
+      list(message = "Aborting DBI processing", call = NULL),
+      class = c("dbi_abort", "condition")))
+  stop("Invalid usage of dbBreak().", call. = FALSE)
+}
