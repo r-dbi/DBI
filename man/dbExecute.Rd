@@ -20,7 +20,7 @@ The number of rows affected by the \code{statement}
 \description{
 \code{dbExecute} comes with a default implementation
 (which should work with most backends) that calls
-\code{\link{dbSendManip}}, then \code{\link{dbGetRowsAffected}}, ensuring that
+\code{\link{dbSendStatement}}, then \code{\link{dbGetRowsAffected}}, ensuring that
 the result is always free-d by \code{\link{dbClearResult}}.
 }
 \examples{
@@ -44,7 +44,7 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendManip}},
-  \code{\link{dbSendQuery}}
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendStatement}}
 }
 

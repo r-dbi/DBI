@@ -226,7 +226,7 @@ setGeneric("dbHasCompleted",
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' rs <- dbSendManip(con, "DELETE FROM mtcars")
+#' rs <- dbSendStatement(con, "DELETE FROM mtcars")
 #' dbGetRowsAffected(rs)
 #' nrow(mtcars)
 #'
