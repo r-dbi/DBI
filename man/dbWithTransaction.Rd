@@ -63,15 +63,12 @@ tryCatch(
 dbReadTable(con, "cars")   # still 6 rows
 
 ## early exit, silently
-tryCatch(
-  dbWithTransaction(con, {
-    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-    if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
-    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-  }),
-  error = identity
-)
+dbWithTransaction(con, {
+  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
+  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
+  if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
+  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
+})
 dbReadTable(con, "cars")   # still 6 rows
 
 dbDisconnect(con)
