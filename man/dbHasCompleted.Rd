@@ -17,6 +17,7 @@ a logical vector of length 1
 \description{
 This method returns if the operation has completed.
 A \code{SELECT} query is completed if all rows have been fetched.
+A data manipulation statement is completed if it has been executed.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

@@ -19,6 +19,12 @@ dbGetQuery(conn, statement, ...)
 \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
 the result is always free-d by \code{\link{dbClearResult}}.
 }
+\details{
+This function is for \code{SELECT} queries only.  Some backends may
+support data manipulation statements through this function for compatibility
+reasons.  However callers are strongly advised to use
+\code{\link{dbExecute}} for data manipulation statements.
+}
 \section{Implementation notes}{
 
 Subclasses should override this method only if they provide some sort of
@@ -33,6 +39,8 @@ dbGetQuery(con, "SELECT * FROM mtcars")
 dbDisconnect(con)
 }
 \seealso{
+For updates: \code{\link{dbSendStatement}} and \code{\link{dbExecute}}.
+
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
@@ -40,6 +48,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
 }
 

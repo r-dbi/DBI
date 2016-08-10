@@ -186,6 +186,7 @@ setGeneric("dbGetStatement",
 #'
 #' This method returns if the operation has completed.
 #' A \code{SELECT} query is completed if all rows have been fetched.
+#' A data manipulation statement is completed if it has been executed.
 #'
 #' @inheritParams dbClearResult
 #' @return a logical vector of length 1
@@ -214,7 +215,8 @@ setGeneric("dbHasCompleted",
 #' The number of rows affected
 #'
 #' This function returns the number of rows that were added, deleted, or updated
-#' by data modifying query. For a selection query, this function returns 0.
+#' by a data manipulation statement. For a selection query, this function
+#' returns 0.
 #'
 #' @inheritParams dbClearResult
 #' @return a numeric vector of length 1
@@ -224,7 +226,7 @@ setGeneric("dbHasCompleted",
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' rs <- dbSendQuery(con, "DELETE FROM mtcars")
+#' rs <- dbSendStatement(con, "DELETE FROM mtcars")
 #' dbGetRowsAffected(rs)
 #' nrow(mtcars)
 #'

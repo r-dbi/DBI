@@ -16,13 +16,14 @@ a numeric vector of length 1
 }
 \description{
 This function returns the number of rows that were added, deleted, or updated
-by data modifying query. For a selection query, this function returns 0.
+by a data manipulation statement. For a selection query, this function
+returns 0.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
-rs <- dbSendQuery(con, "DELETE FROM mtcars")
+rs <- dbSendStatement(con, "DELETE FROM mtcars")
 dbGetRowsAffected(rs)
 nrow(mtcars)
 
