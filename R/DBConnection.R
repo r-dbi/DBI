@@ -60,8 +60,7 @@ show_connection <- function(object) {
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
 setGeneric("dbDisconnect",
-  def = function(conn, ...) standardGeneric("dbDisconnect"),
-  valueClass = "logical"
+  def = function(conn, ...) standardGeneric("dbDisconnect")
 )
 
 #' Execute a query on a given database connection
@@ -347,7 +346,7 @@ setGeneric("dbReadTable", valueClass = "data.frame",
 
 #' @rdname dbReadTable
 #' @export
-setGeneric("dbWriteTable", valueClass = "logical",
+setGeneric("dbWriteTable",
   signature = c("conn", "name", "value"),
   function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
@@ -392,6 +391,5 @@ setGeneric("dbExistsTable",
 #'
 #' dbDisconnect(con)
 setGeneric("dbRemoveTable",
-  def = function(conn, name, ...) standardGeneric("dbRemoveTable"),
-  valueClass = "logical"
+  def = function(conn, name, ...) standardGeneric("dbRemoveTable")
 )

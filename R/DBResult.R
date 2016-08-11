@@ -126,8 +126,7 @@ setGeneric("fetch",
 #' dbClearResult(rs)
 #' dbDisconnect(con)
 setGeneric("dbClearResult",
-  def = function(res, ...) standardGeneric("dbClearResult"),
-  valueClass = "logical"
+  def = function(res, ...) standardGeneric("dbClearResult")
 )
 
 #' Information about result types

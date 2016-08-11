@@ -205,8 +205,7 @@ setGeneric(
   def = function(conn, ...) {
     .Deprecated()
     standardGeneric("dbCallProc")
-  },
-  valueClass = "logical"
+  }
 )
 
 #' Determine the current version of the package.
@@ -238,6 +237,5 @@ setGeneric(
   def = function(res, flds, ...) {
     .Deprecated()
     standardGeneric("dbSetDataMappings")
-  },
-  valueClass = "logical"
+  }
 )
