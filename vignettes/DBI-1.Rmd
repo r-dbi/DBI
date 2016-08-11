@@ -682,7 +682,7 @@ Java’s Database Connectivity (JDBC)
 ([www.javasoft.com](http://www.javasoft.com/products/jdbc/index.html)).
 
 In C through the Open Database Connectivity (ODBC)
-([www.genix.net/unixODBC](http://www.genix.net/unixODBC)).
+([www.unixodbc.org](http://www.unixodbc.org/)).
 
 Python’s Database Application Programming Interface
 ([www.python.org](http://www.python.org/topics/database)).
