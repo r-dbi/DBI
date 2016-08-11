@@ -10,14 +10,14 @@
 |language |en_US:en                     |
 |collate  |en_US.UTF-8                  |
 |tz       |Europe/Zurich                |
-|date     |2016-08-08                   |
+|date     |2016-08-11                   |
 
 ## Packages
 
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
-|covr      |   |2.2.0      |2016-08-04 |cran (@2.2.0)                    |
-|DBI       |   |0.4-8      |2016-08-08 |local (rstats-db/DBI@NA)         |
+|covr      |   |2.2.1      |2016-08-10 |cran (@2.2.1)                    |
+|DBI       |   |0.4-9      |2016-08-10 |local (rstats-db/DBI@NA)         |
 |knitr     |   |1.13       |2016-05-09 |cran (@1.13)                     |
 |rmarkdown |   |1.0        |2016-07-08 |cran (@1.0)                      |
 |RSQLite   |   |1.0.0      |2014-10-25 |cran (@1.0.0)                    |
@@ -348,10 +348,17 @@ Maintainer: K. Gerald van den Boogaart <support@boogaart.de>
 
 0 errors | 0 warnings | 0 notes
 
-## imputeMulti (0.6.1)
+## imputeMulti (0.6.2)
 Maintainer: Alex Whitworth <whitworth.alex@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note 
+
+```
+checking dependencies in R code ... NOTE
+There are ::: calls to the package's namespace in its code. A package
+  almost never needs to use ::: for its own objects:
+  ‘count_compare’
+```
 
 ## macleish (0.3.0)
 Maintainer: Ben Baumer <ben.baumer@gmail.com>
@@ -974,9 +981,9 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 SDMX meaning: No results matching the query.
-Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 11, 2016 1:16:47 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 SEVERE: Exception caught parsing results from call to provider OECD
-Aug 08, 2016 10:26:49 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+Aug 11, 2016 1:16:47 AM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
 INFO: Exception: 
 it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 404, message: Not Found
 SDMX meaning: No results matching the query.

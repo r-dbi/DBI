@@ -498,7 +498,7 @@ The ODBC protocol was developed by Microsoft to allow connectivity among
 C/C++ applications and RDBMS. As you would expect, originally
 implementations of the ODBC were only available under Windows
 environments. There are various effort to create a Unix implementation
-(see [the Unix ODBC](http://genix.net/unixODBC) web-site and @odbc.lj).
+(see [the Unix ODBC](http://www.unixodbc.org/) web-site and @odbc.lj).
 This approach looks promising because it allows us to write only one
 back-end, instead of one per RDBMS. Since most RDBMS already provide
 ODBC drivers, this could greatly simplify development. Unfortunately,
@@ -537,10 +537,10 @@ necessarily relational.
 
 # Resources {#sec:resources}
 
-The latest documentation and software on the RS-DBI is available at
-[www.omegahat.org](http://www.omegahat.org/contrib/RS-DBI/index.html).
+The latest documentation and software on the RS-DBI was available at
+www.omegahat.org (link dead now: `http://www.omegahat.org/contrib/RS-DBI/index.html`).
 The R community has developed interfaces to some databases:
-[RmSQL](http://cran.r-project.org/src/contrib/PACKAGES.html) is an
+[RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
 interface to the [mSQL](http://www.Hughes.com.au) database written by
 Torsten Hothorn; [RPgSQL](http://www.nceas.ucsb.edu/~keitt/R) is an
 interface to [PostgreSQL](http://www.postgreSQL.org) and was written by
@@ -550,10 +550,10 @@ Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see @R.imp-exp.)
 
 The are R and S-Plus interfaces
-[RMySQL/SMySQL](http://www.omegahat.org/contrib/RS-DBI)@RS-MySQL to
+to
 [MySQL](http://www.mysql.org) that follow the propose RS-DBI API
 described here; also, there’s an S-Plus interface
-[SOracle](http://www.omegahat.org/contrib/RS-DBI)@RS-Oracle to
+SOracle @RS-Oracle to
 [Oracle](http://www.oracle.com) (we expect to have an R implementation
 soon.)
 
@@ -561,7 +561,7 @@ The idea of a common interface to databases has been successfully
 implemented in Java’s Database Connectivity (JDBC)
 ([www.javasoft.com](http://www.javasoft.com/products/jdbc/index.html)),
 in C through the Open Database Connectivity (ODBC)
-([www.genix.net/unixODBC](http://www.genix.net/unixODBC)), in Python’s
+([www.unixodbc.org](http://www.unixodbc.org/)), in Python’s
 Database Application Programming Interface
 ([www.python.org](http://www.python.org)), and in Perl’s Database
 Interface ([www.cpan.org](http://www.cpan.org)).
