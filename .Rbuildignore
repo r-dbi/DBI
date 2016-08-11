@@ -12,6 +12,8 @@ inst\/doc\/DBI\.out$
 inst\/doc\/DBI\.ps$
 inst\/doc\/.*\.tmp$
 inst\/doc\/DBI\.b..$
+^inst/web$
+^inst/staticdocs$
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
