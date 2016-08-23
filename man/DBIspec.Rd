@@ -107,10 +107,10 @@ Data written in a transaction must persist after the transaction is committed.
 For example, a table that is missing when the transaction is started
 but is created
 and populated during the transaction
-
 must exist and contain the data added there
 both during
 and after the transaction.
+
 The transaction isolation level is not specified by DBI.
 
 }
