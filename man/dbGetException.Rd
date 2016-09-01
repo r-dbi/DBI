@@ -13,8 +13,8 @@ dbGetException(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a list with elements \code{errNum} (an integer error number) and
-  \code{errMsg} (a character string) describing the last error in the
+a list with elements \code{errorNum} (an integer error number) and
+  \code{errorMsg} (a character string) describing the last error in the
   connection \code{conn}.
 }
 \description{
