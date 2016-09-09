@@ -1,3 +1,8 @@
+# DBI 0.5-1 (2016-09-09)
+
+- Documentation and example updates.
+
+
 # DBI 0.5 (2016-08-11, CRAN release)
 
 - Interface changes
