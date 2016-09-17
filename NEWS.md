@@ -1,3 +1,8 @@
+## DBI 0.5-10 (2016-09-17)
+
+- Same as 0.5-1.
+
+
 # DBI 0.5-1 (2016-09-09)
 
 - Documentation and example updates.
