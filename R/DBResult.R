@@ -80,7 +80,7 @@ show_result <- function(object) {
 #' # Fetch in chunks
 #' rs <- dbSendQuery(con, "SELECT * FROM mtcars")
 #' while (!dbHasCompleted(rs)) {
-#'   chunk <- fetch(rs, 10)
+#'   chunk <- dbFetch(rs, 10)
 #'   print(nrow(chunk))
 #' }
 #'

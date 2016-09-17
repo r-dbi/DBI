@@ -255,8 +255,8 @@ setMethod(
 #'
 #' @inheritParams dbDisconnect
 #' @family DBIConnection generics
-#' @return a list with elements \code{errNum} (an integer error number) and
-#'   \code{errMsg} (a character string) describing the last error in the
+#' @return a list with elements \code{errorNum} (an integer error number) and
+#'   \code{errorMsg} (a character string) describing the last error in the
 #'   connection \code{conn}.
 #' @export
 setGeneric("dbGetException",

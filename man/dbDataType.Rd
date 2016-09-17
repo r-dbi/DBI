@@ -64,6 +64,11 @@ dbDataType(con, iris)
 dbDisconnect(con)
 }
 \seealso{
+Other DBIDriver generics: \code{\link{DBIDriver-class}},
+  \code{\link{dbConnect}}, \code{\link{dbDriver}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
+
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDisconnect}}, \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
@@ -73,10 +78,5 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
   \code{\link{dbSendStatement}}
-
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDriver}},
-  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
 }
 

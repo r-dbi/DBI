@@ -84,5 +84,36 @@ and map them to the BLOB (binary large object) data type.
 The behavior for other object types is not specified.
 }
 }
+
+\section{Transactions}{
+
+\subsection{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
+Transactions are available in DBI, but actual support may vary between backends.
+A transaction is initiated by a call to \code{\link[DBI]{dbBegin}}
+and committed by a call to \code{\link[DBI]{dbCommit}}.
+Both generics expect an object of class \code{\linkS4class{DBIConnection}}
+and return \code{TRUE} (invisibly) upon success.
+
+The implementations are expected to raise an error in case of failure,
+but this is difficult to test in an automated way.
+In any way, both generics should throw an error with a closed connection.
+In addition, a call to \code{\link[DBI]{dbCommit}} without
+a call to \code{\link[DBI]{dbBegin}} should raise an error.
+Nested transactions are not supported by DBI,
+an attempt to call \code{\link[DBI]{dbBegin}} twice
+should yield an error.
+
+Data written in a transaction must persist after the transaction is committed.
+For example, a table that is missing when the transaction is started
+but is created
+and populated during the transaction
+must exist and contain the data added there
+both during
+and after the transaction.
+
+The transaction isolation level is not specified by DBI.
+
+}
+}
 \keyword{datasets}
 

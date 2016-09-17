@@ -1,4 +1,4 @@
-Intermediate release.
+Documentation updates only, necessary for the upcoming RSQLite release.
 
 ## Test environments
 * ubuntu 16.04 (local install), R 3.3.1
@@ -18,8 +18,4 @@ Found the following apparent S3 methods exported but not registered:
 
 ## Reverse dependencies
 
-* I have run R CMD check on all 76 reverse dependencies for both the currently
-released version 0.4-1 and for the release candidate. For all packages I
-could install, no substantial textual difference could be observed between the
-results for the current and for the next version. All maintainers of the reverse
-dependencies have been notified.
+* Not checked, documentation update only.
