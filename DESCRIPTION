@@ -25,7 +25,7 @@ License: LGPL (>= 2)
 URL: http://rstats-db.github.io/DBI
 URLNote: https://github.com/rstats-db/DBI
 BugReports: https://github.com/rstats-db/DBI/issues
-Collate:
+Collate: 
     'DBObject.R'
     'DBDriver.R'
     'DBConnection.R'
@@ -39,6 +39,7 @@ Collate:
     'interpolate.R'
     'quote.R'
     'rownames.R'
+    'spec.R'
     'table-create.R'
     'table-insert.R'
     'table.R'
