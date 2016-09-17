@@ -14,8 +14,10 @@ dbBind(res, params, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \description{
-The \code{\link{dbSendQuery}} function can be called with queries
-that contain placeholders for values. This function binds these placeholders
+For parametrised or prepared statements,
+the \code{\link{dbSendQuery}} function can be called with queries
+that contain placeholders for values. The \code{\link{dbBind}} function
+(documented here) binds these placeholders
 to actual values, and is intended to be called on the result of
 \code{\link{dbSendQuery}} before calling \code{\link{dbFetch}}.
 }
