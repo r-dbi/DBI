@@ -37,13 +37,13 @@ letters are upper or lower case.}
 \item{allow.keywords}{logical describing whether SQL keywords should be
 allowed in the resulting set of SQL names.  Its default is \code{TRUE}}
 
+\item{\dots}{any other argument are passed to the driver implementation.}
+
 \item{name}{a character vector with database identifier candidates we need
 to determine whether they are legal SQL identifiers or not.}
 
 \item{case}{a character string specifying whether to make the comparison as
 lower case, upper case, or any of the two.  it defaults to \code{any}.}
-
-\item{\dots}{any other argument are passed to the driver implementation.}
 }
 \value{
 \code{make.db.names} returns a character vector of legal SQL
