@@ -297,22 +297,20 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' Parametrised or prepared statements are executed as follows:
 #'
-#' \enumerate{
-#'   \item Call [dbSendQuery()] with a query that contains placeholders,
-#'     store the returned \code{\linkS4class{DBIResult}} object in a variable.
-#'     Currently, the syntax for the placeholders is backend-specific,
-#'     e.g., `?`, `$`, `$name` and `:name`.
-#'     Mixing placeholders (in particular, named and unnamed ones) is not
-#'     recommended.
-#'   \item Call [dbBind()] on the `DBIResult` object with a list
-#'     that specifies actual values for the placeholders.  The list must be
-#'     named or unnamed, depending on the kind of placeholders used.
-#'     Named values are matched to named paramters, unnamed values
-#'     are matched by position.
-#'   \item Call [dbFetch()] on the same `DBIResult` object.
-#'   \item Repeat 2. and 3. as necessary.
-#'   \item Close the result set via [dbClearResult()].
-#' }
+#' 1. Call [dbSendQuery()] with a query that contains placeholders,
+#'    store the returned \code{\linkS4class{DBIResult}} object in a variable.
+#'    Currently, the syntax for the placeholders is backend-specific,
+#'    e.g., `?`, `$`, `$name` and `:name`.
+#'    Mixing placeholders (in particular, named and unnamed ones) is not
+#'    recommended.
+#' 1. Call [dbBind()] on the `DBIResult` object with a list
+#'    that specifies actual values for the placeholders.  The list must be
+#'    named or unnamed, depending on the kind of placeholders used.
+#'    Named values are matched to named paramters, unnamed values
+#'    are matched by position.
+#' 1. Call [dbFetch()] on the same `DBIResult` object.
+#' 1. Repeat 2. and 3. as necessary.
+#' 1. Close the result set via [dbClearResult()].
 #'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings

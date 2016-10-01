@@ -23,7 +23,6 @@ to actual values, and is intended to be called on the result of
 }
 \details{
 Parametrised or prepared statements are executed as follows:
-
 \enumerate{
 \item Call \code{\link[=dbSendQuery]{dbSendQuery()}} with a query that contains placeholders,
 store the returned \code{\linkS4class{DBIResult}} object in a variable.
