@@ -64,7 +64,7 @@ show_result <- function(object) {
 #' @param ... Other arguments passed on to methods.
 #' @return a data.frame with as many rows as records were fetched and as many
 #'   columns as fields in the result set.
-#' @seealso close the result set with \code{\link{dbClearResult}} as soon as you
+#' @seealso close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
 #' @family DBIResult generics
 #' @examples
@@ -161,7 +161,7 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #'
-#' Returns the statement that was passed to \code{\link{dbSendQuery}}.
+#' Returns the statement that was passed to [dbSendQuery()].
 #'
 #' @inheritParams dbClearResult
 #' @return a character vector
@@ -240,7 +240,7 @@ setGeneric("dbGetRowsAffected",
 
 #' The number of rows fetched so far
 #'
-#' This value is increased by calls to \code{\link{dbFetch}}. For a data
+#' This value is increased by calls to [dbFetch()]. For a data
 #' modifying query, the return value is 0.
 #'
 #' @inheritParams dbClearResult
@@ -272,8 +272,8 @@ setGeneric("dbGetRowCount",
 #' @section Implementation notes:
 #' The default implementation for \code{DBIResult objects}
 #' constructs such a list from the return values of the corresponding methods,
-#' \code{\link{dbGetStatement}}, \code{\link{dbGetRowCount}},
-#' \code{\link{dbGetRowsAffected}}, and \code{\link{dbHasCompleted}}.
+#' [dbGetStatement()], [dbGetRowCount()],
+#' [dbGetRowsAffected()], and [dbHasCompleted()].
 NULL
 #' @rdname hidden_aliases
 setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
@@ -289,29 +289,29 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' Bind values to a parameterised/prepared statement
 #'
 #' For parametrised or prepared statements,
-#' the \code{\link{dbSendQuery}} function can be called with queries
-#' that contain placeholders for values. The \code{\link{dbBind}} function
+#' the [dbSendQuery()] function can be called with queries
+#' that contain placeholders for values. The [dbBind()] function
 #' (documented here) binds these placeholders
 #' to actual values, and is intended to be called on the result of
-#' \code{\link{dbSendQuery}} before calling \code{\link{dbFetch}}.
+#' [dbSendQuery()] before calling [dbFetch()].
 #'
 #' Parametrised or prepared statements are executed as follows:
 #'
 #' \enumerate{
-#'   \item Call \code{\link{dbSendQuery}} with a query that contains placeholders,
+#'   \item Call [dbSendQuery()] with a query that contains placeholders,
 #'     store the returned \code{\linkS4class{DBIResult}} object in a variable.
 #'     Currently, the syntax for the placeholders is backend-specific,
 #'     e.g., \code{?}, \code{$}, \code{$name} and \code{:name}.
 #'     Mixing placeholders (in particular, named and unnamed ones) is not
 #'     recommended.
-#'   \item Call \code{\link{dbBind}} on the \code{DBIResult} object with a list
+#'   \item Call [dbBind()] on the \code{DBIResult} object with a list
 #'     that specifies actual values for the placeholders.  The list must be
 #'     named or unnamed, depending on the kind of placeholders used.
 #'     Named values are matched to named paramters, unnamed values
 #'     are matched by position.
-#'   \item Call \code{\link{dbFetch}} on the same \code{DBIResult} object.
+#'   \item Call [dbFetch()] on the same \code{DBIResult} object.
 #'   \item Repeat 2. and 3. as necessary.
-#'   \item Close the result set via \code{\link{dbClearResult}}.
+#'   \item Close the result set via [dbClearResult()].
 #' }
 #'
 #' @inheritParams dbClearResult

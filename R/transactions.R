@@ -10,7 +10,7 @@
 #'
 #' @inheritParams dbDisconnect
 #' @return a logical indicating whether the operation succeeded or not.
-#' @seealso Self-contained transactions: \code{\link{dbWithTransaction}}
+#' @seealso Self-contained transactions: [dbWithTransaction()]
 #' @examples
 #' \dontrun{
 #' ora <- dbDriver("Oracle")
@@ -56,10 +56,10 @@ setGeneric("dbRollback",
 #'
 #' Given that \link{transactions} are implemented, this function
 #' allows you to pass in code that is run in a transaction.
-#' The default method of \code{dbWithTransaction} calls \code{\link{dbBegin}}
+#' The default method of \code{dbWithTransaction} calls [dbBegin()]
 #' before executing the code,
-#' and \code{\link{dbCommit}} after successful completion,
-#' or \code{\link{dbRollback}} in case of an error.
+#' and [dbCommit()] after successful completion,
+#' or [dbRollback()] in case of an error.
 #' The advantage is
 #' that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
 #' \code{dbRollback} -- that is all taken care of.
@@ -72,7 +72,7 @@ setGeneric("dbRollback",
 #' environment.
 #'
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
-#'   \code{\link{dbConnect}}.
+#'   [dbConnect()].
 #' @param code An arbitrary block of R code
 #'
 #' @return The result of the evaluation of \code{code}

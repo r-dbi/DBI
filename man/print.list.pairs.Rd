@@ -16,7 +16,7 @@ the (invisible) value of x.
 }
 \description{
 DEPRECATED, do not use. Use \code{\link[base]{summary}} to print output of
-\code{\link{dbGetInfo}}.
+\code{\link[=dbGetInfo]{dbGetInfo()}}.
 }
 \keyword{internal}
 

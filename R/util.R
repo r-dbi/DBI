@@ -1,7 +1,7 @@
 #' Print a list of pairs.
 #'
 #' DEPRECATED, do not use. Use \code{\link[base]{summary}} to print output of
-#' \code{\link{dbGetInfo}}.
+#' [dbGetInfo()].
 #'
 #' @param x a list of key, value pairs
 #' @param ... additional arguments to be passed to \code{cat}

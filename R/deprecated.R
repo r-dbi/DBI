@@ -1,7 +1,7 @@
 #' Make R identifiers into legal SQL identifiers
 #'
-#' These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
-#' (or possibly \code{\link{dbQuoteString}}) instead.
+#' These methods are DEPRECATED. Please use [dbQuoteIdentifier()]
+#' (or possibly [dbQuoteString()]) instead.
 #'
 #' The algorithm in \code{make.db.names} first invokes \code{make.names} and
 #' then replaces each occurrence of a dot `.` by an underscore `_`.  If
@@ -17,7 +17,7 @@
 #' @section Bugs:
 #' The current mapping is not guaranteed to be fully reversible: some SQL
 #' identifiers that get mapped into R identifiers with \code{make.names} and
-#' then back to SQL with \code{\link{make.db.names}} will not be equal to the
+#' then back to SQL with [make.db.names()] will not be equal to the
 #' original SQL identifiers (e.g., compound SQL identifiers of the form
 #' \code{username.tablename} will loose the dot ``.'').
 #'

@@ -142,7 +142,7 @@ setGeneric("dbUnloadDriver",
 #'   database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
 #'   an object of class \code{MySQLConnection}. This object is used to direct
 #'   commands to the database engine.
-#' @seealso \code{\link{dbDisconnect}} to disconnect from a database.
+#' @seealso [dbDisconnect()] to disconnect from a database.
 #' @family DBIDriver generics
 #' @export
 #' @examples

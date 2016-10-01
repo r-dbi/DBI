@@ -55,8 +55,8 @@ database-engine associated with \code{dbObj}.
 \code{isSQLKeyword} returns a logical vector parallel to \code{name}.
 }
 \description{
-These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
-(or possibly \code{\link{dbQuoteString}}) instead.
+These methods are DEPRECATED. Please use \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+(or possibly \code{\link[=dbQuoteString]{dbQuoteString()}}) instead.
 }
 \details{
 The algorithm in \code{make.db.names} first invokes \code{make.names} and
@@ -74,7 +74,7 @@ override or update this vector.
 
 The current mapping is not guaranteed to be fully reversible: some SQL
 identifiers that get mapped into R identifiers with \code{make.names} and
-then back to SQL with \code{\link{make.db.names}} will not be equal to the
+then back to SQL with \code{\link[=make.db.names]{make.db.names()}} will not be equal to the
 original SQL identifiers (e.g., compound SQL identifiers of the form
 \code{username.tablename} will loose the dot ``.'').
 }

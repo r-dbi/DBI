@@ -8,7 +8,7 @@ dbGetQuery(conn, statement, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
 
@@ -16,14 +16,14 @@ dbGetQuery(conn, statement, ...)
 }
 \description{
 \code{dbGetQuery} comes with a default implementation that calls
-\code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
-the result is always free-d by \code{\link{dbClearResult}}.
+\code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
+the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 \details{
 This function is for \code{SELECT} queries only.  Some backends may
 support data manipulation statements through this function for compatibility
 reasons.  However callers are strongly advised to use
-\code{\link{dbExecute}} for data manipulation statements.
+\code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 
@@ -39,7 +39,7 @@ dbGetQuery(con, "SELECT * FROM mtcars")
 dbDisconnect(con)
 }
 \seealso{
-For updates: \code{\link{dbSendStatement}} and \code{\link{dbExecute}}.
+For updates: \code{\link[=dbSendStatement]{dbSendStatement()}} and \code{\link[=dbExecute]{dbExecute()}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},

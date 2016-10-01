@@ -14,10 +14,10 @@ sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
 \item{con}{A database connection.}
 
 \item{table}{Name of the table. Escaped with
-\code{\link{dbQuoteIdentifier}}.}
+\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{values}{A data frame. Factors will be converted to character vectors.
-Character vectors will be escaped with \code{\link{dbQuoteString}}.}
+Character vectors will be escaped with \code{\link[=dbQuoteString]{dbQuoteString()}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
@@ -37,7 +37,7 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \description{
 \code{sqlAppendTable} generates a single SQL string that inserts a
 data frame into an existing table. \code{sqlAppendTableTemplate} generates
-a template suitable for use with \code{\link{dbBind}}.
+a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
 These methods are mostly useful for backend implementers.
 }
 \examples{

@@ -8,7 +8,7 @@ dbListFields(conn, name, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{a character string with the name of the remote table.}
 
@@ -29,7 +29,7 @@ dbListFields(con, "mtcars")
 dbDisconnect(con)
 }
 \seealso{
-\code{\link{dbColumnInfo}} to get the type of the fields.
+\code{\link[=dbColumnInfo]{dbColumnInfo()}} to get the type of the fields.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},

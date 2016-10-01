@@ -8,7 +8,7 @@ dbSendStatement(conn, statement, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
 
@@ -17,20 +17,20 @@ dbSendStatement(conn, statement, ...)
 \value{
 An object that inherits from \code{\linkS4class{DBIResult}}.
 Once you have finished using a result, make sure to disconnect it
-with \code{\link{dbClearResult}}.
+with \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 \description{
 The function \code{dbSendStatement} only submits and synchronously executes the
 SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
 \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
-the number of affected rows, call \code{\link{dbGetRowsAffected}} on the
-returned result object.  You must also call \code{\link{dbClearResult}} after
+the number of affected rows, call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} on the
+returned result object.  You must also call \code{\link[=dbClearResult]{dbClearResult()}} after
 that. For interactive use, you should almost always prefer
-\code{\link{dbExecute}}.
+\code{\link[=dbExecute]{dbExecute()}}.
 }
 \details{
-\code{\link{dbSendStatement}} comes with a default implementation that simply
-forwards to \code{\link{dbSendQuery}}, to support backends that only
+\code{\link[=dbSendStatement]{dbSendStatement()}} comes with a default implementation that simply
+forwards to \code{\link[=dbSendQuery]{dbSendQuery()}}, to support backends that only
 implement the latter.
 }
 \examples{
@@ -47,7 +47,7 @@ dbReadTable(con, "cars")   # there are now 6 rows
 dbDisconnect(con)
 }
 \seealso{
-For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},

@@ -54,7 +54,7 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-close the result set with \code{\link{dbClearResult}} as soon as you
+close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
 finish retrieving the records you want.
 
 Other DBIResult generics: \code{\link{DBIResult-class}},

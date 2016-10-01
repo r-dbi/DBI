@@ -44,7 +44,7 @@ dbListTables(con)
 dbDisconnect(con)
 }
 \seealso{
-\code{\link{dbDisconnect}} to disconnect from a database.
+\code{\link[=dbDisconnect]{dbDisconnect()}} to disconnect from a database.
 
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbDataType}}, \code{\link{dbDriver}},

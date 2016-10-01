@@ -15,7 +15,7 @@ identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
 
 \item{...}{Named values to interpolate into string. All strings
-will be first escaped with \code{\link{dbQuoteString}} prior
+will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
 to interpolation to protect against SQL injection attacks.}
 }
 \description{
@@ -24,7 +24,7 @@ Safely interpolate values into an SQL string
 \section{Backend authors}{
 
 If you are implementing a SQL backend with non-ANSI quoting rules, you'll
-need to implement a method for \code{\link{sqlParseVariables}}. Failure to
+need to implement a method for \code{\link[=sqlParseVariables]{sqlParseVariables()}}. Failure to
 do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.
 }

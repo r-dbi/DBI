@@ -51,7 +51,7 @@ show_connection <- function(object) {
 #' resources (e.g., memory, sockets).
 #'
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
-#'   \code{\link{dbConnect}}.
+#'   [dbConnect()].
 #' @param ... Other parameters passed on to methods.
 #' @return a logical vector of length 1, indicating success or failure.
 #' @family DBIConnection generics
@@ -68,22 +68,22 @@ setGeneric("dbDisconnect",
 #'
 #' The function \code{dbSendQuery} only submits and synchronously executes the
 #' SQL query to the database engine.  It does \emph{not} extract any
-#' records --- for that you need to use the function \code{\link{dbFetch}}, and
-#' then you must call \code{\link{dbClearResult}} when you finish fetching the
+#' records --- for that you need to use the function [dbFetch()], and
+#' then you must call [dbClearResult()] when you finish fetching the
 #' records you need. For interactive use, you should almost always prefer
-#' \code{\link{dbGetQuery}}.
+#' [dbGetQuery()].
 #'
 #' This function is for \code{SELECT} queries only.  Some backends may
 #' support data manipulation queries through this function for compatibility
 #' reasons.  However, callers are strongly advised to use
-#' \code{\link{dbSendStatement}} for data manipulation statements.
+#' [dbSendStatement()] for data manipulation statements.
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.
-#'   The result set can be used with \code{\link{dbFetch}} to extract records.
+#'   The result set can be used with [dbFetch()] to extract records.
 #'   Once you have finished using a result, make sure to disconnect it
-#'   with \code{\link{dbClearResult}}.
+#'   with [dbClearResult()].
 #'
 #' @section Side Effects:
 #' The query is submitted to the database server and the DBMS executes it,
@@ -93,7 +93,7 @@ setGeneric("dbDisconnect",
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers' \code{dbSendQuery} documentation for details.
 #' @family DBIConnection generics
-#' @seealso For updates: \code{\link{dbSendStatement}} and \code{\link{dbExecute}}.
+#' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -114,23 +114,23 @@ setGeneric("dbSendQuery",
 #' The function \code{dbSendStatement} only submits and synchronously executes the
 #' SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
 #' \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
-#' the number of affected rows, call \code{\link{dbGetRowsAffected}} on the
-#' returned result object.  You must also call \code{\link{dbClearResult}} after
+#' the number of affected rows, call [dbGetRowsAffected()] on the
+#' returned result object.  You must also call [dbClearResult()] after
 #' that. For interactive use, you should almost always prefer
-#' \code{\link{dbExecute}}.
+#' [dbExecute()].
 #'
-#' \code{\link{dbSendStatement}} comes with a default implementation that simply
-#' forwards to \code{\link{dbSendQuery}}, to support backends that only
+#' [dbSendStatement()] comes with a default implementation that simply
+#' forwards to [dbSendQuery()], to support backends that only
 #' implement the latter.
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.
 #'   Once you have finished using a result, make sure to disconnect it
-#'   with \code{\link{dbClearResult}}.
+#'   with [dbClearResult()].
 #'
 #' @family DBIConnection generics
-#' @seealso For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+#' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -161,13 +161,13 @@ setMethod(
 #' Send query, retrieve results and then clear result set
 #'
 #' \code{dbGetQuery} comes with a default implementation that calls
-#' \code{\link{dbSendQuery}}, then \code{\link{dbFetch}}, ensuring that
-#' the result is always free-d by \code{\link{dbClearResult}}.
+#' [dbSendQuery()], then [dbFetch()], ensuring that
+#' the result is always free-d by [dbClearResult()].
 #'
 #' This function is for \code{SELECT} queries only.  Some backends may
 #' support data manipulation statements through this function for compatibility
 #' reasons.  However callers are strongly advised to use
-#' \code{\link{dbExecute}} for data manipulation statements.
+#' [dbExecute()] for data manipulation statements.
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
@@ -176,7 +176,7 @@ setMethod(
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @family DBIConnection generics
-#' @seealso For updates: \code{\link{dbSendStatement}} and \code{\link{dbExecute}}.
+#' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -216,14 +216,14 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #'
 #' \code{dbExecute} comes with a default implementation
 #' (which should work with most backends) that calls
-#' \code{\link{dbSendStatement}}, then \code{\link{dbGetRowsAffected}}, ensuring that
-#' the result is always free-d by \code{\link{dbClearResult}}.
+#' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
+#' the result is always free-d by [dbClearResult()].
 #'
 #' @inheritParams dbDisconnect
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the \code{statement}
 #' @family DBIConnection generics
-#' @seealso For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+#' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -282,7 +282,7 @@ setGeneric("dbListResults",
 #' @param name a character string with the name of the remote table.
 #' @return a character vector
 #' @family DBIConnection generics
-#' @seealso \code{\link{dbColumnInfo}} to get the type of the fields.
+#' @seealso [dbColumnInfo()] to get the type of the fields.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -324,9 +324,9 @@ setGeneric("dbListTables",
 #' data frame -> database table.
 #'
 #' @note The translation of identifiers between R and SQL is done through calls
-#'   to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
+#'   to [make.names()] and [make.db.names()], but we cannot
 #'   guarantee that the conversion is reversible.  For details see
-#'   \code{\link{make.db.names}}.
+#'   [make.db.names()].
 #' @inheritParams dbDisconnect
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
