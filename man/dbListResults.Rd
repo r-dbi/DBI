@@ -14,7 +14,7 @@ dbListResults(conn, ...)
 }
 \value{
 a list. If no results are active, an empty list. If only
-  a single result is active, a list with one element.
+a single result is active, a list with one element.
 }
 \description{
 List of \linkS4class{DBIResult} objects currently active on the connection.

@@ -16,9 +16,9 @@ dbSendQuery(conn, statement, ...)
 }
 \value{
 An object that inherits from \code{\linkS4class{DBIResult}}.
-  The result set can be used with \code{\link{dbFetch}} to extract records.
-  Once you have finished using a result, make sure to disconnect it
-  with \code{\link{dbClearResult}}.
+The result set can be used with \code{\link{dbFetch}} to extract records.
+Once you have finished using a result, make sure to disconnect it
+with \code{\link{dbClearResult}}.
 }
 \description{
 The function \code{dbSendQuery} only submits and synchronously executes the

@@ -9,14 +9,14 @@ sqlInterpolate(`_con`, `_sql`, ...)
 \arguments{
 \item{_con}{A database connection.}
 
-\item{...}{Named values to interpolate into string. All strings
-will be first escaped with \code{\link{dbQuoteString}} prior
-to interpolation to protect against SQL injection attacks.}
-
-\item{`_sql`}{A SQL string containing containing variables to interpolate.
+\item{_sql}{A SQL string containing containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
+
+\item{...}{Named values to interpolate into string. All strings
+will be first escaped with \code{\link{dbQuoteString}} prior
+to interpolation to protect against SQL injection attacks.}
 }
 \description{
 Safely interpolate values into an SQL string

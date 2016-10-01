@@ -14,7 +14,7 @@ dbListTables(conn, ...)
 }
 \value{
 a character vector. If no tables present, a character vector
-  of length 0.
+of length 0.
 }
 \description{
 This should, where possible, include temporary tables.

@@ -4,7 +4,7 @@
 #' (or possibly \code{\link{dbQuoteString}}) instead.
 #'
 #' The algorithm in \code{make.db.names} first invokes \code{make.names} and
-#' then replaces each occurrence of a dot ``.'' by an underscore ``\_''.  If
+#' then replaces each occurrence of a dot `.` by an underscore `_`.  If
 #' \code{allow.keywords} is \code{FALSE} and identifiers collide with SQL
 #' keywords, a small integer is appended to the identifier in the form of
 #' \code{"_n"}.

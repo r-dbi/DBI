@@ -16,8 +16,8 @@ dbSendStatement(conn, statement, ...)
 }
 \value{
 An object that inherits from \code{\linkS4class{DBIResult}}.
-  Once you have finished using a result, make sure to disconnect it
-  with \code{\link{dbClearResult}}.
+Once you have finished using a result, make sure to disconnect it
+with \code{\link{dbClearResult}}.
 }
 \description{
 The function \code{dbSendStatement} only submits and synchronously executes the

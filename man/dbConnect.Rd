@@ -17,9 +17,9 @@ typically include \code{user}, \code{password}, \code{dbname}, \code{host},
 }
 \value{
 An object that extends \code{\linkS4class{DBIConnection}} in a
-  database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
-  an object of class \code{MySQLConnection}. This object is used to direct
-  commands to the database engine.
+database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
+an object of class \code{MySQLConnection}. This object is used to direct
+commands to the database engine.
 }
 \description{
 Connect to a DBMS going through the appropriate authorization procedure.

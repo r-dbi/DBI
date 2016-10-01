@@ -14,8 +14,8 @@ dbGetException(conn, ...)
 }
 \value{
 a list with elements \code{errorNum} (an integer error number) and
-  \code{errorMsg} (a character string) describing the last error in the
-  connection \code{conn}.
+\code{errorMsg} (a character string) describing the last error in the
+connection \code{conn}.
 }
 \description{
 Get DBMS exceptions

@@ -28,9 +28,9 @@ data frame -> database table.
 }
 \note{
 The translation of identifiers between R and SQL is done through calls
-  to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
-  guarantee that the conversion is reversible.  For details see
-  \code{\link{make.db.names}}.
+to \code{\link{make.names}} and \code{\link{make.db.names}}, but we cannot
+guarantee that the conversion is reversible.  For details see
+\code{\link{make.db.names}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
