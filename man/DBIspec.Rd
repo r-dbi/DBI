@@ -1,3 +1,8 @@
+%   R/spec-driver-class.R, R/spec-driver-constructor.R,
+%   R/spec-driver-data-type.R, R/spec-driver.R, R/spec-connection.R,
+%   R/spec-result.R, R/spec-sql.R, R/spec-meta-bind.R, R/spec-meta.R,
+%   R/spec-transaction-begin-commit.R, R/spec-transaction.R,
+%   R/spec-compliance.R, R/spec-stress.R
 \docType{data}
 \name{DBIspec}
 \alias{DBIspec}
@@ -58,30 +63,47 @@ is also accepted.
 
 
 \subsection{\code{dbDataType("DBIDriver", "ANY")}}{
-The backend can override the \code{\link[DBI]{dbDataType}} generic
+The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
 for its driver class.
 This generic expects an arbitrary object as second argument
 and returns a corresponding SQL type
 as atomic
 character value
 with at least one character.
-As-is objects (i.e., wrapped by \code{\link[base]{I}}) must be
+As-is objects (i.e., wrapped by \code{\link[base:I]{base::I()}}) must be
 supported and return the same results as their unwrapped counterparts.
 
 To query the values returned by the default implementation,
 run \code{example(dbDataType, package = "DBI")}.
 If the backend needs to override this generic,
 it must accept all basic R data types as its second argument, namely
-\code{\link[base]{logical}},
-\code{\link[base]{integer}},
-\code{\link[base]{numeric}},
-\code{\link[base]{character}},
-dates (see \code{\link[base]{Dates}}),
-date-time (see \code{\link[base]{DateTimeClasses}}),
-and \code{\link[base]{difftime}}.
+\code{\link[base:logical]{base::logical()}},
+\code{\link[base:integer]{base::integer()}},
+\code{\link[base:numeric]{base::numeric()}},
+\code{\link[base:character]{base::character()}},
+dates (see \code{\link[base:Dates]{base::Dates()}}),
+date-time (see \code{\link[base:DateTimeClasses]{base::DateTimeClasses()}}),
+and \code{\link[base:difftime]{base::difftime()}}.
 It also must accept lists of \code{raw} vectors
 and map them to the BLOB (binary large object) data type.
 The behavior for other object types is not specified.
+}
+}
+
+\section{Parametrized queries and statements}{
+
+\pkg{DBI} supports parametrized (or prepared) queries and statements
+via the \code{\link[DBI:dbBind]{DBI::dbBind()}} generic.
+Parametrized queries are different from normal queries
+in that they allow an arbitrary number of placeholders,
+which are later substituted by actual values.
+Parametrized queries (and statements) serve two purposes:
+\itemize{
+\item The same query can be executed more than once with different values.
+The DBMS may cache intermediate information,
+such as the execution plan for the query,
+and execute it faster.
+\item Separation of query syntax and parameters protects against SQL injection.
 }
 }
 
@@ -89,18 +111,18 @@ The behavior for other object types is not specified.
 
 \subsection{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
 Transactions are available in DBI, but actual support may vary between backends.
-A transaction is initiated by a call to \code{\link[DBI]{dbBegin}}
-and committed by a call to \code{\link[DBI]{dbCommit}}.
+A transaction is initiated by a call to \code{\link[DBI:dbBegin]{DBI::dbBegin()}}
+and committed by a call to \code{\link[DBI:dbCommit]{DBI::dbCommit()}}.
 Both generics expect an object of class \code{\linkS4class{DBIConnection}}
 and return \code{TRUE} (invisibly) upon success.
 
 The implementations are expected to raise an error in case of failure,
 but this is difficult to test in an automated way.
 In any way, both generics should throw an error with a closed connection.
-In addition, a call to \code{\link[DBI]{dbCommit}} without
-a call to \code{\link[DBI]{dbBegin}} should raise an error.
+In addition, a call to \code{\link[DBI:dbCommit]{DBI::dbCommit()}} without
+a call to \code{\link[DBI:dbBegin]{DBI::dbBegin()}} should raise an error.
 Nested transactions are not supported by DBI,
-an attempt to call \code{\link[DBI]{dbBegin}} twice
+an attempt to call \code{\link[DBI:dbBegin]{DBI::dbBegin()}} twice
 should yield an error.
 
 Data written in a transaction must persist after the transaction is committed.
@@ -110,6 +132,10 @@ and populated during the transaction
 must exist and contain the data added there
 both during
 and after the transaction.
+
+The behavior is not specified if other arguments are passed to these
+functions. In particular, \pkg{RSQLite} issues named transactions
+if the \code{name} argument is set.
 
 The transaction isolation level is not specified by DBI.
 
