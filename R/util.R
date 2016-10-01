@@ -1,6 +1,6 @@
 #' Print a list of pairs.
 #'
-#' DEPRECATED, do not use. Use \code{\link[base]{summary}} to print output of
+#' DEPRECATED, do not use. Use [base::summary()] to print output of
 #' [dbGetInfo()].
 #'
 #' @param x a list of key, value pairs
