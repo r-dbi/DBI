@@ -11,7 +11,7 @@ dbBreak()
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{code}{An arbitrary block of R code}
 }
@@ -21,10 +21,10 @@ The result of the evaluation of \code{code}
 \description{
 Given that \link{transactions} are implemented, this function
 allows you to pass in code that is run in a transaction.
-The default method of \code{dbWithTransaction} calls \code{\link{dbBegin}}
+The default method of \code{dbWithTransaction} calls \code{\link[=dbBegin]{dbBegin()}}
 before executing the code,
-and \code{\link{dbCommit}} after successful completion,
-or \code{\link{dbRollback}} in case of an error.
+and \code{\link[=dbCommit]{dbCommit()}} after successful completion,
+or \code{\link[=dbRollback]{dbRollback()}} in case of an error.
 The advantage is
 that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
 \code{dbRollback} -- that is all taken care of.

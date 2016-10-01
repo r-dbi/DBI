@@ -20,7 +20,7 @@ special values.}
 }
 \value{
 a data.frame with as many rows as records were fetched and as many
-  columns as fields in the result set.
+columns as fields in the result set.
 }
 \description{
 Fetch the next \code{n} elements (rows) from the result set and return them
@@ -54,8 +54,8 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-close the result set with \code{\link{dbClearResult}} as soon as you
-  finish retrieving the records you want.
+close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
+finish retrieving the records you want.
 
 Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{SQL}}, \code{\link{dbBind}},

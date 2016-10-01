@@ -15,7 +15,7 @@ dbGetStatement(res, ...)
 a character vector
 }
 \description{
-Returns the statement that was passed to \code{\link{dbSendQuery}}.
+Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

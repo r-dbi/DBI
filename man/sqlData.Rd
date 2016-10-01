@@ -13,14 +13,14 @@ sqlData(con, value, row.names = NA, ...)
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
-  If \code{TRUE}, always translate row names to a column called "row_names".
-  If \code{FALSE}, never translate row names. If \code{NA}, translate
-  rownames only if they're a character vector.
+If \code{TRUE}, always translate row names to a column called "row_names".
+If \code{FALSE}, never translate row names. If \code{NA}, translate
+rownames only if they're a character vector.
 
-  A string is equivalent to \code{TRUE}, but allows you to override the
-  default name.
+A string is equivalent to \code{TRUE}, but allows you to override the
+default name.
 
-  For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
 \item{...}{Other arguments used by individual methods.}
 }
@@ -34,10 +34,10 @@ This method is mostly useful for backend implementers.
 \details{
 The default method:
 \itemize{
-  \item Converts factors to characters
-  \item Quotes all strings
-  \item Converts all columns to strings
-  \item Replaces NA with NULL
+\item Converts factors to characters
+\item Quotes all strings
+\item Converts all columns to strings
+\item Replaces NA with NULL
 }
 }
 \examples{

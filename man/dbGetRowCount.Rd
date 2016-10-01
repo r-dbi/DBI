@@ -15,7 +15,7 @@ dbGetRowCount(res, ...)
 a numeric vector of length 1
 }
 \description{
-This value is increased by calls to \code{\link{dbFetch}}. For a data
+This value is increased by calls to \code{\link[=dbFetch]{dbFetch()}}. For a data
 modifying query, the return value is 0.
 }
 \examples{

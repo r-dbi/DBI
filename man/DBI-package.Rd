@@ -20,10 +20,10 @@ dbGetQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > 2.3")
 dbDisconnect(con)
 }
 \seealso{
-Important generics: \code{\link{dbConnect}}, \code{\link{dbGetQuery}},
-  \code{\link{dbWriteTable}}, \code{\link{dbDisconnect}}
+Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
 
-  Formal specification (currently work in progress and incomplete):
-  \link{DBIspec}
+Formal specification (currently work in progress and incomplete):
+\link{DBIspec}
 }
 

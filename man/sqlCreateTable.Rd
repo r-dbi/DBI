@@ -10,27 +10,27 @@ sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 \item{con}{A database connection.}
 
 \item{table}{Name of the table. Escaped with
-\code{\link{dbQuoteIdentifier}}.}
+\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{fields}{Either a character vector or a data frame.
 
-  A named character vector: Names are column names, values are types.
-  Names are escaped with \code{\link{dbQuoteIdentifier}}.
-  Field types are unescaped.
+A named character vector: Names are column names, values are types.
+Names are escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Field types are unescaped.
 
-  A data frame: field types are generated using
-  \code{\link{dbDataType}}.}
+A data frame: field types are generated using
+\code{\link[=dbDataType]{dbDataType()}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
-  If \code{TRUE}, always translate row names to a column called "row_names".
-  If \code{FALSE}, never translate row names. If \code{NA}, translate
-  rownames only if they're a character vector.
+If \code{TRUE}, always translate row names to a column called "row_names".
+If \code{FALSE}, never translate row names. If \code{NA}, translate
+rownames only if they're a character vector.
 
-  A string is equivalent to \code{TRUE}, but allows you to override the
-  default name.
+A string is equivalent to \code{TRUE}, but allows you to override the
+default name.
 
-  For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
 

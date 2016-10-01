@@ -8,13 +8,13 @@ dbListTables(conn, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
 a character vector. If no tables present, a character vector
-  of length 0.
+of length 0.
 }
 \description{
 This should, where possible, include temporary tables.

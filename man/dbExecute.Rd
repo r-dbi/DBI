@@ -8,7 +8,7 @@ dbExecute(conn, statement, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
 
@@ -20,8 +20,8 @@ The number of rows affected by the \code{statement}
 \description{
 \code{dbExecute} comes with a default implementation
 (which should work with most backends) that calls
-\code{\link{dbSendStatement}}, then \code{\link{dbGetRowsAffected}}, ensuring that
-the result is always free-d by \code{\link{dbClearResult}}.
+\code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
+the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -35,7 +35,7 @@ dbReadTable(con, "cars")   # there are now 6 rows
 dbDisconnect(con)
 }
 \seealso{
-For queries: \code{\link{dbSendQuery}} and \code{\link{dbGetQuery}}.
+For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},

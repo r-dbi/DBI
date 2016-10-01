@@ -42,8 +42,8 @@ being executed (\code{statement}), how many rows have been fetched so far
 
 The default implementation for \code{DBIResult objects}
 constructs such a list from the return values of the corresponding methods,
-\code{\link{dbGetStatement}}, \code{\link{dbGetRowCount}},
-\code{\link{dbGetRowsAffected}}, and \code{\link{dbHasCompleted}}.
+\code{\link[=dbGetStatement]{dbGetStatement()}}, \code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},

@@ -14,21 +14,21 @@ sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
 \item{con}{A database connection.}
 
 \item{table}{Name of the table. Escaped with
-\code{\link{dbQuoteIdentifier}}.}
+\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{values}{A data frame. Factors will be converted to character vectors.
-Character vectors will be escaped with \code{\link{dbQuoteString}}.}
+Character vectors will be escaped with \code{\link[=dbQuoteString]{dbQuoteString()}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
-  If \code{TRUE}, always translate row names to a column called "row_names".
-  If \code{FALSE}, never translate row names. If \code{NA}, translate
-  rownames only if they're a character vector.
+If \code{TRUE}, always translate row names to a column called "row_names".
+If \code{FALSE}, never translate row names. If \code{NA}, translate
+rownames only if they're a character vector.
 
-  A string is equivalent to \code{TRUE}, but allows you to override the
-  default name.
+A string is equivalent to \code{TRUE}, but allows you to override the
+default name.
 
-  For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
 \item{...}{Other arguments used by individual methods.}
 
@@ -37,7 +37,7 @@ Character vectors will be escaped with \code{\link{dbQuoteString}}.}
 \description{
 \code{sqlAppendTable} generates a single SQL string that inserts a
 data frame into an existing table. \code{sqlAppendTableTemplate} generates
-a template suitable for use with \code{\link{dbBind}}.
+a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
 These methods are mostly useful for backend implementers.
 }
 \examples{
