@@ -14,29 +14,30 @@ dbBind(res, params, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \description{
-The \code{\link{dbSendQuery}} function can be called with queries
-that contain placeholders for values. This function binds these placeholders
+For parametrised or prepared statements,
+the \code{\link[=dbSendQuery]{dbSendQuery()}} function can be called with queries
+that contain placeholders for values. The \code{\link[=dbBind]{dbBind()}} function
+(documented here) binds these placeholders
 to actual values, and is intended to be called on the result of
-\code{\link{dbSendQuery}} before calling \code{\link{dbFetch}}.
+\code{\link[=dbSendQuery]{dbSendQuery()}} before calling \code{\link[=dbFetch]{dbFetch()}}.
 }
 \details{
 Parametrised or prepared statements are executed as follows:
-
 \enumerate{
-  \item Call \code{\link{dbSendQuery}} with a query that contains placeholders,
-    store the returned \code{\linkS4class{DBIResult}} object in a variable.
-    Currently, the syntax for the placeholders is backend-specific,
-    e.g., \code{?}, \code{$}, \code{$name} and \code{:name}.
-    Mixing placeholders (in particular, named and unnamed ones) is not
-    recommended.
-  \item Call \code{\link{dbBind}} on the \code{DBIResult} object with a list
-    that specifies actual values for the placeholders.  The list must be
-    named or unnamed, depending on the kind of placeholders used.
-    Named values are matched to named paramters, unnamed values
-    are matched by position.
-  \item Call \code{\link{dbFetch}} on the same \code{DBIResult} object.
-  \item Repeat 2. and 3. as necessary.
-  \item Close the result set via \code{\link{dbClearResult}}.
+\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} with a query that contains placeholders,
+store the returned \code{\linkS4class{DBIResult}} object in a variable.
+Currently, the syntax for the placeholders is backend-specific,
+e.g., \code{?}, \code{$}, \code{$name} and \code{:name}.
+Mixing placeholders (in particular, named and unnamed ones) is not
+recommended.
+\item Call \code{\link[=dbBind]{dbBind()}} on the \code{DBIResult} object with a list
+that specifies actual values for the placeholders.  The list must be
+named or unnamed, depending on the kind of placeholders used.
+Named values are matched to named paramters, unnamed values
+are matched by position.
+\item Call \code{\link[=dbFetch]{dbFetch()}} on the same \code{DBIResult} object.
+\item Repeat 2. and 3. as necessary.
+\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 }
 \examples{

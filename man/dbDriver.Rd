@@ -19,11 +19,11 @@ dbUnloadDriver(drv, ...)
 }
 \value{
 In the case of \code{dbDriver}, an driver object whose class extends
-  \code{DBIDriver}. This object may be used to create connections to the
-  actual DBMS engine.
+\code{DBIDriver}. This object may be used to create connections to the
+actual DBMS engine.
 
-  In the case of \code{dbUnloadDriver}, a logical indicating whether the
-  operation succeeded or not.
+In the case of \code{dbUnloadDriver}, a logical indicating whether the
+operation succeeded or not.
 }
 \description{
 \code{dbDriver} is a helper method used to create an new driver object

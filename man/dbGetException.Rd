@@ -8,14 +8,14 @@ dbGetException(conn, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
 a list with elements \code{errorNum} (an integer error number) and
-  \code{errorMsg} (a character string) describing the last error in the
-  connection \code{conn}.
+\code{errorMsg} (a character string) describing the last error in the
+connection \code{conn}.
 }
 \description{
 Get DBMS exceptions

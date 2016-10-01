@@ -1,6 +1,6 @@
 #' Create a simple table
 #'
-#' Exposes interface to simple \code{CREATE TABLE} commands. The default
+#' Exposes interface to simple `CREATE TABLE` commands. The default
 #' method is ANSI SQL 99 compliant.
 #' This method is mostly useful for backend implementers.
 #'
@@ -11,16 +11,16 @@
 #'
 #' @param con A database connection.
 #' @param table Name of the table. Escaped with
-#'   \code{\link{dbQuoteIdentifier}}.
+#'   [dbQuoteIdentifier()].
 #' @param fields Either a character vector or a data frame.
 #'
 #'   A named character vector: Names are column names, values are types.
-#'   Names are escaped with \code{\link{dbQuoteIdentifier}}.
+#'   Names are escaped with [dbQuoteIdentifier()].
 #'   Field types are unescaped.
 #'
 #'   A data frame: field types are generated using
-#'   \code{\link{dbDataType}}.
-#' @param temporary If \code{TRUE}, will generate a temporary table statement.
+#'   [dbDataType()].
+#' @param temporary If `TRUE`, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
 #' @export

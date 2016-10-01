@@ -8,7 +8,7 @@ dbSendQuery(conn, statement, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
-\code{\link{dbConnect}}.}
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
 
@@ -16,23 +16,23 @@ dbSendQuery(conn, statement, ...)
 }
 \value{
 An object that inherits from \code{\linkS4class{DBIResult}}.
-  The result set can be used with \code{\link{dbFetch}} to extract records.
-  Once you have finished using a result, make sure to disconnect it
-  with \code{\link{dbClearResult}}.
+The result set can be used with \code{\link[=dbFetch]{dbFetch()}} to extract records.
+Once you have finished using a result, make sure to disconnect it
+with \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 \description{
 The function \code{dbSendQuery} only submits and synchronously executes the
 SQL query to the database engine.  It does \emph{not} extract any
-records --- for that you need to use the function \code{\link{dbFetch}}, and
-then you must call \code{\link{dbClearResult}} when you finish fetching the
+records --- for that you need to use the function \code{\link[=dbFetch]{dbFetch()}}, and
+then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
 records you need. For interactive use, you should almost always prefer
-\code{\link{dbGetQuery}}.
+\code{\link[=dbGetQuery]{dbGetQuery()}}.
 }
 \details{
 This function is for \code{SELECT} queries only.  Some backends may
 support data manipulation queries through this function for compatibility
 reasons.  However, callers are strongly advised to use
-\code{\link{dbSendStatement}} for data manipulation statements.
+\code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
 }
 \section{Side Effects}{
 
@@ -54,7 +54,7 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-For updates: \code{\link{dbSendStatement}} and \code{\link{dbExecute}}.
+For updates: \code{\link[=dbSendStatement]{dbSendStatement()}} and \code{\link[=dbExecute]{dbExecute()}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},

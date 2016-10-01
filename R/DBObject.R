@@ -5,24 +5,24 @@
 #'
 #' More generally, the DBI defines a very small set of classes and generics that
 #' allows users and applications access DBMS with a common interface.  The
-#' virtual classes are \code{DBIDriver} that individual drivers extend,
-#' \code{DBIConnection} that represent instances of DBMS connections, and
-#' \code{DBIResult} that represent the result of a DBMS statement.  These three
-#' classes extend the basic class of \code{DBIObject}, which serves as the root
+#' virtual classes are `DBIDriver` that individual drivers extend,
+#' `DBIConnection` that represent instances of DBMS connections, and
+#' `DBIResult` that represent the result of a DBMS statement.  These three
+#' classes extend the basic class of `DBIObject`, which serves as the root
 #' or parent of the class hierarchy.
 #'
 #' @section Implementation notes:
 #' An implementation MUST provide methods for the following generics:
 #'
 #' \itemize{
-#'   \item \code{\link{dbGetInfo}}.
+#'   \item [dbGetInfo()].
 #' }
 #'
 #' It MAY also provide methods for:
 #'
 #' \itemize{
-#'   \item \code{\link{summary}}. Print a concise description of the
-#'     object. The default method invokes \code{dbGetInfo(dbObj)} and prints
+#'   \item [summary()]. Print a concise description of the
+#'     object. The default method invokes `dbGetInfo(dbObj)` and prints
 #'     the name-value pairs one per line.  Individual implementations may
 #'     tailor this appropriately.
 #' }
@@ -47,23 +47,23 @@ setClass("DBIObject", "VIRTUAL")
 #' Get DBMS metadata
 #'
 #' @section Implementation notes:
-#' For \code{DBIDriver} subclasses, this should include the version of the
-#' package (\code{driver.version}), the version of the underlying client
-#' library (\code{client.version}), and the maximum number of connections
-#' (\code{max.connections}).
+#' For `DBIDriver` subclasses, this should include the version of the
+#' package (`driver.version`), the version of the underlying client
+#' library (`client.version`), and the maximum number of connections
+#' (`max.connections`).
 #'
-#' For \code{DBIConnection} objects this should report the version of
-#' the DBMS engine (\code{db.version}), database name (\code{dbname}),
-#' username, (\code{username}), host (\code{host}), port (\code{port}), etc.
+#' For `DBIConnection` objects this should report the version of
+#' the DBMS engine (`db.version`), database name (`dbname`),
+#' username, (`username`), host (`host`), port (`port`), etc.
 #' It MAY also include any other arguments related to the connection
 #' (e.g., thread id, socket or TCP connection type). It MUST NOT include the
 #' password.
 #'
-#' For \code{DBIResult} objects, this should include the statement
-#' being executed (\code{statement}), how many rows have been fetched so far
-#' (in the case of queries, \code{row.count}), how many rows were affected
+#' For `DBIResult` objects, this should include the statement
+#' being executed (`statement`), how many rows have been fetched so far
+#' (in the case of queries, `row.count`), how many rows were affected
 #' (deleted, inserted, changed,
-#' (\code{rows.affected}), and if the query is complete (\code{has.completed}).
+#' (`rows.affected`), and if the query is complete (`has.completed`).
 #'
 #' @param dbObj An object inheriting from \code{\linkS4class{DBIObject}},
 #'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},

@@ -6,8 +6,8 @@
 #'
 #' dbDisconnect(con)
 #' @seealso
-#'   Important generics: \code{\link{dbConnect}}, \code{\link{dbGetQuery}},
-#'   \code{\link{dbWriteTable}}, \code{\link{dbDisconnect}}
+#'   Important generics: [dbConnect()], [dbGetQuery()],
+#'   [dbWriteTable()], [dbDisconnect()]
 #'
 #'   Formal specification (currently work in progress and incomplete):
 #'   \link{DBIspec}

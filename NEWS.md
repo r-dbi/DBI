@@ -1,3 +1,8 @@
+## DBI 0.5-11 (2016-10-01)
+
+- Use markdown in documentation.
+
+
 ## DBI 0.5-10 (2016-09-17)
 
 - Same as 0.5-1.

@@ -37,30 +37,30 @@ letters are upper or lower case.}
 \item{allow.keywords}{logical describing whether SQL keywords should be
 allowed in the resulting set of SQL names.  Its default is \code{TRUE}}
 
+\item{\dots}{any other argument are passed to the driver implementation.}
+
 \item{name}{a character vector with database identifier candidates we need
 to determine whether they are legal SQL identifiers or not.}
 
 \item{case}{a character string specifying whether to make the comparison as
 lower case, upper case, or any of the two.  it defaults to \code{any}.}
-
-\item{\dots}{any other argument are passed to the driver implementation.}
 }
 \value{
 \code{make.db.names} returns a character vector of legal SQL
-  identifiers corresponding to its \code{snames} argument.
+identifiers corresponding to its \code{snames} argument.
 
-  \code{SQLKeywords} returns a character vector of all known keywords for the
-  database-engine associated with \code{dbObj}.
+\code{SQLKeywords} returns a character vector of all known keywords for the
+database-engine associated with \code{dbObj}.
 
-  \code{isSQLKeyword} returns a logical vector parallel to \code{name}.
+\code{isSQLKeyword} returns a logical vector parallel to \code{name}.
 }
 \description{
-These methods are DEPRECATED. Please use \code{\link{dbQuoteIdentifier}}
-(or possibly \code{\link{dbQuoteString}}) instead.
+These methods are DEPRECATED. Please use \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+(or possibly \code{\link[=dbQuoteString]{dbQuoteString()}}) instead.
 }
 \details{
 The algorithm in \code{make.db.names} first invokes \code{make.names} and
-then replaces each occurrence of a dot ``.'' by an underscore ``\_''.  If
+then replaces each occurrence of a dot \code{.} by an underscore \code{_}.  If
 \code{allow.keywords} is \code{FALSE} and identifiers collide with SQL
 keywords, a small integer is appended to the identifier in the form of
 \code{"_n"}.
@@ -74,14 +74,14 @@ override or update this vector.
 
 The current mapping is not guaranteed to be fully reversible: some SQL
 identifiers that get mapped into R identifiers with \code{make.names} and
-then back to SQL with \code{\link{make.db.names}} will not be equal to the
+then back to SQL with \code{\link[=make.db.names]{make.db.names()}} will not be equal to the
 original SQL identifiers (e.g., compound SQL identifiers of the form
 \code{username.tablename} will loose the dot ``.'').
 }
 \references{
 The set of SQL keywords is stored in the character vector
-  \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
-  in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
-  override or update this vector.
+\code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
+in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
+override or update this vector.
 }
 

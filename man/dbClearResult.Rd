@@ -13,7 +13,7 @@ dbClearResult(res, ...)
 }
 \value{
 a logical indicating whether clearing the
-  result set was successful or not.
+result set was successful or not.
 }
 \description{
 Frees all resources (local and remote) associated with a result set.  In some
