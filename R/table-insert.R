@@ -1,7 +1,7 @@
 #' Insert rows into a table
 #'
-#' \code{sqlAppendTable} generates a single SQL string that inserts a
-#' data frame into an existing table. \code{sqlAppendTableTemplate} generates
+#' `sqlAppendTable` generates a single SQL string that inserts a
+#' data frame into an existing table. `sqlAppendTableTemplate` generates
 #' a template suitable for use with [dbBind()].
 #' These methods are mostly useful for backend implementers.
 #'

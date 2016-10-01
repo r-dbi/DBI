@@ -1,9 +1,9 @@
 #' DBIDriver class
 #'
 #' Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
-#' The virtual class \code{DBIDriver} defines the operations for creating
+#' The virtual class `DBIDriver` defines the operations for creating
 #' connections and defining data type mappings.  Actual driver classes, for
-#' instance \code{RPgSQL}, \code{RMySQL}, etc. implement these operations in a
+#' instance `RPgSQL`, `RMySQL`, etc. implement these operations in a
 #' DBMS-specific manner.
 #'
 #' @docType class
@@ -16,10 +16,10 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
 #' Load and unload database drivers
 #'
-#' \code{dbDriver} is a helper method used to create an new driver object
+#' `dbDriver` is a helper method used to create an new driver object
 #' given the name of a database or the corresponding R package. It works
 #' through convention: all DBI-extending packages should provide an exported
-#' object with the same name as the package. \code{dbDriver} just looks for
+#' object with the same name as the package. `dbDriver` just looks for
 #' this object in the right places: if you know what database you are connecting
 #' to, you should call the function directly.
 #'
@@ -27,17 +27,17 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #' The client part of the database communication is
 #' initialized (typically dynamically loading C code, etc.) but note that
 #' connecting to the database engine itself needs to be done through calls to
-#' \code{dbConnect}.
+#' `dbConnect`.
 #'
 #' @param drvName character name of the driver to instantiate.
-#' @param drv an object that inherits from \code{DBIDriver} as created by
-#'   \code{dbDriver}.
-#' @param ... any other arguments are passed to the driver \code{drvName}.
-#' @return In the case of \code{dbDriver}, an driver object whose class extends
-#'   \code{DBIDriver}. This object may be used to create connections to the
+#' @param drv an object that inherits from `DBIDriver` as created by
+#'   `dbDriver`.
+#' @param ... any other arguments are passed to the driver `drvName`.
+#' @return In the case of `dbDriver`, an driver object whose class extends
+#'   `DBIDriver`. This object may be used to create connections to the
 #'   actual DBMS engine.
 #'
-#'   In the case of \code{dbUnloadDriver}, a logical indicating whether the
+#'   In the case of `dbUnloadDriver`, a logical indicating whether the
 #'   operation succeeded or not.
 #' @import methods
 #' @family DBIDriver generics
@@ -129,18 +129,18 @@ setGeneric("dbUnloadDriver",
 #' documentation of individual drivers for details.
 #'
 #' Each driver will define what other arguments are required, e.g.,
-#' \code{"dbname"} for the database name, \code{"username"}, and
-#' \code{"password"}.
+#' `"dbname"` for the database name, `"username"`, and
+#' `"password"`.
 #'
 #' @param drv an object that inherits from \code{\linkS4class{DBIDriver}},
 #'   or an existing \code{\linkS4class{DBIConnection}}
 #'   object (in order to clone an existing connection).
 #' @param ... authorization arguments needed by the DBMS instance; these
-#'   typically include \code{user}, \code{password}, \code{dbname}, \code{host},
-#'   \code{port}, etc.  For details see the appropriate \code{DBIDriver}.
+#'   typically include `user`, `password`, `dbname`, `host`,
+#'   `port`, etc.  For details see the appropriate `DBIDriver`.
 #' @return An object that extends \code{\linkS4class{DBIConnection}} in a
-#'   database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
-#'   an object of class \code{MySQLConnection}. This object is used to direct
+#'   database-specific manner. For instance `dbConnect(RMySQL::MySQL())` produces
+#'   an object of class `MySQLConnection`. This object is used to direct
 #'   commands to the database engine.
 #' @seealso [dbDisconnect()] to disconnect from a database.
 #' @family DBIDriver generics
@@ -195,7 +195,7 @@ setGeneric("dbListConnections",
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #'   or \code{\linkS4class{DBIConnection}}
 #' @param obj An R object whose SQL type we want to determine.
-#' @return A character string specifying the SQL data type for \code{obj}.
+#' @return A character string specifying the SQL data type for `obj`.
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @examples

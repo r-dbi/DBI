@@ -5,13 +5,13 @@ NULL
 #'
 #' This set of classes and generics make it possible to flexibly deal with SQL
 #' escaping needs. By default, any user supplied input to a query should be
-#' escaped using either \code{dbQuoteIdentifier} or \code{dbQuoteString}
+#' escaped using either `dbQuoteIdentifier` or `dbQuoteString`
 #' depending on whether it refers to a table or variable name, or is a literal
 #' string.
-#' These functions return an object of the \code{SQL} class,
+#' These functions return an object of the `SQL` class,
 #' which tells DBI functions that a character string does not need to be escaped
 #' anymore, to prevent double escaping.
-#' The \code{SQL} class has associated the \code{SQL()} constructor function.
+#' The `SQL` class has associated the `SQL()` constructor function.
 #'
 #' @section Implementation notes:
 #'
@@ -19,9 +19,9 @@ NULL
 #' uses a different convention, you will need to provide your own methods.
 #' Note that because of the way that S4 dispatch finds methods and because
 #' SQL inherits from character, if you implement (e.g.) a method for
-#' \code{dbQuoteString(MyConnection, character)}, you will also need to
-#' implement \code{dbQuoteString(MyConnection, SQL)} - this should simply
-#' return \code{x} unchanged.
+#' `dbQuoteString(MyConnection, character)`, you will also need to
+#' implement `dbQuoteString(MyConnection, SQL)` - this should simply
+#' return `x` unchanged.
 #'
 #' If you implement your own method, make sure to convert NA to NULL (unquoted).
 #'
@@ -29,7 +29,7 @@ NULL
 #'   an active connection to an DBMS.
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
-#' @return An object of class \code{SQL}.
+#' @return An object of class `SQL`.
 #' @export
 #' @examples
 #' # Quoting ensures that arbitrary input is safe for use in a query

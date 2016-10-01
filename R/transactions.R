@@ -5,7 +5,7 @@
 #' \code{\linkS4class{DBIConnection}} subclass.
 #'
 #' @section Side Effects:
-#' The current transaction on the connection \code{con} is committed or rolled
+#' The current transaction on the connection `con` is committed or rolled
 #' back.
 #'
 #' @inheritParams dbDisconnect
@@ -56,26 +56,26 @@ setGeneric("dbRollback",
 #'
 #' Given that \link{transactions} are implemented, this function
 #' allows you to pass in code that is run in a transaction.
-#' The default method of \code{dbWithTransaction} calls [dbBegin()]
+#' The default method of `dbWithTransaction` calls [dbBegin()]
 #' before executing the code,
 #' and [dbCommit()] after successful completion,
 #' or [dbRollback()] in case of an error.
 #' The advantage is
-#' that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
-#' \code{dbRollback} -- that is all taken care of.
-#' The special function \code{dbBreak} allows an early exit with rollback,
-#' it can be called only inside \code{dbWithTransaction}.
+#' that you don't have to remember to do `dbBegin` and `dbCommit` or
+#' `dbRollback` -- that is all taken care of.
+#' The special function `dbBreak` allows an early exit with rollback,
+#' it can be called only inside `dbWithTransaction`.
 #'
 #' @section Side Effects:
-#' The transaction in \code{code} on the connection \code{conn} is committed
-#' or rolled back. The \code{code} chunk may also modify the local R
+#' The transaction in `code` on the connection `conn` is committed
+#' or rolled back. The `code` chunk may also modify the local R
 #' environment.
 #'
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
 #'   [dbConnect()].
 #' @param code An arbitrary block of R code
 #'
-#' @return The result of the evaluation of \code{code}
+#' @return The result of the evaluation of `code`
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

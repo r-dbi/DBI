@@ -1,6 +1,6 @@
 #' Create a simple table
 #'
-#' Exposes interface to simple \code{CREATE TABLE} commands. The default
+#' Exposes interface to simple `CREATE TABLE` commands. The default
 #' method is ANSI SQL 99 compliant.
 #' This method is mostly useful for backend implementers.
 #'
@@ -20,7 +20,7 @@
 #'
 #'   A data frame: field types are generated using
 #'   [dbDataType()].
-#' @param temporary If \code{TRUE}, will generate a temporary table statement.
+#' @param temporary If `TRUE`, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
 #' @export

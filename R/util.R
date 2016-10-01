@@ -4,7 +4,7 @@
 #' [dbGetInfo()].
 #'
 #' @param x a list of key, value pairs
-#' @param ... additional arguments to be passed to \code{cat}
+#' @param ... additional arguments to be passed to `cat`
 #' @return the (invisible) value of x.
 #' @keywords internal
 #' @export print.list.pairs

@@ -9,8 +9,8 @@
 #' @param _con A database connection.
 #' @param _sql A SQL string containing containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
-#'   identifier, i.e. it must start with a letter or \code{.}, and be followed
-#'   by a letter, digit, \code{.} or \code{_}.
+#'   identifier, i.e. it must start with a letter or `.`, and be followed
+#'   by a letter, digit, `.` or `_`.
 #' @param ... Named values to interpolate into string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
 #'   to interpolation to protect against SQL injection attacks.
@@ -63,17 +63,17 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
 #' Parse interpolated variables from SQL.
 #'
 #' If you're implementing a backend that uses non-ANSI quoting or commenting
-#' rules, you'll need to implement a method for \code{sqlParseVariables} that
-#' calls \code{sqlParseVariablesImpl} with the appropriate quote and
+#' rules, you'll need to implement a method for `sqlParseVariables` that
+#' calls `sqlParseVariablesImpl` with the appropriate quote and
 #' comment specifications.
 #'
 #'
 #' @param start,end Start and end characters for quotes and comments
 #' @param endRequired Is the ending character of a comment required?
 #' @param doubleEscape Can quoting characters be escaped by doubling them?
-#'   Defaults to \code{TRUE}.
+#'   Defaults to `TRUE`.
 #' @param escape What character can be used to escape quoting characters?
-#'   Defaults to \code{""}, i.e. nothing.
+#'   Defaults to `""`, i.e. nothing.
 #' @keywords internal
 #' @export
 #' @examples
@@ -122,9 +122,9 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @export
 #' @rdname sqlParseVariables
 #' @param sql SQL to parse (a character vector of length 1)
-#' @param quotes A list of \code{QuoteSpec} calls defining the quoting
+#' @param quotes A list of `QuoteSpec` calls defining the quoting
 #'   specification.
-#' @param comments A list of \code{CommentSpec} calls defining the commenting
+#' @param comments A list of `CommentSpec` calls defining the commenting
 #'   specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
   sql_arr <- c(strsplit(as.character(sql), "", fixed = TRUE)[[1]], " ")
