@@ -100,10 +100,51 @@ which are later substituted by actual values.
 Parametrized queries (and statements) serve two purposes:
 \itemize{
 \item The same query can be executed more than once with different values.
-The DBMS may cache intermediate information,
-such as the execution plan for the query,
+The DBMS may cache intermediate information for the query,
+such as the execution plan,
 and execute it faster.
 \item Separation of query syntax and parameters protects against SQL injection.
+}
+
+The placeholder format is currently not specified by \pkg{DBI};
+in the future, a uniform placeholder syntax may be supported.
+Consult the backend documentation for the supported formats.
+For automated testing, backend authors specify the placeholder syntax with
+the \code{placeholder_pattern} tweak.
+Known examples are:
+\itemize{
+\item \code{?} (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
+\item \code{$1} (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
+\item \code{:name} and \code{$name} (named matching) in \pkg{RSQLite}
+}
+
+\pkg{DBI} clients execute parametrized statements as follows:
+\enumerate{
+\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+that contains placeholders,
+store the returned \code{\linkS4class{DBIResult}} object in a variable.
+Mixing placeholders (in particular, named and unnamed ones) is not
+recommended.
+\item Call \code{\link[=dbBind]{dbBind()}} on the \code{DBIResult} object with a list
+that specifies actual values for the placeholders.
+All elements in this list must have the same lengths and contain values
+supported by the backend; a \code{\link[=data.frame]{data.frame()}} is internally stored as such
+a list.
+The list must be named or unnamed,
+depending on the kind of placeholders used.
+Named values are matched to named parameters, unnamed values
+are matched by position.
+\item Retrieve the data or the number of affected rows from the  \code{DBIResult} object.
+\itemize{
+\item For queries issued by \code{dbSendQuery()},
+call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+\item For statements issued by \code{dbSendStatements()},
+call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{dbBind()} call.
+Calls to \code{dbFetch()} are ignored.)
+}
+\item Repeat 2. and 3. as necessary.
+\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 }
 }
 
