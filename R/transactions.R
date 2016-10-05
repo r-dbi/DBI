@@ -113,7 +113,7 @@ setGeneric("dbRollback",
 #'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",
-  def = function(conn, code) standardGeneric("dbWithTransaction")
+  def = function(conn, code, ...) standardGeneric("dbWithTransaction")
 )
 
 #' @rdname hidden_aliases
