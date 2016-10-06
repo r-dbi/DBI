@@ -1,3 +1,9 @@
+## DBI 0.5-12 (2016-10-06)
+
+- All standard generics are required to have an ellipsis (with test), for future extensibility.
+- Documentation updates: DBI specification and `dbBind()`.
+
+
 ## DBI 0.5-11 (2016-10-01)
 
 - Use markdown in documentation.
