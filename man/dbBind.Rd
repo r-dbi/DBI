@@ -24,20 +24,37 @@ to actual values, and is intended to be called on the result of
 \details{
 Parametrised or prepared statements are executed as follows:
 \enumerate{
-\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} with a query that contains placeholders,
+\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+that contains placeholders,
 store the returned \code{\linkS4class{DBIResult}} object in a variable.
-Currently, the syntax for the placeholders is backend-specific,
-e.g., \code{?}, \code{$}, \code{$name} and \code{:name}.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
-\item Call \code{\link[=dbBind]{dbBind()}} on the \code{DBIResult} object with a list
-that specifies actual values for the placeholders.  The list must be
-named or unnamed, depending on the kind of placeholders used.
-Named values are matched to named paramters, unnamed values
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
+\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()}, see the last
+enumeration item.
+\item Construct a list with parameters
+that specify actual values for the placeholders.
+The list must be named or unnamed,
+depending on the kind of placeholders used.
+Named values are matched to named parameters, unnamed values
 are matched by position.
-\item Call \code{\link[=dbFetch]{dbFetch()}} on the same \code{DBIResult} object.
+All elements in this list must have the same lengths and contain values
+supported by the backend; a \code{\link[=data.frame]{data.frame()}} is internally stored as such
+a list.
+The parameter list is passed a call to \code{\link[=dbBind]{dbBind()}} on the \code{DBIResult}
+object.
+\item Retrieve the data or the number of affected rows from the  \code{DBIResult} object.
+\itemize{
+\item For queries issued by \code{dbSendQuery()},
+call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+\item For statements issued by \code{dbSendStatements()},
+call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{dbBind()} call,
+the statement is processed entirely before the function returns.
+Calls to \code{dbFetch()} are ignored.)
+}
 \item Repeat 2. and 3. as necessary.
-\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
+\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 }
 }
 \examples{

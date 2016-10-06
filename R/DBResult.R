@@ -297,20 +297,35 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' Parametrised or prepared statements are executed as follows:
 #'
-#' 1. Call [dbSendQuery()] with a query that contains placeholders,
+#' 1. Call [DBI::dbSendQuery()] or [DBI::dbSendStatement()] with a query or statement
+#'    that contains placeholders,
 #'    store the returned \code{\linkS4class{DBIResult}} object in a variable.
-#'    Currently, the syntax for the placeholders is backend-specific,
-#'    e.g., `?`, `$`, `$name` and `:name`.
 #'    Mixing placeholders (in particular, named and unnamed ones) is not
 #'    recommended.
-#' 1. Call [dbBind()] on the `DBIResult` object with a list
-#'    that specifies actual values for the placeholders.  The list must be
-#'    named or unnamed, depending on the kind of placeholders used.
-#'    Named values are matched to named paramters, unnamed values
+#'    It is good practice to register a call to [DBI::dbClearResult()] via
+#'    [on.exit()] right after calling `dbSendQuery()`, see the last
+#'    enumeration item.
+#' 1. Construct a list with parameters
+#'    that specify actual values for the placeholders.
+#'    The list must be named or unnamed,
+#'    depending on the kind of placeholders used.
+#'    Named values are matched to named parameters, unnamed values
 #'    are matched by position.
-#' 1. Call [dbFetch()] on the same `DBIResult` object.
+#'    All elements in this list must have the same lengths and contain values
+#'    supported by the backend; a [data.frame()] is internally stored as such
+#'    a list.
+#'    The parameter list is passed a call to [dbBind()] on the `DBIResult`
+#'    object.
+#' 1. Retrieve the data or the number of affected rows from the  `DBIResult` object.
+#'     - For queries issued by `dbSendQuery()`,
+#'       call [DBI::dbFetch()].
+#'     - For statements issued by `dbSendStatements()`,
+#'       call [DBI::dbGetRowsAffected()].
+#'       (Execution begins immediately after the `dbBind()` call,
+#'       the statement is processed entirely before the function returns.
+#'       Calls to `dbFetch()` are ignored.)
 #' 1. Repeat 2. and 3. as necessary.
-#' 1. Close the result set via [dbClearResult()].
+#' 1. Close the result set via [DBI::dbClearResult()].
 #'
 #' @inheritParams dbClearResult
 #' @param params A list of bindings

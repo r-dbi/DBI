@@ -1,4 +1,4 @@
-setGeneric("dbiDataType", function(x) standardGeneric("dbiDataType"))
+setGeneric("dbiDataType", function(x, ...) standardGeneric("dbiDataType"))
 
 data_frame_data_type <- function(x) {
   vapply(x, dbiDataType, FUN.VALUE = character(1), USE.NAMES = TRUE)
