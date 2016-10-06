@@ -5,7 +5,7 @@
 \alias{dbWithTransaction}
 \title{Self-contained SQL transactions}
 \usage{
-dbWithTransaction(conn, code)
+dbWithTransaction(conn, code, ...)
 
 dbBreak()
 }
