@@ -145,7 +145,8 @@ object.
 call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
 \item For statements issued by \code{dbSendStatements()},
 call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
-(Execution begins immediately after the \code{dbBind()} call.
+(Execution begins immediately after the \code{dbBind()} call,
+the statement is processed entirely before the function returns.
 Calls to \code{dbFetch()} are ignored.)
 }
 \item Repeat 2. and 3. as necessary.
