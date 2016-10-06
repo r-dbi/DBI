@@ -14,6 +14,8 @@ dbBreak()
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{code}{An arbitrary block of R code}
+
+\item{...}{Other parameters passed on to methods.}
 }
 \value{
 The result of the evaluation of \code{code}

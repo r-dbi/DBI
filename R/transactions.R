@@ -74,6 +74,7 @@ setGeneric("dbRollback",
 #' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
 #'   [dbConnect()].
 #' @param code An arbitrary block of R code
+#' @param ... Other parameters passed on to methods.
 #'
 #' @return The result of the evaluation of `code`
 #' @export
