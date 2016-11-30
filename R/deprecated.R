@@ -53,11 +53,11 @@
 #'
 #'   `isSQLKeyword` returns a logical vector parallel to `name`.
 #' @export
-setGeneric("make.db.names", signature = c("dbObj", "snames"),
-  function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
-           allow.keywords = TRUE, ...) {
-    standardGeneric("make.db.names")
-  },
+setGeneric(
+  "make.db.names",
+  signature = c("dbObj", "snames"),
+  function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE, ...)
+    standardGeneric("make.db.names"),
   valueClass = "character"
 )
 
@@ -102,11 +102,11 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
 
 #' @rdname make.db.names
 #' @export
-setGeneric("isSQLKeyword", signature = c("dbObj", "name"),
-  function(dbObj, name, keywords = .SQL92Keywords,
-           case = c("lower", "upper", "any")[3], ...) {
-    standardGeneric("isSQLKeyword")
-  },
+setGeneric(
+  "isSQLKeyword",
+  signature = c("dbObj", "name"),
+  function(dbObj, name, keywords = .SQL92Keywords, case = c("lower", "upper", "any")[3], ...)
+    standardGeneric("isSQLKeyword"),
   valueClass = "logical"
 )
 
@@ -137,10 +137,9 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
 ## (See pp. 22 and 23 in X/Open SQL and RDA, 1994, isbn 1-872630-68-8)
 
 #' @export
-setGeneric("SQLKeywords",
-  function(dbObj, ...) {
-    standardGeneric("SQLKeywords")
-  },
+setGeneric(
+  "SQLKeywords",
+  function(dbObj, ...) standardGeneric("SQLKeywords"),
   valueClass = "character"
 )
 
@@ -201,7 +200,8 @@ setMethod("SQLKeywords", "missing",
 #' @inheritParams dbDisconnect
 #' @keywords internal
 #' @export
-setGeneric("dbCallProc",
+setGeneric(
+  "dbCallProc",
   def = function(conn, ...) {
     .Deprecated()
     standardGeneric("dbCallProc")
@@ -218,21 +218,6 @@ dbGetDBIVersion <- function() {
   utils::packageVersion("DBI")
 }
 
-#' Call an SQL stored procedure
-#'
-#' DEPRECATED
-#'
-#' @inheritParams dbDisconnect
-#' @keywords internal
-#' @export
-setGeneric("dbCallProc",
-  def = function(conn, ...) {
-    .Deprecated()
-    standardGeneric("dbCallProc")
-  },
-  valueClass = "logical"
-)
-
 #' Set data mappings between an DBMS and R.
 #'
 #' This generic is deprecated since no working implementation was ever produced.
@@ -248,7 +233,8 @@ setGeneric("dbCallProc",
 #' @keywords internal
 #' @param flds a field description object as returned by `dbColumnInfo`.
 #' @export
-setGeneric("dbSetDataMappings",
+setGeneric(
+  "dbSetDataMappings",
   def = function(res, flds, ...) {
     .Deprecated()
     standardGeneric("dbSetDataMappings")

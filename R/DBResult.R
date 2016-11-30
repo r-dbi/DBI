@@ -345,6 +345,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' dbClearResult(iris_result)
 #' dbDisconnect(con)
 #' }
-setGeneric("dbBind", function(res, params, ...) {
-  standardGeneric("dbBind")
-})
+setGeneric(
+  "dbBind",
+  function(res, params, ...) standardGeneric("dbBind")
+)
