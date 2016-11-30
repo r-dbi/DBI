@@ -342,18 +342,14 @@ setGeneric("dbListTables",
 #' dbDisconnect(con)
 setGeneric("dbReadTable", valueClass = "data.frame",
   signature = c("conn", "name"),
-  function(conn, name, ...) {
-    standardGeneric("dbReadTable")
-  }
+  function(conn, name, ...) standardGeneric("dbReadTable")
 )
 
 #' @rdname dbReadTable
 #' @export
 setGeneric("dbWriteTable", valueClass = "logical",
   signature = c("conn", "name", "value"),
-  function(conn, name, value, ...) {
-    standardGeneric("dbWriteTable")
-  }
+  function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
 
 #' Does a table exist?

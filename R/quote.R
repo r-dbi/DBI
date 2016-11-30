@@ -67,9 +67,10 @@ setMethod("show", "SQL", function(object) {
 #' @rdname SQL
 #' @family DBIResult generics
 #' @export
-setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
-  standardGeneric("dbQuoteIdentifier")
-})
+setGeneric(
+  "dbQuoteIdentifier",
+  function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
+)
 
 #' @rdname hidden_aliases
 #' @export
@@ -91,9 +92,10 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 #' @rdname SQL
 #' @family DBIResult generics
 #' @export
-setGeneric("dbQuoteString", function(conn, x, ...) {
-  standardGeneric("dbQuoteString")
-})
+setGeneric(
+  "dbQuoteString",
+  function(conn, x, ...) standardGeneric("dbQuoteString")
+)
 
 #' @rdname hidden_aliases
 #' @export
