@@ -29,7 +29,7 @@ setGeneric(
   "sqlData",
   function(con, value, row.names = NA, ...)
     standardGeneric("sqlData")
-})
+)
 
 #' @rdname hidden_aliases
 #' @export
