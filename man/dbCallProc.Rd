@@ -2,6 +2,7 @@
 % Please edit documentation in R/deprecated.R
 \name{dbCallProc}
 \alias{dbCallProc}
+\alias{dbCallProc}
 \title{Call an SQL stored procedure}
 \usage{
 dbCallProc(conn, ...)

@@ -2,6 +2,7 @@
 % Please edit documentation in R/DBObject.R, R/DBResult.R
 \name{dbGetInfo}
 \alias{dbGetInfo}
+\alias{dbGetInfo}
 \title{Get DBMS metadata}
 \usage{
 dbGetInfo(dbObj, ...)

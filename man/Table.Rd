@@ -2,8 +2,8 @@
 % Please edit documentation in R/table.R
 \docType{class}
 \name{Table-class}
-\alias{Table}
 \alias{Table-class}
+\alias{Table}
 \title{Refer to a table nested in a hierarchy (e.g. within a schema)}
 \usage{
 Table(...)
