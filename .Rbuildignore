@@ -21,3 +21,5 @@ inst\/doc\/DBI\.b..$
 ^revdep$
 ^\.httr-oauth$
 ^scripts$
+^tic\.R$
+^_pkgdown\.yml$
