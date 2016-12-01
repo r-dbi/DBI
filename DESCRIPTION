@@ -26,6 +26,7 @@ URL: http://rstats-db.github.io/DBI
 URLNote: https://github.com/rstats-db/DBI
 BugReports: https://github.com/rstats-db/DBI/issues
 Collate: 
+    'invisible.R'
     'DBObject.R'
     'DBDriver.R'
     'DBConnection.R'

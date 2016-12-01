@@ -33,10 +33,13 @@ NULL
 
 #' @export
 #' @rdname transactions
+#' @include invisible.R
 setGeneric("dbBegin",
   def = function(conn, ...) standardGeneric("dbBegin"),
   valueClass = "logical"
 )
+
+(function() make_generic_return_invisible("dbBegin"))()
 
 #' @export
 #' @rdname transactions
@@ -45,12 +48,16 @@ setGeneric("dbCommit",
   valueClass = "logical"
 )
 
+(function() make_generic_return_invisible("dbCommit"))()
+
 #' @export
 #' @rdname transactions
 setGeneric("dbRollback",
   def = function(conn, ...) standardGeneric("dbRollback"),
   valueClass = "logical"
 )
+
+(function() make_generic_return_invisible("dbRollback"))()
 
 #' Self-contained SQL transactions
 #'

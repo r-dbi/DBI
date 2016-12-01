@@ -125,10 +125,13 @@ setGeneric("fetch",
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
+#' @include invisible.R
 setGeneric("dbClearResult",
   def = function(res, ...) standardGeneric("dbClearResult"),
   valueClass = "logical"
 )
+
+(function() make_generic_return_invisible("dbClearResult"))()
 
 #' Information about result types
 #'
