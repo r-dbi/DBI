@@ -6,12 +6,13 @@
 #' do so does not expose you to SQL injection attacks, but will (rarely) result
 #' in errors matching supplied and interpolated variables.
 #'
-#' @param _con A database connection.
-#' @param `_sql` A SQL string containing variables to interpolate.
+#' @param conn A database connection.
+#' @param sql A SQL string containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
-#' @param ... Named values to interpolate into string. All strings
+#' @param ...,.dots Named values (for `...`) or a named list (for `.dots`)
+#'   to interpolate into a string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
 #'   to interpolation to protect against SQL injection attacks.
 #' @export
