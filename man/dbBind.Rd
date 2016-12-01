@@ -58,7 +58,6 @@ Calls to \code{dbFetch()} are ignored.)
 }
 }
 \examples{
-\dontrun{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "iris", iris)
@@ -70,7 +69,6 @@ dbFetch(iris_result)
 
 dbClearResult(iris_result)
 dbDisconnect(con)
-}
 }
 \seealso{
 Other DBIResult generics: \code{\link{DBIResult-class}},
