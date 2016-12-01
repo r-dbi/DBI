@@ -23,9 +23,8 @@ Get DBMS metadata
 \section{Implementation notes}{
 
 For \code{DBIDriver} subclasses, this should include the version of the
-package (\code{driver.version}), the version of the underlying client
-library (\code{client.version}), and the maximum number of connections
-(\code{max.connections}).
+package (\code{driver.version}) and the version of the underlying client
+library (\code{client.version}).
 
 For \code{DBIConnection} objects this should report the version of
 the DBMS engine (\code{db.version}), database name (\code{dbname}),
