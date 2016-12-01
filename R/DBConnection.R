@@ -265,7 +265,7 @@ setGeneric("dbGetException",
 
 #' A list of all pending results
 #'
-#' List of \linkS4class{DBIResult} objects currently active on the connection.
+#' DEPRECATED, a connection can only have one active result set.
 #'
 #' @inheritParams dbDisconnect
 #' @family DBIConnection generics
@@ -273,7 +273,10 @@ setGeneric("dbGetException",
 #'   a single result is active, a list with one element.
 #' @export
 setGeneric("dbListResults",
-  def = function(conn, ...) standardGeneric("dbListResults")
+  def = function(conn, ...) {
+    .Deprecated()
+    standardGeneric("dbListResults")
+  }
 )
 
 #' List field names of a remote table
