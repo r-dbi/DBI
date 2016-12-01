@@ -48,9 +48,8 @@ setClass("DBIObject", "VIRTUAL")
 #'
 #' @section Implementation notes:
 #' For `DBIDriver` subclasses, this should include the version of the
-#' package (`driver.version`), the version of the underlying client
-#' library (`client.version`), and the maximum number of connections
-#' (`max.connections`).
+#' package (`driver.version`) and the version of the underlying client
+#' library (`client.version`).
 #'
 #' For `DBIConnection` objects this should report the version of
 #' the DBMS engine (`db.version`), database name (`dbname`),
