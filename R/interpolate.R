@@ -23,20 +23,19 @@
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 setGeneric(
   "sqlInterpolate",
-  function(`_con`, `_sql`, ...) standardGeneric("sqlInterpolate")
+  function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
 )
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
-  sql <- `_sql`
-  pos <- sqlParseVariables(`_con`, sql)
+setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = list()) {
+  pos <- sqlParseVariables(conn, sql)
 
   if (length(pos$start) == 0)
     return(SQL(sql))
 
   vars <- substring(sql, pos$start + 1, pos$end)
-  values <- list(...)
+  values <- c(list(...), .dots)
   if (!setequal(vars, names(values))) {
     stop("Supplied vars don't match vars to interpolate", call. = FALSE)
   }
@@ -44,7 +43,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
 
   safe_values <- vapply(values, function(x) {
     if (is.character(x)) {
-      dbQuoteString(`_con`, x)
+      dbQuoteString(conn, x)
     } else {
       as.character(x)
     }
@@ -91,12 +90,12 @@ setMethod("sqlInterpolate", "DBIConnection", function(`_con`, `_sql`, ...) {
 #' )
 setGeneric(
   "sqlParseVariables",
-  function(con, sql, ...) standardGeneric("sqlParseVariables")
+  function(conn, sql, ...) standardGeneric("sqlParseVariables")
 )
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlParseVariables", "DBIConnection", function(con, sql, ...) {
+setMethod("sqlParseVariables", "DBIConnection", function(conn, sql, ...) {
   sqlParseVariablesImpl(sql,
     list(
       sqlQuoteSpec('"', '"'),
@@ -142,7 +141,6 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   quote_spec_offset <- 0L
   comment_spec_offset <- 0L
   sql_variable_start <- 0L
-  sql_variable_end <- 0L
 
   # prepare comments & quotes for quicker comparisions
   for(c in seq_along(comments)) {

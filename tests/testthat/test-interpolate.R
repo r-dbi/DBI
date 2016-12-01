@@ -5,8 +5,19 @@ test_that("parameter names matched", {
     sqlInterpolate(ANSI(), "?a ?b", a = 1, b = 2),
     SQL("1 2")
   )
+
   expect_equal(
     sqlInterpolate(ANSI(), "?a ?b", b = 2, a = 1),
+    SQL("1 2")
+  )
+
+  expect_equal(
+    sqlInterpolate(ANSI(), "?a ?b", b = 2, .dots = list(a = 1)),
+    SQL("1 2")
+  )
+
+  expect_equal(
+    sqlInterpolate(ANSI(), "?a ?b", .dots = list(a = 1, b = 2)),
     SQL("1 2")
   )
 })
