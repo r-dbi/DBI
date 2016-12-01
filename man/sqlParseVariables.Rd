@@ -7,7 +7,7 @@
 \alias{sqlParseVariablesImpl}
 \title{Parse interpolated variables from SQL.}
 \usage{
-sqlParseVariables(con, sql, ...)
+sqlParseVariables(conn, sql, ...)
 
 sqlCommentSpec(start, end, endRequired)
 

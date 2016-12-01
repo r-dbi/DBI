@@ -4,14 +4,14 @@
 \alias{sqlInterpolate}
 \title{Safely interpolate values into an SQL string}
 \usage{
-sqlInterpolate(`_con`, `_sql`, ...)
+sqlInterpolate(conn, sql, ..., .dots = list())
 }
 \arguments{
-\item{_con}{A database connection.}
-
 \item{...}{Named values to interpolate into string. All strings
 will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
 to interpolation to protect against SQL injection attacks.}
+
+\item{_con}{A database connection.}
 
 \item{`_sql`}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
