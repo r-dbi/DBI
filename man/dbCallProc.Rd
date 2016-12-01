@@ -2,11 +2,8 @@
 % Please edit documentation in R/deprecated.R
 \name{dbCallProc}
 \alias{dbCallProc}
-\alias{dbCallProc}
 \title{Call an SQL stored procedure}
 \usage{
-dbCallProc(conn, ...)
-
 dbCallProc(conn, ...)
 }
 \arguments{
@@ -16,8 +13,6 @@ dbCallProc(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \description{
-DEPRECATED
-
 DEPRECATED
 }
 \keyword{internal}
