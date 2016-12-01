@@ -76,6 +76,9 @@ setGeneric(
 #' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
+    if (length(x) != 1) {
+      stop("The default implementation of dbQuoteIdentifier() can handle only literal strings.", call. = FALSE)
+    }
     x <- gsub('"', '""', x, fixed = TRUE)
     SQL(paste('"', encodeString(x), '"', sep = ""))
   }
