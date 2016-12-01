@@ -16,7 +16,7 @@ Depends:
     methods
 Suggests:
     testthat,
-    RSQLite,
+    RSQLite (>= 1.1),
     knitr,
     rmarkdown,
     covr
