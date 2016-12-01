@@ -76,11 +76,25 @@ setGeneric(
 #' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
-    if (length(x) != 1) {
-      stop("The default implementation of dbQuoteIdentifier() can handle only literal strings.", call. = FALSE)
+    dbQuoteIdentifier(conn, as.list(x))
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod(
+  "dbQuoteIdentifier", c("DBIConnection", "list"),
+  function(conn, x, ...) {
+    if (any(vapply(x, length, integer(1L)) != 1L)) {
+      stop("The default implementation of dbQuoteIdentifier() cannot handle schemas.", call. = FALSE)
     }
+    x <- unlist(x)
     x <- gsub('"', '""', x, fixed = TRUE)
-    SQL(paste('"', encodeString(x), '"', sep = ""))
+    if (length(x) == 0L) {
+      SQL(character())
+    } else {
+      SQL(paste('"', encodeString(x), '"', sep = ""))
+    }
   }
 )
 
