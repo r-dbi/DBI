@@ -69,9 +69,9 @@
 
 \S4method{SQLKeywords}{missing}(dbObj, ...)
 
-\S4method{sqlInterpolate}{DBIConnection}(`_con`, `_sql`, ...)
+\S4method{sqlInterpolate}{DBIConnection}(conn, sql, ..., .dots = list())
 
-\S4method{sqlParseVariables}{DBIConnection}(con, sql, ...)
+\S4method{sqlParseVariables}{DBIConnection}(conn, sql, ...)
 
 \S4method{show}{SQL}(object)
 
