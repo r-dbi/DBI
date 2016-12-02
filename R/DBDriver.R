@@ -116,8 +116,7 @@ is_attached <- function(x) {
 #' @family DBIDriver generics
 #' @export
 setGeneric("dbUnloadDriver",
-  def = function(drv, ...) standardGeneric("dbUnloadDriver"),
-  valueClass = "logical"
+  def = function(drv, ...) standardGeneric("dbUnloadDriver")
 )
 
 #' Create a connection to a DBMS
