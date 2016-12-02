@@ -34,22 +34,19 @@ NULL
 #' @export
 #' @rdname transactions
 setGeneric("dbBegin",
-  def = function(conn, ...) standardGeneric("dbBegin"),
-  valueClass = "logical"
+  def = function(conn, ...) standardGeneric("dbBegin")
 )
 
 #' @export
 #' @rdname transactions
 setGeneric("dbCommit",
-  def = function(conn, ...) standardGeneric("dbCommit"),
-  valueClass = "logical"
+  def = function(conn, ...) standardGeneric("dbCommit")
 )
 
 #' @export
 #' @rdname transactions
 setGeneric("dbRollback",
-  def = function(conn, ...) standardGeneric("dbRollback"),
-  valueClass = "logical"
+  def = function(conn, ...) standardGeneric("dbRollback")
 )
 
 #' Self-contained SQL transactions

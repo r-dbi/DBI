@@ -4,35 +4,36 @@
 %   R/quote.R, R/table-create.R, R/table-insert.R, R/table.R, R/transactions.R
 \docType{methods}
 \name{dbDriver,character-method}
-\alias{SQLKeywords,DBIObject-method}
-\alias{SQLKeywords,missing-method}
-\alias{dbDataType,DBIObject-method}
 \alias{dbDriver,character-method}
+\alias{show,DBIDriver-method}
+\alias{dbDataType,DBIObject-method}
+\alias{show,DBIConnection-method}
+\alias{dbSendStatement,DBIConnection,character-method}
+\alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbExecute,DBIConnection,character-method}
+\alias{show,AnsiConnection-method}
+\alias{show,DBIResult-method}
 \alias{dbFetch,DBIResult-method}
 \alias{dbGetInfo,DBIResult-method}
-\alias{dbGetQuery,DBIConnection,character-method}
-\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection,Table-method}
-\alias{dbQuoteIdentifier,DBIConnection,character-method}
-\alias{dbQuoteString,DBIConnection,SQL-method}
-\alias{dbQuoteString,DBIConnection,character-method}
-\alias{dbSendStatement,DBIConnection,character-method}
-\alias{dbWithTransaction,DBIConnection-method}
-\alias{hidden_aliases}
-\alias{isSQLKeyword,DBIObject,character-method}
-\alias{make.db.names,DBIObject,character-method}
-\alias{show,AnsiConnection-method}
-\alias{show,DBIConnection-method}
-\alias{show,DBIDriver-method}
-\alias{show,DBIResult-method}
-\alias{show,SQL-method}
-\alias{show,Table-method}
-\alias{sqlAppendTable,DBIConnection-method}
-\alias{sqlCreateTable,DBIConnection-method}
 \alias{sqlData,DBIConnection-method}
+\alias{make.db.names,DBIObject,character-method}
+\alias{isSQLKeyword,DBIObject,character-method}
+\alias{SQLKeywords,DBIObject-method}
+\alias{SQLKeywords,missing-method}
+\alias{hidden_aliases}
 \alias{sqlInterpolate,DBIConnection-method}
 \alias{sqlParseVariables,DBIConnection-method}
+\alias{show,SQL-method}
+\alias{dbQuoteIdentifier,DBIConnection,character-method}
+\alias{dbQuoteIdentifier,DBIConnection,list-method}
+\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
+\alias{dbQuoteString,DBIConnection,character-method}
+\alias{dbQuoteString,DBIConnection,SQL-method}
+\alias{sqlCreateTable,DBIConnection-method}
+\alias{sqlAppendTable,DBIConnection-method}
+\alias{dbQuoteIdentifier,DBIConnection,Table-method}
+\alias{show,Table-method}
+\alias{dbWithTransaction,DBIConnection-method}
 \title{Internal page for hidden aliases}
 \usage{
 \S4method{dbDriver}{character}(drvName, ...)
@@ -69,13 +70,15 @@
 
 \S4method{SQLKeywords}{missing}(dbObj, ...)
 
-\S4method{sqlInterpolate}{DBIConnection}(`_con`, `_sql`, ...)
+\S4method{sqlInterpolate}{DBIConnection}(conn, sql, ..., .dots = list())
 
-\S4method{sqlParseVariables}{DBIConnection}(con, sql, ...)
+\S4method{sqlParseVariables}{DBIConnection}(conn, sql, ...)
 
 \S4method{show}{SQL}(object)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,list}(conn, x, ...)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
 

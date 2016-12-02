@@ -67,16 +67,34 @@ setMethod("show", "SQL", function(object) {
 #' @rdname SQL
 #' @family DBIResult generics
 #' @export
-setGeneric("dbQuoteIdentifier", function(conn, x, ...) {
-  standardGeneric("dbQuoteIdentifier")
-})
+setGeneric(
+  "dbQuoteIdentifier",
+  function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
+)
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
+    dbQuoteIdentifier(conn, as.list(x))
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod(
+  "dbQuoteIdentifier", c("DBIConnection", "list"),
+  function(conn, x, ...) {
+    if (any(vapply(x, length, integer(1L)) != 1L)) {
+      stop("The default implementation of dbQuoteIdentifier() cannot handle schemas.", call. = FALSE)
+    }
+    x <- unlist(x)
     x <- gsub('"', '""', x, fixed = TRUE)
-    SQL(paste('"', encodeString(x), '"', sep = ""))
+    if (length(x) == 0L) {
+      SQL(character())
+    } else {
+      SQL(paste('"', encodeString(x), '"', sep = ""))
+    }
   }
 )
 
@@ -91,9 +109,10 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 #' @rdname SQL
 #' @family DBIResult generics
 #' @export
-setGeneric("dbQuoteString", function(conn, x, ...) {
-  standardGeneric("dbQuoteString")
-})
+setGeneric(
+  "dbQuoteString",
+  function(conn, x, ...) standardGeneric("dbQuoteString")
+)
 
 #' @rdname hidden_aliases
 #' @export

@@ -2,8 +2,8 @@
 % Please edit documentation in R/rownames.R
 \name{rownames}
 \alias{rownames}
-\alias{sqlColumnToRownames}
 \alias{sqlRownamesToColumn}
+\alias{sqlColumnToRownames}
 \title{Convert row names back and forth between columns}
 \usage{
 sqlRownamesToColumn(df, row.names = NA)

@@ -1,3 +1,17 @@
+## DBI 0.5-13 (2016-12-02)
+
+- Remove `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
+- New `dbQuoteIdentifier(DBIConnection, list)` to support quoting multi-component identifiers such as tables in a schema (#71). DBI backends should implement this method for schema support.
+- Renamed arguments to `sqlInterpolate()` and `sqlParseVariables()`, the former gains a `.dots` argument (#140, #147).
+until RSQLite 1.1 has been built for OS X
+- Remove `max.connections` requirement from documentation (#56).
+- Enable `dbBind()` example (#136).
+- Use roxygen2 inheritance to copy DBI specification to this package.
+- Avoid using braces in the definitions of generics if possible, so that standard generics can be detected (#146).
+- Change `omegahat.org` URL to `omegahat.net`, the particular document still doesn't exist below the new domain.
+- Use `tic` package for building documentation.
+
+
 ## DBI 0.5-12 (2016-10-06)
 
 - All standard generics are required to have an ellipsis (with test), for future extensibility.

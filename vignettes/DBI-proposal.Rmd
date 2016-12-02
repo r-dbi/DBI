@@ -538,7 +538,7 @@ necessarily relational.
 # Resources {#sec:resources}
 
 The latest documentation and software on the RS-DBI was available at
-www.omegahat.org (link dead now: `http://www.omegahat.org/contrib/RS-DBI/index.html`).
+www.omegahat.net (link dead now: `http://www.omegahat.net/contrib/RS-DBI/index.html`).
 The R community has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
 interface to the [mSQL](http://www.Hughes.com.au) database written by

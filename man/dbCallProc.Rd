@@ -5,8 +5,6 @@
 \title{Call an SQL stored procedure}
 \usage{
 dbCallProc(conn, ...)
-
-dbCallProc(conn, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
@@ -15,8 +13,6 @@ dbCallProc(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \description{
-DEPRECATED
-
 DEPRECATED
 }
 \keyword{internal}

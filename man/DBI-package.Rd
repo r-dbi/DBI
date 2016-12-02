@@ -4,7 +4,7 @@
 \name{DBI-package}
 \alias{DBI}
 \alias{DBI-package}
-\title{R Database Interface}
+\title{DBI: R Database Interface}
 \description{
 A database interface definition for communication
 between R and relational database management systems.  All
@@ -25,5 +25,15 @@ Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQue
 
 Formal specification (currently work in progress and incomplete):
 \link{DBIspec}
+}
+\author{
+\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+
+Authors:
+\itemize{
+  \item R Special Interest Group on Databases (R-SIG-DB)
+  \item Hadley Wickham
+}
+
 }
 

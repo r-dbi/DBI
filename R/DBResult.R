@@ -126,8 +126,7 @@ setGeneric("fetch",
 #' dbClearResult(rs)
 #' dbDisconnect(con)
 setGeneric("dbClearResult",
-  def = function(res, ...) standardGeneric("dbClearResult"),
-  valueClass = "logical"
+  def = function(res, ...) standardGeneric("dbClearResult")
 )
 
 #' Information about result types
@@ -332,7 +331,6 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' @family DBIResult generics
 #' @export
 #' @examples
-#' \dontrun{
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "iris", iris)
@@ -344,7 +342,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #'
 #' dbClearResult(iris_result)
 #' dbDisconnect(con)
-#' }
-setGeneric("dbBind", function(res, params, ...) {
-  standardGeneric("dbBind")
-})
+setGeneric(
+  "dbBind",
+  function(res, params, ...) standardGeneric("dbBind")
+)
