@@ -53,6 +53,7 @@ deploy:
 
 #r_github_packages
 r_github_packages:
+- krlmlr/roxygen@b-%23521-subsection
 
 #r_packages
 r_packages:
