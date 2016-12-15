@@ -2,43 +2,43 @@
 % Please edit documentation in R/interpolate.R
 \name{sqlParseVariables}
 \alias{sqlParseVariables}
-\alias{sqlCommentSpec}
-\alias{sqlQuoteSpec}
-\alias{sqlParseVariablesImpl}
-\title{Parse interpolated variables from SQL.}
+\title{Parse interpolated variables from SQL}
 \usage{
 sqlParseVariables(conn, sql, ...)
 
-sqlCommentSpec(start, end, endRequired)
-
-sqlQuoteSpec(start, end, escape = "", doubleEscape = TRUE)
-
-sqlParseVariablesImpl(sql, quotes, comments)
+sqlParseVariables(con, sql, ...) # DBI 0.5 compatibility
 }
 \arguments{
-\item{sql}{SQL to parse (a character vector of length 1)}
+\item{conn, con}{A database connection.}
 
-\item{start, end}{Start and end characters for quotes and comments}
+\item{sql}{A SQL string containing variables to search for.
+Variables must start with a question mark and can be any valid R
+identifier, i.e. it must start with a letter or \code{.}, and be followed
+by a letter, digit, \code{.} or \code{_}.}
 
-\item{endRequired}{Is the ending character of a comment required?}
-
-\item{escape}{What character can be used to escape quoting characters?
-Defaults to \code{""}, i.e. nothing.}
-
-\item{doubleEscape}{Can quoting characters be escaped by doubling them?
-Defaults to \code{TRUE}.}
-
-\item{quotes}{A list of \code{QuoteSpec} calls defining the quoting
-specification.}
-
-\item{comments}{A list of \code{CommentSpec} calls defining the commenting
-specification.}
+\item{...}{Unused.}
 }
 \description{
+Offers a convenient and safe way to determine named placeholders in a SQL query.
+This is mostly useful for backend authors where the DBMS doesn't support
+parametrized queries.
+}
+\section{Backend authors}{
+
 If you're implementing a backend that uses non-ANSI quoting or commenting
 rules, you'll need to implement a method for \code{sqlParseVariables} that
 calls \code{sqlParseVariablesImpl} with the appropriate quote and
 comment specifications.
+}
+
+\section{Compatibility with DBI 0.5}{
+
+In DBI 0.5, the \code{sqlParseVariables()} method had a different signature.
+In an effort to harmonize the argument names
+across all DBI methods, the current version of DBI encourages backend authors
+to define methods with the new signature,
+which will eventually become the signature of the generic.
+For compatibility reasons this is not enforced.
 }
 \examples{
 # Use [] for quoting and no comments
