@@ -5,11 +5,13 @@
 \title{Safely interpolate values into an SQL string}
 \usage{
 sqlInterpolate(conn, sql, ..., .dots = list())
+
+sqlInterpolate(`_con`, `_sql`, ...) # DBI 0.5 compatibility
 }
 \arguments{
-\item{conn}{A database connection.}
+\item{conn, _con}{A database connection.}
 
-\item{sql}{A SQL string containing variables to interpolate.
+\item{sql, _sql}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
@@ -20,7 +22,10 @@ will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
 to interpolation to protect against SQL injection attacks.}
 }
 \description{
-Safely interpolate values into an SQL string
+Offers a convenient and safe way to replace named placeholders in a SQL query with
+constants.
+This is mostly useful for backend authors where the DBMS doesn't support
+parametrized queries.
 }
 \section{Backend authors}{
 
@@ -29,11 +34,24 @@ need to implement a method for \code{\link[=sqlParseVariables]{sqlParseVariables
 do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.
 }
+
+\section{Compatibility with DBI 0.5}{
+
+In DBI 0.5, the \code{sqlInterpolate()} method had a different signature.
+In an effort to harmonize the argument names
+across all DBI methods, the current version of DBI encourages backend authors
+to define methods with the new signature,
+which will eventually become the signature of the generic.
+For compatibility reasons this is not enforced.
+}
 \examples{
 sql <- "SELECT * FROM X WHERE name = ?name"
 sqlInterpolate(ANSI(), sql, name = "Hadley")
 
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
+
+# The .dots argument is preferred for programming
+sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
 }
 

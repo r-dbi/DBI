@@ -1,13 +1,26 @@
 #' Safely interpolate values into an SQL string
 #'
+#' Offers a convenient and safe way to replace named placeholders in a SQL query with
+#' constants.
+#' This is mostly useful for backend authors where the DBMS doesn't support
+#' parametrized queries.
+#'
 #' @section Backend authors:
 #' If you are implementing a SQL backend with non-ANSI quoting rules, you'll
 #' need to implement a method for [sqlParseVariables()]. Failure to
 #' do so does not expose you to SQL injection attacks, but will (rarely) result
 #' in errors matching supplied and interpolated variables.
 #'
-#' @param conn A database connection.
-#' @param sql A SQL string containing variables to interpolate.
+#' @section Compatibility with DBI 0.5:
+#' In DBI 0.5, the `sqlInterpolate()` method had a different signature.
+#' In an effort to harmonize the argument names
+#' across all DBI methods, the current version of DBI encourages backend authors
+#' to define methods with the new signature,
+#' which will eventually become the signature of the generic.
+#' For compatibility reasons this is not enforced.
+#'
+#' @param conn,_con A database connection.
+#' @param sql,_sql A SQL string containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
@@ -15,16 +28,26 @@
 #'   to interpolate into a string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
 #'   to interpolation to protect against SQL injection attacks.
-#' @export
+#' @usage
+#' sqlInterpolate(conn, sql, ..., .dots = list())
+#'
+#' sqlInterpolate(`_con`, `_sql`, ...) # DBI 0.5 compatibility
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
 #' sqlInterpolate(ANSI(), sql, name = "Hadley")
 #'
 #' # This is safe because the single quote has been double escaped
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
+#'
+#' # The .dots argument is preferred for programming
+#' sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
+#' @name sqlInterpolate
+function(conn, sql, ..., .dots = list()) {}
+
+#' @export
 setGeneric(
   "sqlInterpolate",
-  function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
+  function(..., .dots = list()) standardGeneric("sqlInterpolate")
 )
 
 #' @rdname hidden_aliases
