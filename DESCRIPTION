@@ -35,6 +35,7 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
+    'dot-dispatch.R'
     'hidden.R'
     'interpolate.R'
     'quote.R'

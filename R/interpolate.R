@@ -47,7 +47,7 @@ function(conn, sql, ..., .dots = list()) {}
 #' @export
 setGeneric(
   "sqlInterpolate",
-  function(..., .dots = list()) standardGeneric("sqlInterpolate")
+  make_dispatch_override_generic("sqlInterpolate", function(conn, sql, ..., .dots = list()) {})
 )
 
 #' @rdname hidden_aliases
