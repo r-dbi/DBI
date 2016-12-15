@@ -1,9 +1,15 @@
 #' Safely interpolate values into an SQL string
 #'
+#' @description
 #' Offers a convenient and safe way to replace named placeholders in a SQL query with
 #' constants.
 #' This is mostly useful for backend authors where the DBMS doesn't support
 #' parametrized queries.
+#'
+#' The signature of this generic has changed from DBI 0.5 to DBI 0.6,
+#' the `_0.5` and `_0.6` functions are included in the *Usage* section below to
+#' illustrate this change. See the *Compatibility with DBI 0.5* section for
+#' details.
 #'
 #' @section Backend authors:
 #' If you are implementing a SQL backend with non-ANSI quoting rules, you'll
@@ -12,12 +18,15 @@
 #' in errors matching supplied and interpolated variables.
 #'
 #' @section Compatibility with DBI 0.5:
-#' In DBI 0.5, the `sqlInterpolate()` method had a different signature.
+#' In DBI 0.5, the `sqlInterpolate()` method had a different signature, see the
+#' `_0.5` function in the *Usage* section.
 #' In an effort to harmonize the argument names
 #' across all DBI methods, the current version of DBI encourages backend authors
-#' to define methods with the new signature,
-#' which will eventually become the signature of the generic.
-#' For compatibility reasons this is not enforced.
+#' to define methods with the new `_0.6` signature,
+#' which will eventually become the actual signature of the generic.
+#' For technical reasons this is not enforced, the generic is defined with
+#' signature `...` and performs nonstandard dispatch to support backends that
+#' implement this method with either signature.
 #'
 #' @param conn,_con A database connection.
 #' @param sql,_sql A SQL string containing variables to interpolate.
@@ -28,10 +37,6 @@
 #'   to interpolate into a string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
 #'   to interpolation to protect against SQL injection attacks.
-#' @usage
-#' sqlInterpolate(conn, sql, ..., .dots = list())
-#'
-#' sqlInterpolate(`_con`, `_sql`, ...) # DBI 0.5 compatibility
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
 #' sqlInterpolate(ANSI(), sql, name = "Hadley")
@@ -42,9 +47,14 @@
 #' # The .dots argument is preferred for programming
 #' sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
 #' @name sqlInterpolate
-function(conn, sql, ..., .dots = list()) {}
+sqlInterpolate_0.6 <- function(conn, sql, ..., .dots = list()) {}
+
+#' @name sqlInterpolate
+sqlInterpolate_0.5 <- function(`_con`, `_sql`, ...) {}
 
 #' @export
+#' @include dot-dispatch.R
+#' @name sqlInterpolate
 setGeneric(
   "sqlInterpolate",
   make_dispatch_override_generic("sqlInterpolate", function(conn, sql, ..., .dots = list()) {})
@@ -86,9 +96,15 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 
 #' Parse interpolated variables from SQL
 #'
+#' @description
 #' Offers a convenient and safe way to determine named placeholders in a SQL query.
 #' This is mostly useful for backend authors where the DBMS doesn't support
 #' parametrized queries.
+#'
+#' The signature of this generic has changed from DBI 0.5 to DBI 0.6,
+#' the `_0.5` and `_0.6` functions are included in the *Usage* section below to
+#' illustrate this change. See the *Compatibility with DBI 0.5* section for
+#' details.
 #'
 #' @section Backend authors:
 #' If you're implementing a backend that uses non-ANSI quoting or commenting
@@ -97,12 +113,15 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #' comment specifications.
 #'
 #' @section Compatibility with DBI 0.5:
-#' In DBI 0.5, the `sqlParseVariables()` method had a different signature.
+#' In DBI 0.5, the `sqlParseVariables()` method had a different signature, see the
+#' `_0.5` function in the *Usage* section.
 #' In an effort to harmonize the argument names
 #' across all DBI methods, the current version of DBI encourages backend authors
-#' to define methods with the new signature,
-#' which will eventually become the signature of the generic.
-#' For compatibility reasons this is not enforced.
+#' to define methods with the new `_0.6` signature,
+#' which will eventually become the actual signature of the generic.
+#' For technical reasons this is not enforced, the generic is defined with
+#' signature `...` and performs nonstandard dispatch to support backends that
+#' implement this method with either signature.
 #'
 #' @param conn,con A database connection.
 #' @param sql A SQL string containing variables to search for.
@@ -110,12 +129,7 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
 #' @param ... Unused.
-#' @usage
-#' sqlParseVariables(conn, sql, ...)
-#'
-#' sqlParseVariables(con, sql, ...) # DBI 0.5 compatibility
 #' @keywords internal
-#' @export
 #' @examples
 #' # Use [] for quoting and no comments
 #' sqlParseVariablesImpl("[?a]",
@@ -129,10 +143,14 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #'   list(sqlCommentSpec("#", "\n", FALSE))
 #' )
 #' @name sqlParseVariables
-function(conn, sql, ...) {}
+sqlParseVariables_0.6 <- function(conn, sql, ...) {}
+
+#' @name sqlParseVariables
+sqlParseVariables_0.5 <- function(con, sql, ...) {}
 
 #' @export
 #' @include dot-dispatch.R
+#' @name sqlParseVariables
 setGeneric(
   "sqlParseVariables",
   make_dispatch_override_generic("sqlParseVariables", function(conn, sql, ...) {})

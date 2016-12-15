@@ -2,11 +2,17 @@
 % Please edit documentation in R/interpolate.R
 \name{sqlParseVariables}
 \alias{sqlParseVariables}
+\alias{sqlParseVariables_0.6}
+\alias{sqlParseVariables}
+\alias{sqlParseVariables_0.5}
+\alias{sqlParseVariables}
 \title{Parse interpolated variables from SQL}
 \usage{
-sqlParseVariables(conn, sql, ...)
+sqlParseVariables_0.6(conn, sql, ...)
 
-sqlParseVariables(con, sql, ...) # DBI 0.5 compatibility
+sqlParseVariables_0.5(con, sql, ...)
+
+sqlParseVariables(...)
 }
 \arguments{
 \item{conn, con}{A database connection.}
@@ -22,6 +28,11 @@ by a letter, digit, \code{.} or \code{_}.}
 Offers a convenient and safe way to determine named placeholders in a SQL query.
 This is mostly useful for backend authors where the DBMS doesn't support
 parametrized queries.
+
+The signature of this generic has changed from DBI 0.5 to DBI 0.6,
+the \code{_0.5} and \code{_0.6} functions are included in the \emph{Usage} section below to
+illustrate this change. See the \emph{Compatibility with DBI 0.5} section for
+details.
 }
 \section{Backend authors}{
 
@@ -33,12 +44,15 @@ comment specifications.
 
 \section{Compatibility with DBI 0.5}{
 
-In DBI 0.5, the \code{sqlParseVariables()} method had a different signature.
+In DBI 0.5, the \code{sqlParseVariables()} method had a different signature, see the
+\code{_0.5} function in the \emph{Usage} section.
 In an effort to harmonize the argument names
 across all DBI methods, the current version of DBI encourages backend authors
-to define methods with the new signature,
-which will eventually become the signature of the generic.
-For compatibility reasons this is not enforced.
+to define methods with the new \code{_0.6} signature,
+which will eventually become the actual signature of the generic.
+For technical reasons this is not enforced, the generic is defined with
+signature \code{...} and performs nonstandard dispatch to support backends that
+implement this method with either signature.
 }
 \examples{
 # Use [] for quoting and no comments
