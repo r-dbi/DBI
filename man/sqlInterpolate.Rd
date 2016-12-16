@@ -17,7 +17,7 @@ sqlInterpolate(...)
 \arguments{
 \item{conn, _con}{A database connection.}
 
-\item{sql, _sql}{A SQL string containing variables to interpolate.
+\item{sql, `_sql`}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}

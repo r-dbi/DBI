@@ -29,7 +29,7 @@
 #' implement this method with either signature.
 #'
 #' @param conn,_con A database connection.
-#' @param sql,_sql A SQL string containing variables to interpolate.
+#' @param sql,`_sql` A SQL string containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
