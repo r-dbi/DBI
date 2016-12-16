@@ -294,12 +294,18 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
 }
 
 #' @export
+#' @param start,end Start and end characters for quotes and comments
+#' @param endRequired Is the ending character of a comment required?
 #' @rdname sqlParseVariablesImpl
 sqlCommentSpec <- function(start, end, endRequired) {
   list(start, end, endRequired)
 }
 
 #' @export
+#' @param escape What character can be used to escape quoting characters?
+#'   Defaults to `""`, i.e. nothing.
+#' @param doubleEscape Can quoting characters be escaped by doubling them?
+#'   Defaults to `TRUE`.
 #' @rdname sqlParseVariablesImpl
 sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
   list(start, end, escape, doubleEscape)

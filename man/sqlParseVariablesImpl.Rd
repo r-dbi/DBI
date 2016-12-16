@@ -20,6 +20,16 @@ specification.}
 
 \item{comments}{A list of \code{CommentSpec} calls defining the commenting
 specification.}
+
+\item{start, end}{Start and end characters for quotes and comments}
+
+\item{endRequired}{Is the ending character of a comment required?}
+
+\item{escape}{What character can be used to escape quoting characters?
+Defaults to \code{""}, i.e. nothing.}
+
+\item{doubleEscape}{Can quoting characters be escaped by doubling them?
+Defaults to \code{TRUE}.}
 }
 \description{
 This function is useful for backend authors who wish to provide
