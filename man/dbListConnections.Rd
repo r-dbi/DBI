@@ -25,4 +25,3 @@ Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
   \code{\link{dbIsValid}}
 }
-

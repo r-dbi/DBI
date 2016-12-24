@@ -50,4 +50,3 @@ sqlAppendTableTemplate(ANSI(), "iris", iris)
 sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
 sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
 }
-

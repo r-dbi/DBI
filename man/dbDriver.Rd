@@ -40,6 +40,7 @@ initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to
 \code{dbConnect}.
 }
+
 \examples{
 # Create a RSQLite driver with a string
 d <- dbDriver("SQLite")
@@ -59,4 +60,3 @@ Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
   \code{\link{dbListConnections}}
 }
-

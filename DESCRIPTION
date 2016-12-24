@@ -1,6 +1,6 @@
 Package: DBI
-Version: 0.5-13
-Date: 2016-12-02
+Version: 0.5-14
+Date: 2016-12-24
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All
@@ -35,6 +35,7 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
+    'dot-dispatch.R'
     'hidden.R'
     'interpolate.R'
     'quote.R'

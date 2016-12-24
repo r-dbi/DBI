@@ -39,6 +39,7 @@ The transaction in \code{code} on the connection \code{conn} is committed
 or rolled back. The \code{code} chunk may also modify the local R
 environment.
 }
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -75,4 +76,3 @@ dbReadTable(con, "cars")   # still 6 rows
 
 dbDisconnect(con)
 }
-

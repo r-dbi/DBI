@@ -25,4 +25,3 @@ The details on conversion functions (e.g., arguments, whether they can invoke
 initializers and/or destructors) have not been specified.
 }
 \keyword{internal}
-

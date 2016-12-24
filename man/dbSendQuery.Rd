@@ -43,6 +43,7 @@ and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' \code{dbSendQuery} documentation for details.
 }
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -66,4 +67,3 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbRemoveTable}},
   \code{\link{dbSendStatement}}
 }
-

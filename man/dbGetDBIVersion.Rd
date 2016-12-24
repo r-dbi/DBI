@@ -10,4 +10,3 @@ dbGetDBIVersion()
 Determine the current version of the package.
 }
 \keyword{internal}
-

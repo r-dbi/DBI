@@ -1,13 +1,35 @@
 #' Safely interpolate values into an SQL string
 #'
+#' @description
+#' Offers a convenient and safe way to replace named placeholders in a SQL query with
+#' constants.
+#' This is mostly useful for backend authors where the DBMS doesn't support
+#' parametrized queries.
+#'
+#' The signature of this generic has changed from DBI 0.5 to DBI 0.6,
+#' the `_0.5` and `_0.6` functions are included in the *Usage* section below to
+#' illustrate this change. See the *Compatibility with DBI 0.5* section for
+#' details.
+#'
 #' @section Backend authors:
 #' If you are implementing a SQL backend with non-ANSI quoting rules, you'll
 #' need to implement a method for [sqlParseVariables()]. Failure to
 #' do so does not expose you to SQL injection attacks, but will (rarely) result
 #' in errors matching supplied and interpolated variables.
 #'
-#' @param conn A database connection.
-#' @param sql A SQL string containing variables to interpolate.
+#' @section Compatibility with DBI 0.5:
+#' In DBI 0.5, the `sqlInterpolate()` method had a different signature, see the
+#' `_0.5` function in the *Usage* section.
+#' In an effort to harmonize the argument names
+#' across all DBI methods, the current version of DBI encourages backend authors
+#' to define methods with the new `_0.6` signature,
+#' which will eventually become the actual signature of the generic.
+#' For technical reasons this is not enforced, the generic is defined with
+#' signature `...` and performs nonstandard dispatch to support backends that
+#' implement this method with either signature.
+#'
+#' @param conn,_con A database connection.
+#' @param sql,`_sql` A SQL string containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
@@ -15,16 +37,27 @@
 #'   to interpolate into a string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
 #'   to interpolation to protect against SQL injection attacks.
-#' @export
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
 #' sqlInterpolate(ANSI(), sql, name = "Hadley")
 #'
 #' # This is safe because the single quote has been double escaped
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
+#'
+#' # The .dots argument is preferred for programming
+#' sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
+#' @name sqlInterpolate
+sqlInterpolate_0.6 <- function(conn, sql, ..., .dots = list()) {}
+
+#' @name sqlInterpolate
+sqlInterpolate_0.5 <- function(`_con`, `_sql`, ...) {}
+
+#' @export
+#' @include dot-dispatch.R
+#' @name sqlInterpolate
 setGeneric(
   "sqlInterpolate",
-  function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
+  make_dispatch_override_generic("sqlInterpolate", function(conn, sql, ..., .dots = list()) {})
 )
 
 #' @rdname hidden_aliases
@@ -61,22 +94,42 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
   SQL(sql)
 })
 
-#' Parse interpolated variables from SQL.
+#' Parse interpolated variables from SQL
 #'
+#' @description
+#' Offers a convenient and safe way to determine named placeholders in a SQL query.
+#' This is mostly useful for backend authors where the DBMS doesn't support
+#' parametrized queries.
+#'
+#' The signature of this generic has changed from DBI 0.5 to DBI 0.6,
+#' the `_0.5` and `_0.6` functions are included in the *Usage* section below to
+#' illustrate this change. See the *Compatibility with DBI 0.5* section for
+#' details.
+#'
+#' @section Backend authors:
 #' If you're implementing a backend that uses non-ANSI quoting or commenting
 #' rules, you'll need to implement a method for `sqlParseVariables` that
 #' calls `sqlParseVariablesImpl` with the appropriate quote and
 #' comment specifications.
 #'
+#' @section Compatibility with DBI 0.5:
+#' In DBI 0.5, the `sqlParseVariables()` method had a different signature, see the
+#' `_0.5` function in the *Usage* section.
+#' In an effort to harmonize the argument names
+#' across all DBI methods, the current version of DBI encourages backend authors
+#' to define methods with the new `_0.6` signature,
+#' which will eventually become the actual signature of the generic.
+#' For technical reasons this is not enforced, the generic is defined with
+#' signature `...` and performs nonstandard dispatch to support backends that
+#' implement this method with either signature.
 #'
-#' @param start,end Start and end characters for quotes and comments
-#' @param endRequired Is the ending character of a comment required?
-#' @param doubleEscape Can quoting characters be escaped by doubling them?
-#'   Defaults to `TRUE`.
-#' @param escape What character can be used to escape quoting characters?
-#'   Defaults to `""`, i.e. nothing.
+#' @param conn,con A database connection.
+#' @param sql A SQL string containing variables to search for.
+#'   Variables must start with a question mark and can be any valid R
+#'   identifier, i.e. it must start with a letter or `.`, and be followed
+#'   by a letter, digit, `.` or `_`.
+#' @param ... Unused.
 #' @keywords internal
-#' @export
 #' @examples
 #' # Use [] for quoting and no comments
 #' sqlParseVariablesImpl("[?a]",
@@ -89,9 +142,18 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #'   list(sqlQuoteSpec("'", "'"), sqlQuoteSpec('"', '"')),
 #'   list(sqlCommentSpec("#", "\n", FALSE))
 #' )
+#' @name sqlParseVariables
+sqlParseVariables_0.6 <- function(conn, sql, ...) {}
+
+#' @name sqlParseVariables
+sqlParseVariables_0.5 <- function(con, sql, ...) {}
+
+#' @export
+#' @include dot-dispatch.R
+#' @name sqlParseVariables
 setGeneric(
   "sqlParseVariables",
-  function(conn, sql, ...) standardGeneric("sqlParseVariables")
+  make_dispatch_override_generic("sqlParseVariables", function(conn, sql, ...) {})
 )
 
 #' @rdname hidden_aliases
@@ -109,20 +171,13 @@ setMethod("sqlParseVariables", "DBIConnection", function(conn, sql, ...) {
   )
 })
 
-#' @export
-#' @rdname sqlParseVariables
-sqlCommentSpec <- function(start, end, endRequired) {
-  list(start, end, endRequired)
-}
 
+#' Helper function for sqlParseVariables
+#'
+#' This function is useful for backend authors who wish to provide
+#' a custom implementation of [sqlParseVariables()].
+#'
 #' @export
-#' @rdname sqlParseVariables
-sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
-  list(start, end, escape, doubleEscape)
-}
-
-#' @export
-#' @rdname sqlParseVariables
 #' @param sql SQL to parse (a character vector of length 1)
 #' @param quotes A list of `QuoteSpec` calls defining the quoting
 #'   specification.
@@ -236,4 +291,22 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     stop("Unterminated comment")
   }
   list(start = as.integer(var_pos_start), end = as.integer(var_pos_end))
+}
+
+#' @export
+#' @param start,end Start and end characters for quotes and comments
+#' @param endRequired Is the ending character of a comment required?
+#' @rdname sqlParseVariablesImpl
+sqlCommentSpec <- function(start, end, endRequired) {
+  list(start, end, endRequired)
+}
+
+#' @export
+#' @param escape What character can be used to escape quoting characters?
+#'   Defaults to `""`, i.e. nothing.
+#' @param doubleEscape Can quoting characters be escaped by doubling them?
+#'   Defaults to `TRUE`.
+#' @rdname sqlParseVariablesImpl
+sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
+  list(start, end, escape, doubleEscape)
 }

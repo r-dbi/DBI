@@ -13,4 +13,3 @@ A dummy DBI connector that simulates ANSI-SQL compliance
 ANSI()
 }
 \keyword{internal}
-

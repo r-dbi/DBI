@@ -58,4 +58,3 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}}
 }
-

@@ -49,6 +49,7 @@ return \code{x} unchanged.
 
 If you implement your own method, make sure to convert NA to NULL (unquoted).
 }
+
 \examples{
 # Quoting ensures that arbitrary input is safe for use in a query
 name <- "Robert'); DROP TABLE Students;--"
@@ -85,4 +86,3 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
-

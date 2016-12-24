@@ -45,6 +45,7 @@ constructs such a list from the return values of the corresponding methods,
 \code{\link[=dbGetStatement]{dbGetStatement()}}, \code{\link[=dbGetRowCount]{dbGetRowCount()}},
 \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
+
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbConnect}}, \code{\link{dbDataType}},
@@ -68,4 +69,3 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
-

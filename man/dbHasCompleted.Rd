@@ -43,4 +43,3 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}}, \code{\link{dbIsValid}}
 }
-
