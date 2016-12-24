@@ -79,10 +79,10 @@ then back to SQL with \code{\link[=make.db.names]{make.db.names()}} will not be 
 original SQL identifiers (e.g., compound SQL identifiers of the form
 \code{username.tablename} will loose the dot ``.'').
 }
+
 \references{
 The set of SQL keywords is stored in the character vector
 \code{.SQL92Keywords} and reflects the SQL ANSI/ISO standard as documented
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.
 }
-

@@ -17,4 +17,3 @@ For more on these concepts, see
 \description{
 Refer to a table nested in a hierarchy (e.g. within a schema)
 }
-

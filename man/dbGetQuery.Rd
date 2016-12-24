@@ -30,6 +30,7 @@ reasons.  However callers are strongly advised to use
 Subclasses should override this method only if they provide some sort of
 performance optimisation.
 }
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -50,4 +51,3 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
   \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
 }
-

@@ -16,4 +16,3 @@ dbCallProc(conn, ...)
 DEPRECATED
 }
 \keyword{internal}
-

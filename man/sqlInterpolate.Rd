@@ -58,6 +58,7 @@ For technical reasons this is not enforced, the generic is defined with
 signature \code{...} and performs nonstandard dispatch to support backends that
 implement this method with either signature.
 }
+
 \examples{
 sql <- "SELECT * FROM X WHERE name = ?name"
 sqlInterpolate(ANSI(), sql, name = "Hadley")
@@ -68,4 +69,3 @@ sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 # The .dots argument is preferred for programming
 sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
 }
-

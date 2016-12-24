@@ -35,4 +35,3 @@ Defaults to \code{TRUE}.}
 This function is useful for backend authors who wish to provide
 a custom implementation of \code{\link[=sqlParseVariables]{sqlParseVariables()}}.
 }
-

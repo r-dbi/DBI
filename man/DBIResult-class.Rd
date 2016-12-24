@@ -19,6 +19,7 @@ active results per connection.
 The default show method displays a summary of the query using other
 DBI generics.
 }
+
 \seealso{
 Other DBI classes: \code{\link{DBIConnection-class}},
   \code{\link{DBIDriver-class}},
@@ -32,4 +33,3 @@ Other DBIResult generics: \code{\link{SQL}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
 }
-

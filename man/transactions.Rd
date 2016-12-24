@@ -32,6 +32,7 @@ these methods should not be implemented for the specific
 The current transaction on the connection \code{con} is committed or rolled
 back.
 }
+
 \examples{
 \dontrun{
 ora <- dbDriver("Oracle")
@@ -53,4 +54,3 @@ dbDisconnect(con)
 \seealso{
 Self-contained transactions: \code{\link[=dbWithTransaction]{dbWithTransaction()}}
 }
-

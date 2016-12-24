@@ -47,6 +47,7 @@ If you implement one method (i.e. for strings or data frames), you need
 to implement both, otherwise the S4 dispatch rules will be ambiguous
 and will generate an error on every call.
 }
+
 \examples{
 sqlCreateTable(ANSI(), "my-table", c(a = "integer", b = "text"))
 sqlCreateTable(ANSI(), "my-table", iris)
@@ -55,4 +56,3 @@ sqlCreateTable(ANSI(), "my-table", iris)
 sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5])
 sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5], row.names = FALSE)
 }
-

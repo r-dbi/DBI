@@ -30,4 +30,3 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
   \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
 }
-

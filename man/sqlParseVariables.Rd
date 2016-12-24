@@ -54,6 +54,7 @@ For technical reasons this is not enforced, the generic is defined with
 signature \code{...} and performs nonstandard dispatch to support backends that
 implement this method with either signature.
 }
+
 \examples{
 # Use [] for quoting and no comments
 sqlParseVariablesImpl("[?a]",
@@ -68,4 +69,3 @@ sqlParseVariablesImpl("# ?a\\n?b",
 )
 }
 \keyword{internal}
-

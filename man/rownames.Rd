@@ -44,4 +44,3 @@ sqlRownamesToColumn(head(iris), TRUE)
 sqlRownamesToColumn(head(iris), "ROWNAMES")
 
 }
-

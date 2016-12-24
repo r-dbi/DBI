@@ -48,4 +48,3 @@ sqlData(con, head(mtcars))
 
 dbDisconnect(con)
 }
-

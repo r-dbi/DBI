@@ -34,6 +34,7 @@ the name-value pairs one per line.  Individual implementations may
 tailor this appropriately.
 }
 }
+
 \examples{
 drv <- RSQLite::SQLite()
 con <- dbConnect(drv)
@@ -51,4 +52,3 @@ Other DBI classes: \code{\link{DBIConnection-class}},
   \code{\link{DBIDriver-class}},
   \code{\link{DBIResult-class}}
 }
-

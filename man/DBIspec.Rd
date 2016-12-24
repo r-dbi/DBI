@@ -41,7 +41,7 @@ This section describes the construction of, and the methods defined for,
 this driver class.
 
 
-\subsection{Construction}{
+\subsection{{Construction}{
 The backend must support creation of an instance of this driver class
 with a \dfn{constructor function}.
 By default, its name is the package name without the leading \sQuote{R}
@@ -58,10 +58,10 @@ an empty argument list is expected.
 Otherwise, an argument list where all arguments have default values
 is also accepted.
 
-}
+}}
 
 
-\subsection{\code{dbDataType("DBIDriver", "ANY")}}{
+\subsection{{\code{dbDataType("DBIDriver", "ANY")}}{
 The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
 for its driver class.
 This generic expects an arbitrary object as second argument
@@ -86,7 +86,7 @@ and \code{\link[base:difftime]{base::difftime()}}.
 It also must accept lists of \code{raw} vectors
 and map them to the BLOB (binary large object) data type.
 The behavior for other object types is not specified.
-}
+}}
 
 }
 
@@ -159,7 +159,7 @@ Calls to \code{dbFetch()} are ignored.)
 \section{Transactions}{
 
 
-\subsection{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
+\subsection{{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
 Transactions are available in DBI, but actual support may vary between backends.
 A transaction is initiated by a call to \code{\link[DBI:dbBegin]{DBI::dbBegin()}}
 and committed by a call to \code{\link[DBI:dbCommit]{DBI::dbCommit()}}.
@@ -189,7 +189,7 @@ if the \code{name} argument is set.
 
 The transaction isolation level is not specified by DBI.
 
-}
+}}
 
 }
 
