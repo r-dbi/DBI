@@ -1,3 +1,8 @@
+## DBI 0.5-14 (2016-12-24)
+
+- `sqlParseVariables()` and `sqlInterpolate()` have `...` as exported formals. DBI drivers are expected to implement `sqlParseVariables(conn, sql, ..., .dots)` and `sqlInterpolate(conn, sql, ...)`. Dispatch occurs manually, overriding default S4 logic. This is a temporary workaround, DBI 0.7 will export the correct signature, and backends not adhering to this signature will not be able to load (#147).
+
+
 ## DBI 0.5-13 (2016-12-02)
 
 - Remove `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
