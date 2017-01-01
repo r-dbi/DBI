@@ -38,7 +38,7 @@ dbDisconnect(con)
 For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},

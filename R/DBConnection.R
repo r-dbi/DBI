@@ -45,17 +45,18 @@ show_connection <- function(object) {
   }
 }
 
-#' @rdname dbConnect
-#' @description
-#' `dbDisconnect()` closes the connection, discards all pending work, and frees
+#' Disconnect (close) a connection
+#'
+#' This closes the connection, discards all pending work, and frees
 #' resources (e.g., memory, sockets).
 #'
 #' @inheritParams dbGetQuery
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as returned by
-#'   `dbConnect()`.
-#' @return `TRUE` for `dbDisconnect()`.
+#' @return a logical vector of length 1, indicating success or failure.
 #' @family DBIConnection generics
 #' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbDisconnect(con)
 setGeneric("dbDisconnect",
   def = function(conn, ...) standardGeneric("dbDisconnect")
 )
