@@ -197,7 +197,7 @@ setMethod("SQLKeywords", "missing",
 #'
 #' DEPRECATED
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @keywords internal
 #' @export
 setGeneric(

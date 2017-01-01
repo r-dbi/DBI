@@ -7,7 +7,7 @@
 dbExistsTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{A character string specifying a DBMS table name.}

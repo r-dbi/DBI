@@ -7,7 +7,7 @@
 dbExecute(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}

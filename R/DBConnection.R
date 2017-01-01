@@ -50,9 +50,7 @@ show_connection <- function(object) {
 #' This closes the connection, discards all pending work, and frees
 #' resources (e.g., memory, sockets).
 #'
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
-#'   [dbConnect()].
-#' @param ... Other parameters passed on to methods.
+#' @inheritParams dbGetQuery
 #' @return a logical vector of length 1, indicating success or failure.
 #' @family DBIConnection generics
 #' @export
@@ -77,7 +75,7 @@ setGeneric("dbDisconnect",
 #' reasons.  However, callers are strongly advised to use
 #' [dbSendStatement()] for data manipulation statements.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.
 #'   The result set can be used with [dbFetch()] to extract records.
@@ -122,7 +120,7 @@ setGeneric("dbSendQuery",
 #' forwards to [dbSendQuery()], to support backends that only
 #' implement the latter.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.
 #'   Once you have finished using a result, make sure to disconnect it
@@ -172,8 +170,10 @@ setMethod(
 #' Subclasses should override this method only if they provide some sort of
 #' performance optimisation.
 #'
-#' @inheritParams dbDisconnect
+#' @param conn A \code{\linkS4class{DBIConnection}} object, as returned by
+#'   [dbConnect()].
 #' @param statement a character vector of length 1 containing SQL.
+#' @param ... Other parameters passed on to methods.
 #' @family DBIConnection generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
@@ -218,7 +218,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
 #' the result is always free-d by [dbClearResult()].
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
 #' @return The number of rows affected by the `statement`
 #' @family DBIConnection generics
@@ -252,7 +252,7 @@ setMethod(
 
 #' Get DBMS exceptions
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @family DBIConnection generics
 #' @return a list with elements `errorNum` (an integer error number) and
 #'   `errorMsg` (a character string) describing the last error in the
@@ -266,7 +266,7 @@ setGeneric("dbGetException",
 #'
 #' List of \linkS4class{DBIResult} objects currently active on the connection.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @family DBIConnection generics
 #' @return a list. If no results are active, an empty list. If only
 #'   a single result is active, a list with one element.
@@ -277,7 +277,7 @@ setGeneric("dbListResults",
 
 #' List field names of a remote table
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param name a character string with the name of the remote table.
 #' @return a character vector
 #' @family DBIConnection generics
@@ -299,7 +299,7 @@ setGeneric("dbListFields",
 #'
 #' This should, where possible, include temporary tables.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @return a character vector. If no tables present, a character vector
 #'   of length 0.
 #' @family DBIConnection generics
@@ -326,7 +326,7 @@ setGeneric("dbListTables",
 #'   to [make.names()] and [make.db.names()], but we cannot
 #'   guarantee that the conversion is reversible.  For details see
 #'   [make.db.names()].
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
 #' @family DBIConnection generics
@@ -353,7 +353,7 @@ setGeneric("dbWriteTable",
 
 #' Does a table exist?
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
 #' @family DBIConnection generics
 #' @return a logical vector of length 1.
@@ -375,7 +375,7 @@ setGeneric("dbExistsTable",
 #'
 #' Executes the sql `DROP TABLE name`.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
 #' @family DBIConnection generics
 #' @return a logical vector of length 1 indicating success or failure.
