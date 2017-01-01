@@ -50,6 +50,9 @@ show_connection <- function(object) {
 #' This closes the connection, discards all pending work, and frees
 #' resources (e.g., memory, sockets).
 #'
+#' @inherit DBItest::spec_connection_disconnect return
+#' @inheritSection DBItest::spec_connection_disconnect Specification
+#'
 #' @inheritParams dbGetQuery
 #' @return a logical vector of length 1, indicating success or failure.
 #' @family DBIConnection generics

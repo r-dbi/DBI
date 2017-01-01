@@ -36,9 +36,7 @@ Each driver will define what other arguments are required, e.g.,
 \section{Specification}{
 
 
-Can connect and disconnect, connection object inherits from
-"DBIConnection".
-Repeated disconnect throws warning.
+DBI specifies only the return type for \code{dbConnect()}.
 
 }
 

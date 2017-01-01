@@ -19,6 +19,15 @@ a logical vector of length 1, indicating success or failure.
 This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
 }
+\section{Specification}{
+
+
+A warning is issued when releasing a connection without calling
+\code{dbDisconnect()},
+or when calling \code{dbDisconnect()} on an already disconnected connection.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
