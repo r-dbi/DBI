@@ -193,5 +193,10 @@ It also must accept lists of \code{raw} vectors
 and map them to the BLOB (binary large object) data type.
 The behavior for other object types is not specified.
 
+
+Can connect and disconnect, connection object inherits from
+"DBIConnection".
+Repeated disconnect throws warning.
+
 }
 

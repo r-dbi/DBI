@@ -131,6 +131,8 @@ setGeneric("dbUnloadDriver",
 #' `"dbname"` for the database name, `"username"`, and
 #' `"password"`.
 #'
+#' @inheritSection DBItest::spec_connection_connect Specification
+#'
 #' @param drv an object that inherits from \code{\linkS4class{DBIDriver}},
 #'   or an existing \code{\linkS4class{DBIConnection}}
 #'   object (in order to clone an existing connection).
