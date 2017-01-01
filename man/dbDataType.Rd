@@ -34,6 +34,36 @@ integer vectors.
 Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.
 }
+\section{Specification}{
+
+
+The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
+for its driver class.
+This generic expects an arbitrary object as second argument
+and returns a corresponding SQL type
+as atomic
+character value
+with at least one character.
+As-is objects (i.e., wrapped by \code{\link[base:I]{base::I()}}) must be
+supported and return the same results as their unwrapped counterparts.
+
+To query the values returned by the default implementation,
+run \code{example(dbDataType, package = "DBI")}.
+If the backend needs to override this generic,
+it must accept all basic R data types as its second argument, namely
+\code{\link[base:logical]{base::logical()}},
+\code{\link[base:integer]{base::integer()}},
+\code{\link[base:numeric]{base::numeric()}},
+\code{\link[base:character]{base::character()}},
+dates (see \code{\link[base:Dates]{base::Dates()}}),
+date-time (see \code{\link[base:DateTimeClasses]{base::DateTimeClasses()}}),
+and \code{\link[base:difftime]{base::difftime()}}.
+It also must accept lists of \code{raw} vectors
+and map them to the BLOB (binary large object) data type.
+The behavior for other object types is not specified.
+
+}
+
 \examples{
 dbDataType(ANSI(), 1:5)
 dbDataType(ANSI(), 1)

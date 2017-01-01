@@ -190,6 +190,8 @@ setGeneric("dbListConnections",
 #' Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 #' problems with under/overflows and loss of precision.
 #'
+#' @inheritSection DBItest::spec_driver_data_type Specification
+#'
 #' @inheritParams dbListConnections
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #'   or \code{\linkS4class{DBIConnection}}
