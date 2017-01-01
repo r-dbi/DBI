@@ -121,15 +121,15 @@ setGeneric("dbUnloadDriver",
 
 #' Create a connection to a DBMS
 #'
-#' Connect to a DBMS going through the appropriate authorization procedure.
+#' `dbConnect()` connects to a DBMS going through the appropriate authorization
+#' procedure.
 #' Some implementations may allow you to have multiple connections open, so you
 #' may invoke this function repeatedly assigning its output to different
 #' objects. The authorization mechanism is left unspecified, so check the
 #' documentation of individual drivers for details.
 #'
-#' Each driver will define what other arguments are required, e.g.,
-#' `"dbname"` for the database name, `"username"`, and
-#' `"password"`.
+#' Each driver will define what other arguments to `dbConnect()` are required,
+#' e.g., `"dbname"` for the database name, `"username"`, and `"password"`.
 #'
 #' @inheritSection DBItest::spec_connection_connect Specification
 #'
@@ -139,11 +139,11 @@ setGeneric("dbUnloadDriver",
 #' @param ... authorization arguments needed by the DBMS instance; these
 #'   typically include `user`, `password`, `dbname`, `host`,
 #'   `port`, etc.  For details see the appropriate `DBIDriver`.
-#' @return An object that extends \code{\linkS4class{DBIConnection}} in a
-#'   database-specific manner. For instance `dbConnect(RMySQL::MySQL())` produces
+#' @return For `dbConnect()`, an object that extends
+#'   \code{\linkS4class{DBIConnection}} in a database-specific manner.
+#'   For instance `dbConnect(RMySQL::MySQL())` produces
 #'   an object of class `MySQLConnection`. This object is used to direct
 #'   commands to the database engine.
-#' @seealso [dbDisconnect()] to disconnect from a database.
 #' @family DBIDriver generics
 #' @export
 #' @examples

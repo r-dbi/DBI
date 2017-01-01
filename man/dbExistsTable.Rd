@@ -31,7 +31,7 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
+  \code{\link{dbConnect}}, \code{\link{dbDataType}},
   \code{\link{dbExecute}}, \code{\link{dbGetException}},
   \code{\link{dbGetInfo}}, \code{\link{dbGetQuery}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
