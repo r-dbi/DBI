@@ -35,12 +35,6 @@ to the package author to adopt this convention or not.
 \section{Driver}{
 
 
-Each DBI backend implements a \dfn{driver class},
-which must be an S4 class and inherit from the \code{DBIDriver} class.
-This section describes the construction of, and the methods defined for,
-this driver class.
-
-
 \subsection{Construction}{
 The backend must support creation of an instance of this driver class
 with a \dfn{constructor function}.
@@ -59,6 +53,12 @@ Otherwise, an argument list where all arguments have default values
 is also accepted.
 
 }
+
+
+Each DBI backend implements a \dfn{driver class},
+which must be an S4 class and inherit from the \code{DBIDriver} class.
+This section describes the construction of, and the methods defined for,
+this driver class.
 
 }
 
@@ -197,6 +197,21 @@ DBI specifies only the return type for \code{dbConnect()}.
 A warning is issued when releasing a connection without calling
 \code{dbDisconnect()},
 or when calling \code{dbDisconnect()} on an already disconnected connection.
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
+\code{dbValid()} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+
+If a result set is open, issuing a second query
+raises a warning
+and invalidates the open result set.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
 
 }
 

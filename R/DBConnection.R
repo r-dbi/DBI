@@ -75,15 +75,14 @@ setGeneric("dbDisconnect",
 #'
 #' This function is for `SELECT` queries only.  Some backends may
 #' support data manipulation queries through this function for compatibility
-#' reasons.  However, callers are strongly advised to use
+#' reasons.  However, callers are strongly encouraged to use
 #' [dbSendStatement()] for data manipulation statements.
+#'
+#' @inherit DBItest::spec_result_send_query return
+#' @inheritSection DBItest::spec_result_send_query Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
-#' @return An object that inherits from \code{\linkS4class{DBIResult}}.
-#'   The result set can be used with [dbFetch()] to extract records.
-#'   Once you have finished using a result, make sure to disconnect it
-#'   with [dbClearResult()].
 #'
 #' @section Side Effects:
 #' The query is submitted to the database server and the DBMS executes it,

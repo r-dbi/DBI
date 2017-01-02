@@ -15,10 +15,15 @@ dbSendQuery(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-An object that inherits from \code{\linkS4class{DBIResult}}.
-The result set can be used with \code{\link[=dbFetch]{dbFetch()}} to extract records.
+\code{dbSendQuery()} returns
+an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult-class}.
+The result set can be used with \code{\link[DBI:dbFetch]{DBI::dbFetch()}} to extract records.
 Once you have finished using a result, make sure to disconnect it
-with \code{\link[=dbClearResult]{dbClearResult()}}.
+with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-\code{NA} string.
 }
 \description{
 The function \code{dbSendQuery} only submits and synchronously executes the
@@ -31,7 +36,7 @@ records you need. For interactive use, you should almost always prefer
 \details{
 This function is for \code{SELECT} queries only.  Some backends may
 support data manipulation queries through this function for compatibility
-reasons.  However, callers are strongly advised to use
+reasons.  However, callers are strongly encouraged to use
 \code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
 }
 \section{Side Effects}{
@@ -42,6 +47,25 @@ is driver-specific: some drivers may choose to leave the output on the server
 and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' \code{dbSendQuery} documentation for details.
+}
+
+\section{Specification}{
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
+\code{dbValid()} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+
+If a result set is open, issuing a second query
+raises a warning
+and invalidates the open result set.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
+
 }
 
 \examples{
