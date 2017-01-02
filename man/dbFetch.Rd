@@ -19,8 +19,19 @@ special values.}
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a data.frame with as many rows as records were fetched and as many
-columns as fields in the result set.
+\code{dbFetch()} always returns a \link{data.frame}
+with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+An attempt to fetch from a closed result set raises an error.
+If the \code{n} argument is not an atomic whole number
+greater or equal to -1, an error is raised,
+but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
+Calling \code{dbFetch()} on a result set from a data manipulation query
+created by \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}
+can be fetched and return an empty data frame, with a warning.
 }
 \description{
 Fetch the next \code{n} elements (rows) from the result set and return them
@@ -33,6 +44,26 @@ method for \code{dbFetch} calls \code{fetch} so that it is compatible with
 existing code. Implementors are free to provide methods for \code{dbFetch}
 only.
 }
+\section{Specification}{
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+Multi-row queries can also be fetched progressively
+by passing a whole number (\link{integer}
+or \link{numeric})
+as the \code{n} argument.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued when clearing the result set.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
