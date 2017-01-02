@@ -230,6 +230,12 @@ Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.
 
 
+\code{dbClearResult()} frees all resources associated with retrieving
+the result of a query or update operation.
+The DBI backend can expect a call to \code{dbClearResult()} for each
+\code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} call.
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively

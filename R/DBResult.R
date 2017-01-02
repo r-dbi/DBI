@@ -112,10 +112,11 @@ setGeneric("fetch",
 #' cases (e.g., very large result sets) this can be a critical step to avoid
 #' exhausting resources (memory, file descriptors, etc.)
 #'
+#' @inherit DBItest::spec_result_clear_result return
+#' @inheritSection DBItest::spec_result_clear_result Specification
+#'
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param ... Other arguments passed on to methods.
-#' @return a logical indicating whether clearing the
-#'   result set was successful or not.
 #' @family DBIResult generics
 #' @export
 #' @examples
