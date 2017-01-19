@@ -54,7 +54,7 @@ drivers' \code{dbSendQuery} documentation for details.
 
 No warnings occur under normal conditions.
 The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
-\code{dbValid()} returns \code{TRUE}.
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
 \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 Failure to clear the result set leads to a warning

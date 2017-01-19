@@ -122,6 +122,9 @@ setGeneric("dbSendQuery",
 #' forwards to [dbSendQuery()], to support backends that only
 #' implement the latter.
 #'
+#' @inherit DBItest::spec_result_send_statement return
+#' @inheritSection DBItest::spec_result_send_statement Specification
+#'
 #' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
 #' @return An object that inherits from \code{\linkS4class{DBIResult}}.

@@ -201,7 +201,7 @@ or when calling \code{dbDisconnect()} on an already disconnected connection.
 
 No warnings occur under normal conditions.
 The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
-\code{dbValid()} returns \code{TRUE}.
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
 \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 Failure to clear the result set leads to a warning
@@ -246,6 +246,21 @@ If zero rows are fetched, the columns of the data frame are still fully
 typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendStatement()} must be valid, i.e.,
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+
+If a result set is open, issuing a second statement
+raises a warning
+and invalidates the open result set.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
 
 
 Fetching multi-row queries with one

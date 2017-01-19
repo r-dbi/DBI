@@ -33,6 +33,25 @@ that. For interactive use, you should almost always prefer
 forwards to \code{\link[=dbSendQuery]{dbSendQuery()}}, to support backends that only
 implement the latter.
 }
+\section{Specification}{
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendStatement()} must be valid, i.e.,
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+
+If a result set is open, issuing a second statement
+raises a warning
+and invalidates the open result set.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
