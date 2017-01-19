@@ -263,6 +263,9 @@ The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
 
+No warnings occur under normal conditions.
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively

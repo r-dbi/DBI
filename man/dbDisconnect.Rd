@@ -13,7 +13,7 @@ dbDisconnect(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a logical vector of length 1, indicating success or failure.
+\code{dbDisconnect()} returns \code{TRUE}, invisibly.
 }
 \description{
 This closes the connection, discards all pending work, and frees

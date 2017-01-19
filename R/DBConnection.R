@@ -54,7 +54,6 @@ show_connection <- function(object) {
 #' @inheritSection DBItest::spec_connection_disconnect Specification
 #'
 #' @inheritParams dbGetQuery
-#' @return a logical vector of length 1, indicating success or failure.
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -127,9 +126,6 @@ setGeneric("dbSendQuery",
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
-#' @return An object that inherits from \code{\linkS4class{DBIResult}}.
-#'   Once you have finished using a result, make sure to disconnect it
-#'   with [dbClearResult()].
 #'
 #' @family DBIConnection generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
