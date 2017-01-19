@@ -217,14 +217,20 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 
 #' Execute an update statement, query number of rows affected, and then close result set
 #'
-#' `dbExecute` comes with a default implementation
+#' `dbExecute()` comes with a default implementation
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
 #' the result is always free-d by [dbClearResult()].
 #'
+#' @section Implementation notes:
+#' Subclasses should override this method only if they provide some sort of
+#' performance optimisation.
+#'
+#' @inherit DBItest::spec_result_execute return
+#' @inheritSection DBItest::spec_result_execute Specification
+#'
 #' @inheritParams dbGetQuery
 #' @param statement a character vector of length 1 containing SQL.
-#' @return The number of rows affected by the `statement`
 #' @family DBIConnection generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @export

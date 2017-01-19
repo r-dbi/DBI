@@ -15,14 +15,35 @@ dbExecute(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-The number of rows affected by the \code{statement}
+\code{dbExecute()} always returns a
+scalar
+numeric
+that specifies the number of rows affected
+by the statement.
+An error is raised when issuing a statement over a closed
+or invalid connection,
+if the syntax of the statement is invalid,
+or if the statement is not a non-\code{NA} string.
 }
 \description{
-\code{dbExecute} comes with a default implementation
+\code{dbExecute()} comes with a default implementation
 (which should work with most backends) that calls
 \code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 }
+\section{Implementation notes}{
+
+Subclasses should override this method only if they provide some sort of
+performance optimisation.
+}
+
+\section{Specification}{
+
+
+No warnings occur under normal conditions.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
