@@ -238,6 +238,18 @@ The DBI backend can expect a call to \code{dbClearResult()} for each
 
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively
 by passing a whole number (\link{integer}
 or \link{numeric})

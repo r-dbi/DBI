@@ -14,6 +14,14 @@ dbGetQuery(conn, statement, ...)
 
 \item{...}{Other parameters passed on to methods.}
 }
+\value{
+\code{dbGetQuery()} always returns a \link{data.frame}
+with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+}
 \description{
 \code{dbGetQuery} comes with a default implementation that calls
 \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
@@ -29,6 +37,22 @@ reasons.  However callers are strongly advised to use
 
 Subclasses should override this method only if they provide some sort of
 performance optimisation.
+}
+
+\section{Specification}{
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.
+
 }
 
 \examples{

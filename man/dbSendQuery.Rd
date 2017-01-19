@@ -16,7 +16,7 @@ dbSendQuery(conn, statement, ...)
 }
 \value{
 \code{dbSendQuery()} returns
-an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult-class}.
+an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult}.
 The result set can be used with \code{\link[DBI:dbFetch]{DBI::dbFetch()}} to extract records.
 Once you have finished using a result, make sure to disconnect it
 with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.

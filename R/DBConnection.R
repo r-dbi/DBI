@@ -168,6 +168,9 @@ setMethod(
 #' reasons.  However callers are strongly advised to use
 #' [dbExecute()] for data manipulation statements.
 #'
+#' @inherit DBItest::spec_result_get_query return
+#' @inheritSection DBItest::spec_result_get_query Specification
+#'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
 #' performance optimisation.
