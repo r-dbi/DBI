@@ -59,13 +59,15 @@ show_result <- function(object) {
 #'
 #' @inherit DBItest::spec_result_fetch return
 #' @inheritSection DBItest::spec_result_fetch Specification
+#' @inheritSection DBItest::spec_result_roundtrip Specification
 #'
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param res An object inheriting from [DBIResult-class], created by
+#'   [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch. Use `n = -1`
 #'   to retrieve all pending records.  Some implementations may recognize other
 #'   special values.
 #' @param ... Other arguments passed on to methods.
-#' @seealso close the result set with [dbClearResult()] as soon as you
+#' @seealso Close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
 #' @family DBIResult generics
 #' @examples
