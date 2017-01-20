@@ -17,7 +17,8 @@ dbSendStatement(conn, statement, ...)
 \value{
 \code{dbSendStatement()} returns
 an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult}.
-The result set can be used with \code{\link[DBI:dbFetch]{DBI::dbFetch()}} to extract records.
+The result set can be used with \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}} to
+determine the number of rows affected by the query.
 Once you have finished using a result, make sure to disconnect it
 with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 An error is raised when issuing a statement over a closed

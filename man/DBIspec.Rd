@@ -176,18 +176,20 @@ To query the values returned by the default implementation,
 run \code{example(dbDataType, package = "DBI")}.
 If the backend needs to override this generic,
 it must accept all basic R data types as its second argument, namely
-\code{\link[base:logical]{base::logical()}},
-\code{\link[base:integer]{base::integer()}},
-\code{\link[base:numeric]{base::numeric()}},
-\code{\link[base:character]{base::character()}},
-dates (see \link[base:Dates]{base::Dates}),
-date-time (see \link[base:DateTimeClasses]{base::DateTimeClasses}),
-and \link[base:difftime]{base::difftime}.
-It also must accept lists of \code{raw} vectors
+\link{logical},
+\link{integer},
+\link{numeric},
+\link{character},
+dates (see \link{Dates}),
+date-time (see \link{DateTimeClasses}),
+and \link{difftime}.
+It also must accept lists of \link{raw} vectors
 and map them to the BLOB (binary large object) data type,
 unless the \code{omit_blob_tests} tweak is set to \code{TRUE}.
-As-is objects (i.e., wrapped by \code{\link[base:I]{base::I()}}) must be
+As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
 supported and return the same results as their unwrapped counterparts.
+The SQL data type for \link{factor}
+and \link{ordered} is the same as for character.
 The behavior for other object types is not specified.
 
 
@@ -264,6 +266,10 @@ and must be cleared with \code{dbClearResult()}.
 
 
 No warnings occur under normal conditions.
+
+
+SQL Data types exist for all basic R data types, and the engine can
+process them.
 
 
 Fetching multi-row queries with one
