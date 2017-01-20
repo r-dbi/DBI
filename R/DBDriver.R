@@ -195,6 +195,7 @@ setGeneric("dbListConnections",
 #'
 #' @inherit DBItest::spec_driver_data_type return
 #' @inheritSection DBItest::spec_driver_data_type Specification
+#' @inheritSection DBItest::spec_result_create_table_with_data_type Specification
 #'
 #' @inheritParams dbListConnections
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}

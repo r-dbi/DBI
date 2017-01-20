@@ -65,6 +65,13 @@ The SQL data type for \link{factor}
 and \link{ordered} is the same as for character.
 The behavior for other object types is not specified.
 
+
+
+
+All data types returned by \code{dbDataType()} are usable in an SQL statement
+of the form
+\code{"CREATE TABLE test (a ...)"}.
+
 }
 
 \examples{

@@ -193,6 +193,11 @@ and \link{ordered} is the same as for character.
 The behavior for other object types is not specified.
 
 
+All data types returned by \code{dbDataType()} are usable in an SQL statement
+of the form
+\code{"CREATE TABLE test (a ...)"}.
+
+
 DBI specifies only the return type for \code{dbConnect()}.
 
 
@@ -266,10 +271,6 @@ and must be cleared with \code{dbClearResult()}.
 
 
 No warnings occur under normal conditions.
-
-
-SQL Data types exist for all basic R data types, and the engine can
-process them.
 
 
 Fetching multi-row queries with one
