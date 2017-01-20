@@ -60,9 +60,9 @@ When done, the DBIResult object must be cleared with a call to
 Failure to clear the result set leads to a warning
 when the connection is closed.
 
-If a result set is open, issuing a second query
-raises a warning
-and invalidates the open result set.
+If the backend supports only one open result set per connection,
+issuing a second query invalidates an already open result set
+and raises a warning.
 The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
