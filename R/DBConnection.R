@@ -330,7 +330,8 @@ setGeneric("dbListTables",
 #' @param name A character string specifying a DBMS table name.
 #' @param value a data.frame (or coercible to data.frame).
 #' @family DBIConnection generics
-#' @return a data.frame.
+#' @return For `dbReadTable` - a data.frame; for `dbWriteTable` - TRUE if table
+#'   is successfully written, FALSE otherwise.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
