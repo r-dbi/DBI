@@ -57,5 +57,5 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbQuoteString}}
 }

@@ -306,6 +306,27 @@ and must be cleared with \code{dbClearResult()}.
 No warnings occur under normal conditions.
 
 
+The returned expression can be used in a \code{SELECT ...} query,
+and for any scalar character \code{x} the value of
+\code{dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]}
+must be identical to \code{x},
+even if \code{x} contains
+spaces,
+quotes (single
+or double),
+backticks,
+or newlines
+(in any combination)
+or is itself the result of a \code{dbQuoteString()} call coerced back to
+character (even repeatedly).
+If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.na()}}.
+The strings \code{"NA"} or \code{"NULL"} are not treated specially.
+
+\code{NA} should be translated to an unquoted SQL \code{NULL},
+so that the query \code{SELECT 1 AS a WHERE ... IS NULL}
+returns one row.
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively

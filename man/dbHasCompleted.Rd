@@ -41,5 +41,6 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
   \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}}, \code{\link{dbIsValid}}
+  \code{\link{dbGetStatement}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteString}}
 }

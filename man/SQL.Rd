@@ -5,14 +5,11 @@
 \alias{SQL}
 \alias{SQL-class}
 \alias{dbQuoteIdentifier}
-\alias{dbQuoteString}
 \title{SQL quoting}
 \usage{
 SQL(x)
 
 dbQuoteIdentifier(conn, x, ...)
-
-dbQuoteString(conn, x, ...)
 }
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}
@@ -28,10 +25,10 @@ An object of class \code{SQL}.
 \description{
 This set of classes and generics make it possible to flexibly deal with SQL
 escaping needs. By default, any user supplied input to a query should be
-escaped using either \code{dbQuoteIdentifier} or \code{dbQuoteString}
+escaped using either \code{dbQuoteIdentifier} or \code{\link[=dbQuoteString]{dbQuoteString()}}
 depending on whether it refers to a table or variable name, or is a literal
 string.
-These functions return an object of the \code{SQL} class,
+These functions may return an object of the \code{SQL} class,
 which tells DBI functions that a character string does not need to be escaped
 anymore, to prevent double escaping.
 The \code{SQL} class has associated the \code{SQL()} constructor function.
@@ -46,8 +43,6 @@ SQL inherits from character, if you implement (e.g.) a method for
 \code{dbQuoteString(MyConnection, character)}, you will also need to
 implement \code{dbQuoteString(MyConnection, SQL)} - this should simply
 return \code{x} unchanged.
-
-If you implement your own method, make sure to convert NA to NULL (unquoted).
 }
 
 \examples{
@@ -76,13 +71,6 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
-
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteString}}
 }

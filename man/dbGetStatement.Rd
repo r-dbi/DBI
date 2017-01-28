@@ -34,5 +34,6 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
   \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteString}}
 }
