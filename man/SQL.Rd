@@ -4,12 +4,9 @@
 \name{SQL}
 \alias{SQL}
 \alias{SQL-class}
-\alias{dbQuoteIdentifier}
 \title{SQL quoting}
 \usage{
 SQL(x)
-
-dbQuoteIdentifier(conn, x, ...)
 }
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}
@@ -25,7 +22,7 @@ An object of class \code{SQL}.
 \description{
 This set of classes and generics make it possible to flexibly deal with SQL
 escaping needs. By default, any user supplied input to a query should be
-escaped using either \code{dbQuoteIdentifier} or \code{\link[=dbQuoteString]{dbQuoteString()}}
+escaped using either \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} or \code{\link[=dbQuoteString]{dbQuoteString()}}
 depending on whether it refers to a table or variable name, or is a literal
 string.
 These functions may return an object of the \code{SQL} class,
@@ -46,31 +43,16 @@ return \code{x} unchanged.
 }
 
 \examples{
-# Quoting ensures that arbitrary input is safe for use in a query
-name <- "Robert'); DROP TABLE Students;--"
-dbQuoteString(ANSI(), name)
-dbQuoteIdentifier(ANSI(), name)
-
-# NAs become NULL
-dbQuoteString(ANSI(), c("x", NA))
+dbQuoteIdentifier(ANSI(), "SELECT")
+dbQuoteString(ANSI(), "SELECT")
 
 # SQL vectors are always passed through as is
-var_name <- SQL("select")
+var_name <- SQL("SELECT")
 var_name
 
 dbQuoteIdentifier(ANSI(), var_name)
 dbQuoteString(ANSI(), var_name)
 
 # This mechanism is used to prevent double escaping
-dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
-}
-\seealso{
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteString}}
+dbQuoteString(ANSI(), dbQuoteString(ANSI(), "SELECT"))
 }

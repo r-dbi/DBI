@@ -5,7 +5,7 @@ NULL
 #'
 #' This set of classes and generics make it possible to flexibly deal with SQL
 #' escaping needs. By default, any user supplied input to a query should be
-#' escaped using either `dbQuoteIdentifier` or [dbQuoteString()]
+#' escaped using either [dbQuoteIdentifier()] or [dbQuoteString()]
 #' depending on whether it refers to a table or variable name, or is a literal
 #' string.
 #' These functions may return an object of the `SQL` class,
@@ -30,23 +30,18 @@ NULL
 #' @return An object of class `SQL`.
 #' @export
 #' @examples
-#' # Quoting ensures that arbitrary input is safe for use in a query
-#' name <- "Robert'); DROP TABLE Students;--"
-#' dbQuoteString(ANSI(), name)
-#' dbQuoteIdentifier(ANSI(), name)
-#'
-#' # NAs become NULL
-#' dbQuoteString(ANSI(), c("x", NA))
+#' dbQuoteIdentifier(ANSI(), "SELECT")
+#' dbQuoteString(ANSI(), "SELECT")
 #'
 #' # SQL vectors are always passed through as is
-#' var_name <- SQL("select")
+#' var_name <- SQL("SELECT")
 #' var_name
 #'
 #' dbQuoteIdentifier(ANSI(), var_name)
 #' dbQuoteString(ANSI(), var_name)
 #'
 #' # This mechanism is used to prevent double escaping
-#' dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
+#' dbQuoteString(ANSI(), dbQuoteString(ANSI(), "SELECT"))
 SQL <- function(x) new("SQL", x)
 
 #' @rdname SQL
@@ -62,9 +57,30 @@ setMethod("show", "SQL", function(object) {
 })
 
 
-#' @rdname SQL
+#' Quote identifiers
+#'
+#' Call this function to generate a string that is suitable for
+#' use in a query as a column name, to make sure that you
+#' generate valid SQL and avoid SQL injection.
+#'
+#' @inherit DBItest::spec_sql_quote_identifier return
+#' @inheritSection DBItest::spec_sql_quote_identifier Specification
+#'
 #' @family DBIResult generics
 #' @export
+#' @examples
+#' # Quoting ensures that arbitrary input is safe for use in a query
+#' name <- "Robert'); DROP TABLE Students;--"
+#' dbQuoteIdentifier(ANSI(), name)
+#'
+#' # SQL vectors are always passed through as is
+#' var_name <- SQL("select")
+#' var_name
+#'
+#' dbQuoteIdentifier(ANSI(), var_name)
+#'
+#' # This mechanism is used to prevent double escaping
+#' dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 setGeneric(
   "dbQuoteIdentifier",
   function(conn, x, ...) standardGeneric("dbQuoteIdentifier")

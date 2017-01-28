@@ -323,8 +323,25 @@ If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.
 The strings \code{"NA"} or \code{"NULL"} are not treated specially.
 
 \code{NA} should be translated to an unquoted SQL \code{NULL},
-so that the query \code{SELECT 1 AS a WHERE ... IS NULL}
+so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
+
+
+Calling \code{\link[DBI:dbGetQuery]{DBI::dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+returns a data frame with the identifier, unquoted, as column name.
+Quoted identifiers can be used as table and column names in SQL queries,
+in particular in queries like \code{SELECT 1 AS ...}
+and \code{SELECT * FROM (SELECT 1) ...}.
+This is also true for column names that are empty strings
+or contain special characters such as a space,
+a dot,
+a comma,
+or quotes used to mark strings
+or identifiers,
+if the database supports this.
+In any case, checking the validity of the identifier
+should be performed only when executing a query,
+and not by \code{dbQuoteIdentifier()}.
 
 
 Fetching multi-row queries with one
