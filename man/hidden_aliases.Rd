@@ -25,7 +25,6 @@
 \alias{sqlParseVariables,DBIConnection-method}
 \alias{show,SQL-method}
 \alias{dbQuoteIdentifier,DBIConnection,character-method}
-\alias{dbQuoteIdentifier,DBIConnection,list-method}
 \alias{dbQuoteIdentifier,DBIConnection,SQL-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
@@ -77,8 +76,6 @@
 \S4method{show}{SQL}(object)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
-
-\S4method{dbQuoteIdentifier}{DBIConnection,list}(conn, x, ...)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
 

@@ -74,19 +74,9 @@ setGeneric(
 #' @export
 setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
   function(conn, x, ...) {
-    dbQuoteIdentifier(conn, as.list(x))
-  }
-)
-
-#' @rdname hidden_aliases
-#' @export
-setMethod(
-  "dbQuoteIdentifier", c("DBIConnection", "list"),
-  function(conn, x, ...) {
-    if (any(vapply(x, length, integer(1L)) != 1L)) {
-      stop("The default implementation of dbQuoteIdentifier() cannot handle schemas.", call. = FALSE)
+    if (any(is.na(x))) {
+      stop("Cannot pass NA to dbQuoteIdentifier()", call. = FALSE)
     }
-    x <- unlist(x)
     x <- gsub('"', '""', x, fixed = TRUE)
     if (length(x) == 0L) {
       SQL(character())
