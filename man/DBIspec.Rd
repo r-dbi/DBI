@@ -237,26 +237,29 @@ Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.
 
 
-The column type of the returned data frame depend on the data returned:
+The column types of the returned data frame depend on the data returned:
 \itemize{
 \item \link{integer} for integer values between -2^31 and 2^31 - 1
 \item \link{numeric} for numbers with a fractional component
 \item \link{logical} for Boolean values (some backends may return an integer)
 \item \link{character} for text
 \item lists of \link{raw} for blobs
+\item coercible using \code{\link[=as.Date]{as.Date()}} for dates
+(also applies to the return value of the SQL function \code{current_date})
+\item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times
+(also applies to the return value of the SQL function \code{current_time})
+\item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps
+(also applies to the return value of the SQL function \code{current_timestamp})
 \item \link{NA} for SQL \code{NULL} values
 }
 
-If dates and types are supported by the backend, the following R types are
+If dates and timestamps are supported by the backend, the following R types are
 used:
 \itemize{
 \item \link{Date} for dates
-(including the return value of the SQL function \code{current_date})
-\item a type coercible to \link[hms:hms]{hms::hms} for times
-(including the return value of the SQL function \code{current_time})
+(also applies to the return value of the SQL function \code{current_date})
 \item \link{POSIXct} for timestamps
-(including the return value of the SQL function \code{current_timestamp},
-with time zone information set if supported by the backend)
+(also applies to the return value of the SQL function \code{current_timestamp})
 }
 
 R has no built-in type with lossless support for the full range of 64-bit
