@@ -352,7 +352,7 @@ to support databases that allow non-syntactic names for their objects:
 \item A list (named or
 unnamed),
 the components will be passed as arguments to
-\code{dbQuoteIdentifier()}.
+\code{dbQuoteIdentifier()} in addition to the \code{conn} argument
 }
 
 

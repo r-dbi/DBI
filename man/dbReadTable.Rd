@@ -4,29 +4,53 @@
 \alias{dbReadTable}
 \title{Copy data frames from database tables}
 \usage{
-dbReadTable(conn, name, ..., row.names = NA, check.names = TRUE)
+dbReadTable(conn, name, ...)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{A character string specifying a DBMS table name.}
+\item{name}{A character string specifying the unquoted DBMS table name,
+a list specifying arguments to a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+(excluding the first \code{conn} argument), or the result of such a call}
 
 \item{...}{Other parameters passed on to methods.}
+}
+\value{
+\code{dbReadTable()} returns a data frame that contains the complete data
+from the remote table, effectively the result of calling \code{\link[=dbGetQuery]{dbGetQuery()}}
+with \code{SELECT * FROM <name>}.
+An error is returned if the table does not exist.
+An empty table is returned as a data frame with zero rows.
 
-\item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
+The presence of \link{rownames} depends on the \code{row.names} argument,
+see \code{\link[DBI:sqlColumnToRownames]{DBI::sqlColumnToRownames()}} for details:
+\itemize{
+\item If \code{FALSE}, the returned data frame doesn't have row names.
+\item If \code{TRUE}, a column named "row_names" is converted to row names,
+an error is raised if no such column exists.
+\item If \code{NA}, a column named "row_names" is converted to row names if it exists,
+otherwise no translation occurs.
+\item If a string, this specifies the name of the column in the remote table
+that contains the row names,
+an error is raised if no such column exists.
+}
 
-If \code{TRUE}, always translate row names to a column called "row_names".
-If \code{FALSE}, never translate row names. If \code{NA}, translate
-rownames only if they're a character vector.
+If the database supports identifiers with special characters,
+the columns in the returned data frame are converted to valid R
+identifiers if the \code{make.names} argument is \code{TRUE},
+otherwise non-syntactic column names can be returned unquoted.
 
-A string is equivalent to \code{TRUE}, but allows you to override the
-default name.
-
-For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
-
-\item{check.names}{Should the columns of the resulting data frame
-become valid R identifiers?}
+An error is raised
+if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+(or with \code{do.call(dbQuoteIdentifier, c(list(conn), name))} if \code{name} is a
+list),
+or if this results in a non-scalar.
+Unsupported values for \code{row.names} and \code{check.names}
+(non-scalars,
+unsupported data types,
+\code{NA} for \code{check.names})
+also raise an error.
 }
 \description{
 Reads a database table to a data frame, optionally converting
@@ -34,9 +58,41 @@ a column to row names and converting the column names to valid
 R identifiers.
 }
 \note{
-The DBI implementation converts column names with a call to
+The default DBI implementation converts column names with a call to
 \code{\link[=make.names]{make.names()}} if \code{check.names} is \code{TRUE}.
 }
+\section{Additional arguments}{
+
+
+The following arguments are not part of the generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names}
+\item \code{check.names}
+}
+
+They must be provided as named arguments.
+See the "Value" section for details on their usage.
+
+}
+
+\section{Specification}{
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item An unquoted table name as string, \code{dbReadTable()} will do the quoting
+\item The result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}, no more quoting is done
+\item A list (named or
+unnamed),
+the components will be passed as arguments to
+\code{dbQuoteIdentifier()} in addition to the \code{conn} argument
+}
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

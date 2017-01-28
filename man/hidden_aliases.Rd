@@ -54,8 +54,7 @@
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
   row.names = NA, check.names = TRUE)
 
-\S4method{dbReadTable}{DBIConnection,list}(conn, name, ..., row.names = NA,
-  check.names = TRUE)
+\S4method{dbReadTable}{DBIConnection,list}(conn, name, ...)
 
 \S4method{show}{AnsiConnection}(object)
 

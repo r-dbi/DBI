@@ -333,14 +333,17 @@ setGeneric("dbListTables",
 #' a column to row names and converting the column names to valid
 #' R identifiers.
 #'
-#' @note The DBI implementation converts column names with a call to
+#' @note The default DBI implementation converts column names with a call to
 #'   [make.names()] if `check.names` is `TRUE`.
 #'
+#' @inherit DBItest::spec_sql_read_table return
+#' @inheritSection DBItest::spec_sql_read_table Additional arguments
+#' @inheritSection DBItest::spec_sql_read_table Specification
+#'
 #' @inheritParams dbGetQuery
-#' @param name A character string specifying a DBMS table name.
-#' @inheritParams sqlColumnToRownames
-#' @param check.names Should the columns of the resulting data frame
-#'   become valid R identifiers?
+#' @param name A character string specifying the unquoted DBMS table name,
+#'   a list specifying arguments to a call to [dbQuoteIdentifier()]
+#'   (excluding the first `conn` argument), or the result of such a call
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -352,7 +355,7 @@ setGeneric("dbListTables",
 #' dbDisconnect(con)
 setGeneric("dbReadTable", valueClass = "data.frame",
   signature = c("conn", "name"),
-  function(conn, name, ..., row.names = NA, check.names = TRUE) standardGeneric("dbReadTable")
+  function(conn, name, ...) standardGeneric("dbReadTable")
 )
 
 #' @rdname hidden_aliases
