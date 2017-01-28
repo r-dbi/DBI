@@ -2,12 +2,9 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbReadTable}
 \alias{dbReadTable}
-\alias{dbWriteTable}
-\title{Copy data frames to and from database tables}
+\title{Copy data frames from database tables}
 \usage{
-dbReadTable(conn, name, ...)
-
-dbWriteTable(conn, name, value, ...)
+dbReadTable(conn, name, ..., row.names = NA, check.names = TRUE)
 }
 \arguments{
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
@@ -17,20 +14,28 @@ dbWriteTable(conn, name, value, ...)
 
 \item{...}{Other parameters passed on to methods.}
 
-\item{value}{a data.frame (or coercible to data.frame).}
-}
-\value{
-a data.frame.
+\item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
+
+If \code{TRUE}, always translate row names to a column called "row_names".
+If \code{FALSE}, never translate row names. If \code{NA}, translate
+rownames only if they're a character vector.
+
+A string is equivalent to \code{TRUE}, but allows you to override the
+default name.
+
+For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+
+\item{check.names}{Should the columns of the resulting data frame
+become valid R identifiers?}
 }
 \description{
-\code{dbReadTable}: database table -> data frame; \code{dbWriteTable}:
-data frame -> database table.
+Reads a database table to a data frame, optionally converting
+a column to row names and converting the column names to valid
+R identifiers.
 }
 \note{
-The translation of identifiers between R and SQL is done through calls
-to \code{\link[=make.names]{make.names()}} and \code{\link[=make.db.names]{make.db.names()}}, but we cannot
-guarantee that the conversion is reversible.  For details see
-\code{\link[=make.db.names]{make.db.names()}}.
+The DBI implementation converts column names with a call to
+\code{\link[=make.names]{make.names()}} if \code{check.names} is \code{TRUE}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -48,5 +53,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

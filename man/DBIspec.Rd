@@ -344,6 +344,18 @@ should be performed only when executing a query,
 and not by \code{dbQuoteIdentifier()}.
 
 
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item An unquoted table name as string, \code{dbReadTable()} will do the quoting
+\item The result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}, no more quoting is done
+\item A list (named or
+unnamed),
+the components will be passed as arguments to
+\code{dbQuoteIdentifier()}.
+}
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively

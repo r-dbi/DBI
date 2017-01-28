@@ -327,17 +327,72 @@ setGeneric("dbListTables",
   valueClass = "character"
 )
 
-#' Copy data frames to and from database tables
+#' Copy data frames from database tables
 #'
-#' `dbReadTable`: database table -> data frame; `dbWriteTable`:
-#' data frame -> database table.
+#' Reads a database table to a data frame, optionally converting
+#' a column to row names and converting the column names to valid
+#' R identifiers.
 #'
-#' @note The translation of identifiers between R and SQL is done through calls
-#'   to [make.names()] and [make.db.names()], but we cannot
-#'   guarantee that the conversion is reversible.  For details see
-#'   [make.db.names()].
+#' @note The DBI implementation converts column names with a call to
+#'   [make.names()] if `check.names` is `TRUE`.
+#'
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
+#' @inheritParams sqlColumnToRownames
+#' @param check.names Should the columns of the resulting data frame
+#'   become valid R identifiers?
+#' @family DBIConnection generics
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbWriteTable(con, "mtcars", mtcars[1:10, ])
+#' dbReadTable(con, "mtcars")
+#'
+#' dbDisconnect(con)
+setGeneric("dbReadTable", valueClass = "data.frame",
+  signature = c("conn", "name"),
+  function(conn, name, ..., row.names = NA, check.names = TRUE) standardGeneric("dbReadTable")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbReadTable", c("DBIConnection", "character"),
+  function(conn, name, ..., row.names = NA, check.names = TRUE) {
+    sql_name <- dbQuoteIdentifier(conn, name)
+    if (length(sql_name) != 1L) {
+      stop("Invalid name: ", format(name), call. = FALSE)
+    }
+    stopifnot(length(row.names) == 1L)
+    stopifnot(is.null(row.names) || is.logical(row.names) || is.character(row.names))
+    stopifnot(length(check.names) == 1L)
+    stopifnot(is.logical(check.names))
+    stopifnot(!is.na(check.names))
+
+    out <- dbGetQuery(paste0("SELECT * FROM ", sql_name))
+    out <- sqlColumnToRownames(out, row.names)
+    if (check.names) {
+      names(out) <- make.names(names(out), unique = TRUE)
+    }
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbReadTable", c("DBIConnection", "list"),
+  function(conn, name, ...) {
+    sql_name <- do.call(dbQuoteIdentifier, c(list(conn), name))
+    dbReadTable(conn, sql_name)
+  }
+)
+
+#' Copy data frames to database tables
+#'
+#' `dbWriteTable`: data frame -> database table.
+#'
+#' @inheritParams dbGetQuery
+#' @param name A character string specifying a DBMS table name.
+#' @inheritParams sqlColumnToRownames
 #' @param value a data.frame (or coercible to data.frame).
 #' @family DBIConnection generics
 #' @return a data.frame.
@@ -349,12 +404,6 @@ setGeneric("dbListTables",
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbReadTable", valueClass = "data.frame",
-  signature = c("conn", "name"),
-  function(conn, name, ...) standardGeneric("dbReadTable")
-)
-
-#' @rdname dbReadTable
 #' @export
 setGeneric("dbWriteTable",
   signature = c("conn", "name", "value"),
