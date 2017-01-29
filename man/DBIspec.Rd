@@ -347,24 +347,78 @@ and not by \code{dbQuoteIdentifier()}.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item An unquoted table name as string, \code{dbReadTable()} will do the quoting
-\item The result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}, no more quoting is done
-\item A list (named or
-unnamed),
-the components will be passed as arguments to
-\code{dbQuoteIdentifier()} in addition to the \code{conn} argument
+\item If an unquoted table name as string: \code{dbReadTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 
 
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item An unquoted table name as string, \code{dbWriteTable()} will do the quoting
-\item The result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}, no more quoting is done
-\item A list (named or
-unnamed),
-the components will be passed as arguments to
-\code{dbQuoteIdentifier()}.
+\item If an unquoted table name as string: \code{dbWriteTable()} will do the quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+If the \code{overwrite} argument is \code{TRUE}, an existing table of the same name
+will be overwritten.
+This argument doesn't change behavior if the table does not exist yet.
+
+If the \code{append} argument is \code{TRUE}, the rows in an existing table are
+preserved, and the new data are appended.
+If the table doesn't exist yet, it is created.
+
+If the \code{temporary} argument is \code{TRUE}, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection
+and after reconnecting
+
+SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, and spaces can also be used in the data,
+and, if the database supports non-syntactic identifiers,
+also for table names and column names.
+
+The following data types must be supported at least,
+and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
+\itemize{
+\item integer
+\item numeric
+(also with \code{Inf} and \code{NaN} values)
+\item logical
+\item \code{NA} as NULL
+\item 64-bit values (using \code{"bigint"} as field type)
+\item character (in both UTF-8
+and native encodings)
+\item factor (returned as character)
+\item list of raw
+(if supported by the database)
+\item date
+(if supported by the database;
+returned as integers with class \code{Date})
+\item time
+(if supported by the database;
+returned as objects that inherit from \code{difftime})
+\item timestamp
+(if supported by the database;
+with time zone support)
+}
+
+The interpretation of \link{rownames} depends on the \code{row.names} argument,
+see \code{\link[DBI:sqlRownamesToColumn]{DBI::sqlRownamesToColumn()}} for details:
+\itemize{
+\item If \code{FALSE}, row names are ignored.
+\item If \code{TRUE}, row names are converted to a column named "row_names",
+even if the input data frame only has natural row names from 1 to \code{nrow(...)}.
+\item If \code{NA}, a column named "row_names" is created if the data has custom row names,
+no extra column is created in the case of natural row names.
+\item If a string, this specifies the name of the column in the remote table
+that contains the row names,
+even if the input data frame only has natural row names.
 }
 
 
@@ -382,6 +436,37 @@ If zero rows are fetched, the columns of the data frame are still fully
 typed.
 Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.
+
+}
+
+\section{Additional arguments}{
+
+
+The following arguments are not part of the \code{dbReadTable()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names}
+\item \code{check.names}
+}
+
+They must be provided as named arguments.
+See the "Value" section for details on their usage.
+
+
+The following arguments are not part of the \code{dbWriteTable()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names} (default: \code{NA})
+\item \code{overwrite} (default: \code{FALSE})
+\item \code{append} (default: \code{FALSE})
+\item \code{field.types} (default: \code{NULL})
+\item \code{temporary} (default: \code{FALSE})
+}
+
+They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
 
 }
 

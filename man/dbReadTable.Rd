@@ -43,8 +43,6 @@ otherwise non-syntactic column names can be returned unquoted.
 
 An error is raised
 if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-(or with \code{do.call(dbQuoteIdentifier, c(list(conn), name))} if \code{name} is a
-list),
 or if this results in a non-scalar.
 Unsupported values for \code{row.names} and \code{check.names}
 (non-scalars,
@@ -64,7 +62,7 @@ The default DBI implementation converts column names with a call to
 \section{Additional arguments}{
 
 
-The following arguments are not part of the generic
+The following arguments are not part of the \code{dbReadTable()} generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 \itemize{
@@ -83,12 +81,11 @@ See the "Value" section for details on their usage.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item An unquoted table name as string, \code{dbReadTable()} will do the quoting
-\item The result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}, no more quoting is done
-\item A list (named or
-unnamed),
-the components will be passed as arguments to
-\code{dbQuoteIdentifier()} in addition to the \code{conn} argument
+\item If an unquoted table name as string: \code{dbReadTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 
 }

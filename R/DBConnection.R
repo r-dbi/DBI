@@ -383,22 +383,34 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 
 #' Copy data frames to database tables
 #'
-#' `dbWriteTable`: data frame -> database table.
+#' Writes, overwrites or appends a data frame to a database table, optionally
+#' converting row names to a column and specifying SQL data types for fields.
+#'
+#' @inherit DBItest::spec_sql_write_table return
+#' @inheritSection DBItest::spec_sql_write_table Additional arguments
+#' @inheritSection DBItest::spec_sql_write_table Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
-#' @inheritParams sqlColumnToRownames
-#' @param value a data.frame (or coercible to data.frame).
+#' @param value a [data.frame] (or coercible to data.frame).
 #' @family DBIConnection generics
-#' @return a data.frame.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
-#' dbWriteTable(con, "mtcars", mtcars[1:10, ])
+#' dbWriteTable(con, "mtcars", mtcars[1:5, ])
 #' dbReadTable(con, "mtcars")
 #'
-#' dbDisconnect(con)
+#' dbWriteTable(con, "mtcars", mtcars[6:10, ], append = TRUE)
+#' dbReadTable(con, "mtcars")
+#'
+#' dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE)
+#' dbReadTable(con, "mtcars")
+#'
+#' # No row names
+#' dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
+#' dbReadTable(con, "mtcars")
+#'
 #' @export
 setGeneric("dbWriteTable",
   signature = c("conn", "name", "value"),
