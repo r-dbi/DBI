@@ -362,7 +362,7 @@ setGeneric("dbReadTable", valueClass = "data.frame",
 #' @export
 setMethod("dbReadTable", c("DBIConnection", "character"),
   function(conn, name, ..., row.names = NA, check.names = TRUE) {
-    sql_name <- dbQuoteIdentifier(conn, name)
+    sql_name <- dbQuoteIdentifier(conn, x = name, ...)
     if (length(sql_name) != 1L) {
       stop("Invalid name: ", format(name), call. = FALSE)
     }
@@ -377,15 +377,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
     if (check.names) {
       names(out) <- make.names(names(out), unique = TRUE)
     }
-  }
-)
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbReadTable", c("DBIConnection", "list"),
-  function(conn, name, ...) {
-    sql_name <- do.call(dbQuoteIdentifier, c(list(conn), name))
-    dbReadTable(conn, sql_name, ...)
+    out
   }
 )
 

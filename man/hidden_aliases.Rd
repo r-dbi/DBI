@@ -12,7 +12,6 @@
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbReadTable,DBIConnection,character-method}
-\alias{dbReadTable,DBIConnection,list-method}
 \alias{show,AnsiConnection-method}
 \alias{show,DBIResult-method}
 \alias{dbFetch,DBIResult-method}
@@ -53,8 +52,6 @@
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
   row.names = NA, check.names = TRUE)
-
-\S4method{dbReadTable}{DBIConnection,list}(conn, name, ...)
 
 \S4method{show}{AnsiConnection}(object)
 
