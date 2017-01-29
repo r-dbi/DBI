@@ -307,11 +307,13 @@ setGeneric("dbListFields",
 
 #' List remote tables
 #'
-#' This should, where possible, include temporary tables.
+#' This should, where possible, include temporary tables, and views.
+#'
+#' @inherit DBItest::spec_sql_list_tables return
+#' @inheritSection DBItest::spec_sql_list_tables Additional arguments
+#' @inheritSection DBItest::spec_sql_list_tables Specification
 #'
 #' @inheritParams dbGetQuery
-#' @return a character vector. If no tables present, a character vector
-#'   of length 0.
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -419,10 +421,14 @@ setGeneric("dbWriteTable",
 
 #' Does a table exist?
 #'
+#' Returns if a table given by name exists in the database.
+#'
+#' @inherit DBItest::spec_sql_exists_table return
+#' @inheritSection DBItest::spec_sql_exists_table Specification
+#'
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
 #' @family DBIConnection generics
-#' @return a logical vector of length 1.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

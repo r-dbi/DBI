@@ -422,6 +422,22 @@ even if the input data frame only has natural row names.
 }
 
 
+TBD (schema support).
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbExistsTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbExistsTable()} returns \code{TRUE}.
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively
@@ -467,6 +483,15 @@ but are part of the DBI specification:
 
 They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.
+
+
+TBD (schema support).
+
+
+TBD: Schema support.
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
 
 }
 
