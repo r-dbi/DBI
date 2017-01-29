@@ -385,7 +385,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 setMethod("dbReadTable", c("DBIConnection", "list"),
   function(conn, name, ...) {
     sql_name <- do.call(dbQuoteIdentifier, c(list(conn), name))
-    dbReadTable(conn, sql_name)
+    dbReadTable(conn, sql_name, ...)
   }
 )
 
