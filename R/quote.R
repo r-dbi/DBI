@@ -146,8 +146,7 @@ setGeneric(
 #' @export
 setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
-    x <- gsub("\\", "\\\\", x, fixed = TRUE)
-    x <- gsub("'", "\\'", x, fixed = TRUE)
+    x <- gsub("'", "''", x, fixed = TRUE)
 
     # Not calling encodeString() here, see also http://stackoverflow.com/a/549244/946850
     # and especially the comment by Álvaro González
