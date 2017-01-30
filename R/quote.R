@@ -148,11 +148,15 @@ setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
     x <- gsub("'", "''", x, fixed = TRUE)
 
-    # Not calling encodeString() here, see also http://stackoverflow.com/a/549244/946850
-    # and especially the comment by Álvaro González
-    str <- paste("'", x, "'", sep = "")
-    str[is.na(x)] <- "NULL"
-    SQL(str)
+    if (length(x) == 0L) {
+      SQL(character())
+    } else {
+      # Not calling encodeString() here, see also http://stackoverflow.com/a/549244/946850
+      # and especially the comment by Álvaro González
+      str <- paste("'", x, "'", sep = "")
+      str[is.na(x)] <- "NULL"
+      SQL(str)
+    }
   }
 )
 
