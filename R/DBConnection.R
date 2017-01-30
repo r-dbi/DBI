@@ -446,12 +446,16 @@ setGeneric("dbExistsTable",
 
 #' Remove a table from the database
 #'
-#' Executes the sql `DROP TABLE name`.
+#' Remove a remote table (e.g., created by [dbWriteTable()])
+#' from the database.
+#'
+#' @inherit DBItest::spec_sql_remove_table return
+#' @inheritSection DBItest::spec_sql_remove_table Additional arguments
+#' @inheritSection DBItest::spec_sql_remove_table Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying a DBMS table name.
 #' @family DBIConnection generics
-#' @return a logical vector of length 1 indicating success or failure.
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

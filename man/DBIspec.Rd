@@ -438,6 +438,23 @@ so that all optional arguments are passed along
 For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbExistsTable()} returns \code{TRUE}.
 
 
+A table removed by \code{dbRemoveTable()} doesn't appear in the list of tables
+returned by \code{\link[=dbListTables]{dbListTables()}},
+and \code{\link[=dbExistsTable]{dbExistsTable()}} returns \code{FALSE} after successful removal.
+The removal propagates immediately to other connections to the same database.
+This function can also be used to remove a temporary table.
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbRemoveTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+
 Fetching multi-row queries with one
 or more columns be default returns the entire result.
 Multi-row queries can also be fetched progressively
