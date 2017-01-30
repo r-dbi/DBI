@@ -26,6 +26,16 @@ or if this results in a non-scalar.
 \description{
 Returns if a table given by name exists in the database.
 }
+\section{Additional arguments}{
+
+
+TBD: Schema support.
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
+
+}
+
 \section{Specification}{
 
 

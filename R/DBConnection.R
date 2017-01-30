@@ -424,6 +424,7 @@ setGeneric("dbWriteTable",
 #' Returns if a table given by name exists in the database.
 #'
 #' @inherit DBItest::spec_sql_exists_table return
+#' @inheritSection DBItest::spec_sql_exists_table Additional arguments
 #' @inheritSection DBItest::spec_sql_exists_table Specification
 #'
 #' @inheritParams dbGetQuery
