@@ -35,13 +35,7 @@ to the package author to adopt this convention or not.
 \section{Driver}{
 
 
-Each DBI backend implements a \dfn{driver class},
-which must be an S4 class and inherit from the \code{DBIDriver} class.
-This section describes the construction of, and the methods defined for,
-this driver class.
-
-
-\subsection{{Construction}{
+\subsection{Construction}{
 The backend must support creation of an instance of this driver class
 with a \dfn{constructor function}.
 By default, its name is the package name without the leading \sQuote{R}
@@ -58,35 +52,13 @@ an empty argument list is expected.
 Otherwise, an argument list where all arguments have default values
 is also accepted.
 
-}}
+}
 
 
-\subsection{{\code{dbDataType("DBIDriver", "ANY")}}{
-The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
-for its driver class.
-This generic expects an arbitrary object as second argument
-and returns a corresponding SQL type
-as atomic
-character value
-with at least one character.
-As-is objects (i.e., wrapped by \code{\link[base:I]{base::I()}}) must be
-supported and return the same results as their unwrapped counterparts.
-
-To query the values returned by the default implementation,
-run \code{example(dbDataType, package = "DBI")}.
-If the backend needs to override this generic,
-it must accept all basic R data types as its second argument, namely
-\code{\link[base:logical]{base::logical()}},
-\code{\link[base:integer]{base::integer()}},
-\code{\link[base:numeric]{base::numeric()}},
-\code{\link[base:character]{base::character()}},
-dates (see \code{\link[base:Dates]{base::Dates()}}),
-date-time (see \code{\link[base:DateTimeClasses]{base::DateTimeClasses()}}),
-and \code{\link[base:difftime]{base::difftime()}}.
-It also must accept lists of \code{raw} vectors
-and map them to the BLOB (binary large object) data type.
-The behavior for other object types is not specified.
-}}
+Each DBI backend implements a \dfn{driver class},
+which must be an S4 class and inherit from the \code{DBIDriver} class.
+This section describes the construction of, and the methods defined for,
+this driver class.
 
 }
 
@@ -159,7 +131,7 @@ Calls to \code{dbFetch()} are ignored.)
 \section{Transactions}{
 
 
-\subsection{{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
+\subsection{\code{dbBegin("DBIConnection")} and \code{dbCommit("DBIConnection")}}{
 Transactions are available in DBI, but actual support may vary between backends.
 A transaction is initiated by a call to \code{\link[DBI:dbBegin]{DBI::dbBegin()}}
 and committed by a call to \code{\link[DBI:dbCommit]{DBI::dbCommit()}}.
@@ -189,7 +161,361 @@ if the \code{name} argument is set.
 
 The transaction isolation level is not specified by DBI.
 
-}}
+}
+
+}
+
+\section{Specification}{
+
+
+The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
+for its driver class.
+
+This generic expects an arbitrary object as second argument.
+To query the values returned by the default implementation,
+run \code{example(dbDataType, package = "DBI")}.
+If the backend needs to override this generic,
+it must accept all basic R data types as its second argument, namely
+\link{logical},
+\link{integer},
+\link{numeric},
+\link{character},
+dates (see \link{Dates}),
+date-time (see \link{DateTimeClasses}),
+and \link{difftime}.
+It also must accept lists of \link{raw} vectors
+and map them to the BLOB (binary large object) data type,
+unless the \code{omit_blob_tests} tweak is set to \code{TRUE}.
+As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
+supported and return the same results as their unwrapped counterparts.
+The SQL data type for \link{factor}
+and \link{ordered} is the same as for character.
+The behavior for other object types is not specified.
+
+
+All data types returned by \code{dbDataType()} are usable in an SQL statement
+of the form
+\code{"CREATE TABLE test (a ...)"}.
+
+
+DBI specifies only the return type for \code{dbConnect()}.
+
+
+A warning is issued when releasing a connection without calling
+\code{dbDisconnect()},
+or when calling \code{dbDisconnect()} on an already disconnected connection.
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+
+If the backend supports only one open result set per connection,
+issuing a second query invalidates an already open result set
+and raises a warning.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+Multi-row queries can also be fetched progressively
+by passing a whole number (\link{integer}
+or \link{numeric})
+as the \code{n} argument.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued when clearing the result set.
+
+
+The column types of the returned data frame depend on the data returned:
+\itemize{
+\item \link{integer} for integer values between -2^31 and 2^31 - 1
+\item \link{numeric} for numbers with a fractional component
+\item \link{logical} for Boolean values (some backends may return an integer)
+\item \link{character} for text
+\item lists of \link{raw} for blobs
+\item coercible using \code{\link[=as.Date]{as.Date()}} for dates
+(also applies to the return value of the SQL function \code{current_date})
+\item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times
+(also applies to the return value of the SQL function \code{current_time})
+\item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps
+(also applies to the return value of the SQL function \code{current_timestamp})
+\item \link{NA} for SQL \code{NULL} values
+}
+
+If dates and timestamps are supported by the backend, the following R types are
+used:
+\itemize{
+\item \link{Date} for dates
+(also applies to the return value of the SQL function \code{current_date})
+\item \link{POSIXct} for timestamps
+(also applies to the return value of the SQL function \code{current_timestamp})
+}
+
+R has no built-in type with lossless support for the full range of 64-bit
+or larger integers. Here, the following rules apply:
+\itemize{
+\item Values are returned as numeric
+\item Conversion to character always returns a lossless decimal representation
+of the data
+}
+
+
+\code{dbClearResult()} frees all resources associated with retrieving
+the result of a query or update operation.
+The DBI backend can expect a call to \code{dbClearResult()} for each
+\code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} call.
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.
+
+
+No warnings occur under normal conditions.
+The DBIResult object returned by \code{dbSendStatement()} must be valid, i.e.,
+\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
+When done, the DBIResult object must be cleared with a call to
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+If the backend supports only one open result set per connection,
+issuing a second query invalidates an already open result set
+and raises a warning.
+The newly opened result set is valid
+and must be cleared with \code{dbClearResult()}.
+
+
+No warnings occur under normal conditions.
+
+
+The returned expression can be used in a \code{SELECT ...} query,
+and for any scalar character \code{x} the value of
+\code{dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]}
+must be identical to \code{x},
+even if \code{x} contains
+spaces,
+quotes (single
+or double),
+backticks,
+or newlines
+(in any combination)
+or is itself the result of a \code{dbQuoteString()} call coerced back to
+character (even repeatedly).
+If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.na()}}.
+The strings \code{"NA"} or \code{"NULL"} are not treated specially.
+
+\code{NA} should be translated to an unquoted SQL \code{NULL},
+so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
+returns one row.
+
+
+Calling \code{\link[DBI:dbGetQuery]{DBI::dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+returns a data frame with the identifier, unquoted, as column name.
+Quoted identifiers can be used as table and column names in SQL queries,
+in particular in queries like \code{SELECT 1 AS ...}
+and \code{SELECT * FROM (SELECT 1) ...}.
+This is also true for column names that are empty strings
+or contain special characters such as a space,
+a dot,
+a comma,
+or quotes used to mark strings
+or identifiers,
+if the database supports this.
+In any case, checking the validity of the identifier
+should be performed only when executing a query,
+and not by \code{dbQuoteIdentifier()}.
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbReadTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbWriteTable()} will do the quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+If the \code{overwrite} argument is \code{TRUE}, an existing table of the same name
+will be overwritten.
+This argument doesn't change behavior if the table does not exist yet.
+
+If the \code{append} argument is \code{TRUE}, the rows in an existing table are
+preserved, and the new data are appended.
+If the table doesn't exist yet, it is created.
+
+If the \code{temporary} argument is \code{TRUE}, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection
+and after reconnecting to the database.
+
+SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, and spaces can also be used in the data,
+and, if the database supports non-syntactic identifiers,
+also for table names and column names.
+
+The following data types must be supported at least,
+and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
+\itemize{
+\item integer
+\item numeric
+(also with \code{Inf} and \code{NaN} values,
+the latter are translated to \code{NA})
+\item logical
+\item \code{NA} as NULL
+\item 64-bit values (using \code{"bigint"} as field type)
+\item character (in both UTF-8
+and native encodings)
+\item factor (returned as character)
+\item list of raw
+(if supported by the database)
+\item date
+(if supported by the database;
+returned as integers with class \code{Date})
+\item time
+(if supported by the database;
+returned as objects that inherit from \code{difftime})
+\item timestamp
+(if supported by the database;
+with time zone support)
+}
+
+The interpretation of \link{rownames} depends on the \code{row.names} argument,
+see \code{\link[DBI:sqlRownamesToColumn]{DBI::sqlRownamesToColumn()}} for details:
+\itemize{
+\item If \code{FALSE}, row names are ignored.
+\item If \code{TRUE}, row names are converted to a column named "row_names",
+even if the input data frame only has natural row names from 1 to \code{nrow(...)}.
+\item If \code{NA}, a column named "row_names" is created if the data has custom row names,
+no extra column is created in the case of natural row names.
+\item If a string, this specifies the name of the column in the remote table
+that contains the row names,
+even if the input data frame only has natural row names.
+}
+
+
+TBD (schema support).
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbExistsTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbExistsTable()} returns \code{TRUE}.
+
+
+A table removed by \code{dbRemoveTable()} doesn't appear in the list of tables
+returned by \code{\link[=dbListTables]{dbListTables()}},
+and \code{\link[=dbExistsTable]{dbExistsTable()}} returns \code{FALSE}.
+The removal propagates immediately to other connections to the same database.
+This function can also be used to remove a temporary table.
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbRemoveTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+Multi-row queries can also be fetched progressively
+by passing a whole number (\link{integer}
+or \link{numeric})
+as the \code{n} argument.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued when clearing the result set.
+
+}
+
+\section{Additional arguments}{
+
+
+The following arguments are not part of the \code{dbReadTable()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names}
+\item \code{check.names}
+}
+
+They must be provided as named arguments.
+See the "Value" section for details on their usage.
+
+
+The following arguments are not part of the \code{dbWriteTable()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names} (default: \code{NA})
+\item \code{overwrite} (default: \code{FALSE})
+\item \code{append} (default: \code{FALSE})
+\item \code{field.types} (default: \code{NULL})
+\item \code{temporary} (default: \code{FALSE})
+}
+
+They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
+
+
+TBD (schema support).
+
+
+TBD: Schema support.
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
+
+
+TBD: Schema support.
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
 
 }
 

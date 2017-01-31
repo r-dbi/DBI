@@ -7,12 +7,27 @@
 dbGetQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character vector of length 1 containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
+}
+\value{
+\code{dbGetQuery()} always returns a \link{data.frame}
+with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-\code{NA} string.
+If the \code{n} argument is not an atomic whole number
+greater or equal to -1, an error is raised,
+but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
 }
 \description{
 \code{dbGetQuery} comes with a default implementation that calls
@@ -29,6 +44,22 @@ reasons.  However callers are strongly advised to use
 
 Subclasses should override this method only if they provide some sort of
 performance optimisation.
+}
+
+\section{Specification}{
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.
+
 }
 
 \examples{
@@ -49,5 +80,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

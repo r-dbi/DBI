@@ -131,6 +131,9 @@ setGeneric("dbUnloadDriver",
 #' `"dbname"` for the database name, `"username"`, and
 #' `"password"`.
 #'
+#' @inherit DBItest::spec_driver_connect return
+#' @inheritSection DBItest::spec_driver_connect Specification
+#'
 #' @param drv an object that inherits from \code{\linkS4class{DBIDriver}},
 #'   or an existing \code{\linkS4class{DBIConnection}}
 #'   object (in order to clone an existing connection).
@@ -190,11 +193,14 @@ setGeneric("dbListConnections",
 #' Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 #' problems with under/overflows and loss of precision.
 #'
+#' @inherit DBItest::spec_driver_data_type return
+#' @inheritSection DBItest::spec_driver_data_type Specification
+#' @inheritSection DBItest::spec_result_create_table_with_data_type Specification
+#'
 #' @inheritParams dbListConnections
 #' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
 #'   or \code{\linkS4class{DBIConnection}}
 #' @param obj An R object whose SQL type we want to determine.
-#' @return A character string specifying the SQL data type for `obj`.
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @examples

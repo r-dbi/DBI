@@ -7,7 +7,7 @@
 dbRemoveTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{A character string specifying a DBMS table name.}
@@ -15,11 +15,49 @@ dbRemoveTable(conn, name, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a logical vector of length 1 indicating success or failure.
+\code{dbRemoveTable()} returns \code{TRUE}, invisibly.
+If the table does not exist, an error is raised.
+An attempt to remove a view with this function may result in an error.
+
+An error is raised
+if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+or if this results in a non-scalar.
 }
 \description{
-Executes the sql \code{DROP TABLE name}.
+Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}})
+from the database.
 }
+\section{Additional arguments}{
+
+
+TBD: Schema support.
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
+
+}
+
+\section{Specification}{
+
+
+A table removed by \code{dbRemoveTable()} doesn't appear in the list of tables
+returned by \code{\link[=dbListTables]{dbListTables()}},
+and \code{\link[=dbExistsTable]{dbExistsTable()}} returns \code{FALSE}.
+The removal propagates immediately to other connections to the same database.
+This function can also be used to remove a temporary table.
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbRemoveTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -39,5 +77,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

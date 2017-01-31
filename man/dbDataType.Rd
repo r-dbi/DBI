@@ -15,7 +15,11 @@ or \code{\linkS4class{DBIConnection}}}
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-A character string specifying the SQL data type for \code{obj}.
+\code{dbDataType()} returns the SQL type that corresponds to the \code{obj} argument
+as a non-empty
+character string.
+An error is raised for invalid values for the \code{obj} argument such as a
+\code{NULL} value.
 }
 \description{
 This is a generic function. The default method determines the SQL type of an
@@ -34,6 +38,42 @@ integer vectors.
 Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.
 }
+\section{Specification}{
+
+
+The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
+for its driver class.
+
+This generic expects an arbitrary object as second argument.
+To query the values returned by the default implementation,
+run \code{example(dbDataType, package = "DBI")}.
+If the backend needs to override this generic,
+it must accept all basic R data types as its second argument, namely
+\link{logical},
+\link{integer},
+\link{numeric},
+\link{character},
+dates (see \link{Dates}),
+date-time (see \link{DateTimeClasses}),
+and \link{difftime}.
+It also must accept lists of \link{raw} vectors
+and map them to the BLOB (binary large object) data type,
+unless the \code{omit_blob_tests} tweak is set to \code{TRUE}.
+As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
+supported and return the same results as their unwrapped counterparts.
+The SQL data type for \link{factor}
+and \link{ordered} is the same as for character.
+The behavior for other object types is not specified.
+
+
+
+
+All data types returned by \code{dbDataType()} are usable in an SQL statement
+of the form
+\code{"CREATE TABLE test (a ...)"}.
+
+}
+
 \examples{
 dbDataType(ANSI(), 1:5)
 dbDataType(ANSI(), 1)
@@ -77,5 +117,5 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbSendStatement}}
+  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
 }
