@@ -1,3 +1,13 @@
+## DBI 0.5-15 (2017-01-31)
+
+- Revert `...` hack for `sqlInterpolate()` and `sqlParseVariables()`, simply renamed arguments (#147).
+- Added specification from DBItest to methods documentation. Affected methods: `dbConnect()`, `dbDisconnect()`, `dbDataType()`, `dbSendQuery()`, `dbFetch()`, `dbClearResult()`, `dbGetQuery()`, `dbSendStatement()`, `dbExecute()`, `dbQuoteIdentifier()`, `dbQuoteString()`, `dbReadTable()`, `dbWriteTable()`, `dbRemoveTable()`, `dbExistsTable()`, and `dbListTables()` (#129).
+- Added default implementation for `dbReadTable()`.
+- Removed `dbQuoteIdentifier(DBIConnection, list)` again.
+- Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
+- Removed `tryCatch()` call in `dbGetQuery()` (#113).
+
+
 ## DBI 0.5-14 (2016-12-24)
 
 - `sqlParseVariables()` and `sqlInterpolate()` have `...` as exported formals. DBI drivers are expected to implement `sqlParseVariables(conn, sql, ..., .dots)` and `sqlInterpolate(conn, sql, ...)`. Dispatch occurs manually, overriding default S4 logic. This is a temporary workaround, DBI 0.7 will export the correct signature, and backends not adhering to this signature will not be able to load (#147).
