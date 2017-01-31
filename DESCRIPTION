@@ -15,11 +15,12 @@ Depends:
     R (>= 2.15.0),
     methods
 Suggests:
-    testthat,
-    RSQLite (>= 1.1),
+    covr,
+    hms,
     knitr,
     rmarkdown,
-    covr
+    RSQLite (>= 1.1),
+    testthat
 Encoding: UTF-8
 License: LGPL (>= 2)
 URL: http://rstats-db.github.io/DBI

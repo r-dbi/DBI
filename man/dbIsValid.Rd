@@ -48,14 +48,16 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 
 Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{SQL}}, \code{\link{dbBind}},
-  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
-  \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetRowCount}},
+  \code{\link{dbBind}}, \code{\link{dbClearResult}},
+  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}
+  \code{\link{dbHasCompleted}},
+  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbQuoteString}}
 }

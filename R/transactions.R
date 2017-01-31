@@ -8,7 +8,7 @@
 #' The current transaction on the connection `con` is committed or rolled
 #' back.
 #'
-#' @inheritParams dbDisconnect
+#' @inheritParams dbGetQuery
 #' @return a logical indicating whether the operation succeeded or not.
 #' @seealso Self-contained transactions: [dbWithTransaction()]
 #' @examples
@@ -68,10 +68,8 @@ setGeneric("dbRollback",
 #' or rolled back. The `code` chunk may also modify the local R
 #' environment.
 #'
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as produced by
-#'   [dbConnect()].
+#' @inheritParams dbGetQuery
 #' @param code An arbitrary block of R code
-#' @param ... Other parameters passed on to methods.
 #'
 #' @return The result of the evaluation of `code`
 #' @export

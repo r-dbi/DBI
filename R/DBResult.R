@@ -57,14 +57,17 @@ show_result <- function(object) {
 #' existing code. Implementors are free to provide methods for `dbFetch`
 #' only.
 #'
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @inherit DBItest::spec_result_fetch return
+#' @inheritSection DBItest::spec_result_fetch Specification
+#' @inheritSection DBItest::spec_result_roundtrip Specification
+#'
+#' @param res An object inheriting from [DBIResult-class], created by
+#'   [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch. Use `n = -1`
 #'   to retrieve all pending records.  Some implementations may recognize other
 #'   special values.
 #' @param ... Other arguments passed on to methods.
-#' @return a data.frame with as many rows as records were fetched and as many
-#'   columns as fields in the result set.
-#' @seealso close the result set with [dbClearResult()] as soon as you
+#' @seealso Close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
 #' @family DBIResult generics
 #' @examples
@@ -111,10 +114,11 @@ setGeneric("fetch",
 #' cases (e.g., very large result sets) this can be a critical step to avoid
 #' exhausting resources (memory, file descriptors, etc.)
 #'
+#' @inherit DBItest::spec_result_clear_result return
+#' @inheritSection DBItest::spec_result_clear_result Specification
+#'
 #' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
 #' @param ... Other arguments passed on to methods.
-#' @return a logical indicating whether clearing the
-#'   result set was successful or not.
 #' @family DBIResult generics
 #' @export
 #' @examples

@@ -11,6 +11,7 @@
 \alias{dbSendStatement,DBIConnection,character-method}
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbExecute,DBIConnection,character-method}
+\alias{dbReadTable,DBIConnection,character-method}
 \alias{show,AnsiConnection-method}
 \alias{show,DBIResult-method}
 \alias{dbFetch,DBIResult-method}
@@ -25,7 +26,6 @@
 \alias{sqlParseVariables,DBIConnection-method}
 \alias{show,SQL-method}
 \alias{dbQuoteIdentifier,DBIConnection,character-method}
-\alias{dbQuoteIdentifier,DBIConnection,list-method}
 \alias{dbQuoteIdentifier,DBIConnection,SQL-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
@@ -49,6 +49,9 @@
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
+
+\S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
+  row.names = NA, check.names = TRUE)
 
 \S4method{show}{AnsiConnection}(object)
 
@@ -77,8 +80,6 @@
 \S4method{show}{SQL}(object)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
-
-\S4method{dbQuoteIdentifier}{DBIConnection,list}(conn, x, ...)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
 
