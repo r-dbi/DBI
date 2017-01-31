@@ -6,6 +6,14 @@
 \usage{
 dbQuoteString(conn, x, ...)
 }
+\arguments{
+\item{conn}{A subclass of \code{\linkS4class{DBIConnection}}, representing
+an active connection to an DBMS.}
+
+\item{x}{A character vector to quote as string.}
+
+\item{...}{Other arguments passed on to methods.}
+}
 \value{
 \code{dbQuoteString()} returns an object that can be coerced to \link{character},
 of the same length as the input.

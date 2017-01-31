@@ -42,7 +42,7 @@ See the "Specification" section for details on their usage.
 
 A table removed by \code{dbRemoveTable()} doesn't appear in the list of tables
 returned by \code{\link[=dbListTables]{dbListTables()}},
-and \code{\link[=dbExistsTable]{dbExistsTable()}} returns \code{FALSE} after successful removal.
+and \code{\link[=dbExistsTable]{dbExistsTable()}} returns \code{FALSE}.
 The removal propagates immediately to other connections to the same database.
 This function can also be used to remove a temporary table.
 

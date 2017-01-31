@@ -79,7 +79,7 @@ If the \code{temporary} argument is \code{TRUE}, the table is not available in a
 second connection and is gone after reconnecting.
 Not all backends support this argument.
 A regular, non-temporary table is visible in a second connection
-and after reconnecting
+and after reconnecting to the database.
 
 SQL keywords can be used freely in table names, column names, and data.
 Quotes, commas, and spaces can also be used in the data,
@@ -91,7 +91,8 @@ and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
 \itemize{
 \item integer
 \item numeric
-(also with \code{Inf} and \code{NaN} values)
+(also with \code{Inf} and \code{NaN} values,
+the latter are translated to \code{NA})
 \item logical
 \item \code{NA} as NULL
 \item 64-bit values (using \code{"bigint"} as field type)

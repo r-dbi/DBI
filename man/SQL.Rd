@@ -11,9 +11,6 @@ SQL(x)
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}
 
-\item{conn}{A subclass of \code{\linkS4class{DBIConnection}}, representing
-an active connection to an DBMS.}
-
 \item{...}{Other arguments passed on to methods. Not otherwise used.}
 }
 \value{

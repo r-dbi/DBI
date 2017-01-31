@@ -23,8 +23,6 @@ NULL
 #' implement `dbQuoteString(MyConnection, SQL)` - this should simply
 #' return `x` unchanged.
 #'
-#' @param conn A subclass of \code{\linkS4class{DBIConnection}}, representing
-#'   an active connection to an DBMS.
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
 #' @return An object of class `SQL`.
@@ -62,6 +60,11 @@ setMethod("show", "SQL", function(object) {
 #' Call this function to generate a string that is suitable for
 #' use in a query as a column name, to make sure that you
 #' generate valid SQL and avoid SQL injection.
+#'
+#' @param conn A subclass of \code{\linkS4class{DBIConnection}}, representing
+#'   an active connection to an DBMS.
+#' @param x A character vector to quote as identifier.
+#' @param ... Other arguments passed on to methods.
 #'
 #' @inherit DBItest::spec_sql_quote_identifier return
 #' @inheritSection DBItest::spec_sql_quote_identifier Specification
@@ -116,6 +119,11 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 #' Call this function to generate a string that is suitable for
 #' use in a query as a string literal, to make sure that you
 #' generate valid SQL and avoid SQL injection.
+#'
+#' @param conn A subclass of \code{\linkS4class{DBIConnection}}, representing
+#'   an active connection to an DBMS.
+#' @param x A character vector to quote as string.
+#' @param ... Other arguments passed on to methods.
 #'
 #' @inherit DBItest::spec_sql_quote_string return
 #' @inheritSection DBItest::spec_sql_quote_string Specification
