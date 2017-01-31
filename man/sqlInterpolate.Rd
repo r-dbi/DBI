@@ -2,22 +2,14 @@
 % Please edit documentation in R/interpolate.R
 \name{sqlInterpolate}
 \alias{sqlInterpolate}
-\alias{sqlInterpolate_0.6}
-\alias{sqlInterpolate}
-\alias{sqlInterpolate_0.5}
-\alias{sqlInterpolate}
 \title{Safely interpolate values into an SQL string}
 \usage{
-sqlInterpolate_0.6(conn, sql, ..., .dots = list())
-
-sqlInterpolate_0.5(`_con`, `_sql`, ...)
-
-sqlInterpolate(...)
+sqlInterpolate(conn, sql, ..., .dots = list())
 }
 \arguments{
-\item{conn, _con}{A database connection.}
+\item{conn}{A database connection.}
 
-\item{sql, `_sql`}{A SQL string containing variables to interpolate.
+\item{sql}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
@@ -28,15 +20,7 @@ will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
 to interpolation to protect against SQL injection attacks.}
 }
 \description{
-Offers a convenient and safe way to replace named placeholders in a SQL query with
-constants.
-This is mostly useful for backend authors where the DBMS doesn't support
-parametrized queries.
-
-The signature of this generic has changed from DBI 0.5 to DBI 0.6,
-the \code{_0.5} and \code{_0.6} functions are included in the \emph{Usage} section below to
-illustrate this change. See the \emph{Compatibility with DBI 0.5} section for
-details.
+Safely interpolate values into an SQL string
 }
 \section{Backend authors}{
 
@@ -46,26 +30,10 @@ do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.
 }
 
-\section{Compatibility with DBI 0.5}{
-
-In DBI 0.5, the \code{sqlInterpolate()} method had a different signature, see the
-\code{_0.5} function in the \emph{Usage} section.
-In an effort to harmonize the argument names
-across all DBI methods, the current version of DBI encourages backend authors
-to define methods with the new \code{_0.6} signature,
-which will eventually become the actual signature of the generic.
-For technical reasons this is not enforced, the generic is defined with
-signature \code{...} and performs nonstandard dispatch to support backends that
-implement this method with either signature.
-}
-
 \examples{
 sql <- "SELECT * FROM X WHERE name = ?name"
 sqlInterpolate(ANSI(), sql, name = "Hadley")
 
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
-
-# The .dots argument is preferred for programming
-sqlInterpolate(ANSI(), sql, .dots = list(name = "H'); DROP TABLE--;"))
 }
