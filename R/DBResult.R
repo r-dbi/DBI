@@ -166,8 +166,9 @@ setGeneric("dbColumnInfo",
 #'
 #' Returns the statement that was passed to [dbSendQuery()].
 #'
+#' @inherit DBItest::spec_meta_get_statement return
+#'
 #' @inheritParams dbClearResult
-#' @return a character vector
 #' @family DBIResult generics
 #' @export
 #' @examples

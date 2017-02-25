@@ -12,7 +12,11 @@ dbGetStatement(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a character vector
+\code{dbGetStatement()} returns a string, the query used in
+either \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}}
+or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}.
+Attempting to query the statement for a result set cleared with
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} gives an error.
 }
 \description{
 Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}.
