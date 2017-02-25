@@ -189,10 +189,12 @@ setGeneric("dbGetStatement",
 #'
 #' This method returns if the operation has completed.
 #' A `SELECT` query is completed if all rows have been fetched.
-#' A data manipulation statement is completed if it has been executed.
+#' A data manipulation statement is always completed.
+#'
+#' @inherit DBItest::spec_meta_has_completed return
+#' @inheritSection DBItest::spec_meta_has_completed Specification
 #'
 #' @inheritParams dbClearResult
-#' @return a logical vector of length 1
 #' @family DBIResult generics
 #' @export
 #' @examples

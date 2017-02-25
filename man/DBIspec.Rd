@@ -456,20 +456,15 @@ so that all optional arguments are passed along
 }
 
 
-Fetching multi-row queries with one
-or more columns be default returns the entire result.
-Multi-row queries can also be fetched progressively
-by passing a whole number (\link{integer}
-or \link{numeric})
-as the \code{n} argument.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If zero rows are fetched, the columns of the data frame are still fully
-typed.
-Fetching fewer rows than available is permitted,
-no warning is issued when clearing the result set.
+The completion status for a query is only guaranteed to be set to
+\code{FALSE} after attempting to fetch past the end of the entire result.
+Therefore, for a query with an empty result set,
+the initial return value is unspecified,
+but the result value is \code{TRUE} after trying to fetch only one row.
+Similarly, for a query with a result set of length n,
+the return value is unspecified after fetching n rows,
+but the result value is \code{TRUE} after trying to fetch only one more
+row.
 
 }
 
