@@ -295,46 +295,40 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' Bind values to a parameterised/prepared statement
 #'
 #' For parametrised or prepared statements,
-#' the [dbSendQuery()] function can be called with queries
-#' that contain placeholders for values. The [dbBind()] function
-#' (documented here) binds these placeholders
-#' to actual values, and is intended to be called on the result of
-#' [dbSendQuery()] before calling [dbFetch()].
+#' the [dbSendQuery()] and [dbSendStatement()] functions can be called with
+#' statements that contain placeholders for values. The `dbBind()` function
+#' binds these placeholders
+#' to actual values, and is intended to be called on the result set
+#' before calling [dbFetch()] or [dbGetRowsAffected()].
 #'
-#' Parametrised or prepared statements are executed as follows:
+#' \pkg{DBI} supports parametrized (or prepared) queries and statements
+#' via the `dbBind()` generic.
+#' Parametrized queries are different from normal queries
+#' in that they allow an arbitrary number of placeholders,
+#' which are later substituted by actual values.
+#' Parametrized queries (and statements) serve two purposes:
 #'
-#' 1. Call [DBI::dbSendQuery()] or [DBI::dbSendStatement()] with a query or statement
-#'    that contains placeholders,
-#'    store the returned \code{\linkS4class{DBIResult}} object in a variable.
-#'    Mixing placeholders (in particular, named and unnamed ones) is not
-#'    recommended.
-#'    It is good practice to register a call to [DBI::dbClearResult()] via
-#'    [on.exit()] right after calling `dbSendQuery()`, see the last
-#'    enumeration item.
-#' 1. Construct a list with parameters
-#'    that specify actual values for the placeholders.
-#'    The list must be named or unnamed,
-#'    depending on the kind of placeholders used.
-#'    Named values are matched to named parameters, unnamed values
-#'    are matched by position.
-#'    All elements in this list must have the same lengths and contain values
-#'    supported by the backend; a [data.frame()] is internally stored as such
-#'    a list.
-#'    The parameter list is passed a call to [dbBind()] on the `DBIResult`
-#'    object.
-#' 1. Retrieve the data or the number of affected rows from the  `DBIResult` object.
-#'     - For queries issued by `dbSendQuery()`,
-#'       call [DBI::dbFetch()].
-#'     - For statements issued by `dbSendStatements()`,
-#'       call [DBI::dbGetRowsAffected()].
-#'       (Execution begins immediately after the `dbBind()` call,
-#'       the statement is processed entirely before the function returns.
-#'       Calls to `dbFetch()` are ignored.)
-#' 1. Repeat 2. and 3. as necessary.
-#' 1. Close the result set via [DBI::dbClearResult()].
+#' - The same query can be executed more than once with different values.
+#'   The DBMS may cache intermediate information for the query,
+#'   such as the execution plan,
+#'   and execute it faster.
+#' - Separation of query syntax and parameters protects against SQL injection.
+#'
+#' The placeholder format is currently not specified by \pkg{DBI};
+#' in the future, a uniform placeholder syntax may be supported.
+#' Consult the backend documentation for the supported formats.
+#' For automated testing, backend authors specify the placeholder syntax with
+#' the `placeholder_pattern` tweak.
+#' Known examples are:
+#'
+#' - `?` (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
+#' - `$1` (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
+#' - `:name` and `$name` (named matching) in \pkg{RSQLite}
+#'
+#' @inheritSection DBItest::spec_meta_bind Specification
 #'
 #' @inheritParams dbClearResult
-#' @param params A list of bindings
+#' @param params A list of bindings.
 #' @family DBIResult generics
 #' @export
 #' @examples
