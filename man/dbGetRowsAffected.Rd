@@ -12,12 +12,20 @@ dbGetRowsAffected(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a numeric vector of length 1
+\code{dbGetRowsAffected()} returns a scalar number string (integer or numeric),
+the number of rows affected by a data manipulation statement
+issued with \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}.
+The value is available directly after the call
+and does not change after calling \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+For queries issued with \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}},
+zero is returned before
+and after the call to \code{dbFetch()}.
+Attempting to get the rows affected for a result set cleared with
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} gives an error.
 }
 \description{
 This function returns the number of rows that were added, deleted, or updated
-by a data manipulation statement. For a selection query, this function
-returns 0.
+by a data manipulation statement.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
