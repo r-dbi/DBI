@@ -12,11 +12,27 @@ dbGetRowCount(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a numeric vector of length 1
+\code{dbGetRowCount()} returns a scalar number string (integer or numeric),
+the number of rows fetched so far.
+After calling \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}},
+the row count is initially zero.
+After a call to \code{\link[DBI:dbFetch]{DBI::dbFetch()}} without limit,
+the row count matches the total number of rows returned.
+Fetching a limited number of rows
+increases the number of rows by the number of rows returned,
+even if fetching past the end of the result set.
+For queries with an empty result set,
+zero is returned
+even after fetching.
+For data manipulation statements issued with
+\code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}},
+zero is returned before
+and after calling \code{dbFetch()}.
+Attempting to get the row count for a result set cleared with
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} gives an error.
 }
 \description{
-This value is increased by calls to \code{\link[=dbFetch]{dbFetch()}}. For a data
-modifying query, the return value is 0.
+This value is increased by calls to \code{\link[=dbFetch]{dbFetch()}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

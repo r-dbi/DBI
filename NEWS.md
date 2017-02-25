@@ -1,3 +1,8 @@
+## DBI 0.5-16 (2017-02-26)
+
+- Added specification from DBItest to methods documentation. Affected methods: `dbIsValid()`, `dbHasCompleted()`, `dbGetStatement()`, `dbGetRowCount()`, `dbGetRowsAffected()`, and `dbBind()`.
+
+
 ## DBI 0.5-15 (2017-01-31)
 
 - Revert `...` hack for `sqlInterpolate()` and `sqlParseVariables()`, simply renamed arguments (#147).

@@ -62,72 +62,6 @@ this driver class.
 
 }
 
-\section{Parametrized queries and statements}{
-
-
-\pkg{DBI} supports parametrized (or prepared) queries and statements
-via the \code{\link[DBI:dbBind]{DBI::dbBind()}} generic.
-Parametrized queries are different from normal queries
-in that they allow an arbitrary number of placeholders,
-which are later substituted by actual values.
-Parametrized queries (and statements) serve two purposes:
-\itemize{
-\item The same query can be executed more than once with different values.
-The DBMS may cache intermediate information for the query,
-such as the execution plan,
-and execute it faster.
-\item Separation of query syntax and parameters protects against SQL injection.
-}
-
-The placeholder format is currently not specified by \pkg{DBI};
-in the future, a uniform placeholder syntax may be supported.
-Consult the backend documentation for the supported formats.
-For automated testing, backend authors specify the placeholder syntax with
-the \code{placeholder_pattern} tweak.
-Known examples are:
-\itemize{
-\item \code{?} (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
-\item \code{$1} (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
-\item \code{:name} and \code{$name} (named matching) in \pkg{RSQLite}
-}
-
-\pkg{DBI} clients execute parametrized statements as follows:
-\enumerate{
-\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
-that contains placeholders,
-store the returned \code{\linkS4class{DBIResult}} object in a variable.
-Mixing placeholders (in particular, named and unnamed ones) is not
-recommended.
-It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
-\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()}, see the last
-enumeration item.
-\item Construct a list with parameters
-that specify actual values for the placeholders.
-The list must be named or unnamed,
-depending on the kind of placeholders used.
-Named values are matched to named parameters, unnamed values
-are matched by position.
-All elements in this list must have the same lengths and contain values
-supported by the backend; a \code{\link[=data.frame]{data.frame()}} is internally stored as such
-a list.
-The parameter list is passed a call to \code{\link[=dbBind]{dbBind()}} on the \code{DBIResult}
-object.
-\item Retrieve the data or the number of affected rows from the  \code{DBIResult} object.
-\itemize{
-\item For queries issued by \code{dbSendQuery()},
-call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
-\item For statements issued by \code{dbSendStatements()},
-call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
-(Execution begins immediately after the \code{dbBind()} call,
-the statement is processed entirely before the function returns.
-Calls to \code{dbFetch()} are ignored.)
-}
-\item Repeat 2. and 3. as necessary.
-\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
-}
-
-}
-
 \section{Transactions}{
 
 
@@ -243,7 +177,7 @@ The column types of the returned data frame depend on the data returned:
 \item \link{numeric} for numbers with a fractional component
 \item \link{logical} for Boolean values (some backends may return an integer)
 \item \link{character} for text
-\item lists of \link{raw} for blobs
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
 \item coercible using \code{\link[=as.Date]{as.Date()}} for dates
 (also applies to the return value of the SQL function \code{current_date})
 \item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times
@@ -456,20 +390,78 @@ so that all optional arguments are passed along
 }
 
 
-Fetching multi-row queries with one
-or more columns be default returns the entire result.
-Multi-row queries can also be fetched progressively
-by passing a whole number (\link{integer}
-or \link{numeric})
-as the \code{n} argument.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If zero rows are fetched, the columns of the data frame are still fully
-typed.
-Fetching fewer rows than available is permitted,
-no warning is issued when clearing the result set.
+The completion status for a query is only guaranteed to be set to
+\code{FALSE} after attempting to fetch past the end of the entire result.
+Therefore, for a query with an empty result set,
+the initial return value is unspecified,
+but the result value is \code{TRUE} after trying to fetch only one row.
+Similarly, for a query with a result set of length n,
+the return value is unspecified after fetching n rows,
+but the result value is \code{TRUE} after trying to fetch only one more
+row.
+
+
+\pkg{DBI} clients execute parametrized statements as follows:
+\enumerate{
+\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+that contains placeholders,
+store the returned \link[DBI:DBIResult-class]{DBI::DBIResult} object in a variable.
+Mixing placeholders (in particular, named and unnamed ones) is not
+recommended.
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
+\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
+(see the last enumeration item).
+\item Construct a list with parameters
+that specify actual values for the placeholders.
+The list must be named or unnamed,
+depending on the kind of placeholders used.
+Named values are matched to named parameters, unnamed values
+are matched by position in the list of parameters.
+All elements in this list must have the same lengths and contain values
+supported by the backend; a \link{data.frame} is internally stored as such
+a list.
+The parameter list is passed to a call to \code{dbBind()} on the \code{DBIResult}
+object.
+\item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
+\itemize{
+\item For queries issued by \code{dbSendQuery()},
+call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+\item For statements issued by \code{dbSendStatements()},
+call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{dbBind()} call,
+the statement is processed entirely before the function returns.)
+}
+\item Repeat 2. and 3. as necessary.
+\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+}
+
+
+The elements of the \code{params} argument do not need to be scalars,
+vectors of arbitrary length
+(including length 0)
+are supported.
+For queries, calling \code{dbFetch()} binding such parameters returns
+concatenated results, equivalent to binding and fetching for each set
+of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the
+total number of rows affected if binding non-scalar parameters.
+\code{dbBind()} also accepts repeated calls on the same result set
+for both queries
+and data manipulation statements,
+even if no results are fetched between calls to \code{dbBind()}.
+
+At least the following data types are accepted:
+\itemize{
+\item \link{integer}
+\item \link{numeric}
+\item \link{logical} for Boolean values (some backends may return an integer)
+\item \link{NA}
+\item \link{character}
+\item \link{Date}
+\item \link{POSIXct} timestamps
+\item \link{POSIXlt} timestamps
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
+}
 
 }
 

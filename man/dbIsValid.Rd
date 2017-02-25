@@ -14,7 +14,17 @@ or a \code{\linkS4class{DBIResult}}}
 \item{...}{Other arguments to methods.}
 }
 \value{
-a logical of length 1
+\code{dbIsValid()} returns a logical scalar,
+\code{TRUE} if the object specified by \code{dbObj} is valid,
+\code{FALSE} otherwise.
+A \linkS4class{DBIConnection} object is initially valid,
+and becomes invalid after disconnecting with \code{\link[=dbDisconnect]{dbDisconnect()}}.
+A \linkS4class{DBIResult} object is initially valid,
+and stays valid even after all rows have been fetched;
+only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
+If the connection to the database system is dropped (e.g., due to
+connectivity problems, server failure, etc.), \code{dbIsValid()} should return
+\code{FALSE}. This is not tested automatically.
 }
 \description{
 This generic tests whether a database object is still valid (i.e. it hasn't
