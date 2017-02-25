@@ -13,6 +13,22 @@ dbBind(res, params, ...)
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbBind()} returns the result set,
+invisibly,
+for queries issued by \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}}
+and also for data manipulation statements issued by
+\code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}.
+Calling \code{dbBind()} for a query without parameters
+raises an error.
+Binding too many
+or not enough values,
+or parameters with wrong names
+or unequal length,
+also raises an error.
+Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearResult]{dbClearResult()}}
+also raises an error.
+}
 \description{
 For parametrised or prepared statements,
 the \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbSendStatement]{dbSendStatement()}} functions can be called with
@@ -66,7 +82,7 @@ that specify actual values for the placeholders.
 The list must be named or unnamed,
 depending on the kind of placeholders used.
 Named values are matched to named parameters, unnamed values
-are matched by position.
+are matched by position in the list of parameters.
 All elements in this list must have the same lengths and contain values
 supported by the backend; a \link{data.frame} is internally stored as such
 a list.
@@ -83,6 +99,34 @@ the statement is processed entirely before the function returns.)
 }
 \item Repeat 2. and 3. as necessary.
 \item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+}
+
+
+The elements of the \code{params} argument do not need to be scalars,
+vectors of arbitrary length
+(including length 0)
+are supported.
+For queries, calling \code{dbFetch()} binding such parameters returns
+concatenated results, equivalent to binding and fetching for each set
+of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the
+total number of rows affected if binding non-scalar parameters.
+\code{dbBind()} also accepts repeated calls on the same result set
+for both queries
+and data manipulation statements,
+even if no results are fetched between calls to \code{dbBind()}.
+
+At least the following data types are accepted:
+\itemize{
+\item \link{integer}
+\item \link{numeric}
+\item \link{logical} for Boolean values (some backends may return an integer)
+\item \link{NA}
+\item \link{character}
+\item \link{Date}
+\item \link{POSIXct} timestamps
+\item \link{POSIXlt} timestamps
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
 }
 
 }

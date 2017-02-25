@@ -325,6 +325,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' - `$1` (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
 #' - `:name` and `$name` (named matching) in \pkg{RSQLite}
 #'
+#' @inherit DBItest::spec_meta_bind return
 #' @inheritSection DBItest::spec_meta_bind Specification
 #'
 #' @inheritParams dbClearResult

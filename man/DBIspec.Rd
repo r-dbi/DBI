@@ -400,6 +400,69 @@ the return value is unspecified after fetching n rows,
 but the result value is \code{TRUE} after trying to fetch only one more
 row.
 
+
+\pkg{DBI} clients execute parametrized statements as follows:
+\enumerate{
+\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+that contains placeholders,
+store the returned \link[DBI:DBIResult-class]{DBI::DBIResult} object in a variable.
+Mixing placeholders (in particular, named and unnamed ones) is not
+recommended.
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
+\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
+(see the last enumeration item).
+\item Construct a list with parameters
+that specify actual values for the placeholders.
+The list must be named or unnamed,
+depending on the kind of placeholders used.
+Named values are matched to named parameters, unnamed values
+are matched by position in the list of parameters.
+All elements in this list must have the same lengths and contain values
+supported by the backend; a \link{data.frame} is internally stored as such
+a list.
+The parameter list is passed to a call to \code{dbBind()} on the \code{DBIResult}
+object.
+\item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
+\itemize{
+\item For queries issued by \code{dbSendQuery()},
+call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+\item For statements issued by \code{dbSendStatements()},
+call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{dbBind()} call,
+the statement is processed entirely before the function returns.)
+}
+\item Repeat 2. and 3. as necessary.
+\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+}
+
+
+The elements of the \code{params} argument do not need to be scalars,
+vectors of arbitrary length
+(including length 0)
+are supported.
+For queries, calling \code{dbFetch()} binding such parameters returns
+concatenated results, equivalent to binding and fetching for each set
+of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the
+total number of rows affected if binding non-scalar parameters.
+\code{dbBind()} also accepts repeated calls on the same result set
+for both queries
+and data manipulation statements,
+even if no results are fetched between calls to \code{dbBind()}.
+
+At least the following data types are accepted:
+\itemize{
+\item \link{integer}
+\item \link{numeric}
+\item \link{logical} for Boolean values (some backends may return an integer)
+\item \link{NA}
+\item \link{character}
+\item \link{Date}
+\item \link{POSIXct} timestamps
+\item \link{POSIXlt} timestamps
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
+}
+
 }
 
 \section{Additional arguments}{
