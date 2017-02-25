@@ -246,11 +246,11 @@ setGeneric("dbGetRowsAffected",
 
 #' The number of rows fetched so far
 #'
-#' This value is increased by calls to [dbFetch()]. For a data
-#' modifying query, the return value is 0.
+#' This value is increased by calls to [dbFetch()].
+#'
+#' @inherit DBItest::spec_meta_get_row_count return
 #'
 #' @inheritParams dbClearResult
-#' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
 #' @examples
