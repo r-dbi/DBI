@@ -221,11 +221,11 @@ setGeneric("dbHasCompleted",
 #' The number of rows affected
 #'
 #' This function returns the number of rows that were added, deleted, or updated
-#' by a data manipulation statement. For a selection query, this function
-#' returns 0.
+#' by a data manipulation statement.
+#'
+#' @inherit DBItest::spec_meta_get_rows_affected return
 #'
 #' @inheritParams dbClearResult
-#' @return a numeric vector of length 1
 #' @family DBIResult generics
 #' @export
 #' @examples
