@@ -243,7 +243,7 @@ The column types of the returned data frame depend on the data returned:
 \item \link{numeric} for numbers with a fractional component
 \item \link{logical} for Boolean values (some backends may return an integer)
 \item \link{character} for text
-\item lists of \link{raw} for blobs
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
 \item coercible using \code{\link[=as.Date]{as.Date()}} for dates
 (also applies to the return value of the SQL function \code{current_date})
 \item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times

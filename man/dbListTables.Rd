@@ -21,9 +21,10 @@ in the database.
 Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
 are part of the list,
 including temporary tables if supported by the database.
-The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 As soon a table is removed from the database,
 it is also removed from the list of database tables.
+
+The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
 This should, where possible, include temporary tables, and views.
