@@ -1,33 +1,52 @@
 #' Begin/commit/rollback SQL transactions
 #'
+#' A transaction encapsulates several SQL statements in an atomic unit.
+#' It is initiated with `dbBegin()` and either made persistent with `dbCommit()`
+#' or undone with `dbRollback()`.
+#' In any case, the DBMS guarantees that either all or none of the statements
+#' have a permanent effect.
+#' This helps ensuring consistency of write operations to multiple tables.
+#'
 #' Not all database engines implement transaction management, in which case
 #' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
+#' [DBIConnection-class] subclass.
 #'
-#' @section Side Effects:
-#' The current transaction on the connection `con` is committed or rolled
-#' back.
+#' @inherit DBItest::spec_transaction_begin_commit_rollback return
+#' @inheritSection DBItest::spec_transaction_begin_commit_rollback Specification
 #'
 #' @inheritParams dbGetQuery
-#' @return a logical indicating whether the operation succeeded or not.
 #' @seealso Self-contained transactions: [dbWithTransaction()]
 #' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if (dbGetRowsAffected(rs) > 250) {
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' } else {
+#' dbWriteTable(con, "cash", data.frame(amount = 100))
+#' dbWriteTable(con, "account", data.frame(amount = 2000))
+#'
+#' # All operations are carried out as logical unit:
+#' dbBegin(con)
+#' withdrawal <- 300
+#' dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#' dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#' dbCommit(con)
+#'
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
+#' # Rolling back after detecting negative value on account:
+#' dbBegin(con)
+#' withdrawal <- 5000
+#' dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#' dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#' if (dbReadTable(con, "account")$amount >= 0) {
 #'   dbCommit(con)
+#' } else {
+#'   dbRollback(con)
 #' }
 #'
-#' dbClearResult(rs)
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
 #' dbDisconnect(con)
-#' }
 #' @name transactions
 NULL
 
