@@ -72,59 +72,65 @@ setGeneric("dbRollback",
 #'
 #' Given that \link{transactions} are implemented, this function
 #' allows you to pass in code that is run in a transaction.
-#' The default method of `dbWithTransaction` calls [dbBegin()]
+#' The default method of `dbWithTransaction()` calls [dbBegin()]
 #' before executing the code,
 #' and [dbCommit()] after successful completion,
 #' or [dbRollback()] in case of an error.
 #' The advantage is
-#' that you don't have to remember to do `dbBegin` and `dbCommit` or
-#' `dbRollback` -- that is all taken care of.
-#' The special function `dbBreak` allows an early exit with rollback,
-#' it can be called only inside `dbWithTransaction`.
+#' that you don't have to remember to do `dbBegin()` and `dbCommit()` or
+#' `dbRollback()` -- that is all taken care of.
+#' The special function `dbBreak()` allows an early exit with rollback,
+#' it can be called only inside `dbWithTransaction()`.
 #'
-#' @section Side Effects:
-#' The transaction in `code` on the connection `conn` is committed
-#' or rolled back. The `code` chunk may also modify the local R
-#' environment.
+#' DBI implements `dbWithTransaction()`, backends should need to override this
+#' generic only if they implement specialized handling.
+
+#' @inherit DBItest::spec_transaction_with_transaction return
+#' @inheritSection DBItest::spec_transaction_with_transaction Specification
 #'
 #' @inheritParams dbGetQuery
-#' @param code An arbitrary block of R code
+#' @param code An arbitrary block of R code.
 #'
-#' @return The result of the evaluation of `code`
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
-#' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there are 3 rows
+#' dbWriteTable(con, "cash", data.frame(amount = 100))
+#' dbWriteTable(con, "account", data.frame(amount = 2000))
 #'
-#' ## successful transaction
-#' dbWithTransaction(con, {
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # there are now 6 rows
-#'
-#' ## failed transaction -- note the missing comma
-#' tryCatch(
-#'   dbWithTransaction(con, {
-#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'     dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#'   }),
-#'   error = identity
+#' # All operations are carried out as logical unit:
+#' dbWithTransaction(
+#'   con,
+#'   {
+#'     withdrawal <- 300
+#'     dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#'     dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#'   }
 #' )
-#' dbReadTable(con, "cars")   # still 6 rows
 #'
-#' ## early exit, silently
-#' dbWithTransaction(con, {
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-#'   if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # still 6 rows
+#' # The code is executed as if in the curent environment:
+#' withdrawal
+#'
+#' # The changes are committed to the database after successful execution:
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
+#' # Rolling back with dbBreak():
+#' dbWithTransaction(
+#'   con,
+#'   {
+#'     withdrawal <- 5000
+#'     dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#'     dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#'     if (dbReadTable(con, "account")$amount < 0) {
+#'       dbBreak()
+#'     }
+#'   }
+#' )
+#'
+#' # These changes were not committed to the database:
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
 #'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",

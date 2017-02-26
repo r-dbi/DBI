@@ -13,66 +13,89 @@ dbBreak()
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{code}{An arbitrary block of R code}
+\item{code}{An arbitrary block of R code.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-The result of the evaluation of \code{code}
+\code{dbWithTransaction()} returns the value of the executed code.
+Failure to initiate the transaction
+(e.g., if the connection is closed
+of if \code{\link[=dbBegin]{dbBegin()}} has been called already)
+gives an error.
 }
 \description{
 Given that \link{transactions} are implemented, this function
 allows you to pass in code that is run in a transaction.
-The default method of \code{dbWithTransaction} calls \code{\link[=dbBegin]{dbBegin()}}
+The default method of \code{dbWithTransaction()} calls \code{\link[=dbBegin]{dbBegin()}}
 before executing the code,
 and \code{\link[=dbCommit]{dbCommit()}} after successful completion,
 or \code{\link[=dbRollback]{dbRollback()}} in case of an error.
 The advantage is
-that you don't have to remember to do \code{dbBegin} and \code{dbCommit} or
-\code{dbRollback} -- that is all taken care of.
-The special function \code{dbBreak} allows an early exit with rollback,
-it can be called only inside \code{dbWithTransaction}.
+that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or
+\code{dbRollback()} -- that is all taken care of.
+The special function \code{dbBreak()} allows an early exit with rollback,
+it can be called only inside \code{dbWithTransaction()}.
 }
-\section{Side Effects}{
+\details{
+DBI implements \code{dbWithTransaction()}, backends should need to override this
+generic only if they implement specialized handling.
+}
+\section{Specification}{
 
-The transaction in \code{code} on the connection \code{conn} is committed
-or rolled back. The \code{code} chunk may also modify the local R
-environment.
+
+\code{dbWithTransaction()} initiates a transaction with \code{dbBegin()}, executes
+the code given in the \code{code} argument, and commits the transaction with
+\code{\link[=dbCommit]{dbCommit()}}.
+If the code raises an error, the transaction is instead aborted with
+\code{\link[=dbRollback]{dbRollback()}}, and the error is propagated.
+If the code calls \code{dbBreak()}, execution of the code stops and the
+transaction is silently aborted.
+All side effects caused by the code
+(such as the creation of new variables)
+propagate to the calling environment.
+
 }
 
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
-dbWriteTable(con, "cars", head(cars, 3))
-dbReadTable(con, "cars")   # there are 3 rows
+dbWriteTable(con, "cash", data.frame(amount = 100))
+dbWriteTable(con, "account", data.frame(amount = 2000))
 
-## successful transaction
-dbWithTransaction(con, {
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-})
-dbReadTable(con, "cars")   # there are now 6 rows
-
-## failed transaction -- note the missing comma
-tryCatch(
-  dbWithTransaction(con, {
-    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-    dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-    dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-  }),
-  error = identity
+# All operations are carried out as logical unit:
+dbWithTransaction(
+  con,
+  {
+    withdrawal <- 300
+    dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+    dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+  }
 )
-dbReadTable(con, "cars")   # still 6 rows
 
-## early exit, silently
-dbWithTransaction(con, {
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-  if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
-  dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-})
-dbReadTable(con, "cars")   # still 6 rows
+# The code is executed as if in the curent environment:
+withdrawal
+
+# The changes are committed to the database after successful execution:
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
+
+# Rolling back with dbBreak():
+dbWithTransaction(
+  con,
+  {
+    withdrawal <- 5000
+    dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+    dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+    if (dbReadTable(con, "account")$amount < 0) {
+      dbBreak()
+    }
+  }
+)
+
+# These changes were not committed to the database:
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
 
 dbDisconnect(con)
 }

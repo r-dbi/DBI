@@ -459,6 +459,18 @@ if the \code{name} argument is set.
 
 The transaction isolation level is not specified by DBI.
 
+
+\code{dbWithTransaction()} initiates a transaction with \code{dbBegin()}, executes
+the code given in the \code{code} argument, and commits the transaction with
+\code{\link[=dbCommit]{dbCommit()}}.
+If the code raises an error, the transaction is instead aborted with
+\code{\link[=dbRollback]{dbRollback()}}, and the error is propagated.
+If the code calls \code{dbBreak()}, execution of the code stops and the
+transaction is silently aborted.
+All side effects caused by the code
+(such as the creation of new variables)
+propagate to the calling environment.
+
 }
 
 \section{Additional arguments}{
