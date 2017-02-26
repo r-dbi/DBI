@@ -102,7 +102,7 @@ The transaction isolation level is not specified by DBI.
 \section{Specification}{
 
 
-The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
+The backend can override the \code{\link[=dbDataType]{dbDataType()}} generic
 for its driver class.
 
 This generic expects an arbitrary object as second argument.
@@ -144,7 +144,7 @@ No warnings occur under normal conditions.
 The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
 \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\code{\link[=dbClearResult]{dbClearResult()}}.
 Failure to clear the result set leads to a warning
 when the connection is closed.
 
@@ -208,7 +208,7 @@ of the data
 \code{dbClearResult()} frees all resources associated with retrieving
 the result of a query or update operation.
 The DBI backend can expect a call to \code{dbClearResult()} for each
-\code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} call.
+\code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} call.
 
 
 Fetching multi-row queries with one
@@ -227,7 +227,7 @@ No warnings occur under normal conditions.
 The DBIResult object returned by \code{dbSendStatement()} must be valid, i.e.,
 \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\code{\link[=dbClearResult]{dbClearResult()}}.
 Failure to clear the result set leads to a warning
 when the connection is closed.
 If the backend supports only one open result set per connection,
@@ -261,7 +261,7 @@ so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
 
 
-Calling \code{\link[DBI:dbGetQuery]{DBI::dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like \code{SELECT 1 AS ...}
@@ -344,7 +344,7 @@ with time zone support)
 }
 
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
-see \code{\link[DBI:sqlRownamesToColumn]{DBI::sqlRownamesToColumn()}} for details:
+see \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
 \itemize{
 \item If \code{FALSE}, row names are ignored.
 \item If \code{TRUE}, row names are converted to a column named "row_names",
@@ -403,12 +403,12 @@ row.
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} with a query or statement
 that contains placeholders,
-store the returned \link[DBI:DBIResult-class]{DBI::DBIResult} object in a variable.
+store the returned \linkS4class{DBIResult} object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
-It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
+It is good practice to register a call to \code{\link[=dbClearResult]{dbClearResult()}} via
 \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
 (see the last enumeration item).
 \item Construct a list with parameters
@@ -425,14 +425,14 @@ object.
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
 \item For queries issued by \code{dbSendQuery()},
-call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+call \code{\link[=dbFetch]{dbFetch()}}.
 \item For statements issued by \code{dbSendStatements()},
-call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
 (Execution begins immediately after the \code{dbBind()} call,
 the statement is processed entirely before the function returns.)
 }
 \item Repeat 2. and 3. as necessary.
-\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 
 

@@ -24,7 +24,7 @@ An error is returned if the table does not exist.
 An empty table is returned as a data frame with zero rows.
 
 The presence of \link{rownames} depends on the \code{row.names} argument,
-see \code{\link[DBI:sqlColumnToRownames]{DBI::sqlColumnToRownames()}} for details:
+see \code{\link[=sqlColumnToRownames]{sqlColumnToRownames()}} for details:
 \itemize{
 \item If \code{FALSE}, the returned data frame doesn't have row names.
 \item If \code{TRUE}, a column named "row_names" is converted to row names,

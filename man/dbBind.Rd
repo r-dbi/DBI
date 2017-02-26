@@ -16,9 +16,9 @@ dbBind(res, params, ...)
 \value{
 \code{dbBind()} returns the result set,
 invisibly,
-for queries issued by \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}}
+for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}}
 and also for data manipulation statements issued by
-\code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}.
+\code{\link[=dbSendStatement]{dbSendStatement()}}.
 Calling \code{dbBind()} for a query without parameters
 raises an error.
 Binding too many
@@ -69,12 +69,12 @@ Known examples are:
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} with a query or statement
+\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} with a query or statement
 that contains placeholders,
-store the returned \link[DBI:DBIResult-class]{DBI::DBIResult} object in a variable.
+store the returned \linkS4class{DBIResult} object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
-It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
+It is good practice to register a call to \code{\link[=dbClearResult]{dbClearResult()}} via
 \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
 (see the last enumeration item).
 \item Construct a list with parameters
@@ -91,14 +91,14 @@ object.
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
 \item For queries issued by \code{dbSendQuery()},
-call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
+call \code{\link[=dbFetch]{dbFetch()}}.
 \item For statements issued by \code{dbSendStatements()},
-call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
 (Execution begins immediately after the \code{dbBind()} call,
 the statement is processed entirely before the function returns.)
 }
 \item Repeat 2. and 3. as necessary.
-\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 
 

@@ -113,7 +113,7 @@ with time zone support)
 }
 
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
-see \code{\link[DBI:sqlRownamesToColumn]{DBI::sqlRownamesToColumn()}} for details:
+see \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
 \itemize{
 \item If \code{FALSE}, row names are ignored.
 \item If \code{TRUE}, row names are converted to a column named "row_names",
