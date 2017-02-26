@@ -16,10 +16,10 @@ dbSendQuery(conn, statement, ...)
 }
 \value{
 \code{dbSendQuery()} returns
-an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult}.
-The result set can be used with \code{\link[DBI:dbFetch]{DBI::dbFetch()}} to extract records.
+an S4 object that inherits from \linkS4class{DBIResult}.
+The result set can be used with \code{\link[=dbFetch]{dbFetch()}} to extract records.
 Once you have finished using a result, make sure to disconnect it
-with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+with \code{\link[=dbClearResult]{dbClearResult()}}.
 An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
@@ -56,7 +56,7 @@ No warnings occur under normal conditions.
 The DBIResult object returned by \code{dbSendQuery()} must be valid, i.e.,
 \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\code{\link[=dbClearResult]{dbClearResult()}}.
 Failure to clear the result set leads to a warning
 when the connection is closed.
 

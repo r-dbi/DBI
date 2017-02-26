@@ -31,7 +31,7 @@ If the \code{n} argument is not an atomic whole number
 greater or equal to -1, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 Calling \code{dbFetch()} on a result set from a data manipulation query
-created by \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}
+created by \code{\link[=dbSendStatement]{dbSendStatement()}}
 can be fetched and return an empty data frame, with a warning.
 }
 \description{

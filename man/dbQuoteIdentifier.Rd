@@ -24,8 +24,8 @@ but not for an empty string.
 When passing the returned object again to \code{dbQuoteIdentifier()}
 as \code{x}
 argument, it is returned unchanged.
-Passing objects of class \link[DBI:SQL]{DBI::SQL} should also return them unchanged.
-(For backends it may be most convenient to return \link[DBI:SQL]{DBI::SQL} objects
+Passing objects of class \link{SQL} should also return them unchanged.
+(For backends it may be most convenient to return \link{SQL} objects
 to achieve this behavior, but this is not required.)
 }
 \description{
@@ -36,7 +36,7 @@ generate valid SQL and avoid SQL injection.
 \section{Specification}{
 
 
-Calling \code{\link[DBI:dbGetQuery]{DBI::dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like \code{SELECT 1 AS ...}
