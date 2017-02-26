@@ -32,11 +32,25 @@ to the package author to adopt this convention or not.
 
 }
 
-\section{Driver}{
+\section{DBI classes and methods}{
 
 
-\subsection{Construction}{
-The backend must support creation of an instance of this driver class
+A backend defines three classes,
+which are subclasses of
+\linkS4class{DBIDriver},
+\linkS4class{DBIConnection},
+and \linkS4class{DBIResult}.
+The backend provides implementation for all methods defined for these
+base classes, but not provided by DBI.
+All methods have an ellipsis \code{...} in their formals.
+
+}
+
+\section{Construction of the \code{DBIDriver} object}{
+
+
+The backend must support creation of an instance of its \linkS4class{DBIDriver}
+subclass
 with a \dfn{constructor function}.
 By default, its name is the package name without the leading \sQuote{R}
 (if it exists), e.g., \code{SQLite} for the \pkg{RSQLite} package.
@@ -51,14 +65,6 @@ For the automated tests, unless the
 an empty argument list is expected.
 Otherwise, an argument list where all arguments have default values
 is also accepted.
-
-}
-
-
-Each DBI backend implements a \dfn{driver class},
-which must be an S4 class and inherit from the \code{DBIDriver} class.
-This section describes the construction of, and the methods defined for,
-this driver class.
 
 }
 
