@@ -41,7 +41,7 @@ problems with under/overflows and loss of precision.
 \section{Specification}{
 
 
-The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
+The backend can override the \code{\link[=dbDataType]{dbDataType()}} generic
 for its driver class.
 
 This generic expects an arbitrary object as second argument.

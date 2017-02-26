@@ -1,33 +1,52 @@
 #' Begin/commit/rollback SQL transactions
 #'
+#' A transaction encapsulates several SQL statements in an atomic unit.
+#' It is initiated with `dbBegin()` and either made persistent with `dbCommit()`
+#' or undone with `dbRollback()`.
+#' In any case, the DBMS guarantees that either all or none of the statements
+#' have a permanent effect.
+#' This helps ensuring consistency of write operations to multiple tables.
+#'
 #' Not all database engines implement transaction management, in which case
 #' these methods should not be implemented for the specific
-#' \code{\linkS4class{DBIConnection}} subclass.
+#' [DBIConnection-class] subclass.
 #'
-#' @section Side Effects:
-#' The current transaction on the connection `con` is committed or rolled
-#' back.
+#' @inherit DBItest::spec_transaction_begin_commit_rollback return
+#' @inheritSection DBItest::spec_transaction_begin_commit_rollback Specification
 #'
 #' @inheritParams dbGetQuery
-#' @return a logical indicating whether the operation succeeded or not.
 #' @seealso Self-contained transactions: [dbWithTransaction()]
 #' @examples
-#' \dontrun{
-#' ora <- dbDriver("Oracle")
-#' con <- dbConnect(ora)
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
-#' rs <- dbSendQuery(con,
-#'       "delete * from PURGE as p where p.wavelength<0.03")
-#' if (dbGetRowsAffected(rs) > 250) {
-#'   warning("dubious deletion -- rolling back transaction")
-#'   dbRollback(con)
-#' } else {
+#' dbWriteTable(con, "cash", data.frame(amount = 100))
+#' dbWriteTable(con, "account", data.frame(amount = 2000))
+#'
+#' # All operations are carried out as logical unit:
+#' dbBegin(con)
+#' withdrawal <- 300
+#' dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#' dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#' dbCommit(con)
+#'
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
+#' # Rolling back after detecting negative value on account:
+#' dbBegin(con)
+#' withdrawal <- 5000
+#' dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#' dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#' if (dbReadTable(con, "account")$amount >= 0) {
 #'   dbCommit(con)
+#' } else {
+#'   dbRollback(con)
 #' }
 #'
-#' dbClearResult(rs)
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
 #' dbDisconnect(con)
-#' }
 #' @name transactions
 NULL
 
@@ -53,59 +72,65 @@ setGeneric("dbRollback",
 #'
 #' Given that \link{transactions} are implemented, this function
 #' allows you to pass in code that is run in a transaction.
-#' The default method of `dbWithTransaction` calls [dbBegin()]
+#' The default method of `dbWithTransaction()` calls [dbBegin()]
 #' before executing the code,
 #' and [dbCommit()] after successful completion,
 #' or [dbRollback()] in case of an error.
 #' The advantage is
-#' that you don't have to remember to do `dbBegin` and `dbCommit` or
-#' `dbRollback` -- that is all taken care of.
-#' The special function `dbBreak` allows an early exit with rollback,
-#' it can be called only inside `dbWithTransaction`.
+#' that you don't have to remember to do `dbBegin()` and `dbCommit()` or
+#' `dbRollback()` -- that is all taken care of.
+#' The special function `dbBreak()` allows an early exit with rollback,
+#' it can be called only inside `dbWithTransaction()`.
 #'
-#' @section Side Effects:
-#' The transaction in `code` on the connection `conn` is committed
-#' or rolled back. The `code` chunk may also modify the local R
-#' environment.
+#' DBI implements `dbWithTransaction()`, backends should need to override this
+#' generic only if they implement specialized handling.
+
+#' @inherit DBItest::spec_transaction_with_transaction return
+#' @inheritSection DBItest::spec_transaction_with_transaction Specification
 #'
 #' @inheritParams dbGetQuery
-#' @param code An arbitrary block of R code
+#' @param code An arbitrary block of R code.
 #'
-#' @return The result of the evaluation of `code`
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
-#' dbWriteTable(con, "cars", head(cars, 3))
-#' dbReadTable(con, "cars")   # there are 3 rows
+#' dbWriteTable(con, "cash", data.frame(amount = 100))
+#' dbWriteTable(con, "account", data.frame(amount = 2000))
 #'
-#' ## successful transaction
-#' dbWithTransaction(con, {
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # there are now 6 rows
-#'
-#' ## failed transaction -- note the missing comma
-#' tryCatch(
-#'   dbWithTransaction(con, {
-#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'     dbExecute(con, "INSERT INTO cars (speed dist) VALUES (2, 2);")
-#'     dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#'   }),
-#'   error = identity
+#' # All operations are carried out as logical unit:
+#' dbWithTransaction(
+#'   con,
+#'   {
+#'     withdrawal <- 300
+#'     dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#'     dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#'   }
 #' )
-#' dbReadTable(con, "cars")   # still 6 rows
 #'
-#' ## early exit, silently
-#' dbWithTransaction(con, {
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (1, 1);")
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (2, 2);")
-#'   if (nrow(dbReadTable(con, "cars")) > 7) dbBreak()
-#'   dbExecute(con, "INSERT INTO cars (speed, dist) VALUES (3, 3);")
-#' })
-#' dbReadTable(con, "cars")   # still 6 rows
+#' # The code is executed as if in the curent environment:
+#' withdrawal
+#'
+#' # The changes are committed to the database after successful execution:
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
+#'
+#' # Rolling back with dbBreak():
+#' dbWithTransaction(
+#'   con,
+#'   {
+#'     withdrawal <- 5000
+#'     dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+#'     dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+#'     if (dbReadTable(con, "account")$amount < 0) {
+#'       dbBreak()
+#'     }
+#'   }
+#' )
+#'
+#' # These changes were not committed to the database:
+#' dbReadTable(con, "cash")
+#' dbReadTable(con, "account")
 #'
 #' dbDisconnect(con)
 setGeneric("dbWithTransaction",
