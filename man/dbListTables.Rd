@@ -7,18 +7,42 @@
 dbListTables(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a character vector. If no tables present, a character vector
-of length 0.
+\code{dbListTables()}
+returns a character vector
+that enumerates all tables
+and views
+in the database.
+Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
+are part of the list,
+including temporary tables if supported by the database.
+As soon a table is removed from the database,
+it is also removed from the list of database tables.
+
+The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
-This should, where possible, include temporary tables.
+This should, where possible, include temporary tables, and views.
 }
+\section{Additional arguments}{
+
+
+TBD (schema support).
+
+}
+
+\section{Specification}{
+
+
+TBD (schema support).
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -36,5 +60,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

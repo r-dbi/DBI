@@ -33,6 +33,13 @@ Each driver will define what other arguments are required, e.g.,
 \code{"dbname"} for the database name, \code{"username"}, and
 \code{"password"}.
 }
+\section{Specification}{
+
+
+DBI specifies only the return type for \code{dbConnect()}.
+
+}
+
 \examples{
 # SQLite only needs a path to the database. Other database drivers
 # will require more details (like username, password, host, port etc)

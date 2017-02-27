@@ -2,36 +2,94 @@
 % Please edit documentation in R/DBConnection.R
 \name{dbReadTable}
 \alias{dbReadTable}
-\alias{dbWriteTable}
-\title{Copy data frames to and from database tables}
+\title{Copy data frames from database tables}
 \usage{
 dbReadTable(conn, name, ...)
-
-dbWriteTable(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{A character string specifying a DBMS table name.}
+\item{name}{A character string specifying the unquoted DBMS table name,
+a list specifying arguments to a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+(excluding the first \code{conn} argument), or the result of such a call}
 
 \item{...}{Other parameters passed on to methods.}
-
-\item{value}{a data.frame (or coercible to data.frame).}
 }
 \value{
-a data.frame.
+\code{dbReadTable()} returns a data frame that contains the complete data
+from the remote table, effectively the result of calling \code{\link[=dbGetQuery]{dbGetQuery()}}
+with \code{SELECT * FROM <name>}.
+An error is returned if the table does not exist.
+An empty table is returned as a data frame with zero rows.
+
+The presence of \link{rownames} depends on the \code{row.names} argument,
+see \code{\link[=sqlColumnToRownames]{sqlColumnToRownames()}} for details:
+\itemize{
+\item If \code{FALSE}, the returned data frame doesn't have row names.
+\item If \code{TRUE}, a column named "row_names" is converted to row names,
+an error is raised if no such column exists.
+\item If \code{NA}, a column named "row_names" is converted to row names if it exists,
+otherwise no translation occurs.
+\item If a string, this specifies the name of the column in the remote table
+that contains the row names,
+an error is raised if no such column exists.
+}
+
+If the database supports identifiers with special characters,
+the columns in the returned data frame are converted to valid R
+identifiers if the \code{make.names} argument is \code{TRUE},
+otherwise non-syntactic column names can be returned unquoted.
+
+An error is raised
+if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+or if this results in a non-scalar.
+Unsupported values for \code{row.names} and \code{check.names}
+(non-scalars,
+unsupported data types,
+\code{NA} for \code{check.names})
+also raise an error.
 }
 \description{
-\code{dbReadTable}: database table -> data frame; \code{dbWriteTable}:
-data frame -> database table.
+Reads a database table to a data frame, optionally converting
+a column to row names and converting the column names to valid
+R identifiers.
 }
 \note{
-The translation of identifiers between R and SQL is done through calls
-to \code{\link[=make.names]{make.names()}} and \code{\link[=make.db.names]{make.db.names()}}, but we cannot
-guarantee that the conversion is reversible.  For details see
-\code{\link[=make.db.names]{make.db.names()}}.
+The default DBI implementation converts column names with a call to
+\code{\link[=make.names]{make.names()}} if \code{check.names} is \code{TRUE}.
 }
+\section{Additional arguments}{
+
+
+The following arguments are not part of the \code{dbReadTable()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{row.names}
+\item \code{check.names}
+}
+
+They must be provided as named arguments.
+See the "Value" section for details on their usage.
+
+}
+
+\section{Specification}{
+
+
+The \code{name} argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+\itemize{
+\item If an unquoted table name as string: \code{dbReadTable()} will do the
+quoting,
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
+so that all optional arguments are passed along
+\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+}
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -48,5 +106,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
   \code{\link{dbListFields}}, \code{\link{dbListResults}},
   \code{\link{dbListTables}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

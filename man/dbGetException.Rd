@@ -7,7 +7,7 @@
 dbGetException(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
@@ -28,5 +28,6 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
   \code{\link{dbListResults}}, \code{\link{dbListTables}},
   \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }

@@ -12,14 +12,27 @@ dbClearResult(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a logical indicating whether clearing the
-result set was successful or not.
+\code{dbClearResult()} returns \code{TRUE}, invisibly, for result sets obtained from
+both \code{dbSendQuery()}
+and \code{dbSendStatement()}.
+An attempt to close an already closed result set issues a warning
+in both cases.
 }
 \description{
 Frees all resources (local and remote) associated with a result set.  In some
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)
 }
+\section{Specification}{
+
+
+\code{dbClearResult()} frees all resources associated with retrieving
+the result of a query or update operation.
+The DBI backend can expect a call to \code{dbClearResult()} for each
+\code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} call.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -31,10 +44,12 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{SQL}}, \code{\link{dbBind}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
+  \code{\link{dbBind}}, \code{\link{dbColumnInfo}},
+  \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
+  \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbQuoteString}}
 }

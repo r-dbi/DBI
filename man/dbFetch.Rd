@@ -10,7 +10,8 @@ dbFetch(res, n = -1, ...)
 fetch(res, n = -1, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}, created by
+\code{\link[=dbSendQuery]{dbSendQuery()}}.}
 
 \item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1}
 to retrieve all pending records.  Some implementations may recognize other
@@ -19,8 +20,19 @@ special values.}
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a data.frame with as many rows as records were fetched and as many
-columns as fields in the result set.
+\code{dbFetch()} always returns a \link{data.frame}
+with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+An attempt to fetch from a closed result set raises an error.
+If the \code{n} argument is not an atomic whole number
+greater or equal to -1, an error is raised,
+but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
+Calling \code{dbFetch()} on a result set from a data manipulation query
+created by \code{\link[=dbSendStatement]{dbSendStatement()}}
+can be fetched and return an empty data frame, with a warning.
 }
 \description{
 Fetch the next \code{n} elements (rows) from the result set and return them
@@ -33,6 +45,62 @@ method for \code{dbFetch} calls \code{fetch} so that it is compatible with
 existing code. Implementors are free to provide methods for \code{dbFetch}
 only.
 }
+\section{Specification}{
+
+
+Fetching multi-row queries with one
+or more columns be default returns the entire result.
+Multi-row queries can also be fetched progressively
+by passing a whole number (\link{integer}
+or \link{numeric})
+as the \code{n} argument.
+A value of \link{Inf} for the \code{n} argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued when clearing the result set.
+
+
+
+
+The column types of the returned data frame depend on the data returned:
+\itemize{
+\item \link{integer} for integer values between -2^31 and 2^31 - 1
+\item \link{numeric} for numbers with a fractional component
+\item \link{logical} for Boolean values (some backends may return an integer)
+\item \link{character} for text
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
+\item coercible using \code{\link[=as.Date]{as.Date()}} for dates
+(also applies to the return value of the SQL function \code{current_date})
+\item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times
+(also applies to the return value of the SQL function \code{current_time})
+\item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps
+(also applies to the return value of the SQL function \code{current_timestamp})
+\item \link{NA} for SQL \code{NULL} values
+}
+
+If dates and timestamps are supported by the backend, the following R types are
+used:
+\itemize{
+\item \link{Date} for dates
+(also applies to the return value of the SQL function \code{current_date})
+\item \link{POSIXct} for timestamps
+(also applies to the return value of the SQL function \code{current_timestamp})
+}
+
+R has no built-in type with lossless support for the full range of 64-bit
+or larger integers. Here, the following rules apply:
+\itemize{
+\item Values are returned as numeric
+\item Conversion to character always returns a lossless decimal representation
+of the data
+}
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -54,14 +122,16 @@ dbClearResult(rs)
 dbDisconnect(con)
 }
 \seealso{
-close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
+Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
 finish retrieving the records you want.
 
 Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{SQL}}, \code{\link{dbBind}},
-  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
+  \code{\link{dbBind}}, \code{\link{dbClearResult}},
+  \code{\link{dbColumnInfo}}, \code{\link{dbGetInfo}},
+  \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbQuoteString}}
 }

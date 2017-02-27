@@ -12,7 +12,11 @@ dbGetStatement(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-a character vector
+\code{dbGetStatement()} returns a string, the query used in
+either \code{\link[=dbSendQuery]{dbSendQuery()}}
+or \code{\link[=dbSendStatement]{dbSendStatement()}}.
+Attempting to query the statement for a result set cleared with
+\code{\link[=dbClearResult]{dbClearResult()}} gives an error.
 }
 \description{
 Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}.
@@ -29,10 +33,11 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{SQL}}, \code{\link{dbBind}},
-  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
-  \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetRowCount}},
+  \code{\link{dbBind}}, \code{\link{dbClearResult}},
+  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
+  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}}
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
+  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbQuoteString}}
 }

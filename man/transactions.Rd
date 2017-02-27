@@ -14,42 +14,104 @@ dbCommit(conn, ...)
 dbRollback(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as produced by
+\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a logical indicating whether the operation succeeded or not.
+\code{dbBegin()}, \code{dbCommit()} and \code{dbRollback()} return \code{TRUE}, invisibly.
+The implementations are expected to raise an error in case of failure,
+but this is difficult to test in an automated way.
+In any way, all generics throw an error with a closed connection.
+In addition, a call to \code{dbCommit()}
+or \code{dbRollback()}
+without a prior call to \code{dbBegin()} raises an error.
+Nested transactions are not supported by DBI,
+an attempt to call \code{dbBegin()} twice
+yields an error.
 }
 \description{
+A transaction encapsulates several SQL statements in an atomic unit.
+It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
+or undone with \code{dbRollback()}.
+In any case, the DBMS guarantees that either all or none of the statements
+have a permanent effect.
+This helps ensuring consistency of write operations to multiple tables.
+}
+\details{
 Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
-\code{\linkS4class{DBIConnection}} subclass.
+\linkS4class{DBIConnection} subclass.
 }
-\section{Side Effects}{
+\section{Specification}{
 
-The current transaction on the connection \code{con} is committed or rolled
-back.
+
+Actual support for transactions may vary between backends.
+A transaction is initiated by a call to \code{dbBegin()}
+and committed by a call to \code{dbCommit()}.
+Data written in a transaction must persist after the transaction is committed.
+For example, a table that is missing when the transaction is started
+but is created
+and populated during the transaction
+must exist and contain the data added there
+both during
+and after the transaction,
+and also in a new connection.
+
+A transaction
+can also be aborted with \code{dbRollback()}.
+All data written in such a transaction must be removed after the
+transaction is rolled back.
+For example, a table that is missing when the transaction is started
+but is created during the transaction
+must not exist anymore after the rollback.
+
+Disconnection from a connection with an open transaction
+gives a warning
+and effectively rolls back the transaction.
+All data written in such a transaction must be removed after the
+transaction is rolled back.
+
+The behavior is not specified if other arguments are passed to these
+functions. In particular, \pkg{RSQLite} issues named transactions
+if the \code{name} argument is set.
+
+The transaction isolation level is not specified by DBI.
+
 }
 
 \examples{
-\dontrun{
-ora <- dbDriver("Oracle")
-con <- dbConnect(ora)
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
-rs <- dbSendQuery(con,
-      "delete * from PURGE as p where p.wavelength<0.03")
-if (dbGetRowsAffected(rs) > 250) {
-  warning("dubious deletion -- rolling back transaction")
-  dbRollback(con)
-} else {
+dbWriteTable(con, "cash", data.frame(amount = 100))
+dbWriteTable(con, "account", data.frame(amount = 2000))
+
+# All operations are carried out as logical unit:
+dbBegin(con)
+withdrawal <- 300
+dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+dbCommit(con)
+
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
+
+# Rolling back after detecting negative value on account:
+dbBegin(con)
+withdrawal <- 5000
+dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+if (dbReadTable(con, "account")$amount >= 0) {
   dbCommit(con)
+} else {
+  dbRollback(con)
 }
 
-dbClearResult(rs)
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
+
 dbDisconnect(con)
-}
 }
 \seealso{
 Self-contained transactions: \code{\link[=dbWithTransaction]{dbWithTransaction()}}
