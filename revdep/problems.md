@@ -18,6 +18,7 @@
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
 |DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
+|hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
@@ -27,37 +28,37 @@
 
 29 packages with problems
 
-|package           |version   | errors| warnings| notes|
-|:-----------------|:---------|------:|--------:|-----:|
-|annmap            |1.16.0    |      0|        2|     5|
-|AnnotationDbi     |1.36.2    |      0|        1|     5|
-|ChemmineR         |2.26.1    |      1|        0|     0|
-|ChIPpeakAnno      |3.8.9     |      0|        1|     2|
-|cn.farms          |1.22.0    |      1|        0|     1|
-|convey            |0.1.0     |      1|        0|     0|
-|eiR               |1.14.1    |      1|        2|     6|
-|GOFunction        |1.22.0    |      0|        1|     5|
-|lumi              |2.26.4    |      0|        1|     3|
-|mgsa              |1.22.0    |      0|        1|     4|
-|oce               |0.9-20    |      1|        0|     1|
-|oligo             |1.38.0    |      1|        0|     9|
-|ora               |2.0-1     |      1|        0|     0|
-|PAnnBuilder       |1.38.0    |      0|        3|     1|
-|plethy            |1.12.1    |      1|        0|     0|
-|poplite           |0.99.17.3 |      1|        0|     0|
-|postGIStools      |0.2.1     |      1|        0|     0|
-|RImmPort          |1.2.0     |      0|        1|     1|
-|rnaSeqMap         |2.32.0    |      0|        1|     4|
-|ROracle           |1.3-1     |      1|        0|     0|
-|RQDA              |0.2-8     |      1|        0|     1|
-|RSQLite           |1.1-2     |      1|        0|     1|
-|sf                |0.3-4     |      1|        0|     1|
-|specL             |1.8.0     |      0|        1|     3|
-|sqldf             |0.4-10    |      0|        1|     2|
-|TSdata            |2016.8-1  |      0|        1|     0|
-|VariantAnnotation |1.20.2    |      0|        1|     3|
-|VariantFiltering  |1.10.1    |      0|        1|     4|
-|vmsbase           |2.1.3     |      1|        0|     0|
+|package           |version  | errors| warnings| notes|
+|:-----------------|:--------|------:|--------:|-----:|
+|annmap            |1.16.0   |      0|        2|     5|
+|AnnotationDbi     |1.36.2   |      0|        1|     5|
+|ChemmineR         |2.26.1   |      1|        0|     0|
+|ChIPpeakAnno      |3.8.9    |      0|        1|     2|
+|cn.farms          |1.22.0   |      1|        0|     1|
+|eiR               |1.14.1   |      1|        2|     6|
+|GOFunction        |1.22.0   |      0|        1|     5|
+|lumi              |2.26.4   |      0|        1|     3|
+|mgsa              |1.22.0   |      0|        1|     4|
+|oce               |0.9-20   |      1|        0|     1|
+|oligo             |1.38.0   |      1|        0|     9|
+|ora               |2.0-1    |      1|        0|     0|
+|PAnnBuilder       |1.38.0   |      0|        3|     1|
+|plethy            |1.12.1   |      2|        0|     3|
+|postGIStools      |0.2.1    |      1|        0|     0|
+|RImmPort          |1.2.0    |      0|        1|     1|
+|RJDBC             |0.2-5    |      0|        1|     1|
+|rnaSeqMap         |2.32.0   |      0|        1|     4|
+|ROracle           |1.3-1    |      1|        0|     0|
+|RQDA              |0.2-8    |      1|        0|     1|
+|RSQLite           |1.1-2    |      1|        0|     1|
+|sf                |0.3-4    |      1|        0|     1|
+|sparklyr          |0.5.2    |      1|        0|     0|
+|specL             |1.8.0    |      0|        1|     3|
+|sqldf             |0.4-10   |      0|        1|     2|
+|TSdata            |2016.8-1 |      0|        1|     0|
+|VariantAnnotation |1.20.2   |      0|        1|     3|
+|VariantFiltering  |1.10.1   |      0|        1|     4|
+|vmsbase           |2.1.3    |      1|        0|     0|
 
 ## annmap (1.16.0)
 Maintainer: Chris Wirth <Christopher.Wirth@cruk.manchester.ac.uk>
@@ -298,31 +299,6 @@ File ‘cn.farms/R/sFsnowfall-internal.R’:
   assign(name, value, envir = globalenv())
 ```
 
-## convey (0.1.0)
-Maintainer: Djalma Pessoa <pessoad@gmail.com>  
-Bug reports: https://github.com/djalmapessoa/convey/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  33: force(code)
-  34: with_reporter(reporter = reporter, start_end_reporter = start_end_reporter,     {        lister$start_file(basename(path))        source_file(path, new.env(parent = env), chdir = TRUE,             encoding = encoding, wrap = wrap)        end_context()    })
-  35: FUN(X[[i]], ...)
-  36: lapply(paths, test_file, env = env, reporter = current_reporter,     start_end_reporter = FALSE, load_helpers = FALSE, encoding = encoding,     wrap = TRUE)
-  37: force(code)
-  38: with_reporter(reporter = current_reporter, results <- lapply(paths,     test_file, env = env, reporter = current_reporter, start_end_reporter = FALSE,     load_helpers = FALSE, encoding = encoding, wrap = TRUE))
-  39: test_files(paths, reporter = reporter, env = env, encoding = encoding)
-  40: test_dir(test_path, reporter = reporter, env = env, filter = filter,     ...)
-  41: with_top_env(env, {    test_dir(test_path, reporter = reporter, env = env, filter = filter,         ...)})
-  42: run_tests(package, test_path, filter, reporter, ...)
-  43: test_check("convey")
-  An irrecoverable exception occurred. R is aborting now ...
-  Segmentation fault (core dumped)
-```
-
 ## eiR (1.14.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -334,12 +310,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R 
+       /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -840,27 +816,93 @@ A package should be listed in only one of these fields.
 ## plethy (1.12.1)
 Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
 
-1 error  | 0 warnings | 0 notes
+2 errors | 0 warnings | 3 notes
 
 ```
-checking package dependencies ... ERROR
-Package required and available but unsuitable version: ‘DBI’
+checking examples ... ERROR
+Running examples in ‘plethy-Ex.R’ failed
+The error most likely occurred in:
 
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
-```
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: Utility functions
+> ### Title: Utility functions to assist with QA/QC and analysis of
+> ###   plethysmography data
+> ### Aliases: add.labels.by.sample get.err.breaks adjust.labels proc.sanity
+> ### Keywords: Utilities
+... 21 lines ...
+> temp.db.file <- tempfile()
+> write(sim.bux.lines, file=temp.file)
+> test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
+Processing /tmp/RtmpCRO9Af/file5b1172eeedd in chunks of 10000
+Starting chunk 1
+Reached breakpoint change
+Processing breakpoint 1
+Starting sample sample_1
+Error in if (sum(which.gt) > 0) { : missing value where TRUE/FALSE needed
+Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.time
+Execution halted
 
-## poplite (0.99.17.3)
-Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
+checking tests ... ERROR
+Running the tests in ‘tests/runTests.R’ failed.
+Last 13 lines of output:
+  
+     test_check_helpers.R 
+       test.add.labels.by.sample 
+       test.dbImport 
+       test.get.err.breaks 
+       test.summaryMeasures 
+  
+  
+  Error in BiocGenerics:::testPackage("plethy") : 
+    unit tests failed for package plethy
+  In addition: Warning message:
+  closing unused connection 3 (/tmp/RtmpEVQuoy/file5d932fa5627c) 
+  Execution halted
 
-1 error  | 0 warnings | 0 notes
+checking dependencies in R code ... NOTE
+There are ::: calls to the package's namespace in its code. A package
+  almost never needs to use ::: for its own objects:
+  ‘csv.to.table’ ‘find.break.ranges.integer’ ‘fix.time’ ‘multi.grep’
 
-```
-checking package dependencies ... ERROR
-Package required and available but unsuitable version: ‘DBI’
+checking R code for possible problems ... NOTE
+generate.sample.buxco : <anonymous> : <anonymous> : <anonymous> :
+  <anonymous>: no visible global function definition for ‘rnorm’
+make.db.package: no visible global function definition for
+  ‘packageDescription’
+mvtsplot.data.frame: no visible global function definition for ‘colors’
+mvtsplot.data.frame: no visible global function definition for ‘par’
+mvtsplot.data.frame: no visible global function definition for ‘layout’
+mvtsplot.data.frame: no visible global function definition for
+  ‘strwidth’
+... 14 lines ...
+tsplot,BuxcoDB: no visible binding for global variable ‘Sample_Name’
+Undefined global functions or variables:
+  Axis Days Sample_Name Value abline bxp colors layout legend lines
+  median mtext packageDescription par plot rnorm strwidth terms
+Consider adding
+  importFrom("grDevices", "colors")
+  importFrom("graphics", "Axis", "abline", "bxp", "layout", "legend",
+             "lines", "mtext", "par", "plot", "strwidth")
+  importFrom("stats", "median", "rnorm", "terms")
+  importFrom("utils", "packageDescription")
+to your NAMESPACE file.
 
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+checking Rd line widths ... NOTE
+Rd file 'parsing.Rd':
+  \usage lines wider than 90 characters:
+     parse.buxco(file.name = NULL, table.delim = "Table", burn.in.lines = c("Measurement", "Create measurement", "Waiting for", "Site Acknow ... [TRUNCATED]
+       chunk.size = 500, db.name = "bux_test.db", max.run.time.minutes = 60, overwrite = TRUE, verbose=TRUE, make.package = F, author = NULL ... [TRUNCATED]
+     parse.buxco.basic(file.name=NULL, table.delim="Table", burn.in.lines=c("Measurement", "Create measurement", "Waiting for", "Site Acknow ... [TRUNCATED]
+
+Rd file 'utilities.Rd':
+  \usage lines wider than 90 characters:
+     get.err.breaks(bux.db, max.exp.count=150, max.acc.count=900, vary.perc=.1, label.val="ERR")
+     proc.sanity(bux.db, max.exp.time=300, max.acc.time=1800, max.exp.count=150, max.acc.count=900)
+  \examples lines wider than 100 characters:
+     err.dta <- data.frame(samples=samples, count=count, measure_break=measure_break, table_break=table_break, phase=phase, stringsAsFactors ... [TRUNCATED]
+     sample.labels <- data.frame(samples=c("sample_1","sample_3"), response_type=c("high", "low"),stringsAsFactors=FALSE)
+
+These lines will be truncated in the PDF manual.
 ```
 
 ## postGIStools (0.2.1)
@@ -916,6 +958,25 @@ getTiterAssayResults: no visible binding for global variable
   ‘experiment_sample_accession’
 Undefined global functions or variables:
   ZBREFIDP control_files_names experiment_sample_accession
+```
+
+## RJDBC (0.2-5)
+Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
+
+0 errors | 1 warning  | 1 note 
+
+```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbReadTable' and siglist 'JDBCConnection,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘java-src’
 ```
 
 ## rnaSeqMap (2.32.0)
@@ -1073,6 +1134,18 @@ checking installed package size ... NOTE
     libs   3.8Mb
 ```
 
+## sparklyr (0.5.2)
+Maintainer: Javier Luraschi <javier@rstudio.com>  
+Bug reports: https://github.com/rstudio/sparklyr/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sparklyr’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/sparklyr.Rcheck/00install.out’ for details.
+```
+
 ## specL (1.8.0)
 Maintainer: Christian Panse <cp@fgcz.ethz.ch>, Witold E. Wolski <wewolski@gmail.com>  
 Bug reports: https://github.com/fgcz/specL/issues
@@ -1150,24 +1223,24 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-SDMX meaning: Error on the provider side.
-Feb 27, 2017 11:05:42 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
-SEVERE: Exception caught parsing results from call to provider OECD
-Feb 27, 2017 11:05:42 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
-INFO: Exception: 
-it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 500, message: Internal Server Error
-SDMX meaning: Error on the provider side.
+Feb 27, 2017 11:34:56 PM it.bancaditalia.oss.sdmx.util.Configuration init
+INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
+Feb 27, 2017 11:34:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
+Feb 27, 2017 11:34:58 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
+Feb 27, 2017 11:34:59 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:498)
-	at RJavaTools.invokeMethod(RJavaTools.java:386)
-
+Feb 27, 2017 11:35:05 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
+Feb 27, 2017 11:35:07 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+INFO: The sdmx call returned messages in the footer:
+ Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
 Error: processing vignette 'Guide.Stex' failed with diagnostics:
- chunk 3 
+ chunk 5 
 Error in .local(serIDs, con, ...) : 
-  QNA.CAN.B1_GE.CARSA.Q error: java.lang.NullPointerException
+  ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT error: it.bancaditalia.oss.sdmx.util.SdmxException: The query: ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT did not match any time series on the provider.
 Execution halted
 ```
 
