@@ -10,51 +10,54 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2016-12-24                   |
+|date     |2017-02-27                   |
 
 ## Packages
 
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
-|covr      |   |2.2.1      |2016-08-10 |cran (@2.2.1)                    |
-|DBI       |   |0.5-14     |2016-12-24 |Github (rstats-db/DBI@8afe845)   |
+|covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
+|DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
-|rmarkdown |   |1.2        |2016-11-21 |cran (@1.2)                      |
-|RSQLite   |   |1.1-1      |2016-12-10 |cran (@1.1-1)                    |
-|testthat  |   |1.0.2.9000 |2016-12-24 |Github (hadley/testthat@3b2f225) |
+|rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
+|RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
+|testthat  |   |1.0.2.9000 |2017-02-27 |Github (hadley/testthat@b72a228) |
 
 # Check results
 
-26 packages with problems
+29 packages with problems
 
-|package           |version  | errors| warnings| notes|
-|:-----------------|:--------|------:|--------:|-----:|
-|annmap            |1.16.0   |      0|        2|     5|
-|AnnotationDbi     |1.36.0   |      0|        1|     5|
-|ChemmineR         |2.26.1   |      1|        0|     0|
-|ChIPpeakAnno      |3.8.6    |      0|        1|     2|
-|cn.farms          |1.22.0   |      1|        0|     1|
-|eiR               |1.14.1   |      1|        2|     6|
-|GOFunction        |1.22.0   |      0|        1|     5|
-|lumi              |2.26.3   |      0|        1|     3|
-|mgsa              |1.22.0   |      0|        1|     4|
-|oce               |0.9-20   |      1|        0|     1|
-|oligo             |1.38.0   |      1|        0|     9|
-|ora               |2.0-1    |      1|        0|     0|
-|PAnnBuilder       |1.38.0   |      0|        3|     1|
-|plethy            |1.12.1   |      1|        0|     0|
-|poplite           |0.99.16  |      1|        0|     1|
-|RImmPort          |1.2.0    |      0|        1|     1|
-|rnaSeqMap         |2.32.0   |      0|        1|     4|
-|ROracle           |1.3-1    |      1|        0|     0|
-|RQDA              |0.2-8    |      1|        0|     1|
-|sf                |0.2-7    |      1|        0|     0|
-|specL             |1.8.0    |      0|        1|     3|
-|sqldf             |0.4-10   |      0|        1|     2|
-|TSdata            |2016.8-1 |      0|        1|     0|
-|VariantAnnotation |1.20.2   |      0|        1|     3|
-|VariantFiltering  |1.10.1   |      0|        1|     4|
-|vmsbase           |2.1.3    |      1|        0|     0|
+|package           |version   | errors| warnings| notes|
+|:-----------------|:---------|------:|--------:|-----:|
+|annmap            |1.16.0    |      0|        2|     5|
+|AnnotationDbi     |1.36.2    |      0|        1|     5|
+|ChemmineR         |2.26.1    |      1|        0|     0|
+|ChIPpeakAnno      |3.8.9     |      0|        1|     2|
+|cn.farms          |1.22.0    |      1|        0|     1|
+|convey            |0.1.0     |      1|        0|     0|
+|eiR               |1.14.1    |      1|        2|     6|
+|GOFunction        |1.22.0    |      0|        1|     5|
+|lumi              |2.26.4    |      0|        1|     3|
+|mgsa              |1.22.0    |      0|        1|     4|
+|oce               |0.9-20    |      1|        0|     1|
+|oligo             |1.38.0    |      1|        0|     9|
+|ora               |2.0-1     |      1|        0|     0|
+|PAnnBuilder       |1.38.0    |      0|        3|     1|
+|plethy            |1.12.1    |      1|        0|     0|
+|poplite           |0.99.17.3 |      1|        0|     0|
+|postGIStools      |0.2.1     |      1|        0|     0|
+|RImmPort          |1.2.0     |      0|        1|     1|
+|rnaSeqMap         |2.32.0    |      0|        1|     4|
+|ROracle           |1.3-1     |      1|        0|     0|
+|RQDA              |0.2-8     |      1|        0|     1|
+|RSQLite           |1.1-2     |      1|        0|     1|
+|sf                |0.3-4     |      1|        0|     1|
+|specL             |1.8.0     |      0|        1|     3|
+|sqldf             |0.4-10    |      0|        1|     2|
+|TSdata            |2016.8-1  |      0|        1|     0|
+|VariantAnnotation |1.20.2    |      0|        1|     3|
+|VariantFiltering  |1.10.1    |      0|        1|     4|
+|vmsbase           |2.1.3     |      1|        0|     0|
 
 ## annmap (1.16.0)
 Maintainer: Chris Wirth <Christopher.Wirth@cruk.manchester.ac.uk>
@@ -156,9 +159,8 @@ Rd file 'plot.ngs.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## AnnotationDbi (1.36.0)
-Maintainer: Bioconductor Package Maintainer
- <maintainer@bioconductor.org>
+## AnnotationDbi (1.36.2)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 0 errors | 1 warning  | 5 notes
 
@@ -181,8 +183,6 @@ checking dependencies in R code ... NOTE
   ‘GO.db’ ‘KEGG.db’ ‘RSQLite’ ‘graph’
   Please use :: or requireNamespace() instead.
   See section 'Suggested packages' in the 'Writing R Extensions' manual.
-Unexported object imported by a ':::' call: ‘BiocGenerics:::testPackage’
-  See the note in ?`:::` about the use of this operator.
 
 checking R code for possible problems ... NOTE
 .selectInp8: no visible global function definition for ‘.resort’
@@ -216,7 +216,7 @@ Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/ChemmineR.Rcheck/00install.out’ for details.
 ```
 
-## ChIPpeakAnno (3.8.6)
+## ChIPpeakAnno (3.8.9)
 Maintainer: Lihua Julie Zhu <julie.zhu@umassmed.edu>,
  Jianhong Ou <Jianhong.ou@umassmed.edu>
 
@@ -298,6 +298,31 @@ File ‘cn.farms/R/sFsnowfall-internal.R’:
   assign(name, value, envir = globalenv())
 ```
 
+## convey (0.1.0)
+Maintainer: Djalma Pessoa <pessoad@gmail.com>  
+Bug reports: https://github.com/djalmapessoa/convey/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  33: force(code)
+  34: with_reporter(reporter = reporter, start_end_reporter = start_end_reporter,     {        lister$start_file(basename(path))        source_file(path, new.env(parent = env), chdir = TRUE,             encoding = encoding, wrap = wrap)        end_context()    })
+  35: FUN(X[[i]], ...)
+  36: lapply(paths, test_file, env = env, reporter = current_reporter,     start_end_reporter = FALSE, load_helpers = FALSE, encoding = encoding,     wrap = TRUE)
+  37: force(code)
+  38: with_reporter(reporter = current_reporter, results <- lapply(paths,     test_file, env = env, reporter = current_reporter, start_end_reporter = FALSE,     load_helpers = FALSE, encoding = encoding, wrap = TRUE))
+  39: test_files(paths, reporter = reporter, env = env, encoding = encoding)
+  40: test_dir(test_path, reporter = reporter, env = env, filter = filter,     ...)
+  41: with_top_env(env, {    test_dir(test_path, reporter = reporter, env = env, filter = filter,         ...)})
+  42: run_tests(package, test_path, filter, reporter, ...)
+  43: test_check("convey")
+  An irrecoverable exception occurred. R is aborting now ...
+  Segmentation fault (core dumped)
+```
+
 ## eiR (1.14.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -309,12 +334,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpaRuv71/RLIBS_6e152ea6314b/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpaRuv71/RLIBS_6e152ea6314b/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpaRuv71/RLIBS_6e152ea6314b/eiR/unitTests/test_main.R 
+       /tmp/Rtmp3KvCyL/RLIBS_3dd62f99c4c0/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -474,14 +499,15 @@ Rd file 'GOFunction.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## lumi (2.26.3)
-Maintainer: Pan Du <dupan.mail@gmail.com>
+## lumi (2.26.4)
+Maintainer: Pan Du <dupan.mail@gmail.com>, Lei Huang <lhuang@bsd.uchicago.edu>, Gang Feng <g-feng@northwestern.edu>
 
 0 errors | 1 warning  | 3 notes
 
 ```
 checking dependencies in R code ... WARNING
-'::' or ':::' import not declared from: ‘bigmemoryExtras’
+'::' or ':::' imports not declared from:
+  ‘IRanges’ ‘bigmemoryExtras’
 
 checking installed package size ... NOTE
   installed size is  6.8Mb
@@ -645,7 +671,7 @@ checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘doMPI’
 
 checking installed package size ... NOTE
-  installed size is 30.3Mb
+  installed size is 30.4Mb
   sub-directories of 1Mb or more:
     R         1.2Mb
     doc      12.9Mb
@@ -824,46 +850,42 @@ See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
 manual.
 ```
 
-## poplite (0.99.16)
+## poplite (0.99.17.3)
 Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
 
-1 error  | 0 warnings | 1 note 
+1 error  | 0 warnings | 0 notes
+
+```
+checking package dependencies ... ERROR
+Package required and available but unsuitable version: ‘DBI’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+```
+
+## postGIStools (0.2.1)
+Maintainer: Philippe Marchand <pmarchand@sesync.org>  
+Bug reports: https://github.com/SESYNC-ci/postGIStools/issues
+
+1 error  | 0 warnings | 0 notes
 
 ```
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  1. Failure: createTable (@test-poplite.R#252) 
-  2. Failure: createTable (@test-poplite.R#252) 
-  3. Failure: createTable (@test-poplite.R#252) 
-  4. Failure: createTable (@test-poplite.R#252) 
-  5. Failure: insertStatement (@test-poplite.R#330) 
-  6. Failure: insertStatement (@test-poplite.R#350) 
-  7. Failure: insertStatement (@test-poplite.R#330) 
-  8. Failure: insertStatement (@test-poplite.R#350) 
-  9. Failure: insertStatement (@test-poplite.R#330) 
-  1. ...
+  1. Failure: get_postgis_query correctly imports geometry (@test_get_query.R#49) 
+  proj4string(qry) not equal to `proj_wgs84`.
+  1/1 mismatches
+  x[1]: "+proj=longlat +datum=WGS84 +no_defs"
+  y[1]: "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
+  
+  
+  testthat results ================================================================
+  OK: 48 SKIPPED: 0 FAILED: 1
+  1. Failure: get_postgis_query correctly imports geometry (@test_get_query.R#49) 
   
   Error: testthat unit tests failed
   Execution halted
-
-checking R code for possible problems ... NOTE
-filter_.Database: no visible global function definition for ‘stack’
-get.starting.point : <anonymous>: no visible global function definition
-  for ‘na.omit’
-select_.Database: no visible global function definition for ‘stack’
-tsl.to.graph: no visible global function definition for ‘stack’
-join,Database: no visible global function definition for ‘stack’
-join,Database : .get.select.cols: no visible global function definition
-  for ‘setNames’
-join,Database: no visible binding for global variable ‘new.ancil’
-join,Database: no visible global function definition for ‘setNames’
-Undefined global functions or variables:
-  na.omit new.ancil setNames stack
-Consider adding
-  importFrom("stats", "na.omit", "setNames")
-  importFrom("utils", "stack")
-to your NAMESPACE file.
 ```
 
 ## RImmPort (1.2.0)
@@ -990,16 +1012,65 @@ Packages which this enhances but not available for checking:
   ‘rjpod’ ‘d3Network’
 ```
 
-## sf (0.2-7)
+## RSQLite (1.1-2)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
+Bug reports: https://github.com/rstats-db/RSQLite/issues
+
+1 error  | 0 warnings | 1 note 
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
+  2. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
+  3. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
+  4. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#95) 
+  5. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#95) 
+  6. Failure: DBItest[RSQLite]: Result: fetch_no_return_value (@spec-result-fetch.R#112) 
+  7. Error: DBItest[RSQLite]: Result: cannot_clear_result_twice_query (@spec-result-clear-result.R#42) 
+  8. Error: DBItest[RSQLite]: Result: cannot_clear_result_twice_statement (@spec-result-clear-result.R#52) 
+  9. Failure: DBItest[RSQLite]: Result: get_query_n_bad (@spec-result-get-query.R#87) 
+  1. ...
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking installed package size ... NOTE
+  installed size is  7.8Mb
+  sub-directories of 1Mb or more:
+    libs   7.2Mb
+```
+
+## sf (0.3-4)
 Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>  
 Bug reports: https://github.com/edzer/sfr/issues/
 
-1 error  | 0 warnings | 0 notes
+1 error  | 0 warnings | 1 note 
 
 ```
-checking whether package ‘sf’ can be installed ... ERROR
-Installation failed.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/sf.Rcheck/00install.out’ for details.
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  1. Error: st_transform works (@test_gdal.R#10) ---------------------------------
+  package rgdal is required for spTransform methods
+  1: spTransform(sp, CRS("+init=epsg:3857")) at testthat/test_gdal.R:10
+  2: spTransform(sp, CRS("+init=epsg:3857")) at /tmp/RtmpvuUUir/devtools345049746f77/sp/R/Spatial-methods.R:93
+  3: stop("package rgdal is required for spTransform methods") at /tmp/RtmpvuUUir/devtools345049746f77/sp/R/Spatial-methods.R:97
+  
+  OGR: Unsupported geometry type
+  testthat results ================================================================
+  OK: 393 SKIPPED: 5 FAILED: 1
+  1. Error: st_transform works (@test_gdal.R#10) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking installed package size ... NOTE
+  installed size is  9.7Mb
+  sub-directories of 1Mb or more:
+    doc    3.9Mb
+    libs   3.8Mb
 ```
 
 ## specL (1.8.0)
@@ -1079,24 +1150,24 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Dec 24, 2016 11:47:19 AM it.bancaditalia.oss.sdmx.util.Configuration init
-INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Dec 24, 2016 11:47:20 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Dec 24, 2016 11:47:21 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Dec 24, 2016 11:47:21 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+SDMX meaning: Error on the provider side.
+Feb 27, 2017 11:05:42 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+SEVERE: Exception caught parsing results from call to provider OECD
+Feb 27, 2017 11:05:42 PM it.bancaditalia.oss.sdmx.client.custom.RestSdmx20Client getData
+INFO: Exception: 
+it.bancaditalia.oss.sdmx.util.SdmxException: Connection failed. HTTP error code : 500, message: Internal Server Error
+SDMX meaning: Error on the provider side.
 ... 8 lines ...
-Dec 24, 2016 11:47:22 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Dec 24, 2016 11:47:23 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
-INFO: The sdmx call returned messages in the footer:
- Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at RJavaTools.invokeMethod(RJavaTools.java:386)
+
 
 Error: processing vignette 'Guide.Stex' failed with diagnostics:
- chunk 5 
+ chunk 3 
 Error in .local(serIDs, con, ...) : 
-  ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT error: it.bancaditalia.oss.sdmx.util.SdmxException: The query: ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT did not match any time series on the provider.
+  QNA.CAN.B1_GE.CARSA.Q error: java.lang.NullPointerException
 Execution halted
 ```
 
@@ -1117,7 +1188,7 @@ Extensions’ manual.
 checking installed package size ... NOTE
   installed size is  5.1Mb
   sub-directories of 1Mb or more:
-    R         2.5Mb
+    R         2.6Mb
     extdata   1.2Mb
 
 checking dependencies in R code ... NOTE
@@ -1160,7 +1231,7 @@ checking sizes of PDF files under ‘inst/doc’ ... WARNING
   consider running tools::compactPDF(gs_quality = "ebook") on these files
 
 checking installed package size ... NOTE
-  installed size is  7.8Mb
+  installed size is  7.9Mb
   sub-directories of 1Mb or more:
     R         3.6Mb
     extdata   3.5Mb
