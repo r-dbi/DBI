@@ -10,7 +10,7 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-02-27                   |
+|date     |2017-02-28                   |
 
 ## Packages
 
@@ -855,9 +855,9 @@ Bug reports: https://github.com/hadley/dplyr/issues
 
 ```
 checking installed package size ... NOTE
-  installed size is 23.4Mb
+  installed size is 23.5Mb
   sub-directories of 1Mb or more:
-    libs  21.3Mb
+    libs  21.4Mb
 ```
 
 ## eiR (1.14.1)
@@ -871,12 +871,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmppSjxvM/RLIBS_a06e779da26f/eiR/unitTests/test_main.R 
+       /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -2214,7 +2214,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpCRO9Af/file5b1172eeedd in chunks of 10000
+Processing /tmp/RtmpqrIDND/file400b7b3f9502 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2237,7 +2237,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/RtmpEVQuoy/file5d932fa5627c) 
+  closing unused connection 3 (/tmp/Rtmp8DJg54/file42d66b6c17d5) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3156,17 +3156,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Feb 27, 2017 11:34:56 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Feb 27, 2017 11:34:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 27, 2017 11:34:58 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 27, 2017 11:34:59 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Feb 27, 2017 11:35:05 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Feb 27, 2017 11:35:07 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 

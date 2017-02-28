@@ -18,6 +18,7 @@
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
 |DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
+|hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
@@ -115,7 +116,7 @@
 |redcapAPI          |1.3       |      0|        0|     1|
 |refGenome          |1.7.0     |      0|        0|     0|
 |RImmPort           |1.2.0     |      0|        1|     1|
-|RJDBC              |0.2-5     |      0|        0|     1|
+|RJDBC              |0.2-5     |      0|        1|     1|
 |RmiR               |1.30.0    |      0|        0|     5|
 |RMySQL             |0.10.9    |      0|        0|     0|
 |rnaSeqMap          |2.32.0    |      0|        1|     4|
@@ -137,7 +138,7 @@
 |sf                 |0.3-4     |      1|        0|     1|
 |smnet              |2.1       |      0|        0|     0|
 |snplist            |0.17      |      0|        0|     0|
-|sparklyr           |0.5.2     |      0|        0|     0|
+|sparklyr           |0.5.2     |      1|        0|     0|
 |sparkwarc          |0.1.1     |      0|        0|     0|
 |specL              |1.8.0     |      0|        1|     3|
 |sqldf              |0.4-10    |      0|        1|     2|
@@ -870,12 +871,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R 
+       /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -2213,7 +2214,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpUaYyBy/filed5144f45352b in chunks of 10000
+Processing /tmp/RtmpqrIDND/file400b7b3f9502 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2236,7 +2237,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/Rtmpub3sC2/filed76d5e002e73) 
+  closing unused connection 3 (/tmp/Rtmp8DJg54/file42d66b6c17d5) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -2410,9 +2411,17 @@ Undefined global functions or variables:
 ## RJDBC (0.2-5)
 Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 
-0 errors | 0 warnings | 1 note 
+0 errors | 1 warning  | 1 note 
 
 ```
+checking for missing documentation entries ... WARNING
+Undocumented S4 methods:
+  generic 'dbReadTable' and siglist 'JDBCConnection,ANY'
+All user-level objects in a package (including S4 classes and methods)
+should have documentation entries.
+See chapter ‘Writing R documentation files’ in the ‘Writing R
+Extensions’ manual.
+
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
   ‘java-src’
@@ -2831,7 +2840,13 @@ Maintainer: Alexander Sibley <alexander.sibley@dm.duke.edu>
 Maintainer: Javier Luraschi <javier@rstudio.com>  
 Bug reports: https://github.com/rstudio/sparklyr/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sparklyr’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/sparklyr.Rcheck/00install.out’ for details.
+```
 
 ## sparkwarc (0.1.1)
 Maintainer: Javier Luraschi <javier@rstudio.com>  
@@ -3141,17 +3156,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 9:46:25 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Feb 28, 2017 9:46:26 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Feb 28, 2017 9:46:27 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
