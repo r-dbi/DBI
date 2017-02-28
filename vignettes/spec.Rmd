@@ -2,7 +2,9 @@
 title: "DBI specification"
 author: "Kirill Müller"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    smart: FALSE
 vignette: >
   %\VignetteIndexEntry{DBI specification}
   %\VignetteEngine{knitr::rmarkdown}
