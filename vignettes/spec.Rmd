@@ -71,7 +71,8 @@ topics <- c(
   "dbGetRowCount",
   "dbGetRowsAffected",
   "dbBind",
-  "transactions"
+  "transactions",
+  "dbWithTransaction"
 )
 
 asis_topic(topics, rd_db)
