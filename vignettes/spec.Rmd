@@ -8,3 +8,71 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r echo = FALSE}
+library(magrittr)
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+r <- rprojroot::is_r_package$make_fix_file()
+
+rd_db <- tools::Rd_db(dir = r())
+rd_db_test <- tools::Rd_db("DBItest")
+
+Links <- tools::findHTMLlinks()
+
+html_topic <- function(name, db) {
+  rd <- db[[paste0(name, ".Rd")]]
+
+  conn <- textConnection(NULL, "w")
+  on.exit(close(conn))
+
+  #tools::Rd2HTML(rd, conn, Links = Links)
+  tools::Rd2HTML(rd, conn)
+
+  textConnectionValue(conn)
+}
+
+xml_topic <- function(name, db) {
+  html <- html_topic(name, db)
+  x <- xml2::read_html(paste(html, collapse = "\n"))
+  xx <- x %>% xml2::xml_find_first("/html/body")
+  xx %>% xml2::xml_find_first("//table") %>% xml2::xml_remove
+  xx
+}
+
+asis_topic <- function(name, db) {
+xml <- lapply(name, xml_topic, db)
+  asis <- sapply(xml, as.character) %>% paste(collapse = "\n")
+  knitr::asis_output(asis)
+}
+
+asis_topic("DBIspec", rd_db_test)
+topics <- c(
+  "dbDataType",
+  "dbConnect",
+  "dbDisconnect",
+  "dbSendQuery",
+  "dbFetch",
+  "dbClearResult",
+  "dbGetQuery",
+  "dbSendStatement",
+  "dbExecute",
+  "dbQuoteString",
+  "dbQuoteIdentifier",
+  "dbReadTable",
+  "dbListTables",
+  "dbExistsTable",
+  "dbRemoveTable",
+  "dbIsValid",
+  "dbHasCompleted",
+  "dbGetStatement",
+  "dbGetRowCount",
+  "dbGetRowsAffected",
+  "dbBind",
+  "transactions"
+)
+
+asis_topic(topics, rd_db)
+```
