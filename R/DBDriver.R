@@ -16,10 +16,14 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
 #' Load and unload database drivers
 #'
-#' `dbDriver` is a helper method used to create an new driver object
+#' @description
+#' These methods are deprecated, please consult the documentation of the
+#' individual backends for the construction of driver instances.
+#'
+#' `dbDriver()` is a helper method used to create an new driver object
 #' given the name of a database or the corresponding R package. It works
 #' through convention: all DBI-extending packages should provide an exported
-#' object with the same name as the package. `dbDriver` just looks for
+#' object with the same name as the package. `dbDriver()` just looks for
 #' this object in the right places: if you know what database you are connecting
 #' to, you should call the function directly.
 #'
@@ -56,6 +60,10 @@ setGeneric("dbDriver",
 #' @rdname hidden_aliases
 setMethod("dbDriver", "character",
   definition = function(drvName, ...) {
+    warning(
+      "dbDriver() is deprecated, please call the constructor function exported by the DBI backend.",
+      call. = FALSE
+    )
     findDriver(drvName)(...)
   }
 )
@@ -112,6 +120,8 @@ is_attached <- function(x) {
   x %in% loadedNamespaces()
 }
 
+#' @description
+#' `dbUnloadDriver()` is not implemented for modern backends.
 #' @rdname dbDriver
 #' @family DBIDriver generics
 #' @export
