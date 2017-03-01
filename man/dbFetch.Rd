@@ -14,6 +14,7 @@ fetch(res, n = -1, ...)
 \code{\link[=dbSendQuery]{dbSendQuery()}}.}
 
 \item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1}
+or \code{n = Inf}
 to retrieve all pending records.  Some implementations may recognize other
 special values.}
 
@@ -39,11 +40,10 @@ Fetch the next \code{n} elements (rows) from the result set and return them
 as a data.frame.
 }
 \details{
-\code{fetch} is provided for compatibility with older DBI clients - for all
-new code you are strongly encouraged to use \code{dbFetch}. The default
-method for \code{dbFetch} calls \code{fetch} so that it is compatible with
-existing code. Implementors are free to provide methods for \code{dbFetch}
-only.
+\code{fetch()} is provided for compatibility with older DBI clients - for all
+new code you are strongly encouraged to use \code{dbFetch()}. The default
+implementation for \code{dbFetch()} calls \code{fetch()} so that it is compatible with
+existing code. Modern backends should implement for \code{dbFetch()} only.
 }
 \section{Specification}{
 

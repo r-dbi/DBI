@@ -10,7 +10,7 @@ dbSendQuery(conn, statement, ...)
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{statement}{a character vector of length 1 containing SQL.}
+\item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -26,29 +26,26 @@ if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
 }
 \description{
-The function \code{dbSendQuery} only submits and synchronously executes the
+The \code{dbSendQuery()} method only submits and synchronously executes the
 SQL query to the database engine.  It does \emph{not} extract any
-records --- for that you need to use the function \code{\link[=dbFetch]{dbFetch()}}, and
+records --- for that you need to use the \code{\link[=dbFetch]{dbFetch()}} method, and
 then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 \code{\link[=dbGetQuery]{dbGetQuery()}}.
 }
 \details{
-This function is for \code{SELECT} queries only.  Some backends may
-support data manipulation queries through this function for compatibility
+This method is for \code{SELECT} queries only.  Some backends may
+support data manipulation queries through this method for compatibility
 reasons.  However, callers are strongly encouraged to use
 \code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
-}
-\section{Side Effects}{
 
 The query is submitted to the database server and the DBMS executes it,
 possibly generating vast amounts of data. Where these data live
 is driver-specific: some drivers may choose to leave the output on the server
 and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
-drivers' \code{dbSendQuery} documentation for details.
+drivers' \code{dbSendQuery()} documentation for details.
 }
-
 \section{Specification}{
 
 

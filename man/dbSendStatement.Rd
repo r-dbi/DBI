@@ -10,7 +10,7 @@ dbSendStatement(conn, statement, ...)
 \item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{statement}{a character vector of length 1 containing SQL.}
+\item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -27,7 +27,7 @@ if the syntax of the statement is invalid,
 or if the statement is not a non-\code{NA} string.
 }
 \description{
-The function \code{dbSendStatement} only submits and synchronously executes the
+The \code{dbSendStatement()} method only submits and synchronously executes the
 SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
 \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
 the number of affected rows, call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} on the

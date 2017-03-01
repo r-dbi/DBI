@@ -40,7 +40,6 @@ Collate:
     'interpolate.R'
     'quote.R'
     'rownames.R'
-    'spec.R'
     'table-create.R'
     'table-insert.R'
     'table.R'

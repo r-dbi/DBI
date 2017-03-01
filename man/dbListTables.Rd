@@ -27,6 +27,8 @@ it is also removed from the list of database tables.
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
+Returns the unquoted names of remote tables accessible through this
+connection.
 This should, where possible, include temporary tables, and views.
 }
 \section{Additional arguments}{

@@ -11,8 +11,7 @@ dbReadTable(conn, name, ...)
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{A character string specifying the unquoted DBMS table name,
-a list specifying arguments to a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-(excluding the first \code{conn} argument), or the result of such a call}
+or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -54,10 +53,6 @@ also raise an error.
 Reads a database table to a data frame, optionally converting
 a column to row names and converting the column names to valid
 R identifiers.
-}
-\note{
-The default DBI implementation converts column names with a call to
-\code{\link[=make.names]{make.names()}} if \code{check.names} is \code{TRUE}.
 }
 \section{Additional arguments}{
 
