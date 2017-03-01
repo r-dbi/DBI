@@ -350,7 +350,7 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' # Executing the same statement with different values at once
 #' iris_result <- dbSendStatement(con, "DELETE FROM iris WHERE [Species] = $species")
 #' dbBind(iris_result, list(species = c("setosa", "versicolor", "unknown")))
-#' dbGetRowsAffected(iris_result)ex
+#' dbGetRowsAffected(iris_result)
 #' dbClearResult(iris_result)
 #'
 #' nrow(dbReadTable(con, "iris"))
