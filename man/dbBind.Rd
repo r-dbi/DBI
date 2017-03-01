@@ -7,7 +7,7 @@
 dbBind(res, params, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
 \item{params}{A list of bindings, named or unnamed.}
 

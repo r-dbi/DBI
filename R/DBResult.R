@@ -117,7 +117,7 @@ setGeneric("fetch",
 #' @inherit DBItest::spec_result_clear_result return
 #' @inheritSection DBItest::spec_result_clear_result Specification
 #'
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param res An object inheriting from [DBIResult-class].
 #' @param ... Other arguments passed on to methods.
 #' @family DBIResult generics
 #' @export

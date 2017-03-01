@@ -8,9 +8,9 @@
 dbGetInfo(dbObj, ...)
 }
 \arguments{
-\item{dbObj}{An object inheriting from \code{\linkS4class{DBIObject}},
-i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
-or a \code{\linkS4class{DBIResult}}}
+\item{dbObj}{An object inheriting from \linkS4class{DBIObject},
+i.e. \linkS4class{DBIDriver}, \linkS4class{DBIConnection},
+or a \linkS4class{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }

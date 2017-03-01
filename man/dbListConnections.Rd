@@ -7,7 +7,7 @@
 dbListConnections(drv, ...)
 }
 \arguments{
-\item{drv}{A object inheriting from \code{\linkS4class{DBIDriver}}}
+\item{drv}{A object inheriting from \linkS4class{DBIDriver}}
 
 \item{...}{Other arguments passed on to methods.}
 }

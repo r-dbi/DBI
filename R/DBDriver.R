@@ -141,8 +141,8 @@ setGeneric("dbUnloadDriver",
 #' @inherit DBItest::spec_driver_connect return
 #' @inheritSection DBItest::spec_driver_connect Specification
 #'
-#' @param drv an object that inherits from \code{\linkS4class{DBIDriver}},
-#'   or an existing \code{\linkS4class{DBIConnection}}
+#' @param drv an object that inherits from [DBIDriver-class],
+#'   or an existing [DBIConnection-class]
 #'   object (in order to clone an existing connection).
 #' @param ... authentication arguments needed by the DBMS instance; these
 #'   typically include `user`, `password`, `host`, `port`, `dbname`, etc.
@@ -171,7 +171,7 @@ setGeneric("dbConnect",
 #' containing a single element. If no connection are open, methods MUST
 #' return an empty list.
 #'
-#' @param drv A object inheriting from \code{\linkS4class{DBIDriver}}
+#' @param drv A object inheriting from [DBIDriver-class]
 #' @param ... Other arguments passed on to methods.
 #' @family DBIDriver generics
 #' @export
@@ -205,8 +205,8 @@ setGeneric("dbListConnections",
 #' @inheritSection DBItest::spec_result_create_table_with_data_type Specification
 #'
 #' @inheritParams dbListConnections
-#' @param dbObj A object inheriting from \code{\linkS4class{DBIDriver}}
-#'   or \code{\linkS4class{DBIConnection}}
+#' @param dbObj A object inheriting from [DBIDriver-class]
+#'   or [DBIConnection-class]
 #' @param obj An R object whose SQL type we want to determine.
 #' @family DBIDriver generics
 #' @family DBIConnection generics

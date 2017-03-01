@@ -175,7 +175,7 @@ setMethod(
 #' Subclasses should override this method only if they provide some sort of
 #' performance optimization.
 #'
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as returned by
+#' @param conn A [DBIConnection-class] object, as returned by
 #'   [dbConnect()].
 #' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
@@ -269,7 +269,7 @@ setGeneric("dbGetException",
 
 #' A list of all pending results
 #'
-#' List of \linkS4class{DBIResult} objects currently active on the connection.
+#' List of [DBIResult-class] objects currently active on the connection.
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics

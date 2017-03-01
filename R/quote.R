@@ -61,7 +61,7 @@ setMethod("show", "SQL", function(object) {
 #' use in a query as a column name, to make sure that you
 #' generate valid SQL and avoid SQL injection.
 #'
-#' @param conn A subclass of \code{\linkS4class{DBIConnection}}, representing
+#' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
 #' @param x A character vector to quote as identifier.
 #' @param ... Other arguments passed on to methods.
@@ -120,7 +120,7 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 #' use in a query as a string literal, to make sure that you
 #' generate valid SQL and avoid SQL injection.
 #'
-#' @param conn A subclass of \code{\linkS4class{DBIConnection}}, representing
+#' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
 #' @param x A character vector to quote as string.
 #' @param ... Other arguments passed on to methods.

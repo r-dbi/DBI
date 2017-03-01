@@ -7,8 +7,8 @@
 dbConnect(drv, ...)
 }
 \arguments{
-\item{drv}{an object that inherits from \code{\linkS4class{DBIDriver}},
-or an existing \code{\linkS4class{DBIConnection}}
+\item{drv}{an object that inherits from \linkS4class{DBIDriver},
+or an existing \linkS4class{DBIConnection}
 object (in order to clone an existing connection).}
 
 \item{...}{authentication arguments needed by the DBMS instance; these
