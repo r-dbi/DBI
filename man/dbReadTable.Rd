@@ -7,12 +7,11 @@
 dbReadTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{A character string specifying the unquoted DBMS table name,
-a list specifying arguments to a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-(excluding the first \code{conn} argument), or the result of such a call}
+or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -38,7 +37,8 @@ an error is raised if no such column exists.
 
 If the database supports identifiers with special characters,
 the columns in the returned data frame are converted to valid R
-identifiers if the \code{make.names} argument is \code{TRUE},
+identifiers
+if the \code{check.names} argument is \code{TRUE},
 otherwise non-syntactic column names can be returned unquoted.
 
 An error is raised
@@ -54,10 +54,6 @@ also raise an error.
 Reads a database table to a data frame, optionally converting
 a column to row names and converting the column names to valid
 R identifiers.
-}
-\note{
-The default DBI implementation converts column names with a call to
-\code{\link[=make.names]{make.names()}} if \code{check.names} is \code{TRUE}.
 }
 \section{Additional arguments}{
 

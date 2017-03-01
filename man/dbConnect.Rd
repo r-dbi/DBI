@@ -7,42 +7,50 @@
 dbConnect(drv, ...)
 }
 \arguments{
-\item{drv}{an object that inherits from \code{\linkS4class{DBIDriver}},
-or an existing \code{\linkS4class{DBIConnection}}
+\item{drv}{an object that inherits from \linkS4class{DBIDriver},
+or an existing \linkS4class{DBIConnection}
 object (in order to clone an existing connection).}
 
-\item{...}{authorization arguments needed by the DBMS instance; these
-typically include \code{user}, \code{password}, \code{dbname}, \code{host},
-\code{port}, etc.  For details see the appropriate \code{DBIDriver}.}
+\item{...}{authentication arguments needed by the DBMS instance; these
+typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
+For details see the appropriate \code{DBIDriver}.}
 }
 \value{
-An object that extends \code{\linkS4class{DBIConnection}} in a
-database-specific manner. For instance \code{dbConnect(RMySQL::MySQL())} produces
-an object of class \code{MySQLConnection}. This object is used to direct
-commands to the database engine.
+\code{dbConnect()} returns an S4 object that inherits from \linkS4class{DBIConnection}.
+This object is used to communicate with the database engine.
 }
 \description{
-Connect to a DBMS going through the appropriate authorization procedure.
+Connect to a DBMS going through the appropriate authentication procedure.
 Some implementations may allow you to have multiple connections open, so you
 may invoke this function repeatedly assigning its output to different
-objects. The authorization mechanism is left unspecified, so check the
+objects.
+The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
-}
-\details{
-Each driver will define what other arguments are required, e.g.,
-\code{"dbname"} for the database name, \code{"username"}, and
-\code{"password"}.
 }
 \section{Specification}{
 
 
-DBI specifies only the return type for \code{dbConnect()}.
+DBI recommends using the following argument names for authentication
+parameters, with \code{NULL} default:
+\itemize{
+\item \code{user} for the user name (default: current user)
+\item \code{password} for the password
+\item \code{host} for the host name (default: local connection)
+\item \code{port} for the port number (default: local connection)
+\item \code{dbname} for the name of the database on the host, or the database file
+name
+}
+
+The defaults should provide reasonable behavior, in particular a
+local connection for \code{host = NULL}.  For some DBMS (e.g., PostgreSQL),
+this is different to a TCP/IP connection to \code{localhost}.
 
 }
 
 \examples{
-# SQLite only needs a path to the database. Other database drivers
-# will require more details (like username, password, host, port etc)
+# SQLite only needs a path to the database. (Here, ":memory:" is a special
+# path that creates an in-memory database.) Other database drivers
+# will require more details (like user, password, host, port, etc.)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 con
 

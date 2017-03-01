@@ -2,7 +2,7 @@
 % Please edit documentation in R/data.R
 \name{sqlData}
 \alias{sqlData}
-\title{Convert a data frame into form suitable for upload to a SQL database}
+\title{Convert a data frame into form suitable for upload to an SQL database}
 \usage{
 sqlData(con, value, row.names = NA, ...)
 }
@@ -28,7 +28,7 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 This is a generic method that coerces R objects into vectors suitable for
 upload to the database. The output will vary a little from method to
 method depending on whether the main upload device is through a single
-SQL string or multiple parameterised queries.
+SQL string or multiple parameterized queries.
 This method is mostly useful for backend implementers.
 }
 \details{

@@ -64,9 +64,9 @@ setClass("DBIObject", "VIRTUAL")
 #' (deleted, inserted, changed,
 #' (`rows.affected`), and if the query is complete (`has.completed`).
 #'
-#' @param dbObj An object inheriting from \code{\linkS4class{DBIObject}},
-#'  i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
-#'  or a \code{\linkS4class{DBIResult}}
+#' @param dbObj An object inheriting from [DBIObject-class],
+#'  i.e. [DBIDriver-class], [DBIConnection-class],
+#'  or a [DBIResult-class]
 #' @param ... Other arguments to methods.
 #' @family DBIDriver generics
 #' @family DBIConnection generics

@@ -7,10 +7,10 @@
 dbSendStatement(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{statement}{a character vector of length 1 containing SQL.}
+\item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -19,7 +19,7 @@ dbSendStatement(conn, statement, ...)
 an S4 object that inherits from \linkS4class{DBIResult}.
 The result set can be used with \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to
 determine the number of rows affected by the query.
-Once you have finished using a result, make sure to disconnect it
+Once you have finished using a result, make sure to clear it
 with \code{\link[=dbClearResult]{dbClearResult()}}.
 An error is raised when issuing a statement over a closed
 or invalid connection,
@@ -27,7 +27,7 @@ if the syntax of the statement is invalid,
 or if the statement is not a non-\code{NA} string.
 }
 \description{
-The function \code{dbSendStatement} only submits and synchronously executes the
+The \code{dbSendStatement()} method only submits and synchronously executes the
 SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
 \code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
 the number of affected rows, call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} on the
@@ -44,8 +44,6 @@ implement the latter.
 
 
 No warnings occur under normal conditions.
-The DBIResult object returned by \code{dbSendStatement()} must be valid, i.e.,
-\code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}.
 When done, the DBIResult object must be cleared with a call to
 \code{\link[=dbClearResult]{dbClearResult()}}.
 Failure to clear the result set leads to a warning

@@ -7,7 +7,7 @@
 dbListTables(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
@@ -27,12 +27,18 @@ it is also removed from the list of database tables.
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
+Returns the unquoted names of remote tables accessible through this
+connection.
 This should, where possible, include temporary tables, and views.
 }
 \section{Additional arguments}{
 
 
 TBD (schema support).
+TBD: \code{temporary = NA}
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
 
 }
 

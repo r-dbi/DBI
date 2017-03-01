@@ -38,14 +38,12 @@ to, you should call the function directly.
 
 \code{dbUnloadDriver()} is not implemented for modern backends.
 }
-\section{Side Effects}{
-
+\details{
 The client part of the database communication is
 initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to
 \code{dbConnect}.
 }
-
 \examples{
 # Create a RSQLite driver with a string
 d <- dbDriver("SQLite")

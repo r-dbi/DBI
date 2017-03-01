@@ -7,7 +7,7 @@
 dbColumnInfo(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
 \item{...}{Other arguments passed on to methods.}
 }

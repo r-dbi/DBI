@@ -7,7 +7,7 @@
 dbGetStatement(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -19,7 +19,8 @@ Attempting to query the statement for a result set cleared with
 \code{\link[=dbClearResult]{dbClearResult()}} gives an error.
 }
 \description{
-Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}.
+Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}
+or \code{\link[=dbSendStatement]{dbSendStatement()}}.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

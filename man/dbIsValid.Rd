@@ -7,9 +7,9 @@
 dbIsValid(dbObj, ...)
 }
 \arguments{
-\item{dbObj}{An object inheriting from \code{\linkS4class{DBIObject}},
-i.e. \code{\linkS4class{DBIDriver}}, \code{\linkS4class{DBIConnection}},
-or a \code{\linkS4class{DBIResult}}}
+\item{dbObj}{An object inheriting from \linkS4class{DBIObject},
+i.e. \linkS4class{DBIDriver}, \linkS4class{DBIConnection},
+or a \linkS4class{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }
@@ -19,8 +19,11 @@ or a \code{\linkS4class{DBIResult}}}
 \code{FALSE} otherwise.
 A \linkS4class{DBIConnection} object is initially valid,
 and becomes invalid after disconnecting with \code{\link[=dbDisconnect]{dbDisconnect()}}.
-A \linkS4class{DBIResult} object is initially valid,
+A \linkS4class{DBIResult} object is valid after a call to \code{\link[=dbSendQuery]{dbSendQuery()}},
 and stays valid even after all rows have been fetched;
+only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
+A \linkS4class{DBIResult} object is also valid after a call to \code{\link[=dbSendStatement]{dbSendStatement()}},
+and stays valid after querying the number of rows affected;
 only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
 If the connection to the database system is dropped (e.g., due to
 connectivity problems, server failure, etc.), \code{dbIsValid()} should return
