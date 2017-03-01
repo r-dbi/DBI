@@ -1,3 +1,8 @@
+## DBI 0.5-19 (2017-03-01)
+
+- Finalize first draft of specification, now in a vignette.
+
+
 ## DBI 0.5-18 (2017-03-01)
 
 - Deprecate `dbDriver()` and `dbUnloadDriver()` by documentation (#21).
