@@ -7,12 +7,12 @@
 dbGetRowCount(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbGetRowCount()} returns a scalar number string (integer or numeric),
+\code{dbGetRowCount()} returns a scalar number (integer or numeric),
 the number of rows fetched so far.
 After calling \code{\link[=dbSendQuery]{dbSendQuery()}},
 the row count is initially zero.
@@ -32,7 +32,8 @@ Attempting to get the row count for a result set cleared with
 \code{\link[=dbClearResult]{dbClearResult()}} gives an error.
 }
 \description{
-This value is increased by calls to \code{\link[=dbFetch]{dbFetch()}}.
+Returns the total number of rows actually fetched with calls to \code{\link[=dbFetch]{dbFetch()}}
+for this result set.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

@@ -24,7 +24,7 @@ Safely interpolate values into an SQL string
 }
 \section{Backend authors}{
 
-If you are implementing a SQL backend with non-ANSI quoting rules, you'll
+If you are implementing an SQL backend with non-ANSI quoting rules, you'll
 need to implement a method for \code{\link[=sqlParseVariables]{sqlParseVariables()}}. Failure to
 do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.

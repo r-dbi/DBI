@@ -7,7 +7,7 @@
 dbExistsTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{A character string specifying a DBMS table name.}
@@ -30,6 +30,7 @@ Returns if a table given by name exists in the database.
 
 
 TBD: Schema support.
+TBD: \code{temporary = NA}
 
 They must be provided as named arguments.
 See the "Specification" section for details on their usage.

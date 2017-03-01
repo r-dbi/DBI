@@ -7,8 +7,8 @@
 dbDataType(dbObj, obj, ...)
 }
 \arguments{
-\item{dbObj}{A object inheriting from \code{\linkS4class{DBIDriver}}
-or \code{\linkS4class{DBIConnection}}}
+\item{dbObj}{A object inheriting from \linkS4class{DBIDriver}
+or \linkS4class{DBIConnection}}
 
 \item{obj}{An R object whose SQL type we want to determine.}
 
@@ -18,22 +18,29 @@ or \code{\linkS4class{DBIConnection}}}
 \code{dbDataType()} returns the SQL type that corresponds to the \code{obj} argument
 as a non-empty
 character string.
+For data frames, a character vector with one element per column
+is returned.
 An error is raised for invalid values for the \code{obj} argument such as a
 \code{NULL} value.
 }
 \description{
-This is a generic function. The default method determines the SQL type of an
+Returns an SQL string that describes the SQL data type to be used for an
+object.
+The default implementation of this generic determines the SQL type of an
 R object according to the SQL 92 specification, which may serve as a starting
-point for driver implementations. The default method also provides a method
+point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 }
 \details{
 The data types supported by databases are different than the data types in R,
-but the mapping between the primitve types is straightforward:  Any of the
-many fixed and varying length character types are mapped to character
-vectors. Fixed-precision (non-IEEE) numbers are mapped into either numeric or
+but the mapping between the primitive types is straightforward:
+\itemize{
+\item Any of the many fixed and varying length character types are mapped to
+character vectors
+\item Fixed-precision (non-IEEE) numbers are mapped into either numeric or
 integer vectors.
+}
 
 Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.

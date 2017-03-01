@@ -1,7 +1,7 @@
 #' Safely interpolate values into an SQL string
 #'
 #' @section Backend authors:
-#' If you are implementing a SQL backend with non-ANSI quoting rules, you'll
+#' If you are implementing an SQL backend with non-ANSI quoting rules, you'll
 #' need to implement a method for [sqlParseVariables()]. Failure to
 #' do so does not expose you to SQL injection attacks, but will (rarely) result
 #' in errors matching supplied and interpolated variables.
@@ -123,7 +123,7 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 
 #' @export
 #' @rdname sqlParseVariables
-#' @param sql SQL to parse (a character vector of length 1)
+#' @param sql SQL to parse (a character string)
 #' @param quotes A list of `QuoteSpec` calls defining the quoting
 #'   specification.
 #' @param comments A list of `CommentSpec` calls defining the commenting

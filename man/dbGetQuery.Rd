@@ -7,10 +7,10 @@
 dbGetQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{statement}{a character vector of length 1 containing SQL.}
+\item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -26,24 +26,26 @@ or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
 If the \code{n} argument is not an atomic whole number
-greater or equal to -1, an error is raised,
+greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
 }
 \description{
-\code{dbGetQuery} comes with a default implementation that calls
+Returns the result of a query as a data frame.
+\code{dbGetQuery()} comes with a default implementation
+(which should work with most backends) that calls
 \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 }
 \details{
-This function is for \code{SELECT} queries only.  Some backends may
-support data manipulation statements through this function for compatibility
-reasons.  However callers are strongly advised to use
+This method is for \code{SELECT} queries only.  Some backends may
+support data manipulation statements through this method for compatibility
+reasons.  However, callers are strongly advised to use
 \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 
 Subclasses should override this method only if they provide some sort of
-performance optimisation.
+performance optimization.
 }
 
 \section{Specification}{

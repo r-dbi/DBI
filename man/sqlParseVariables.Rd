@@ -16,7 +16,7 @@ sqlQuoteSpec(start, end, escape = "", doubleEscape = TRUE)
 sqlParseVariablesImpl(sql, quotes, comments)
 }
 \arguments{
-\item{sql}{SQL to parse (a character vector of length 1)}
+\item{sql}{SQL to parse (a character string)}
 
 \item{start, end}{Start and end characters for quotes and comments}
 

@@ -7,7 +7,7 @@
 dbQuoteString(conn, x, ...)
 }
 \arguments{
-\item{conn}{A subclass of \code{\linkS4class{DBIConnection}}, representing
+\item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
 \item{x}{A character vector to quote as string.}
@@ -27,7 +27,7 @@ Passing objects of class \link{SQL} should also return them unchanged.
 to achieve this behavior, but this is not required.)
 }
 \description{
-Call this function to generate a string that is suitable for
+Call this method to generate a string that is suitable for
 use in a query as a string literal, to make sure that you
 generate valid SQL and avoid SQL injection.
 }
