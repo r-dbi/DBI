@@ -131,12 +131,14 @@ topics <- c(
   "dbSendQuery",
   "dbFetch",
   "dbClearResult",
+  "dbBind",
   "dbGetQuery",
   "dbSendStatement",
   "dbExecute",
   "dbQuoteString",
   "dbQuoteIdentifier",
   "dbReadTable",
+  "dbWriteTable",
   "dbListTables",
   "dbExistsTable",
   "dbRemoveTable",
@@ -145,7 +147,6 @@ topics <- c(
   "dbGetStatement",
   "dbGetRowCount",
   "dbGetRowsAffected",
-  "dbBind",
   "transactions",
   "dbWithTransaction"
 )
