@@ -18,6 +18,8 @@ or \code{\linkS4class{DBIConnection}}}
 \code{dbDataType()} returns the SQL type that corresponds to the \code{obj} argument
 as a non-empty
 character string.
+For data frames, a character vector with one element per column
+is returned.
 An error is raised for invalid values for the \code{obj} argument such as a
 \code{NULL} value.
 }

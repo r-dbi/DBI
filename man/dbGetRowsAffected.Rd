@@ -12,7 +12,7 @@ dbGetRowsAffected(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbGetRowsAffected()} returns a scalar number string (integer or numeric),
+\code{dbGetRowsAffected()} returns a scalar number (integer or numeric),
 the number of rows affected by a data manipulation statement
 issued with \code{\link[=dbSendStatement]{dbSendStatement()}}.
 The value is available directly after the call

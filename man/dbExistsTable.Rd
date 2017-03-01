@@ -30,6 +30,7 @@ Returns if a table given by name exists in the database.
 
 
 TBD: Schema support.
+TBD: \code{temporary = NA}
 
 They must be provided as named arguments.
 See the "Specification" section for details on their usage.

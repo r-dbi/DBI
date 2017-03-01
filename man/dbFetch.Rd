@@ -29,7 +29,7 @@ or has one
 or zero rows.
 An attempt to fetch from a closed result set raises an error.
 If the \code{n} argument is not an atomic whole number
-greater or equal to -1, an error is raised,
+greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 Calling \code{dbFetch()} on a result set from a data manipulation query
 created by \code{\link[=dbSendStatement]{dbSendStatement()}}
@@ -58,6 +58,8 @@ A value of \link{Inf} for the \code{n} argument is supported
 and also returns the full result.
 If more rows than available are fetched, the result is returned in full
 without warning.
+If fewer rows than requested are returned, further fetches will
+return a data frame with zero rows.
 If zero rows are fetched, the columns of the data frame are still fully
 typed.
 Fetching fewer rows than available is permitted,

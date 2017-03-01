@@ -35,6 +35,10 @@ This should, where possible, include temporary tables, and views.
 
 
 TBD (schema support).
+TBD: \code{temporary = NA}
+
+They must be provided as named arguments.
+See the "Specification" section for details on their usage.
 
 }
 

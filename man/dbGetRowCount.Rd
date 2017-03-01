@@ -12,7 +12,7 @@ dbGetRowCount(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbGetRowCount()} returns a scalar number string (integer or numeric),
+\code{dbGetRowCount()} returns a scalar number (integer or numeric),
 the number of rows fetched so far.
 After calling \code{\link[=dbSendQuery]{dbSendQuery()}},
 the row count is initially zero.

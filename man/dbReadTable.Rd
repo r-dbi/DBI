@@ -37,7 +37,8 @@ an error is raised if no such column exists.
 
 If the database supports identifiers with special characters,
 the columns in the returned data frame are converted to valid R
-identifiers if the \code{make.names} argument is \code{TRUE},
+identifiers
+if the \code{check.names} argument is \code{TRUE},
 otherwise non-syntactic column names can be returned unquoted.
 
 An error is raised

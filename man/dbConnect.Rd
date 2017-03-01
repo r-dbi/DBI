@@ -17,6 +17,7 @@ For details see the appropriate \code{DBIDriver}.}
 }
 \value{
 \code{dbConnect()} returns an S4 object that inherits from \linkS4class{DBIConnection}.
+This object is used to communicate with the database engine.
 }
 \description{
 Connect to a DBMS going through the appropriate authentication procedure.
@@ -29,7 +30,20 @@ documentation of individual drivers for details.
 \section{Specification}{
 
 
-DBI specifies only the return type for \code{dbConnect()}.
+DBI recommends using the following argument names for authentication
+parameters, with \code{NULL} default:
+\itemize{
+\item \code{user} for the user name (default: current user)
+\item \code{password} for the password
+\item \code{host} for the host name (default: local connection)
+\item \code{port} for the port number (default: local connection)
+\item \code{dbname} for the name of the database on the host, or the database file
+name
+}
+
+The defaults should provide reasonable behavior, in particular a
+local connection for \code{host = NULL}.  For some DBMS (e.g., PostgreSQL),
+this is different to a TCP/IP connection to \code{localhost}.
 
 }
 
