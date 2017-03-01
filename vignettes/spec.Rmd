@@ -14,11 +14,10 @@ vignette: >
 ```{r echo = FALSE}
 library(magrittr)
 knitr::opts_chunk$set(echo = FALSE)
+r <- rprojroot::is_r_package$make_fix_file()
 ```
 
 ```{r}
-r <- rprojroot::is_r_package$make_fix_file()
-
 rd_db <- tools::Rd_db(dir = r())
 rd_db_test <- tools::Rd_db("DBItest")
 
@@ -39,6 +38,11 @@ html_topic <- function(name, db) {
 xml_topic <- function(name, db, patcher) {
   html <- html_topic(name, db)
   x <- xml2::read_html(paste(html, collapse = "\n"))
+
+  # No idea why this is necessary when embedding HTML in Markdown
+  codes <- x %>% xml2::xml_find_all("//code[contains(., '$')]")
+  xml2::xml_text(codes) <- gsub("[$]", "\\\\$", xml2::xml_text(codes))
+
   xx <- x %>% xml2::xml_find_first("/html/body")
   xx %>% xml2::xml_find_first("//table") %>% xml2::xml_remove
   patcher(xx)
