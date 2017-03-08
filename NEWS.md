@@ -1,81 +1,27 @@
-## DBI 0.5-22 (2017-03-08)
+# DBI 0.6 (2017-03-08)
 
-- Vignette tweaks.
+- Interface changes
+    - Deprecated `dbDriver()` and `dbUnloadDriver()` by documentation (#21).
+    - Renamed arguments to  `sqlInterpolate()` and `sqlParseVariables()` to be more consistent with the rest of the interface, and added `.dots` argument to `sqlParseVariables`. DBI drivers are now expected to implement `sqlParseVariables(conn, sql, ..., .dots)` and `sqlInterpolate(conn, sql, ...)` (#147).
 
+- Interface enhancements
+    - Removed `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
+    - Avoiding using braces in the definitions of generics if possible, so that standard generics can be detected (#146).
+    - Added default implementation for `dbReadTable()`.
+    - All standard generics are required to have an ellipsis (with test), for future extensibility.    - Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
+    - Removed `tryCatch()` call in `dbGetQuery()` (#113).
 
-## DBI 0.5-21 (2017-03-08)
+- Documentation improvements
+    - Finalized first draft of DBI specification, now in a vignette.
+    - Most methods now draw documentation from `DBItest`, only those where the behavior is not finally decided don't do this yet yet.
+    - Removed `max.connections` requirement from documentation (#56).
+    - Improved `dbBind()` documentation and example (#136).
+    - Change `omegahat.org` URL to `omegahat.net`, the particular document still doesn't exist below the new domain.
 
-- Enable building vignettes on Travis and on CRAN.
-
-
-## DBI 0.5-20 (2017-03-08)
-
-- Synchronize specs with `DBItest`.
-
-
-## DBI 0.5-19 (2017-03-01)
-
-- Finalize first draft of specification, now in a vignette.
-
-
-## DBI 0.5-18 (2017-03-01)
-
-- Deprecate `dbDriver()` and `dbUnloadDriver()` by documentation (#21).
-
-
-## DBI 0.5-17 (2017-02-26)
-
-- Added specification from DBItest to methods documentation. Affected methods: `dbBegin()`, `dbCommit()`, `dbRollback()`, and `dbWithTransaction()`. Most methods now draw documentation from `DBItest`, only those where the behavior is not finally decided don't yet.
-
-
-## DBI 0.5-16 (2017-02-26)
-
-- Added specification from DBItest to methods documentation. Affected methods: `dbIsValid()`, `dbHasCompleted()`, `dbGetStatement()`, `dbGetRowCount()`, `dbGetRowsAffected()`, and `dbBind()`.
-
-
-## DBI 0.5-15 (2017-01-31)
-
-- Revert `...` hack for `sqlInterpolate()` and `sqlParseVariables()`, simply renamed arguments (#147).
-- Added specification from DBItest to methods documentation. Affected methods: `dbConnect()`, `dbDisconnect()`, `dbDataType()`, `dbSendQuery()`, `dbFetch()`, `dbClearResult()`, `dbGetQuery()`, `dbSendStatement()`, `dbExecute()`, `dbQuoteIdentifier()`, `dbQuoteString()`, `dbReadTable()`, `dbWriteTable()`, `dbRemoveTable()`, `dbExistsTable()`, and `dbListTables()` (#129).
-- Added default implementation for `dbReadTable()`.
-- Removed `dbQuoteIdentifier(DBIConnection, list)` again.
-- Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
-- Removed `tryCatch()` call in `dbGetQuery()` (#113).
-
-
-## DBI 0.5-14 (2016-12-24)
-
-- `sqlParseVariables()` and `sqlInterpolate()` have `...` as exported formals. DBI drivers are expected to implement `sqlParseVariables(conn, sql, ..., .dots)` and `sqlInterpolate(conn, sql, ...)`. Dispatch occurs manually, overriding default S4 logic. This is a temporary workaround, DBI 0.7 will export the correct signature, and backends not adhering to this signature will not be able to load (#147).
-
-
-## DBI 0.5-13 (2016-12-02)
-
-- Remove `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
-- New `dbQuoteIdentifier(DBIConnection, list)` to support quoting multi-component identifiers such as tables in a schema (#71). DBI backends should implement this method for schema support.
-- Renamed arguments to `sqlInterpolate()` and `sqlParseVariables()`, the former gains a `.dots` argument (#140, #147).
-until RSQLite 1.1 has been built for OS X
-- Remove `max.connections` requirement from documentation (#56).
-- Enable `dbBind()` example (#136).
-- Use roxygen2 inheritance to copy DBI specification to this package.
-- Avoid using braces in the definitions of generics if possible, so that standard generics can be detected (#146).
-- Change `omegahat.org` URL to `omegahat.net`, the particular document still doesn't exist below the new domain.
-- Use `tic` package for building documentation.
-
-
-## DBI 0.5-12 (2016-10-06)
-
-- All standard generics are required to have an ellipsis (with test), for future extensibility.
-- Documentation updates: DBI specification and `dbBind()`.
-
-
-## DBI 0.5-11 (2016-10-01)
-
-- Use markdown in documentation.
-
-
-## DBI 0.5-10 (2016-09-17)
-
-- Same as 0.5-1.
+- Internal
+    - Use roxygen2 inheritance to copy DBI specification to this package.
+    - Use `tic` package for building documentation.
+    - Use markdown in documentation.
 
 
 # DBI 0.5-1 (2016-09-09)
