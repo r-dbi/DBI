@@ -6,22 +6,61 @@
 \alias{DBI-package}
 \title{DBI: R Database Interface}
 \description{
-A database interface definition for communication
-between R and relational database management systems.  All
-classes in this package are virtual and need to be extended by
-the various R/DBMS implementations.
+DBI defines an interface for communication between R and relational database
+management systems.
+All classes in this package are virtual and need to be extended by
+the various R/DBMS implementations (so-called \emph{DBI backends}).
 }
+\section{Definition}{
+
+
+A DBI backend is an R package,
+which should import the \pkg{DBI}
+and \pkg{methods}
+packages.
+For better or worse, the names of many existing backends start with
+\sQuote{R}, e.g., \pkg{RSQLite}, \pkg{RMySQL}, \pkg{RSQLServer}; it is up
+to the backend author to adopt this convention or not.
+
+}
+
+\section{DBI classes and methods}{
+
+
+A backend defines three classes,
+which are subclasses of
+\linkS4class{DBIDriver},
+\linkS4class{DBIConnection},
+and \linkS4class{DBIResult}.
+The backend provides implementation for all methods
+of these base classes
+that are defined but not implemented by DBI.
+All methods have an ellipsis \code{...} in their formals.
+
+}
+
+\section{Construction of the DBIDriver object}{
+
+
+The backend must support creation of an instance of its \linkS4class{DBIDriver}
+subclass
+with a \dfn{constructor function}.
+By default, its name is the package name without the leading \sQuote{R}
+(if it exists), e.g., \code{SQLite} for the \pkg{RSQLite} package.
+However, backend authors may choose a different name.
+The constructor must be exported, and
+it must be a function
+that is callable without arguments.
+DBI recommends to define a constructor with an empty argument list.
+
+}
+
 \examples{
-con <- dbConnect(RSQLite::SQLite(), ":memory:")
-
-dbWriteTable(con, "iris", iris)
-dbGetQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > 2.3")
-
-dbDisconnect(con)
+RSQLite::SQLite()
 }
 \seealso{
 Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQuery]{dbGetQuery()}},
-\code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
+\code{\link[=dbReadTable]{dbReadTable()}}, \code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
 
 Formal specification (currently work in progress and incomplete):
 \code{vignette("spec", package = "DBI")}
