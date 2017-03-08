@@ -20,7 +20,8 @@ Suggests:
     knitr,
     rmarkdown,
     RSQLite (>= 1.1),
-    testthat
+    testthat,
+    xml2
 Encoding: UTF-8
 License: LGPL (>= 2)
 URL: http://rstats-db.github.io/DBI
