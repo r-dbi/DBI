@@ -1,3 +1,8 @@
+## DBI 0.5-21 (2017-03-08)
+
+- Enable building vignettes on Travis and on CRAN.
+
+
 ## DBI 0.5-20 (2017-03-08)
 
 - Synchronize specs with `DBItest`.
