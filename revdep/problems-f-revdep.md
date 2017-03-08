@@ -10,14 +10,14 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-02-28                   |
+|date     |2017-03-08                   |
 
 ## Packages
 
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
-|DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
+|DBI       |   |0.5-20     |2017-03-08 |Github (rstats-db/DBI@6e28f5c)   |
 |hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
@@ -26,17 +26,20 @@
 
 # Check results
 
-29 packages with problems
+32 packages with problems
 
 |package           |version  | errors| warnings| notes|
 |:-----------------|:--------|------:|--------:|-----:|
 |annmap            |1.16.0   |      0|        2|     5|
 |AnnotationDbi     |1.36.2   |      0|        1|     5|
+|archivist         |2.1.2    |      0|        1|     3|
 |ChemmineR         |2.26.1   |      1|        0|     0|
 |ChIPpeakAnno      |3.8.9    |      0|        1|     2|
 |cn.farms          |1.22.0   |      1|        0|     1|
+|convey            |0.1.0    |      1|        0|     0|
 |eiR               |1.14.1   |      1|        2|     6|
 |GOFunction        |1.22.0   |      0|        1|     5|
+|ITALICS           |2.34.0   |      0|        1|     5|
 |lumi              |2.26.4   |      0|        1|     3|
 |mgsa              |1.22.0   |      0|        1|     4|
 |oce               |0.9-20   |      1|        0|     1|
@@ -206,6 +209,34 @@ Rd file 'inpIDMapper.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## archivist (2.1.2)
+Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
+Bug reports: https://github.com/pbiecek/archivist/issues
+
+0 errors | 1 warning  | 3 notes
+
+```
+checking whether package ‘archivist’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/archivist.Rcheck/00install.out’ for details.
+
+checking package dependencies ... NOTE
+Package which this enhances but not available for checking: ‘archivist.github’
+
+checking whether the namespace can be loaded with stated dependencies ... NOTE
+Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
+
+A namespace must be able to be loaded with just the base namespace
+loaded: otherwise if the namespace gets loaded by a saved object, the
+session will be unable to start.
+
+Probably some imports need to be declared in the NAMESPACE file.
+
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘archivist.github’
+```
+
 ## ChemmineR (2.26.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -299,6 +330,31 @@ File ‘cn.farms/R/sFsnowfall-internal.R’:
   assign(name, value, envir = globalenv())
 ```
 
+## convey (0.1.0)
+Maintainer: Djalma Pessoa <pessoad@gmail.com>  
+Bug reports: https://github.com/djalmapessoa/convey/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  OK: 281 SKIPPED: 0 FAILED: 9
+  1. Failure: compare results convey vs vardpoor (@test-svyarpr.R#46) 
+  2. Failure: compare results convey vs vardpoor (@test-svyarpr.R#48) 
+  3. Failure: compare results convey vs vardpoor (@test-svyarpt.R#43) 
+  4. Failure: compare results convey vs vardpoor (@test-svyarpt.R#45) 
+  5. Failure: compare results convey vs vardpoor (@test-svypoormed.R#44) 
+  6. Failure: compare results convey vs vardpoor (@test-svypoormed.R#46) 
+  7. Failure: compare results convey vs vardpoor (@test-svyqsr.R#45) 
+  8. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#48) 
+  9. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#50) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
 ## eiR (1.14.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -310,12 +366,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R : Error : (converted from warning) dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R 
+       /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -475,6 +531,65 @@ Rd file 'GOFunction.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## ITALICS (2.34.0)
+Maintainer: Guillem Rigaill <italics@curie.fr>
+
+0 errors | 1 warning  | 5 notes
+
+```
+checking whether package ‘ITALICS’ can be installed ... WARNING
+Found the following significant warnings:
+  Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ITALICS.Rcheck/00install.out’ for details.
+
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+Packages listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘affxparser’ ‘GLAD’ ‘oligo’
+A package should be listed in only one of these fields.
+
+checking dependencies in R code ... NOTE
+Packages in Depends field not imported from:
+  ‘ITALICSData’ ‘pd.mapping50k.xba240’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+trainITALICS: warning in list.files(dir, full.name = TRUE): partial
+  argument match of 'full.name' to 'full.names'
+
+checking Rd files ... NOTE
+prepare_Rd: GLAD.GLAD.Rd:33: Dropping empty section \keyword
+prepare_Rd: ITALICSNew.Rd:82: Dropping empty section \keyword
+prepare_Rd: ITALICSTrain.Rd:43: Dropping empty section \keyword
+prepare_Rd: Model.GetConfDat.Rd:23: Dropping empty section \keyword
+prepare_Rd: Model.GetCorrection.Rd:20: Dropping empty section \keyword
+prepare_Rd: Model.GetEffet.Rd:20: Dropping empty section \keyword
+prepare_Rd: Model.GetModel.Rd:21: Dropping empty section \keyword
+prepare_Rd: Model.GetResidu.Rd:18: Dropping empty section \keyword
+prepare_Rd: New.AddInfo.Rd:24: Dropping empty section \keyword
+prepare_Rd: New.fromQuartetToSnp.Rd:31: Dropping empty section \keyword
+prepare_Rd: New.fromQuartetToSnp.Rd:25: Dropping empty section \examples
+prepare_Rd: New.fromSnpToQuartet.Rd:25: Dropping empty section \keyword
+prepare_Rd: New.getQuartet.Rd:27: Dropping empty section \keyword
+prepare_Rd: New.getSnpInfo.Rd:25: Dropping empty section \keyword
+prepare_Rd: New.readQuartetCopyNb.Rd:23: Dropping empty section \keyword
+
+checking Rd line widths ... NOTE
+Rd file 'ITALICSNew.Rd':
+  \usage lines wider than 90 characters:
+         amplicon=2.1, deletion=-3.5, deltaN=0.15, forceGL=c(-0.2,0.2), param=c(d=2), nbsigma=1, ... )
+  \examples lines wider than 100 characters:
+     ## load annotation using the pd.mapping50k.xba24 or pd.mapping50k.hind240 or  pd.mapping250k.sty or pd.mapping250k.nsp package
+     snpInfo <- fromQuartetToSnp(cIntensity="quartetLogRatio", quartetInfo=quartet$quartetInfo, snpInfo=snpInfo)
+
+Rd file 'ITALICSTrain.Rd':
+  \usage lines wider than 90 characters:
+     trainITALICS (dir,  amplicon=2.1, deletion=-3.5, deltaN=0.15, forceGL=c(-0.2,0.2), param=c(d=2), nbsigma=1, ...)
+
+These lines will be truncated in the PDF manual.
+```
+
 ## lumi (2.26.4)
 Maintainer: Pan Du <dupan.mail@gmail.com>, Lei Huang <lhuang@bsd.uchicago.edu>, Gang Feng <g-feng@northwestern.edu>
 
@@ -630,8 +745,7 @@ The error most likely occurred in:
 > ### Aliases: MAplot MAplot-methods MAplot,FeatureSet-method
 > ###   MAplot,TilingFeatureSet-method MAplot,PLMset-method
 > ###   MAplot,ExpressionSet-method MAplot,matrix-method
-... 8 lines ...
-+   groups <- factor(rep(c('brain', 'UnivRef'), each=3))
+... 9 lines ...
 +   data.frame(sampleNames(nimbleExpressionFS), groups)
 +   MAplot(nimbleExpressionFS, pairs=TRUE, ylim=c(-.5, .5), groups=groups)
 + }
@@ -639,6 +753,7 @@ Loading required package: oligoData
 Loading required package: pd.hg18.60mer.expr
 Loading required package: RSQLite
 Loading required package: DBI
+Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
 Error in loadNamespace(name) : there is no package called ‘KernSmooth’
 Calls: MAplot ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
 Execution halted
@@ -787,13 +902,13 @@ See section ‘Good practice’ in ‘?data’.
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-             }
      
 
 trying URL 'http://gpcr2.biocomp.unibo.it/bacello/dataset.htm'
 Content type 'text/html; charset=iso-8859-1' length 5062 bytes
 ==================================================
 downloaded 5062 bytes
+
 ... 8 lines ...
 Warning in rsqlite_disconnect(conn@ptr) :
   There are 1 result in use. The connection will be released when they are closed
@@ -833,7 +948,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpqrIDND/file400b7b3f9502 in chunks of 10000
+Processing /tmp/Rtmp5FKFHM/filed7d31b177ccb in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -856,7 +971,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/Rtmp8DJg54/file42d66b6c17d5) 
+  closing unused connection 3 (/tmp/RtmpapsNQ4/filedabd1c84b30e) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -1083,15 +1198,15 @@ Bug reports: https://github.com/rstats-db/RSQLite/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  1. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
-  2. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
-  3. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#78) 
-  4. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#95) 
-  5. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#95) 
-  6. Failure: DBItest[RSQLite]: Result: fetch_no_return_value (@spec-result-fetch.R#112) 
-  7. Error: DBItest[RSQLite]: Result: cannot_clear_result_twice_query (@spec-result-clear-result.R#42) 
-  8. Error: DBItest[RSQLite]: Result: cannot_clear_result_twice_statement (@spec-result-clear-result.R#52) 
-  9. Failure: DBItest[RSQLite]: Result: get_query_n_bad (@spec-result-get-query.R#87) 
+  1. Failure: DBItest[RSQLite]: Driver: data_type_driver (@spec-driver-data-type.R#13) 
+  2. Failure: DBItest[RSQLite]: Connection: data_type_connection (@spec-connection-data-type.R#5) 
+  3. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
+  4. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
+  5. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
+  6. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#90) 
+  7. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#90) 
+  8. Failure: DBItest[RSQLite]: Result: fetch_no_return_value (@spec-result-fetch.R#107) 
+  9. Failure: DBItest[RSQLite]: Result: fetch_n_more_rows (@spec-result-fetch.R#197) 
   1. ...
   
   Error: testthat unit tests failed
@@ -1223,17 +1338,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:41:04 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:41:05 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 9:41:05 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
