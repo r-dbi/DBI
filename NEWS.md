@@ -1,3 +1,8 @@
+## DBI 0.5-22 (2017-03-08)
+
+- Vignette tweaks.
+
+
 ## DBI 0.5-21 (2017-03-08)
 
 - Enable building vignettes on Travis and on CRAN.

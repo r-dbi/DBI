@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.5-21
+Version: 0.5-22
 Date: 2017-03-08
 Title: R Database Interface
 Description: A database interface definition for communication
@@ -18,8 +18,10 @@ Suggests:
     covr,
     hms,
     knitr,
+    magrittr,
+    rprojroot,
     rmarkdown,
-    RSQLite (>= 1.1),
+    RSQLite (>= 1.1-2),
     testthat,
     xml2
 Encoding: UTF-8
