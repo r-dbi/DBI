@@ -75,8 +75,6 @@ patch_package_doc <- function(x) {
   remove_see_also_section(x)
   remove_authors_section(x)
 
-  h3 <- x %>% xml_find_all("//h3")
-  xml_name(h3) <- "h2"
   x
 }
 
