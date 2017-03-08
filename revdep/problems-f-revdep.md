@@ -4,7 +4,7 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.3.2 (2016-10-31) |
+|version  |R version 3.3.3 (2017-03-06) |
 |system   |x86_64, linux-gnu            |
 |ui       |X11                          |
 |language |(EN)                         |
@@ -29,40 +29,50 @@
 
 # Check results
 
-30 packages with problems
+40 packages with problems
 
-|package           |version  | errors| warnings| notes|
-|:-----------------|:--------|------:|--------:|-----:|
-|annmap            |1.16.0   |      0|        2|     5|
-|AnnotationDbi     |1.36.2   |      0|        1|     5|
-|ChemmineR         |2.26.1   |      1|        0|     0|
-|ChIPpeakAnno      |3.8.9    |      0|        1|     2|
-|cn.farms          |1.22.0   |      1|        0|     1|
-|convey            |0.1.0    |      1|        0|     0|
-|eiR               |1.14.1   |      1|        2|     6|
-|GOFunction        |1.22.0   |      0|        1|     5|
-|lumi              |2.26.4   |      0|        1|     3|
-|mgsa              |1.22.0   |      0|        1|     4|
-|oce               |0.9-20   |      1|        0|     1|
-|oligo             |1.38.0   |      1|        0|     9|
-|ora               |2.0-1    |      1|        0|     0|
-|PAnnBuilder       |1.38.0   |      0|        3|     1|
-|plethy            |1.12.1   |      2|        0|     3|
-|postGIStools      |0.2.1    |      1|        0|     0|
-|RImmPort          |1.2.0    |      0|        1|     1|
-|RJDBC             |0.2-5    |      0|        1|     1|
-|rnaSeqMap         |2.32.0   |      0|        1|     4|
-|ROracle           |1.3-1    |      1|        0|     0|
-|RQDA              |0.2-8    |      1|        0|     1|
-|RSQLite           |1.1-2    |      1|        0|     1|
-|sf                |0.3-4    |      1|        0|     1|
-|sparklyr          |0.5.2    |      1|        0|     0|
-|specL             |1.8.0    |      0|        1|     3|
-|sqldf             |0.4-10   |      0|        1|     2|
-|TSdata            |2016.8-1 |      0|        1|     0|
-|VariantAnnotation |1.20.2   |      0|        1|     3|
-|VariantFiltering  |1.10.1   |      0|        1|     4|
-|vmsbase           |2.1.3    |      1|        0|     0|
+|package           |version   | errors| warnings| notes|
+|:-----------------|:---------|------:|--------:|-----:|
+|annmap            |1.16.0    |      0|        2|     5|
+|AnnotationDbi     |1.36.2    |      0|        1|     5|
+|AnnotationHubData |1.4.1     |      1|        0|     3|
+|ChemmineR         |2.26.1    |      1|        0|     0|
+|ChIPpeakAnno      |3.8.9     |      2|        1|     2|
+|cn.farms          |1.22.0    |      1|        0|     1|
+|convey            |0.1.0     |      1|        0|     0|
+|DECIPHER          |2.2.0     |      1|        1|     3|
+|eiR               |1.14.1    |      1|        2|     6|
+|ensembldb         |1.6.2     |      2|        1|     2|
+|GenomicFeatures   |1.26.3    |      2|        1|     2|
+|Genominator       |1.28.0    |      1|        1|     4|
+|GenVisR           |1.4.1     |      1|        0|     0|
+|GOFunction        |1.22.0    |      0|        1|     5|
+|GWASTools         |1.20.0    |      2|        0|     1|
+|lumi              |2.26.4    |      0|        1|     3|
+|mgsa              |1.22.0    |      0|        1|     4|
+|oce               |0.9-20    |      1|        0|     1|
+|oligo             |1.38.0    |      1|        0|     9|
+|ora               |2.0-1     |      1|        0|     0|
+|PAnnBuilder       |1.38.0    |      0|        3|     1|
+|plethy            |1.12.1    |      2|        0|     3|
+|poplite           |0.99.17.3 |      0|        1|     0|
+|postGIStools      |0.2.1     |      1|        0|     0|
+|RImmPort          |1.2.0     |      0|        1|     1|
+|RJDBC             |0.2-5     |      0|        1|     1|
+|rnaSeqMap         |2.32.0    |      0|        1|     4|
+|ROracle           |1.3-1     |      1|        0|     0|
+|RQDA              |0.2-8     |      1|        0|     1|
+|RSQLite           |1.1-2     |      1|        0|     1|
+|rTRM              |1.12.0    |      0|        1|     1|
+|seqplots          |1.12.0    |      2|        0|     3|
+|sf                |0.3-4     |      1|        0|     1|
+|sparklyr          |0.5.2     |      1|        0|     0|
+|specL             |1.8.0     |      0|        1|     3|
+|sqldf             |0.4-10    |      0|        1|     2|
+|TSdata            |2016.8-1  |      0|        1|     0|
+|VariantAnnotation |1.20.2    |      2|        2|     3|
+|VariantFiltering  |1.10.1    |      2|        2|     4|
+|vmsbase           |2.1.3     |      1|        0|     0|
 
 ## annmap (1.16.0)
 Maintainer: Chris Wirth <Christopher.Wirth@cruk.manchester.ac.uk>
@@ -210,6 +220,65 @@ Rd file 'inpIDMapper.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## AnnotationHubData (1.4.1)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+
+1 error  | 0 warnings | 3 notes
+
+```
+checking tests ... ERROR
+  Running ‘AnnotationHubData_unit_tests.R’ [98s/180s]
+Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
+Last 13 lines of output:
+  1 Test Suite : 
+  AnnotationHubData RUnit Tests - 21 test functions, 1 error, 0 failures
+  ERROR in test_dbSNPVCFPreparer_recipe: Error in curl::curl(ul, "r") : Timeout was reached
+  
+  Test files with failing tests
+  
+     test_recipe.R 
+       test_dbSNPVCFPreparer_recipe 
+  
+  
+  Error in BiocGenerics:::testPackage("AnnotationHubData") : 
+    unit tests failed for package AnnotationHubData
+  In addition: Warning message:
+  closing unused connection 3 (ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/archive/2016/) 
+  Execution halted
+
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘appveyor.yml’
+
+checking dependencies in R code ... NOTE
+Missing object imported by a ':::' call: ‘AnnotationHub:::.db_connection’
+Unexported object imported by a ':::' call: ‘OrganismDbi:::.packageTaxIds’
+  See the note in ?`:::` about the use of this operator.
+
+checking R code for possible problems ... NOTE
+.NCBIMetadataFromUrl: no visible binding for global variable ‘results’
+.NCBIMetadataFromUrl: no visible binding for global variable ‘specData’
+.makeComplexGR: no visible binding for global variable ‘seqname’
+jsonPath: no visible binding for global variable ‘SourceFile’
+jsonPath: no visible binding for global variable ‘HubRoot’
+makeAnnotationHubMetadata : <anonymous>: no visible binding for global
+  variable ‘Title’
+makeAnnotationHubMetadata : <anonymous>: no visible binding for global
+  variable ‘Description’
+... 52 lines ...
+  SourceFile SourceType SourceUrl SourceVersion Species TaxonomyId
+  Title ahroot bucket checkTrue read.csv results seqname specData
+  suppresWarnings
+Consider adding
+  importFrom("utils", "read.csv")
+to your NAMESPACE file.
+
+Found the following calls to data() loading into the global environment:
+File ‘AnnotationHubData/R/makeNCBIToOrgDbs.R’:
+  data(specData, package = "GenomeInfoDb")
+See section ‘Good practice’ in ‘?data’.
+```
+
 ## ChemmineR (2.26.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -225,9 +294,52 @@ See ‘/home/muelleki/git/R/DBI/revdep/checks/ChemmineR.Rcheck/00install.out’ 
 Maintainer: Lihua Julie Zhu <julie.zhu@umassmed.edu>,
  Jianhong Ou <Jianhong.ou@umassmed.edu>
 
-0 errors | 1 warning  | 2 notes
+2 errors | 1 warning  | 2 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘ChIPpeakAnno-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: addMetadata
+> ### Title: Add metadata of the GRanges objects used for findOverlapsOfPeaks
+> ### Aliases: addMetadata
+> ### Keywords: misc
+> 
+... 9 lines ...
+> peaks2 <- GRanges(seqnames=c(6,6,6,6,5),
++                   IRanges(start=c(1549800,1554400,1565000,1569400,167888600),
++                           end=c(1550599,1560799,1565399,1571199,167888999),
++                           names=c("f1","f2","f3","f4","f5")),
++                   strand="+",
++                   score=6:10, id=LETTERS[1:5])
+> ol <- findOverlapsOfPeaks(peaks1, peaks2)
+Error in c(<S4 object of class "GRanges">, <S4 object of class "GRanges">) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: findOverlapsOfPeaks -> vennCounts -> unlist -> GRangesList
+Execution halted
+
+checking tests ... ERROR
+  Running ‘runTests.R’ [50s/49s]
+Running the tests in ‘tests/runTests.R’ failed.
+Last 13 lines of output:
+  testthat results ================================================================
+  OK: 56 SKIPPED: 3 FAILED: 10
+  1.  Error: annotatePeakInBatch works not correct (@test_annotatePeakInBatch.R#42) 
+  2.  Error: assignChromosomeRegion works not correct (@test_assignChromosomeRegion.R#8) 
+  3.  Error: binOverFeature works not correct (@test_binOverFeature.R#34) 
+  4.  Error: featureAligend works not correct (@test_feature.R#3) 
+  5.  Error: findEnhancers works not correct (@test_findEnhancers.R#3) 
+  6.  Error: findOverlapsOfPeaks works not correct (@test_findOverlapsOfPeaks.R#13) 
+  7.  Error: getAllPeakSequence works not correct (@test_getAllPeakSequence.R#7) 
+  8.  Error: getVennCounts works not correct (@test_getVennCounts.R#15) 
+  9.  Error: makeVennDiagram works not correct (@test_makeVennDiagram.R#16) 
+  10. Error: toGRanges works not correct (@test_toGRanges.R#48) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
@@ -311,8 +423,11 @@ Bug reports: https://github.com/djalmapessoa/convey/issues
 
 ```
 checking tests ... ERROR
+  Running ‘testthat.R’ [111s/112s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  
+  testthat results ================================================================
   OK: 273 SKIPPED: 0 FAILED: 9
   1. Failure: compare results convey vs vardpoor (@test-svyarpr.R#46) 
   2. Failure: compare results convey vs vardpoor (@test-svyarpr.R#48) 
@@ -328,6 +443,94 @@ Last 13 lines of output:
   Execution halted
 ```
 
+## DECIPHER (2.2.0)
+Maintainer: Erik Wright <DECIPHER@cae.wisc.edu>
+
+1 error  | 1 warning  | 3 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘DECIPHER-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: AdjustAlignment
+> ### Title: Improve An Existing Alignment By Adjusting Gap Placements
+> ### Aliases: AdjustAlignment
+> 
+> ### ** Examples
+... 13 lines ...
+[2]     5 ARRPK
+> 
+> # a real example
+> fas <- system.file("extdata", "Streptomyces_ITS_aligned.fas", package="DECIPHER")
+> dna <- readDNAStringSet(fas)
+> adjustedDNA <- AdjustAlignment(dna)
+> BrowseSeqs(adjustedDNA, highlight=1)
+Error in c(myXStringSet, ConsensusSequence(myXStringSet, ...)) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: BrowseSeqs -> c
+Execution halted
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+    Filter, Find, Map, Position, Reduce, anyDuplicated, append,
+    as.data.frame, cbind, colnames, do.call, duplicated, eval, evalq,
+    get, grep, grepl, intersect, is.unsorted, lapply, lengths, mapply,
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, rank,
+    rbind, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit, which, which.max, which.min
+
+... 8 lines ...
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: XVector
+Loading required package: RSQLite
+
+Error: processing vignette 'ArtOfAlignmentInR.Rnw' failed with diagnostics:
+ chunk 2 (label = expr0) 
+Error in .Primitive("c")(<S4 object of class structure("IRanges", package = "IRanges")>) : 
+  could not find symbol "recursive" in environment of the generic function
+Execution halted
+
+checking installed package size ... NOTE
+  installed size is  9.1Mb
+  sub-directories of 1Mb or more:
+    data      2.5Mb
+    doc       3.8Mb
+    extdata   1.4Mb
+
+checking foreign function calls ... NOTE
+Registration problems:
+  symbol ‘functionCall’ in the local frame:
+   .Call(functionCall, myXStringSet, as.numeric(subMatrix), gapOpening, 
+       gapExtension, gapLetter, shiftPenalty, threshold, weight, 
+       PACKAGE = "DECIPHER")
+  symbol ‘consensusProfile’ in the local frame:
+   .Call(consensusProfile, pattern, p.weight, NULL, PACKAGE = "DECIPHER")
+  symbol ‘consensusProfile’ in the local frame:
+   .Call(consensusProfile, subject, s.weight, NULL, PACKAGE = "DECIPHER")
+... 11 lines ...
+       structureMatrix)
+  Evaluating ‘compression[1]’ during check gives error
+‘object 'compression' not found’:
+   .Call(compression[1], x, 2L - length(compression), compressRepeats, 
+       processors, PACKAGE = "DECIPHER")
+  Evaluating ‘compression[1]’ during check gives error
+‘object 'compression' not found’:
+   .Call(compression[1], x, 2L - length(compression), processors, 
+       PACKAGE = "DECIPHER")
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
+
+checking R code for possible problems ... NOTE
+DesignSignatures: no visible binding for global variable ‘deltaHrules’
+Undefined global functions or variables:
+  deltaHrules
+```
+
 ## eiR (1.14.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -335,16 +538,19 @@ Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
 ```
 checking tests ... ERROR
+  Running ‘runTests.R’
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
+  
+   
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R 
+       /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -439,6 +645,291 @@ write to stdout/stderr instead of to the console, nor the system RNG.
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
 
+## ensembldb (1.6.2)
+Maintainer: Johannes Rainer <johannes.rainer@eurac.edu>  
+Bug reports: https://github.com/jotsetung/ensembldb/issues
+
+2 errors | 1 warning  | 2 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘ensembldb-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: seqlevelsStyle
+> ### Title: Support for other than Ensembl seqlevel style
+> ### Aliases: seqlevelsStyle seqlevelsStyle,EnsDb-method seqlevelsStyle<-
+> ###   seqlevelsStyle<-,EnsDb-method supportedSeqlevelsStyles
+> ###   supportedSeqlevelsStyles,EnsDb-method
+... 358 lines ...
+[1] "GRCh37"
+> ## Although differently named, both represent genome build GRCh37.
+> 
+> ## Extract the full transcript sequences of all lincRNAs encoded on chromsome Y.
+> yTxSeqs <- extractTranscriptSeqs(bsg, exonsBy(edb, "tx",
++                                               filter=list(SeqnameFilter("chrY"),
++                                                           GenebiotypeFilter("lincRNA"))))
+Error in .Primitive("c")(<S4 object of class "DNAStringSet">) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: extractTranscriptSeqs ... unsplit_list_of_XVectorList -> do.call -> do.call -> <Anonymous>
+Execution halted
+
+checking tests ... ERROR
+  Running ‘runTests.R’ [97s/95s]
+Running the tests in ‘tests/runTests.R’ failed.
+Last 13 lines of output:
+  1 Test Suite : 
+  ensembldb RUnit Tests - 76 test functions, 1 error, 0 failures
+  ERROR in test_extractTranscriptSeqs_with_BSGenome: Error in .Primitive("c")(<S4 object of class structure("DNAStringSet", package = "Biostrings")>) : 
+    could not find symbol "recursive" in environment of the generic function
+  
+  Test files with failing tests
+  
+     test_get_sequence.R 
+       test_extractTranscriptSeqs_with_BSGenome 
+  
+  
+  Error in BiocGenerics:::testPackage("ensembldb") : 
+    unit tests failed for package ensembldb
+  In addition: There were 29 warnings (use warnings() to see them)
+  Execution halted
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+The following objects are masked from 'package:base':
+
+    colMeans, colSums, expand.grid, rowMeans, rowSums
+
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicFeatures
+... 8 lines ...
+
+Loading required package: BSgenome
+Loading required package: Biostrings
+Loading required package: XVector
+Loading required package: rtracklayer
+Warning in .formatSeqnameByStyleFromQuery(x, sn, ifNotFound) :
+  More than 5 seqnames with seqlevels style of the database (Ensembl) could not be mapped to the seqlevels style: UCSC!) Returning the orginal seqnames for these.
+Quitting from lines 487-504 (ensembldb.Rmd) 
+Error: processing vignette 'ensembldb.Rmd' failed with diagnostics:
+could not find symbol "recursive" in environment of the generic function
+Execution halted
+
+checking dependencies in R code ... NOTE
+Unexported objects imported by ':::' calls:
+  'GenomicFeatures:::fetchChromLengthsFromEnsembl'
+  'GenomicFeatures:::fetchChromLengthsFromEnsemblPlants'
+  See the note in ?`:::` about the use of this operator.
+
+checking Rd line widths ... NOTE
+Rd file 'EnsDb.Rd':
+  \examples lines wider than 100 characters:
+     dbcon <- dbConnect(MySQL(), user = my_user, pass = my_pass, host = my_host, dbname = "ensdb_hsapiens_v75")
+
+These lines will be truncated in the PDF manual.
+```
+
+## GenomicFeatures (1.26.3)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+
+2 errors | 1 warning  | 2 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘GenomicFeatures-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: as-format-methods
+> ### Title: Coerce to file format structures
+> ### Aliases: asBED,TxDb-method asGFF,TxDb-method
+> 
+> ### ** Examples
+> 
+>   txdb_file <- system.file("extdata", "hg19_knownGene_sample.sqlite",
++                            package="GenomicFeatures")
+>   txdb <- loadDb(txdb_file)
+> 
+>   asBED(txdb)
+Error in .Primitive("c")(<S4 object of class "GRanges">) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: asBED ... range -> .local -> do.call -> do.call -> <Anonymous>
+Execution halted
+
+checking tests ... ERROR
+  Running ‘run_unitTests.R’ [110s/110s]
+Running the tests in ‘tests/run_unitTests.R’ failed.
+Last 13 lines of output:
+  
+     test_mapIdsToRanges.R 
+       /home/muelleki/git/R/DBI/revdep/checks/GenomicFeatures.Rcheck/GenomicFeatures/unitTests/test_mapIdsToRanges.R 
+  
+     test_transcripts.R 
+       test_GenomicRanges_distance 
+  
+     test_transcriptsBy.R 
+       test_transcriptsBy 
+  
+  
+  Error in BiocGenerics:::testPackage("GenomicFeatures") : 
+    unit tests failed for package GenomicFeatures
+  Calls: <Anonymous> -> <Anonymous>
+  Execution halted
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Quitting from lines 369-372 (GenomicFeatures.Rnw) 
+Error: processing vignette 'GenomicFeatures.Rnw' failed with diagnostics:
+could not find symbol "recursive" in environment of the generic function
+Execution halted
+
+
+checking package dependencies ... NOTE
+Depends: includes the non-default packages:
+  ‘BiocGenerics’ ‘S4Vectors’ ‘IRanges’ ‘GenomeInfoDb’ ‘GenomicRanges’
+  ‘AnnotationDbi’
+Adding so many packages to the search path is excessive and importing
+selectively is preferable.
+
+checking dependencies in R code ... NOTE
+Unexported objects imported by ':::' calls:
+  ‘biomaRt:::martBM’ ‘biomaRt:::martDataset’ ‘biomaRt:::martHost’
+  ‘rtracklayer:::resourceDescription’ ‘rtracklayer:::ucscTableOutputs’
+  See the note in ?`:::` about the use of this operator.
+```
+
+## Genominator (1.28.0)
+Maintainer: James Bullard <bullard@stat.berkeley.edu>
+
+1 error  | 1 warning  | 4 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘Genominator-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: makeGeneRepresentation
+> ### Title: Compute a gene representation from annotation.
+> ### Aliases: makeGeneRepresentation
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+> data(yeastAnno)
+> ui <- makeGeneRepresentation(yeastAnno, type = "background")
+Error in c(x0, y) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: makeGeneRepresentation ... .local -> gaps -> union -> union -> .local -> reduce -> c
+Execution halted
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+    match, mget, order, paste, pmax, pmax.int, pmin, pmin.int, rank,
+    rbind, rownames, sapply, setdiff, sort, table, tapply, union,
+    unique, unsplit, which, which.max, which.min
+
+Loading required package: IRanges
+Loading required package: S4Vectors
+Loading required package: stats4
+... 8 lines ...
+Loading required package: GenomeGraphs
+Loading required package: biomaRt
+Loading required package: grid
+matplot: doing 1 plots with  col= ("1") pch= ("1" "2" "3" "4" "5" "6" "7" "8" "9" "0" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X" "Y" "Z") ...
+
+
+Error: processing vignette 'plotting.Rnw' failed with diagnostics:
+ chunk 6 
+Error in .Primitive("c")(<S4 object of class structure("IRanges", package = "IRanges")>) : 
+  could not find symbol "recursive" in environment of the generic function
+Execution halted
+
+checking dependencies in R code ... NOTE
+'library' or 'require' calls to packages already attached by Depends:
+  ‘GenomeGraphs’ ‘IRanges’
+  Please remove these calls from your code.
+'library' or 'require' call to ‘ShortRead’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Packages in Depends field not imported from:
+  ‘GenomeGraphs’ ‘RSQLite’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking S3 generic/method consistency ... NOTE
+Found the following apparent S3 methods exported but not registered:
+  plot.genominator.coverage plot.genominator.goodness.of.fit
+See section ‘Registering S3 methods’ in the ‘Writing R Extensions’
+manual.
+
+checking R code for possible problems ... NOTE
+addPrimingWeights: no visible global function definition for
+  ‘varLabels’
+addPrimingWeights: no visible global function definition for
+  ‘alignData’
+addPrimingWeights: no visible global function definition for ‘subseq’
+addPrimingWeights: no visible global function definition for ‘sread’
+addPrimingWeights: no visible global function definition for
+  ‘AlignedDataFrame’
+addPrimingWeights: no visible global function definition for ‘pData’
+... 46 lines ...
+  function definition for ‘qunif’
+plot.genominator.goodness.of.fit : <anonymous>: no visible global
+  function definition for ‘qqplot’
+Undefined global functions or variables:
+  AlignedDataFrame DisplayPars alignData chromosome gdPlot
+  geneRegionBiomart makeAnnotationTrack makeBaseTrack makeGenericArray
+  makeGenomeAxis mkAllStrings pData position ppoints qchisq qqplot
+  qunif readAligned sread subseq tables varLabels varMetadata
+Consider adding
+  importFrom("stats", "ppoints", "qchisq", "qqplot", "qunif")
+to your NAMESPACE file.
+
+checking Rd line widths ... NOTE
+Rd file 'makeGeneRepresentation.Rd':
+  \usage lines wider than 90 characters:
+     "background"), gene.id = "ensembl_gene_id", transcript.id = "ensembl_transcript_id", bind.columns, ignoreStrand = TRUE, verbose = getOp ... [TRUNCATED]
+
+These lines will be truncated in the PDF manual.
+```
+
+## GenVisR (1.4.1)
+Maintainer: Zachary Skidmore <zlskidmore@gmail.com>  
+Bug reports: https://github.com/griffithlab/GenVisR/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘GenVisR-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: compIdent
+> ### Title: Construct identity snp comparison plot
+> ### Aliases: compIdent
+> 
+> ### ** Examples
+... 42 lines ...
+Loading required package: XVector
+Loading required package: rtracklayer
+> hg19 <- BSgenome.Hsapiens.UCSC.hg19
+> 
+> # Generate plot
+> compIdent(genome=hg19, debug=TRUE)
+Argument not supplied to target, defaulting to predefined identity SNPs from hg19 assembly!
+Error in .Primitive("c")(<S4 object of class "DNAStringSet">, <S4 object of class "DNAStringSet">,  : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: compIdent ... unsplit_list_of_XVectorList -> do.call -> do.call -> <Anonymous>
+Execution halted
+```
+
 ## GOFunction (1.22.0)
 Maintainer: Jing Wang <jingwang.uestc@gmail.com>
 
@@ -500,6 +991,68 @@ Rd file 'GOFunction.Rd':
   \examples lines wider than 100 characters:
             sigTerm <- GOFunction(interestGenes, refGenes, organism = "org.Hs.eg.db", ontology= "BP", fdrmethod = "BY", 
             fdrth = 0.05, ppth = 0.05, pcth = 0.05, poth = 0.05, peth = 0.05, bmpSize = 2000, filename="sigTerm")
+
+These lines will be truncated in the PDF manual.
+```
+
+## GWASTools (1.20.0)
+Maintainer: Stephanie M. Gogarten <sdmorris@u.washington.edu>, Adrienne Stilp <amstilp@u.washington.edu>
+
+2 errors | 0 warnings | 1 note 
+
+```
+checking examples ... ERROR
+Running examples in ‘GWASTools-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: vcfWrite
+> ### Title: Utility to write VCF file
+> ### Aliases: vcfWrite vcfCheck
+> ### Keywords: manip
+> 
+... 32 lines ...
+> vcffile <- tempfile()
+> vcfWrite(genoData, vcffile, id.col="rsID", info.cols="IntensityOnly")
+Block 1 of 4... 1000 SNPs
+Block 2 of 4... 1000 SNPs
+Block 3 of 4... 1000 SNPs
+Block 4 of 4... 300 SNPs
+> vcf <- readVcf(vcffile, "hg18")
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: readVcf ... scanBcfHeader -> .bcfHeaderAsSimpleList -> SimpleList -> c
+Execution halted
+
+checking tests ... ERROR
+  Running ‘test.R’ [156s/154s]
+Running the tests in ‘tests/test.R’ failed.
+Last 13 lines of output:
+  
+     vcfWrite_test.R 
+       test_VA 
+       test_both.exclude 
+       test_ref.allele 
+       test_scan.exclude 
+       test_scan.order 
+       test_snp.exclude 
+       test_snp.exclude.blocks 
+       test_snp.exclude.blocks2 
+  
+  
+  Error in BiocGenerics:::testPackage("GWASTools", pattern = ".*_test\\.R$") : 
+    unit tests failed for package GWASTools
+  Execution halted
+
+checking Rd line widths ... NOTE
+Rd file 'assocRegression.Rd':
+  \examples lines wider than 100 characters:
+     scanAnnot$blood.pressure[scanAnnot$case.cntl.status==1] <- rnorm(sum(scanAnnot$case.cntl.status==1), mean=100, sd=10)
+     scanAnnot$blood.pressure[scanAnnot$case.cntl.status==0] <- rnorm(sum(scanAnnot$case.cntl.status==0), mean=90, sd=5)
+
+Rd file 'createDataFile.Rd':
+  \usage lines wider than 90 characters:
+                    precision="single", compress="ZIP_RA:8M", compress.geno="ZIP_RA", compress.annot="ZIP_RA",
 
 These lines will be truncated in the PDF manual.
 ```
@@ -862,7 +1415,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpPbchJY/file504b15e36d52 in chunks of 10000
+Processing /tmp/RtmpcLtFfP/filee48d527b1eab in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -872,8 +1425,11 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
+  Running ‘runTests.R’ [22s/22s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
+  
+  Test files with failing tests
   
      test_check_helpers.R 
        test.add.labels.by.sample 
@@ -885,7 +1441,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/Rtmpc2YkFz/file535782cab73) 
+  closing unused connection 3 (/tmp/RtmpI5jW2o/filee84136ff7391) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -934,6 +1490,36 @@ Rd file 'utilities.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## poplite (0.99.17.3)
+Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Loading required package: GenomicRanges
+Loading required package: SummarizedExperiment
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+... 8 lines ...
+
+The following object is masked from ‘package:base’:
+
+    tabulate
+
+
+Error: processing vignette 'poplite.Rnw' failed with diagnostics:
+ chunk 15 
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Execution halted
+```
+
 ## postGIStools (0.2.1)
 Maintainer: Philippe Marchand <pmarchand@sesync.org>  
 Bug reports: https://github.com/SESYNC-ci/postGIStools/issues
@@ -942,8 +1528,11 @@ Bug reports: https://github.com/SESYNC-ci/postGIStools/issues
 
 ```
 checking tests ... ERROR
+  Running ‘testthat.R’ [2s/22s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  > 
+  > test_check("postGIStools")
   1. Failure: get_postgis_query correctly imports geometry (@test_get_query.R#49) 
   proj4string(qry) not equal to `proj_wgs84`.
   1/1 mismatches
@@ -1110,8 +1699,11 @@ Bug reports: https://github.com/rstats-db/RSQLite/issues
 
 ```
 checking tests ... ERROR
+  Running ‘testthat.R’
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
+  testthat results ================================================================
+  OK: 1462 SKIPPED: 22 FAILED: 84
   1. Failure: DBItest[RSQLite]: Driver: data_type_driver (@spec-driver-data-type.R#13) 
   2. Failure: DBItest[RSQLite]: Connection: data_type_connection (@spec-connection-data-type.R#5) 
   3. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
@@ -1132,6 +1724,133 @@ checking installed package size ... NOTE
     libs   7.2Mb
 ```
 
+## rTRM (1.12.0)
+Maintainer: Diego Diez <diego10ruiz@gmail.com>  
+Bug reports: https://github.com/ddiez/rTRM/issues
+
+0 errors | 1 warning  | 1 note 
+
+```
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Read 8734 items
+Error : .onLoad failed in loadNamespace() for 'MotifDb', details:
+  call: c(values, x)
+  error: could not find symbol "recursive" in environment of the generic function
+Quitting from lines 277-286 (rTRM_Introduction.Rnw) 
+Error: processing vignette 'rTRM_Introduction.Rnw' failed with diagnostics:
+package or namespace load failed for 'MotifDb'
+Execution halted
+
+
+checking Rd line widths ... NOTE
+Rd file 'findTRM.Rd':
+  \usage lines wider than 90 characters:
+     findTRM(g, target, query, method = "nsa", max.bridge = 1, extended = FALSE, strict = FALSE, type = "igraph")
+
+Rd file 'plotGraph.Rd':
+  \usage lines wider than 90 characters:
+     plotGraph(g, layout = layout.fruchterman.reingold, mar = .5, vertex.pch = 21, vertex.cex, vertex.col, vertex.bg, vertex.lwd, edge.col,  ... [TRUNCATED]
+
+Rd file 'plotTRM.Rd':
+  \usage lines wider than 90 characters:
+     plotTRM(g, layout = layout.fruchterman.reingold, mar = .5, vertex.col, vertex.cex, vertex.lwd, edge.col, edge.lwd, edge.lty, label = TR ... [TRUNCATED]
+
+Rd file 'processBiogrid.Rd':
+  \usage lines wider than 90 characters:
+     processBiogrid(dblist, org = "human", simplify = TRUE, type = "physical", mimic.old = FALSE)
+
+These lines will be truncated in the PDF manual.
+```
+
+## seqplots (1.12.0)
+Maintainer: Przemyslaw Stempor <ps562@cam.ac.uk>  
+Bug reports: http://github.com/przemol/seqplots/issues
+
+2 errors | 0 warnings | 3 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘seqplots-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: getPlotSetArray
+> ### Title: Process genomic signal
+> ### Aliases: getPlotSetArray
+> 
+> ### ** Examples
+... 38 lines ...
+MotifSetup with 2 motifs/tracks.> ms$addBigWig(bw1)
+MotifSetup with 3 motifs/tracks.> if(.Platform$OS.type != "windows" || .Machine$sizeof.pointer != 4) {
++     plotset2 <- getPlotSetArray(ms, c(bed1, bed2), 'ce10')
++ }
+character
+Processing: Transcripts_ce10_chrI_100Kb.bed @ GAGA [ 1 / 6 ]
+Error in c(x, value) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: getPlotSetArray ... eval -> .nextMethod -> replaceROWS -> replaceROWS -> c
+Execution halted
+** found \donttest examples: check also with --run-donttest
+
+checking tests ... ERROR
+  Running ‘test-all.R’ [17s/16s]
+Running the tests in ‘tests/test-all.R’ failed.
+Last 13 lines of output:
+  12: `[<-`(`*tmp*`, idx, value = <S4 object of class structure("DNAStringSet", package = "Biostrings")>)
+  13: callNextMethod(x, i, value = value) at /tmp/RtmpGs2f8Q/devtools11166e56ff03/S4Vectors/R/List-class.R:526
+  14: eval(call, callEnv)
+  15: eval(expr, envir, enclos)
+  16: .nextMethod(x, i, value = value) at /tmp/RtmpGs2f8Q/devtools11166e56ff03/S4Vectors/R/List-class.R:526
+  17: replaceROWS(x, i, value) at /tmp/RtmpGs2f8Q/devtools11166e56ff03/S4Vectors/R/Vector-class.R:427
+  18: replaceROWS(x, i, value) at /tmp/RtmpGs2f8Q/devtools11166e56ff03/S4Vectors/R/subsetting-utils.R:431
+  19: c(x, value) at /tmp/RtmpGs2f8Q/devtools11166e56ff03/S4Vectors/R/Vector-class.R:443
+  
+  testthat results ================================================================
+  OK: 41 SKIPPED: 0 FAILED: 1
+  1. Error: Test motifs (@test1.R#106) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking installed package size ... NOTE
+  installed size is  9.1Mb
+  sub-directories of 1Mb or more:
+    R          1.2Mb
+    doc        2.4Mb
+    seqplots   4.9Mb
+
+checking foreign function calls ... NOTE
+Foreign function call to a different package:
+  .Call("BWGFile_summary", ..., PACKAGE = "rtracklayer")
+See chapter ‘System and foreign language interfaces’ in the ‘Writing R
+Extensions’ manual.
+
+checking R code for possible problems ... NOTE
+getPlotSetArray : <anonymous>: no visible global function definition
+  for ‘qt’
+getSF : <anonymous>: no visible global function definition for ‘approx’
+ggHeatmapPlotWrapper: no visible global function definition for
+  ‘colorRampPalette’
+ggHeatmapPlotWrapper: no visible binding for global variable ‘Var2’
+ggHeatmapPlotWrapper: no visible binding for global variable ‘Var1’
+ggHeatmapPlotWrapper: no visible binding for global variable ‘value’
+heatmapPlotWrapper: no visible global function definition for
+... 39 lines ...
+  capture.output colorRampPalette cutree dist hclust image kmeans
+  layout lines mtext par plot.new qt rainbow rect rgb title value
+Consider adding
+  importFrom("grDevices", "adjustcolor", "colorRampPalette", "rainbow",
+             "rgb")
+  importFrom("graphics", "abline", "axis", "box", "image", "layout",
+             "lines", "mtext", "par", "plot.new", "rect", "title")
+  importFrom("stats", "approx", "as.dendrogram", "cutree", "dist",
+             "hclust", "kmeans", "qt")
+  importFrom("utils", "capture.output")
+to your NAMESPACE file.
+```
+
 ## sf (0.3-4)
 Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>  
 Bug reports: https://github.com/edzer/sfr/issues/
@@ -1140,10 +1859,16 @@ Bug reports: https://github.com/edzer/sfr/issues/
 
 ```
 checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  1. Error: st_transform works (@test_gdal.R#10) ---------------------------------
-  package rgdal is required for spTransform methods
+  Running ‘cast.R’
+  Comparing ‘cast.Rout’ to ‘cast.Rout.save’ ... OK
+  Running ‘crs.R’
+  Comparing ‘crs.Rout’ to ‘crs.Rout.save’ ... OK
+  Running ‘dist.R’
+  Comparing ‘dist.Rout’ to ‘dist.Rout.save’ ... OK
+  Running ‘dplyr.R’
+  Comparing ‘dplyr.Rout’ to ‘dplyr.Rout.save’ ... OK
+  Running ‘empty.R’
+... 38 lines ...
   1: spTransform(sp, CRS("+init=epsg:3857")) at testthat/test_gdal.R:10
   2: spTransform(sp, CRS("+init=epsg:3857")) at /tmp/RtmpvuUUir/devtools345049746f77/sp/R/Spatial-methods.R:93
   3: stop("package rgdal is required for spTransform methods") at /tmp/RtmpvuUUir/devtools345049746f77/sp/R/Spatial-methods.R:97
@@ -1252,17 +1977,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 2:58:21 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:58:21 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:58:22 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:58:22 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Mar 08, 2017 12:28:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:58:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Mar 08, 2017 12:28:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 2:58:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
@@ -1276,9 +2001,49 @@ Execution halted
 ## VariantAnnotation (1.20.2)
 Maintainer: Valerie Obenchain <maintainer@bioconductor.org>
 
-0 errors | 1 warning  | 3 notes
+2 errors | 2 warnings | 3 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘VariantAnnotation-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: GLtoGP
+> ### Title: Convert genotype likelihoods to genotype probabilities
+> ### Aliases: GLtoGP PLtoGP
+> ### Keywords: manip
+> 
+> ### ** Examples
+> 
+>   ## Read a vcf file with a "GL" field.
+>   vcfFile <- system.file("extdata", "gl_chr1.vcf", package="VariantAnnotation") 
+>   vcf <- readVcf(vcfFile, "hg19")
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: readVcf ... scanBcfHeader -> .bcfHeaderAsSimpleList -> SimpleList -> c
+Execution halted
+
+checking tests ... ERROR
+  Running ‘VariantAnnotation_unit_tests.R’ [74s/72s]
+Running the tests in ‘tests/VariantAnnotation_unit_tests.R’ failed.
+Last 13 lines of output:
+  
+     test_summarizeVariants-methods.R 
+       /home/muelleki/git/R/DBI/revdep/checks/VariantAnnotation.Rcheck/VariantAnnotation/unitTests/test_summarizeVariants-methods.R 
+  
+     test_writeVcf-methods.R 
+       test_writeVcf_connection_increment 
+       test_writeVcf_flatgeno 
+       test_writeVcf_geno 
+       test_writeVcf_tags 
+  
+  
+  Error in BiocGenerics:::testPackage("VariantAnnotation") : 
+    unit tests failed for package VariantAnnotation
+  Calls: <Anonymous> -> <Anonymous>
+  Execution halted
+
 checking for missing documentation entries ... WARNING
 Undocumented S4 methods:
   generic '[' and siglist 'VCF,ANY,ANY,ANY'
@@ -1286,6 +2051,29 @@ All user-level objects in a package (including S4 classes and methods)
 should have documentation entries.
 See chapter ‘Writing R documentation files’ in the ‘Writing R
 Extensions’ manual.
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Loading required package: SummarizedExperiment
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+    'citation("Biobase")', and for packages
+... 8 lines ...
+
+The following object is masked from ‘package:base’:
+
+    tabulate
+
+
+Error: processing vignette 'VariantAnnotation.Rnw' failed with diagnostics:
+ chunk 3 (label = readVcf) 
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Execution halted
 
 checking installed package size ... NOTE
   installed size is  5.1Mb
@@ -1324,13 +2112,82 @@ Undefined global functions or variables:
 Maintainer: Robert Castelo <robert.castelo@upf.edu>  
 Bug reports: https://github.com/rcastelo/VariantFiltering/issues
 
-0 errors | 1 warning  | 4 notes
+2 errors | 2 warnings | 4 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘VariantFiltering-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: VariantFilteringParam-class
+> ### Title: VariantFiltering parameter class
+> ### Aliases: sequence_variant.gSOXP class:VariantFilteringParam
+> ###   VariantFilteringParam VariantFilteringParam-class
+> ###   show,VariantFilteringParam-method $,VariantFilteringParam-method
+> ###   names,VariantFilteringParam-method
+> ###   filters,VariantFilteringParam-method
+> ###   cutoffs,VariantFilteringParam-method sog,VariantFilteringParam-method
+> ###   spliceSiteMatricesHuman variantLocations
+> ### Keywords: classes,methods
+> 
+> ### ** Examples
+> 
+> vfpar <- VariantFilteringParam(system.file("extdata", "CEUtrio.vcf.bgz", package="VariantFiltering"),
++                                system.file("extdata", "CEUtrio.ped", package="VariantFiltering"),
++                                snpdb=list(), otherAnnotations=character(0))
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Calls: VariantFilteringParam ... scanBcfHeader -> .bcfHeaderAsSimpleList -> SimpleList -> c
+Execution halted
+
+checking tests ... ERROR
+  Running ‘runTests.R’ [20s/20s]
+Running the tests in ‘tests/runTests.R’ failed.
+Last 13 lines of output:
+  ERROR in test_location_annotations: Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+    could not find symbol "recursive" in environment of the generic function
+  
+  Test files with failing tests
+  
+     test_VariantFilteringParam-methods.R 
+       test_VariantFilteringParam 
+  
+     test_location-methods.R 
+       test_location_annotations 
+  
+  
+  Error in BiocGenerics:::testPackage("VariantFiltering") : 
+    unit tests failed for package VariantFiltering
+  Execution halted
+
 checking sizes of PDF files under ‘inst/doc’ ... WARNING
   ‘gs+qpdf’ made some significant size reductions:
      compacted ‘usingVariantFiltering.pdf’ from 415Kb to 153Kb
   consider running tools::compactPDF(gs_quality = "ebook") on these files
+
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Loading required package: GenomicRanges
+Loading required package: SummarizedExperiment
+Loading required package: Biobase
+Welcome to Bioconductor
+
+    Vignettes contain introductory material; view with
+    'browseVignettes()'. To cite Bioconductor, see
+... 8 lines ...
+
+The following object is masked from ‘package:base’:
+
+    tabulate
+
+
+Error: processing vignette 'usingVariantFiltering.Rnw' failed with diagnostics:
+ chunk 3 
+Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
+  could not find symbol "recursive" in environment of the generic function
+Execution halted
 
 checking installed package size ... NOTE
   installed size is  7.9Mb
