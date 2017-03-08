@@ -10,14 +10,14 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-02-28                   |
+|date     |2017-03-08                   |
 
 ## Packages
 
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
-|DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
+|DBI       |   |0.5-19     |2017-03-08 |Github (rstats-db/DBI@d633b79)   |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
@@ -43,7 +43,7 @@
 |BatchExperiments   |1.4.1     |      0|        0|     2|
 |BatchJobs          |1.6       |      0|        0|     0|
 |bibliospec         |0.0.4     |      0|        0|     0|
-|BIEN               |1.0.0     |      0|        0|     0|
+|BIEN               |1.1.0     |      0|        0|     0|
 |biglm              |0.9-1     |      0|        0|     5|
 |bigrquery          |0.3.0     |      0|        0|     0|
 |bioassayR          |1.12.1    |      0|        0|     1|
@@ -52,7 +52,7 @@
 |chunked            |0.3       |      0|        0|     0|
 |CITAN              |2015.12-2 |      0|        0|     0|
 |cn.farms           |1.22.0    |      1|        0|     1|
-|convey             |0.1.0     |      0|        0|     0|
+|convey             |0.1.0     |      1|        0|     0|
 |datamap            |0.1-1     |      0|        0|     2|
 |dbfaker            |0.1.0     |      0|        0|     0|
 |DBItest            |1.4       |      0|        0|     0|
@@ -169,7 +169,7 @@
 |VariantAnnotation  |1.20.2    |      0|        1|     3|
 |VariantFiltering   |1.10.1    |      0|        1|     4|
 |vmsbase            |2.1.3     |      1|        0|     0|
-|WhopGenome         |0.9.4     |      0|        0|     0|
+|WhopGenome         |0.9.6     |      0|        0|     0|
 
 ## acc (1.3.3)
 Maintainer: Jaejoon Song <jjsong2@mdanderson.org>
@@ -560,7 +560,7 @@ Bug reports: https://github.com/protViz/bibliospec/issues
 
 0 errors | 0 warnings | 0 notes
 
-## BIEN (1.0.0)
+## BIEN (1.1.0)
 Maintainer: Brian Maitner <bmaitner@gmail.com>
 
 0 errors | 0 warnings | 0 notes
@@ -750,7 +750,26 @@ File ‘cn.farms/R/sFsnowfall-internal.R’:
 Maintainer: Djalma Pessoa <pessoad@gmail.com>  
 Bug reports: https://github.com/djalmapessoa/convey/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  OK: 273 SKIPPED: 0 FAILED: 9
+  1. Failure: compare results convey vs vardpoor (@test-svyarpr.R#46) 
+  2. Failure: compare results convey vs vardpoor (@test-svyarpr.R#48) 
+  3. Failure: compare results convey vs vardpoor (@test-svyarpt.R#43) 
+  4. Failure: compare results convey vs vardpoor (@test-svyarpt.R#45) 
+  5. Failure: compare results convey vs vardpoor (@test-svypoormed.R#44) 
+  6. Failure: compare results convey vs vardpoor (@test-svypoormed.R#46) 
+  7. Failure: compare results convey vs vardpoor (@test-svyqsr.R#45) 
+  8. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#48) 
+  9. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#50) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
 
 ## datamap (0.1-1)
 Maintainer: Jeffrey Horner <jeffrey.horner@gmail.com>
@@ -870,12 +889,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpatfrtU/RLIBS_1eab7fd5d1f8/eiR/unitTests/test_main.R 
+       /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -2213,7 +2232,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpUaYyBy/filed5144f45352b in chunks of 10000
+Processing /tmp/RtmpvaVH34/file70574780a7ac in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2236,7 +2255,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/Rtmpub3sC2/filed76d5e002e73) 
+  closing unused connection 3 (/tmp/RtmpVlLgMt/file73865b5086c5) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3141,17 +3160,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 9:10:30 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:31 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 9:46:24 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:32 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 9:46:25 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:32 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Feb 28, 2017 9:46:26 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:34 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Feb 28, 2017 9:46:27 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 9:10:34 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
@@ -3406,7 +3425,7 @@ Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/vmsbase.Rcheck/00install.out’ for details.
 ```
 
-## WhopGenome (0.9.4)
+## WhopGenome (0.9.6)
 Maintainer: Ulrich Wittelsbuerger <ulrich.wittelsbuerger@uni-duesseldorf.de>
 
 0 errors | 0 warnings | 0 notes

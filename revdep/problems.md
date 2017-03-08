@@ -10,15 +10,14 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-02-28                   |
+|date     |2017-03-08                   |
 
 ## Packages
 
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
-|DBI       |   |0.5-17     |2017-02-27 |Github (rstats-db/DBI@89005a5)   |
-|hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
+|DBI       |   |0.5-19     |2017-03-08 |Github (rstats-db/DBI@d633b79)   |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
@@ -26,7 +25,7 @@
 
 # Check results
 
-29 packages with problems
+28 packages with problems
 
 |package           |version  | errors| warnings| notes|
 |:-----------------|:--------|------:|--------:|-----:|
@@ -35,6 +34,7 @@
 |ChemmineR         |2.26.1   |      1|        0|     0|
 |ChIPpeakAnno      |3.8.9    |      0|        1|     2|
 |cn.farms          |1.22.0   |      1|        0|     1|
+|convey            |0.1.0    |      1|        0|     0|
 |eiR               |1.14.1   |      1|        2|     6|
 |GOFunction        |1.22.0   |      0|        1|     5|
 |lumi              |2.26.4   |      0|        1|     3|
@@ -46,13 +46,11 @@
 |plethy            |1.12.1   |      2|        0|     3|
 |postGIStools      |0.2.1    |      1|        0|     0|
 |RImmPort          |1.2.0    |      0|        1|     1|
-|RJDBC             |0.2-5    |      0|        1|     1|
 |rnaSeqMap         |2.32.0   |      0|        1|     4|
 |ROracle           |1.3-1    |      1|        0|     0|
 |RQDA              |0.2-8    |      1|        0|     1|
 |RSQLite           |1.1-2    |      1|        0|     1|
 |sf                |0.3-4    |      1|        0|     1|
-|sparklyr          |0.5.2    |      1|        0|     0|
 |specL             |1.8.0    |      0|        1|     3|
 |sqldf             |0.4-10   |      0|        1|     2|
 |TSdata            |2016.8-1 |      0|        1|     0|
@@ -299,6 +297,31 @@ File ‘cn.farms/R/sFsnowfall-internal.R’:
   assign(name, value, envir = globalenv())
 ```
 
+## convey (0.1.0)
+Maintainer: Djalma Pessoa <pessoad@gmail.com>  
+Bug reports: https://github.com/djalmapessoa/convey/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  OK: 273 SKIPPED: 0 FAILED: 9
+  1. Failure: compare results convey vs vardpoor (@test-svyarpr.R#46) 
+  2. Failure: compare results convey vs vardpoor (@test-svyarpr.R#48) 
+  3. Failure: compare results convey vs vardpoor (@test-svyarpt.R#43) 
+  4. Failure: compare results convey vs vardpoor (@test-svyarpt.R#45) 
+  5. Failure: compare results convey vs vardpoor (@test-svypoormed.R#44) 
+  6. Failure: compare results convey vs vardpoor (@test-svypoormed.R#46) 
+  7. Failure: compare results convey vs vardpoor (@test-svyqsr.R#45) 
+  8. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#48) 
+  9. Failure: compare results convey vs vardpoor (@test-svyrmpg.R#50) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+```
+
 ## eiR (1.14.1)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
 
@@ -310,12 +333,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/RtmpXz3Pqq/RLIBS_8404a8649e4/eiR/unitTests/test_main.R 
+       /tmp/RtmpWT85Rg/RLIBS_b68526191e77/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -833,7 +856,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpqrIDND/file400b7b3f9502 in chunks of 10000
+Processing /tmp/RtmpvaVH34/file70574780a7ac in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -856,7 +879,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/Rtmp8DJg54/file42d66b6c17d5) 
+  closing unused connection 3 (/tmp/RtmpVlLgMt/file73865b5086c5) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -958,25 +981,6 @@ getTiterAssayResults: no visible binding for global variable
   ‘experiment_sample_accession’
 Undefined global functions or variables:
   ZBREFIDP control_files_names experiment_sample_accession
-```
-
-## RJDBC (0.2-5)
-Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking for missing documentation entries ... WARNING
-Undocumented S4 methods:
-  generic 'dbReadTable' and siglist 'JDBCConnection,ANY'
-All user-level objects in a package (including S4 classes and methods)
-should have documentation entries.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
-
-checking top-level files ... NOTE
-Non-standard file/directory found at top level:
-  ‘java-src’
 ```
 
 ## rnaSeqMap (2.32.0)
@@ -1134,18 +1138,6 @@ checking installed package size ... NOTE
     libs   3.8Mb
 ```
 
-## sparklyr (0.5.2)
-Maintainer: Javier Luraschi <javier@rstudio.com>  
-Bug reports: https://github.com/rstudio/sparklyr/issues
-
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sparklyr’ can be installed ... ERROR
-Installation failed.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/sparklyr.Rcheck/00install.out’ for details.
-```
-
 ## specL (1.8.0)
 Maintainer: Christian Panse <cp@fgcz.ethz.ch>, Witold E. Wolski <wewolski@gmail.com>  
 Bug reports: https://github.com/fgcz/specL/issues
@@ -1223,17 +1215,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 9:10:30 AM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:31 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:32 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Feb 28, 2017 10:12:52 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:32 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 9:10:34 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Feb 28, 2017 10:12:54 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 9:10:34 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
