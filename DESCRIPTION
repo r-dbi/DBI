@@ -18,8 +18,10 @@ Suggests:
     covr,
     hms,
     knitr,
+    magrittr,
+    rprojroot,
     rmarkdown,
-    RSQLite (>= 1.1),
+    RSQLite (>= 1.1-2),
     testthat,
     xml2
 Encoding: UTF-8
