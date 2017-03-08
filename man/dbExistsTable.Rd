@@ -29,10 +29,9 @@ Returns if a table given by name exists in the database.
 \section{Additional arguments}{
 
 
-TBD: Schema support.
 TBD: \code{temporary = NA}
 
-They must be provided as named arguments.
+This must be provided as named argument.
 See the "Specification" section for details on their usage.
 
 }
@@ -45,8 +44,7 @@ to support databases that allow non-syntactic names for their objects:
 \itemize{
 \item If an unquoted table name as string: \code{dbExistsTable()} will do the
 quoting,
-perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
-so that all optional arguments are passed along
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 

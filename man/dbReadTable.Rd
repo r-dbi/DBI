@@ -79,8 +79,7 @@ to support databases that allow non-syntactic names for their objects:
 \itemize{
 \item If an unquoted table name as string: \code{dbReadTable()} will do the
 quoting,
-perhaps by calling \code{dbQuoteIdentifier(conn, x = name, ...)}
-so that all optional arguments are passed along
+perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 
