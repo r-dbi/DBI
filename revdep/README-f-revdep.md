@@ -17,12 +17,15 @@
 |package   |*  |version    |date       |source                           |
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
-|DBI       |   |0.5-20     |2017-03-08 |Github (rstats-db/DBI@6e28f5c)   |
+|DBI       |   |0.5-22     |2017-03-08 |Github (rstats-db/DBI@b0ee46a)   |
 |hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
+|magrittr  |   |1.5        |2014-11-22 |CRAN (R 3.3.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
+|rprojroot |   |1.2        |2017-01-16 |cran (@1.2)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
 |testthat  |   |1.0.2.9000 |2017-02-27 |Github (hadley/testthat@b72a228) |
+|xml2      |   |1.1.1      |2017-01-24 |cran (@1.1.1)                    |
 
 # Check results
 
@@ -39,7 +42,7 @@
 |AnnotationForge    |1.16.1    |      0|        0|     1|
 |AnnotationFuncs    |1.24.0    |      0|        0|     3|
 |AnnotationHubData  |1.4.1     |      0|        0|     3|
-|archivist          |2.1.2     |      0|        1|     3|
+|archivist          |2.1.2     |      0|        0|     2|
 |aroma.affymetrix   |3.0.0     |      0|        0|     0|
 |BatchExperiments   |1.4.1     |      0|        0|     2|
 |BatchJobs          |1.6       |      0|        0|     0|
@@ -80,7 +83,7 @@
 |GWASTools          |1.20.0    |      0|        0|     1|
 |imputeMulti        |0.6.4     |      0|        0|     1|
 |isobar             |1.20.0    |      0|        0|     5|
-|ITALICS            |2.34.0    |      0|        1|     5|
+|ITALICS            |2.34.0    |      0|        0|     5|
 |keggorthology      |2.26.0    |      0|        0|     3|
 |knitr              |1.15.1    |      0|        0|     0|
 |liteq              |1.0.0     |      0|        0|     0|
@@ -483,25 +486,11 @@ See section ‘Good practice’ in ‘?data’.
 Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
 Bug reports: https://github.com/pbiecek/archivist/issues
 
-0 errors | 1 warning  | 3 notes
+0 errors | 0 warnings | 2 notes
 
 ```
-checking whether package ‘archivist’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/archivist.Rcheck/00install.out’ for details.
-
 checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘archivist.github’
-
-checking whether the namespace can be loaded with stated dependencies ... NOTE
-Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
-
-A namespace must be able to be loaded with just the base namespace
-loaded: otherwise if the namespace gets loaded by a saved object, the
-session will be unable to start.
-
-Probably some imports need to be declared in the NAMESPACE file.
 
 checking Rd cross-references ... NOTE
 Package unavailable to check Rd xrefs: ‘archivist.github’
@@ -771,7 +760,7 @@ Bug reports: https://github.com/djalmapessoa/convey/issues
 checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  OK: 281 SKIPPED: 0 FAILED: 9
+  OK: 273 SKIPPED: 0 FAILED: 9
   1. Failure: compare results convey vs vardpoor (@test-svyarpr.R#46) 
   2. Failure: compare results convey vs vardpoor (@test-svyarpr.R#48) 
   3. Failure: compare results convey vs vardpoor (@test-svyarpt.R#43) 
@@ -904,12 +893,12 @@ Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R : Error : (converted from warning) dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
+  ERROR in /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/Rtmpx6sneo/RLIBS_1fa31bef0b5b/eiR/unitTests/test_main.R 
+       /tmp/RtmpyAiB4r/RLIBS_994b3ce4a85b/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -1508,14 +1497,9 @@ These lines will be truncated in the PDF manual.
 ## ITALICS (2.34.0)
 Maintainer: Guillem Rigaill <italics@curie.fr>
 
-0 errors | 1 warning  | 5 notes
+0 errors | 0 warnings | 5 notes
 
 ```
-checking whether package ‘ITALICS’ can be installed ... WARNING
-Found the following significant warnings:
-  Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/ITALICS.Rcheck/00install.out’ for details.
-
 checking DESCRIPTION meta-information ... NOTE
 Malformed Description field: should contain one or more complete sentences.
 Packages listed in more than one of Depends, Imports, Suggests, Enhances:
@@ -2002,7 +1986,8 @@ The error most likely occurred in:
 > ### Aliases: MAplot MAplot-methods MAplot,FeatureSet-method
 > ###   MAplot,TilingFeatureSet-method MAplot,PLMset-method
 > ###   MAplot,ExpressionSet-method MAplot,matrix-method
-... 9 lines ...
+... 8 lines ...
++   groups <- factor(rep(c('brain', 'UnivRef'), each=3))
 +   data.frame(sampleNames(nimbleExpressionFS), groups)
 +   MAplot(nimbleExpressionFS, pairs=TRUE, ylim=c(-.5, .5), groups=groups)
 + }
@@ -2010,7 +1995,6 @@ Loading required package: oligoData
 Loading required package: pd.hg18.60mer.expr
 Loading required package: RSQLite
 Loading required package: DBI
-Warning: dbDriver() is deprecated, please call the constructor function exported by the DBI backend.
 Error in loadNamespace(name) : there is no package called ‘KernSmooth’
 Calls: MAplot ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
 Execution halted
@@ -2159,13 +2143,13 @@ See section ‘Good practice’ in ‘?data’.
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
+             }
      
 
 trying URL 'http://gpcr2.biocomp.unibo.it/bacello/dataset.htm'
 Content type 'text/html; charset=iso-8859-1' length 5062 bytes
 ==================================================
 downloaded 5062 bytes
-
 ... 8 lines ...
 Warning in rsqlite_disconnect(conn@ptr) :
   There are 1 result in use. The connection will be released when they are closed
@@ -2252,7 +2236,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/Rtmp5FKFHM/filed7d31b177ccb in chunks of 10000
+Processing /tmp/RtmpPbchJY/file504b15e36d52 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2275,7 +2259,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/RtmpapsNQ4/filedabd1c84b30e) 
+  closing unused connection 3 (/tmp/Rtmpc2YkFz/file535782cab73) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3194,17 +3178,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 9:41:03 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 9:41:04 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 12:28:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Mar 08, 2017 9:41:05 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 12:28:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Mar 08, 2017 9:41:05 AM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 12:28:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
