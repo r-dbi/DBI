@@ -60,10 +60,6 @@ setGeneric("dbDriver",
 #' @rdname hidden_aliases
 setMethod("dbDriver", "character",
   definition = function(drvName, ...) {
-    warning(
-      "dbDriver() is deprecated, please call the constructor function exported by the DBI backend.",
-      call. = FALSE
-    )
     findDriver(drvName)(...)
   }
 )
