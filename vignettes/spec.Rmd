@@ -3,8 +3,10 @@ title: "DBI specification"
 author: "Kirill Müller"
 date: "`r Sys.Date()`"
 output:
-  rmarkdown::html_vignette:
+  rmarkdown::html_document:
     smart: FALSE
+    toc: TRUE
+    toc_float: TRUE
 abstract: >
   The DBI package defines the generic DataBase Interface for R.
   The connection to individual DBMS is provided by other packages that import DBI
