@@ -308,7 +308,6 @@ setGeneric("dbListFields",
 #'
 #' @inherit DBItest::spec_sql_list_tables return
 #' @inheritSection DBItest::spec_sql_list_tables Additional arguments
-#' @inheritSection DBItest::spec_sql_list_tables Specification
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
@@ -443,7 +442,6 @@ setGeneric("dbExistsTable",
 #' from the database.
 #'
 #' @inherit DBItest::spec_sql_remove_table return
-#' @inheritSection DBItest::spec_sql_remove_table Additional arguments
 #' @inheritSection DBItest::spec_sql_remove_table Specification
 #'
 #' @inheritParams dbGetQuery

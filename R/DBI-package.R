@@ -10,5 +10,5 @@
 #'   [dbWriteTable()], [dbDisconnect()]
 #'
 #'   Formal specification (currently work in progress and incomplete):
-#'   \link{DBIspec}
+#'   `vignette("spec", package = "DBI")`
 "_PACKAGE"
