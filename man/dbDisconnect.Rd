@@ -7,7 +7,7 @@
 dbDisconnect(conn, ...)
 }
 \arguments{
-\item{conn}{A \code{\linkS4class{DBIConnection}} object, as returned by
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
@@ -22,9 +22,10 @@ resources (e.g., memory, sockets).
 \section{Specification}{
 
 
-A warning is issued when releasing a connection without calling
-\code{dbDisconnect()},
-or when calling \code{dbDisconnect()} on an already disconnected connection.
+A warning is issued on garbage collection when a connection has been
+released without calling \code{dbDisconnect()}.
+A warning is issued immediately when calling \code{dbDisconnect()} on an
+already disconnected connection.
 
 }
 

@@ -1,0 +1,155 @@
+---
+title: "DBI specification"
+author: "Kirill Müller"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    smart: FALSE
+vignette: >
+  %\VignetteIndexEntry{DBI specification}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+library(magrittr)
+knitr::opts_chunk$set(echo = FALSE)
+r <- rprojroot::is_r_package$make_fix_file()
+```
+
+```{r}
+rd_db <- tools::Rd_db(dir = r())
+rd_db_test <- tools::Rd_db("DBItest")
+
+Links <- tools::findHTMLlinks()
+
+html_topic <- function(name, db) {
+  rd <- db[[paste0(name, ".Rd")]]
+
+  conn <- textConnection(NULL, "w")
+  on.exit(close(conn))
+
+  #tools::Rd2HTML(rd, conn, Links = Links)
+  tools::Rd2HTML(rd, conn)
+
+  textConnectionValue(conn)
+}
+
+xml_topic <- function(name, db, patcher) {
+  html <- html_topic(name, db)
+  x <- xml2::read_html(paste(html, collapse = "\n"))
+
+  # No idea why this is necessary when embedding HTML in Markdown
+  codes <- x %>% xml2::xml_find_all("//code[contains(., '$')]")
+  xml2::xml_text(codes) <- gsub("[$]", "\\\\$", xml2::xml_text(codes))
+
+  xx <- x %>% xml2::xml_find_first("/html/body")
+  xx %>% xml2::xml_find_first("//table") %>% xml2::xml_remove
+  patcher(xx)
+}
+
+asis_topic <- function(name, db, patcher = identity) {
+  xml <- lapply(name, xml_topic, db, patcher = patcher)
+  asis <- sapply(xml, as.character) %>% paste(collapse = "\n")
+  knitr::asis_output(asis)
+}
+
+patch_intro <- function(x) {
+  x %>% xml2::xml_find_first("//h2") %>% xml2::xml_remove
+  x %>% xml2::xml_find_first("//h3") %>% xml2::xml_remove
+  h3 <- x %>% xml2::xml_find_all("//h3")
+  xml2::xml_name(h3) <- "h2"
+  x
+}
+
+move_contents_of_usage_section <- function(x) {
+  # http://stackoverflow.com/a/3839299/946850
+  usage_contents <-
+    x %>%
+    xml2::xml_find_all(
+      "//h3[.='Usage']/following-sibling::node() [not(self::h3)] [count(preceding-sibling::h3)=2]")
+
+  usage_text <-
+    usage_contents %>%
+    xml2::xml_find_first("//pre") %>% 
+    xml2::xml_text
+
+  h3 <- x %>% xml2::xml_find_first("//h3")
+
+  intro_text <-
+    xml2::read_xml(
+      paste0(
+        "<p>This section describes the behavior of the following method",
+        if (length(grep("[(]", strsplit(usage_text, "\n")[[1]])) > 1) "s" else "",
+        ":</p>")
+    )
+
+  xml2::xml_add_sibling(
+    h3,
+    intro_text,
+    .where = "before")
+  lapply(usage_contents, xml2::xml_add_sibling, .x = h3, .copy = FALSE, .where = "before")
+
+  x %>% xml2::xml_find_first("//h3[.='Usage']") %>% xml2::xml_remove
+  x
+}
+
+move_additional_arguments_section <- function(x) {
+  # http://stackoverflow.com/a/3839299/946850 and some trial and error
+  additional_arguments <- x %>%
+    xml2::xml_find_all(
+      "//h3[.='Additional arguments'] | //h3[.='Additional arguments']/following-sibling::node()[following-sibling::h3]")
+
+  after_arg <- x %>% xml2::xml_find_first("//h3[text()='Arguments']/following-sibling::h3")
+
+  lapply(additional_arguments, xml2::xml_add_sibling, .x = after_arg, .copy = FALSE, .where = "before")
+
+  x
+}
+
+remove_see_also_section <- function(x) {
+  # http://stackoverflow.com/a/3839299/946850 and some trial and error
+  x %>%
+    xml2::xml_find_all(
+      "//h3[.='See Also'] | //h3[.='See Also']/following-sibling::node()[following-sibling::h3]") %>%
+    xml2::xml_remove()
+  x
+}
+
+patch_method_doc <- function(x) {
+  move_contents_of_usage_section(x)
+  remove_see_also_section(x)
+  move_additional_arguments_section(x)
+  x
+}
+
+asis_topic("DBIspec", rd_db_test, patch_intro)
+topics <- c(
+  "dbDataType",
+  "dbConnect",
+  "dbDisconnect",
+  "dbSendQuery",
+  "dbFetch",
+  "dbClearResult",
+  "dbBind",
+  "dbGetQuery",
+  "dbSendStatement",
+  "dbExecute",
+  "dbQuoteString",
+  "dbQuoteIdentifier",
+  "dbReadTable",
+  "dbWriteTable",
+  "dbListTables",
+  "dbExistsTable",
+  "dbRemoveTable",
+  "dbIsValid",
+  "dbHasCompleted",
+  "dbGetStatement",
+  "dbGetRowCount",
+  "dbGetRowsAffected",
+  "transactions",
+  "dbWithTransaction"
+)
+
+asis_topic(topics, rd_db, patch_method_doc)
+```

@@ -26,21 +26,24 @@ In the case of \code{dbUnloadDriver}, a logical indicating whether the
 operation succeeded or not.
 }
 \description{
-\code{dbDriver} is a helper method used to create an new driver object
+These methods are deprecated, please consult the documentation of the
+individual backends for the construction of driver instances.
+
+\code{dbDriver()} is a helper method used to create an new driver object
 given the name of a database or the corresponding R package. It works
 through convention: all DBI-extending packages should provide an exported
-object with the same name as the package. \code{dbDriver} just looks for
+object with the same name as the package. \code{dbDriver()} just looks for
 this object in the right places: if you know what database you are connecting
 to, you should call the function directly.
-}
-\section{Side Effects}{
 
+\code{dbUnloadDriver()} is not implemented for modern backends.
+}
+\details{
 The client part of the database communication is
 initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to
 \code{dbConnect}.
 }
-
 \examples{
 # Create a RSQLite driver with a string
 d <- dbDriver("SQLite")

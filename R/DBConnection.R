@@ -65,31 +65,30 @@ setGeneric("dbDisconnect",
 
 #' Execute a query on a given database connection
 #'
-#' The function `dbSendQuery` only submits and synchronously executes the
+#' The `dbSendQuery()` method only submits and synchronously executes the
 #' SQL query to the database engine.  It does \emph{not} extract any
-#' records --- for that you need to use the function [dbFetch()], and
+#' records --- for that you need to use the [dbFetch()] method, and
 #' then you must call [dbClearResult()] when you finish fetching the
 #' records you need. For interactive use, you should almost always prefer
 #' [dbGetQuery()].
 #'
-#' This function is for `SELECT` queries only.  Some backends may
-#' support data manipulation queries through this function for compatibility
+#' This method is for `SELECT` queries only.  Some backends may
+#' support data manipulation queries through this method for compatibility
 #' reasons.  However, callers are strongly encouraged to use
 #' [dbSendStatement()] for data manipulation statements.
 #'
-#' @inherit DBItest::spec_result_send_query return
-#' @inheritSection DBItest::spec_result_send_query Specification
-#'
-#' @inheritParams dbGetQuery
-#' @param statement a character vector of length 1 containing SQL.
-#'
-#' @section Side Effects:
 #' The query is submitted to the database server and the DBMS executes it,
 #' possibly generating vast amounts of data. Where these data live
 #' is driver-specific: some drivers may choose to leave the output on the server
 #' and transfer them piecemeal to R, others may transfer all the data to the
 #' client -- but not necessarily to the memory that R manages. See individual
-#' drivers' `dbSendQuery` documentation for details.
+#' drivers' `dbSendQuery()` documentation for details.
+#' @inherit DBItest::spec_result_send_query return
+#' @inheritSection DBItest::spec_result_send_query Specification
+#'
+#' @inheritParams dbGetQuery
+#' @param statement a character string containing SQL.
+#'
 #' @family DBIConnection generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @examples
@@ -109,7 +108,7 @@ setGeneric("dbSendQuery",
 
 #' Execute a data manipulation statement on a given database connection
 #'
-#' The function `dbSendStatement` only submits and synchronously executes the
+#' The `dbSendStatement()` method only submits and synchronously executes the
 #' SQL data manipulation statement (e.g., `UPDATE`, `DELETE`,
 #' `INSERT INTO`, `DROP TABLE`, ...) to the database engine.  To query
 #' the number of affected rows, call [dbGetRowsAffected()] on the
@@ -125,7 +124,7 @@ setGeneric("dbSendQuery",
 #' @inheritSection DBItest::spec_result_send_statement Specification
 #'
 #' @inheritParams dbGetQuery
-#' @param statement a character vector of length 1 containing SQL.
+#' @param statement a character string containing SQL.
 #'
 #' @family DBIConnection generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
@@ -158,13 +157,15 @@ setMethod(
 
 #' Send query, retrieve results and then clear result set
 #'
-#' `dbGetQuery` comes with a default implementation that calls
+#' Returns the result of a query as a data frame.
+#' `dbGetQuery()` comes with a default implementation
+#' (which should work with most backends) that calls
 #' [dbSendQuery()], then [dbFetch()], ensuring that
 #' the result is always free-d by [dbClearResult()].
 #'
-#' This function is for `SELECT` queries only.  Some backends may
-#' support data manipulation statements through this function for compatibility
-#' reasons.  However callers are strongly advised to use
+#' This method is for `SELECT` queries only.  Some backends may
+#' support data manipulation statements through this method for compatibility
+#' reasons.  However, callers are strongly advised to use
 #' [dbExecute()] for data manipulation statements.
 #'
 #' @inherit DBItest::spec_result_get_query return
@@ -172,11 +173,11 @@ setMethod(
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
-#' performance optimisation.
+#' performance optimization.
 #'
-#' @param conn A \code{\linkS4class{DBIConnection}} object, as returned by
+#' @param conn A [DBIConnection-class] object, as returned by
 #'   [dbConnect()].
-#' @param statement a character vector of length 1 containing SQL.
+#' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
 #' @family DBIConnection generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
@@ -211,6 +212,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 
 #' Execute an update statement, query number of rows affected, and then close result set
 #'
+#' Executes a statement and returns the number of rows affected.
 #' `dbExecute()` comes with a default implementation
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
@@ -218,13 +220,12 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
-#' performance optimisation.
+#' performance optimization.
 #'
 #' @inherit DBItest::spec_result_execute return
-#' @inheritSection DBItest::spec_result_execute Specification
 #'
 #' @inheritParams dbGetQuery
-#' @param statement a character vector of length 1 containing SQL.
+#' @param statement a character string containing SQL.
 #' @family DBIConnection generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @export
@@ -268,7 +269,7 @@ setGeneric("dbGetException",
 
 #' A list of all pending results
 #'
-#' List of \linkS4class{DBIResult} objects currently active on the connection.
+#' List of [DBIResult-class] objects currently active on the connection.
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
@@ -301,6 +302,8 @@ setGeneric("dbListFields",
 
 #' List remote tables
 #'
+#' Returns the unquoted names of remote tables accessible through this
+#' connection.
 #' This should, where possible, include temporary tables, and views.
 #'
 #' @inherit DBItest::spec_sql_list_tables return
@@ -329,17 +332,13 @@ setGeneric("dbListTables",
 #' a column to row names and converting the column names to valid
 #' R identifiers.
 #'
-#' @note The default DBI implementation converts column names with a call to
-#'   [make.names()] if `check.names` is `TRUE`.
-#'
 #' @inherit DBItest::spec_sql_read_table return
 #' @inheritSection DBItest::spec_sql_read_table Additional arguments
 #' @inheritSection DBItest::spec_sql_read_table Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying the unquoted DBMS table name,
-#'   a list specifying arguments to a call to [dbQuoteIdentifier()]
-#'   (excluding the first `conn` argument), or the result of such a call
+#'   or the result of a call to [dbQuoteIdentifier()].
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -387,7 +386,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 #' @inheritSection DBItest::spec_sql_write_table Specification
 #'
 #' @inheritParams dbGetQuery
-#' @param name A character string specifying a DBMS table name.
+#' @inheritParams dbReadTable
 #' @param value a [data.frame] (or coercible to data.frame).
 #' @family DBIConnection generics
 #' @export

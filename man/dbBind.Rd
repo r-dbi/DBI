@@ -2,14 +2,14 @@
 % Please edit documentation in R/DBResult.R
 \name{dbBind}
 \alias{dbBind}
-\title{Bind values to a parameterised/prepared statement}
+\title{Bind values to a parameterized/prepared statement}
 \usage{
 dbBind(res, params, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
-\item{params}{A list of bindings.}
+\item{params}{A list of bindings, named or unnamed.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -30,7 +30,7 @@ Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearR
 also raises an error.
 }
 \description{
-For parametrised or prepared statements,
+For parametrized or prepared statements,
 the \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbSendStatement]{dbSendStatement()}} functions can be called with
 statements that contain placeholders for values. The \code{dbBind()} function
 binds these placeholders
@@ -135,13 +135,23 @@ At least the following data types are accepted:
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "iris", iris)
+
+# Using the same query for different values
 iris_result <- dbSendQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > ?")
 dbBind(iris_result, list(2.3))
 dbFetch(iris_result)
 dbBind(iris_result, list(3))
 dbFetch(iris_result)
-
 dbClearResult(iris_result)
+
+# Executing the same statement with different values at once
+iris_result <- dbSendStatement(con, "DELETE FROM iris WHERE [Species] = $species")
+dbBind(iris_result, list(species = c("setosa", "versicolor", "unknown")))
+dbGetRowsAffected(iris_result)
+dbClearResult(iris_result)
+
+nrow(dbReadTable(con, "iris"))
+
 dbDisconnect(con)
 }
 \seealso{

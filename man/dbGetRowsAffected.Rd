@@ -7,12 +7,12 @@
 dbGetRowsAffected(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \code{\linkS4class{DBIResult}}.}
+\item{res}{An object inheriting from \linkS4class{DBIResult}.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbGetRowsAffected()} returns a scalar number string (integer or numeric),
+\code{dbGetRowsAffected()} returns a scalar number (integer or numeric),
 the number of rows affected by a data manipulation statement
 issued with \code{\link[=dbSendStatement]{dbSendStatement()}}.
 The value is available directly after the call
@@ -24,7 +24,7 @@ Attempting to get the rows affected for a result set cleared with
 \code{\link[=dbClearResult]{dbClearResult()}} gives an error.
 }
 \description{
-This function returns the number of rows that were added, deleted, or updated
+This method returns the number of rows that were added, deleted, or updated
 by a data manipulation statement.
 }
 \examples{

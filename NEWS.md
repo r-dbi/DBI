@@ -1,3 +1,13 @@
+## DBI 0.5-19 (2017-03-01)
+
+- Finalize first draft of specification, now in a vignette.
+
+
+## DBI 0.5-18 (2017-03-01)
+
+- Deprecate `dbDriver()` and `dbUnloadDriver()` by documentation (#21).
+
+
 ## DBI 0.5-17 (2017-02-26)
 
 - Added specification from DBItest to methods documentation. Affected methods: `dbBegin()`, `dbCommit()`, `dbRollback()`, and `dbWithTransaction()`. Most methods now draw documentation from `DBItest`, only those where the behavior is not finally decided don't yet.

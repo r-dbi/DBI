@@ -24,7 +24,7 @@ Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQue
 \code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
 
 Formal specification (currently work in progress and incomplete):
-\link{DBIspec}
+\code{vignette("spec", package = "DBI")}
 }
 \author{
 \strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}

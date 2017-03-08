@@ -1,7 +1,7 @@
 #' Convert row names back and forth between columns
 #'
 #' These functions provide a reasonably automatic way of preserving the row
-#' names of data frame during back-and-forth translation to a SQL table.
+#' names of data frame during back-and-forth translation to an SQL table.
 #' By default, row names will be converted to an explicit column
 #' called "row_names", and any query returning a column called "row_names"
 #' will have those automatically set as row names.

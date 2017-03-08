@@ -51,11 +51,10 @@ show_result <- function(object) {
 #' Fetch the next `n` elements (rows) from the result set and return them
 #' as a data.frame.
 #'
-#' `fetch` is provided for compatibility with older DBI clients - for all
-#' new code you are strongly encouraged to use `dbFetch`. The default
-#' method for `dbFetch` calls `fetch` so that it is compatible with
-#' existing code. Implementors are free to provide methods for `dbFetch`
-#' only.
+#' `fetch()` is provided for compatibility with older DBI clients - for all
+#' new code you are strongly encouraged to use `dbFetch()`. The default
+#' implementation for `dbFetch()` calls `fetch()` so that it is compatible with
+#' existing code. Modern backends should implement for `dbFetch()` only.
 #'
 #' @inherit DBItest::spec_result_fetch return
 #' @inheritSection DBItest::spec_result_fetch Specification
@@ -64,6 +63,7 @@ show_result <- function(object) {
 #' @param res An object inheriting from [DBIResult-class], created by
 #'   [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch. Use `n = -1`
+#'   or `n = Inf`
 #'   to retrieve all pending records.  Some implementations may recognize other
 #'   special values.
 #' @param ... Other arguments passed on to methods.
@@ -117,7 +117,7 @@ setGeneric("fetch",
 #' @inherit DBItest::spec_result_clear_result return
 #' @inheritSection DBItest::spec_result_clear_result Specification
 #'
-#' @param res An object inheriting from \code{\linkS4class{DBIResult}}.
+#' @param res An object inheriting from [DBIResult-class].
 #' @param ... Other arguments passed on to methods.
 #' @family DBIResult generics
 #' @export
@@ -164,7 +164,8 @@ setGeneric("dbColumnInfo",
 
 #' Get the statement associated with a result set
 #'
-#' Returns the statement that was passed to [dbSendQuery()].
+#' Returns the statement that was passed to [dbSendQuery()]
+#' or [dbSendStatement()].
 #'
 #' @inherit DBItest::spec_meta_get_statement return
 #'
@@ -220,7 +221,7 @@ setGeneric("dbHasCompleted",
 
 #' The number of rows affected
 #'
-#' This function returns the number of rows that were added, deleted, or updated
+#' This method returns the number of rows that were added, deleted, or updated
 #' by a data manipulation statement.
 #'
 #' @inherit DBItest::spec_meta_get_rows_affected return
@@ -246,7 +247,8 @@ setGeneric("dbGetRowsAffected",
 
 #' The number of rows fetched so far
 #'
-#' This value is increased by calls to [dbFetch()].
+#' Returns the total number of rows actually fetched with calls to [dbFetch()]
+#' for this result set.
 #'
 #' @inherit DBItest::spec_meta_get_row_count return
 #'
@@ -292,9 +294,9 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 })
 
 
-#' Bind values to a parameterised/prepared statement
+#' Bind values to a parameterized/prepared statement
 #'
-#' For parametrised or prepared statements,
+#' For parametrized or prepared statements,
 #' the [dbSendQuery()] and [dbSendStatement()] functions can be called with
 #' statements that contain placeholders for values. The `dbBind()` function
 #' binds these placeholders
@@ -329,20 +331,30 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' @inheritSection DBItest::spec_meta_bind Specification
 #'
 #' @inheritParams dbClearResult
-#' @param params A list of bindings.
+#' @param params A list of bindings, named or unnamed.
 #' @family DBIResult generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "iris", iris)
+#'
+#' # Using the same query for different values
 #' iris_result <- dbSendQuery(con, "SELECT * FROM iris WHERE [Petal.Width] > ?")
 #' dbBind(iris_result, list(2.3))
 #' dbFetch(iris_result)
 #' dbBind(iris_result, list(3))
 #' dbFetch(iris_result)
-#'
 #' dbClearResult(iris_result)
+#'
+#' # Executing the same statement with different values at once
+#' iris_result <- dbSendStatement(con, "DELETE FROM iris WHERE [Species] = $species")
+#' dbBind(iris_result, list(species = c("setosa", "versicolor", "unknown")))
+#' dbGetRowsAffected(iris_result)
+#' dbClearResult(iris_result)
+#'
+#' nrow(dbReadTable(con, "iris"))
+#'
 #' dbDisconnect(con)
 setGeneric(
   "dbBind",
