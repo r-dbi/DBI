@@ -366,7 +366,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
     stopifnot(is.logical(check.names))
     stopifnot(!is.na(check.names))
 
-    out <- dbGetQuery(paste0("SELECT * FROM ", sql_name))
+    out <- dbGetQuery(conn, paste0("SELECT * FROM ", sql_name))
     out <- sqlColumnToRownames(out, row.names)
     if (check.names) {
       names(out) <- make.names(names(out), unique = TRUE)
