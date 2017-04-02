@@ -1,3 +1,8 @@
+# DBI 0.6-1 (2017-04-01)
+
+- Fix `dbReadTable()` for backends that do not provide their own implementation (#171).
+
+
 # DBI 0.6 (2017-03-08)
 
 - Interface changes
