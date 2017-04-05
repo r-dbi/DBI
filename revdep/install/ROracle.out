@@ -1,5 +1,0 @@
-* installing *source* package ‘ROracle’ ...
-** package ‘ROracle’ successfully unpacked and MD5 sums checked
-configure: error: OCI libraries not found
-ERROR: configuration failed for package ‘ROracle’
-* removing ‘/home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/ROracle’
