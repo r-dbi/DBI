@@ -6,9 +6,9 @@
 \alias{sqlColumnToRownames}
 \title{Convert row names back and forth between columns}
 \usage{
-sqlRownamesToColumn(df, row.names = NA)
+sqlRownamesToColumn(df, row.names = FALSE)
 
-sqlColumnToRownames(df, row.names = NA)
+sqlColumnToRownames(df, row.names = FALSE)
 }
 \arguments{
 \item{df}{A data frame}

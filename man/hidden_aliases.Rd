@@ -51,7 +51,7 @@
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
-  row.names = NA, check.names = TRUE)
+  row.names = FALSE, check.names = TRUE)
 
 \S4method{show}{AnsiConnection}(object)
 
@@ -61,7 +61,7 @@
 
 \S4method{dbGetInfo}{DBIResult}(dbObj, ...)
 
-\S4method{sqlData}{DBIConnection}(con, value, row.names = NA, ...)
+\S4method{sqlData}{DBIConnection}(con, value, row.names = FALSE, ...)
 
 \S4method{make.db.names}{DBIObject,character}(dbObj, snames,
   keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE, ...)
@@ -87,11 +87,11 @@
 
 \S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
-\S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
-  temporary = FALSE, ...)
+\S4method{sqlCreateTable}{DBIConnection}(con, table, fields,
+  row.names = FALSE, temporary = FALSE, ...)
 
-\S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
-  ...)
+\S4method{sqlAppendTable}{DBIConnection}(con, table, values,
+  row.names = FALSE, ...)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,Table}(conn, x, ...)
 

@@ -4,7 +4,7 @@
 \alias{sqlData}
 \title{Convert a data frame into form suitable for upload to an SQL database}
 \usage{
-sqlData(con, value, row.names = NA, ...)
+sqlData(con, value, row.names = FALSE, ...)
 }
 \arguments{
 \item{con}{A database connection.}

@@ -5,9 +5,9 @@
 \alias{sqlAppendTableTemplate}
 \title{Insert rows into a table}
 \usage{
-sqlAppendTable(con, table, values, row.names = NA, ...)
+sqlAppendTable(con, table, values, row.names = FALSE, ...)
 
-sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
+sqlAppendTableTemplate(con, table, values, row.names = FALSE, prefix = "?",
   ...)
 }
 \arguments{
