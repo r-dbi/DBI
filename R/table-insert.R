@@ -18,14 +18,14 @@
 #' sqlAppendTable(ANSI(), "mtcars", head(mtcars), row.names = FALSE)
 setGeneric(
   "sqlAppendTable",
-  function(con, table, values, row.names = NA, ...)
+  function(con, table, values, row.names = FALSE, ...)
     standardGeneric("sqlAppendTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("sqlAppendTable", "DBIConnection",
-  function(con, table, values, row.names = NA, ...) {
+  function(con, table, values, row.names = FALSE, ...) {
     stopifnot(is.data.frame(values))
 
     sql_values <- sqlData(con, values, row.names)
@@ -54,7 +54,7 @@ setMethod("sqlAppendTable", "DBIConnection",
 #'
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
-sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ...) {
+sqlAppendTableTemplate <- function(con, table, values, row.names = FALSE, prefix = "?", ...) {
   table <- dbQuoteIdentifier(con, table)
 
   values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)

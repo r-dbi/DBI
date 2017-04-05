@@ -34,7 +34,7 @@ NULL
 
 #' @export
 #' @rdname rownames
-sqlRownamesToColumn <- function(df, row.names = NA) {
+sqlRownamesToColumn <- function(df, row.names = FALSE) {
   name <- guessRowName(df, row.names)
   if (is.null(name)) {
     rownames(df) <- NULL
@@ -52,7 +52,7 @@ sqlRownamesToColumn <- function(df, row.names = NA) {
 
 #' @export
 #' @rdname rownames
-sqlColumnToRownames <- function(df, row.names = NA) {
+sqlColumnToRownames <- function(df, row.names = FALSE) {
   name <- guessColName(df, row.names)
   if (is.null(name)) return(df)
 

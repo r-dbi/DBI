@@ -27,13 +27,13 @@
 #' dbDisconnect(con)
 setGeneric(
   "sqlData",
-  function(con, value, row.names = NA, ...)
+  function(con, value, row.names = FALSE, ...)
     standardGeneric("sqlData")
 )
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlData", "DBIConnection", function(con, value, row.names = NA, ...) {
+setMethod("sqlData", "DBIConnection", function(con, value, row.names = FALSE, ...) {
   value <- sqlRownamesToColumn(value, row.names)
 
   # Convert factors to strings

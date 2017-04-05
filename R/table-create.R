@@ -33,14 +33,14 @@
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5], row.names = FALSE)
 setGeneric(
   "sqlCreateTable",
-  function(con, table, fields, row.names = NA, temporary = FALSE, ...)
+  function(con, table, fields, row.names = FALSE, temporary = FALSE, ...)
     standardGeneric("sqlCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("sqlCreateTable", "DBIConnection",
-  function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+  function(con, table, fields, row.names = FALSE, temporary = FALSE, ...) {
     table <- dbQuoteIdentifier(con, table)
 
     if (is.data.frame(fields)) {
