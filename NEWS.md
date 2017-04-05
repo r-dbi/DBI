@@ -1,3 +1,8 @@
+## DBI 0.6-11 (2017-04-06)
+
+- Import updated specs from `DBItest`.
+
+
 ## DBI 0.6-10 (2017-04-06)
 
 - Same as 0.6-1.
