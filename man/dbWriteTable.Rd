@@ -95,11 +95,14 @@ and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
 the latter are translated to \code{NA})
 \item logical
 \item \code{NA} as NULL
-\item 64-bit values (using \code{"bigint"} as field type)
+\item 64-bit values (using \code{"bigint"} as field type, after conversion to
+numeric)
 \item character (in both UTF-8
 and native encodings)
 \item factor (returned as character)
 \item list of raw
+(if supported by the database)
+\item objects of type \link{blob}
 (if supported by the database)
 \item date
 (if supported by the database;

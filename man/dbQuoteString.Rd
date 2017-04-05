@@ -40,6 +40,7 @@ and for any scalar character \code{x} the value of
 must be identical to \code{x},
 even if \code{x} contains
 spaces,
+tabs,
 quotes (single
 or double),
 backticks,
