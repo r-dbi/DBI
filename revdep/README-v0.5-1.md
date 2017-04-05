@@ -18,14 +18,10 @@
 |:---------|:--|:----------|:----------|:--------------------------------|
 |covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                    |
 |DBI       |   |0.5-22     |2017-03-08 |Github (rstats-db/DBI@b0ee46a)   |
-|hms       |   |0.3        |2016-11-22 |cran (@0.3)                      |
 |knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                   |
-|magrittr  |   |1.5        |2014-11-22 |CRAN (R 3.3.1)                   |
 |rmarkdown |   |1.3        |2016-12-21 |cran (@1.3)                      |
-|rprojroot |   |1.2        |2017-01-16 |cran (@1.2)                      |
 |RSQLite   |   |1.1-2      |2017-01-08 |cran (@1.1-2)                    |
 |testthat  |   |1.0.2.9000 |2017-02-27 |Github (hadley/testthat@b72a228) |
-|xml2      |   |1.1.1      |2017-01-24 |cran (@1.1.1)                    |
 
 # Check results
 
@@ -41,7 +37,7 @@
 |AnnotationDbi      |1.36.2    |      0|        1|     5|
 |AnnotationForge    |1.16.1    |      0|        0|     1|
 |AnnotationFuncs    |1.24.0    |      0|        0|     3|
-|AnnotationHubData  |1.4.1     |      1|        0|     3|
+|AnnotationHubData  |1.4.1     |      0|        0|     3|
 |archivist          |2.1.2     |      0|        0|     2|
 |aroma.affymetrix   |3.0.0     |      0|        0|     0|
 |BatchExperiments   |1.4.1     |      0|        0|     2|
@@ -119,7 +115,7 @@
 |redcapAPI          |1.3       |      0|        0|     1|
 |refGenome          |1.7.0     |      0|        0|     0|
 |RImmPort           |1.2.0     |      0|        1|     1|
-|RJDBC              |0.2-5     |      0|        1|     1|
+|RJDBC              |0.2-5     |      0|        0|     1|
 |RmiR               |1.30.0    |      0|        0|     5|
 |RMySQL             |0.10.9    |      0|        0|     0|
 |rnaSeqMap          |2.32.0    |      0|        1|     4|
@@ -141,7 +137,7 @@
 |sf                 |0.3-4     |      1|        0|     1|
 |smnet              |2.1       |      0|        0|     0|
 |snplist            |0.17      |      0|        0|     0|
-|sparklyr           |0.5.2     |      1|        0|     0|
+|sparklyr           |0.5.2     |      0|        0|     0|
 |sparkwarc          |0.1.1     |      0|        0|     0|
 |specL              |1.8.0     |      0|        1|     3|
 |sqldf              |0.4-10    |      0|        1|     2|
@@ -446,29 +442,9 @@ These lines will be truncated in the PDF manual.
 ## AnnotationHubData (1.4.1)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
-1 error  | 0 warnings | 3 notes
+0 errors | 0 warnings | 3 notes
 
 ```
-checking tests ... ERROR
-  Running ‘AnnotationHubData_unit_tests.R’ [98s/180s]
-Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
-Last 13 lines of output:
-  1 Test Suite : 
-  AnnotationHubData RUnit Tests - 21 test functions, 1 error, 0 failures
-  ERROR in test_dbSNPVCFPreparer_recipe: Error in curl::curl(ul, "r") : Timeout was reached
-  
-  Test files with failing tests
-  
-     test_recipe.R 
-       test_dbSNPVCFPreparer_recipe 
-  
-  
-  Error in BiocGenerics:::testPackage("AnnotationHubData") : 
-    unit tests failed for package AnnotationHubData
-  In addition: Warning message:
-  closing unused connection 3 (ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh37/archive/2016/) 
-  Execution halted
-
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
   ‘appveyor.yml’
@@ -707,7 +683,7 @@ Calls: findOverlapsOfPeaks -> vennCounts -> unlist -> GRangesList
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [50s/49s]
+  Running ‘runTests.R’ [46s/51s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -821,7 +797,7 @@ Bug reports: https://github.com/djalmapessoa/convey/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [111s/112s]
+  Running ‘testthat.R’ [111s/114s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   
@@ -1008,12 +984,12 @@ Last 13 lines of output:
    
   1 Test Suite : 
   eiR RUnit Tests - 1 test function, 1 error, 0 failures
-  ERROR in /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R: Error while sourcing  /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
+  ERROR in /tmp/RtmpcLGAMS/RLIBS_e0522e67a3d9/eiR/unitTests/test_main.R: Error while sourcing  /tmp/RtmpcLGAMS/RLIBS_e0522e67a3d9/eiR/unitTests/test_main.R : Error : (converted from warning) Closing open result set, pending rows
   
   Test files with failing tests
   
      test_main.R 
-       /tmp/Rtmp8WgxMz/RLIBS_38b7379feeea/eiR/unitTests/test_main.R 
+       /tmp/RtmpcLGAMS/RLIBS_e0522e67a3d9/eiR/unitTests/test_main.R 
   
   
   Error in BiocGenerics:::testPackage("eiR") : 
@@ -1185,7 +1161,7 @@ Calls: extractTranscriptSeqs ... unsplit_list_of_XVectorList -> do.call -> do.ca
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [97s/95s]
+  Running ‘runTests.R’ [98s/125s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   1 Test Suite : 
@@ -1445,7 +1421,7 @@ Calls: asBED ... range -> .local -> do.call -> do.call -> <Anonymous>
 Execution halted
 
 checking tests ... ERROR
-  Running ‘run_unitTests.R’ [110s/110s]
+  Running ‘run_unitTests.R’ [111s/120s]
 Running the tests in ‘tests/run_unitTests.R’ failed.
 Last 13 lines of output:
   
@@ -1720,7 +1696,7 @@ Calls: readVcf ... scanBcfHeader -> .bcfHeaderAsSimpleList -> SimpleList -> c
 Execution halted
 
 checking tests ... ERROR
-  Running ‘test.R’ [156s/154s]
+  Running ‘test.R’ [155s/154s]
 Running the tests in ‘tests/test.R’ failed.
 Last 13 lines of output:
   
@@ -2577,7 +2553,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpcLtFfP/filee48d527b1eab in chunks of 10000
+Processing /tmp/Rtmp0HcSLt/file8ee078237cff in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2587,7 +2563,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [22s/22s]
+  Running ‘runTests.R’ [24s/23s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   
@@ -2603,7 +2579,7 @@ Last 13 lines of output:
   Error in BiocGenerics:::testPackage("plethy") : 
     unit tests failed for package plethy
   In addition: Warning message:
-  closing unused connection 3 (/tmp/RtmpI5jW2o/filee84136ff7391) 
+  closing unused connection 3 (/tmp/RtmplLqapF/file918a3719ad11) 
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -2805,17 +2781,9 @@ Undefined global functions or variables:
 ## RJDBC (0.2-5)
 Maintainer: Simon Urbanek <Simon.Urbanek@r-project.org>
 
-0 errors | 1 warning  | 1 note 
+0 errors | 0 warnings | 1 note 
 
 ```
-checking for missing documentation entries ... WARNING
-Undocumented S4 methods:
-  generic 'dbReadTable' and siglist 'JDBCConnection,ANY'
-All user-level objects in a package (including S4 classes and methods)
-should have documentation entries.
-See chapter ‘Writing R documentation files’ in the ‘Writing R
-Extensions’ manual.
-
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
   ‘java-src’
@@ -3089,7 +3057,7 @@ checking tests ... ERROR
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
-  OK: 1462 SKIPPED: 22 FAILED: 84
+  OK: 1464 SKIPPED: 22 FAILED: 91
   1. Failure: DBItest[RSQLite]: Driver: data_type_driver (@spec-driver-data-type.R#13) 
   2. Failure: DBItest[RSQLite]: Connection: data_type_connection (@spec-connection-data-type.R#5) 
   3. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
@@ -3192,7 +3160,7 @@ Execution halted
 ** found \donttest examples: check also with --run-donttest
 
 checking tests ... ERROR
-  Running ‘test-all.R’ [17s/16s]
+  Running ‘test-all.R’ [17s/17s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
   12: `[<-`(`*tmp*`, idx, value = <S4 object of class structure("DNAStringSet", package = "Biostrings")>)
@@ -3299,13 +3267,7 @@ Maintainer: Alexander Sibley <alexander.sibley@dm.duke.edu>
 Maintainer: Javier Luraschi <javier@rstudio.com>  
 Bug reports: https://github.com/rstudio/sparklyr/issues
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sparklyr’ can be installed ... ERROR
-Installation failed.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/sparklyr.Rcheck/00install.out’ for details.
-```
+0 errors | 0 warnings | 0 notes
 
 ## sparkwarc (0.1.1)
 Maintainer: Javier Luraschi <javier@rstudio.com>  
@@ -3615,17 +3577,17 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
-Mar 08, 2017 2:58:21 PM it.bancaditalia.oss.sdmx.util.Configuration init
+Mar 08, 2017 2:31:24 PM it.bancaditalia.oss.sdmx.util.Configuration init
 INFO: Configuration file: /home/muelleki/R/x86_64-pc-linux-gnu-library/3.3/RJSDMX/configuration.properties
-Mar 08, 2017 2:58:21 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:31:25 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 2:58:22 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:31:26 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://stats.oecd.org/restsdmx/sdmx.ashx//GetDataStructure/QNA
-Mar 08, 2017 2:58:22 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:31:26 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 ... 8 lines ...
-Mar 08, 2017 2:58:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Mar 08, 2017 2:31:27 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-Mar 08, 2017 2:58:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Mar 08, 2017 2:31:27 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
@@ -3794,7 +3756,7 @@ Calls: readVcf ... scanBcfHeader -> .bcfHeaderAsSimpleList -> SimpleList -> c
 Execution halted
 
 checking tests ... ERROR
-  Running ‘VariantAnnotation_unit_tests.R’ [74s/72s]
+  Running ‘VariantAnnotation_unit_tests.R’ [75s/134s]
 Running the tests in ‘tests/VariantAnnotation_unit_tests.R’ failed.
 Last 13 lines of output:
   
@@ -3911,7 +3873,7 @@ Calls: VariantFilteringParam ... scanBcfHeader -> .bcfHeaderAsSimpleList -> Simp
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [20s/20s]
+  Running ‘runTests.R’ [20s/19s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   ERROR in test_location_annotations: Error in c(DataFrameList(META = meta), tbls[unique(tags)]) : 
