@@ -25,10 +25,8 @@
 #' sqlData(con, head(mtcars))
 #'
 #' dbDisconnect(con)
-setGeneric(
-  "sqlData",
-  function(con, value, row.names = NA, ...)
-    standardGeneric("sqlData")
+setGeneric("sqlData",
+  def = function(con, value, row.names = NA, ...) standardGeneric("sqlData")
 )
 
 #' @rdname hidden_aliases

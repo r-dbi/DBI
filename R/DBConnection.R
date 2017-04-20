@@ -142,8 +142,8 @@ setGeneric("dbSendQuery",
 #' dbDisconnect(con)
 #' @export
 setGeneric("dbSendStatement",
-           def = function(conn, statement, ...) standardGeneric("dbSendStatement"),
-           valueClass = "DBIResult"
+  def = function(conn, statement, ...) standardGeneric("dbSendStatement"),
+  valueClass = "DBIResult"
 )
 
 #' @rdname hidden_aliases
@@ -239,8 +239,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' dbReadTable(con, "cars")   # there are now 6 rows
 #'
 #' dbDisconnect(con)
-setGeneric(
-  "dbExecute",
+setGeneric("dbExecute",
   def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
@@ -347,9 +346,9 @@ setGeneric("dbListTables",
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbReadTable", valueClass = "data.frame",
-  signature = c("conn", "name"),
-  function(conn, name, ...) standardGeneric("dbReadTable")
+setGeneric("dbReadTable",
+  def = function(conn, name, ...) standardGeneric("dbReadTable"),
+  valueClass = "data.frame"
 )
 
 #' @rdname hidden_aliases
@@ -407,8 +406,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 #'
 #' @export
 setGeneric("dbWriteTable",
-  signature = c("conn", "name", "value"),
-  function(conn, name, value, ...) standardGeneric("dbWriteTable")
+  def = function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
 
 #' Does a table exist?
