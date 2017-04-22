@@ -190,7 +190,8 @@ setMethod(
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQuery",
-  def = function(conn, statement, ...) standardGeneric("dbGetQuery")
+  def = function(conn, statement, ...) standardGeneric("dbGetQuery"),
+  valueClass = "data.frame"
 )
 
 #' @rdname hidden_aliases
