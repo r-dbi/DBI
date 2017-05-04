@@ -197,17 +197,11 @@ setGeneric("dbGetQuery",
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
-  function(conn, statement, ...) {
+  function(conn, statement, ..., n = -1L) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
 
-    df <- dbFetch(rs, n = -1, ...)
-
-    if (!dbHasCompleted(rs)) {
-      warning("Pending rows", call. = FALSE)
-    }
-
-    df
+    dbFetch(rs, n = n, ...)
   }
 )
 
