@@ -15,6 +15,7 @@ Depends:
     R (>= 3.0.0),
     methods
 Suggests:
+    blob,
     covr,
     hms,
     knitr,

@@ -179,6 +179,7 @@ setMethod(
 #'   [dbConnect()].
 #' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
+#' @param n See section "Additional arguments"
 #' @family DBIConnection generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
