@@ -13,8 +13,6 @@ dbGetQuery(conn, statement, ...)
 \item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
-
-\item{n}{See section "Additional arguments"}
 }
 \value{
 \code{dbGetQuery()} always returns a \link{data.frame}

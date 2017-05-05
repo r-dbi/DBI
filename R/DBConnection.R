@@ -179,7 +179,6 @@ setMethod(
 #'   [dbConnect()].
 #' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
-#' @param n See section "Additional arguments"
 #' @family DBIConnection generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
@@ -196,6 +195,7 @@ setGeneric("dbGetQuery",
 )
 
 #' @rdname hidden_aliases
+#' @param n Number of rows to fetch, default -1
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
   function(conn, statement, ..., n = -1L) {
