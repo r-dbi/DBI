@@ -1,6 +1,6 @@
 Package: DBI
-Version: 0.6-11
-Date: 2017-04-06
+Version: 0.6-12
+Date: 2017-05-05
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All
@@ -12,9 +12,10 @@ Authors@R: c(
     person("Kirill", "Müller", email = "krlmlr+r@mailbox.org", role = c("aut", "cre"))
     )
 Depends:
-    R (>= 2.15.0),
+    R (>= 3.0.0),
     methods
 Suggests:
+    blob,
     covr,
     hms,
     knitr,

@@ -19,7 +19,9 @@ dbRemoveTable(conn, name, ...)
 If the table does not exist, an error is raised.
 An attempt to remove a view with this function may result in an error.
 
-An error is raised
+An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
 if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 or if this results in a non-scalar.
 }

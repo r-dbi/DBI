@@ -1,3 +1,11 @@
+## DBI 0.6-12 (2017-05-05)
+
+- Update specification from DBItest v1.4-21.
+- The default implementation of `dbGetQuery()` now accepts an `n` argument and forwards it to `dbFetch()`. No warning about pending rows is issued anymore (#76).
+- The `dbGetQuery()` method now has `valueClass = data.frame`.
+- Require R >= 3.0.0 (for `slots` argument of `setClass()`) (#169, @mvkorpel).
+
+
 ## DBI 0.6-11 (2017-04-06)
 
 - Import updated specs from `DBItest`.

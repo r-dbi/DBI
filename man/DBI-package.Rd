@@ -14,8 +14,8 @@ the various R/DBMS implementations (so-called \emph{DBI backends}).
 \section{Definition}{
 
 
-A DBI backend is an R package,
-which should import the \pkg{DBI}
+A DBI backend is an R package
+which imports the \pkg{DBI}
 and \pkg{methods}
 packages.
 For better or worse, the names of many existing backends start with

@@ -142,8 +142,8 @@ setGeneric("dbSendQuery",
 #' dbDisconnect(con)
 #' @export
 setGeneric("dbSendStatement",
-           def = function(conn, statement, ...) standardGeneric("dbSendStatement"),
-           valueClass = "DBIResult"
+  def = function(conn, statement, ...) standardGeneric("dbSendStatement"),
+  valueClass = "DBIResult"
 )
 
 #' @rdname hidden_aliases
@@ -190,23 +190,19 @@ setMethod(
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQuery",
-  def = function(conn, statement, ...) standardGeneric("dbGetQuery")
+  def = function(conn, statement, ...) standardGeneric("dbGetQuery"),
+  valueClass = "data.frame"
 )
 
 #' @rdname hidden_aliases
+#' @param n Number of rows to fetch, default -1
 #' @export
 setMethod("dbGetQuery", signature("DBIConnection", "character"),
-  function(conn, statement, ...) {
+  function(conn, statement, ..., n = -1L) {
     rs <- dbSendQuery(conn, statement, ...)
     on.exit(dbClearResult(rs))
 
-    df <- dbFetch(rs, n = -1, ...)
-
-    if (!dbHasCompleted(rs)) {
-      warning("Pending rows", call. = FALSE)
-    }
-
-    df
+    dbFetch(rs, n = n, ...)
   }
 )
 
@@ -239,8 +235,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' dbReadTable(con, "cars")   # there are now 6 rows
 #'
 #' dbDisconnect(con)
-setGeneric(
-  "dbExecute",
+setGeneric("dbExecute",
   def = function(conn, statement, ...) standardGeneric("dbExecute")
 )
 
@@ -347,9 +342,9 @@ setGeneric("dbListTables",
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbReadTable", valueClass = "data.frame",
-  signature = c("conn", "name"),
-  function(conn, name, ...) standardGeneric("dbReadTable")
+setGeneric("dbReadTable",
+  def = function(conn, name, ...) standardGeneric("dbReadTable"),
+  valueClass = "data.frame"
 )
 
 #' @rdname hidden_aliases
@@ -407,8 +402,7 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 #'
 #' @export
 setGeneric("dbWriteTable",
-  signature = c("conn", "name", "value"),
-  function(conn, name, value, ...) standardGeneric("dbWriteTable")
+  def = function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
 
 #' Does a table exist?

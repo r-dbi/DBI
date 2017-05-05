@@ -25,6 +25,8 @@ As soon a table is removed from the database,
 it is also removed from the list of database tables.
 
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
+An error is raised when calling this method for a closed
+or invalid connection.
 }
 \description{
 Returns the unquoted names of remote tables accessible through this

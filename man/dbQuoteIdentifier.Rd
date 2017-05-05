@@ -46,8 +46,8 @@ from the quoting mechanism used for strings, so that a query like
 \code{SELECT ... FROM (SELECT 1 AS ...)}
 throws an error if the column names do not match.
 
-The method can quote column names that are empty strings
-or contain special characters such as a space,
+The method can quote column names that
+contain special characters such as a space,
 a dot,
 a comma,
 or quotes used to mark strings

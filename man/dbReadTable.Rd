@@ -19,7 +19,7 @@ or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 \code{dbReadTable()} returns a data frame that contains the complete data
 from the remote table, effectively the result of calling \code{\link[=dbGetQuery]{dbGetQuery()}}
 with \code{SELECT * FROM <name>}.
-An error is returned if the table does not exist.
+An error is raised if the table does not exist.
 An empty table is returned as a data frame with zero rows.
 
 The presence of \link{rownames} depends on the \code{row.names} argument,
@@ -35,12 +35,16 @@ that contains the row names,
 an error is raised if no such column exists.
 }
 
+The default is \code{row.names = FALSE}.
+
 If the database supports identifiers with special characters,
 the columns in the returned data frame are converted to valid R
 identifiers
 if the \code{check.names} argument is \code{TRUE},
 otherwise non-syntactic column names can be returned unquoted.
 
+An error is raised when calling this method for a closed
+or invalid connection.
 An error is raised
 if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 or if this results in a non-scalar.

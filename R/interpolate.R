@@ -22,9 +22,8 @@
 #'
 #' # This is safe because the single quote has been double escaped
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
-setGeneric(
-  "sqlInterpolate",
-  function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
+setGeneric("sqlInterpolate",
+  def = function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
 )
 
 #' @rdname hidden_aliases
@@ -89,9 +88,8 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #'   list(sqlQuoteSpec("'", "'"), sqlQuoteSpec('"', '"')),
 #'   list(sqlCommentSpec("#", "\n", FALSE))
 #' )
-setGeneric(
-  "sqlParseVariables",
-  function(conn, sql, ...) standardGeneric("sqlParseVariables")
+setGeneric("sqlParseVariables",
+  def = function(conn, sql, ...) standardGeneric("sqlParseVariables")
 )
 
 #' @rdname hidden_aliases

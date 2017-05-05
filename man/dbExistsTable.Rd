@@ -19,7 +19,9 @@ dbExistsTable(conn, name, ...)
 specified by the \code{name} argument exists, \code{FALSE} otherwise.
 This includes temporary tables if supported by the database.
 
-An error is raised
+An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
 if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 or if this results in a non-scalar.
 }
