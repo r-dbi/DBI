@@ -1,3 +1,8 @@
+## DBI 0.6-13 (2017-05-08)
+
+- Update to `DBItest` v1.4-22.
+
+
 ## DBI 0.6-12 (2017-05-05)
 
 - Update specification from DBItest v1.4-21.
