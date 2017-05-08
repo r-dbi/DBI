@@ -14,40 +14,60 @@
 
 ## Packages
 
-|package   |*  |version |date       |source                         |
-|:---------|:--|:-------|:----------|:------------------------------|
-|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                  |
-|DBI       |   |0.6-13  |2017-05-08 |Github (rstats-db/DBI@f6500a5) |
-|hms       |   |0.3     |2016-11-22 |cran (@0.3)                    |
-|knitr     |   |1.15.1  |2016-11-22 |cran (@1.15.1)                 |
-|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                 |
-|rmarkdown |   |1.5     |2017-04-26 |cran (@1.5)                    |
-|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                    |
-|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                 |
-|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                  |
-|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                  |
+|package   |*  |version    |date       |source                          |
+|:---------|:--|:----------|:----------|:-------------------------------|
+|blob      |   |1.0.0.9002 |2017-04-24 |Github (tidyverse/blob@615057a) |
+|covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                   |
+|DBI       |   |0.6-13     |2017-05-08 |Github (rstats-db/DBI@f6500a5)  |
+|hms       |   |0.3        |2016-11-22 |cran (@0.3)                     |
+|knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                  |
+|magrittr  |   |1.5        |2014-11-22 |CRAN (R 3.4.0)                  |
+|rmarkdown |   |1.5        |2017-04-26 |cran (@1.5)                     |
+|rprojroot |   |1.2        |2017-01-16 |cran (@1.2)                     |
+|RSQLite   |   |1.1-2      |2017-01-08 |CRAN (R 3.4.0)                  |
+|testthat  |   |1.0.2      |2016-04-23 |cran (@1.0.2)                   |
+|xml2      |   |1.1.1      |2017-01-24 |cran (@1.1.1)                   |
 
 # Check results
 
-131 packages
+150 packages
 
 |package            |version   | errors| warnings| notes|
 |:------------------|:---------|------:|--------:|-----:|
 |acc                |1.3.3     |      0|        0|     1|
+|afmToolkit         |0.0.1     |      0|        0|     0|
 |anamiR             |1.4.0     |      0|        0|     4|
 |annaffy            |1.48.0    |      0|        0|     2|
 |annmap             |1.18.0    |      0|        2|     5|
+|annotate           |1.54.0    |      0|        0|     1|
 |AnnotationDbi      |1.38.0    |      0|        1|     5|
 |AnnotationForge    |1.18.0    |      0|        0|     1|
-|BIEN               |1.1.0     |      0|        0|     0|
+|AnnotationFuncs    |1.26.0    |      0|        0|     4|
+|AnnotationHubData  |1.6.0     |      1|        0|     4|
+|archivist          |2.1.2     |      0|        0|     2|
+|aroma.affymetrix   |3.1.0     |      0|        0|     0|
+|BatchExperiments   |1.4.1     |      0|        0|     2|
+|BatchJobs          |1.6       |      0|        0|     0|
+|BETS               |0.2.1     |      0|        0|     0|
+|bibliospec         |0.0.4     |      0|        0|     0|
+|BIEN               |1.1.0     |      1|        0|     0|
+|biglm              |0.9-1     |      0|        0|     6|
 |bigrquery          |0.3.0     |      1|        0|     0|
+|bioassayR          |1.14.0    |      0|        0|     0|
+|ChemmineR          |2.28.0    |      1|        0|     0|
 |ChIPpeakAnno       |3.10.1    |      0|        0|     2|
 |chunked            |0.3       |      1|        0|     1|
+|CITAN              |2015.12-2 |      0|        0|     0|
+|cn.farms           |1.24.0    |      1|        0|     2|
+|convey             |0.2.0     |      0|        0|     0|
 |cranlike           |1.0.0     |      0|        0|     0|
 |D3GB               |1.1       |      0|        0|     0|
 |datamap            |0.1-1     |      0|        0|     3|
+|dbfaker            |0.1.0     |      0|        0|     0|
+|DBItest            |1.4       |      0|        0|     0|
 |DECIPHER           |2.4.0     |      0|        0|     4|
 |DMwR2              |0.0.2     |      0|        0|     0|
+|dplyr              |0.5.0     |      1|        0|     2|
 |eiR                |1.16.0    |      0|        0|     6|
 |eisa               |1.28.0    |      0|        0|     2|
 |emuR               |0.2.2     |      0|        0|     0|
@@ -93,7 +113,7 @@
 |oce                |0.9-21    |      1|        0|     1|
 |odbc               |1.0.1     |      0|        0|     1|
 |ODB                |1.1.1     |      0|        0|     2|
-|oligo              |1.40.1    |      1|        2|     9|
+|oligo              |1.40.1    |      1|        1|     9|
 |ora                |2.0-1     |      1|        0|     0|
 |PAnnBuilder        |1.40.0    |      0|        3|     1|
 |pdInfoBuilder      |1.40.0    |      0|        0|     2|
@@ -127,11 +147,11 @@
 |SEERaBomb          |2017.1    |      0|        0|     0|
 |sejmRP             |1.3.4     |      0|        0|     0|
 |seqplots           |1.13.0    |      1|        0|     3|
-|sf                 |0.4-2     |      0|        1|     1|
+|sf                 |0.4-2     |      2|        0|     1|
 |smnet              |2.1.1     |      0|        0|     0|
 |snplist            |0.17      |      0|        0|     1|
 |sparklyr           |0.5.4     |      0|        0|     0|
-|sparkwarc          |0.1.1     |      0|        0|     0|
+|sparkwarc          |0.1.1     |      1|        0|     0|
 |specL              |1.10.0    |      0|        0|     5|
 |sqldf              |0.4-10    |      0|        1|     2|
 |sqliter            |0.1.0     |      0|        0|     0|
@@ -180,6 +200,11 @@ search.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
+
+## afmToolkit (0.0.1)
+Maintainer: Rafael Benitez <rabesua@uv.es>
+
+0 errors | 0 warnings | 0 notes
 
 ## anamiR (1.4.0)
 Maintainer: Ti-Tai Wang <r04945002@ntu.edu.tw>  
@@ -351,6 +376,20 @@ Rd file 'plot.ngs.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## annotate (1.54.0)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+
+0 errors | 0 warnings | 1 note 
+
+```
+checking Rd line widths ... NOTE
+Rd file 'readGEOAnn.Rd':
+  \usage lines wider than 90 characters:
+                            "https://www.ncbi.nlm.nih.gov/geo/query/browse.cgi?view=platforms&prtype=SAGE&dtype=SAGE")
+
+These lines will be truncated in the PDF manual.
+```
+
 ## AnnotationDbi (1.38.0)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
@@ -411,10 +450,286 @@ checking installed package size ... NOTE
     extdata              3.3Mb
 ```
 
+## AnnotationFuncs (1.26.0)
+Maintainer: Stefan McKinnon Edwards <stefan.hoj-edwards@agrsci.dk>  
+Bug reports: 
+
+0 errors | 0 warnings | 4 notes
+
+```
+checking DESCRIPTION meta-information ... NOTE
+BugReports field should not be empty
+
+checking dependencies in R code ... NOTE
+Package in Depends field not imported from: ‘AnnotationDbi’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking R code for possible problems ... NOTE
+getOrthologs: no visible global function definition for ‘dbmeta’
+getOrthologs: no visible global function definition for ‘dbconn’
+getOrthologs: no visible global function definition for ‘dbfile’
+getOrthologs: no visible global function definition for ‘direction’
+translate: no visible global function definition for ‘dbmeta’
+translate: no visible global function definition for ‘dbconn’
+translate: no visible global function definition for ‘stack’
+Undefined global functions or variables:
+  dbconn dbfile dbmeta direction stack
+Consider adding
+  importFrom("utils", "stack")
+to your NAMESPACE file.
+
+checking Rd line widths ... NOTE
+Rd file 'getOrthologs.Rd':
+  \examples lines wider than 100 characters:
+     bovine.ensembl <- getOrthologs(c(1,2,3), hom.Hs.inpBOSTA, 'BOSTA', pre.from=org.Hs.egENSEMBLPROT, post.from=org.Bt.egENSEMBLPROT2EG)
+     hs2bt.refseqs2 <- lapply(bovine.ensembl, translate, from=org.Bt.egREFSEQ, simplify=TRUE) # simplify=TRUE is very important here!
+
+These lines will be truncated in the PDF manual.
+```
+
+## AnnotationHubData (1.6.0)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+
+1 error  | 0 warnings | 4 notes
+
+```
+checking tests ... ERROR
+  Running ‘AnnotationHubData_unit_tests.R’ [65s/132s]
+Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
+Last 13 lines of output:
+  
+   
+  1 Test Suite : 
+  AnnotationHubData RUnit Tests - 21 test functions, 1 error, 0 failures
+  ERROR in test_Grasp2Db_recipe: Error : object 'src_sql' is not exported by 'namespace:dplyr'
+  
+  Test files with failing tests
+  
+     test_recipe.R 
+       test_Grasp2Db_recipe 
+  
+  
+  Error in BiocGenerics:::testPackage("AnnotationHubData") : 
+    unit tests failed for package AnnotationHubData
+  Execution halted
+
+checking DESCRIPTION meta-information ... NOTE
+Package listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘BiocInstaller’
+A package should be listed in only one of these fields.
+
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘appveyor.yml’
+
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘BiocInstaller’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Missing object imported by a ':::' call: ‘AnnotationHub:::.db_connection’
+Unexported object imported by a ':::' call: ‘OrganismDbi:::.packageTaxIds’
+  See the note in ?`:::` about the use of this operator.
+
+checking R code for possible problems ... NOTE
+.NCBIMetadataFromUrl: no visible binding for global variable ‘results’
+.NCBIMetadataFromUrl: no visible binding for global variable ‘specData’
+.makeComplexGR: no visible binding for global variable ‘seqname’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘Title’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘Description’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘BiocVersion’
+... 39 lines ...
+test_Inparanoid8ImportPreparer_recipe: no visible binding for global
+  variable ‘BiocVersion’
+test_Inparanoid8ImportPreparer_recipe: no visible global function
+  definition for ‘checkTrue’
+trackWithAuxiliaryTablesToGRanges: no visible binding for global
+  variable ‘seqname’
+Undefined global functions or variables:
+  BiocVersion Coordinate_1_based DataProvider Description DispatchClass
+  Genome Location_Prefix Maintainer RDataClass RDataDateAdded RDataPath
+  SourceType SourceUrl SourceVersion Species TaxonomyId Title ahroot
+  checkTrue results seqname specData suppresWarnings
+```
+
+## archivist (2.1.2)
+Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>  
+Bug reports: https://github.com/pbiecek/archivist/issues
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking package dependencies ... NOTE
+Package which this enhances but not available for checking: ‘archivist.github’
+
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘archivist.github’
+```
+
+## aroma.affymetrix (3.1.0)
+Maintainer: Henrik Bengtsson <henrikb@braju.com>  
+Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
+
+0 errors | 0 warnings | 0 notes
+
+## BatchExperiments (1.4.1)
+Maintainer: Michel Lang <michellang@gmail.com>  
+Bug reports: https://github.com/tudo-r/BatchExperiments/issues
+
+0 errors | 0 warnings | 2 notes
+
+```
+checking dependencies in R code ... NOTE
+Unexported objects imported by ':::' calls:
+  ‘BatchJobs:::addIntModulo’ ‘BatchJobs:::buffer’
+  ‘BatchJobs:::checkDir’ ‘BatchJobs:::checkId’ ‘BatchJobs:::checkIds’
+  ‘BatchJobs:::checkPart’ ‘BatchJobs:::createShardedDirs’
+  ‘BatchJobs:::dbConnectToJobsDB’ ‘BatchJobs:::dbCreateJobStatusTable’
+  ‘BatchJobs:::dbDoQuery’ ‘BatchJobs:::dbFindDone’
+  ‘BatchJobs:::dbFindRunning’ ‘BatchJobs:::dbRemoveJobs’
+  ‘BatchJobs:::dbSelectWithIds’ ‘BatchJobs:::getJobDirs’
+  ‘BatchJobs:::getJobInfoInternal’ ‘BatchJobs:::getKillJob’
+  ‘BatchJobs:::getListJobs’ ‘BatchJobs:::getRandomSeed’
+  ‘BatchJobs:::getResult’ ‘BatchJobs:::isRegistryDir’
+  ‘BatchJobs:::makeRegistryInternal’ ‘BatchJobs:::saveRegistry’
+  ‘BatchJobs:::seeder’ ‘BatchJobs:::syncRegistry’
+  See the note in ?`:::` about the use of this operator.
+
+checking R code for possible problems ... NOTE
+addExperiments.ExperimentRegistry: no visible global function
+  definition for ‘is’
+applyJobFunction.ExperimentRegistry: no visible global function
+  definition for ‘setNames’
+calcDynamic: no visible global function definition for ‘setNames’
+checkExperimentRegistry: no visible global function definition for
+  ‘head’
+dbSummarizeExperiments: no visible global function definition for
+  ‘setNames’
+designIterator: no visible global function definition for ‘setNames’
+getIndex : exprToIndex: no visible global function definition for
+  ‘capture.output’
+getProblemFilePaths: no visible global function definition for
+  ‘setNames’
+updateRegistry.ExperimentRegistry: no visible global function
+  definition for ‘packageVersion’
+Undefined global functions or variables:
+  capture.output head is packageVersion setNames
+Consider adding
+  importFrom("methods", "is")
+  importFrom("stats", "setNames")
+  importFrom("utils", "capture.output", "head", "packageVersion")
+to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
+contains 'methods').
+```
+
+## BatchJobs (1.6)
+Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
+Bug reports: https://github.com/tudo-r/BatchJobs/issues
+
+0 errors | 0 warnings | 0 notes
+
+## BETS (0.2.1)
+Maintainer: Pedro Costa Ferreira <pedro.guilherme@fgv.br>  
+Bug reports: https://github.com/pedrocostaferreira/BETS/issues
+
+0 errors | 0 warnings | 0 notes
+
+## bibliospec (0.0.4)
+Maintainer: Witold E. Wolski <wew@fgcz.ethz.ch>  
+Bug reports: https://github.com/protViz/bibliospec/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## BIEN (1.1.0)
 Maintainer: Brian Maitner <bmaitner@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+  Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  + })
+  Error: Test failed: 'List functions return a dataframe'
+  * invalid value from generic function 'dbGetQuery', class "NULL", expected "data.frame"
+  1: expect_that(BIEN_list_all(), is_a("data.frame"))
+  2: condition(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-that.R:22
+  3: expect_is(x, class) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/old-school.R:23
+  4: klass(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-inheritance.R:69
+  5: paste(class(x), collapse = "/") at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/utils.R:16
+  6: BIEN_list_all()
+  7: .BIEN_sql(query, ...)
+  8: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
+  9: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
+  10: postgresqlNewConnection(drv, ...) at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQL.R:67
+  11: dbGetQuery(con, "set datestyle to ISO") at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQLSup
+  Execution halted
+```
+
+## biglm (0.9-1)
+Maintainer: Thomas Lumley <tlumley@u.washington.edu>
+
+0 errors | 0 warnings | 6 notes
+
+```
+checking DESCRIPTION meta-information ... NOTE
+Malformed Description field: should contain one or more complete sentences.
+
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘test’
+
+checking dependencies in R code ... NOTE
+Packages in Depends field not imported from:
+  ‘DBI’ ‘methods’
+  These packages need to be imported from (in the NAMESPACE file)
+  for when this namespace is loaded but not attached.
+
+checking foreign function calls ... NOTE
+Call with DUP:
+   .Fortran("regcf", as.integer(p), as.integer(p * p/2), bigQR$D, 
+       bigQR$rbar, bigQR$thetab, bigQR$tol, beta = numeric(p), nreq = as.integer(nvar), 
+       ier = integer(1), DUP = FALSE)
+DUP is no longer supported and will be ignored.
+
+checking R code for possible problems ... NOTE
+bigglm.RODBC: no visible global function definition for ‘odbcQuery’
+bigglm.RODBC : chunk: no visible global function definition for
+  ‘odbcQuery’
+bigglm.RODBC : chunk: no visible global function definition for
+  ‘sqlGetResults’
+bigglm,ANY-DBIConnection: no visible global function definition for
+  ‘dbSendQuery’
+bigglm,ANY-DBIConnection: no visible global function definition for
+  ‘dbClearResult’
+bigglm,ANY-DBIConnection : chunk: no visible global function definition
+  for ‘dbClearResult’
+bigglm,ANY-DBIConnection : chunk: no visible global function definition
+  for ‘dbSendQuery’
+bigglm,ANY-DBIConnection : chunk: no visible global function definition
+  for ‘fetch’
+Undefined global functions or variables:
+  dbClearResult dbSendQuery fetch odbcQuery sqlGetResults
+
+Found the following calls to data() loading into the global environment:
+File ‘biglm/R/bigglm.R’:
+  data(reset = TRUE)
+  data(reset = FALSE)
+See section ‘Good practice’ in ‘?data’.
+
+checking compiled code ... NOTE
+File ‘biglm/libs/biglm.so’:
+  Found no calls to: ‘R_registerRoutines’, ‘R_useDynamicSymbols’
+
+It is good practice to register native routines and to disable symbol
+search.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
 
 ## bigrquery (0.3.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
@@ -426,6 +741,23 @@ Bug reports: https://github.com/rstats-db/bigrquery/issues
 checking whether package ‘bigrquery’ can be installed ... ERROR
 Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/bigrquery.Rcheck/00install.out’ for details.
+```
+
+## bioassayR (1.14.0)
+Maintainer: Tyler Backman <tbackman@lbl.gov>  
+Bug reports: https://github.com/TylerBackman/bioassayR/issues
+
+0 errors | 0 warnings | 0 notes
+
+## ChemmineR (2.28.0)
+Maintainer: Thomas Girke <thomas.girke@ucr.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ChemmineR’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ChemmineR.Rcheck/00install.out’ for details.
 ```
 
 ## ChIPpeakAnno (3.10.1)
@@ -482,6 +814,76 @@ checking dependencies in R code ... NOTE
 Missing or unexported object: ‘dplyr::sql_render’
 ```
 
+## CITAN (2015.12-2)
+Maintainer: Marek Gagolewski <gagolews@ibspan.waw.pl>  
+Bug reports: https://github.com/Rexamine/CITAN/issues
+
+0 errors | 0 warnings | 0 notes
+
+## cn.farms (1.24.0)
+Maintainer: Andreas Mitterecker <mitterecker@bioinf.jku.at>
+
+1 error  | 0 warnings | 2 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘cn.farms-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plotEvalIc
+> ### Title: Creates a plot with known regions and a numeric vector
+> ### Aliases: plotEvalIc
+> 
+> ### ** Examples
+> 
+> load(system.file("exampleData/slData.RData", package = "cn.farms"))
+> load(system.file("exampleData/testSegments.RData", package = "cn.farms"))
+> plotEvalIc(slData, fData(testSegments),
++      variable = assayData(slData)$L_z[, 1], 23)
+Error in loadNamespace(name) : there is no package called ‘KernSmooth’
+Calls: plotEvalIc ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+Execution halted
+
+checking R code for possible problems ... NOTE
+calcDistance: no visible global function definition for ‘density’
+callSummarizeH01: no visible binding for global variable ‘var’
+callSummarizeH01: no visible global function definition for ‘rnorm’
+createAnnotation: no visible global function definition for
+  ‘installed.packages’
+determineBaselineArray: no visible binding for global variable ‘median’
+flcSnp6Std: no visible global function definition for ‘lowess’
+flcSnp6Std: no visible global function definition for ‘approx’
+flcSnp6StdH01: no visible global function definition for ‘lowess’
+... 102 lines ...
+             "order.dendrogram", "pchisq", "rnorm", "runif", "sd", "var")
+  importFrom("utils", "assignInNamespace", "getFromNamespace", "head",
+             "installed.packages", "packageDescription")
+to your NAMESPACE file.
+
+Found the following assignments to the global environment:
+File ‘cn.farms/R/sFclusterFunctions.R’:
+  assign("var1", 99, pos = globalenv())
+  assign("var2", 101, pos = globalenv())
+File ‘cn.farms/R/sFsnowfall-internal.R’:
+  assign(name, value, envir = globalenv())
+
+checking compiled code ... NOTE
+File ‘cn.farms/libs/cn.farms.so’:
+  Found no call to: ‘R_useDynamicSymbols’
+
+It is good practice to register native routines and to disable symbol
+search.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
+
+## convey (0.2.0)
+Maintainer: Djalma Pessoa <pessoad@gmail.com>  
+Bug reports: https://github.com/djalmapessoa/convey/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## cranlike (1.0.0)
 Maintainer: Gábor Csárdi <csardi.gabor@gmail.com>  
 Bug reports: https://github.com/r-hub/cranlike/issues
@@ -536,6 +938,17 @@ search.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
+
+## dbfaker (0.1.0)
+Maintainer: Hari Mohanraj <hari@shipt.com>
+
+0 errors | 0 warnings | 0 notes
+
+## DBItest (1.4)
+Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
+Bug reports: https://github.com/rstats-db/DBItest/issues
+
+0 errors | 0 warnings | 0 notes
 
 ## DECIPHER (2.4.0)
 Maintainer: Erik Wright <eswright@pitt.edu>
@@ -593,6 +1006,48 @@ Maintainer: Luis Torgo <ltorgo@dcc.fc.up.pt>
 Bug reports: https://github.com/ltorgo/DMwR2/issues
 
 0 errors | 0 warnings | 0 notes
+
+## dplyr (0.5.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/hadley/dplyr/issues
+
+1 error  | 0 warnings | 2 notes
+
+```
+checking tests ... ERROR
+  Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  5. Failure: ungrouped output (@test-output.R#10) -------------------------------
+  print(iris_mem %>% head(), n = 30L, width = 80L) not equal to safe_read_lines("output/iris-head-30-80.txt").
+  Lengths differ: 12 vs 11
+  
+  
+  testthat results ================================================================
+  OK: 1504 SKIPPED: 1 FAILED: 5
+  1. Failure: ungrouped output (@test-output.R#10) 
+  2. Failure: ungrouped output (@test-output.R#10) 
+  3. Failure: ungrouped output (@test-output.R#10) 
+  4. Failure: ungrouped output (@test-output.R#10) 
+  5. Failure: ungrouped output (@test-output.R#10) 
+  
+  Error: testthat unit tests failed
+  Execution halted
+
+checking installed package size ... NOTE
+  installed size is 23.4Mb
+  sub-directories of 1Mb or more:
+    libs  21.3Mb
+
+checking compiled code ... NOTE
+File ‘dplyr/libs/dplyr.so’:
+  Found no calls to: ‘R_registerRoutines’, ‘R_useDynamicSymbols’
+
+It is good practice to register native routines and to disable symbol
+search.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
 
 ## eiR (1.16.0)
 Maintainer: Thomas Girke <thomas.girke@ucr.edu>
@@ -751,12 +1206,12 @@ checking tests ... ERROR
   Running ‘testthat.R’
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  downloaded 10 KB
+  downloaded 11 KB
   
   trying URL 'http://www.nytimes.com'
-  Content type 'text/html; charset=utf-8' length 220155 bytes (214 KB)
+  Content type 'text/html; charset=utf-8' length 214406 bytes (209 KB)
   ==================================================
-  downloaded 214 KB
+  downloaded 209 KB
   
   testthat results ================================================================
   OK: 15 SKIPPED: 0 FAILED: 3
@@ -1568,7 +2023,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [58s/67s]
+  Running ‘testthat.R’ [60s/59s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -1733,7 +2188,7 @@ Error: 'src_sql' is not an exported object from 'namespace:dplyr'
 Execution halted
 
 checking tests ... ERROR
-  Running ‘testthat.R’ [19s/74s]
+  Running ‘testthat.R’ [19s/68s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -1903,7 +2358,7 @@ contains 'methods').
 ## oligo (1.40.1)
 Maintainer: Benilton Carvalho <benilton@unicamp.br>
 
-1 error  | 2 warnings | 9 notes
+1 error  | 1 warning  | 9 notes
 
 ```
 checking examples ... ERROR
@@ -1928,29 +2383,6 @@ Loading required package: DBI
 Error in loadNamespace(name) : there is no package called ‘KernSmooth’
 Calls: MAplot ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
 Execution halted
-
-checking for code/documentation mismatches ... WARNING
-Codoc mismatches from documentation object 'boxplot':
-\S4method{boxplot}{FeatureSet}
-  Code: function(x, which = c("pm", "mm", "bg", "both", "all"), transfo
-                 = log2, nsample = 10000, target = "mps1", ...)
-  Docs: function(x, which = c("pm", "mm", "bg", "both", "all"), transfo
-                 = log2, nsample = 10000, ...)
-  Argument names in code not in docs:
-    target
-  Mismatches in argument names:
-... 11 lines ...
-  Mismatches in argument names:
-    Position: 5 Code: target Docs: ...
-
-S4 class codoc mismatches from documentation object 'oligoPLM-class':
-Slots for class 'oligoPLM'
-  Code: annotation chip.coefs description geometry manufacturer method
-        narrays nprobes nprobesets phenoData probe.coefs protocolData
-        residualSE residuals se.chip.coefs se.probe.coefs weights
-  Docs: annotation chip.coefs geometry manufacturer method narrays
-        nprobes nprobesets probe.coefs residualSE residuals
-        se.chip.coefs se.probe.coefs weights
 
 checking files in ‘vignettes’ ... WARNING
 Files in the 'vignettes' directory newer than all files in 'inst/doc':
@@ -2219,7 +2651,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpbwiMys/file397a281a2127 in chunks of 10000
+Processing /tmp/RtmpFIpMoh/fileaf254e8c915 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2245,7 +2677,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/Rtmp2wE89Y/file3bf77ca1a234)
+    closing unused connection 3 (/tmp/Rtmp8wrx7k/fileb1e255d422f1)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -2724,7 +3156,7 @@ Bug reports: https://github.com/rstats-db/RSQLite/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [13s/12s]
+  Running ‘testthat.R’ [12s/12s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   8. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
@@ -2804,7 +3236,7 @@ Bug reports: http://github.com/przemol/seqplots/issues
 
 ```
 checking tests ... ERROR
-  Running ‘test-all.R’ [24s/23s]
+  Running ‘test-all.R’ [25s/24s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
   6: plotHeatmap(plotset$data, main, labels, legend, keepratio, plotScale, sortrows, clusters, 
@@ -2864,12 +3296,54 @@ to your NAMESPACE file.
 Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>  
 Bug reports: https://github.com/edzer/sfr/issues/
 
-0 errors | 1 warning  | 1 note 
+2 errors | 0 warnings | 1 note 
 
 ```
-checking dependencies in R code ... WARNING
-'::' or ':::' import not declared from: ‘rlang’
-'loadNamespace' or 'requireNamespace' call not declared from: ‘rlang’
+checking examples ... ERROR
+Running examples in ‘sf-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: dplyr
+> ### Title: Dplyr verb methods for sf objects
+> ### Aliases: dplyr filter_.sf dplyr filter.sf dplyr arrange_.sf dplyr
+> ###   arrange.sf dplyr distinct_.sf dplyr distinct.sf dplyr group_by_.sf
+> ###   dplyr group_by.sf dplyr mutate_.sf dplyr mutate.sf dplyr
+... 29 lines ...
+epsg (SRID):    4267
+proj4string:    +proj=longlat +datum=NAD27 +no_defs
+> nc %>% filter(AREA > .1) %>% plot()
+Warning: plotting the first 10 out of 14 attributes; use max.plot = 14 to plot all
+> # plot 10 smallest counties in grey:
+> st_geometry(nc) %>% plot()
+> nc %>% select(AREA) %>% arrange(AREA) %>% slice(1:10) %>% plot(add = TRUE, col = 'grey')
+Error in select.sf(., AREA) : 
+  requires dplyr > 0.5.0: install that first, then reinstall sf
+Calls: %>% ... _fseq -> freduce -> <Anonymous> -> select -> select.sf
+Execution halted
+
+checking tests ... ERROR
+  Running ‘cast.R’
+  Comparing ‘cast.Rout’ to ‘cast.Rout.save’ ...4c4
+< Linking to GEOS 3.5.0, GDAL 2.1.0, proj.4 4.9.2
+---
+> Linking to GEOS 3.5.1, GDAL 2.1.3, proj.4 4.9.2
+  Running ‘crs.R’
+  Comparing ‘crs.Rout’ to ‘crs.Rout.save’ ... OK
+  Running ‘dist.R’
+  Comparing ‘dist.Rout’ to ‘dist.Rout.save’ ... OK
+... 8 lines ...
+  Warning message:
+  plotting the first 10 out of 14 attributes; use max.plot = 14 to plot all 
+  > 
+  > # plot 10 smallest counties in grey:
+  > nc %>% 
+  +   select(BIR74, geometry) %>% 
+  +   plot()
+  Error in select.sf(., BIR74, geometry) : 
+    requires dplyr > 0.5.0: install that first, then reinstall sf
+  Calls: %>% ... _fseq -> freduce -> <Anonymous> -> select -> select.sf
+  Execution halted
 
 checking installed package size ... NOTE
   installed size is 10.3Mb
@@ -2909,7 +3383,13 @@ Bug reports: https://github.com/rstudio/sparklyr/issues
 Maintainer: Javier Luraschi <javier@rstudio.com>  
 Bug reports: https://github.com/javierluraschi/sparkwarc
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘sparkwarc’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/sparkwarc.Rcheck/00install.out’ for details.
+```
 
 ## specL (1.10.0)
 Maintainer: Christian Panse <cp@fgcz.ethz.ch>, Witold E. Wolski <wewolski@gmail.com>  
@@ -3238,16 +3718,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-May 08, 2017 9:59:20 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+May 08, 2017 10:35:46 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 9:59:20 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+May 08, 2017 10:35:46 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 9:59:23 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+May 08, 2017 10:35:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-May 08, 2017 9:59:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+May 08, 2017 10:35:50 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
