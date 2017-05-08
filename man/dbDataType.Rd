@@ -63,9 +63,9 @@ it must accept all basic R data types as its second argument, namely
 dates (see \link{Dates}),
 date-time (see \link{DateTimeClasses}),
 and \link{difftime}.
-It also must accept lists of \link{raw} vectors
-and map them to the BLOB (binary large object) data type,
-unless the \code{omit_blob_tests} tweak is set to \code{TRUE}.
+If the database supports blobs,
+this method also must accept lists of \link{raw} vectors,
+and \link[blob:blob]{blob::blob} objects.
 As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
 supported and return the same results as their unwrapped counterparts.
 The SQL data type for \link{factor}

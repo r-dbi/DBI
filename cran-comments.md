@@ -1,7 +1,7 @@
-Documentation updates only, necessary for the upcoming RSQLite release.
+Addresses a glitch in the default `dbReadTable()` implementation now provided by DBI.
 
 ## Test environments
-* ubuntu 16.04 (local install), R 3.3.1
+* ubuntu 16.04 (local install), R 3.3.3
 * ubuntu 12.04 (on travis-ci), R devel, release, and oldrel
 * win-builder (release and devel)
 
@@ -18,4 +18,4 @@ Found the following apparent S3 methods exported but not registered:
 
 ## Reverse dependencies
 
-* Not checked, documentation update only.
+Minor update, reverse dependencies not checked.

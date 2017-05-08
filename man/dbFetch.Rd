@@ -94,9 +94,15 @@ used:
 }
 
 R has no built-in type with lossless support for the full range of 64-bit
-or larger integers. Here, the following rules apply:
+or larger integers. If 64-bit integers are returned from a query,
+the following rules apply:
 \itemize{
-\item Values are returned as numeric
+\item Values are returned in a container with support for the full range of
+valid 64-bit values (such as the \code{integer64} class of the \pkg{bit64}
+package)
+\item Coercion to numeric always returns a number that is as close as possible
+to the true value
+\item Loss of precision when converting to numeric gives a warning
 \item Conversion to character always returns a lossless decimal representation
 of the data
 }

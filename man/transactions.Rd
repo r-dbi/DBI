@@ -23,7 +23,8 @@ dbRollback(conn, ...)
 \code{dbBegin()}, \code{dbCommit()} and \code{dbRollback()} return \code{TRUE}, invisibly.
 The implementations are expected to raise an error in case of failure,
 but this is not tested.
-In any way, all generics throw an error with a closed connection.
+In any way, all generics throw an error with a closed
+or invalid connection.
 In addition, a call to \code{dbCommit()}
 or \code{dbRollback()}
 without a prior call to \code{dbBegin()} raises an error.
@@ -68,8 +69,7 @@ but is created during the transaction
 must not exist anymore after the rollback.
 
 Disconnection from a connection with an open transaction
-gives a warning
-and effectively rolls back the transaction.
+effectively rolls back the transaction.
 All data written in such a transaction must be removed after the
 transaction is rolled back.
 

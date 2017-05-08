@@ -46,7 +46,7 @@
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
-\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...)
+\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
 
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
@@ -103,6 +103,8 @@
 \item{object}{Object to display}
 
 \item{conn, x}{Connection and Table used when escaping.}
+
+\item{n}{Number of rows to fetch, default -1}
 
 \item{object}{Object to display}
 

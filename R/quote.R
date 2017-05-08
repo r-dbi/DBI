@@ -84,9 +84,8 @@ setMethod("show", "SQL", function(object) {
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
-setGeneric(
-  "dbQuoteIdentifier",
-  function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
+setGeneric("dbQuoteIdentifier",
+  def = function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
 )
 
 #' @rdname hidden_aliases
@@ -145,9 +144,8 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
-setGeneric(
-  "dbQuoteString",
-  function(conn, x, ...) standardGeneric("dbQuoteString")
+setGeneric("dbQuoteString",
+  def = function(conn, x, ...) standardGeneric("dbQuoteString")
 )
 
 #' @rdname hidden_aliases

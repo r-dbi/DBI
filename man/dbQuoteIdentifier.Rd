@@ -41,8 +41,13 @@ returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like \code{SELECT 1 AS ...}
 and \code{SELECT * FROM (SELECT 1) ...}.
-This is also true for column names that are empty strings
-or contain special characters such as a space,
+The method must use a quoting mechanism that is unambiguously different
+from the quoting mechanism used for strings, so that a query like
+\code{SELECT ... FROM (SELECT 1 AS ...)}
+throws an error if the column names do not match.
+
+The method can quote column names that
+contain special characters such as a space,
 a dot,
 a comma,
 or quotes used to mark strings

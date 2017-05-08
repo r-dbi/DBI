@@ -16,10 +16,8 @@
 #'
 #' sqlAppendTable(ANSI(), "mtcars", head(mtcars))
 #' sqlAppendTable(ANSI(), "mtcars", head(mtcars), row.names = FALSE)
-setGeneric(
-  "sqlAppendTable",
-  function(con, table, values, row.names = NA, ...)
-    standardGeneric("sqlAppendTable")
+setGeneric("sqlAppendTable",
+  def = function(con, table, values, row.names = NA, ...) standardGeneric("sqlAppendTable")
 )
 
 #' @rdname hidden_aliases
