@@ -4,6 +4,7 @@
 language: r
 sudo: false
 cache: packages
+latex: false
 warnings_are_errors: true
 
 #env
