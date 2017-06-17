@@ -10,18 +10,18 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-05-08                   |
+|date     |2017-06-17                   |
 
 ## Packages
 
 |package   |*  |version |date       |source                         |
 |:---------|:--|:-------|:----------|:------------------------------|
 |covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                  |
-|DBI       |   |0.6-13  |2017-05-08 |Github (rstats-db/DBI@f6500a5) |
+|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df) |
 |hms       |   |0.3     |2016-11-22 |cran (@0.3)                    |
-|knitr     |   |1.15.1  |2016-11-22 |cran (@1.15.1)                 |
+|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                   |
 |magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                 |
-|rmarkdown |   |1.5     |2017-04-26 |cran (@1.5)                    |
+|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                    |
 |rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                    |
 |RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                 |
 |testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                  |
@@ -29,41 +29,60 @@
 
 # Check results
 
-31 packages with problems
+34 packages with problems
 
-|package          |version  | errors| warnings| notes|
-|:----------------|:--------|------:|--------:|-----:|
-|annmap           |1.18.0   |      0|        2|     5|
-|AnnotationDbi    |1.38.0   |      0|        1|     5|
-|bigrquery        |0.3.0    |      1|        0|     0|
-|chunked          |0.3      |      1|        0|     1|
-|etl              |0.3.5    |      1|        1|     0|
-|GenomicFeatures  |1.28.0   |      0|        1|     3|
-|GOFunction       |1.24.0   |      0|        1|     5|
-|implyr           |0.1.0    |      1|        0|     0|
-|lumi             |2.28.0   |      0|        2|     3|
-|mgsa             |1.24.0   |      0|        1|     5|
-|mimager          |1.0.0    |      1|        0|     0|
-|MonetDBLite      |0.3.1    |      2|        0|     3|
-|oce              |0.9-21   |      1|        0|     1|
-|oligo            |1.40.1   |      1|        2|     9|
-|ora              |2.0-1    |      1|        0|     0|
-|PAnnBuilder      |1.40.0   |      0|        3|     1|
-|plethy           |1.14.0   |      2|        0|     3|
-|RImmPort         |1.4.0    |      0|        1|     0|
-|RJDBC            |0.2-5    |      0|        1|     1|
-|rnaSeqMap        |2.34.0   |      0|        1|     5|
-|ROracle          |1.3-1    |      1|        0|     0|
-|RPresto          |1.2.1    |      1|        1|     1|
-|RQDA             |0.2-8    |      1|        0|     1|
-|RSQLite          |1.1-2    |      1|        0|     2|
-|seqplots         |1.13.0   |      1|        0|     3|
-|sf               |0.4-2    |      0|        1|     1|
-|sqldf            |0.4-10   |      0|        1|     2|
-|taxizedb         |0.1.0    |      1|        0|     0|
-|TSdata           |2016.8-1 |      0|        1|     0|
-|VariantFiltering |1.12.1   |      0|        1|     4|
-|vmsbase          |2.1.3    |      1|        0|     0|
+|package           |version  | errors| warnings| notes|
+|:-----------------|:--------|------:|--------:|-----:|
+|anchoredDistr     |1.0.2    |      0|        1|     0|
+|annmap            |1.18.0   |      0|        2|     5|
+|AnnotationDbi     |1.38.1   |      0|        1|     5|
+|AnnotationHubData |1.6.0    |      1|        0|     4|
+|aroma.affymetrix  |3.1.0    |      1|        0|     0|
+|bigrquery         |0.3.0    |      1|        0|     0|
+|ChemmineR         |2.28.0   |      1|        0|     0|
+|chunked           |0.3      |      1|        0|     1|
+|cn.farms          |1.24.0   |      1|        0|     2|
+|etl               |0.3.5    |      1|        1|     0|
+|GenomicFeatures   |1.28.3   |      0|        1|     3|
+|GOFunction        |1.24.0   |      0|        1|     5|
+|implyr            |0.1.0    |      1|        0|     0|
+|lumi              |2.28.0   |      0|        2|     3|
+|mgsa              |1.24.0   |      0|        1|     5|
+|mimager           |1.0.0    |      1|        0|     0|
+|MonetDBLite       |0.3.1    |      2|        0|     3|
+|oce               |0.9-21   |      1|        0|     1|
+|oligo             |1.40.1   |      1|        1|     9|
+|ora               |2.0-1    |      1|        0|     0|
+|PAnnBuilder       |1.40.0   |      0|        3|     1|
+|plethy            |1.14.0   |      2|        0|     3|
+|RImmPort          |1.4.1    |      0|        1|     0|
+|RJDBC             |0.2-5    |      0|        1|     1|
+|rnaSeqMap         |2.34.0   |      0|        1|     5|
+|ROracle           |1.3-1    |      1|        0|     0|
+|RPresto           |1.2.1    |      1|        1|     1|
+|RQDA              |0.2-8    |      1|        0|     1|
+|seqplots          |1.13.0   |      2|        0|     3|
+|sqldf             |0.4-10   |      0|        1|     2|
+|taxizedb          |0.1.0    |      1|        0|     0|
+|TSdata            |2016.8-1 |      0|        1|     0|
+|VariantFiltering  |1.12.1   |      0|        1|     4|
+|vmsbase           |2.1.3    |      1|        0|     0|
+
+## anchoredDistr (1.0.2)
+Maintainer: Heather Savoy <frystacka@berkeley.edu>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Quitting from lines 50-64 (anchoredDistr.Rmd) 
+Error: processing vignette 'anchoredDistr.Rmd' failed with diagnostics:
+cannot open the connection
+Execution halted
+
+```
 
 ## annmap (1.18.0)
 Maintainer: Chris Wirth <Christopher.Wirth@cruk.manchester.ac.uk>
@@ -165,7 +184,7 @@ Rd file 'plot.ngs.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## AnnotationDbi (1.38.0)
+## AnnotationDbi (1.38.1)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 0 errors | 1 warning  | 5 notes
@@ -212,6 +231,105 @@ Rd file 'inpIDMapper.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
+## AnnotationHubData (1.6.0)
+Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
+
+1 error  | 0 warnings | 4 notes
+
+```
+checking tests ... ERROR
+  Running ‘AnnotationHubData_unit_tests.R’ [69s/158s]
+Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
+Last 13 lines of output:
+  
+   
+  1 Test Suite : 
+  AnnotationHubData RUnit Tests - 21 test functions, 1 error, 0 failures
+  ERROR in test_Grasp2Db_recipe: Error : object 'src_sql' is not exported by 'namespace:dplyr'
+  
+  Test files with failing tests
+  
+     test_recipe.R 
+       test_Grasp2Db_recipe 
+  
+  
+  Error in BiocGenerics:::testPackage("AnnotationHubData") : 
+    unit tests failed for package AnnotationHubData
+  Execution halted
+
+checking DESCRIPTION meta-information ... NOTE
+Package listed in more than one of Depends, Imports, Suggests, Enhances:
+  ‘BiocInstaller’
+A package should be listed in only one of these fields.
+
+checking top-level files ... NOTE
+Non-standard file/directory found at top level:
+  ‘appveyor.yml’
+
+checking dependencies in R code ... NOTE
+'library' or 'require' call to ‘BiocInstaller’ in package code.
+  Please use :: or requireNamespace() instead.
+  See section 'Suggested packages' in the 'Writing R Extensions' manual.
+Missing object imported by a ':::' call: ‘AnnotationHub:::.db_connection’
+Unexported object imported by a ':::' call: ‘OrganismDbi:::.packageTaxIds’
+  See the note in ?`:::` about the use of this operator.
+
+checking R code for possible problems ... NOTE
+.NCBIMetadataFromUrl: no visible binding for global variable ‘results’
+.NCBIMetadataFromUrl: no visible binding for global variable ‘specData’
+.makeComplexGR: no visible binding for global variable ‘seqname’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘Title’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘Description’
+makeAnnotationHubMetadata : <anonymous> : <anonymous>: no visible
+  binding for global variable ‘BiocVersion’
+... 39 lines ...
+test_Inparanoid8ImportPreparer_recipe: no visible binding for global
+  variable ‘BiocVersion’
+test_Inparanoid8ImportPreparer_recipe: no visible global function
+  definition for ‘checkTrue’
+trackWithAuxiliaryTablesToGRanges: no visible binding for global
+  variable ‘seqname’
+Undefined global functions or variables:
+  BiocVersion Coordinate_1_based DataProvider Description DispatchClass
+  Genome Location_Prefix Maintainer RDataClass RDataDateAdded RDataPath
+  SourceType SourceUrl SourceVersion Species TaxonomyId Title ahroot
+  checkTrue results seqname specData suppresWarnings
+```
+
+## aroma.affymetrix (3.1.0)
+Maintainer: Henrik Bengtsson <henrikb@braju.com>  
+Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+  Running ‘001.setupExampleData,annotationData.R’ [10s/11s]
+  Running ‘002.setupExampleData,rawData.R’
+  Running ‘AffymetrixCdfFile.R’ [10s/11s]
+  Running ‘AffymetrixCelFile.R’
+  Running ‘AffymetrixCelSet.R’
+Running the tests in ‘tests/AffymetrixCelSet.R’ failed.
+Last 13 lines of output:
+  > ds <- AffymetrixCelSet()
+  
+   *** caught segfault ***
+  address 0x100000000, cause 'memory not mapped'
+  
+  Traceback:
+   1: GenericDataFileSet(files = files, ...)
+   2: extend(GenericDataFileSet(files = files, ...), "AromaMicroarrayDataSet")
+   3: AromaMicroarrayDataSet(files = files, ...)
+   4: extend(AromaMicroarrayDataSet(files = files, ...), c("AffymetrixFileSet",     uses("AromaPlatformInterface")))
+   5: AffymetrixFileSet(files = files, ...)
+   6: extend(AffymetrixFileSet(files = files, ...), "AffymetrixCelSet",     `cached:.intensities` = NULL, `cached:.intensitiesIdxs` = NULL,     `cached:.readUnitsCache` = NULL, `cached:.getUnitIntensitiesCache` = NULL,     `cached:.averageFiles` = list(), `cached:.timestamps` = NULL,     `cached:.fileSize` = NULL)
+   7: AffymetrixCelSet()
+  An irrecoverable exception occurred. R is aborting now ...
+  Segmentation fault (core dumped)
+```
+
 ## bigrquery (0.3.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
 Bug reports: https://github.com/rstats-db/bigrquery/issues
@@ -222,6 +340,17 @@ Bug reports: https://github.com/rstats-db/bigrquery/issues
 checking whether package ‘bigrquery’ can be installed ... ERROR
 Installation failed.
 See ‘/home/muelleki/git/R/DBI/revdep/checks/bigrquery.Rcheck/00install.out’ for details.
+```
+
+## ChemmineR (2.28.0)
+Maintainer: Thomas Girke <thomas.girke@ucr.edu>
+
+1 error  | 0 warnings | 0 notes
+
+```
+checking whether package ‘ChemmineR’ can be installed ... ERROR
+Installation failed.
+See ‘/home/muelleki/git/R/DBI/revdep/checks/ChemmineR.Rcheck/00install.out’ for details.
 ```
 
 ## chunked (0.3)
@@ -255,6 +384,64 @@ checking dependencies in R code ... NOTE
 Missing or unexported object: ‘dplyr::sql_render’
 ```
 
+## cn.farms (1.24.0)
+Maintainer: Andreas Mitterecker <mitterecker@bioinf.jku.at>
+
+1 error  | 0 warnings | 2 notes
+
+```
+checking examples ... ERROR
+Running examples in ‘cn.farms-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plotEvalIc
+> ### Title: Creates a plot with known regions and a numeric vector
+> ### Aliases: plotEvalIc
+> 
+> ### ** Examples
+> 
+> load(system.file("exampleData/slData.RData", package = "cn.farms"))
+> load(system.file("exampleData/testSegments.RData", package = "cn.farms"))
+> plotEvalIc(slData, fData(testSegments),
++      variable = assayData(slData)$L_z[, 1], 23)
+Error in loadNamespace(name) : there is no package called ‘KernSmooth’
+Calls: plotEvalIc ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
+Execution halted
+
+checking R code for possible problems ... NOTE
+calcDistance: no visible global function definition for ‘density’
+callSummarizeH01: no visible binding for global variable ‘var’
+callSummarizeH01: no visible global function definition for ‘rnorm’
+createAnnotation: no visible global function definition for
+  ‘installed.packages’
+determineBaselineArray: no visible binding for global variable ‘median’
+flcSnp6Std: no visible global function definition for ‘lowess’
+flcSnp6Std: no visible global function definition for ‘approx’
+flcSnp6StdH01: no visible global function definition for ‘lowess’
+... 102 lines ...
+             "order.dendrogram", "pchisq", "rnorm", "runif", "sd", "var")
+  importFrom("utils", "assignInNamespace", "getFromNamespace", "head",
+             "installed.packages", "packageDescription")
+to your NAMESPACE file.
+
+Found the following assignments to the global environment:
+File ‘cn.farms/R/sFclusterFunctions.R’:
+  assign("var1", 99, pos = globalenv())
+  assign("var2", 101, pos = globalenv())
+File ‘cn.farms/R/sFsnowfall-internal.R’:
+  assign(name, value, envir = globalenv())
+
+checking compiled code ... NOTE
+File ‘cn.farms/libs/cn.farms.so’:
+  Found no call to: ‘R_useDynamicSymbols’
+
+It is good practice to register native routines and to disable symbol
+search.
+
+See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+```
+
 ## etl (0.3.5)
 Maintainer: Ben Baumer <ben.baumer@gmail.com>  
 Bug reports: https://github.com/beanumber/etl/issues
@@ -266,12 +453,12 @@ checking tests ... ERROR
   Running ‘testthat.R’
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
-  downloaded 10 KB
+  downloaded 11 KB
   
   trying URL 'http://www.nytimes.com'
-  Content type 'text/html; charset=utf-8' length 220155 bytes (214 KB)
+  Content type 'text/html; charset=utf-8' length 226326 bytes (221 KB)
   ==================================================
-  downloaded 214 KB
+  downloaded 221 KB
   
   testthat results ================================================================
   OK: 15 SKIPPED: 0 FAILED: 3
@@ -290,7 +477,7 @@ See section 'Cross-references' in the 'Writing R Extensions' manual.
 
 ```
 
-## GenomicFeatures (1.28.0)
+## GenomicFeatures (1.28.3)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 0 errors | 1 warning  | 3 notes
@@ -535,7 +722,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [58s/67s]
+  Running ‘testthat.R’ [62s/67s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -586,7 +773,7 @@ Error: 'src_sql' is not an exported object from 'namespace:dplyr'
 Execution halted
 
 checking tests ... ERROR
-  Running ‘testthat.R’ [19s/74s]
+  Running ‘testthat.R’ [19s/48s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -663,7 +850,7 @@ checking installed package size ... NOTE
 ## oligo (1.40.1)
 Maintainer: Benilton Carvalho <benilton@unicamp.br>
 
-1 error  | 2 warnings | 9 notes
+1 error  | 1 warning  | 9 notes
 
 ```
 checking examples ... ERROR
@@ -688,29 +875,6 @@ Loading required package: DBI
 Error in loadNamespace(name) : there is no package called ‘KernSmooth’
 Calls: MAplot ... tryCatch -> tryCatchList -> tryCatchOne -> <Anonymous>
 Execution halted
-
-checking for code/documentation mismatches ... WARNING
-Codoc mismatches from documentation object 'boxplot':
-\S4method{boxplot}{FeatureSet}
-  Code: function(x, which = c("pm", "mm", "bg", "both", "all"), transfo
-                 = log2, nsample = 10000, target = "mps1", ...)
-  Docs: function(x, which = c("pm", "mm", "bg", "both", "all"), transfo
-                 = log2, nsample = 10000, ...)
-  Argument names in code not in docs:
-    target
-  Mismatches in argument names:
-... 11 lines ...
-  Mismatches in argument names:
-    Position: 5 Code: target Docs: ...
-
-S4 class codoc mismatches from documentation object 'oligoPLM-class':
-Slots for class 'oligoPLM'
-  Code: annotation chip.coefs description geometry manufacturer method
-        narrays nprobes nprobesets phenoData probe.coefs protocolData
-        residualSE residuals se.chip.coefs se.probe.coefs weights
-  Docs: annotation chip.coefs geometry manufacturer method narrays
-        nprobes nprobesets probe.coefs residualSE residuals
-        se.chip.coefs se.probe.coefs weights
 
 checking files in ‘vignettes’ ... WARNING
 Files in the 'vignettes' directory newer than all files in 'inst/doc':
@@ -912,7 +1076,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpbwiMys/file397a281a2127 in chunks of 10000
+Processing /tmp/Rtmpb6wiUQ/filea46d2cc7ef5 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -922,7 +1086,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [25s/24s]
+  Running ‘runTests.R’ [25s/25s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   Test files with failing tests
@@ -938,7 +1102,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/Rtmp2wE89Y/file3bf77ca1a234)
+    closing unused connection 3 (/tmp/RtmplXQjGw/filea571359afb4d)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -987,7 +1151,7 @@ Rd file 'utilities.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## RImmPort (1.4.0)
+## RImmPort (1.4.1)
 Maintainer: Ravi Shankar <rshankar@stanford.edu>
 
 0 errors | 1 warning  | 0 notes
@@ -995,7 +1159,7 @@ Maintainer: Ravi Shankar <rshankar@stanford.edu>
 ```
 checking sizes of PDF files under ‘inst/doc’ ... WARNING
   ‘gs+qpdf’ made some significant size reductions:
-     compacted ‘RImmPort_Article.pdf’ from 734Kb to 339Kb
+     compacted ‘RImmPort_Article.pdf’ from 735Kb to 339Kb
   consider running tools::compactPDF(gs_quality = "ebook") on these files
 ```
 
@@ -1161,71 +1325,52 @@ checking package dependencies ... NOTE
 Package which this enhances but not available for checking: ‘rjpod’
 ```
 
-## RSQLite (1.1-2)
-Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
-Bug reports: https://github.com/rstats-db/RSQLite/issues
-
-1 error  | 0 warnings | 2 notes
-
-```
-checking tests ... ERROR
-  Running ‘testthat.R’ [13s/12s]
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  8. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
-  9. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#90) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  In addition: Warning messages:
-  1: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  2: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  3: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  4: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  5: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  6: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  7: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  8: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  Execution halted
-
-checking installed package size ... NOTE
-  installed size is  7.8Mb
-  sub-directories of 1Mb or more:
-    libs   7.2Mb
-
-checking compiled code ... NOTE
-File ‘RSQLite/libs/RSQLite.so’:
-  Found no calls to: ‘R_registerRoutines’, ‘R_useDynamicSymbols’
-
-It is good practice to register native routines and to disable symbol
-search.
-
-See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
-```
-
 ## seqplots (1.13.0)
 Maintainer: Przemyslaw Stempor <ps562@cam.ac.uk>  
 Bug reports: http://github.com/przemol/seqplots/issues
 
-1 error  | 0 warnings | 3 notes
+2 errors | 0 warnings | 3 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘seqplots-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plotAverage
+> ### Title: Create the average plot
+> ### Aliases: plotAverage plotAverage,PlotSetArray-method
+> ###   plotAverage,PlotSetList-method plotAverage,PlotSetPair-method
+> ###   plotAverage,list-method
+... 24 lines ...
++     load(system.file("extdata", "precalc_plotset.Rdata", package="seqplots"))
++ }
+character
+Processing: Transcripts_ce10_chrI_100Kb.bed @ GSM1208360_chrI_100Kb_q5_sample.bw [ 1 / 2 ]
+Error in scan(file, what = "", sep = sep, quote = quote, nlines = 1, quiet = TRUE,  : 
+  invalid connection
+Calls: getPlotSetArray ... .supportedSeqnameMappings -> lapply -> lapply -> FUN -> scan
+Error in close.connection(file) : invalid connection
+Calls: getPlotSetArray ... lapply -> lapply -> FUN -> close -> close.connection
+Execution halted
+** found \donttest examples: check also with --run-donttest
+
 checking tests ... ERROR
-  Running ‘test-all.R’ [24s/23s]
+  Running ‘test-all.R’ [25s/28s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  6: plotHeatmap(plotset$data, main, labels, legend, keepratio, plotScale, sortrows, clusters, 
-         clstmethod, include, ssomt1, ssomt2, cex.main, cex.lab, cex.axis, cex.legend, 
-         xlab, ylab, autoscale, zmin, zmax, xlim, ln.v, s, indi, o_min, o_max, colvec, 
-         clspace, pointsize, embed, ggplot, raster, ...)
-  7: plotHeatmap(plotset$data, main, labels, legend, keepratio, plotScale, sortrows, clusters, 
-         clstmethod, include, ssomt1, ssomt2, cex.main, cex.lab, cex.axis, cex.legend, 
-         xlab, ylab, autoscale, zmin, zmax, xlim, ln.v, s, indi, o_min, o_max, colvec, 
-         clspace, pointsize, embed, ggplot, raster, ...)
-  
+  Error in signalCondition(e) : 
+    no function to return from, jumping to top level
+  Calls: <Anonymous> ... close.connection -> .handleSimpleError -> h -> signalCondition
   testthat results ================================================================
-  OK: 63 SKIPPED: 0 FAILED: 1
-  1. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#53) 
+  OK: 63 SKIPPED: 0 FAILED: 7
+  1. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#21) 
+  2. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#21) 
+  3. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#53) 
+  4. Error: Test motifs (@test1.R#106) 
+  5. Error: Test motifs (@test1.R#106) 
+  6. Error: Test motifs (@test1.R#137) 
+  7. Error: Test motifs (@test1.R#137) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -1265,24 +1410,6 @@ Consider adding
              "hclust", "kmeans", "qt")
   importFrom("utils", "capture.output")
 to your NAMESPACE file.
-```
-
-## sf (0.4-2)
-Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>  
-Bug reports: https://github.com/edzer/sfr/issues/
-
-0 errors | 1 warning  | 1 note 
-
-```
-checking dependencies in R code ... WARNING
-'::' or ':::' import not declared from: ‘rlang’
-'loadNamespace' or 'requireNamespace' call not declared from: ‘rlang’
-
-checking installed package size ... NOTE
-  installed size is 10.3Mb
-  sub-directories of 1Mb or more:
-    doc    4.0Mb
-    libs   4.2Mb
 ```
 
 ## sqldf (0.4-10)
@@ -1349,16 +1476,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-May 08, 2017 9:59:20 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 9:59:20 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 9:59:23 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-May 08, 2017 9:59:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
