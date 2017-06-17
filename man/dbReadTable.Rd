@@ -25,7 +25,7 @@ An empty table is returned as a data frame with zero rows.
 The presence of \link{rownames} depends on the \code{row.names} argument,
 see \code{\link[=sqlColumnToRownames]{sqlColumnToRownames()}} for details:
 \itemize{
-\item If \code{FALSE}, the returned data frame doesn't have row names.
+\item If \code{FALSE} or \code{NULL}, the returned data frame doesn't have row names.
 \item If \code{TRUE}, a column named "row_names" is converted to row names,
 an error is raised if no such column exists.
 \item If \code{NA}, a column named "row_names" is converted to row names if it exists,

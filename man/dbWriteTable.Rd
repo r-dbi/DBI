@@ -133,7 +133,7 @@ It indicates the SQL data type to be used for a new column.
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
 see \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
 \itemize{
-\item If \code{FALSE}, row names are ignored.
+\item If \code{FALSE} or \code{NULL}, row names are ignored.
 \item If \code{TRUE}, row names are converted to a column named "row_names",
 even if the input data frame only has natural row names from 1 to \code{nrow(...)}.
 \item If \code{NA}, a column named "row_names" is created if the data has custom row names,
