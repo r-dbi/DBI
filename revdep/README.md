@@ -14,18 +14,19 @@
 
 ## Packages
 
-|package   |*  |version |date       |source                         |
-|:---------|:--|:-------|:----------|:------------------------------|
-|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                  |
-|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df) |
-|hms       |   |0.3     |2016-11-22 |cran (@0.3)                    |
-|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                   |
-|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                 |
-|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                    |
-|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                    |
-|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                 |
-|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                  |
-|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                  |
+|package   |*  |version |date       |source                          |
+|:---------|:--|:-------|:----------|:-------------------------------|
+|blob      |   |1.1.0   |2017-06-17 |Github (tidyverse/blob@9dd54d9) |
+|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                   |
+|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df)  |
+|hms       |   |0.3     |2016-11-22 |cran (@0.3)                     |
+|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                    |
+|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                  |
+|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                     |
+|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                     |
+|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                  |
+|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                   |
+|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                   |
 
 # Check results
 
@@ -51,7 +52,7 @@
 |bdlp                |0.9-1     |      0|        0|     0|
 |BETS                |0.2.1     |      0|        0|     0|
 |bibliospec          |0.0.4     |      0|        0|     0|
-|BIEN                |1.1.0     |      0|        0|     0|
+|BIEN                |1.1.0     |      1|        0|     0|
 |biglm               |0.9-1     |      0|        0|     6|
 |bigrquery           |0.3.0     |      1|        0|     0|
 |bioassayR           |1.14.0    |      0|        0|     0|
@@ -517,7 +518,7 @@ Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 ```
 checking tests ... ERROR
-  Running ‘AnnotationHubData_unit_tests.R’ [69s/158s]
+  Running ‘AnnotationHubData_unit_tests.R’ [69s/99s]
 Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
 Last 13 lines of output:
   
@@ -601,7 +602,7 @@ Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
 checking tests ... ERROR
   Running ‘001.setupExampleData,annotationData.R’ [10s/11s]
   Running ‘002.setupExampleData,rawData.R’
-  Running ‘AffymetrixCdfFile.R’ [10s/11s]
+  Running ‘AffymetrixCdfFile.R’
   Running ‘AffymetrixCelFile.R’
   Running ‘AffymetrixCelSet.R’
 Running the tests in ‘tests/AffymetrixCelSet.R’ failed.
@@ -699,7 +700,29 @@ Bug reports: https://github.com/protViz/bibliospec/issues
 ## BIEN (1.1.0)
 Maintainer: Brian Maitner <bmaitner@gmail.com>
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+  Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  + })
+  Error: Test failed: 'List functions return a dataframe'
+  * invalid value from generic function 'dbGetQuery', class "NULL", expected "data.frame"
+  1: expect_that(BIEN_list_all(), is_a("data.frame"))
+  2: condition(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-that.R:22
+  3: expect_is(x, class) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/old-school.R:23
+  4: klass(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-inheritance.R:69
+  5: paste(class(x), collapse = "/") at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/utils.R:16
+  6: BIEN_list_all()
+  7: .BIEN_sql(query, ...)
+  8: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
+  9: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
+  10: postgresqlNewConnection(drv, ...) at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQL.R:67
+  11: dbGetQuery(con, "set datestyle to ISO") at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQLSup
+  Execution halted
+```
 
 ## biglm (0.9-1)
 Maintainer: Thomas Lumley <tlumley@u.washington.edu>
@@ -1217,7 +1240,7 @@ Last 13 lines of output:
   downloaded 11 KB
   
   trying URL 'http://www.nytimes.com'
-  Content type 'text/html; charset=utf-8' length 226326 bytes (221 KB)
+  Content type 'text/html; charset=utf-8' length 227072 bytes (221 KB)
   ==================================================
   downloaded 221 KB
   
@@ -2036,7 +2059,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [62s/67s]
+  Running ‘testthat.R’ [63s/64s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -2201,7 +2224,7 @@ Error: 'src_sql' is not an exported object from 'namespace:dplyr'
 Execution halted
 
 checking tests ... ERROR
-  Running ‘testthat.R’ [19s/48s]
+  Running ‘testthat.R’ [19s/47s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -2670,7 +2693,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/Rtmpb6wiUQ/filea46d2cc7ef5 in chunks of 10000
+Processing /tmp/RtmpnwldyI/file9e2b10d08b3b in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2680,7 +2703,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [25s/25s]
+  Running ‘runTests.R’ [24s/24s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   Test files with failing tests
@@ -2696,7 +2719,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/RtmplXQjGw/filea571359afb4d)
+    closing unused connection 3 (/tmp/Rtmp3sHPzl/file9fd3770d0b69)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3261,7 +3284,7 @@ The error most likely occurred in:
 + }
 character
 Processing: Transcripts_ce10_chrI_100Kb.bed @ GSM1208360_chrI_100Kb_q5_sample.bw [ 1 / 2 ]
-Error in scan(file, what = "", sep = sep, quote = quote, nlines = 1, quiet = TRUE,  : 
+Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
   invalid connection
 Calls: getPlotSetArray ... .supportedSeqnameMappings -> lapply -> lapply -> FUN -> scan
 Error in close.connection(file) : invalid connection
@@ -3270,7 +3293,7 @@ Execution halted
 ** found \donttest examples: check also with --run-donttest
 
 checking tests ... ERROR
-  Running ‘test-all.R’ [25s/28s]
+  Running ‘test-all.R’ [24s/27s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
   Error in signalCondition(e) : 
@@ -3701,16 +3724,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Jun 17, 2017 9:03:15 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 

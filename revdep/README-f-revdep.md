@@ -10,180 +10,187 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-05-08                   |
+|date     |2017-06-17                   |
 
 ## Packages
 
-|package   |*  |version    |date       |source                          |
-|:---------|:--|:----------|:----------|:-------------------------------|
-|blob      |   |1.0.0.9002 |2017-04-24 |Github (tidyverse/blob@615057a) |
-|covr      |   |2.2.2      |2017-01-05 |cran (@2.2.2)                   |
-|DBI       |   |0.6-13     |2017-05-08 |Github (rstats-db/DBI@f6500a5)  |
-|hms       |   |0.3        |2016-11-22 |cran (@0.3)                     |
-|knitr     |   |1.15.1     |2016-11-22 |cran (@1.15.1)                  |
-|magrittr  |   |1.5        |2014-11-22 |CRAN (R 3.4.0)                  |
-|rmarkdown |   |1.5        |2017-04-26 |cran (@1.5)                     |
-|rprojroot |   |1.2        |2017-01-16 |cran (@1.2)                     |
-|RSQLite   |   |1.1-2      |2017-01-08 |CRAN (R 3.4.0)                  |
-|testthat  |   |1.0.2      |2016-04-23 |cran (@1.0.2)                   |
-|xml2      |   |1.1.1      |2017-01-24 |cran (@1.1.1)                   |
+|package   |*  |version |date       |source                          |
+|:---------|:--|:-------|:----------|:-------------------------------|
+|blob      |   |1.1.0   |2017-06-17 |Github (tidyverse/blob@9dd54d9) |
+|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                   |
+|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df)  |
+|hms       |   |0.3     |2016-11-22 |cran (@0.3)                     |
+|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                    |
+|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                  |
+|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                     |
+|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                     |
+|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                  |
+|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                   |
+|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                   |
 
 # Check results
 
-150 packages
+157 packages
 
-|package            |version   | errors| warnings| notes|
-|:------------------|:---------|------:|--------:|-----:|
-|acc                |1.3.3     |      0|        0|     1|
-|afmToolkit         |0.0.1     |      0|        0|     0|
-|anamiR             |1.4.0     |      0|        0|     4|
-|annaffy            |1.48.0    |      0|        0|     2|
-|annmap             |1.18.0    |      0|        2|     5|
-|annotate           |1.54.0    |      0|        0|     1|
-|AnnotationDbi      |1.38.0    |      0|        1|     5|
-|AnnotationForge    |1.18.0    |      0|        0|     1|
-|AnnotationFuncs    |1.26.0    |      0|        0|     4|
-|AnnotationHubData  |1.6.0     |      1|        0|     4|
-|archivist          |2.1.2     |      0|        0|     2|
-|aroma.affymetrix   |3.1.0     |      0|        0|     0|
-|BatchExperiments   |1.4.1     |      0|        0|     2|
-|BatchJobs          |1.6       |      0|        0|     0|
-|BETS               |0.2.1     |      0|        0|     0|
-|bibliospec         |0.0.4     |      0|        0|     0|
-|BIEN               |1.1.0     |      1|        0|     0|
-|biglm              |0.9-1     |      0|        0|     6|
-|bigrquery          |0.3.0     |      1|        0|     0|
-|bioassayR          |1.14.0    |      0|        0|     0|
-|ChemmineR          |2.28.0    |      1|        0|     0|
-|ChIPpeakAnno       |3.10.1    |      0|        0|     2|
-|chunked            |0.3       |      1|        0|     1|
-|CITAN              |2015.12-2 |      0|        0|     0|
-|cn.farms           |1.24.0    |      1|        0|     2|
-|convey             |0.2.0     |      0|        0|     0|
-|cranlike           |1.0.0     |      0|        0|     0|
-|D3GB               |1.1       |      0|        0|     0|
-|datamap            |0.1-1     |      0|        0|     3|
-|dbfaker            |0.1.0     |      0|        0|     0|
-|DBItest            |1.4       |      0|        0|     0|
-|DECIPHER           |2.4.0     |      0|        0|     4|
-|DMwR2              |0.0.2     |      0|        0|     0|
-|dplyr              |0.5.0     |      1|        0|     2|
-|eiR                |1.16.0    |      0|        0|     6|
-|eisa               |1.28.0    |      0|        0|     2|
-|emuR               |0.2.2     |      0|        0|     0|
-|ensembldb          |2.0.1     |      0|        0|     3|
-|etl                |0.3.5     |      1|        1|     0|
-|ETLUtils           |1.3       |      0|        0|     0|
-|ExperimentHubData  |1.2.0     |      0|        0|     1|
-|filehashSQLite     |0.2-4     |      0|        0|     3|
-|frma               |1.28.0    |      0|        0|     2|
-|frmaTools          |1.28.0    |      0|        0|     4|
-|gcbd               |0.2.6     |      0|        0|     0|
-|GenomicFeatures    |1.28.0    |      0|        1|     3|
-|genomicper         |1.6       |      0|        0|     0|
-|Genominator        |1.30.0    |      0|        0|     4|
-|GenVisR            |1.6.0     |      0|        0|     1|
-|gmDatabase         |0.5.0     |      0|        0|     0|
-|GOFunction         |1.24.0    |      0|        1|     5|
-|GWASTools          |1.22.0    |      0|        0|     1|
-|healthcareai       |0.1.12    |      0|        0|     0|
-|implyr             |0.1.0     |      1|        0|     0|
-|imputeMulti        |0.6.4     |      0|        0|     2|
-|IntEREst           |1.0.0     |      0|        0|     2|
-|isobar             |1.22.0    |      0|        0|     5|
-|ITALICS            |2.36.0    |      0|        0|     5|
-|keggorthology      |2.28.0    |      0|        0|     3|
-|knitr              |1.15.1    |      0|        0|     0|
-|liteq              |1.0.0     |      0|        0|     0|
-|lumi               |2.28.0    |      0|        2|     3|
-|macleish           |0.3.0     |      0|        0|     0|
-|marmap             |0.9.6     |      0|        0|     0|
-|mdgsa              |1.8.0     |      0|        0|     2|
-|mdsr               |0.1.3     |      0|        0|     1|
-|MetaIntegrator     |1.0.3     |      0|        0|     0|
-|mgsa               |1.24.0    |      0|        1|     5|
-|mimager            |1.0.0     |      1|        0|     0|
-|miRNAmeConverter   |1.4.0     |      0|        0|     1|
-|miRNAtap           |1.10.0    |      0|        0|     2|
-|mitools            |2.3       |      0|        0|     1|
-|MmPalateMiRNA      |1.26.0    |      0|        0|     4|
-|MonetDBLite        |0.3.1     |      2|        0|     3|
-|MonetDB.R          |1.0.1     |      0|        0|     2|
-|oai                |0.2.2     |      0|        0|     1|
-|oce                |0.9-21    |      1|        0|     1|
-|odbc               |1.0.1     |      0|        0|     1|
-|ODB                |1.1.1     |      0|        0|     2|
-|oligo              |1.40.1    |      1|        1|     9|
-|ora                |2.0-1     |      1|        0|     0|
-|PAnnBuilder        |1.40.0    |      0|        3|     1|
-|pdInfoBuilder      |1.40.0    |      0|        0|     2|
-|pitchRx            |1.8.2     |      0|        0|     1|
-|PivotalR           |0.1.18.3  |      0|        0|     1|
-|plethy             |1.14.0    |      2|        0|     3|
-|poplite            |0.99.17.3 |      0|        0|     0|
-|postGIStools       |0.2.1     |      0|        0|     0|
-|ProjectTemplate    |0.7       |      0|        0|     0|
-|quantmod           |0.4-8     |      0|        0|     1|
-|RecordLinkage      |0.4-10    |      0|        0|     1|
-|redcapAPI          |1.3       |      0|        0|     1|
-|refGenome          |1.7.3     |      0|        0|     0|
-|RImmPort           |1.4.0     |      0|        1|     0|
-|RJDBC              |0.2-5     |      0|        1|     1|
-|RmiR               |1.32.0    |      0|        0|     4|
-|RMySQL             |0.10.11   |      0|        0|     0|
-|rnaSeqMap          |2.34.0    |      0|        1|     5|
-|RObsDat            |16.03     |      0|        0|     1|
-|RODBCDBI           |0.1.1     |      0|        0|     0|
-|Roleswitch         |1.14.0    |      0|        0|     2|
-|ROracle            |1.3-1     |      1|        0|     0|
-|rpostgisLT         |0.4.0     |      0|        0|     0|
-|rpostgis           |1.2.1     |      0|        0|     0|
-|RPostgreSQL        |0.4-1     |      0|        0|     4|
-|RPresto            |1.2.1     |      1|        1|     1|
-|RQDA               |0.2-8     |      1|        0|     1|
-|RRedshiftSQL       |0.1.2     |      0|        0|     0|
-|RSQLite            |1.1-2     |      1|        0|     2|
-|rTRM               |1.14.0    |      0|        0|     1|
-|SEERaBomb          |2017.1    |      0|        0|     0|
-|sejmRP             |1.3.4     |      0|        0|     0|
-|seqplots           |1.13.0    |      1|        0|     3|
-|sf                 |0.4-2     |      2|        0|     1|
-|smnet              |2.1.1     |      0|        0|     0|
-|snplist            |0.17      |      0|        0|     1|
-|sparklyr           |0.5.4     |      0|        0|     0|
-|sparkwarc          |0.1.1     |      1|        0|     0|
-|specL              |1.10.0    |      0|        0|     5|
-|sqldf              |0.4-10    |      0|        1|     2|
-|sqliter            |0.1.0     |      0|        0|     0|
-|sqlutils           |1.2       |      0|        0|     3|
-|storr              |1.1.0     |      0|        0|     0|
-|stream             |1.2-4     |      0|        0|     1|
-|survey             |3.31-5    |      0|        0|     0|
-|taxizedb           |0.1.0     |      1|        0|     0|
-|tcpl               |1.2.2     |      0|        0|     1|
-|tigreBrowserWriter |0.1.4     |      0|        0|     0|
-|tigre              |1.30.0    |      0|        0|     2|
-|timeseriesdb       |0.2.1     |      0|        0|     1|
-|topGO              |2.28.0    |      0|        0|     4|
-|toxboot            |0.1.1     |      0|        0|     1|
-|TScompare          |2015.4-1  |      0|        0|     1|
-|TSdata             |2016.8-1  |      0|        1|     0|
-|TSdbi              |2015.7-1  |      0|        0|     0|
-|TSfame             |2015.4-1  |      0|        0|     1|
-|TSmisc             |2016.8-1  |      0|        0|     0|
-|TSMySQL            |2015.4-1  |      0|        0|     0|
-|TSodbc             |2015.4-1  |      0|        0|     0|
-|TSPostgreSQL       |2015.4-1  |      0|        0|     0|
-|TSsdmx             |2016.8-1  |      0|        0|     0|
-|TSSQLite           |2015.4-1  |      0|        0|     0|
-|TSsql              |2015.1-2  |      0|        0|     1|
-|twitteR            |1.1.9     |      0|        0|     0|
-|Uniquorn           |1.4.0     |      0|        0|     2|
-|UPMASK             |1.1       |      0|        0|     0|
-|VariantAnnotation  |1.22.0    |      0|        0|     3|
-|VariantFiltering   |1.12.1    |      0|        1|     4|
-|vmsbase            |2.1.3     |      1|        0|     0|
-|WhopGenome         |0.9.7     |      0|        0|     0|
+|package             |version   | errors| warnings| notes|
+|:-------------------|:---------|------:|--------:|-----:|
+|acc                 |1.3.3     |      0|        0|     1|
+|afmToolkit          |0.0.1     |      0|        0|     0|
+|anamiR              |1.4.0     |      0|        0|     4|
+|anchoredDistr       |1.0.2     |      0|        1|     0|
+|annaffy             |1.48.0    |      0|        0|     2|
+|annmap              |1.18.0    |      0|        2|     5|
+|annotate            |1.54.0    |      0|        0|     1|
+|AnnotationDbi       |1.38.1    |      0|        1|     5|
+|AnnotationForge     |1.18.0    |      0|        0|     1|
+|AnnotationFuncs     |1.26.0    |      0|        0|     4|
+|AnnotationHubData   |1.6.0     |      1|        0|     4|
+|archivist           |2.1.2     |      0|        0|     2|
+|aroma.affymetrix    |3.1.0     |      1|        0|     0|
+|BatchExperiments    |1.4.1     |      0|        0|     2|
+|BatchJobs           |1.6       |      0|        0|     0|
+|bdlp                |0.9-1     |      0|        0|     0|
+|BETS                |0.2.1     |      0|        0|     0|
+|bibliospec          |0.0.4     |      0|        0|     0|
+|BIEN                |1.1.0     |      1|        0|     0|
+|biglm               |0.9-1     |      0|        0|     6|
+|bigrquery           |0.3.0     |      1|        0|     0|
+|bioassayR           |1.14.0    |      0|        0|     0|
+|ChemmineR           |2.28.0    |      1|        0|     0|
+|ChIPpeakAnno        |3.10.1    |      0|        0|     2|
+|chunked             |0.3       |      1|        0|     1|
+|CITAN               |2015.12-2 |      0|        0|     0|
+|cn.farms            |1.24.0    |      1|        0|     2|
+|convey              |0.2.0     |      0|        0|     0|
+|cranlike            |1.0.0     |      0|        0|     0|
+|D3GB                |1.1       |      0|        0|     0|
+|datamap             |0.1-1     |      0|        0|     3|
+|dbfaker             |0.1.0     |      0|        0|     0|
+|DBItest             |1.4       |      0|        0|     0|
+|dbplyr              |1.0.0     |      0|        0|     0|
+|DECIPHER            |2.4.0     |      0|        0|     4|
+|DMwR2               |0.0.2     |      0|        0|     0|
+|dplyr               |0.7.0     |      0|        0|     1|
+|eiR                 |1.16.0    |      0|        0|     6|
+|eisa                |1.28.0    |      0|        0|     2|
+|emuR                |0.2.2     |      0|        0|     0|
+|ensembldb           |2.0.3     |      0|        0|     3|
+|etl                 |0.3.5     |      1|        1|     0|
+|ETLUtils            |1.3       |      0|        0|     0|
+|ExperimentHubData   |1.2.0     |      0|        0|     1|
+|filehashSQLite      |0.2-4     |      0|        0|     3|
+|frma                |1.28.0    |      0|        0|     2|
+|frmaTools           |1.28.0    |      0|        0|     4|
+|gcbd                |0.2.6     |      0|        0|     0|
+|GenomicFeatures     |1.28.3    |      0|        1|     3|
+|genomicper          |1.6       |      0|        0|     0|
+|Genominator         |1.30.0    |      0|        0|     4|
+|GenVisR             |1.6.0     |      0|        0|     1|
+|gmDatabase          |0.5.0     |      0|        0|     0|
+|GOFunction          |1.24.0    |      0|        1|     5|
+|GWASTools           |1.22.0    |      0|        0|     1|
+|healthcareai        |0.1.12    |      0|        0|     0|
+|implyr              |0.1.0     |      1|        0|     0|
+|imputeMulti         |0.6.4     |      0|        0|     2|
+|IntEREst            |1.0.0     |      0|        0|     2|
+|InterpretMSSpectrum |1.0       |      0|        0|     0|
+|isobar              |1.22.0    |      0|        0|     5|
+|ITALICS             |2.36.0    |      0|        0|     5|
+|keggorthology       |2.28.0    |      0|        0|     3|
+|knitr               |1.16      |      0|        0|     0|
+|liteq               |1.0.0     |      0|        0|     0|
+|lumi                |2.28.0    |      0|        2|     3|
+|macleish            |0.3.0     |      0|        0|     0|
+|marmap              |0.9.6     |      0|        0|     0|
+|mdgsa               |1.8.0     |      0|        0|     2|
+|mdsr                |0.1.3     |      0|        0|     1|
+|MetaIntegrator      |1.0.3     |      0|        0|     0|
+|mgsa                |1.24.0    |      0|        1|     5|
+|mimager             |1.0.0     |      1|        0|     0|
+|miRNAmeConverter    |1.4.0     |      0|        0|     1|
+|miRNAtap            |1.10.0    |      0|        0|     2|
+|mitools             |2.3       |      0|        0|     1|
+|MmPalateMiRNA       |1.26.0    |      0|        0|     4|
+|MonetDBLite         |0.3.1     |      2|        0|     3|
+|MonetDB.R           |1.0.1     |      0|        0|     2|
+|oai                 |0.2.2     |      0|        0|     1|
+|oce                 |0.9-21    |      1|        0|     1|
+|odbc                |1.0.1     |      0|        0|     1|
+|ODB                 |1.1.1     |      0|        0|     2|
+|oligo               |1.40.1    |      1|        1|     9|
+|ora                 |2.0-1     |      1|        0|     0|
+|PAnnBuilder         |1.40.0    |      0|        3|     1|
+|pdInfoBuilder       |1.40.0    |      0|        0|     2|
+|pitchRx             |1.8.2     |      0|        0|     1|
+|PivotalR            |0.1.18.3  |      0|        0|     1|
+|pleiades            |0.2.0     |      0|        0|     0|
+|plethy              |1.14.0    |      2|        0|     3|
+|poplite             |0.99.17.3 |      0|        0|     0|
+|postGIStools        |0.2.1     |      0|        0|     0|
+|ProjectTemplate     |0.7       |      0|        0|     0|
+|quantmod            |0.4-9     |      0|        0|     1|
+|RecordLinkage       |0.4-10    |      0|        0|     1|
+|redcapAPI           |1.3       |      0|        0|     1|
+|refGenome           |1.7.3     |      0|        0|     0|
+|replyr              |0.4.0     |      0|        0|     0|
+|RImmPort            |1.4.1     |      0|        1|     0|
+|RJDBC               |0.2-5     |      0|        1|     1|
+|RmiR                |1.32.0    |      0|        0|     4|
+|RMySQL              |0.10.11   |      0|        0|     0|
+|rnaSeqMap           |2.34.0    |      0|        1|     5|
+|RObsDat             |16.03     |      0|        0|     1|
+|RODBCDBI            |0.1.1     |      0|        0|     0|
+|Roleswitch          |1.14.0    |      0|        0|     2|
+|ROracle             |1.3-1     |      1|        0|     0|
+|rpostgisLT          |0.4.0     |      0|        0|     0|
+|rpostgis            |1.2.1     |      0|        0|     0|
+|RPostgreSQL         |0.4-1     |      0|        0|     4|
+|RPresto             |1.2.1     |      1|        1|     1|
+|RQDA                |0.2-8     |      1|        0|     1|
+|RRedshiftSQL        |0.1.2     |      0|        0|     0|
+|RSQLite             |1.1-2     |      0|        0|     2|
+|RSQLServer          |0.3.0     |      0|        0|     0|
+|rTRM                |1.14.0    |      0|        0|     1|
+|SEERaBomb           |2017.1    |      0|        0|     0|
+|sejmRP              |1.3.4     |      0|        0|     0|
+|seqplots            |1.13.0    |      2|        0|     3|
+|sf                  |0.5-0     |      0|        0|     1|
+|smnet               |2.1.1     |      0|        0|     0|
+|snplist             |0.17      |      0|        0|     1|
+|sparklyr            |0.5.6     |      0|        0|     0|
+|sparkwarc           |0.1.1     |      0|        0|     0|
+|specL               |1.10.0    |      0|        0|     5|
+|sqldf               |0.4-10    |      0|        1|     2|
+|sqliter             |0.1.0     |      0|        0|     0|
+|sqlutils            |1.2       |      0|        0|     3|
+|storr               |1.1.1     |      0|        0|     0|
+|stream              |1.2-4     |      0|        0|     1|
+|survey              |3.32      |      0|        0|     0|
+|taxizedb            |0.1.0     |      1|        0|     0|
+|tcpl                |1.2.2     |      0|        0|     1|
+|tigreBrowserWriter  |0.1.4     |      0|        0|     0|
+|tigre               |1.30.0    |      0|        0|     2|
+|timeseriesdb        |0.2.1     |      0|        0|     1|
+|topGO               |2.28.0    |      0|        0|     4|
+|toxboot             |0.1.1     |      0|        0|     1|
+|TScompare           |2015.4-1  |      0|        0|     1|
+|TSdata              |2016.8-1  |      0|        1|     0|
+|TSdbi               |2017.4-1  |      0|        0|     0|
+|TSfame              |2015.4-1  |      0|        0|     1|
+|TSmisc              |2016.8-1  |      0|        0|     0|
+|TSMySQL             |2015.4-1  |      0|        0|     0|
+|TSodbc              |2015.4-1  |      0|        0|     0|
+|TSPostgreSQL        |2015.4-1  |      0|        0|     0|
+|TSsdmx              |2016.8-1  |      0|        0|     0|
+|TSSQLite            |2015.4-1  |      0|        0|     0|
+|TSsql               |2017.4-1  |      0|        0|     0|
+|twitteR             |1.1.9     |      0|        0|     0|
+|Uniquorn            |1.4.2     |      0|        0|     1|
+|UPMASK              |1.1       |      0|        0|     0|
+|VariantAnnotation   |1.22.1    |      0|        0|     3|
+|VariantFiltering    |1.12.1    |      0|        1|     4|
+|vmsbase             |2.1.3     |      1|        0|     0|
+|WhopGenome          |0.9.7     |      0|        0|     0|
 
 ## acc (1.3.3)
 Maintainer: Jaejoon Song <jjsong2@mdanderson.org>
@@ -232,6 +239,22 @@ checking R code for possible problems ... NOTE
 GSEA_ana: no visible binding for global variable ‘msigdb.gs’
 Undefined global functions or variables:
   msigdb.gs
+```
+
+## anchoredDistr (1.0.2)
+Maintainer: Heather Savoy <frystacka@berkeley.edu>
+
+0 errors | 1 warning  | 0 notes
+
+```
+checking re-building of vignette outputs ... WARNING
+Error in re-building vignettes:
+  ...
+Quitting from lines 50-64 (anchoredDistr.Rmd) 
+Error: processing vignette 'anchoredDistr.Rmd' failed with diagnostics:
+cannot open the connection
+Execution halted
+
 ```
 
 ## annaffy (1.48.0)
@@ -390,7 +413,7 @@ Rd file 'readGEOAnn.Rd':
 These lines will be truncated in the PDF manual.
 ```
 
-## AnnotationDbi (1.38.0)
+## AnnotationDbi (1.38.1)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 0 errors | 1 warning  | 5 notes
@@ -495,7 +518,7 @@ Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 ```
 checking tests ... ERROR
-  Running ‘AnnotationHubData_unit_tests.R’ [65s/132s]
+  Running ‘AnnotationHubData_unit_tests.R’ [69s/99s]
 Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
 Last 13 lines of output:
   
@@ -573,7 +596,33 @@ Package unavailable to check Rd xrefs: ‘archivist.github’
 Maintainer: Henrik Bengtsson <henrikb@braju.com>  
 Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
 
-0 errors | 0 warnings | 0 notes
+1 error  | 0 warnings | 0 notes
+
+```
+checking tests ... ERROR
+  Running ‘001.setupExampleData,annotationData.R’ [10s/11s]
+  Running ‘002.setupExampleData,rawData.R’
+  Running ‘AffymetrixCdfFile.R’
+  Running ‘AffymetrixCelFile.R’
+  Running ‘AffymetrixCelSet.R’
+Running the tests in ‘tests/AffymetrixCelSet.R’ failed.
+Last 13 lines of output:
+  > ds <- AffymetrixCelSet()
+  
+   *** caught segfault ***
+  address 0x100000000, cause 'memory not mapped'
+  
+  Traceback:
+   1: GenericDataFileSet(files = files, ...)
+   2: extend(GenericDataFileSet(files = files, ...), "AromaMicroarrayDataSet")
+   3: AromaMicroarrayDataSet(files = files, ...)
+   4: extend(AromaMicroarrayDataSet(files = files, ...), c("AffymetrixFileSet",     uses("AromaPlatformInterface")))
+   5: AffymetrixFileSet(files = files, ...)
+   6: extend(AffymetrixFileSet(files = files, ...), "AffymetrixCelSet",     `cached:.intensities` = NULL, `cached:.intensitiesIdxs` = NULL,     `cached:.readUnitsCache` = NULL, `cached:.getUnitIntensitiesCache` = NULL,     `cached:.averageFiles` = list(), `cached:.timestamps` = NULL,     `cached:.fileSize` = NULL)
+   7: AffymetrixCelSet()
+  An irrecoverable exception occurred. R is aborting now ...
+  Segmentation fault (core dumped)
+```
 
 ## BatchExperiments (1.4.1)
 Maintainer: Michel Lang <michellang@gmail.com>  
@@ -628,6 +677,11 @@ contains 'methods').
 ## BatchJobs (1.6)
 Maintainer: Bernd Bischl <bernd_bischl@gmx.net>  
 Bug reports: https://github.com/tudo-r/BatchJobs/issues
+
+0 errors | 0 warnings | 0 notes
+
+## bdlp (0.9-1)
+Maintainer: Rainer Dangl <rainer.dangl@boku.ac.at>
 
 0 errors | 0 warnings | 0 notes
 
@@ -950,6 +1004,12 @@ Bug reports: https://github.com/rstats-db/DBItest/issues
 
 0 errors | 0 warnings | 0 notes
 
+## dbplyr (1.0.0)
+Maintainer: Hadley Wickham <hadley@rstudio.com>  
+Bug reports: https://github.com/tidyverse/dplyr/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## DECIPHER (2.4.0)
 Maintainer: Erik Wright <eswright@pitt.edu>
 
@@ -1007,46 +1067,17 @@ Bug reports: https://github.com/ltorgo/DMwR2/issues
 
 0 errors | 0 warnings | 0 notes
 
-## dplyr (0.5.0)
+## dplyr (0.7.0)
 Maintainer: Hadley Wickham <hadley@rstudio.com>  
-Bug reports: https://github.com/hadley/dplyr/issues
+Bug reports: https://github.com/tidyverse/dplyr/issues
 
-1 error  | 0 warnings | 2 notes
+0 errors | 0 warnings | 1 note 
 
 ```
-checking tests ... ERROR
-  Running ‘testthat.R’
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  5. Failure: ungrouped output (@test-output.R#10) -------------------------------
-  print(iris_mem %>% head(), n = 30L, width = 80L) not equal to safe_read_lines("output/iris-head-30-80.txt").
-  Lengths differ: 12 vs 11
-  
-  
-  testthat results ================================================================
-  OK: 1504 SKIPPED: 1 FAILED: 5
-  1. Failure: ungrouped output (@test-output.R#10) 
-  2. Failure: ungrouped output (@test-output.R#10) 
-  3. Failure: ungrouped output (@test-output.R#10) 
-  4. Failure: ungrouped output (@test-output.R#10) 
-  5. Failure: ungrouped output (@test-output.R#10) 
-  
-  Error: testthat unit tests failed
-  Execution halted
-
 checking installed package size ... NOTE
-  installed size is 23.4Mb
+  installed size is 32.9Mb
   sub-directories of 1Mb or more:
-    libs  21.3Mb
-
-checking compiled code ... NOTE
-File ‘dplyr/libs/dplyr.so’:
-  Found no calls to: ‘R_registerRoutines’, ‘R_useDynamicSymbols’
-
-It is good practice to register native routines and to disable symbol
-search.
-
-See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
+    libs  30.9Mb
 ```
 
 ## eiR (1.16.0)
@@ -1170,7 +1201,7 @@ Bug reports: https://github.com/IPS-LMU/emuR/issues
 
 0 errors | 0 warnings | 0 notes
 
-## ensembldb (2.0.1)
+## ensembldb (2.0.3)
 Maintainer: Johannes Rainer <johannes.rainer@eurac.edu>  
 Bug reports: https://github.com/jotsetung/ensembldb/issues
 
@@ -1178,10 +1209,10 @@ Bug reports: https://github.com/jotsetung/ensembldb/issues
 
 ```
 checking installed package size ... NOTE
-  installed size is  6.6Mb
+  installed size is  6.5Mb
   sub-directories of 1Mb or more:
     R     1.6Mb
-    doc   3.7Mb
+    doc   3.6Mb
 
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
@@ -1209,9 +1240,9 @@ Last 13 lines of output:
   downloaded 11 KB
   
   trying URL 'http://www.nytimes.com'
-  Content type 'text/html; charset=utf-8' length 214406 bytes (209 KB)
+  Content type 'text/html; charset=utf-8' length 227072 bytes (221 KB)
   ==================================================
-  downloaded 209 KB
+  downloaded 221 KB
   
   testthat results ================================================================
   OK: 15 SKIPPED: 0 FAILED: 3
@@ -1400,7 +1431,7 @@ Maintainer: Dirk Eddelbuettel <edd@debian.org>
 
 0 errors | 0 warnings | 0 notes
 
-## GenomicFeatures (1.28.0)
+## GenomicFeatures (1.28.3)
 Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 0 errors | 1 warning  | 3 notes
@@ -1665,6 +1696,11 @@ File ‘IntEREst/R/annotateU12.R’:
 See section ‘Good practice’ in ‘?data’.
 ```
 
+## InterpretMSSpectrum (1.0)
+Maintainer: Jan Lisec <jan.lisec@charite.de>
+
+0 errors | 0 warnings | 0 notes
+
 ## isobar (1.22.0)
 Maintainer: Florian P Breitwieser <florian.bw@gmail.com>  
 Bug reports: https://github.com/fbreitwieser/isobar/issues
@@ -1819,7 +1855,7 @@ File ‘keggorthology/R/getKOtags.R’:
 See section ‘Good practice’ in ‘?data’.
 ```
 
-## knitr (1.15.1)
+## knitr (1.16)
 Maintainer: Yihui Xie <xie@yihui.name>  
 Bug reports: https://github.com/yihui/knitr/issues
 
@@ -2023,7 +2059,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [60s/59s]
+  Running ‘testthat.R’ [63s/64s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -2188,7 +2224,7 @@ Error: 'src_sql' is not an exported object from 'namespace:dplyr'
 Execution halted
 
 checking tests ... ERROR
-  Running ‘testthat.R’ [19s/68s]
+  Running ‘testthat.R’ [19s/47s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -2631,6 +2667,12 @@ search.
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
 
+## pleiades (0.2.0)
+Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>  
+Bug reports: https://github.com/ropensci/pleiades/issues
+
+0 errors | 0 warnings | 0 notes
+
 ## plethy (1.14.0)
 Maintainer: Daniel Bottomly <bottomly@ohsu.edu>
 
@@ -2651,7 +2693,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpFIpMoh/fileaf254e8c915 in chunks of 10000
+Processing /tmp/RtmpnwldyI/file9e2b10d08b3b in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2661,7 +2703,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [25s/24s]
+  Running ‘runTests.R’ [24s/24s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   Test files with failing tests
@@ -2677,7 +2719,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/Rtmp8wrx7k/fileb1e255d422f1)
+    closing unused connection 3 (/tmp/Rtmp3sHPzl/file9fd3770d0b69)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -2743,7 +2785,7 @@ Bug reports: https://github.com/johnmyleswhite/ProjectTemplate/issues
 
 0 errors | 0 warnings | 0 notes
 
-## quantmod (0.4-8)
+## quantmod (0.4-9)
 Maintainer: Joshua M. Ulrich <josh.m.ulrich@gmail.com>  
 Bug reports: https://github.com/joshuaulrich/quantmod/issues
 
@@ -2810,7 +2852,13 @@ Maintainer: Wolfgang Kaisers <kaisers@med.uni-duesseldorf.de>
 
 0 errors | 0 warnings | 0 notes
 
-## RImmPort (1.4.0)
+## replyr (0.4.0)
+Maintainer: John Mount <jmount@win-vector.com>  
+Bug reports: https://github.com/WinVector/replyr/issues
+
+0 errors | 0 warnings | 0 notes
+
+## RImmPort (1.4.1)
 Maintainer: Ravi Shankar <rshankar@stanford.edu>
 
 0 errors | 1 warning  | 0 notes
@@ -2818,7 +2866,7 @@ Maintainer: Ravi Shankar <rshankar@stanford.edu>
 ```
 checking sizes of PDF files under ‘inst/doc’ ... WARNING
   ‘gs+qpdf’ made some significant size reductions:
-     compacted ‘RImmPort_Article.pdf’ from 734Kb to 339Kb
+     compacted ‘RImmPort_Article.pdf’ from 735Kb to 339Kb
   consider running tools::compactPDF(gs_quality = "ebook") on these files
 ```
 
@@ -3152,33 +3200,13 @@ Maintainer: Michael Treadwell <michael.treadwell@interworks.com>
 Maintainer: Kirill Müller <krlmlr+r@mailbox.org>  
 Bug reports: https://github.com/rstats-db/RSQLite/issues
 
-1 error  | 0 warnings | 2 notes
+0 errors | 0 warnings | 2 notes
 
 ```
-checking tests ... ERROR
-  Running ‘testthat.R’ [12s/12s]
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  8. Failure: DBItest[RSQLite]: Result: fetch_n_bad (@spec-result-fetch.R#73) 
-  9. Failure: DBItest[RSQLite]: Result: fetch_n_good_after_bad (@spec-result-fetch.R#90) 
-  1. ...
-  
-  Error: testthat unit tests failed
-  In addition: Warning messages:
-  1: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  2: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  3: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  4: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  5: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  6: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  7: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  8: Unused skip expressions: constructor_strict, cannot_disconnect_twice, clear_result_return, stale_result_warning, data_logical_null_.*, data_64_bit, data_64_bit_null_.*, data_raw_null_.*, data_date_null_.*, data_time_null_.*, data_timestamp_null_.*, data_timestamp_utc, data_timestamp_utc_null_.*, data_timestamp_parens, data_timestamp_parens_null_.*, append_table_error, quote_identifier_not_vectorized, roundtrip_64_bit, read_only 
-  Execution halted
-
 checking installed package size ... NOTE
-  installed size is  7.8Mb
+  installed size is  8.0Mb
   sub-directories of 1Mb or more:
-    libs   7.2Mb
+    libs   7.4Mb
 
 checking compiled code ... NOTE
 File ‘RSQLite/libs/RSQLite.so’:
@@ -3189,6 +3217,12 @@ search.
 
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
+
+## RSQLServer (0.3.0)
+Maintainer: Imanuel Costigan <i.costigan@me.com>  
+Bug reports: https://github.com/imanuelcostigan/RSQLServer/issues
+
+0 errors | 0 warnings | 0 notes
 
 ## rTRM (1.14.0)
 Maintainer: Diego Diez <diego10ruiz@gmail.com>  
@@ -3232,25 +3266,48 @@ Bug reports: http://github.com/mi2-warsaw/sejmRP/issues
 Maintainer: Przemyslaw Stempor <ps562@cam.ac.uk>  
 Bug reports: http://github.com/przemol/seqplots/issues
 
-1 error  | 0 warnings | 3 notes
+2 errors | 0 warnings | 3 notes
 
 ```
+checking examples ... ERROR
+Running examples in ‘seqplots-Ex.R’ failed
+The error most likely occurred in:
+
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: plotAverage
+> ### Title: Create the average plot
+> ### Aliases: plotAverage plotAverage,PlotSetArray-method
+> ###   plotAverage,PlotSetList-method plotAverage,PlotSetPair-method
+> ###   plotAverage,list-method
+... 24 lines ...
++     load(system.file("extdata", "precalc_plotset.Rdata", package="seqplots"))
++ }
+character
+Processing: Transcripts_ce10_chrI_100Kb.bed @ GSM1208360_chrI_100Kb_q5_sample.bw [ 1 / 2 ]
+Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
+  invalid connection
+Calls: getPlotSetArray ... .supportedSeqnameMappings -> lapply -> lapply -> FUN -> scan
+Error in close.connection(file) : invalid connection
+Calls: getPlotSetArray ... lapply -> lapply -> FUN -> close -> close.connection
+Execution halted
+** found \donttest examples: check also with --run-donttest
+
 checking tests ... ERROR
-  Running ‘test-all.R’ [25s/24s]
+  Running ‘test-all.R’ [24s/27s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
-  6: plotHeatmap(plotset$data, main, labels, legend, keepratio, plotScale, sortrows, clusters, 
-         clstmethod, include, ssomt1, ssomt2, cex.main, cex.lab, cex.axis, cex.legend, 
-         xlab, ylab, autoscale, zmin, zmax, xlim, ln.v, s, indi, o_min, o_max, colvec, 
-         clspace, pointsize, embed, ggplot, raster, ...)
-  7: plotHeatmap(plotset$data, main, labels, legend, keepratio, plotScale, sortrows, clusters, 
-         clstmethod, include, ssomt1, ssomt2, cex.main, cex.lab, cex.axis, cex.legend, 
-         xlab, ylab, autoscale, zmin, zmax, xlim, ln.v, s, indi, o_min, o_max, colvec, 
-         clspace, pointsize, embed, ggplot, raster, ...)
-  
+  Error in signalCondition(e) : 
+    no function to return from, jumping to top level
+  Calls: <Anonymous> ... close.connection -> .handleSimpleError -> h -> signalCondition
   testthat results ================================================================
-  OK: 63 SKIPPED: 0 FAILED: 1
-  1. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#53) 
+  OK: 63 SKIPPED: 0 FAILED: 7
+  1. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#21) 
+  2. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#21) 
+  3. Error: Test getPlotSetArray function and plotting interfaces (@test1.R#53) 
+  4. Error: Test motifs (@test1.R#106) 
+  5. Error: Test motifs (@test1.R#106) 
+  6. Error: Test motifs (@test1.R#137) 
+  7. Error: Test motifs (@test1.R#137) 
   
   Error: testthat unit tests failed
   Execution halted
@@ -3292,64 +3349,19 @@ Consider adding
 to your NAMESPACE file.
 ```
 
-## sf (0.4-2)
+## sf (0.5-0)
 Maintainer: Edzer Pebesma <edzer.pebesma@uni-muenster.de>  
 Bug reports: https://github.com/edzer/sfr/issues/
 
-2 errors | 0 warnings | 1 note 
+0 errors | 0 warnings | 1 note 
 
 ```
-checking examples ... ERROR
-Running examples in ‘sf-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: dplyr
-> ### Title: Dplyr verb methods for sf objects
-> ### Aliases: dplyr filter_.sf dplyr filter.sf dplyr arrange_.sf dplyr
-> ###   arrange.sf dplyr distinct_.sf dplyr distinct.sf dplyr group_by_.sf
-> ###   dplyr group_by.sf dplyr mutate_.sf dplyr mutate.sf dplyr
-... 29 lines ...
-epsg (SRID):    4267
-proj4string:    +proj=longlat +datum=NAD27 +no_defs
-> nc %>% filter(AREA > .1) %>% plot()
-Warning: plotting the first 10 out of 14 attributes; use max.plot = 14 to plot all
-> # plot 10 smallest counties in grey:
-> st_geometry(nc) %>% plot()
-> nc %>% select(AREA) %>% arrange(AREA) %>% slice(1:10) %>% plot(add = TRUE, col = 'grey')
-Error in select.sf(., AREA) : 
-  requires dplyr > 0.5.0: install that first, then reinstall sf
-Calls: %>% ... _fseq -> freduce -> <Anonymous> -> select -> select.sf
-Execution halted
-
-checking tests ... ERROR
-  Running ‘cast.R’
-  Comparing ‘cast.Rout’ to ‘cast.Rout.save’ ...4c4
-< Linking to GEOS 3.5.0, GDAL 2.1.0, proj.4 4.9.2
----
-> Linking to GEOS 3.5.1, GDAL 2.1.3, proj.4 4.9.2
-  Running ‘crs.R’
-  Comparing ‘crs.Rout’ to ‘crs.Rout.save’ ... OK
-  Running ‘dist.R’
-  Comparing ‘dist.Rout’ to ‘dist.Rout.save’ ... OK
-... 8 lines ...
-  Warning message:
-  plotting the first 10 out of 14 attributes; use max.plot = 14 to plot all 
-  > 
-  > # plot 10 smallest counties in grey:
-  > nc %>% 
-  +   select(BIR74, geometry) %>% 
-  +   plot()
-  Error in select.sf(., BIR74, geometry) : 
-    requires dplyr > 0.5.0: install that first, then reinstall sf
-  Calls: %>% ... _fseq -> freduce -> <Anonymous> -> select -> select.sf
-  Execution halted
-
 checking installed package size ... NOTE
-  installed size is 10.3Mb
+  installed size is 13.0Mb
   sub-directories of 1Mb or more:
-    doc    4.0Mb
-    libs   4.2Mb
+    doc      4.0Mb
+    libs     5.4Mb
+    sqlite   1.5Mb
 ```
 
 ## smnet (2.1.1)
@@ -3373,7 +3385,7 @@ search.
 See ‘Writing portable packages’ in the ‘Writing R Extensions’ manual.
 ```
 
-## sparklyr (0.5.4)
+## sparklyr (0.5.6)
 Maintainer: Javier Luraschi <javier@rstudio.com>  
 Bug reports: https://github.com/rstudio/sparklyr/issues
 
@@ -3383,13 +3395,7 @@ Bug reports: https://github.com/rstudio/sparklyr/issues
 Maintainer: Javier Luraschi <javier@rstudio.com>  
 Bug reports: https://github.com/javierluraschi/sparkwarc
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking whether package ‘sparkwarc’ can be installed ... ERROR
-Installation failed.
-See ‘/home/muelleki/git/R/DBI/revdep/checks/sparkwarc.Rcheck/00install.out’ for details.
-```
+0 errors | 0 warnings | 0 notes
 
 ## specL (1.10.0)
 Maintainer: Christian Panse <cp@fgcz.ethz.ch>, Witold E. Wolski <wewolski@gmail.com>  
@@ -3399,7 +3405,7 @@ Bug reports: https://github.com/fgcz/specL/issues
 
 ```
 checking installed package size ... NOTE
-  installed size is  5.6Mb
+  installed size is  5.7Mb
   sub-directories of 1Mb or more:
     doc   4.2Mb
 
@@ -3496,7 +3502,7 @@ Consider adding
 to your NAMESPACE file.
 ```
 
-## storr (1.1.0)
+## storr (1.1.1)
 Maintainer: Rich FitzJohn <rich.fitzjohn@gmail.com>  
 Bug reports: https://github.com/richfitz/storr/issues
 
@@ -3510,13 +3516,13 @@ Bug reports: https://github.com/mhahsler/stream/issues
 
 ```
 checking installed package size ... NOTE
-  installed size is  6.2Mb
+  installed size is  6.6Mb
   sub-directories of 1Mb or more:
     doc    1.6Mb
-    libs   4.0Mb
+    libs   4.5Mb
 ```
 
-## survey (3.31-5)
+## survey (3.32)
 Maintainer: "Thomas Lumley" <t.lumley@auckland.ac.nz>
 
 0 errors | 0 warnings | 0 notes
@@ -3718,16 +3724,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-May 08, 2017 10:35:46 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 10:35:46 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-May 08, 2017 10:35:47 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-May 08, 2017 10:35:50 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Jun 17, 2017 9:03:15 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
@@ -3738,7 +3744,7 @@ Error in .local(serIDs, con, ...) :
 Execution halted
 ```
 
-## TSdbi (2015.7-1)
+## TSdbi (2017.4-1)
 Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 
 0 errors | 0 warnings | 0 notes
@@ -3801,39 +3807,22 @@ Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 
 0 errors | 0 warnings | 0 notes
 
-## TSsql (2015.1-2)
+## TSsql (2017.4-1)
 Maintainer: Paul Gilbert <pgilbert.ttv9z@ncf.ca>
 
-0 errors | 0 warnings | 1 note 
-
-```
-checking R code for possible problems ... NOTE
-TSgetSQL: no visible global function definition for ‘ts’
-TSputSQL: no visible global function definition for ‘is.ts’
-TSputSQL: no visible global function definition for ‘frequency’
-TSputSQL: no visible global function definition for ‘time’
-TSquery: no visible global function definition for ‘ts’
-Undefined global functions or variables:
-  frequency is.ts time ts
-Consider adding
-  importFrom("stats", "frequency", "is.ts", "time", "ts")
-to your NAMESPACE file.
-```
+0 errors | 0 warnings | 0 notes
 
 ## twitteR (1.1.9)
 Maintainer: Jeff Gentry <geoffjentry@gmail.com>
 
 0 errors | 0 warnings | 0 notes
 
-## Uniquorn (1.4.0)
+## Uniquorn (1.4.2)
 Maintainer: 'Raik Otto' <raik.otto@hu-berlin.de>
 
-0 errors | 0 warnings | 2 notes
+0 errors | 0 warnings | 1 note 
 
 ```
-checking DESCRIPTION meta-information ... NOTE
-Malformed Description field: should contain one or more complete sentences.
-
 checking top-level files ... NOTE
 Non-standard file/directory found at top level:
   ‘unitTests’
@@ -3844,7 +3833,7 @@ Maintainer: Alberto Krone-Martins <algol@sim.ul.pt>
 
 0 errors | 0 warnings | 0 notes
 
-## VariantAnnotation (1.22.0)
+## VariantAnnotation (1.22.1)
 Maintainer: Valerie Obenchain <maintainer@bioconductor.org>
 
 0 errors | 0 warnings | 3 notes
