@@ -52,7 +52,7 @@
 |bdlp                |0.9-1     |      0|        0|     0|
 |BETS                |0.2.1     |      0|        0|     0|
 |bibliospec          |0.0.4     |      0|        0|     0|
-|BIEN                |1.1.0     |      1|        0|     0|
+|BIEN                |1.1.0     |      0|        0|     0|
 |biglm               |0.9-1     |      0|        0|     6|
 |bigrquery           |0.3.0     |      1|        0|     0|
 |bioassayR           |1.14.0    |      0|        0|     0|
@@ -518,7 +518,7 @@ Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 ```
 checking tests ... ERROR
-  Running ‘AnnotationHubData_unit_tests.R’ [69s/99s]
+  Running ‘AnnotationHubData_unit_tests.R’ [68s/144s]
 Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
 Last 13 lines of output:
   
@@ -600,7 +600,7 @@ Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
 
 ```
 checking tests ... ERROR
-  Running ‘001.setupExampleData,annotationData.R’ [10s/11s]
+  Running ‘001.setupExampleData,annotationData.R’ [10s/10s]
   Running ‘002.setupExampleData,rawData.R’
   Running ‘AffymetrixCdfFile.R’
   Running ‘AffymetrixCelFile.R’
@@ -700,29 +700,7 @@ Bug reports: https://github.com/protViz/bibliospec/issues
 ## BIEN (1.1.0)
 Maintainer: Brian Maitner <bmaitner@gmail.com>
 
-1 error  | 0 warnings | 0 notes
-
-```
-checking tests ... ERROR
-  Running ‘testthat.R’
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  + })
-  Error: Test failed: 'List functions return a dataframe'
-  * invalid value from generic function 'dbGetQuery', class "NULL", expected "data.frame"
-  1: expect_that(BIEN_list_all(), is_a("data.frame"))
-  2: condition(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-that.R:22
-  3: expect_is(x, class) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/old-school.R:23
-  4: klass(object) at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/expect-inheritance.R:69
-  5: paste(class(x), collapse = "/") at /tmp/Rtmpf6YF8j/devtools1eed5a0addc9/testthat/R/utils.R:16
-  6: BIEN_list_all()
-  7: .BIEN_sql(query, ...)
-  8: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
-  9: DBI::dbConnect(drv, host = host, dbname = dbname, user = user, password = password)
-  10: postgresqlNewConnection(drv, ...) at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQL.R:67
-  11: dbGetQuery(con, "set datestyle to ISO") at /tmp/RtmpiJ5k3E/devtools91020816811/RPostgreSQL/R/PostgreSQLSup
-  Execution halted
-```
+0 errors | 0 warnings | 0 notes
 
 ## biglm (0.9-1)
 Maintainer: Thomas Lumley <tlumley@u.washington.edu>
@@ -2059,7 +2037,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [63s/64s]
+  Running ‘testthat.R’ [62s/66s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -2224,7 +2202,7 @@ Error: 'src_sql' is not an exported object from 'namespace:dplyr'
 Execution halted
 
 checking tests ... ERROR
-  Running ‘testthat.R’ [19s/47s]
+  Running ‘testthat.R’ [19s/48s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
   testthat results ================================================================
@@ -2693,7 +2671,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpnwldyI/file9e2b10d08b3b in chunks of 10000
+Processing /tmp/RtmpOzzZOO/file191622a45aeb in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2703,7 +2681,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [24s/24s]
+  Running ‘runTests.R’ [24s/25s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   Test files with failing tests
@@ -2719,7 +2697,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/Rtmp3sHPzl/file9fd3770d0b69)
+    closing unused connection 3 (/tmp/RtmpLRUjJg/file19d116401b0d)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3293,7 +3271,7 @@ Execution halted
 ** found \donttest examples: check also with --run-donttest
 
 checking tests ... ERROR
-  Running ‘test-all.R’ [24s/27s]
+  Running ‘test-all.R’ [25s/28s]
 Running the tests in ‘tests/test-all.R’ failed.
 Last 13 lines of output:
   Error in signalCondition(e) : 
@@ -3724,16 +3702,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 9:03:14 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-Jun 17, 2017 9:03:15 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Jun 17, 2017 10:26:43 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
