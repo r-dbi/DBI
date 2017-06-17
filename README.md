@@ -1,6 +1,6 @@
 # DBI
 
-[![Build Status](https://travis-ci.org/rstats-db/DBI.png?branch=master)](https://travis-ci.org/rstats-db/DBI) [![Coverage Status](https://img.shields.io/codecov/c/github/rstats-db/DBI/master.svg)](https://codecov.io/github/rstats-db/DBI?branch=master) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
+[![Build Status](https://travis-ci.org/rstats-db/DBI.png?branch=master)](https://travis-ci.org/rstats-db/DBI) [![Coverage Status](https://codecov.io/gh/rstats-db/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/rstats-db/DBI?branch=master) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 
 The DBI package defines a common interface between the R and database management systems (DBMS).  The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](http://dbi.perl.org/), Java's [JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html), Python's [DB-API](http://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](http://en.wikipedia.org/wiki/ODBC). It defines a set of classes and methods defines what operations are possible and how they are performed:
 
