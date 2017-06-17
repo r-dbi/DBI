@@ -1,5 +1,5 @@
 Package: DBI
-Version: 0.6-14
+Version: 0.7
 Date: 2017-06-17
 Title: R Database Interface
 Description: A database interface definition for communication
