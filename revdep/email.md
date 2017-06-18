@@ -1,7 +1,7 @@
 Hi
 
 
-This is an automated email to let you know about the upcoming release of {{{my_package}}} (version {{{my_version}}}), which will be submitted to CRAN on {{{ date }}}. (The already announced release of RSQLite will be postponed.) To check for potential problems, I ran `R CMD check` on your package {{{your_package}}} (version {{{your_version}}}).
+This is an automated email to let you know about the upcoming release of {{{my_package}}} (version {{{my_version}}}), which will be submitted to CRAN on {{{ date }}}. To check for potential problems, I ran `R CMD check` on your package {{{your_package}}} (version {{{your_version}}}).
 
 I found: {{{your_summary}}}{{#you_have_problems}}, see detailed results at the end of the message{{/you_have_problems}}.
 
