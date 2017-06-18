@@ -14,19 +14,18 @@
 
 ## Packages
 
-|package   |*  |version |date       |source                          |
-|:---------|:--|:-------|:----------|:-------------------------------|
-|blob      |   |1.1.0   |2017-06-17 |Github (tidyverse/blob@9dd54d9) |
-|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                   |
-|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df)  |
-|hms       |   |0.3     |2016-11-22 |cran (@0.3)                     |
-|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                    |
-|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                  |
-|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                     |
-|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                     |
-|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                  |
-|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                   |
-|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                   |
+|package   |*  |version |date       |source                         |
+|:---------|:--|:-------|:----------|:------------------------------|
+|covr      |   |2.2.2   |2017-01-05 |cran (@2.2.2)                  |
+|DBI       |   |0.6-14  |2017-06-17 |Github (rstats-db/DBI@0f390df) |
+|hms       |   |0.3     |2016-11-22 |cran (@0.3)                    |
+|knitr     |   |1.16    |2017-05-18 |cran (@1.16)                   |
+|magrittr  |   |1.5     |2014-11-22 |CRAN (R 3.4.0)                 |
+|rmarkdown |   |1.6     |2017-06-15 |cran (@1.6)                    |
+|rprojroot |   |1.2     |2017-01-16 |cran (@1.2)                    |
+|RSQLite   |   |1.1-2   |2017-01-08 |CRAN (R 3.4.0)                 |
+|testthat  |   |1.0.2   |2016-04-23 |cran (@1.0.2)                  |
+|xml2      |   |1.1.1   |2017-01-24 |cran (@1.1.1)                  |
 
 # Check results
 
@@ -518,7 +517,7 @@ Maintainer: Bioconductor Package Maintainer <maintainer@bioconductor.org>
 
 ```
 checking tests ... ERROR
-  Running ‘AnnotationHubData_unit_tests.R’ [68s/144s]
+  Running ‘AnnotationHubData_unit_tests.R’ [69s/158s]
 Running the tests in ‘tests/AnnotationHubData_unit_tests.R’ failed.
 Last 13 lines of output:
   
@@ -600,9 +599,9 @@ Bug reports: https://github.com/HenrikBengtsson/aroma.affymetrix/issues
 
 ```
 checking tests ... ERROR
-  Running ‘001.setupExampleData,annotationData.R’ [10s/10s]
+  Running ‘001.setupExampleData,annotationData.R’ [10s/11s]
   Running ‘002.setupExampleData,rawData.R’
-  Running ‘AffymetrixCdfFile.R’
+  Running ‘AffymetrixCdfFile.R’ [10s/11s]
   Running ‘AffymetrixCelFile.R’
   Running ‘AffymetrixCelSet.R’
 Running the tests in ‘tests/AffymetrixCelSet.R’ failed.
@@ -1218,7 +1217,7 @@ Last 13 lines of output:
   downloaded 11 KB
   
   trying URL 'http://www.nytimes.com'
-  Content type 'text/html; charset=utf-8' length 227072 bytes (221 KB)
+  Content type 'text/html; charset=utf-8' length 226326 bytes (221 KB)
   ==================================================
   downloaded 221 KB
   
@@ -2037,7 +2036,7 @@ Bug reports: https://github.com/aaronwolen/mimager/issues
 
 ```
 checking tests ... ERROR
-  Running ‘testthat.R’ [62s/66s]
+  Running ‘testthat.R’ [62s/67s]
 Running the tests in ‘tests/testthat.R’ failed.
 Last 13 lines of output:
     ^~~
@@ -2671,7 +2670,7 @@ The error most likely occurred in:
 > temp.db.file <- tempfile()
 > write(sim.bux.lines, file=temp.file)
 > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-Processing /tmp/RtmpOzzZOO/file191622a45aeb in chunks of 10000
+Processing /tmp/Rtmpb6wiUQ/filea46d2cc7ef5 in chunks of 10000
 Starting chunk 1
 Reached breakpoint change
 Processing breakpoint 1
@@ -2681,7 +2680,7 @@ Calls: parse.buxco ... write.sample.breaks -> write.sample.db -> sanity.check.ti
 Execution halted
 
 checking tests ... ERROR
-  Running ‘runTests.R’ [24s/25s]
+  Running ‘runTests.R’ [25s/25s]
 Running the tests in ‘tests/runTests.R’ failed.
 Last 13 lines of output:
   Test files with failing tests
@@ -2697,7 +2696,7 @@ Last 13 lines of output:
     unit tests failed for package plethy
   In addition: Warning message:
   In .Internal(gc(verbose, reset)) :
-    closing unused connection 3 (/tmp/RtmpLRUjJg/file19d116401b0d)
+    closing unused connection 3 (/tmp/RtmplXQjGw/filea571359afb4d)
   Execution halted
 
 checking dependencies in R code ... NOTE
@@ -3262,7 +3261,7 @@ The error most likely occurred in:
 + }
 character
 Processing: Transcripts_ce10_chrI_100Kb.bed @ GSM1208360_chrI_100Kb_q5_sample.bw [ 1 / 2 ]
-Error in scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  : 
+Error in scan(file, what = "", sep = sep, quote = quote, nlines = 1, quiet = TRUE,  : 
   invalid connection
 Calls: getPlotSetArray ... .supportedSeqnameMappings -> lapply -> lapply -> FUN -> scan
 Error in close.connection(file) : invalid connection
@@ -3702,16 +3701,16 @@ checking re-building of vignette outputs ... WARNING
 Error in re-building vignettes:
   ...
 INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetData/QNA/CAN+USA+MEX.B1_GE.CARSA.Q?format=compact_v2
-Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:56 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-Jun 17, 2017 10:26:42 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
 INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
 ... 8 lines ...
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-Jun 17, 2017 10:26:43 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+Jun 17, 2017 8:07:57 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
 INFO: The sdmx call returned messages in the footer:
  Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
 
