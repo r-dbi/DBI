@@ -349,13 +349,15 @@ setGeneric("dbReadTable",
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbReadTable", c("DBIConnection", "character"),
-  function(conn, name, ..., row.names = NA, check.names = TRUE) {
+  function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
     sql_name <- dbQuoteIdentifier(conn, x = name, ...)
     if (length(sql_name) != 1L) {
       stop("Invalid name: ", format(name), call. = FALSE)
     }
-    stopifnot(length(row.names) == 1L)
-    stopifnot(is.null(row.names) || is.logical(row.names) || is.character(row.names))
+    if (!is.null(row.names)) {
+      stopifnot(length(row.names) == 1L)
+      stopifnot(is.logical(row.names) || is.character(row.names))
+    }
     stopifnot(length(check.names) == 1L)
     stopifnot(is.logical(check.names))
     stopifnot(!is.na(check.names))
