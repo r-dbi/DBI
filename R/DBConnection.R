@@ -294,6 +294,18 @@ setGeneric("dbListFields",
   valueClass = "character"
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbListFields", c("DBIConnection", "character"),
+  function(conn, name, ...) {
+    rs <- dbSendQuery(conn, paste("SELECT * FROM ",
+                                  dbQuoteIdentifier(conn, name), "LIMIT 0"))
+    on.exit(dbClearResult(rs))
+
+    names(dbFetch(rs, n = 0, row.names = FALSE))
+  }
+)
+
 #' List remote tables
 #'
 #' Returns the unquoted names of remote tables accessible through this
