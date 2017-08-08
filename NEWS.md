@@ -1,3 +1,8 @@
+## DBI 0.7-11 (2017-08-08)
+
+- The default implementation of `dbReadTable()` now has `row.names = FALSE` as default and also supports `row.names = NULL` (#186).
+
+
 # DBI 0.7 (2017-06-17)
 
 - Import updated specs from `DBItest`.

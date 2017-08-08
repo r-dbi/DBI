@@ -51,7 +51,7 @@
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
-  row.names = NA, check.names = TRUE)
+  row.names = FALSE, check.names = TRUE)
 
 \S4method{show}{AnsiConnection}(object)
 
