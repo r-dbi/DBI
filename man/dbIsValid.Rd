@@ -19,6 +19,8 @@ or a \linkS4class{DBIResult}}
 \code{FALSE} otherwise.
 A \linkS4class{DBIConnection} object is initially valid,
 and becomes invalid after disconnecting with \code{\link[=dbDisconnect]{dbDisconnect()}}.
+For an invalid connection object (e.g., for some drivers if the object
+is saved to a file and then restored), the method also returns \code{FALSE}.
 A \linkS4class{DBIResult} object is valid after a call to \code{\link[=dbSendQuery]{dbSendQuery()}},
 and stays valid even after all rows have been fetched;
 only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
