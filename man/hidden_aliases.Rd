@@ -11,6 +11,7 @@
 \alias{dbSendStatement,DBIConnection,character-method}
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbExecute,DBIConnection,character-method}
+\alias{dbListFields,DBIConnection,character-method}
 \alias{dbReadTable,DBIConnection,character-method}
 \alias{show,AnsiConnection-method}
 \alias{show,DBIResult-method}
@@ -49,6 +50,8 @@
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
 
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
+
+\S4method{dbListFields}{DBIConnection,character}(conn, name, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
   row.names = FALSE, check.names = TRUE)
