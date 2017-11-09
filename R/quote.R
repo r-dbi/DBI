@@ -95,7 +95,8 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
     if (any(is.na(x))) {
       stop("Cannot pass NA to dbQuoteIdentifier()", call. = FALSE)
     }
-    x <- gsub('"', '""', enc2utf8(x), fixed = TRUE, useBytes = TRUE)
+    # Avoid fixed = TRUE due to https://github.com/r-dbi/DBItest/issues/156
+    x <- gsub('"', '""', enc2utf8(x))
     if (length(x) == 0L) {
       SQL(character())
     } else {
@@ -152,7 +153,8 @@ setGeneric("dbQuoteString",
 #' @export
 setMethod("dbQuoteString", c("DBIConnection", "character"),
   function(conn, x, ...) {
-    x <- gsub("'", "''", enc2utf8(x), fixed = TRUE, useBytes = TRUE)
+    # Avoid fixed = TRUE due to https://github.com/r-dbi/DBItest/issues/156
+    x <- gsub("'", "''", enc2utf8(x))
 
     if (length(x) == 0L) {
       SQL(character())
