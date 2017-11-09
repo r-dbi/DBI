@@ -90,8 +90,14 @@ setGeneric("dbQuoteIdentifier",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
+setMethod("dbQuoteIdentifier", "DBIConnection",
   function(conn, x, ...) {
+    if (is(x, "SQL")) return(x)
+    if (is(x, "Table")) {
+      return(SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = ".")))
+    }
+    if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
+
     if (any(is.na(x))) {
       stop("Cannot pass NA to dbQuoteIdentifier()", call. = FALSE)
     }
@@ -103,14 +109,6 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "character"),
       # Not calling encodeString() here to keep things simple
       SQL(paste('"', x, '"', sep = ""))
     }
-  }
-)
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"),
-  function(conn, x, ...) {
-    x
   }
 )
 
@@ -151,8 +149,11 @@ setGeneric("dbQuoteString",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection", "character"),
+setMethod("dbQuoteString", "DBIConnection",
   function(conn, x, ...) {
+    if (is(x, "SQL")) return(x)
+    if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
+
     # Avoid fixed = TRUE due to https://github.com/r-dbi/DBItest/issues/156
     x <- gsub("'", "''", enc2utf8(x))
 
@@ -165,14 +166,6 @@ setMethod("dbQuoteString", c("DBIConnection", "character"),
       str[is.na(x)] <- "NULL"
       SQL(str)
     }
-  }
-)
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteString", c("DBIConnection", "SQL"),
-  function(conn, x, ...) {
-    x
   }
 )
 
