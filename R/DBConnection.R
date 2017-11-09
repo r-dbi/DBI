@@ -106,6 +106,15 @@ setGeneric("dbSendQuery",
   valueClass = "DBIResult"
 )
 
+#' @rdname hidden_aliases
+#' @export
+#' @include sql.R
+setMethod("dbSendQuery", signature("DBIConnection", "SQL"),
+  function(conn, statement, ...) {
+    dbSendQuery(conn, as.character(statement), ...)
+  }
+)
+
 #' Execute a data manipulation statement on a given database connection
 #'
 #' The `dbSendStatement()` method only submits and synchronously executes the
@@ -148,10 +157,18 @@ setGeneric("dbSendStatement",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod(
-  "dbSendStatement", signature("DBIConnection", "character"),
+setMethod("dbSendStatement", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
     dbSendQuery(conn, statement, ...)
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+#' @include sql.R
+setMethod("dbSendStatement", signature("DBIConnection", "SQL"),
+  function(conn, statement, ...) {
+    dbSendStatement(conn, as.character(statement), ...)
   }
 )
 
@@ -205,6 +222,15 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
   }
 )
 
+#' @rdname hidden_aliases
+#' @export
+#' @include sql.R
+setMethod("dbGetQuery", signature("DBIConnection", "SQL"),
+  function(conn, statement, ...) {
+    dbGetQuery(conn, as.character(statement), ...)
+  }
+)
+
 #' Execute an update statement, query number of rows affected, and then close result set
 #'
 #' Executes a statement and returns the number of rows affected.
@@ -240,12 +266,20 @@ setGeneric("dbExecute",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod(
-  "dbExecute", signature("DBIConnection", "character"),
+setMethod("dbExecute", signature("DBIConnection", "character"),
   function(conn, statement, ...) {
     rs <- dbSendStatement(conn, statement, ...)
     on.exit(dbClearResult(rs))
     dbGetRowsAffected(rs)
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+#' @include sql.R
+setMethod("dbExecute", signature("DBIConnection", "SQL"),
+  function(conn, statement, ...) {
+    dbExecute(conn, as.character(statement), ...)
   }
 )
 
