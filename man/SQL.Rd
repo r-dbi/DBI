@@ -4,9 +4,21 @@
 \name{SQL}
 \alias{SQL}
 \alias{SQL-class}
+\alias{as.character.SQL}
+\alias{length.SQL}
+\alias{[.SQL}
+\alias{[[.SQL}
 \title{SQL quoting}
 \usage{
 SQL(x)
+
+\method{as.character}{SQL}(x)
+
+\method{length}{SQL}(x)
+
+\method{[}{SQL}(x, i)
+
+\method{[[}{SQL}(x, i)
 }
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}

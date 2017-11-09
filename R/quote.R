@@ -40,18 +40,38 @@ NULL
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteString(ANSI(), dbQuoteString(ANSI(), "SELECT"))
-SQL <- function(x) new("SQL", x)
+SQL <- function(x) new("SQL", value = x)
 
 #' @rdname SQL
 #' @export
 #' @aliases
 #'   SQL-class
-setClass("SQL", contains = "character")
+setClass("SQL", slots = c(value = "character"))
+
+#' @rdname SQL
+#' @export
+as.character.SQL <- function(x) x@value
+
+#' @rdname SQL
+#' @export
+length.SQL <- function(x) length(as.character(x))
+
+#' @rdname SQL
+#' @export
+`[.SQL` <- function(x, i) SQL(as.character(x)[i])
+
+#' @rdname SQL
+#' @export
+`[[.SQL` <- function(x, i) SQL(as.character(x)[[i]])
+
+#' @rdname SQL
+#' @export
+`c.SQL` <- function(x, ...) SQL(c(as.character(x), as.character(c(...))))
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("show", "SQL", function(object) {
-  cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
+  cat(paste0("<SQL> ", object, collapse = "\n"), "\n", sep = "")
 })
 
 
