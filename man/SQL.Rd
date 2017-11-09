@@ -8,6 +8,7 @@
 \alias{length.SQL}
 \alias{[.SQL}
 \alias{[[.SQL}
+\alias{c.SQL}
 \title{SQL quoting}
 \usage{
 SQL(x)
@@ -19,6 +20,8 @@ SQL(x)
 \method{[}{SQL}(x, i)
 
 \method{[[}{SQL}(x, i)
+
+\method{c}{SQL}(x, ...)
 }
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}

@@ -3,6 +3,7 @@
 S3method("[",SQL)
 S3method("[[",SQL)
 S3method(as.character,SQL)
+S3method(c,SQL)
 S3method(length,SQL)
 export(.SQL92Keywords)
 export(ANSI)
