@@ -72,18 +72,25 @@ A column named \code{row_names} is treated like any other column.
 
 The column types of the returned data frame depend on the data returned:
 \itemize{
-\item \link{integer} for integer values between -2^31 and 2^31 - 1
-\item \link{numeric} for numbers with a fractional component
-\item \link{logical} for Boolean values (some backends may return an integer)
-\item \link{character} for text
-\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
-\item coercible using \code{\link[=as.Date]{as.Date()}} for dates
+\item \link{integer} (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
+with \link{NA} for SQL \code{NULL} values
+\item \link{numeric} for numbers with a fractional component,
+with NA for SQL \code{NULL} values
+\item \link{logical} for Boolean values (some backends may return an integer);
+with NA for SQL \code{NULL} values
+\item \link{character} for text,
+with NA for SQL \code{NULL} values
+\item lists of \link{raw} for blobs
+with \link{NULL} entries for SQL NULL values
+\item coercible using \code{\link[=as.Date]{as.Date()}} for dates,
+with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_date})
-\item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times
+\item coercible using \code{\link[hms:as.hms]{hms::as.hms()}} for times,
+with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_time})
-\item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps
+\item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps,
+with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_timestamp})
-\item \link{NA} for SQL \code{NULL} values
 }
 
 If dates and timestamps are supported by the backend, the following R types are

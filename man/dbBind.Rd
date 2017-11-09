@@ -135,12 +135,11 @@ for both queries
 and data manipulation statements,
 even if no results are fetched between calls to \code{dbBind()}.
 
-At least the following data types are accepted:
+At least the following data types are accepted on input (including \link{NA}):
 \itemize{
 \item \link{integer}
 \item \link{numeric}
-\item \link{logical} for Boolean values (some backends may return an integer)
-\item \link{NA}
+\item \link{logical} for Boolean values
 \item \link{character}
 \item \link{factor} (bound as character,
 with warning)
