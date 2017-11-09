@@ -33,6 +33,7 @@ BugReports: https://github.com/rstats-db/DBI/issues
 Collate: 
     'DBObject.R'
     'DBDriver.R'
+    'sql.R'
     'DBConnection.R'
     'ANSI.R'
     'DBI-package.R'
