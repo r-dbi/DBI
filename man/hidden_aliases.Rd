@@ -30,6 +30,7 @@
 \alias{dbQuoteIdentifier,DBIConnection,SQL-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
+\alias{dbQuoteLiteral,DBIConnection-method}
 \alias{sqlCreateTable,DBIConnection-method}
 \alias{sqlAppendTable,DBIConnection-method}
 \alias{dbQuoteIdentifier,DBIConnection,Table-method}
@@ -89,6 +90,8 @@
 \S4method{dbQuoteString}{DBIConnection,character}(conn, x, ...)
 
 \S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
+
+\S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
 \S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
   temporary = FALSE, ...)
