@@ -49,7 +49,7 @@ existing code. Modern backends should implement for \code{dbFetch()} only.
 
 
 Fetching multi-row queries with one
-or more columns be default returns the entire result.
+or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
 by passing a whole number (\link{integer}
 or \link{numeric})
