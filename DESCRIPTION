@@ -27,9 +27,9 @@ Suggests:
     xml2
 Encoding: UTF-8
 License: LGPL (>= 2)
-URL: http://rstats-db.github.io/DBI
-URLNote: https://github.com/rstats-db/DBI
-BugReports: https://github.com/rstats-db/DBI/issues
+URL: http://r-dbi.github.io/DBI
+URLNote: https://github.com/r-dbi/DBI
+BugReports: https://github.com/r-dbi/DBI/issues
 Collate: 
     'DBObject.R'
     'DBDriver.R'
