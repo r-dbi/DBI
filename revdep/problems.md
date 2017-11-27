@@ -354,7 +354,7 @@ Version: 1.26.0
 
 Version: 1.6.2
 
-## Newly fixed
+## Newly broken
 
 *   checking tests ...
     ```
@@ -441,7 +441,7 @@ Version: 1.6.2
 
 # archivist
 
-Version: 2.1.2
+Version: 2.2
 
 ## In both
 
@@ -1501,9 +1501,9 @@ Version: 0.7.4
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 32.9Mb
+      installed size is 33.0Mb
       sub-directories of 1Mb or more:
-        libs  31.0Mb
+        libs  31.1Mb
     ```
 
 *   checking data for non-ASCII characters ... NOTE
@@ -3057,6 +3057,32 @@ Version: 8.6.0
 
 ## In both
 
+*   checking examples ... ERROR
+    ```
+    ...
+    +     got <- xx[[1]]           
+    +     got[[1]][["GOID"]]
+    +     got[[1]][["Ontology"]]
+    +     got[[1]][["Evidence"]]
+    + }
+    [1] "IBA"
+    > # For the reverse map:
+    > # Convert to a list
+    > xx <- as.list(hta20probesetGO2PROBE)
+    > if(length(xx) > 0){
+    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
+    +     goids <- xx[2:3]
+    +     # Gets the manufacturer ids for the first element of goids
+    +     goids[[1]]
+    +     # Evidence code for the mappings
+    +     names(goids[[1]])
+    + }
+    NULL
+    > # Convert hta20probesetGO2ALLPROBES to a list
+    > xx <- as.list(hta20probesetGO2ALLPROBES)
+    Killed
+    ```
+
 *   checking installed package size ... NOTE
     ```
       installed size is 302.3Mb
@@ -3345,34 +3371,6 @@ Version: 3.2.3
 
 Version: 8.6.0
 
-## Newly broken
-
-*   checking examples ... ERROR
-    ```
-    ...
-    +     got <- xx[[1]]           
-    +     got[[1]][["GOID"]]
-    +     got[[1]][["Ontology"]]
-    +     got[[1]][["Evidence"]]
-    + }
-    [1] "IMP"
-    > # For the reverse map:
-    > # Convert to a list
-    > xx <- as.list(huex10stprobesetGO2PROBE)
-    > if(length(xx) > 0){
-    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
-    +     goids <- xx[2:3]
-    +     # Gets the manufacturer ids for the first element of goids
-    +     goids[[1]]
-    +     # Evidence code for the mappings
-    +     names(goids[[1]])
-    + }
-     [1] "IEP" "IEP" "IEP" "IEP" "IEP" "IEP" "IEP" "IEP" "IEP" "IEP"
-    > # Convert huex10stprobesetGO2ALLPROBES to a list
-    > xx <- as.list(huex10stprobesetGO2ALLPROBES)
-    Killed
-    ```
-
 ## In both
 
 *   checking installed package size ... NOTE
@@ -3455,32 +3453,6 @@ Version: 8.6.0
 
 ## In both
 
-*   checking examples ... ERROR
-    ```
-    ...
-    +     got <- xx[[1]]           
-    +     got[[1]][["GOID"]]
-    +     got[[1]][["Ontology"]]
-    +     got[[1]][["Evidence"]]
-    + }
-    [1] "IBA"
-    > # For the reverse map:
-    > # Convert to a list
-    > xx <- as.list(hugene10stprobesetGO2PROBE)
-    > if(length(xx) > 0){
-    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
-    +     goids <- xx[2:3]
-    +     # Gets the manufacturer ids for the first element of goids
-    +     goids[[1]]
-    +     # Evidence code for the mappings
-    +     names(goids[[1]])
-    + }
-    [1] "IEP" "IEP"
-    > # Convert hugene10stprobesetGO2ALLPROBES to a list
-    > xx <- as.list(hugene10stprobesetGO2ALLPROBES)
-    Killed
-    ```
-
 *   checking installed package size ... NOTE
     ```
       installed size is 118.4Mb
@@ -3560,32 +3532,6 @@ Version: 8.6.0
 Version: 8.6.0
 
 ## In both
-
-*   checking examples ... ERROR
-    ```
-    ...
-    +     got <- xx[[1]]           
-    +     got[[1]][["GOID"]]
-    +     got[[1]][["Ontology"]]
-    +     got[[1]][["Evidence"]]
-    + }
-    [1] "IBA"
-    > # For the reverse map:
-    > # Convert to a list
-    > xx <- as.list(hugene11stprobesetGO2PROBE)
-    > if(length(xx) > 0){
-    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
-    +     goids <- xx[2:3]
-    +     # Gets the manufacturer ids for the first element of goids
-    +     goids[[1]]
-    +     # Evidence code for the mappings
-    +     names(goids[[1]])
-    + }
-    [1] "IEP" "IEP"
-    > # Convert hugene11stprobesetGO2ALLPROBES to a list
-    > xx <- as.list(hugene11stprobesetGO2ALLPROBES)
-    Killed
-    ```
 
 *   checking installed package size ... NOTE
     ```
@@ -3746,32 +3692,6 @@ Version: 8.6.0
 Version: 8.6.0
 
 ## In both
-
-*   checking examples ... ERROR
-    ```
-    ...
-    +     got <- xx[[1]]           
-    +     got[[1]][["GOID"]]
-    +     got[[1]][["Ontology"]]
-    +     got[[1]][["Evidence"]]
-    + }
-    [1] "IBA"
-    > # For the reverse map:
-    > # Convert to a list
-    > xx <- as.list(hugene21stprobesetGO2PROBE)
-    > if(length(xx) > 0){
-    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
-    +     goids <- xx[2:3]
-    +     # Gets the manufacturer ids for the first element of goids
-    +     goids[[1]]
-    +     # Evidence code for the mappings
-    +     names(goids[[1]])
-    + }
-    [1] "IEP" "IEP"
-    > # Convert hugene21stprobesetGO2ALLPROBES to a list
-    > xx <- as.list(hugene21stprobesetGO2ALLPROBES)
-    Killed
-    ```
 
 *   checking installed package size ... NOTE
     ```
@@ -5611,6 +5531,32 @@ Version: 8.6.0
 
 ## In both
 
+*   checking examples ... ERROR
+    ```
+    ...
+    +     got[[1]][["Ontology"]]
+    +     got[[1]][["Evidence"]]
+    + }
+    [1] "IMP"
+    > # For the reverse map:
+    > # Convert to a list
+    > xx <- as.list(mta10probesetGO2PROBE)
+    > if(length(xx) > 0){
+    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
+    +     goids <- xx[2:3]
+    +     # Gets the manufacturer ids for the first element of goids
+    +     goids[[1]]
+    +     # Evidence code for the mappings
+    +     names(goids[[1]])
+    + }
+     [1] "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA"
+    [13] "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA"
+    [25] "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA" "IBA"
+    > # Convert mta10probesetGO2ALLPROBES to a list
+    > xx <- as.list(mta10probesetGO2ALLPROBES)
+    Killed
+    ```
+
 *   checking installed package size ... NOTE
     ```
       installed size is 146.2Mb
@@ -6057,7 +6003,7 @@ Version: 1.1.3
 
 *   checking installed package size ... NOTE
     ```
-      installed size is  6.0Mb
+      installed size is  6.1Mb
       sub-directories of 1Mb or more:
         libs   5.7Mb
     ```
@@ -10305,7 +10251,7 @@ Version: 3.12.2
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 770.8Mb
+      installed size is 770.9Mb
       sub-directories of 1Mb or more:
         data      42.8Mb
         extdata  727.9Mb
@@ -12497,7 +12443,7 @@ Version: 3.12.0
 
 *   checking installed package size ... NOTE
     ```
-      installed size is 52.1Mb
+      installed size is 52.0Mb
       sub-directories of 1Mb or more:
         data      4.3Mb
         extdata  47.6Mb
@@ -12561,6 +12507,141 @@ Version: 3.12.0
       for when this namespace is loaded but not attached.
     ```
 
+# pd.rabgene.1.1.st
+
+Version: 3.12.0
+
+## In both
+
+*   checking whether the namespace can be unloaded cleanly ... WARNING
+    ```
+    ---- unloading
+    Warning message:
+    .onUnload failed in unloadNamespace() for 'pd.rabgene.1.1.st', details:
+      call: rsqlite_connection_valid(dbObj@ptr)
+      error: external pointer is not valid 
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Depends: includes the non-default packages:
+      ‘Biostrings’ ‘RSQLite’ ‘oligoClasses’ ‘oligo’ ‘DBI’ ‘IRanges’
+      ‘S4Vectors’
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 63.4Mb
+      sub-directories of 1Mb or more:
+        data      3.7Mb
+        extdata  59.6Mb
+    ```
+
+*   checking DESCRIPTION meta-information ... NOTE
+    ```
+    Malformed Description field: should contain one or more complete sentences.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Packages in Depends field not imported from:
+      ‘IRanges’ ‘methods’ ‘oligo’ ‘oligoClasses’
+      These packages need to be imported from (in the NAMESPACE file)
+      for when this namespace is loaded but not attached.
+    ```
+
+# pd.rae230a
+
+Version: 3.12.0
+
+## In both
+
+*   checking whether the namespace can be unloaded cleanly ... WARNING
+    ```
+    ---- unloading
+    Warning message:
+    .onUnload failed in unloadNamespace() for 'pd.rae230a', details:
+      call: rsqlite_connection_valid(dbObj@ptr)
+      error: external pointer is not valid 
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Depends: includes the non-default packages:
+      ‘Biostrings’ ‘RSQLite’ ‘oligoClasses’ ‘oligo’ ‘DBI’ ‘IRanges’
+      ‘S4Vectors’
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 12.1Mb
+      sub-directories of 1Mb or more:
+        data      1.2Mb
+        extdata  10.8Mb
+    ```
+
+*   checking DESCRIPTION meta-information ... NOTE
+    ```
+    Malformed Description field: should contain one or more complete sentences.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Packages in Depends field not imported from:
+      ‘IRanges’ ‘methods’ ‘oligo’ ‘oligoClasses’
+      These packages need to be imported from (in the NAMESPACE file)
+      for when this namespace is loaded but not attached.
+    ```
+
+# pd.rae230b
+
+Version: 3.12.0
+
+## In both
+
+*   checking whether the namespace can be unloaded cleanly ... WARNING
+    ```
+    ---- unloading
+    Warning message:
+    .onUnload failed in unloadNamespace() for 'pd.rae230b', details:
+      call: rsqlite_connection_valid(dbObj@ptr)
+      error: external pointer is not valid 
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Depends: includes the non-default packages:
+      ‘Biostrings’ ‘RSQLite’ ‘oligoClasses’ ‘oligo’ ‘DBI’ ‘IRanges’
+      ‘S4Vectors’
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 11.7Mb
+      sub-directories of 1Mb or more:
+        data      1.2Mb
+        extdata  10.4Mb
+    ```
+
+*   checking DESCRIPTION meta-information ... NOTE
+    ```
+    Malformed Description field: should contain one or more complete sentences.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Packages in Depends field not imported from:
+      ‘IRanges’ ‘methods’ ‘oligo’ ‘oligoClasses’
+      These packages need to be imported from (in the NAMESPACE file)
+      for when this namespace is loaded but not attached.
+    ```
+
 # pd.raex.1.0.st.v1
 
 Version: 3.14.1
@@ -12591,6 +12672,51 @@ Version: 3.14.1
       sub-directories of 1Mb or more:
         data      25.4Mb
         extdata  307.7Mb
+    ```
+
+*   checking DESCRIPTION meta-information ... NOTE
+    ```
+    Malformed Description field: should contain one or more complete sentences.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Packages in Depends field not imported from:
+      ‘IRanges’ ‘methods’ ‘oligo’ ‘oligoClasses’
+      These packages need to be imported from (in the NAMESPACE file)
+      for when this namespace is loaded but not attached.
+    ```
+
+# pd.ragene.1.0.st.v1
+
+Version: 3.14.1
+
+## In both
+
+*   checking whether the namespace can be unloaded cleanly ... WARNING
+    ```
+    ---- unloading
+    Warning message:
+    .onUnload failed in unloadNamespace() for 'pd.ragene.1.0.st.v1', details:
+      call: rsqlite_connection_valid(dbObj@ptr)
+      error: external pointer is not valid 
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
+    Depends: includes the non-default packages:
+      ‘Biostrings’ ‘RSQLite’ ‘oligoClasses’ ‘oligo’ ‘DBI’ ‘IRanges’
+      ‘S4Vectors’
+    Adding so many packages to the search path is excessive and importing
+    selectively is preferable.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 80.4Mb
+      sub-directories of 1Mb or more:
+        data      5.3Mb
+        extdata  75.0Mb
     ```
 
 *   checking DESCRIPTION meta-information ... NOTE
@@ -13765,18 +13891,43 @@ Version: 3.12.0
 
 ## In both
 
-*   checking package dependencies ... ERROR
+*   checking whether the namespace can be unloaded cleanly ... WARNING
     ```
-    Package required but not available: ‘RSQLite’
-    
+    ---- unloading
+    Warning message:
+    .onUnload failed in unloadNamespace() for 'pd.u133.x3p', details:
+      call: rsqlite_connection_valid(dbObj@ptr)
+      error: external pointer is not valid 
+    ```
+
+*   checking package dependencies ... NOTE
+    ```
     Depends: includes the non-default packages:
       ‘Biostrings’ ‘RSQLite’ ‘oligoClasses’ ‘oligo’ ‘DBI’ ‘IRanges’
       ‘S4Vectors’
     Adding so many packages to the search path is excessive and importing
     selectively is preferable.
-    
-    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-    manual.
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is 46.4Mb
+      sub-directories of 1Mb or more:
+        data      3.8Mb
+        extdata  42.4Mb
+    ```
+
+*   checking DESCRIPTION meta-information ... NOTE
+    ```
+    Malformed Description field: should contain one or more complete sentences.
+    ```
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Packages in Depends field not imported from:
+      ‘IRanges’ ‘methods’ ‘oligo’ ‘oligoClasses’
+      These packages need to be imported from (in the NAMESPACE file)
+      for when this namespace is loaded but not attached.
     ```
 
 # pd.vitis.vinifera
@@ -14403,7 +14554,7 @@ Version: 1.14.0
     > temp.db.file <- tempfile()
     > write(sim.bux.lines, file=temp.file)
     > test.bux.db <- parse.buxco(file.name=temp.file, db.name=temp.db.file, chunk.size=10000)
-    Processing /home/muelleki/tmp/RtmpM7WPrJ/file2080370a0ce5 in chunks of 10000
+    Processing /home/muelleki/tmp/Rtmp2oiYlZ/file1c67b17284ced in chunks of 10000
     Starting chunk 1
     Reached breakpoint change
     Processing breakpoint 1
@@ -14431,7 +14582,7 @@ Version: 1.14.0
         unit tests failed for package plethy
       In addition: Warning message:
       In .Internal(gc(verbose, reset)) :
-        closing unused connection 3 (/home/muelleki/tmp/Rtmpe6E1Rc/file29c91754c10f)
+        closing unused connection 3 (/home/muelleki/tmp/RtmpalOI5s/file1c7bb7be2fc24)
       Execution halted
     ```
 
@@ -15088,6 +15239,41 @@ Version: 3.2.3
     See section ‘Good practice’ in '?.onAttach'.
     ```
 
+# RClickhouse
+
+Version: 0.3.0
+
+## In both
+
+*   checking tests ...
+    ```
+     ERROR
+    Running the tests in ‘tests/testthat.R’ failed.
+    Last 13 lines of output:
+      3. Error: correct conversion of logical values in dplyr (#15) (@test-regr-15.R#9) 
+      fail to connect: Connection refused
+      1: dbConnect(RClickhouse::clickhouse(), host = serveraddr) at testthat/test-regr-15.R:9
+      2: dbConnect(RClickhouse::clickhouse(), host = serveraddr)
+      3: .local(drv, ...)
+      4: connect(host, port, db, user, password, compression)
+      
+      testthat results ================================================================
+      OK: 0 SKIPPED: 0 FAILED: 3
+      1. Error: reading & writing array columns (@test-array.R#9) 
+      2. Error: array columns with empty entries (@test-array.R#30) 
+      3. Error: correct conversion of logical values in dplyr (#15) (@test-regr-15.R#9) 
+      
+      Error: testthat unit tests failed
+      Execution halted
+    ```
+
+*   checking installed package size ... NOTE
+    ```
+      installed size is  9.7Mb
+      sub-directories of 1Mb or more:
+        libs   9.5Mb
+    ```
+
 # redcapAPI
 
 Version: 1.3
@@ -15286,15 +15472,6 @@ Version: 3.2.3
 # rgug4130a.db
 
 Version: 3.2.3
-
-## Newly fixed
-
-*   checking replacement functions ... WARNING
-    ```
-    Warning: system call failed: Cannot allocate memory
-    The argument of a replacement function which corresponds to the right
-    hand side must be named ‘value’.
-    ```
 
 ## In both
 
@@ -15667,7 +15844,7 @@ Version: 1.14.0
 *   checking re-building of vignette outputs ... NOTE
     ```
     ...
-    3: max(p.x-p.x.prev)=0.00005
+    3: max(p.x-p.x.prev)=0.00009
     4: max(p.x-p.x.prev)=0.00000
     
     Start roleswitch with 365 miRNA and 11016 mRNA
@@ -15734,7 +15911,7 @@ Version: 0.3-0
 ** preparing package for lazy loading
 R session is headless; GTK+ not initialized.
 
-(R:39192): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
+(R:106687): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
 Error: package or namespace load failed for ‘cairoDevice’:
  .onLoad failed in loadNamespace() for 'cairoDevice', details:
   call: fun(libname, pkgname)
@@ -15754,7 +15931,7 @@ ERROR: lazy loading failed for package ‘RQDA’
 ** preparing package for lazy loading
 R session is headless; GTK+ not initialized.
 
-(R:39178): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
+(R:106680): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
 Error: package or namespace load failed for ‘cairoDevice’:
  .onLoad failed in loadNamespace() for 'cairoDevice', details:
   call: fun(libname, pkgname)
@@ -15808,6 +15985,34 @@ Version: 2.0
 # rta10probeset.db
 
 Version: 8.6.0
+
+## Newly fixed
+
+*   checking examples ... ERROR
+    ```
+    ...
+    + }
+    [1] "ISO"
+    > # For the reverse map:
+    > # Convert to a list
+    > xx <- as.list(rta10probesetGO2PROBE)
+    > if(length(xx) > 0){
+    +     # Gets the manufacturer ids for the top 2nd and 3nd GO identifiers
+    +     goids <- xx[2:3]
+    +     # Gets the manufacturer ids for the first element of goids
+    +     goids[[1]]
+    +     # Evidence code for the mappings
+    +     names(goids[[1]])
+    + }
+     [1] "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS"
+    [13] "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "NAS" "NAS" "NAS" "ISO" "ISS" "ISO"
+    [25] "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO"
+    [37] "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "ISO" "ISS" "NAS" "NAS" "NAS"
+    [49] "NAS"
+    > # Convert rta10probesetGO2ALLPROBES to a list
+    > xx <- as.list(rta10probesetGO2ALLPROBES)
+    Killed
+    ```
 
 ## In both
 
@@ -15930,7 +16135,7 @@ Version: 1.3.4
 
 # seplyr
 
-Version: 0.1.6
+Version: 0.5.0
 
 ## In both
 
@@ -16482,14 +16687,14 @@ Version: 2016.8-1
 *   checking running R code from vignettes ...
     ```
     ...
-    INFO: Contacting web service with query: https://stats.oecd.org/restsdmx/sdmx.ashx/GetDataStructure/QNA
-    Nov 23, 2017 3:08:16 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-    SEVERE: HTTP error code 429 doesn't have a defined SDMX meaning.
-    Nov 23, 2017 3:08:16 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
-    SEVERE: HTTP error code 429 doesn't have a defined SDMX meaning.
+    INFO: The sdmx call returned messages in the footer:
+     Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
+    Nov 27, 2017 8:40:27 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+    INFO: The sdmx call returned messages in the footer:
+     Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
     
       When sourcing ‘Guide.R’:
-    Error: QNA.CAN.B1_GE.CARSA.Q error: it.bancaditalia.oss.sdmx.exceptions.SdmxInvalidParameterException: HTTP error code 429 doesn't have a defined SDMX meaning.
+    Error: ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT error: it.bancaditalia.oss.sdmx.exceptions.SdmxXmlContentException: The query: ei_nama_q.Q.MIO-EUR.NSA.CP.NA-P72.IT did not match any time series on the provider.
     Execution halted
     when running code in ‘GuideAppendix.Stex’
       ...
@@ -16509,18 +16714,18 @@ Version: 2016.8-1
     ```
     ...
     INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/dataflow/ESTAT/ei_nama_q/latest
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
     INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
     INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/datastructure/ESTAT/DSD_ei_nama_q/1.0
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
     INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient runQuery
     INFO: Contacting web service with query: http://ec.europa.eu/eurostat/SDMX/diss-web/rest/data/ESTAT,ei_nama_q,1.0/Q.MIO-EUR.NSA.CP.NA-P72.IT
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
     INFO: The sdmx call returned messages in the footer:
      Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
-    Nov 23, 2017 3:08:24 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
+    Nov 27, 2017 8:40:40 PM it.bancaditalia.oss.sdmx.client.RestSdmxClient getData
     INFO: The sdmx call returned messages in the footer:
      Message [code=400, severity=Error, url=null, text=[Error caused by the caller due to incorrect or semantically invalid arguments]]
     
@@ -16719,7 +16924,7 @@ Version: 2.1.3
 Warning: no DISPLAY variable so Tk is not available
 R session is headless; GTK+ not initialized.
 
-(R:49664): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
+(R:106806): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
 Error : .onLoad failed in loadNamespace() for 'cairoDevice', details:
   call: fun(libname, pkgname)
   error: GDK display not found - please make sure X11 is running
@@ -16738,7 +16943,7 @@ ERROR: lazy loading failed for package ‘vmsbase’
 Warning: no DISPLAY variable so Tk is not available
 R session is headless; GTK+ not initialized.
 
-(R:49651): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
+(R:106792): Gtk-WARNING **: gtk_disable_setlocale() must be called before gtk_init()
 Error : .onLoad failed in loadNamespace() for 'cairoDevice', details:
   call: fun(libname, pkgname)
   error: GDK display not found - please make sure X11 is running

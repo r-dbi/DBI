@@ -9,13 +9,13 @@
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |Zulu                         |
-|date     |2017-11-23                   |
+|date     |2017-11-27                   |
 
 # Dependencies
 
 |package | old|new    |Δ  |
 |:-------|---:|:------|:--|
-|DBI     | 0.7|0.7-12 |*  |
+|DBI     | 0.7|0.7-13 |*  |
 
 # Revdeps
 
@@ -32,12 +32,12 @@
 
 ## Broken (2)
 
-|package                                               |version |error  |warning |note |
-|:-----------------------------------------------------|:-------|:------|:-------|:----|
-|[huex10stprobeset.db](problems.md#huex10stprobesetdb) |8.6.0   |__+1__ |        |4    |
-|[pool](problems.md#pool)                              |0.1.3   |       |__+1__  |     |
+|package                                            |version |error  |warning |note |
+|:--------------------------------------------------|:-------|:------|:-------|:----|
+|[AnnotationHubData](problems.md#annotationhubdata) |1.6.2   |__+1__ |2       |3    |
+|[pool](problems.md#pool)                           |0.1.3   |       |__+1__  |     |
 
-## All (516)
+## All (517)
 
 |package                                                                               |version   |error  |warning |note |
 |:-------------------------------------------------------------------------------------|:---------|:------|:-------|:----|
@@ -52,8 +52,8 @@
 |[AnnotationDbi](problems.md#annotationdbi)                                            |1.38.2    |       |2       |4    |
 |[AnnotationForge](problems.md#annotationforge)                                        |1.18.2    |1      |        |1    |
 |[AnnotationFuncs](problems.md#annotationfuncs)                                        |1.26.0    |       |        |3    |
-|[AnnotationHubData](problems.md#annotationhubdata)                                    |1.6.2     |-1     |2       |3    |
-|[archivist](problems.md#archivist)                                                    |2.1.2     |       |        |2    |
+|[AnnotationHubData](problems.md#annotationhubdata)                                    |1.6.2     |__+1__ |2       |3    |
+|[archivist](problems.md#archivist)                                                    |2.2       |       |        |2    |
 |aroma.affymetrix                                                                      |3.1.0     |       |        |     |
 |[ath1121501.db](problems.md#ath1121501db)                                             |3.2.3     |       |1       |3    |
 |[BatchExperiments](problems.md#batchexperiments)                                      |1.4.1     |       |        |2    |
@@ -152,7 +152,7 @@
 |[hguqiagenv3.db](problems.md#hguqiagenv3db)                                           |3.2.3     |       |        |3    |
 |[Hs6UG171.db](problems.md#hs6ug171db)                                                 |3.2.3     |       |        |3    |
 |[HsAgilentDesign026652.db](problems.md#hsagilentdesign026652db)                       |3.2.3     |       |        |3    |
-|[hta20probeset.db](problems.md#hta20probesetdb)                                       |8.6.0     |       |        |4    |
+|[hta20probeset.db](problems.md#hta20probesetdb)                                       |8.6.0     |1      |        |4    |
 |[hta20transcriptcluster.db](problems.md#hta20transcriptclusterdb)                     |8.6.0     |       |        |4    |
 |[hthgu133a.db](problems.md#hthgu133adb)                                               |3.2.3     |       |        |3    |
 |[hthgu133b.db](problems.md#hthgu133bdb)                                               |3.2.3     |       |        |3    |
@@ -161,15 +161,15 @@
 |[hu35ksubc.db](problems.md#hu35ksubcdb)                                               |3.2.3     |       |        |3    |
 |[hu35ksubd.db](problems.md#hu35ksubddb)                                               |3.2.3     |       |        |3    |
 |[hu6800.db](problems.md#hu6800db)                                                     |3.2.3     |       |        |3    |
-|[huex10stprobeset.db](problems.md#huex10stprobesetdb)                                 |8.6.0     |__+1__ |        |4    |
+|[huex10stprobeset.db](problems.md#huex10stprobesetdb)                                 |8.6.0     |       |        |4    |
 |[huex10sttranscriptcluster.db](problems.md#huex10sttranscriptclusterdb)               |8.6.0     |       |        |4    |
-|[hugene10stprobeset.db](problems.md#hugene10stprobesetdb)                             |8.6.0     |1      |        |4    |
+|[hugene10stprobeset.db](problems.md#hugene10stprobesetdb)                             |8.6.0     |       |        |4    |
 |[hugene10sttranscriptcluster.db](problems.md#hugene10sttranscriptclusterdb)           |8.6.0     |       |        |4    |
-|[hugene11stprobeset.db](problems.md#hugene11stprobesetdb)                             |8.6.0     |1      |        |4    |
+|[hugene11stprobeset.db](problems.md#hugene11stprobesetdb)                             |8.6.0     |       |        |4    |
 |[hugene11sttranscriptcluster.db](problems.md#hugene11sttranscriptclusterdb)           |8.6.0     |       |        |4    |
 |[hugene20stprobeset.db](problems.md#hugene20stprobesetdb)                             |8.6.0     |       |        |4    |
 |[hugene20sttranscriptcluster.db](problems.md#hugene20sttranscriptclusterdb)           |8.6.0     |       |        |4    |
-|[hugene21stprobeset.db](problems.md#hugene21stprobesetdb)                             |8.6.0     |1      |        |4    |
+|[hugene21stprobeset.db](problems.md#hugene21stprobesetdb)                             |8.6.0     |       |        |4    |
 |[hugene21sttranscriptcluster.db](problems.md#hugene21sttranscriptclusterdb)           |8.6.0     |       |        |4    |
 |[HuO22.db](problems.md#huo22db)                                                       |3.2.3     |       |        |3    |
 |implyr                                                                                |0.2.1     |       |        |     |
@@ -230,7 +230,7 @@
 |[mouse4302.db](problems.md#mouse4302db)                                               |3.2.3     |       |        |3    |
 |[mouse430a2.db](problems.md#mouse430a2db)                                             |3.2.3     |       |        |3    |
 |[mpedbarray.db](problems.md#mpedbarraydb)                                             |3.2.3     |       |        |3    |
-|[mta10probeset.db](problems.md#mta10probesetdb)                                       |8.6.0     |       |        |4    |
+|[mta10probeset.db](problems.md#mta10probesetdb)                                       |8.6.0     |1      |        |4    |
 |[mta10transcriptcluster.db](problems.md#mta10transcriptclusterdb)                     |8.6.0     |       |        |4    |
 |[mu11ksuba.db](problems.md#mu11ksubadb)                                               |3.2.3     |       |        |3    |
 |[mu11ksubb.db](problems.md#mu11ksubbdb)                                               |3.2.3     |       |        |3    |
@@ -401,11 +401,11 @@
 |[pd.porgene.1.0.st](problems.md#pdporgene10st)                                        |3.12.0    |       |1       |4    |
 |[pd.porgene.1.1.st](problems.md#pdporgene11st)                                        |3.12.0    |       |1       |4    |
 |[pd.rabgene.1.0.st](problems.md#pdrabgene10st)                                        |3.12.0    |       |1       |4    |
-|pd.rabgene.1.1.st                                                                     |3.12.0    |       |        |     |
-|pd.rae230a                                                                            |3.12.0    |       |        |     |
-|pd.rae230b                                                                            |3.12.0    |       |        |     |
+|[pd.rabgene.1.1.st](problems.md#pdrabgene11st)                                        |3.12.0    |       |1       |4    |
+|[pd.rae230a](problems.md#pdrae230a)                                                   |3.12.0    |       |1       |4    |
+|[pd.rae230b](problems.md#pdrae230b)                                                   |3.12.0    |       |1       |4    |
 |[pd.raex.1.0.st.v1](problems.md#pdraex10stv1)                                         |3.14.1    |       |1       |4    |
-|pd.ragene.1.0.st.v1                                                                   |3.14.1    |       |        |     |
+|[pd.ragene.1.0.st.v1](problems.md#pdragene10stv1)                                     |3.14.1    |       |1       |4    |
 |[pd.ragene.1.1.st.v1](problems.md#pdragene11stv1)                                     |3.14.1    |       |1       |4    |
 |[pd.ragene.2.0.st](problems.md#pdragene20st)                                          |3.14.1    |       |1       |4    |
 |[pd.ragene.2.1.st](problems.md#pdragene21st)                                          |3.14.1    |       |1       |4    |
@@ -431,7 +431,7 @@
 |[pd.soygene.1.1.st](problems.md#pdsoygene11st)                                        |3.12.0    |       |1       |4    |
 |[pd.sugar.cane](problems.md#pdsugarcane)                                              |3.12.0    |       |2       |4    |
 |[pd.tomato](problems.md#pdtomato)                                                     |3.12.0    |       |2       |4    |
-|[pd.u133.x3p](problems.md#pdu133x3p)                                                  |3.12.0    |1      |        |     |
+|[pd.u133.x3p](problems.md#pdu133x3p)                                                  |3.12.0    |       |1       |4    |
 |[pd.vitis.vinifera](problems.md#pdvitisvinifera)                                      |3.12.0    |       |1       |4    |
 |[pd.wheat](problems.md#pdwheat)                                                       |3.12.0    |       |1       |4    |
 |[pd.x.laevis.2](problems.md#pdxlaevis2)                                               |3.12.0    |       |1       |4    |
@@ -470,6 +470,7 @@
 |[ragene21stprobeset.db](problems.md#ragene21stprobesetdb)                             |8.6.0     |       |        |4    |
 |[ragene21sttranscriptcluster.db](problems.md#ragene21sttranscriptclusterdb)           |8.6.0     |       |        |4    |
 |[rat2302.db](problems.md#rat2302db)                                                   |3.2.3     |       |        |3    |
+|[RClickhouse](problems.md#rclickhouse)                                                |0.3.0     |1      |        |1    |
 |RecordLinkage                                                                         |0.4-10    |       |        |     |
 |[redcapAPI](problems.md#redcapapi)                                                    |1.3       |       |        |1    |
 |refGenome                                                                             |1.7.3     |       |        |     |
@@ -479,7 +480,7 @@
 |[rgu34c.db](problems.md#rgu34cdb)                                                     |3.2.3     |       |        |3    |
 |[rguatlas4k.db](problems.md#rguatlas4kdb)                                             |3.2.3     |       |        |3    |
 |[rgug4105a.db](problems.md#rgug4105adb)                                               |3.2.3     |       |        |3    |
-|[rgug4130a.db](problems.md#rgug4130adb)                                               |3.2.3     |       |-1      |3    |
+|[rgug4130a.db](problems.md#rgug4130adb)                                               |3.2.3     |       |        |3    |
 |[rgug4131a.db](problems.md#rgug4131adb)                                               |3.2.3     |       |        |3    |
 |RImmPort                                                                              |1.4.2     |       |        |     |
 |[RJDBC](problems.md#rjdbc)                                                            |0.2-5     |       |1       |     |
@@ -502,13 +503,13 @@
 |RRedshiftSQL                                                                          |0.1.2     |       |        |     |
 |[RSQLite](problems.md#rsqlite)                                                        |2.0       |1      |        |2    |
 |RSQLServer                                                                            |0.3.0     |       |        |     |
-|[rta10probeset.db](problems.md#rta10probesetdb)                                       |8.6.0     |       |        |4    |
+|[rta10probeset.db](problems.md#rta10probesetdb)                                       |8.6.0     |-1     |        |4    |
 |[rta10transcriptcluster.db](problems.md#rta10transcriptclusterdb)                     |8.6.0     |       |        |4    |
 |rTRM                                                                                  |1.14.0    |       |        |     |
 |[rtu34.db](problems.md#rtu34db)                                                       |3.2.3     |       |        |3    |
 |SEERaBomb                                                                             |2017.2    |       |        |     |
 |[sejmRP](problems.md#sejmrp)                                                          |1.3.4     |       |        |1    |
-|[seplyr](problems.md#seplyr)                                                          |0.1.6     |       |1       |1    |
+|[seplyr](problems.md#seplyr)                                                          |0.5.0     |       |1       |1    |
 |[seqplots](problems.md#seqplots)                                                      |1.14.1    |       |1       |3    |
 |[sergeant](problems.md#sergeant)                                                      |0.5.2     |1      |        |     |
 |[sf](problems.md#sf)                                                                  |0.5-5     |       |1       |1    |
