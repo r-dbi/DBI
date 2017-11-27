@@ -1,3 +1,14 @@
+## DBI 0.7-13 (2017-11-27)
+
+- The deprecated `print.list.pairs()` has been removed.
+- Fix `dbDataType()` for `AsIs` object (#198, @yutannihilation).
+- Point to db.rstudio.com (@wibeasley, #209).
+- Reflect new 'r-dbi' organization in `DESCRIPTION` (@wibeasley, #207).
+- Using switchpatch on the second argument for default implementations of `dbQuoteString()` and `dbQuoteIdentifier()`.
+- New `dbQuoteLiteral()` generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to `dbQuoteString()` for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the `"SQL"` class is necessary (#172).
+- Fix `dbQuoteString()` and `dbQuoteIdentifier()` to ignore invalid UTF-8 strings (r-dbi/DBItest#156).
+
+
 ## DBI 0.7-12 (2017-08-10)
 
 - Add default implementation of `dbListFields()`.
