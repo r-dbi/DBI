@@ -49,7 +49,6 @@ isSQLKeyword(dbObj, name, keywords = .SQL92Keywords, case = c("lower", "upper", 
 isSQLKeyword.default(name, keywords = .SQL92Keywords, case = c("lower", "upper", "any")[3])
 make.db.names(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE, ...)
 make.db.names.default(snames, keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE)
-print.list.pairs(x, ...)
 sqlAppendTable(con, table, values, row.names = NA, ...)
 sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?", ...)
 sqlColumnToRownames(df, row.names = NA)
