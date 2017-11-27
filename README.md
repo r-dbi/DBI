@@ -48,7 +48,7 @@ To install DBI:
 * Get the released version from CRAN: `install.packages("DBI")`
 * Get the development version from github: `devtools::install_github("r-dbi/DBI")`
 
-Discussions associated with DBI and related database packages take place on [R-SIG-DB](https://stat.ethz.ch/mailman/listinfo/r-sig-db).
+Discussions associated with DBI and related database packages take place on [R-SIG-DB](https://stat.ethz.ch/mailman/listinfo/r-sig-db).  The website [Databases using R](http://db.rstudio.com/) describes the tools and best practices in this ecosystem.
 
 ## Class structure
 
