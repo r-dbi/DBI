@@ -24,3 +24,4 @@ inst\/doc\/DBI\.b..$
 ^tic\.R$
 ^_pkgdown\.yml$
 ^revdep/
+^API$
