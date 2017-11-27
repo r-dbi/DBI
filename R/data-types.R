@@ -23,7 +23,8 @@ check_raw_list <- function(x) {
 }
 
 as_is_data_type <- function(x) {
-  dbiDataType(unclass(x))
+  oldClass(x) <- oldClass(x)[-1]
+  dbiDataType(x)
 }
 
 setOldClass("difftime")
