@@ -12,15 +12,6 @@ Table <- function(...) {
 }
 
 #' @rdname hidden_aliases
-#' @param conn,x Connection and Table used when escaping.
-#' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "Table"),
-  function(conn, x, ...) {
-    SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = "."))
-  }
-)
-
-#' @rdname hidden_aliases
 #' @param object Table object to print
 #' @export
 setMethod("show", "Table", function(object) {

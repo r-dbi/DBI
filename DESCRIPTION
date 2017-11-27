@@ -1,6 +1,6 @@
 Package: DBI
-Version: 0.7-12
-Date: 2017-08-10
+Version: 0.7-13
+Date: 2017-11-27
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All
@@ -27,9 +27,9 @@ Suggests:
     xml2
 Encoding: UTF-8
 License: LGPL (>= 2)
-URL: http://rstats-db.github.io/DBI
-URLNote: https://github.com/rstats-db/DBI
-BugReports: https://github.com/rstats-db/DBI/issues
+URL: http://r-dbi.github.io/DBI
+URLNote: https://github.com/r-dbi/DBI
+BugReports: https://github.com/r-dbi/DBI/issues
 Collate: 
     'DBObject.R'
     'DBDriver.R'
@@ -48,7 +48,6 @@ Collate:
     'table-insert.R'
     'table.R'
     'transactions.R'
-    'util.R'
 VignetteBuilder: knitr
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
 RoxygenNote: 6.0.1

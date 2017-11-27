@@ -52,10 +52,9 @@ Actual support for transactions may vary between backends.
 A transaction is initiated by a call to \code{dbBegin()}
 and committed by a call to \code{dbCommit()}.
 Data written in a transaction must persist after the transaction is committed.
-For example, a table that is missing when the transaction is started
-but is created
-and populated during the transaction
-must exist and contain the data added there
+For example, a record that is missing when the transaction is started
+but is created during the transaction
+must exist
 both during
 and after the transaction,
 and also in a new connection.
@@ -64,7 +63,7 @@ A transaction
 can also be aborted with \code{dbRollback()}.
 All data written in such a transaction must be removed after the
 transaction is rolled back.
-For example, a table that is missing when the transaction is started
+For example, a record that is missing when the transaction is started
 but is created during the transaction
 must not exist anymore after the rollback.
 

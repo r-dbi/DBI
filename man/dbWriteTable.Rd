@@ -120,7 +120,8 @@ returned as objects that inherit from \code{difftime})
 \item timestamp
 (if supported by the database;
 returned as \code{POSIXct}
-with time zone support)
+respecting the time zone but not necessarily preserving the
+input time zone)
 }
 
 Mixing column types in the same table is supported.
