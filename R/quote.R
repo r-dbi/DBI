@@ -224,6 +224,15 @@ setMethod("dbQuoteLiteral", "DBIConnection",
 
     if (is.character(x)) return(dbQuoteString(conn, x))
 
+    if (inherits(x, "POSIXt")) {
+      return(dbQuoteString(
+        conn,
+        strftime(as.POSIXct(x), "%Y%m%d%H%M%S", tz = "UTC")
+      ))
+    }
+
+    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x, usetz = TRUE)))
+
     if (is.list(x)) {
       blob_data <- vapply(
         x,
