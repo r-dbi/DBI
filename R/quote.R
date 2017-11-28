@@ -220,6 +220,8 @@ setMethod("dbQuoteLiteral", "DBIConnection",
 
     if (is(x, "SQL")) return(x)
 
+    if (is.factor(x)) return(dbQuoteString(conn, as.character(x)))
+
     if (is.character(x)) return(dbQuoteString(conn, x))
 
     if (is.list(x)) {
