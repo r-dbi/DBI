@@ -2,58 +2,72 @@ context("sqlInterpolate")
 
 test_that("parameter names matched", {
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", a = 1, b = 2),
+    sqlInterpolate(ANSI(), ":a :b", a = 1, b = 2),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", b = 2, a = 1),
+    sqlInterpolate(ANSI(), ":a :b", b = 2, a = 1),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", b = 2, .dots = list(a = 1)),
+    sqlInterpolate(ANSI(), ":a :b", b = 2, .dots = list(a = 1)),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", .dots = list(a = 1, b = 2)),
+    sqlInterpolate(ANSI(), ":a :b", .dots = list(a = 1, b = 2)),
     SQL("1 2")
   )
 })
 
 test_that("parameters in strings are ignored", {
   expect_equal(
-    sqlInterpolate(ANSI(), "'?a'"),
-    SQL("'?a'")
+    sqlInterpolate(ANSI(), "'? :fuu'"),
+    SQL("'? :fuu'")
+  )
+})
+
+
+test_that("positional and named parameters don't mix", {
+  expect_error(
+    sqlInterpolate(ANSI(), "foo :a ? bar", 1, 2)
+  )
+})
+
+test_that("positional parameters work", {
+  expect_equal(
+    sqlInterpolate(ANSI(), "a ? c ? d ", 1, 2),
+    SQL("a 1 c 2 d ")
   )
 })
 
 test_that("parameters in comments are ignored", {
   expect_equal(
-    sqlInterpolate(ANSI(), "-- ?a"),
-    SQL("-- ?a")
+    sqlInterpolate(ANSI(), "-- ? :fuu"),
+    SQL("-- ? :fuu")
   )
 })
 
 test_that("strings are quoted", {
   expect_equal(
-    sqlInterpolate(ANSI(), "?a", a = "abc"),
+    sqlInterpolate(ANSI(), ":a", a = "abc"),
     SQL("'abc'")
   )
 })
 
 test_that("some more complex case works as well", {
   expect_equal(
-    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ?bar", faa = "abc", fuu=42L),
-    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ?bar")
+    sqlInterpolate(ANSI(), "asdf :faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' :fuu -- ? :bar", faa = "abc", fuu=42L),
+    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ? :bar")
   )
 })
 
 test_that("escaping quotes with doubling works", {
   expect_equal(
-    sqlInterpolate(ANSI(), "'this is a single '' one ?quoted string' ?bar ", bar=42),
-    SQL("'this is a single '' one ?quoted string' 42 ")
+    sqlInterpolate(ANSI(), "'this is a single '' one :quoted string' :bar ", bar=42),
+    SQL("'this is a single '' one :quoted string' 42 ")
   )
 })
 
@@ -63,11 +77,11 @@ test_that("corner cases work", {
     SQL("")
   )
   expect_error(
-    sqlInterpolate(ANSI(), "?"),
+    sqlInterpolate(ANSI(), ":"),
     "Length 0 variable"
   )
   expect_equal(
-    sqlInterpolate(ANSI(), "?a", a = 1),
+    sqlInterpolate(ANSI(), ":a", a = 1),
     SQL("1")
   )
   expect_equal(
@@ -79,7 +93,7 @@ test_that("corner cases work", {
     "Unterminated literal"
   )
   expect_equal(
-    sqlInterpolate(ANSI(), "?a\"\"?b", a = 1, b = 2),
+    sqlInterpolate(ANSI(), ":a\"\":b", a = 1, b = 2),
     SQL("1\"\"2")
   )
   expect_equal(
@@ -94,7 +108,7 @@ test_that("corner cases work", {
   # Test escaping rules
   expect_identical(
     sqlParseVariablesImpl(
-      "?a '?b\\'?c' ?d '''' ?e",
+      ":a ':b\\':c' :d '''' :e",
       list(
         sqlQuoteSpec("'", "'", escape = "\\", doubleEscape = FALSE)
       ),
