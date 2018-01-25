@@ -88,7 +88,7 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
   fc <- substring(snames, 1, 1)
   lc <- substring(snames, nchar(snames))
   i <- match(fc, c("'", '"'), 0) > 0 & match(lc, c("'", '"'), 0) > 0
-  snames[!i]  <- make.names(snames[!i], unique = FALSE)
+  snames[!i] <- make.names(snames[!i], unique = FALSE)
   if (unique)
     snames[!i] <- makeUnique(snames[!i])
   if (!allow.keywords) {
@@ -124,7 +124,8 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
   kw <- switch(c("lower", "upper", "any")[n],
     lower = tolower(keywords),
     upper = toupper(keywords),
-    any = toupper(keywords))
+    any = toupper(keywords)
+  )
   if (n == 3)
     name <- toupper(name)
   match(name, keywords, nomatch = 0) > 0
@@ -152,7 +153,8 @@ setMethod("SQLKeywords", "missing",
 )
 
 #' @export
-.SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
+.SQL92Keywords <- c(
+  "ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
   "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN",
   "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST",
   "CATALOG", "CHAR", "CHARACTER", "CHARACTER_LENGTH", "CHAR_LENGTH",

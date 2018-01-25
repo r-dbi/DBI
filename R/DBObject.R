@@ -105,7 +105,8 @@ setGeneric("dbGetInfo",
 #' dbIsValid(con)
 setGeneric("dbIsValid",
   def = function(dbObj, ...) standardGeneric("dbIsValid"),
-  valueClass = "logical")
+  valueClass = "logical"
+)
 
 setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {

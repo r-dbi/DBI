@@ -110,7 +110,8 @@ setGeneric("sqlParseVariables",
 #' @rdname hidden_aliases
 #' @export
 setMethod("sqlParseVariables", "DBIConnection", function(conn, sql, ...) {
-  sqlParseVariablesImpl(sql,
+  sqlParseVariablesImpl(
+    sql,
     list(
       sqlQuoteSpec('"', '"'),
       sqlQuoteSpec("'", "'")

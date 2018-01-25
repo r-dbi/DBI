@@ -55,10 +55,11 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #' @export
 setGeneric("dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
-  valueClass = "DBIDriver")
+  valueClass = "DBIDriver"
+)
 
 #' @rdname hidden_aliases
-setMethod("dbDriver", "character",
+setMethod("dbDriver", signature("character"),
   definition = function(drvName, ...) {
     findDriver(drvName)(...)
   }
@@ -72,7 +73,8 @@ setMethod("show", "DBIDriver", function(object) {
     # to protect drivers that fail to implement the required methods (e.g.,
     # RPostgreSQL)
     show_driver(object),
-    error = function(e) NULL)
+    error = function(e) NULL
+  )
   invisible(NULL)
 })
 
@@ -99,11 +101,13 @@ findDriver <- function(drvName) {
   }
 
   # Can't find it:
-  stop("Couldn't find driver ", drvName, ". Looked in:\n",
+  stop(
+    "Couldn't find driver ", drvName, ". Looked in:\n",
     "* global namespace\n",
     "* in package called ", drvName, "\n",
     "* in package called ", pkgName,
-    call. = FALSE)
+    call. = FALSE
+  )
 }
 
 get2 <- function(x, env) {

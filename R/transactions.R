@@ -145,9 +145,11 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
     call <- dbRollback(conn)
     if (identical(call, FALSE)) {
       stop(
-        paste("Failed to rollback transaction.",
+        paste(
+          "Failed to rollback transaction.",
           "Tried to roll back because an error",
-          "occurred:", conditionMessage(e)),
+          "occurred:", conditionMessage(e)
+        ),
         call. = FALSE
       )
     }
@@ -181,6 +183,8 @@ dbBreak <- function() {
   signalCondition(
     structure(
       list(message = "Aborting DBI processing", call = NULL),
-      class = c("dbi_abort", "condition")))
+      class = c("dbi_abort", "condition")
+    )
+  )
   stop("Invalid usage of dbBreak().", call. = FALSE)
 }

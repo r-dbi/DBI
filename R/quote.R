@@ -235,7 +235,7 @@ setGeneric("dbQuoteLiteral",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteLiteral", "DBIConnection",
+setMethod("dbQuoteLiteral", signature("DBIConnection"),
   function(conn, x, ...) {
     # Switchpatching to avoid ambiguous S4 dispatch, so that our method
     # is used only if no alternatives are available.

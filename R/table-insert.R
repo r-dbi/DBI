@@ -22,7 +22,7 @@ setGeneric("sqlAppendTable",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlAppendTable", "DBIConnection",
+setMethod("sqlAppendTable", signature("DBIConnection"),
   function(con, table, values, row.names = NA, ...) {
     stopifnot(is.data.frame(values))
 

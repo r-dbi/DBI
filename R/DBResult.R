@@ -29,7 +29,8 @@ setMethod("show", "DBIResult", function(object) {
   # RPostgreSQL)
   tryCatch(
     show_result(object),
-    error = function(e) NULL)
+    error = function(e) NULL
+  )
   invisible(NULL)
 })
 

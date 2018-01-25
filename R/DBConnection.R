@@ -34,7 +34,8 @@ setMethod("show", "DBIConnection", function(object) {
   # RPostgreSQL)
   tryCatch(
     show_connection(object),
-    error = function(e) NULL)
+    error = function(e) NULL
+  )
   invisible(NULL)
 })
 
@@ -296,7 +297,7 @@ setGeneric("dbListFields",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbListFields", c("DBIConnection", "character"),
+setMethod("dbListFields", signature("DBIConnection", "character"),
   function(conn, name, ...) {
     rs <- dbSendQuery(
       conn,
