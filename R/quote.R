@@ -259,9 +259,11 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       blob_data <- vapply(
         x,
         function(x) {
-          if (is.null(x)) "NULL"
-          else if (is.raw(x)) paste0("X'", paste(format(x), collapse = ""), "'")
-          else {
+          if (is.null(x)) {
+            "NULL"
+          } else if (is.raw(x)) {
+            paste0("X'", paste(format(x), collapse = ""), "'")
+          } else {
             stop("Lists must contain raw vectors or NULL", call. = FALSE)
           }
         },

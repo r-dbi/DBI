@@ -89,8 +89,9 @@ make.db.names.default <- function(snames, keywords = .SQL92Keywords,
   lc <- substring(snames, nchar(snames))
   i <- match(fc, c("'", '"'), 0) > 0 & match(lc, c("'", '"'), 0) > 0
   snames[!i] <- make.names(snames[!i], unique = FALSE)
-  if (unique)
+  if (unique) {
     snames[!i] <- makeUnique(snames[!i])
+  }
   if (!allow.keywords) {
     kwi <- match(keywords, toupper(snames), nomatch = 0L)
     snames[kwi] <- paste('"', snames[kwi], '"', sep = "")
@@ -119,15 +120,17 @@ setMethod("isSQLKeyword", signature(dbObj = "DBIObject", name = "character"),
 isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
                                  case = c("lower", "upper", "any")[3]) {
   n <- pmatch(case, c("lower", "upper", "any"), nomatch = 0)
-  if (n == 0)
+  if (n == 0) {
     stop('case must be one of "lower", "upper", or "any"')
+  }
   kw <- switch(c("lower", "upper", "any")[n],
     lower = tolower(keywords),
     upper = toupper(keywords),
     any = toupper(keywords)
   )
-  if (n == 3)
+  if (n == 3) {
     name <- toupper(name)
+  }
   match(name, keywords, nomatch = 0) > 0
 }
 

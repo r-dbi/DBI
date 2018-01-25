@@ -31,8 +31,9 @@ test_that("parameters in strings are ignored", {
 
 test_that("named parameters check matches", {
   expect_error(
-    sqlInterpolate(ANSI(), "?a ?b", a=1, d=2)
-  , "Supplied values don't match named vars to interpolate")
+    sqlInterpolate(ANSI(), "?a ?b", a = 1, d = 2),
+    "Supplied values don't match named vars to interpolate"
+  )
 })
 
 test_that("positional parameters work", {
@@ -44,8 +45,9 @@ test_that("positional parameters work", {
 
 test_that("positional parameters can't have names", {
   expect_error(
-    sqlInterpolate(ANSI(), "? ?", a=1, 2)
-  , "Positional variables don't take named arguments")
+    sqlInterpolate(ANSI(), "? ?", a = 1, 2),
+    "Positional variables don't take named arguments"
+  )
 })
 
 test_that("parameters in comments are ignored", {

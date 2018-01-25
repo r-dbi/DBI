@@ -31,8 +31,9 @@ setGeneric("sqlInterpolate",
 setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = list()) {
   pos <- sqlParseVariables(conn, sql)
 
-  if (length(pos$start) == 0)
+  if (length(pos$start) == 0) {
     return(SQL(sql))
+  }
 
   vars <- substring(sql, pos$start + 1, pos$end)
   positional_vars <- pos$start == pos$end
@@ -126,13 +127,13 @@ setMethod("sqlParseVariables", "DBIConnection", function(conn, sql, ...) {
 #' @export
 #' @rdname sqlParseVariables
 sqlCommentSpec <- function(start, end, endRequired) {
-  list(start=start, end=end, endRequired=endRequired)
+  list(start = start, end = end, endRequired = endRequired)
 }
 
 #' @export
 #' @rdname sqlParseVariables
 sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
-  list(start=start, end=end, escape=escape, doubleEscape=doubleEscape)
+  list(start = start, end = end, escape = escape, doubleEscape = doubleEscape)
 }
 
 #' @export
@@ -160,17 +161,17 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   sql_variable_start <- 0L
 
   # prepare comments & quotes for quicker comparisions
-  for(c in seq_along(comments)) {
+  for (c in seq_along(comments)) {
     comments[[c]][["start"]] <- str_to_vec(comments[[c]][["start"]])
     comments[[c]][["end"]]   <- str_to_vec(comments[[c]][["end"]])
   }
-  for(q in seq_along(quotes)) {
+  for (q in seq_along(quotes)) {
     quotes[[q]][["hasEscape"]] <- nchar(quotes[[q]][["escape"]]) > 0L
   }
 
   state <- "default"
   i <- 0L
-  while(i < length(sql_arr)) {
+  while (i < length(sql_arr)) {
     i <- i + 1L
     switch(state,
 
@@ -182,7 +183,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
           next
         }
         # starting quoted area
-        for(q in seq_along(quotes)) {
+        for (q in seq_along(quotes)) {
           if (identical(sql_arr[[i]], quotes[[q]][["start"]])) {
             quote_spec_offset <- q
             state <- "quote"
@@ -192,7 +193,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
         # we can abort here if the state has changed
         if (state != "default") next
         # starting comment
-        for(c in seq_along(comments)) {
+        for (c in seq_along(comments)) {
           comment_start_arr <- comments[[c]][["start"]]
           comment_start_length <- length(comment_start_arr)
           if (identical(sql_arr[i:(i + comment_start_length - 1L)], comment_start_arr)) {
@@ -235,7 +236,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
         if (identical(sql_arr[i:(i + comment_end_length - 1L)], comment_end_arr)) {
           i <- i + comment_end_length
           comment_spec_offset <- 0L
-          state <- 'default'
+          state <- "default"
         }
       }
     ) # </switch>
