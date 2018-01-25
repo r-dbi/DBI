@@ -17,3 +17,7 @@ Table <- function(...) {
 setMethod("show", "Table", function(object) {
   cat("<Table> ", paste0(object@name, collapse = "."), "\n", sep = "")
 })
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection", "Table"), quote_identifier)

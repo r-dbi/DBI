@@ -88,9 +88,7 @@ setGeneric("dbQuoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
 )
 
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteIdentifier", "DBIConnection",
+quote_identifier <-
   function(conn, x, ...) {
     if (is(x, "SQL")) return(x)
     if (is(x, "Table")) {
@@ -110,7 +108,20 @@ setMethod("dbQuoteIdentifier", "DBIConnection",
       SQL(paste('"', x, '"', sep = ""))
     }
   }
-)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection"), quote_identifier)
+
+# Need to keep other method declarations around for now, because clients might
+# use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection", "character"), quote_identifier)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), quote_identifier)
 
 #' Quote literal strings
 #'
@@ -147,9 +158,7 @@ setGeneric("dbQuoteString",
   def = function(conn, x, ...) standardGeneric("dbQuoteString")
 )
 
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteString", "DBIConnection",
+quote_string <-
   function(conn, x, ...) {
     if (is(x, "SQL")) return(x)
     if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
@@ -167,7 +176,20 @@ setMethod("dbQuoteString", "DBIConnection",
       SQL(str)
     }
   }
-)
+
+# Need to keep other method declarations around for now, because clients might
+# use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection"), quote_string)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection", "character"), quote_string)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection", "SQL"), quote_string)
 
 #' Quote literal values
 #'

@@ -26,12 +26,17 @@
 \alias{sqlInterpolate,DBIConnection-method}
 \alias{sqlParseVariables,DBIConnection-method}
 \alias{show,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection-method}
-\alias{dbQuoteString,DBIConnection-method}
+\alias{dbQuoteIdentifier,DBIConnection,ANY-method}
+\alias{dbQuoteIdentifier,DBIConnection,character-method}
+\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
+\alias{dbQuoteString,DBIConnection,ANY-method}
+\alias{dbQuoteString,DBIConnection,character-method}
+\alias{dbQuoteString,DBIConnection,SQL-method}
 \alias{dbQuoteLiteral,DBIConnection-method}
 \alias{sqlCreateTable,DBIConnection-method}
 \alias{sqlAppendTable,DBIConnection-method}
 \alias{show,Table-method}
+\alias{dbQuoteIdentifier,DBIConnection,Table-method}
 \alias{dbWithTransaction,DBIConnection-method}
 \title{Internal page for hidden aliases}
 \usage{
@@ -80,9 +85,17 @@
 
 \S4method{show}{SQL}(object)
 
-\S4method{dbQuoteIdentifier}{DBIConnection}(conn, x, ...)
+\S4method{dbQuoteIdentifier}{DBIConnection,ANY}(conn, x, ...)
 
-\S4method{dbQuoteString}{DBIConnection}(conn, x, ...)
+\S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,ANY}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,character}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
@@ -93,6 +106,8 @@
   ...)
 
 \S4method{show}{Table}(object)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,Table}(conn, x, ...)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 }
