@@ -17,7 +17,7 @@
 #'   to interpolation to protect against SQL injection attacks.
 #' @export
 #' @examples
-#' sql <- "SELECT * FROM X WHERE name = :name"
+#' sql <- "SELECT * FROM X WHERE name = ?name"
 #' sqlInterpolate(ANSI(), sql, name = "Hadley")
 #'
 #' # This is safe because the single quote has been double escaped
@@ -37,13 +37,16 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
   vars <- substring(sql, pos$start + 1, pos$end)
   positional_vars <- pos$start == pos$end
   if (all(positional_vars) != any(positional_vars)) {
-    stop("Can't mix positional (?) and named (:asdf) variables", call. = FALSE)
+    stop("Can't mix positional (?) and named (?asdf) variables", call. = FALSE)
   }
 
   values <- c(list(...), .dots)
   if (all(positional_vars)) {
     if (length(vars) != length(values)) {
       stop("Supplied values don't match positional vars to interpolate", call. = FALSE)
+    }
+    if (any(names(values) != "")) {
+      stop("Positional variables don't take named arguments")
     }
   }
   else {
@@ -90,13 +93,13 @@ setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = li
 #' @export
 #' @examples
 #' # Use [] for quoting and no comments
-#' sqlParseVariablesImpl("[:a]",
+#' sqlParseVariablesImpl("[?a]",
 #'   list(sqlQuoteSpec("[", "]", "\\", FALSE)),
 #'   list()
 #' )
 #'
 #' # Standard quotes, use # for commenting
-#' sqlParseVariablesImpl("# :a\n:b",
+#' sqlParseVariablesImpl("# ?a\n?b",
 #'   list(sqlQuoteSpec("'", "'"), sqlQuoteSpec('"', '"')),
 #'   list(sqlCommentSpec("#", "\n", FALSE))
 #' )
@@ -171,14 +174,8 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
     switch(state,
 
       default = {
-        # positional variable
+        #  variable
         if (sql_arr[[i]] == "?") {
-          var_pos_start <- c(var_pos_start, i)
-          var_pos_end <- c(var_pos_end, i)
-          next
-        }
-        # named variable
-        if (sql_arr[[i]] == ":") {
           sql_variable_start <- i
           state <- "variable"
           next
@@ -208,10 +205,6 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
 
       variable = {
         if (!(sql_arr[[i]] %in% var_chars)) {
-          # make sure variable has at least one character after the ':'
-          if (i - sql_variable_start < 2L) {
-            stop("Length 0 variable")
-          }
           # append current variable offsets to return vectors
           var_pos_start <- c(var_pos_start, sql_variable_start)
           # we have already read too much, go back
