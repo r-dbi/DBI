@@ -74,7 +74,7 @@ setClass("DBIObject", "VIRTUAL")
 #' @return a named list
 #' @export
 setGeneric("dbGetInfo",
-   def = function(dbObj, ...) standardGeneric("dbGetInfo")
+  def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
 
 #' Is this DBMS object still valid?

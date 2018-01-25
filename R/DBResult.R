@@ -35,7 +35,7 @@ setMethod("show", "DBIResult", function(object) {
 
 show_result <- function(object) {
   cat("<", is(object)[1], ">\n", sep = "")
-  if(!dbIsValid(object)){
+  if (!dbIsValid(object)) {
     cat("EXPIRED\n")
   } else {
     cat("  SQL  ", dbGetStatement(object), "\n", sep = "")

@@ -298,8 +298,14 @@ setGeneric("dbListFields",
 #' @export
 setMethod("dbListFields", c("DBIConnection", "character"),
   function(conn, name, ...) {
-    rs <- dbSendQuery(conn, paste("SELECT * FROM ",
-                                  dbQuoteIdentifier(conn, name), "LIMIT 0"))
+    rs <- dbSendQuery(
+      conn,
+      paste(
+        "SELECT * FROM ",
+        dbQuoteIdentifier(conn, name),
+        "LIMIT 0"
+      )
+    )
     on.exit(dbClearResult(rs))
 
     names(dbFetch(rs, n = 0, row.names = FALSE))
