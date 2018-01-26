@@ -39,6 +39,8 @@ or undone with \code{dbRollback()}.
 In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("transactions")}
 }
 \details{
 Not all database engines implement transaction management, in which case

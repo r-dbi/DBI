@@ -43,6 +43,7 @@ Collate:
     'hidden.R'
     'interpolate.R'
     'quote.R'
+    'rd.R'
     'rownames.R'
     'table-create.R'
     'table-insert.R'

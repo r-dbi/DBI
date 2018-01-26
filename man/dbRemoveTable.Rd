@@ -28,6 +28,8 @@ or if this results in a non-scalar.
 \description{
 Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}})
 from the database.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbRemoveTable")}
 }
 \section{Specification}{
 

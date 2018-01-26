@@ -82,6 +82,9 @@ setGeneric("dbGetInfo",
 #' This generic tests whether a database object is still valid (i.e. it hasn't
 #' been disconnected or cleared).
 #'
+#' @template methods
+#' @templateVar method_name dbIsValid
+#'
 #' @inherit DBItest::spec_meta_is_valid return
 #'
 #' @inheritParams dbGetInfo

@@ -57,6 +57,9 @@ show_result <- function(object) {
 #' implementation for `dbFetch()` calls `fetch()` so that it is compatible with
 #' existing code. Modern backends should implement for `dbFetch()` only.
 #'
+#' @template methods
+#' @templateVar method_name dbFetch
+#'
 #' @inherit DBItest::spec_result_fetch return
 #' @inheritSection DBItest::spec_result_fetch Specification
 #' @inheritSection DBItest::spec_result_roundtrip Specification
@@ -115,6 +118,9 @@ setGeneric("fetch",
 #' cases (e.g., very large result sets) this can be a critical step to avoid
 #' exhausting resources (memory, file descriptors, etc.)
 #'
+#' @template methods
+#' @templateVar method_name dbClearResult
+#'
 #' @inherit DBItest::spec_result_clear_result return
 #' @inheritSection DBItest::spec_result_clear_result Specification
 #'
@@ -168,6 +174,9 @@ setGeneric("dbColumnInfo",
 #' Returns the statement that was passed to [dbSendQuery()]
 #' or [dbSendStatement()].
 #'
+#' @template methods
+#' @templateVar method_name dbGetStatement
+#'
 #' @inherit DBItest::spec_meta_get_statement return
 #'
 #' @inheritParams dbClearResult
@@ -193,6 +202,9 @@ setGeneric("dbGetStatement",
 #' This method returns if the operation has completed.
 #' A `SELECT` query is completed if all rows have been fetched.
 #' A data manipulation statement is always completed.
+#'
+#' @template methods
+#' @templateVar method_name dbHasCompleted
 #'
 #' @inherit DBItest::spec_meta_has_completed return
 #' @inheritSection DBItest::spec_meta_has_completed Specification
@@ -225,6 +237,9 @@ setGeneric("dbHasCompleted",
 #' This method returns the number of rows that were added, deleted, or updated
 #' by a data manipulation statement.
 #'
+#' @template methods
+#' @templateVar method_name dbGetRowsAffected
+#'
 #' @inherit DBItest::spec_meta_get_rows_affected return
 #'
 #' @inheritParams dbClearResult
@@ -250,6 +265,9 @@ setGeneric("dbGetRowsAffected",
 #'
 #' Returns the total number of rows actually fetched with calls to [dbFetch()]
 #' for this result set.
+#'
+#' @template methods
+#' @templateVar method_name dbGetRowCount
 #'
 #' @inherit DBItest::spec_meta_get_row_count return
 #'
@@ -327,6 +345,9 @@ setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
 #' - `?` (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
 #' - `$1` (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
 #' - `:name` and `$name` (named matching) in \pkg{RSQLite}
+#'
+#' @template methods
+#' @templateVar method_name dbBind
 #'
 #' @inherit DBItest::spec_meta_bind return
 #' @inheritSection DBItest::spec_meta_bind Specification

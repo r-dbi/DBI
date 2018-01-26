@@ -31,6 +31,8 @@ Executes a statement and returns the number of rows affected.
 (which should work with most backends) that calls
 \code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExecute")}
 }
 \section{Implementation notes}{
 

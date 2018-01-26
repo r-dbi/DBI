@@ -66,6 +66,9 @@ setMethod("show", "SQL", function(object) {
 #' @param x A character vector to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
+#' @template methods
+#' @templateVar method_name dbQuoteIdentifier
+#'
 #' @inherit DBItest::spec_sql_quote_identifier return
 #' @inheritSection DBItest::spec_sql_quote_identifier Specification
 #'
@@ -134,6 +137,9 @@ setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), quote_identifier)
 #' @param x A character vector to quote as string.
 #' @param ... Other arguments passed on to methods.
 #'
+#' @template methods
+#' @templateVar method_name dbQuoteString
+#'
 #' @inherit DBItest::spec_sql_quote_string return
 #' @inheritSection DBItest::spec_sql_quote_string Specification
 #'
@@ -200,6 +206,9 @@ setMethod("dbQuoteString", c("DBIConnection", "SQL"), quote_string)
 #'
 #' @inheritParams dbQuoteString
 #' @param x A vector to quote as string.
+#'
+#' @template methods
+#' @templateVar method_name dbQuoteLiteral
 #'
 #' @inherit DBItest::spec_sql_quote_literal return
 #' @inheritSection DBItest::spec_sql_quote_literal Specification

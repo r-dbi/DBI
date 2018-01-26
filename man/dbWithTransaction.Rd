@@ -37,6 +37,8 @@ that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or
 \code{dbRollback()} -- that is all taken care of.
 The special function \code{dbBreak()} allows an early exit with rollback,
 it can be called only inside \code{dbWithTransaction()}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWithTransaction")}
 }
 \details{
 DBI implements \code{dbWithTransaction()}, backends should need to override this

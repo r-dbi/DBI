@@ -34,6 +34,8 @@ the number of affected rows, call \code{\link[=dbGetRowsAffected]{dbGetRowsAffec
 returned result object.  You must also call \code{\link[=dbClearResult]{dbClearResult()}} after
 that. For interactive use, you should almost always prefer
 \code{\link[=dbExecute]{dbExecute()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbSendStatement")}
 }
 \details{
 \code{\link[=dbSendStatement]{dbSendStatement()}} comes with a default implementation that simply

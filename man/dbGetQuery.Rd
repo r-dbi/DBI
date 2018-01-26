@@ -35,6 +35,8 @@ Returns the result of a query as a data frame.
 (which should work with most backends) that calls
 \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQuery")}
 }
 \details{
 This method is for \code{SELECT} queries only.  Some backends may

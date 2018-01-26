@@ -51,6 +51,9 @@ show_connection <- function(object) {
 #' This closes the connection, discards all pending work, and frees
 #' resources (e.g., memory, sockets).
 #'
+#' @template methods
+#' @templateVar method_name dbDisconnect
+#'
 #' @inherit DBItest::spec_connection_disconnect return
 #' @inheritSection DBItest::spec_connection_disconnect Specification
 #'
@@ -84,6 +87,10 @@ setGeneric("dbDisconnect",
 #' and transfer them piecemeal to R, others may transfer all the data to the
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers' `dbSendQuery()` documentation for details.
+#'
+#' @template methods
+#' @templateVar method_name dbSendQuery
+#'
 #' @inherit DBItest::spec_result_send_query return
 #' @inheritSection DBItest::spec_result_send_query Specification
 #'
@@ -120,6 +127,9 @@ setGeneric("dbSendQuery",
 #' [dbSendStatement()] comes with a default implementation that simply
 #' forwards to [dbSendQuery()], to support backends that only
 #' implement the latter.
+#'
+#' @template methods
+#' @templateVar method_name dbSendStatement
 #'
 #' @inherit DBItest::spec_result_send_statement return
 #' @inheritSection DBItest::spec_result_send_statement Specification
@@ -169,6 +179,9 @@ setMethod(
 #' reasons.  However, callers are strongly advised to use
 #' [dbExecute()] for data manipulation statements.
 #'
+#' @template methods
+#' @templateVar method_name dbGetQuery
+#'
 #' @inherit DBItest::spec_result_get_query return
 #' @inheritSection DBItest::spec_result_get_query Specification
 #'
@@ -213,6 +226,9 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
 #' the result is always free-d by [dbClearResult()].
+#'
+#' @template methods
+#' @templateVar method_name dbExecute
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
@@ -319,6 +335,9 @@ setMethod("dbListFields", signature("DBIConnection", "character"),
 #' connection.
 #' This should, where possible, include temporary tables, and views.
 #'
+#' @template methods
+#' @templateVar method_name dbListTables
+#'
 #' @inherit DBItest::spec_sql_list_tables return
 #' @inheritSection DBItest::spec_sql_list_tables Additional arguments
 #'
@@ -343,6 +362,9 @@ setGeneric("dbListTables",
 #' Reads a database table to a data frame, optionally converting
 #' a column to row names and converting the column names to valid
 #' R identifiers.
+#'
+#' @template methods
+#' @templateVar method_name dbReadTable
 #'
 #' @inherit DBItest::spec_sql_read_table return
 #' @inheritSection DBItest::spec_sql_read_table Additional arguments
@@ -395,6 +417,9 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
 #' Writes, overwrites or appends a data frame to a database table, optionally
 #' converting row names to a column and specifying SQL data types for fields.
 #'
+#' @template methods
+#' @templateVar method_name dbWriteTable
+#'
 #' @inherit DBItest::spec_sql_write_table return
 #' @inheritSection DBItest::spec_sql_write_table Additional arguments
 #' @inheritSection DBItest::spec_sql_write_table Specification
@@ -429,6 +454,9 @@ setGeneric("dbWriteTable",
 #'
 #' Returns if a table given by name exists in the database.
 #'
+#' @template methods
+#' @templateVar method_name dbExistsTable
+#'
 #' @inherit DBItest::spec_sql_exists_table return
 #' @inheritSection DBItest::spec_sql_exists_table Additional arguments
 #' @inheritSection DBItest::spec_sql_exists_table Specification
@@ -454,6 +482,9 @@ setGeneric("dbExistsTable",
 #'
 #' Remove a remote table (e.g., created by [dbWriteTable()])
 #' from the database.
+#'
+#' @template methods
+#' @templateVar method_name dbRemoveTable
 #'
 #' @inherit DBItest::spec_sql_remove_table return
 #' @inheritSection DBItest::spec_sql_remove_table Specification

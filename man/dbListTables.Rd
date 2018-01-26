@@ -32,6 +32,8 @@ or invalid connection.
 Returns the unquoted names of remote tables accessible through this
 connection.
 This should, where possible, include temporary tables, and views.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}
 }
 \section{Additional arguments}{
 

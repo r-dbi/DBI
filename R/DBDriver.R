@@ -138,6 +138,9 @@ setGeneric("dbUnloadDriver",
 #' The authentication mechanism is left unspecified, so check the
 #' documentation of individual drivers for details.
 #'
+#' @template methods
+#' @templateVar method_name dbConnect
+#'
 #' @inherit DBItest::spec_driver_connect return
 #' @inheritSection DBItest::spec_driver_connect Specification
 #'
@@ -199,6 +202,9 @@ setGeneric("dbListConnections",
 #'
 #' Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 #' problems with under/overflows and loss of precision.
+#'
+#' @template methods
+#' @templateVar method_name dbDataType
 #'
 #' @inherit DBItest::spec_driver_data_type return
 #' @inheritSection DBItest::spec_driver_data_type Specification
