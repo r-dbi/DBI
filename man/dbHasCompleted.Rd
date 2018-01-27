@@ -25,6 +25,8 @@ Attempting to query completion status for a result set cleared with
 This method returns if the operation has completed.
 A \code{SELECT} query is completed if all rows have been fetched.
 A data manipulation statement is always completed.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbHasCompleted")}
 }
 \section{Specification}{
 

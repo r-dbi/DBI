@@ -5,7 +5,6 @@ test_that("dbDataType works on a data frame", {
   types <- dbDataType(MockDriver(), df)
 
   expect_equal(types, c(x = "INT", y = "DOUBLE"))
-
 })
 
 test_that("dbDataType works on AsIs", {

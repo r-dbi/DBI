@@ -34,6 +34,8 @@ connectivity problems, server failure, etc.), \code{dbIsValid()} should return
 \description{
 This generic tests whether a database object is still valid (i.e. it hasn't
 been disconnected or cleared).
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbIsValid")}
 }
 \examples{
 dbIsValid(RSQLite::SQLite())

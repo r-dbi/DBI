@@ -18,7 +18,8 @@ a list with elements \code{errorNum} (an integer error number) and
 connection \code{conn}.
 }
 \description{
-Get DBMS exceptions
+DEPRECATED. Backends should use R's condition system to signal errors and
+warnings.
 }
 \seealso{
 Other DBIConnection generics: \code{\link{DBIConnection-class}},

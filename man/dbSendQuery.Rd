@@ -32,6 +32,8 @@ records --- for that you need to use the \code{\link[=dbFetch]{dbFetch()}} metho
 then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 \code{\link[=dbGetQuery]{dbGetQuery()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbSendQuery")}
 }
 \details{
 This method is for \code{SELECT} queries only.  Some backends may

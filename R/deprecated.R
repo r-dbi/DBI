@@ -60,7 +60,7 @@ setGeneric("make.db.names",
 )
 
 #' @rdname hidden_aliases
-setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
+setMethod("make.db.names", signature(dbObj = "DBIObject", snames = "character"),
   definition = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
     make.db.names.default(snames, keywords, unique, allow.keywords)
   },
@@ -75,25 +75,26 @@ setMethod("make.db.names", signature(dbObj="DBIObject", snames="character"),
 make.db.names.default <- function(snames, keywords = .SQL92Keywords,
                                   unique = TRUE, allow.keywords = TRUE) {
   makeUnique <- function(x, sep = "_") {
-    if(length(x)==0) return(x)
+    if (length(x) == 0) return(x)
     out <- x
-    lc <- make.names(tolower(x), unique=FALSE)
+    lc <- make.names(tolower(x), unique = FALSE)
     i <- duplicated(lc)
     lc <- make.names(lc, unique = TRUE)
-    out[i] <- paste(out[i], substring(lc[i], first=nchar(out[i])+1), sep=sep)
+    out[i] <- paste(out[i], substring(lc[i], first = nchar(out[i]) + 1), sep = sep)
     out
   }
   ## Note: SQL identifiers *can* be enclosed in double or single quotes
   ## when they are equal to reserverd keywords.
   fc <- substring(snames, 1, 1)
   lc <- substring(snames, nchar(snames))
-  i <- match(fc, c("'", '"'), 0)>0 & match(lc, c("'", '"'), 0)>0
-  snames[!i]  <- make.names(snames[!i], unique=FALSE)
-  if(unique)
+  i <- match(fc, c("'", '"'), 0) > 0 & match(lc, c("'", '"'), 0) > 0
+  snames[!i] <- make.names(snames[!i], unique = FALSE)
+  if (unique) {
     snames[!i] <- makeUnique(snames[!i])
-  if(!allow.keywords){
+  }
+  if (!allow.keywords) {
     kwi <- match(keywords, toupper(snames), nomatch = 0L)
-    snames[kwi] <- paste('"', snames[kwi], '"', sep='')
+    snames[kwi] <- paste('"', snames[kwi], '"', sep = "")
   }
   gsub("\\.", "_", snames)
 }
@@ -108,7 +109,7 @@ setGeneric("isSQLKeyword",
 )
 
 #' @rdname hidden_aliases
-setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
+setMethod("isSQLKeyword", signature(dbObj = "DBIObject", name = "character"),
   definition = function(dbObj, name, keywords, case, ...)
     isSQLKeyword.default(name, keywords, case),
   valueClass = "logical"
@@ -118,16 +119,19 @@ setMethod("isSQLKeyword", signature(dbObj="DBIObject", name="character"),
 #' @export
 isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
                                  case = c("lower", "upper", "any")[3]) {
-  n <- pmatch(case, c("lower", "upper", "any"), nomatch=0)
-  if(n==0)
+  n <- pmatch(case, c("lower", "upper", "any"), nomatch = 0)
+  if (n == 0) {
     stop('case must be one of "lower", "upper", or "any"')
+  }
   kw <- switch(c("lower", "upper", "any")[n],
     lower = tolower(keywords),
     upper = toupper(keywords),
-    any = toupper(keywords))
-  if(n==3)
+    any = toupper(keywords)
+  )
+  if (n == 3) {
     name <- toupper(name)
-  match(name, keywords, nomatch=0) > 0
+  }
+  match(name, keywords, nomatch = 0) > 0
 }
 
 ## SQL ANSI 92 (plus ISO's) keywords --- all 220 of them!
@@ -152,7 +156,8 @@ setMethod("SQLKeywords", "missing",
 )
 
 #' @export
-.SQL92Keywords <- c("ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
+.SQL92Keywords <- c(
+  "ABSOLUTE", "ADD", "ALL", "ALLOCATE", "ALTER", "AND", "ANY",
   "ARE", "AS", "ASC", "ASSERTION", "AT", "AUTHORIZATION", "AVG", "BEGIN",
   "BETWEEN", "BIT", "BIT_LENGTH", "BY", "CASCADE", "CASCADED", "CASE", "CAST",
   "CATALOG", "CHAR", "CHARACTER", "CHARACTER_LENGTH", "CHAR_LENGTH",

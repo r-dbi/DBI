@@ -27,6 +27,8 @@ or if this results in a non-scalar.
 }
 \description{
 Returns if a table given by name exists in the database.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExistsTable")}
 }
 \section{Additional arguments}{
 

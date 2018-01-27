@@ -24,15 +24,36 @@ test_that("parameter names matched", {
 
 test_that("parameters in strings are ignored", {
   expect_equal(
-    sqlInterpolate(ANSI(), "'?a'"),
-    SQL("'?a'")
+    sqlInterpolate(ANSI(), "'? ?fuu'"),
+    SQL("'? ?fuu'")
+  )
+})
+
+test_that("named parameters check matches", {
+  expect_error(
+    sqlInterpolate(ANSI(), "?a ?b", a = 1, d = 2),
+    "Supplied values don't match named vars to interpolate"
+  )
+})
+
+test_that("positional parameters work", {
+  expect_equal(
+    sqlInterpolate(ANSI(), "a ? c ? d ", 1, 2),
+    SQL("a 1 c 2 d ")
+  )
+})
+
+test_that("positional parameters can't have names", {
+  expect_error(
+    sqlInterpolate(ANSI(), "? ?", a = 1, 2),
+    "Positional variables don't take named arguments"
   )
 })
 
 test_that("parameters in comments are ignored", {
   expect_equal(
-    sqlInterpolate(ANSI(), "-- ?a"),
-    SQL("-- ?a")
+    sqlInterpolate(ANSI(), "-- ? ?fuu"),
+    SQL("-- ? ?fuu")
   )
 })
 
@@ -45,8 +66,8 @@ test_that("strings are quoted", {
 
 test_that("some more complex case works as well", {
   expect_equal(
-    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ?bar", faa = "abc", fuu=42L),
-    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ?bar")
+    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ? ?bar", faa = "abc", fuu=42L),
+    SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ? ?bar")
   )
 })
 
@@ -64,7 +85,7 @@ test_that("corner cases work", {
   )
   expect_error(
     sqlInterpolate(ANSI(), "?"),
-    "Length 0 variable"
+    "Supplied values don't match positional vars to interpolate"
   )
   expect_equal(
     sqlInterpolate(ANSI(), "?a", a = 1),

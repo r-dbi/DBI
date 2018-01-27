@@ -3,7 +3,7 @@
 ## Exported functions
 
 ANSI()
-SQL(x)
+SQL(x, ..., names = NULL)
 SQLKeywords(dbObj, ...)
 dbBegin(conn, ...)
 dbBind(res, params, ...)

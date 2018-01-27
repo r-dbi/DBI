@@ -25,6 +25,7 @@ NULL
 #'
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
+#' @param names Names for the returned object, must have the same length as `x`.
 #' @return An object of class `SQL`.
 #' @export
 #' @examples
@@ -40,7 +41,13 @@ NULL
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteString(ANSI(), dbQuoteString(ANSI(), "SELECT"))
-SQL <- function(x) new("SQL", x)
+SQL <- function(x, ..., names = NULL) {
+  if (!is.null(names)) {
+    stopifnot(length(x) == length(names))
+  }
+  names(x) <- names
+  new("SQL", x)
+}
 
 #' @rdname SQL
 #' @export
@@ -66,6 +73,9 @@ setMethod("show", "SQL", function(object) {
 #' @param x A character vector to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
+#' @template methods
+#' @templateVar method_name dbQuoteIdentifier
+#'
 #' @inherit DBItest::spec_sql_quote_identifier return
 #' @inheritSection DBItest::spec_sql_quote_identifier Specification
 #'
@@ -88,9 +98,7 @@ setGeneric("dbQuoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbQuoteIdentifier")
 )
 
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteIdentifier", "DBIConnection",
+quote_identifier <-
   function(conn, x, ...) {
     if (is(x, "SQL")) return(x)
     if (is(x, "Table")) {
@@ -110,7 +118,20 @@ setMethod("dbQuoteIdentifier", "DBIConnection",
       SQL(paste('"', x, '"', sep = ""))
     }
   }
-)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection"), quote_identifier)
+
+# Need to keep other method declarations around for now, because clients might
+# use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection", "character"), quote_identifier)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), quote_identifier)
 
 #' Quote literal strings
 #'
@@ -122,6 +143,9 @@ setMethod("dbQuoteIdentifier", "DBIConnection",
 #'   an active connection to an DBMS.
 #' @param x A character vector to quote as string.
 #' @param ... Other arguments passed on to methods.
+#'
+#' @template methods
+#' @templateVar method_name dbQuoteString
 #'
 #' @inherit DBItest::spec_sql_quote_string return
 #' @inheritSection DBItest::spec_sql_quote_string Specification
@@ -147,9 +171,7 @@ setGeneric("dbQuoteString",
   def = function(conn, x, ...) standardGeneric("dbQuoteString")
 )
 
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteString", "DBIConnection",
+quote_string <-
   function(conn, x, ...) {
     if (is(x, "SQL")) return(x)
     if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
@@ -167,7 +189,20 @@ setMethod("dbQuoteString", "DBIConnection",
       SQL(str)
     }
   }
-)
+
+# Need to keep other method declarations around for now, because clients might
+# use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection"), quote_string)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection", "character"), quote_string)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteString", c("DBIConnection", "SQL"), quote_string)
 
 #' Quote literal values
 #'
@@ -178,6 +213,9 @@ setMethod("dbQuoteString", "DBIConnection",
 #'
 #' @inheritParams dbQuoteString
 #' @param x A vector to quote as string.
+#'
+#' @template methods
+#' @templateVar method_name dbQuoteLiteral
 #'
 #' @inherit DBItest::spec_sql_quote_literal return
 #' @inheritSection DBItest::spec_sql_quote_literal Specification
@@ -213,22 +251,35 @@ setGeneric("dbQuoteLiteral",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteLiteral", "DBIConnection",
+setMethod("dbQuoteLiteral", signature("DBIConnection"),
   function(conn, x, ...) {
     # Switchpatching to avoid ambiguous S4 dispatch, so that our method
     # is used only if no alternatives are available.
 
     if (is(x, "SQL")) return(x)
 
+    if (is.factor(x)) return(dbQuoteString(conn, as.character(x)))
+
     if (is.character(x)) return(dbQuoteString(conn, x))
+
+    if (inherits(x, "POSIXt")) {
+      return(dbQuoteString(
+        conn,
+        strftime(as.POSIXct(x), "%Y%m%d%H%M%S", tz = "UTC")
+      ))
+    }
+
+    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x, usetz = TRUE)))
 
     if (is.list(x)) {
       blob_data <- vapply(
         x,
         function(x) {
-          if (is.null(x)) "NULL"
-          else if (is.raw(x)) paste0("X'", paste(format(x), collapse = ""), "'")
-          else {
+          if (is.null(x)) {
+            "NULL"
+          } else if (is.raw(x)) {
+            paste0("X'", paste(format(x), collapse = ""), "'")
+          } else {
             stop("Lists must contain raw vectors or NULL", call. = FALSE)
           }
         },

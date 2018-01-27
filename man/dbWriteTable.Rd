@@ -43,6 +43,8 @@ also raise an error.
 \description{
 Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
 }
 \section{Additional arguments}{
 

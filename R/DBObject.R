@@ -74,13 +74,16 @@ setClass("DBIObject", "VIRTUAL")
 #' @return a named list
 #' @export
 setGeneric("dbGetInfo",
-   def = function(dbObj, ...) standardGeneric("dbGetInfo")
+  def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
 
 #' Is this DBMS object still valid?
 #'
 #' This generic tests whether a database object is still valid (i.e. it hasn't
 #' been disconnected or cleared).
+#'
+#' @template methods
+#' @templateVar method_name dbIsValid
 #'
 #' @inherit DBItest::spec_meta_is_valid return
 #'
@@ -105,7 +108,8 @@ setGeneric("dbGetInfo",
 #' dbIsValid(con)
 setGeneric("dbIsValid",
   def = function(dbObj, ...) standardGeneric("dbIsValid"),
-  valueClass = "logical")
+  valueClass = "logical"
+)
 
 setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {

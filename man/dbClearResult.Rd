@@ -22,6 +22,8 @@ in both cases.
 Frees all resources (local and remote) associated with a result set.  In some
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbClearResult")}
 }
 \section{Specification}{
 

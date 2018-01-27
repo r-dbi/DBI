@@ -34,6 +34,8 @@ Attempting to get the row count for a result set cleared with
 \description{
 Returns the total number of rows actually fetched with calls to \code{\link[=dbFetch]{dbFetch()}}
 for this result set.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetRowCount")}
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

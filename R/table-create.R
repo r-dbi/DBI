@@ -37,7 +37,7 @@ setGeneric("sqlCreateTable",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlCreateTable", "DBIConnection",
+setMethod("sqlCreateTable", signature("DBIConnection"),
   function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
     table <- dbQuoteIdentifier(con, table)
 

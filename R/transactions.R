@@ -11,6 +11,9 @@
 #' these methods should not be implemented for the specific
 #' [DBIConnection-class] subclass.
 #'
+#' @template methods
+#' @templateVar method_name transactions
+#'
 #' @inherit DBItest::spec_transaction_begin_commit_rollback return
 #' @inheritSection DBItest::spec_transaction_begin_commit_rollback Specification
 #'
@@ -84,7 +87,10 @@ setGeneric("dbRollback",
 #'
 #' DBI implements `dbWithTransaction()`, backends should need to override this
 #' generic only if they implement specialized handling.
-
+#'
+#' @template methods
+#' @templateVar method_name dbWithTransaction
+#'
 #' @inherit DBItest::spec_transaction_with_transaction return
 #' @inheritSection DBItest::spec_transaction_with_transaction Specification
 #'
@@ -144,10 +150,14 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
   rollback_because <- function(e) {
     call <- dbRollback(conn)
     if (identical(call, FALSE)) {
-      stop(paste("Failed to rollback transaction.",
-                 "Tried to roll back because an error",
-                 "occurred:", conditionMessage(e)),
-           call. = FALSE)
+      stop(
+        paste(
+          "Failed to rollback transaction.",
+          "Tried to roll back because an error",
+          "occurred:", conditionMessage(e)
+        ),
+        call. = FALSE
+      )
     }
     if (inherits(e, "error")) {
       stop(e)
@@ -169,7 +179,8 @@ setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
       res
     },
     dbi_abort = rollback_because,
-    error = rollback_because)
+    error = rollback_because
+  )
 })
 
 #' @export
@@ -178,6 +189,8 @@ dbBreak <- function() {
   signalCondition(
     structure(
       list(message = "Aborting DBI processing", call = NULL),
-      class = c("dbi_abort", "condition")))
+      class = c("dbi_abort", "condition")
+    )
+  )
   stop("Invalid usage of dbBreak().", call. = FALSE)
 }

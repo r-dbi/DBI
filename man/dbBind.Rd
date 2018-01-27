@@ -46,6 +46,8 @@ statements that contain placeholders for values. The \code{dbBind()} function
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbBind")}
 }
 \details{
 \pkg{DBI} supports parametrized (or prepared) queries and statements
