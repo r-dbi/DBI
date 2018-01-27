@@ -268,6 +268,9 @@ setMethod(
 
 #' Get DBMS exceptions
 #'
+#' DEPRECATED. Backends should use R's condition system to signal errors and
+#' warnings.
+#'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
 #' @return a list with elements `errorNum` (an integer error number) and
