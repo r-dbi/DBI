@@ -283,7 +283,9 @@ setGeneric("dbGetException",
 
 #' A list of all pending results
 #'
-#' List of [DBIResult-class] objects currently active on the connection.
+#' DEPRECATED. DBI currenty supports only one open result set per connection,
+#' you need to keep track of the result sets you open if you need this
+#' functionality.
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
