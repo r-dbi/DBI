@@ -1,3 +1,13 @@
+## DBI 0.7-14 (2018-01-27)
+
+- The `SQL()` function gains a `names` argument which can be used to assign names to SQL strings.
+- `dbListResults()` is deprecated by documentation (#58).
+- `dbGetException()` is soft-deprecated by documentation (#51).
+- Help pages for generics now contain a dynamic list of methods implemented by DBI backends (#162).
+- `sqlInterpolate()` now supports both named and positional variables (#216, @hannesmuehleisen).
+- Specialized methods for `dbQuoteString()` and `dbQuoteIdentifier()` are available again, for compatibility with clients that use `getMethod()` to access them (#218).
+
+
 ## DBI 0.7-13 (2017-11-27)
 
 - The deprecated `print.list.pairs()` has been removed.
