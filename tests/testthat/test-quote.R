@@ -12,4 +12,5 @@ test_that("identifier", {
 test_that("SQL names", {
   expect_null(names(SQL(letters)))
   expect_equal(names(SQL(letters, names = LETTERS)), LETTERS)
+  expect_null(names(SQL(setNames(letters, LETTERS))))
 })
