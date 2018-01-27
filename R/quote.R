@@ -25,6 +25,7 @@ NULL
 #'
 #' @param x A character vector to label as being escaped SQL.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
+#' @param names Names for the returned object, must have the same length as `x`.
 #' @return An object of class `SQL`.
 #' @export
 #' @examples
@@ -40,7 +41,13 @@ NULL
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteString(ANSI(), dbQuoteString(ANSI(), "SELECT"))
-SQL <- function(x) new("SQL", x)
+SQL <- function(x, ..., names = NULL) {
+  if (!is.null(names)) {
+    stopifnot(length(x) == length(names))
+  }
+  names(x) <- names
+  new("SQL", x)
+}
 
 #' @rdname SQL
 #' @export

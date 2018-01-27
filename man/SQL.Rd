@@ -6,12 +6,14 @@
 \alias{SQL-class}
 \title{SQL quoting}
 \usage{
-SQL(x)
+SQL(x, ..., names = NULL)
 }
 \arguments{
 \item{x}{A character vector to label as being escaped SQL.}
 
 \item{...}{Other arguments passed on to methods. Not otherwise used.}
+
+\item{names}{Names for the returned object, must have the same length as \code{x}.}
 }
 \value{
 An object of class \code{SQL}.
