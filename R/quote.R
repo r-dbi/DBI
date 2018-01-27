@@ -112,10 +112,10 @@ quote_identifier <-
     # Avoid fixed = TRUE due to https://github.com/r-dbi/DBItest/issues/156
     x <- gsub('"', '""', enc2utf8(x))
     if (length(x) == 0L) {
-      SQL(character())
+      SQL(character(), names = names(x))
     } else {
       # Not calling encodeString() here to keep things simple
-      SQL(paste('"', x, '"', sep = ""))
+      SQL(paste('"', x, '"', sep = ""), names = names(x))
     }
   }
 
@@ -285,12 +285,12 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
         },
         character(1)
       )
-      return(SQL(blob_data))
+      return(SQL(blob_data, names = names(x)))
     }
 
     if (is.logical(x)) x <- as.numeric(x)
     x <- as.character(x)
     x[is.na(x)] <- "NULL"
-    SQL(x)
+    SQL(x, names = names(x))
   }
 )
