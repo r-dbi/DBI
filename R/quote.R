@@ -101,6 +101,9 @@ setGeneric("dbQuoteIdentifier",
 
 quote_identifier <-
   function(conn, x, ...) {
+    if (is.list(x)) {
+      return(vapply(x, function(xx) list(dbQuoteIdentifier(conn, xx)), list(1)))
+    }
     if (is(x, "SQL")) return(x)
     if (is(x, "Table")) {
       return(SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = ".")))
