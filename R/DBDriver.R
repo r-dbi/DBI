@@ -170,9 +170,8 @@ setGeneric("dbConnect",
 
 #' List currently open connections
 #'
-#' Drivers that implement only a single connections MUST return a list
-#' containing a single element. If no connection are open, methods MUST
-#' return an empty list.
+#' DEPRECATED, drivers are no longer required to implement this method.
+#' Keep track of the connections you opened if you require a list.
 #'
 #' @param drv A object inheriting from [DBIDriver-class]
 #' @param ... Other arguments passed on to methods.
