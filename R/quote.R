@@ -61,6 +61,11 @@ setMethod("show", "SQL", function(object) {
   cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
 })
 
+#' @export
+`[.SQL` <- function(x, ...) SQL(NextMethod())
+
+#' @export
+`[[.SQL` <- function(x, ...) SQL(NextMethod())
 
 #' Quote identifiers
 #'
