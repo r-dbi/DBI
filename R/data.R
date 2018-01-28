@@ -31,7 +31,7 @@ setGeneric("sqlData",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlData", "DBIConnection", function(con, value, row.names = NA, ...) {
+setMethod("sqlData", signature("DBIConnection"), function(con, value, row.names = NA, ...) {
   value <- sqlRownamesToColumn(value, row.names)
 
   # Convert factors to strings

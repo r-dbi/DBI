@@ -394,7 +394,7 @@ setGeneric("dbReadTable",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbReadTable", c("DBIConnection", "character"),
+setMethod("dbReadTable", signature("DBIConnection", "character"),
   function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
     sql_name <- dbQuoteIdentifier(conn, x = name, ...)
     if (length(sql_name) != 1L) {

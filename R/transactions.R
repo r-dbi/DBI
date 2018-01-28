@@ -145,7 +145,7 @@ setGeneric("dbWithTransaction",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWithTransaction", "DBIConnection", function(conn, code) {
+setMethod("dbWithTransaction", signature("DBIConnection"), function(conn, code) {
   ## needs to be a closure, because it accesses conn
   rollback_because <- function(e) {
     call <- dbRollback(conn)

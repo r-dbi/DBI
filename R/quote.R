@@ -121,17 +121,17 @@ quote_identifier <-
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection"), quote_identifier)
 
 # Need to keep other method declarations around for now, because clients might
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "character"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "character"), quote_identifier)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), quote_identifier)
 
 #' Quote literal strings
 #'
@@ -194,15 +194,15 @@ quote_string <-
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection"), quote_string)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection", "character"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection", "character"), quote_string)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection", "SQL"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection", "SQL"), quote_string)
 
 #' Quote literal values
 #'

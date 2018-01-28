@@ -68,7 +68,7 @@ setMethod("dbDriver", signature("character"),
 #' @rdname hidden_aliases
 #' @param object Object to display
 #' @export
-setMethod("show", "DBIDriver", function(object) {
+setMethod("show", signature("DBIDriver"), function(object) {
   tryCatch(
     # to protect drivers that fail to implement the required methods (e.g.,
     # RPostgreSQL)
@@ -251,6 +251,6 @@ setGeneric("dbDataType",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
+setMethod("dbDataType", signature("DBIObject"), function(dbObj, obj, ...) {
   dbiDataType(obj)
 })

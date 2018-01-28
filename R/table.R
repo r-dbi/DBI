@@ -14,10 +14,10 @@ Table <- function(...) {
 #' @rdname hidden_aliases
 #' @param object Table object to print
 #' @export
-setMethod("show", "Table", function(object) {
+setMethod("show", signature("Table"), function(object) {
   cat("<Table> ", paste0(object@name, collapse = "."), "\n", sep = "")
 })
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "Table"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "Table"), quote_identifier)
