@@ -21,3 +21,5 @@ Other DBIDriver generics: \code{\link{dbConnect}},
   \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
   \code{\link{dbListConnections}}
 }
+\concept{DBI classes}
+\concept{DBIDriver generics}

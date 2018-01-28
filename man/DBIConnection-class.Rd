@@ -41,3 +41,5 @@ Other DBIConnection generics: \code{\link{dbDataType}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
   \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
 }
+\concept{DBI classes}
+\concept{DBIConnection generics}

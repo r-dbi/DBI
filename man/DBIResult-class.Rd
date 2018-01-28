@@ -35,3 +35,5 @@ Other DBIResult generics: \code{\link{dbBind}},
   \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
+\concept{DBI classes}
+\concept{DBIResult generics}

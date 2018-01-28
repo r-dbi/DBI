@@ -85,3 +85,4 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
+\concept{DBIResult generics}

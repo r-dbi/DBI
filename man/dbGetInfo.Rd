@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBObject.R, R/DBResult.R
 \name{dbGetInfo}
 \alias{dbGetInfo}
-\alias{dbGetInfo}
 \title{Get DBMS metadata}
 \usage{
 dbGetInfo(dbObj, ...)
@@ -72,3 +71,6 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
+\concept{DBIConnection generics}
+\concept{DBIDriver generics}
+\concept{DBIResult generics}

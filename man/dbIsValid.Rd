@@ -78,3 +78,6 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
+\concept{DBIConnection generics}
+\concept{DBIDriver generics}
+\concept{DBIResult generics}

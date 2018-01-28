@@ -86,3 +86,4 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}
 }
+\concept{DBIResult generics}

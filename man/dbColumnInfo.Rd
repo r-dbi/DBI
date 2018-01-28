@@ -45,3 +45,4 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
+\concept{DBIResult generics}
