@@ -29,6 +29,7 @@
 \alias{dbQuoteIdentifier,DBIConnection,ANY-method}
 \alias{dbQuoteIdentifier,DBIConnection,character-method}
 \alias{dbQuoteIdentifier,DBIConnection,SQL-method}
+\alias{dbUnquoteIdentifier,DBIConnection-method}
 \alias{dbQuoteString,DBIConnection,ANY-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
@@ -90,6 +91,8 @@
 \S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
 
 \S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
+
+\S4method{dbUnquoteIdentifier}{DBIConnection}(conn, x, ...)
 
 \S4method{dbQuoteString}{DBIConnection,ANY}(conn, x, ...)
 

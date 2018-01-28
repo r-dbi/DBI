@@ -65,12 +65,13 @@ setMethod("show", "SQL", function(object) {
 #' Quote identifiers
 #'
 #' Call this method to generate a string that is suitable for
-#' use in a query as a column name, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' use in a query as a column or table name, to make sure that you
+#' generate valid SQL and avoid SQL injection. The inverse operation is
+#' [dbUnquoteIdentifier()].
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
-#' @param x A character vector to quote as identifier.
+#' @param x A character vector, [SQL] or [Table] object to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
 #' @template methods
@@ -132,6 +133,76 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "character"), quote_id
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), quote_identifier)
+
+#' Unquote identifiers
+#'
+#' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]
+#' back to a list of [Table] objects.
+#'
+#' @param conn A subclass of [DBIConnection-class], representing
+#'   an active connection to an DBMS.
+#' @param x An [SQL] or [Table] object or character vector, or a list of such
+#'   objects, to unquote.
+#' @param ... Other arguments passed on to methods.
+#'
+#' @template methods
+#' @templateVar method_name dbUnquoteIdentifier
+#'
+#' @inherit DBItest::spec_sql_unquote_identifier return
+#' @inheritSection DBItest::spec_sql_unquote_identifier Specification
+#'
+#' @family DBIResult generics
+#' @export
+#' @examples
+#' # Unquoting allows to understand the structure of a possibly complex quoted
+#' # identifier
+#'
+#' dbUnquoteIdentifier(
+#'   ANSI(),
+#'   SQL(c("Schema"."Table", "UnqualifiedTable"))
+#' )
+#'
+#' # Character vectors are wrapped in a list
+#' dbQuoteIdentifier(
+#'   ANSI(),
+#'   c(schema = "Schema", table = "Table")
+#' )
+#'
+#' # Lists of character vectors are returned unchanged
+#' dbQuoteIdentifier(
+#'   ANSI(),
+#'   list(c(schema = "Schema", table = "Table"), "UnqualifiedTable")
+#' )
+setGeneric("dbUnquoteIdentifier",
+  def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
+  if (is.list(x)) {
+    return(vapply(x, dbUnquoteIdentifier, conn = conn, list(1)))
+  }
+  if (is(x, "SQL")) {
+    . <- strsplit(as.character(x), '^"|"$|"[.]"')
+    . <- lapply(., `[`, -1L)
+    split <- .
+    tables <- lapply(split, Table)
+    quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
+    bad <- quoted != x
+    if (any(bad)) {
+      stop("Can't unquote ", x[bad][[1L]], call. = FALSE)
+    }
+    return(tables)
+  }
+  if (is(x, "Table")) {
+    return(list(x))
+  }
+  if (is.character(x)) {
+    return(list(do.call(Table, as.list(x))))
+  }
+  stop("x must be character, SQL or Table, or a list of such objects", call. = FALSE)
+})
 
 #' Quote literal strings
 #'
