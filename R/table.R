@@ -15,8 +15,13 @@ Table <- function(...) {
 #' @param object Table object to print
 #' @export
 setMethod("show", signature("Table"), function(object) {
-  cat("<Table> ", paste0(object@name, collapse = "."), "\n", sep = "")
+  cat(toString(object), "\n", sep = "")
 })
+
+#' @export
+toString.Table <- function(x, ...) {
+  paste0("<Table> ", paste(x@name, collapse = "."))
+}
 
 #' @rdname hidden_aliases
 #' @export
