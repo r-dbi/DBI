@@ -261,7 +261,7 @@
 <a href="#dbi-0-4-2016-04-30" class="anchor"></a>DBI 0.4 (2016-04-30)</h1>
 <ul>
 <li><p>New package maintainer: Kirill Müller.</p></li>
-<li><p><code>dbGetInfo()</code> gains a default method that extracts the information from <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>. This means that most drivers should no longer need to implement <code>dbGetInfo()</code> (which may be deprecated anyway at some point) (#55).</p></li>
+<li><p><code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> gains a default method that extracts the information from <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>. This means that most drivers should no longer need to implement <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (which may be deprecated anyway at some point) (#55).</p></li>
 <li><p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> are now properly exported.</p></li>
 <li><p>The default implementation for <code><a href="../reference/dbDataType.html">dbDataType()</a></code> (powered by <code>dbiDataType()</code>) now also supports <code>difftime</code> and <code>AsIs</code> objects and lists of <code>raw</code> (#70).</p></li>
 <li><p>Default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> method now always calls <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, in a <code>tryCatch()</code> block.</p></li>
@@ -311,7 +311,7 @@
 <h2 class="hasAnchor">
 <a href="#new-default-methods" class="anchor"></a>New default methods</h2>
 <ul>
-<li><p><code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> gain default methods that extract the appropriate elements from <code>dbGetInfo()</code>. This means that most drivers should no longer need to implement these methods (#13).</p></li>
+<li><p><code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> gain default methods that extract the appropriate elements from <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code>. This means that most drivers should no longer need to implement these methods (#13).</p></li>
 <li><p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> gains a default method for <code>DBIConnection</code> which uses <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbFetch.html">fetch()</a></code> and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p></li>
 </ul>
 </div>
@@ -323,7 +323,7 @@
 <p>The following functions are soft-deprecated. They are going away, and developers who use the DBI should begin preparing. The formal deprecation process will begin in July 2015, where these function will emit warnings on use.</p>
 <ul>
 <li><p><code><a href="../reference/dbFetch.html">fetch()</a></code> is replaced by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p></li>
-<li><p><code><a href="../reference/make.db.names.html">make.db.names()</a></code>, <code>isSQLKeyword()</code> and <code><a href="../reference/make.db.names.html">SQLKeywords()</a></code>: a black list based approach is fundamentally flawed; instead quote strings and identifiers with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>.</p></li>
+<li><p><code><a href="../reference/make.db.names.html">make.db.names()</a></code>, <code><a href="../reference/make.db.names.html">isSQLKeyword()</a></code> and <code><a href="../reference/make.db.names.html">SQLKeywords()</a></code>: a black list based approach is fundamentally flawed; instead quote strings and identifiers with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>.</p></li>
 </ul>
 </li>
 <li><p><code><a href="../reference/dbGetDBIVersion.html">dbGetDBIVersion()</a></code> is deprecated since it’s now just a thin wrapper around <code>packageVersion("DBI")</code>.</p></li>

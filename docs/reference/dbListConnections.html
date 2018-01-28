@@ -103,9 +103,8 @@
     </div>
 
     
-    <p>Drivers that implement only a single connections MUST return a list
-containing a single element. If no connection are open, methods MUST
-return an empty list.</p>
+    <p>DEPRECATED, drivers are no longer required to implement this method.
+Keep track of the connections you opened if you require a list.</p>
     
 
     <pre class="usage"><span class='fu'>dbListConnections</span>(<span class='no'>drv</span>, <span class='no'>...</span>)</pre>
@@ -131,7 +130,7 @@ return an empty list.</p>
 
     <p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
   <code><a href='dbConnect.html'>dbConnect</a></code>, <code><a href='dbDataType.html'>dbDataType</a></code>,
-  <code><a href='dbDriver.html'>dbDriver</a></code>, <code>dbGetInfo</code>,
+  <code><a href='dbDriver.html'>dbDriver</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
   <code><a href='dbIsValid.html'>dbIsValid</a></code></p>
     
 
