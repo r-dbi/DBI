@@ -15,5 +15,6 @@ For more on these concepts, see
 \url{http://stackoverflow.com/questions/7022755/}}
 }
 \description{
-Refer to a table nested in a hierarchy (e.g. within a schema)
+Objects of class \code{Table} have a single slot \code{name}, which is a named
+character vector.
 }
