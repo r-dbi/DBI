@@ -362,6 +362,36 @@ setGeneric("dbListTables",
   valueClass = "character"
 )
 
+#' List remote objects
+#'
+#' Returns the names of remote tables accessible through this connection
+#' (possibly via a prefix) as a data frame.
+#' This should, where possible, include temporary objects.
+#'
+#' @template methods
+#' @templateVar method_name dbListObjects
+#'
+#' @inherit DBItest::spec_sql_list_objects return
+#' @inheritSection DBItest::spec_sql_list_objects Additional arguments
+#'
+#' @inheritParams dbGetQuery
+#' @param prefix An optional prefix, passed to [dbUnquoteIdentifier()].
+#'   If given the method will return all objects accessible through this prefix.
+#' @family DBIConnection generics
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbListObjects(con)
+#' dbWriteTable(con, "mtcars", mtcars)
+#' dbListObjects(con)
+#'
+#' dbDisconnect(con)
+setGeneric("dbListObjects",
+  def = function(conn, prefix = NULL, ...) standardGeneric("dbListObjects"),
+  valueClass = "data.frame"
+)
+
 #' Copy data frames from database tables
 #'
 #' Reads a database table to a data frame, optionally converting
