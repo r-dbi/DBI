@@ -12,7 +12,11 @@ setClass("Table", slots = list(name = "character"))
 #'   \url{http://stackoverflow.com/questions/7022755/}
 #' @export
 Table <- function(...) {
-  new("Table", name = c(...))
+  components <- c(...)
+  if (is.null(names(components)) || any(names(components) == "")) {
+    stop("All arguments to Table() must be named.", call. = FALSE)
+  }
+  new("Table", name = components)
 }
 
 #' @rdname hidden_aliases
