@@ -10,6 +10,7 @@ setClass("Table", slots = list(name = "character"))
 #'   or `cluster`, `catalog`, `schema`, `table`.
 #'   For more on these concepts, see
 #'   \url{http://stackoverflow.com/questions/7022755/}
+#' @export
 Table <- function(...) {
   new("Table", name = c(...))
 }
