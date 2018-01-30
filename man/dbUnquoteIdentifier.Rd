@@ -27,7 +27,7 @@ back to a list of \link{Table} objects.
 
 dbUnquoteIdentifier(
   ANSI(),
-  SQL(c("Schema"."Table", "UnqualifiedTable"))
+  SQL(c('"Schema"."Table"', "UnqualifiedTable"))
 )
 
 # Character vectors are wrapped in a list

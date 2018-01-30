@@ -31,7 +31,8 @@ or invalid connection.
 \description{
 Returns the unquoted names of remote tables accessible through this
 connection.
-This should, where possible, include temporary tables, and views.
+This should include views and temporary objects, but not all database backends
+(in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}
 }

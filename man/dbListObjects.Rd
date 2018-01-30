@@ -10,15 +10,22 @@ dbListObjects(conn, prefix = NULL, ...)
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{prefix}{An optional prefix, passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
+\item{prefix}{A fully qualified path in the database's namespace, or \code{NULL}.
+will be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 If given the method will return all objects accessible through this prefix.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \description{
-Returns the names of remote tables accessible through this connection
-(possibly via a prefix) as a data frame.
-This should, where possible, include temporary objects.
+Returns the names of remote objects accessible through this connection
+as a data frame.
+This should include temporary objects, but not all database backends
+(in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+Compared to \code{\link[=dbListTables]{dbListTables()}}, this method also enumerates tables and views
+in schemas, and returns fully qualified identifiers to access these objects.
+This allows exploration of all database objects available to the current
+user, including those that can only be accessed by giving the full
+namespace.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListObjects")}
 }

@@ -29,7 +29,7 @@ to achieve this behavior, but this is not required.)
 \description{
 Call this method to generate a string that is suitable for
 use in a query as a string literal, to make sure that you
-generate valid SQL and avoid SQL injection.
+generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteString")}
 }

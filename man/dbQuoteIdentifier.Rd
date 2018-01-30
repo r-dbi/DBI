@@ -32,8 +32,8 @@ to achieve this behavior, but this is not required.)
 \description{
 Call this method to generate a string that is suitable for
 use in a query as a column or table name, to make sure that you
-generate valid SQL and avoid SQL injection. The inverse operation is
-\code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
+generate valid SQL and protect against SQL injection attacks. The inverse
+operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteIdentifier")}
 }

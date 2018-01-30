@@ -338,7 +338,8 @@ setMethod("dbListFields", signature("DBIConnection", "character"),
 #'
 #' Returns the unquoted names of remote tables accessible through this
 #' connection.
-#' This should, where possible, include temporary tables, and views.
+#' This should include views and temporary objects, but not all database backends
+#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 #'
 #' @template methods
 #' @templateVar method_name dbListTables
@@ -364,9 +365,15 @@ setGeneric("dbListTables",
 
 #' List remote objects
 #'
-#' Returns the names of remote tables accessible through this connection
-#' (possibly via a prefix) as a data frame.
-#' This should, where possible, include temporary objects.
+#' Returns the names of remote objects accessible through this connection
+#' as a data frame.
+#' This should include temporary objects, but not all database backends
+#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+#' Compared to [dbListTables()], this method also enumerates tables and views
+#' in schemas, and returns fully qualified identifiers to access these objects.
+#' This allows exploration of all database objects available to the current
+#' user, including those that can only be accessed by giving the full
+#' namespace.
 #'
 #' @template methods
 #' @templateVar method_name dbListObjects
@@ -375,7 +382,8 @@ setGeneric("dbListTables",
 #' @inheritSection DBItest::spec_sql_list_objects Additional arguments
 #'
 #' @inheritParams dbGetQuery
-#' @param prefix An optional prefix, passed to [dbUnquoteIdentifier()].
+#' @param prefix A fully qualified path in the database's namespace, or `NULL`.
+#'   will be passed to [dbUnquoteIdentifier()].
 #'   If given the method will return all objects accessible through this prefix.
 #' @family DBIConnection generics
 #' @export

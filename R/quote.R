@@ -71,8 +71,8 @@ setMethod("show", "SQL", function(object) {
 #'
 #' Call this method to generate a string that is suitable for
 #' use in a query as a column or table name, to make sure that you
-#' generate valid SQL and avoid SQL injection. The inverse operation is
-#' [dbUnquoteIdentifier()].
+#' generate valid SQL and protect against SQL injection attacks. The inverse
+#' operation is [dbUnquoteIdentifier()].
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
@@ -167,7 +167,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), quote_identifi
 #'
 #' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   SQL(c("Schema"."Table", "UnqualifiedTable"))
+#'   SQL(c('"Schema"."Table"', "UnqualifiedTable"))
 #' )
 #'
 #' # Character vectors are wrapped in a list
@@ -216,7 +216,7 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
 #'
 #' Call this method to generate a string that is suitable for
 #' use in a query as a string literal, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' generate valid SQL and protect against SQL injection attacks.
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
@@ -288,7 +288,7 @@ setMethod("dbQuoteString", signature("DBIConnection", "SQL"), quote_string)
 #' @description
 #' Call these methods to generate a string that is suitable for
 #' use in a query as a literal value of the correct type, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' generate valid SQL and protect against SQL injection attacks.
 #'
 #' @inheritParams dbQuoteString
 #' @param x A vector to quote as string.

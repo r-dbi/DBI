@@ -17,7 +17,7 @@ an active connection to an DBMS.}
 \description{
 Call these methods to generate a string that is suitable for
 use in a query as a literal value of the correct type, to make sure that you
-generate valid SQL and avoid SQL injection.
+generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteLiteral")}
 }
