@@ -1,4 +1,4 @@
-#' @rdname Table
+#' @rdname Id
 setClass("Id", slots = list(name = "character"))
 
 #' Refer to a table nested in a hierarchy (e.g. within a schema)
