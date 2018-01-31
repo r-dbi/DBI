@@ -36,8 +36,8 @@
 \alias{dbQuoteLiteral,DBIConnection-method}
 \alias{sqlCreateTable,DBIConnection-method}
 \alias{sqlAppendTable,DBIConnection-method}
-\alias{show,Table-method}
-\alias{dbQuoteIdentifier,DBIConnection,Table-method}
+\alias{show,Id-method}
+\alias{dbQuoteIdentifier,DBIConnection,Id-method}
 \alias{dbWithTransaction,DBIConnection-method}
 \title{Internal page for hidden aliases}
 \usage{
@@ -108,9 +108,9 @@
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)
 
-\S4method{show}{Table}(object)
+\S4method{show}{Id}(object)
 
-\S4method{dbQuoteIdentifier}{DBIConnection,Table}(conn, x, ...)
+\S4method{dbQuoteIdentifier}{DBIConnection,Id}(conn, x, ...)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 }

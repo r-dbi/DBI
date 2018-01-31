@@ -1,5 +1,5 @@
 #' @rdname Table
-setClass("Table", slots = list(name = "character"))
+setClass("Id", slots = list(name = "character"))
 
 #' Refer to a table nested in a hierarchy (e.g. within a schema)
 #'
@@ -11,18 +11,18 @@ setClass("Table", slots = list(name = "character"))
 #'   For more on these concepts, see
 #'   \url{http://stackoverflow.com/questions/7022755/}
 #' @export
-Table <- function(...) {
+Id <- function(...) {
   components <- c(...)
   if (is.null(names(components)) || any(names(components) == "")) {
     stop("All arguments to Table() must be named.", call. = FALSE)
   }
-  new("Table", name = components)
+  new("Id", name = components)
 }
 
 #' @rdname hidden_aliases
 #' @param object Table object to print
 #' @export
-setMethod("show", signature("Table"), function(object) {
+setMethod("show", signature("Id"), function(object) {
   cat(toString(object), "\n", sep = "")
 })
 
@@ -33,4 +33,4 @@ toString.Table <- function(x, ...) {
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "Table"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifier)

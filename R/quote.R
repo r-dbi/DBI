@@ -108,7 +108,7 @@ quote_identifier <-
   function(conn, x, ...) {
     # Don't support lists, auto-vectorization violates type stability
     if (is(x, "SQL")) return(x)
-    if (is(x, "Table")) {
+    if (is(x, "Id")) {
       return(SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = ".")))
     }
     if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
@@ -200,11 +200,11 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
     }
     return(tables)
   }
-  if (is(x, "Table")) {
+  if (is(x, "Id")) {
     return(list(x))
   }
   if (is.character(x)) {
-    return(list(do.call(Table, as.list(x))))
+    return(list(do.call(Id, as.list(x))))
   }
   stop("x must be character, SQL or Table, or a list of such objects", call. = FALSE)
 })
