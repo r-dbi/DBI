@@ -190,10 +190,9 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
     return(vapply(x, dbUnquoteIdentifier, conn = conn, list(1)))
   }
   if (is(x, "SQL")) {
-    . <- strsplit(as.character(x), '^"|"$|"[.]"')
-    . <- lapply(., `[`, -1L)
-    split <- .
-    tables <- lapply(split, Table)
+    split <-  strsplit(as.character(x), '^"|"$|"[.]"')
+    components <- lapply(split, `[`, -1L)
+    tables <- lapply(components, Table)
     quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
     bad <- quoted != x
     if (any(bad)) {
