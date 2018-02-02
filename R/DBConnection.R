@@ -1,3 +1,6 @@
+#' @include table.R
+NULL
+
 #' DBIConnection class
 #'
 #' This virtual class encapsulates the connection to a DBMS, and it provides
@@ -455,6 +458,14 @@ setMethod("dbReadTable", signature("DBIConnection", "character"),
   }
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbReadTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbReadTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
+)
+
 #' Copy data frames to database tables
 #'
 #' Writes, overwrites or appends a data frame to a database table, optionally
@@ -493,6 +504,14 @@ setGeneric("dbWriteTable",
   def = function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbWriteTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbWriteTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
+)
+
 #' Does a table exist?
 #'
 #' Returns if a table given by name exists in the database.
@@ -519,6 +538,14 @@ setGeneric("dbWriteTable",
 setGeneric("dbExistsTable",
   def = function(conn, name, ...) standardGeneric("dbExistsTable"),
   valueClass = "logical"
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbExistsTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbExistsTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
 )
 
 #' Remove a table from the database
@@ -548,4 +575,12 @@ setGeneric("dbExistsTable",
 #' dbDisconnect(con)
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbRemoveTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbRemoveTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
 )

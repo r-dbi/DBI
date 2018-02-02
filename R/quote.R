@@ -140,6 +140,10 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "character"), quote_id
 #' @export
 setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), quote_identifier)
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifier)
+
 #' Unquote identifiers
 #'
 #' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]

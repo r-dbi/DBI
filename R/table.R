@@ -27,10 +27,6 @@ setMethod("show", signature("Id"), function(object) {
 })
 
 #' @export
-toString.Table <- function(x, ...) {
-  paste0("<Table> ", paste(x@name, collapse = "."))
+toString.Id <- function(x, ...) {
+  paste0("<Table> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
 }
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifier)
