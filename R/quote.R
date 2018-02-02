@@ -61,16 +61,22 @@ setMethod("show", "SQL", function(object) {
   cat(paste0("<SQL> ", object@.Data, collapse = "\n"), "\n", sep = "")
 })
 
+#' @export
+`[.SQL` <- function(x, ...) SQL(NextMethod())
+
+#' @export
+`[[.SQL` <- function(x, ...) SQL(NextMethod())
 
 #' Quote identifiers
 #'
 #' Call this method to generate a string that is suitable for
-#' use in a query as a column name, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' use in a query as a column or table name, to make sure that you
+#' generate valid SQL and protect against SQL injection attacks. The inverse
+#' operation is [dbUnquoteIdentifier()].
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
-#' @param x A character vector to quote as identifier.
+#' @param x A character vector, [SQL] or [Table] object to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
 #' @template methods
@@ -100,8 +106,9 @@ setGeneric("dbQuoteIdentifier",
 
 quote_identifier <-
   function(conn, x, ...) {
+    # Don't support lists, auto-vectorization violates type stability
     if (is(x, "SQL")) return(x)
-    if (is(x, "Table")) {
+    if (is(x, "Id")) {
       return(SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = ".")))
     }
     if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
@@ -121,23 +128,96 @@ quote_identifier <-
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection"), quote_identifier)
 
 # Need to keep other method declarations around for now, because clients might
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "character"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "character"), quote_identifier)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", c("DBIConnection", "SQL"), quote_identifier)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), quote_identifier)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifier)
+
+#' Unquote identifiers
+#'
+#' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]
+#' back to a list of [Table] objects.
+#'
+#' @param conn A subclass of [DBIConnection-class], representing
+#'   an active connection to an DBMS.
+#' @param x An [SQL] or [Table] object or character vector, or a list of such
+#'   objects, to unquote.
+#' @param ... Other arguments passed on to methods.
+#'
+#' @template methods
+#' @templateVar method_name dbUnquoteIdentifier
+#'
+#' @inherit DBItest::spec_sql_unquote_identifier return
+#' @inheritSection DBItest::spec_sql_unquote_identifier Specification
+#'
+#' @family DBIResult generics
+#' @export
+#' @examples
+#' # Unquoting allows to understand the structure of a possibly complex quoted
+#' # identifier
+#'
+#' dbUnquoteIdentifier(
+#'   ANSI(),
+#'   SQL(c('"Schema"."Table"', "UnqualifiedTable"))
+#' )
+#'
+#' # Character vectors are wrapped in a list
+#' dbQuoteIdentifier(
+#'   ANSI(),
+#'   c(schema = "Schema", table = "Table")
+#' )
+#'
+#' # Lists of character vectors are returned unchanged
+#' dbQuoteIdentifier(
+#'   ANSI(),
+#'   list(c(schema = "Schema", table = "Table"), "UnqualifiedTable")
+#' )
+setGeneric("dbUnquoteIdentifier",
+  def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
+  if (is.list(x)) {
+    return(vapply(x, dbUnquoteIdentifier, conn = conn, list(1)))
+  }
+  if (is(x, "SQL")) {
+    split <-  strsplit(as.character(x), '^"|"$|"[.]"')
+    components <- lapply(split, `[`, -1L)
+    tables <- lapply(components, Table)
+    quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
+    bad <- quoted != x
+    if (any(bad)) {
+      stop("Can't unquote ", x[bad][[1L]], call. = FALSE)
+    }
+    return(tables)
+  }
+  if (is(x, "Id")) {
+    return(list(x))
+  }
+  if (is.character(x)) {
+    return(list(do.call(Id, as.list(x))))
+  }
+  stop("x must be character, SQL or Table, or a list of such objects", call. = FALSE)
+})
 
 #' Quote literal strings
 #'
 #' Call this method to generate a string that is suitable for
 #' use in a query as a string literal, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' generate valid SQL and protect against SQL injection attacks.
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
@@ -194,22 +274,22 @@ quote_string <-
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection"), quote_string)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection", "character"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection", "character"), quote_string)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", c("DBIConnection", "SQL"), quote_string)
+setMethod("dbQuoteString", signature("DBIConnection", "SQL"), quote_string)
 
 #' Quote literal values
 #'
 #' @description
 #' Call these methods to generate a string that is suitable for
 #' use in a query as a literal value of the correct type, to make sure that you
-#' generate valid SQL and avoid SQL injection.
+#' generate valid SQL and protect against SQL injection attacks.
 #'
 #' @inheritParams dbQuoteString
 #' @param x A vector to quote as string.

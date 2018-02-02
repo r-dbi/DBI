@@ -144,13 +144,13 @@ setGeneric("SQLKeywords",
 )
 
 #' @rdname hidden_aliases
-setMethod("SQLKeywords", "DBIObject",
+setMethod("SQLKeywords", signature("DBIObject"),
   definition = function(dbObj, ...) .SQL92Keywords,
   valueClass = "character"
 )
 
 #' @rdname hidden_aliases
-setMethod("SQLKeywords", "missing",
+setMethod("SQLKeywords", signature("missing"),
   definition = function(dbObj, ...) .SQL92Keywords,
   valueClass = "character"
 )
