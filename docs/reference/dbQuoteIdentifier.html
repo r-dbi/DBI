@@ -104,16 +104,17 @@
 
     
     <p>Call this method to generate a string that is suitable for
-use in a query as a column name, to make sure that you
-generate valid SQL and avoid SQL injection.
+use in a query as a column or table name, to make sure that you
+generate valid SQL and protect against SQL injection attacks. The inverse
+operation is <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a></code>.
 
     <h3>Methods in other packages</h3>
 
     <ul>
 <li><p><code><a href='hidden_aliases.html'>DBI::dbQuoteIdentifier("DBIConnection", "ANY")</a></code></p></li>
 <li><p><code><a href='hidden_aliases.html'>DBI::dbQuoteIdentifier("DBIConnection", "character")</a></code></p></li>
+<li><p><code><a href='hidden_aliases.html'>DBI::dbQuoteIdentifier("DBIConnection", "Id")</a></code></p></li>
 <li><p><code><a href='hidden_aliases.html'>DBI::dbQuoteIdentifier("DBIConnection", "SQL")</a></code></p></li>
-<li><p><code><a href='hidden_aliases.html'>DBI::dbQuoteIdentifier("DBIConnection", "Table")</a></code></p></li>
 <li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</code></p></li>
 <li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</code></p></li>
 </ul></p>
@@ -131,7 +132,7 @@ an active connection to an DBMS.</p></td>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>A character vector to quote as identifier.</p></td>
+      <td><p>A character vector, <a href='SQL.html'>SQL</a> or Table object to quote as identifier.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -144,6 +145,7 @@ an active connection to an DBMS.</p></td>
     <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to character,
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
+The names of the input argument are preserved in the output.
 An error is raised if the input contains <code>NA</code>,
 but not for an empty string.</p>
 <p>When passing the returned object again to <code>dbQuoteIdentifier()</code>
@@ -185,7 +187,9 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
   <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></code>,
   <code><a href='dbGetStatement.html'>dbGetStatement</a></code>,
   <code><a href='dbHasCompleted.html'>dbHasCompleted</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>, <code><a href='dbQuoteString.html'>dbQuoteString</a></code></p>
+  <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>,
+  <code><a href='dbQuoteString.html'>dbQuoteString</a></code>,
+  <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

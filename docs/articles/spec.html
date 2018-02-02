@@ -1312,7 +1312,7 @@ dbQuoteString(conn, x, ...)
 Description
 </h3>
 <p>
-Call this method to generate a string that is suitable for use in a query as a string literal, to make sure that you generate valid SQL and avoid SQL injection.
+Call this method to generate a string that is suitable for use in a query as a string literal, to make sure that you generate valid SQL and protect against SQL injection attacks.
 </p>
 <h4>
 Methods in other packages
@@ -1421,7 +1421,7 @@ dbQuoteIdentifier(conn, x, ...)
 Description
 </h3>
 <p>
-Call this method to generate a string that is suitable for use in a query as a column name, to make sure that you generate valid SQL and avoid SQL injection.
+Call this method to generate a string that is suitable for use in a query as a column or table name, to make sure that you generate valid SQL and protect against SQL injection attacks. The inverse operation is <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
 </p>
 <h4>
 Methods in other packages
@@ -1439,12 +1439,12 @@ Methods in other packages
 </li>
 <li>
 <p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “SQL”)</code>
+<code>DBI::dbQuoteIdentifier(“DBIConnection”, “Id”)</code>
 </p>
 </li>
 <li>
 <p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “Table”)</code>
+<code>DBI::dbQuoteIdentifier(“DBIConnection”, “SQL”)</code>
 </p>
 </li>
 </ul>
@@ -1468,7 +1468,7 @@ A subclass of DBIConnection, representing an active connection to an DBMS.
 </td>
 <td>
 <p>
-A character vector to quote as identifier.
+A character vector, SQL or Table object to quote as identifier.
 </p>
 </td>
 </tr>
@@ -1487,7 +1487,7 @@ Other arguments passed on to methods.
 Value
 </h3>
 <p>
-<code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. An error is raised if the input contains <code>NA</code>, but not for an empty string.
+<code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. The names of the input argument are preserved in the output. An error is raised if the input contains <code>NA</code>, but not for an empty string.
 </p>
 <p>
 When passing the returned object again to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)
@@ -1542,6 +1542,11 @@ Methods in other packages
 <li>
 <p>
 <code>DBI::dbReadTable(“DBIConnection”, “character”)</code>
+</p>
+</li>
+<li>
+<p>
+<code>DBI::dbReadTable(“DBIConnection”, “Id”)</code>
 </p>
 </li>
 </ul>
@@ -1687,6 +1692,16 @@ Description
 <p>
 Writes, overwrites or appends a data frame to a database table, optionally converting row names to a column and specifying SQL data types for fields.
 </p>
+<h4>
+Methods in other packages
+</h4>
+<ul>
+<li>
+<p>
+<code>DBI::dbWriteTable(“DBIConnection”, “Id”)</code>
+</p>
+</li>
+</ul>
 <h3>
 Arguments
 </h3>
@@ -1938,7 +1953,7 @@ dbListTables(conn, ...)
 Description
 </h3>
 <p>
-Returns the unquoted names of remote tables accessible through this connection. This should, where possible, include temporary tables, and views.
+Returns the unquoted names of remote tables accessible through this connection. This should include views and temporary objects, but not all database backends (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
 </p>
 <h3>
 Arguments
@@ -2012,6 +2027,16 @@ Description
 <p>
 Returns if a table given by name exists in the database.
 </p>
+<h4>
+Methods in other packages
+</h4>
+<ul>
+<li>
+<p>
+<code>DBI::dbExistsTable(“DBIConnection”, “Id”)</code>
+</p>
+</li>
+</ul>
 <h3>
 Arguments
 </h3>
@@ -2115,6 +2140,16 @@ Description
 <p>
 Remove a remote table (e.g., created by <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>) from the database.
 </p>
+<h4>
+Methods in other packages
+</h4>
+<ul>
+<li>
+<p>
+<code>DBI::dbRemoveTable(“DBIConnection”, “Id”)</code>
+</p>
+</li>
+</ul>
 <h3>
 Arguments
 </h3>

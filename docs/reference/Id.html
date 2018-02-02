@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Disconnect (close) a connection — dbDisconnect • DBI</title>
+<title>Refer to a table nested in a hierarchy (e.g. within a schema) — Id-class • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -99,81 +99,35 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Disconnect (close) a connection</h1>
+    <h1>Refer to a table nested in a hierarchy (e.g. within a schema)</h1>
     </div>
 
     
-    <p>This closes the connection, discards all pending work, and frees
-resources (e.g., memory, sockets).
-
-    <h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbDisconnect("SQLiteConnection")</code></p></li>
-</ul></p>
+    <p>Objects of class <code>Table</code> have a single slot <code>name</code>, which is a named
+character vector.</p>
     
 
-    <pre class="usage"><span class='fu'>dbDisconnect</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>Id</span>(<span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>conn</th>
-      <td><p>A <a href='DBIConnection-class.html'>DBIConnection</a> object, as returned by
-<code><a href='dbConnect.html'>dbConnect()</a></code>.</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Other parameters passed on to methods.</p></td>
+      <td><p>Components of the hierarchy, e.g. <code>schema</code>, <code>table</code>,
+or <code>cluster</code>, <code>catalog</code>, <code>schema</code>, <code>table</code>.
+For more on these concepts, see
+<a href='http://stackoverflow.com/questions/7022755/'>http://stackoverflow.com/questions/7022755/</a></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>A warning is issued on garbage collection when a connection has been
-released without calling <code>dbDisconnect()</code>,
-but this cannot be tested automatically.
-A warning is issued immediately when calling <code>dbDisconnect()</code> on an
-already disconnected
-or invalid connection.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
-  <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbExecute.html'>dbExecute</a></code>,
-  <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
-  <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListObjects.html'>dbListObjects</a></code>,
-  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
-  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
-  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
-  <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
-    
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
-<span class='fu'>dbDisconnect</span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+                </ul>
 
   </div>
 </div>

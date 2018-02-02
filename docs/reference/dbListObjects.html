@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Disconnect (close) a connection — dbDisconnect • DBI</title>
+<title>List remote objects — dbListObjects • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -99,21 +99,22 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Disconnect (close) a connection</h1>
+    <h1>List remote objects</h1>
     </div>
 
     
-    <p>This closes the connection, discards all pending work, and frees
-resources (e.g., memory, sockets).
-
-    <h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbDisconnect("SQLiteConnection")</code></p></li>
-</ul></p>
+    <p>Returns the names of remote objects accessible through this connection
+as a data frame.
+This should include temporary objects, but not all database backends
+(in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
+Compared to <code><a href='dbListTables.html'>dbListTables()</a></code>, this method also enumerates tables and views
+in schemas, and returns fully qualified identifiers to access these objects.
+This allows exploration of all database objects available to the current
+user, including those that can only be accessed by giving the full
+namespace.</p>
     
 
-    <pre class="usage"><span class='fu'>dbDisconnect</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dbListObjects</span>(<span class='no'>conn</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -124,52 +125,42 @@ resources (e.g., memory, sockets).
 <code><a href='dbConnect.html'>dbConnect()</a></code>.</p></td>
     </tr>
     <tr>
+      <th>prefix</th>
+      <td><p>A fully qualified path in the database's namespace, or <code>NULL</code>.
+will be passed to <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a></code>.
+If given the method will return all objects accessible through this prefix.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>Other parameters passed on to methods.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>A warning is issued on garbage collection when a connection has been
-released without calling <code>dbDisconnect()</code>,
-but this cannot be tested automatically.
-A warning is issued immediately when calling <code>dbDisconnect()</code> on an
-already disconnected
-or invalid connection.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
-  <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbExecute.html'>dbExecute</a></code>,
-  <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
+  <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect</a></code>,
+  <code><a href='dbExecute.html'>dbExecute</a></code>, <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
   <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
   <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListObjects.html'>dbListObjects</a></code>,
-  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
-  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
-  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
-  <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
+  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
+  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
+  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
+  <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
-<span class='fu'>dbDisconnect</span>(<span class='no'>con</span>)</div></pre>
+
+<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("SQLiteConnection", package = "RSQLite")),     structure(function (conn, prefix = NULL, ...)     {        ans &lt;- standardGeneric("dbListObjects")        .valueClassTest(ans, "data.frame", "dbListObjects")    }, generic = structure("dbListObjects", package = "DBI"), package = "DBI", group = list(), valueClass = "data.frame", signature = c("conn",     "prefix"), default = `\001NULL\001`, skeleton = (function (conn,         prefix = NULL, ...)     stop("invalid call in method dispatch to 'dbListObjects' (no default method)",         domain = NA))(conn, prefix, ...), class = structure("standardGeneric", package = "methods")),     &lt;environment&gt;): unable to find an inherited method for function ‘dbListObjects’ for signature ‘"SQLiteConnection"’</span></div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
+<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("SQLiteConnection", package = "RSQLite")),     structure(function (conn, prefix = NULL, ...)     {        ans &lt;- standardGeneric("dbListObjects")        .valueClassTest(ans, "data.frame", "dbListObjects")    }, generic = structure("dbListObjects", package = "DBI"), package = "DBI", group = list(), valueClass = "data.frame", signature = c("conn",     "prefix"), default = `\001NULL\001`, skeleton = (function (conn,         prefix = NULL, ...)     stop("invalid call in method dispatch to 'dbListObjects' (no default method)",         domain = NA))(conn, prefix, ...), class = structure("standardGeneric", package = "methods")),     &lt;environment&gt;): unable to find an inherited method for function ‘dbListObjects’ for signature ‘"SQLiteConnection"’</span></div><div class='input'>
+<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

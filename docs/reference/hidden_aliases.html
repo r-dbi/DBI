@@ -115,6 +115,9 @@
 <span class='co'># S4 method for DBIObject</span>
 <span class='fu'><a href='dbDataType.html'>dbDataType</a></span>(<span class='no'>dbObj</span>, <span class='no'>obj</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for Id</span>
+<span class='fu'>show</span>(<span class='no'>object</span>)
+
 <span class='co'># S4 method for DBIConnection</span>
 <span class='fu'>show</span>(<span class='no'>object</span>)
 
@@ -133,6 +136,18 @@
 <span class='co'># S4 method for DBIConnection,character</span>
 <span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>,
   <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+
+<span class='co'># S4 method for DBIConnection,Id</span>
+<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DBIConnection,Id</span>
+<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DBIConnection,Id</span>
+<span class='fu'><a href='dbExistsTable.html'>dbExistsTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DBIConnection,Id</span>
+<span class='fu'><a href='dbRemoveTable.html'>dbRemoveTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for AnsiConnection</span>
 <span class='fu'>show</span>(<span class='no'>object</span>)
@@ -181,6 +196,12 @@
 <span class='co'># S4 method for DBIConnection,SQL</span>
 <span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
 
+<span class='co'># S4 method for DBIConnection,Id</span>
+<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
+
+<span class='co'># S4 method for DBIConnection</span>
+<span class='fu'><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
+
 <span class='co'># S4 method for DBIConnection,ANY</span>
 <span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
 
@@ -201,12 +222,6 @@
 <span class='fu'><a href='sqlAppendTable.html'>sqlAppendTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='no'>...</span>)
 
-<span class='co'># S4 method for Table</span>
-<span class='fu'>show</span>(<span class='no'>object</span>)
-
-<span class='co'># S4 method for DBIConnection,Table</span>
-<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
-
 <span class='co'># S4 method for DBIConnection</span>
 <span class='fu'><a href='dbWithTransaction.html'>dbWithTransaction</a></span>(<span class='no'>conn</span>, <span class='no'>code</span>)</pre>
     
@@ -223,15 +238,15 @@
     </tr>
     <tr>
       <th>object</th>
-      <td><p>Object to display</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object to display</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
       <td><p>Table object to print</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object to display</p></td>
+    </tr>
+    <tr>
+      <th>object</th>
+      <td><p>Object to display</p></td>
     </tr>
     </table>
     

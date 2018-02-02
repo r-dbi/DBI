@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Completion status — dbHasCompleted • DBI</title>
+<title>Unquote identifiers — dbUnquoteIdentifier • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -99,59 +99,40 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Completion status</h1>
+    <h1>Unquote identifiers</h1>
     </div>
 
     
-    <p>This method returns if the operation has completed.
-A <code>SELECT</code> query is completed if all rows have been fetched.
-A data manipulation statement is always completed.
+    <p>Call this method to convert a <a href='SQL.html'>SQL</a> object created by <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
+back to a list of Table objects.
 
     <h3>Methods in other packages</h3>
 
     <ul>
-<li><p><code>RSQLite::dbHasCompleted("SQLiteResult")</code></p></li>
+<li><p><code><a href='hidden_aliases.html'>DBI::dbUnquoteIdentifier("DBIConnection")</a></code></p></li>
 </ul></p>
     
 
-    <pre class="usage"><span class='fu'>dbHasCompleted</span>(<span class='no'>res</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dbUnquoteIdentifier</span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>res</th>
-      <td><p>An object inheriting from <a href='DBIResult-class.html'>DBIResult</a>.</p></td>
+      <th>conn</th>
+      <td><p>A subclass of <a href='DBIConnection-class.html'>DBIConnection</a>, representing
+an active connection to an DBMS.</p></td>
+    </tr>
+    <tr>
+      <th>x</th>
+      <td><p>An <a href='SQL.html'>SQL</a> or Table object or character vector, or a list of such
+objects, to unquote.</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td><p>Other arguments passed on to methods.</p></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbHasCompleted()</code> returns a logical scalar.
-For a query initiated by <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> with non-empty result set,
-<code>dbHasCompleted()</code> returns <code>FALSE</code> initially
-and <code>TRUE</code> after calling <code><a href='dbFetch.html'>dbFetch()</a></code> without limit.
-For a query initiated by <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>,
-<code>dbHasCompleted()</code> always returns <code>TRUE</code>.
-Attempting to query completion status for a result set cleared with
-<code><a href='dbClearResult.html'>dbClearResult()</a></code> gives an error.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>The completion status for a query is only guaranteed to be set to
-<code>FALSE</code> after attempting to fetch past the end of the entire result.
-Therefore, for a query with an empty result set,
-the initial return value is unspecified,
-but the result value is <code>TRUE</code> after trying to fetch only one row.
-Similarly, for a query with a result set of length n,
-the return value is unspecified after fetching n rows,
-but the result value is <code>TRUE</code> after trying to fetch only one more
-row.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -160,34 +141,37 @@ row.</p>
   <code><a href='dbColumnInfo.html'>dbColumnInfo</a></code>, <code><a href='dbFetch.html'>dbFetch</a></code>,
   <code><a href='dbGetInfo.html'>dbGetInfo</a></code>, <code><a href='dbGetRowCount.html'>dbGetRowCount</a></code>,
   <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></code>,
-  <code><a href='dbGetStatement.html'>dbGetStatement</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
+  <code><a href='dbGetStatement.html'>dbGetStatement</a></code>,
+  <code><a href='dbHasCompleted.html'>dbHasCompleted</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
   <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></code>,
-  <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>,
-  <code><a href='dbQuoteString.html'>dbQuoteString</a></code>,
-  <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p>
+  <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>, <code><a href='dbQuoteString.html'>dbQuoteString</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Unquoting allows to understand the structure of a possibly complex quoted</span>
+<span class='co'># identifier</span>
 
-<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
-<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>)
-
-<span class='fu'>dbHasCompleted</span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='no'>ret1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>, <span class='fl'>10</span>)
-<span class='fu'>dbHasCompleted</span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='no'>ret2</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)
-<span class='fu'>dbHasCompleted</span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
+<span class='fu'>dbUnquoteIdentifier</span>(
+  <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
+  <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='fu'>c</span>(<span class='st'>'"Schema"."Table"'</span>, <span class='st'>"UnqualifiedTable"</span>))
+)</div><div class='output co'>#&gt; <span class='error'>Error in match.fun(FUN): object 'Table' not found</span></div><div class='input'>
+<span class='co'># Character vectors are wrapped in a list</span>
+<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(
+  <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
+  <span class='fu'>c</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>)
+)</div><div class='output co'>#&gt; &lt;SQL&gt; "Schema"
+#&gt; &lt;SQL&gt; "Table"</div><div class='input'>
+<span class='co'># Lists of character vectors are returned unchanged</span>
+<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(
+  <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
+  <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>), <span class='st'>"UnqualifiedTable"</span>)
+)</div><div class='output co'>#&gt; <span class='error'>Error: x must be character or SQL</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

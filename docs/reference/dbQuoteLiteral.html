@@ -105,7 +105,7 @@
     
     <p>Call these methods to generate a string that is suitable for
 use in a query as a literal value of the correct type, to make sure that you
-generate valid SQL and avoid SQL injection.
+generate valid SQL and protect against SQL injection attacks.
 
     <h3>Methods in other packages</h3>
 
@@ -144,7 +144,8 @@ an active connection to an DBMS.</p></td>
   <code><a href='dbGetStatement.html'>dbGetStatement</a></code>,
   <code><a href='dbHasCompleted.html'>dbHasCompleted</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
   <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></code>,
-  <code><a href='dbQuoteString.html'>dbQuoteString</a></code></p>
+  <code><a href='dbQuoteString.html'>dbQuoteString</a></code>,
+  <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
