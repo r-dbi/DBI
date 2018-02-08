@@ -14,6 +14,18 @@ an active connection to an DBMS.}
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbQuoteLiteral()} returns an object that can be coerced to \link{character},
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.
+
+When passing the returned object again to \code{dbQuoteLiteral()}
+as \code{x}
+argument, it is returned unchanged.
+Passing objects of class \link{SQL} should also return them unchanged.
+(For backends it may be most convenient to return \link{SQL} objects
+to achieve this behavior, but this is not required.)
+}
 \description{
 Call these methods to generate a string that is suitable for
 use in a query as a literal value of the correct type, to make sure that you
@@ -21,6 +33,27 @@ generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteLiteral")}
 }
+\section{Specification}{
+
+
+The returned expression can be used in a \code{SELECT ...} query,
+and the value of
+\code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]}
+must be equal to \code{x}
+for any scalar
+integer,
+numeric,
+string,
+and logical.
+If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.na()}}.
+The literals \code{"NA"} or \code{"NULL"} are not treated specially.
+
+\code{NA} should be translated to an unquoted SQL \code{NULL},
+so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
+returns one row.
+
+}
+
 \examples{
 # Quoting ensures that arbitrary input is safe for use in a query
 name <- "Robert'); DROP TABLE Students;--"
