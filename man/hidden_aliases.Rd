@@ -14,6 +14,7 @@
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbListFields,DBIConnection,character-method}
+\alias{dbListObjects,DBIConnection-method}
 \alias{dbReadTable,DBIConnection,character-method}
 \alias{dbReadTable,DBIConnection,Id-method}
 \alias{dbWriteTable,DBIConnection,Id-method}
@@ -63,6 +64,8 @@
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbListFields}{DBIConnection,character}(conn, name, ...)
+
+\S4method{dbListObjects}{DBIConnection}(conn, prefix = NULL, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
   row.names = FALSE, check.names = TRUE)

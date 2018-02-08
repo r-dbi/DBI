@@ -403,6 +403,22 @@ setGeneric("dbListObjects",
   valueClass = "data.frame"
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbListObjects", signature("DBIConnection", "ANY"),
+  function(conn, prefix = NULL, ...) {
+    names <- dbListTables(conn)
+    id <- SQL(dbQuoteIdentifier(conn, names))
+    tables <- lapply(names, function(x) Id(table = x))
+    data.frame(
+      table = I(unname(tables)),
+      id = quoted_names,
+      is_prefix = is_prefix,
+      stringsAsFactors = FALSE
+    )
+  }
+)
+
 #' Copy data frames from database tables
 #'
 #' Reads a database table to a data frame, optionally converting
