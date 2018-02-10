@@ -408,14 +408,13 @@ setGeneric("dbListObjects",
 setMethod("dbListObjects", signature("DBIConnection", "ANY"),
   function(conn, prefix = NULL, ...) {
     names <- dbListTables(conn)
-    id <- SQL(dbQuoteIdentifier(conn, names))
     tables <- lapply(names, function(x) Id(table = x))
-    data.frame(
+    ret <- data.frame(
       table = I(unname(tables)),
-      id = quoted_names,
-      is_prefix = is_prefix,
       stringsAsFactors = FALSE
     )
+    ret$is_prefix <- rep_len(FALSE, nrow(ret))
+    ret
   }
 )
 
