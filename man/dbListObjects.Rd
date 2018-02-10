@@ -16,6 +16,29 @@ If given the method will return all objects accessible through this prefix.}
 
 \item{...}{Other parameters passed on to methods.}
 }
+\value{
+\code{dbListObjects()}
+returns a data frame
+with columns
+\code{table} and \code{is_prefix} (in that order),
+optionally with other columns with a dot (\code{.}) prefix.
+The \code{table} column is of type list.
+Each object in this list is suitable for use as argument in \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+The \code{is_prefix} column is a logical.
+This data frame contains one row for each object (schema, table
+and view)
+accessible from the prefix (if passed) or from the global namespace
+(if prefix is omitted).
+Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
+are part of the data frame,
+including temporary objects if supported by the database.
+As soon a table is removed from the database,
+it is also removed from the data frame of database objects.
+
+The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
+An error is raised when calling this method for a closed
+or invalid connection.
+}
 \description{
 Returns the names of remote objects accessible through this connection
 as a data frame.
@@ -29,6 +52,16 @@ namespace.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListObjects")}
 }
+\section{Additional arguments}{
+
+
+TBD: \code{temporary = NA}
+
+This must be provided as named argument.
+See the "Specification" section for details on their usage.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
