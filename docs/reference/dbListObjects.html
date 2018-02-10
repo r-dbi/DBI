@@ -111,7 +111,13 @@ Compared to <code><a href='dbListTables.html'>dbListTables()</a></code>, this me
 in schemas, and returns fully qualified identifiers to access these objects.
 This allows exploration of all database objects available to the current
 user, including those that can only be accessed by giving the full
-namespace.</p>
+namespace.
+
+    <h3>Methods in other packages</h3>
+
+    <ul>
+<li><p><code><a href='hidden_aliases.html'>DBI::dbListObjects("DBIConnection")</a></code></p></li>
+</ul></p>
     
 
     <pre class="usage"><span class='fu'>dbListObjects</span>(<span class='no'>conn</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
@@ -136,6 +142,36 @@ If given the method will return all objects accessible through this prefix.</p><
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbListObjects()</code>
+returns a data frame
+with columns
+<code>table</code> and <code>is_prefix</code> (in that order),
+optionally with other columns with a dot (<code>.</code>) prefix.
+The <code>table</code> column is of type list.
+Each object in this list is suitable for use as argument in <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
+The <code>is_prefix</code> column is a logical.
+This data frame contains one row for each object (schema, table
+and view)
+accessible from the prefix (if passed) or from the global namespace
+(if prefix is omitted).
+Tables added with <code><a href='dbWriteTable.html'>dbWriteTable()</a></code>
+are part of the data frame,
+including temporary objects if supported by the database.
+As soon a table is removed from the database,
+it is also removed from the data frame of database objects.</p>
+<p>The returned names are suitable for quoting with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
+An error is raised when calling this method for a closed
+or invalid connection.</p>
+    
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>TBD: <code>temporary = NA</code></p>
+<p>This must be provided as named argument.
+See the "Specification" section for details on their usage.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
@@ -152,8 +188,10 @@ If given the method will return all objects accessible through this prefix.</p><
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
-<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("SQLiteConnection", package = "RSQLite")),     structure(function (conn, prefix = NULL, ...)     {        ans &lt;- standardGeneric("dbListObjects")        .valueClassTest(ans, "data.frame", "dbListObjects")    }, generic = structure("dbListObjects", package = "DBI"), package = "DBI", group = list(), valueClass = "data.frame", signature = c("conn",     "prefix"), default = `\001NULL\001`, skeleton = (function (conn,         prefix = NULL, ...)     stop("invalid call in method dispatch to 'dbListObjects' (no default method)",         domain = NA))(conn, prefix, ...), class = structure("standardGeneric", package = "methods")),     &lt;environment&gt;): unable to find an inherited method for function ‘dbListObjects’ for signature ‘"SQLiteConnection"’</span></div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
-<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; <span class='error'>Error in (function (classes, fdef, mtable) {    methods &lt;- .findInheritedMethods(classes, fdef, mtable)    if (length(methods) == 1L)         return(methods[[1L]])    else if (length(methods) == 0L) {        cnames &lt;- paste0("\"", vapply(classes, as.character,             ""), "\"", collapse = ", ")        stop(gettextf("unable to find an inherited method for function %s for signature %s",             sQuote(fdef@generic), sQuote(cnames)), domain = NA)    }    else stop("Internal error in finding inherited methods; didn't return a unique method",         domain = NA)})(list(structure("SQLiteConnection", package = "RSQLite")),     structure(function (conn, prefix = NULL, ...)     {        ans &lt;- standardGeneric("dbListObjects")        .valueClassTest(ans, "data.frame", "dbListObjects")    }, generic = structure("dbListObjects", package = "DBI"), package = "DBI", group = list(), valueClass = "data.frame", signature = c("conn",     "prefix"), default = `\001NULL\001`, skeleton = (function (conn,         prefix = NULL, ...)     stop("invalid call in method dispatch to 'dbListObjects' (no default method)",         domain = NA))(conn, prefix, ...), class = structure("standardGeneric", package = "methods")),     &lt;environment&gt;): unable to find an inherited method for function ‘dbListObjects’ for signature ‘"SQLiteConnection"’</span></div><div class='input'>
+<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; [1] table     is_prefix
+#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
+<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt;                    table is_prefix
+#&gt; 1 &lt;Table&gt; table = mtcars     FALSE</div><div class='input'>
 <span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -161,6 +199,10 @@ If given the method will return all objects accessible through this prefix.</p><
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
