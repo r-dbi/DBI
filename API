@@ -3,6 +3,7 @@
 ## Exported functions
 
 ANSI()
+Id(...)
 SQL(x, ..., names = NULL)
 SQLKeywords(dbObj, ...)
 dbBegin(conn, ...)
@@ -30,6 +31,7 @@ dbHasCompleted(res, ...)
 dbIsValid(dbObj, ...)
 dbListConnections(drv, ...)
 dbListFields(conn, name, ...)
+dbListObjects(conn, prefix = NULL, ...)
 dbListResults(conn, ...)
 dbListTables(conn, ...)
 dbQuoteIdentifier(conn, x, ...)
@@ -42,6 +44,7 @@ dbSendQuery(conn, statement, ...)
 dbSendStatement(conn, statement, ...)
 dbSetDataMappings(res, flds, ...)
 dbUnloadDriver(drv, ...)
+dbUnquoteIdentifier(conn, x, ...)
 dbWithTransaction(conn, code, ...)
 dbWriteTable(conn, name, value, ...)
 fetch(res, n = -1, ...)
@@ -60,6 +63,12 @@ sqlParseVariables(conn, sql, ...)
 sqlParseVariablesImpl(sql, quotes, comments)
 sqlQuoteSpec(start, end, escape, doubleEscape = TRUE)
 sqlRownamesToColumn(df, row.names = NA)
+
+## Foreign S3 methods
+
+[.SQL(x, ...)
+[[.SQL(x, ...)
+toString.Id(x, ...)
 
 ## Exported data
 

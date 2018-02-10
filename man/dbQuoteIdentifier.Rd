@@ -10,7 +10,7 @@ dbQuoteIdentifier(conn, x, ...)
 \item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
-\item{x}{A character vector to quote as identifier.}
+\item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -18,6 +18,7 @@ an active connection to an DBMS.}
 \code{dbQuoteIdentifier()} returns an object that can be coerced to \link{character},
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
+The names of the input argument are preserved in the output.
 An error is raised if the input contains \code{NA},
 but not for an empty string.
 
@@ -30,8 +31,9 @@ to achieve this behavior, but this is not required.)
 }
 \description{
 Call this method to generate a string that is suitable for
-use in a query as a column name, to make sure that you
-generate valid SQL and avoid SQL injection.
+use in a query as a column or table name, to make sure that you
+generate valid SQL and protect against SQL injection attacks. The inverse
+operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteIdentifier")}
 }
@@ -83,5 +85,8 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
+  \code{\link{dbQuoteLiteral}},
+  \code{\link{dbQuoteString}},
+  \code{\link{dbUnquoteIdentifier}}
 }
+\concept{DBIResult generics}

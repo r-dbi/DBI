@@ -1,3 +1,11 @@
+## DBI 0.7-15 (2018-02-10)
+
+- Schema support: Export `Id()`, new generics `dbListObjects()` and `dbUnquoteIdentifier()`, methods for `Id` that call `dbQuoteIdentifier()` and then forward (#220).
+- `dbListConnections()` is soft-deprecated by documentation.
+- Default implementations of `dbQuoteIdentifier()` and `dbQuoteLiteral()` preserve names, default implementation of `dbQuoteString()` strips names (#173).
+- Breaking change: If the `names` argument is unset, `SQL()` strips the names from the output.
+
+
 ## DBI 0.7-14 (2018-01-27)
 
 - The `SQL()` function gains a `names` argument which can be used to assign names to SQL strings.

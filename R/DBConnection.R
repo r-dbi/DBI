@@ -1,3 +1,6 @@
+#' @include table.R
+NULL
+
 #' DBIConnection class
 #'
 #' This virtual class encapsulates the connection to a DBMS, and it provides
@@ -338,7 +341,8 @@ setMethod("dbListFields", signature("DBIConnection", "character"),
 #'
 #' Returns the unquoted names of remote tables accessible through this
 #' connection.
-#' This should, where possible, include temporary tables, and views.
+#' This should include views and temporary objects, but not all database backends
+#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 #'
 #' @template methods
 #' @templateVar method_name dbListTables
@@ -360,6 +364,58 @@ setMethod("dbListFields", signature("DBIConnection", "character"),
 setGeneric("dbListTables",
   def = function(conn, ...) standardGeneric("dbListTables"),
   valueClass = "character"
+)
+
+#' List remote objects
+#'
+#' Returns the names of remote objects accessible through this connection
+#' as a data frame.
+#' This should include temporary objects, but not all database backends
+#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+#' Compared to [dbListTables()], this method also enumerates tables and views
+#' in schemas, and returns fully qualified identifiers to access these objects.
+#' This allows exploration of all database objects available to the current
+#' user, including those that can only be accessed by giving the full
+#' namespace.
+#'
+#' @template methods
+#' @templateVar method_name dbListObjects
+#'
+#' @inherit DBItest::spec_sql_list_objects return
+#' @inheritSection DBItest::spec_sql_list_objects Additional arguments
+#'
+#' @inheritParams dbGetQuery
+#' @param prefix A fully qualified path in the database's namespace, or `NULL`.
+#'   will be passed to [dbUnquoteIdentifier()].
+#'   If given the method will return all objects accessible through this prefix.
+#' @family DBIConnection generics
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#'
+#' dbListObjects(con)
+#' dbWriteTable(con, "mtcars", mtcars)
+#' dbListObjects(con)
+#'
+#' dbDisconnect(con)
+setGeneric("dbListObjects",
+  def = function(conn, prefix = NULL, ...) standardGeneric("dbListObjects"),
+  valueClass = "data.frame"
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbListObjects", signature("DBIConnection", "ANY"),
+  function(conn, prefix = NULL, ...) {
+    names <- dbListTables(conn)
+    tables <- lapply(names, function(x) Id(table = x))
+    ret <- data.frame(
+      table = I(unname(tables)),
+      stringsAsFactors = FALSE
+    )
+    ret$is_prefix <- rep_len(FALSE, nrow(ret))
+    ret
+  }
 )
 
 #' Copy data frames from database tables
@@ -394,7 +450,7 @@ setGeneric("dbReadTable",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbReadTable", c("DBIConnection", "character"),
+setMethod("dbReadTable", signature("DBIConnection", "character"),
   function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
     sql_name <- dbQuoteIdentifier(conn, x = name, ...)
     if (length(sql_name) != 1L) {
@@ -414,6 +470,14 @@ setMethod("dbReadTable", c("DBIConnection", "character"),
       names(out) <- make.names(names(out), unique = TRUE)
     }
     out
+  }
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbReadTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbReadTable(conn, dbQuoteIdentifier(conn, name), ...)
   }
 )
 
@@ -455,6 +519,14 @@ setGeneric("dbWriteTable",
   def = function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )
 
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbWriteTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbWriteTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
+)
+
 #' Does a table exist?
 #'
 #' Returns if a table given by name exists in the database.
@@ -481,6 +553,14 @@ setGeneric("dbWriteTable",
 setGeneric("dbExistsTable",
   def = function(conn, name, ...) standardGeneric("dbExistsTable"),
   valueClass = "logical"
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbExistsTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbExistsTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
 )
 
 #' Remove a table from the database
@@ -510,4 +590,12 @@ setGeneric("dbExistsTable",
 #' dbDisconnect(con)
 setGeneric("dbRemoveTable",
   def = function(conn, name, ...) standardGeneric("dbRemoveTable")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbRemoveTable", signature("DBIConnection", "Id"),
+  function(conn, name, ...) {
+    dbRemoveTable(conn, dbQuoteIdentifier(conn, name), ...)
+  }
 )

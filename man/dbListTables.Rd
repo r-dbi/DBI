@@ -31,7 +31,8 @@ or invalid connection.
 \description{
 Returns the unquoted names of remote tables accessible through this
 connection.
-This should, where possible, include temporary tables, and views.
+This should include views and temporary objects, but not all database backends
+(in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}
 }
@@ -60,8 +61,9 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
   \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
-  \code{\link{dbListFields}}, \code{\link{dbListResults}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
-  \code{\link{dbWriteTable}}
+  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
+  \code{\link{dbListResults}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
 }
+\concept{DBIConnection generics}

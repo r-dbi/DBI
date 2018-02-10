@@ -15,9 +15,8 @@ dbListConnections(drv, ...)
 a list
 }
 \description{
-Drivers that implement only a single connections MUST return a list
-containing a single element. If no connection are open, methods MUST
-return an empty list.
+DEPRECATED, drivers are no longer required to implement this method.
+Keep track of the connections you opened if you require a list.
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
@@ -25,3 +24,4 @@ Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
   \code{\link{dbIsValid}}
 }
+\concept{DBIDriver generics}

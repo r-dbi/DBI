@@ -24,7 +24,7 @@ setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
 #' @rdname hidden_aliases
 #' @param object Object to display
 #' @export
-setMethod("show", "DBIResult", function(object) {
+setMethod("show", signature("DBIResult"), function(object) {
   # to protect drivers that fail to implement the required methods (e.g.,
   # RPostgreSQL)
   tryCatch(
@@ -101,7 +101,7 @@ setGeneric("dbFetch",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbFetch", "DBIResult", function(res, n = -1, ...) {
+setMethod("dbFetch", signature("DBIResult"), function(res, n = -1, ...) {
   fetch(res, n = n, ...)
 })
 
@@ -303,7 +303,7 @@ setGeneric("dbGetRowCount",
 #' [dbGetRowsAffected()], and [dbHasCompleted()].
 NULL
 #' @rdname hidden_aliases
-setMethod("dbGetInfo", "DBIResult", function(dbObj, ...) {
+setMethod("dbGetInfo", signature("DBIResult"), function(dbObj, ...) {
   list(
     statement = dbGetStatement(dbObj),
     row.count = dbGetRowCount(dbObj),
