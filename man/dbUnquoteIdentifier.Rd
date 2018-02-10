@@ -10,14 +10,14 @@ dbUnquoteIdentifier(conn, x, ...)
 \item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
-\item{x}{An \link{SQL} or \link{Table} object or character vector, or a list of such
+\item{x}{An \link{SQL} or \link{Id} object or character vector, or a list of such
 objects, to unquote.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \description{
 Call this method to convert a \link{SQL} object created by \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-back to a list of \link{Table} objects.
+back to a list of \link{Id} objects.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbUnquoteIdentifier")}
 }

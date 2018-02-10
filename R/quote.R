@@ -76,7 +76,7 @@ setMethod("show", "SQL", function(object) {
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
-#' @param x A character vector, [SQL] or [Table] object to quote as identifier.
+#' @param x A character vector, [SQL] or [Id] object to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
 #' @template methods
@@ -147,11 +147,11 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' Unquote identifiers
 #'
 #' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]
-#' back to a list of [Table] objects.
+#' back to a list of [Id] objects.
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
-#' @param x An [SQL] or [Table] object or character vector, or a list of such
+#' @param x An [SQL] or [Id] object or character vector, or a list of such
 #'   objects, to unquote.
 #' @param ... Other arguments passed on to methods.
 #'

@@ -10,7 +10,7 @@ dbQuoteIdentifier(conn, x, ...)
 \item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
-\item{x}{A character vector, \link{SQL} or \link{Table} object to quote as identifier.}
+\item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 
 \item{...}{Other arguments passed on to methods.}
 }
