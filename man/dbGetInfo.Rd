@@ -2,7 +2,6 @@
 % Please edit documentation in R/DBObject.R, R/DBResult.R
 \name{dbGetInfo}
 \alias{dbGetInfo}
-\alias{dbGetInfo}
 \title{Get DBMS metadata}
 \usage{
 dbGetInfo(dbObj, ...)
@@ -57,10 +56,10 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
   \code{\link{dbIsValid}}, \code{\link{dbListFields}},
-  \code{\link{dbListResults}}, \code{\link{dbListTables}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
-  \code{\link{dbWriteTable}}
+  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
 
 Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbBind}}, \code{\link{dbClearResult}},
@@ -70,5 +69,10 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetStatement}},
   \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
   \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
+  \code{\link{dbQuoteLiteral}},
+  \code{\link{dbQuoteString}},
+  \code{\link{dbUnquoteIdentifier}}
 }
+\concept{DBIConnection generics}
+\concept{DBIDriver generics}
+\concept{DBIResult generics}

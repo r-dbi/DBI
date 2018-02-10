@@ -52,3 +52,4 @@ Other DBI classes: \code{\link{DBIConnection-class}},
   \code{\link{DBIDriver-class}},
   \code{\link{DBIResult-class}}
 }
+\concept{DBI classes}

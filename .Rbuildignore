@@ -25,3 +25,4 @@ inst\/doc\/DBI\.b..$
 ^_pkgdown\.yml$
 ^revdep/
 ^API$
+^docs$

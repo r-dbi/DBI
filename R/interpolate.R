@@ -28,7 +28,7 @@ setGeneric("sqlInterpolate",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlInterpolate", "DBIConnection", function(conn, sql, ..., .dots = list()) {
+setMethod("sqlInterpolate", signature("DBIConnection"), function(conn, sql, ..., .dots = list()) {
   pos <- sqlParseVariables(conn, sql)
 
   if (length(pos$start) == 0) {
@@ -110,7 +110,7 @@ setGeneric("sqlParseVariables",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlParseVariables", "DBIConnection", function(conn, sql, ...) {
+setMethod("sqlParseVariables", signature("DBIConnection"), function(conn, sql, ...) {
   sqlParseVariablesImpl(
     sql,
     list(

@@ -68,7 +68,7 @@ setMethod("dbDriver", signature("character"),
 #' @rdname hidden_aliases
 #' @param object Object to display
 #' @export
-setMethod("show", "DBIDriver", function(object) {
+setMethod("show", signature("DBIDriver"), function(object) {
   tryCatch(
     # to protect drivers that fail to implement the required methods (e.g.,
     # RPostgreSQL)
@@ -170,9 +170,8 @@ setGeneric("dbConnect",
 
 #' List currently open connections
 #'
-#' Drivers that implement only a single connections MUST return a list
-#' containing a single element. If no connection are open, methods MUST
-#' return an empty list.
+#' DEPRECATED, drivers are no longer required to implement this method.
+#' Keep track of the connections you opened if you require a list.
 #'
 #' @param drv A object inheriting from [DBIDriver-class]
 #' @param ... Other arguments passed on to methods.
@@ -252,6 +251,6 @@ setGeneric("dbDataType",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbDataType", "DBIObject", function(dbObj, obj, ...) {
+setMethod("dbDataType", signature("DBIObject"), function(dbObj, obj, ...) {
   dbiDataType(obj)
 })
