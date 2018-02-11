@@ -41,11 +41,11 @@ options(repos = revdepcheck:::get_repos(bioc = TRUE))
 todo <- revdep_todo()
 dir.create("revdep/warmup_lib", showWarnings = FALSE)
 withr::with_libpaths("revdep/warmup_lib", action = "replace", {
-  #if (length(dir(.libPaths())) > 0) crancache::update_packages(ask = FALSE)
+  crancache::update_packages(ask = FALSE)
   crancache::install_packages(setdiff(todo, rownames(installed.packages())))
 
   remotes::install_local(".")
-  crancache::downlaod_packages(todo)
+  crancache::download_packages(todo, destdir = tempdir())
 })
 
 repos <- paste0(
