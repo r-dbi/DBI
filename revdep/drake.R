@@ -9,7 +9,11 @@ make_subset_available <- function(pkg) {
 }
 
 subset_available <- function(available, pkg) {
-  available[pkg, , drop = FALSE]
+  if (pkg %in% rownames(available)) {
+    available[pkg, , drop = FALSE]
+  } else {
+    available[integer(), , drop = FALSE]
+  }
 }
 
 plan_available <-
@@ -223,9 +227,9 @@ plan <-
     plan_compare,
     plan_compare_all,
     plan_install,
-    plan_available,
     plan_base_libs,
     plan_download,
+    plan_available,
     plan_deps
   )
 
@@ -234,6 +238,7 @@ plan <-
 make(
   plan,
   "compare_all",
+  keep_going = TRUE,
   #parallelism = "future"
   , jobs = parallel::detectCores()
 )
