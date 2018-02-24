@@ -4,6 +4,7 @@ Breaking changes
 ----------------
 
 - `SQL()` now strips the names from the output if the `names` argument is unset.
+- The `dbReadTable()`, `dbWriteTable()`, `dbExistsTable()`, `dbRemoveTable()`, and `dbListFields()` generics now specialize over the first two arguments to support implementations with the `Id` S4 class as type for the second argument. Some packages may need to update their documentation to satisfy R CMD check again.
 
 New generics
 ------------
