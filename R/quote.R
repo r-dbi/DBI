@@ -196,7 +196,7 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   if (is(x, "SQL")) {
     split <-  strsplit(as.character(x), '^"|"$|"[.]"')
     components <- lapply(split, `[`, -1L)
-    tables <- lapply(components, Table)
+    tables <- lapply(components, Id)
     quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
     bad <- quoted != x
     if (any(bad)) {
