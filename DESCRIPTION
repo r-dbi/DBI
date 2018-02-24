@@ -43,6 +43,7 @@ Collate:
     'deprecated.R'
     'hidden.R'
     'interpolate.R'
+    'list-pairs.R'
     'quote.R'
     'rd.R'
     'rownames.R'
