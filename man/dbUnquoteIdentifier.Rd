@@ -22,24 +22,30 @@ back to a list of \link{Id} objects.
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbUnquoteIdentifier")}
 }
 \examples{
-# Unquoting allows to understand the structure of a possibly complex quoted
-# identifier
-
+# Unquoting allows to understand the structure of a
+# possibly complex quoted identifier
 dbUnquoteIdentifier(
   ANSI(),
   SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
 )
 
-# Character vectors are wrapped in a list
-dbQuoteIdentifier(
+# The returned object is always a list,
+# also for Id objects or lists thereof
+dbUnquoteIdentifier(
   ANSI(),
-  c(schema = "Schema", table = "Table")
+  Id(schema = "Schema", table = "Table")
 )
 
-# Lists of character vectors are returned unchanged
-dbQuoteIdentifier(
+dbUnquoteIdentifier(
   ANSI(),
-  list(c(schema = "Schema", table = "Table"), "UnqualifiedTable")
+  list(Id(schema = "Schema", table = "Table"), Id(table = "UnqualifiedTable"))
+)
+
+# Lists of SQL objects can also be processed,
+# but each component must be length 1
+dbUnquoteIdentifier(
+  ANSI(),
+  list(SQL('"Schema"."Table"'), SQL('"UnqualifiedTable"'))
 )
 }
 \seealso{

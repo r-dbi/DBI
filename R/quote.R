@@ -164,24 +164,30 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' @family DBIResult generics
 #' @export
 #' @examples
-#' # Unquoting allows to understand the structure of a possibly complex quoted
-#' # identifier
-#'
+#' # Unquoting allows to understand the structure of a
+#' # possibly complex quoted identifier
 #' dbUnquoteIdentifier(
 #'   ANSI(),
 #'   SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
 #' )
 #'
-#' # Character vectors are wrapped in a list
-#' dbQuoteIdentifier(
+#' # The returned object is always a list,
+#' # also for Id objects or lists thereof
+#' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   c(schema = "Schema", table = "Table")
+#'   Id(schema = "Schema", table = "Table")
 #' )
 #'
-#' # Lists of character vectors are returned unchanged
-#' dbQuoteIdentifier(
+#' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   list(c(schema = "Schema", table = "Table"), "UnqualifiedTable")
+#'   list(Id(schema = "Schema", table = "Table"), Id(table = "UnqualifiedTable"))
+#' )
+#'
+#' # Lists of SQL objects can also be processed,
+#' # but each component must be length 1
+#' dbUnquoteIdentifier(
+#'   ANSI(),
+#'   list(SQL('"Schema"."Table"'), SQL('"UnqualifiedTable"'))
 #' )
 setGeneric("dbUnquoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
@@ -216,10 +222,7 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   if (is(x, "Id")) {
     return(list(x))
   }
-  if (is.character(x)) {
-    return(list(do.call(Id, as.list(x))))
-  }
-  stop("x must be character, SQL or Table, or a list of such objects", call. = FALSE)
+  stop("x must be SQL or Table, or a list of such objects", call. = FALSE)
 })
 
 #' Quote literal strings
