@@ -169,7 +169,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #'
 #' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   SQL(c('"Schema"."Table"', "UnqualifiedTable"))
+#'   SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
 #' )
 #'
 #' # Character vectors are wrapped in a list
@@ -196,7 +196,16 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   if (is(x, "SQL")) {
     split <-  strsplit(as.character(x), '^"|"$|"[.]"')
     components <- lapply(split, `[`, -1L)
-    tables <- lapply(components, Id)
+    lengths <- vapply(components, length, integer(1))
+    if (!all(lengths %in% 1:2)) {
+      stop("Can only unquote up to two components.", call. = FALSE)
+    }
+    named_components <- lapply(components, function(x) {
+      if (length(x) == 1) names(x) <- "table"
+      else names(x) <- c("schema", "table")
+      as.list(x)
+    })
+    tables <- lapply(named_components, do.call, what = Id)
     quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
     bad <- quoted != x
     if (any(bad)) {
