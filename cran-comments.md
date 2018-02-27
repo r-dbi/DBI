@@ -12,4 +12,4 @@ OK.
 
 ## Reverse dependencies
 
-Checked more than 523 downstream dependencies on CRAN and Bioconductor, very few packages could not be installed or checked. Seeing new warnings in pool, RJDBC and RSQLServer, these packages need very minor documentation updates to accommodate changes to the definition of generics.
+Checked more than 523 downstream dependencies on CRAN and Bioconductor, very few packages could not be installed or checked. Seeing new warnings in pool, RJDBC and RSQLServer, these packages need very minor documentation updates to accommodate changes to the definition of generics. Contacted maintaners of these packages.
