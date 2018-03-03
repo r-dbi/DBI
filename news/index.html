@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="All news" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -124,7 +127,7 @@
 <ul>
 <li>Import updated specs from <code>DBItest</code>.</li>
 <li>The default implementation of <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> now accepts an <code>n</code> argument and forwards it to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. No warning about pending rows is issued anymore (#76).</li>
-<li>Require R &gt;= 3.0.0 (for <code>slots</code> argument of <code>setClass()</code>) (#169, @mvkorpel).</li>
+<li>Require R &gt;= 3.0.0 (for <code>slots</code> argument of <code>setClass()</code>) (#169, <a href='http://github.com/mvkorpel'>@mvkorpel</a>).</li>
 </ul>
 </div>
     <div id="dbi-0-6-1-2017-04-01" class="section level1">
@@ -192,8 +195,8 @@
 <li>Interface enhancements
 <ul>
 <li>New <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> generic, forwards to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> by default (#20, #132).</li>
-<li>New <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> by default (#109, @bborgesr).</li>
-<li>New <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> that calls <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code>, and <code><a href="../reference/transactions.html">dbRollback()</a></code> on failure (#110, @bborgesr).</li>
+<li>New <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> by default (#109, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
+<li>New <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> that calls <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code>, and <code><a href="../reference/transactions.html">dbRollback()</a></code> on failure (#110, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
 <li>New <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code> function which allows aborting from within <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> (#115, #133).</li>
 <li>Export <code><a href="../reference/dbFetch.html">dbFetch()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> methods.</li>
 </ul>
@@ -203,7 +206,7 @@
 <li>One example per function (except functions scheduled for deprecation) (#67).</li>
 <li>Consistent layout and identifier naming.</li>
 <li>Better documentation of generics by adding links to the class and related generics in the “See also” section under “Other DBI… generics” (#130). S4 documentation is directed to a hidden page to unclutter documentation index (#59).</li>
-<li>Fix two minor vignette typos (#124, @mdsumner).</li>
+<li>Fix two minor vignette typos (#124, <a href='http://github.com/mdsumner'>@mdsumner</a>).</li>
 <li>Add package documentation.</li>
 <li>Remove misleading parts in <code><a href="../reference/dbConnect.html">dbConnect()</a></code> documentation (#118).</li>
 <li>Remove misleading link in <code><a href="../reference/dbDataType.html">dbDataType()</a></code> documentation.</li>
@@ -216,7 +219,7 @@
 <li>Internal
 <ul>
 <li>Use <code>contains</code> argument instead of <code>representation()</code> to denote base classes (#93).</li>
-<li>Remove redundant declaration of transaction methods (#110, @bborgesr).</li>
+<li>Remove redundant declaration of transaction methods (#110, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
 </ul>
 </li>
 </ul>
@@ -245,7 +248,7 @@
 <li><p><code><a href="../reference/rownames.html">sqlRownamesToColumn()</a></code> and <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> provide a standard way of translating row names to and from the database.</p></li>
 <li><p><code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> and <code><a href="../reference/sqlParseVariables.html">sqlParseVariables()</a></code> allows databases without native parameterised queries to use parameterised queries to avoid SQL injection attacks.</p></li>
 <li><p><code><a href="../reference/sqlData.html">sqlData()</a></code> is a new generic that converts a data frame into a data frame suitable for sending to the database. This is used to (e.g.) ensure all character vectors are encoded as UTF-8, or to convert R varible types (like factor) to types supported by the database.</p></li>
-<li><p>The <code><a href="../reference/sqlParseVariables.html">sqlParseVariablesImpl()</a></code> is now implemented purely in R, with full test coverage (#83, @hannesmuehleisen).</p></li>
+<li><p>The <code><a href="../reference/sqlParseVariables.html">sqlParseVariablesImpl()</a></code> is now implemented purely in R, with full test coverage (#83, <a href='http://github.com/hannesmuehleisen'>@hannesmuehleisen</a>).</p></li>
 </ul>
 </li>
 <li><p><code>dbiCheckCompliance()</code> has been removed, the functionality is now available in the <code>DBItest</code> package (#80).</p></li>
