@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="All news" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -104,6 +107,17 @@
     </div>
 
     <div class="contents">
+    <div id="dbi-0-7-15-2018-02-10" class="section level2">
+<h2 class="hasAnchor">
+<a href="#dbi-0-7-15-2018-02-10" class="anchor"></a>DBI 0.7-15 (2018-02-10)</h2>
+<ul>
+<li>Schema support: Export <code><a href="../reference/Id.html">Id()</a></code>, new generics <code><a href="../reference/dbListObjects.html">dbListObjects()</a></code> and <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>, methods for <code>Id</code> that call <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and then forward (#220).</li>
+<li>
+<code><a href="../reference/dbListConnections.html">dbListConnections()</a></code> is soft-deprecated by documentation.</li>
+<li>Default implementations of <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> preserve names, default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> strips names (#173).</li>
+<li>Breaking change: If the <code>names</code> argument is unset, <code><a href="../reference/SQL.html">SQL()</a></code> strips the names from the output.</li>
+</ul>
+</div>
     <div id="dbi-0-7-14-2018-01-27" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dbi-0-7-14-2018-01-27" class="anchor"></a>DBI 0.7-14 (2018-01-27)</h2>
@@ -115,7 +129,7 @@
 <code><a href="../reference/dbGetException.html">dbGetException()</a></code> is soft-deprecated by documentation (#51).</li>
 <li>Help pages for generics now contain a dynamic list of methods implemented by DBI backends (#162).</li>
 <li>
-<code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> now supports both named and positional variables (#216, @hannesmuehleisen).</li>
+<code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> now supports both named and positional variables (#216, <a href='http://github.com/hannesmuehleisen'>@hannesmuehleisen</a>).</li>
 <li>Specialized methods for <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> are available again, for compatibility with clients that use <code>getMethod()</code> to access them (#218).</li>
 </ul>
 </div>
@@ -124,9 +138,9 @@
 <a href="#dbi-0-7-13-2017-11-27" class="anchor"></a>DBI 0.7-13 (2017-11-27)</h2>
 <ul>
 <li>The deprecated <code>print.list.pairs()</code> has been removed.</li>
-<li>Fix <code><a href="../reference/dbDataType.html">dbDataType()</a></code> for <code>AsIs</code> object (#198, @yutannihilation).</li>
-<li>Point to db.rstudio.com (@wibeasley, #209).</li>
-<li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (@wibeasley, #207).</li>
+<li>Fix <code><a href="../reference/dbDataType.html">dbDataType()</a></code> for <code>AsIs</code> object (#198, <a href='http://github.com/yutannihilation'>@yutannihilation</a>).</li>
+<li>Point to db.rstudio.com (<a href='http://github.com/wibeasley'>@wibeasley</a>, #209).</li>
+<li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (<a href='http://github.com/wibeasley'>@wibeasley</a>, #207).</li>
 <li>Using switchpatch on the second argument for default implementations of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</li>
 <li>New <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the <code>"SQL"</code> class is necessary (#172).</li>
 <li>Fix <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to ignore invalid UTF-8 strings (r-dbi/DBItest#156).</li>
@@ -152,7 +166,7 @@
 <ul>
 <li>Import updated specs from <code>DBItest</code>.</li>
 <li>The default implementation of <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> now accepts an <code>n</code> argument and forwards it to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. No warning about pending rows is issued anymore (#76).</li>
-<li>Require R &gt;= 3.0.0 (for <code>slots</code> argument of <code>setClass()</code>) (#169, @mvkorpel).</li>
+<li>Require R &gt;= 3.0.0 (for <code>slots</code> argument of <code>setClass()</code>) (#169, <a href='http://github.com/mvkorpel'>@mvkorpel</a>).</li>
 </ul>
 </div>
     <div id="dbi-0-6-1-2017-04-01" class="section level1">
@@ -220,8 +234,8 @@
 <li>Interface enhancements
 <ul>
 <li>New <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> generic, forwards to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> by default (#20, #132).</li>
-<li>New <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> by default (#109, @bborgesr).</li>
-<li>New <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> that calls <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code>, and <code><a href="../reference/transactions.html">dbRollback()</a></code> on failure (#110, @bborgesr).</li>
+<li>New <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> by default (#109, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
+<li>New <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> that calls <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code>, and <code><a href="../reference/transactions.html">dbRollback()</a></code> on failure (#110, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
 <li>New <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code> function which allows aborting from within <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> (#115, #133).</li>
 <li>Export <code><a href="../reference/dbFetch.html">dbFetch()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> methods.</li>
 </ul>
@@ -231,7 +245,7 @@
 <li>One example per function (except functions scheduled for deprecation) (#67).</li>
 <li>Consistent layout and identifier naming.</li>
 <li>Better documentation of generics by adding links to the class and related generics in the “See also” section under “Other DBI… generics” (#130). S4 documentation is directed to a hidden page to unclutter documentation index (#59).</li>
-<li>Fix two minor vignette typos (#124, @mdsumner).</li>
+<li>Fix two minor vignette typos (#124, <a href='http://github.com/mdsumner'>@mdsumner</a>).</li>
 <li>Add package documentation.</li>
 <li>Remove misleading parts in <code><a href="../reference/dbConnect.html">dbConnect()</a></code> documentation (#118).</li>
 <li>Remove misleading link in <code><a href="../reference/dbDataType.html">dbDataType()</a></code> documentation.</li>
@@ -244,7 +258,7 @@
 <li>Internal
 <ul>
 <li>Use <code>contains</code> argument instead of <code>representation()</code> to denote base classes (#93).</li>
-<li>Remove redundant declaration of transaction methods (#110, @bborgesr).</li>
+<li>Remove redundant declaration of transaction methods (#110, <a href='http://github.com/bborgesr'>@bborgesr</a>).</li>
 </ul>
 </li>
 </ul>
@@ -273,7 +287,7 @@
 <li><p><code><a href="../reference/rownames.html">sqlRownamesToColumn()</a></code> and <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> provide a standard way of translating row names to and from the database.</p></li>
 <li><p><code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> and <code><a href="../reference/sqlParseVariables.html">sqlParseVariables()</a></code> allows databases without native parameterised queries to use parameterised queries to avoid SQL injection attacks.</p></li>
 <li><p><code><a href="../reference/sqlData.html">sqlData()</a></code> is a new generic that converts a data frame into a data frame suitable for sending to the database. This is used to (e.g.) ensure all character vectors are encoded as UTF-8, or to convert R varible types (like factor) to types supported by the database.</p></li>
-<li><p>The <code><a href="../reference/sqlParseVariables.html">sqlParseVariablesImpl()</a></code> is now implemented purely in R, with full test coverage (#83, @hannesmuehleisen).</p></li>
+<li><p>The <code><a href="../reference/sqlParseVariables.html">sqlParseVariablesImpl()</a></code> is now implemented purely in R, with full test coverage (#83, <a href='http://github.com/hannesmuehleisen'>@hannesmuehleisen</a>).</p></li>
 </ul>
 </li>
 <li><p><code>dbiCheckCompliance()</code> has been removed, the functionality is now available in the <code>DBItest</code> package (#80).</p></li>
@@ -444,6 +458,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#dbi-0-7-15-2018-02-10">0.7-15</a></li>
         <li><a href="#dbi-0-7-14-2018-01-27">0.7-14</a></li>
         <li><a href="#dbi-0-7-13-2017-11-27">0.7-13</a></li>
         <li><a href="#dbi-0-7-12-2017-08-10">0.7-12</a></li>
