@@ -26,3 +26,4 @@ inst\/doc\/DBI\.b..$
 ^revdep/
 ^API$
 ^docs$
+^man-roxygen$
