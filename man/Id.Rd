@@ -15,6 +15,6 @@ For more on these concepts, see
 \url{http://stackoverflow.com/questions/7022755/}}
 }
 \description{
-Objects of class \code{Table} have a single slot \code{name}, which is a named
+Objects of class \code{Id} have a single slot \code{name}, which is a named
 character vector.
 }
