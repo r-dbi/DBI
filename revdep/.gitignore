@@ -1,3 +1,6 @@
 checks
 library
 data.sqlite
+warmup_lib
+/download
+/libs

@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,20 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Load and unload database drivers — dbDriver" />
+
+<meta property="og:description" content="These methods are deprecated, please consult the documentation of the
+individual backends for the construction of driver instances." />
+
+<meta property="og:description" content="dbDriver() is a helper method used to create an new driver object
+given the name of a database or the corresponding R package. It works
+through convention: all DBI-extending packages should provide an exported
+object with the same name as the package. dbDriver() just looks for
+this object in the right places: if you know what database you are connecting
+to, you should call the function directly." />
+
+<meta property="og:description" content="dbUnloadDriver() is not implemented for modern backends." />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 

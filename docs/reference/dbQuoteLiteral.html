@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,18 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Quote literal values — dbQuoteLiteral" />
+
+<meta property="og:description" content="Call these methods to generate a string that is suitable for
+use in a query as a literal value of the correct type, to make sure that you
+generate valid SQL and protect against SQL injection attacks." />
+
+<meta property="og:description" content="Methods in other packages" />
+
+<meta property="og:description" content="
+DBI::dbQuoteLiteral("DBIConnection")
+" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -134,6 +148,36 @@ an active connection to an DBMS.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbQuoteLiteral()</code> returns an object that can be coerced to character,
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.</p>
+<p>When passing the returned object again to <code>dbQuoteLiteral()</code>
+as <code>x</code>
+argument, it is returned unchanged.
+Passing objects of class <a href='SQL.html'>SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href='SQL.html'>SQL</a> objects
+to achieve this behavior, but this is not required.)</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>The returned expression can be used in a <code>SELECT ...</code> query,
+and the value of
+<code>dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]</code>
+must be equal to <code>x</code>
+for any scalar
+integer,
+numeric,
+string,
+and logical.
+If <code>x</code> is <code>NA</code>, the result must merely satisfy <code>is.na()</code>.
+The literals <code>"NA"</code> or <code>"NULL"</code> are not treated specially.
+    <code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
+so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
+returns one row.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -175,6 +219,10 @@ an active connection to an DBMS.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
