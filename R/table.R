@@ -3,7 +3,7 @@ setClass("Id", slots = list(name = "character"))
 
 #' Refer to a table nested in a hierarchy (e.g. within a schema)
 #'
-#' Objects of class `Id` have a single slot `name`, which is a named
+#' Objects of class `Table` have a single slot `name`, which is a named
 #' character vector.
 #'
 #' @param ... Components of the hierarchy, e.g. `schema`, `table`,

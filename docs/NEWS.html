@@ -106,58 +106,82 @@
     </div>
 
 
-<div id="dbi-0-7-15-2018-02-10" class="section level2">
+<div id="dbi-0-8-2018-02-24" class="section level1">
+<h1 class="hasAnchor">
+<a href="#dbi-0-8-2018-02-24" class="anchor"></a>DBI 0.8 (2018-02-24)</h1>
+<div id="breaking-changes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-0-7-15-2018-02-10" class="anchor"></a>DBI 0.7-15 (2018-02-10)</h2>
+<a href="#breaking-changes" class="anchor"></a>Breaking changes</h2>
 <ul>
-<li>Schema support: Export <code><a href="reference/Id.html">Id()</a></code>, new generics <code><a href="reference/dbListObjects.html">dbListObjects()</a></code> and <code><a href="reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>, methods for <code>Id</code> that call <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and then forward (#220).</li>
 <li>
-<code><a href="reference/dbListConnections.html">dbListConnections()</a></code> is soft-deprecated by documentation.</li>
-<li>Default implementations of <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> preserve names, default implementation of <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> strips names (#173).</li>
-<li>Breaking change: If the <code>names</code> argument is unset, <code><a href="reference/SQL.html">SQL()</a></code> strips the names from the output.</li>
+<code><a href="reference/SQL.html">SQL()</a></code> now strips the names from the output if the <code>names</code> argument is unset.</li>
+<li>The <code><a href="reference/dbReadTable.html">dbReadTable()</a></code>, <code><a href="reference/dbWriteTable.html">dbWriteTable()</a></code>, <code><a href="reference/dbExistsTable.html">dbExistsTable()</a></code>, <code><a href="reference/dbRemoveTable.html">dbRemoveTable()</a></code>, and <code><a href="reference/dbListFields.html">dbListFields()</a></code> generics now specialize over the first two arguments to support implementations with the <code>Id</code> S4 class as type for the second argument. Some packages may need to update their documentation to satisfy R CMD check again.</li>
 </ul>
 </div>
-<div id="dbi-0-7-14-2018-01-27" class="section level2">
+<div id="new-generics" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-0-7-14-2018-01-27" class="anchor"></a>DBI 0.7-14 (2018-01-27)</h2>
+<a href="#new-generics" class="anchor"></a>New generics</h2>
 <ul>
-<li>The <code><a href="reference/SQL.html">SQL()</a></code> function gains a <code>names</code> argument which can be used to assign names to SQL strings.</li>
+<li>Schema support: Export <code><a href="reference/Id.html">Id()</a></code>, new generics <code><a href="reference/dbListObjects.html">dbListObjects()</a></code> and <code><a href="reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>, methods for <code>Id</code> that call <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and then forward (#220).</li>
+<li>New <code><a href="reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the <code>"SQL"</code> class is necessary (#172).</li>
+</ul>
+</div>
+<div id="default-implementations" class="section level2">
+<h2 class="hasAnchor">
+<a href="#default-implementations" class="anchor"></a>Default implementations</h2>
+<ul>
+<li>Default implementations of <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> preserve names, default implementation of <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> strips names (#173).</li>
+<li>Specialized methods for <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> are available again, for compatibility with clients that use <code>getMethod()</code> to access them (#218).</li>
+<li>Add default implementation of <code><a href="reference/dbListFields.html">dbListFields()</a></code>.</li>
+<li>The default implementation of <code><a href="reference/dbReadTable.html">dbReadTable()</a></code> now has <code>row.names = FALSE</code> as default and also supports <code>row.names = NULL</code> (#186).</li>
+</ul>
+</div>
+<div id="api-changes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#api-changes" class="anchor"></a>API changes</h2>
+<ul>
+<li>The <code><a href="reference/SQL.html">SQL()</a></code> function gains an optional <code>names</code> argument which can be used to assign names to SQL strings.</li>
+</ul>
+</div>
+<div id="deprecated-generics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deprecated-generics" class="anchor"></a>Deprecated generics</h2>
+<ul>
+<li>
+<code><a href="reference/dbListConnections.html">dbListConnections()</a></code> is soft-deprecated by documentation.</li>
 <li>
 <code><a href="reference/dbListResults.html">dbListResults()</a></code> is deprecated by documentation (#58).</li>
 <li>
 <code><a href="reference/dbGetException.html">dbGetException()</a></code> is soft-deprecated by documentation (#51).</li>
-<li>Help pages for generics now contain a dynamic list of methods implemented by DBI backends (#162).</li>
-<li>
-<code><a href="reference/sqlInterpolate.html">sqlInterpolate()</a></code> now supports both named and positional variables (#216, @hannesmuehleisen).</li>
-<li>Specialized methods for <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> are available again, for compatibility with clients that use <code>getMethod()</code> to access them (#218).</li>
+<li>The deprecated <code>print.list.pairs()</code> has been removed.</li>
 </ul>
 </div>
-<div id="dbi-0-7-13-2017-11-27" class="section level2">
+<div id="bug-fixes" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-0-7-13-2017-11-27" class="anchor"></a>DBI 0.7-13 (2017-11-27)</h2>
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
-<li>The deprecated <code>print.list.pairs()</code> has been removed.</li>
 <li>Fix <code><a href="reference/dbDataType.html">dbDataType()</a></code> for <code>AsIs</code> object (#198, @yutannihilation).</li>
-<li>Point to db.rstudio.com (@wibeasley, #209).</li>
-<li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (@wibeasley, #207).</li>
-<li>Using switchpatch on the second argument for default implementations of <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</li>
-<li>New <code><a href="reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the <code>"SQL"</code> class is necessary (#172).</li>
 <li>Fix <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to ignore invalid UTF-8 strings (r-dbi/DBItest#156).</li>
 </ul>
 </div>
-<div id="dbi-0-7-12-2017-08-10" class="section level2">
+<div id="documentation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-0-7-12-2017-08-10" class="anchor"></a>DBI 0.7-12 (2017-08-10)</h2>
+<a href="#documentation" class="anchor"></a>Documentation</h2>
 <ul>
-<li>Add default implementation of <code><a href="reference/dbListFields.html">dbListFields()</a></code>.</li>
+<li>Help pages for generics now contain a dynamic list of methods implemented by DBI backends (#162).</li>
+<li>
+<code><a href="reference/sqlInterpolate.html">sqlInterpolate()</a></code> now supports both named and positional variables (#216, @hannesmuehleisen).</li>
+<li>Point to db.rstudio.com (@wibeasley, #209).</li>
+<li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (@wibeasley, #207).</li>
 </ul>
 </div>
-<div id="dbi-0-7-11-2017-08-08" class="section level2">
+<div id="internal" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-0-7-11-2017-08-08" class="anchor"></a>DBI 0.7-11 (2017-08-08)</h2>
+<a href="#internal" class="anchor"></a>Internal</h2>
 <ul>
-<li>The default implementation of <code><a href="reference/dbReadTable.html">dbReadTable()</a></code> now has <code>row.names = FALSE</code> as default and also supports <code>row.names = NULL</code> (#186).</li>
+<li>Using switchpatch on the second argument for default implementations of <code><a href="reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</li>
 </ul>
+</div>
 </div>
 <div id="dbi-0-7-2017-06-17" class="section level1">
 <h1 class="hasAnchor">
@@ -471,3 +495,4 @@
 
   </body>
 </html>
+
