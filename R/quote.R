@@ -164,24 +164,30 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' @family DBIResult generics
 #' @export
 #' @examples
-#' # Unquoting allows to understand the structure of a possibly complex quoted
-#' # identifier
+#' # Unquoting allows to understand the structure of a
+#' # possibly complex quoted identifier
+#' dbUnquoteIdentifier(
+#'   ANSI(),
+#'   SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
+#' )
+#'
+#' # The returned object is always a list,
+#' # also for Id objects or lists thereof
+#' dbUnquoteIdentifier(
+#'   ANSI(),
+#'   Id(schema = "Schema", table = "Table")
+#' )
 #'
 #' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   SQL(c('"Schema"."Table"', "UnqualifiedTable"))
+#'   list(Id(schema = "Schema", table = "Table"), Id(table = "UnqualifiedTable"))
 #' )
 #'
-#' # Character vectors are wrapped in a list
-#' dbQuoteIdentifier(
+#' # Lists of SQL objects can also be processed,
+#' # but each component must be length 1
+#' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   c(schema = "Schema", table = "Table")
-#' )
-#'
-#' # Lists of character vectors are returned unchanged
-#' dbQuoteIdentifier(
-#'   ANSI(),
-#'   list(c(schema = "Schema", table = "Table"), "UnqualifiedTable")
+#'   list(SQL('"Schema"."Table"'), SQL('"UnqualifiedTable"'))
 #' )
 setGeneric("dbUnquoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
@@ -196,7 +202,16 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   if (is(x, "SQL")) {
     split <-  strsplit(as.character(x), '^"|"$|"[.]"')
     components <- lapply(split, `[`, -1L)
-    tables <- lapply(components, Table)
+    lengths <- vapply(components, length, integer(1))
+    if (!all(lengths %in% 1:2)) {
+      stop("Can only unquote up to two components.", call. = FALSE)
+    }
+    named_components <- lapply(components, function(x) {
+      if (length(x) == 1) names(x) <- "table"
+      else names(x) <- c("schema", "table")
+      as.list(x)
+    })
+    tables <- lapply(named_components, do.call, what = Id)
     quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
     bad <- quoted != x
     if (any(bad)) {
@@ -207,10 +222,7 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   if (is(x, "Id")) {
     return(list(x))
   }
-  if (is.character(x)) {
-    return(list(do.call(Id, as.list(x))))
-  }
-  stop("x must be character, SQL or Table, or a list of such objects", call. = FALSE)
+  stop("x must be SQL or Table, or a list of such objects", call. = FALSE)
 })
 
 #' Quote literal strings
