@@ -14,7 +14,7 @@ setClass("Id", slots = list(name = "character"))
 Id <- function(...) {
   components <- c(...)
   if (is.null(names(components)) || any(names(components) == "")) {
-    stop("All arguments to Table() must be named.", call. = FALSE)
+    stop("All arguments to Id() must be named.", call. = FALSE)
   }
   new("Id", name = components)
 }
