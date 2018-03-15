@@ -25,17 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Send query, retrieve results and then clear result set — dbGetQuery" />
 
 <meta property="og:description" content="Returns the result of a query as a data frame.
 dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
-the result is always free-d by dbClearResult()." />
-
-<meta property="og:description" content="Methods in other packages" />
+the result is always free-d by dbClearResult().
+Methods in other packages" />
 
 <meta property="og:description" content="
 DBI::dbGetQuery("DBIConnection", "character")
@@ -123,9 +120,8 @@ DBI::dbGetQuery("DBIConnection", "character")
 <code>dbGetQuery()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>, then <code><a href='dbFetch.html'>dbFetch()</a></code>, ensuring that
-the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult()</a></code>.
-
-    <h3>Methods in other packages</h3>
+the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p>
+<p><h3>Methods in other packages</h3>
 
     <ul>
 <li><p><code><a href='hidden_aliases.html'>DBI::dbGetQuery("DBIConnection", "character")</a></code></p></li>
@@ -284,3 +280,4 @@ no warning is issued.</p>
 
   </body>
 </html>
+
