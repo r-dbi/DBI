@@ -1,6 +1,6 @@
 pandoc: 1.15.2
 pkgdown: 0.1.0.9000
-pkgdown_sha: b2313f0ad7bcc2deb563a850c1f0cb3f6a9df79e
+pkgdown_sha: 39cc9743b588ae133635238e77bcbe023c8efdd9
 articles:
   DBI-1: DBI-1.html
   DBI-proposal: DBI-proposal.html
