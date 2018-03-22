@@ -1,3 +1,7 @@
+### DBI 0.8.0.9000 (2018-03-22)
+
+- Same as DBI 0.8, switching to semantic versioning.
+
 # DBI 0.8 (2018-02-24)
 
 Breaking changes
