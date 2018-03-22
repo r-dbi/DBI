@@ -196,34 +196,33 @@ setGeneric("dbUnquoteIdentifier",
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
-  if (is.list(x)) {
-    return(vapply(x, dbUnquoteIdentifier, conn = conn, list(1)))
-  }
   if (is(x, "SQL")) {
-    split <-  strsplit(as.character(x), '^"|"$|"[.]"')
-    components <- lapply(split, `[`, -1L)
-    lengths <- vapply(components, length, integer(1))
-    if (!all(lengths %in% 1:2)) {
-      stop("Can only unquote up to two components.", call. = FALSE)
+    rx <- '^(?:|`((?:[^`]|``)+)`[.])(?:|`((?:[^`]|``)*)`)$'
+    bad <- grep(rx, x, invert = TRUE)
+    if (length(bad) > 0) {
+      stop("Can't unquote ", x[bad[[1]]], call. = FALSE)
     }
-    named_components <- lapply(components, function(x) {
-      if (length(x) == 1) names(x) <- "table"
-      else names(x) <- c("schema", "table")
-      as.list(x)
-    })
-    tables <- lapply(named_components, do.call, what = Id)
-    quoted <- lapply(tables, dbQuoteIdentifier, conn = conn)
-    bad <- quoted != x
-    if (any(bad)) {
-      stop("Can't unquote ", x[bad][[1L]], call. = FALSE)
-    }
-    return(tables)
+    schema <- gsub(rx, "\\1", x)
+    schema <- gsub('""', '"', schema)
+    table <- gsub(rx, "\\2", x)
+    table <- gsub('""', '"', table)
+
+    ret <- Map(schema, table, f = as_table)
+    names(ret) <- names(x)
+    return(ret)
   }
   if (is(x, "Id")) {
     return(list(x))
   }
-  stop("x must be SQL or Table, or a list of such objects", call. = FALSE)
+  stop("x must be SQL or Id", call. = FALSE)
 })
+
+as_table <- function(schema, table) {
+  args <- c(schema = schema, table = table)
+  # Also omits NA args
+  args <- args[!is.na(args) & args != ""]
+  do.call(Id, as.list(args))
+}
 
 #' Quote literal strings
 #'
