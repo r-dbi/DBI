@@ -28,5 +28,5 @@ setMethod("show", signature("Id"), function(object) {
 
 #' @export
 toString.Id <- function(x, ...) {
-  paste0("<Table> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
+  paste0("<Id> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
 }
