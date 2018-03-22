@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Refer to a table nested in a hierarchy (e.g. within a schema) — Id-class • DBI</title>
+<title>/home/travis/build/r-dbi/DBI/cran-comments.md • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -22,14 +22,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
-<script src="../pkgdown.js"></script>
-<meta property="og:title" content="Refer to a table nested in a hierarchy (e.g. within a schema) — Id-class" />
-
-<meta property="og:description" content="Objects of class Id have a single slot name, which is a named
-character vector." />
-<meta name="twitter:card" content="summary" />
+<link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script>
+<script src="pkgdown.js"></script>
+<meta property="og:title" content="/home/travis/build/r-dbi/DBI/cran-comments.md" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -42,7 +38,7 @@ character vector." />
   </head>
 
   <body>
-    <div class="container template-reference-topic">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -52,18 +48,18 @@ character vector." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <a class="navbar-brand" href="index.html">DBI</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -73,21 +69,21 @@ character vector." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
+      <a href="articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
-      <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+      <a href="articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
+      <a href="articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
     </li>
     <li>
-      <a href="../articles/spec.html">DBI specification</a>
+      <a href="articles/spec.html">DBI specification</a>
     </li>
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="news/index.html">News</a>
 </li>
       </ul>
       
@@ -102,41 +98,38 @@ character vector." />
       </header>
 
       <div class="row">
-  <div class="col-md-9 contents">
+  <div class="contents col-md-12">
     <div class="page-header">
-    <h1>Refer to a table nested in a hierarchy (e.g. within a schema)</h1>
-    
+      <h1>/home/travis/build/r-dbi/DBI/cran-comments.md</h1>
     </div>
 
-    
-    <p>Objects of class <code>Id</code> have a single slot <code>name</code>, which is a named
-character vector.</p>
-    
 
-    <pre class="usage"><span class='fu'>Id</span>(<span class='no'>...</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Components of the hierarchy, e.g. <code>schema</code>, <code>table</code>,
-or <code>cluster</code>, <code>catalog</code>, <code>schema</code>, <code>table</code>.
-For more on these concepts, see
-<a href='http://stackoverflow.com/questions/7022755/'>http://stackoverflow.com/questions/7022755/</a></p></td>
-    </tr>
-    </table>
-    
-
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-                </ul>
-
-  </div>
+<p>Minor update to support upcoming release of RSQLite.</p>
+<div id="test-environments" class="section level2">
+<h2 class="hasAnchor">
+<a href="#test-environments" class="anchor"></a>Test environments</h2>
+<ul>
+<li>ubuntu 17.04 (local install), R 3.4.3</li>
+<li>ubuntu 14.04 (on travis-ci), R devel, release, and oldrel</li>
+<li>win-builder (release and devel)</li>
+</ul>
 </div>
+<div id="r-cmd-check-results" class="section level2">
+<h2 class="hasAnchor">
+<a href="#r-cmd-check-results" class="anchor"></a>R CMD check results</h2>
+<p>OK.</p>
+</div>
+<div id="reverse-dependencies" class="section level2">
+<h2 class="hasAnchor">
+<a href="#reverse-dependencies" class="anchor"></a>Reverse dependencies</h2>
+<p>Checked more than 523 downstream dependencies on CRAN and Bioconductor, very few packages could not be installed or checked. Seeing new warnings in pool, RJDBC and RSQLServer, these packages need very minor documentation updates to accommodate changes to the definition of generics. Contacted maintaners of these packages.</p>
+</div>
+
+
+  </div>
+
+</div>
+
 
       <footer>
       <div class="copyright">

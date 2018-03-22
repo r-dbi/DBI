@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="DBIObject class — DBIObject-class" />
 
 <meta property="og:description" content="Base class for all other DBI classes (e.g., drivers, connections). This
@@ -75,13 +73,13 @@ is a virtual Class: No objects may be created from it." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
       <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
       <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+    </li>
+    <li>
+      <a href="../articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
       <a href="../articles/spec.html">DBI specification</a>
@@ -89,7 +87,7 @@ is a virtual Class: No objects may be created from it." />
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -107,6 +105,7 @@ is a virtual Class: No objects may be created from it." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBIObject class</h1>
+    
     </div>
 
     
@@ -128,10 +127,12 @@ or parent of the class hierarchy.</p>
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
-    <p>An implementation MUST provide methods for the following generics:</p><ul>
+    <p>An implementation MUST provide methods for the following generics:</p>
+<ul>
 <li><p><code><a href='dbGetInfo.html'>dbGetInfo()</a></code>.</p></li>
 </ul>
-    <p>It MAY also provide methods for:</p><ul>
+    <p>It MAY also provide methods for:</p>
+<ul>
 <li><p><code>summary()</code>. Print a concise description of the
 object. The default method invokes <code><a href='dbGetInfo.html'>dbGetInfo(dbObj)</a></code> and prints
 the name-value pairs one per line.  Individual implementations may
@@ -184,3 +185,4 @@ tailor this appropriately.</p></li>
 
   </body>
 </html>
+

@@ -25,14 +25,11 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Unquote identifiers — dbUnquoteIdentifier" />
 
 <meta property="og:description" content="Call this method to convert a SQL object created by dbQuoteIdentifier()
-back to a list of Id objects." />
-
-<meta property="og:description" content="Methods in other packages" />
+back to a list of Id objects.
+Methods in other packages" />
 
 <meta property="og:description" content="
 DBI::dbUnquoteIdentifier("DBIConnection")
@@ -81,13 +78,13 @@ DBI::dbUnquoteIdentifier("DBIConnection")
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
       <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
       <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+    </li>
+    <li>
+      <a href="../articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
       <a href="../articles/spec.html">DBI specification</a>
@@ -95,7 +92,7 @@ DBI::dbUnquoteIdentifier("DBIConnection")
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -113,13 +110,13 @@ DBI::dbUnquoteIdentifier("DBIConnection")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Unquote identifiers</h1>
+    
     </div>
 
     
     <p>Call this method to convert a <a href='SQL.html'>SQL</a> object created by <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
-back to a list of <a href='Id.html'>Id</a> objects.
-
-    <h3>Methods in other packages</h3>
+back to a list of <a href='Id.html'>Id</a> objects.</p>
+<p><h3>Methods in other packages</h3>
 
     <ul>
 <li><p><code><a href='hidden_aliases.html'>DBI::dbUnquoteIdentifier("DBIConnection")</a></code></p></li>
@@ -161,24 +158,45 @@ objects, to unquote.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Unquoting allows to understand the structure of a possibly complex quoted</span>
-<span class='co'># identifier</span>
-
+    <pre class="examples"><div class='input'><span class='co'># Unquoting allows to understand the structure of a</span>
+<span class='co'># possibly complex quoted identifier</span>
 <span class='fu'>dbUnquoteIdentifier</span>(
   <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
-  <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='fu'>c</span>(<span class='st'>'"Schema"."Table"'</span>, <span class='st'>"UnqualifiedTable"</span>))
-)</div><div class='output co'>#&gt; <span class='error'>Error in match.fun(FUN): object 'Table' not found</span></div><div class='input'>
-<span class='co'># Character vectors are wrapped in a list</span>
-<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(
+  <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='fu'>c</span>(<span class='st'>'"Schema"."Table"'</span>, <span class='st'>'"UnqualifiedTable"'</span>))
+)</div><div class='output co'>#&gt; [[1]]
+#&gt; &lt;Table&gt; schema = Schema, table = Table
+#&gt; 
+#&gt; [[2]]
+#&gt; &lt;Table&gt; table = UnqualifiedTable
+#&gt; </div><div class='input'>
+<span class='co'># The returned object is always a list,</span>
+<span class='co'># also for Id objects or lists thereof</span>
+<span class='fu'>dbUnquoteIdentifier</span>(
   <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
-  <span class='fu'>c</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>)
-)</div><div class='output co'>#&gt; &lt;SQL&gt; "Schema"
-#&gt; &lt;SQL&gt; "Table"</div><div class='input'>
-<span class='co'># Lists of character vectors are returned unchanged</span>
-<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(
+  <span class='fu'><a href='Id.html'>Id</a></span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>)
+)</div><div class='output co'>#&gt; [[1]]
+#&gt; &lt;Table&gt; schema = Schema, table = Table
+#&gt; </div><div class='input'>
+<span class='fu'>dbUnquoteIdentifier</span>(
   <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
-  <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>), <span class='st'>"UnqualifiedTable"</span>)
-)</div><div class='output co'>#&gt; <span class='error'>Error: x must be character or SQL</span></div></pre>
+  <span class='fu'>list</span>(<span class='fu'><a href='Id.html'>Id</a></span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>), <span class='fu'><a href='Id.html'>Id</a></span>(<span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"UnqualifiedTable"</span>))
+)</div><div class='output co'>#&gt; [[1]]
+#&gt; &lt;Table&gt; schema = Schema, table = Table
+#&gt; 
+#&gt; [[2]]
+#&gt; &lt;Table&gt; table = UnqualifiedTable
+#&gt; </div><div class='input'>
+<span class='co'># Lists of SQL objects can also be processed,</span>
+<span class='co'># but each component must be length 1</span>
+<span class='fu'>dbUnquoteIdentifier</span>(
+  <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
+  <span class='fu'>list</span>(<span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='st'>'"Schema"."Table"'</span>), <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='st'>'"UnqualifiedTable"'</span>))
+)</div><div class='output co'>#&gt; [[1]]
+#&gt; &lt;Table&gt; schema = Schema, table = Table
+#&gt; 
+#&gt; [[2]]
+#&gt; &lt;Table&gt; table = UnqualifiedTable
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -207,3 +225,4 @@ objects, to unquote.</p></td>
 
   </body>
 </html>
+

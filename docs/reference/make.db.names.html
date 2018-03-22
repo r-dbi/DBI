@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Make R identifiers into legal SQL identifiers — make.db.names" />
 
 <meta property="og:description" content="These methods are DEPRECATED. Please use dbQuoteIdentifier()
@@ -75,13 +73,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
       <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
       <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+    </li>
+    <li>
+      <a href="../articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
       <a href="../articles/spec.html">DBI specification</a>
@@ -89,7 +87,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -107,6 +105,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make R identifiers into legal SQL identifiers</h1>
+    
     </div>
 
     
@@ -174,12 +173,10 @@ lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>make.db.names</code> returns a character vector of legal SQL
-identifiers corresponding to its <code>snames</code> argument.
-
-<code>SQLKeywords</code> returns a character vector of all known keywords for the
-database-engine associated with <code>dbObj</code>.
-
-<code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
+identifiers corresponding to its <code>snames</code> argument.</p>
+<p><code>SQLKeywords</code> returns a character vector of all known keywords for the
+database-engine associated with <code>dbObj</code>.</p>
+<p><code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -242,3 +239,4 @@ override or update this vector.</p>
 
   </body>
 </html>
+

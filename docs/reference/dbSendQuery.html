@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="Execute a query on a given database connection — dbSendQuery" />
 
 <meta property="og:description" content="The dbSendQuery() method only submits and synchronously executes the
@@ -34,9 +32,8 @@ SQL query to the database engine.  It does not extract any
 records --- for that you need to use the dbFetch() method, and
 then you must call dbClearResult() when you finish fetching the
 records you need. For interactive use, you should almost always prefer
-dbGetQuery()." />
-
-<meta property="og:description" content="Methods in other packages" />
+dbGetQuery().
+Methods in other packages" />
 
 <meta property="og:description" content="
 RSQLite::dbSendQuery("SQLiteConnection", "character")
@@ -85,13 +82,13 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
       <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
       <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+    </li>
+    <li>
+      <a href="../articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
       <a href="../articles/spec.html">DBI specification</a>
@@ -99,7 +96,7 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -117,6 +114,7 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Execute a query on a given database connection</h1>
+    
     </div>
 
     
@@ -125,9 +123,8 @@ SQL query to the database engine.  It does <em>not</em> extract any
 records --- for that you need to use the <code><a href='dbFetch.html'>dbFetch()</a></code> method, and
 then you must call <code><a href='dbClearResult.html'>dbClearResult()</a></code> when you finish fetching the
 records you need. For interactive use, you should almost always prefer
-<code><a href='dbGetQuery.html'>dbGetQuery()</a></code>.
-
-    <h3>Methods in other packages</h3>
+<code><a href='dbGetQuery.html'>dbGetQuery()</a></code>.</p>
+<p><h3>Methods in other packages</h3>
 
     <ul>
 <li><p><code>RSQLite::dbSendQuery("SQLiteConnection", "character")</code></p></li>
@@ -260,3 +257,4 @@ and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a><
 
   </body>
 </html>
+

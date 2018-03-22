@@ -25,8 +25,6 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
 <meta property="og:title" content="DBI: R Database Interface — DBI-package" />
 
 <meta property="og:description" content="DBI defines an interface for communication between R and relational database
@@ -77,13 +75,13 @@ the various R/DBMS implementations (so-called DBI backends)." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
       <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
     </li>
     <li>
       <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
+    </li>
+    <li>
+      <a href="../articles/backend.html">Implementing a new backend</a>
     </li>
     <li>
       <a href="../articles/spec.html">DBI specification</a>
@@ -91,7 +89,7 @@ the various R/DBMS implementations (so-called DBI backends)." />
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -109,6 +107,7 @@ the various R/DBMS implementations (so-called DBI backends)." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBI: R Database Interface</h1>
+    
     </div>
 
     
@@ -168,7 +167,7 @@ DBI recommends to define a constructor with an empty argument list.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>()</div><div class='output co'>#&gt; &lt;SQLiteDriver&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>()</div><div class='output co'>#&gt; <span class='warning'>Warning: replacing previous import ‘DBI::.__C__oldClass’ by ‘methods::.__C__oldClass’ when loading ‘RSQLite’</span></div><div class='output co'>#&gt; <span class='warning'>Warning: replacing previous import ‘DBI::coerce’ by ‘methods::coerce’ when loading ‘RSQLite’</span></div><div class='output co'>#&gt; <span class='warning'>Warning: replacing previous import ‘DBI::.__C__character’ by ‘methods::.__C__character’ when loading ‘RSQLite’</span></div><div class='output co'>#&gt; <span class='warning'>Warning: replacing previous import ‘DBI::.__C__vector’ by ‘methods::.__C__vector’ when loading ‘RSQLite’</span></div><div class='output co'>#&gt; &lt;SQLiteDriver&gt;</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -213,3 +212,4 @@ Authors:
 
   </body>
 </html>
+
