@@ -19,15 +19,15 @@ an active connection to an DBMS.}
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
 The names of the input argument are preserved in the output.
-An error is raised if the input contains \code{NA},
-but not for an empty string.
-
 When passing the returned object again to \code{dbQuoteIdentifier()}
 as \code{x}
 argument, it is returned unchanged.
 Passing objects of class \link{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link{SQL} objects
 to achieve this behavior, but this is not required.)
+
+An error is raised if the input contains \code{NA},
+but not for an empty string.
 }
 \description{
 Call this method to generate a string that is suitable for

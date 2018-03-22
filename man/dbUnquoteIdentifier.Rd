@@ -15,12 +15,42 @@ objects, to unquote.}
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbUnquoteIdentifier()} returns a list of objects
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.
+The names of the input argument are preserved in the output.
+When passing the first element of a returned object again to
+\code{dbUnquoteIdentifier()} as \code{x}
+argument, it is returned unchanged (but wrapped in a list).
+Passing objects of class \link{Id} should also return them unchanged (but wrapped in a list).
+(For backends it may be most convenient to return \link{Id} objects
+to achieve this behavior, but this is not required.)
+
+An error is raised if plain character vectors are passed as the \code{x}
+argument.
+}
 \description{
 Call this method to convert a \link{SQL} object created by \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 back to a list of \link{Id} objects.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbUnquoteIdentifier")}
 }
+\section{Specification}{
+
+
+For any character vector of length one, quoting (with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}})
+then unquoting then quoting the first element is identical to just quoting.
+This is also true for strings that
+contain special characters such as a space,
+a dot,
+a comma,
+or quotes used to mark strings
+or identifiers,
+if the database supports this.
+
+}
+
 \examples{
 # Unquoting allows to understand the structure of a
 # possibly complex quoted identifier

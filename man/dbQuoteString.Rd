@@ -57,6 +57,13 @@ The strings \code{"NA"} or \code{"NULL"} are not treated specially.
 so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
 
+Passing a numeric,
+integer,
+logical,
+or raw vector,
+or a list
+for the \code{x} argument raises an error.
+
 }
 
 \examples{
