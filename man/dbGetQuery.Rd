@@ -53,16 +53,19 @@ performance optimization.
 \section{Specification}{
 
 
-Fetching multi-row queries with one
-or more columns be default returns the entire result.
+The \code{n} argument specifies the number of rows to be fetched.
+If omitted, fetching multi-row queries with one
+or more columns returns the entire result.
 A value of \link{Inf} for the \code{n} argument is supported
 and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If zero rows are fetched, the columns of the data frame are still fully
+If more rows than available are fetched (by passing a too large value for
+\code{n}), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully
 typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.
+
+The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
 
 A column named \code{row_names} is treated like any other column.
 

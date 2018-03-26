@@ -63,6 +63,8 @@ and raises a warning.
 The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
+The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
 }
 
 \examples{
