@@ -111,6 +111,24 @@ setGeneric("dbIsValid",
   valueClass = "logical"
 )
 
+#' Is this DBMS object read only?
+#'
+#' This generic tests whether a database object is read only.
+#'
+#' @inheritParams dbGetInfo
+#' @family DBIDriver generics
+#' @family DBIConnection generics
+#' @family DBIResult generics
+#' @export
+#' @examples
+#' dbIsReadOnly(RSQLite::SQLite())
+#'
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:", flags = SQLITE_RO)
+#' dbIsReadOnly(con)
+setGeneric("dbIsReadOnly",
+  def = function(dbObj, ...) standardGeneric("dbIsReadOnly"),
+  valueClass = "logical")
+
 setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {
   info <- dbGetInfo(dbObj = object, ...)
