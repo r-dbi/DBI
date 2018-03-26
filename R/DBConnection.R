@@ -521,9 +521,9 @@ setGeneric("dbWriteTable",
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWriteTable", signature("DBIConnection", "Id"),
-  function(conn, name, ...) {
-    dbWriteTable(conn, dbQuoteIdentifier(conn, name), ...)
+setMethod("dbWriteTable", signature("DBIConnection", "Id", "ANY"),
+  function(conn, name, value, ...) {
+    dbWriteTable(conn, dbQuoteIdentifier(conn, name), value, ...)
   }
 )
 
