@@ -63,22 +63,22 @@ dbUnquoteIdentifier(
 )
 
 # The returned object is always a list,
-# also for Id objects or lists thereof
+# also for Id objects
 dbUnquoteIdentifier(
   ANSI(),
   Id(schema = "Schema", table = "Table")
 )
 
-dbUnquoteIdentifier(
+# Quoting is the inverse operation to unquoting the elements
+# of the returned list
+dbQuoteIdentifier(
   ANSI(),
-  list(Id(schema = "Schema", table = "Table"), Id(table = "UnqualifiedTable"))
+  dbUnquoteIdentifier(ANSI(), SQL("UnqualifiedTable"))[[1]]
 )
 
-# Lists of SQL objects can also be processed,
-# but each component must be length 1
-dbUnquoteIdentifier(
+dbQuoteIdentifier(
   ANSI(),
-  list(SQL('"Schema"."Table"'), SQL('"UnqualifiedTable"'))
+  dbUnquoteIdentifier(ANSI(), Id(schema = "Schema", table = "Table"))[[1]]
 )
 }
 \seealso{

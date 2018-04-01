@@ -172,22 +172,22 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' )
 #'
 #' # The returned object is always a list,
-#' # also for Id objects or lists thereof
+#' # also for Id objects
 #' dbUnquoteIdentifier(
 #'   ANSI(),
 #'   Id(schema = "Schema", table = "Table")
 #' )
 #'
-#' dbUnquoteIdentifier(
+#' # Quoting is the inverse operation to unquoting the elements
+#' # of the returned list
+#' dbQuoteIdentifier(
 #'   ANSI(),
-#'   list(Id(schema = "Schema", table = "Table"), Id(table = "UnqualifiedTable"))
+#'   dbUnquoteIdentifier(ANSI(), SQL("UnqualifiedTable"))[[1]]
 #' )
 #'
-#' # Lists of SQL objects can also be processed,
-#' # but each component must be length 1
-#' dbUnquoteIdentifier(
+#' dbQuoteIdentifier(
 #'   ANSI(),
-#'   list(SQL('"Schema"."Table"'), SQL('"UnqualifiedTable"'))
+#'   dbUnquoteIdentifier(ANSI(), Id(schema = "Schema", table = "Table"))[[1]]
 #' )
 setGeneric("dbUnquoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
@@ -197,15 +197,15 @@ setGeneric("dbUnquoteIdentifier",
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
   if (is(x, "SQL")) {
-    rx <- '^(?:(?:|`((?:[^`]|``)+)`[.])(?:|`((?:[^`]|``)*)`)|([^`. ]+))$'
+    rx <- '^(?:(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")*)")|([^". ]+))$'
     bad <- grep(rx, x, invert = TRUE)
     if (length(bad) > 0) {
       stop("Can't unquote ", x[bad[[1]]], call. = FALSE)
     }
     schema <- gsub(rx, "\\1", x)
-    schema <- gsub('``', '`', schema)
+    schema <- gsub('""', '"', schema)
     table <- gsub(rx, "\\2", x)
-    table <- gsub('``', '`', table)
+    table <- gsub('""', '"', table)
     naked_table <- gsub(rx, "\\3", x)
 
     ret <- Map(schema, table, naked_table, f = as_table)
