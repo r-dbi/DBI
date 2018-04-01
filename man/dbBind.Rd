@@ -137,6 +137,9 @@ for both queries
 and data manipulation statements,
 even if no results are fetched between calls to \code{dbBind()}.
 
+If the placeholders in the query are named,
+their order in the \code{params} argument is not important.
+
 At least the following data types are accepted on input (including \link{NA}):
 \itemize{
 \item \link{integer}
@@ -184,8 +187,8 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}},
   \code{\link{dbQuoteString}},
   \code{\link{dbUnquoteIdentifier}}

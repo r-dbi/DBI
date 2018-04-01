@@ -68,12 +68,17 @@ Formal specification (currently work in progress and incomplete):
 \code{vignette("spec", package = "DBI")}
 }
 \author{
-\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org}
+\strong{Maintainer}: Kirill Müller \email{krlmlr+r@mailbox.org} (0000-0002-1416-3412)
 
 Authors:
 \itemize{
   \item R Special Interest Group on Databases (R-SIG-DB)
   \item Hadley Wickham
+}
+
+Other contributors:
+\itemize{
+  \item R Consortium [funder]
 }
 
 }

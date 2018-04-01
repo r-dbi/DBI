@@ -49,6 +49,9 @@ or quotes used to mark strings
 or identifiers,
 if the database supports this.
 
+Unquoting simple strings (consisting of only letters) wrapped with \code{\link[=SQL]{SQL()}}
+and then quoting gives the same result as just quoting.
+
 }
 
 \examples{
@@ -85,8 +88,8 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}}, \code{\link{dbQuoteString}}
 }
 \concept{DBIResult generics}

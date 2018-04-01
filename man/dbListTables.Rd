@@ -36,16 +36,6 @@ This should include views and temporary objects, but not all database backends
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}
 }
-\section{Additional arguments}{
-
-
-TBD: \code{temporary = NA}
-
-This must be provided as named argument.
-See the "Specification" section for details on their usage.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -60,10 +50,11 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
-  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
-  \code{\link{dbListResults}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
+  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
+  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
+  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 }
 \concept{DBIConnection generics}

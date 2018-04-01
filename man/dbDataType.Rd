@@ -115,19 +115,19 @@ dbDisconnect(con)
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbConnect}}, \code{\link{dbDriver}},
-  \code{\link{dbGetInfo}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbListConnections}}
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDisconnect}}, \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
-  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
-  \code{\link{dbListResults}}, \code{\link{dbListTables}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
-  \code{\link{dbWriteTable}}
+  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
+  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
 }
 \concept{DBIConnection generics}
 \concept{DBIDriver generics}

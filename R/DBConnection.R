@@ -348,7 +348,6 @@ setMethod("dbListFields", signature("DBIConnection", "character"),
 #' @templateVar method_name dbListTables
 #'
 #' @inherit DBItest::spec_sql_list_tables return
-#' @inheritSection DBItest::spec_sql_list_tables Additional arguments
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
@@ -535,7 +534,6 @@ setMethod("dbWriteTable", signature("DBIConnection", "Id", "ANY"),
 #' @templateVar method_name dbExistsTable
 #'
 #' @inherit DBItest::spec_sql_exists_table return
-#' @inheritSection DBItest::spec_sql_exists_table Additional arguments
 #' @inheritSection DBItest::spec_sql_exists_table Specification
 #'
 #' @inheritParams dbGetQuery

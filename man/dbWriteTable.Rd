@@ -53,7 +53,7 @@ The following arguments are not part of the \code{dbWriteTable()} generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 \itemize{
-\item \code{row.names} (default: \code{NA})
+\item \code{row.names} (default: \code{FALSE})
 \item \code{overwrite} (default: \code{FALSE})
 \item \code{append} (default: \code{FALSE})
 \item \code{field.types} (default: \code{NULL})
@@ -103,8 +103,13 @@ and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
 (the behavior for \code{Inf} and \code{NaN} is not specified)
 \item logical
 \item \code{NA} as NULL
-\item 64-bit values (using \code{"bigint"} as field type);
-the result can be converted to a numeric, which may lose precision,
+\item 64-bit values (using \code{"bigint"} as field type); the result can be
+\itemize{
+\item converted to a numeric, which may lose precision,
+\item converted a character vector, which gives the full decimal
+representation
+\item written to another table and read again unchanged
+}
 \item character (in both UTF-8
 and native encodings),
 supporting empty strings
@@ -145,6 +150,8 @@ that contains the row names,
 even if the input data frame only has natural row names.
 }
 
+The default is \code{row.names = FALSE}.
+
 }
 
 \examples{
@@ -169,10 +176,11 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsValid}},
-  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
-  \code{\link{dbListResults}}, \code{\link{dbListTables}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}}
+  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
+  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
+  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
+  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
+  \code{\link{dbSendStatement}}
 }
 \concept{DBIConnection generics}

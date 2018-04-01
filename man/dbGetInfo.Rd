@@ -48,18 +48,19 @@ constructs such a list from the return values of the corresponding methods,
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbConnect}}, \code{\link{dbDataType}},
-  \code{\link{dbDriver}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+  \code{\link{dbDriver}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbListConnections}}
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
   \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
-  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
-  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
-  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
+  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
+  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
+  \code{\link{dbListResults}}, \code{\link{dbListTables}},
+  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
+  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
+  \code{\link{dbWriteTable}}
 
 Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbBind}}, \code{\link{dbClearResult}},
@@ -67,8 +68,8 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteIdentifier}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
   \code{\link{dbQuoteLiteral}},
   \code{\link{dbQuoteString}},
   \code{\link{dbUnquoteIdentifier}}

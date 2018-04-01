@@ -84,8 +84,8 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
   \code{\link{dbGetRowsAffected}},
   \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsValid}},
-  \code{\link{dbQuoteLiteral}},
+  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}, \code{\link{dbQuoteLiteral}},
   \code{\link{dbQuoteString}},
   \code{\link{dbUnquoteIdentifier}}
 }
