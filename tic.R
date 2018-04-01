@@ -6,8 +6,7 @@ if (Sys.getenv("BUILD_PKGDOWN") != "" && !ci()$is_tag()) {
 
   if (Sys.getenv("id_rsa") != "") {
     get_stage("before_deploy") %>%
-      add_step(step_setup_ssh()) %>%
-      add_step(step_test_ssh())
+      add_step(step_setup_ssh())
 
     # pkgdown documentation can be built optionally. Other example criteria:
     # - `inherits(ci(), "TravisCI")`: Only for Travis CI
