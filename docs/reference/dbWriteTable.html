@@ -37,6 +37,8 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "character")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 " />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -44,6 +46,8 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -59,8 +63,12 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -101,6 +109,7 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -108,7 +117,7 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames to database tables</h1>
@@ -129,7 +138,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
 
     <pre class="usage"><span class='fu'>dbWriteTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -181,7 +190,7 @@ also raise an error.</p>
     <p>The following arguments are not part of the <code>dbWriteTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:</p><ul>
-<li><p><code>row.names</code> (default: <code>NA</code>)</p></li>
+<li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>overwrite</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>append</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>field.types</code> (default: <code>NULL</code>)</p></li>
@@ -221,8 +230,12 @@ and be read identically with <code><a href='dbReadTable.html'>dbReadTable()</a><
 (the behavior for <code>Inf</code> and <code>NaN</code> is not specified)</p></li>
 <li><p>logical</p></li>
 <li><p><code>NA</code> as NULL</p></li>
-<li><p>64-bit values (using <code>"bigint"</code> as field type);
-the result can be converted to a numeric, which may lose precision,</p></li>
+<li><p>64-bit values (using <code>"bigint"</code> as field type); the result can be</p><ul>
+<li><p>converted to a numeric, which may lose precision,</p></li>
+<li><p>converted a character vector, which gives the full decimal
+representation</p></li>
+<li><p>written to another table and read again unchanged</p></li>
+</ul></li>
 <li><p>character (in both UTF-8
 and native encodings),
 supporting empty strings</p></li>
@@ -258,18 +271,20 @@ no extra column is created in the case of natural row names.</p></li>
 that contains the row names,
 even if the input data frame only has natural row names.</p></li>
 </ul>
+    <p>The default is <code>row.names = FALSE</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+    <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
   <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect</a></code>,
   <code><a href='dbExecute.html'>dbExecute</a></code>, <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
   <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListObjects.html'>dbListObjects</a></code>,
-  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
-  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
-  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code></p>
+  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>,
+  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbListFields.html'>dbListFields</a></code>,
+  <code><a href='dbListObjects.html'>dbListObjects</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
+  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
+  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
+  <code><a href='dbSendStatement.html'>dbSendStatement</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -342,7 +357,7 @@ even if the input data frame only has natural row names.</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -351,6 +366,8 @@ even if the input data frame only has natural row names.</p></li>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

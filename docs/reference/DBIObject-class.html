@@ -30,6 +30,8 @@
 <meta property="og:description" content="Base class for all other DBI classes (e.g., drivers, connections). This
 is a virtual Class: No objects may be created from it." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -37,6 +39,8 @@ is a virtual Class: No objects may be created from it." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -52,8 +56,12 @@ is a virtual Class: No objects may be created from it." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -94,6 +102,7 @@ is a virtual Class: No objects may be created from it." />
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -101,7 +110,7 @@ is a virtual Class: No objects may be created from it." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBIObject class</h1>
@@ -141,9 +150,9 @@ tailor this appropriately.</p></li>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other DBI classes: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+    <div class='dont-index'><p>Other DBI classes: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
   <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
-  <code><a href='DBIResult-class.html'>DBIResult-class</a></code></p>
+  <code><a href='DBIResult-class.html'>DBIResult-class</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -173,7 +182,7 @@ tailor this appropriately.</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -182,6 +191,8 @@ tailor this appropriately.</p></li>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

@@ -38,6 +38,8 @@ Methods in other packages" />
 DBI::dbGetQuery("DBIConnection", "character")
 " />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -45,6 +47,8 @@ DBI::dbGetQuery("DBIConnection", "character")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -60,8 +64,12 @@ DBI::dbGetQuery("DBIConnection", "character")
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -102,6 +110,7 @@ DBI::dbGetQuery("DBIConnection", "character")
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -109,7 +118,7 @@ DBI::dbGetQuery("DBIConnection", "character")
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Send query, retrieve results and then clear result set</h1>
@@ -131,7 +140,7 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
 
     <pre class="usage"><span class='fu'>dbGetQuery</span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -181,30 +190,33 @@ performance optimization.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>Fetching multi-row queries with one
-or more columns be default returns the entire result.
+    <p>The <code>n</code> argument specifies the number of rows to be fetched.
+If omitted, fetching multi-row queries with one
+or more columns returns the entire result.
 A value of Inf for the <code>n</code> argument is supported
 and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If zero rows are fetched, the columns of the data frame are still fully
+If more rows than available are fetched (by passing a too large value for
+<code>n</code>), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully
 typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>For updates: <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> and <code><a href='dbExecute.html'>dbExecute()</a></code>.</p>
+    <div class='dont-index'><p>For updates: <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> and <code><a href='dbExecute.html'>dbExecute()</a></code>.</p>
 <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
   <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect</a></code>,
   <code><a href='dbExecute.html'>dbExecute</a></code>, <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
   <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbListFields.html'>dbListFields</a></code>,
-  <code><a href='dbListObjects.html'>dbListObjects</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
-  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
-  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
-  <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
+  <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
+  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListObjects.html'>dbListObjects</a></code>,
+  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
+  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
+  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
+  <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -269,7 +281,7 @@ no warning is issued.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -278,6 +290,8 @@ no warning is issued.</p>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

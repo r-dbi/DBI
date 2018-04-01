@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -75,7 +79,7 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>A Common Interface to Relational Databases from R and S – A Proposal</h1>
                         <h4 class="author">David James</h4>
@@ -88,7 +92,6 @@
 
     
     
-<div class="contents">
 <p>For too long S and similar data analysis environments have lacked good interfaces to relational database systems (RDBMS). For the last twenty years or so these RDBMS have evolved into highly optimized client-server systems for data storage and manipulation, and currently they serve as repositories for most of the business, industrial, and research “raw” data that analysts work with. Other analysis packages, such as SAS, have traditionally provided good data connectivity, but S and GNU R have relied on intermediate text files as means of importing data (but see <span class="citation">(<em>R Data Import/Export</em> 2001)</span> and <span class="citation">(<em>Using Relational Database Systems with R</em> 2000)</span>.) Although this simple approach works well for relatively modest amounts of mostly static data, it does not scale up to larger amounts of data distributed over machines and locations, nor does it scale up to data that is highly dynamic – situations that are becoming increasingly common.</p>
 <p>We want to propose a common interface between R/S and RDBMS that would allow users to access data stored on database servers in a uniform and predictable manner irrespective of the database engine. The interface defines a small set of classes and methods similar in spirit to Python’s DB-API, Java’s JDBC, Microsoft’s ODBC, Perl’s DBI, etc., but it conforms to the “whole-object” philosophy so natural in S and R.</p>
 <div id="sec:distr" class="section level1">
@@ -625,7 +628,6 @@
 <li id="fn2"><p>The term “database” is sometimes (confusingly) used both to denote the RDBMS, such as Oracle, MySQL, and also to denote a particular database instance under a RDBMS, such as “opto” or “sales” databases under the same RDBMS.<a href="#fnref2">↩</a></p></li>
 </ol>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -660,7 +662,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -669,6 +671,8 @@
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

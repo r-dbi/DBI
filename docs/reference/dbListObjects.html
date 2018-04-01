@@ -42,6 +42,8 @@ Methods in other packages" />
 DBI::dbListObjects("DBIConnection")
 " />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -49,6 +51,8 @@ DBI::dbListObjects("DBIConnection")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -64,8 +68,12 @@ DBI::dbListObjects("DBIConnection")
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -106,6 +114,7 @@ DBI::dbListObjects("DBIConnection")
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -113,7 +122,7 @@ DBI::dbListObjects("DBIConnection")
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List remote objects</h1>
@@ -139,7 +148,7 @@ namespace.</p>
 
     <pre class="usage"><span class='fu'>dbListObjects</span>(<span class='no'>conn</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -182,24 +191,22 @@ it is also removed from the data frame of database objects.</p>
 An error is raised when calling this method for a closed
 or invalid connection.</p>
     
-    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+    <h2 class="hasAnchor" id=""><a class="anchor" href="#"></a></h2>
 
     
-    <p>TBD: <code>temporary = NA</code></p>
-<p>This must be provided as named argument.
-See the "Specification" section for details on their usage.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+    <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
   <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect</a></code>,
   <code><a href='dbExecute.html'>dbExecute</a></code>, <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
   <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
-  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
-  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
-  <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
+  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>,
+  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbListFields.html'>dbListFields</a></code>,
+  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
+  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
+  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
+  <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -207,8 +214,8 @@ See the "Specification" section for details on their usage.</p>
 
 <span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; [1] table     is_prefix
 #&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
-<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt;                    table is_prefix
-#&gt; 1 &lt;Table&gt; table = mtcars     FALSE</div><div class='input'>
+<span class='fu'>dbListObjects</span>(<span class='no'>con</span>)</div><div class='output co'>#&gt;                 table is_prefix
+#&gt; 1 &lt;Id&gt; table = mtcars     FALSE</div><div class='input'>
 <span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -218,7 +225,7 @@ See the "Specification" section for details on their usage.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#additional-arguments">Additional arguments</a></li>
+      <li><a href="#"></a></li>
 
       <li><a href="#see-also">See also</a></li>
       
@@ -230,7 +237,7 @@ See the "Specification" section for details on their usage.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -239,6 +246,8 @@ See the "Specification" section for details on their usage.</p>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

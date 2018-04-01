@@ -44,6 +44,8 @@ Methods in other packages" />
 DBI::dbWithTransaction("DBIConnection")
 " />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -51,6 +53,8 @@ DBI::dbWithTransaction("DBIConnection")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -66,8 +70,12 @@ DBI::dbWithTransaction("DBIConnection")
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -108,6 +116,7 @@ DBI::dbWithTransaction("DBIConnection")
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -115,7 +124,7 @@ DBI::dbWithTransaction("DBIConnection")
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Self-contained SQL transactions</h1>
@@ -145,7 +154,7 @@ it can be called only inside <code>dbWithTransaction()</code>.</p>
 
 <span class='fu'>dbBreak</span>()</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -251,7 +260,7 @@ propagate to the calling environment.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -260,6 +269,8 @@ propagate to the calling environment.</p>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

@@ -32,6 +32,8 @@ management systems.
 All classes in this package are virtual and need to be extended by
 the various R/DBMS implementations (so-called DBI backends)." />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -39,6 +41,8 @@ the various R/DBMS implementations (so-called DBI backends)." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -54,8 +58,12 @@ the various R/DBMS implementations (so-called DBI backends)." />
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -96,6 +104,7 @@ the various R/DBMS implementations (so-called DBI backends)." />
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -103,7 +112,7 @@ the various R/DBMS implementations (so-called DBI backends)." />
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBI: R Database Interface</h1>
@@ -160,10 +169,10 @@ DBI recommends to define a constructor with an empty argument list.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Important generics: <code><a href='dbConnect.html'>dbConnect()</a></code>, <code><a href='dbGetQuery.html'>dbGetQuery()</a></code>,
+    <div class='dont-index'><p>Important generics: <code><a href='dbConnect.html'>dbConnect()</a></code>, <code><a href='dbGetQuery.html'>dbGetQuery()</a></code>,
 <code><a href='dbReadTable.html'>dbReadTable()</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable()</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect()</a></code></p>
 <p>Formal specification (currently work in progress and incomplete):
-<code><a href='../articles/spec.html'>vignette("spec", package = "DBI")</a></code></p>
+<code><a href='../articles/spec.html'>vignette("spec", package = "DBI")</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -186,12 +195,17 @@ DBI recommends to define a constructor with an empty argument list.</p>
 
     <h2>Author</h2>
     
-<strong>Maintainer</strong>: Kirill Müller <a href='mailto:krlmlr+r@mailbox.org'>krlmlr+r@mailbox.org</a>
+<strong>Maintainer</strong>: Kirill Müller <a href='mailto:krlmlr+r@mailbox.org'>krlmlr+r@mailbox.org</a> (0000-0002-1416-3412)
 
 Authors:
 <ul>
 <li><p>R Special Interest Group on Databases (R-SIG-DB)</p></li>
 <li><p>Hadley Wickham</p></li>
+</ul>
+
+Other contributors:
+<ul>
+<li><p>R Consortium [funder]</p></li>
 </ul>
 
 
@@ -200,7 +214,7 @@ Authors:
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -209,6 +223,8 @@ Authors:
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -75,12 +79,12 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Implementing a new backend</h1>
                         <h4 class="author">Hadley Wickham</h4>
             
-            <h4 class="date">2018-03-21</h4>
+            <h4 class="date">2018-04-01</h4>
       
       
 
@@ -88,7 +92,6 @@
 
     
     
-<div class="contents">
 <p>The goal of this document is to help you implement a new backend for DBI.</p>
 <p>If you are writing a package that connects a database to R, I highly recommend that you make it DBI compatible because it makes your life easier by spelling out exactly what you need to do. The consistent interface provided by DBI makes it easier for you to implement the package (because you have fewer arbitrary choices to make), and easier for your users (because it follows a familiar pattern). In addition, the <code>DBItest</code> package provides test cases which you can easily incorporate in your package.</p>
 <p>I’ll illustrate the process using a fictional database called Kazam.</p>
@@ -269,7 +272,6 @@ Kazam &lt;-<span class="st"> </span>function() {
 <a href="#full-dbi-compliance" class="anchor"></a>Full DBI compliance</h2>
 <p>By now, your package should implement all methods defined in the DBI specification. If you want to walk the extra mile, offer a read-only mode that allows your users to be sure that their valuable data doesn’t get destroyed inadvertently.</p>
 </div>
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -293,7 +295,7 @@ Kazam &lt;-<span class="st"> </span>function() {
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -302,6 +304,8 @@ Kazam &lt;-<span class="st"> </span>function() {
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

@@ -18,7 +18,7 @@
 <![endif]-->
 </head>
 <body>
-    <div class="container template-vignette">
+    <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
@@ -27,8 +27,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -75,12 +79,12 @@
 
       
       </header><div class="row">
-  <div class="col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>DBI specification</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2018-03-21</h4>
+            <h4 class="date">2018-04-01</h4>
       
       
 
@@ -92,7 +96,6 @@
       <p>The DBI package defines the generic DataBase Interface for R. The connection to individual DBMS is provided by other packages that import DBI (so-called <em>DBI backends</em>). This document formalizes the behavior expected by the methods declared in DBI and implemented by the individual backends. To ensure maximum portability and exchangeability, and to reduce the effort for implementing a new DBI backend, the DBItest package defines a comprehensive set of test cases that test conformance to the DBI specification. This document is derived from comments in the test definitions of the DBItest package. Any extensions or updates to the tests will be reflected in this document.</p>
     </div>
     
-<div class="contents">
 
 <h2>
 DBI: R Database Interface
@@ -491,6 +494,9 @@ No warnings occur under normal conditions. When done, the DBIResult object must 
 </p>
 <p>
 If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
 </p>
 <h3>
 Examples
@@ -939,6 +945,9 @@ Close the result set via <code><a href="../reference/dbClearResult.html">dbClear
 The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code>rbind()</code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>.
 </p>
 <p>
+If the placeholders in the query are named, their order in the <code>params</code> argument is not important.
+</p>
+<p>
 At least the following data types are accepted on input (including NA):
 </p>
 <ul>
@@ -1103,7 +1112,10 @@ Subclasses should override this method only if they provide some sort of perform
 Specification
 </h3>
 <p>
-Fetching multi-row queries with one or more columns be default returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched, the result is returned in full without warning. If zero rows are fetched, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.
+The <code>n</code> argument specifies the number of rows to be fetched. If omitted, fetching multi-row queries with one or more columns returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning. If zero rows are requested, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
 </p>
 <p>
 A column named <code>row_names</code> is treated like any other column.
@@ -1198,6 +1210,9 @@ Specification
 </h3>
 <p>
 No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed. If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
 </p>
 <h3>
 Examples
@@ -1393,6 +1408,9 @@ The returned expression can be used in a <code>SELECT …</code> query, and for 
 <p>
 <code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code>SELECT * FROM (SELECT 1) a WHERE … IS NULL</code> returns one row.
 </p>
+<p>
+Passing a numeric, integer, logical, or raw vector, or a list for the <code>x</code> argument raises an error.
+</p>
 <h3>
 Examples
 </h3>
@@ -1493,10 +1511,10 @@ Other arguments passed on to methods.
 Value
 </h3>
 <p>
-<code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. The names of the input argument are preserved in the output. An error is raised if the input contains <code>NA</code>, but not for an empty string.
+<code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. The names of the input argument are preserved in the output. When passing the returned object again to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)
 </p>
 <p>
-When passing the returned object again to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)
+An error is raised if the input contains <code>NA</code>, but not for an empty string.
 </p>
 <h3>
 Specification
@@ -1600,7 +1618,7 @@ The following arguments are not part of the <code><a href="../reference/dbReadTa
 <ul>
 <li>
 <p>
-<code>row.names</code>
+<code>row.names</code> (default: <code>FALSE</code>)
 </p>
 </li>
 <li>
@@ -1762,7 +1780,7 @@ The following arguments are not part of the <code><a href="../reference/dbWriteT
 <ul>
 <li>
 <p>
-<code>row.names</code> (default: <code>NA</code>)
+<code>row.names</code> (default: <code>FALSE</code>)
 </p>
 </li>
 <li>
@@ -1845,8 +1863,25 @@ logical
 </li>
 <li>
 <p>
-64-bit values (using <code>“bigint”</code> as field type); the result can be converted to a numeric, which may lose precision,
+64-bit values (using <code>“bigint”</code> as field type); the result can be
 </p>
+<ul>
+<li>
+<p>
+converted to a numeric, which may lose precision,
+</p>
+</li>
+<li>
+<p>
+converted a character vector, which gives the full decimal representation
+</p>
+</li>
+<li>
+<p>
+written to another table and read again unchanged
+</p>
+</li>
+</ul>
 </li>
 <li>
 <p>
@@ -1915,6 +1950,9 @@ If a string, this specifies the name of the column in the remote table that cont
 </p>
 </li>
 </ul>
+<p>
+The default is <code>row.names = FALSE</code>.
+</p>
 <h3>
 Value
 </h3>
@@ -1986,15 +2024,6 @@ Other parameters passed on to methods.
 </td>
 </tr>
 </table>
-<h3>
-Additional arguments
-</h3>
-<p>
-TBD: <code>temporary = NA</code>
-</p>
-<p>
-This must be provided as named argument. See the “Specification” section for details on their usage.
-</p>
 <h3>
 Value
 </h3>
@@ -2079,13 +2108,13 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
-Additional arguments
+Value
 </h3>
 <p>
-TBD: <code>temporary = NA</code>
+<code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise. This includes temporary tables if supported by the database.
 </p>
 <p>
-This must be provided as named argument. See the “Specification” section for details on their usage.
+An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.
 </p>
 <h3>
 Specification
@@ -2107,15 +2136,6 @@ If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">d
 </ul>
 <p>
 For all tables listed by <code><a href="../reference/dbListTables.html">dbListTables()</a></code>, <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns <code>TRUE</code>.
-</p>
-<h3>
-Value
-</h3>
-<p>
-<code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise. This includes temporary tables if supported by the database.
-</p>
-<p>
-An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.
 </p>
 <h3>
 Examples
@@ -2802,7 +2822,6 @@ dbReadTable(con, "account")
 dbDisconnect(con)
 </pre>
 
-</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -2812,7 +2831,7 @@ dbDisconnect(con)
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -2821,6 +2840,8 @@ dbDisconnect(con)
 
       </footer>
 </div>
+
+  
 
   </body>
 </html>

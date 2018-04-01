@@ -39,6 +39,8 @@ Methods in other packages" />
 RSQLite::dbBind("SQLiteResult")
 " />
 <meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -46,6 +48,8 @@ RSQLite::dbBind("SQLiteResult")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
 
 
   </head>
@@ -61,8 +65,12 @@ RSQLite::dbBind("SQLiteResult")
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">DBI</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">DBI</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -103,6 +111,7 @@ RSQLite::dbBind("SQLiteResult")
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -110,7 +119,7 @@ RSQLite::dbBind("SQLiteResult")
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Bind values to a parameterized/prepared statement</h1>
@@ -133,7 +142,7 @@ before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a hre
 
     <pre class="usage"><span class='fu'>dbBind</span>(<span class='no'>res</span>, <span class='no'>params</span>, <span class='no'>...</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -256,6 +265,8 @@ total number of rows affected if binding non-scalar parameters.
 for both queries
 and data manipulation statements,
 even if no results are fetched between calls to <code>dbBind()</code>.</p>
+<p>If the placeholders in the query are named,
+their order in the <code>params</code> argument is not important.</p>
 <p>At least the following data types are accepted on input (including NA):</p><ul>
 <li><p>integer</p></li>
 <li><p>numeric</p></li>
@@ -272,17 +283,17 @@ with warning)</p></li>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
+    <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
   <code><a href='dbClearResult.html'>dbClearResult</a></code>, <code><a href='dbColumnInfo.html'>dbColumnInfo</a></code>,
   <code><a href='dbFetch.html'>dbFetch</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
   <code><a href='dbGetRowCount.html'>dbGetRowCount</a></code>,
   <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></code>,
   <code><a href='dbGetStatement.html'>dbGetStatement</a></code>,
-  <code><a href='dbHasCompleted.html'>dbHasCompleted</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></code>,
+  <code><a href='dbHasCompleted.html'>dbHasCompleted</a></code>, <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>,
+  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></code>,
   <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>,
   <code><a href='dbQuoteString.html'>dbQuoteString</a></code>,
-  <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p>
+  <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -332,7 +343,7 @@ with warning)</p></li>
 
       <footer>
       <div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, Kirill Müller, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
@@ -341,6 +352,8 @@ with warning)</p></li>
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>
