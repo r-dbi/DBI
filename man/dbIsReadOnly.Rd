@@ -17,10 +17,7 @@ or a \linkS4class{DBIResult}}
 This generic tests whether a database object is read only.
 }
 \examples{
-dbIsReadOnly(RSQLite::SQLite())
-
-con <- dbConnect(RSQLite::SQLite(), ":memory:", flags = SQLITE_RO)
-dbIsReadOnly(con)
+dbIsReadOnly(ANSI())
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},

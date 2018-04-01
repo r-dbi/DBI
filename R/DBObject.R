@@ -121,13 +121,14 @@ setGeneric("dbIsValid",
 #' @family DBIResult generics
 #' @export
 #' @examples
-#' dbIsReadOnly(RSQLite::SQLite())
-#'
-#' con <- dbConnect(RSQLite::SQLite(), ":memory:", flags = SQLITE_RO)
-#' dbIsReadOnly(con)
+#' dbIsReadOnly(ANSI())
 setGeneric("dbIsReadOnly",
   def = function(dbObj, ...) standardGeneric("dbIsReadOnly"),
   valueClass = "logical")
+
+setMethod("dbIsReadOnly", "DBIObject", function(dbObj, ...) {
+  FALSE
+})
 
 setGeneric("summary")
 setMethod("summary", "DBIObject", function(object, ...) {
