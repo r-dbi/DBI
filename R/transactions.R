@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Begin/commit/rollback SQL transactions
 #'
 #' A transaction encapsulates several SQL statements in an atomic unit.

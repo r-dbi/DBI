@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Insert rows into a table
 #'
 #' `sqlAppendTable` generates a single SQL string that inserts a

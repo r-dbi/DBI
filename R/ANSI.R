@@ -1,3 +1,4 @@
+#' @include hidden.R
 #' @include DBConnection.R
 #' @include DBDriver.R
 setClass("AnsiConnection", contains = "DBIConnection")

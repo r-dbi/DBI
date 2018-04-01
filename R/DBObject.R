@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' DBIObject class
 #'
 #' Base class for all other DBI classes (e.g., drivers, connections). This
@@ -126,6 +129,7 @@ setGeneric("dbIsReadOnly",
   def = function(dbObj, ...) standardGeneric("dbIsReadOnly"),
   valueClass = "logical")
 
+#' @rdname hidden_aliases
 setMethod("dbIsReadOnly", "DBIObject", function(dbObj, ...) {
   FALSE
 })

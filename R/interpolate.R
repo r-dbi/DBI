@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Safely interpolate values into an SQL string
 #'
 #' @section Backend authors:

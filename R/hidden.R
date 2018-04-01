@@ -5,4 +5,5 @@
 #' @usage NULL
 #' @format NULL
 #' @keywords internal
+#' @docType methods
 hidden_aliases <- NULL

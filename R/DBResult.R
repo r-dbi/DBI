@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' DBIResult class
 #'
 #' This virtual class describes the result and state of execution of

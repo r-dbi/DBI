@@ -1,4 +1,5 @@
 #' @include table.R
+#' @include hidden.R
 NULL
 
 #' DBIConnection class

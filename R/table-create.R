@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Create a simple table
 #'
 #' Exposes interface to simple `CREATE TABLE` commands. The default

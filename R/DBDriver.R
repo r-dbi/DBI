@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' DBIDriver class
 #'
 #' Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).

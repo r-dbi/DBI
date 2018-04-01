@@ -32,6 +32,7 @@ URL: http://r-dbi.github.io/DBI
 URLNote: https://github.com/r-dbi/DBI
 BugReports: https://github.com/r-dbi/DBI/issues
 Collate: 
+    'hidden.R'
     'DBObject.R'
     'DBDriver.R'
     'table.R'
@@ -42,7 +43,6 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
-    'hidden.R'
     'interpolate.R'
     'list-pairs.R'
     'quote.R'

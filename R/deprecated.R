@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Make R identifiers into legal SQL identifiers
 #'
 #' These methods are DEPRECATED. Please use [dbQuoteIdentifier()]

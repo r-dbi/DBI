@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' Convert a data frame into form suitable for upload to an SQL database
 #'
 #' This is a generic method that coerces R objects into vectors suitable for

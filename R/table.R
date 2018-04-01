@@ -1,3 +1,6 @@
+#' @include hidden.R
+NULL
+
 #' @rdname Id
 setClass("Id", slots = list(name = "character"))
 
