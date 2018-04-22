@@ -169,6 +169,7 @@ topics <- c(
   "dbListTables",
   "dbExistsTable",
   "dbRemoveTable",
+  "dbListFields",
   "dbIsValid",
   "dbHasCompleted",
   "dbGetStatement",

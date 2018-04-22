@@ -304,7 +304,10 @@ setGeneric("dbListResults",
 #'
 #' @inheritParams dbGetQuery
 #' @param name a character string with the name of the remote table.
-#' @return a character vector
+#'
+#' @inherit DBItest::spec_sql_list_fields return
+#' @inheritSection DBItest::spec_sql_list_fields Specification
+#'
 #' @family DBIConnection generics
 #' @seealso [dbColumnInfo()] to get the type of the fields.
 #' @export
