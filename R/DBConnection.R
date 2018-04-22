@@ -382,6 +382,7 @@ setGeneric("dbListTables",
 #' @templateVar method_name dbListObjects
 #'
 #' @inherit DBItest::spec_sql_list_objects return
+#' @inheritSection DBItest::spec_sql_list_objects Specification
 #' @inheritSection DBItest::spec_sql_list_objects Additional arguments
 #'
 #' @inheritParams dbGetQuery
