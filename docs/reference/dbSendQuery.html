@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -127,6 +129,7 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
     <div class="hidden name"><code>dbSendQuery.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>The <code>dbSendQuery()</code> method only submits and synchronously executes the
 SQL query to the database engine.  It does <em>not</em> extract any
@@ -140,6 +143,7 @@ records you need. For interactive use, you should almost always prefer
 <li><p><code>RSQLite::dbSendQuery("SQLiteConnection", "character")</code></p></li>
 </ul></p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>dbSendQuery</span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)</pre>
     

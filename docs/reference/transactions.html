@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -129,6 +131,7 @@ RSQLite::dbRollback("SQLiteConnection")
     <div class="hidden name"><code>transactions.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with <code>dbBegin()</code> and either made persistent with <code>dbCommit()</code>
@@ -144,6 +147,7 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <li><p><code>RSQLite::dbRollback("SQLiteConnection")</code></p></li>
 </ul></p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>dbBegin</span>(<span class='no'>conn</span>, <span class='no'>...</span>)
 

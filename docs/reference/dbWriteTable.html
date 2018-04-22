@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -125,6 +127,7 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
     <div class="hidden name"><code>dbWriteTable.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.</p>
@@ -136,6 +139,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
 <li><p><code>RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")</code></p></li>
 </ul></p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>dbWriteTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
     

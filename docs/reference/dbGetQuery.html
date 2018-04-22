@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -126,6 +128,7 @@ DBI::dbGetQuery("DBIConnection", "character")
     <div class="hidden name"><code>dbGetQuery.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Returns the result of a query as a data frame.
 <code>dbGetQuery()</code> comes with a default implementation
@@ -138,6 +141,7 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
 <li><p><code><a href='hidden_aliases.html'>DBI::dbGetQuery("DBIConnection", "character")</a></code></p></li>
 </ul></p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>dbGetQuery</span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)</pre>
     

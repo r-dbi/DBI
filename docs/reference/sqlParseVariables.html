@@ -21,6 +21,8 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
@@ -120,12 +122,14 @@ comment specifications." />
     <div class="hidden name"><code>sqlParseVariables.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>If you're implementing a backend that uses non-ANSI quoting or commenting
 rules, you'll need to implement a method for <code>sqlParseVariables</code> that
 calls <code>sqlParseVariablesImpl</code> with the appropriate quote and
 comment specifications.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>sqlParseVariables</span>(<span class='no'>conn</span>, <span class='no'>sql</span>, <span class='no'>...</span>)
 
