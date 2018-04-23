@@ -54,9 +54,9 @@ dbIsValid(con)
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDataType}},
-  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}},
+  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
+  \code{\link{dbDataType}}, \code{\link{dbDriver}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
   \code{\link{dbListConnections}}
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},

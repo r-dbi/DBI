@@ -114,9 +114,10 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDriver}},
-  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbListConnections}}
+  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
+  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
+  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
 
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbDisconnect}}, \code{\link{dbExecute}},

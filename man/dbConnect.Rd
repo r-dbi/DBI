@@ -26,6 +26,7 @@ may invoke this function repeatedly assigning its output to different
 objects.
 The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
+Use \code{\link[=dbCanConnect]{dbCanConnect()}} to check if a connection can be established.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbConnect")}
 }
@@ -64,8 +65,9 @@ dbDisconnect(con)
 \code{\link[=dbDisconnect]{dbDisconnect()}} to disconnect from a database.
 
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbDataType}}, \code{\link{dbDriver}},
-  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbListConnections}}
+  \code{\link{dbCanConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
+  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
+  \code{\link{dbListConnections}}
 }
 \concept{DBIDriver generics}

@@ -9,6 +9,7 @@
 \alias{dbIsReadOnly,DBIObject-method}
 \alias{dbDriver,character-method}
 \alias{show,DBIDriver-method}
+\alias{dbCanConnect,DBIDriver-method}
 \alias{dbDataType,DBIObject-method}
 \alias{show,Id-method}
 \alias{show,DBIConnection-method}
@@ -54,6 +55,8 @@
 \S4method{dbDriver}{character}(drvName, ...)
 
 \S4method{show}{DBIDriver}(object)
+
+\S4method{dbCanConnect}{DBIDriver}(drv, ...)
 
 \S4method{dbDataType}{DBIObject}(dbObj, obj, ...)
 

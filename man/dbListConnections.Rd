@@ -20,8 +20,9 @@ Keep track of the connections you opened if you require a list.
 }
 \seealso{
 Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDataType}},
-  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}}
+  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
+  \code{\link{dbDataType}}, \code{\link{dbDriver}},
+  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
+  \code{\link{dbIsValid}}
 }
 \concept{DBIDriver generics}
