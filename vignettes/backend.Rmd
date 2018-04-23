@@ -2,7 +2,6 @@
 ---
 title: "Implementing a new backend"
 author: "Hadley Wickham"
-date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Implementing a new backend}

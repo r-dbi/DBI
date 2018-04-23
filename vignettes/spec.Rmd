@@ -1,7 +1,6 @@
 ---
 title: "DBI specification"
 author: "Kirill Müller"
-date: "`r Sys.Date()`"
 output:
   rmarkdown::html_document:
     smart: FALSE
