@@ -275,7 +275,7 @@ dbConnect(drv, ...)
 Description
 </h3>
 <p>
-Connect to a DBMS going through the appropriate authentication procedure. Some implementations may allow you to have multiple connections open, so you may invoke this function repeatedly assigning its output to different objects. The authentication mechanism is left unspecified, so check the documentation of individual drivers for details.
+Connect to a DBMS going through the appropriate authentication procedure. Some implementations may allow you to have multiple connections open, so you may invoke this function repeatedly assigning its output to different objects. The authentication mechanism is left unspecified, so check the documentation of individual drivers for details. Use <code><a href="../reference/dbCanConnect.html">dbCanConnect()</a></code> to check if a connection can be established.
 </p>
 <h3>
 Arguments

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DBIDriver class — DBIDriver-class • DBI</title>
+<title>Check if a connection to a DBMS can be established — dbCanConnect • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,13 +27,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="DBIDriver class — DBIDriver-class" />
+<meta property="og:title" content="Check if a connection to a DBMS can be established — dbCanConnect" />
 
-<meta property="og:description" content="Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
-The virtual class DBIDriver defines the operations for creating
-connections and defining data type mappings.  Actual driver classes, for
-instance RPgSQL, RMySQL, etc. implement these operations in a
-DBMS-specific manner." />
+<meta property="og:description" content="Like dbConnect(), but only checks validity without actually returning
+a connection object.  The default implementation opens a connection
+and disconnects on success, but individual backends might implement
+a lighter-weight check.
+Methods in other packages" />
+
+<meta property="og:description" content="
+DBI::dbCanConnect("DBIDriver")
+" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,41 +122,68 @@ DBMS-specific manner." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>DBIDriver class</h1>
+    <h1>Check if a connection to a DBMS can be established</h1>
     
-    <div class="hidden name"><code>DBIDriver-class.Rd</code></div>
+    <div class="hidden name"><code>dbCanConnect.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
-The virtual class <code>DBIDriver</code> defines the operations for creating
-connections and defining data type mappings.  Actual driver classes, for
-instance <code>RPgSQL</code>, <code>RMySQL</code>, etc. implement these operations in a
-DBMS-specific manner.</p>
+    <p>Like <code><a href='dbConnect.html'>dbConnect()</a></code>, but only checks validity without actually returning
+a connection object.  The default implementation opens a connection
+and disconnects on success, but individual backends might implement
+a lighter-weight check.</p>
+<p><h3>Methods in other packages</h3>
+
+    <ul>
+<li><p><code><a href='hidden_aliases.html'>DBI::dbCanConnect("DBIDriver")</a></code></p></li>
+</ul></p>
     
     </div>
 
-        
+    <pre class="usage"><span class='fu'>dbCanConnect</span>(<span class='no'>drv</span>, <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>drv</th>
+      <td><p>an object that inherits from <a href='DBIDriver-class.html'>DBIDriver</a>,
+or an existing <a href='DBIConnection-class.html'>DBIConnection</a>
+object (in order to clone an existing connection).</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>authentication arguments needed by the DBMS instance; these
+typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
+For details see the appropriate <code>DBIDriver</code>.</p></td>
+    </tr>
+    </table>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other DBI classes: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
-  <code><a href='DBIObject-class.html'>DBIObject-class</a></code>,
-  <code><a href='DBIResult-class.html'>DBIResult-class</a></code></p>
-<p>Other DBIDriver generics: <code><a href='dbCanConnect.html'>dbCanConnect</a></code>,
+    <div class='dont-index'><p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
   <code><a href='dbConnect.html'>dbConnect</a></code>, <code><a href='dbDataType.html'>dbDataType</a></code>,
   <code><a href='dbDriver.html'>dbDriver</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
   <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
   <code><a href='dbListConnections.html'>dbListConnections</a></code></p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># SQLite only needs a path to the database. (Here, ":memory:" is a special</span>
+<span class='co'># path that creates an in-memory database.) Other database drivers</span>
+<span class='co'># will require more details (like user, password, host, port, etc.)</span>
+<span class='fu'>dbCanConnect</span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
