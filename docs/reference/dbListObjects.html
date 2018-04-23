@@ -196,9 +196,25 @@ it is also removed from the data frame of database objects.</p>
 An error is raised when calling this method for a closed
 or invalid connection.</p>
     
-    <h2 class="hasAnchor" id=""><a class="anchor" href="#"></a></h2>
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
+    <p>The <code>table</code> object can be quoted with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
+The result of quoting can be passed to <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a></code>.
+The unquoted results are equal to the original <code>table</code> object.
+(For backends it may be convenient to use the <a href='Id.html'>Id</a> class, but this is
+not required.)</p>
+<p>The <code>prefix</code> column indicates if the <code>table</code> value refers to a table
+or a prefix.
+For a call with the default <code>prefix = NULL</code>, the <code>table</code>
+values that have <code>is_prefix == FALSE</code> correspond to the tables
+returned from <code><a href='dbListTables.html'>dbListTables()</a></code>,</p>
+<p>Values in <code>table</code> column that have <code>is_prefix == TRUE</code> can be
+passed as the <code>prefix</code> argument to another call to <code>dbListObjects()</code>.
+For the data frame returned from a <code>dbListObject()</code> call with the
+<code>prefix</code> argument set, all <code>table</code> values where <code>is_prefix</code> is
+<code>FALSE</code> can be used in a call to <code><a href='dbExistsTable.html'>dbExistsTable()</a></code> which returns
+<code>TRUE</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -230,7 +246,7 @@ or invalid connection.</p>
       
       <li><a href="#value">Value</a></li>
 
-      <li><a href="#"></a></li>
+      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

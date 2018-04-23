@@ -84,7 +84,6 @@
       <h1>DBI specification</h1>
                         <h4 class="author">Kirill Müller</h4>
             
-            <h4 class="date">2018-04-23</h4>
       
       
       <div class="hidden name"><code>spec.Rmd</code></div>
@@ -2259,6 +2258,101 @@ dbDisconnect(con)
 
 
 <h2>
+List field names of a remote table
+</h2>
+<p>
+This section describes the behavior of the following method:
+</p>
+<pre>
+dbListFields(conn, name, ...)
+</pre>
+<h3>
+Description
+</h3>
+<p>
+List field names of a remote table
+</p>
+<h3>
+Arguments
+</h3>
+<table summary="R argblock" class="table">
+<tr valign="top">
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+a character string with the name of the remote table.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
+</tr>
+</table>
+<h3>
+Value
+</h3>
+<p>
+<code><a href="../reference/dbListFields.html">dbListFields()</a></code> returns a character vector that enumerates all fields in the table in the correct order. This also works for temporary tables if supported by the database. The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. If the table does not exist, an error is raised. Invalid types for the <code>name</code> argument (e.g., <code>character</code> of length not equal to one, or numeric) lead to an error. An error is also raised when calling this method for a closed or invalid connection.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The <code>name</code> argument can be
+</p>
+<ul>
+<li>
+<p>
+a string
+</p>
+</li>
+<li>
+<p>
+the return value of <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+</p>
+</li>
+<li>
+<p>
+a value from the <code>table</code> column from the return value of <code><a href="../reference/dbListObjects.html">dbListObjects()</a></code> where <code>is_prefix</code> is <code>FALSE</code>
+</p>
+</li>
+</ul>
+<p>
+A column named <code>row_names</code> is treated like any other column.
+</p>
+<h3>
+Examples
+</h3>
+<pre>
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+dbListFields(con, "mtcars")
+
+dbDisconnect(con)
+</pre>
+
+
+<h2>
 Is this DBMS object still valid?
 </h2>
 <p>
@@ -2580,6 +2674,79 @@ dbWriteTable(con, "mtcars", mtcars)
 rs &lt;- dbSendStatement(con, "DELETE FROM mtcars")
 dbGetRowsAffected(rs)
 nrow(mtcars)
+
+dbClearResult(rs)
+dbDisconnect(con)
+</pre>
+
+
+<h2>
+Information about result types
+</h2>
+<p>
+This section describes the behavior of the following method:
+</p>
+<pre>
+dbColumnInfo(res, ...)
+</pre>
+<h3>
+Description
+</h3>
+<p>
+Produces a data.frame that describes the output of a query. The data.frame should have as many rows as there are output fields in the result set, and each column in the data.frame describes an aspect of the result set field (field name, type, etc.)
+</p>
+<h3>
+Arguments
+</h3>
+<table summary="R argblock" class="table">
+<tr valign="top">
+<td>
+<code>res</code>
+</td>
+<td>
+<p>
+An object inheriting from DBIResult.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other arguments passed on to methods.
+</p>
+</td>
+</tr>
+</table>
+<h3>
+Value
+</h3>
+<p>
+<code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> returns a data frame with at least two columns <code>“name”</code> and <code>“type”</code> (in that order) (and optional columns that start with a dot). The <code>“name”</code> and <code>“type”</code> columns contain the names and types of the R columns of the data frame that is returned from <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The <code>“type”</code> column is of type <code>character</code> and only for information. Do not compute on the <code>“type”</code> column, instead use <code><a href="../reference/dbFetch.html">dbFetch(res, n = 0)</a></code> to create a zero-row data frame initialized with the correct data types.
+</p>
+<p>
+An attempt to query columns for a closed result set raises an error.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+A column named <code>row_names</code> is treated like any other column.
+</p>
+<p>
+The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, even if the query returns unnamed or duplicate column names.
+</p>
+<h3>
+Examples
+</h3>
+<pre>
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+rs &lt;- dbSendQuery(con, "SELECT 1 AS a, 2 AS b")
+dbColumnInfo(rs)
+dbFetch(rs)
 
 dbClearResult(rs)
 dbDisconnect(con)

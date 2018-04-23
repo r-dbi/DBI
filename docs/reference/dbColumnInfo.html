@@ -31,7 +31,7 @@
 
 <meta property="og:description" content="Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
-each column in the data.frame should describe an aspect of the result set
+each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)" />
 <meta name="twitter:card" content="summary" />
 
@@ -126,7 +126,7 @@ field (field name, type, etc.)" />
     
     <p>Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
-each column in the data.frame should describe an aspect of the result set
+each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)</p>
     
     </div>
@@ -148,11 +148,24 @@ field (field name, type, etc.)</p>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data.frame with one row per output field in <code>res</code>. Methods
-MUST include <code>name</code>, <code>field.type</code> (the SQL type),
-and <code>data.type</code> (the R data type) columns, and MAY contain other
-database specific information like scale and precision or whether the
-field can store <code>NULL</code>s.</p>
+    <p><code>dbColumnInfo()</code>
+returns a data frame
+with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
+(and optional columns that start with a dot).
+The <code>"name"</code> and <code>"type"</code> columns contain the names and types
+of the R columns of the data frame that is returned from <code><a href='dbFetch.html'>dbFetch()</a></code>.
+The <code>"type"</code> column is of type <code>character</code> and only for information.
+Do not compute on the <code>"type"</code> column, instead use <code><a href='dbFetch.html'>dbFetch(res, n = 0)</a></code>
+to create a zero-row data frame initialized with the correct data types.</p>
+<p>An attempt to query columns for a closed result set raises an error.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>A column named <code>row_names</code> is treated like any other column.</p>
+<p>The column names are always consistent with the data returned by <code><a href='dbFetch.html'>dbFetch()</a></code>,
+even if the query returns unnamed
+or duplicate column names.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -186,6 +199,8 @@ field can store <code>NULL</code>s.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

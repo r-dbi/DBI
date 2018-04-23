@@ -147,7 +147,30 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a character vector</p>
+    <p><code>dbListFields()</code>
+returns a character vector
+that enumerates all fields
+in the table in the correct order.
+This also works for temporary tables if supported by the database.
+The returned names are suitable for quoting with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
+If the table does not exist, an error is raised.
+Invalid types for the <code>name</code> argument
+(e.g., <code>character</code> of length not equal to one,
+or numeric)
+lead to an error.
+An error is also raised when calling this method for a closed
+or invalid connection.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>The <code>name</code> argument can be</p><ul>
+<li><p>a string</p></li>
+<li><p>the return value of <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code></p></li>
+<li><p>a value from the <code>table</code> column from the return value of
+<code><a href='dbListObjects.html'>dbListObjects()</a></code> where <code>is_prefix</code> is <code>FALSE</code></p></li>
+</ul>
+    <p>A column named <code>row_names</code> is treated like any other column.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -178,6 +201,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
