@@ -131,14 +131,12 @@
 <span class="co">#' @rdname Kazam-class</span>
 <span class="kw">setMethod</span>(<span class="st">"dbUnloadDriver"</span>, <span class="st">"KazamDriver"</span>, function(drv, ...) {
   <span class="ot">TRUE</span>
-})
-<span class="co">#&gt; [1] "dbUnloadDriver"</span></code></pre></div>
+})</code></pre></div>
 <p>If your package needs global setup or tear down, do this in the <code>.onLoad()</code> and <code>.onUnload()</code> functions.</p>
 <p>You might also want to add a show method so the object prints nicely:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">setMethod</span>(<span class="st">"show"</span>, <span class="st">"KazamDriver"</span>, function(object) {
   <span class="kw">cat</span>(<span class="st">"&lt;KazamDriver&gt;</span><span class="ch">\n</span><span class="st">"</span>)
-})
-<span class="co">#&gt; [1] "show"</span></code></pre></div>
+})</code></pre></div>
 <p>Next create <code>Kazam()</code> which instantiates this class.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @export</span>
 Kazam &lt;-<span class="st"> </span>function() {
@@ -179,8 +177,7 @@ Kazam &lt;-<span class="st"> </span>function() {
   <span class="co"># ...</span>
   
   <span class="kw">new</span>(<span class="st">"KazamConnection"</span>, <span class="dt">host =</span> host, ...)
-})
-<span class="co">#&gt; [1] "dbConnect"</span></code></pre></div>
+})</code></pre></div>
 <ul>
 <li><p>Replace <code>...</code> with the arguments needed to connect to your database. You’ll always need to include <code>...</code> in the arguments, even if you don’t use it, for compatibility with the generic.</p></li>
 <li><p>This is likely to be where people first come for help, so the examples should show how to connect to the database, and how to query it. (Obviously these examples won’t work yet.) Ideally, include examples that can be run right away (perhaps relying on a publicly hosted database), but failing that surround in <code>\dontrun{}</code> so people can at least see the code.</p></li>
@@ -208,22 +205,19 @@ Kazam &lt;-<span class="st"> </span>function() {
 <span class="kw">setMethod</span>(<span class="st">"dbSendQuery"</span>, <span class="st">"KazamConnection"</span>, function(conn, statement, ...) {
   <span class="co"># some code</span>
   <span class="kw">new</span>(<span class="st">"KazamResult"</span>, ...)
-})
-<span class="co">#&gt; [1] "dbSendQuery"</span></code></pre></div>
+})</code></pre></div>
 <p>Next, implement <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>, which should close the result set and free all resources associated with it:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @export</span>
 <span class="kw">setMethod</span>(<span class="st">"dbClearResult"</span>, <span class="st">"KazamResult"</span>, function(res, ...) {
   <span class="co"># free resources</span>
   <span class="ot">TRUE</span>
-})
-<span class="co">#&gt; [1] "dbClearResult"</span></code></pre></div>
+})</code></pre></div>
 <p>The hardest part of every DBI package is writing the <code><a href="../reference/dbFetch.html">dbFetch()</a></code> method. This needs to take a result set and (optionally) number of records to return, and create a dataframe. Mapping R’s data types to those of your database may require a custom implementation of the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> method for your connection class:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' Retrieve records from Kazam query</span>
 <span class="co">#' @export</span>
 <span class="kw">setMethod</span>(<span class="st">"dbFetch"</span>, <span class="st">"KazamResult"</span>, function(res, <span class="dt">n =</span> -<span class="dv">1</span>, ...) {
   ...
 })
-<span class="co">#&gt; [1] "dbFetch"</span>
 
 <span class="co"># (optionally)</span>
 
@@ -231,14 +225,12 @@ Kazam &lt;-<span class="st"> </span>function() {
 <span class="co">#' @export</span>
 <span class="kw">setMethod</span>(<span class="st">"dbDataType"</span>, <span class="st">"KazamConnection"</span>, function(dbObj, obj, ...) {
   ...
-})
-<span class="co">#&gt; [1] "dbDataType"</span></code></pre></div>
+})</code></pre></div>
 <p>Next, implement <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> which should return a <code>logical</code> indicating if there are any rows remaining to be fetched.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#' @export</span>
 <span class="kw">setMethod</span>(<span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, function(res, ...) { 
   
-})
-<span class="co">#&gt; [1] "dbHasCompleted"</span></code></pre></div>
+})</code></pre></div>
 <p>With these four methods in place, you can now use the default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database, or relax and let the <code>DBItest</code> package do the work for you.</p>
 </div>
 <div id="sql-methods" class="section level2">
