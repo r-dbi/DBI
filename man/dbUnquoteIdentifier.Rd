@@ -10,8 +10,7 @@ dbUnquoteIdentifier(conn, x, ...)
 \item{conn}{A subclass of \linkS4class{DBIConnection}, representing
 an active connection to an DBMS.}
 
-\item{x}{An \link{SQL} or \link{Id} object or character vector, or a list of such
-objects, to unquote.}
+\item{x}{An \link{SQL} or \link{Id} object or character vector to unquote.}
 
 \item{...}{Other arguments passed on to methods.}
 }

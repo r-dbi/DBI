@@ -11,7 +11,7 @@ dbListObjects(conn, prefix = NULL, ...)
 \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{prefix}{A fully qualified path in the database's namespace, or \code{NULL}.
-will be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
+This argument will be processed with \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 If given the method will return all objects accessible through this prefix.}
 
 \item{...}{Other parameters passed on to methods.}

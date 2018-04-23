@@ -402,7 +402,7 @@ setGeneric("dbListTables",
 #'
 #' @inheritParams dbGetQuery
 #' @param prefix A fully qualified path in the database's namespace, or `NULL`.
-#'   will be passed to [dbUnquoteIdentifier()].
+#'   This argument will be processed with [dbUnquoteIdentifier()].
 #'   If given the method will return all objects accessible through this prefix.
 #' @family DBIConnection generics
 #' @export

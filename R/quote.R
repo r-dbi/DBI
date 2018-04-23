@@ -152,8 +152,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #'
 #' @param conn A subclass of [DBIConnection-class], representing
 #'   an active connection to an DBMS.
-#' @param x An [SQL] or [Id] object or character vector, or a list of such
-#'   objects, to unquote.
+#' @param x An [SQL] or [Id] object or character vector to unquote.
 #' @param ... Other arguments passed on to methods.
 #'
 #' @template methods
