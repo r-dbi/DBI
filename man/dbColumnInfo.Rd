@@ -12,18 +12,36 @@ dbColumnInfo(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-A data.frame with one row per output field in \code{res}. Methods
-MUST include \code{name}, \code{field.type} (the SQL type),
-and \code{data.type} (the R data type) columns, and MAY contain other
-database specific information like scale and precision or whether the
-field can store \code{NULL}s.
+\code{dbColumnInfo()}
+returns a data frame
+with at least two columns \code{"name"} and \code{"type"} (in that order)
+(and optional columns that start with a dot).
+The \code{"name"} and \code{"type"} columns contain the names and types
+of the R columns of the data frame that is returned from \code{\link[=dbFetch]{dbFetch()}}.
+The \code{"type"} column is of type \code{character} and only for information.
+Do not compute on the \code{"type"} column, instead use \code{dbFetch(res, n = 0)}
+to create a zero-row data frame initialized with the correct data types.
+
+An attempt to query columns for a closed result set raises an error.
 }
 \description{
 Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
-each column in the data.frame should describe an aspect of the result set
+each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)
 }
+\section{Specification}{
+
+
+
+A column named \code{row_names} is treated like any other column.
+
+The column names are always consistent with the data returned by \code{dbFetch()},
+even if the query returns unnamed
+or duplicate column names.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

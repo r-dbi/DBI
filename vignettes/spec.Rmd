@@ -175,6 +175,7 @@ topics <- c(
   "dbGetStatement",
   "dbGetRowCount",
   "dbGetRowsAffected",
+  "dbColumnInfo",
   "transactions",
   "dbWithTransaction"
 )

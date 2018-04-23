@@ -147,15 +147,14 @@ setGeneric("dbClearResult",
 #'
 #' Produces a data.frame that describes the output of a query. The data.frame
 #' should have as many rows as there are output fields in the result set, and
-#' each column in the data.frame should describe an aspect of the result set
+#' each column in the data.frame describes an aspect of the result set
 #' field (field name, type, etc.)
 #'
 #' @inheritParams dbClearResult
-#' @return A data.frame with one row per output field in `res`. Methods
-#'   MUST include `name`, `field.type` (the SQL type),
-#'   and `data.type` (the R data type) columns, and MAY contain other
-#'   database specific information like scale and precision or whether the
-#'   field can store `NULL`s.
+#'
+#' @inherit DBItest::spec_meta_column_info return
+#' @inheritSection DBItest::spec_meta_column_info Specification
+#'
 #' @family DBIResult generics
 #' @export
 #' @examples
