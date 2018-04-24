@@ -66,10 +66,12 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 
 #' Create a table in the database
 #'
-#' The default method calls [sqlCreateTable()] and [dbExecute()]. Backends
-#' compliant to ANSI SQL 99 don't need to override it. Backends with a
-#' different SQL syntax can override `sqlCreateTable()`, backends with
-#' entirely different ways to create tables need to override this method.
+#' The default `dbCreateTable()` method calls [sqlCreateTable()] and
+#' [dbExecute()].
+#' Backends compliant to ANSI SQL 99 don't need to override it.
+#' Backends with a different SQL syntax can override `sqlCreateTable()`,
+#' backends with entirely different ways to create tables need to
+#' override this method.
 #'
 #' The default value for the `row.names` argument is different from
 #' `sqlCreateTable()`, the argument order is also different.  The

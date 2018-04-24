@@ -33,6 +33,12 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
   function(con, table, values, row.names = NA, ...) {
     stopifnot(is.data.frame(values))
 
+    if (missing(row.names)) {
+      warning("Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.",
+              call. = FALSE
+      )
+    }
+
     sql_values <- sqlData(con, values, row.names)
     table <- dbQuoteIdentifier(con, table)
     fields <- dbQuoteIdentifier(con, names(sql_values))
@@ -82,23 +88,26 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
     suffix <- names(fields)
   }
 
-  # Convert fields into a character matrix
-  SQL(paste0(
-    "INSERT INTO ", table, "\n",
-    "  (", paste(fields, collapse = ", "), ")\n",
-    "VALUES\n",
-    paste0("  (", paste0(prefix, seq_along(fields), collapse = ", "), ")", collapse = ",\n")
-  ))
+  placeholders <- lapply(paste0(prefix, suffix), SQL)
+  names(placeholders) <- names(fields)
+  placeholders <- as.data.frame(placeholders, stringsAsFactors = FALSE)
+
+  sqlAppendTable(
+    con = con,
+    table = table,
+    values = placeholders,
+    row.names = row.names
+  )
 }
 
 #' Insert rows into a table
 #'
-#' This method assumes that the table has been created beforehand, e.g.
-#' with [dbCreateTable()].
+#' The `dbAppendTable()` method assumes that the table has been created
+#' beforehand, e.g. with [dbCreateTable()].
 #' The default implementation calls [sqlAppendTableTemplate()] and then
 #' [dbExecute()] with the `param` argument. Backends compliant to
 #' ANSI SQL 99 don't need to override it. Backends with a different SQL
-#' syntax can override `sqlAppendTableTemplate()`, backends with
+#' syntax can override [sqlAppendTable()], backends with
 #' entirely different ways to create tables need to override this method.
 #'
 #' The default value for the `row.names` argument is different from

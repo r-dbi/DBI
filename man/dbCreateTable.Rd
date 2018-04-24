@@ -39,10 +39,12 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
 }
 \description{
-The default method calls \code{\link[=sqlCreateTable]{sqlCreateTable()}} and \code{\link[=dbExecute]{dbExecute()}}. Backends
-compliant to ANSI SQL 99 don't need to override it. Backends with a
-different SQL syntax can override \code{sqlCreateTable()}, backends with
-entirely different ways to create tables need to override this method.
+The default \code{dbCreateTable()} method calls \code{\link[=sqlCreateTable]{sqlCreateTable()}} and
+\code{\link[=dbExecute]{dbExecute()}}.
+Backends compliant to ANSI SQL 99 don't need to override it.
+Backends with a different SQL syntax can override \code{sqlCreateTable()},
+backends with entirely different ways to create tables need to
+override this method.
 }
 \details{
 The default value for the \code{row.names} argument is different from
