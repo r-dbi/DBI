@@ -81,15 +81,15 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
   fields <- dbQuoteIdentifier(con, names(values))
 
   if (pattern == "") {
-    suffix <- ""
-  } else if (pattern == "1") {
+    suffix <- rep("", length(fields))
+  } else if (patterwn == "1") {
     suffix <- as.character(seq_along(fields))
   } else {
     suffix <- names(fields)
   }
 
   placeholders <- lapply(paste0(prefix, suffix), SQL)
-  names(placeholders) <- names(fields)
+  names(placeholders) <- names(values)
   placeholders <- as.data.frame(placeholders, stringsAsFactors = FALSE)
 
   sqlAppendTable(

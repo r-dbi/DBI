@@ -103,7 +103,7 @@ setMethod("dbCreateTable", signature("DBIConnection"),
       temporary = temporary,
       ...
     )
-    dbExecute(con, query)
+    dbExecute(conn, query)
     invisible(TRUE)
   }
 )
