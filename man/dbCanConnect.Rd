@@ -15,6 +15,10 @@ object (in order to clone an existing connection).}
 typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
 For details see the appropriate \code{DBIDriver}.}
 }
+\value{
+A scalar logical.  If \code{FALSE}, the \code{"reason"} attribute indicates
+a reason for failure.
+}
 \description{
 Like \code{\link[=dbConnect]{dbConnect()}}, but only checks validity without actually returning
 a connection object.  The default implementation opens a connection
