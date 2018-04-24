@@ -46,6 +46,7 @@
 \alias{dbQuoteString,DBIConnection,SQL-method}
 \alias{dbQuoteLiteral,DBIConnection-method}
 \alias{sqlCreateTable,DBIConnection-method}
+\alias{dbCreateTable,DBIConnection-method}
 \alias{sqlAppendTable,DBIConnection-method}
 \alias{dbWithTransaction,DBIConnection-method}
 \title{Internal page for hidden aliases}
@@ -133,6 +134,9 @@
 
 \S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
   temporary = FALSE, ...)
+
+\S4method{dbCreateTable}{DBIConnection}(con, table, fields, ...,
+  row.names = FALSE, temporary = FALSE)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)

@@ -1,16 +1,11 @@
 #' @include hidden.R
 NULL
 
-#' Create a simple table
+#' Compose query to create a simple table
 #'
-#' Exposes interface to simple `CREATE TABLE` commands. The default
+#' Exposes an interface to simple `CREATE TABLE` commands. The default
 #' method is ANSI SQL 99 compliant.
 #' This method is mostly useful for backend implementers.
-#'
-#' @section DBI-backends:
-#' If you implement one method (i.e. for strings or data frames), you need
-#' to implement both, otherwise the S4 dispatch rules will be ambiguous
-#' and will generate an error on every call.
 #'
 #' @param con A database connection.
 #' @param table Name of the table. Escaped with
@@ -42,6 +37,12 @@ setGeneric("sqlCreateTable",
 #' @export
 setMethod("sqlCreateTable", signature("DBIConnection"),
   function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+    if (missing(row.names)) {
+      warning("Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.",
+        call. = FALSE
+      )
+    }
+
     table <- dbQuoteIdentifier(con, table)
 
     if (is.data.frame(fields)) {
@@ -57,5 +58,44 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
       "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
       "  ", paste(fields, collapse = ",\n  "), "\n)\n"
     ))
+  }
+)
+
+#' Create a table in the database
+#'
+#' The default method calls [sqlCreateTable()] and [dbExecute()]. Backends
+#' compliant to ANSI SQL 99 don't need to override it. Backends with a
+#' different SQL syntax can override `sqlCreateTable()`, backends with
+#' entirely different ways to create tables need to override this method.
+#'
+#' The default value for the `row.names` argument is different from
+#' `sqlCreateTable()`, the argument order is also different.  Both will be
+#' adapted in a later release of DBI.
+#'
+#' @inheritParams sqlCreateTable
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbCreateTable(con, "iris", iris)
+#' dbReadTable(con, "iris")
+#' dbDisconnect(con)
+setGeneric("dbCreateTable",
+  def = function(con, table, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbCreateTable", signature("DBIConnection"),
+  function(con, table, fields, ..., row.names = FALSE, temporary = FALSE) {
+    query <- sqlCreateTable(
+      con = con,
+      table = table,
+      fields = fields,
+      row.names = row.names,
+      temporary = temporary,
+      ...
+    )
+    dbExecute(con, query)
+    invisible(TRUE)
   }
 )
