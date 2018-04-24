@@ -30,10 +30,12 @@
 
 <meta property="og:title" content="Create a table in the database — dbCreateTable" />
 
-<meta property="og:description" content="The default method calls sqlCreateTable() and dbExecute(). Backends
-compliant to ANSI SQL 99 don't need to override it. Backends with a
-different SQL syntax can override sqlCreateTable(), backends with
-entirely different ways to create tables need to override this method." />
+<meta property="og:description" content="The default dbCreateTable() method calls sqlCreateTable() and
+dbExecute().
+Backends compliant to ANSI SQL 99 don't need to override it.
+Backends with a different SQL syntax can override sqlCreateTable(),
+backends with entirely different ways to create tables need to
+override this method." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -123,26 +125,28 @@ entirely different ways to create tables need to override this method." />
 
     <div class="ref-description">
     
-    <p>The default method calls <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> and <code><a href='dbExecute.html'>dbExecute()</a></code>. Backends
-compliant to ANSI SQL 99 don't need to override it. Backends with a
-different SQL syntax can override <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, backends with
-entirely different ways to create tables need to override this method.</p>
+    <p>The default <code>dbCreateTable()</code> method calls <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> and
+<code><a href='dbExecute.html'>dbExecute()</a></code>.
+Backends compliant to ANSI SQL 99 don't need to override it.
+Backends with a different SQL syntax can override <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>,
+backends with entirely different ways to create tables need to
+override this method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>con</th>
-      <td><p>A database connection.</p></td>
+      <th>conn</th>
+      <td><p>A <a href='DBIConnection-class.html'>DBIConnection</a> object, as returned by
+<code><a href='dbConnect.html'>dbConnect()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>table</th>
-      <td><p>Name of the table. Escaped with
-<code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.</p></td>
+      <th>name</th>
+      <td><p>Name of the table, escaped with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.</p></td>
     </tr>
     <tr>
       <th>fields</th>
@@ -176,8 +180,22 @@ default name.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The default value for the <code>row.names</code> argument is different from
-<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, the argument order is also different.  Both will be
-adapted in a later release of DBI.</p>
+<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, the argument order is also different.  The
+<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> method will be adapted in a later release of DBI.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+  <code><a href='dbAppendTable.html'>dbAppendTable</a></code>, <code><a href='dbDataType.html'>dbDataType</a></code>,
+  <code><a href='dbDisconnect.html'>dbDisconnect</a></code>, <code><a href='dbExecute.html'>dbExecute</a></code>,
+  <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
+  <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
+  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>,
+  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbListFields.html'>dbListFields</a></code>,
+  <code><a href='dbListObjects.html'>dbListObjects</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
+  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
+  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
+  <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -192,6 +210,8 @@ adapted in a later release of DBI.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

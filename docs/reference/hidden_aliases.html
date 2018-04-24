@@ -249,12 +249,16 @@
   <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
-<span class='fu'><a href='dbCreateTable.html'>dbCreateTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>fields</span>, <span class='no'>...</span>,
+<span class='fu'><a href='dbCreateTable.html'>dbCreateTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>,
   <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
 <span class='fu'><a href='sqlAppendTable.html'>sqlAppendTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='no'>...</span>)
+
+<span class='co'># S4 method for DBIConnection</span>
+<span class='fu'><a href='dbAppendTable.html'>dbAppendTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>values</span>, <span class='no'>...</span>,
+  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
 <span class='fu'><a href='dbWithTransaction.html'>dbWithTransaction</a></span>(<span class='no'>conn</span>, <span class='no'>code</span>)</pre>
