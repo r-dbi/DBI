@@ -4,14 +4,13 @@
 \alias{dbAppendTable}
 \title{Insert rows into a table}
 \usage{
-dbAppendTable(conn, table, values, ..., row.names = FALSE)
+dbAppendTable(conn, name, values, ..., row.names = FALSE)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{table}{Name of the table. Escaped with
-\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+\item{name}{Name of the table, escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{values}{A data frame of values. The column names must be consistent
 with those in the target table in the database.}

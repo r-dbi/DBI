@@ -114,6 +114,7 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' `sqlAppendTableToTemplate()`, the latter will be adapted in a later
 #' release of DBI.
 #'
+#' @param name Name of the table, escaped with [dbQuoteIdentifier()].
 #' @inheritParams sqlAppendTableTemplate
 #' @inheritParams dbDisconnect
 #' @param values A data frame of values. The column names must be consistent
@@ -127,16 +128,16 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbAppendTable",
-  def = function(conn, table, values, ..., row.names = FALSE) standardGeneric("dbAppendTable")
+  def = function(conn, name, values, ..., row.names = FALSE) standardGeneric("dbAppendTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbAppendTable", signature("DBIConnection"),
-  function(conn, table, values, ..., row.names = FALSE) {
+  function(conn, name, values, ..., row.names = FALSE) {
     query <- sqlAppendTableTemplate(
       con = conn,
-      table = table,
+      table = name,
       values = values,
       row.names = row.names,
       prefix = "?",

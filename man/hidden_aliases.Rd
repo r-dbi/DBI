@@ -136,13 +136,13 @@
 \S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
   temporary = FALSE, ...)
 
-\S4method{dbCreateTable}{DBIConnection}(conn, table, fields, ...,
+\S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ...,
   row.names = FALSE, temporary = FALSE)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)
 
-\S4method{dbAppendTable}{DBIConnection}(conn, table, values, ...,
+\S4method{dbAppendTable}{DBIConnection}(conn, name, values, ...,
   row.names = FALSE)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)

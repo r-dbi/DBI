@@ -4,15 +4,13 @@
 \alias{dbCreateTable}
 \title{Create a table in the database}
 \usage{
-dbCreateTable(conn, table, fields, ..., row.names = FALSE,
-  temporary = FALSE)
+dbCreateTable(conn, name, fields, ..., row.names = FALSE, temporary = FALSE)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{table}{Name of the table. Escaped with
-\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+\item{name}{Name of the table, escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{fields}{Either a character vector or a data frame.
 

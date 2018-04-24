@@ -77,6 +77,7 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' `sqlCreateTable()`, the argument order is also different.  The
 #' `sqlCreateTable()` method will be adapted in a later release of DBI.
 #'
+#' @param name Name of the table, escaped with [dbQuoteIdentifier()].
 #' @inheritParams sqlCreateTable
 #' @inheritParams dbDisconnect
 #' @family DBIConnection generics
@@ -87,16 +88,16 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbCreateTable",
-  def = function(conn, table, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
+  def = function(conn, name, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbCreateTable", signature("DBIConnection"),
-  function(conn, table, fields, ..., row.names = FALSE, temporary = FALSE) {
+  function(conn, name, fields, ..., row.names = FALSE, temporary = FALSE) {
     query <- sqlCreateTable(
       con = conn,
-      table = table,
+      table = name,
       fields = fields,
       row.names = row.names,
       temporary = temporary,
