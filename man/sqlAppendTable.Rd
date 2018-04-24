@@ -9,9 +9,6 @@ sqlAppendTable(con, table, values, row.names = NA, ...)
 
 sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
   ..., pattern = "")
-
-sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
-  ..., pattern = "")
 }
 \arguments{
 \item{con}{A database connection.}
@@ -43,15 +40,6 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \item \code{"1"}: position
 \item anything else: field name
 }}
-
-\item{prefix}{Parameter prefix to use for placeholders.}
-
-\item{pattern}{Parameter pattern to use for placeholders:
-\itemize{
-\item \code{""}: no pattern
-\item \code{"1"}: position
-\item anything else: field name
-}}
 }
 \description{
 \code{sqlAppendTable()} generates a single SQL string that inserts a
@@ -69,10 +57,6 @@ sqlAppendTable(ANSI(), "iris", head(iris))
 
 sqlAppendTable(ANSI(), "mtcars", head(mtcars))
 sqlAppendTable(ANSI(), "mtcars", head(mtcars), row.names = FALSE)
-sqlAppendTableTemplate(ANSI(), "iris", iris)
-
-sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
-sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
 sqlAppendTableTemplate(ANSI(), "iris", iris)
 
 sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)

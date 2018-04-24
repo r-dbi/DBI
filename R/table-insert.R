@@ -50,7 +50,6 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
 
 #' @rdname sqlAppendTable
 #' @inheritParams sqlCreateTable
-#' @inheritParams sqlAppendTable
 #' @inheritParams rownames
 #' @param prefix Parameter prefix to use for placeholders.
 #' @param pattern Parameter pattern to use for placeholders:
@@ -139,41 +138,3 @@ setMethod("dbAppendTable", signature("DBIConnection"),
     dbExecute(conn, query, param = unname(as.list(values)))
   }
 )
-
-#' @rdname sqlAppendTable
-#' @inheritParams sqlCreateTable
-#' @inheritParams sqlAppendTable
-#' @inheritParams rownames
-#' @param prefix Parameter prefix to use for placeholders.
-#' @param pattern Parameter pattern to use for placeholders:
-#' - `""`: no pattern
-#' - `"1"`: position
-#' - anything else: field name
-#' @export
-#' @examples
-#' sqlAppendTableTemplate(ANSI(), "iris", iris)
-#'
-#' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
-#' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
-sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
-  table <- dbQuoteIdentifier(con, table)
-
-  values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)
-  fields <- dbQuoteIdentifier(con, names(values))
-
-  if (pattern == "") {
-    suffix <- ""
-  } else if (pattern == "1") {
-    suffix <- as.character(seq_along(fields))
-  } else {
-    suffix <- names(fields)
-  }
-
-  # Convert fields into a character matrix
-  SQL(paste0(
-    "INSERT INTO ", table, "\n",
-    "  (", paste(fields, collapse = ", "), ")\n",
-    "VALUES\n",
-    paste0("  (", paste0(prefix, seq_along(fields), collapse = ", "), ")", collapse = ",\n")
-  ))
-}
