@@ -189,8 +189,8 @@ setGeneric("dbSendQuery",
 #'   con,
 #'   "INSERT INTO cars (speed, dist) VALUES (?, ?)"
 #' )
-#' dbBind(rs, list(5:6, 6:7)
-#' dbBind(rs, list(7L, 8L)
+#' dbBind(rs, list(5:6, 6:7))
+#' dbBind(rs, list(7L, 8L))
 #' dbClearResult(rs)
 #' dbReadTable(con, "cars")   # there are now 10 rows
 #'
