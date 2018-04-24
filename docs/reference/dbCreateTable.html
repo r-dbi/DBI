@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get DBMS exceptions — dbGetException • DBI</title>
+<title>Create a table in the database — dbCreateTable • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,10 +28,12 @@
 
 
 
-<meta property="og:title" content="Get DBMS exceptions — dbGetException" />
+<meta property="og:title" content="Create a table in the database — dbCreateTable" />
 
-<meta property="og:description" content="DEPRECATED. Backends should use R's condition system to signal errors and
-warnings." />
+<meta property="og:description" content="The default method calls sqlCreateTable() and dbExecute(). Backends
+compliant to ANSI SQL 99 don't need to override it. Backends with a
+different SQL syntax can override sqlCreateTable(), backends with
+entirely different ways to create tables need to override this method." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,64 +116,85 @@ warnings." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get DBMS exceptions</h1>
+    <h1>Create a table in the database</h1>
     
-    <div class="hidden name"><code>dbGetException.Rd</code></div>
+    <div class="hidden name"><code>dbCreateTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>DEPRECATED. Backends should use R's condition system to signal errors and
-warnings.</p>
+    <p>The default method calls <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> and <code><a href='dbExecute.html'>dbExecute()</a></code>. Backends
+compliant to ANSI SQL 99 don't need to override it. Backends with a
+different SQL syntax can override <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, backends with
+entirely different ways to create tables need to override this method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dbGetException</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>conn</th>
-      <td><p>A <a href='DBIConnection-class.html'>DBIConnection</a> object, as returned by
-<code><a href='dbConnect.html'>dbConnect()</a></code>.</p></td>
+      <th>con</th>
+      <td><p>A database connection.</p></td>
+    </tr>
+    <tr>
+      <th>table</th>
+      <td><p>Name of the table. Escaped with
+<code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>fields</th>
+      <td><p>Either a character vector or a data frame.</p>
+<p>A named character vector: Names are column names, values are types.
+Names are escaped with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
+Field types are unescaped.</p>
+<p>A data frame: field types are generated using
+<code><a href='dbDataType.html'>dbDataType()</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>Other parameters passed on to methods.</p></td>
+      <td><p>Other arguments used by individual methods.</p></td>
+    </tr>
+    <tr>
+      <th>row.names</th>
+      <td><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
+<p>If <code>TRUE</code>, always translate row names to a column called "row_names".
+If <code>FALSE</code>, never translate row names. If <code>NA</code>, translate
+rownames only if they're a character vector.</p>
+<p>A string is equivalent to <code>TRUE</code>, but allows you to override the
+default name.</p>
+<p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>temporary</th>
+      <td><p>If <code>TRUE</code>, will generate a temporary table statement.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>a list with elements <code>errorNum</code> (an integer error number) and
-<code>errorMsg</code> (a character string) describing the last error in the
-connection <code>conn</code>.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
-  <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect</a></code>,
-  <code><a href='dbExecute.html'>dbExecute</a></code>, <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
-  <code><a href='dbGetInfo.html'>dbGetInfo</a></code>, <code><a href='dbGetQuery.html'>dbGetQuery</a></code>,
-  <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListFields.html'>dbListFields</a></code>, <code><a href='dbListObjects.html'>dbListObjects</a></code>,
-  <code><a href='dbListResults.html'>dbListResults</a></code>, <code><a href='dbListTables.html'>dbListTables</a></code>,
-  <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
-  <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
-  <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
+    <p>The default value for the <code>row.names</code> argument is different from
+<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, the argument order is also different.  Both will be
+adapted in a later release of DBI.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+<span class='fu'>dbCreateTable</span>(<span class='no'>con</span>, <span class='st'>"iris"</span>, <span class='no'>iris</span>)
+<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>)</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
+#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-          </ul>
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

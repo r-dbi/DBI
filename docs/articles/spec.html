@@ -472,6 +472,34 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
+Additional arguments
+</h3>
+<p>
+The following argument is not part of the <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> generic (to improve compatibility across backends) but is part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+<p>
+It must be provided as named arguments. See the “Specification” sections for details on its usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed.
+</p>
+<p>
+If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
+</p>
+<h3>
 Details
 </h3>
 <p>
@@ -487,25 +515,30 @@ Value
 <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to extract records. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a query over a closed or invalid connection, if the syntax of the query is invalid, or if the query is not a non-<code>NA</code> string.
 </p>
 <h3>
-Specification
-</h3>
-<p>
-No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed.
-</p>
-<p>
-If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
-</p>
-<p>
-The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
-</p>
-<h3>
 Examples
 </h3>
 <pre>
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
-rs &lt;- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+rs &lt;- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(rs)
+dbClearResult(rs)
+
+# Pass one set of values with the param argument:
+rs &lt;- dbSendQuery(
+  con,
+  "SELECT * FROM mtcars WHERE cyl = ?",
+  param = list(4L)
+)
+dbFetch(rs)
+dbClearResult(rs)
+
+# Pass multiple sets of values with dbBind():
+rs &lt;- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = ?")
+dbBind(rs, list(6L))
+dbFetch(rs)
+dbBind(rs, list(8L))
 dbFetch(rs)
 dbClearResult(rs)
 
@@ -1091,6 +1124,39 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
+Additional arguments
+</h3>
+<p>
+The following arguments are not part of the <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>n</code> (default: -1)
+</p>
+</li>
+<li>
+<p>
+<code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+<p>
+They must be provided as named arguments. See the “Specification” and “Value” sections for details on their usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The <code>n</code> argument specifies the number of rows to be fetched. If omitted, fetching multi-row queries with one or more columns returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning. If zero rows are requested, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
+</p>
+<p>
+A column named <code>row_names</code> is treated like any other column.
+</p>
+<h3>
 Details
 </h3>
 <p>
@@ -1109,18 +1175,6 @@ Implementation notes
 Subclasses should override this method only if they provide some sort of performance optimization.
 </p>
 <h3>
-Specification
-</h3>
-<p>
-The <code>n</code> argument specifies the number of rows to be fetched. If omitted, fetching multi-row queries with one or more columns returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning. If zero rows are requested, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.
-</p>
-<p>
-The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
-</p>
-<p>
-A column named <code>row_names</code> is treated like any other column.
-</p>
-<h3>
 Examples
 </h3>
 <pre>
@@ -1128,6 +1182,13 @@ con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
 dbGetQuery(con, "SELECT * FROM mtcars")
+dbGetQuery(con, "SELECT * FROM mtcars", n = 6)
+
+# Pass values using the param argument:
+# (This query runs eight times, once for each different
+# parameter. The resulting rows are combined into a single
+# data frame.)
+dbGetQuery(con, "SELECT COUNT(*) FROM mtcars WHERE cyl = ?", param = list(1:8))
 
 dbDisconnect(con)
 </pre>
@@ -1194,6 +1255,31 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
+Additional arguments
+</h3>
+<p>
+The following argument is not part of the <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> generic (to improve compatibility across backends) but is part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+<p>
+It must be provided as named arguments. See the “Specification” sections for details on its usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed. If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
+</p>
+<h3>
 Details
 </h3>
 <p>
@@ -1206,27 +1292,39 @@ Value
 <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to determine the number of rows affected by the query. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a statement over a closed or invalid connection, if the syntax of the statement is invalid, or if the statement is not a non-<code>NA</code> string.
 </p>
 <h3>
-Specification
-</h3>
-<p>
-No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed. If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
-</p>
-<p>
-The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
-</p>
-<h3>
 Examples
 </h3>
 <pre>
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
-rs &lt;- dbSendStatement(con,
-  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+
+rs &lt;- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+)
 dbHasCompleted(rs)
 dbGetRowsAffected(rs)
 dbClearResult(rs)
 dbReadTable(con, "cars")   # there are now 6 rows
+
+# Pass one set of values directly using the param argument:
+rs &lt;- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+  param = list(4L, 5L)
+)
+dbClearResult(rs)
+
+# Pass multiple sets of values using dbBind():
+rs &lt;- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)"
+)
+dbBind(rs, list(5:6, 6:7))
+dbBind(rs, list(7L, 8L))
+dbClearResult(rs)
+dbReadTable(con, "cars")   # there are now 10 rows
 
 dbDisconnect(con)
 </pre>
@@ -1293,6 +1391,28 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
+Additional arguments
+</h3>
+<p>
+The following argument is not part of the <code><a href="../reference/dbExecute.html">dbExecute()</a></code> generic (to improve compatibility across backends) but is part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+<p>
+It must be provided as named arguments. See the “Specification” sections for details on its usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
+</p>
+<h3>
 Value
 </h3>
 <p>
@@ -1312,9 +1432,19 @@ con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
 dbReadTable(con, "cars")   # there are 3 rows
-dbExecute(con,
-  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+dbExecute(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+)
 dbReadTable(con, "cars")   # there are now 6 rows
+
+# Pass values using the param argument:
+dbExecute(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+  param = list(4:7, 5:8)
+)
+dbReadTable(con, "cars")   # there are now 10 rows
 
 dbDisconnect(con)
 </pre>

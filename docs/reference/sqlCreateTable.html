@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create a simple table — sqlCreateTable • DBI</title>
+<title>Compose query to create a simple table — sqlCreateTable • DBI</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -21,15 +21,16 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-<meta property="og:title" content="Create a simple table — sqlCreateTable" />
 
-<meta property="og:description" content="Exposes interface to simple CREATE TABLE commands. The default
+
+
+<meta property="og:title" content="Compose query to create a simple table — sqlCreateTable" />
+
+<meta property="og:description" content="Exposes an interface to simple CREATE TABLE commands. The default
 method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers." />
 <meta name="twitter:card" content="summary" />
@@ -42,8 +43,6 @@ This method is mostly useful for backend implementers." />
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -116,14 +115,14 @@ This method is mostly useful for backend implementers." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create a simple table</h1>
+    <h1>Compose query to create a simple table</h1>
     
     <div class="hidden name"><code>sqlCreateTable.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Exposes interface to simple <code>CREATE TABLE</code> commands. The default
+    <p>Exposes an interface to simple <code>CREATE TABLE</code> commands. The default
 method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers.</p>
     
@@ -172,20 +171,13 @@ default name.</p>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="dbi-backends"><a class="anchor" href="#dbi-backends"></a>DBI-backends</h2>
-
-    
-    <p>If you implement one method (i.e. for strings or data frames), you need
-to implement both, otherwise the S4 dispatch rules will be ambiguous
-and will generate an error on every call.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"my-table"</span>, <span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='st'>"integer"</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='st'>"text"</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "my-table" (
+    <pre class="examples"><div class='input'><span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"my-table"</span>, <span class='fu'>c</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='st'>"integer"</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='st'>"text"</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.</span></div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "my-table" (
 #&gt;   "a" integer,
 #&gt;   "b" text
 #&gt; )
-#&gt; </div><div class='input'><span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"my-table"</span>, <span class='no'>iris</span>)</div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "my-table" (
+#&gt; </div><div class='input'><span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"my-table"</span>, <span class='no'>iris</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.</span></div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "my-table" (
 #&gt;   "Sepal.Length" DOUBLE,
 #&gt;   "Sepal.Width" DOUBLE,
 #&gt;   "Petal.Length" DOUBLE,
@@ -194,7 +186,7 @@ and will generate an error on every call.</p>
 #&gt; )
 #&gt; </div><div class='input'>
 <span class='co'># By default, character row names are converted to a row_names colum</span>
-<span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>[, <span class='fl'>1</span>:<span class='fl'>5</span>])</div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "mtcars" (
+<span class='fu'>sqlCreateTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>[, <span class='fl'>1</span>:<span class='fl'>5</span>])</div><div class='output co'>#&gt; <span class='warning'>Warning: Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.</span></div><div class='output co'>#&gt; &lt;SQL&gt; CREATE TABLE "mtcars" (
 #&gt;   "row_names" TEXT,
 #&gt;   "mpg" DOUBLE,
 #&gt;   "cyl" DOUBLE,
@@ -215,9 +207,7 @@ and will generate an error on every call.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#dbi-backends">DBI-backends</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -21,12 +21,13 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Execute a query on a given database connection — dbSendQuery" />
 
 <meta property="og:description" content="The dbSendQuery() method only submits and synchronously executes the
@@ -50,8 +51,6 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -190,6 +189,17 @@ and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' <code>dbSendQuery()</code> documentation for details.</p>
     
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>The following argument is not part of the <code>dbSendQuery()</code> generic
+(to improve compatibility across backends)
+but is part of the DBI specification:</p><ul>
+<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+</ul>
+    <p>It must be provided as named arguments.
+See the "Specification" sections for details on its usage.</p>
+    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -224,7 +234,7 @@ and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a><
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
-<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars WHERE cyl = 4;"</span>)
+<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars WHERE cyl = 4"</span>)
 <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 #&gt; 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
 #&gt; 2  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
@@ -238,6 +248,52 @@ and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a><
 #&gt; 10 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
 #&gt; 11 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
 
+<span class='co'># Pass one set of values with the param argument:</span>
+<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendQuery</span>(
+  <span class='no'>con</span>,
+  <span class='st'>"SELECT * FROM mtcars WHERE cyl = ?"</span>,
+  <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fl'>4L</span>)
+)
+<span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#&gt; 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+#&gt; 2  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+#&gt; 3  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+#&gt; 4  32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+#&gt; 5  30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+#&gt; 6  33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+#&gt; 7  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+#&gt; 8  27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+#&gt; 9  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+#&gt; 10 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+#&gt; 11 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
+
+<span class='co'># Pass multiple sets of values with dbBind():</span>
+<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars WHERE cyl = ?"</span>)
+<span class='fu'><a href='dbBind.html'>dbBind</a></span>(<span class='no'>rs</span>, <span class='fu'>list</span>(<span class='fl'>6L</span>))
+<span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#&gt; 1 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+#&gt; 2 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+#&gt; 3 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+#&gt; 4 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+#&gt; 5 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+#&gt; 6 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+#&gt; 7 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</div><div class='input'><span class='fu'><a href='dbBind.html'>dbBind</a></span>(<span class='no'>rs</span>, <span class='fu'>list</span>(<span class='fl'>8L</span>))
+<span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#&gt; 1  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+#&gt; 2  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+#&gt; 3  16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+#&gt; 4  17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+#&gt; 5  15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+#&gt; 6  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+#&gt; 7  10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+#&gt; 8  14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+#&gt; 9  15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+#&gt; 10 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+#&gt; 11 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+#&gt; 12 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+#&gt; 13 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+#&gt; 14 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
+
 <span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -248,6 +304,8 @@ and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a><
       <li><a href="#value">Value</a></li>
 
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
 
       <li><a href="#specification">Specification</a></li>
 

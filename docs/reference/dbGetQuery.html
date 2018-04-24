@@ -21,12 +21,13 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
-
-
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Send query, retrieve results and then clear result set — dbGetQuery" />
 
 <meta property="og:description" content="Returns the result of a query as a data frame.
@@ -49,8 +50,6 @@ DBI::dbGetQuery("DBIConnection", "character")
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -192,6 +191,18 @@ reasons.  However, callers are strongly advised to use
     <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
     
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>The following arguments are not part of the <code>dbGetQuery()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul>
+<li><p><code>n</code> (default: -1)</p></li>
+<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+</ul>
+    <p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.</p>
+    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -260,7 +271,26 @@ no warning is issued.</p>
 #&gt; 29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
 #&gt; 30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
 #&gt; 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
-#&gt; 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'>
+#&gt; 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'><span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>6</span>)</div><div class='output co'>#&gt;    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+#&gt; 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+#&gt; 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+#&gt; 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+#&gt; 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+#&gt; 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+#&gt; 6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</div><div class='input'>
+<span class='co'># Pass values using the param argument:</span>
+<span class='co'># (This query runs eight times, once for each different</span>
+<span class='co'># parameter. The resulting rows are combined into a single</span>
+<span class='co'># data frame.)</span>
+<span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'>list</span>(<span class='fl'>1</span>:<span class='fl'>8</span>))</div><div class='output co'>#&gt;   COUNT(*)
+#&gt; 1        0
+#&gt; 2        0
+#&gt; 3        0
+#&gt; 4       11
+#&gt; 5        0
+#&gt; 6        7
+#&gt; 7        0
+#&gt; 8       14</div><div class='input'>
 <span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -273,6 +303,8 @@ no warning is issued.</p>
       <li><a href="#details">Details</a></li>
 
       <li><a href="#implementation-notes">Implementation notes</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
 
       <li><a href="#specification">Specification</a></li>
 
