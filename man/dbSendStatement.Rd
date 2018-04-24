@@ -42,6 +42,21 @@ that. For interactive use, you should almost always prefer
 forwards to \code{\link[=dbSendQuery]{dbSendQuery()}}, to support backends that only
 implement the latter.
 }
+\section{Additional arguments}{
+
+
+The following argument is not part of the \code{dbSendStatement()} generic
+(to improve compatibility across backends)
+but is part of the DBI specification:
+\itemize{
+\item \code{params} (default: \code{NULL})
+}
+
+It must be provided as named arguments.
+See the "Specification" sections for details on its usage.
+
+}
+
 \section{Specification}{
 
 
@@ -66,12 +81,33 @@ The \code{param} argument allows passing query parameters, see \code{\link[=dbBi
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
-rs <- dbSendStatement(con,
-  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+
+rs <- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+)
 dbHasCompleted(rs)
 dbGetRowsAffected(rs)
 dbClearResult(rs)
 dbReadTable(con, "cars")   # there are now 6 rows
+
+# Pass one set of values directly using the param argument:
+rs <- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+  param = list(4L, 5L)
+)
+dbClearResult(rs)
+
+# Pass multiple sets of values using dbBind():
+rs <- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)"
+)
+dbBind(rs, list(5:6, 6:7)
+dbBind(rs, list(7L, 8L)
+dbClearResult(rs)
+dbReadTable(con, "cars")   # there are now 10 rows
 
 dbDisconnect(con)
 }

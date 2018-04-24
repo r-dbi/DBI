@@ -40,14 +40,47 @@ Subclasses should override this method only if they provide some sort of
 performance optimization.
 }
 
+\section{Additional arguments}{
+
+
+The following argument is not part of the \code{dbExecute()} generic
+(to improve compatibility across backends)
+but is part of the DBI specification:
+\itemize{
+\item \code{params} (default: \code{NULL})
+}
+
+It must be provided as named arguments.
+See the "Specification" sections for details on its usage.
+
+}
+
+\section{Specification}{
+
+
+
+The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
 dbReadTable(con, "cars")   # there are 3 rows
-dbExecute(con,
-  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+dbExecute(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+)
 dbReadTable(con, "cars")   # there are now 6 rows
+
+# Pass values using the param argument:
+dbExecute(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+  param = list(4:7, 5:8)
+)
+dbReadTable(con, "cars")   # there are now 10 rows
 
 dbDisconnect(con)
 }

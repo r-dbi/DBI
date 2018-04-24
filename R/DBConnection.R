@@ -96,6 +96,7 @@ setGeneric("dbDisconnect",
 #' @templateVar method_name dbSendQuery
 #'
 #' @inherit DBItest::spec_result_send_query return
+#' @inheritSection DBItest::spec_result_send_query Additional arguments
 #' @inheritSection DBItest::spec_result_send_query Specification
 #'
 #' @inheritParams dbGetQuery
@@ -107,7 +108,24 @@ setGeneric("dbDisconnect",
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4;")
+#' rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+#' dbFetch(rs)
+#' dbClearResult(rs)
+#'
+#' # Pass one set of values with the param argument:
+#' rs <- dbSendQuery(
+#'   con,
+#'   "SELECT * FROM mtcars WHERE cyl = ?",
+#'   param = list(4L)
+#' )
+#' dbFetch(rs)
+#' dbClearResult(rs)
+#'
+#' # Pass multiple sets of values with dbBind():
+#' rs <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = ?")
+#' dbBind(rs, list(6L))
+#' dbFetch(rs)
+#' dbBind(rs, list(8L))
 #' dbFetch(rs)
 #' dbClearResult(rs)
 #'
@@ -136,6 +154,7 @@ setGeneric("dbSendQuery",
 #' @templateVar method_name dbSendStatement
 #'
 #' @inherit DBItest::spec_result_send_statement return
+#' @inheritSection DBItest::spec_result_send_statement Additional arguments
 #' @inheritSection DBItest::spec_result_send_statement Specification
 #'
 #' @inheritParams dbGetQuery
@@ -147,12 +166,33 @@ setGeneric("dbSendQuery",
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "cars", head(cars, 3))
-#' rs <- dbSendStatement(con,
-#'   "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+#'
+#' rs <- dbSendStatement(
+#'   con,
+#'   "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+#' )
 #' dbHasCompleted(rs)
 #' dbGetRowsAffected(rs)
 #' dbClearResult(rs)
 #' dbReadTable(con, "cars")   # there are now 6 rows
+#'
+#' # Pass one set of values directly using the param argument:
+#' rs <- dbSendStatement(
+#'   con,
+#'   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+#'   param = list(4L, 5L)
+#' )
+#' dbClearResult(rs)
+#'
+#' # Pass multiple sets of values using dbBind():
+#' rs <- dbSendStatement(
+#'   con,
+#'   "INSERT INTO cars (speed, dist) VALUES (?, ?)"
+#' )
+#' dbBind(rs, list(5:6, 6:7)
+#' dbBind(rs, list(7L, 8L)
+#' dbClearResult(rs)
+#' dbReadTable(con, "cars")   # there are now 10 rows
 #'
 #' dbDisconnect(con)
 #' @export
@@ -187,6 +227,7 @@ setMethod(
 #' @templateVar method_name dbGetQuery
 #'
 #' @inherit DBItest::spec_result_get_query return
+#' @inheritSection DBItest::spec_result_get_query Additional arguments
 #' @inheritSection DBItest::spec_result_get_query Specification
 #'
 #' @section Implementation notes:
@@ -205,6 +246,13 @@ setMethod(
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
 #' dbGetQuery(con, "SELECT * FROM mtcars")
+#' dbGetQuery(con, "SELECT * FROM mtcars", n = 6)
+#'
+#' # Pass values using the param argument:
+#' # (This query runs eight times, once for each different
+#' # parameter. The resulting rows are combined into a single
+#' # data frame.)
+#' dbGetQuery(con, "SELECT COUNT(*) FROM mtcars WHERE cyl = ?", param = list(1:8))
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQuery",
@@ -239,6 +287,8 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' performance optimization.
 #'
 #' @inherit DBItest::spec_result_execute return
+#' @inheritSection DBItest::spec_result_execute Additional arguments
+#' @inheritSection DBItest::spec_result_execute Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character string containing SQL.
@@ -250,9 +300,19 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #'
 #' dbWriteTable(con, "cars", head(cars, 3))
 #' dbReadTable(con, "cars")   # there are 3 rows
-#' dbExecute(con,
-#'   "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3);")
+#' dbExecute(
+#'   con,
+#'   "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+#' )
 #' dbReadTable(con, "cars")   # there are now 6 rows
+#'
+#' # Pass values using the param argument:
+#' dbExecute(
+#'   con,
+#'   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
+#'   param = list(4:7, 5:8)
+#' )
+#' dbReadTable(con, "cars")   # there are now 10 rows
 #'
 #' dbDisconnect(con)
 setGeneric("dbExecute",
@@ -397,8 +457,8 @@ setGeneric("dbListTables",
 #' @templateVar method_name dbListObjects
 #'
 #' @inherit DBItest::spec_sql_list_objects return
-#' @inheritSection DBItest::spec_sql_list_objects Specification
 #' @inheritSection DBItest::spec_sql_list_objects Additional arguments
+#' @inheritSection DBItest::spec_sql_list_objects Specification
 #'
 #' @inheritParams dbGetQuery
 #' @param prefix A fully qualified path in the database's namespace, or `NULL`.

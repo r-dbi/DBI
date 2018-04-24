@@ -50,6 +50,22 @@ Subclasses should override this method only if they provide some sort of
 performance optimization.
 }
 
+\section{Additional arguments}{
+
+
+The following arguments are not part of the \code{dbGetQuery()} generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+\itemize{
+\item \code{n} (default: -1)
+\item \code{params} (default: \code{NULL})
+}
+
+They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
+
+}
+
 \section{Specification}{
 
 
@@ -76,6 +92,13 @@ con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
 dbGetQuery(con, "SELECT * FROM mtcars")
+dbGetQuery(con, "SELECT * FROM mtcars", n = 6)
+
+# Pass values using the param argument:
+# (This query runs eight times, once for each different
+# parameter. The resulting rows are combined into a single
+# data frame.)
+dbGetQuery(con, "SELECT COUNT(*) FROM mtcars WHERE cyl = ?", param = list(1:8))
 
 dbDisconnect(con)
 }
