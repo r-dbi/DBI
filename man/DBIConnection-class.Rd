@@ -31,7 +31,8 @@ Other DBI classes: \code{\link{DBIDriver-class}},
   \code{\link{DBIObject-class}},
   \code{\link{DBIResult-class}}
 
-Other DBIConnection generics: \code{\link{dbDataType}},
+Other DBIConnection generics: \code{\link{dbAppendTable}},
+  \code{\link{dbCreateTable}}, \code{\link{dbDataType}},
   \code{\link{dbDisconnect}}, \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},

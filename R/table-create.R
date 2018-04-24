@@ -7,6 +7,9 @@ NULL
 #' method is ANSI SQL 99 compliant.
 #' This method is mostly useful for backend implementers.
 #'
+#' The `row.names` argument must be passed explicitly in order to avoid
+#' a compatibility warning.  The default will be changed in a later release.
+#'
 #' @param con A database connection.
 #' @param table Name of the table. Escaped with
 #'   [dbQuoteIdentifier()].
@@ -69,10 +72,12 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' entirely different ways to create tables need to override this method.
 #'
 #' The default value for the `row.names` argument is different from
-#' `sqlCreateTable()`, the argument order is also different.  Both will be
-#' adapted in a later release of DBI.
+#' `sqlCreateTable()`, the argument order is also different.  The
+#' `sqlCreateTable()` method will be adapted in a later release of DBI.
 #'
 #' @inheritParams sqlCreateTable
+#' @inheritParams dbDisconnect
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -80,15 +85,15 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbCreateTable",
-  def = function(con, table, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
+  def = function(conn, table, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbCreateTable", signature("DBIConnection"),
-  function(con, table, fields, ..., row.names = FALSE, temporary = FALSE) {
+  function(conn, table, fields, ..., row.names = FALSE, temporary = FALSE) {
     query <- sqlCreateTable(
-      con = con,
+      con = conn,
       table = table,
       fields = fields,
       row.names = row.names,

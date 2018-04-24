@@ -48,6 +48,7 @@
 \alias{sqlCreateTable,DBIConnection-method}
 \alias{dbCreateTable,DBIConnection-method}
 \alias{sqlAppendTable,DBIConnection-method}
+\alias{dbAppendTable,DBIConnection-method}
 \alias{dbWithTransaction,DBIConnection-method}
 \title{Internal page for hidden aliases}
 \usage{
@@ -135,11 +136,14 @@
 \S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
   temporary = FALSE, ...)
 
-\S4method{dbCreateTable}{DBIConnection}(con, table, fields, ...,
+\S4method{dbCreateTable}{DBIConnection}(conn, table, fields, ...,
   row.names = FALSE, temporary = FALSE)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)
+
+\S4method{dbAppendTable}{DBIConnection}(conn, table, values, ...,
+  row.names = FALSE)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 }

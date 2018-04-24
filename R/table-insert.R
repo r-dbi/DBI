@@ -1,12 +1,16 @@
 #' @include hidden.R
 NULL
 
-#' Insert rows into a table
+#' Compose query to insert rows into a table
 #'
-#' `sqlAppendTable` generates a single SQL string that inserts a
-#' data frame into an existing table. `sqlAppendTableTemplate` generates
+#' `sqlAppendTable()` generates a single SQL string that inserts a
+#' data frame into an existing table. `sqlAppendTableTemplate()` generates
 #' a template suitable for use with [dbBind()].
+#' The default methods are ANSI SQL 99 compliant.
 #' These methods are mostly useful for backend implementers.
+#'
+#' The `row.names` argument must be passed explicitly in order to avoid
+#' a compatibility warning.  The default will be changed in a later release.
 #'
 #' @inheritParams sqlCreateTable
 #' @inheritParams rownames
@@ -48,18 +52,122 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
 #' @inheritParams sqlCreateTable
 #' @inheritParams sqlAppendTable
 #' @inheritParams rownames
-#' @param prefix Parameter prefix to put in front of column id.
+#' @param prefix Parameter prefix to use for placeholders.
+#' @param pattern Parameter pattern to use for placeholders:
+#' - `""`: no pattern
+#' - `"1"`: position
+#' - anything else: field name
 #' @export
 #' @examples
 #' sqlAppendTableTemplate(ANSI(), "iris", iris)
 #'
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
-sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ...) {
+sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
+  if (missing(row.names)) {
+    warning("Do not rely on the default value of the row.names argument for sqlAppendTableTemplate(), it will change in the future.",
+      call. = FALSE
+    )
+  }
+
   table <- dbQuoteIdentifier(con, table)
 
   values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)
   fields <- dbQuoteIdentifier(con, names(values))
+
+  if (pattern == "") {
+    suffix <- ""
+  } else if (pattern == "1") {
+    suffix <- as.character(seq_along(fields))
+  } else {
+    suffix <- names(fields)
+  }
+
+  # Convert fields into a character matrix
+  SQL(paste0(
+    "INSERT INTO ", table, "\n",
+    "  (", paste(fields, collapse = ", "), ")\n",
+    "VALUES\n",
+    paste0("  (", paste0(prefix, seq_along(fields), collapse = ", "), ")", collapse = ",\n")
+  ))
+}
+
+#' Insert rows into a table
+#'
+#' This method assumes that the table has been created beforehand, e.g.
+#' with [dbCreateTable()].
+#' The default implementation calls [sqlAppendTableTemplate()] and then
+#' [dbExecute()] with the `param` argument. Backends compliant to
+#' ANSI SQL 99 don't need to override it. Backends with a different SQL
+#' syntax can override `sqlAppendTableTemplate()`, backends with
+#' entirely different ways to create tables need to override this method.
+#'
+#' The default value for the `row.names` argument is different from
+#' `sqlAppendTableToTemplate()`, the latter will be adapted in a later
+#' release of DBI.
+#'
+#' @inheritParams sqlAppendTableTemplate
+#' @inheritParams dbDisconnect
+#' @param values A data frame of values. The column names must be consistent
+#'   with those in the target table in the database.
+#' @family DBIConnection generics
+#' @export
+#' @examples
+#' con <- dbConnect(RSQLite::SQLite(), ":memory:")
+#' dbCreateTable(con, "iris", iris)
+#' dbAppendTable(con, "iris", iris)
+#' dbReadTable(con, "iris")
+#' dbDisconnect(con)
+setGeneric("dbAppendTable",
+  def = function(conn, table, values, ..., row.names = FALSE) standardGeneric("dbAppendTable")
+)
+
+#' @rdname hidden_aliases
+#' @export
+setMethod("dbAppendTable", signature("DBIConnection"),
+  function(conn, table, values, ..., row.names = FALSE) {
+    query <- sqlAppendTableTemplate(
+      con = conn,
+      table = table,
+      values = values,
+      row.names = row.names,
+      prefix = "?",
+      pattern = "",
+      ...
+    )
+    values <- sqlRownamesToColumn(values, row.names)
+    dbExecute(conn, query, param = unname(as.list(values)))
+  }
+)
+
+#' @rdname sqlAppendTable
+#' @inheritParams sqlCreateTable
+#' @inheritParams sqlAppendTable
+#' @inheritParams rownames
+#' @param prefix Parameter prefix to use for placeholders.
+#' @param pattern Parameter pattern to use for placeholders:
+#' - `""`: no pattern
+#' - `"1"`: position
+#' - anything else: field name
+#' @export
+#' @examples
+#' sqlAppendTableTemplate(ANSI(), "iris", iris)
+#'
+#' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
+#' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
+sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
+  table <- dbQuoteIdentifier(con, table)
+
+  values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)
+  fields <- dbQuoteIdentifier(con, names(values))
+
+  if (pattern == "") {
+    suffix <- ""
+  } else if (pattern == "1") {
+    suffix <- as.character(seq_along(fields))
+  } else {
+    suffix <- names(fields)
+  }
 
   # Convert fields into a character matrix
   SQL(paste0(

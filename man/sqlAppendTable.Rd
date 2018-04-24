@@ -3,12 +3,15 @@
 \name{sqlAppendTable}
 \alias{sqlAppendTable}
 \alias{sqlAppendTableTemplate}
-\title{Insert rows into a table}
+\title{Compose query to insert rows into a table}
 \usage{
 sqlAppendTable(con, table, values, row.names = NA, ...)
 
 sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
-  ...)
+  ..., pattern = "")
+
+sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
+  ..., pattern = "")
 }
 \arguments{
 \item{con}{A database connection.}
@@ -32,19 +35,44 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
 \item{...}{Other arguments used by individual methods.}
 
-\item{prefix}{Parameter prefix to put in front of column id.}
+\item{prefix}{Parameter prefix to use for placeholders.}
+
+\item{pattern}{Parameter pattern to use for placeholders:
+\itemize{
+\item \code{""}: no pattern
+\item \code{"1"}: position
+\item anything else: field name
+}}
+
+\item{prefix}{Parameter prefix to use for placeholders.}
+
+\item{pattern}{Parameter pattern to use for placeholders:
+\itemize{
+\item \code{""}: no pattern
+\item \code{"1"}: position
+\item anything else: field name
+}}
 }
 \description{
-\code{sqlAppendTable} generates a single SQL string that inserts a
-data frame into an existing table. \code{sqlAppendTableTemplate} generates
+\code{sqlAppendTable()} generates a single SQL string that inserts a
+data frame into an existing table. \code{sqlAppendTableTemplate()} generates
 a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
+The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers.
+}
+\details{
+The \code{row.names} argument must be passed explicitly in order to avoid
+a compatibility warning.  The default will be changed in a later release.
 }
 \examples{
 sqlAppendTable(ANSI(), "iris", head(iris))
 
 sqlAppendTable(ANSI(), "mtcars", head(mtcars))
 sqlAppendTable(ANSI(), "mtcars", head(mtcars), row.names = FALSE)
+sqlAppendTableTemplate(ANSI(), "iris", iris)
+
+sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
+sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
 sqlAppendTableTemplate(ANSI(), "iris", iris)
 
 sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)

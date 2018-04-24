@@ -39,6 +39,7 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBIConnection generics: \code{\link{DBIConnection-class}},
+  \code{\link{dbAppendTable}}, \code{\link{dbCreateTable}},
   \code{\link{dbDataType}}, \code{\link{dbExecute}},
   \code{\link{dbExistsTable}},
   \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
