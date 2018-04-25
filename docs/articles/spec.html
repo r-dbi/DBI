@@ -347,6 +347,31 @@ DBI recommends using the following argument names for authentication parameters,
 <p>
 The defaults should provide reasonable behavior, in particular a local connection for <code>host = NULL</code>. For some DBMS (e.g., PostgreSQL), this is different to a TCP/IP connection to <code>localhost</code>.
 </p>
+<p>
+In addition, DBI supports the <code>bigint</code> argument that governs how 64-bit integer data is returned. The following values are supported:
+</p>
+<ul>
+<li>
+<p>
+<code>“integer”</code>: always return as <code>integer</code>, silently overflow
+</p>
+</li>
+<li>
+<p>
+<code>“numeric”</code>: always return as <code>numeric</code>, silently round
+</p>
+</li>
+<li>
+<p>
+<code>“character”</code>: always return the decimal representation as <code>character</code>
+</p>
+</li>
+<li>
+<p>
+<code>“integer64”</code>: return as a data type that can be coerced using <code>as.integer()</code> (with warning on overflow), <code>as.numeric()</code> and <code>as.character()</code>
+</p>
+</li>
+</ul>
 <h3>
 Examples
 </h3>
