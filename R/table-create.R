@@ -73,11 +73,14 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' backends with entirely different ways to create tables need to
 #' override this method.
 #'
-#' The default value for the `row.names` argument is different from
-#' `sqlCreateTable()`, the argument order is also different.  The
-#' `sqlCreateTable()` method will be adapted in a later release of DBI.
+#' The `row.names` argument is not supported by this method.
+#' Process the values with [sqlRownamesToColumn()] before calling this method.
+#'
+#' The argument order is different from the `sqlCreateTable()` method, the
+#' latter will be adapted in a later release of DBI.
 #'
 #' @param name Name of the table, escaped with [dbQuoteIdentifier()].
+#' @param row.names Must be `NULL`.
 #' @inheritParams sqlCreateTable
 #' @inheritParams dbDisconnect
 #' @family DBIConnection generics
@@ -88,13 +91,15 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbCreateTable",
-  def = function(conn, name, fields, ..., row.names = FALSE, temporary = FALSE) standardGeneric("dbCreateTable")
+  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) standardGeneric("dbCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbCreateTable", signature("DBIConnection"),
-  function(conn, name, fields, ..., row.names = FALSE, temporary = FALSE) {
+  function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+    stopifnot(is.null(row.names))
+
     query <- sqlCreateTable(
       con = conn,
       table = name,

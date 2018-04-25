@@ -4,7 +4,7 @@
 \alias{dbCreateTable}
 \title{Create a table in the database}
 \usage{
-dbCreateTable(conn, name, fields, ..., row.names = FALSE, temporary = FALSE)
+dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -23,16 +23,7 @@ A data frame: field types are generated using
 
 \item{...}{Other arguments used by individual methods.}
 
-\item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
-
-If \code{TRUE}, always translate row names to a column called "row_names".
-If \code{FALSE}, never translate row names. If \code{NA}, translate
-rownames only if they're a character vector.
-
-A string is equivalent to \code{TRUE}, but allows you to override the
-default name.
-
-For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+\item{row.names}{Must be \code{NULL}.}
 
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
 }
@@ -45,9 +36,11 @@ backends with entirely different ways to create tables need to
 override this method.
 }
 \details{
-The default value for the \code{row.names} argument is different from
-\code{sqlCreateTable()}, the argument order is also different.  The
-\code{sqlCreateTable()} method will be adapted in a later release of DBI.
+The \code{row.names} argument is not supported by this method.
+Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} before calling this method.
+
+The argument order is different from the \code{sqlCreateTable()} method, the
+latter will be adapted in a later release of DBI.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

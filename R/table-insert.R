@@ -90,7 +90,11 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 
   placeholders <- lapply(paste0(prefix, suffix), SQL)
   names(placeholders) <- names(values)
-  placeholders <- as.data.frame(placeholders, stringsAsFactors = FALSE)
+  placeholders <- as.data.frame(
+    placeholders,
+    optional = TRUE,
+    stringsAsFactors = FALSE
+  )
 
   sqlAppendTable(
     con = con,
@@ -110,15 +114,15 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' syntax can override [sqlAppendTable()], backends with
 #' entirely different ways to create tables need to override this method.
 #'
-#' The default value for the `row.names` argument is different from
-#' `sqlAppendTableToTemplate()`, the latter will be adapted in a later
-#' release of DBI.
+#' The `row.names` argument is not supported by this method.
+#' Process the values with [sqlRownamesToColumn()] before calling this method.
 #'
 #' @param name Name of the table, escaped with [dbQuoteIdentifier()].
-#' @inheritParams sqlAppendTableTemplate
-#' @inheritParams dbDisconnect
 #' @param values A data frame of values. The column names must be consistent
 #'   with those in the target table in the database.
+#' @param row.names Must be `NULL`.
+#' @inheritParams sqlAppendTableTemplate
+#' @inheritParams dbDisconnect
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -128,13 +132,15 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbAppendTable",
-  def = function(conn, name, values, ..., row.names = FALSE) standardGeneric("dbAppendTable")
+  def = function(conn, name, values, ..., row.names = NULL) standardGeneric("dbAppendTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbAppendTable", signature("DBIConnection"),
-  function(conn, name, values, ..., row.names = FALSE) {
+  function(conn, name, values, ..., row.names = NULL) {
+    stopifnot(is.null(row.names))
+
     query <- sqlAppendTableTemplate(
       con = conn,
       table = name,

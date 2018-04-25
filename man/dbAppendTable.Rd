@@ -4,7 +4,7 @@
 \alias{dbAppendTable}
 \title{Insert rows into a table}
 \usage{
-dbAppendTable(conn, name, values, ..., row.names = FALSE)
+dbAppendTable(conn, name, values, ..., row.names = NULL)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -17,16 +17,7 @@ with those in the target table in the database.}
 
 \item{...}{Other arguments used by individual methods.}
 
-\item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
-
-If \code{TRUE}, always translate row names to a column called "row_names".
-If \code{FALSE}, never translate row names. If \code{NA}, translate
-rownames only if they're a character vector.
-
-A string is equivalent to \code{TRUE}, but allows you to override the
-default name.
-
-For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
+\item{row.names}{Must be \code{NULL}.}
 }
 \description{
 The \code{dbAppendTable()} method assumes that the table has been created
@@ -38,9 +29,8 @@ syntax can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}, backends wi
 entirely different ways to create tables need to override this method.
 }
 \details{
-The default value for the \code{row.names} argument is different from
-\code{sqlAppendTableToTemplate()}, the latter will be adapted in a later
-release of DBI.
+The \code{row.names} argument is not supported by this method.
+Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} before calling this method.
 }
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

@@ -137,13 +137,13 @@
   temporary = FALSE, ...)
 
 \S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ...,
-  row.names = FALSE, temporary = FALSE)
+  row.names = NULL, temporary = FALSE)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)
 
 \S4method{dbAppendTable}{DBIConnection}(conn, name, values, ...,
-  row.names = FALSE)
+  row.names = NULL)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 }
