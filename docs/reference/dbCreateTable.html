@@ -63,7 +63,7 @@ override this method." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9001</span>
       </span>
     </div>
 
@@ -134,7 +134,7 @@ override this method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -163,13 +163,7 @@ Field types are unescaped.</p>
     </tr>
     <tr>
       <th>row.names</th>
-      <td><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
-<p>If <code>TRUE</code>, always translate row names to a column called "row_names".
-If <code>FALSE</code>, never translate row names. If <code>NA</code>, translate
-rownames only if they're a character vector.</p>
-<p>A string is equivalent to <code>TRUE</code>, but allows you to override the
-default name.</p>
-<p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></td>
+      <td><p>Must be <code>NULL</code>.</p></td>
     </tr>
     <tr>
       <th>temporary</th>
@@ -179,9 +173,10 @@ default name.</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The default value for the <code>row.names</code> argument is different from
-<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code>, the argument order is also different.  The
-<code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> method will be adapted in a later release of DBI.</p>
+    <p>The <code>row.names</code> argument is not supported by this method.
+Process the values with <code><a href='rownames.html'>sqlRownamesToColumn()</a></code> before calling this method.</p>
+<p>The argument order is different from the <code><a href='sqlCreateTable.html'>sqlCreateTable()</a></code> method, the
+latter will be adapted in a later release of DBI.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

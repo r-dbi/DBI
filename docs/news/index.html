@@ -55,7 +55,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9001</span>
       </span>
     </div>
 
@@ -114,6 +114,25 @@
       
     </div>
 
+    <div id="dbi-0-8-0-9001-2018-04-25" class="section level1">
+<h1 class="page-header">
+<a href="#dbi-0-8-0-9001-2018-04-25" class="anchor"></a>DBI 0.8.0.9001 (2018-04-25)<small> Unreleased </small>
+</h1>
+<ul>
+<li>New <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code> that by default calls <code><a href="../reference/sqlAppendTable.html">sqlAppendTableTemplate()</a></code> and then <code><a href="../reference/dbExecute.html">dbExecute()</a></code> with a <code>param</code> argument, without support for <code>row.names</code> argument (#74).</li>
+<li>New <code><a href="../reference/dbCreateTable.html">dbCreateTable()</a></code> that by default calls <code><a href="../reference/sqlCreateTable.html">sqlCreateTable()</a></code> and then <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, without support for <code>row.names</code> argument (#74).</li>
+<li>Add “Additional arguments” sections and more examples for <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</li>
+<li>New <code><a href="../reference/dbCanConnect.html">dbCanConnect()</a></code> generic with default implementation (#87).</li>
+<li>The <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> method is now fully specified (#75).</li>
+<li>The <code><a href="../reference/dbListFields.html">dbListFields()</a></code> method is now fully specified (#75).</li>
+<li>Add default implementation for <code><a href="../reference/dbListFields.html">dbListFields(DBIConnection, Id)</a></code>, this relies on <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(DBIConnection, Id)</a></code> (#75).</li>
+<li>Add new generic <code><a href="../reference/dbIsReadOnly.html">dbIsReadOnly()</a></code> (#190, <a href='http://github.com/anhqle'>@anhqle</a>).</li>
+<li>Pass missing <code>value</code> argument to secondary <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> call (#737, <a href='http://github.com/jimhester'>@jimhester</a>).</li>
+<li>Fix <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> forwarder for signature <code>c("DBIConnection", "Id", "data.frame")</code>.</li>
+<li>The <code>Id</code> class now uses <code>&lt;Id&gt;</code> and not <code>&lt;Table&gt;</code> when printing.</li>
+<li>The default <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> implementation now complies to the spec.</li>
+</ul>
+</div>
     <div id="dbi-0-8-0-9000-2018-03-22" class="section level1">
 <h1 class="page-header">
 <a href="#dbi-0-8-0-9000-2018-03-22" class="anchor"></a>DBI 0.8.0.9000 (2018-03-22)<small> Unreleased </small>
@@ -519,6 +538,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#dbi-0-8-0-9001-2018-04-25">0.8.0.9001</a></li>
         <li><a href="#dbi-0-8-0-9000-2018-03-22">0.8.0.9000</a></li>
         <li><a href="#dbi-0-8-2018-02-24">0.8</a></li>
         <li><a href="#dbi-0-7-2017-06-17">0.7</a></li>

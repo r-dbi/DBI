@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9001</span>
       </span>
     </div>
 
@@ -307,6 +307,9 @@ Value
 </h3>
 <p>
 <code><a href="../reference/dbConnect.html">dbConnect()</a></code> returns an S4 object that inherits from DBIConnection. This object is used to communicate with the database engine.
+</p>
+<p>
+A <code>format()</code> method is defined for the connection object. It returns a string that consists of a single line of text.
 </p>
 <h3>
 Specification
@@ -2053,7 +2056,7 @@ timestamp (if supported by the database; returned as <code>POSIXct</code> respec
 Mixing column types in the same table is supported.
 </p>
 <p>
-The <code>field.types</code> argument must be a named character vector with at most one entry for each column. It indicates the SQL data type to be used for a new column.
+The <code>field.types</code> argument must be a named character vector with at most one entry for each column. It indicates the SQL data type to be used for a new column. If a column is missed from <code>field.types</code>, the type is inferred from the input data with <code><a href="../reference/dbDataType.html">dbDataType()</a></code>.
 </p>
 <p>
 The interpretation of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlRownamesToColumn()</a></code> for details:

@@ -66,7 +66,7 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9001</span>
       </span>
     </div>
 
@@ -263,7 +263,9 @@ input time zone)</p></li>
     <p>Mixing column types in the same table is supported.</p>
 <p>The <code>field.types</code> argument must be a named character vector with at most
 one entry for each column.
-It indicates the SQL data type to be used for a new column.</p>
+It indicates the SQL data type to be used for a new column.
+If a column is missed from <code>field.types</code>, the type is inferred
+from the input data with <code><a href='dbDataType.html'>dbDataType()</a></code>.</p>
 <p>The interpretation of <a href='rownames.html'>rownames</a> depends on the <code>row.names</code> argument,
 see <code><a href='rownames.html'>sqlRownamesToColumn()</a></code> for details:</p><ul>
 <li><p>If <code>FALSE</code> or <code>NULL</code>, row names are ignored.</p></li>
