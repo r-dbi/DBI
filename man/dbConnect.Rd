@@ -51,6 +51,17 @@ The defaults should provide reasonable behavior, in particular a
 local connection for \code{host = NULL}.  For some DBMS (e.g., PostgreSQL),
 this is different to a TCP/IP connection to \code{localhost}.
 
+In addition, DBI supports the \code{bigint} argument that governs how
+64-bit integer data is returned.  The following values are supported:
+\itemize{
+\item \code{"integer"}: always return as \code{integer}, silently overflow
+\item \code{"numeric"}: always return as \code{numeric}, silently round
+\item \code{"character"}: always return the decimal representation as \code{character}
+\item \code{"integer64"}: return as a data type that can be coerced using
+\code{\link[=as.integer]{as.integer()}} (with warning on overflow), \code{\link[=as.numeric]{as.numeric()}}
+and \code{\link[=as.character]{as.character()}}
+}
+
 }
 
 \examples{
