@@ -136,6 +136,8 @@ Mixing column types in the same table is supported.
 The \code{field.types} argument must be a named character vector with at most
 one entry for each column.
 It indicates the SQL data type to be used for a new column.
+If a column is missed from \code{field.types}, the type is inferred
+from the input data with \code{\link[=dbDataType]{dbDataType()}}.
 
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
 see \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
