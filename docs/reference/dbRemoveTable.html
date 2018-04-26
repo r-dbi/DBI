@@ -169,6 +169,23 @@ An error is also raised
 if <code>name</code> cannot be processed with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
 or if this results in a non-scalar.</p>
     
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>The following arguments are not part of the <code>dbRemoveTable()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul>
+<li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
+<li><p><code>fail_if_missing</code> (default: <code>TRUE</code>)</p></li>
+</ul>
+    <p>These arguments must be provided as named arguments.</p>
+<p>If <code>temporary</code> is <code>TRUE</code>, the call to <code>dbRemoveTable()</code>
+will consider only temporary tables.
+Not all backends support this argument.
+In particular, permanent tables of the same name are left untouched.</p>
+<p>If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code>dbRemoveTable()</code>
+succeeds if the table does not exist.</p>
+    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -214,6 +231,8 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
 
       <li><a href="#specification">Specification</a></li>
 

@@ -2370,13 +2370,31 @@ Other parameters passed on to methods.
 </tr>
 </table>
 <h3>
-Value
+Additional arguments
 </h3>
 <p>
-<code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly. If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.
+The following arguments are not part of the <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>temporary</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li>
+<p>
+<code>fail_if_missing</code> (default: <code>TRUE</code>)
+</p>
+</li>
+</ul>
+<p>
+These arguments must be provided as named arguments.
 </p>
 <p>
-An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.
+If <code>temporary</code> is <code>TRUE</code>, the call to <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> will consider only temporary tables. Not all backends support this argument. In particular, permanent tables of the same name are left untouched.
+</p>
+<p>
+If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> succeeds if the table does not exist.
 </p>
 <h3>
 Specification
@@ -2399,6 +2417,15 @@ If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">d
 </p>
 </li>
 </ul>
+<h3>
+Value
+</h3>
+<p>
+<code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly. If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.
+</p>
+<p>
+An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.
+</p>
 <h3>
 Examples
 </h3>
