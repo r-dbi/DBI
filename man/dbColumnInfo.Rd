@@ -36,9 +36,15 @@ field (field name, type, etc.)
 
 A column named \code{row_names} is treated like any other column.
 
-The column names are always consistent with the data returned by \code{dbFetch()},
-even if the query returns unnamed
-or duplicate column names.
+The column names are always consistent
+with the data returned by \code{dbFetch()}.
+If the query returns unnamed columns,
+unique
+non-empty and non-\code{NA} names are assigned.
+In the case of a duplicate column name, the first occurrence
+retains the original name, and unique names are assigned for
+the other occurrences.
+Column names that correspond to SQL or R keywords are left unchanged.
 
 }
 
