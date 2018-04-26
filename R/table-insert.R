@@ -31,7 +31,7 @@ setGeneric("sqlAppendTable",
 #' @export
 setMethod("sqlAppendTable", signature("DBIConnection"),
   function(con, table, values, row.names = NA, ...) {
-    stopifnot(is.data.frame(values))
+    stopifnot(is.list(values))
 
     if (missing(row.names)) {
       warning("Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.",
@@ -90,11 +90,6 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 
   placeholders <- lapply(paste0(prefix, suffix), SQL)
   names(placeholders) <- names(values)
-  placeholders <- as.data.frame(
-    placeholders,
-    optional = TRUE,
-    stringsAsFactors = FALSE
-  )
 
   sqlAppendTable(
     con = con,
