@@ -647,6 +647,7 @@ setMethod("dbExistsTable", signature("DBIConnection", "Id"),
 #' @templateVar method_name dbRemoveTable
 #'
 #' @inherit DBItest::spec_sql_remove_table return
+#' @inheritSection DBItest::spec_sql_remove_table Additional arguments
 #' @inheritSection DBItest::spec_sql_remove_table Specification
 #'
 #' @inheritParams dbGetQuery
