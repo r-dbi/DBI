@@ -55,7 +55,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9001</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9002</span>
       </span>
     </div>
 
@@ -114,6 +114,15 @@
       
     </div>
 
+    <div id="dbi-0-8-0-9002-2018-04-27" class="section level1">
+<h1 class="page-header">
+<a href="#dbi-0-8-0-9002-2018-04-27" class="anchor"></a>DBI 0.8.0.9002 (2018-04-27)<small> Unreleased </small>
+</h1>
+<ul>
+<li>
+<code><a href="../reference/sqlAppendTable.html">sqlAppendTable()</a></code> now accepts lists for the <code>values</code> argument, to support lists of <code>SQL</code> objects in R 3.1.</li>
+</ul>
+</div>
     <div id="dbi-0-8-0-9001-2018-04-25" class="section level1">
 <h1 class="page-header">
 <a href="#dbi-0-8-0-9001-2018-04-25" class="anchor"></a>DBI 0.8.0.9001 (2018-04-25)<small> Unreleased </small>
@@ -253,7 +262,8 @@
 <li>Removed <code>valueClass = "logical"</code> for those generics where the return value is meaningless, to allow backends to return invisibly (#135).</li>
 <li>Avoiding using braces in the definitions of generics if possible, so that standard generics can be detected (#146).</li>
 <li>Added default implementation for <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code>.</li>
-<li>All standard generics are required to have an ellipsis (with test), for future extensibility. - Improved default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> (#77).</li>
+<li>All standard generics are required to have an ellipsis (with test), for future extensibility.</li>
+<li>Improved default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> (#77).</li>
 <li>Removed <code>tryCatch()</code> call in <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> (#113).</li>
 </ul>
 </li>
@@ -538,6 +548,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#dbi-0-8-0-9002-2018-04-27">0.8.0.9002</a></li>
         <li><a href="#dbi-0-8-0-9001-2018-04-25">0.8.0.9001</a></li>
         <li><a href="#dbi-0-8-0-9000-2018-03-22">0.8.0.9000</a></li>
         <li><a href="#dbi-0-8-2018-02-24">0.8</a></li>
