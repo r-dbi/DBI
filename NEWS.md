@@ -95,7 +95,8 @@ Internal
     - Removed `valueClass = "logical"` for those generics where the return value is meaningless, to allow backends to return invisibly (#135).
     - Avoiding using braces in the definitions of generics if possible, so that standard generics can be detected (#146).
     - Added default implementation for `dbReadTable()`.
-    - All standard generics are required to have an ellipsis (with test), for future extensibility.    - Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
+    - All standard generics are required to have an ellipsis (with test), for future extensibility.
+    - Improved default implementation of `dbQuoteString()` and `dbQuoteIdentifier()` (#77).
     - Removed `tryCatch()` call in `dbGetQuery()` (#113).
 
 - Documentation improvements
