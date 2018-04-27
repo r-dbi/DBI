@@ -1,3 +1,8 @@
+# DBI 0.8.0.9002 (2018-04-27)
+
+- `sqlAppendTable()` now accepts lists for the `values` argument, to support lists of `SQL` objects in R 3.1.
+
+
 # DBI 0.8.0.9001 (2018-04-25)
 
 - New `dbAppendTable()` that by default calls `sqlAppendTableTemplate()` and then `dbExecute()` with a `param` argument, without support for `row.names` argument (#74).
