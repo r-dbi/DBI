@@ -24,9 +24,11 @@ The \code{dbAppendTable()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTable]{dbCreateTable()}}.
 The default implementation calls \code{\link[=sqlAppendTableTemplate]{sqlAppendTableTemplate()}} and then
 \code{\link[=dbExecute]{dbExecute()}} with the \code{param} argument. Backends compliant to
-ANSI SQL 99 don't need to override it. Backends with a different SQL
-syntax can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}, backends with
-entirely different ways to create tables need to override this method.
+ANSI SQL 99 which use \code{?} as a placeholder for prepard queries don't need
+to override it. Backends with a different SQL syntax which use \code{?}
+as a placeholder for prepared queries can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}.
+Other backends (with different placeholders or with entirely different
+ways to create tables) need to override the \code{dbAppendTable()} method.
 }
 \details{
 The \code{row.names} argument is not supported by this method.
