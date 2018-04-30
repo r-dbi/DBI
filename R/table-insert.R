@@ -82,7 +82,7 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 
   if (pattern == "") {
     suffix <- rep("", length(fields))
-  } else if (patterwn == "1") {
+  } else if (pattern == "1") {
     suffix <- as.character(seq_along(fields))
   } else {
     suffix <- names(fields)
