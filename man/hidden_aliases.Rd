@@ -142,7 +142,7 @@
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
   ...)
 
-\S4method{dbAppendTable}{DBIConnection}(conn, name, values, ...,
+\S4method{dbAppendTable}{DBIConnection}(conn, name, value, ...,
   row.names = NULL)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)

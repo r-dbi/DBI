@@ -115,7 +115,7 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' Process the values with [sqlRownamesToColumn()] before calling this method.
 #'
 #' @param name Name of the table, escaped with [dbQuoteIdentifier()].
-#' @param values A data frame of values. The column names must be consistent
+#' @param value A data frame of values. The column names must be consistent
 #'   with those in the target table in the database.
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlAppendTableTemplate
@@ -129,19 +129,19 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbAppendTable",
-  def = function(conn, name, values, ..., row.names = NULL) standardGeneric("dbAppendTable")
+  def = function(conn, name, value, ..., row.names = NULL) standardGeneric("dbAppendTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbAppendTable", signature("DBIConnection"),
-  function(conn, name, values, ..., row.names = NULL) {
+  function(conn, name, value, ..., row.names = NULL) {
     stopifnot(is.null(row.names))
 
     query <- sqlAppendTableTemplate(
       con = conn,
       table = name,
-      values = values,
+      values = value,
       row.names = row.names,
       prefix = "?",
       pattern = "",

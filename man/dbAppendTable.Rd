@@ -4,7 +4,7 @@
 \alias{dbAppendTable}
 \title{Insert rows into a table}
 \usage{
-dbAppendTable(conn, name, values, ..., row.names = NULL)
+dbAppendTable(conn, name, value, ..., row.names = NULL)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -12,7 +12,7 @@ dbAppendTable(conn, name, values, ..., row.names = NULL)
 
 \item{name}{Name of the table, escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
-\item{values}{A data frame of values. The column names must be consistent
+\item{value}{A data frame of values. The column names must be consistent
 with those in the target table in the database.}
 
 \item{...}{Other arguments used by individual methods.}
