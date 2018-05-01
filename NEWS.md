@@ -1,37 +1,30 @@
 # DBI 1.0.0 (2018-05-02)
 
-- Update docs on how to cope with stored procedures (#239, @aryoda).
-
-
-# DBI 0.8.0.9003 (2018-05-01)
-
-- Rename `values` to `value` in `dbAppendTable()` for consistency with `dbWriteTable()`.
-
-
-# DBI 0.8.0.9002 (2018-04-27)
-
-- `sqlAppendTable()` now accepts lists for the `values` argument, to support lists of `SQL` objects in R 3.1.
-
-
-# DBI 0.8.0.9001 (2018-04-25)
+## New generics
 
 - New `dbAppendTable()` that by default calls `sqlAppendTableTemplate()` and then `dbExecute()` with a `param` argument, without support for `row.names` argument (#74).
 - New `dbCreateTable()` that by default calls `sqlCreateTable()` and then `dbExecute()`, without support for `row.names` argument (#74).
-- Add "Additional arguments" sections and more examples for `dbGetQuery()`, `dbSendQuery()`, `dbExecute()` and `dbSendStatement()`.
 - New `dbCanConnect()` generic with default implementation (#87).
+- New `dbIsReadOnly()` generic with default implementation (#190, @anhqle).
+
+## Changes
+
+- `sqlAppendTable()` now accepts lists for the `values` argument, to support lists of `SQL` objects in R 3.1.
+- Add default implementation for `dbListFields(DBIConnection, Id)`, this relies on `dbQuoteIdentifier(DBIConnection, Id)` (#75).
+
+## Documentation updates
+
+- Update docs on how to cope with stored procedures (#239, @aryoda).
+- Add "Additional arguments" sections and more examples for `dbGetQuery()`, `dbSendQuery()`, `dbExecute()` and `dbSendStatement()`.
 - The `dbColumnInfo()` method is now fully specified (#75).
 - The `dbListFields()` method is now fully specified (#75).
-- Add default implementation for `dbListFields(DBIConnection, Id)`, this relies on `dbQuoteIdentifier(DBIConnection, Id)` (#75).
-- Add new generic `dbIsReadOnly()` (#190, @anhqle).
+
+## Bug fixes
+
 - Pass missing `value` argument to secondary `dbWriteTable()` call (#737, @jimhester).
-- Fix `dbWriteTable()` forwarder for signature `c("DBIConnection", "Id", "data.frame")`.
 - The `Id` class now uses `<Id>` and not `<Table>` when printing.
 - The default `dbUnquoteIdentifier()` implementation now complies to the spec.
 
-
-# DBI 0.8.0.9000 (2018-03-22)
-
-- Same as DBI 0.8, switching to semantic versioning.
 
 # DBI 0.8 (2018-02-24)
 
