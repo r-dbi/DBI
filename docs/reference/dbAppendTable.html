@@ -34,9 +34,11 @@
 beforehand, e.g. with dbCreateTable().
 The default implementation calls sqlAppendTableTemplate() and then
 dbExecute() with the param argument. Backends compliant to
-ANSI SQL 99 don't need to override it. Backends with a different SQL
-syntax can override sqlAppendTable(), backends with
-entirely different ways to create tables need to override this method." />
+ANSI SQL 99 which use ? as a placeholder for prepard queries don't need
+to override it. Backends with a different SQL syntax which use ?
+as a placeholder for prepared queries can override sqlAppendTable().
+Other backends (with different placeholders or with entirely different
+ways to create tables) need to override the dbAppendTable() method." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -130,13 +132,15 @@ entirely different ways to create tables need to override this method." />
 beforehand, e.g. with <code><a href='dbCreateTable.html'>dbCreateTable()</a></code>.
 The default implementation calls <code><a href='sqlAppendTable.html'>sqlAppendTableTemplate()</a></code> and then
 <code><a href='dbExecute.html'>dbExecute()</a></code> with the <code>param</code> argument. Backends compliant to
-ANSI SQL 99 don't need to override it. Backends with a different SQL
-syntax can override <code><a href='sqlAppendTable.html'>sqlAppendTable()</a></code>, backends with
-entirely different ways to create tables need to override this method.</p>
+ANSI SQL 99 which use <code>?</code> as a placeholder for prepard queries don't need
+to override it. Backends with a different SQL syntax which use <code>?</code>
+as a placeholder for prepared queries can override <code><a href='sqlAppendTable.html'>sqlAppendTable()</a></code>.
+Other backends (with different placeholders or with entirely different
+ways to create tables) need to override the <code>dbAppendTable()</code> method.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>dbAppendTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>values</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>dbAppendTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +155,7 @@ entirely different ways to create tables need to override this method.</p>
       <td><p>Name of the table, escaped with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.</p></td>
     </tr>
     <tr>
-      <th>values</th>
+      <th>value</th>
       <td><p>A data frame of values. The column names must be consistent
 with those in the target table in the database.</p></td>
     </tr>
