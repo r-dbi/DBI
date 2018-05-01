@@ -39,14 +39,7 @@ the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQuery")}
 }
 \details{
-This method is for \code{SELECT} queries only
-(incl. other SQL statements that return a \code{SELECT}-alike result,
-e. g. execution of a stored procedure).
-
-To execute a stored procedure that does not return a result set,
-use \code{\link[=dbExecute]{dbExecute()}}.
-
-Some backends may
+This method is for \code{SELECT} queries only.  Some backends may
 support data manipulation statements through this method for compatibility
 reasons.  However, callers are strongly advised to use
 \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.

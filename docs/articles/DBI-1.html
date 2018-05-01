@@ -411,6 +411,14 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 <dd>
 <p>invokes a stored procedure in the DBMS and returns a <code>DBIResult</code> object.</p>
 <p>[Stored procedures are <em>not</em> part of the ANSI SQL-92 standard and vary substantially from one RDBMS to another.]</p>
+<p><strong>Deprecated since 2014:</strong></p>
+<p>The recommended way of calling a stored procedure is now</p>
+<ul>
+<li>
+<code>dbGetQuery</code> if a result set is returned and</li>
+<li>
+<code>dbExecute</code> for data manipulation and other cases that do not return a result set.</li>
+</ul>
 </dd>
 </dl>
 </div>
