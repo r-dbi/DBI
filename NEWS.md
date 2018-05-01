@@ -1,3 +1,8 @@
+# DBI 1.0.0 (2018-05-02)
+
+- Update docs on how to cope with stored procedures (#239, @aryoda).
+
+
 # DBI 0.8.0.9003 (2018-05-01)
 
 - Rename `values` to `value` in `dbAppendTable()` for consistency with `dbWriteTable()`.
