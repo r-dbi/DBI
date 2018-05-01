@@ -1188,7 +1188,13 @@ A column named <code>row_names</code> is treated like any other column.
 Details
 </h3>
 <p>
-This method is for <code>SELECT</code> queries only. Some backends may support data manipulation statements through this method for compatibility reasons. However, callers are strongly advised to use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> for data manipulation statements.
+This method is for <code>SELECT</code> queries only (incl. other SQL statements that return a <code>SELECT</code>-alike result, e. g. execution of a stored procedure).
+</p>
+<p>
+To execute a stored procedure that does not return a result set, use <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.
+</p>
+<p>
+Some backends may support data manipulation statements through this method for compatibility reasons. However, callers are strongly advised to use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> for data manipulation statements.
 </p>
 <h3>
 Value
@@ -1439,6 +1445,12 @@ Specification
 </h3>
 <p>
 The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.
+</p>
+<h3>
+Details
+</h3>
+<p>
+You can also use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> to call a stored procedure that performs data manipulation or other actions that do not return a result set. To execute a stored procedure that returns a result set use <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> instead.
 </p>
 <h3>
 Value

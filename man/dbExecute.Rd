@@ -34,6 +34,11 @@ the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExecute")}
 }
+\details{
+You can also use \code{dbExecute()} to call a stored procedure
+that performs data manipulation or other actions that do not return a result set.
+To execute a stored procedure that returns a result set use \code{\link[=dbGetQuery]{dbGetQuery()}} instead.
+}
 \section{Implementation notes}{
 
 Subclasses should override this method only if they provide some sort of

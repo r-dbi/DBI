@@ -180,7 +180,12 @@ but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> ar
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This method is for <code>SELECT</code> queries only.  Some backends may
+    <p>This method is for <code>SELECT</code> queries only
+(incl. other SQL statements that return a <code>SELECT</code>-alike result,
+e. g. execution of a stored procedure).</p>
+<p>To execute a stored procedure that does not return a result set,
+use <code><a href='dbExecute.html'>dbExecute()</a></code>.</p>
+<p>Some backends may
 support data manipulation statements through this method for compatibility
 reasons.  However, callers are strongly advised to use
 <code><a href='dbExecute.html'>dbExecute()</a></code> for data manipulation statements.</p>

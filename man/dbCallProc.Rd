@@ -13,6 +13,14 @@ dbCallProc(conn, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \description{
-DEPRECATED
+\strong{Deprecated since 2014}
+}
+\details{
+The recommended way of calling a stored procedure is now
+
+\enumerate{
+\item{\code{\link{dbGetQuery}} if a result set is returned}
+\item{\code{\link{dbExecute}}  for data manipulation and other cases where no result set is returned}
+}
 }
 \keyword{internal}

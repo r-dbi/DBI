@@ -30,7 +30,7 @@
 
 <meta property="og:title" content="Call an SQL stored procedure — dbCallProc" />
 
-<meta property="og:description" content="DEPRECATED" />
+<meta property="og:description" content="Deprecated since 2014" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -120,7 +120,7 @@
 
     <div class="ref-description">
     
-    <p>DEPRECATED</p>
+    <p><strong>Deprecated since 2014</strong></p>
     
     </div>
 
@@ -140,13 +140,23 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The recommended way of calling a stored procedure is now</p>
+<ol>
+<li><p><code><a href='dbGetQuery.html'>dbGetQuery</a></code> if a result set is returned</p></li>
+<li><p><code><a href='dbExecute.html'>dbExecute</a></code>  for data manipulation and other cases where no result set is returned</p></li>
+</ol>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
