@@ -1,3 +1,8 @@
+# DBI 0.8.0.9003 (2018-05-01)
+
+- Rename `values` to `value` in `dbAppendTable()` for consistency with `dbWriteTable()`.
+
+
 # DBI 0.8.0.9002 (2018-04-27)
 
 - `sqlAppendTable()` now accepts lists for the `values` argument, to support lists of `SQL` objects in R 3.1.
