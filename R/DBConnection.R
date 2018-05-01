@@ -218,7 +218,14 @@ setMethod(
 #' [dbSendQuery()], then [dbFetch()], ensuring that
 #' the result is always free-d by [dbClearResult()].
 #'
-#' This method is for `SELECT` queries only.  Some backends may
+#' This method is for `SELECT` queries only
+#' (incl. other SQL statements that return a `SELECT`-alike result,
+#'  e. g. execution of a stored procedure).
+#'
+#' To execute a stored procedure that does not return a result set,
+#' use [dbExecute()].
+#'
+#' Some backends may
 #' support data manipulation statements through this method for compatibility
 #' reasons.  However, callers are strongly advised to use
 #' [dbExecute()] for data manipulation statements.
@@ -274,10 +281,15 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' Execute an update statement, query number of rows affected, and then close result set
 #'
 #' Executes a statement and returns the number of rows affected.
-#' `dbExecute()` comes with a default implementation
+#' [dbExecute()] comes with a default implementation
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
 #' the result is always free-d by [dbClearResult()].
+#'
+#' You can also use [dbExecute()] to call a stored procedure
+#' that performs data manipulation or other actions that do not return a result set.
+#'
+#' To execute a stored procedure that returns a result set use [dbGetQuery()] instead.
 #'
 #' @template methods
 #' @templateVar method_name dbExecute

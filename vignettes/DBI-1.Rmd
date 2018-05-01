@@ -7,6 +7,7 @@ bibliography: biblio.bib
 vignette: >
   %\VignetteIndexEntry{A Common Database Interface (DBI)}
   %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 This document describes a common interface between the S language (in
@@ -411,6 +412,13 @@ procedures. All these functions are optional.*
 
     [Stored procedures are *not* part of the ANSI SQL-92 standard and
     vary substantially from one RDBMS to another.]
+
+    **Deprecated since 2014:**
+    
+    The recommended way of calling a stored procedure is now
+    
+    - `dbGetQuery` if a result set is returned and
+    - `dbExecute`  for data manipulation and other cases that do not return a result set.
 
 ## Class `DBIResult` {#sec:DBIResult}
 
