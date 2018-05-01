@@ -10,16 +10,21 @@ methods_as_rd <- function(method) {
     sig <- paste0(x@defined, collapse = ",")
     sig_text <- paste0('"', x@defined, '"', collapse = ", ")
     package <- getNamespaceName(environment(x@.Data))
-    paste0(
-      "\\code{\\link[=", x@generic, ",", sig, "-method]{",
-      package, "::", x@generic,
-      "(", sig_text, ")}}"
-    )
+    if (package == "DBI") {
+      NA_character_
+    } else {
+      paste0(
+        "\\code{\\link[=", x@generic, ",", sig, "-method]{",
+        package, "::", x@generic,
+        "(", sig_text, ")}}"
+      )
+    }
   }
 
-  if (length(methods@.Data) == 0) return("")
-
   item_text <- vapply(methods@.Data, s4_topic, character(1))
+  item_text <- item_text[!is.na(item_text)]
+
+  if (length(item_text) == 0) return("")
 
   paste0(
     "\\subsection{Methods in other packages}{\n\n",

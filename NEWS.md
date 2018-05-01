@@ -18,6 +18,7 @@
 - Add "Additional arguments" sections and more examples for `dbGetQuery()`, `dbSendQuery()`, `dbExecute()` and `dbSendStatement()`.
 - The `dbColumnInfo()` method is now fully specified (#75).
 - The `dbListFields()` method is now fully specified (#75).
+- The dynamic list of methods in help pages doesn't contain methods in DBI anymore.
 
 ## Bug fixes
 
