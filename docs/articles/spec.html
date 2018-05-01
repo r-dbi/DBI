@@ -29,7 +29,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.8.0.9003</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
       </span>
     </div>
 
@@ -144,16 +144,6 @@ Description
 <p>
 Returns an SQL string that describes the SQL data type to be used for an object. The default implementation of this generic determines the SQL type of an R object according to the SQL 92 specification, which may serve as a starting point for driver implementations. DBI also provides an implementation for data.frame which will return a character vector giving the type for each column in the dataframe.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbDataType(“DBIObject”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -591,16 +581,6 @@ Description
 <p>
 Fetch the next <code>n</code> elements (rows) from the result set and return them as a data.frame.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbFetch(“DBIResult”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1106,16 +1086,6 @@ Description
 <p>
 Returns the result of a query as a data frame. <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbGetQuery(“DBIConnection”, “character”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1243,16 +1213,6 @@ Description
 <p>
 The <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> method only submits and synchronously executes the SQL data manipulation statement (e.g., <code>UPDATE</code>, <code>DELETE</code>, <code>INSERT INTO</code>, <code>DROP TABLE</code>, …) to the database engine. To query the number of affected rows, call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> on the returned result object. You must also call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> after that. For interactive use, you should almost always prefer <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbSendStatement(“DBIConnection”, “character”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1379,16 +1339,6 @@ Description
 <p>
 Executes a statement and returns the number of rows affected. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbExecute(“DBIConnection”, “character”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1505,26 +1455,6 @@ Description
 <p>
 Call this method to generate a string that is suitable for use in a query as a string literal, to make sure that you generate valid SQL and protect against SQL injection attacks.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbQuoteString(“DBIConnection”, “ANY”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbQuoteString(“DBIConnection”, “character”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbQuoteString(“DBIConnection”, “SQL”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1617,31 +1547,6 @@ Description
 <p>
 Call this method to generate a string that is suitable for use in a query as a column or table name, to make sure that you generate valid SQL and protect against SQL injection attacks. The inverse operation is <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “ANY”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “character”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “Id”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbQuoteIdentifier(“DBIConnection”, “SQL”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1729,21 +1634,6 @@ Description
 <p>
 Reads a database table to a data frame, optionally converting a column to row names and converting the column names to valid R identifiers.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbReadTable(“DBIConnection”, “character”)</code>
-</p>
-</li>
-<li>
-<p>
-<code>DBI::dbReadTable(“DBIConnection”, “Id”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -1886,16 +1776,6 @@ Description
 <p>
 Writes, overwrites or appends a data frame to a database table, optionally converting row names to a column and specifying SQL data types for fields.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbWriteTable(“DBIConnection”, “Id”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -2232,16 +2112,6 @@ Description
 <p>
 Returns if a table given by name exists in the database.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbExistsTable(“DBIConnection”, “Id”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -2336,16 +2206,6 @@ Description
 <p>
 Remove a remote table (e.g., created by <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>) from the database.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbRemoveTable(“DBIConnection”, “Id”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
@@ -3078,16 +2938,6 @@ Description
 <p>
 Given that transactions are implemented, this function allows you to pass in code that is run in a transaction. The default method of <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> calls <code><a href="../reference/transactions.html">dbBegin()</a></code> before executing the code, and <code><a href="../reference/transactions.html">dbCommit()</a></code> after successful completion, or <code><a href="../reference/transactions.html">dbRollback()</a></code> in case of an error. The advantage is that you don’t have to remember to do <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code> or <code><a href="../reference/transactions.html">dbRollback()</a></code> – that is all taken care of. The special function <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code> allows an early exit with rollback, it can be called only inside <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>.
 </p>
-<h4>
-Methods in other packages
-</h4>
-<ul>
-<li>
-<p>
-<code>DBI::dbWithTransaction(“DBIConnection”)</code>
-</p>
-</li>
-</ul>
 <h3>
 Arguments
 </h3>
