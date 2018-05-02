@@ -14,7 +14,8 @@
 
 ## Documentation updates
 
-- Update docs on how to cope with stored procedures (#239, @aryoda).
+- The DBI specification vignette is rendered correctly from the installed package (#234).
+- Update docs on how to cope with stored procedures (#242, @aryoda).
 - Add "Additional arguments" sections and more examples for `dbGetQuery()`, `dbSendQuery()`, `dbExecute()` and `dbSendStatement()`.
 - The `dbColumnInfo()` method is now fully specified (#75).
 - The `dbListFields()` method is now fully specified (#75).

@@ -9,8 +9,11 @@ methods_as_rd <- function(method) {
   s4_topic <- function(x) {
     sig <- paste0(x@defined, collapse = ",")
     sig_text <- paste0('"', x@defined, '"', collapse = ", ")
-    package <- getNamespaceName(environment(x@.Data))
-    if (package == "DBI") {
+    package <- tryCatch(
+      getNamespaceName(environment(x@.Data)),
+      error = function(e) NA
+    )
+    if (is.na(package) || package == "DBI") {
       NA_character_
     } else {
       paste0(
