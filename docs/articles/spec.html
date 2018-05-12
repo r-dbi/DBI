@@ -93,7 +93,7 @@
     
         <div class="abstract">
       <p class="abstract">Abstract</p>
-      <p>The DBI package defines the generic DataBase Interface for R. The connection to individual DBMS is provided by other packages that import DBI (so-called <em>DBI backends</em>). This document formalizes the behavior expected by the methods declared in DBI and implemented by the individual backends. To ensure maximum portability and exchangeability, and to reduce the effort for implementing a new DBI backend, the DBItest package defines a comprehensive set of test cases that test conformance to the DBI specification. This document is derived from comments in the test definitions of the DBItest package. Any extensions or updates to the tests will be reflected in this document.</p>
+      The DBI package defines the generic DataBase Interface for R. The connection to individual DBMS is provided by other packages that import DBI (so-called <em>DBI backends</em>). This document formalizes the behavior expected by the methods declared in DBI and implemented by the individual backends. To ensure maximum portability and exchangeability, and to reduce the effort for implementing a new DBI backend, the DBItest package defines a comprehensive set of test cases that test conformance to the DBI specification. This document is derived from comments in the test definitions of the DBItest package. Any extensions or updates to the tests will be reflected in this document.
     </div>
     
 
@@ -213,7 +213,7 @@ Specification
 The backend can override the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> generic for its driver class.
 </p>
 <p>
-This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = “DBI”)</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and blob::blob objects. As-is objects (i.e., wrapped by <code>I()</code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.
+This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = “DBI”)</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code>I()</code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.
 </p>
 <p>
 All data types returned by <code><a href="../reference/dbDataType.html">dbDataType()</a></code> are usable in an SQL statement of the form <code>“CREATE TABLE test (a …)”</code>.
@@ -1039,7 +1039,7 @@ lists of raw for blobs (with <code>NULL</code> entries for SQL NULL values)
 </li>
 <li>
 <p>
-objects of type blob::blob
+objects of type <a href="blob::blob" class="uri">blob::blob</a>
 </p>
 </li>
 </ul>
@@ -1950,7 +1950,7 @@ list of raw (if supported by the database)
 </li>
 <li>
 <p>
-objects of type blob::blob (if supported by the database)
+objects of type <a href="blob::blob" class="uri">blob::blob</a> (if supported by the database)
 </p>
 </li>
 <li>

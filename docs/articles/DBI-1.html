@@ -103,36 +103,36 @@
 <h1 class="hasAnchor">
 <a href="#sec:intro" class="anchor"></a>Introduction</h1>
 <p>The database interface (DBI) separates the connectivity to the DBMS into a “front-end” and a “back-end”. Applications use only the exposed “front-end” API. The facilities that communicate with specific DBMS (Oracle, PostgreSQL, etc.) are provided by “device drivers” that get invoked automatically by the S language evaluator. The following example illustrates some of the DBI capabilities:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## Choose the proper DBMS driver and connect to the server
-
-drv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbDriver.html">dbDriver</a></span>(<span class="st">"ODBC"</span>)
-con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(drv, <span class="st">"dsn"</span>, <span class="st">"usr"</span>, <span class="st">"pwd"</span>)
-
-## The interface can work at a higher level importing tables 
-## as data.frames and exporting data.frames as DBMS tables.
-
-<span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con)
-<span class="kw"><a href="../reference/dbListFields.html">dbListFields</a></span>(con, <span class="st">"quakes"</span>)
-if(<span class="kw"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(con, <span class="st">"new_results"</span>))
-   <span class="kw"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span>(con, <span class="st">"new_results"</span>)
-<span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"new_results"</span>, new.output)
-
-## The interface allows lower-level interface to the DBMS
-res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="kw">paste</span>(
-            <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,
-            <span class="st">"FROM geom_table as g, elec_measures as e"</span>,
-            <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,
-            <span class="st">"ORDER BY g.diam"</span>))
-out &lt;-<span class="st"> </span><span class="ot">NULL</span>
-while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(res)){
-   chunk &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbFetch.html">fetch</a></span>(res, <span class="dt">n =</span> <span class="dv">10000</span>)
-   out &lt;-<span class="st"> </span><span class="kw">c</span>(out, <span class="kw">doit</span>(chunk))
-}
-
-## Free up resources
-<span class="kw"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(res)
-<span class="kw"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(con)
-<span class="kw"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span>(drv)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">## Choose the proper DBMS driver and connect to the server</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">drv &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbDriver.html">dbDriver</a></span>(<span class="st">"ODBC"</span>)</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(drv, <span class="st">"dsn"</span>, <span class="st">"usr"</span>, <span class="st">"pwd"</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">## The interface can work at a higher level importing tables </a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">## as data.frames and exporting data.frames as DBMS tables.</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con)</a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="kw"><a href="../reference/dbListFields.html">dbListFields</a></span>(con, <span class="st">"quakes"</span>)</a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="cf">if</span>(<span class="kw"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(con, <span class="st">"new_results"</span>))</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12">   <span class="kw"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span>(con, <span class="st">"new_results"</span>)</a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"new_results"</span>, new.output)</a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15">## The interface allows lower-level interface to the DBMS</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="kw">paste</span>(</a>
+<a class="sourceLine" id="cb1-17" data-line-number="17">            <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">            <span class="st">"FROM geom_table as g, elec_measures as e"</span>,</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">            <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20">            <span class="st">"ORDER BY g.diam"</span>))</a>
+<a class="sourceLine" id="cb1-21" data-line-number="21">out &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="cf">while</span>(<span class="op">!</span><span class="kw"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(res)){</a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">   chunk &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbFetch.html">fetch</a></span>(res, <span class="dt">n =</span> <span class="dv">10000</span>)</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">   out &lt;-<span class="st"> </span><span class="kw">c</span>(out, <span class="kw">doit</span>(chunk))</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">}</a>
+<a class="sourceLine" id="cb1-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27">## Free up resources</a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="kw"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(res)</a>
+<a class="sourceLine" id="cb1-29" data-line-number="29"><span class="kw"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(con)</a>
+<a class="sourceLine" id="cb1-30" data-line-number="30"><span class="kw"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span>(drv)</a></code></pre></div>
 <p>(only the first 2 expressions are DBMS-specific – all others are independent of the database engine itself).</p>
 <p>Individual DBI drivers need not implement all the features we list below (we indicate those that are optional). Furthermore, drivers may extend the core DBI facilities, but we suggest to have these extensions clearly indicated and documented.</p>
 <p>The following are the elements of the DBI:</p>
@@ -176,7 +176,7 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 <dt>
 <code>DBIObject</code>:</dt>
 <dd>
-<p>Virtual class<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> that groups all other DBI classes.</p>
+<p>Virtual class<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> that groups all other DBI classes.</p>
 </dd>
 <dt>
 <code>DBIDriver</code>:</dt>
@@ -220,15 +220,15 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 </dd>
 </dl>
 <p>In the next few sub-sections we describe in detail each of these classes and their methods.</p>
-<div id="class-dbiobject" class="section level2">
+<div id="sec:DBIObject" class="section level2">
 <h2 class="hasAnchor">
-<a href="#class-dbiobject" class="anchor"></a>Class <code id="sec:DBIObject">DBIObject</code>
+<a href="#sec:DBIObject" class="anchor"></a>Class <code>DBIObject</code>
 </h2>
 <p>This class simply groups all DBI classes, and thus all extend it.</p>
 </div>
-<div id="class-dbidriver" class="section level2">
+<div id="sec:DBIDriver" class="section level2">
 <h2 class="hasAnchor">
-<a href="#class-dbidriver" class="anchor"></a>Class <code id="sec:DBIDriver">DBIDriver</code>
+<a href="#sec:DBIDriver" class="anchor"></a>Class <code>DBIDriver</code>
 </h2>
 <p>This class identifies the database management system. It needs to be extended by individual back-ends (Oracle, PostgreSQL, etc.)</p>
 <p>The DBI provides the generator <code><a href="../reference/dbDriver.html">dbDriver(driverName)</a></code> which simply invokes the function <code>driverName</code>, which in turn instantiates the corresponding driver object.</p>
@@ -285,9 +285,9 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 </dd>
 </dl>
 </div>
-<div id="class-dbiconnection" class="section level2">
+<div id="sec:DBIConnection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#class-dbiconnection" class="anchor"></a>Class <code id="sec:DBIConnection">DBIConnection</code>
+<a href="#sec:DBIConnection" class="anchor"></a>Class <code>DBIConnection</code>
 </h2>
 <p>This virtual class encapsulates the connection to a DBMS, and it provides access to dynamic queries, result sets, DBMS session management (transactions), etc.</p>
 <p><em>Note:</em> Individual drivers are free to implement single or multiple simultaneous connections.</p>
@@ -359,7 +359,7 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 <p>list of <code>DBIResult</code> objects currently active on the connection <code>conn</code>. May be <code>NULL</code> if no result set is active on <code>conn</code>. Drivers that implement only one result set per connection could return that one object (no need to wrap it in a list).</p>
 </dd>
 </dl>
-<p><em>Note: The following are convenience methods that simplify the import/export of (mainly) data.frames. The first five methods implement the core methods needed to <code>attach</code> remote DBMS to the S search path. (For details, see <span class="citation">Chambers (1991; Chambers 1998)</span>.)</em></p>
+<p><em>Note: The following are convenience methods that simplify the import/export of (mainly) data.frames. The first five methods implement the core methods needed to <code>attach</code> remote DBMS to the S search path. (For details, see <span class="citation">Chambers (1991, 1998)</span>.)</em></p>
 <p><em>Hint:</em> For relational DBMS these methods may be easily implemented using the core DBI methods <code>dbConnect</code>, <code>dbSendQuery</code>, and <code>fetch</code>, due to SQL reflectance (i.e., one easily gets this meta-data by querying the appropriate tables on the RDBMS).</p>
 <dl>
 <dt>
@@ -422,9 +422,9 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 </dd>
 </dl>
 </div>
-<div id="class-dbiresult" class="section level2">
+<div id="sec:DBIResult" class="section level2">
 <h2 class="hasAnchor">
-<a href="#class-dbiresult" class="anchor"></a>Class <code id="sec:DBIResult">DBIResult</code>
+<a href="#sec:DBIResult" class="anchor"></a>Class <code>DBIResult</code>
 </h2>
 <p>This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query). The result set <code>res</code> keeps track of whether the statement produces output for R/S, how many rows were affected by the operation, how many rows have been fetched (if statement is a query), whether there are more rows to fetch, etc.</p>
 <p><em>Note: Individual drivers are free to allow single or multiple active results per connection.</em></p>
@@ -544,7 +544,7 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 <h1 class="hasAnchor">
 <a href="#sec:data-mappings" class="anchor"></a>Data Type Mappings</h1>
 <p>The data types supported by databases are different than the data types in R and S, but the mapping between the “primitive” types is straightforward: Any of the many fixed and varying length character types are mapped to R/S <code>character</code>. Fixed-precision (non-IEEE) numbers are mapped into either doubles (<code>numeric</code>) or long (<code>integer</code>). Notice that many DBMS do not follow the so-called IEEE arithmetic, so there are potential problems with under/overflows and loss of precision, but given the R/S primitive types we cannot do too much but identify these situations and warn the application (how?).</p>
-<p>By default dates and date-time objects are mapped to character using the appropriate <code>TO_CHAR</code> function in the DBMS (which should take care of any locale information). Some RDBMS support the type <code>CURRENCY</code> or <code>MONEY</code> which should be mapped to <code>numeric</code> (again with potential round off errors). Large objects (character, binary, file, etc.) also need to be mapped. User-defined functions may be specified to do the actual conversion (as has been done in other inter-systems packages<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>).</p>
+<p>By default dates and date-time objects are mapped to character using the appropriate <code>TO_CHAR</code> function in the DBMS (which should take care of any locale information). Some RDBMS support the type <code>CURRENCY</code> or <code>MONEY</code> which should be mapped to <code>numeric</code> (again with potential round off errors). Large objects (character, binary, file, etc.) also need to be mapped. User-defined functions may be specified to do the actual conversion (as has been done in other inter-systems packages<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>).</p>
 <p>Specifying user-defined conversion functions still needs to be defined.</p>
 </div>
 <div id="sec:utilities" class="section level1">
@@ -645,8 +645,8 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A virtual class allows us to group classes that share some common characteristics, even if their implementations are radically different.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data conversion code found in R-Java, R-Perl, and R-Python packages to the DBI<a href="#fnref2">↩</a></p></li>
+<li id="fn1"><p>A virtual class allows us to group classes that share some common characteristics, even if their implementations are radically different.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data conversion code found in R-Java, R-Perl, and R-Python packages to the DBI<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
   </div>
@@ -660,10 +660,10 @@ while(!<span class="kw"><a href="../reference/dbHasCompleted.html">dbHasComplete
       <li><a href="#sec:intro">Introduction</a></li>
       <li>
 <a href="#sec:DBIClasses">DBI Classes and Methods</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#class-dbiobject">Class <code id="sec:DBIObject">DBIObject</code></a></li>
-      <li><a href="#class-dbidriver">Class <code id="sec:DBIDriver">DBIDriver</code></a></li>
-      <li><a href="#class-dbiconnection">Class <code id="sec:DBIConnection">DBIConnection</code></a></li>
-      <li><a href="#class-dbiresult">Class <code id="sec:DBIResult">DBIResult</code></a></li>
+<li><a href="#sec:DBIObject">Class <code>DBIObject</code></a></li>
+      <li><a href="#sec:DBIDriver">Class <code>DBIDriver</code></a></li>
+      <li><a href="#sec:DBIConnection">Class <code>DBIConnection</code></a></li>
+      <li><a href="#sec:DBIResult">Class <code>DBIResult</code></a></li>
       </ul>
 </li>
       <li><a href="#sec:data-mappings">Data Type Mappings</a></li>
