@@ -1,3 +1,4 @@
+^\.github$
 R\/\.RData$
 R\/\.Rhistory$
 R\/Makefile$
@@ -27,3 +28,4 @@ inst\/doc\/DBI\.b..$
 ^API$
 ^docs$
 ^man-roxygen$
+^CRAN-RELEASE$
