@@ -43,6 +43,7 @@ also raise an error.
 \description{
 Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
+New code should prefer \code{\link[=dbCreateTable]{dbCreateTable()}} and \code{\link[=dbAppendTable]{dbAppendTable()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
 }

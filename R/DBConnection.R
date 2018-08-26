@@ -572,6 +572,7 @@ setMethod("dbReadTable", signature("DBIConnection", "Id"),
 #'
 #' Writes, overwrites or appends a data frame to a database table, optionally
 #' converting row names to a column and specifying SQL data types for fields.
+#' New code should prefer [dbCreateTable()] and [dbAppendTable()].
 #'
 #' @template methods
 #' @templateVar method_name dbWriteTable
