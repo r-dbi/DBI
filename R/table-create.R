@@ -99,6 +99,7 @@ setGeneric("dbCreateTable",
 setMethod("dbCreateTable", signature("DBIConnection"),
   function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
     stopifnot(is.null(row.names))
+    stopifnot(is.logical(temporary), length(temporary) == 1L)
 
     query <- sqlCreateTable(
       con = conn,
