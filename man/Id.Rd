@@ -17,4 +17,21 @@ For more on these concepts, see
 \description{
 Objects of class \code{Id} have a single slot \code{name}, which is a named
 character vector.
+The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
+Support for \code{Id} objects depends on the database backend.
+They can be used in the following methods as \code{name} argument:
+\itemize{
+\item \code{\link[=dbCreateTable]{dbCreateTable()}}
+\item \code{\link[=dbAppendTable]{dbAppendTable()}}
+\item \code{\link[=dbReadTable]{dbReadTable()}}
+\item \code{\link[=dbWriteTable]{dbWriteTable()}}
+\item \code{\link[=dbExistsTable]{dbExistsTable()}}
+\item \code{\link[=dbRemoveTable]{dbRemoveTable()}}
+Objects of this class are also returned from \code{\link[=dbListObjects]{dbListObjects()}}.
+}
+}
+\examples{
+Id(schema = "dbo", table = "Customer")
+dbQuoteIdentifier(ANSI(), Id(schema = "nycflights13", table = "flights"))
+Id(cluster = "mycluster", catalog = "mycatalog", schema = "myschema", table = "mytable")
 }

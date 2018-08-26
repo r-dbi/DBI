@@ -8,12 +8,26 @@ setClass("Id", slots = list(name = "character"))
 #'
 #' Objects of class `Id` have a single slot `name`, which is a named
 #' character vector.
+#' The [dbQuoteIdentifier()] method converts `Id` objects to strings.
+#' Support for `Id` objects depends on the database backend.
+#' They can be used in the following methods as `name` argument:
+#' - [dbCreateTable()]
+#' - [dbAppendTable()]
+#' - [dbReadTable()]
+#' - [dbWriteTable()]
+#' - [dbExistsTable()]
+#' - [dbRemoveTable()]
+#' Objects of this class are also returned from [dbListObjects()].
 #'
 #' @param ... Components of the hierarchy, e.g. `schema`, `table`,
 #'   or `cluster`, `catalog`, `schema`, `table`.
 #'   For more on these concepts, see
 #'   \url{http://stackoverflow.com/questions/7022755/}
 #' @export
+#' @examples
+#' Id(schema = "dbo", table = "Customer")
+#' dbQuoteIdentifier(ANSI(), Id(schema = "nycflights13", table = "flights"))
+#' Id(cluster = "mycluster", catalog = "mycatalog", schema = "myschema", table = "mytable")
 Id <- function(...) {
   components <- c(...)
   if (is.null(names(components)) || any(names(components) == "")) {
