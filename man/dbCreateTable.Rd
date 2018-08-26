@@ -4,7 +4,8 @@
 \alias{dbCreateTable}
 \title{Create a table in the database}
 \usage{
-dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
+dbCreateTable(conn, name, fields, ..., row.names = NULL,
+  temporary = FALSE)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by

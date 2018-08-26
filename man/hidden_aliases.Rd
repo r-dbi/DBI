@@ -68,7 +68,8 @@
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
-\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
+\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...,
+  n = -1L)
 
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
@@ -100,7 +101,8 @@
 \S4method{sqlData}{DBIConnection}(con, value, row.names = NA, ...)
 
 \S4method{make.db.names}{DBIObject,character}(dbObj, snames,
-  keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE, ...)
+  keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE,
+  ...)
 
 \S4method{isSQLKeyword}{DBIObject,character}(dbObj, name,
   keywords = .SQL92Keywords, case = c("lower", "upper", "any")[3], ...)
@@ -133,14 +135,14 @@
 
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
-\S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA,
-  temporary = FALSE, ...)
+\S4method{sqlCreateTable}{DBIConnection}(con, table, fields,
+  row.names = NA, temporary = FALSE, ...)
 
 \S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ...,
   row.names = NULL, temporary = FALSE)
 
-\S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA,
-  ...)
+\S4method{sqlAppendTable}{DBIConnection}(con, table, values,
+  row.names = NA, ...)
 
 \S4method{dbAppendTable}{DBIConnection}(conn, name, value, ...,
   row.names = NULL)

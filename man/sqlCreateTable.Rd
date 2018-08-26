@@ -4,7 +4,8 @@
 \alias{sqlCreateTable}
 \title{Compose query to create a simple table}
 \usage{
-sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
+sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE,
+  ...)
 }
 \arguments{
 \item{con}{A database connection.}
