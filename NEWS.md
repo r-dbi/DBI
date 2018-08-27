@@ -1,3 +1,9 @@
+# DBI 1.0.0.9000
+
+- Improve documentation for `Id`.
+- Avoid partial arg match in `dbWriteTable()` (#246, @richfitz).
+
+
 # DBI 1.0.0 (2018-05-02)
 
 ## New generics
