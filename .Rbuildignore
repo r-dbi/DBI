@@ -1,3 +1,4 @@
+^codecov\.yml$
 ^\.github$
 R\/\.RData$
 R\/\.Rhistory$
