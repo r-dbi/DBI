@@ -27,7 +27,7 @@ Suggests:
     testthat,
     xml2
 Encoding: UTF-8
-License: LGPL (>= 2)
+License: LGPL (>= 2.1)
 URL: http://r-dbi.github.io/DBI
 URLNote: https://github.com/r-dbi/DBI
 BugReports: https://github.com/r-dbi/DBI/issues
