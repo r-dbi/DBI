@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -39,11 +41,12 @@ This helps ensuring consistency of write operations to multiple tables.
 Methods in other packages" />
 
 <meta property="og:description" content="
-RSQLite::dbBegin("SQLiteConnection")
-RSQLite::dbCommit("SQLiteConnection")
-RSQLite::dbRollback("SQLiteConnection")
+RSQLite::dbBegin(&quot;SQLiteConnection&quot;)
+RSQLite::dbCommit(&quot;SQLiteConnection&quot;)
+RSQLite::dbRollback(&quot;SQLiteConnection&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -70,7 +73,7 @@ RSQLite::dbRollback("SQLiteConnection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -168,55 +171,11 @@ This helps ensuring consistency of write operations to multiple tables.</p>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.
-The implementations are expected to raise an error in case of failure,
-but this is not tested.
-In any way, all generics throw an error with a closed
-or invalid connection.
-In addition, a call to <code>dbCommit()</code>
-or <code>dbRollback()</code>
-without a prior call to <code>dbBegin()</code> raises an error.
-Nested transactions are not supported by DBI,
-an attempt to call <code>dbBegin()</code> twice
-yields an error.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
 <a href='DBIConnection-class.html'>DBIConnection</a> subclass.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>Actual support for transactions may vary between backends.
-A transaction is initiated by a call to <code>dbBegin()</code>
-and committed by a call to <code>dbCommit()</code>.
-Data written in a transaction must persist after the transaction is committed.
-For example, a record that is missing when the transaction is started
-but is created during the transaction
-must exist
-both during
-and after the transaction,
-and also in a new connection.</p>
-<p>A transaction
-can also be aborted with <code>dbRollback()</code>.
-All data written in such a transaction must be removed after the
-transaction is rolled back.
-For example, a record that is missing when the transaction is started
-but is created during the transaction
-must not exist anymore after the rollback.</p>
-<p>Disconnection from a connection with an open transaction
-effectively rolls back the transaction.
-All data written in such a transaction must be removed after the
-transaction is rolled back.</p>
-<p>The behavior is not specified if other arguments are passed to these
-functions. In particular, <span class="pkg">RSQLite</span> issues named transactions
-with support for nesting
-if the <code>name</code> argument is set.</p>
-<p>The transaction isolation level is not specified by DBI.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -256,11 +215,7 @@ if the <code>name</code> argument is set.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

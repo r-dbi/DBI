@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -37,10 +39,11 @@ operation is dbUnquoteIdentifier().
 Methods in other packages" />
 
 <meta property="og:description" content="
-RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
-RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
+RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;character&quot;)
+RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -67,7 +70,7 @@ RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -162,44 +165,6 @@ an active connection to an DBMS.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to character,
-of the same length as the input.
-For an empty character vector this function returns a length-0 object.
-The names of the input argument are preserved in the output.
-When passing the returned object again to <code>dbQuoteIdentifier()</code>
-as <code>x</code>
-argument, it is returned unchanged.
-Passing objects of class <a href='SQL.html'>SQL</a> should also return them unchanged.
-(For backends it may be most convenient to return <a href='SQL.html'>SQL</a> objects
-to achieve this behavior, but this is not required.)</p>
-<p>An error is raised if the input contains <code>NA</code>,
-but not for an empty string.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>Calling <code><a href='dbGetQuery.html'>dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
-returns a data frame with the identifier, unquoted, as column name.
-Quoted identifiers can be used as table and column names in SQL queries,
-in particular in queries like <code>SELECT 1 AS ...</code>
-and <code>SELECT * FROM (SELECT 1) ...</code>.
-The method must use a quoting mechanism that is unambiguously different
-from the quoting mechanism used for strings, so that a query like
-<code>SELECT ... FROM (SELECT 1 AS ...)</code>
-throws an error if the column names do not match.</p>
-<p>The method can quote column names that
-contain special characters such as a space,
-a dot,
-a comma,
-or quotes used to mark strings
-or identifiers,
-if the database supports this.
-In any case, checking the validity of the identifier
-should be performed only when executing a query,
-and not by <code>dbQuoteIdentifier()</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -230,10 +195,6 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

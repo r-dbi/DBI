@@ -8,8 +8,8 @@
 <title>R Database Interface • DBI</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="R Database Interface">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="pkgdown.js"></script><meta property="og:title" content="R Database Interface">
 <meta property="og:description" content="A database interface definition for communication
     between R and relational database management systems.  All
     classes in this package are virtual and need to be extended by
@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -152,6 +152,8 @@
 <p>Within the R community, there were quite a number of people that showed interest on defining a common interface to databases, but only a few folks actually provided code/suggestions/etc. (Tim Keitt was most active with the dbi/PostgreSQL packages — he also was considering what he called “proxy” objects, which was reminiscent of what Duncan had been doing). Kurt Hornick, Vincent Carey, Robert Gentleman, and others provided suggestions/comments/support for the DBI definition. By around 2003, the DBI was more or less implemented as it is today.</p>
 <p>I’m sure I’ll forget some (most should be in the THANKS sections of the various packages), but the names that come to my mind at this moment are Jake Luciani (ROracle), Don MacQueen and other early ROracle users (super helpful), Doug Bates and his student Saikat DebRoy for RMySQL, Fei Chen (at the time a student of Prof. Ripley) also contributed to RMySQL, Tim Keitt (working on an early S3 interface to PostgrSQL), Torsten Hothorn (worked with mSQL and also MySQL), Prof. Ripley working/extending the RODBC package, in addition to John Chambers and Duncan Temple-Lang who provided very important comments and suggestions.</p>
 <p>Actually, the real impetus behind the DBI was always to do distributed statistical computing — <em>not</em> to provide a yet-another import/export mechanism — and this perspective was driven by John and Duncan’s vision and work on inter-system computing, COM, CORBA, etc. I’m not sure many of us really appreciated (even now) the full extent of those ideas and concepts. Just like in other languages (C’s ODBC, Java’s JDBC, Perl’s DBI/DBD, Python dbapi), R/S DBI was meant to unify the interfacing to RDBMS so that R/S applications could be developed on top of the DBI and not be hard coded to any one relation database. The interface I tried to follow the closest was the Python’s DBAPI — I haven’t worked on this topic for a while, but I still feel Python’s DBAPI is the cleanest and most relevant for the S language.</p>
+<hr>
+<p>Please note that the DBI project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -169,7 +171,8 @@
 <div class="license">
 <h2>License</h2>
 <ul class="list-unstyled">
-<li>LGPL (&gt;= 2)</li>
+<li><a href="LICENSE.html">Full license</a></li>
+<li><small>LGPL (&gt;= 2.1)</small></li>
 </ul>
 </div>
 <div class="developers">

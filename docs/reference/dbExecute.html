@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -37,6 +39,7 @@ dbSendStatement(), then dbGetRowsAffected(), ensuring that
 the result is always free-d by dbClearResult().
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -63,7 +66,7 @@ the result is always free-d by dbClearResult().
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -154,18 +157,6 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbExecute()</code> always returns a
-scalar
-numeric
-that specifies the number of rows affected
-by the statement.
-An error is raised when issuing a statement over a closed
-or invalid connection,
-if the syntax of the statement is invalid,
-or if the statement is not a non-<code>NA</code> string.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>You can also use <code>dbExecute()</code> to call a stored procedure
@@ -177,22 +168,6 @@ To execute a stored procedure that returns a result set use <code><a href='dbGet
     
     <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
-    
-    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
-
-    
-    <p>The following argument is not part of the <code>dbExecute()</code> generic
-(to improve compatibility across backends)
-but is part of the DBI specification:</p><ul>
-<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
-</ul>
-    <p>It must be provided as named arguments.
-See the "Specification" sections for details on its usage.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -250,15 +225,9 @@ See the "Specification" sections for details on its usage.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
 
       <li><a href="#implementation-notes">Implementation notes</a></li>
-
-      <li><a href="#additional-arguments">Additional arguments</a></li>
-
-      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

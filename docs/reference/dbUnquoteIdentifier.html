@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,9 +37,10 @@ back to a list of Id objects.
 Methods in other packages" />
 
 <meta property="og:description" content="
-RSQLite::dbUnquoteIdentifier("SQLiteConnection", "SQL")
+RSQLite::dbUnquoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -64,7 +67,7 @@ RSQLite::dbUnquoteIdentifier("SQLiteConnection", "SQL")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -156,36 +159,6 @@ an active connection to an DBMS.</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbUnquoteIdentifier()</code> returns a list of objects
-of the same length as the input.
-For an empty character vector this function returns a length-0 object.
-The names of the input argument are preserved in the output.
-When passing the first element of a returned object again to
-<code>dbUnquoteIdentifier()</code> as <code>x</code>
-argument, it is returned unchanged (but wrapped in a list).
-Passing objects of class <a href='Id.html'>Id</a> should also return them unchanged (but wrapped in a list).
-(For backends it may be most convenient to return <a href='Id.html'>Id</a> objects
-to achieve this behavior, but this is not required.)</p>
-<p>An error is raised if plain character vectors are passed as the <code>x</code>
-argument.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>For any character vector of length one, quoting (with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>)
-then unquoting then quoting the first element is identical to just quoting.
-This is also true for strings that
-contain special characters such as a space,
-a dot,
-a comma,
-or quotes used to mark strings
-or identifiers,
-if the database supports this.</p>
-<p>Unquoting simple strings (consisting of only letters) wrapped with <code><a href='SQL.html'>SQL()</a></code>
-and then quoting gives the same result as just quoting.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -235,10 +208,6 @@ and then quoting gives the same result as just quoting.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

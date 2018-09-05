@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,11 +37,12 @@ been disconnected or cleared).
 Methods in other packages" />
 
 <meta property="og:description" content="
-RSQLite::dbIsValid("SQLiteConnection")
-RSQLite::dbIsValid("SQLiteDriver")
-RSQLite::dbIsValid("SQLiteResult")
+RSQLite::dbIsValid(&quot;SQLiteConnection&quot;)
+RSQLite::dbIsValid(&quot;SQLiteDriver&quot;)
+RSQLite::dbIsValid(&quot;SQLiteResult&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -66,7 +69,7 @@ RSQLite::dbIsValid("SQLiteResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -157,25 +160,6 @@ or a <a href='DBIResult-class.html'>DBIResult</a></p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbIsValid()</code> returns a logical scalar,
-<code>TRUE</code> if the object specified by <code>dbObj</code> is valid,
-<code>FALSE</code> otherwise.
-A <a href='DBIConnection-class.html'>DBIConnection</a> object is initially valid,
-and becomes invalid after disconnecting with <code><a href='dbDisconnect.html'>dbDisconnect()</a></code>.
-For an invalid connection object (e.g., for some drivers if the object
-is saved to a file and then restored), the method also returns <code>FALSE</code>.
-A <a href='DBIResult-class.html'>DBIResult</a> object is valid after a call to <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>,
-and stays valid even after all rows have been fetched;
-only clearing it with <code><a href='dbClearResult.html'>dbClearResult()</a></code> invalidates it.
-A <a href='DBIResult-class.html'>DBIResult</a> object is also valid after a call to <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>,
-and stays valid after querying the number of rows affected;
-only clearing it with <code><a href='dbClearResult.html'>dbClearResult()</a></code> invalidates it.
-If the connection to the database system is dropped (e.g., due to
-connectivity problems, server failure, etc.), <code>dbIsValid()</code> should return
-<code>FALSE</code>. This is not tested automatically.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
@@ -223,8 +207,6 @@ connectivity problems, server failure, etc.), <code>dbIsValid()</code> should re
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

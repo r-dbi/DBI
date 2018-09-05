@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -39,9 +41,10 @@ before calling dbFetch() or dbGetRowsAffected().
 Methods in other packages" />
 
 <meta property="og:description" content="
-RSQLite::dbBind("SQLiteResult")
+RSQLite::dbBind(&quot;SQLiteResult&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -68,7 +71,7 @@ RSQLite::dbBind("SQLiteResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -163,32 +166,6 @@ before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a hre
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbBind()</code> returns the result set,
-invisibly,
-for queries issued by <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>
-and also for data manipulation statements issued by
-<code><a href='dbSendStatement.html'>dbSendStatement()</a></code>.
-Calling <code>dbBind()</code> for a query without parameters
-raises an error.
-Binding too many
-or not enough values,
-or parameters with wrong names
-or unequal length,
-also raises an error.
-If the placeholders in the query are named,
-all parameter values must have names
-(which must not be empty
-or <code>NA</code>),
-and vice versa,
-otherwise an error is raised.
-The behavior for mixing placeholders of different types
-(in particular mixing positional and named placeholders)
-is not specified.</p>
-<p>Calling <code>dbBind()</code> on a result set already cleared by <code><a href='dbClearResult.html'>dbClearResult()</a></code>
-also raises an error.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><span class="pkg">DBI</span> supports parametrized (or prepared) queries and statements
@@ -212,77 +189,6 @@ Known examples are:</p><ul>
 <li><p><code>?</code> (positional matching in order of appearance) in <span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>:name</code> and <code>$name</code> (named matching) in <span class="pkg">RSQLite</span></p></li>
-</ul>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol>
-<li><p>Call <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> with a query or statement
-that contains placeholders,
-store the returned <a href='DBIResult-class.html'>DBIResult</a> object in a variable.
-Mixing placeholders (in particular, named and unnamed ones) is not
-recommended.
-It is good practice to register a call to <code><a href='dbClearResult.html'>dbClearResult()</a></code> via
-<code>on.exit()</code> right after calling <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>
-(see the last enumeration item).
-Until <code>dbBind()</code> has been called, the returned result set object has the
-following behavior:</p><ul>
-<li><p><code><a href='dbFetch.html'>dbFetch()</a></code> raises an error (for <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>)</p></li>
-<li><p><code><a href='dbGetRowCount.html'>dbGetRowCount()</a></code> returns zero (for <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>)</p></li>
-<li><p><code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code> returns an integer <code>NA</code> (for <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>)</p></li>
-<li><p><code><a href='dbIsValid.html'>dbIsValid()</a></code> returns <code>TRUE</code></p></li>
-<li><p><code><a href='dbHasCompleted.html'>dbHasCompleted()</a></code> returns <code>FALSE</code></p></li>
-</ul></li>
-<li><p>Construct a list with parameters
-that specify actual values for the placeholders.
-The list must be named or unnamed,
-depending on the kind of placeholders used.
-Named values are matched to named parameters, unnamed values
-are matched by position in the list of parameters.
-All elements in this list must have the same lengths and contain values
-supported by the backend; a data.frame is internally stored as such
-a list.
-The parameter list is passed to a call to <code>dbBind()</code> on the <code>DBIResult</code>
-object.</p></li>
-<li><p>Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.</p><ul>
-<li><p>For queries issued by <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>,
-call <code><a href='dbFetch.html'>dbFetch()</a></code>.</p></li>
-<li><p>For statements issued by <code>dbSendStatements()</code>,
-call <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>.
-(Execution begins immediately after the <code>dbBind()</code> call,
-the statement is processed entirely before the function returns.)</p></li>
-</ul></li>
-<li><p>Repeat 2. and 3. as necessary.</p></li>
-<li><p>Close the result set via <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p></li>
-</ol>
-    <p>The elements of the <code>params</code> argument do not need to be scalars,
-vectors of arbitrary length
-(including length 0)
-are supported.
-For queries, calling <code><a href='dbFetch.html'>dbFetch()</a></code> binding such parameters returns
-concatenated results, equivalent to binding and fetching for each set
-of values and connecting via <code>rbind()</code>.
-For data manipulation statements, <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code> returns the
-total number of rows affected if binding non-scalar parameters.
-<code>dbBind()</code> also accepts repeated calls on the same result set
-for both queries
-and data manipulation statements,
-even if no results are fetched between calls to <code>dbBind()</code>.</p>
-<p>If the placeholders in the query are named,
-their order in the <code>params</code> argument is not important.</p>
-<p>At least the following data types are accepted on input (including NA):</p><ul>
-<li><p>integer</p></li>
-<li><p>numeric</p></li>
-<li><p>logical for Boolean values</p></li>
-<li><p>character</p></li>
-<li><p>factor (bound as character,
-with warning)</p></li>
-<li><p>Date</p></li>
-<li><p>POSIXct timestamps</p></li>
-<li><p>POSIXlt timestamps</p></li>
-<li><p>lists of raw for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
-<li><p>objects of type <a href='http://www.rdocumentation.org/packages/blob/topics/blob'>blob::blob</a></p></li>
 </ul>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -331,11 +237,7 @@ with warning)</p></li>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
-      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

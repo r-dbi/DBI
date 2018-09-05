@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -35,6 +37,7 @@ should have as many rows as there are output fields in the result set, and
 each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -61,7 +64,7 @@ field (field name, type, etc.)" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -145,33 +148,6 @@ field (field name, type, etc.)</p>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>dbColumnInfo()</code>
-returns a data frame
-with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
-(and optional columns that start with a dot).
-The <code>"name"</code> and <code>"type"</code> columns contain the names and types
-of the R columns of the data frame that is returned from <code><a href='dbFetch.html'>dbFetch()</a></code>.
-The <code>"type"</code> column is of type <code>character</code> and only for information.
-Do not compute on the <code>"type"</code> column, instead use <code><a href='dbFetch.html'>dbFetch(res, n = 0)</a></code>
-to create a zero-row data frame initialized with the correct data types.</p>
-<p>An attempt to query columns for a closed result set raises an error.</p>
-    
-    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
-
-    
-    <p>A column named <code>row_names</code> is treated like any other column.</p>
-<p>The column names are always consistent
-with the data returned by <code><a href='dbFetch.html'>dbFetch()</a></code>.
-If the query returns unnamed columns,
-unique
-non-empty and non-<code>NA</code> names are assigned.
-In the case of a duplicate column name, the first occurrence
-retains the original name, and unique names are assigned for
-the other occurrences.
-Column names that correspond to SQL or R keywords are left unchanged.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -203,10 +179,6 @@ Column names that correspond to SQL or R keywords are left unchanged.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
-
-      <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

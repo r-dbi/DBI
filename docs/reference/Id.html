@@ -21,9 +21,11 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
+<!-- sticky kit -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
-<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 
@@ -31,8 +33,20 @@
 <meta property="og:title" content="Refer to a table nested in a hierarchy (e.g. within a schema) — Id-class" />
 
 <meta property="og:description" content="Objects of class Id have a single slot name, which is a named
-character vector." />
+character vector.
+The dbQuoteIdentifier() method converts Id objects to strings.
+Support for Id objects depends on the database backend.
+They can be used in the following methods as name argument:
+dbCreateTable()
+dbAppendTable()
+dbReadTable()
+dbWriteTable()
+dbExistsTable()
+dbRemoveTable()
+Objects of this class are also returned from dbListObjects().
+" />
 <meta name="twitter:card" content="summary" />
+
 
 
 <!-- mathjax -->
@@ -59,7 +73,7 @@ character vector." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">1.0.0.9000</span>
       </span>
     </div>
 
@@ -122,7 +136,18 @@ character vector." />
     <div class="ref-description">
     
     <p>Objects of class <code>Id</code> have a single slot <code>name</code>, which is a named
-character vector.</p>
+character vector.
+The <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code> method converts <code>Id</code> objects to strings.
+Support for <code>Id</code> objects depends on the database backend.
+They can be used in the following methods as <code>name</code> argument:</p><ul>
+<li><p><code><a href='dbCreateTable.html'>dbCreateTable()</a></code></p></li>
+<li><p><code><a href='dbAppendTable.html'>dbAppendTable()</a></code></p></li>
+<li><p><code><a href='dbReadTable.html'>dbReadTable()</a></code></p></li>
+<li><p><code><a href='dbWriteTable.html'>dbWriteTable()</a></code></p></li>
+<li><p><code><a href='dbExistsTable.html'>dbExistsTable()</a></code></p></li>
+<li><p><code><a href='dbRemoveTable.html'>dbRemoveTable()</a></code>
+Objects of this class are also returned from <code><a href='dbListObjects.html'>dbListObjects()</a></code>.</p></li>
+</ul>
     
     </div>
 
@@ -141,12 +166,16 @@ For more on these concepts, see
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>Id</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"dbo"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Customer"</span>)</div><div class='output co'>#&gt; &lt;Id&gt; schema = dbo, table = Customer</div><div class='input'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'>Id</span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"nycflights13"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"flights"</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; "nycflights13"."flights"</div><div class='input'><span class='fu'>Id</span>(<span class='kw'>cluster</span> <span class='kw'>=</span> <span class='st'>"mycluster"</span>, <span class='kw'>catalog</span> <span class='kw'>=</span> <span class='st'>"mycatalog"</span>, <span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"myschema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"mytable"</span>)</div><div class='output co'>#&gt; &lt;Id&gt; cluster = mycluster, catalog = mycatalog, schema = myschema, table = mytable</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
