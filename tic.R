@@ -2,7 +2,7 @@ add_package_checks()
 
 if (Sys.getenv("BUILD_PKGDOWN") != "" && !ci()$is_tag()) {
   get_stage("deploy") %>%
-    add_code_step(prepare_call = remotes::install_github("r-lib/pkgapi")) %>%
+    add_code_step(prepare_call = remotes::install_github(c("r-lib/pkgdown", "r-lib/pkgapi"))) %>%
     add_step(step_build_pkgdown())
 
   if (Sys.getenv("id_rsa") != "") {
