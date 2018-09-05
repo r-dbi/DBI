@@ -154,6 +154,27 @@ for this result set.</p>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbGetRowCount()</code> returns a scalar number (integer or numeric),
+the number of rows fetched so far.
+After calling <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>,
+the row count is initially zero.
+After a call to <code><a href='dbFetch.html'>dbFetch()</a></code> without limit,
+the row count matches the total number of rows returned.
+Fetching a limited number of rows
+increases the number of rows by the number of rows returned,
+even if fetching past the end of the result set.
+For queries with an empty result set,
+zero is returned
+even after fetching.
+For data manipulation statements issued with
+<code><a href='dbSendStatement.html'>dbSendStatement()</a></code>,
+zero is returned before
+and after calling <code><a href='dbFetch.html'>dbFetch()</a></code>.
+Attempting to get the row count for a result set cleared with
+<code><a href='dbClearResult.html'>dbClearResult()</a></code> gives an error.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -185,6 +206,8 @@ for this result set.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

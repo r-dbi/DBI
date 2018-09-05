@@ -167,6 +167,18 @@ records you need. For interactive use, you should almost always prefer
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbSendQuery()</code> returns
+an S4 object that inherits from <a href='DBIResult-class.html'>DBIResult</a>.
+The result set can be used with <code><a href='dbFetch.html'>dbFetch()</a></code> to extract records.
+Once you have finished using a result, make sure to clear it
+with <code><a href='dbClearResult.html'>dbClearResult()</a></code>.
+An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-<code>NA</code> string.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This method is for <code>SELECT</code> queries only.  Some backends may
@@ -179,6 +191,32 @@ is driver-specific: some drivers may choose to leave the output on the server
 and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' <code>dbSendQuery()</code> documentation for details.</p>
+    
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>The following argument is not part of the <code>dbSendQuery()</code> generic
+(to improve compatibility across backends)
+but is part of the DBI specification:</p><ul>
+<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+</ul>
+    <p>It must be provided as named arguments.
+See the "Specification" sections for details on its usage.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>No warnings occur under normal conditions.
+When done, the DBIResult object must be cleared with a call to
+<code><a href='dbClearResult.html'>dbClearResult()</a></code>.
+Failure to clear the result set leads to a warning
+when the connection is closed.</p>
+<p>If the backend supports only one open result set per connection,
+issuing a second query invalidates an already open result set
+and raises a warning.
+The newly opened result set is valid
+and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -267,7 +305,13 @@ drivers' <code>dbSendQuery()</code> documentation for details.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
+
+      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

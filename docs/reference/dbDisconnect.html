@@ -155,6 +155,20 @@ resources (e.g., memory, sockets).</p>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>A warning is issued on garbage collection when a connection has been
+released without calling <code>dbDisconnect()</code>,
+but this cannot be tested automatically.
+A warning is issued immediately when calling <code>dbDisconnect()</code> on an
+already disconnected
+or invalid connection.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
@@ -179,6 +193,10 @@ resources (e.g., memory, sockets).</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

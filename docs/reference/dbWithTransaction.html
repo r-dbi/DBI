@@ -171,10 +171,33 @@ it can be called only inside <code>dbWithTransaction()</code>.</p>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbWithTransaction()</code> returns the value of the executed code.
+Failure to initiate the transaction
+(e.g., if the connection is closed
+or invalid
+of if <code><a href='transactions.html'>dbBegin()</a></code> has been called already)
+gives an error.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>DBI implements <code>dbWithTransaction()</code>, backends should need to override this
 generic only if they implement specialized handling.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p><code>dbWithTransaction()</code> initiates a transaction with <code><a href='transactions.html'>dbBegin()</a></code>, executes
+the code given in the <code>code</code> argument, and commits the transaction with
+<code><a href='transactions.html'>dbCommit()</a></code>.
+If the code raises an error, the transaction is instead aborted with
+<code><a href='transactions.html'>dbRollback()</a></code>, and the error is propagated.
+If the code calls <code>dbBreak()</code>, execution of the code stops and the
+transaction is silently aborted.
+All side effects caused by the code
+(such as the creation of new variables)
+propagate to the calling environment.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -222,7 +245,11 @@ generic only if they implement specialized handling.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
+
+      <li><a href="#specification">Specification</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

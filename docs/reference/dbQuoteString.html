@@ -153,6 +153,47 @@ an active connection to an DBMS.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbQuoteString()</code> returns an object that can be coerced to character,
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.</p>
+<p>When passing the returned object again to <code>dbQuoteString()</code>
+as <code>x</code>
+argument, it is returned unchanged.
+Passing objects of class <a href='SQL.html'>SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href='SQL.html'>SQL</a> objects
+to achieve this behavior, but this is not required.)</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>The returned expression can be used in a <code>SELECT ...</code> query,
+and for any scalar character <code>x</code> the value of
+<code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code>
+must be identical to <code>x</code>,
+even if <code>x</code> contains
+spaces,
+tabs,
+quotes (single
+or double),
+backticks,
+or newlines
+(in any combination)
+or is itself the result of a <code>dbQuoteString()</code> call coerced back to
+character (even repeatedly).
+If <code>x</code> is <code>NA</code>, the result must merely satisfy <code>is.na()</code>.
+The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.</p>
+<p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
+so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
+returns one row.</p>
+<p>Passing a numeric,
+integer,
+logical,
+or raw vector,
+or a list
+for the <code>x</code> argument raises an error.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -185,6 +226,10 @@ an active connection to an DBMS.</p></td>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

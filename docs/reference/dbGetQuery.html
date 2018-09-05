@@ -157,6 +157,22 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbGetQuery()</code> always returns a data.frame
+with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-<code>NA</code> string.
+If the <code>n</code> argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
+    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This method is for <code>SELECT</code> queries only
@@ -174,6 +190,35 @@ reasons.  However, callers are strongly advised to use
     
     <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
+    
+    <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
+
+    
+    <p>The following arguments are not part of the <code>dbGetQuery()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul>
+<li><p><code>n</code> (default: -1)</p></li>
+<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+</ul>
+    <p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>The <code>n</code> argument specifies the number of rows to be fetched.
+If omitted, fetching multi-row queries with one
+or more columns returns the entire result.
+A value of Inf for the <code>n</code> argument is supported
+and also returns the full result.
+If more rows than available are fetched (by passing a too large value for
+<code>n</code>), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
+<p>A column named <code>row_names</code> is treated like any other column.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -254,9 +299,15 @@ performance optimization.</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
 
       <li><a href="#implementation-notes">Implementation notes</a></li>
+
+      <li><a href="#additional-arguments">Additional arguments</a></li>
+
+      <li><a href="#specification">Specification</a></li>
 
       <li><a href="#see-also">See also</a></li>
       

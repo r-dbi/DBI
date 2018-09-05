@@ -148,6 +148,33 @@ field (field name, type, etc.)</p>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbColumnInfo()</code>
+returns a data frame
+with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
+(and optional columns that start with a dot).
+The <code>"name"</code> and <code>"type"</code> columns contain the names and types
+of the R columns of the data frame that is returned from <code><a href='dbFetch.html'>dbFetch()</a></code>.
+The <code>"type"</code> column is of type <code>character</code> and only for information.
+Do not compute on the <code>"type"</code> column, instead use <code><a href='dbFetch.html'>dbFetch(res, n = 0)</a></code>
+to create a zero-row data frame initialized with the correct data types.</p>
+<p>An attempt to query columns for a closed result set raises an error.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p>A column named <code>row_names</code> is treated like any other column.</p>
+<p>The column names are always consistent
+with the data returned by <code><a href='dbFetch.html'>dbFetch()</a></code>.
+If the query returns unnamed columns,
+unique
+non-empty and non-<code>NA</code> names are assigned.
+In the case of a duplicate column name, the first occurrence
+retains the original name, and unique names are assigned for
+the other occurrences.
+Column names that correspond to SQL or R keywords are left unchanged.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -179,6 +206,10 @@ field (field name, type, etc.)</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

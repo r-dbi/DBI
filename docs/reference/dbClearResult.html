@@ -156,6 +156,22 @@ exhausting resources (memory, file descriptors, etc.)</p>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
+both <code><a href='dbSendQuery.html'>dbSendQuery()</a></code>
+and <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>.
+An attempt to close an already closed result set issues a warning
+in both cases.</p>
+    
+    <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
+
+    
+    <p><code>dbClearResult()</code> frees all resources associated with retrieving
+the result of a query or update operation.
+The DBI backend can expect a call to <code>dbClearResult()</code> for each
+<code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> call.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -185,6 +201,10 @@ exhausting resources (memory, file descriptors, etc.)</p>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
+      <li><a href="#specification">Specification</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
