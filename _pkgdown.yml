@@ -2,6 +2,11 @@ template:
   params:
     bootswatch: flatly # https://bootswatch.com/flatly/
 
+home:
+  links:
+  - text: Report a security vulnerability
+    href: https://dbi.r-dbi.org/security.html
+
 development:
   mode: auto
 
