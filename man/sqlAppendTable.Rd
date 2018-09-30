@@ -7,8 +7,8 @@
 \usage{
 sqlAppendTable(con, table, values, row.names = NA, ...)
 
-sqlAppendTableTemplate(con, table, values, row.names = NA, prefix = "?",
-  ..., pattern = "")
+sqlAppendTableTemplate(con, table, values, row.names = NA,
+  prefix = "?", ..., pattern = "")
 }
 \arguments{
 \item{con}{A database connection.}
