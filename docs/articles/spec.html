@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -182,6 +182,24 @@ Fixed-precision (non-IEEE) numbers are mapped into either numeric or integer vec
 </ul>
 <p>
 Notice that many DBMS do not follow IEEE arithmetic, so there are potential problems with under/overflows and loss of precision.
+</p>
+<h3>
+Value
+</h3>
+<p>
+<code><a href="../reference/dbDataType.html">dbDataType()</a></code> returns the SQL type that corresponds to the <code>obj</code> argument as a non-empty character string. For data frames, a character vector with one element per column is returned. An error is raised for invalid values for the <code>obj</code> argument such as a <code>NULL</code> value.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The backend can override the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> generic for its driver class.
+</p>
+<p>
+This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = “DBI”)</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code>I()</code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.
+</p>
+<p>
+All data types returned by <code><a href="../reference/dbDataType.html">dbDataType()</a></code> are usable in an SQL statement of the form <code>“CREATE TABLE test (a …)”</code>.
 </p>
 <h3>
 Examples
@@ -701,6 +719,188 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </td>
 <td>
 <p>
+<code><a href="../reference/dbFetch.html">dbFetch()</a></code> raises an error (for <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>)
+</p>
+</li>
+<li>
+<p>
+<code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> returns zero (for <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>)
+</p>
+</li>
+<li>
+<p>
+<code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns an integer <code>NA</code> (for <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>)
+</p>
+</li>
+<li>
+<p>
+<code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> returns <code>TRUE</code>
+</p>
+</li>
+<li>
+<p>
+<code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code>
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+Construct a list with parameters that specify actual values for the placeholders. The list must be named or unnamed, depending on the kind of placeholders used. Named values are matched to named parameters, unnamed values are matched by position in the list of parameters. All elements in this list must have the same lengths and contain values supported by the backend; a data.frame is internally stored as such a list. The parameter list is passed to a call to <code><a href="../reference/dbBind.html">dbBind()</a></code> on the <code>DBIResult</code> object.
+</p>
+</li>
+<li>
+<p>
+Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.
+</p>
+<ul>
+<li>
+<p>
+For queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, call <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.
+</p>
+</li>
+<li>
+<p>
+For statements issued by <code>dbSendStatements()</code>, call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>. (Execution begins immediately after the <code><a href="../reference/dbBind.html">dbBind()</a></code> call, the statement is processed entirely before the function returns.)
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+Repeat 2. and 3. as necessary.
+</p>
+</li>
+<li>
+<p>
+Close the result set via <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+</li>
+</ol>
+<p>
+The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code>rbind()</code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>.
+</p>
+<p>
+If the placeholders in the query are named, their order in the <code>params</code> argument is not important.
+</p>
+<p>
+At least the following data types are accepted on input (including NA):
+</p>
+<ul>
+<li>
+<p>
+integer
+</p>
+</li>
+<li>
+<p>
+numeric
+</p>
+</li>
+<li>
+<p>
+logical for Boolean values
+</p>
+</li>
+<li>
+<p>
+character
+</p>
+</li>
+<li>
+<p>
+factor (bound as character, with warning)
+</p>
+</li>
+<li>
+<p>
+Date
+</p>
+</li>
+<li>
+<p>
+POSIXct timestamps
+</p>
+</li>
+<li>
+<p>
+POSIXlt timestamps
+</p>
+</li>
+<li>
+<p>
+lists of raw for blobs (with <code>NULL</code> entries for SQL NULL values)
+</p>
+</li>
+<li>
+<p>
+objects of type <a href="blob::blob" class="uri">blob::blob</a>
+</p>
+</li>
+</ul>
+<h3>
+Examples
+</h3>
+<pre>
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "iris", iris)
+
+# Using the same query for different values
+iris_result &lt;- dbSendQuery(con, "SELECT * FROM iris WHERE [Petal.Width] &gt; ?")
+dbBind(iris_result, list(2.3))
+dbFetch(iris_result)
+dbBind(iris_result, list(3))
+dbFetch(iris_result)
+dbClearResult(iris_result)
+
+# Executing the same statement with different values at once
+iris_result &lt;- dbSendStatement(con, "DELETE FROM iris WHERE [Species] = $species")
+dbBind(iris_result, list(species = c("setosa", "versicolor", "unknown")))
+dbGetRowsAffected(iris_result)
+dbClearResult(iris_result)
+
+nrow(dbReadTable(con, "iris"))
+
+dbDisconnect(con)
+</pre>
+
+
+<h2>
+Send query, retrieve results and then clear result set
+</h2>
+<p>
+This section describes the behavior of the following method:
+</p>
+<pre>
+dbGetQuery(conn, statement, ...)
+</pre>
+<h3>
+Description
+</h3>
+<p>
+Returns the result of a query as a data frame. <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.
+</p>
+<h3>
+Arguments
+</h3>
+<table summary="R argblock" class="table">
+<tr valign="top">
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>statement</code>
+</td>
+<td>
+<p>
 a character string containing SQL.
 </p>
 </td>
@@ -1091,6 +1291,344 @@ Description
 </h3>
 <p>
 Reads a database table to a data frame, optionally converting a column to row names and converting the column names to valid R identifiers.
+</p>
+<h3>
+Arguments
+</h3>
+<table summary="R argblock" class="table">
+<tr valign="top">
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+A character string specifying the unquoted DBMS table name, or the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
+</tr>
+</table>
+<h3>
+Additional arguments
+</h3>
+<p>
+The following arguments are not part of the <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>row.names</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li>
+<p>
+<code>check.names</code>
+</p>
+</li>
+</ul>
+<p>
+They must be provided as named arguments. See the “Value” section for details on their usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p>
+If an unquoted table name as string: <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> will do the quoting, perhaps by calling <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(conn, x = name)</a></code>
+</p>
+</li>
+<li>
+<p>
+If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done
+</p>
+</li>
+</ul>
+<h3>
+Value
+</h3>
+<p>
+<code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.
+</p>
+<p>
+The presence of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> for details:
+</p>
+<ul>
+<li>
+<p>
+If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn’t have row names.
+</p>
+</li>
+<li>
+<p>
+If <code>TRUE</code>, a column named “row_names” is converted to row names, an error is raised if no such column exists.
+</p>
+</li>
+<li>
+<p>
+If <code>NA</code>, a column named “row_names” is converted to row names if it exists, otherwise no translation occurs.
+</p>
+</li>
+<li>
+<p>
+If a string, this specifies the name of the column in the remote table that contains the row names, an error is raised if no such column exists.
+</p>
+</li>
+</ul>
+<p>
+The default is <code>row.names = FALSE</code>.
+</p>
+<p>
+If the database supports identifiers with special characters, the columns in the returned data frame are converted to valid R identifiers if the <code>check.names</code> argument is <code>TRUE</code>, otherwise non-syntactic column names can be returned unquoted.
+</p>
+<p>
+An error is raised when calling this method for a closed or invalid connection. An error is raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Unsupported values for <code>row.names</code> and <code>check.names</code> (non-scalars, unsupported data types, <code>NA</code> for <code>check.names</code>) also raise an error.
+</p>
+<h3>
+Examples
+</h3>
+<pre>
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars[1:10, ])
+dbReadTable(con, "mtcars")
+
+dbDisconnect(con)
+</pre>
+
+
+<h2>
+Copy data frames to database tables
+</h2>
+<p>
+This section describes the behavior of the following method:
+</p>
+<pre>
+dbWriteTable(conn, name, value, ...)
+</pre>
+<h3>
+Description
+</h3>
+<p>
+Writes, overwrites or appends a data frame to a database table, optionally converting row names to a column and specifying SQL data types for fields.
+</p>
+<h3>
+Arguments
+</h3>
+<table summary="R argblock" class="table">
+<tr valign="top">
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+A character string specifying the unquoted DBMS table name, or the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>value</code>
+</td>
+<td>
+<p>
+a data.frame (or coercible to data.frame).
+</p>
+</td>
+</tr>
+<tr valign="top">
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
+</tr>
+</table>
+<h3>
+Additional arguments
+</h3>
+<p>
+The following arguments are not part of the <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:
+</p>
+<ul>
+<li>
+<p>
+<code>row.names</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li>
+<p>
+<code>overwrite</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li>
+<p>
+<code>append</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li>
+<p>
+<code>field.types</code> (default: <code>NULL</code>)
+</p>
+</li>
+<li>
+<p>
+<code>temporary</code> (default: <code>FALSE</code>)
+</p>
+</li>
+</ul>
+<p>
+They must be provided as named arguments. See the “Specification” and “Value” sections for details on their usage.
+</p>
+<h3>
+Specification
+</h3>
+<p>
+The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p>
+If an unquoted table name as string: <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> will do the quoting, perhaps by calling <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(conn, x = name)</a></code>
+</p>
+</li>
+<li>
+<p>
+If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done
+</p>
+</li>
+</ul>
+<p>
+If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name will be overwritten. This argument doesn’t change behavior if the table does not exist yet.
+</p>
+<p>
+If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are preserved, and the new data are appended. If the table doesn’t exist yet, it is created.
+</p>
+<p>
+If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a second connection and is gone after reconnecting. Not all backends support this argument. A regular, non-temporary table is visible in a second connection and after reconnecting to the database.
+</p>
+<p>
+SQL keywords can be used freely in table names, column names, and data. Quotes, commas, and spaces can also be used in the data, and, if the database supports non-syntactic identifiers, also for table names and column names.
+</p>
+<p>
+The following data types must be supported at least, and be read identically with <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code>:
+</p>
+<ul>
+<li>
+<p>
+integer
+</p>
+</li>
+<li>
+<p>
+numeric (the behavior for <code>Inf</code> and <code>NaN</code> is not specified)
+</p>
+</li>
+<li>
+<p>
+logical
+</p>
+</li>
+<li>
+<p>
+<code>NA</code> as NULL
+</p>
+</li>
+<li>
+<p>
+64-bit values (using <code>“bigint”</code> as field type); the result can be
+</p>
+<ul>
+<li>
+<p>
+converted to a numeric, which may lose precision,
+</p>
+</li>
+<li>
+<p>
+converted a character vector, which gives the full decimal representation
+</p>
+</li>
+<li>
+<p>
+written to another table and read again unchanged
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p>
+character (in both UTF-8 and native encodings), supporting empty strings
+</p>
+</li>
+<li>
+<p>
+factor (returned as character)
+</p>
+</li>
+<li>
+<p>
+list of raw (if supported by the database)
+</p>
+</li>
+<li>
+<p>
+objects of type <a href="blob::blob" class="uri">blob::blob</a> (if supported by the database)
+</p>
+</li>
+<li>
+<p>
+date (if supported by the database; returned as <code>Date</code>)
+</p>
+</li>
+<li>
+<p>
+time (if supported by the database; returned as objects that inherit from <code>difftime</code>)
+</p>
+</li>
+<li>
+<p>
+timestamp (if supported by the database; returned as <code>POSIXct</code> respecting the time zone but not necessarily preserving the input time zone)
+</p>
+</li>
+</ul>
+<p>
+Mixing column types in the same table is supported.
 </p>
 <h3>
 Arguments
@@ -2016,7 +2554,7 @@ dbDisconnect(con)
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">

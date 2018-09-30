@@ -1,6 +1,3 @@
-^LICENSE\.md$
-^CODE_OF_CONDUCT\.md$
-^codecov\.yml$
 ^\.github$
 R\/\.RData$
 R\/\.Rhistory$

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">DBI</a>
-        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0.9000</span>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.0.0</span>
       </span>
     </div>
 
@@ -128,7 +128,7 @@
 <ul>
 <li>Get the released version from CRAN: <code>install.packages("DBI")</code>
 </li>
-<li>Get the development version from github: <code><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">devtools::install_github("r-dbi/DBI")</a></code>
+<li>Get the development version from github: <code><a href="http://www.rdocumentation.org/packages/devtools/topics/reexports">devtools::install_github("r-dbi/DBI")</a></code>
 </li>
 </ul>
 <p>Discussions associated with DBI and related database packages take place on <a href="https://stat.ethz.ch/mailman/listinfo/r-sig-db">R-SIG-DB</a>. The website <a href="http://db.rstudio.com/">Databases using R</a> describes the tools and best practices in this ecosystem.</p>
@@ -154,7 +154,7 @@
 <p>I’m sure I’ll forget some (most should be in the THANKS sections of the various packages), but the names that come to my mind at this moment are Jake Luciani (ROracle), Don MacQueen and other early ROracle users (super helpful), Doug Bates and his student Saikat DebRoy for RMySQL, Fei Chen (at the time a student of Prof. Ripley) also contributed to RMySQL, Tim Keitt (working on an early S3 interface to PostgrSQL), Torsten Hothorn (worked with mSQL and also MySQL), Prof. Ripley working/extending the RODBC package, in addition to John Chambers and Duncan Temple-Lang who provided very important comments and suggestions.</p>
 <p>Actually, the real impetus behind the DBI was always to do distributed statistical computing — <em>not</em> to provide a yet-another import/export mechanism — and this perspective was driven by John and Duncan’s vision and work on inter-system computing, COM, CORBA, etc. I’m not sure many of us really appreciated (even now) the full extent of those ideas and concepts. Just like in other languages (C’s ODBC, Java’s JDBC, Perl’s DBI/DBD, Python dbapi), R/S DBI was meant to unify the interfacing to RDBMS so that R/S applications could be developed on top of the DBI and not be hard coded to any one relation database. The interface I tried to follow the closest was the Python’s DBAPI — I haven’t worked on this topic for a while, but I still feel Python’s DBAPI is the cleanest and most relevant for the S language.</p>
 <hr>
-<p>Please note that the DBI project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the <em>DBI</em> project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
@@ -166,6 +166,8 @@
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=DBI">https://​cloud.r-project.org/​package=DBI</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/r-dbi/DBI/issues">https://​github.com/​r-dbi/​DBI/​issues</a>
+</li>
+<li>Report a security vulnerability at <br><a href="https://dbi.r-dbi.org/security.html">https://​dbi.r-dbi.org/​security.html</a>
 </li>
 </ul>
 </div>
@@ -182,7 +184,8 @@
 <li>R Special Interest Group on Databases (R-SIG-DB) <br><small class="roles"> Author </small>  </li>
 <li>
 <a href="http://hadley.nz">Hadley Wickham</a> <br><small class="roles"> Author </small>  </li>
-<li>Kirill Müller <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
+<li>
+<a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID" height="16"></a> </li>
 <li>
 <a href="https://www.r-consortium.org">R Consortium</a> <br><small class="roles"> Funder </small>  </li>
 </ul>
@@ -193,7 +196,7 @@
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.org/r-dbi/DBI"><img src="https://travis-ci.org/r-dbi/DBI.png?branch=master" alt="Build Status"></a></li>
 <li><a href="https://codecov.io/github/r-dbi/DBI?branch=master"><img src="https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg" alt="Coverage Status"></a></li>
-<li><a href="https://cran.r-project.org/package=DBI"><img src="http://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://cran.r-project.org/package=DBI"><img src="https://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>
 </ul>
 </div>
 </div>
@@ -201,7 +204,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, Kirill Müller, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">

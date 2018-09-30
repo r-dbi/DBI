@@ -1,6 +1,6 @@
 # DBI
 
-[![Build Status](https://travis-ci.org/r-dbi/DBI.png?branch=master)](https://travis-ci.org/r-dbi/DBI) [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master) [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
+[![Build Status](https://travis-ci.org/r-dbi/DBI.png?branch=master)](https://travis-ci.org/r-dbi/DBI) [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master) [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 
 The DBI package defines a common interface between the R and database management systems (DBMS).  The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](http://dbi.perl.org/), Java's [JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html), Python's [DB-API](http://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](http://en.wikipedia.org/wiki/ODBC). It defines a set of classes and methods defines what operations are possible and how they are performed:
 
@@ -82,4 +82,4 @@ Actually, the real impetus behind the DBI was always to do distributed statistic
 
 ---
 
-Please note that the DBI project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the _DBI_ project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
