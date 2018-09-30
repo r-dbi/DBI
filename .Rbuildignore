@@ -1,3 +1,4 @@
+^\.github$
 R\/\.RData$
 R\/\.Rhistory$
 R\/Makefile$
