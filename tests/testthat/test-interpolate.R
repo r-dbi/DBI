@@ -64,6 +64,13 @@ test_that("strings are quoted", {
   )
 })
 
+test_that("unquoted strings", {
+  expect_equal(
+    sqlInterpolate(ANSI(), "?a ?b", a = SQL("abc"), b = SQL("('a','b')")),
+    SQL("abc ('a','b')")
+  )
+})
+
 test_that("some more complex case works as well", {
   expect_equal(
     sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ? ?bar", faa = "abc", fuu=42L),
