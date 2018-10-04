@@ -17,7 +17,8 @@ by a letter, digit, \code{.} or \code{_}.}
 \item{..., .dots}{Named values (for \code{...}) or a named list (for \code{.dots})
 to interpolate into a string. All strings
 will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
-to interpolation to protect against SQL injection attacks.}
+to interpolation to protect against SQL injection attacks
+unless specified by \code{\link[=SQL]{SQL()}}.}
 }
 \description{
 Safely interpolate values into an SQL string
@@ -36,4 +37,11 @@ sqlInterpolate(ANSI(), sql, name = "Hadley")
 
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
+
+# Use SQL() to avoid escaping
+sql2 <- "SELECT * FROM ?table WHERE name in ?names"
+sqlInterpolate(ANSI(), sql2, table = SQL("X"), names = SQL("('a','b')"))
+
+# but it is unsafe
+sqlInterpolate(ANSI(), sql2, table = SQL("X; DELETE FROM X; SELECT * FROM X"), names = SQL("('a','b')"))
 }
