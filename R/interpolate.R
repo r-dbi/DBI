@@ -17,8 +17,8 @@ NULL
 #' @param ...,.dots Named values (for `...`) or a named list (for `.dots`)
 #'   to interpolate into a string. All strings
 #'   will be first escaped with [dbQuoteString()] prior
-#'   to interpolation to protect against SQL injection attacks
-#'   unless specified by [SQL()].
+#'   to interpolation to protect against SQL injection attacks,
+#'   arguments created by [SQL()] or [dbQuoteIdentifier()] remain unchanged.
 #' @export
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
@@ -27,12 +27,18 @@ NULL
 #' # This is safe because the single quote has been double escaped
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 #'
-#' # Use SQL() to avoid escaping
+#' # Use SQL() or dbQuoteIdentifier() to avoid escaping
 #' sql2 <- "SELECT * FROM ?table WHERE name in ?names"
-#' sqlInterpolate(ANSI(), sql2, table = SQL("X"), names = SQL("('a','b')"))
+#' sqlInterpolate(ANSI(), sql2,
+#'   table = dbQuoteIdentifier(ANSI(), "X"),
+#'   names = SQL("('a', 'b')")
+#' )
 #'
-#' # but it is unsafe
-#' sqlInterpolate(ANSI(), sql2, table = SQL("X; DELETE FROM X; SELECT * FROM X"), names = SQL("('a','b')"))
+#' # Don't use SQL() to escape identifiers to avoid SQL injection
+#' sqlInterpolate(ANSI(), sql2,
+#'   table = SQL("X; DELETE FROM X; SELECT * FROM X"),
+#'   names = SQL("('a', 'b')")
+#' )
 setGeneric("sqlInterpolate",
   def = function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
 )

@@ -17,8 +17,8 @@ by a letter, digit, \code{.} or \code{_}.}
 \item{..., .dots}{Named values (for \code{...}) or a named list (for \code{.dots})
 to interpolate into a string. All strings
 will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
-to interpolation to protect against SQL injection attacks
-unless specified by \code{\link[=SQL]{SQL()}}.}
+to interpolation to protect against SQL injection attacks,
+arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
 }
 \description{
 Safely interpolate values into an SQL string
@@ -38,10 +38,16 @@ sqlInterpolate(ANSI(), sql, name = "Hadley")
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 
-# Use SQL() to avoid escaping
+# Use SQL() or dbQuoteIdentifier() to avoid escaping
 sql2 <- "SELECT * FROM ?table WHERE name in ?names"
-sqlInterpolate(ANSI(), sql2, table = SQL("X"), names = SQL("('a','b')"))
+sqlInterpolate(ANSI(), sql2,
+  table = dbQuoteIdentifier(ANSI(), "X"),
+  names = SQL("('a', 'b')")
+)
 
-# but it is unsafe
-sqlInterpolate(ANSI(), sql2, table = SQL("X; DELETE FROM X; SELECT * FROM X"), names = SQL("('a','b')"))
+# Don't use SQL() to escape identifiers to avoid SQL injection
+sqlInterpolate(ANSI(), sql2,
+  table = SQL("X; DELETE FROM X; SELECT * FROM X"),
+  names = SQL("('a', 'b')")
+)
 }
