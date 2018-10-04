@@ -1,3 +1,8 @@
+# DBI 1.0.0.9001
+
+- Add usage of `SQL()` to `sqlInterpolate()` examples (#259, @renkun-ken).
+
+
 # DBI 1.0.0.9000
 
 - Improve documentation for `Id`.
