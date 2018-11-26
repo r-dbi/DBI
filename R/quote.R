@@ -168,14 +168,14 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' # possibly complex quoted identifier
 #' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
+#'   SQL(c('"Catalog"."Schema"."Table"', '"Schema"."Table"', '"UnqualifiedTable"'))
 #' )
 #'
 #' # The returned object is always a list,
 #' # also for Id objects
 #' dbUnquoteIdentifier(
 #'   ANSI(),
-#'   Id(schema = "Schema", table = "Table")
+#'   Id(catalog = "Catalog", schema = "Schema", table = "Table")
 #' )
 #'
 #' # Quoting is the inverse operation to unquoting the elements
@@ -197,18 +197,20 @@ setGeneric("dbUnquoteIdentifier",
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
   if (is(x, "SQL")) {
-    rx <- '^(?:(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")*)")|([^". ]+))$'
+    rx <- '^(?:(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")*)")|([^". ]+))$'
     bad <- grep(rx, x, invert = TRUE)
     if (length(bad) > 0) {
       stop("Can't unquote ", x[bad[[1]]], call. = FALSE)
     }
-    schema <- gsub(rx, "\\1", x)
+    catalog <- gsub(rx, "\\1", x)
+    catalog <- gsub('""', '"', catalog)
+    schema <- gsub(rx, "\\2", x)
     schema <- gsub('""', '"', schema)
-    table <- gsub(rx, "\\2", x)
+    table <- gsub(rx, "\\3", x)
     table <- gsub('""', '"', table)
-    naked_table <- gsub(rx, "\\3", x)
+    naked_table <- gsub(rx, "\\4", x)
 
-    ret <- Map(schema, table, naked_table, f = as_table)
+    ret <- Map(catalog, schema, table, naked_table, f = as_table)
     names(ret) <- names(x)
     return(ret)
   }
@@ -218,8 +220,8 @@ setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, .
   stop("x must be SQL or Id", call. = FALSE)
 })
 
-as_table <- function(schema, table, naked_table = NULL) {
-  args <- c(schema = schema, table = table, table = naked_table)
+as_table <- function(catalog, schema, table, naked_table = NULL) {
+  args <- c(catalog = catalog, schema = schema, table = table, table = naked_table)
   # Also omits NA args
   args <- args[!is.na(args) & args != ""]
   do.call(Id, as.list(args))
