@@ -9,17 +9,17 @@
 <title>Fetch records from a previously executed query — dbFetch • DBI</title>
 
 <!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
 <!-- sticky kit -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
@@ -44,7 +44,8 @@ RSQLite::dbFetch(&quot;SQLiteResult&quot;)
 <meta name="robots" content="noindex">
 
 <!-- mathjax -->
-<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -68,7 +69,7 @@ RSQLite::dbFetch(&quot;SQLiteResult&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9001</span>
       </span>
     </div>
 
@@ -167,7 +168,7 @@ special values.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>dbFetch()</code> always returns a data.frame
+    <p><code>dbFetch()</code> always returns a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>
 with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
@@ -194,10 +195,10 @@ existing code. Modern backends should implement for <code>dbFetch()</code> only.
     <p>Fetching multi-row queries with one
 or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
-by passing a whole number (integer
-or numeric)
+by passing a whole number (<a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer</a>
+or <a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric</a>)
 as the <code>n</code> argument.
-A value of Inf for the <code>n</code> argument is supported
+A value of <a href='https://www.rdocumentation.org/packages/base/topics/is.finite'>Inf</a> for the <code>n</code> argument is supported
 and also returns the full result.
 If more rows than available are fetched, the result is returned in full
 without warning.
@@ -209,31 +210,31 @@ Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
     <p>The column types of the returned data frame depend on the data returned:</p><ul>
-<li><p>integer (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer</a> (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
+with <a href='https://www.rdocumentation.org/packages/base/topics/NA'>NA</a> for SQL <code>NULL</code> values</p></li>
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric</a> for numbers with a fractional component,
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p>numeric for numbers with a fractional component,
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> for Boolean values (some backends may return an integer);
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p>logical for Boolean values (some backends may return an integer);
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> for text,
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p>character for text,
-with NA for SQL <code>NULL</code> values</p></li>
-<li><p>lists of raw for blobs
-with NULL entries for SQL NULL values</p></li>
-<li><p>coercible using <code>as.Date()</code> for dates,
+<li><p>lists of <a href='https://www.rdocumentation.org/packages/base/topics/raw'>raw</a> for blobs
+with <a href='https://www.rdocumentation.org/packages/base/topics/NULL'>NULL</a> entries for SQL NULL values</p></li>
+<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date()</a></code> for dates,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p>coercible using <code><a href='http://www.rdocumentation.org/packages/hms/topics/hms'>hms::as.hms()</a></code> for times,
+<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/hms/topics/hms'>hms::as.hms()</a></code> for times,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_time</code>)</p></li>
-<li><p>coercible using <code>as.POSIXct()</code> for timestamps,
+<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/base/topics/as.POSIXlt'>as.POSIXct()</a></code> for timestamps,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
     <p>If dates and timestamps are supported by the backend, the following R types are
 used:</p><ul>
-<li><p>Date for dates
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/Dates'>Date</a> for dates
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p>POSIXct for timestamps
+<li><p><a href='https://www.rdocumentation.org/packages/base/topics/DateTimeClasses'>POSIXct</a> for timestamps
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
     <p>R has no built-in type with lossless support for the full range of 64-bit
@@ -267,7 +268,7 @@ finish retrieving the records you want.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
 
@@ -290,7 +291,7 @@ finish retrieving the records you want.</p>
 <span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>)
 <span class='kw'>while</span> (!<span class='fu'><a href='dbHasCompleted.html'>dbHasCompleted</a></span>(<span class='no'>rs</span>)) {
   <span class='no'>chunk</span> <span class='kw'>&lt;-</span> <span class='fu'>dbFetch</span>(<span class='no'>rs</span>, <span class='fl'>10</span>)
-  <span class='fu'>print</span>(<span class='fu'>nrow</span>(<span class='no'>chunk</span>))
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='no'>chunk</span>))
 }</div><div class='output co'>#&gt; [1] 10
 #&gt; [1] 10
 #&gt; [1] 10
@@ -323,9 +324,8 @@ finish retrieving the records you want.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
 </div>
-
       </footer>
    </div>
 
