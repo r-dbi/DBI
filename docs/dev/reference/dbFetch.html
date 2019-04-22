@@ -169,7 +169,7 @@ special values.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>dbFetch()</code> always returns a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>
+    <p><code>dbFetch()</code> always returns a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a>
 with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
@@ -196,10 +196,10 @@ existing code. Modern backends should implement for <code>dbFetch()</code> only.
     <p>Fetching multi-row queries with one
 or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
-by passing a whole number (<a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer</a>
-or <a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric</a>)
+by passing a whole number (<a href='https://rdrr.io/r/base/integer.html'>integer</a>
+or <a href='https://rdrr.io/r/base/numeric.html'>numeric</a>)
 as the <code>n</code> argument.
-A value of <a href='https://www.rdocumentation.org/packages/base/topics/is.finite'>Inf</a> for the <code>n</code> argument is supported
+A value of <a href='https://rdrr.io/r/base/is.finite.html'>Inf</a> for the <code>n</code> argument is supported
 and also returns the full result.
 If more rows than available are fetched, the result is returned in full
 without warning.
@@ -211,31 +211,31 @@ Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
     <p>The column types of the returned data frame depend on the data returned:</p><ul>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer</a> (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
-with <a href='https://www.rdocumentation.org/packages/base/topics/NA'>NA</a> for SQL <code>NULL</code> values</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric</a> for numbers with a fractional component,
+<li><p><a href='https://rdrr.io/r/base/integer.html'>integer</a> (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
+with <a href='https://rdrr.io/r/base/NA.html'>NA</a> for SQL <code>NULL</code> values</p></li>
+<li><p><a href='https://rdrr.io/r/base/numeric.html'>numeric</a> for numbers with a fractional component,
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> for Boolean values (some backends may return an integer);
+<li><p><a href='https://rdrr.io/r/base/logical.html'>logical</a> for Boolean values (some backends may return an integer);
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a> for text,
+<li><p><a href='https://rdrr.io/r/base/character.html'>character</a> for text,
 with NA for SQL <code>NULL</code> values</p></li>
-<li><p>lists of <a href='https://www.rdocumentation.org/packages/base/topics/raw'>raw</a> for blobs
-with <a href='https://www.rdocumentation.org/packages/base/topics/NULL'>NULL</a> entries for SQL NULL values</p></li>
-<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/base/topics/as.Date'>as.Date()</a></code> for dates,
+<li><p>lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> for blobs
+with <a href='https://rdrr.io/r/base/NULL.html'>NULL</a> entries for SQL NULL values</p></li>
+<li><p>coercible using <code><a href='https://rdrr.io/r/base/as.Date.html'>as.Date()</a></code> for dates,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/hms/topics/hms'>hms::as.hms()</a></code> for times,
+<li><p>coercible using <code><a href='https://rdrr.io/pkg/hms/man/hms.html'>hms::as.hms()</a></code> for times,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_time</code>)</p></li>
-<li><p>coercible using <code><a href='https://www.rdocumentation.org/packages/base/topics/as.POSIXlt'>as.POSIXct()</a></code> for timestamps,
+<li><p>coercible using <code><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct()</a></code> for timestamps,
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
     <p>If dates and timestamps are supported by the backend, the following R types are
 used:</p><ul>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/Dates'>Date</a> for dates
+<li><p><a href='https://rdrr.io/r/base/Dates.html'>Date</a> for dates
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/DateTimeClasses'>POSIXct</a> for timestamps
+<li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct</a> for timestamps
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
     <p>R has no built-in type with lossless support for the full range of 64-bit
@@ -269,7 +269,7 @@ finish retrieving the records you want.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
 
@@ -292,7 +292,7 @@ finish retrieving the records you want.</p>
 <span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>)
 <span class='kw'>while</span> (!<span class='fu'><a href='dbHasCompleted.html'>dbHasCompleted</a></span>(<span class='no'>rs</span>)) {
   <span class='no'>chunk</span> <span class='kw'>&lt;-</span> <span class='fu'>dbFetch</span>(<span class='no'>rs</span>, <span class='fl'>10</span>)
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='no'>chunk</span>))
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>chunk</span>))
 }</div><div class='output co'>#&gt; [1] 10
 #&gt; [1] 10
 #&gt; [1] 10

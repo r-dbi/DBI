@@ -216,7 +216,7 @@ Specification
 The backend can override the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> generic for its driver class.
 </p>
 <p>
-This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = “DBI”)</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code><a href="https://www.rdocumentation.org/packages/base/topics/AsIs">I()</a></code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.
+This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = “DBI”)</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.
 </p>
 <p>
 All data types returned by <code><a href="../reference/dbDataType.html">dbDataType()</a></code> are usable in an SQL statement of the form <code>“CREATE TABLE test (a …)”</code>.
@@ -302,7 +302,7 @@ Value
 <code><a href="../reference/dbConnect.html">dbConnect()</a></code> returns an S4 object that inherits from DBIConnection. This object is used to communicate with the database engine.
 </p>
 <p>
-A <code><a href="https://www.rdocumentation.org/packages/base/topics/format">format()</a></code> method is defined for the connection object. It returns a string that consists of a single line of text.
+A <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> method is defined for the connection object. It returns a string that consists of a single line of text.
 </p>
 <h3>
 Specification
@@ -361,7 +361,7 @@ In addition, DBI supports the <code>bigint</code> argument that governs how 64-b
 </li>
 <li>
 <p>
-<code>“integer64”</code>: return as a data type that can be coerced using <code><a href="https://www.rdocumentation.org/packages/base/topics/integer">as.integer()</a></code> (with warning on overflow), <code><a href="https://www.rdocumentation.org/packages/base/topics/numeric">as.numeric()</a></code> and <code><a href="https://www.rdocumentation.org/packages/base/topics/character">as.character()</a></code>
+<code>“integer64”</code>: return as a data type that can be coerced using <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code> (with warning on overflow), <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code> and <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code>
 </p>
 </li>
 </ul>
@@ -671,17 +671,17 @@ lists of raw for blobs with NULL entries for SQL NULL values
 </li>
 <li>
 <p>
-coercible using <code><a href="https://www.rdocumentation.org/packages/base/topics/as.Date">as.Date()</a></code> for dates, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_date</code>)
+coercible using <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> for dates, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_date</code>)
 </p>
 </li>
 <li>
 <p>
-coercible using <code><a href="https://www.rdocumentation.org/packages/hms/topics/hms">hms::as.hms()</a></code> for times, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_time</code>)
+coercible using <code><a href="https://rdrr.io/pkg/hms/man/hms.html">hms::as.hms()</a></code> for times, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_time</code>)
 </p>
 </li>
 <li>
 <p>
-coercible using <code><a href="https://www.rdocumentation.org/packages/base/topics/as.POSIXlt">as.POSIXct()</a></code> for timestamps, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_timestamp</code>)
+coercible using <code><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct()</a></code> for timestamps, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_timestamp</code>)
 </p>
 </li>
 </ul>
@@ -922,7 +922,7 @@ Specification
 <ol>
 <li>
 <p>
-Call <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> with a query or statement that contains placeholders, store the returned DBIResult object in a variable. Mixing placeholders (in particular, named and unnamed ones) is not recommended. It is good practice to register a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> via <code><a href="https://www.rdocumentation.org/packages/base/topics/on.exit">on.exit()</a></code> right after calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> (see the last enumeration item). Until <code><a href="../reference/dbBind.html">dbBind()</a></code> has been called, the returned result set object has the following behavior:
+Call <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> with a query or statement that contains placeholders, store the returned DBIResult object in a variable. Mixing placeholders (in particular, named and unnamed ones) is not recommended. It is good practice to register a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> via <code><a href="https://rdrr.io/r/base/on.exit.html">on.exit()</a></code> right after calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> (see the last enumeration item). Until <code><a href="../reference/dbBind.html">dbBind()</a></code> has been called, the returned result set object has the following behavior:
 </p>
 <ul>
 <li>
@@ -986,7 +986,7 @@ Close the result set via <code><a href="../reference/dbClearResult.html">dbClear
 </li>
 </ol>
 <p>
-The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code><a href="https://www.rdocumentation.org/packages/base/topics/cbind">rbind()</a></code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>.
+The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>.
 </p>
 <p>
 If the placeholders in the query are named, their order in the <code>params</code> argument is not important.
@@ -1506,7 +1506,7 @@ When passing the returned object again to <code><a href="../reference/dbQuoteStr
 Specification
 </h3>
 <p>
-The returned expression can be used in a <code>SELECT …</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0(“SELECT”, dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://www.rdocumentation.org/packages/base/topics/NA">is.na()</a></code>. The strings <code>“NA”</code> or <code>“NULL”</code> are not treated specially.
+The returned expression can be used in a <code>SELECT …</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0(“SELECT”, dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. The strings <code>“NA”</code> or <code>“NULL”</code> are not treated specially.
 </p>
 <p>
 <code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code>SELECT * FROM (SELECT 1) a WHERE … IS NULL</code> returns one row.

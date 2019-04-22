@@ -163,7 +163,7 @@ or the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentif
     </tr>
     <tr>
       <th>value</th>
-      <td><p>a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a> (or coercible to data.frame).</p></td>
+      <td><p>a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a> (or coercible to data.frame).</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -252,7 +252,7 @@ supporting empty strings</p></li>
 <li><p>factor (returned as character)</p></li>
 <li><p>list of raw
 (if supported by the database)</p></li>
-<li><p>objects of type <a href='https://www.rdocumentation.org/packages/blob/topics/blob'>blob::blob</a>
+<li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a>
 (if supported by the database)</p></li>
 <li><p>date
 (if supported by the database;
@@ -276,7 +276,7 @@ from the input data with <code><a href='dbDataType.html'>dbDataType()</a></code>
 see <code><a href='rownames.html'>sqlRownamesToColumn()</a></code> for details:</p><ul>
 <li><p>If <code>FALSE</code> or <code>NULL</code>, row names are ignored.</p></li>
 <li><p>If <code>TRUE</code>, row names are converted to a column named "row_names",
-even if the input data frame only has natural row names from 1 to <code><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow(...)</a></code>.</p></li>
+even if the input data frame only has natural row names from 1 to <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(...)</a></code>.</p></li>
 <li><p>If <code>NA</code>, a column named "row_names" is created if the data has custom row names,
 no extra column is created in the case of natural row names.</p></li>
 <li><p>If a string, this specifies the name of the column in the remote table
@@ -301,7 +301,7 @@ even if the input data frame only has natural row names.</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'>dbWriteTable</span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>[<span class='fl'>1</span>:<span class='fl'>5</span>, ])
 <span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>)</div><div class='output co'>#&gt;    mpg cyl disp  hp drat    wt  qsec vs am gear carb

@@ -204,18 +204,18 @@ propagate to the calling environment.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
-<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"cash"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>100</span>))
-<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"account"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span>(<span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>2000</span>))
+<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"cash"</span>, <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>100</span>))
+<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"account"</span>, <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>amount</span> <span class='kw'>=</span> <span class='fl'>2000</span>))
 
 <span class='co'># All operations are carried out as logical unit:</span>
 <span class='fu'>dbWithTransaction</span>(
   <span class='no'>con</span>,
   {
     <span class='no'>withdrawal</span> <span class='kw'>&lt;-</span> <span class='fl'>300</span>
-    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE cash SET amount = amount + ?"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>withdrawal</span>))
-    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE account SET amount = amount - ?"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>withdrawal</span>))
+    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE cash SET amount = amount + ?"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>withdrawal</span>))
+    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE account SET amount = amount - ?"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>withdrawal</span>))
   }
 )</div><div class='output co'>#&gt; [1] 1</div><div class='input'>
 <span class='co'># The code is executed as if in the curent environment:</span>
@@ -229,8 +229,8 @@ propagate to the calling environment.</p>
   <span class='no'>con</span>,
   {
     <span class='no'>withdrawal</span> <span class='kw'>&lt;-</span> <span class='fl'>5000</span>
-    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE cash SET amount = amount + ?"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>withdrawal</span>))
-    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE account SET amount = amount - ?"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='no'>withdrawal</span>))
+    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE cash SET amount = amount + ?"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>withdrawal</span>))
+    <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>con</span>, <span class='st'>"UPDATE account SET amount = amount - ?"</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>withdrawal</span>))
     <span class='kw'>if</span> (<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"account"</span>)$<span class='no'>amount</span> <span class='kw'>&lt;</span> <span class='fl'>0</span>) {
       <span class='fu'>dbBreak</span>()
     }

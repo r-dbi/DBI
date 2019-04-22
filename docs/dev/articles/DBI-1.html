@@ -121,7 +121,7 @@
 <a class="sourceLine" id="cb1-13" data-line-number="13"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"new_results"</span>, new.output)</a>
 <a class="sourceLine" id="cb1-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb1-15" data-line-number="15">## The interface allows lower-level interface to the DBMS</a>
-<a class="sourceLine" id="cb1-16" data-line-number="16">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/paste">paste</a></span>(</a>
+<a class="sourceLine" id="cb1-16" data-line-number="16">res &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(</a>
 <a class="sourceLine" id="cb1-17" data-line-number="17">            <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,</a>
 <a class="sourceLine" id="cb1-18" data-line-number="18">            <span class="st">"FROM geom_table as g, elec_measures as e"</span>,</a>
 <a class="sourceLine" id="cb1-19" data-line-number="19">            <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,</a>
@@ -129,7 +129,7 @@
 <a class="sourceLine" id="cb1-21" data-line-number="21">out &lt;-<span class="st"> </span><span class="ot">NULL</span></a>
 <a class="sourceLine" id="cb1-22" data-line-number="22"><span class="cf">while</span>(<span class="op">!</span><span class="kw"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(res)){</a>
 <a class="sourceLine" id="cb1-23" data-line-number="23">   chunk &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbFetch.html">fetch</a></span>(res, <span class="dt">n =</span> <span class="dv">10000</span>)</a>
-<a class="sourceLine" id="cb1-24" data-line-number="24">   out &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(out, <span class="kw">doit</span>(chunk))</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">   out &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(out, <span class="kw">doit</span>(chunk))</a>
 <a class="sourceLine" id="cb1-25" data-line-number="25">}</a>
 <a class="sourceLine" id="cb1-26" data-line-number="26"></a>
 <a class="sourceLine" id="cb1-27" data-line-number="27">## Free up resources</a>
@@ -201,17 +201,17 @@
 <p>The methods <code>format</code>, <code>print</code>, <code>show</code>, <code>dbGetInfo</code>, and <code>summary</code> are defined (and <em>implemented</em> in the <code>DBI</code> package) for the <code>DBIObject</code> base class, thus available to all implementations; individual drivers, however, are free to override them as they see fit.</p>
 <dl>
 <dt>
-<code><a href="https://www.rdocumentation.org/packages/base/topics/format">format(x, ...)</a></code>:</dt>
+<code><a href="https://rdrr.io/r/base/format.html">format(x, ...)</a></code>:</dt>
 <dd>
 <p>produces a concise character representation (label) for the <code>DBIObject</code> <code>x</code>.</p>
 </dd>
 <dt>
-<code><a href="https://www.rdocumentation.org/packages/base/topics/print">print(x, ...)</a></code>/<code>show(x)</code>:</dt>
+<code><a href="https://rdrr.io/r/base/print.html">print(x, ...)</a></code>/<code>show(x)</code>:</dt>
 <dd>
 <p>prints a one-line identification of the object <code>x</code>.</p>
 </dd>
 <dt>
-<code><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary(object, ...)</a></code>:</dt>
+<code><a href="https://rdrr.io/r/base/summary.html">summary(object, ...)</a></code>:</dt>
 <dd>
 <p>produces a concise description of the object. The default method for <code>DBIObject</code> simply invokes <code><a href="../reference/dbGetInfo.html">dbGetInfo(dbObj)</a></code> and prints the name-value pairs one per line. Individual implementations may tailor this appropriately.</p>
 </dd>

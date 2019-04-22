@@ -162,7 +162,7 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>dbGetQuery()</code> always returns a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a>
+    <p><code>dbGetQuery()</code> always returns a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a>
 with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
@@ -212,7 +212,7 @@ See the "Specification" and "Value" sections for details on their usage.</p>
     <p>The <code>n</code> argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
 or more columns returns the entire result.
-A value of <a href='https://www.rdocumentation.org/packages/base/topics/is.finite'>Inf</a> for the <code>n</code> argument is supported
+A value of <a href='https://rdrr.io/r/base/is.finite.html'>Inf</a> for the <code>n</code> argument is supported
 and also returns the full result.
 If more rows than available are fetched (by passing a too large value for
 <code>n</code>), the result is returned in full without warning.
@@ -240,7 +240,7 @@ no warning is issued.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
 <span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
@@ -286,7 +286,7 @@ no warning is issued.</p>
 <span class='co'># (This query runs eight times, once for each different</span>
 <span class='co'># parameter. The resulting rows are combined into a single</span>
 <span class='co'># data frame.)</span>
-<span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>8</span>))</div><div class='output co'>#&gt;   COUNT(*)
+<span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>8</span>))</div><div class='output co'>#&gt;   COUNT(*)
 #&gt; 1        0
 #&gt; 2        0
 #&gt; 3        0

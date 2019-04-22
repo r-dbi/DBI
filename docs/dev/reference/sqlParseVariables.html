@@ -185,8 +185,8 @@ specification.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use [] for quoting and no comments</span>
 <span class='fu'>sqlParseVariablesImpl</span>(<span class='st'>"[?a]"</span>,
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'>sqlQuoteSpec</span>(<span class='st'>"["</span>, <span class='st'>"]"</span>, <span class='st'>"\\"</span>, <span class='fl'>FALSE</span>)),
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>()
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'>sqlQuoteSpec</span>(<span class='st'>"["</span>, <span class='st'>"]"</span>, <span class='st'>"\\"</span>, <span class='fl'>FALSE</span>)),
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</div><div class='output co'>#&gt; $start
 #&gt; integer(0)
 #&gt; 
@@ -195,8 +195,8 @@ specification.</p></td>
 #&gt; </div><div class='input'>
 <span class='co'># Standard quotes, use # for commenting</span>
 <span class='fu'>sqlParseVariablesImpl</span>(<span class='st'>"# ?a\n?b"</span>,
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'>sqlQuoteSpec</span>(<span class='st'>"'"</span>, <span class='st'>"'"</span>), <span class='fu'>sqlQuoteSpec</span>(<span class='st'>'"'</span>, <span class='st'>'"'</span>)),
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'>sqlCommentSpec</span>(<span class='st'>"#"</span>, <span class='st'>"\n"</span>, <span class='fl'>FALSE</span>))
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'>sqlQuoteSpec</span>(<span class='st'>"'"</span>, <span class='st'>"'"</span>), <span class='fu'>sqlQuoteSpec</span>(<span class='st'>'"'</span>, <span class='st'>'"'</span>)),
+  <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'>sqlCommentSpec</span>(<span class='st'>"#"</span>, <span class='st'>"\n"</span>, <span class='fl'>FALSE</span>))
 )</div><div class='output co'>#&gt; $start
 #&gt; integer(0)
 #&gt; 

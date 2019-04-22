@@ -158,7 +158,7 @@ an active connection to an DBMS.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>dbQuoteLiteral()</code> returns an object that can be coerced to <a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a>,
+    <p><code>dbQuoteLiteral()</code> returns an object that can be coerced to <a href='https://rdrr.io/r/base/character.html'>character</a>,
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.</p>
 <p>When passing the returned object again to <code>dbQuoteLiteral()</code>
@@ -180,7 +180,7 @@ integer,
 numeric,
 string,
 and logical.
-If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href='https://www.rdocumentation.org/packages/base/topics/NA'>is.na()</a></code>.
+If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href='https://rdrr.io/r/base/NA.html'>is.na()</a></code>.
 The literals <code>"NA"</code> or <code>"NULL"</code> are not treated specially.</p>
 <p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
 so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
@@ -207,16 +207,16 @@ for the <code>x</code> argument raises an error.</p>
 <span class='no'>name</span> <span class='kw'>&lt;-</span> <span class='st'>"Robert'); DROP TABLE Students;--"</span>
 <span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='no'>name</span>)</div><div class='output co'>#&gt; &lt;SQL&gt; 'Robert''); DROP TABLE Students;--'</div><div class='input'>
 <span class='co'># NAs become NULL</span>
-<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; 1
+<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; 1
 #&gt; &lt;SQL&gt; 2
 #&gt; &lt;SQL&gt; 3
 #&gt; &lt;SQL&gt; NULL</div><div class='input'>
 <span class='co'># Logicals become integers by default</span>
-<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; 1
+<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>TRUE</span>, <span class='fl'>FALSE</span>, <span class='fl'>NA</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; 1
 #&gt; &lt;SQL&gt; 0
 #&gt; &lt;SQL&gt; NULL</div><div class='input'>
 <span class='co'># Raw vectors become hex strings by default</span>
-<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/raw'>as.raw</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='kw'>NULL</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; X'010203'
+<span class='fu'>dbQuoteLiteral</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/raw.html'>as.raw</a></span>(<span class='fl'>1</span>:<span class='fl'>3</span>), <span class='kw'>NULL</span>))</div><div class='output co'>#&gt; &lt;SQL&gt; X'010203'
 #&gt; &lt;SQL&gt; NULL</div><div class='input'>
 <span class='co'># SQL vectors are always passed through as is</span>
 <span class='no'>var_name</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='st'>"select"</span>)

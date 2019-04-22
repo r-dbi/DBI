@@ -115,7 +115,7 @@
 <a href="#testing" class="anchor"></a>Testing</h2>
 <p>Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don’t worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.</p>
 <p>Take the time now to head over to the <code>DBItest</code> vignette. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/vignette">vignette</a></span>(<span class="st">"test"</span>, <span class="dt">package =</span> <span class="st">"DBItest"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="st">"test"</span>, <span class="dt">package =</span> <span class="st">"DBItest"</span>)</a></code></pre></div>
 <p>Add custom tests that are not covered by <code>DBItest</code> at your discretion, or enhance <code>DBItest</code> and file a pull request if the test is generic enough to be useful for many DBI backends.</p>
 </div>
 <div id="driver" class="section level2">
@@ -135,10 +135,10 @@
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">setMethod</span>(<span class="st">"dbUnloadDriver"</span>, <span class="st">"KazamDriver"</span>, <span class="cf">function</span>(drv, ...) {</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4">  <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb4-5" data-line-number="5">})</a></code></pre></div>
-<p>If your package needs global setup or tear down, do this in the <code><a href="https://www.rdocumentation.org/packages/base/topics/ns-hooks">.onLoad()</a></code> and <code><a href="https://www.rdocumentation.org/packages/base/topics/ns-hooks">.onUnload()</a></code> functions.</p>
+<p>If your package needs global setup or tear down, do this in the <code><a href="https://rdrr.io/r/base/ns-hooks.html">.onLoad()</a></code> and <code><a href="https://rdrr.io/r/base/ns-hooks.html">.onUnload()</a></code> functions.</p>
 <p>You might also want to add a show method so the object prints nicely:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">setMethod</span>(<span class="st">"show"</span>, <span class="st">"KazamDriver"</span>, <span class="cf">function</span>(object) {</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/cat">cat</a></span>(<span class="st">"&lt;KazamDriver&gt;</span><span class="ch">\n</span><span class="st">"</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">  <span class="kw"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="st">"&lt;KazamDriver&gt;</span><span class="ch">\n</span><span class="st">"</span>)</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3">})</a></code></pre></div>
 <p>Next create <code>Kazam()</code> which instantiates this class.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co">#' @export</span></a>
@@ -159,7 +159,7 @@
 <a class="sourceLine" id="cb7-4" data-line-number="4"><span class="co">#' @keywords internal</span></a>
 <a class="sourceLine" id="cb7-5" data-line-number="5"><span class="kw">setClass</span>(<span class="st">"KazamConnection"</span>, </a>
 <a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="dt">contains =</span> <span class="st">"DBIConnection"</span>, </a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="dt">slots =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="dt">slots =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(</a>
 <a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">host =</span> <span class="st">"character"</span>, </a>
 <a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">username =</span> <span class="st">"character"</span>, </a>
 <a class="sourceLine" id="cb7-10" data-line-number="10">    <span class="co"># and so on</span></a>
@@ -197,7 +197,7 @@
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="co">#' @export</span></a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="kw">setClass</span>(<span class="st">"KazamResult"</span>, </a>
 <a class="sourceLine" id="cb9-6" data-line-number="6">  <span class="dt">contains =</span> <span class="st">"DBIResult"</span>,</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7">  <span class="dt">slots =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">ptr =</span> <span class="st">"externalptr"</span>)</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7">  <span class="dt">slots =</span> <span class="kw"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="dt">ptr =</span> <span class="st">"externalptr"</span>)</a>
 <a class="sourceLine" id="cb9-8" data-line-number="8">)</a></code></pre></div>
 <p>Then write a <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> method. This takes a connection and SQL string as arguments, and returns a result object. Again <code>...</code> is needed for compatibility with the generic, but you can add other arguments if you need them.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co">#' Send a query to Kazam.</span></a>
