@@ -40,6 +40,10 @@ test_that("unquote SQL", {
                list(Id(catalog = "c", schema = "b", table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('c.b.a')),
                list(Id(catalog = "c", schema = "b", table = "a")))
+  expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"c"."b.d"."a"')),
+               list(Id(catalog = "c", schema = "b.d", table = "a")))
+  expect_equal(dbUnquoteIdentifier(ANSI(), SQL('c."b""d".a')),
+               list(Id(catalog = "c", schema = 'b"d', table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL(c('"Catalog"."Schema"."Table"', '"UnqualifiedTable"'))),
                list(Id(catalog = "Catalog", schema = "Schema", table = "Table"),
                     Id(table = "UnqualifiedTable")))
