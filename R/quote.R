@@ -197,20 +197,24 @@ setGeneric("dbUnquoteIdentifier",
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), function(conn, x, ...) {
   if (is(x, "SQL")) {
-    rx <- '^(?:(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")+)"[.])(?:|"((?:[^"]|"")*)")|([^". ]+))$'
-    bad <- grep(rx, x, invert = TRUE)
-    if (length(bad) > 0) {
+    elt <- '(?:([^."]+)|"((?:[^"]|"")+)")'
+    good <- paste0('^', elt, '(?:\\.', elt, ')?(?:\\.', elt, ')?$')
+    bad <- grep(good, x, invert = TRUE)
+    if(length(bad) > 0){
       stop("Can't unquote ", x[bad[[1]]], call. = FALSE)
     }
-    catalog <- gsub(rx, "\\1", x)
-    catalog <- gsub('""', '"', catalog)
-    schema <- gsub(rx, "\\2", x)
-    schema <- gsub('""', '"', schema)
-    table <- gsub(rx, "\\3", x)
-    table <- gsub('""', '"', table)
-    naked_table <- gsub(rx, "\\4", x)
+    matches <- regmatches(x, regexec(good, x))
+    components <- lapply(matches,
+                         function (y) {
+                           m <- gsub('""', '"',
+                                     grep('.+', y, value = TRUE))
+                           rev(m[2:length(m)])
+                         })
+    table   <- lapply(components, function (y) y[1])
+    schema  <- lapply(components, function (y) y[2])
+    catalog <- lapply(components, function (y) y[3])
 
-    ret <- Map(catalog, schema, table, naked_table, f = as_table)
+    ret <- Map(catalog, schema, table, f = as_table)
     names(ret) <- names(x)
     return(ret)
   }
