@@ -162,7 +162,8 @@ arguments created by <code><a href='SQL.html'>SQL()</a></code> or <code><a href=
     <h2 class="hasAnchor" id="backend-authors"><a class="anchor" href="#backend-authors"></a>Backend authors</h2>
 
     
-    <p>If you are implementing an SQL backend with non-ANSI quoting rules, you'll
+
+<p>If you are implementing an SQL backend with non-ANSI quoting rules, you'll
 need to implement a method for <code><a href='sqlParseVariables.html'>sqlParseVariables()</a></code>. Failure to
 do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.</p>

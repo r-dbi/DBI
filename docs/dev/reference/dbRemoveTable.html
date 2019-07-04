@@ -36,11 +36,7 @@
 
 <meta property="og:description" content="Remove a remote table (e.g., created by dbWriteTable())
 from the database.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbRemoveTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbRemoveTable(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -137,11 +133,7 @@ RSQLite::dbRemoveTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
     
     <p>Remove a remote table (e.g., created by <code><a href='dbWriteTable.html'>dbWriteTable()</a></code>)
 from the database.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbRemoveTable("SQLiteConnection", "character")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbRemoveTable(\"SQLiteConnection\", \"character\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -179,13 +171,16 @@ or if this results in a non-scalar.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following arguments are not part of the <code>dbRemoveTable()</code> generic
+
+
+<p>The following arguments are not part of the <code>dbRemoveTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:</p><ul>
 <li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>fail_if_missing</code> (default: <code>TRUE</code>)</p></li>
 </ul>
-    <p>These arguments must be provided as named arguments.</p>
+
+<p>These arguments must be provided as named arguments.</p>
 <p>If <code>temporary</code> is <code>TRUE</code>, the call to <code>dbRemoveTable()</code>
 will consider only temporary tables.
 Not all backends support this argument.
@@ -196,7 +191,9 @@ succeeds if the table does not exist.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>A table removed by <code>dbRemoveTable()</code> doesn't appear in the list of tables
+
+
+<p>A table removed by <code>dbRemoveTable()</code> doesn't appear in the list of tables
 returned by <code><a href='dbListTables.html'>dbListTables()</a></code>,
 and <code><a href='dbExistsTable.html'>dbExistsTable()</a></code> returns <code>FALSE</code>.
 The removal propagates immediately to other connections to the same database.
@@ -208,6 +205,8 @@ quoting,
 perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn, x = name)</a></code></p></li>
 <li><p>If the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

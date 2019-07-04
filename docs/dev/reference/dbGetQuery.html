@@ -194,25 +194,31 @@ reasons.  However, callers are strongly advised to use
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
-    <p>Subclasses should override this method only if they provide some sort of
+
+<p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
     
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following arguments are not part of the <code>dbGetQuery()</code> generic
+
+
+<p>The following arguments are not part of the <code>dbGetQuery()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:</p><ul>
 <li><p><code>n</code> (default: -1)</p></li>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
 </ul>
-    <p>They must be provided as named arguments.
+
+<p>They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The <code>n</code> argument specifies the number of rows to be fetched.
+
+
+<p>The <code>n</code> argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
 or more columns returns the entire result.
 A value of <a href='https://rdrr.io/r/base/is.finite.html'>Inf</a> for the <code>n</code> argument is supported

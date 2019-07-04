@@ -36,11 +36,7 @@
 
 <meta property="og:description" content="Fetch the next n elements (rows) from the result set and return them
 as a data.frame.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbFetch(&quot;SQLiteResult&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbFetch(\&quot;SQLiteResult\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -137,11 +133,7 @@ RSQLite::dbFetch(&quot;SQLiteResult&quot;)
     
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbFetch("SQLiteResult")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbFetch(\"SQLiteResult\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -196,7 +188,9 @@ existing code. Modern backends should implement for <code>dbFetch()</code> only.
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>Fetching multi-row queries with one
+
+
+<p>Fetching multi-row queries with one
 or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
 by passing a whole number (<a href='https://rdrr.io/r/base/integer.html'>integer</a>
@@ -213,7 +207,10 @@ typed.
 Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
-    <p>The column types of the returned data frame depend on the data returned:</p><ul>
+
+
+
+<p>The column types of the returned data frame depend on the data returned:</p><ul>
 <li><p><a href='https://rdrr.io/r/base/integer.html'>integer</a> (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
 with <a href='https://rdrr.io/r/base/NA.html'>NA</a> for SQL <code>NULL</code> values</p></li>
 <li><p><a href='https://rdrr.io/r/base/numeric.html'>numeric</a> for numbers with a fractional component,
@@ -234,14 +231,16 @@ with NA for SQL <code>NULL</code> values
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
-    <p>If dates and timestamps are supported by the backend, the following R types are
+
+<p>If dates and timestamps are supported by the backend, the following R types are
 used:</p><ul>
 <li><p><a href='https://rdrr.io/r/base/Dates.html'>Date</a> for dates
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
 <li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct</a> for timestamps
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
-    <p>R has no built-in type with lossless support for the full range of 64-bit
+
+<p>R has no built-in type with lossless support for the full range of 64-bit
 or larger integers. If 64-bit integers are returned from a query,
 the following rules apply:</p><ul>
 <li><p>Values are returned in a container with support for the full range of
@@ -253,6 +252,8 @@ to the true value</p></li>
 <li><p>Conversion to character always returns a lossless decimal representation
 of the data</p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

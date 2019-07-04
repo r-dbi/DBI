@@ -37,11 +37,7 @@
 <meta property="og:description" content="Reads a database table to a data frame, optionally converting
 a column to row names and converting the column names to valid
 R identifiers.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbReadTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbReadTable(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -139,11 +135,7 @@ RSQLite::dbReadTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
     <p>Reads a database table to a data frame, optionally converting
 a column to row names and converting the column names to valid
 R identifiers.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbReadTable("SQLiteConnection", "character")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbReadTable(\"SQLiteConnection\", \"character\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -207,25 +199,32 @@ also raise an error.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following arguments are not part of the <code>dbReadTable()</code> generic
+
+
+<p>The following arguments are not part of the <code>dbReadTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:</p><ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>check.names</code></p></li>
 </ul>
-    <p>They must be provided as named arguments.
+
+<p>They must be provided as named arguments.
 See the "Value" section for details on their usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The <code>name</code> argument is processed as follows,
+
+
+<p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul>
 <li><p>If an unquoted table name as string: <code>dbReadTable()</code> will do the
 quoting,
 perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn, x = name)</a></code></p></li>
 <li><p>If the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

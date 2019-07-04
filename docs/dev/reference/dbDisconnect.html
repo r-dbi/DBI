@@ -36,11 +36,7 @@
 
 <meta property="og:description" content="This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbDisconnect(&quot;SQLiteConnection&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbDisconnect(\&quot;SQLiteConnection\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -137,11 +133,7 @@ RSQLite::dbDisconnect(&quot;SQLiteConnection&quot;)
     
     <p>This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbDisconnect("SQLiteConnection")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbDisconnect(\"SQLiteConnection\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -168,7 +160,9 @@ resources (e.g., memory, sockets).</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>A warning is issued on garbage collection when a connection has been
+
+
+<p>A warning is issued on garbage collection when a connection has been
 released without calling <code>dbDisconnect()</code>,
 but this cannot be tested automatically.
 A warning is issued immediately when calling <code>dbDisconnect()</code> on an

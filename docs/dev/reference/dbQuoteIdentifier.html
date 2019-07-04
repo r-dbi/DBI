@@ -38,12 +38,7 @@
 use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is dbUnquoteIdentifier().
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;character&quot;)
-RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbQuoteIdentifier(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;)\nRSQLite::dbQuoteIdentifier(\&quot;SQLiteConnection\&quot;, \&quot;SQL\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -142,12 +137,7 @@ RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a></code>.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</code></p></li>
-<li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbQuoteIdentifier(\"SQLiteConnection\", \"character\")</code></p></li>\n<li><p><code>RSQLite::dbQuoteIdentifier(\"SQLiteConnection\", \"SQL\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -189,7 +179,9 @@ but not for an empty string.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>Calling <code><a href='dbGetQuery.html'>dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
+
+
+<p>Calling <code><a href='dbGetQuery.html'>dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like <code>SELECT 1 AS ...</code>

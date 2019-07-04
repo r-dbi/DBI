@@ -41,12 +41,7 @@ R object according to the SQL 92 specification, which may serve as a starting
 point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbDataType(&quot;SQLiteConnection&quot;)
-RSQLite::dbDataType(&quot;SQLiteDriver&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbDataType(\&quot;SQLiteConnection\&quot;)\nRSQLite::dbDataType(\&quot;SQLiteDriver\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -148,12 +143,7 @@ R object according to the SQL 92 specification, which may serve as a starting
 point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbDataType("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbDataType("SQLiteDriver")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbDataType(\"SQLiteConnection\")</code></p></li>\n<li><p><code>RSQLite::dbDataType(\"SQLiteDriver\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -196,13 +186,16 @@ character vectors</p></li>
 <li><p>Fixed-precision (non-IEEE) numbers are mapped into either numeric or
 integer vectors.</p></li>
 </ul>
-    <p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
+
+<p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The backend can override the <code>dbDataType()</code> generic
+
+
+<p>The backend can override the <code>dbDataType()</code> generic
 for its driver class.</p>
 <p>This generic expects an arbitrary object as second argument.
 To query the values returned by the default implementation,
@@ -224,7 +217,10 @@ supported and return the same results as their unwrapped counterparts.
 The SQL data type for <a href='https://rdrr.io/r/base/factor.html'>factor</a>
 and <a href='https://rdrr.io/r/base/factor.html'>ordered</a> is the same as for character.
 The behavior for other object types is not specified.</p>
-    <p>All data types returned by <code>dbDataType()</code> are usable in an SQL statement
+
+
+
+<p>All data types returned by <code>dbDataType()</code> are usable in an SQL statement
 of the form
 <code>"CREATE TABLE test (a ...)"</code>.</p>
     

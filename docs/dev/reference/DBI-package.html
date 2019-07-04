@@ -143,7 +143,9 @@ the various R/DBMS implementations (so-called <em>DBI backends</em>).</p>
     <h2 class="hasAnchor" id="definition"><a class="anchor" href="#definition"></a>Definition</h2>
 
     
-    <p>A DBI backend is an R package
+
+
+<p>A DBI backend is an R package
 which imports the <span class="pkg">DBI</span>
 and <span class="pkg">methods</span>
 packages.
@@ -154,7 +156,9 @@ to the backend author to adopt this convention or not.</p>
     <h2 class="hasAnchor" id="dbi-classes-and-methods"><a class="anchor" href="#dbi-classes-and-methods"></a>DBI classes and methods</h2>
 
     
-    <p>A backend defines three classes,
+
+
+<p>A backend defines three classes,
 which are subclasses of
 <a href='DBIDriver-class.html'>DBIDriver</a>,
 <a href='DBIConnection-class.html'>DBIConnection</a>,
@@ -169,7 +173,9 @@ and have an ellipsis <code>...</code> in their formals for extensibility.</p>
     <h2 class="hasAnchor" id="construction-of-the-dbidriver-object"><a class="anchor" href="#construction-of-the-dbidriver-object"></a>Construction of the DBIDriver object</h2>
 
     
-    <p>The backend must support creation of an instance of its <a href='DBIDriver-class.html'>DBIDriver</a>
+
+
+<p>The backend must support creation of an instance of its <a href='DBIDriver-class.html'>DBIDriver</a>
 subclass
 with a <dfn>constructor function</dfn>.
 By default, its name is the package name without the leading &#8216;R&#8217;

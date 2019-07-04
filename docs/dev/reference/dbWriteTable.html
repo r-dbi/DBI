@@ -37,12 +37,7 @@
 <meta property="og:description" content="Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
 New code should prefer dbCreateTable() and dbAppendTable().
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbWriteTable(&quot;SQLiteConnection&quot;, &quot;character&quot;, &quot;character&quot;)
-RSQLite::dbWriteTable(&quot;SQLiteConnection&quot;, &quot;character&quot;, &quot;data.frame&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbWriteTable(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;, \&quot;character\&quot;)\nRSQLite::dbWriteTable(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;, \&quot;data.frame\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -140,12 +135,7 @@ RSQLite::dbWriteTable(&quot;SQLiteConnection&quot;, &quot;character&quot;, &quot
     <p>Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
 New code should prefer <code><a href='dbCreateTable.html'>dbCreateTable()</a></code> and <code><a href='dbAppendTable.html'>dbAppendTable()</a></code>.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbWriteTable("SQLiteConnection", "character", "character")</code></p></li>
-<li><p><code>RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbWriteTable(\"SQLiteConnection\", \"character\", \"character\")</code></p></li>\n<li><p><code>RSQLite::dbWriteTable(\"SQLiteConnection\", \"character\", \"data.frame\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -200,7 +190,9 @@ also raise an error.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following arguments are not part of the <code>dbWriteTable()</code> generic
+
+
+<p>The following arguments are not part of the <code>dbWriteTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:</p><ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
@@ -209,19 +201,23 @@ but are part of the DBI specification:</p><ul>
 <li><p><code>field.types</code> (default: <code>NULL</code>)</p></li>
 <li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
 </ul>
-    <p>They must be provided as named arguments.
+
+<p>They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The <code>name</code> argument is processed as follows,
+
+
+<p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul>
 <li><p>If an unquoted table name as string: <code>dbWriteTable()</code> will do the quoting,
 perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn, x = name)</a></code></p></li>
 <li><p>If the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
-    <p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name
+
+<p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name
 will be overwritten.
 This argument doesn't change behavior if the table does not exist yet.</p>
 <p>If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are
@@ -269,7 +265,8 @@ returned as <code>POSIXct</code>
 respecting the time zone but not necessarily preserving the
 input time zone)</p></li>
 </ul>
-    <p>Mixing column types in the same table is supported.</p>
+
+<p>Mixing column types in the same table is supported.</p>
 <p>The <code>field.types</code> argument must be a named character vector with at most
 one entry for each column.
 It indicates the SQL data type to be used for a new column.
@@ -286,7 +283,8 @@ no extra column is created in the case of natural row names.</p></li>
 that contains the row names,
 even if the input data frame only has natural row names.</p></li>
 </ul>
-    <p>The default is <code>row.names = FALSE</code>.</p>
+
+<p>The default is <code>row.names = FALSE</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

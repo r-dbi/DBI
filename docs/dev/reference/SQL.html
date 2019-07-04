@@ -175,7 +175,9 @@ The <code>SQL</code> class has associated the <code>SQL()</code> constructor fun
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
-    <p>DBI provides default generics for SQL-92 compatible quoting. If the database
+
+
+<p>DBI provides default generics for SQL-92 compatible quoting. If the database
 uses a different convention, you will need to provide your own methods.
 Note that because of the way that S4 dispatch finds methods and because
 SQL inherits from character, if you implement (e.g.) a method for

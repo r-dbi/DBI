@@ -35,11 +35,7 @@
 <meta property="og:title" content="Does a table exist? — dbExistsTable" />
 
 <meta property="og:description" content="Returns if a table given by name exists in the database.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbExistsTable(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -135,11 +131,7 @@ RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
     <div class="ref-description">
     
     <p>Returns if a table given by name exists in the database.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbExistsTable("SQLiteConnection", "character")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbExistsTable(\"SQLiteConnection\", \"character\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -177,14 +169,17 @@ or if this results in a non-scalar.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The <code>name</code> argument is processed as follows,
+
+
+<p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul>
 <li><p>If an unquoted table name as string: <code>dbExistsTable()</code> will do the
 quoting,
 perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn, x = name)</a></code></p></li>
 <li><p>If the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
-    <p>For all tables listed by <code><a href='dbListTables.html'>dbListTables()</a></code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.</p>
+
+<p>For all tables listed by <code><a href='dbListTables.html'>dbListTables()</a></code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

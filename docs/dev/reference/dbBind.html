@@ -40,11 +40,7 @@ statements that contain placeholders for values. The dbBind() function
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling dbFetch() or dbGetRowsAffected().
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbBind(&quot;SQLiteResult&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbBind(\&quot;SQLiteResult\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -145,11 +141,7 @@ statements that contain placeholders for values. The <code>dbBind()</code> funct
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbBind("SQLiteResult")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbBind(\"SQLiteResult\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -212,7 +204,8 @@ such as the execution plan,
 and execute it faster.</p></li>
 <li><p>Separation of query syntax and parameters protects against SQL injection.</p></li>
 </ul>
-    <p>The placeholder format is currently not specified by <span class="pkg">DBI</span>;
+
+<p>The placeholder format is currently not specified by <span class="pkg">DBI</span>;
 in the future, a uniform placeholder syntax may be supported.
 Consult the backend documentation for the supported formats.
 For automated testing, backend authors specify the placeholder syntax with
@@ -222,11 +215,14 @@ Known examples are:</p><ul>
 <li><p><code>$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>:name</code> and <code>$name</code> (named matching) in <span class="pkg">RSQLite</span></p></li>
 </ul>
+
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol>
+
+
+<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol>
 <li><p>Call <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> with a query or statement
 that contains placeholders,
 store the returned <a href='DBIResult-class.html'>DBIResult</a> object in a variable.
@@ -265,7 +261,9 @@ the statement is processed entirely before the function returns.)</p></li>
 <li><p>Repeat 2. and 3. as necessary.</p></li>
 <li><p>Close the result set via <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p></li>
 </ol>
-    <p>The elements of the <code>params</code> argument do not need to be scalars,
+
+
+<p>The elements of the <code>params</code> argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
 are supported.
@@ -293,6 +291,8 @@ with warning)</p></li>
 <li><p>lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
 <li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a></p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

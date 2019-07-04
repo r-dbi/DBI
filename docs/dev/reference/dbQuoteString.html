@@ -174,7 +174,9 @@ to achieve this behavior, but this is not required.)</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>The returned expression can be used in a <code>SELECT ...</code> query,
+
+
+<p>The returned expression can be used in a <code>SELECT ...</code> query,
 and for any scalar character <code>x</code> the value of
 <code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code>
 must be identical to <code>x</code>,

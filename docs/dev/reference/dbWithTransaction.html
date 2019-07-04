@@ -194,7 +194,9 @@ generic only if they implement specialized handling.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p><code>dbWithTransaction()</code> initiates a transaction with <code><a href='transactions.html'>dbBegin()</a></code>, executes
+
+
+<p><code>dbWithTransaction()</code> initiates a transaction with <code><a href='transactions.html'>dbBegin()</a></code>, executes
 the code given in the <code>code</code> argument, and commits the transaction with
 <code><a href='transactions.html'>dbCommit()</a></code>.
 If the code raises an error, the transaction is instead aborted with

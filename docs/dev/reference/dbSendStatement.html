@@ -189,18 +189,23 @@ implement the latter.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following argument is not part of the <code>dbSendStatement()</code> generic
+
+
+<p>The following argument is not part of the <code>dbSendStatement()</code> generic
 (to improve compatibility across backends)
 but is part of the DBI specification:</p><ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
 </ul>
-    <p>It must be provided as named arguments.
+
+<p>It must be provided as named arguments.
 See the "Specification" sections for details on its usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>No warnings occur under normal conditions.
+
+
+<p>No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
 <code><a href='dbClearResult.html'>dbClearResult()</a></code>.
 Failure to clear the result set leads to a warning
@@ -210,7 +215,9 @@ issuing a second query invalidates an already open result set
 and raises a warning.
 The newly opened result set is valid
 and must be cleared with <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p>
-    <p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
+
+
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

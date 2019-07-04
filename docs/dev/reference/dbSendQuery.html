@@ -40,11 +40,7 @@ records --- for that you need to use the dbFetch() method, and
 then you must call dbClearResult() when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 dbGetQuery().
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbSendQuery(&quot;SQLiteConnection&quot;, &quot;character&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbSendQuery(\&quot;SQLiteConnection\&quot;, \&quot;character\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -145,11 +141,7 @@ records --- for that you need to use the <code><a href='dbFetch.html'>dbFetch()<
 then you must call <code><a href='dbClearResult.html'>dbClearResult()</a></code> when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 <code><a href='dbGetQuery.html'>dbGetQuery()</a></code>.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbSendQuery("SQLiteConnection", "character")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbSendQuery(\"SQLiteConnection\", \"character\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -201,18 +193,23 @@ drivers' <code>dbSendQuery()</code> documentation for details.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following argument is not part of the <code>dbSendQuery()</code> generic
+
+
+<p>The following argument is not part of the <code>dbSendQuery()</code> generic
 (to improve compatibility across backends)
 but is part of the DBI specification:</p><ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
 </ul>
-    <p>It must be provided as named arguments.
+
+<p>It must be provided as named arguments.
 See the "Specification" sections for details on its usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>No warnings occur under normal conditions.
+
+
+<p>No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
 <code><a href='dbClearResult.html'>dbClearResult()</a></code>.
 Failure to clear the result set leads to a warning

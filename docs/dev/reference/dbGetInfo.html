@@ -157,7 +157,8 @@ or a <a href='DBIResult-class.html'>DBIResult</a></p></td>
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
-    <p>For <code>DBIDriver</code> subclasses, this should include the version of the
+
+<p>For <code>DBIDriver</code> subclasses, this should include the version of the
 package (<code>driver.version</code>) and the version of the underlying client
 library (<code>client.version</code>).</p>
 <p>For <code>DBIConnection</code> objects this should report the version of
@@ -171,7 +172,8 @@ being executed (<code>statement</code>), how many rows have been fetched so far
 (in the case of queries, <code>row.count</code>), how many rows were affected
 (deleted, inserted, changed,
 (<code>rows.affected</code>), and if the query is complete (<code>has.completed</code>).</p>
-    <p>The default implementation for <code>DBIResult objects</code>
+
+<p>The default implementation for <code>DBIResult objects</code>
 constructs such a list from the return values of the corresponding methods,
 <code><a href='dbGetStatement.html'>dbGetStatement()</a></code>, <code><a href='dbGetRowCount.html'>dbGetRowCount()</a></code>,
 <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>, and <code><a href='dbHasCompleted.html'>dbHasCompleted()</a></code>.</p>

@@ -41,12 +41,7 @@ objects.
 The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 Use dbCanConnect() to check if a connection can be established.
-Methods in other packages" />
-
-<meta property="og:description" content="
-RSQLite::dbConnect(&quot;SQLiteConnection&quot;)
-RSQLite::dbConnect(&quot;SQLiteDriver&quot;)
-" />
+c(&quot;Methods in other packages&quot;, &quot;\nRSQLite::dbConnect(\&quot;SQLiteConnection\&quot;)\nRSQLite::dbConnect(\&quot;SQLiteDriver\&quot;)\n&quot;)" />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -148,12 +143,7 @@ objects.
 The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 Use <code><a href='dbCanConnect.html'>dbCanConnect()</a></code> to check if a connection can be established.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
-<li><p><code>RSQLite::dbConnect("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbConnect("SQLiteDriver")</code></p></li>
-</ul></p>
+<p>c("<h3>Methods in other packages</h3>", "<ul>\n<li><p><code>RSQLite::dbConnect(\"SQLiteConnection\")</code></p></li>\n<li><p><code>RSQLite::dbConnect(\"SQLiteDriver\")</code></p></li>\n</ul>")</p>
     
     </div>
 
@@ -186,7 +176,9 @@ It returns a string that consists of a single line of text.</p>
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p>DBI recommends using the following argument names for authentication
+
+
+<p>DBI recommends using the following argument names for authentication
 parameters, with <code>NULL</code> default:</p><ul>
 <li><p><code>user</code> for the user name (default: current user)</p></li>
 <li><p><code>password</code> for the password</p></li>
@@ -195,7 +187,8 @@ parameters, with <code>NULL</code> default:</p><ul>
 <li><p><code>dbname</code> for the name of the database on the host, or the database file
 name</p></li>
 </ul>
-    <p>The defaults should provide reasonable behavior, in particular a
+
+<p>The defaults should provide reasonable behavior, in particular a
 local connection for <code>host = NULL</code>.  For some DBMS (e.g., PostgreSQL),
 this is different to a TCP/IP connection to <code>localhost</code>.</p>
 <p>In addition, DBI supports the <code>bigint</code> argument that governs how
@@ -207,6 +200,8 @@ this is different to a TCP/IP connection to <code>localhost</code>.</p>
 <code><a href='https://rdrr.io/r/base/integer.html'>as.integer()</a></code> (with warning on overflow), <code><a href='https://rdrr.io/r/base/numeric.html'>as.numeric()</a></code>
 and <code><a href='https://rdrr.io/r/base/character.html'>as.character()</a></code></p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
