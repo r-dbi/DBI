@@ -1,11 +1,9 @@
-pandoc: 1.15.2
-pkgdown: 0.1.0.9000
-pkgdown_sha: 491a8fa339dcdd1aa466e8df2f0693f679fba4cc
+pandoc: 2.2.1
+pkgdown: 1.1.0.9000
+pkgdown_sha: ~
 articles:
   DBI-1: DBI-1.html
   DBI-proposal: DBI-proposal.html
   backend: backend.html
-  biblio.bib: biblio.bib
-  hierarchy.png: hierarchy.png
   spec: spec.html
 
