@@ -15,13 +15,20 @@ identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
 
 \item{..., .dots}{Named values (for \code{...}) or a named list (for \code{.dots})
-to interpolate into a string. All strings
-will be first escaped with \code{\link[=dbQuoteString]{dbQuoteString()}} prior
-to interpolation to protect against SQL injection attacks,
-arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
+to interpolate into a string. All values
+will be first escaped with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} prior
+to interpolation to protect against SQL injection attacks.
+Arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
+}
+\value{
+The \code{sql} query with the values from \code{...} and \code{.dots} safely
+embedded.
 }
 \description{
-Safely interpolate values into an SQL string
+Accepts a query string with placeholders for values, and returns a string
+with the values embedded.
+The function is careful to quote all of its inputs with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}}
+to protect against SQL injection attacks.
 }
 \section{Backend authors}{
 
@@ -38,6 +45,11 @@ sqlInterpolate(ANSI(), sql, name = "Hadley")
 # This is safe because the single quote has been double escaped
 sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
 
+# Using paste0() could lead to dangerous SQL with carefully crafted inputs
+# (SQL injection)
+name <- "H'); DROP TABLE--;"
+paste0("SELECT * FROM X WHERE name = '", name, "'")
+
 # Use SQL() or dbQuoteIdentifier() to avoid escaping
 sql2 <- "SELECT * FROM ?table WHERE name in ?names"
 sqlInterpolate(ANSI(), sql2,
@@ -50,4 +62,13 @@ sqlInterpolate(ANSI(), sql2,
   table = SQL("X; DELETE FROM X; SELECT * FROM X"),
   names = SQL("('a', 'b')")
 )
+
+# Use dbGetQuery() or dbExecute() to process these queries:
+if (requireNamespace("RSQLite", quietly = TRUE)) {
+  con <- dbConnect(RSQLite::SQLite())
+  sql <- "SELECT ?value AS value"
+  query <- sqlInterpolate(con, sql, value = 3)
+  print(dbGetQuery(con, query))
+  dbDisconnect(con)
+}
 }

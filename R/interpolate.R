@@ -3,6 +3,11 @@ NULL
 
 #' Safely interpolate values into an SQL string
 #'
+#' Accepts a query string with placeholders for values, and returns a string
+#' with the values embedded.
+#' The function is careful to quote all of its inputs with [dbQuoteLiteral()]
+#' to protect against SQL injection attacks.
+#'
 #' @section Backend authors:
 #' If you are implementing an SQL backend with non-ANSI quoting rules, you'll
 #' need to implement a method for [sqlParseVariables()]. Failure to
@@ -15,10 +20,12 @@ NULL
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
 #' @param ...,.dots Named values (for `...`) or a named list (for `.dots`)
-#'   to interpolate into a string. All strings
-#'   will be first escaped with [dbQuoteString()] prior
-#'   to interpolation to protect against SQL injection attacks,
-#'   arguments created by [SQL()] or [dbQuoteIdentifier()] remain unchanged.
+#'   to interpolate into a string. All values
+#'   will be first escaped with [dbQuoteLiteral()] prior
+#'   to interpolation to protect against SQL injection attacks.
+#'   Arguments created by [SQL()] or [dbQuoteIdentifier()] remain unchanged.
+#' @return The `sql` query with the values from `...` and `.dots` safely
+#'   embedded.
 #' @export
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
@@ -26,6 +33,11 @@ NULL
 #'
 #' # This is safe because the single quote has been double escaped
 #' sqlInterpolate(ANSI(), sql, name = "H'); DROP TABLE--;")
+#'
+#' # Using paste0() could lead to dangerous SQL with carefully crafted inputs
+#' # (SQL injection)
+#' name <- "H'); DROP TABLE--;"
+#' paste0("SELECT * FROM X WHERE name = '", name, "'")
 #'
 #' # Use SQL() or dbQuoteIdentifier() to avoid escaping
 #' sql2 <- "SELECT * FROM ?table WHERE name in ?names"
@@ -39,6 +51,15 @@ NULL
 #'   table = SQL("X; DELETE FROM X; SELECT * FROM X"),
 #'   names = SQL("('a', 'b')")
 #' )
+#'
+#' # Use dbGetQuery() or dbExecute() to process these queries:
+#' if (requireNamespace("RSQLite", quietly = TRUE)) {
+#'   con <- dbConnect(RSQLite::SQLite())
+#'   sql <- "SELECT ?value AS value"
+#'   query <- sqlInterpolate(con, sql, value = 3)
+#'   print(dbGetQuery(con, query))
+#'   dbDisconnect(con)
+#' }
 setGeneric("sqlInterpolate",
   def = function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
 )
@@ -74,13 +95,7 @@ setMethod("sqlInterpolate", signature("DBIConnection"), function(conn, sql, ...,
     values <- values[vars]
   }
 
-  safe_values <- vapply(values, function(x) {
-    if (is.character(x)) {
-      dbQuoteString(conn, x)
-    } else {
-      as.character(x)
-    }
-  }, character(1))
+  safe_values <- vapply(values, function(x) dbQuoteLiteral(conn, x), character(1))
 
   for (i in rev(seq_along(vars))) {
     sql <- paste0(
