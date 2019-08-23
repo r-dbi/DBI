@@ -23,8 +23,10 @@ Once you have finished using a result, make sure to clear it
 with \code{\link[=dbClearResult]{dbClearResult()}}.
 An error is raised when issuing a statement over a closed
 or invalid connection,
-if the syntax of the statement is invalid,
 or if the statement is not a non-\code{NA} string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the \code{params} argument)
+or the \code{immediate} argument is set to \code{TRUE}.
 }
 \description{
 The \code{dbSendStatement()} method only submits and synchronously executes the
@@ -45,15 +47,16 @@ implement the latter.
 \section{Additional arguments}{
 
 
-The following argument is not part of the \code{dbSendStatement()} generic
+The following arguments are not part of the \code{dbSendStatement()} generic
 (to improve compatibility across backends)
-but is part of the DBI specification:
+but are part of the DBI specification:
 \itemize{
 \item \code{params} (default: \code{NULL})
+\item \code{immediate} (default: \code{FALSE})
 }
 
-It must be provided as named arguments.
-See the "Specification" sections for details on its usage.
+They must be provided as named arguments.
+See the "Specification" sections for details on their usage.
 
 }
 
@@ -74,6 +77,12 @@ and must be cleared with \code{dbClearResult()}.
 
 
 The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
+The \code{immediate} argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing \code{immediate = TRUE} leads to immediate execution of the
+statement, via the "direct" API (if supported by the driver),
+and not wait for parameters to be bound.
 
 }
 

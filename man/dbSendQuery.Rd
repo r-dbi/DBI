@@ -22,8 +22,10 @@ Once you have finished using a result, make sure to clear it
 with \code{\link[=dbClearResult]{dbClearResult()}}.
 An error is raised when issuing a query over a closed
 or invalid connection,
-if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the \code{params} argument)
+or the \code{immediate} argument is set to \code{TRUE}.
 }
 \description{
 The \code{dbSendQuery()} method only submits and synchronously executes the
@@ -51,15 +53,16 @@ drivers' \code{dbSendQuery()} documentation for details.
 \section{Additional arguments}{
 
 
-The following argument is not part of the \code{dbSendQuery()} generic
+The following arguments are not part of the \code{dbSendQuery()} generic
 (to improve compatibility across backends)
-but is part of the DBI specification:
+but are part of the DBI specification:
 \itemize{
 \item \code{params} (default: \code{NULL})
+\item \code{immediate} (default: \code{FALSE})
 }
 
-It must be provided as named arguments.
-See the "Specification" sections for details on its usage.
+They must be provided as named arguments.
+See the "Specification" sections for details on their usage.
 
 }
 
@@ -79,6 +82,12 @@ The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
 The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
+The \code{immediate} argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing \code{immediate = TRUE} leads to immediate execution of the
+query, via the "direct" API (if supported by the driver),
+and not wait for parameters to be bound.
 
 }
 

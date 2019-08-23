@@ -66,6 +66,7 @@ but are part of the DBI specification:
 \itemize{
 \item \code{n} (default: -1)
 \item \code{params} (default: \code{NULL})
+\item \code{immediate} (default: \code{FALSE})
 }
 
 They must be provided as named arguments.
@@ -75,6 +76,9 @@ See the "Specification" and "Value" sections for details on their usage.
 
 \section{Specification}{
 
+
+
+A column named \code{row_names} is treated like any other column.
 
 The \code{n} argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
@@ -90,7 +94,10 @@ no warning is issued.
 
 The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
 
-A column named \code{row_names} is treated like any other column.
+The \code{immediate} argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing \code{immediate = TRUE} leads to immediate execution of the
+query, via the "direct" API (if supported by the driver).
 
 }
 

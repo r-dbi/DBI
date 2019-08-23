@@ -48,15 +48,16 @@ performance optimization.
 \section{Additional arguments}{
 
 
-The following argument is not part of the \code{dbExecute()} generic
+The following arguments are not part of the \code{dbExecute()} generic
 (to improve compatibility across backends)
-but is part of the DBI specification:
+but are part of the DBI specification:
 \itemize{
 \item \code{params} (default: \code{NULL})
+\item \code{immediate} (default: \code{FALSE})
 }
 
-It must be provided as named arguments.
-See the "Specification" sections for details on its usage.
+They must be provided as named arguments.
+See the "Specification" sections for details on their usage.
 
 }
 
@@ -65,6 +66,11 @@ See the "Specification" sections for details on its usage.
 
 
 The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
+The \code{immediate} argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing \code{immediate = TRUE} leads to immediate execution of the
+statement, via the "direct" API (if supported by the driver).
 
 }
 
