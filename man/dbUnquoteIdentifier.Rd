@@ -49,7 +49,11 @@ or identifiers,
 if the database supports this.
 
 Unquoting simple strings (consisting of only letters) wrapped with \code{\link[=SQL]{SQL()}}
-and then quoting gives the same result as just quoting.
+and then quoting via \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} gives the same result as just
+quoting the string.
+Similarly, unquoting expressions of the form \code{SQL("schema.table")}
+and then quoting gives the same result as quoting the identifier
+constructed by \code{Id(schema = "schema", table = "table")}.
 
 }
 
@@ -58,14 +62,14 @@ and then quoting gives the same result as just quoting.
 # possibly complex quoted identifier
 dbUnquoteIdentifier(
   ANSI(),
-  SQL(c('"Schema"."Table"', '"UnqualifiedTable"'))
+  SQL(c('"Catalog"."Schema"."Table"', '"Schema"."Table"', '"UnqualifiedTable"'))
 )
 
 # The returned object is always a list,
 # also for Id objects
 dbUnquoteIdentifier(
   ANSI(),
-  Id(schema = "Schema", table = "Table")
+  Id(catalog = "Catalog", schema = "Schema", table = "Table")
 )
 
 # Quoting is the inverse operation to unquoting the elements
