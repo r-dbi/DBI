@@ -189,7 +189,11 @@ or quotes used to mark strings
 or identifiers,
 if the database supports this.</p>
 <p>Unquoting simple strings (consisting of only letters) wrapped with <code><a href='SQL.html'>SQL()</a></code>
-and then quoting gives the same result as just quoting.</p>
+and then quoting via <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code> gives the same result as just
+quoting the string.
+Similarly, unquoting expressions of the form <code><a href='SQL.html'>SQL("schema.table")</a></code>
+and then quoting gives the same result as quoting the identifier
+constructed by <code><a href='Id.html'>Id(schema = "schema", table = "table")</a></code>.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -209,20 +213,23 @@ and then quoting gives the same result as just quoting.</p>
 <span class='co'># possibly complex quoted identifier</span>
 <span class='fu'>dbUnquoteIdentifier</span>(
   <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
-  <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'"Schema"."Table"'</span>, <span class='st'>'"UnqualifiedTable"'</span>))
+  <span class='fu'><a href='SQL.html'>SQL</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>'"Catalog"."Schema"."Table"'</span>, <span class='st'>'"Schema"."Table"'</span>, <span class='st'>'"UnqualifiedTable"'</span>))
 )</div><div class='output co'>#&gt; [[1]]
-#&gt; &lt;Id&gt; schema = Schema, table = Table
+#&gt; &lt;Id&gt; catalog = Catalog, schema = Schema, table = Table
 #&gt; 
 #&gt; [[2]]
+#&gt; &lt;Id&gt; schema = Schema, table = Table
+#&gt; 
+#&gt; [[3]]
 #&gt; &lt;Id&gt; table = UnqualifiedTable
 #&gt; </div><div class='input'>
 <span class='co'># The returned object is always a list,</span>
 <span class='co'># also for Id objects</span>
 <span class='fu'>dbUnquoteIdentifier</span>(
   <span class='fu'><a href='ANSI.html'>ANSI</a></span>(),
-  <span class='fu'><a href='Id.html'>Id</a></span>(<span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>)
+  <span class='fu'><a href='Id.html'>Id</a></span>(<span class='kw'>catalog</span> <span class='kw'>=</span> <span class='st'>"Catalog"</span>, <span class='kw'>schema</span> <span class='kw'>=</span> <span class='st'>"Schema"</span>, <span class='kw'>table</span> <span class='kw'>=</span> <span class='st'>"Table"</span>)
 )</div><div class='output co'>#&gt; [[1]]
-#&gt; &lt;Id&gt; schema = Schema, table = Table
+#&gt; &lt;Id&gt; catalog = Catalog, schema = Schema, table = Table
 #&gt; </div><div class='input'>
 <span class='co'># Quoting is the inverse operation to unquoting the elements</span>
 <span class='co'># of the returned list</span>
