@@ -35,7 +35,16 @@
 <meta property="og:description" content="Accepts a query string with placeholders for values, and returns a string
 with the values embedded.
 The function is careful to quote all of its inputs with dbQuoteLiteral()
-to protect against SQL injection attacks." />
+to protect against SQL injection attacks.
+Placeholders can be specified with one of two syntaxes:
+?: each occurrence of a standalone ? is replaced with a value
+?name1, ?name2, ...: values are given as named arguments or a
+named list, the names are used to match the values
+" />
+
+<meta property="og:description" content="Mixing ? and ?name syntaxes is an error.
+The number and names of values supplied must correspond to the placeholders
+used in the query." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -132,6 +141,15 @@ to protect against SQL injection attacks." />
 with the values embedded.
 The function is careful to quote all of its inputs with <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral()</a></code>
 to protect against SQL injection attacks.</p>
+<p>Placeholders can be specified with one of two syntaxes:</p><ul>
+<li><p><code>?</code>: each occurrence of a standalone <code>?</code> is replaced with a value</p></li>
+<li><p><code>?name1</code>, <code>?name2</code>, ...: values are given as named arguments or a
+named list, the names are used to match the values</p></li>
+</ul>
+
+    <p>Mixing <code>?</code> and <code><a href='https://www.rdocumentation.org/packages/base/topics/name'>?name</a></code> syntaxes is an error.
+The number and names of values supplied must correspond to the placeholders
+used in the query.</p>
     
     </div>
 
@@ -153,9 +171,10 @@ by a letter, digit, <code>.</code> or <code>_</code>.</p></td>
     </tr>
     <tr>
       <th>..., .dots</th>
-      <td><p>Named values (for <code>...</code>) or a named list (for <code>.dots</code>)
-to interpolate into a string. All values
-will be first escaped with <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral()</a></code> prior
+      <td><p>Values (for <code>...</code>) or a list (for <code>.dots</code>)
+to interpolate into a string.
+Names are required if  <code>sql</code> uses the <code><a href='https://www.rdocumentation.org/packages/base/topics/name'>?name</a></code> syntax for placeholders.
+All values will be first escaped with <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral()</a></code> prior
 to interpolation to protect against SQL injection attacks.
 Arguments created by <code><a href='SQL.html'>SQL()</a></code> or <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code> remain unchanged.</p></td>
     </tr>
