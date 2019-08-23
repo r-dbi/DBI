@@ -14,9 +14,10 @@ Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
 by a letter, digit, \code{.} or \code{_}.}
 
-\item{..., .dots}{Named values (for \code{...}) or a named list (for \code{.dots})
-to interpolate into a string. All values
-will be first escaped with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} prior
+\item{..., .dots}{Values (for \code{...}) or a list (for \code{.dots})
+to interpolate into a string.
+Names are required if  \code{sql} uses the \code{?name} syntax for placeholders.
+All values will be first escaped with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} prior
 to interpolation to protect against SQL injection attacks.
 Arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
 }
@@ -29,6 +30,17 @@ Accepts a query string with placeholders for values, and returns a string
 with the values embedded.
 The function is careful to quote all of its inputs with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}}
 to protect against SQL injection attacks.
+
+Placeholders can be specified with one of two syntaxes:
+\itemize{
+\item \code{?}: each occurrence of a standalone \code{?} is replaced with a value
+\item \code{?name1}, \code{?name2}, ...: values are given as named arguments or a
+named list, the names are used to match the values
+}
+
+Mixing \code{?} and \code{?name} syntaxes is an error.
+The number and names of values supplied must correspond to the placeholders
+used in the query.
 }
 \section{Backend authors}{
 

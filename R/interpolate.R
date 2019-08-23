@@ -3,10 +3,21 @@ NULL
 
 #' Safely interpolate values into an SQL string
 #'
+#' @description
 #' Accepts a query string with placeholders for values, and returns a string
 #' with the values embedded.
 #' The function is careful to quote all of its inputs with [dbQuoteLiteral()]
 #' to protect against SQL injection attacks.
+#'
+#' Placeholders can be specified with one of two syntaxes:
+#'
+#' - `?`: each occurrence of a standalone `?` is replaced with a value
+#' - `?name1`, `?name2`, ...: values are given as named arguments or a
+#'   named list, the names are used to match the values
+#'
+#' Mixing `?` and `?name` syntaxes is an error.
+#' The number and names of values supplied must correspond to the placeholders
+#' used in the query.
 #'
 #' @section Backend authors:
 #' If you are implementing an SQL backend with non-ANSI quoting rules, you'll
@@ -19,9 +30,10 @@ NULL
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed
 #'   by a letter, digit, `.` or `_`.
-#' @param ...,.dots Named values (for `...`) or a named list (for `.dots`)
-#'   to interpolate into a string. All values
-#'   will be first escaped with [dbQuoteLiteral()] prior
+#' @param ...,.dots Values (for `...`) or a list (for `.dots`)
+#'   to interpolate into a string.
+#'   Names are required if  `sql` uses the `?name` syntax for placeholders.
+#'   All values will be first escaped with [dbQuoteLiteral()] prior
 #'   to interpolation to protect against SQL injection attacks.
 #'   Arguments created by [SQL()] or [dbQuoteIdentifier()] remain unchanged.
 #' @return The `sql` query with the values from `...` and `.dots` safely
