@@ -1,3 +1,12 @@
+# DBI 1.0.0.9002
+
+- Add tests for `dbUnquoteIdentifier()` (#279, @baileych).
+- `sqlInterpolate()` uses `dbQuoteLiteral()` instead of checking the type of the input.
+- Improved documentation for `sqlInterpolate()` (#100).
+- `dbUnquoteIdentifier()` also handles unquoted identifiers of the form `table`, `schema.table` or `catalog.schema.table`, for compatibility with dbplyr.
+- `dbUnquoteIdentifier()` now supports `Id()` objects with `catalog` members (#266, @raffscallion).
+
+
 # DBI 1.0.0.9001
 
 - Add usage of `SQL()` to `sqlInterpolate()` examples (#259, @renkun-ken).
