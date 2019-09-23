@@ -48,15 +48,16 @@ performance optimization.
 \section{Additional arguments}{
 
 
-The following argument is not part of the \code{dbExecute()} generic
+The following arguments are not part of the \code{dbExecute()} generic
 (to improve compatibility across backends)
-but is part of the DBI specification:
+but are part of the DBI specification:
 \itemize{
 \item \code{params} (default: \code{NULL})
+\item \code{immediate} (default: \code{NULL})
 }
 
-It must be provided as named arguments.
-See the "Specification" sections for details on its usage.
+They must be provided as named arguments.
+See the "Specification" sections for details on their usage.
 
 }
 
@@ -65,6 +66,50 @@ See the "Specification" sections for details on its usage.
 
 
 The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+
+}
+
+\section{Specification for the \code{immediate} argument}{
+
+
+
+The \code{immediate} argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing \code{immediate = TRUE} leads to immediate execution of the
+query or statement, via the "direct" API (if supported by the driver).
+The default \code{NULL} means that the backend should choose whatever API
+makes the most sense for the database, and (if relevant) tries the
+other API if the first attempt fails. A successful second attempt
+should result in a message that suggests passing the correct
+\code{immediate} argument.
+Examples for possible behaviors:
+\enumerate{
+\item DBI backend defaults to \code{immediate = TRUE} internally
+\enumerate{
+\item A query without parameters is passed: query is executed
+\item A query with parameters is passed:
+\enumerate{
+\item \code{params} not given: rejected immediately by the database
+because of a syntax error in the query, the backend tries
+\code{immediate = FALSE} (and gives a message)
+\item \code{params} given: query is executed using \code{immediate = FALSE}
+}
+}
+\item DBI backend defaults to \code{immediate = FALSE} internally
+\enumerate{
+\item A query without parameters is passed:
+\enumerate{
+\item simple query: query is executed
+\item "special" query (such as setting a config options): fails,
+the backend tries \code{immediate = TRUE} (and gives a message)
+}
+\item A query with parameters is passed:
+\enumerate{
+\item \code{params} not given: waiting for parameters via \code{\link[=dbBind]{dbBind()}}
+\item \code{params} given: query is executed
+}
+}
+}
 
 }
 

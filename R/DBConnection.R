@@ -98,6 +98,7 @@ setGeneric("dbDisconnect",
 #' @inherit DBItest::spec_result_send_query return
 #' @inheritSection DBItest::spec_result_send_query Additional arguments
 #' @inheritSection DBItest::spec_result_send_query Specification
+#' @inheritSection DBItest::spec_result_send_query Specification for the `immediate` argument
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character string containing SQL.
@@ -156,6 +157,7 @@ setGeneric("dbSendQuery",
 #' @inherit DBItest::spec_result_send_statement return
 #' @inheritSection DBItest::spec_result_send_statement Additional arguments
 #' @inheritSection DBItest::spec_result_send_statement Specification
+#' @inheritSection DBItest::spec_result_send_statement Specification for the `immediate` argument
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character string containing SQL.
@@ -236,6 +238,7 @@ setMethod(
 #' @inherit DBItest::spec_result_get_query return
 #' @inheritSection DBItest::spec_result_get_query Additional arguments
 #' @inheritSection DBItest::spec_result_get_query Specification
+#' @inheritSection DBItest::spec_result_get_query Specification for the `immediate` argument
 #'
 #' @section Implementation notes:
 #' Subclasses should override this method only if they provide some sort of
@@ -300,6 +303,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' @inherit DBItest::spec_result_execute return
 #' @inheritSection DBItest::spec_result_execute Additional arguments
 #' @inheritSection DBItest::spec_result_execute Specification
+#' @inheritSection DBItest::spec_result_execute Specification for the `immediate` argument
 #'
 #' @inheritParams dbGetQuery
 #' @param statement a character string containing SQL.
