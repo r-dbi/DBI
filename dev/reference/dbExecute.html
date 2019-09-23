@@ -186,18 +186,54 @@ performance optimization.</p>
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
-    <p>The following argument is not part of the <code>dbExecute()</code> generic
+    <p>The following arguments are not part of the <code>dbExecute()</code> generic
 (to improve compatibility across backends)
-but is part of the DBI specification:</p><ul>
+but are part of the DBI specification:</p><ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+<li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul>
-    <p>It must be provided as named arguments.
-See the "Specification" sections for details on its usage.</p>
+    <p>They must be provided as named arguments.
+See the "Specification" sections for details on their usage.</p>
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
     <p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
+    
+    <h2 class="hasAnchor" id="specification-for-the-immediate-argument"><a class="anchor" href="#specification-for-the-immediate-argument"></a>Specification for the <code>immediate</code> argument</h2>
+
+    
+    <p>The <code>immediate</code> argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing <code>immediate = TRUE</code> leads to immediate execution of the
+query or statement, via the "direct" API (if supported by the driver).
+The default <code>NULL</code> means that the backend should choose whatever API
+makes the most sense for the database, and (if relevant) tries the
+other API if the first attempt fails. A successful second attempt
+should result in a message that suggests passing the correct
+<code>immediate</code> argument.
+Examples for possible behaviors:</p><ol>
+<li><p>DBI backend defaults to <code>immediate = TRUE</code> internally</p><ol>
+<li><p>A query without parameters is passed: query is executed</p></li>
+<li><p>A query with parameters is passed:</p><ol>
+<li><p><code>params</code> not given: rejected immediately by the database
+because of a syntax error in the query, the backend tries
+<code>immediate = FALSE</code> (and gives a message)</p></li>
+<li><p><code>params</code> given: query is executed using <code>immediate = FALSE</code></p></li>
+</ol></li>
+</ol></li>
+<li><p>DBI backend defaults to <code>immediate = FALSE</code> internally</p><ol>
+<li><p>A query without parameters is passed:</p><ol>
+<li><p>simple query: query is executed</p></li>
+<li><p>"special" query (such as setting a config options): fails,
+the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
+</ol></li>
+<li><p>A query with parameters is passed:</p><ol>
+<li><p><code>params</code> not given: waiting for parameters via <code><a href='dbBind.html'>dbBind()</a></code></p></li>
+<li><p><code>params</code> given: query is executed</p></li>
+</ol></li>
+</ol></li>
+</ol>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -264,6 +300,8 @@ See the "Specification" sections for details on its usage.</p>
       <li><a href="#additional-arguments">Additional arguments</a></li>
 
       <li><a href="#specification">Specification</a></li>
+
+      <li><a href="#specification-for-the-immediate-argument">Specification for the <code>immediate</code> argument</a></li>
 
       <li><a href="#see-also">See also</a></li>
       
