@@ -97,6 +97,7 @@ names2 <- function(x) {
 #' @param drv A object inheriting from [DBIConnector-class].
 #' @param eval Set to `FALSE` to return the functions that generate the argument
 #'   instead of evaluating them.
+#' @param ... Other arguments passed on to methods. Not otherwise used.
 #' @family DBIConnector generics
 #' @examples
 #' cnr <- new("DBIConnector",

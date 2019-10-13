@@ -11,6 +11,8 @@ dbGetConnectArgs(drv, eval = TRUE, ...)
 
 \item{eval}{Set to \code{FALSE} to return the functions that generate the argument
 instead of evaluating them.}
+
+\item{...}{Other arguments passed on to methods. Not otherwise used.}
 }
 \description{
 Returns the arguments stored in a \linkS4class{DBIConnector} object,
