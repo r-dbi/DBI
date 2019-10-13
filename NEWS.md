@@ -1,3 +1,11 @@
+# DBI 1.0.0.9003
+
+- New `setDBIMethod()` (#235).
+- Update examples to refer to `params` instead of `param` (#235).
+- New `DBIConnector` class (#280).
+- Specify `immediate` argument to `dbSendQuery()`, `dbGetQuery()`, `dbSendStatement()` and `dbExecute()` (#268).
+
+
 # DBI 1.0.0.9002
 
 - Add tests for `dbUnquoteIdentifier()` (#279, @baileych).
