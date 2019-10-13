@@ -151,7 +151,11 @@ dbGetQuery(con, "SELECT * FROM mtcars", n = 6)
 # (This query runs eight times, once for each different
 # parameter. The resulting rows are combined into a single
 # data frame.)
-dbGetQuery(con, "SELECT COUNT(*) FROM mtcars WHERE cyl = ?", param = list(1:8))
+dbGetQuery(
+  con,
+  "SELECT COUNT(*) FROM mtcars WHERE cyl = ?",
+  params = list(1:8)
+)
 
 dbDisconnect(con)
 }

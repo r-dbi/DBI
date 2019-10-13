@@ -142,7 +142,7 @@ dbReadTable(con, "cars")   # there are now 6 rows
 rs <- dbSendStatement(
   con,
   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
-  param = list(4L, 5L)
+  params = list(4L, 5L)
 )
 dbClearResult(rs)
 

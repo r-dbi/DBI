@@ -141,7 +141,7 @@ dbClearResult(rs)
 rs <- dbSendQuery(
   con,
   "SELECT * FROM mtcars WHERE cyl = ?",
-  param = list(4L)
+  params = list(4L)
 )
 dbFetch(rs)
 dbClearResult(rs)

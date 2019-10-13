@@ -128,7 +128,7 @@ dbReadTable(con, "cars")   # there are now 6 rows
 dbExecute(
   con,
   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
-  param = list(4:7, 5:8)
+  params = list(4:7, 5:8)
 )
 dbReadTable(con, "cars")   # there are now 10 rows
 
