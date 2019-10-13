@@ -288,7 +288,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class='fu'>dbExecute</span>(
   <span class='no'>con</span>,
   <span class='st'>"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,
-  <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4</span>:<span class='fl'>7</span>, <span class='fl'>5</span>:<span class='fl'>8</span>)
+  <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4</span>:<span class='fl'>7</span>, <span class='fl'>5</span>:<span class='fl'>8</span>)
 )</div><div class='output co'>#&gt; [1] 4</div><div class='input'><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"cars"</span>)   <span class='co'># there are now 10 rows</span></div><div class='output co'>#&gt;    speed dist
 #&gt; 1      4    2
 #&gt; 2      4   10

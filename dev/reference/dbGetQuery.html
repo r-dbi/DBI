@@ -337,7 +337,11 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class='co'># (This query runs eight times, once for each different</span>
 <span class='co'># parameter. The resulting rows are combined into a single</span>
 <span class='co'># data frame.)</span>
-<span class='fu'>dbGetQuery</span>(<span class='no'>con</span>, <span class='st'>"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>, <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>8</span>))</div><div class='output co'>#&gt;   COUNT(*)
+<span class='fu'>dbGetQuery</span>(
+  <span class='no'>con</span>,
+  <span class='st'>"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>,
+  <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>1</span>:<span class='fl'>8</span>)
+)</div><div class='output co'>#&gt;   COUNT(*)
 #&gt; 1        0
 #&gt; 2        0
 #&gt; 3        0

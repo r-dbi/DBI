@@ -299,7 +299,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendStatement</span>(
   <span class='no'>con</span>,
   <span class='st'>"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,
-  <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4L</span>, <span class='fl'>5L</span>)
+  <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4L</span>, <span class='fl'>5L</span>)
 )
 <span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
 

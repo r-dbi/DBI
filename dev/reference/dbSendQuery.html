@@ -306,7 +306,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'>dbSendQuery</span>(
   <span class='no'>con</span>,
   <span class='st'>"SELECT * FROM mtcars WHERE cyl = ?"</span>,
-  <span class='kw'>param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4L</span>)
+  <span class='kw'>params</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>4L</span>)
 )
 <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 #&gt; 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
