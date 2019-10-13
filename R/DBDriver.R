@@ -6,7 +6,7 @@ NULL
 #' Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 #' The virtual class `DBIDriver` defines the operations for creating
 #' connections and defining data type mappings.  Actual driver classes, for
-#' instance `RPgSQL`, `RMySQL`, etc. implement these operations in a
+#' instance `RPostgres`, `RMariaDB`, etc. implement these operations in a
 #' DBMS-specific manner.
 #'
 #' @docType class

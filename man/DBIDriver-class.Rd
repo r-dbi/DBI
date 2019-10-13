@@ -8,7 +8,7 @@
 Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 The virtual class \code{DBIDriver} defines the operations for creating
 connections and defining data type mappings.  Actual driver classes, for
-instance \code{RPgSQL}, \code{RMySQL}, etc. implement these operations in a
+instance \code{RPostgres}, \code{RMariaDB}, etc. implement these operations in a
 DBMS-specific manner.
 }
 \seealso{
