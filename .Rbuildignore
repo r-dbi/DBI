@@ -29,3 +29,5 @@ inst\/doc\/DBI\.b..$
 ^docs$
 ^man-roxygen$
 ^CRAN-RELEASE$
+^codecov\.yml$
+^LICENSE\.md$
