@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -42,6 +44,7 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -68,7 +71,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -110,6 +113,7 @@
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -310,7 +314,7 @@
 <li>Added default implementation for <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code>.</li>
 <li>All standard generics are required to have an ellipsis (with test), for future extensibility.</li>
 <li>Improved default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> (#77).</li>
-<li>Removed <code><a href="https://www.rdocumentation.org/packages/base/topics/conditions">tryCatch()</a></code> call in <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> (#113).</li>
+<li>Removed <code><a href="https://rdrr.io/r/base/conditions.html">tryCatch()</a></code> call in <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> (#113).</li>
 </ul>
 </li>
 <li>Documentation improvements
@@ -348,7 +352,7 @@
 <ul>
 <li>
 <code><a href="../reference/dbDataType.html">dbDataType()</a></code> maps <code>character</code> values to <code>"TEXT"</code> by default (#102).</li>
-<li>The default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> doesn’t call <code><a href="https://www.rdocumentation.org/packages/base/topics/encodeString">encodeString()</a></code> anymore: Neither SQLite nor Postgres understand e.g. <code>\n</code> in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (#121).</li>
+<li>The default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> doesn’t call <code><a href="https://rdrr.io/r/base/encodeString.html">encodeString()</a></code> anymore: Neither SQLite nor Postgres understand e.g. <code>\n</code> in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (#121).</li>
 </ul>
 </li>
 <li>Interface enhancements
@@ -400,7 +404,7 @@
 <li><p><code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> gains a default method that extracts the information from <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>. This means that most drivers should no longer need to implement <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (which may be deprecated anyway at some point) (#55).</p></li>
 <li><p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> are now properly exported.</p></li>
 <li><p>The default implementation for <code><a href="../reference/dbDataType.html">dbDataType()</a></code> (powered by <code>dbiDataType()</code>) now also supports <code>difftime</code> and <code>AsIs</code> objects and lists of <code>raw</code> (#70).</p></li>
-<li><p>Default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> method now always calls <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, in a <code><a href="https://www.rdocumentation.org/packages/base/topics/conditions">tryCatch()</a></code> block.</p></li>
+<li><p>Default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> method now always calls <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, in a <code><a href="https://rdrr.io/r/base/conditions.html">tryCatch()</a></code> block.</p></li>
 <li><p>New generic <code><a href="../reference/dbBind.html">dbBind()</a></code> for binding values to a parameterised query.</p></li>
 <li>
 <p>DBI gains a number of SQL generation functions. These make it easier to write backends by implementing common operations that are slightly tricky to do absolutely correctly.</p>
@@ -415,7 +419,7 @@
 <li><p><code>dbiCheckCompliance()</code> has been removed, the functionality is now available in the <code>DBItest</code> package (#80).</p></li>
 <li><p>Added default <code>show()</code> methods for driver, connection and results.</p></li>
 <li><p>New concrete <code>ANSIConnection</code> class and <code><a href="../reference/ANSI.html">ANSI()</a></code> function to generate a dummy ANSI compliant connection useful for testing.</p></li>
-<li><p>Default <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code>dbQuoteIdentifer()</code> methods now use <code><a href="https://www.rdocumentation.org/packages/base/topics/encodeString">encodeString()</a></code> so that special characters like <code>\n</code> are correctly escaped. <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> converts <code>NA</code> to (unquoted) NULL.</p></li>
+<li><p>Default <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code>dbQuoteIdentifer()</code> methods now use <code><a href="https://rdrr.io/r/base/encodeString.html">encodeString()</a></code> so that special characters like <code>\n</code> are correctly escaped. <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> converts <code>NA</code> to (unquoted) NULL.</p></li>
 <li><p>The initial DBI proposal and DBI version 1 specification are now included as a vignette. These are there mostly for historical interest.</p></li>
 <li><p>The new <code>DBItest</code> package is described in the vignette.</p></li>
 <li><p>Deprecated <code>print.list.pairs()</code>.</p></li>
@@ -464,7 +468,7 @@
 <li><p><code><a href="../reference/make.db.names.html">make.db.names()</a></code>, <code><a href="../reference/make.db.names.html">isSQLKeyword()</a></code> and <code><a href="../reference/make.db.names.html">SQLKeywords()</a></code>: a black list based approach is fundamentally flawed; instead quote strings and identifiers with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>.</p></li>
 </ul>
 </li>
-<li><p><code><a href="../reference/dbGetDBIVersion.html">dbGetDBIVersion()</a></code> is deprecated since it’s now just a thin wrapper around <code><a href="https://www.rdocumentation.org/packages/utils/topics/packageDescription">packageVersion("DBI")</a></code>.</p></li>
+<li><p><code><a href="../reference/dbGetDBIVersion.html">dbGetDBIVersion()</a></code> is deprecated since it’s now just a thin wrapper around <code><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion("DBI")</a></code>.</p></li>
 <li><p><code><a href="../reference/dbSetDataMappings.html">dbSetDataMappings()</a></code> (#9) and <code><a href="../reference/dbCallProc.html">dbCallProc()</a></code> (#7) are deprecated as no implementations were ever provided.</p></li>
 </ul>
 </div>
@@ -627,19 +631,23 @@
 
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='http://krlmlr.info'>Kirill Müller</a>, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 

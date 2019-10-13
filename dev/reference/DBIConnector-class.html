@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DBI: R Database Interface — DBI-package • DBI</title>
+<title>DBIConnector class — DBIConnector-class • DBI</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,12 +32,17 @@
 
 
 
-<meta property="og:title" content="DBI: R Database Interface — DBI-package" />
+<meta property="og:title" content="DBIConnector class — DBIConnector-class" />
 
-<meta property="og:description" content="DBI defines an interface for communication between R and relational database
-management systems.
-All classes in this package are virtual and need to be extended by
-the various R/DBMS implementations (so-called DBI backends)." />
+<meta property="og:description" content="Wraps DBIDriver to include connection options.
+The purpose of this class is to store both the driver
+and the connection options, so that a database connection can be established
+with a call to dbConnect() without additional arguments.
+To prevent leakage of passwords and other credentials,
+this class supports delayed evaluation.
+All arguments can optionally be a function (callable without arguments).
+This function is evaluated transparently when connecting in
+dbGetConnectArgs()." />
 <meta name="twitter:card" content="summary" />
 
 <meta name="robots" content="noindex">
@@ -125,104 +130,55 @@ the various R/DBMS implementations (so-called DBI backends)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>DBI: R Database Interface</h1>
+    <h1>DBIConnector class</h1>
     
-    <div class="hidden name"><code>DBI-package.Rd</code></div>
+    <div class="hidden name"><code>DBIConnector-class.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>DBI defines an interface for communication between R and relational database
-management systems.
-All classes in this package are virtual and need to be extended by
-the various R/DBMS implementations (so-called <em>DBI backends</em>).</p>
+    <p>Wraps <a href='DBIDriver-class.html'>DBIDriver</a> to include connection options.
+The purpose of this class is to store both the driver
+and the connection options, so that a database connection can be established
+with a call to <code><a href='dbConnect.html'>dbConnect()</a></code> without additional arguments.</p>
+<p>To prevent leakage of passwords and other credentials,
+this class supports delayed evaluation.
+All arguments can optionally be a function (callable without arguments).
+This function is evaluated transparently when connecting in
+<code><a href='dbGetConnectArgs.html'>dbGetConnectArgs()</a></code>.</p>
     
     </div>
 
         
-    <h2 class="hasAnchor" id="definition"><a class="anchor" href="#definition"></a>Definition</h2>
-
-    
-
-
-<p>A DBI backend is an R package
-which imports the <span class="pkg">DBI</span>
-and <span class="pkg">methods</span>
-packages.
-For better or worse, the names of many existing backends start with
-&#8216;R&#8217;, e.g., <span class="pkg">RSQLite</span>, <span class="pkg">RMySQL</span>, <span class="pkg">RSQLServer</span>; it is up
-to the backend author to adopt this convention or not.</p>
-    
-    <h2 class="hasAnchor" id="dbi-classes-and-methods"><a class="anchor" href="#dbi-classes-and-methods"></a>DBI classes and methods</h2>
-
-    
-
-
-<p>A backend defines three classes,
-which are subclasses of
-<a href='DBIDriver-class.html'>DBIDriver</a>,
-<a href='DBIConnection-class.html'>DBIConnection</a>,
-and <a href='DBIResult-class.html'>DBIResult</a>.
-The backend provides implementation for all methods
-of these base classes
-that are defined but not implemented by DBI.
-All methods defined in <span class="pkg">DBI</span> are reexported (so that the package can
-be used without having to attach <span class="pkg">DBI</span>),
-and have an ellipsis <code>...</code> in their formals for extensibility.</p>
-    
-    <h2 class="hasAnchor" id="construction-of-the-dbidriver-object"><a class="anchor" href="#construction-of-the-dbidriver-object"></a>Construction of the DBIDriver object</h2>
-
-    
-
-
-<p>The backend must support creation of an instance of its <a href='DBIDriver-class.html'>DBIDriver</a>
-subclass
-with a <dfn>constructor function</dfn>.
-By default, its name is the package name without the leading &#8216;R&#8217;
-(if it exists), e.g., <code>SQLite</code> for the <span class="pkg">RSQLite</span> package.
-However, backend authors may choose a different name.
-The constructor must be exported, and
-it must be a function
-that is callable without arguments.
-DBI recommends to define a constructor with an empty argument list.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Important generics: <code><a href='dbConnect.html'>dbConnect()</a></code>, <code><a href='dbGetQuery.html'>dbGetQuery()</a></code>,
-<code><a href='dbReadTable.html'>dbReadTable()</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable()</a></code>, <code><a href='dbDisconnect.html'>dbDisconnect()</a></code></p>
-<p>Formal specification (currently work in progress and incomplete):
-<code><a href='../articles/spec.html'>vignette("spec", package = "DBI")</a></code></p></div>
+    <div class='dont-index'><p>Other DBI classes: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+  <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
+  <code><a href='DBIObject-class.html'>DBIObject-class</a></code>,
+  <code><a href='DBIResult-class.html'>DBIResult-class</a></code></p>
+<p>Other DBIConnector generics: <code><a href='dbConnect.html'>dbConnect</a></code>,
+  <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbGetConnectArgs.html'>dbGetConnectArgs</a></code>,
+  <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>()</div><div class='output co'>#&gt; &lt;SQLiteDriver&gt;</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>new</span>(<span class='st'>"DBIConnector"</span>,
+  <span class='kw'>.drv</span> <span class='kw'>=</span> <span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(),
+  <span class='kw'>.conn_args</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>dbname</span> <span class='kw'>=</span> <span class='st'>":memory:"</span>)
+)</div><div class='output co'>#&gt; &lt;DBIConnector&gt;&lt;SQLiteDriver&gt;
+#&gt; Arguments:
+#&gt; $dbname
+#&gt; [1] ":memory:"
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
-      <li><a href="#definition">Definition</a></li>
-
-      <li><a href="#dbi-classes-and-methods">DBI classes and methods</a></li>
-
-      <li><a href="#construction-of-the-dbidriver-object">Construction of the DBIDriver object</a></li>
-
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
-
-    <h2>Author</h2>
-    <p><strong>Maintainer</strong>: Kirill Müller <a href='mailto:krlmlr+r@mailbox.org'>krlmlr+r@mailbox.org</a> (0000-0002-1416-3412)</p>
-<p>Authors:</p><ul>
-<li><p>R Special Interest Group on Databases (R-SIG-DB)</p></li>
-<li><p>Hadley Wickham</p></li>
-</ul>
-
-<p>Other contributors:</p><ul>
-<li><p>R Consortium [funder]</p></li>
-</ul>
-
 
   </div>
 </div>

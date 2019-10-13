@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -38,9 +40,7 @@ statements that contain placeholders for values. The dbBind() function
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling dbFetch() or dbGetRowsAffected().
-Methods in other packages" />
-
-<meta property="og:description" content="
+Methods in other packages
 RSQLite::dbBind(&quot;SQLiteResult&quot;)
 " />
 <meta name="twitter:card" content="summary" />
@@ -55,6 +55,7 @@ RSQLite::dbBind(&quot;SQLiteResult&quot;)
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
 
 
   </head>
@@ -81,7 +82,7 @@ RSQLite::dbBind(&quot;SQLiteResult&quot;)
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -123,6 +124,7 @@ RSQLite::dbBind(&quot;SQLiteResult&quot;)
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -141,9 +143,7 @@ statements that contain placeholders for values. The <code>dbBind()</code> funct
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>.</p>
-<p><h3>Methods in other packages</h3>
-
-    <ul>
+<p><h3>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbBind("SQLiteResult")</code></p></li>
 </ul></p>
     
@@ -208,7 +208,8 @@ such as the execution plan,
 and execute it faster.</p></li>
 <li><p>Separation of query syntax and parameters protects against SQL injection.</p></li>
 </ul>
-    <p>The placeholder format is currently not specified by <span class="pkg">DBI</span>;
+
+<p>The placeholder format is currently not specified by <span class="pkg">DBI</span>;
 in the future, a uniform placeholder syntax may be supported.
 Consult the backend documentation for the supported formats.
 For automated testing, backend authors specify the placeholder syntax with
@@ -218,18 +219,21 @@ Known examples are:</p><ul>
 <li><p><code>$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>:name</code> and <code>$name</code> (named matching) in <span class="pkg">RSQLite</span></p></li>
 </ul>
+
     
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
-    <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol>
+
+
+<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol>
 <li><p>Call <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code> with a query or statement
 that contains placeholders,
 store the returned <a href='DBIResult-class.html'>DBIResult</a> object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
 It is good practice to register a call to <code><a href='dbClearResult.html'>dbClearResult()</a></code> via
-<code><a href='https://www.rdocumentation.org/packages/base/topics/on.exit'>on.exit()</a></code> right after calling <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>
+<code><a href='https://rdrr.io/r/base/on.exit.html'>on.exit()</a></code> right after calling <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> or <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>
 (see the last enumeration item).
 Until <code>dbBind()</code> has been called, the returned result set object has the
 following behavior:</p><ul>
@@ -246,7 +250,7 @@ depending on the kind of placeholders used.
 Named values are matched to named parameters, unnamed values
 are matched by position in the list of parameters.
 All elements in this list must have the same lengths and contain values
-supported by the backend; a <a href='https://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a> is internally stored as such
+supported by the backend; a <a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a> is internally stored as such
 a list.
 The parameter list is passed to a call to <code>dbBind()</code> on the <code>DBIResult</code>
 object.</p></li>
@@ -261,13 +265,15 @@ the statement is processed entirely before the function returns.)</p></li>
 <li><p>Repeat 2. and 3. as necessary.</p></li>
 <li><p>Close the result set via <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p></li>
 </ol>
-    <p>The elements of the <code>params</code> argument do not need to be scalars,
+
+
+<p>The elements of the <code>params</code> argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
 are supported.
 For queries, calling <code><a href='dbFetch.html'>dbFetch()</a></code> binding such parameters returns
 concatenated results, equivalent to binding and fetching for each set
-of values and connecting via <code><a href='https://www.rdocumentation.org/packages/base/topics/cbind'>rbind()</a></code>.
+of values and connecting via <code><a href='https://rdrr.io/r/base/cbind.html'>rbind()</a></code>.
 For data manipulation statements, <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code> returns the
 total number of rows affected if binding non-scalar parameters.
 <code>dbBind()</code> also accepts repeated calls on the same result set
@@ -276,19 +282,21 @@ and data manipulation statements,
 even if no results are fetched between calls to <code>dbBind()</code>.</p>
 <p>If the placeholders in the query are named,
 their order in the <code>params</code> argument is not important.</p>
-<p>At least the following data types are accepted on input (including <a href='https://www.rdocumentation.org/packages/base/topics/NA'>NA</a>):</p><ul>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/integer'>integer</a></p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/numeric'>numeric</a></p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/logical'>logical</a> for Boolean values</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/factor'>factor</a> (bound as character,
+<p>At least the following data types are accepted on input (including <a href='https://rdrr.io/r/base/NA.html'>NA</a>):</p><ul>
+<li><p><a href='https://rdrr.io/r/base/integer.html'>integer</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/numeric.html'>numeric</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/logical.html'>logical</a> for Boolean values</p></li>
+<li><p><a href='https://rdrr.io/r/base/character.html'>character</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/factor.html'>factor</a> (bound as character,
 with warning)</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/Dates'>Date</a></p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/DateTimeClasses'>POSIXct</a> timestamps</p></li>
-<li><p><a href='https://www.rdocumentation.org/packages/base/topics/DateTimeClasses'>POSIXlt</a> timestamps</p></li>
-<li><p>lists of <a href='https://www.rdocumentation.org/packages/base/topics/raw'>raw</a> for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
-<li><p>objects of type <a href='https://www.rdocumentation.org/packages/blob/topics/blob'>blob::blob</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/Dates.html'>Date</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct</a> timestamps</p></li>
+<li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXlt</a> timestamps</p></li>
+<li><p>lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
+<li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a></p></li>
 </ul>
+
+
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -306,29 +314,29 @@ with warning)</p></li>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://www.rdocumentation.org/packages/RSQLite/topics/SQLite'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 
 <span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>, <span class='no'>iris</span>)
 
 <span class='co'># Using the same query for different values</span>
 <span class='no'>iris_result</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)
-<span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fl'>2.3</span>))
+<span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>2.3</span>))
 <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>iris_result</span>)</div><div class='output co'>#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
 #&gt; 1          6.3         3.3          6.0         2.5 virginica
 #&gt; 2          7.2         3.6          6.1         2.5 virginica
 #&gt; 3          5.8         2.8          5.1         2.4 virginica
 #&gt; 4          6.3         3.4          5.6         2.4 virginica
 #&gt; 5          6.7         3.1          5.6         2.4 virginica
-#&gt; 6          6.7         3.3          5.7         2.5 virginica</div><div class='input'><span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='fl'>3</span>))
+#&gt; 6          6.7         3.3          5.7         2.5 virginica</div><div class='input'><span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fl'>3</span>))
 <span class='fu'><a href='dbFetch.html'>dbFetch</a></span>(<span class='no'>iris_result</span>)</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
 #&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>iris_result</span>)
 
 <span class='co'># Executing the same statement with different values at once</span>
 <span class='no'>iris_result</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendStatement.html'>dbSendStatement</a></span>(<span class='no'>con</span>, <span class='st'>"DELETE FROM iris WHERE [Species] = $species"</span>)
-<span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/list'>list</a></span>(<span class='kw'>species</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"setosa"</span>, <span class='st'>"versicolor"</span>, <span class='st'>"unknown"</span>)))
+<span class='fu'>dbBind</span>(<span class='no'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>species</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"setosa"</span>, <span class='st'>"versicolor"</span>, <span class='st'>"unknown"</span>)))
 <span class='fu'><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></span>(<span class='no'>iris_result</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>iris_result</span>)
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/nrow'>nrow</a></span>(<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>))</div><div class='output co'>#&gt; [1] 50</div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>))</div><div class='output co'>#&gt; [1] 50</div><div class='input'>
 <span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -350,19 +358,23 @@ with warning)</p></li>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href='http://hadley.nz'>Hadley Wickham</a>, <a href='http://krlmlr.info'>Kirill Müller</a>, <a href='https://www.r-consortium.org'>R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
