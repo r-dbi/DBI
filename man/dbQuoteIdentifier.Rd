@@ -7,8 +7,8 @@
 dbQuoteIdentifier(conn, x, ...)
 }
 \arguments{
-\item{conn}{A subclass of \linkS4class{DBIConnection}, representing
-an active connection to an DBMS.}
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 

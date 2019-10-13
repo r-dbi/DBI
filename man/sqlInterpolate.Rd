@@ -7,7 +7,8 @@
 sqlInterpolate(conn, sql, ..., .dots = list())
 }
 \arguments{
-\item{conn}{A database connection.}
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{sql}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
