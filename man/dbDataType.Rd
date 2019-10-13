@@ -130,6 +130,11 @@ Other DBIConnection generics: \code{\link{DBIConnection-class}},
   \code{\link{dbListTables}}, \code{\link{dbReadTable}},
   \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
   \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
+
+Other DBIConnector generics: \code{\link{DBIConnector-class}},
+  \code{\link{dbConnect}}, \code{\link{dbGetConnectArgs}},
+  \code{\link{dbIsReadOnly}}
 }
 \concept{DBIConnection generics}
+\concept{DBIConnector generics}
 \concept{DBIDriver generics}

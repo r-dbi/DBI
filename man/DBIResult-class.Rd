@@ -22,6 +22,7 @@ DBI generics.
 
 \seealso{
 Other DBI classes: \code{\link{DBIConnection-class}},
+  \code{\link{DBIConnector-class}},
   \code{\link{DBIDriver-class}},
   \code{\link{DBIObject-class}}
 

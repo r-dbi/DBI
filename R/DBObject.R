@@ -122,6 +122,7 @@ setGeneric("dbIsValid",
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @family DBIResult generics
+#' @family DBIConnector generics
 #' @export
 #' @examples
 #' dbIsReadOnly(ANSI())

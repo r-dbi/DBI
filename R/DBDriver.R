@@ -156,6 +156,7 @@ setGeneric("dbUnloadDriver",
 #'   For details see the appropriate `DBIDriver`.
 #' @seealso [dbDisconnect()] to disconnect from a database.
 #' @family DBIDriver generics
+#' @family DBIConnector generics
 #' @export
 #' @examples
 #' # SQLite only needs a path to the database. (Here, ":memory:" is a special
@@ -263,6 +264,7 @@ setGeneric("dbListConnections",
 #' @param obj An R object whose SQL type we want to determine.
 #' @family DBIDriver generics
 #' @family DBIConnection generics
+#' @family DBIConnector generics
 #' @examples
 #' dbDataType(ANSI(), 1:5)
 #' dbDataType(ANSI(), 1)

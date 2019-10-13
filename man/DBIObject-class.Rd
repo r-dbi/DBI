@@ -49,6 +49,7 @@ dbDisconnect(con)
 }
 \seealso{
 Other DBI classes: \code{\link{DBIConnection-class}},
+  \code{\link{DBIConnector-class}},
   \code{\link{DBIDriver-class}},
   \code{\link{DBIResult-class}}
 }

@@ -83,5 +83,10 @@ Other DBIDriver generics: \code{\link{DBIDriver-class}},
   \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
   \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
   \code{\link{dbListConnections}}
+
+Other DBIConnector generics: \code{\link{DBIConnector-class}},
+  \code{\link{dbDataType}}, \code{\link{dbGetConnectArgs}},
+  \code{\link{dbIsReadOnly}}
 }
+\concept{DBIConnector generics}
 \concept{DBIDriver generics}

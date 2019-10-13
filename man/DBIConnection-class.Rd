@@ -27,7 +27,8 @@ dbDisconnect(con)
 }
 }
 \seealso{
-Other DBI classes: \code{\link{DBIDriver-class}},
+Other DBI classes: \code{\link{DBIConnector-class}},
+  \code{\link{DBIDriver-class}},
   \code{\link{DBIObject-class}},
   \code{\link{DBIResult-class}}
 

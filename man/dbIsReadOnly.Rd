@@ -49,7 +49,12 @@ Other DBIResult generics: \code{\link{DBIResult-class}},
   \code{\link{dbQuoteLiteral}},
   \code{\link{dbQuoteString}},
   \code{\link{dbUnquoteIdentifier}}
+
+Other DBIConnector generics: \code{\link{DBIConnector-class}},
+  \code{\link{dbConnect}}, \code{\link{dbDataType}},
+  \code{\link{dbGetConnectArgs}}
 }
 \concept{DBIConnection generics}
+\concept{DBIConnector generics}
 \concept{DBIDriver generics}
 \concept{DBIResult generics}
