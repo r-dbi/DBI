@@ -32,6 +32,7 @@ URL: http://r-dbi.github.io/DBI
 URLNote: https://github.com/r-dbi/DBI
 BugReports: https://github.com/r-dbi/DBI/issues
 Collate: 
+    's4.R'
     'hidden.R'
     'DBObject.R'
     'DBDriver.R'

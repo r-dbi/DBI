@@ -66,8 +66,7 @@ setGeneric("make.db.names",
 setMethod("make.db.names", signature(dbObj = "DBIObject", snames = "character"),
   definition = function(dbObj, snames, keywords, unique, allow.keywords, ...) {
     make.db.names.default(snames, keywords, unique, allow.keywords)
-  },
-  valueClass = "character"
+  }
 )
 
 ## produce legal SQL identifiers from strings in a character vector
@@ -114,8 +113,7 @@ setGeneric("isSQLKeyword",
 #' @rdname hidden_aliases
 setMethod("isSQLKeyword", signature(dbObj = "DBIObject", name = "character"),
   definition = function(dbObj, name, keywords, case, ...)
-    isSQLKeyword.default(name, keywords, case),
-  valueClass = "logical"
+    isSQLKeyword.default(name, keywords, case)
 )
 
 #' @rdname make.db.names
@@ -148,14 +146,12 @@ setGeneric("SQLKeywords",
 
 #' @rdname hidden_aliases
 setMethod("SQLKeywords", signature("DBIObject"),
-  definition = function(dbObj, ...) .SQL92Keywords,
-  valueClass = "character"
+  definition = function(dbObj, ...) .SQL92Keywords
 )
 
 #' @rdname hidden_aliases
 setMethod("SQLKeywords", signature("missing"),
-  definition = function(dbObj, ...) .SQL92Keywords,
-  valueClass = "character"
+  definition = function(dbObj, ...) .SQL92Keywords
 )
 
 #' @export
