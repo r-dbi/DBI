@@ -4,7 +4,7 @@
 \alias{dbReadTable}
 \title{Copy data frames from database tables}
 \usage{
-dbReadTable(conn, name, ...)
+dbReadTable(conn, name, n = NULL, ...)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -12,6 +12,8 @@ dbReadTable(conn, name, ...)
 
 \item{name}{A character string specifying the unquoted DBMS table name,
 or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+
+\item{n}{The number of rows to read, use \code{NULL} for "no limit".}
 
 \item{...}{Other parameters passed on to methods.}
 }

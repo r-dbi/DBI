@@ -531,6 +531,7 @@ setMethod("dbListObjects", signature("DBIConnection", "ANY"),
 #' @inheritParams dbGetQuery
 #' @param name A character string specifying the unquoted DBMS table name,
 #'   or the result of a call to [dbQuoteIdentifier()].
+#' @param n The number of rows to read, use `NULL` for "no limit".
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -541,14 +542,15 @@ setMethod("dbListObjects", signature("DBIConnection", "ANY"),
 #'
 #' dbDisconnect(con)
 setGeneric("dbReadTable",
-  def = function(conn, name, ...) standardGeneric("dbReadTable"),
+  def = function(conn, name, n = NULL, ...) standardGeneric("dbReadTable"),
+  signature = c("conn", "name"),
   valueClass = "data.frame"
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbReadTable", signature("DBIConnection", "character"),
-  function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
+  function(conn, name, n = NULL, ..., row.names = FALSE, check.names = TRUE) {
     sql_name <- dbQuoteIdentifier(conn, x = name, ...)
     if (length(sql_name) != 1L) {
       stop("Invalid name: ", format(name), call. = FALSE)
@@ -561,7 +563,9 @@ setMethod("dbReadTable", signature("DBIConnection", "character"),
     stopifnot(is.logical(check.names))
     stopifnot(!is.na(check.names))
 
-    out <- dbGetQuery(conn, paste0("SELECT * FROM ", sql_name))
+    if (is.null(n)) n <- -1
+
+    out <- dbGetQuery(conn, paste0("SELECT * FROM ", sql_name), n = n)
     out <- sqlColumnToRownames(out, row.names)
     if (check.names) {
       names(out) <- make.names(names(out), unique = TRUE)
