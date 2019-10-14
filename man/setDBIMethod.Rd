@@ -21,31 +21,7 @@ setDBIMethod(f, signature = character(), definition,
   See the Details section.
   }
 
-\item{where}{\emph{These arguments are allowed
-        but either obsolete or rarely appropriate.}
-
-      \code{where}: where to store the definition; should be the
-      default, the namespace for the package.
-
-  \code{valueClass}{ Obsolete. }
-
-  \code{sealed}{ prevents the method being redefined, but should never
-    be needed when the method is defined in the source code of a
-    package.}
-}
-
-\item{valueClass}{\emph{These arguments are allowed
-        but either obsolete or rarely appropriate.}
-
-      \code{where}: where to store the definition; should be the
-      default, the namespace for the package.
-
-  \code{valueClass}{ Obsolete. }
-
-  \code{sealed}{ prevents the method being redefined, but should never
-    be needed when the method is defined in the source code of a
-    package.}
-}
+\item{where, valueClass}{.}
 
 \item{sealed}{\emph{These arguments are allowed
         but either obsolete or rarely appropriate.}
