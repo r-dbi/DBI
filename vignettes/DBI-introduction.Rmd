@@ -21,8 +21,9 @@ This DBMS-agnostic approach is possible, because DBI works best with several oth
 
 These packages import {DBI} and implement its methods depending on the specific database management system.
 
-Currently, DBI works with the following database management systems: 
+Currently, DBI works with the [many different database management systems](https://github.com/r-dbi/DBI/issues/274), e.g.:
 
+* MySQL, using the R-package [RMySQL](https://github.com/r-dbi/RMySQL)
 * MariaDB, using the R-package [RMariaDB](https://github.com/r-dbi/RMariaDB)
 * Postgres, using and the R-package [RPostgres](https://github.com/r-dbi/RPostgres)
 * SQLite, using and the R-package [RSQLite](https://github.com/r-dbi/RSQLite)
@@ -78,20 +79,23 @@ dbReadTable(con, "mtcars")
 ```
 
 Of course, you can run more specific SQL queries, too.
-`dbSendQuery()` is the function that executes a query, `dbFetch()` the one to return the result as a data frame.
+`dbGetQuery()` is the function to send a query to a database and retrieve the result as a data frame.
+Especially when working with large datasets, it is important to free the resources associated with retrieving the result. `dbGetQuery()` cares about this, too.
 
-For example: Get only these rows from `mtcars`, where the number of cylinders is 4:
+```{r}
+df <- dbGetQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+df
+```
+
+Behind the scences, `dbGetQuery()` is a combination of `dbSendQuery()`, `dbFetch()` and `dbClearResult()`.
+The following snippet leads to the same result as `dbGetQuery()` above:
 
 ```{r}
 res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
-dbFetch(res)
-```
-Don't forget to free the resources associated with retrieving the result, especially when working with large datasets:
-
-```{r}
+df <- dbFetch(res)
 dbClearResult(res)
+df
 ```
-
 When working with large datasets it might be smart to fetch the result step by step, not in one big chunk.
 This can be implemented with a `while` loop and a `dbFetch()` call that defines a maximum number of records to retrieve per fetch, here `n = 5`.
 There are eleven cars with four cylinders, so we expect two chunks of five rows and one chuck of one row:
