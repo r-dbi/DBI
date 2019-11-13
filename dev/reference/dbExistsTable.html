@@ -8,10 +8,12 @@
 
 <title>Does a table exist? — dbExistsTable • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,13 +34,14 @@
 
 
 
-<meta property="og:title" content="Does a table exist? — dbExistsTable" />
 
+<meta property="og:title" content="Does a table exist? — dbExistsTable" />
 <meta property="og:description" content="Returns if a table given by name exists in the database.
 Methods in other packages
 RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -109,7 +112,6 @@ RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -131,16 +133,14 @@ RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
     </div>
 
     <div class="ref-description">
-    
     <p>Returns if a table given by name exists in the database.</p>
 <p><h3>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbExistsTable("SQLiteConnection", "character")</code></p></li>
 </ul></p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbExistsTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -158,7 +158,7 @@ RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
       <td><p>Other parameters passed on to methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
@@ -169,7 +169,6 @@ or invalid connection.
 An error is also raised
 if <code>name</code> cannot be processed with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
 or if this results in a non-scalar.</p>
-    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -184,7 +183,6 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
 </ul>
 
 <p>For all tables listed by <code><a href='dbListTables.html'>dbListTables()</a></code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
@@ -198,7 +196,6 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
   <code><a href='dbReadTable.html'>dbReadTable</a></code>, <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>,
   <code><a href='dbSendQuery.html'>dbSendQuery</a></code>, <code><a href='dbSendStatement.html'>dbSendStatement</a></code>,
   <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
@@ -211,13 +208,9 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

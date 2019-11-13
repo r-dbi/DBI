@@ -8,10 +8,12 @@
 
 <title>Load and unload database drivers — dbDriver • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Load and unload database drivers — dbDriver" />
 
+<meta property="og:title" content="Load and unload database drivers — dbDriver" />
 <meta property="og:description" content="These methods are deprecated, please consult the documentation of the
 individual backends for the construction of driver instances.
 dbDriver() is a helper method used to create an new driver object
@@ -44,6 +46,7 @@ this object in the right places: if you know what database you are connecting
 to, you should call the function directly.
 dbUnloadDriver() is not implemented for modern backends." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -114,7 +117,6 @@ dbUnloadDriver() is not implemented for modern backends." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -136,7 +138,6 @@ dbUnloadDriver() is not implemented for modern backends." />
     </div>
 
     <div class="ref-description">
-    
     <p>These methods are deprecated, please consult the documentation of the
 individual backends for the construction of driver instances.</p>
 <p><code>dbDriver()</code> is a helper method used to create an new driver object
@@ -146,13 +147,12 @@ object with the same name as the package. <code>dbDriver()</code> just looks for
 this object in the right places: if you know what database you are connecting
 to, you should call the function directly.</p>
 <p><code>dbUnloadDriver()</code> is not implemented for modern backends.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbDriver</span>(<span class='no'>drvName</span>, <span class='no'>...</span>)
 
 <span class='fu'>dbUnloadDriver</span>(<span class='no'>drv</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -170,7 +170,7 @@ to, you should call the function directly.</p>
 <code>dbDriver</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>In the case of <code>dbDriver</code>, an driver object whose class extends
@@ -178,14 +178,12 @@ to, you should call the function directly.</p>
 actual DBMS engine.</p>
 <p>In the case of <code>dbUnloadDriver</code>, a logical indicating whether the
 operation succeeded or not.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The client part of the database communication is
 initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to
 <code>dbConnect</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
@@ -198,7 +196,6 @@ connecting to the database engine itself needs to be done through calls to
   <code><a href='dbDataType.html'>dbDataType</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
   <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
   <code><a href='dbListConnections.html'>dbListConnections</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Create a RSQLite driver with a string</span>
@@ -211,13 +208,9 @@ connecting to the database engine itself needs to be done through calls to
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

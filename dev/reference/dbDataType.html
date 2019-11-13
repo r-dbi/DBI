@@ -8,10 +8,12 @@
 
 <title>Determine the SQL data type of an object — dbDataType • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Determine the SQL data type of an object — dbDataType" />
 
+<meta property="og:title" content="Determine the SQL data type of an object — dbDataType" />
 <meta property="og:description" content="Returns an SQL string that describes the SQL data type to be used for an
 object.
 The default implementation of this generic determines the SQL type of an
@@ -46,6 +48,7 @@ RSQLite::dbDataType(&quot;SQLiteConnection&quot;)
 RSQLite::dbDataType(&quot;SQLiteDriver&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -116,7 +119,6 @@ RSQLite::dbDataType(&quot;SQLiteDriver&quot;)
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -138,7 +140,6 @@ RSQLite::dbDataType(&quot;SQLiteDriver&quot;)
     </div>
 
     <div class="ref-description">
-    
     <p>Returns an SQL string that describes the SQL data type to be used for an
 object.
 The default implementation of this generic determines the SQL type of an
@@ -150,11 +151,10 @@ column in the dataframe.</p>
 <li><p><code>RSQLite::dbDataType("SQLiteConnection")</code></p></li>
 <li><p><code>RSQLite::dbDataType("SQLiteDriver")</code></p></li>
 </ul></p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbDataType</span>(<span class='no'>dbObj</span>, <span class='no'>obj</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -172,7 +172,7 @@ or <a href='DBIConnection-class.html'>DBIConnection</a></p></td>
       <td><p>Other arguments passed on to methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>dbDataType()</code> returns the SQL type that corresponds to the <code>obj</code> argument
@@ -182,7 +182,6 @@ For data frames, a character vector with one element per column
 is returned.
 An error is raised for invalid values for the <code>obj</code> argument such as a
 <code>NULL</code> value.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The data types supported by databases are different than the data types in R,
@@ -195,7 +194,6 @@ integer vectors.</p></li>
 
 <p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.</p>
-    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -229,7 +227,6 @@ The behavior for other object types is not specified.</p>
 <p>All data types returned by <code>dbDataType()</code> are usable in an SQL statement
 of the form
 <code>"CREATE TABLE test (a ...)"</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
@@ -251,7 +248,6 @@ of the form
 <p>Other DBIConnector generics: <code><a href='DBIConnector-class.html'>DBIConnector-class</a></code>,
   <code><a href='dbConnect.html'>dbConnect</a></code>, <code><a href='dbGetConnectArgs.html'>dbGetConnectArgs</a></code>,
   <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] "INT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "SMALLINT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</div><div class='output co'>#&gt; [1] "DATE"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>())</div><div class='output co'>#&gt; [1] "TIMESTAMP"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>() - <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>()))</div><div class='output co'>#&gt; [1] "TIME"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"abc"</span>))</div><div class='output co'>#&gt; [1] "TEXT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span>(<span class='fl'>10</span>), <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span>(<span class='fl'>20</span>)))</div><div class='output co'>#&gt; [1] "BLOB"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'>
@@ -268,15 +264,10 @@ of the form
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

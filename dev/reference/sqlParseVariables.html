@@ -8,10 +8,12 @@
 
 <title>Parse interpolated variables from SQL. — sqlParseVariables • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,13 +34,14 @@
 
 
 
-<meta property="og:title" content="Parse interpolated variables from SQL. — sqlParseVariables" />
 
+<meta property="og:title" content="Parse interpolated variables from SQL. — sqlParseVariables" />
 <meta property="og:description" content="If you're implementing a backend that uses non-ANSI quoting or commenting
 rules, you'll need to implement a method for sqlParseVariables that
 calls sqlParseVariablesImpl with the appropriate quote and
 comment specifications." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -109,7 +112,6 @@ comment specifications." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -131,12 +133,10 @@ comment specifications." />
     </div>
 
     <div class="ref-description">
-    
     <p>If you're implementing a backend that uses non-ANSI quoting or commenting
 rules, you'll need to implement a method for <code>sqlParseVariables</code> that
 calls <code>sqlParseVariablesImpl</code> with the appropriate quote and
 comment specifications.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>sqlParseVariables</span>(<span class='no'>conn</span>, <span class='no'>sql</span>, <span class='no'>...</span>)
@@ -146,7 +146,7 @@ comment specifications.</p>
 <span class='fu'>sqlQuoteSpec</span>(<span class='no'>start</span>, <span class='no'>end</span>, <span class='kw'>escape</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>doubleEscape</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>sqlParseVariablesImpl</span>(<span class='no'>sql</span>, <span class='no'>quotes</span>, <span class='no'>comments</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -183,7 +183,7 @@ specification.</p></td>
 specification.</p></td>
     </tr>
     </table>
-    
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Use [] for quoting and no comments</span>
@@ -211,7 +211,6 @@ specification.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

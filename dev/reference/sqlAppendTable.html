@@ -8,10 +8,12 @@
 
 <title>Compose query to insert rows into a table — sqlAppendTable • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Compose query to insert rows into a table — sqlAppendTable" />
 
+<meta property="og:title" content="Compose query to insert rows into a table — sqlAppendTable" />
 <meta property="og:description" content="sqlAppendTable() generates a single SQL string that inserts a
 data frame into an existing table. sqlAppendTableTemplate() generates
 a template suitable for use with dbBind().
 The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -110,7 +113,6 @@ These methods are mostly useful for backend implementers." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -132,20 +134,18 @@ These methods are mostly useful for backend implementers." />
     </div>
 
     <div class="ref-description">
-    
     <p><code>sqlAppendTable()</code> generates a single SQL string that inserts a
 data frame into an existing table. <code>sqlAppendTableTemplate()</code> generates
 a template suitable for use with <code><a href='dbBind.html'>dbBind()</a></code>.
 The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>sqlAppendTable</span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)
 
 <span class='fu'>sqlAppendTableTemplate</span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
   <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='st'>"?"</span>, <span class='no'>...</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>""</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -190,12 +190,11 @@ default name.</p>
 </ul></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>row.names</code> argument must be passed explicitly in order to avoid
 a compatibility warning.  The default will be changed in a later release.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>sqlAppendTable</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"iris"</span>, <span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span>(<span class='no'>iris</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.</span></div><div class='output co'>#&gt; &lt;SQL&gt; INSERT INTO "iris"
@@ -239,9 +238,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

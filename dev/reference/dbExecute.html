@@ -8,10 +8,12 @@
 
 <title>Execute an update statement, query number of rows affected, and then close result set — dbExecute • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Execute an update statement, query number of rows affected, and then close result set — dbExecute" />
 
+<meta property="og:title" content="Execute an update statement, query number of rows affected, and then close result set — dbExecute" />
 <meta property="og:description" content="Executes a statement and returns the number of rows affected.
 dbExecute() comes with a default implementation
 (which should work with most backends) that calls
@@ -41,6 +43,7 @@ dbSendStatement(), then dbGetRowsAffected(), ensuring that
 the result is always free-d by dbClearResult().
 " />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -111,7 +114,6 @@ the result is always free-d by dbClearResult().
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -133,18 +135,16 @@ the result is always free-d by dbClearResult().
     </div>
 
     <div class="ref-description">
-    
     <p>Executes a statement and returns the number of rows affected.
 <code>dbExecute()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href='dbSendStatement.html'>dbSendStatement()</a></code>, then <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>, ensuring that
 the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult()</a></code>.</p>
 <p></p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbExecute</span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -162,7 +162,7 @@ the result is always free-d by <code><a href='dbClearResult.html'>dbClearResult(
       <td><p>Other parameters passed on to methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>dbExecute()</code> always returns a
@@ -174,20 +174,17 @@ An error is raised when issuing a statement over a closed
 or invalid connection,
 if the syntax of the statement is invalid,
 or if the statement is not a non-<code>NA</code> string.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>You can also use <code>dbExecute()</code> to call a stored procedure
 that performs data manipulation or other actions that do not return a result set.
 To execute a stored procedure that returns a result set use <code><a href='dbGetQuery.html'>dbGetQuery()</a></code> instead.</p>
-    
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
 
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
-    
     <h2 class="hasAnchor" id="additional-arguments"><a class="anchor" href="#additional-arguments"></a>Additional arguments</h2>
 
     
@@ -202,7 +199,6 @@ but are part of the DBI specification:</p><ul>
 
 <p>They must be provided as named arguments.
 See the "Specification" sections for details on their usage.</p>
-    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -210,7 +206,6 @@ See the "Specification" sections for details on their usage.</p>
 
 
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href='dbBind.html'>dbBind()</a></code> for details.</p>
-    
     <h2 class="hasAnchor" id="specification-for-the-immediate-argument"><a class="anchor" href="#specification-for-the-immediate-argument"></a>Specification for the <code>immediate</code> argument</h2>
 
     
@@ -250,7 +245,6 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </ol>
 
 
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>For queries: <code><a href='dbSendQuery.html'>dbSendQuery()</a></code> and <code><a href='dbGetQuery.html'>dbGetQuery()</a></code>.</p>
@@ -265,7 +259,6 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
   <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
   <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
   <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
@@ -306,21 +299,13 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#implementation-notes">Implementation notes</a></li>
-
       <li><a href="#additional-arguments">Additional arguments</a></li>
-
       <li><a href="#specification">Specification</a></li>
-
       <li><a href="#specification-for-the-immediate-argument">Specification for the <code>immediate</code> argument</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -8,10 +8,12 @@
 
 <title>Make R identifiers into legal SQL identifiers — make.db.names • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,11 +34,12 @@
 
 
 
-<meta property="og:title" content="Make R identifiers into legal SQL identifiers — make.db.names" />
 
+<meta property="og:title" content="Make R identifiers into legal SQL identifiers — make.db.names" />
 <meta property="og:description" content="These methods are DEPRECATED. Please use dbQuoteIdentifier()
 (or possibly dbQuoteString()) instead." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -107,7 +110,6 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -129,10 +131,8 @@
     </div>
 
     <div class="ref-description">
-    
     <p>These methods are DEPRECATED. Please use <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
 (or possibly <code><a href='dbQuoteString.html'>dbQuoteString()</a></code>) instead.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>make.db.names</span>(<span class='no'>dbObj</span>, <span class='no'>snames</span>, <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
@@ -146,7 +146,7 @@
 
 <span class='fu'>isSQLKeyword.default</span>(<span class='no'>name</span>, <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lower"</span>,
   <span class='st'>"upper"</span>, <span class='st'>"any"</span>)[<span class='fl'>3</span>])</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -191,7 +191,7 @@ to determine whether they are legal SQL identifiers or not.</p></td>
 lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>make.db.names</code> returns a character vector of legal SQL
@@ -199,7 +199,6 @@ identifiers corresponding to its <code>snames</code> argument.</p>
 <p><code>SQLKeywords</code> returns a character vector of all known keywords for the
 database-engine associated with <code>dbObj</code>.</p>
 <p><code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The algorithm in <code>make.db.names</code> first invokes <code>make.names</code> and
@@ -211,7 +210,6 @@ keywords, a small integer is appended to the identifier in the form of
 <code>.SQL92Keywords</code> and reflects the SQL ANSI/ISO standard as documented
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
-    
     <h2 class="hasAnchor" id="bugs"><a class="anchor" href="#bugs"></a>Bugs</h2>
 
     
@@ -221,29 +219,23 @@ identifiers that get mapped into R identifiers with <code>make.names</code> and
 then back to SQL with <code>make.db.names()</code> will not be equal to the
 original SQL identifiers (e.g., compound SQL identifiers of the form
 <code>username.tablename</code> will loose the dot ``.'').</p>
-    
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>The set of SQL keywords is stored in the character vector
 <code>.SQL92Keywords</code> and reflects the SQL ANSI/ISO standard as documented
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
-    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-
       <li><a href="#bugs">Bugs</a></li>
-
       <li><a href="#references">References</a></li>
-          </ul>
+    </ul>
 
   </div>
 </div>

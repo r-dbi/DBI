@@ -8,10 +8,12 @@
 
 <title>SQL quoting — SQL • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="SQL quoting — SQL" />
 
+<meta property="og:title" content="SQL quoting — SQL" />
 <meta property="og:description" content="This set of classes and generics make it possible to flexibly deal with SQL
 escaping needs. By default, any user supplied input to a query should be
 escaped using either dbQuoteIdentifier() or dbQuoteString()
@@ -44,6 +46,7 @@ which tells DBI functions that a character string does not need to be escaped
 anymore, to prevent double escaping.
 The SQL class has associated the SQL() constructor function." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -114,7 +117,6 @@ The SQL class has associated the SQL() constructor function." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -136,7 +138,6 @@ The SQL class has associated the SQL() constructor function." />
     </div>
 
     <div class="ref-description">
-    
     <p>This set of classes and generics make it possible to flexibly deal with SQL
 escaping needs. By default, any user supplied input to a query should be
 escaped using either <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code> or <code><a href='dbQuoteString.html'>dbQuoteString()</a></code>
@@ -146,11 +147,10 @@ These functions may return an object of the <code>SQL</code> class,
 which tells DBI functions that a character string does not need to be escaped
 anymore, to prevent double escaping.
 The <code>SQL</code> class has associated the <code>SQL()</code> constructor function.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>SQL</span>(<span class='no'>x</span>, <span class='no'>...</span>, <span class='kw'>names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -167,11 +167,10 @@ The <code>SQL</code> class has associated the <code>SQL()</code> constructor fun
       <td><p>Names for the returned object, must have the same length as <code>x</code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>An object of class <code>SQL</code>.</p>
-    
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
@@ -184,7 +183,6 @@ SQL inherits from character, if you implement (e.g.) a method for
 <code><a href='dbQuoteString.html'>dbQuoteString(MyConnection, character)</a></code>, you will also need to
 implement <code><a href='dbQuoteString.html'>dbQuoteString(MyConnection, SQL)</a></code> - this should simply
 return <code>x</code> unchanged.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"SELECT"</span>)</div><div class='output co'>#&gt; &lt;SQL&gt; "SELECT"</div><div class='input'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='st'>"SELECT"</span>)</div><div class='output co'>#&gt; &lt;SQL&gt; 'SELECT'</div><div class='input'>
@@ -199,11 +197,8 @@ return <code>x</code> unchanged.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#implementation-notes">Implementation notes</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

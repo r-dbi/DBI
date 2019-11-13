@@ -8,10 +8,12 @@
 
 <title>Disconnect (close) a connection — dbDisconnect • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Disconnect (close) a connection — dbDisconnect" />
 
+<meta property="og:title" content="Disconnect (close) a connection — dbDisconnect" />
 <meta property="og:description" content="This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
 Methods in other packages
 RSQLite::dbDisconnect(&quot;SQLiteConnection&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -110,7 +113,6 @@ RSQLite::dbDisconnect(&quot;SQLiteConnection&quot;)
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -132,17 +134,15 @@ RSQLite::dbDisconnect(&quot;SQLiteConnection&quot;)
     </div>
 
     <div class="ref-description">
-    
     <p>This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).</p>
 <p><h3>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbDisconnect("SQLiteConnection")</code></p></li>
 </ul></p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbDisconnect</span>(<span class='no'>conn</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -156,11 +156,10 @@ resources (e.g., memory, sockets).</p>
       <td><p>Other parameters passed on to methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
-    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -172,7 +171,6 @@ but this cannot be tested automatically.
 A warning is issued immediately when calling <code>dbDisconnect()</code> on an
 already disconnected
 or invalid connection.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
@@ -186,7 +184,6 @@ or invalid connection.</p>
   <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
   <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
   <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
@@ -196,13 +193,9 @@ or invalid connection.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

@@ -8,10 +8,12 @@
 
 <title>Quote identifiers — dbQuoteIdentifier • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,8 +34,8 @@
 
 
 
-<meta property="og:title" content="Quote identifiers — dbQuoteIdentifier" />
 
+<meta property="og:title" content="Quote identifiers — dbQuoteIdentifier" />
 <meta property="og:description" content="Call this method to generate a string that is suitable for
 use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
@@ -43,6 +45,7 @@ RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;character&quot;)
 RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 " />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -113,7 +116,6 @@ RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -135,7 +137,6 @@ RSQLite::dbQuoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
     </div>
 
     <div class="ref-description">
-    
     <p>Call this method to generate a string that is suitable for
 use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
@@ -144,11 +145,10 @@ operation is <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a><
 <li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</code></p></li>
 <li><p><code>RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</code></p></li>
 </ul></p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>dbQuoteIdentifier</span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -166,7 +166,7 @@ operation is <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier()</a><
       <td><p>Other arguments passed on to methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to <a href='https://rdrr.io/r/base/character.html'>character</a>,
@@ -181,7 +181,6 @@ Passing objects of class <a href='SQL.html'>SQL</a> should also return them unch
 to achieve this behavior, but this is not required.)</p>
 <p>An error is raised if the input contains <code>NA</code>,
 but not for an empty string.</p>
-    
     <h2 class="hasAnchor" id="specification"><a class="anchor" href="#specification"></a>Specification</h2>
 
     
@@ -206,7 +205,6 @@ if the database supports this.
 In any case, checking the validity of the identifier
 should be performed only when executing a query,
 and not by <code>dbQuoteIdentifier()</code>.</p>
-    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: <code><a href='DBIResult-class.html'>DBIResult-class</a></code>,
@@ -219,7 +217,6 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
   <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></code>,
   <code><a href='dbQuoteString.html'>dbQuoteString</a></code>,
   <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Quoting ensures that arbitrary input is safe for use in a query</span>
@@ -236,13 +233,9 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#specification">Specification</a></li>
-
       <li><a href="#see-also">See also</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

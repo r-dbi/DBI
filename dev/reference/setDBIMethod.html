@@ -8,10 +8,12 @@
 
 <title>Define an implementation for a DBI generic — setDBIMethod • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,12 +34,13 @@
 
 
 
-<meta property="og:title" content="Define an implementation for a DBI generic — setDBIMethod" />
 
+<meta property="og:title" content="Define an implementation for a DBI generic — setDBIMethod" />
 <meta property="og:description" content="This function is intended as a drop-in replacement for setMethod().
 DBI backends should declare their methods with setDBIMethod() instead of
 setMethod() to simplify future extensions to the DBI package." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -108,7 +111,6 @@ setMethod() to simplify future extensions to the DBI package." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -130,16 +132,14 @@ setMethod() to simplify future extensions to the DBI package." />
     </div>
 
     <div class="ref-description">
-    
     <p>This function is intended as a drop-in replacement for <code>setMethod()</code>.
 DBI backends should declare their methods with <code>setDBIMethod()</code> instead of
 <code>setMethod()</code> to simplify future extensions to the DBI package.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>setDBIMethod</span>(<span class='no'>f</span>, <span class='kw'>signature</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>character</a></span>(), <span class='no'>definition</span>,
   <span class='kw'>where</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-topenv.html'>topenv</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span>()), <span class='no'>valueClass</span>, <span class='no'>sealed</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -177,7 +177,7 @@ DBI backends should declare their methods with <code>setDBIMethod()</code> inste
     package.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>To use in a package that creates its documentation with <span class="pkg">roxygen2</span>,
@@ -185,7 +185,6 @@ set <code>setMethod</code> as an alias to <code>setDBIMethod</code>.
 Make sure to define this method in a file that is sourced early on,
 use <code>aaa.R</code> as filename or use <code>@include</code> to make sure it appears early
 in the collate sequence.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
@@ -205,9 +204,7 @@ in the collate sequence.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

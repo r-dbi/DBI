@@ -8,10 +8,12 @@
 
 <title>Convert a data frame into form suitable for upload to an SQL database — sqlData • DBI</title>
 
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -32,14 +34,15 @@
 
 
 
-<meta property="og:title" content="Convert a data frame into form suitable for upload to an SQL database — sqlData" />
 
+<meta property="og:title" content="Convert a data frame into form suitable for upload to an SQL database — sqlData" />
 <meta property="og:description" content="This is a generic method that coerces R objects into vectors suitable for
 upload to the database. The output will vary a little from method to
 method depending on whether the main upload device is through a single
 SQL string or multiple parameterized queries.
 This method is mostly useful for backend implementers." />
 <meta name="twitter:card" content="summary" />
+
 
 <meta name="robots" content="noindex">
 
@@ -110,7 +113,6 @@ This method is mostly useful for backend implementers." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
@@ -132,17 +134,15 @@ This method is mostly useful for backend implementers." />
     </div>
 
     <div class="ref-description">
-    
     <p>This is a generic method that coerces R objects into vectors suitable for
 upload to the database. The output will vary a little from method to
 method depending on whether the main upload device is through a single
 SQL string or multiple parameterized queries.
 This method is mostly useful for backend implementers.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>sqlData</span>(<span class='no'>con</span>, <span class='no'>value</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -169,7 +169,7 @@ default name.</p>
       <td><p>Other arguments used by individual methods.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The default method:</p><ul>
@@ -179,7 +179,6 @@ default name.</p>
 <li><p>Replaces NA with NULL</p></li>
 </ul>
 
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
@@ -203,9 +202,7 @@ default name.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
