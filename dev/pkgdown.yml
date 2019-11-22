@@ -4,8 +4,8 @@ pkgdown_sha: ~
 articles:
   DBI-1: DBI-1.html
   DBI-history: DBI-history.html
-  DBI-introduction: DBI-introduction.html
   DBI-proposal: DBI-proposal.html
+  DBI: DBI.html
   backend: backend.html
   spec: spec.html
 
