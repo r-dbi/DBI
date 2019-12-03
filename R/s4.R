@@ -11,7 +11,6 @@
 #' in the collate sequence.
 #'
 #' @inheritParams methods::setMethod
-#' @param where,valueClass .
 #'
 #' @examples
 #' if (FALSE) {
