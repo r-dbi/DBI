@@ -1,6 +1,6 @@
 Package: DBI
-Version: 1.0.0.9003
-Date: 2019-10-13
+Version: 1.0.0.9004
+Date: 2019-12-03
 Title: R Database Interface
 Description: A database interface definition for communication
     between R and relational database management systems.  All

@@ -1,3 +1,8 @@
+# DBI 1.0.0.9004
+
+- New DBI intro article (#286, @cutterkom).
+
+
 # DBI 1.0.0.9003
 
 - New `setDBIMethod()` (#235).
