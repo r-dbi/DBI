@@ -1,5 +1,4 @@
 #' @include hidden.R
-#' @include s4.R
 NULL
 
 #' DBIObject class
