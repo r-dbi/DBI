@@ -83,15 +83,21 @@ dbQuoteString(ANSI(), var_name)
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteLiteral}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbQuoteIdentifier}()},
+\code{\link{dbQuoteLiteral}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIResult generics}

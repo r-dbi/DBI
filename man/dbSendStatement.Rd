@@ -31,7 +31,7 @@ or the \code{immediate} argument is set to \code{TRUE}.
 \description{
 The \code{dbSendStatement()} method only submits and synchronously executes the
 SQL data manipulation statement (e.g., \code{UPDATE}, \code{DELETE},
-\code{INSERT INTO}, \code{DROP TABLE}, ...) to the database engine.  To query
+\verb{INSERT INTO}, \verb{DROP TABLE}, ...) to the database engine.  To query
 the number of affected rows, call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} on the
 returned result object.  You must also call \code{\link[=dbClearResult]{dbClearResult()}} after
 that. For interactive use, you should almost always prefer
@@ -161,16 +161,26 @@ dbDisconnect(con)
 \seealso{
 For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
-Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbAppendTable}}, \code{\link{dbCreateTable}},
-  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
-  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
-  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
-  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbWriteTable}}
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbAppendTable}()},
+\code{\link{dbCreateTable}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbWriteTable}()}
 }
 \concept{DBIConnection generics}

@@ -24,8 +24,8 @@ The \code{dbAppendTable()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTable]{dbCreateTable()}}.
 The default implementation calls \code{\link[=sqlAppendTableTemplate]{sqlAppendTableTemplate()}} and then
 \code{\link[=dbExecute]{dbExecute()}} with the \code{param} argument. Backends compliant to
-ANSI SQL 99 which use \code{?} as a placeholder for prepard queries don't need
-to override it. Backends with a different SQL syntax which use \code{?}
+ANSI SQL 99 which use \verb{?} as a placeholder for prepard queries don't need
+to override it. Backends with a different SQL syntax which use \verb{?}
 as a placeholder for prepared queries can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}.
 Other backends (with different placeholders or with entirely different
 ways to create tables) need to override the \code{dbAppendTable()} method.
@@ -42,16 +42,26 @@ dbReadTable(con, "iris")
 dbDisconnect(con)
 }
 \seealso{
-Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbCreateTable}}, \code{\link{dbDataType}},
-  \code{\link{dbDisconnect}}, \code{\link{dbExecute}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
-  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
-  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbCreateTable}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendStatement}()},
+\code{\link{dbWriteTable}()}
 }
 \concept{DBIConnection generics}

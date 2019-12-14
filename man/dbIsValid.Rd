@@ -53,35 +53,54 @@ dbDisconnect(con)
 dbIsValid(con)
 }
 \seealso{
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
-  \code{\link{dbDataType}}, \code{\link{dbDriver}},
-  \code{\link{dbGetInfo}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{DBIDriver-class}},
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDriver}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbListConnections}()}
 
-Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbAppendTable}}, \code{\link{dbCreateTable}},
-  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
-  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
-  \code{\link{dbListResults}}, \code{\link{dbListTables}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
-  \code{\link{dbWriteTable}}
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbAppendTable}()},
+\code{\link{dbCreateTable}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendStatement}()},
+\code{\link{dbWriteTable}()}
 
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteLiteral}},
-  \code{\link{dbQuoteString}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbQuoteIdentifier}()},
+\code{\link{dbQuoteLiteral}()},
+\code{\link{dbQuoteString}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIConnection generics}
 \concept{DBIDriver generics}

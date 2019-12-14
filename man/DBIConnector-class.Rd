@@ -36,14 +36,17 @@ dbGetQuery(con, "SELECT 1 AS a")
 dbDisconnect(con)
 }
 \seealso{
-Other DBI classes: \code{\link{DBIConnection-class}},
-  \code{\link{DBIDriver-class}},
-  \code{\link{DBIObject-class}},
-  \code{\link{DBIResult-class}}
+Other DBI classes: 
+\code{\link{DBIConnection-class}},
+\code{\link{DBIDriver-class}},
+\code{\link{DBIObject-class}},
+\code{\link{DBIResult-class}}
 
-Other DBIConnector generics: \code{\link{dbConnect}},
-  \code{\link{dbDataType}}, \code{\link{dbGetConnectArgs}},
-  \code{\link{dbIsReadOnly}}
+Other DBIConnector generics: 
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbGetConnectArgs}()},
+\code{\link{dbIsReadOnly}()}
 }
 \concept{DBI classes}
 \concept{DBIConnector generics}

@@ -13,7 +13,7 @@ sqlInterpolate(conn, sql, ..., .dots = list())
 \item{sql}{A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or \code{.}, and be followed
-by a letter, digit, \code{.} or \code{_}.}
+by a letter, digit, \code{.} or \verb{_}.}
 
 \item{..., .dots}{Values (for \code{...}) or a list (for \code{.dots})
 to interpolate into a string.
@@ -34,12 +34,12 @@ to protect against SQL injection attacks.
 
 Placeholders can be specified with one of two syntaxes:
 \itemize{
-\item \code{?}: each occurrence of a standalone \code{?} is replaced with a value
+\item \verb{?}: each occurrence of a standalone \verb{?} is replaced with a value
 \item \code{?name1}, \code{?name2}, ...: values are given as named arguments or a
 named list, the names are used to match the values
 }
 
-Mixing \code{?} and \code{?name} syntaxes is an error.
+Mixing \verb{?} and \code{?name} syntaxes is an error.
 The number and names of values supplied must correspond to the placeholders
 used in the query.
 }

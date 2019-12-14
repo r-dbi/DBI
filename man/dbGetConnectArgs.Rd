@@ -31,8 +31,10 @@ dbGetConnectArgs(cnr)
 dbGetConnectArgs(cnr, eval = FALSE)
 }
 \seealso{
-Other DBIConnector generics: \code{\link{DBIConnector-class}},
-  \code{\link{dbConnect}}, \code{\link{dbDataType}},
-  \code{\link{dbIsReadOnly}}
+Other DBIConnector generics: 
+\code{\link{DBIConnector-class}},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbIsReadOnly}()}
 }
 \concept{DBIConnector generics}

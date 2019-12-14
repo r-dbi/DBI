@@ -73,8 +73,7 @@
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
-\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ...,
-  n = -1L)
+\S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
 
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
@@ -84,8 +83,7 @@
 
 \S4method{dbListObjects}{DBIConnection}(conn, prefix = NULL, ...)
 
-\S4method{dbReadTable}{DBIConnection,character}(conn, name, ...,
-  row.names = FALSE, check.names = TRUE)
+\S4method{dbReadTable}{DBIConnection,character}(conn, name, ..., row.names = FALSE, check.names = TRUE)
 
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
@@ -115,12 +113,22 @@
 
 \S4method{sqlData}{DBIConnection}(con, value, row.names = NA, ...)
 
-\S4method{make.db.names}{DBIObject,character}(dbObj, snames,
-  keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE,
-  ...)
+\S4method{make.db.names}{DBIObject,character}(
+  dbObj,
+  snames,
+  keywords = .SQL92Keywords,
+  unique = TRUE,
+  allow.keywords = TRUE,
+  ...
+)
 
-\S4method{isSQLKeyword}{DBIObject,character}(dbObj, name,
-  keywords = .SQL92Keywords, case = c("lower", "upper", "any")[3], ...)
+\S4method{isSQLKeyword}{DBIObject,character}(
+  dbObj,
+  name,
+  keywords = .SQL92Keywords,
+  case = c("lower", "upper", "any")[3],
+  ...
+)
 
 \S4method{SQLKeywords}{DBIObject}(dbObj, ...)
 
@@ -150,17 +158,13 @@
 
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
-\S4method{sqlCreateTable}{DBIConnection}(con, table, fields,
-  row.names = NA, temporary = FALSE, ...)
+\S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA, temporary = FALSE, ...)
 
-\S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ...,
-  row.names = NULL, temporary = FALSE)
+\S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 
-\S4method{sqlAppendTable}{DBIConnection}(con, table, values,
-  row.names = NA, ...)
+\S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA, ...)
 
-\S4method{dbAppendTable}{DBIConnection}(conn, name, value, ...,
-  row.names = NULL)
+\S4method{dbAppendTable}{DBIConnection}(conn, name, value, ..., row.names = NULL)
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 }
@@ -168,14 +172,6 @@
 \item{object}{Object to display}
 
 \item{n}{Number of rows to fetch, default -1}
-
-\item{object}{Table object to print}
-
-\item{object}{Object to display}
-
-\item{object}{Object to display}
-
-\item{object}{Object to display}
 }
 \description{
 For S4 methods that require a documentation entry but only clutter the index.
