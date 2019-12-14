@@ -13,7 +13,7 @@ home:
 
 reference:
 - title: Connecting and disconnecting
-  desc: Connecting and disconnecting to databases.
+  desc: Connecting to and disconnecting from databases.
   contents:
   - '`dbConnect`'
   - '`dbDisconnect`'
