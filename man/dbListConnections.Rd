@@ -30,3 +30,4 @@ Other DBIDriver generics:
 \code{\link{dbIsValid}()}
 }
 \concept{DBIDriver generics}
+\keyword{internal}

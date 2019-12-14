@@ -74,3 +74,4 @@ Other DBIDriver generics:
 \code{\link{dbListConnections}()}
 }
 \concept{DBIDriver generics}
+\keyword{internal}

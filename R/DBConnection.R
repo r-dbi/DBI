@@ -360,6 +360,7 @@ setMethod(
 #'   `errorMsg` (a character string) describing the last error in the
 #'   connection `conn`.
 #' @export
+#' @keywords internal
 setGeneric("dbGetException",
   def = function(conn, ...) standardGeneric("dbGetException")
 )
@@ -375,6 +376,7 @@ setGeneric("dbGetException",
 #' @return a list. If no results are active, an empty list. If only
 #'   a single result is active, a list with one element.
 #' @export
+#' @keywords internal
 setGeneric("dbListResults",
   def = function(conn, ...) standardGeneric("dbListResults")
 )

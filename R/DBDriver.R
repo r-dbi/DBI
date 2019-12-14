@@ -48,6 +48,8 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'   operation succeeded or not.
 #' @import methods
 #' @family DBIDriver generics
+#' @export
+#' @keywords internal
 #' @examples
 #' # Create a RSQLite driver with a string
 #' d <- dbDriver("SQLite")
@@ -55,7 +57,6 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-#' @export
 setGeneric("dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
   valueClass = "DBIDriver"
@@ -225,6 +226,7 @@ setMethod("dbCanConnect", signature("DBIDriver"), function(drv, ...) {
 #' @param drv A object inheriting from [DBIDriver-class]
 #' @param ... Other arguments passed on to methods.
 #' @family DBIDriver generics
+#' @keywords internal
 #' @export
 #' @return a list
 setGeneric("dbListConnections",

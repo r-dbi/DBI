@@ -45,3 +45,4 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()}
 }
 \concept{DBIConnection generics}
+\keyword{internal}

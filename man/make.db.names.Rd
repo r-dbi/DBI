@@ -103,3 +103,4 @@ The set of SQL keywords is stored in the character vector
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.
 }
+\keyword{internal}

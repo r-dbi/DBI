@@ -56,6 +56,7 @@ NULL
 #'
 #'   `isSQLKeyword` returns a logical vector parallel to `name`.
 #' @export
+#' @keywords internal
 setGeneric("make.db.names",
   def = function(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE, allow.keywords = TRUE, ...) standardGeneric("make.db.names"),
   signature = c("dbObj", "snames"),
