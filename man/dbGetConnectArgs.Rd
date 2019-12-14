@@ -15,8 +15,10 @@ instead of evaluating them.}
 \item{...}{Other arguments passed on to methods. Not otherwise used.}
 }
 \description{
-Returns the arguments stored in a \linkS4class{DBIConnector} object,
+Returns the arguments stored in a \linkS4class{DBIConnector} object for inspection,
 optionally evaluating them.
+This function is called by \code{\link[=dbConnect]{dbConnect()}}
+and usually does not need to be called directly.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetConnectArgs")}
 }

@@ -7,20 +7,33 @@
 \description{
 Wraps \linkS4class{DBIDriver} to include connection options.
 The purpose of this class is to store both the driver
-and the connection options, so that a database connection can be established
-with a call to \code{\link[=dbConnect]{dbConnect()}} without additional arguments.
-
+and the connection options.
+A database connection can be established
+with a call to \code{\link[=dbConnect]{dbConnect()}}, passing only that object
+without additional arguments.
+}
+\details{
 To prevent leakage of passwords and other credentials,
 this class supports delayed evaluation.
 All arguments can optionally be a function (callable without arguments).
-This function is evaluated transparently when connecting in
+In such a case, the function is evaluated transparently when connecting in
 \code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}.
 }
 \examples{
-new("DBIConnector",
+# Create a connector:
+cnr <- new("DBIConnector",
   .drv = RSQLite::SQLite(),
   .conn_args = list(dbname = ":memory:")
 )
+cnr
+
+# Establish a connection through this connector:
+con <- dbConnect(cnr)
+con
+
+# Access the database through this connection:
+dbGetQuery(con, "SELECT 1 AS a")
+dbDisconnect(con)
 }
 \seealso{
 Other DBI classes: \code{\link{DBIConnection-class}},

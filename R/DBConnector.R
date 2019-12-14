@@ -3,16 +3,17 @@ NULL
 
 #' DBIConnector class
 #'
-#' @description
 #' Wraps [DBIDriver-class] to include connection options.
 #' The purpose of this class is to store both the driver
-#' and the connection options, so that a database connection can be established
-#' with a call to [dbConnect()] without additional arguments.
+#' and the connection options.
+#' A database connection can be established
+#' with a call to [dbConnect()], passing only that object
+#' without additional arguments.
 #'
 #' To prevent leakage of passwords and other credentials,
 #' this class supports delayed evaluation.
 #' All arguments can optionally be a function (callable without arguments).
-#' This function is evaluated transparently when connecting in
+#' In such a case, the function is evaluated transparently when connecting in
 #' [dbGetConnectArgs()].
 #'
 # FIXME: Include this
@@ -27,10 +28,20 @@ NULL
 #' @export
 #' @include DBDriver.R
 #' @examples
-#' new("DBIConnector",
+#' # Create a connector:
+#' cnr <- new("DBIConnector",
 #'   .drv = RSQLite::SQLite(),
 #'   .conn_args = list(dbname = ":memory:")
 #' )
+#' cnr
+#'
+#' # Establish a connection through this connector:
+#' con <- dbConnect(cnr)
+#' con
+#'
+#' # Access the database through this connection:
+#' dbGetQuery(con, "SELECT 1 AS a")
+#' dbDisconnect(con)
 setClass("DBIConnector",
   slots = c(".drv" = "DBIDriver", ".conn_args" = "list"),
   contains = c("DBIObject")
@@ -88,8 +99,10 @@ names2 <- function(x) {
 
 #' Get connection arguments
 #'
-#' Returns the arguments stored in a [DBIConnector-class] object,
+#' Returns the arguments stored in a [DBIConnector-class] object for inspection,
 #' optionally evaluating them.
+#' This function is called by [dbConnect()]
+#' and usually does not need to be called directly.
 #'
 #' @template methods
 #' @templateVar method_name dbGetConnectArgs
