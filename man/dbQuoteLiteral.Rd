@@ -36,7 +36,7 @@ generate valid SQL and protect against SQL injection attacks.
 \section{Specification}{
 
 
-The returned expression can be used in a \code{SELECT ...} query,
+The returned expression can be used in a \verb{SELECT ...} query,
 and the value of
 \code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]}
 must be equal to \code{x}
@@ -49,7 +49,7 @@ If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.
 The literals \code{"NA"} or \code{"NULL"} are not treated specially.
 
 \code{NA} should be translated to an unquoted SQL \code{NULL},
-so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
+so that the query \verb{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
 
 Passing a list

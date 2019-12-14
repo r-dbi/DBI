@@ -18,7 +18,7 @@ or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 \value{
 \code{dbReadTable()} returns a data frame that contains the complete data
 from the remote table, effectively the result of calling \code{\link[=dbGetQuery]{dbGetQuery()}}
-with \code{SELECT * FROM <name>}.
+with \verb{SELECT * FROM <name>}.
 An error is raised if the table does not exist.
 An empty table is returned as a data frame with zero rows.
 

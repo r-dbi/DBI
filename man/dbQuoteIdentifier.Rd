@@ -40,14 +40,14 @@ operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 \section{Specification}{
 
 
-Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \verb{SELECT 1 AS ...}
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
-in particular in queries like \code{SELECT 1 AS ...}
-and \code{SELECT * FROM (SELECT 1) ...}.
+in particular in queries like \verb{SELECT 1 AS ...}
+and \verb{SELECT * FROM (SELECT 1) ...}.
 The method must use a quoting mechanism that is unambiguously different
 from the quoting mechanism used for strings, so that a query like
-\code{SELECT ... FROM (SELECT 1 AS ...)}
+\verb{SELECT ... FROM (SELECT 1 AS ...)}
 throws an error if the column names do not match.
 
 The method can quote column names that
