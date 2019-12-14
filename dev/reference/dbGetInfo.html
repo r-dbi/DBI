@@ -36,7 +36,8 @@
 
 
 <meta property="og:title" content="Get DBMS metadata — dbGetInfo" />
-<meta property="og:description" content="Get DBMS metadata" />
+<meta property="og:description" content="Retrieves information on objects of class DBIDriver,
+DBIConnection or DBIResult." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -141,7 +142,8 @@
     </div>
 
     <div class="ref-description">
-    <p>Get DBMS metadata</p>
+    <p>Retrieves information on objects of class <a href='DBIDriver-class.html'>DBIDriver</a>,
+<a href='DBIConnection-class.html'>DBIConnection</a> or <a href='DBIResult-class.html'>DBIResult</a>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>dbGetInfo</span>(<span class='no'>dbObj</span>, <span class='no'>...</span>)</pre>
@@ -163,25 +165,36 @@ or a <a href='DBIResult-class.html'>DBIResult</a></p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a named list</p>
+    <p>For objects of class <a href='DBIDriver-class.html'>DBIDriver</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:</p><ul>
+<li><p><code>driver.version</code>,</p></li>
+<li><p><code>client.version</code>.</p></li>
+</ul>
+
+<p>For objects of class <a href='DBIConnection-class.html'>DBIConnection</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:</p><ul>
+<li><p><code>db.version</code>,</p></li>
+<li><p><code>dbname</code>,</p></li>
+<li><p><code>username</code>,</p></li>
+<li><p><code>host</code>,</p></li>
+<li><p><code>port</code>.
+It must not contain a <code>password</code> component.</p></li>
+</ul>
+
+<p>For objects of class <a href='DBIResult-class.html'>DBIResult</a>, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:</p><ul>
+<li><p><code>statatment</code>,</p></li>
+<li><p><code>row.count</code>,</p></li>
+<li><p><code>rows.affected</code>,</p></li>
+<li><p><code>has.completed</code>.</p></li>
+</ul>
+
     <h2 class="hasAnchor" id="implementation-notes"><a class="anchor" href="#implementation-notes"></a>Implementation notes</h2>
 
     
-
-<p>For <code>DBIDriver</code> subclasses, this should include the version of the
-package (<code>driver.version</code>) and the version of the underlying client
-library (<code>client.version</code>).</p>
-<p>For <code>DBIConnection</code> objects this should report the version of
-the DBMS engine (<code>db.version</code>), database name (<code>dbname</code>),
-username, (<code>username</code>), host (<code>host</code>), port (<code>port</code>), etc.
-It MAY also include any other arguments related to the connection
-(e.g., thread id, socket or TCP connection type). It MUST NOT include the
-password.</p>
-<p>For <code>DBIResult</code> objects, this should include the statement
-being executed (<code>statement</code>), how many rows have been fetched so far
-(in the case of queries, <code>row.count</code>), how many rows were affected
-(deleted, inserted, changed,
-(<code>rows.affected</code>), and if the query is complete (<code>has.completed</code>).</p>
 
 <p>The default implementation for <code>DBIResult objects</code>
 constructs such a list from the return values of the corresponding methods,
