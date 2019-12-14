@@ -14,30 +14,41 @@ or a \linkS4class{DBIResult}}
 \item{...}{Other arguments to methods.}
 }
 \value{
-a named list
+For objects of class \linkS4class{DBIDriver}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{driver.version},
+\item \code{client.version}.
+}
+
+For objects of class \linkS4class{DBIConnection}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{db.version},
+\item \code{dbname},
+\item \code{username},
+\item \code{host},
+\item \code{port}.
+It must not contain a \code{password} component.
+}
+
+For objects of class \linkS4class{DBIResult}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{statatment},
+\item \code{row.count},
+\item \code{rows.affected},
+\item \code{has.completed}.
+}
 }
 \description{
-Get DBMS metadata
+Retrieves information on objects of class \linkS4class{DBIDriver},
+\linkS4class{DBIConnection} or \linkS4class{DBIResult}.
 }
 \section{Implementation notes}{
-
-For \code{DBIDriver} subclasses, this should include the version of the
-package (\code{driver.version}) and the version of the underlying client
-library (\code{client.version}).
-
-For \code{DBIConnection} objects this should report the version of
-the DBMS engine (\code{db.version}), database name (\code{dbname}),
-username, (\code{username}), host (\code{host}), port (\code{port}), etc.
-It MAY also include any other arguments related to the connection
-(e.g., thread id, socket or TCP connection type). It MUST NOT include the
-password.
-
-For \code{DBIResult} objects, this should include the statement
-being executed (\code{statement}), how many rows have been fetched so far
-(in the case of queries, \code{row.count}), how many rows were affected
-(deleted, inserted, changed,
-(\code{rows.affected}), and if the query is complete (\code{has.completed}).
-
 
 The default implementation for \verb{DBIResult objects}
 constructs such a list from the return values of the corresponding methods,
