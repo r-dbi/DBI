@@ -8,4 +8,7 @@ articles:
   DBI: DBI.html
   backend: backend.html
   spec: spec.html
+urls:
+  reference: https://dbi.r-dbi.org/reference
+  article: https://dbi.r-dbi.org/articles
 
