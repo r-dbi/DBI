@@ -188,6 +188,6 @@ temp_md <- tempfile(fileext = ".md")
 #html <- '<html><body><pre class="r">\na\nb\n</pre></body></html>'
 
 writeLines(html, temp_html)
-rmarkdown::pandoc_convert(temp_html, "gfm", verbose = TRUE, output = temp_md)
+rmarkdown::pandoc_convert(temp_html, "gfm", verbose = FALSE, output = temp_md)
 knitr::asis_output(paste(readLines(temp_md), collapse = "\n"))
 ```
