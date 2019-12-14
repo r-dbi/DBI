@@ -6,14 +6,6 @@
 - Remove `setDBIMethod()` (#235).
 
 
-# DBI 1.0.0.9005
-
-- Use specifiaction for `dbGetInfo()` (#271).
-- Add pkgdown reference index (#288).
-- DBI specification on https://dbi.r-dbi.org/dev/articles/spec now comes with a table of contents and code formatting.
-- Remove `setDBIMethod()` (#235).
-
-
 # DBI 1.0.0.9004
 
 - New DBI intro article (#286, @cutterkom).
