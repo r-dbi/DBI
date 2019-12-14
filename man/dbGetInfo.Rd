@@ -14,67 +14,103 @@ or a \linkS4class{DBIResult}}
 \item{...}{Other arguments to methods.}
 }
 \value{
-a named list
+For objects of class \linkS4class{DBIDriver}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{driver.version}: the package version of the DBI backend,
+\item \code{client.version}: the version of the DBMS client library.
+}
+
+For objects of class \linkS4class{DBIConnection}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{db.version}: version of the database server,
+\item \code{dbname}: database name,
+\item \code{username}: username to connect to the database,
+\item \code{host}: hostname of the database server,
+\item \code{port}: port on the database server.
+It must not contain a \code{password} component.
+Components that are not applicable should be set to \code{NA}.
+}
+
+For objects of class \linkS4class{DBIResult}, \code{dbGetInfo()}
+returns a named list
+that contains at least the following components:
+\itemize{
+\item \code{statatment}: the statement used with \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbExecute]{dbExecute()}},
+as returned by \code{\link[=dbGetStatement]{dbGetStatement()}},
+\item \code{row.count}: the number of rows fetched so far (for queries),
+as returned by \code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\item \code{rows.affected}: the number of rows affected (for statements),
+as returned by \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}
+\item \code{has.completed}: a logical that indicates
+if the query or statement has completed,
+as returned by \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
+}
 }
 \description{
-Get DBMS metadata
+Retrieves information on objects of class \linkS4class{DBIDriver},
+\linkS4class{DBIConnection} or \linkS4class{DBIResult}.
 }
 \section{Implementation notes}{
 
-For \code{DBIDriver} subclasses, this should include the version of the
-package (\code{driver.version}) and the version of the underlying client
-library (\code{client.version}).
-
-For \code{DBIConnection} objects this should report the version of
-the DBMS engine (\code{db.version}), database name (\code{dbname}),
-username, (\code{username}), host (\code{host}), port (\code{port}), etc.
-It MAY also include any other arguments related to the connection
-(e.g., thread id, socket or TCP connection type). It MUST NOT include the
-password.
-
-For \code{DBIResult} objects, this should include the statement
-being executed (\code{statement}), how many rows have been fetched so far
-(in the case of queries, \code{row.count}), how many rows were affected
-(deleted, inserted, changed,
-(\code{rows.affected}), and if the query is complete (\code{has.completed}).
-
-
-The default implementation for \code{DBIResult objects}
+The default implementation for \verb{DBIResult objects}
 constructs such a list from the return values of the corresponding methods,
 \code{\link[=dbGetStatement]{dbGetStatement()}}, \code{\link[=dbGetRowCount]{dbGetRowCount()}},
 \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
 
 \seealso{
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
-  \code{\link{dbDataType}}, \code{\link{dbDriver}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{DBIDriver-class}},
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDriver}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListConnections}()}
 
-Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbAppendTable}}, \code{\link{dbCreateTable}},
-  \code{\link{dbDataType}}, \code{\link{dbDisconnect}},
-  \code{\link{dbExecute}}, \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetQuery}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListFields}}, \code{\link{dbListObjects}},
-  \code{\link{dbListResults}}, \code{\link{dbListTables}},
-  \code{\link{dbReadTable}}, \code{\link{dbRemoveTable}},
-  \code{\link{dbSendQuery}}, \code{\link{dbSendStatement}},
-  \code{\link{dbWriteTable}}
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbAppendTable}()},
+\code{\link{dbCreateTable}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendStatement}()},
+\code{\link{dbWriteTable}()}
 
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteLiteral}},
-  \code{\link{dbQuoteString}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbQuoteIdentifier}()},
+\code{\link{dbQuoteLiteral}()},
+\code{\link{dbQuoteString}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIConnection generics}
 \concept{DBIDriver generics}

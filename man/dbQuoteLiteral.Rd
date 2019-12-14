@@ -7,8 +7,8 @@
 dbQuoteLiteral(conn, x, ...)
 }
 \arguments{
-\item{conn}{A subclass of \linkS4class{DBIConnection}, representing
-an active connection to an DBMS.}
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A vector to quote as string.}
 
@@ -36,7 +36,7 @@ generate valid SQL and protect against SQL injection attacks.
 \section{Specification}{
 
 
-The returned expression can be used in a \code{SELECT ...} query,
+The returned expression can be used in a \verb{SELECT ...} query,
 and the value of
 \code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]}
 must be equal to \code{x}
@@ -49,7 +49,7 @@ If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.
 The literals \code{"NA"} or \code{"NULL"} are not treated specially.
 
 \code{NA} should be translated to an unquoted SQL \code{NULL},
-so that the query \code{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
+so that the query \verb{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
 
 Passing a list
@@ -80,15 +80,21 @@ dbQuoteLiteral(ANSI(), var_name)
 dbQuoteLiteral(ANSI(), dbQuoteLiteral(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteString}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbQuoteIdentifier}()},
+\code{\link{dbQuoteString}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIResult generics}

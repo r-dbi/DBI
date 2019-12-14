@@ -25,7 +25,7 @@ NULL
 #' do so does not expose you to SQL injection attacks, but will (rarely) result
 #' in errors matching supplied and interpolated variables.
 #'
-#' @param conn A database connection.
+#' @inheritParams dbGetQuery
 #' @param sql A SQL string containing variables to interpolate.
 #'   Variables must start with a question mark and can be any valid R
 #'   identifier, i.e. it must start with a letter or `.`, and be followed

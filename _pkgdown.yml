@@ -1,3 +1,5 @@
+url: https://dbi.r-dbi.org
+
 template:
   params:
     bootswatch: flatly # https://bootswatch.com/flatly/
@@ -6,6 +8,86 @@ home:
   links:
   - text: Report a security vulnerability
     href: https://dbi.r-dbi.org/security.html
+  - text: DBI project website
+    href: https://r-dbi.org
+
+reference:
+- title: Connecting and disconnecting
+  desc: Connecting to and disconnecting from databases.
+  contents:
+  - '`dbConnect`'
+  - '`dbDisconnect`'
+  - '`dbCanConnect`'
+  - '`dbGetInfo`'
+  - '`dbIsValid`'
+  - '`dbIsReadOnly`'
+  - '`DBIConnector-class`'
+  - '`dbGetConnectArgs`'
+
+- title: Tables
+  desc: Reading and writing entire tables.
+  contents:
+  - '`dbReadTable`'
+  - '`dbWriteTable`'
+  - '`dbCreateTable`'
+  - '`dbAppendTable`'
+  - '`dbRemoveTable`'
+  - '`dbListTables`'
+  - '`dbListFields`'
+  - '`dbExistsTable`'
+  - '`dbListObjects`'
+  - '`rownames`'
+
+- title: Queries and statements
+  desc: Sending queries and executing statements.
+  contents:
+  - '`dbGetQuery`'
+  - '`dbExecute`'
+
+- title: Results
+  desc: More control for sending queries and executing statements.
+  contents:
+  - '`dbSendQuery`'
+  - '`dbSendStatement`'
+  - '`dbBind`'
+  - '`dbFetch`'
+  - '`dbGetRowCount`'
+  - '`dbGetRowsAffected`'
+  - '`dbGetStatement`'
+  - '`dbHasCompleted`'
+  - '`dbColumnInfo`'
+  - '`dbClearResult`'
+
+- title: Transactions
+  desc: Ensuring multiple statements are executed together, or not at all.
+  contents:
+  - '`transactions`'
+  - '`dbWithTransaction`'
+
+- title: SQL
+  desc: Tools for creating and parsing SQL queries.
+  contents:
+  - '`SQL`'
+  - '`dbDataType`'
+  - '`dbQuoteIdentifier`'
+  - '`dbQuoteLiteral`'
+  - '`dbQuoteString`'
+  - '`sqlCreateTable`'
+  - '`sqlAppendTable`'
+  - '`sqlData`'
+  - '`dbUnquoteIdentifier`'
+  - '`sqlInterpolate`'
+
+- title: Classes
+  desc: S4 classes defined by DBI.
+  contents:
+  - '`DBI-package`'
+  - '`DBIObject-class`'
+  - '`DBIDriver-class`'
+  - '`DBIConnection-class`'
+  - '`DBIResult-class`'
+  - '`DBIConnector-class`'
+  - '`Id-class`'
 
 development:
   mode: auto

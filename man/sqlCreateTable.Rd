@@ -4,8 +4,7 @@
 \alias{sqlCreateTable}
 \title{Compose query to create a simple table}
 \usage{
-sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE,
-  ...)
+sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 }
 \arguments{
 \item{con}{A database connection.}
@@ -38,7 +37,7 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \item{...}{Other arguments used by individual methods.}
 }
 \description{
-Exposes an interface to simple \code{CREATE TABLE} commands. The default
+Exposes an interface to simple \verb{CREATE TABLE} commands. The default
 method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers.
 }

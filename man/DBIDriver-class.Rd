@@ -8,19 +8,25 @@
 Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 The virtual class \code{DBIDriver} defines the operations for creating
 connections and defining data type mappings.  Actual driver classes, for
-instance \code{RPgSQL}, \code{RMySQL}, etc. implement these operations in a
+instance \code{RPostgres}, \code{RMariaDB}, etc. implement these operations in a
 DBMS-specific manner.
 }
 \seealso{
-Other DBI classes: \code{\link{DBIConnection-class}},
-  \code{\link{DBIObject-class}},
-  \code{\link{DBIResult-class}}
+Other DBI classes: 
+\code{\link{DBIConnection-class}},
+\code{\link{DBIConnector-class}},
+\code{\link{DBIObject-class}},
+\code{\link{DBIResult-class}}
 
-Other DBIDriver generics: \code{\link{dbCanConnect}},
-  \code{\link{dbConnect}}, \code{\link{dbDataType}},
-  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDriver}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListConnections}()}
 }
 \concept{DBI classes}
 \concept{DBIDriver generics}

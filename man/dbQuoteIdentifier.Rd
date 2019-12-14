@@ -7,8 +7,8 @@
 dbQuoteIdentifier(conn, x, ...)
 }
 \arguments{
-\item{conn}{A subclass of \linkS4class{DBIConnection}, representing
-an active connection to an DBMS.}
+\item{conn}{A \linkS4class{DBIConnection} object, as returned by
+\code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 
@@ -40,14 +40,14 @@ operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 \section{Specification}{
 
 
-Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \code{SELECT 1 AS ...}
+Calling \code{\link[=dbGetQuery]{dbGetQuery()}} for a query of the format \verb{SELECT 1 AS ...}
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
-in particular in queries like \code{SELECT 1 AS ...}
-and \code{SELECT * FROM (SELECT 1) ...}.
+in particular in queries like \verb{SELECT 1 AS ...}
+and \verb{SELECT * FROM (SELECT 1) ...}.
 The method must use a quoting mechanism that is unambiguously different
 from the quoting mechanism used for strings, so that a query like
-\code{SELECT ... FROM (SELECT 1 AS ...)}
+\verb{SELECT ... FROM (SELECT 1 AS ...)}
 throws an error if the column names do not match.
 
 The method can quote column names that
@@ -78,15 +78,21 @@ dbQuoteIdentifier(ANSI(), var_name)
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbBind}}, \code{\link{dbClearResult}},
-  \code{\link{dbColumnInfo}}, \code{\link{dbFetch}},
-  \code{\link{dbGetInfo}}, \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbQuoteLiteral}},
-  \code{\link{dbQuoteString}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbQuoteLiteral}()},
+\code{\link{dbQuoteString}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIResult generics}

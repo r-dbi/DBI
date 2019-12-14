@@ -49,23 +49,8 @@ setClass("DBIObject", "VIRTUAL")
 
 #' Get DBMS metadata
 #'
-#' @section Implementation notes:
-#' For `DBIDriver` subclasses, this should include the version of the
-#' package (`driver.version`) and the version of the underlying client
-#' library (`client.version`).
-#'
-#' For `DBIConnection` objects this should report the version of
-#' the DBMS engine (`db.version`), database name (`dbname`),
-#' username, (`username`), host (`host`), port (`port`), etc.
-#' It MAY also include any other arguments related to the connection
-#' (e.g., thread id, socket or TCP connection type). It MUST NOT include the
-#' password.
-#'
-#' For `DBIResult` objects, this should include the statement
-#' being executed (`statement`), how many rows have been fetched so far
-#' (in the case of queries, `row.count`), how many rows were affected
-#' (deleted, inserted, changed,
-#' (`rows.affected`), and if the query is complete (`has.completed`).
+#' Retrieves information on objects of class [DBIDriver-class],
+#' [DBIConnection-class] or [DBIResult-class].
 #'
 #' @param dbObj An object inheriting from [DBIObject-class],
 #'  i.e. [DBIDriver-class], [DBIConnection-class],
@@ -74,7 +59,7 @@ setClass("DBIObject", "VIRTUAL")
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @family DBIResult generics
-#' @return a named list
+#' @inherit DBItest::spec_get_info return
 #' @export
 setGeneric("dbGetInfo",
   def = function(dbObj, ...) standardGeneric("dbGetInfo")
@@ -122,6 +107,7 @@ setGeneric("dbIsValid",
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @family DBIResult generics
+#' @family DBIConnector generics
 #' @export
 #' @examples
 #' dbIsReadOnly(ANSI())

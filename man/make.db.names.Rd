@@ -8,17 +8,35 @@
 \alias{isSQLKeyword.default}
 \title{Make R identifiers into legal SQL identifiers}
 \usage{
-make.db.names(dbObj, snames, keywords = .SQL92Keywords, unique = TRUE,
-  allow.keywords = TRUE, ...)
+make.db.names(
+  dbObj,
+  snames,
+  keywords = .SQL92Keywords,
+  unique = TRUE,
+  allow.keywords = TRUE,
+  ...
+)
 
-make.db.names.default(snames, keywords = .SQL92Keywords, unique = TRUE,
-  allow.keywords = TRUE)
+make.db.names.default(
+  snames,
+  keywords = .SQL92Keywords,
+  unique = TRUE,
+  allow.keywords = TRUE
+)
 
-isSQLKeyword(dbObj, name, keywords = .SQL92Keywords, case = c("lower",
-  "upper", "any")[3], ...)
+isSQLKeyword(
+  dbObj,
+  name,
+  keywords = .SQL92Keywords,
+  case = c("lower", "upper", "any")[3],
+  ...
+)
 
-isSQLKeyword.default(name, keywords = .SQL92Keywords, case = c("lower",
-  "upper", "any")[3])
+isSQLKeyword.default(
+  name,
+  keywords = .SQL92Keywords,
+  case = c("lower", "upper", "any")[3]
+)
 }
 \arguments{
 \item{dbObj}{any DBI object (e.g., \code{DBIDriver}).}
@@ -60,7 +78,7 @@ These methods are DEPRECATED. Please use \code{\link[=dbQuoteIdentifier]{dbQuote
 }
 \details{
 The algorithm in \code{make.db.names} first invokes \code{make.names} and
-then replaces each occurrence of a dot \code{.} by an underscore \code{_}.  If
+then replaces each occurrence of a dot \code{.} by an underscore \verb{_}.  If
 \code{allow.keywords} is \code{FALSE} and identifiers collide with SQL
 keywords, a small integer is appended to the identifier in the form of
 \code{"_n"}.
@@ -85,3 +103,4 @@ The set of SQL keywords is stored in the character vector
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.
 }
+\keyword{internal}

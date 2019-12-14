@@ -1,36 +1,121 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # DBI
 
-[![Build Status](https://travis-ci.org/r-dbi/DBI.svg?branch=master)](https://travis-ci.org/r-dbi/DBI) [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master) [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
+<!-- badges: start -->
 
-The DBI package defines a common interface between the R and database management systems (DBMS).  The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](http://dbi.perl.org/), Java's [JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html), Python's [DB-API](http://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](http://en.wikipedia.org/wiki/ODBC). It defines a set of classes and methods defines what operations are possible and how they are performed:
+[![Build
+Status](https://travis-ci.org/r-dbi/DBI.svg?branch=master)](https://travis-ci.org/r-dbi/DBI)
+[![Coverage
+Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
+[![CII Best
+Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
+<!-- badges: end -->
 
-* connect/disconnect to the DBMS
-* create and execute statements in the DBMS
-* extract results/output from statements
-* error/exception handling
-* information (meta-data) from database objects
-* transaction management (optional)
+The DBI package helps connecting R to database management systems
+(DBMS). DBI separates the connectivity to the DBMS into a “front-end”
+and a “back-end”. The package defines an interface that is implemented
+by *DBI backends* such as:
 
-DBI separates the connectivity to the DBMS into a "front-end" and a "back-end".  Applications use only the exposed "front-end" API. The facilities that communicate with specific DBMSs (SQLite, MySQL, PostgreSQL, MonetDB, etc.) are provided by "drivers" (other packages) that get invoked automatically through S4 methods. 
+  - [RPostgres](https://rpostgres.r-dbi.org),
+  - [RMariaDB](https://rmariadb.r-dbi.org),
+  - [RSQLite](https://rsqlite.r-dbi.org),
+  - [odbc](https://github.com/r-dbi/odbc),
+  - [bigrquery](https://github.com/r-dbi/bigrquery),
+
+and many more. R scripts and packages use DBI to access various
+databases through their DBI backends.
+
+The interface defines a small set of classes and methods similar in
+spirit to Perl’s [DBI](http://dbi.perl.org/), Java’s
+[JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html),
+Python’s [DB-API](http://www.python.org/dev/peps/pep-0249/), and
+Microsoft’s [ODBC](http://en.wikipedia.org/wiki/ODBC). It supports the
+following operations:
+
+  - connect/disconnect to the DBMS
+  - create and execute statements in the DBMS
+  - extract results/output from statements
+  - error/exception handling
+  - information (meta-data) from database objects
+  - transaction management (optional)
+
+## Installation
+
+Most users who want to access a database do not need to install DBI
+directly. It will be installed automatically when you install one of the
+database backends:
+
+  - [RPostgres](https://rpostgres.r-dbi.org) for PostgreSQL,
+  - [RMariaDB](https://rmariadb.r-dbi.org) for MariaDB or MySQL,
+  - [RSQLite](https://rsqlite.r-dbi.org) for SQLite,
+  - [odbc](https://github.com/r-dbi/odbc) for databases that you can
+    access via
+    [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
+  - [bigrquery](https://github.com/r-dbi/bigrquery),
+  - … .
+
+You can install the released version of DBI from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("DBI")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("r-dbi/DBI")
+```
+
+## Example
 
 The following example illustrates some of the DBI capabilities:
 
-```R
+``` r
 library(DBI)
 # Create an ephemeral in-memory RSQLite database
 con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
 
 dbListTables(con)
+#> character(0)
 dbWriteTable(con, "mtcars", mtcars)
 dbListTables(con)
+#> [1] "mtcars"
 
 dbListFields(con, "mtcars")
+#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+#> [11] "carb"
 dbReadTable(con, "mtcars")
+#>    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#> 1 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+#> 2 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+#> 3 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+#> 4 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+#> 5 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+#> 6 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+#> 7 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+#> 8 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+#> 9 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+#>  [ reached 'max' / getOption("max.print") -- omitted 23 rows ]
 
 # You can fetch all results:
 res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
 dbFetch(res)
+#>    mpg cyl  disp hp drat    wt  qsec vs am gear carb
+#> 1 22.8   4 108.0 93 3.85 2.320 18.61  1  1    4    1
+#> 2 24.4   4 146.7 62 3.69 3.190 20.00  1  0    4    2
+#> 3 22.8   4 140.8 95 3.92 3.150 22.90  1  0    4    2
+#> 4 32.4   4  78.7 66 4.08 2.200 19.47  1  1    4    1
+#> 5 30.4   4  75.7 52 4.93 1.615 18.52  1  1    4    2
+#> 6 33.9   4  71.1 65 4.22 1.835 19.90  1  1    4    1
+#> 7 21.5   4 120.1 97 3.70 2.465 20.01  1  0    3    1
+#> 8 27.3   4  79.0 66 4.08 1.935 18.90  1  1    4    1
+#> 9 26.0   4 120.3 91 4.43 2.140 16.70  0  1    5    2
+#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
 dbClearResult(res)
 
 # Or a chunk at a time
@@ -39,48 +124,47 @@ while(!dbHasCompleted(res)){
   chunk <- dbFetch(res, n = 5)
   print(nrow(chunk))
 }
+#> [1] 5
+#> [1] 5
+#> [1] 1
 dbClearResult(res)
 
 dbDisconnect(con)
 ```
 
-To install DBI:
-
-* Get the released version from CRAN: `install.packages("DBI")`
-* Get the development version from github: `devtools::install_github("r-dbi/DBI")`
-
-Discussions associated with DBI and related database packages take place on [R-SIG-DB](https://stat.ethz.ch/mailman/listinfo/r-sig-db).  The website [Databases using R](http://db.rstudio.com/) describes the tools and best practices in this ecosystem.
-
 ## Class structure
 
-There are four main DBI classes. Three which are each extended by individual database backends:
+There are four main DBI classes. Three which are each extended by
+individual database backends:
 
-* `DBIObject`: a common base class for all DBI.
+  - `DBIObject`: a common base class for all DBI.
 
-* `DBIDriver`: a base class representing overall DBMS properties. 
-  Typically generator functions instantiate the driver objects like `RSQLite()`,
-  `RPostgreSQL()`, `RMySQL()` etc.
+  - `DBIDriver`: a base class representing overall DBMS properties.
+    Typically generator functions instantiate the driver objects like
+    `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
 
-* `DBIConnection`: represents a connection to a specific database
+  - `DBIConnection`: represents a connection to a specific database
 
-* `DBIResult`: the result of a DBMS query or statement.  
+  - `DBIResult`: the result of a DBMS query or statement.
 
-All classes are _virtual_: they cannot be instantiated directly and instead must be subclassed.
+All classes are *virtual*: they cannot be instantiated directly and
+instead must be subclassed.
 
-## History
+## Further Reading
 
-The following history of DBI was contributed by David James, the driving force behind the development of DBI, and many of the packages that implement it.
+  - [Databases using R](http://db.rstudio.com/) describes the tools and
+    best practices in this ecosystem.
 
-The idea/work of interfacing S (originally S3 and S4) to RDBMS goes back to the mid- and late 1990's in Bell Labs. The first toy interface I did was to implement John Chamber's early concept of "Data Management in S" (1991). The implementation followed that interface pretty closely and immediately showed some of the limitations when dealing with very large databases; if my memory serves me, the issue was the instance-based of the language back then, e.g., if you attached an RDBMS to the `search()` path and then needed to resolve a symbol "foo", you effectively had to bring all the objects in the database to check their mode/class, i.e., the instance object had the metadata in itself as attributes. The experiment showed that the S3 implementation of "data management" was not really suitable to large external RDBMS (probably it was never intended to do that anyway). (Note however, that since then, John and Duncan Temple Lang generalized the data management in S4 a lot, including Duncan's implementation in his RObjectTables package where he considered a lot of synchronization/caching issues relevant to DBI and, more generally, to most external interfaces).
+  - The [DBI project site](https://www.r-dbi.org/) hosts a blog where
+    recent developments are presented.
 
-Back then we were working very closely with Lucent's microelectronics manufacturing --- our colleagues there had huge Oracle (mostly) databases that we needed to constantly query via [SQL*Plus](http://en.wikipedia.org/wiki/SQL*Plus). My colleague Jake Luciani was developing advanced applications in C and SQL, and the two of us came up with the first implementation of S3 directly connecting with Oracle.  What I remember is that the Linux [PRO*C](http://en.wikipedia.org/wiki/Pro*C) pre-compiler (that embedded SQL in C code) was very buggy --- we spent a lot of time looking for workarounds and tricks until we got the C interface running.  At the time, other projects within Bell Labs began using MySQL, and we moved to MySQL (with the help of Doug Bates' student Saikat DebRoy, then a summer intern) with no intentions of looking back at the very difficult Oracle interface.  It was at this time that I moved all the code from S3 methods to S4 classes and methods and begun reaching out to the S/R community for suggestions, ideas, etc.  All (most) of this work was on Bell Labs versions of S3 and S4, but I made sure it worked with S-Plus. At some point around 2000 (I don't remember exactly when), I ported all the code to R regressing to S3 methods, and later on (once S4 classes and methods were available in R) I re-implemented everything back to S4 classes and methods in R (a painful back-and-forth). It was at this point that I decided to drop S-Plus altogether.  Around that time, I came across a very early implementation of SQLite and I was quite interested and thought it was a very nice RDBMS that could be used for all kinds of experimentation, etc., so it was pretty easy to implement on top of the DBI.
+  - [A history of
+    DBI](https://r-dbi.github.io/DBI/articles/DBI-history.html) by David
+    James, the driving force behind the development of DBI, and many of
+    the packages that implement it.
 
-Within the R community, there were quite a number of people that showed interest on defining a common interface to databases, but only a few folks actually provided code/suggestions/etc.  (Tim Keitt was most active with the dbi/PostgreSQL packages --- he also was considering what he called "proxy" objects, which was reminiscent of what Duncan had been doing).  Kurt Hornick, Vincent Carey, Robert Gentleman, and others provided suggestions/comments/support for the DBI definition. By around 2003, the DBI was more or less implemented as it is today.
+-----
 
-I'm sure I'll forget some (most should be in the THANKS sections of the various packages), but the names that come to my mind at this moment are Jake Luciani (ROracle), Don MacQueen and other early ROracle users (super helpful), Doug Bates and his student Saikat DebRoy for RMySQL, Fei Chen (at the time a student of Prof. Ripley) also contributed to RMySQL, Tim Keitt (working on an early S3 interface to PostgrSQL), Torsten Hothorn (worked with mSQL and also MySQL), Prof. Ripley working/extending the RODBC package, in addition to John Chambers and Duncan Temple-Lang who provided very important comments and suggestions.
-
-Actually, the real impetus behind the DBI was always to do distributed statistical computing --- *not* to provide a yet-another import/export mechanism --- and this perspective was driven by John and Duncan's vision and work on inter-system computing, COM, CORBA, etc.  I'm not sure many of us really appreciated (even now) the full extent of those ideas and concepts.  Just like in other languages (C's ODBC, Java's JDBC, Perl's DBI/DBD, Python dbapi), R/S DBI was meant to unify the interfacing to RDBMS so that R/S applications could be developed on top of the DBI and not be hard coded to any one relation database.  The interface I tried to follow the closest was the Python's DBAPI --- I haven't worked on this topic for a while, but I still feel Python's DBAPI is the cleanest and most relevant for the S language.
-
----
-
-Please note that the _DBI_ project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the *DBI* project is released with a [Contributor Code
+of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
+project, you agree to abide by its terms.

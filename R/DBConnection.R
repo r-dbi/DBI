@@ -117,7 +117,7 @@ setGeneric("dbDisconnect",
 #' rs <- dbSendQuery(
 #'   con,
 #'   "SELECT * FROM mtcars WHERE cyl = ?",
-#'   param = list(4L)
+#'   params = list(4L)
 #' )
 #' dbFetch(rs)
 #' dbClearResult(rs)
@@ -182,7 +182,7 @@ setGeneric("dbSendQuery",
 #' rs <- dbSendStatement(
 #'   con,
 #'   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
-#'   param = list(4L, 5L)
+#'   params = list(4L, 5L)
 #' )
 #' dbClearResult(rs)
 #'
@@ -262,7 +262,11 @@ setMethod(
 #' # (This query runs eight times, once for each different
 #' # parameter. The resulting rows are combined into a single
 #' # data frame.)
-#' dbGetQuery(con, "SELECT COUNT(*) FROM mtcars WHERE cyl = ?", param = list(1:8))
+#' dbGetQuery(
+#'   con,
+#'   "SELECT COUNT(*) FROM mtcars WHERE cyl = ?",
+#'   params = list(1:8)
+#' )
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQuery",
@@ -325,7 +329,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' dbExecute(
 #'   con,
 #'   "INSERT INTO cars (speed, dist) VALUES (?, ?)",
-#'   param = list(4:7, 5:8)
+#'   params = list(4:7, 5:8)
 #' )
 #' dbReadTable(con, "cars")   # there are now 10 rows
 #'
@@ -356,6 +360,7 @@ setMethod(
 #'   `errorMsg` (a character string) describing the last error in the
 #'   connection `conn`.
 #' @export
+#' @keywords internal
 setGeneric("dbGetException",
   def = function(conn, ...) standardGeneric("dbGetException")
 )
@@ -371,6 +376,7 @@ setGeneric("dbGetException",
 #' @return a list. If no results are active, an empty list. If only
 #'   a single result is active, a list with one element.
 #' @export
+#' @keywords internal
 setGeneric("dbListResults",
   def = function(conn, ...) standardGeneric("dbListResults")
 )

@@ -75,8 +75,7 @@ setMethod("show", "SQL", function(object) {
 #' generate valid SQL and protect against SQL injection attacks. The inverse
 #' operation is [dbUnquoteIdentifier()].
 #'
-#' @param conn A subclass of [DBIConnection-class], representing
-#'   an active connection to an DBMS.
+#' @inheritParams dbGetQuery
 #' @param x A character vector, [SQL] or [Id] object to quote as identifier.
 #' @param ... Other arguments passed on to methods.
 #'
@@ -150,8 +149,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]
 #' back to a list of [Id] objects.
 #'
-#' @param conn A subclass of [DBIConnection-class], representing
-#'   an active connection to an DBMS.
+#' @inheritParams dbGetQuery
 #' @param x An [SQL] or [Id] object.
 #' @param ... Other arguments passed on to methods.
 #'
@@ -241,8 +239,7 @@ as_table <- function(catalog, schema, table) {
 #' use in a query as a string literal, to make sure that you
 #' generate valid SQL and protect against SQL injection attacks.
 #'
-#' @param conn A subclass of [DBIConnection-class], representing
-#'   an active connection to an DBMS.
+#' @inheritParams dbGetQuery
 #' @param x A character vector to quote as string.
 #' @param ... Other arguments passed on to methods.
 #'

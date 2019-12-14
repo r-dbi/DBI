@@ -113,23 +113,44 @@ dbDataType(con, iris)
 dbDisconnect(con)
 }
 \seealso{
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
-  \code{\link{dbDriver}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{DBIDriver-class}},
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDriver}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListConnections}()}
 
-Other DBIConnection generics: \code{\link{DBIConnection-class}},
-  \code{\link{dbAppendTable}}, \code{\link{dbCreateTable}},
-  \code{\link{dbDisconnect}}, \code{\link{dbExecute}},
-  \code{\link{dbExistsTable}},
-  \code{\link{dbGetException}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetQuery}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbListFields}},
-  \code{\link{dbListObjects}}, \code{\link{dbListResults}},
-  \code{\link{dbListTables}}, \code{\link{dbReadTable}},
-  \code{\link{dbRemoveTable}}, \code{\link{dbSendQuery}},
-  \code{\link{dbSendStatement}}, \code{\link{dbWriteTable}}
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbAppendTable}()},
+\code{\link{dbCreateTable}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendStatement}()},
+\code{\link{dbWriteTable}()}
+
+Other DBIConnector generics: 
+\code{\link{DBIConnector-class}},
+\code{\link{dbConnect}()},
+\code{\link{dbGetConnectArgs}()},
+\code{\link{dbIsReadOnly}()}
 }
 \concept{DBIConnection generics}
+\concept{DBIConnector generics}
 \concept{DBIDriver generics}

@@ -53,16 +53,25 @@ d
 RSQLite::SQLite()
 }
 \seealso{
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
-  \code{\link{dbDataType}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{DBIDriver-class}},
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListConnections}()}
 
-Other DBIDriver generics: \code{\link{DBIDriver-class}},
-  \code{\link{dbCanConnect}}, \code{\link{dbConnect}},
-  \code{\link{dbDataType}}, \code{\link{dbGetInfo}},
-  \code{\link{dbIsReadOnly}}, \code{\link{dbIsValid}},
-  \code{\link{dbListConnections}}
+Other DBIDriver generics: 
+\code{\link{DBIDriver-class}},
+\code{\link{dbCanConnect}()},
+\code{\link{dbConnect}()},
+\code{\link{dbDataType}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbListConnections}()}
 }
 \concept{DBIDriver generics}
+\keyword{internal}

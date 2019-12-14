@@ -1,36 +1,47 @@
 Package: DBI
-Version: 1.0.0.9002
-Date: 2019-09-05
 Title: R Database Interface
+Version: 1.0.0.9006
+Date: 2019-12-14
+Authors@R: 
+    c(person(given = "R Special Interest Group on Databases (R-SIG-DB)",
+             role = "aut"),
+      person(given = "Hadley",
+             family = "Wickham",
+             role = "aut"),
+      person(given = "Kirill",
+             family = "M\u00fcller",
+             role = c("aut", "cre"),
+             email = "krlmlr+r@mailbox.org",
+             comment = c(ORCID = "0000-0002-1416-3412")),
+      person(given = "R Consortium",
+             role = "fnd"))
 Description: A database interface definition for communication
-    between R and relational database management systems.  All
-    classes in this package are virtual and need to be extended by
-    the various R/DBMS implementations.
-Authors@R: c(
-    person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
-    person("Hadley", "Wickham", role = "aut"),
-    person("Kirill", "M\u00fcller", role = c("aut", "cre"), email = "krlmlr+r@mailbox.org", comment = c(ORCID = "0000-0002-1416-3412")),
-    person("R Consortium", role = "fnd")
-    )
+    between R and relational database management systems.  All classes in
+    this package are virtual and need to be extended by the various R/DBMS
+    implementations.
+License: LGPL (>= 2.1)
+URL: http://r-dbi.github.io/DBI, https://github.com/r-dbi/DBI
+BugReports: https://github.com/r-dbi/DBI/issues
 Depends:
-    R (>= 3.0.0),
-    methods
+    methods,
+    R (>= 3.0.0)
 Suggests:
     blob,
     covr,
     hms,
     knitr,
     magrittr,
-    rprojroot,
     rmarkdown,
+    rprojroot,
     RSQLite (>= 1.1-2),
     testthat,
     xml2
+VignetteBuilder: 
+    knitr
 Encoding: UTF-8
-License: LGPL (>= 2.1)
-URL: http://r-dbi.github.io/DBI
-URLNote: https://github.com/r-dbi/DBI
-BugReports: https://github.com/r-dbi/DBI/issues
+Roxygen: list(markdown = TRUE, roclets = c("collate",
+    "namespace", "rd"))
+RoxygenNote: 7.0.2
 Collate: 
     'hidden.R'
     'DBObject.R'
@@ -38,6 +49,7 @@ Collate:
     'table.R'
     'DBConnection.R'
     'ANSI.R'
+    'DBConnector.R'
     'DBI-package.R'
     'DBResult.R'
     'data-types.R'
@@ -51,6 +63,3 @@ Collate:
     'table-create.R'
     'table-insert.R'
     'transactions.R'
-VignetteBuilder: knitr
-Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd", "pkgapi::api_roclet"))
-RoxygenNote: 6.1.1

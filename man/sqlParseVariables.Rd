@@ -48,9 +48,9 @@ sqlParseVariablesImpl("[?a]",
 )
 
 # Standard quotes, use # for commenting
-sqlParseVariablesImpl("# ?a\\n?b",
+sqlParseVariablesImpl("# ?a\n?b",
   list(sqlQuoteSpec("'", "'"), sqlQuoteSpec('"', '"')),
-  list(sqlCommentSpec("#", "\\n", FALSE))
+  list(sqlCommentSpec("#", "\n", FALSE))
 )
 }
 \keyword{internal}

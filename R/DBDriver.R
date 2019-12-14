@@ -6,7 +6,7 @@ NULL
 #' Base class for all DBMS drivers (e.g., RSQLite, MySQL, PostgreSQL).
 #' The virtual class `DBIDriver` defines the operations for creating
 #' connections and defining data type mappings.  Actual driver classes, for
-#' instance `RPgSQL`, `RMySQL`, etc. implement these operations in a
+#' instance `RPostgres`, `RMariaDB`, etc. implement these operations in a
 #' DBMS-specific manner.
 #'
 #' @docType class
@@ -48,6 +48,8 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'   operation succeeded or not.
 #' @import methods
 #' @family DBIDriver generics
+#' @export
+#' @keywords internal
 #' @examples
 #' # Create a RSQLite driver with a string
 #' d <- dbDriver("SQLite")
@@ -55,7 +57,6 @@ setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 #'
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-#' @export
 setGeneric("dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
   valueClass = "DBIDriver"
@@ -156,6 +157,7 @@ setGeneric("dbUnloadDriver",
 #'   For details see the appropriate `DBIDriver`.
 #' @seealso [dbDisconnect()] to disconnect from a database.
 #' @family DBIDriver generics
+#' @family DBIConnector generics
 #' @export
 #' @examples
 #' # SQLite only needs a path to the database. (Here, ":memory:" is a special
@@ -224,6 +226,7 @@ setMethod("dbCanConnect", signature("DBIDriver"), function(drv, ...) {
 #' @param drv A object inheriting from [DBIDriver-class]
 #' @param ... Other arguments passed on to methods.
 #' @family DBIDriver generics
+#' @keywords internal
 #' @export
 #' @return a list
 setGeneric("dbListConnections",
@@ -263,6 +266,7 @@ setGeneric("dbListConnections",
 #' @param obj An R object whose SQL type we want to determine.
 #' @family DBIDriver generics
 #' @family DBIConnection generics
+#' @family DBIConnector generics
 #' @examples
 #' dbDataType(ANSI(), 1:5)
 #' dbDataType(ANSI(), 1)

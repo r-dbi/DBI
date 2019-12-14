@@ -71,9 +71,9 @@ For automated testing, backend authors specify the placeholder syntax with
 the \code{placeholder_pattern} tweak.
 Known examples are:
 \itemize{
-\item \code{?} (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
-\item \code{$1} (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
-\item \code{:name} and \code{$name} (named matching) in \pkg{RSQLite}
+\item \verb{?} (positional matching in order of appearance) in \pkg{RMySQL} and \pkg{RSQLite}
+\item \verb{$1} (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
+\item \verb{:name} and \verb{$name} (named matching) in \pkg{RSQLite}
 }
 }
 \section{Specification}{
@@ -181,16 +181,21 @@ nrow(dbReadTable(con, "iris"))
 dbDisconnect(con)
 }
 \seealso{
-Other DBIResult generics: \code{\link{DBIResult-class}},
-  \code{\link{dbClearResult}}, \code{\link{dbColumnInfo}},
-  \code{\link{dbFetch}}, \code{\link{dbGetInfo}},
-  \code{\link{dbGetRowCount}},
-  \code{\link{dbGetRowsAffected}},
-  \code{\link{dbGetStatement}},
-  \code{\link{dbHasCompleted}}, \code{\link{dbIsReadOnly}},
-  \code{\link{dbIsValid}}, \code{\link{dbQuoteIdentifier}},
-  \code{\link{dbQuoteLiteral}},
-  \code{\link{dbQuoteString}},
-  \code{\link{dbUnquoteIdentifier}}
+Other DBIResult generics: 
+\code{\link{DBIResult-class}},
+\code{\link{dbClearResult}()},
+\code{\link{dbColumnInfo}()},
+\code{\link{dbFetch}()},
+\code{\link{dbGetInfo}()},
+\code{\link{dbGetRowCount}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbGetStatement}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsReadOnly}()},
+\code{\link{dbIsValid}()},
+\code{\link{dbQuoteIdentifier}()},
+\code{\link{dbQuoteLiteral}()},
+\code{\link{dbQuoteString}()},
+\code{\link{dbUnquoteIdentifier}()}
 }
 \concept{DBIResult generics}
