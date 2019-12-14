@@ -240,25 +240,41 @@ of the form
 <code>"CREATE TABLE test (a ...)"</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other DBIDriver generics: <code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
-  <code><a href='dbCanConnect.html'>dbCanConnect</a></code>, <code><a href='dbConnect.html'>dbConnect</a></code>,
-  <code><a href='dbDriver.html'>dbDriver</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>, <code><a href='dbIsValid.html'>dbIsValid</a></code>,
-  <code><a href='dbListConnections.html'>dbListConnections</a></code></p>
-<p>Other DBIConnection generics: <code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
-  <code><a href='dbAppendTable.html'>dbAppendTable</a></code>, <code><a href='dbCreateTable.html'>dbCreateTable</a></code>,
-  <code><a href='dbDisconnect.html'>dbDisconnect</a></code>, <code><a href='dbExecute.html'>dbExecute</a></code>,
-  <code><a href='dbExistsTable.html'>dbExistsTable</a></code>,
-  <code><a href='dbGetException.html'>dbGetException</a></code>, <code><a href='dbGetInfo.html'>dbGetInfo</a></code>,
-  <code><a href='dbGetQuery.html'>dbGetQuery</a></code>, <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code>,
-  <code><a href='dbIsValid.html'>dbIsValid</a></code>, <code><a href='dbListFields.html'>dbListFields</a></code>,
-  <code><a href='dbListObjects.html'>dbListObjects</a></code>, <code><a href='dbListResults.html'>dbListResults</a></code>,
-  <code><a href='dbListTables.html'>dbListTables</a></code>, <code><a href='dbReadTable.html'>dbReadTable</a></code>,
-  <code><a href='dbRemoveTable.html'>dbRemoveTable</a></code>, <code><a href='dbSendQuery.html'>dbSendQuery</a></code>,
-  <code><a href='dbSendStatement.html'>dbSendStatement</a></code>, <code><a href='dbWriteTable.html'>dbWriteTable</a></code></p>
-<p>Other DBIConnector generics: <code><a href='DBIConnector-class.html'>DBIConnector-class</a></code>,
-  <code><a href='dbConnect.html'>dbConnect</a></code>, <code><a href='dbGetConnectArgs.html'>dbGetConnectArgs</a></code>,
-  <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a></code></p></div>
+    <div class='dont-index'><p>Other DBIDriver generics: 
+<code><a href='DBIDriver-class.html'>DBIDriver-class</a></code>,
+<code><a href='dbCanConnect.html'>dbCanConnect</a>()</code>,
+<code><a href='dbConnect.html'>dbConnect</a>()</code>,
+<code><a href='dbDriver.html'>dbDriver</a>()</code>,
+<code><a href='dbGetInfo.html'>dbGetInfo</a>()</code>,
+<code><a href='dbIsReadOnly.html'>dbIsReadOnly</a>()</code>,
+<code><a href='dbIsValid.html'>dbIsValid</a>()</code>,
+<code><a href='dbListConnections.html'>dbListConnections</a>()</code></p>
+<p>Other DBIConnection generics: 
+<code><a href='DBIConnection-class.html'>DBIConnection-class</a></code>,
+<code><a href='dbAppendTable.html'>dbAppendTable</a>()</code>,
+<code><a href='dbCreateTable.html'>dbCreateTable</a>()</code>,
+<code><a href='dbDisconnect.html'>dbDisconnect</a>()</code>,
+<code><a href='dbExecute.html'>dbExecute</a>()</code>,
+<code><a href='dbExistsTable.html'>dbExistsTable</a>()</code>,
+<code><a href='dbGetException.html'>dbGetException</a>()</code>,
+<code><a href='dbGetInfo.html'>dbGetInfo</a>()</code>,
+<code><a href='dbGetQuery.html'>dbGetQuery</a>()</code>,
+<code><a href='dbIsReadOnly.html'>dbIsReadOnly</a>()</code>,
+<code><a href='dbIsValid.html'>dbIsValid</a>()</code>,
+<code><a href='dbListFields.html'>dbListFields</a>()</code>,
+<code><a href='dbListObjects.html'>dbListObjects</a>()</code>,
+<code><a href='dbListResults.html'>dbListResults</a>()</code>,
+<code><a href='dbListTables.html'>dbListTables</a>()</code>,
+<code><a href='dbReadTable.html'>dbReadTable</a>()</code>,
+<code><a href='dbRemoveTable.html'>dbRemoveTable</a>()</code>,
+<code><a href='dbSendQuery.html'>dbSendQuery</a>()</code>,
+<code><a href='dbSendStatement.html'>dbSendStatement</a>()</code>,
+<code><a href='dbWriteTable.html'>dbWriteTable</a>()</code></p>
+<p>Other DBIConnector generics: 
+<code><a href='DBIConnector-class.html'>DBIConnector-class</a></code>,
+<code><a href='dbConnect.html'>dbConnect</a>()</code>,
+<code><a href='dbGetConnectArgs.html'>dbGetConnectArgs</a>()</code>,
+<code><a href='dbIsReadOnly.html'>dbIsReadOnly</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>1</span>:<span class='fl'>5</span>)</div><div class='output co'>#&gt; [1] "INT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; [1] "SMALLINT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>())</div><div class='output co'>#&gt; [1] "DATE"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>())</div><div class='output co'>#&gt; [1] "TIMESTAMP"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span>() - <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span>()))</div><div class='output co'>#&gt; [1] "TIME"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"x"</span>, <span class='st'>"abc"</span>))</div><div class='output co'>#&gt; [1] "TEXT"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span>(<span class='fl'>10</span>), <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span>(<span class='fl'>20</span>)))</div><div class='output co'>#&gt; [1] "BLOB"</div><div class='input'><span class='fu'>dbDataType</span>(<span class='fu'><a href='ANSI.html'>ANSI</a></span>(), <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span>(<span class='fl'>3</span>))</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'>

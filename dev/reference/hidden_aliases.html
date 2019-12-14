@@ -169,8 +169,7 @@
 <span class='fu'><a href='dbSendStatement.html'>dbSendStatement</a></span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection,character</span>
-<span class='fu'><a href='dbGetQuery.html'>dbGetQuery</a></span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>1L</span>)
+<span class='fu'><a href='dbGetQuery.html'>dbGetQuery</a></span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>, <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>1L</span>)
 
 <span class='co'># S4 method for DBIConnection,character</span>
 <span class='fu'><a href='dbExecute.html'>dbExecute</a></span>(<span class='no'>conn</span>, <span class='no'>statement</span>, <span class='no'>...</span>)
@@ -185,8 +184,7 @@
 <span class='fu'><a href='dbListObjects.html'>dbListObjects</a></span>(<span class='no'>conn</span>, <span class='kw'>prefix</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection,character</span>
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>,
-  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>check.names</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># S4 method for DBIConnection,Id</span>
 <span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)
@@ -231,13 +229,23 @@
 <span class='fu'><a href='sqlData.html'>sqlData</a></span>(<span class='no'>con</span>, <span class='no'>value</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIObject,character</span>
-<span class='fu'><a href='make.db.names.html'>make.db.names</a></span>(<span class='no'>dbObj</span>, <span class='no'>snames</span>,
-  <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>, <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>allow.keywords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='no'>...</span>)
+<span class='fu'><a href='make.db.names.html'>make.db.names</a></span>(
+  <span class='no'>dbObj</span>,
+  <span class='no'>snames</span>,
+  <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>,
+  <span class='kw'>unique</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>allow.keywords</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for DBIObject,character</span>
-<span class='fu'><a href='make.db.names.html'>isSQLKeyword</a></span>(<span class='no'>dbObj</span>, <span class='no'>name</span>,
-  <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>, <span class='kw'>case</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lower"</span>, <span class='st'>"upper"</span>, <span class='st'>"any"</span>)[<span class='fl'>3</span>], <span class='no'>...</span>)
+<span class='fu'><a href='make.db.names.html'>isSQLKeyword</a></span>(
+  <span class='no'>dbObj</span>,
+  <span class='no'>name</span>,
+  <span class='kw'>keywords</span> <span class='kw'>=</span> <span class='no'>.SQL92Keywords</span>,
+  <span class='kw'>case</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"lower"</span>, <span class='st'>"upper"</span>, <span class='st'>"any"</span>)[<span class='fl'>3</span>],
+  <span class='no'>...</span>
+)
 
 <span class='co'># S4 method for DBIObject</span>
 <span class='fu'><a href='make.db.names.html'>SQLKeywords</a></span>(<span class='no'>dbObj</span>, <span class='no'>...</span>)
@@ -282,20 +290,16 @@
 <span class='fu'><a href='dbQuoteLiteral.html'>dbQuoteLiteral</a></span>(<span class='no'>conn</span>, <span class='no'>x</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
-<span class='fu'><a href='sqlCreateTable.html'>sqlCreateTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>fields</span>,
-  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='sqlCreateTable.html'>sqlCreateTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>fields</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
-<span class='fu'><a href='dbCreateTable.html'>dbCreateTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>,
-  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'><a href='dbCreateTable.html'>dbCreateTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
-<span class='fu'><a href='sqlAppendTable.html'>sqlAppendTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>,
-  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)
+<span class='fu'><a href='sqlAppendTable.html'>sqlAppendTable</a></span>(<span class='no'>con</span>, <span class='no'>table</span>, <span class='no'>values</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fl'>NA</span>, <span class='no'>...</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
-<span class='fu'><a href='dbAppendTable.html'>dbAppendTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>,
-  <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+<span class='fu'><a href='dbAppendTable.html'>dbAppendTable</a></span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>value</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
 <span class='co'># S4 method for DBIConnection</span>
 <span class='fu'><a href='dbWithTransaction.html'>dbWithTransaction</a></span>(<span class='no'>conn</span>, <span class='no'>code</span>)</pre>
@@ -310,22 +314,6 @@
     <tr>
       <th>n</th>
       <td><p>Number of rows to fetch, default -1</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Table object to print</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object to display</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object to display</p></td>
-    </tr>
-    <tr>
-      <th>object</th>
-      <td><p>Object to display</p></td>
     </tr>
     </table>
 

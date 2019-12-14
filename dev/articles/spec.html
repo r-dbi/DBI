@@ -987,17 +987,17 @@ The placeholder format is currently not specified by <span class="pkg">DBI</span
 <ul>
 <li>
 <p>
-<code>?</code> (positional matching in order of appearance) in <span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span>
+<code style="white-space: pre;">?</code> (positional matching in order of appearance) in <span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span>
 </p>
 </li>
 <li>
 <p>
-<code>$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span>
+<code style="white-space: pre;">$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span>
 </p>
 </li>
 <li>
 <p>
-<code>:name</code> and <code>$name</code> (named matching) in <span class="pkg">RSQLite</span>
+<code style="white-space: pre;">:name</code> and <code style="white-space: pre;">$name</code> (named matching) in <span class="pkg">RSQLite</span>
 </p>
 </li>
 </ul>
@@ -1398,7 +1398,7 @@ dbSendStatement(conn, statement, ...)
 Description
 </h3>
 <p>
-The <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> method only submits and synchronously executes the SQL data manipulation statement (e.g., <code>UPDATE</code>, <code>DELETE</code>, <code>INSERT INTO</code>, <code>DROP TABLE</code>, …) to the database engine. To query the number of affected rows, call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> on the returned result object. You must also call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> after that. For interactive use, you should almost always prefer <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.
+The <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> method only submits and synchronously executes the SQL data manipulation statement (e.g., <code>UPDATE</code>, <code>DELETE</code>, <code style="white-space: pre;">INSERT INTO</code>, <code style="white-space: pre;">DROP TABLE</code>, …) to the database engine. To query the number of affected rows, call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> on the returned result object. You must also call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> after that. For interactive use, you should almost always prefer <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.
 </p>
 <h3>
 Arguments
@@ -1856,10 +1856,10 @@ When passing the returned object again to <code><a href="../reference/dbQuoteStr
 Specification
 </h3>
 <p>
-The returned expression can be used in a <code>SELECT …</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0(“SELECT”, dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. The strings <code>“NA”</code> or <code>“NULL”</code> are not treated specially.
+The returned expression can be used in a <code style="white-space: pre;">SELECT …</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0(“SELECT”, dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code>. The strings <code>“NA”</code> or <code>“NULL”</code> are not treated specially.
 </p>
 <p>
-<code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code>SELECT * FROM (SELECT 1) a WHERE … IS NULL</code> returns one row.
+<code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code style="white-space: pre;">SELECT * FROM (SELECT 1) a WHERE … IS NULL</code> returns one row.
 </p>
 <p>
 Passing a numeric, integer, logical, or raw vector, or a list for the <code>x</code> argument raises an error.
@@ -1948,7 +1948,7 @@ An error is raised if the input contains <code>NA</code>, but not for an empty s
 Specification
 </h3>
 <p>
-Calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS …</code> returns a data frame with the identifier, unquoted, as column name. Quoted identifiers can be used as table and column names in SQL queries, in particular in queries like <code>SELECT 1 AS …</code> and <code>SELECT * FROM (SELECT 1) …</code>. The method must use a quoting mechanism that is unambiguously different from the quoting mechanism used for strings, so that a query like <code>SELECT … FROM (SELECT 1 AS …)</code> throws an error if the column names do not match.
+Calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code style="white-space: pre;">SELECT 1 AS …</code> returns a data frame with the identifier, unquoted, as column name. Quoted identifiers can be used as table and column names in SQL queries, in particular in queries like <code style="white-space: pre;">SELECT 1 AS …</code> and <code style="white-space: pre;">SELECT * FROM (SELECT 1) …</code>. The method must use a quoting mechanism that is unambiguously different from the quoting mechanism used for strings, so that a query like <code style="white-space: pre;">SELECT … FROM (SELECT 1 AS …)</code> throws an error if the column names do not match.
 </p>
 <p>
 The method can quote column names that contain special characters such as a space, a dot, a comma, or quotes used to mark strings or identifiers, if the database supports this. In any case, checking the validity of the identifier should be performed only when executing a query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
@@ -2065,7 +2065,7 @@ If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">d
 Value
 </h3>
 <p>
-<code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.
+<code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code style="white-space: pre;">SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.
 </p>
 <p>
 The presence of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> for details:
