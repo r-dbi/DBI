@@ -150,7 +150,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' back to a list of [Id] objects.
 #'
 #' @inheritParams dbGetQuery
-#' @param x An [SQL] or [Id] object or character vector to unquote.
+#' @param x An [SQL] or [Id] object.
 #' @param ... Other arguments passed on to methods.
 #'
 #' @template methods
