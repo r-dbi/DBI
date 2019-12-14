@@ -3,7 +3,7 @@ NULL
 
 #' DBIConnector class
 #'
-#' Wraps [DBIDriver-class] to include connection options.
+#' Wraps objects of the [DBIDriver-class] class to include connection options.
 #' The purpose of this class is to store both the driver
 #' and the connection options.
 #' A database connection can be established
