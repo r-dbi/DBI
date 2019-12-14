@@ -18,30 +18,36 @@ For objects of class \linkS4class{DBIDriver}, \code{dbGetInfo()}
 returns a named list
 that contains at least the following components:
 \itemize{
-\item \code{driver.version},
-\item \code{client.version}.
+\item \code{driver.version}: the package version of the DBI backend,
+\item \code{client.version}: the version of the DBMS client library.
 }
 
 For objects of class \linkS4class{DBIConnection}, \code{dbGetInfo()}
 returns a named list
 that contains at least the following components:
 \itemize{
-\item \code{db.version},
-\item \code{dbname},
-\item \code{username},
-\item \code{host},
-\item \code{port}.
+\item \code{db.version}: version of the database server,
+\item \code{dbname}: database name,
+\item \code{username}: username to connect to the database,
+\item \code{host}: hostname of the database server,
+\item \code{port}: port on the database server.
 It must not contain a \code{password} component.
+Components that are not applicable should be set to \code{NA}.
 }
 
 For objects of class \linkS4class{DBIResult}, \code{dbGetInfo()}
 returns a named list
 that contains at least the following components:
 \itemize{
-\item \code{statatment},
-\item \code{row.count},
-\item \code{rows.affected},
-\item \code{has.completed}.
+\item \code{statatment}: the statement used with \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbExecute]{dbExecute()}},
+as returned by \code{\link[=dbGetStatement]{dbGetStatement()}},
+\item \code{row.count}: the number of rows fetched so far (for queries),
+as returned by \code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\item \code{rows.affected}: the number of rows affected (for statements),
+as returned by \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}
+\item \code{has.completed}: a logical that indicates
+if the query or statement has completed,
+as returned by \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
 }
 \description{
