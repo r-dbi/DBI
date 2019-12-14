@@ -63,7 +63,7 @@ setMethod("dbConnect", signature("DBIConnector"),
     named_dots$drv <- NULL
 
     # Named dots are supplemented with connector args
-    extra_args <- modifyList(
+    extra_args <- utils::modifyList(
       dbGetConnectArgs(drv),
       named_dots
     )
