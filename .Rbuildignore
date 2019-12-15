@@ -32,3 +32,4 @@ inst\/doc\/DBI\.b..$
 ^codecov\.yml$
 ^LICENSE\.md$
 ^README\.Rmd$
+^appveyor\.yml$

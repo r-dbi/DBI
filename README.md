@@ -7,6 +7,8 @@
 
 [![Build
 Status](https://travis-ci.org/r-dbi/DBI.svg?branch=master)](https://travis-ci.org/r-dbi/DBI)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/r-dbi/DBI?branch=master&svg=true)](https://ci.appveyor.com/project/r-dbi/DBI)
 [![Coverage
 Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
