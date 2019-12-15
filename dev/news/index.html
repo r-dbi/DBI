@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.0.0.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.0.9000</span>
       </span>
     </div>
 
@@ -137,67 +137,49 @@
       <small>Source: <a href='https://github.com/r-dbi/DBI/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="dbi-1-0-0-9006" class="section level1">
+    <div id="dbi-1-1-0-9000" class="section level1">
 <h1 class="page-header">
-<a href="#dbi-1-0-0-9006" class="anchor"></a>DBI 1.0.0.9006<small> Unreleased </small>
+<a href="#dbi-1-1-0-9000" class="anchor"></a>DBI 1.1.0.9000<small> Unreleased </small>
 </h1>
 <ul>
-<li>Use specifiaction for <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/271'>#271</a>).</li>
-<li>Add pkgdown reference index (<a href='https://github.com/r-dbi/DBI/issues/288'>#288</a>).</li>
-<li>DBI specification on <a href="https://dbi.r-dbi.org/dev/articles/spec" class="uri">https://dbi.r-dbi.org/dev/articles/spec</a> now comes with a table of contents and code formatting.</li>
-<li>Remove <code>setDBIMethod()</code> (<a href='https://github.com/r-dbi/DBI/issues/235'>#235</a>).</li>
+<li>Same as previous version.</li>
 </ul>
 </div>
-    <div id="dbi-1-0-0-9004" class="section level1">
+    <div id="dbi-1-1-0" class="section level1">
 <h1 class="page-header">
-<a href="#dbi-1-0-0-9004" class="anchor"></a>DBI 1.0.0.9004<small> Unreleased </small>
+<a href="#dbi-1-1-0" class="anchor"></a>DBI 1.1.0<small> Unreleased </small>
 </h1>
+<div id="new-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#new-features" class="anchor"></a>New features</h2>
 <ul>
-<li>New DBI intro article (<a href='https://github.com/r-dbi/DBI/issues/286'>#286</a>, <a href='https://github.com/cutterkom'>@cutterkom</a>).</li>
+<li><p>New <code>DBIConnector</code> class (<a href='https://github.com/r-dbi/DBI/issues/280'>#280</a>).</p></li>
+<li><p>Specify <code>immediate</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> and <code><a href="../reference/dbExecute.html">dbExecute()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/268'>#268</a>).</p></li>
+<li><p>Use specification for <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/271'>#271</a>).</p></li>
+<li><p><code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> now supports <code><a href="../reference/Id.html">Id()</a></code> objects with <code>catalog</code> members (<a href='https://github.com/r-dbi/DBI/issues/266'>#266</a>, <a href='https://github.com/raffscallion'>@raffscallion</a>). It also handles unquoted identifiers of the form <code>table</code>, <code>schema.table</code> or <code>catalog.schema.table</code>, for compatibility with dbplyr.</p></li>
 </ul>
 </div>
-    <div id="dbi-1-0-0-9003" class="section level1">
-<h1 class="page-header">
-<a href="#dbi-1-0-0-9003" class="anchor"></a>DBI 1.0.0.9003<small> Unreleased </small>
-</h1>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
 <ul>
-<li>New <code>setDBIMethod()</code> (<a href='https://github.com/r-dbi/DBI/issues/235'>#235</a>).</li>
-<li>Update examples to refer to <code>params</code> instead of <code>param</code> (<a href='https://github.com/r-dbi/DBI/issues/235'>#235</a>).</li>
-<li>New <code>DBIConnector</code> class (<a href='https://github.com/r-dbi/DBI/issues/280'>#280</a>).</li>
-<li>Specify <code>immediate</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> and <code><a href="../reference/dbExecute.html">dbExecute()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/268'>#268</a>).</li>
+<li><p>New DBI intro article (<a href='https://github.com/r-dbi/DBI/issues/286'>#286</a>, <a href='https://github.com/cutterkom'>@cutterkom</a>).</p></li>
+<li><p>Add pkgdown reference index (<a href='https://github.com/r-dbi/DBI/issues/288'>#288</a>).</p></li>
+<li><p>DBI specification on <a href="https://dbi.r-dbi.org/dev/articles/spec" class="uri">https://dbi.r-dbi.org/dev/articles/spec</a> now comes with a table of contents and code formatting.</p></li>
+<li><p>Update examples to refer to <code>params</code> instead of <code>param</code> (<a href='https://github.com/r-dbi/DBI/issues/235'>#235</a>).</p></li>
+<li><p>Improved documentation for <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/100'>#100</a>). Add usage of <code><a href="../reference/SQL.html">SQL()</a></code> to <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> examples (<a href='https://github.com/r-dbi/DBI/issues/259'>#259</a>, <a href='https://github.com/renkun-ken'>@renkun-ken</a>).</p></li>
+<li><p>Improve documentation for <code>Id</code>.</p></li>
 </ul>
 </div>
-    <div id="dbi-1-0-0-9002" class="section level1">
-<h1 class="page-header">
-<a href="#dbi-1-0-0-9002" class="anchor"></a>DBI 1.0.0.9002<small> Unreleased </small>
-</h1>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
 <ul>
-<li>Add tests for <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/279'>#279</a>, <a href='https://github.com/baileych'>@baileych</a>).</li>
-<li>
-<code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> uses <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> instead of checking the type of the input.</li>
-<li>Improved documentation for <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/100'>#100</a>).</li>
-<li>
-<code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> also handles unquoted identifiers of the form <code>table</code>, <code>schema.table</code> or <code>catalog.schema.table</code>, for compatibility with dbplyr.</li>
-<li>
-<code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> now supports <code><a href="../reference/Id.html">Id()</a></code> objects with <code>catalog</code> members (<a href='https://github.com/r-dbi/DBI/issues/266'>#266</a>, <a href='https://github.com/raffscallion'>@raffscallion</a>).</li>
+<li><p>Add tests for <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/279'>#279</a>, <a href='https://github.com/baileych'>@baileych</a>).</p></li>
+<li><p><code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> uses <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> instead of checking the type of the input.</p></li>
+<li><p>Avoid partial argument match in <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/246'>#246</a>, <a href='https://github.com/richfitz'>@richfitz</a>).</p></li>
 </ul>
 </div>
-    <div id="dbi-1-0-0-9001" class="section level1">
-<h1 class="page-header">
-<a href="#dbi-1-0-0-9001" class="anchor"></a>DBI 1.0.0.9001<small> Unreleased </small>
-</h1>
-<ul>
-<li>Add usage of <code><a href="../reference/SQL.html">SQL()</a></code> to <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> examples (<a href='https://github.com/r-dbi/DBI/issues/259'>#259</a>, <a href='https://github.com/renkun-ken'>@renkun-ken</a>).</li>
-</ul>
-</div>
-    <div id="dbi-1-0-0-9000" class="section level1">
-<h1 class="page-header">
-<a href="#dbi-1-0-0-9000" class="anchor"></a>DBI 1.0.0.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Improve documentation for <code>Id</code>.</li>
-<li>Avoid partial arg match in <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/246'>#246</a>, <a href='https://github.com/richfitz'>@richfitz</a>).</li>
-</ul>
 </div>
     <div id="dbi-1-0-0-2018-05-02" class="section level1">
 <h1 class="page-header">
@@ -303,9 +285,9 @@
 <li>Fix <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to ignore invalid UTF-8 strings (r-dbi/DBItest<a href='https://github.com/r-dbi/DBI/issues/156'>#156</a>).</li>
 </ul>
 </div>
-<div id="documentation" class="section level2">
+<div id="documentation-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
+<a href="#documentation-1" class="anchor"></a>Documentation</h2>
 <ul>
 <li>Help pages for generics now contain a dynamic list of methods implemented by DBI backends (<a href='https://github.com/r-dbi/DBI/issues/162'>#162</a>).</li>
 <li>
@@ -314,9 +296,9 @@
 <li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-dbi/DBI/issues/207'>#207</a>).</li>
 </ul>
 </div>
-<div id="internal" class="section level2">
+<div id="internal-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal" class="anchor"></a>Internal</h2>
+<a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
 <li>Using switchpatch on the second argument for default implementations of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</li>
 </ul>
@@ -642,12 +624,8 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#dbi-1-0-0-9006">1.0.0.9006</a></li>
-        <li><a href="#dbi-1-0-0-9004">1.0.0.9004</a></li>
-        <li><a href="#dbi-1-0-0-9003">1.0.0.9003</a></li>
-        <li><a href="#dbi-1-0-0-9002">1.0.0.9002</a></li>
-        <li><a href="#dbi-1-0-0-9001">1.0.0.9001</a></li>
-        <li><a href="#dbi-1-0-0-9000">1.0.0.9000</a></li>
+        <li><a href="#dbi-1-1-0-9000">1.1.0.9000</a></li>
+        <li><a href="#dbi-1-1-0">1.1.0</a></li>
         <li><a href="#dbi-1-0-0-2018-05-02">1.0.0</a></li>
         <li><a href="#dbi-0-8-2018-02-24">0.8</a></li>
         <li><a href="#dbi-0-7-2017-06-17">0.7</a></li>
