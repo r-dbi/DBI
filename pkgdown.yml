@@ -1,9 +1,14 @@
-pandoc: 2.2.1
-pkgdown: 1.1.0.9000
+pandoc: '2.2'
+pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
   DBI-1: DBI-1.html
+  DBI-history: DBI-history.html
   DBI-proposal: DBI-proposal.html
+  DBI: DBI.html
   backend: backend.html
   spec: spec.html
+urls:
+  reference: https://dbi.r-dbi.org/reference
+  article: https://dbi.r-dbi.org/articles
 
