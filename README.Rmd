@@ -130,5 +130,5 @@ All classes are _virtual_: they cannot be instantiated directly and instead must
 
 ---
 
-Please note that the _DBI_ project is released with a [Contributor Code of Conduct](.github/CODE_OF_CONDUCT.md).
+Please note that the _DBI_ project is released with a [Contributor Code of Conduct](https://dbi.r-dbi.org/code_of_conduct).
 By contributing to this project, you agree to abide by its terms.

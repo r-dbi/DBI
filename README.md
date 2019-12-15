@@ -168,5 +168,5 @@ instead must be subclassed.
 -----
 
 Please note that the *DBI* project is released with a [Contributor Code
-of Conduct](.github/CODE_OF_CONDUCT.md). By contributing to this
+of Conduct](https://dbi.r-dbi.org/code_of_conduct). By contributing to this
 project, you agree to abide by its terms.
