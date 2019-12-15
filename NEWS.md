@@ -1,47 +1,38 @@
 # DBI 1.1.0
 
-- Internal changes only.
+## New features
+
+- New `DBIConnector` class (#280).
+
+- Specify `immediate` argument to `dbSendQuery()`, `dbGetQuery()`, `dbSendStatement()` and `dbExecute()` (#268).
+
+- Use specification for `dbGetInfo()` (#271).
+
+- `dbUnquoteIdentifier()` now supports `Id()` objects with `catalog` members (#266, @raffscallion). It also handles unquoted identifiers of the form `table`, `schema.table` or `catalog.schema.table`, for compatibility with dbplyr.
 
 
-# DBI 1.0.0.9006
-
-- Use specifiaction for `dbGetInfo()` (#271).
-- Add pkgdown reference index (#288).
-- DBI specification on https://dbi.r-dbi.org/dev/articles/spec now comes with a table of contents and code formatting.
-- Remove `setDBIMethod()` (#235).
-
-
-# DBI 1.0.0.9004
+## Documentation
 
 - New DBI intro article (#286, @cutterkom).
 
+- Add pkgdown reference index (#288).
 
-# DBI 1.0.0.9003
+- DBI specification on https://dbi.r-dbi.org/dev/articles/spec now comes with a table of contents and code formatting.
 
-- New `setDBIMethod()` (#235).
 - Update examples to refer to `params` instead of `param` (#235).
-- New `DBIConnector` class (#280).
-- Specify `immediate` argument to `dbSendQuery()`, `dbGetQuery()`, `dbSendStatement()` and `dbExecute()` (#268).
 
-
-# DBI 1.0.0.9002
-
-- Add tests for `dbUnquoteIdentifier()` (#279, @baileych).
-- `sqlInterpolate()` uses `dbQuoteLiteral()` instead of checking the type of the input.
-- Improved documentation for `sqlInterpolate()` (#100).
-- `dbUnquoteIdentifier()` also handles unquoted identifiers of the form `table`, `schema.table` or `catalog.schema.table`, for compatibility with dbplyr.
-- `dbUnquoteIdentifier()` now supports `Id()` objects with `catalog` members (#266, @raffscallion).
-
-
-# DBI 1.0.0.9001
-
-- Add usage of `SQL()` to `sqlInterpolate()` examples (#259, @renkun-ken).
-
-
-# DBI 1.0.0.9000
+- Improved documentation for `sqlInterpolate()` (#100). Add usage of `SQL()` to `sqlInterpolate()` examples (#259, @renkun-ken).
 
 - Improve documentation for `Id`.
-- Avoid partial arg match in `dbWriteTable()` (#246, @richfitz).
+
+
+## Internal
+
+- Add tests for `dbUnquoteIdentifier()` (#279, @baileych).
+
+- `sqlInterpolate()` uses `dbQuoteLiteral()` instead of checking the type of the input.
+
+- Avoid partial argument match in `dbWriteTable()` (#246, @richfitz).
 
 
 # DBI 1.0.0 (2018-05-02)
