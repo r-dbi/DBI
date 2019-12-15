@@ -1,3 +1,8 @@
+# DBI 1.1.0
+
+- Internal changes only.
+
+
 # DBI 1.0.0.9006
 
 - Use specifiaction for `dbGetInfo()` (#271).
