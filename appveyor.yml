@@ -21,9 +21,6 @@ environment:
   - R_VERSION: devel
     GCC_PATH: mingw_64
     R_ARCH: x64
-  - R_VERSION: release
-    GCC_PATH: mingw
-    R_ARCH: x32
 
 build_script:
   - travis-tool.sh install_deps
