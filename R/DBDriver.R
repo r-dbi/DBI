@@ -169,6 +169,11 @@ setGeneric("dbUnloadDriver",
 #' dbListTables(con)
 #'
 #' dbDisconnect(con)
+#'
+#' # Bad, for subtle reasons:
+#' # This code fails when RSQLite isn't loaded yet,
+#' # because dbConnect() doesn't know yet about RSQLite.
+#' dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 setGeneric("dbConnect",
   def = function(drv, ...) standardGeneric("dbConnect"),
   valueClass = "DBIConnection"
