@@ -74,6 +74,11 @@ con
 dbListTables(con)
 
 dbDisconnect(con)
+
+# Bad, for subtle reasons:
+# This code fails when RSQLite isn't loaded yet,
+# because dbConnect() doesn't know yet about RSQLite.
+dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 }
 \seealso{
 \code{\link[=dbDisconnect]{dbDisconnect()}} to disconnect from a database.
