@@ -157,7 +157,7 @@
 <p>The following example illustrates some of the DBI capabilities:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(DBI)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co"># Create an ephemeral in-memory RSQLite database</span></a>
-<a class="sourceLine" id="cb3-3" data-line-number="3">con &lt;-<span class="st"> </span><span class="kw"><a href="reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="dt">dbname =</span> <span class="st">":memory:"</span>)</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">con &lt;-<span class="st"> </span><span class="kw"><a href="reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="dt">dbname =</span> <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb3-4" data-line-number="4"></a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw"><a href="reference/dbListTables.html">dbListTables</a></span>(con)</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; character(0)</span></a>

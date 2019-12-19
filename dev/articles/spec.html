@@ -135,7 +135,7 @@
 <div id="examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>()</a></code></pre></div>
 </div>
 </div>
 <div id="determine-the-sql-data-type-of-an-object" class="section level2">
@@ -203,7 +203,7 @@
 <a class="sourceLine" id="cb3-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="kw"><a href="../reference/ANSI.html">ANSI</a></span>(), iris)</a>
 <a class="sourceLine" id="cb3-12" data-line-number="12"></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="kw"><a href="../reference/dbDataType.html">dbDataType</a></span>(con, <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>)</a>
 <a class="sourceLine" id="cb3-16" data-line-number="16"><span class="kw"><a href="../reference/dbDataType.html">dbDataType</a></span>(con, <span class="dv">1</span>)</a>
@@ -282,7 +282,7 @@
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span></a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="co"># path that creates an in-memory database.) Other database drivers</span></a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co"># will require more details (like user, password, host, port, etc.)</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5">con</a>
 <a class="sourceLine" id="cb5-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb5-7" data-line-number="7"><span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con)</a>
@@ -292,7 +292,7 @@
 <a class="sourceLine" id="cb5-11" data-line-number="11"><span class="co"># Bad, for subtle reasons:</span></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12"><span class="co"># This code fails when RSQLite isn't loaded yet,</span></a>
 <a class="sourceLine" id="cb5-13" data-line-number="13"><span class="co"># because dbConnect() doesn't know yet about RSQLite.</span></a>
-<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>))</a></code></pre></div>
+<a class="sourceLine" id="cb5-14" data-line-number="14"><span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>))</a></code></pre></div>
 </div>
 </div>
 <div id="disconnect-close-a-connection" class="section level2">
@@ -332,7 +332,7 @@
 <div id="examples-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-3" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(con)</a></code></pre></div>
 </div>
 </div>
@@ -434,7 +434,7 @@
 <div id="examples-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-4" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb9-4" data-line-number="4">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span>)</a>
@@ -539,7 +539,7 @@
 <div id="examples-5" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-5" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb11-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb11-4" data-line-number="4"></a>
@@ -596,7 +596,7 @@
 <div id="examples-6" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-6" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb13-3" data-line-number="3">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT 1"</span>)</a>
 <a class="sourceLine" id="cb13-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="kw"><a href="../reference/dbFetch.html">dbFetch</a></span>(rs))</a>
@@ -699,7 +699,7 @@
 <div id="examples-7" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-7" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb15-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb15-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"iris"</span>, iris)</a>
 <a class="sourceLine" id="cb15-4" data-line-number="4"></a>
@@ -827,7 +827,7 @@
 <div id="examples-8" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-8" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb17-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb17-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span>(con, <span class="st">"SELECT * FROM mtcars"</span>)</a>
@@ -942,7 +942,7 @@
 <div id="examples-9" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-9" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb19-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"cars"</span>, <span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(cars, <span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb19-4" data-line-number="4"></a>
@@ -1076,7 +1076,7 @@
 <div id="examples-10" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-10" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb21-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb21-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"cars"</span>, <span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(cars, <span class="dv">3</span>))</a>
 <a class="sourceLine" id="cb21-4" data-line-number="4"><span class="kw"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(con, <span class="st">"cars"</span>)   <span class="co"># there are 3 rows</span></a>
@@ -1285,7 +1285,7 @@
 <div id="examples-13" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-13" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>, ])</a>
 <a class="sourceLine" id="cb27-4" data-line-number="4"><span class="kw"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(con, <span class="st">"mtcars"</span>)</a>
@@ -1398,7 +1398,7 @@
 <div id="examples-14" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-14" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb29-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, ])</a>
 <a class="sourceLine" id="cb29-4" data-line-number="4"><span class="kw"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(con, <span class="st">"mtcars"</span>)</a>
@@ -1447,7 +1447,7 @@
 <div id="examples-15" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-15" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw"><a href="../reference/dbListTables.html">dbListTables</a></span>(con)</a>
 <a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
@@ -1503,7 +1503,7 @@
 <div id="examples-16" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-16" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb33-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(con, <span class="st">"iris"</span>)</a>
 <a class="sourceLine" id="cb33-4" data-line-number="4"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"iris"</span>, iris)</a>
@@ -1571,7 +1571,7 @@
 <div id="examples-17" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-17" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb35-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(con, <span class="st">"iris"</span>)</a>
 <a class="sourceLine" id="cb35-4" data-line-number="4"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"iris"</span>, iris)</a>
@@ -1629,7 +1629,7 @@
 <div id="examples-18" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-18" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb37-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb37-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb37-4" data-line-number="4"><span class="kw"><a href="../reference/dbListFields.html">dbListFields</a></span>(con, <span class="st">"mtcars"</span>)</a>
@@ -1675,9 +1675,9 @@
 <div id="examples-19" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-19" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>())</a>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" data-line-number="1"><span class="kw"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>())</a>
 <a class="sourceLine" id="cb39-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb39-3" data-line-number="3">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<a class="sourceLine" id="cb39-3" data-line-number="3">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb39-4" data-line-number="4"><span class="kw"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(con)</a>
 <a class="sourceLine" id="cb39-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb39-6" data-line-number="6">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT 1"</span>)</a>
@@ -1727,7 +1727,7 @@
 <div id="examples-20" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-20" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb41-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb41-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb41-4" data-line-number="4">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT * FROM mtcars"</span>)</a>
@@ -1774,7 +1774,7 @@
 <div id="examples-21" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-21" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb43-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb43-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb43-4" data-line-number="4">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT * FROM mtcars"</span>)</a>
@@ -1816,7 +1816,7 @@
 <div id="examples-22" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-22" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb45-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb45-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb45-4" data-line-number="4">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT * FROM mtcars"</span>)</a>
@@ -1864,7 +1864,7 @@
 <div id="examples-23" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-23" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb47-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb47-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"mtcars"</span>, mtcars)</a>
 <a class="sourceLine" id="cb47-4" data-line-number="4">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(con, <span class="st">"DELETE FROM mtcars"</span>)</a>
@@ -1914,7 +1914,7 @@
 <div id="examples-24" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-24" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb49-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb49-3" data-line-number="3">rs &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(con, <span class="st">"SELECT 1 AS a, 2 AS b"</span>)</a>
 <a class="sourceLine" id="cb49-4" data-line-number="4"><span class="kw"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span>(rs)</a>
@@ -1974,7 +1974,7 @@
 <div id="examples-25" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-25" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb51-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb51-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"cash"</span>, <span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">amount =</span> <span class="dv">100</span>))</a>
 <a class="sourceLine" id="cb51-4" data-line-number="4"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"account"</span>, <span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">amount =</span> <span class="dv">2000</span>))</a>
@@ -2054,7 +2054,7 @@
 <div id="examples-26" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-26" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/RSQLite/man/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" data-line-number="1">con &lt;-<span class="st"> </span><span class="kw"><a href="../reference/dbConnect.html">dbConnect</a></span>(RSQLite<span class="op">::</span><span class="kw"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)</a>
 <a class="sourceLine" id="cb53-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb53-3" data-line-number="3"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"cash"</span>, <span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">amount =</span> <span class="dv">100</span>))</a>
 <a class="sourceLine" id="cb53-4" data-line-number="4"><span class="kw"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(con, <span class="st">"account"</span>, <span class="kw"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="dt">amount =</span> <span class="dv">2000</span>))</a>
