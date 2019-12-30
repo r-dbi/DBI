@@ -222,7 +222,7 @@ latter will be adapted in a later release of DBI.</p>
 <code><a href='dbWriteTable.html'>dbWriteTable</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 <span class='fu'>dbCreateTable</span>(<span class='no'>con</span>, <span class='st'>"iris"</span>, <span class='no'>iris</span>)
 <span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>)</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
 #&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>

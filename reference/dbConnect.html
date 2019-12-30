@@ -240,12 +240,17 @@ and <code><a href='https://rdrr.io/r/base/character.html'>as.character()</a></co
     <pre class="examples"><div class='input'><span class='co'># SQLite only needs a path to the database. (Here, ":memory:" is a special</span>
 <span class='co'># path that creates an in-memory database.) Other database drivers</span>
 <span class='co'># will require more details (like user, password, host, port, etc.)</span>
-<span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'>dbConnect</span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+<span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'>dbConnect</span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
 <span class='no'>con</span></div><div class='output co'>#&gt; &lt;SQLiteConnection&gt;
 #&gt;   Path: :memory:
 #&gt;   Extensions: TRUE</div><div class='input'>
 <span class='fu'><a href='dbListTables.html'>dbListTables</a></span>(<span class='no'>con</span>)</div><div class='output co'>#&gt; character(0)</div><div class='input'>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
+<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)
+
+<span class='co'># Bad, for subtle reasons:</span>
+<span class='co'># This code fails when RSQLite isn't loaded yet,</span>
+<span class='co'># because dbConnect() doesn't know yet about RSQLite.</span>
+<span class='fu'><a href='dbListTables.html'>dbListTables</a></span>(<span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'>dbConnect</span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>))</div><div class='output co'>#&gt; character(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

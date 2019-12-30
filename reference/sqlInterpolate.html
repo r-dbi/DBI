@@ -231,7 +231,7 @@ in errors matching supplied and interpolated variables.</p>
 )</div><div class='output co'>#&gt; &lt;SQL&gt; SELECT * FROM X; DELETE FROM X; SELECT * FROM X WHERE name in ('a', 'b')</div><div class='input'>
 <span class='co'># Use dbGetQuery() or dbExecute() to process these queries:</span>
 <span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"RSQLite"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-  <span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/RSQLite/man/SQLite.html'>SQLite</a></span>())
+  <span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>())
   <span class='no'>sql</span> <span class='kw'>&lt;-</span> <span class='st'>"SELECT ?value AS value"</span>
   <span class='no'>query</span> <span class='kw'>&lt;-</span> <span class='fu'>sqlInterpolate</span>(<span class='no'>con</span>, <span class='no'>sql</span>, <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>3</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='dbGetQuery.html'>dbGetQuery</a></span>(<span class='no'>con</span>, <span class='no'>query</span>))
