@@ -520,7 +520,7 @@
 <li><p>character for text, with NA for SQL <code>NULL</code> values</p></li>
 <li><p>lists of raw for blobs with NULL entries for SQL NULL values</p></li>
 <li><p>coercible using <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> for dates, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p>coercible using <code><a href="https://rdrr.io/pkg/hms/man/hms.html">hms::as_hms()</a></code> for times, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_time</code>)</p></li>
+<li><p>coercible using <code><a href="https://hms.tidyverse.org/reference/hms.html">hms::as_hms()</a></code> for times, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_time</code>)</p></li>
 <li><p>coercible using <code><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct()</a></code> for timestamps, with NA for SQL <code>NULL</code> values (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul>
 <p>If dates and timestamps are supported by the backend, the following R types are used:</p>
