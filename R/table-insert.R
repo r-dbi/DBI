@@ -105,7 +105,7 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' beforehand, e.g. with [dbCreateTable()].
 #' The default implementation calls [sqlAppendTableTemplate()] and then
 #' [dbExecute()] with the `param` argument. Backends compliant to
-#' ANSI SQL 99 which use `?` as a placeholder for prepard queries don't need
+#' ANSI SQL 99 which use `?` as a placeholder for prepared queries don't need
 #' to override it. Backends with a different SQL syntax which use `?`
 #' as a placeholder for prepared queries can override [sqlAppendTable()].
 #' Other backends (with different placeholders or with entirely different
