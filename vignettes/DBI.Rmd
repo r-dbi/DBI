@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 The {DBI} package defines a common interface between the R and database management systems (DBMS).
-Hence the name: DBI stands for **d**ata**b**ase **i**nterface.
+Hence the name: DBI stands for **D**ata**B**ase **I**nterface.
 
 Using DBI, developers can focus on the functionalities of their code, instead of setting up the infrastructure depending on the underlying database.
 This DBMS-agnostic approach is possible, because DBI works best with several other packages that act as drivers to absorb the peculiarities of the specific DBMSs.
