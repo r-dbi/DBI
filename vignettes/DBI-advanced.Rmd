@@ -1,0 +1,110 @@
+---
+title: "Advanced DBI Usage"
+author: "James Wondrasek"
+date: "17/03/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{"Advanced DBI Usage"}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## How to run more complex queries using DBI
+
+`dbGetQuery()` is calling a number of functions behind the scenes. 
+If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.
+
+These functions are:
+`dbSendQuery()` - sends the SQL query to the DBMS and returns a `result` object.
+The query is limited to `SELECT` statements.
+If you want to send other statements, such as `INSERT`, `UPDATE`, `DELETE`, etc, use `dbSendStatement()`.
+
+`dbFetch()` - is called with the `result` object returned by `dbSendQuery()`.
+It also accepts an argument specifying the number of rows to be returned.
+
+`dbClearResult()` - is called when you have finished retrieving data.
+It releases the resources associated with the `result` object.
+
+```{r}
+library(DBI)
+
+con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "PTE")
+res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = 'd100_12'")
+df <- dbFetch(res)
+dbClearResult(res)
+df
+```
+
+## How to read part of a table from a database
+
+If your dataset is large you may want to fetch a limited number of rows at a time.
+As demonstrated below, this can be accomplished by using a while loop where the function `dbHasCompleted()` is used to check for ongoing rows, and `dbFetch()` is used with the `n = X` argument, specifying how many rows to return on each iteration.
+Again, we call `dbClearResult()` at the end to release resources. 
+
+```{r}
+
+res <- dbSendQuery(con, "SELECT * FROM pte_bond")
+while(!dbHasCompleted(res)){
+  chunk <- dbFetch(res, n = 2500)
+  print(nrow(chunk))
+}
+dbClearResult(res)
+
+```
+
+## How to end a DBMS session
+
+When finished accessing the DBMS, close the connection using `dbDisconnect()`.
+
+```{r}
+
+dbDisconnect(con)
+
+```
+
+## How to use parameters in SQL queries
+
+`dbSendQuery()` can be used with parameterised SQL queries.
+For a single set of parameters, the `params` argument can be used. It takes a list and its members are substituted in order for the placeholders within the query. 
+
+```{r}
+
+con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "PTE")
+res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = ?", params = list('d100_11'))
+dbFetch(res)
+dbClearResult(res)
+
+```
+
+For multiple sets of parameters, `dbBind()` is used.
+There are two ways to use `dbBind()`.
+It can be used multiple times with same query.
+
+```{r}
+res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = ?")
+dbBind(res, list('d100_11'))
+df = dbFetch(res)
+dbBind(res, list('d100_12'))
+df = dbFetch(res)
+dbClearResult(res)
+
+```
+
+Or `dbBind()` can be used to execute the same statement with multiple values at once.
+
+```{r}
+# res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = $id")
+# dbBind(res, list(id = c("d100_11", "d100_12")))
+# df <- dbFetch(res)
+# dbClearResult(res)
+# df
+# dbDisconnect(con)
+```
+
+## Conclusion
+
+DBI also provides advanced functionality for database manipulation via SQL, as well as executing queries within atomic transactions with commit/rollback support. Details on these can be found in [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
