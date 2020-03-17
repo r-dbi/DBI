@@ -87,9 +87,18 @@ DBI provides functions to run custom SQL queries and manage the results.
 For small datasets where you do not need to manage the number of results being returned, the function `dbGetQuery()` takes a SQL squery and returns a dataframe.
 
 ```{r}
-df <- dbGetQuery(con, "SELECT * FROM film WHERE release_year = '2006'")
+df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006")
 head(df)
 ```
+
+```{r}
+library(dplyr)
+tbl(con, "film") %>% 
+  filter(release_year == 2006) %>% 
+  select(film_id, title, description)
+```
+
+FIXME: Add rquery syntax.
 
 ## How to end a DBMS session
 
