@@ -13,6 +13,10 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Who this tutorial is for
+
+This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterised queries and queries performed using SQL's transaction features.
+
 ## How to run more complex queries using DBI
 
 `dbGetQuery()` is calling a number of functions behind the scenes. 
@@ -32,11 +36,11 @@ It releases the resources associated with the `result` object.
 ```{r}
 library(DBI)
 
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "PTE")
-res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = 'd100_12'")
+con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
+res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = 'G'")
 df <- dbFetch(res)
 dbClearResult(res)
-df
+head(df,3)
 ```
 
 ## How to read part of a table from a database
@@ -47,34 +51,33 @@ Again, we call `dbClearResult()` at the end to release resources.
 
 ```{r}
 
-res <- dbSendQuery(con, "SELECT * FROM pte_bond")
+res <- dbSendQuery(con, "SELECT * FROM film")
 while(!dbHasCompleted(res)){
-  chunk <- dbFetch(res, n = 2500)
+  chunk <- dbFetch(res, n = 250)
   print(nrow(chunk))
 }
 dbClearResult(res)
 
 ```
 
-## How to end a DBMS session
 
-When finished accessing the DBMS, close the connection using `dbDisconnect()`.
-
-```{r}
-
-dbDisconnect(con)
-
-```
-
-## How to use parameters in SQL queries
+## How to use parameters (safely) in SQL queries
 
 `dbSendQuery()` can be used with parameterised SQL queries.
-For a single set of parameters, the `params` argument can be used. It takes a list and its members are substituted in order for the placeholders within the query. 
+For a single set of parameters, the `params` argument can be used. 
+It takes a list and its members are substituted in order for the placeholders within the query.
+To avoid SQL injection attacks from user-supplied parameters, parameters must always be quoted to ensure they are valid string literals.
+This is performed using the function `dbQuoteString()`.
 
-```{r}
+In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped. 
+As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
 
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "PTE")
-res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = ?", params = list('d100_11'))
+```{r params}
+
+safe_params <- list( dbQuoteString(con,'G') )
+safe_id <- dbQuoteIdentifier(con,"rating")
+query <- paste("SELECT * FROM film WHERE ", safe_id, " = ?" )
+res <- dbSendQuery(con, query , params = safe_params )
 dbFetch(res)
 dbClearResult(res)
 
@@ -82,29 +85,99 @@ dbClearResult(res)
 
 For multiple sets of parameters, `dbBind()` is used.
 There are two ways to use `dbBind()`.
-It can be used multiple times with same query.
+Firstly, it can be used multiple times with same query.
 
-```{r}
-res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = ?")
-dbBind(res, list('d100_11'))
-df = dbFetch(res)
-dbBind(res, list('d100_12'))
-df = dbFetch(res)
+```{r dbbind}
+res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
+dbBind(res, list( dbQuoteString(con,'G') ))
+df <- dbFetch(res)
+dbBind(res, list( dbQuoteString(con,'PG') ))
+df <- dbFetch(res)
 dbClearResult(res)
 
 ```
 
-Or `dbBind()` can be used to execute the same statement with multiple values at once.
+Secondly, `dbBind()` can be used to execute the same statement with multiple values at once.
+
+```{r bind_quotestring}
+res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
+dbBind(res, list(lapply(c("G", "PG"), dbQuoteString,conn=con)))
+df <- dbFetch(res)
+dbClearResult(res)
+dbDisconnect(con)
+```
+
+## SQL data manipulation - UPDATE, DELETE and friends
+
+For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. 
+`dbExecute()` passes the SQL statement to the DBMS for execution and returns the number of rows affected.
+`dbSendStatement()` performs in the same manner, but returns a result object.
+Call `dbGetRowsAffected()` with the result object to get the count of the affected rows. 
+You then need to call `dbClearResult()` with the result object afterwards.
+
+In actuality, `dbExecute()` is a convenience function that calls `dbSendStatement()`, `dbGetRowsAffected()`, and `dbClearResult()`.
+You can use these functions if you need more control over query process.  
+
 
 ```{r}
-# res <- dbSendQuery(con, "SELECT * FROM pte_bond WHERE atom_id1 = $id")
-# dbBind(res, list(id = c("d100_11", "d100_12")))
-# df <- dbFetch(res)
-# dbClearResult(res)
-# df
-# dbDisconnect(con)
+library(DBI)
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "cars", head(cars, 3))
+
+dbExecute(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"
+)
+
+rs <- dbSendStatement(
+  con,
+  "INSERT INTO cars (speed, dist) VALUES (4, 4), (5, 5), (6, 6)"
+)
+dbGetRowsAffected(rs)
+dbClearResult(rs)
+dbDisconnect(con)
+```
+
+## SQL transactions with DBI
+
+DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with `dbBegin()` and either made persistent with `dbCommit()` or undone with `dbRollback()`.
+
+```{r}
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "cash", data.frame(amount = 100))
+dbWriteTable(con, "account", data.frame(amount = 2000))
+
+# All operations are carried out as logical unit:
+dbBegin(con)
+withdrawal <- 300
+dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+dbCommit(con)
+
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
+
+# Rolling back after detecting negative value on account:
+dbBegin(con)
+withdrawal <- 5000
+dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
+dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
+if (dbReadTable(con, "account")$amount >= 0) {
+  dbCommit(con)
+} else {
+  dbRollback(con)
+}
+
+dbReadTable(con, "cash")
+dbReadTable(con, "account")
+
+dbDisconnect()
 ```
 
 ## Conclusion
 
-DBI also provides advanced functionality for database manipulation via SQL, as well as executing queries within atomic transactions with commit/rollback support. Details on these can be found in [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
+That concludes the major features of DBI. For more details on the library functions covered in this tutorial and [Introduction to DBI](missinglink) see [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
+If you are after a data manipulation library that works at a higher level of abstraction, check out [dplyr](https://dplyr.tidyverse.org).
+It is a grammar of data manipulation that can work with local dataframes and remote databases, and is built upon DBI.
