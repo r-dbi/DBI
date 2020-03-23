@@ -10,7 +10,18 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+opts_chunk$set(echo = TRUE)
+
+knit_print.data.frame <- function(x, ...) {
+  print(head(x, 3))
+  if (nrow(x) > 3) {
+    cat("Showing 3 out of", nrow(x), "rows.\n")
+  }
+  invisible(x)
+}
+
+registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 ```
 
 ## Who this tutorial is for
@@ -53,7 +64,7 @@ Again, we call `dbClearResult()` at the end to release resources.
 
 res <- dbSendQuery(con, "SELECT * FROM film")
 while(!dbHasCompleted(res)){
-  chunk <- dbFetch(res, n = 250)
+  chunk <- dbFetch(res, n = 300)
   print(nrow(chunk))
 }
 dbClearResult(res)
@@ -72,9 +83,33 @@ This is performed using the function `dbQuoteString()`.
 In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped. 
 As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
 
+```{r quote}
+
+safe_id <- dbQuoteIdentifier(con,"rating")
+safe_param <- dbQuoteLiteral(con,'G')
+query <- paste0("SELECT title, ", safe_id, " FROM film WHERE ", safe_id, " = ", safe_param )
+res <- dbSendQuery(con, query)
+dbFetch(res)
+dbClearResult(res)
+
+```
+
+FIXME: Same with `glue::glue_sql()`, using safe quoting under the hood.
+
+```{r}
+id <- "rating"
+param <- "G"
+query <- glue::glue_sql("SELECT title, {`id`} FROM film WHERE {`id`} = {param}", .con = con)
+dbGetQuery(con, query)
+```
+
+FIXME: Params work differently, don't need to quote. Only works for literal values, not for identifiers.
+
+- Placeholder syntax varies across databases. How to discover -- read documentation?
+
 ```{r params}
 
-safe_params <- list( dbQuoteString(con,'G') )
+safe_params <- list( 'G' )
 safe_id <- dbQuoteIdentifier(con,"rating")
 query <- paste("SELECT * FROM film WHERE ", safe_id, " = ?" )
 res <- dbSendQuery(con, query , params = safe_params )
@@ -83,15 +118,29 @@ dbClearResult(res)
 
 ```
 
+FIXME: Multiple parameters. In order of appearance if unnamed (`?`). Problem: MariaDB knows only `?` as placeholder, other databases may have named placeholders. How to demo?
+
+```{r multi-param}
+
+safe_params <- list( 'G', 90 )
+query <- paste("SELECT title, rating, length FROM film WHERE rating = ? and length >= ?" )
+res <- dbSendQuery(con, query , params = safe_params )
+dbFetch(res)
+dbClearResult(res)
+
+
+```
+
+
 For multiple sets of parameters, `dbBind()` is used.
 There are two ways to use `dbBind()`.
 Firstly, it can be used multiple times with same query.
 
 ```{r dbbind}
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
-dbBind(res, list( dbQuoteString(con,'G') ))
+dbBind(res, list( 'G' ))
 df <- dbFetch(res)
-dbBind(res, list( dbQuoteString(con,'PG') ))
+dbBind(res, list( 'PG' ))
 df <- dbFetch(res)
 dbClearResult(res)
 
@@ -101,7 +150,7 @@ Secondly, `dbBind()` can be used to execute the same statement with multiple val
 
 ```{r bind_quotestring}
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
-dbBind(res, list(lapply(c("G", "PG"), dbQuoteString,conn=con)))
+dbBind(res, list(c("G", "PG")))
 df <- dbFetch(res)
 dbClearResult(res)
 dbDisconnect(con)
@@ -173,7 +222,7 @@ if (dbReadTable(con, "account")$amount >= 0) {
 dbReadTable(con, "cash")
 dbReadTable(con, "account")
 
-dbDisconnect()
+dbDisconnect(con)
 ```
 
 ## Conclusion
