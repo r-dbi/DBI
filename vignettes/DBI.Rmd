@@ -31,10 +31,10 @@ DBI currently supports about 30 DBMS, including:
 For the full list of supported DBMS visit [https://github.com/r-dbi/backends](https://github.com/r-dbi/backends). You may need to install the package specific to your DBMS.
 
 The functionality currently supported for each of these DBMS's includes:
-- [manage a connection to a database](#how-to-connect-to-a-database-using-dbi)
-- list the tables in a database [link]
-- list the column names in a table [link]
-- read a table into a dataframe [link]
+- manage a connection to a database
+- list the tables in a database 
+- list the column names in a table 
+- read a table into a dataframe 
 
 For more advanced features, such as paramterised queries, transactions, and more see [Advanced DBI Usage](missinglink).
 

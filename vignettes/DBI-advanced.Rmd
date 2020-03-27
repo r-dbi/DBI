@@ -30,7 +30,7 @@ This tutorial is for you if you need to use a richer set of SQL features such as
 
 ## How to run more complex queries using DBI
 
-`dbGetQuery()` is calling a number of functions behind the scenes. 
+`dbGetQuery()` works by calling a number of functions behind the scenes. 
 If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.
 
 These functions are:
@@ -39,7 +39,8 @@ The query is limited to `SELECT` statements.
 If you want to send other statements, such as `INSERT`, `UPDATE`, `DELETE`, etc, use `dbSendStatement()`.
 
 `dbFetch()` - is called with the `result` object returned by `dbSendQuery()`.
-It also accepts an argument specifying the number of rows to be returned.
+It also accepts an argument specifying the number of rows to be returned, eg `n=200`.
+If you want to fetch all the rows, use `n=-1`.
 
 `dbClearResult()` - is called when you have finished retrieving data.
 It releases the resources associated with the `result` object.
@@ -94,7 +95,8 @@ dbClearResult(res)
 
 ```
 
-FIXME: Same with `glue::glue_sql()`, using safe quoting under the hood.
+The same result can be had by using `glue::glue_sql()`.
+It performs the same safe quoting on any variable or R statement appearing between braces within the query string.
 
 ```{r}
 id <- "rating"
@@ -103,28 +105,32 @@ query <- glue::glue_sql("SELECT title, {`id`} FROM film WHERE {`id`} = {param}",
 dbGetQuery(con, query)
 ```
 
-FIXME: Params work differently, don't need to quote. Only works for literal values, not for identifiers.
+Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query.
+Different DBMS use different placeholder schemes. MariaDB uses a `?` for each parameter and expects an ordered list of literal values for each placeholder in the query.
 
-- Placeholder syntax varies across databases. How to discover -- read documentation?
+Other DBMS may use named parameters. 
+Currently there is no list of which placeholder scheme a particular DBMS supports. 
+For now all we can recommend is consulting the documention for the DBMS driver you are using.
 
 ```{r params}
 
-safe_params <- list( 'G' )
+params <- list( 'G' )
 safe_id <- dbQuoteIdentifier(con,"rating")
 query <- paste("SELECT * FROM film WHERE ", safe_id, " = ?" )
-res <- dbSendQuery(con, query , params = safe_params )
+res <- dbSendQuery(con, query , params = params )
 dbFetch(res)
 dbClearResult(res)
 
 ```
 
-FIXME: Multiple parameters. In order of appearance if unnamed (`?`). Problem: MariaDB knows only `?` as placeholder, other databases may have named placeholders. How to demo?
+Below is an example query using multiple placeholders with the MariaDB driver.
+The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query. 
 
 ```{r multi-param}
 
-safe_params <- list( 'G', 90 )
+q_params <- list( 'G', 90 )
 query <- paste("SELECT title, rating, length FROM film WHERE rating = ? and length >= ?" )
-res <- dbSendQuery(con, query , params = safe_params )
+res <- dbSendQuery(con, query , params = q_params )
 dbFetch(res)
 dbClearResult(res)
 
@@ -132,7 +138,7 @@ dbClearResult(res)
 ```
 
 
-For multiple sets of parameters, `dbBind()` is used.
+When you wish to perform the same query with different sets of parameter values, `dbBind()` is used.
 There are two ways to use `dbBind()`.
 Firstly, it can be used multiple times with same query.
 
@@ -162,10 +168,10 @@ For SQL queries that affect the underlying database, such as UPDATE, DELETE, INS
 `dbExecute()` passes the SQL statement to the DBMS for execution and returns the number of rows affected.
 `dbSendStatement()` performs in the same manner, but returns a result object.
 Call `dbGetRowsAffected()` with the result object to get the count of the affected rows. 
-You then need to call `dbClearResult()` with the result object afterwards.
+You then need to call `dbClearResult()` with the result object afterwards to release resources.
 
 In actuality, `dbExecute()` is a convenience function that calls `dbSendStatement()`, `dbGetRowsAffected()`, and `dbClearResult()`.
-You can use these functions if you need more control over query process.  
+You can use these functions if you need more control over the query process.  
 
 
 ```{r}
@@ -227,6 +233,7 @@ dbDisconnect(con)
 
 ## Conclusion
 
-That concludes the major features of DBI. For more details on the library functions covered in this tutorial and [Introduction to DBI](missinglink) see [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
+That concludes the major features of DBI. 
+For more details on the library functions covered in this tutorial and the [Introduction to DBI](missinglink) tutorial see [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
 If you are after a data manipulation library that works at a higher level of abstraction, check out [dplyr](https://dplyr.tidyverse.org).
-It is a grammar of data manipulation that can work with local dataframes and remote databases, and is built upon DBI.
+It is a grammar of data manipulation that can work with local dataframes and remote databases and is built upon DBI.
