@@ -214,10 +214,10 @@
 <ul>
 <li>The DBI specification vignette is rendered correctly from the installed package (<a href='https://github.com/r-dbi/DBI/issues/234'>#234</a>).</li>
 <li>Update docs on how to cope with stored procedures (<a href='https://github.com/r-dbi/DBI/issues/242'>#242</a>, <a href='https://github.com/aryoda'>@aryoda</a>).</li>
-<li>Add âAdditional argumentsâ sections and more examples for <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</li>
+<li>Add “Additional arguments” sections and more examples for <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</li>
 <li>The <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> method is now fully specified (<a href='https://github.com/r-dbi/DBI/issues/75'>#75</a>).</li>
 <li>The <code><a href="../reference/dbListFields.html">dbListFields()</a></code> method is now fully specified (<a href='https://github.com/r-dbi/DBI/issues/75'>#75</a>).</li>
-<li>The dynamic list of methods in help pages doesnât contain methods in DBI anymore.</li>
+<li>The dynamic list of methods in help pages doesn’t contain methods in DBI anymore.</li>
 </ul>
 </div>
 <div id="bug-fixes" class="section level2">
@@ -297,7 +297,7 @@
 <li>
 <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> now supports both named and positional variables (<a href='https://github.com/r-dbi/DBI/issues/216'>#216</a>, <a href='https://github.com/hannesmuehleisen'>@hannesmuehleisen</a>).</li>
 <li>Point to db.rstudio.com (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-dbi/DBI/issues/209'>#209</a>).</li>
-<li>Reflect new âr-dbiâ organization in <code>DESCRIPTION</code> (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-dbi/DBI/issues/207'>#207</a>).</li>
+<li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-dbi/DBI/issues/207'>#207</a>).</li>
 </ul>
 </div>
 <div id="internal-1" class="section level2">
@@ -350,10 +350,10 @@
 <li>Documentation improvements
 <ul>
 <li>Finalized first draft of DBI specification, now in a vignette.</li>
-<li>Most methods now draw documentation from <code>DBItest</code>, only those where the behavior is not finally decided donât do this yet yet.</li>
+<li>Most methods now draw documentation from <code>DBItest</code>, only those where the behavior is not finally decided don’t do this yet yet.</li>
 <li>Removed <code>max.connections</code> requirement from documentation (<a href='https://github.com/r-dbi/DBI/issues/56'>#56</a>).</li>
 <li>Improved <code><a href="../reference/dbBind.html">dbBind()</a></code> documentation and example (<a href='https://github.com/r-dbi/DBI/issues/136'>#136</a>).</li>
-<li>Change <code>omegahat.org</code> URL to <code>omegahat.net</code>, the particular document still doesnât exist below the new domain.</li>
+<li>Change <code>omegahat.org</code> URL to <code>omegahat.net</code>, the particular document still doesn’t exist below the new domain.</li>
 </ul>
 </li>
 <li>Internal
@@ -382,7 +382,7 @@
 <ul>
 <li>
 <code><a href="../reference/dbDataType.html">dbDataType()</a></code> maps <code>character</code> values to <code>"TEXT"</code> by default (<a href='https://github.com/r-dbi/DBI/issues/102'>#102</a>).</li>
-<li>The default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> doesnât call <code><a href="https://rdrr.io/r/base/encodeString.html">encodeString()</a></code> anymore: Neither SQLite nor Postgres understand e.g. <code>\n</code> in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (<a href='https://github.com/r-dbi/DBI/issues/121'>#121</a>).</li>
+<li>The default implementation of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> doesn’t call <code><a href="https://rdrr.io/r/base/encodeString.html">encodeString()</a></code> anymore: Neither SQLite nor Postgres understand e.g. <code>\n</code> in a string literal, and all of SQLite, Postgres, and MySQL accept an embedded newline (<a href='https://github.com/r-dbi/DBI/issues/121'>#121</a>).</li>
 </ul>
 </li>
 <li>Interface enhancements
@@ -398,14 +398,14 @@
 <ul>
 <li>One example per function (except functions scheduled for deprecation) (<a href='https://github.com/r-dbi/DBI/issues/67'>#67</a>).</li>
 <li>Consistent layout and identifier naming.</li>
-<li>Better documentation of generics by adding links to the class and related generics in the âSee alsoâ section under âOther DBIâ¦ genericsâ (<a href='https://github.com/r-dbi/DBI/issues/130'>#130</a>). S4 documentation is directed to a hidden page to unclutter documentation index (<a href='https://github.com/r-dbi/DBI/issues/59'>#59</a>).</li>
+<li>Better documentation of generics by adding links to the class and related generics in the “See also” section under “Other DBI… generics” (<a href='https://github.com/r-dbi/DBI/issues/130'>#130</a>). S4 documentation is directed to a hidden page to unclutter documentation index (<a href='https://github.com/r-dbi/DBI/issues/59'>#59</a>).</li>
 <li>Fix two minor vignette typos (<a href='https://github.com/r-dbi/DBI/issues/124'>#124</a>, <a href='https://github.com/mdsumner'>@mdsumner</a>).</li>
 <li>Add package documentation.</li>
 <li>Remove misleading parts in <code><a href="../reference/dbConnect.html">dbConnect()</a></code> documentation (<a href='https://github.com/r-dbi/DBI/issues/118'>#118</a>).</li>
 <li>Remove misleading link in <code><a href="../reference/dbDataType.html">dbDataType()</a></code> documentation.</li>
 <li>Remove full stop from documentation titles.</li>
-<li>New help topic âDBIspecâ that contains the full DBI specification (currently work in progress) (<a href='https://github.com/r-dbi/DBI/issues/129'>#129</a>).</li>
-<li>HTML documentation generated by <code>staticdocs</code> is now uploaded to <a href="http://rstats-db.github.io/DBI" class="uri">http://rstats-db.github.io/DBI</a> for each build of the âproductionâ branch (<a href='https://github.com/r-dbi/DBI/issues/131'>#131</a>).</li>
+<li>New help topic “DBIspec” that contains the full DBI specification (currently work in progress) (<a href='https://github.com/r-dbi/DBI/issues/129'>#129</a>).</li>
+<li>HTML documentation generated by <code>staticdocs</code> is now uploaded to <a href="http://rstats-db.github.io/DBI" class="uri">http://rstats-db.github.io/DBI</a> for each build of the “production” branch (<a href='https://github.com/r-dbi/DBI/issues/131'>#131</a>).</li>
 <li>Further minor changes and fixes.</li>
 </ul>
 </li>
@@ -430,7 +430,7 @@
 <a href="#dbi-0-4-2016-04-30" class="anchor"></a>DBI 0.4 (2016-04-30)<small> 2016-05-02 </small>
 </h1>
 <ul>
-<li><p>New package maintainer: Kirill MÃ¼ller.</p></li>
+<li><p>New package maintainer: Kirill Müller.</p></li>
 <li><p><code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> gains a default method that extracts the information from <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>, and <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>. This means that most drivers should no longer need to implement <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (which may be deprecated anyway at some point) (<a href='https://github.com/r-dbi/DBI/issues/55'>#55</a>).</p></li>
 <li><p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> are now properly exported.</p></li>
 <li><p>The default implementation for <code><a href="../reference/dbDataType.html">dbDataType()</a></code> (powered by <code>dbiDataType()</code>) now also supports <code>difftime</code> and <code>AsIs</code> objects and lists of <code>raw</code> (<a href='https://github.com/r-dbi/DBI/issues/70'>#70</a>).</p></li>
@@ -498,7 +498,7 @@
 <li><p><code><a href="../reference/make.db.names.html">make.db.names()</a></code>, <code><a href="../reference/make.db.names.html">isSQLKeyword()</a></code> and <code><a href="../reference/make.db.names.html">SQLKeywords()</a></code>: a black list based approach is fundamentally flawed; instead quote strings and identifiers with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>.</p></li>
 </ul>
 </li>
-<li><p><code><a href="../reference/dbGetDBIVersion.html">dbGetDBIVersion()</a></code> is deprecated since itâs now just a thin wrapper around <code><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion("DBI")</a></code>.</p></li>
+<li><p><code><a href="../reference/dbGetDBIVersion.html">dbGetDBIVersion()</a></code> is deprecated since it’s now just a thin wrapper around <code><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion("DBI")</a></code>.</p></li>
 <li><p><code><a href="../reference/dbSetDataMappings.html">dbSetDataMappings()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/9'>#9</a>) and <code><a href="../reference/dbCallProc.html">dbCallProc()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/7'>#7</a>) are deprecated as no implementations were ever provided.</p></li>
 </ul>
 </div>
@@ -508,7 +508,7 @@
 <ul>
 <li><p><code>dbiCheckCompliance()</code> makes it easier for implementors to check that their package is in compliance with the DBI specification.</p></li>
 <li><p>All examples now use the RSQLite package so that you can easily try out the code samples (<a href='https://github.com/r-dbi/DBI/issues/4'>#4</a>).</p></li>
-<li><p><code><a href="../reference/dbDriver.html">dbDriver()</a></code> gains a more effective search mechanism that doesnât rely on packages being loaded (<a href='https://github.com/r-dbi/DBI/issues/1'>#1</a>).</p></li>
+<li><p><code><a href="../reference/dbDriver.html">dbDriver()</a></code> gains a more effective search mechanism that doesn’t rely on packages being loaded (<a href='https://github.com/r-dbi/DBI/issues/1'>#1</a>).</p></li>
 <li><p>DBI has been converted to use roxygen2 for documentation, and now most functions have their own documentation files. I would love your feedback on how we could make the documentation better!</p></li>
 </ul>
 </div>
@@ -526,7 +526,7 @@
 <a href="#version-0-2-6" class="anchor"></a>Version 0.2-6<small> 2013-04-21 </small>
 </h1>
 <ul>
-<li>Removed deprecated \synopsis in some Rd files (thanks to Prof.Â Ripley)</li>
+<li>Removed deprecated \synopsis in some Rd files (thanks to Prof. Ripley)</li>
 </ul>
 </div>
     <div id="version-0-2-5" class="section level1">
@@ -535,7 +535,7 @@
 </h1>
 <ul>
 <li><p>Code cleanups contributed by Matthias Burger: avoid partial argument name matching and use TRUE/FALSE, not T/F.</p></li>
-<li><p>Change behavior of make.db.names.default to quote SQL keywords if allow.keywords is FALSE. Previously, SQL keywords would be name mangled with underscores and a digit. Now they are quoted using â"â.</p></li>
+<li><p>Change behavior of make.db.names.default to quote SQL keywords if allow.keywords is FALSE. Previously, SQL keywords would be name mangled with underscores and a digit. Now they are quoted using ‘"’.</p></li>
 </ul>
 </div>
     <div id="version-0-2-4" class="section level1">
@@ -584,7 +584,7 @@
 <a href="#version-0-1-6" class="anchor"></a>Version 0.1-6<small> 2003-06-16 </small>
 </h1>
 <ul>
-<li>Trivial documentation changes (for R CMD checkâs sake)</li>
+<li>Trivial documentation changes (for R CMD check’s sake)</li>
 </ul>
 </div>
     <div id="version-0-1-5" class="section level1">
@@ -592,7 +592,7 @@
 <a href="#version-0-1-5" class="anchor"></a>Version 0.1-5<small> 2003-04-06 </small>
 </h1>
 <ul>
-<li>Removed duplicated setGeneric(âdbSetDataMappingsâ)</li>
+<li>Removed duplicated setGeneric(“dbSetDataMappings”)</li>
 </ul>
 </div>
     <div id="version-0-1-4" class="section level1">
@@ -600,7 +600,7 @@
 <a href="#version-0-1-4" class="anchor"></a>Version 0.1-4<small> 2002-08-26 </small>
 </h1>
 <ul>
-<li><p>Removed the âvalueClassâ from some generic functions, namely, dbListConnections, dbListResults, dbGetException, dbGetQuery, and dbGetInfo. The reason is that methods for these generics could potentially return different classes of objects (e.g., the call dbGetInfo(res) could return a list of name-value pairs, while dbGetInfo(res, âstatementâ) could be a character vector).</p></li>
+<li><p>Removed the “valueClass” from some generic functions, namely, dbListConnections, dbListResults, dbGetException, dbGetQuery, and dbGetInfo. The reason is that methods for these generics could potentially return different classes of objects (e.g., the call dbGetInfo(res) could return a list of name-value pairs, while dbGetInfo(res, “statement”) could be a character vector).</p></li>
 <li><p>Added 00Index to inst/doc</p></li>
 <li><p>Added dbGetDBIVersion() (simple wrapper to package.description).</p></li>
 </ul>
@@ -619,7 +619,7 @@
 </h1>
 <ul>
 <li>An implementation based on version 4 classes and methods.</li>
-<li>Incorporated (mostly Tim Keittâs) comments.</li>
+<li>Incorporated (mostly Tim Keitt’s) comments.</li>
 </ul>
 </div>
   </div>
@@ -639,7 +639,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
