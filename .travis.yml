@@ -25,7 +25,7 @@ after_script: R -q -e 'tic::after_script()'
 # Header
 language: r
 sudo: false
-dist: trusty
+dist: xenial
 cache: packages
 latex: true
 fortran: false
