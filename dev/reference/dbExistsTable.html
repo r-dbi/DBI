@@ -148,12 +148,12 @@ RSQLite::dbExistsTable(&quot;SQLiteConnection&quot;, &quot;character&quot;)
 
     <div class="ref-description">
     <p>Returns if a table given by name exists in the database.</p>
-<p><h3>Methods in other packages</h3><ul>
+<p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbExistsTable("SQLiteConnection", "character")</code></p></li>
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbExistsTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>dbExistsTable</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>name</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -222,11 +222,14 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
 <code><a href='dbWriteTable.html'>dbWriteTable</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
 
-<span class='fu'>dbExistsTable</span>(<span class='no'>con</span>, <span class='st'>"iris"</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>, <span class='no'>iris</span>)
-<span class='fu'>dbExistsTable</span>(<span class='no'>con</span>, <span class='st'>"iris"</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
+<span class='fu'>dbExistsTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span>, <span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'>dbExistsTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -242,7 +245,7 @@ perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

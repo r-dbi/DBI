@@ -157,7 +157,7 @@ backends with entirely different ways to create tables need to
 override this method.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbCreateTable</span>(<span class='no'>conn</span>, <span class='no'>name</span>, <span class='no'>fields</span>, <span class='no'>...</span>, <span class='kw'>row.names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>temporary</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>dbCreateTable</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>name</span>, <span class='va'>fields</span>, <span class='va'>...</span>, row.names <span class='op'>=</span> <span class='cn'>NULL</span>, temporary <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -225,10 +225,12 @@ latter will be adapted in a later release of DBI.</p>
 <code><a href='dbWriteTable.html'>dbWriteTable</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
-<span class='fu'>dbCreateTable</span>(<span class='no'>con</span>, <span class='st'>"iris"</span>, <span class='no'>iris</span>)
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span>(<span class='no'>con</span>, <span class='st'>"iris"</span>)</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
-#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
+<span class='fu'>dbCreateTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span>, <span class='va'>iris</span><span class='op'>)</span>
+<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
+#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -244,7 +246,7 @@ latter will be adapted in a later release of DBI.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -150,14 +150,14 @@ RSQLite::dbFetch(&quot;SQLiteResult&quot;)
     <div class="ref-description">
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
-<p><h3>Methods in other packages</h3><ul>
+<p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbFetch("SQLiteResult")</code></p></li>
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbFetch</span>(<span class='no'>res</span>, <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>dbFetch</span><span class='op'>(</span><span class='va'>res</span>, n <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span>
 
-<span class='fu'>fetch</span>(<span class='no'>res</span>, <span class='kw'>n</span> <span class='kw'>=</span> -<span class='fl'>1</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>fetch</span><span class='op'>(</span><span class='va'>res</span>, n <span class='op'>=</span> <span class='op'>-</span><span class='fl'>1</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -292,13 +292,14 @@ finish retrieving the records you want.</p>
 <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>con</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span>(<span class='kw pkg'>RSQLite</span><span class='kw ns'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span>(), <span class='st'>":memory:"</span>)
+    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
 
-<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span>(<span class='no'>con</span>, <span class='st'>"mtcars"</span>, <span class='no'>mtcars</span>)
+<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>)</span>
 
 <span class='co'># Fetch all results</span>
-<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars WHERE cyl = 4"</span>)
-<span class='fu'>dbFetch</span>(<span class='no'>rs</span>)</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+<span class='va'>rs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM mtcars WHERE cyl = 4"</span><span class='op'>)</span>
+<span class='fu'>dbFetch</span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
 #&gt; 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
 #&gt; 2  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
 #&gt; 3  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
@@ -309,19 +310,21 @@ finish retrieving the records you want.</p>
 #&gt; 8  27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
 #&gt; 9  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
 #&gt; 10 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
-#&gt; 11 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
+#&gt; 11 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span>
 
 <span class='co'># Fetch in chunks</span>
-<span class='no'>rs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span>(<span class='no'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span>)
-<span class='kw'>while</span> (!<span class='fu'><a href='dbHasCompleted.html'>dbHasCompleted</a></span>(<span class='no'>rs</span>)) {
-  <span class='no'>chunk</span> <span class='kw'>&lt;-</span> <span class='fu'>dbFetch</span>(<span class='no'>rs</span>, <span class='fl'>10</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>chunk</span>))
-}</div><div class='output co'>#&gt; [1] 10
+<span class='va'>rs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM mtcars"</span><span class='op'>)</span>
+<span class='kw'>while</span> <span class='op'>(</span><span class='op'>!</span><span class='fu'><a href='dbHasCompleted.html'>dbHasCompleted</a></span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='va'>chunk</span> <span class='op'>&lt;-</span> <span class='fu'>dbFetch</span><span class='op'>(</span><span class='va'>rs</span>, <span class='fl'>10</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>chunk</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
+</div><div class='output co'>#&gt; [1] 10
 #&gt; [1] 10
 #&gt; [1] 10
 #&gt; [1] 2</div><div class='input'>
-<span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span>(<span class='no'>rs</span>)
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span>(<span class='no'>con</span>)</div></pre>
+<span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span>
+<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -337,7 +340,7 @@ finish retrieving the records you want.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

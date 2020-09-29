@@ -135,14 +135,16 @@
 <div id="examples" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>()</pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="determine-the-sql-data-type-of-an-object" class="section level2">
 <h2 class="hasAnchor">
 <a href="#determine-the-sql-data-type-of-an-object" class="anchor"></a>Determine the SQL data type of an object</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">dbObj</span>, <span class="no">obj</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description" class="anchor"></a>Description</h3>
@@ -191,40 +193,42 @@
 <div id="examples-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-1" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fl">1</span>:<span class="fl">5</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fl">1</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fl">TRUE</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span>())
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span>() - <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>()))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"abc"</span>))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span>(<span class="fl">10</span>), <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span>(<span class="fl">20</span>)))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="fl">3</span>))
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">iris</span>)
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">iris</span><span class="op">)</span>
 
-<span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fl">1</span>:<span class="fl">5</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fl">1</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fl">TRUE</span>)
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>())
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span>())
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span>() - <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span>()))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="st">"abc"</span>))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span>(<span class="fl">10</span>), <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span>(<span class="fl">20</span>)))
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span>(<span class="fl">3</span>))
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span>(<span class="no">con</span>, <span class="no">iris</span>)
+<span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">iris</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="create-a-connection-to-a-dbms" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-connection-to-a-dbms" class="anchor"></a>Create a connection to a DBMS</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="no">drv</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-1" class="anchor"></a>Description</h3>
@@ -279,27 +283,29 @@
 <div id="examples-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-2" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span>
 <span class="co"># path that creates an in-memory database.) Other database drivers</span>
 <span class="co"># will require more details (like user, password, host, port, etc.)</span>
-<span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
-<span class="no">con</span>
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
+<span class="va">con</span>
 
-<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span>(<span class="no">con</span>)
+<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 
 <span class="co"># Bad, for subtle reasons:</span>
 <span class="co"># This code fails when RSQLite isn't loaded yet,</span>
 <span class="co"># because dbConnect() doesn't know yet about RSQLite.</span>
-<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span>(<span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>))</pre></body></html></div>
+<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="disconnect-close-a-connection" class="section level2">
 <h2 class="hasAnchor">
 <a href="#disconnect-close-a-connection" class="anchor"></a>Disconnect (close) a connection</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">conn</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-2" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-2" class="anchor"></a>Description</h3>
@@ -332,15 +338,17 @@
 <div id="examples-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-3" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="execute-a-query-on-a-given-database-connection" class="section level2">
 <h2 class="hasAnchor">
 <a href="#execute-a-query-on-a-given-database-connection" class="anchor"></a>Execute a query on a given database connection</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">conn</span>, <span class="no">statement</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-3" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-3" class="anchor"></a>Description</h3>
@@ -434,40 +442,42 @@
 <div id="examples-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-4" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span>)
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
 <span class="co"># Pass one set of values with the param argument:</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(
-  <span class="no">con</span>,
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"SELECT * FROM mtcars WHERE cyl = ?"</span>,
-  <span class="kw">params</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">4L</span>)
-)
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
+  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4L</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
 <span class="co"># Pass multiple sets of values with dbBind():</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = ?"</span>)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">6L</span>))
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">8L</span>))
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = ?"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">6L</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">8L</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="fetch-records-from-a-previously-executed-query" class="section level2">
 <h2 class="hasAnchor">
 <a href="#fetch-records-from-a-previously-executed-query" class="anchor"></a>Fetch records from a previously executed query</h2>
 <p>This section describes the behavior of the following methods:</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">res</span>, <span class="kw">n</span> <span class="kw">=</span> -<span class="fl">1</span>, <span class="no">...</span>)
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbFetch.html">fetch</a></span>(<span class="no">res</span>, <span class="kw">n</span> <span class="kw">=</span> -<span class="fl">1</span>, <span class="no">...</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-4" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-4" class="anchor"></a>Description</h3>
@@ -539,31 +549,33 @@
 <div id="examples-5" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-5" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
 
 <span class="co"># Fetch all results</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span>)
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
 <span class="co"># Fetch in chunks</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>)
-<span class="kw">while</span> (!<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">rs</span>)) {
-  <span class="no">chunk</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>, <span class="fl">10</span>)
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">chunk</span>))
-}
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span>
+<span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fl">10</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="clear-a-result-set" class="section level2">
 <h2 class="hasAnchor">
 <a href="#clear-a-result-set" class="anchor"></a>Clear a result set</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-5" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-5" class="anchor"></a>Description</h3>
@@ -596,20 +608,22 @@
 <div id="examples-6" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-6" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT 1"</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span>(<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>))
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="bind-values-to-a-parameterizedprepared-statement" class="section level2">
 <h2 class="hasAnchor">
 <a href="#bind-values-to-a-parameterizedprepared-statement" class="anchor"></a>Bind values to a parameterized/prepared statement</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">res</span>, <span class="no">params</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit">
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-6" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-6" class="anchor"></a>Description</h3>
@@ -643,7 +657,7 @@
 </ul>
 <p>The placeholder format is currently not specified by <span class="pkg">DBI</span>; in the future, a uniform placeholder syntax may be supported. Consult the backend documentation for the supported formats. For automated testing, backend authors specify the placeholder syntax with the <code>placeholder_pattern</code> tweak. Known examples are:</p>
 <ul>
-<li><p><code>?</code> (positional matching in order of appearance) in <span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span></p></li>
+<li><p><code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> (positional matching in order of appearance) in <span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>\$1</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>:name</code> and <code>\$name</code> (named matching) in <span class="pkg">RSQLite</span></p></li>
 </ul>
@@ -699,34 +713,36 @@
 <div id="examples-7" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-7" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>, <span class="no">iris</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span>
 
 <span class="co"># Using the same query for different values</span>
-<span class="no">iris_result</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">2.3</span>))
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">iris_result</span>)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">3</span>))
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">iris_result</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">iris_result</span>)
+<span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">2.3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span>
 
 <span class="co"># Executing the same statement with different values at once</span>
-<span class="no">iris_result</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(<span class="no">con</span>, <span class="st">"DELETE FROM iris WHERE [Species] = $species"</span>)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">species</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)))
-<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span>(<span class="no">iris_result</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">iris_result</span>)
+<span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM iris WHERE [Species] = $species"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>))
+<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="send-query-retrieve-results-and-then-clear-result-set" class="section level2">
 <h2 class="hasAnchor">
 <a href="#send-query-retrieve-results-and-then-clear-result-set" class="anchor"></a>Send query, retrieve results and then clear result set</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span>(<span class="no">conn</span>, <span class="no">statement</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-7" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-7" class="anchor"></a>Description</h3>
@@ -827,30 +843,32 @@
 <div id="examples-8" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-8" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>)
-<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">6</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span>
 
 <span class="co"># Pass values using the param argument:</span>
 <span class="co"># (This query runs eight times, once for each different</span>
 <span class="co"># parameter. The resulting rows are combined into a single</span>
 <span class="co"># data frame.)</span>
-<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span>(
-  <span class="no">con</span>,
+<span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>,
-  <span class="kw">params</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">1</span>:<span class="fl">8</span>)
-)
+  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span>
+<span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="execute-a-data-manipulation-statement-on-a-given-database-connection" class="section level2">
 <h2 class="hasAnchor">
 <a href="#execute-a-data-manipulation-statement-on-a-given-database-connection" class="anchor"></a>Execute a data manipulation statement on a given database connection</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(<span class="no">conn</span>, <span class="no">statement</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-8" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-8" class="anchor"></a>Description</h3>
@@ -942,45 +960,47 @@
 <div id="examples-9" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-9" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb19"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">cars</span>, <span class="fl">3</span>))
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(
-  <span class="no">con</span>,
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span>
-)
-<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>)   <span class="co"># there are now 6 rows</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 6 rows</span>
 
 <span class="co"># Pass one set of values directly using the param argument:</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(
-  <span class="no">con</span>,
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,
-  <span class="kw">params</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">4L</span>, <span class="fl">5L</span>)
-)
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
+  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4L</span>, <span class="fl">5L</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
 <span class="co"># Pass multiple sets of values using dbBind():</span>
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(
-  <span class="no">con</span>,
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>
-)
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">5</span>:<span class="fl">6</span>, <span class="fl">6</span>:<span class="fl">7</span>))
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span>(<span class="no">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">7L</span>, <span class="fl">8L</span>))
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>)   <span class="co"># there are now 10 rows</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">7L</span>, <span class="fl">8L</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 10 rows</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set" class="section level2">
 <h2 class="hasAnchor">
 <a href="#execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set" class="anchor"></a>Execute an update statement, query number of rows affected, and then close result set</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">conn</span>, <span class="no">statement</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-9" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-9" class="anchor"></a>Description</h3>
@@ -1076,32 +1096,34 @@
 <div id="examples-10" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-10" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb21"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">cars</span>, <span class="fl">3</span>))
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>)   <span class="co"># there are 3 rows</span>
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(
-  <span class="no">con</span>,
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are 3 rows</span>
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span>
-)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>)   <span class="co"># there are now 6 rows</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 6 rows</span>
 
 <span class="co"># Pass values using the param argument:</span>
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(
-  <span class="no">con</span>,
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span>
+  <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,
-  <span class="kw">params</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="fl">4</span>:<span class="fl">7</span>, <span class="fl">5</span>:<span class="fl">8</span>)
-)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cars"</span>)   <span class="co"># there are now 10 rows</span>
+  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 10 rows</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="quote-literal-strings" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quote-literal-strings" class="anchor"></a>Quote literal strings</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="no">conn</span>, <span class="no">x</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb22"><pre class="downlit">
+<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-10" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-10" class="anchor"></a>Description</h3>
@@ -1141,27 +1163,29 @@
 <div id="examples-11" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-11" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
-<span class="no">name</span> <span class="kw">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
-<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">name</span>)
+<div class="sourceCode" id="cb23"><pre class="downlit">
+<span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
+<span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
+<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span>
 
 <span class="co"># NAs become NULL</span>
-<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x"</span>, <span class="fl">NA</span>))
+<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="cn">NA</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># SQL vectors are always passed through as is</span>
-<span class="no">var_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/SQL.html">SQL</a></span>(<span class="st">"select"</span>)
-<span class="no">var_name</span>
-<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">var_name</span>)
+<span class="va">var_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SQL.html">SQL</a></span><span class="op">(</span><span class="st">"select"</span><span class="op">)</span>
+<span class="va">var_name</span>
+<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span>
 
 <span class="co"># This mechanism is used to prevent double escaping</span>
-<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">name</span>))</pre></body></html></div>
+<span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="quote-identifiers" class="section level2">
 <h2 class="hasAnchor">
 <a href="#quote-identifiers" class="anchor"></a>Quote identifiers</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb24"><html><body><pre class="r"><span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span>(<span class="no">conn</span>, <span class="no">x</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb24"><pre class="downlit">
+<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-11" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-11" class="anchor"></a>Description</h3>
@@ -1200,25 +1224,27 @@
 <div id="examples-12" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-12" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
-<span class="no">name</span> <span class="kw">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
-<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">name</span>)
+<div class="sourceCode" id="cb25"><pre class="downlit">
+<span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
+<span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
+<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span>
 
 <span class="co"># SQL vectors are always passed through as is</span>
-<span class="no">var_name</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/SQL.html">SQL</a></span>(<span class="st">"select"</span>)
-<span class="no">var_name</span>
+<span class="va">var_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SQL.html">SQL</a></span><span class="op">(</span><span class="st">"select"</span><span class="op">)</span>
+<span class="va">var_name</span>
 
-<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">var_name</span>)
+<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span>
 
 <span class="co"># This mechanism is used to prevent double escaping</span>
-<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span>(<span class="fu"><a href="../reference/ANSI.html">ANSI</a></span>(), <span class="no">name</span>))</pre></body></html></div>
+<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="copy-data-frames-from-database-tables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#copy-data-frames-from-database-tables" class="anchor"></a>Copy data frames from database tables</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb26"><html><body><pre class="r"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">conn</span>, <span class="no">name</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb26"><pre class="downlit">
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-12" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-12" class="anchor"></a>Description</h3>
@@ -1285,19 +1311,21 @@
 <div id="examples-13" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-13" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb27"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>[<span class="fl">1</span>:<span class="fl">10</span>, ])
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="copy-data-frames-to-database-tables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#copy-data-frames-to-database-tables" class="anchor"></a>Copy data frames to database tables</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">conn</span>, <span class="no">name</span>, <span class="no">value</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb28"><pre class="downlit">
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-13" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-13" class="anchor"></a>Description</h3>
@@ -1398,27 +1426,29 @@
 <div id="examples-14" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-14" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb29"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>[<span class="fl">1</span>:<span class="fl">5</span>, ])
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>[<span class="fl">6</span>:<span class="fl">10</span>, ], <span class="kw">append</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, append <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>[<span class="fl">1</span>:<span class="fl">10</span>, ], <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span>
 
 <span class="co"># No row names</span>
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>[<span class="fl">1</span>:<span class="fl">10</span>, ], <span class="kw">overwrite</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">row.names</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="list-remote-tables" class="section level2">
 <h2 class="hasAnchor">
 <a href="#list-remote-tables" class="anchor"></a>List remote tables</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span>(<span class="no">conn</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb30"><pre class="downlit">
+<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-14" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-14" class="anchor"></a>Description</h3>
@@ -1447,20 +1477,22 @@
 <div id="examples-15" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-15" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb31"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb31"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span>(<span class="no">con</span>)
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span>(<span class="no">con</span>)
+<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="does-a-table-exist" class="section level2">
 <h2 class="hasAnchor">
 <a href="#does-a-table-exist" class="anchor"></a>Does a table exist?</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">conn</span>, <span class="no">name</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb32"><pre class="downlit">
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-15" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-15" class="anchor"></a>Description</h3>
@@ -1503,20 +1535,22 @@
 <div id="examples-16" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-16" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb33"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb33"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>, <span class="no">iris</span>)
-<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="remove-a-table-from-the-database" class="section level2">
 <h2 class="hasAnchor">
 <a href="#remove-a-table-from-the-database" class="anchor"></a>Remove a table from the database</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span>(<span class="no">conn</span>, <span class="no">name</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb34"><pre class="downlit">
+<span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-16" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-16" class="anchor"></a>Description</h3>
@@ -1571,22 +1605,24 @@
 <div id="examples-17" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-17" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb35"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb35"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>, <span class="no">iris</span>)
-<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
-<span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
-<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span>(<span class="no">con</span>, <span class="st">"iris"</span>)
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="list-field-names-of-a-remote-table" class="section level2">
 <h2 class="hasAnchor">
 <a href="#list-field-names-of-a-remote-table" class="anchor"></a>List field names of a remote table</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span>(<span class="no">conn</span>, <span class="no">name</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb36"><pre class="downlit">
+<span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-17" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-17" class="anchor"></a>Description</h3>
@@ -1629,19 +1665,21 @@
 <div id="examples-18" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-18" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb37"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb37"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="is-this-dbms-object-still-valid" class="section level2">
 <h2 class="hasAnchor">
 <a href="#is-this-dbms-object-still-valid" class="anchor"></a>Is this DBMS object still valid?</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb38"><html><body><pre class="r"><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="no">dbObj</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb38"><pre class="downlit">
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-18" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-18" class="anchor"></a>Description</h3>
@@ -1675,26 +1713,28 @@
 <div id="examples-19" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-19" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb39"><html><body><pre class="r"><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>())
+<div class="sourceCode" id="cb39"><pre class="downlit">
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
-<span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
-<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="no">con</span>)
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT 1"</span>)
-<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="no">rs</span>)
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="no">rs</span>)
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)
-<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="completion-status" class="section level2">
 <h2 class="hasAnchor">
 <a href="#completion-status" class="anchor"></a>Completion status</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb40"><html><body><pre class="r"><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb40"><pre class="downlit">
+<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-19" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-19" class="anchor"></a>Description</h3>
@@ -1727,26 +1767,28 @@
 <div id="examples-20" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-20" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb41"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb41"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">rs</span>)
-<span class="no">ret1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>, <span class="fl">10</span>)
-<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">rs</span>)
-<span class="no">ret2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span>(<span class="no">rs</span>)
+<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="va">ret1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="va">ret2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="get-the-statement-associated-with-a-result-set" class="section level2">
 <h2 class="hasAnchor">
 <a href="#get-the-statement-associated-with-a-result-set" class="anchor"></a>Get the statement associated with a result set</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb42"><html><body><pre class="r"><span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb42"><pre class="downlit">
+<span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-20" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-20" class="anchor"></a>Description</h3>
@@ -1774,21 +1816,23 @@
 <div id="examples-21" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-21" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb43"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb43"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>)
-<span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span>(<span class="no">rs</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="the-number-of-rows-fetched-so-far" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-number-of-rows-fetched-so-far" class="anchor"></a>The number of rows fetched so far</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb44"><html><body><pre class="r"><span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb44"><pre class="downlit">
+<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-21" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-21" class="anchor"></a>Description</h3>
@@ -1816,27 +1860,29 @@
 <div id="examples-22" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-22" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb45"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb45"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT * FROM mtcars"</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span>(<span class="no">rs</span>)
-<span class="no">ret1</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>, <span class="fl">10</span>)
-<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span>(<span class="no">rs</span>)
-<span class="no">ret2</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">ret1</span>) + <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">ret2</span>)
+<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="va">ret1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fl">10</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="va">ret2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ret1</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">ret2</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="the-number-of-rows-affected" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-number-of-rows-affected" class="anchor"></a>The number of rows affected</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb46"><html><body><pre class="r"><span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb46"><pre class="downlit">
+<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-22" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-22" class="anchor"></a>Description</h3>
@@ -1864,22 +1910,24 @@
 <div id="examples-23" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-23" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb47"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb47"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"mtcars"</span>, <span class="no">mtcars</span>)
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span>(<span class="no">con</span>, <span class="st">"DELETE FROM mtcars"</span>)
-<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">mtcars</span>)
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span>
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM mtcars"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="information-about-result-types" class="section level2">
 <h2 class="hasAnchor">
 <a href="#information-about-result-types" class="anchor"></a>Information about result types</h2>
 <p>This section describes the behavior of the following method:</p>
-<div class="sourceCode" id="cb48"><html><body><pre class="r"><span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span>(<span class="no">res</span>, <span class="no">...</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb48"><pre class="downlit">
+<span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-23" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-23" class="anchor"></a>Description</h3>
@@ -1914,25 +1962,27 @@
 <div id="examples-24" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-24" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb49"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb49"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="no">rs</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span>(<span class="no">con</span>, <span class="st">"SELECT 1 AS a, 2 AS b"</span>)
-<span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span>(<span class="no">rs</span>)
+<span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1 AS a, 2 AS b"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span>(<span class="no">rs</span>)
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="begincommitrollback-sql-transactions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#begincommitrollback-sql-transactions" class="anchor"></a>Begin/commit/rollback SQL transactions</h2>
 <p>This section describes the behavior of the following methods:</p>
-<div class="sourceCode" id="cb50"><html><body><pre class="r"><span class="fu"><a href="../reference/transactions.html">dbBegin</a></span>(<span class="no">conn</span>, <span class="no">...</span>)
+<div class="sourceCode" id="cb50"><pre class="downlit">
+<span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/transactions.html">dbCommit</a></span>(<span class="no">conn</span>, <span class="no">...</span>)
+<span class="fu"><a href="../reference/transactions.html">dbCommit</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/transactions.html">dbRollback</a></span>(<span class="no">conn</span>, <span class="no">...</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/transactions.html">dbRollback</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></pre></div>
 <div id="description-24" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-24" class="anchor"></a>Description</h3>
@@ -1974,45 +2024,47 @@
 <div id="examples-25" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-25" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb51"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb51"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">amount</span> <span class="kw">=</span> <span class="fl">100</span>))
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">amount</span> <span class="kw">=</span> <span class="fl">2000</span>))
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># All operations are carried out as logical unit:</span>
-<span class="fu"><a href="../reference/transactions.html">dbBegin</a></span>(<span class="no">con</span>)
-<span class="no">withdrawal</span> <span class="kw">&lt;-</span> <span class="fl">300</span>
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-<span class="fu"><a href="../reference/transactions.html">dbCommit</a></span>(<span class="no">con</span>)
+<span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">300</span>
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/transactions.html">dbCommit</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span>
 
 <span class="co"># Rolling back after detecting negative value on account:</span>
-<span class="fu"><a href="../reference/transactions.html">dbBegin</a></span>(<span class="no">con</span>)
-<span class="no">withdrawal</span> <span class="kw">&lt;-</span> <span class="fl">5000</span>
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-<span class="kw">if</span> (<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)$<span class="no">amount</span> <span class="kw">&gt;=</span> <span class="fl">0</span>) {
-  <span class="fu"><a href="../reference/transactions.html">dbCommit</a></span>(<span class="no">con</span>)
-} <span class="kw">else</span> {
-  <span class="fu"><a href="../reference/transactions.html">dbRollback</a></span>(<span class="no">con</span>)
-}
+<span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">5000</span>
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/transactions.html">dbCommit</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="fu"><a href="../reference/transactions.html">dbRollback</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
+<span class="op">}</span>
 
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
 <div id="self-contained-sql-transactions" class="section level2">
 <h2 class="hasAnchor">
 <a href="#self-contained-sql-transactions" class="anchor"></a>Self-contained SQL transactions</h2>
 <p>This section describes the behavior of the following methods:</p>
-<div class="sourceCode" id="cb52"><html><body><pre class="r"><span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span>(<span class="no">conn</span>, <span class="no">code</span>, <span class="no">...</span>)
+<div class="sourceCode" id="cb52"><pre class="downlit">
+<span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">code</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWithTransaction.html">dbBreak</a></span>()</pre></body></html></div>
+<span class="fu"><a href="../reference/dbWithTransaction.html">dbBreak</a></span><span class="op">(</span><span class="op">)</span></pre></div>
 <div id="description-25" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description-25" class="anchor"></a>Description</h3>
@@ -2054,46 +2106,47 @@
 <div id="examples-26" class="section level3">
 <h3 class="hasAnchor">
 <a href="#examples-26" class="anchor"></a>Examples</h3>
-<div class="sourceCode" id="cb53"><html><body><pre class="r"><span class="no">con</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span>(<span class="kw pkg">RSQLite</span><span class="kw ns">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span>(), <span class="st">":memory:"</span>)
+<div class="sourceCode" id="cb53"><pre class="downlit">
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">amount</span> <span class="kw">=</span> <span class="fl">100</span>))
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span>(<span class="kw">amount</span> <span class="kw">=</span> <span class="fl">2000</span>))
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># All operations are carried out as logical unit:</span>
-<span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span>(
-  <span class="no">con</span>,
-  {
-    <span class="no">withdrawal</span> <span class="kw">&lt;-</span> <span class="fl">300</span>
-    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-  }
-)
+<span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span>
+  <span class="va">con</span>,
+  <span class="op">{</span>
+    <span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">300</span>
+    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+  <span class="op">}</span>
+<span class="op">)</span>
 
 <span class="co"># The code is executed as if in the curent environment:</span>
-<span class="no">withdrawal</span>
+<span class="va">withdrawal</span>
 
 <span class="co"># The changes are committed to the database after successful execution:</span>
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span>
 
 <span class="co"># Rolling back with dbBreak():</span>
-<span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span>(
-  <span class="no">con</span>,
-  {
-    <span class="no">withdrawal</span> <span class="kw">&lt;-</span> <span class="fl">5000</span>
-    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span>(<span class="no">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="no">withdrawal</span>))
-    <span class="kw">if</span> (<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)$<span class="no">amount</span> <span class="kw">&lt;</span> <span class="fl">0</span>) {
-      <span class="fu"><a href="../reference/dbWithTransaction.html">dbBreak</a></span>()
-    }
-  }
-)
+<span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span>
+  <span class="va">con</span>,
+  <span class="op">{</span>
+    <span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">5000</span>
+    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+    <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span>
+    <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
+      <span class="fu"><a href="../reference/dbWithTransaction.html">dbBreak</a></span><span class="op">(</span><span class="op">)</span>
+    <span class="op">}</span>
+  <span class="op">}</span>
+<span class="op">)</span>
 
 <span class="co"># These changes were not committed to the database:</span>
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"cash"</span>)
-<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span>(<span class="no">con</span>, <span class="st">"account"</span>)
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span>(<span class="no">con</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
 </div>
 </div>
   </div>
@@ -2113,7 +2166,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
