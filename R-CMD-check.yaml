@@ -96,8 +96,11 @@ jobs:
           _R_CHECK_SYSTEM_CLOCK_: false
           _R_CHECK_FUTURE_FILE_TIMESTAMPS_: false
         run: |
+          error_on <- "note"
           # Begin custom: rcmdcheck error_on
-          error_on <- if (getRversion() >= "3.4") "note" else "warning"
+          if (getRversion() >= "3.4") {
+            error_on <- "warning"
+          }
           # End custom: rcmdcheck error_on
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = error_on, check_dir = "check")
         shell: Rscript {0}
