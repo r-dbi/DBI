@@ -42,12 +42,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="articles/DBI.html">Get started</a>
 </li>
 <li>
@@ -146,19 +140,19 @@
 <li>… .</li>
 </ul>
 <p>You can install the released version of DBI from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DBI"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DBI"</span><span class="op">)</span></code></pre></div>
 <p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-dbi/DBI"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-dbi/DBI"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>The following example illustrates some of the DBI capabilities:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 <span class="co"># Create an ephemeral in-memory RSQLite database</span>
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -211,7 +205,7 @@
 <span class="co">#&gt; [1] 1</span>
 <span class="fu"><a href="reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="class-structure" class="section level2">
 <h2 class="hasAnchor">
@@ -285,8 +279,7 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://travis-ci.org/r-dbi/DBI"><img src="https://travis-ci.org/r-dbi/DBI.svg?branch=master" alt="Build Status"></a></li>
-<li><a href="https://ci.appveyor.com/project/r-dbi/DBI"><img src="https://ci.appveyor.com/api/projects/status/github/r-dbi/DBI?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://github.com/r-dbi/DBI/actions"><img src="https://github.com/r-dbi/DBI/workflows/rcc/badge.svg" alt="rcc"></a></li>
 <li><a href="https://codecov.io/github/r-dbi/DBI?branch=master"><img src="https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=DBI"><img src="https://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://bestpractices.coreinfrastructure.org/projects/1882"><img src="https://bestpractices.coreinfrastructure.org/projects/1882/badge" alt="CII Best Practices"></a></li>
@@ -301,7 +294,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

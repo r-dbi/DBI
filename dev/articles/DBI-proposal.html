@@ -39,12 +39,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/DBI.html">Get started</a>
 </li>
 <li>
@@ -95,8 +89,7 @@
 
       
 
-      </header><link href="DBI-proposal_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="DBI-proposal_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="DBI-proposal_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Common Interface to Relational Databases from R and S – A Proposal</h1>
@@ -435,7 +428,7 @@
 <div id="sec:corba" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sec:corba" class="anchor"></a>CORBA and a 3-tier Architecture</h2>
-<p>Yet another approach is to move the interface to RDBMS out of R and S altogether into a separate system or server that would serve as a proxy between R/S and databases. The communication to this middle-layer proxy could be done through CORBA <span class="citation">(John M. Chambers et al. 1998, <span class="citation">@corba:siegel.96</span>)</span>, Java’s RMI, or some other similar technology. Such a design could be very flexible, but the CORBA facilities both in R and S are not widely available yet, and we do not know whether this will be made available to Splus5 users from MathSoft. Also, my experience with this technology is rather limited.</p>
+<p>Yet another approach is to move the interface to RDBMS out of R and S altogether into a separate system or server that would serve as a proxy between R/S and databases. The communication to this middle-layer proxy could be done through CORBA <span class="citation">(John M. Chambers et al. 1998, @corba:siegel.96)</span>, Java’s RMI, or some other similar technology. Such a design could be very flexible, but the CORBA facilities both in R and S are not widely available yet, and we do not know whether this will be made available to Splus5 users from MathSoft. Also, my experience with this technology is rather limited.</p>
 <p>On the other hand, this 3-tier architecture seem to offer the most flexibility to cope with very large distributed databases, not necessarily relational.</p>
 </div>
 </div>
@@ -455,8 +448,8 @@
 <h1 class="hasAnchor">
 <a href="#the-s-version-4-definitions" class="anchor"></a>The S Version 4 Definitions</h1>
 <p>The following code is meant to serve as a detailed description of the R/S to database interface. We decided to use S4 (instead of R or S version 3) because its clean syntax help us to describe easily the classes and methods that form the RS-DBI, and also to convey the inter-class relationships.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit">
-<span class="co">## Define all the classes and methods to be used by an</span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Define all the classes and methods to be used by an</span>
 <span class="co">## implementation of the RS-DataBase Interface.  Mostly, </span>
 <span class="co">## these classes are virtual and each driver should extend</span>
 <span class="co">## them to provide the actual implementation.</span>
@@ -610,7 +603,7 @@
 <span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getTableIndices"</span>, 
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span> 
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html">standardGeneric</a></span><span class="op">(</span><span class="st">"getTableIndices"</span><span class="op">)</span>
-   <span class="op">)</span></pre></div>
+   <span class="op">)</span></code></pre></div>
 <div id="refs" class="references">
 <div id="ref-S4">
 <p>Chambers, J. M. 1998. <em>Programming with Data: A Guide to the S Language</em>. New York: Springer.</p>
@@ -644,8 +637,8 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A virtual class allows us to group classes that share some common functionality, e.g., the virtual class “<code>dbConnection</code>” groups all the connection implementations by Informix, Ingres, DB/2, Oracle, etc. Although the details will vary from one RDBMS to another, the defining characteristic of these objects is what a virtual class captures. R and S version 3 do not explicitly define virtual classes, but they can easily implement the idea through inheritance.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>The term “database” is sometimes (confusingly) used both to denote the RDBMS, such as Oracle, MySQL, and also to denote a particular database instance under a RDBMS, such as “opto” or “sales” databases under the same RDBMS.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>A virtual class allows us to group classes that share some common functionality, e.g., the virtual class “<code>dbConnection</code>” groups all the connection implementations by Informix, Ingres, DB/2, Oracle, etc. Although the details will vary from one RDBMS to another, the defining characteristic of these objects is what a virtual class captures. R and S version 3 do not explicitly define virtual classes, but they can easily implement the idea through inheritance.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The term “database” is sometimes (confusingly) used both to denote the RDBMS, such as Oracle, MySQL, and also to denote a particular database instance under a RDBMS, such as “opto” or “sales” databases under the same RDBMS.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -665,7 +658,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

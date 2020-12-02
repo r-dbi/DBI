@@ -39,12 +39,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../articles/DBI.html">Get started</a>
 </li>
 <li>
@@ -95,8 +89,7 @@
 
       
 
-      </header><link href="DBI-1_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="DBI-1_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="DBI-1_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Common Database Interface (DBI)</h1>
@@ -121,8 +114,8 @@
 <h1 class="hasAnchor">
 <a href="#sec:intro" class="anchor"></a>Introduction</h1>
 <p>The database interface (DBI) separates the connectivity to the DBMS into a “front-end” and a “back-end”. Applications use only the exposed “front-end” API. The facilities that communicate with specific DBMS (Oracle, PostgreSQL, etc.) are provided by “device drivers” that get invoked automatically by the S language evaluator. The following example illustrates some of the DBI capabilities:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co">## Choose the proper DBMS driver and connect to the server</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Choose the proper DBMS driver and connect to the server</span>
 
 <span class="va">drv</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbDriver.html">dbDriver</a></span><span class="op">(</span><span class="st">"ODBC"</span><span class="op">)</span>
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="st">"dsn"</span>, <span class="st">"usr"</span>, <span class="st">"pwd"</span><span class="op">)</span>
@@ -151,7 +144,7 @@
 <span class="co">## Free up resources</span>
 <span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></code></pre></div>
 <p>(only the first 2 expressions are DBMS-specific – all others are independent of the database engine itself).</p>
 <p>Individual DBI drivers need not implement all the features we list below (we indicate those that are optional). Furthermore, drivers may extend the core DBI facilities, but we suggest to have these extensions clearly indicated and documented.</p>
 <p>The following are the elements of the DBI:</p>
@@ -189,7 +182,7 @@
 <p><em>Note: Although R releases prior to 1.4 do not have a formal concept of classes, we will use the syntax of the S Version 4 classes and methods (available in R releases 1.4 and later as library <code>methods</code>) to convey precisely the DBI class hierarchy, its methods, and intended behavior.</em></p>
 <p>The DBI classes are <code>DBIObject</code>, <code>DBIDriver</code>, <code>DBIConnection</code> and <code>DBIResult</code>. All these are <em>virtual</em> classes. Drivers define new classes that extend these, e.g., <code>PgSQLDriver</code>, <code>PgSQLConnection</code>, and so on.</p>
 <div class="figure">
-<img src="hierarchy.png" alt="Class hierarchy for the DBI. The top two layers are comprised of virtual classes and each lower layer represents a set of driver-specific implementation classes that provide the functionality defined by the virtual classes above."><p class="caption">Class hierarchy for the DBI. The top two layers are comprised of virtual classes and each lower layer represents a set of driver-specific implementation classes that provide the functionality defined by the virtual classes above.</p>
+<img src="hierarchy.png" alt=""><p class="caption">Class hierarchy for the DBI. The top two layers are comprised of virtual classes and each lower layer represents a set of driver-specific implementation classes that provide the functionality defined by the virtual classes above.</p>
 </div>
 <dl>
 <dt>
@@ -664,8 +657,8 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>A virtual class allows us to group classes that share some common characteristics, even if their implementations are radically different.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data conversion code found in R-Java, R-Perl, and R-Python packages to the DBI<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>A virtual class allows us to group classes that share some common characteristics, even if their implementations are radically different.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data conversion code found in R-Java, R-Perl, and R-Python packages to the DBI<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -685,7 +678,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
