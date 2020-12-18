@@ -114,6 +114,10 @@ test_that("corner cases work", {
     sqlInterpolate(ANSI(), "--"),
     SQL("--")
   )
+  expect_equal(
+    sqlInterpolate(ANSI(), "SELECT *\n--comment\n--consecutive comment with '\nFROM mytable"),
+    SQL("SELECT *\n--comment\n--consecutive comment with '\nFROM mytable")
+  )
   expect_error(
     sqlInterpolate(ANSI(), "/*"),
     "Unterminated comment"
