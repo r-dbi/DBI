@@ -17,12 +17,10 @@ inst\/doc\/DBI\.b..$
 ^inst/staticdocs$
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^\.travis\.yml$
 ^cran-comments\.md$
 ^revdep$
 ^\.httr-oauth$
 ^scripts$
-^tic\.R$
 ^_pkgdown\.yml$
 ^revdep/
 ^API$
@@ -32,4 +30,3 @@ inst\/doc\/DBI\.b..$
 ^codecov\.yml$
 ^LICENSE\.md$
 ^README\.Rmd$
-^appveyor\.yml$

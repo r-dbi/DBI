@@ -16,8 +16,7 @@ knitr::opts_chunk$set(
 # DBI
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.org/r-dbi/DBI.svg?branch=master)](https://travis-ci.org/r-dbi/DBI)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/r-dbi/DBI?branch=master&svg=true)](https://ci.appveyor.com/project/r-dbi/DBI)
+[![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)

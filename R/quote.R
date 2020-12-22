@@ -368,7 +368,7 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       ))
     }
 
-    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x, usetz = TRUE)))
+    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x)))
 
     if (is.list(x)) {
       blob_data <- vapply(

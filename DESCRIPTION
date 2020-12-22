@@ -20,7 +20,7 @@ Description: A database interface definition for communication
     this package are virtual and need to be extended by the various R/DBMS
     implementations.
 License: LGPL (>= 2.1)
-URL: http://r-dbi.github.io/DBI, https://github.com/r-dbi/DBI
+URL: https://dbi.r-dbi.org, https://github.com/r-dbi/DBI
 BugReports: https://github.com/r-dbi/DBI/issues
 Depends:
     methods,
@@ -41,7 +41,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate",
     "namespace", "rd"))
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1
 Collate: 
     'hidden.R'
     'DBObject.R'
