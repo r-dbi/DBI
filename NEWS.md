@@ -1,3 +1,11 @@
+# DBI 1.1.0.9001 (2020-12-22)
+
+- `dbQuoteLiteral()` works for difftime objects (#325).
+- `dbQuoteLiteral()` quotes dates as `YYYY-MM-DD` without time zone (#331).
+- Switch to GitHub Actions (#326).
+- Update URL in DESCRIPTION.
+
+
 # DBI 1.1.0.9000
 
 - Same as previous version.
