@@ -177,10 +177,10 @@ that enumerates all tables
 and views
 in the database.
 Tables added with <code><a href='dbWriteTable.html'>dbWriteTable()</a></code>
-are part of the list,
-including temporary tables if supported by the database.
+are part of the list.
 As soon a table is removed from the database,
 it is also removed from the list of database tables.</p>
+<p>The same applies to temporary tables if supported by the database.</p>
 <p>The returned names are suitable for quoting with <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>.
 An error is raised when calling this method for a closed
 or invalid connection.</p>

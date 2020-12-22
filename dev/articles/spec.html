@@ -688,7 +688,7 @@
 <li><p>Repeat 2. and 3. as necessary.</p></li>
 <li><p>Close the result set via <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p></li>
 </ol>
-<p>The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>.</p>
+<p>The elements of the <code>params</code> argument do not need to be scalars, vectors of arbitrary length (including length 0) are supported. For queries, calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> binding such parameters returns concatenated results, equivalent to binding and fetching for each set of values and connecting via <code><a href="https://rdrr.io/r/base/cbind.html">rbind()</a></code>. For data manipulation statements, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns the total number of rows affected if binding non-scalar parameters. <code><a href="../reference/dbBind.html">dbBind()</a></code> also accepts repeated calls on the same result set for both queries and data manipulation statements, even if no results are fetched between calls to <code><a href="../reference/dbBind.html">dbBind()</a></code>, for both queries and data manipulation statements.</p>
 <p>If the placeholders in the query are named, their order in the <code>params</code> argument is not important.</p>
 <p>At least the following data types are accepted on input (including NA):</p>
 <ul>
@@ -1299,7 +1299,7 @@
 <li><p>If a string, this specifies the name of the column in the remote table that contains the row names, an error is raised if no such column exists.</p></li>
 </ul>
 <p>The default is <code>row.names = FALSE</code>.</p>
-<p>If the database supports identifiers with special characters, the columns in the returned data frame are converted to valid R identifiers if the <code>check.names</code> argument is <code>TRUE</code>, otherwise non-syntactic column names can be returned unquoted.</p>
+<p>If the database supports identifiers with special characters, the columns in the returned data frame are converted to valid R identifiers if the <code>check.names</code> argument is <code>TRUE</code>, If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Unsupported values for <code>row.names</code> and <code>check.names</code> (non-scalars, unsupported data types, <code>NA</code> for <code>check.names</code>) also raise an error.</p>
 </div>
 <div id="examples-13" class="section level3">
@@ -1392,7 +1392,7 @@
 <li><p>written to another table and read again unchanged</p></li>
 </ul>
 </li>
-<li><p>character (in both UTF-8 and native encodings), supporting empty strings</p></li>
+<li><p>character (in both UTF-8 and native encodings), supporting empty strings before and after a non-empty string</p></li>
 <li><p>factor (returned as character)</p></li>
 <li><p>list of raw (if supported by the database)</p></li>
 <li><p>objects of type <a href="blob::blob" class="uri">blob::blob</a> (if supported by the database)</p></li>
@@ -1465,7 +1465,8 @@
 <div id="value-14" class="section level3">
 <h3 class="hasAnchor">
 <a href="#value-14" class="anchor"></a>Value</h3>
-<p><code><a href="../reference/dbListTables.html">dbListTables()</a></code> returns a character vector that enumerates all tables and views in the database. Tables added with <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> are part of the list, including temporary tables if supported by the database. As soon a table is removed from the database, it is also removed from the list of database tables.</p>
+<p><code><a href="../reference/dbListTables.html">dbListTables()</a></code> returns a character vector that enumerates all tables and views in the database. Tables added with <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> are part of the list. As soon a table is removed from the database, it is also removed from the list of database tables.</p>
+<p>The same applies to temporary tables if supported by the database.</p>
 <p>The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. An error is raised when calling this method for a closed or invalid connection.</p>
 </div>
 <div id="examples-15" class="section level3">
@@ -1513,7 +1514,8 @@
 <div id="value-15" class="section level3">
 <h3 class="hasAnchor">
 <a href="#value-15" class="anchor"></a>Value</h3>
-<p><code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise. This includes temporary tables if supported by the database.</p>
+<p><code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.</p>
+<p>This includes temporary tables if supported by the database.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
 </div>
 <div id="specification-14" class="section level3">

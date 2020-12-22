@@ -196,7 +196,7 @@ an error is raised if no such column exists.</p></li>
 the columns in the returned data frame are converted to valid R
 identifiers
 if the <code>check.names</code> argument is <code>TRUE</code>,
-otherwise non-syntactic column names can be returned unquoted.</p>
+If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is raised
