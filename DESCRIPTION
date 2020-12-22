@@ -1,7 +1,7 @@
 Package: DBI
 Title: R Database Interface
-Version: 1.1.0.9000
-Date: 2019-12-15
+Version: 1.1.0.9001
+Date: 2020-12-22
 Authors@R: 
     c(person(given = "R Special Interest Group on Databases (R-SIG-DB)",
              role = "aut"),
@@ -44,7 +44,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate",
     "namespace", "rd"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000
 Collate: 
     'hidden.R'
     'DBObject.R'
@@ -58,6 +58,7 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
+    'hms.R'
     'interpolate.R'
     'list-pairs.R'
     'quote.R'

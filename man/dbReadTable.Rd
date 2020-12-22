@@ -41,7 +41,7 @@ If the database supports identifiers with special characters,
 the columns in the returned data frame are converted to valid R
 identifiers
 if the \code{check.names} argument is \code{TRUE},
-otherwise non-syntactic column names can be returned unquoted.
+If \code{check.names = FALSE}, the returned table has non-syntactic column names without quotes.
 
 An error is raised when calling this method for a closed
 or invalid connection.
