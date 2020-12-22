@@ -30,6 +30,7 @@ Suggests:
     covr,
     dbplyr,
     dplyr,
+    glue,
     hms,
     knitr,
     magrittr,
