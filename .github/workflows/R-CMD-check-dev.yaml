@@ -93,6 +93,15 @@ jobs:
         shell: Rscript {0}
 
       # Begin custom: after install
+      # Must happen after installing system dependencies,
+      # https://github.com/ankane/setup-mariadb/issues/2
+      - uses: ankane/setup-mariadb@v1
+        with:
+          mariadb-version: 10.5
+
+      - name: Create database, set it to UTF-8
+        run: |
+          mysql -e "CREATE DATABASE IF NOT EXISTS test; ALTER DATABASE test CHARACTER SET 'utf8'; FLUSH PRIVILEGES;"
       # End custom: after install
 
       - name: Check
