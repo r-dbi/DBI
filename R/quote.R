@@ -370,6 +370,8 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
 
     if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x)))
 
+    if (inherits(x, "difftime")) return(dbQuoteString(conn, format_hms(x)))
+
     if (is.list(x)) {
       blob_data <- vapply(
         x,

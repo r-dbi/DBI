@@ -41,7 +41,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate",
     "namespace", "rd"))
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.1.9000
 Collate: 
     'hidden.R'
     'DBObject.R'
@@ -55,6 +55,7 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
+    'hms.R'
     'interpolate.R'
     'list-pairs.R'
     'quote.R'
