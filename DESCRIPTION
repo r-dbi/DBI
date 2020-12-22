@@ -28,6 +28,8 @@ Depends:
 Suggests:
     blob,
     covr,
+    dbplyr,
+    dplyr,
     hms,
     knitr,
     magrittr,
