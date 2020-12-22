@@ -368,7 +368,7 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       ))
     }
 
-    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x, usetz = TRUE)))
+    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x)))
 
     if (inherits(x, "difftime")) return(dbQuoteString(conn, format_hms(x)))
 
