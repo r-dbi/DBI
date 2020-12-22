@@ -114,6 +114,7 @@ representation
 \item character (in both UTF-8
 and native encodings),
 supporting empty strings
+before and after a non-empty string
 \item factor (returned as character)
 \item list of raw
 (if supported by the database)
