@@ -144,7 +144,7 @@ jobs:
         run: |
           error_on <- "note"
           # Begin custom: rcmdcheck error_on
-          if (getRversion() < "3.4") {
+          if (getRversion() < "3.5") {
             error_on <- "warning"
             Sys.setenv("_R_CHECK_FORCE_SUGGESTS_" = "FALSE")
           }
