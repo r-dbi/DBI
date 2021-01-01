@@ -283,7 +283,8 @@ withdraw_safe <- function(amount) {
   dbWithTransaction(con, {
     withdraw(amount)
     if (dbReadTable(con, "account")$amount < 0) {
-    stop("Error: insufficient funds")
+      stop("Error: insufficient funds")
+    }
   })
 }
 
