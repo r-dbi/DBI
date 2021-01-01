@@ -11,7 +11,7 @@ vignette: >
 
 ```{r setup, include=FALSE,warning=FALSE, message=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(error = (getRversion() < "3.5"))
+knitr::opts_chunk$set(error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"))
 ```
 
 ## Who this tutorial is for
