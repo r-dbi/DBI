@@ -31,7 +31,7 @@ This tutorial is for you if you need to use a richer set of SQL features such as
 
 ## How to run more complex queries using DBI
 
-`dbGetQuery()` works by calling a number of functions behind the scenes. 
+`dbGetQuery()` works by calling a number of functions behind the scenes.
 If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.
 
 These functions are:
@@ -60,7 +60,7 @@ head(df,3)
 
 If your dataset is large you may want to fetch a limited number of rows at a time.
 As demonstrated below, this can be accomplished by using a while loop where the function `dbHasCompleted()` is used to check for ongoing rows, and `dbFetch()` is used with the `n = X` argument, specifying how many rows to return on each iteration.
-Again, we call `dbClearResult()` at the end to release resources. 
+Again, we call `dbClearResult()` at the end to release resources.
 
 ```{r}
 
@@ -77,12 +77,12 @@ dbClearResult(res)
 ## How to use parameters (safely) in SQL queries
 
 `dbSendQuery()` can be used with parameterised SQL queries.
-For a single set of parameters, the `params` argument can be used. 
+For a single set of parameters, the `params` argument can be used.
 It takes a list and its members are substituted in order for the placeholders within the query.
 To avoid SQL injection attacks from user-supplied parameters, parameters must always be quoted to ensure they are valid string literals.
 This is performed using the function `dbQuoteString()`.
 
-In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped. 
+In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped.
 As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
 
 ```{r quote}
@@ -109,8 +109,8 @@ dbGetQuery(con, query)
 Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query.
 Different DBMS use different placeholder schemes. MariaDB uses a `?` for each parameter and expects an ordered list of literal values for each placeholder in the query.
 
-Other DBMS may use named parameters. 
-Currently there is no list of which placeholder scheme a particular DBMS supports. 
+Other DBMS may use named parameters.
+Currently there is no list of which placeholder scheme a particular DBMS supports.
 For now all we can recommend is consulting the documention for the DBMS driver you are using.
 
 ```{r params}
@@ -125,7 +125,7 @@ dbClearResult(res)
 ```
 
 Below is an example query using multiple placeholders with the MariaDB driver.
-The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query. 
+The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query.
 
 ```{r multi-param}
 
@@ -165,14 +165,14 @@ dbDisconnect(con)
 
 ## SQL data manipulation - UPDATE, DELETE and friends
 
-For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. 
+For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions.
 `dbExecute()` passes the SQL statement to the DBMS for execution and returns the number of rows affected.
 `dbSendStatement()` performs in the same manner, but returns a result object.
-Call `dbGetRowsAffected()` with the result object to get the count of the affected rows. 
+Call `dbGetRowsAffected()` with the result object to get the count of the affected rows.
 You then need to call `dbClearResult()` with the result object afterwards to release resources.
 
 In actuality, `dbExecute()` is a convenience function that calls `dbSendStatement()`, `dbGetRowsAffected()`, and `dbClearResult()`.
-You can use these functions if you need more control over the query process.  
+You can use these functions if you need more control over the query process.
 
 
 ```{r}
@@ -234,7 +234,7 @@ dbDisconnect(con)
 
 ## Conclusion
 
-That concludes the major features of DBI. 
+That concludes the major features of DBI.
 For more details on the library functions covered in this tutorial and the [Introduction to DBI](missinglink) tutorial see [the DBI specification](https://cran.r-project.org/web/packages/DBI/vignettes/spec.html).
 If you are after a data manipulation library that works at a higher level of abstraction, check out [dplyr](https://dplyr.tidyverse.org).
 It is a grammar of data manipulation that can work with local dataframes and remote databases and is built upon DBI.
