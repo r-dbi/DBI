@@ -133,7 +133,7 @@
 <p>Start by making a driver class which inherits from <code>DBIDriver</code>. This class doesn’t need to do anything, it’s just used to dispatch other generics to the right method. Users don’t need to know about this, so you can remove it from the default help listing with <code>@keywords internal</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Driver for Kazam database.</span>
-<span class="co">#' </span>
+<span class="co">#'</span>
 <span class="co">#' @keywords internal</span>
 <span class="co">#' @export</span>
 <span class="co">#' @import DBI</span>
@@ -168,21 +168,21 @@
 <p>Next create a connection class that inherits from <code>DBIConnection</code>. This should store all the information needed to connect to the database. If you’re talking to a C api, this will include a slot that holds an external pointer.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam connection class.</span>
-<span class="co">#' </span>
+<span class="co">#'</span>
 <span class="co">#' @export</span>
 <span class="co">#' @keywords internal</span>
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"KazamConnection"</span>, 
-  contains <span class="op">=</span> <span class="st">"DBIConnection"</span>, 
+<span class="kw">setClass</span><span class="op">(</span><span class="st">"KazamConnection"</span>,
+  contains <span class="op">=</span> <span class="st">"DBIConnection"</span>,
   slots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>
-    host <span class="op">=</span> <span class="st">"character"</span>, 
-    username <span class="op">=</span> <span class="st">"character"</span>, 
+    host <span class="op">=</span> <span class="st">"character"</span>,
+    username <span class="op">=</span> <span class="st">"character"</span>,
     <span class="co"># and so on</span>
     ptr <span class="op">=</span> <span class="st">"externalptr"</span>
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Now you have some of the boilerplate out of the way, you can start work on the connection. The most important method here is <code><a href="../reference/dbConnect.html">dbConnect()</a></code> which allows you to connect to a specified instance of the database. Note the use of <code>@rdname Kazam</code>. This ensures that <code>Kazam()</code> and the connect method are documented together.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#' @param drv An object created by \code{Kazam()} </span>
+<code class="sourceCode R"><span class="co">#' @param drv An object created by \code{Kazam()}</span>
 <span class="co">#' @rdname Kazam</span>
 <span class="co">#' @export</span>
 <span class="co">#' @examples</span>
@@ -193,7 +193,7 @@
 <span class="co">#' }</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbConnect"</span>, <span class="st">"KazamDriver"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># ...</span>
-  
+
   <span class="fu">new</span><span class="op">(</span><span class="st">"KazamConnection"</span>, host <span class="op">=</span> <span class="va">host</span>, <span class="va">...</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <ul>
@@ -208,19 +208,19 @@
 <p>Finally, you’re ready to implement the meat of the system: fetching results of a query into a data frame. First define a results class:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam results class.</span>
-<span class="co">#' </span>
+<span class="co">#'</span>
 <span class="co">#' @keywords internal</span>
 <span class="co">#' @export</span>
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"KazamResult"</span>, 
+<span class="kw">setClass</span><span class="op">(</span><span class="st">"KazamResult"</span>,
   contains <span class="op">=</span> <span class="st">"DBIResult"</span>,
   slots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ptr <span class="op">=</span> <span class="st">"externalptr"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Then write a <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> method. This takes a connection and SQL string as arguments, and returns a result object. Again <code>...</code> is needed for compatibility with the generic, but you can add other arguments if you need them.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Send a query to Kazam.</span>
-<span class="co">#' </span>
+<span class="co">#'</span>
 <span class="co">#' @export</span>
-<span class="co">#' @examples </span>
+<span class="co">#' @examples</span>
 <span class="co">#' # This is another good place to put examples</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbSendQuery"</span>, <span class="st">"KazamConnection"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># some code</span>
@@ -251,8 +251,8 @@
 <p>Next, implement <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> which should return a <code>logical</code> indicating if there are any rows remaining to be fetched.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
-<span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span> 
-  
+<span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
+
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>With these four methods in place, you can now use the default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database, or relax and let the <code>DBItest</code> package do the work for you.</p>
 </div>
