@@ -146,6 +146,7 @@ jobs:
           # Begin custom: rcmdcheck error_on
           if (getRversion() < "3.4") {
             error_on <- "warning"
+            Sys.setenv("_R_CHECK_FORCE_SUGGESTS_" = "FALSE")
           }
           # End custom: rcmdcheck error_on
           rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = error_on, check_dir = "check")
