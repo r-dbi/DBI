@@ -39,7 +39,7 @@ DBI offers a set of classes and methods that define what operations are possible
 
 ## Examples
 
-To showcase DBI capabilities, we create a in-memory RSQLite database 
+To showcase DBI capabilities, we create a in-memory RSQLite database
 
 ```{r}
 library(DBI)

@@ -36,7 +36,7 @@ illustrates some of the DBI capabilities:
 drv <- dbDriver("ODBC")
 con <- dbConnect(drv, "dsn", "usr", "pwd")
 
-## The interface can work at a higher level importing tables 
+## The interface can work at a higher level importing tables
 ## as data.frames and exporting data.frames as DBMS tables.
 
 dbListTables(con)
@@ -414,9 +414,9 @@ procedures. All these functions are optional.*
     vary substantially from one RDBMS to another.]
 
     **Deprecated since 2014:**
-    
+
     The recommended way of calling a stored procedure is now
-    
+
     - `dbGetQuery` if a result set is returned and
     - `dbExecute`  for data manipulation and other cases that do not return a result set.
 

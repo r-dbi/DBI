@@ -8,7 +8,7 @@ abstract: >
   (so-called *DBI backends*).
   This document formalizes the behavior expected by the methods declared in
   DBI and implemented by the individual backends.
-  
+
   To ensure maximum portability and exchangeability, and to reduce the effort
   for implementing a new DBI backend, the DBItest package defines
   a comprehensive set of test cases that test conformance to the DBI
@@ -84,7 +84,7 @@ move_contents_of_usage_section <- function(x) {
 
   usage_text <-
     usage_contents %>%
-    xml_find_first("//pre") %>% 
+    xml_find_first("//pre") %>%
     xml_text
 
   h3 <- x %>% xml_find_first("//h3")
