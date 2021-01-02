@@ -112,7 +112,7 @@ head(df,3)
 ```
 
 
-The equivalent operation using `dplyr` reconstructs the SQL query using three functions to specify the table (`tbl`), the subset of the rows (`filter()`), and the data we require (`select()`).
+The equivalent operation using `dplyr` reconstructs the SQL query using three functions to specify the table (`tbl()`), the subset of the rows (`filter()`), and the columns we require (`select()`).
 
 ```{r message=FALSE}
 library(dplyr)
