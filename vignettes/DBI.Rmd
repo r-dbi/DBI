@@ -1,6 +1,6 @@
 ---
 title: "Introduction to DBI"
-author: "James Wondrasek, Katharina Brunner"
+author: "James Wondrasek, Katharina Brunner, Kirill Müller"
 date: "27 February 2020"
 output: rmarkdown::html_vignette
 vignette: >

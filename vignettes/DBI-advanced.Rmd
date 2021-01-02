@@ -1,6 +1,6 @@
 ---
 title: "Advanced DBI Usage"
-author: "James Wondrasek"
+author: "James Wondrasek, Kirill Müller"
 date: "17/03/2020"
 output: rmarkdown::html_vignette
 vignette: >
