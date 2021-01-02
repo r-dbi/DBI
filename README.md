@@ -24,8 +24,9 @@ by *DBI backends* such as:
 -   [odbc](https://github.com/r-dbi/odbc),
 -   [bigrquery](https://github.com/r-dbi/bigrquery),
 
-and many more. R scripts and packages use DBI to access various
-databases through their DBI backends.
+and many more, see the [list of
+backends](https://github.com/r-dbi/backends#readme). R scripts and
+packages use DBI to access various databases through their DBI backends.
 
 The interface defines a small set of classes and methods similar in
 spirit to Perl’s [DBI](http://dbi.perl.org/), Java’s
