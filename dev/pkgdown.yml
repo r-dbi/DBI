@@ -3,12 +3,13 @@ pkgdown: 1.6.1.9000
 pkgdown_sha: 6094ac3dd80a1f3f1d4e2f47d0ed4716d51362b0
 articles:
   DBI-1: DBI-1.html
+  DBI-advanced: DBI-advanced.html
   DBI-history: DBI-history.html
   DBI-proposal: DBI-proposal.html
   DBI: DBI.html
   backend: backend.html
   spec: spec.html
-last_built: 2021-01-01T17:01Z
+last_built: 2021-01-02T11:01Z
 urls:
   reference: https://dbi.r-dbi.org/reference
   article: https://dbi.r-dbi.org/articles
