@@ -70,9 +70,13 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
 sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
   if (missing(row.names)) {
-    warning("Do not rely on the default value of the row.names argument for sqlAppendTableTemplate(), it will change in the future.",
+    warning("Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.",
       call. = FALSE
     )
+  }
+
+  if (length(values) == 0) {
+    stop("Must pass at least one column in `values`", call. = FALSE)
   }
 
   table <- dbQuoteIdentifier(con, table)
