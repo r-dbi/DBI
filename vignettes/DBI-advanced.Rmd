@@ -50,7 +50,7 @@ These functions are:
 library(DBI)
 
 con <- dbConnect(
-  MariaDB::MariaDB(),
+  RMariaDB::MariaDB(),
   host = "relational.fit.cvut.cz",
   port = 3306,
   username = "guest",
