@@ -1,6 +1,6 @@
 ---
 title: "Advanced DBI Usage"
-author: "James Wondrasek"
+author: "James Wondrasek, Kirill Müller"
 date: "17/03/2020"
 output: rmarkdown::html_vignette
 vignette: >
@@ -30,10 +30,6 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL's transaction features.
 See `vignette("DBI", package = "DBI")` for a more basic tutorial covering connections and execution of simple queries.
 
-```{r}
-library(DBI)
-```
-
 ## How to run more complex queries using DBI
 
 `dbGetQuery()` works by calling a number of functions behind the scenes.
@@ -51,6 +47,8 @@ These functions are:
   It releases the resources associated with the `result` object.
 
 ```{r}
+library(DBI)
+
 con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
 
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = 'G'")
@@ -271,7 +269,6 @@ withdraw_if_funds <- function(amount) {
 }
 
 withdraw_if_funds(5000)
-
 dbReadTable(con, "cash")
 dbReadTable(con, "account")
 ```
@@ -279,35 +276,16 @@ dbReadTable(con, "account")
 Use `dbWithTransaction()` as a safe way to open a transaction, call `dbCommit()` on success and call `dbRollback()` on error.
 
 ```{r error = TRUE}
-withdraw_safe <- function(amount) {
+withdraw_safely <- function(amount) {
   dbWithTransaction(con, {
     withdraw(amount)
     if (dbReadTable(con, "account")$amount < 0) {
-      stop("Error: insufficient funds")
+      stop("Error: insufficient funds", call. = FALSE)
     }
   })
 }
 
-withdraw_safe(5000)
-```
-
-```{r error = TRUE}
-dbReadTable(con, "cash")
-dbReadTable(con, "account")
-```
-
-```{r error = TRUE}
-dbBegin(con)
-withdrawal <- 5000
-dbExecute(con, "UPDATE cash SET amount = amount + ?", list(withdrawal))
-dbExecute(con, "UPDATE account SET amount = amount - ?", list(withdrawal))
-if (dbReadTable(con, "account")$amount >= 0) {
-  dbCommit(con)
-} else {
-  message("Error: insufficient funds")
-  dbRollback(con)
-}
-
+withdraw_safely(5000)
 dbReadTable(con, "cash")
 dbReadTable(con, "account")
 ```
