@@ -49,7 +49,14 @@ These functions are:
 ```{r}
 library(DBI)
 
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
+con <- dbConnect(
+  MariaDB::MariaDB(),
+  host = "relational.fit.cvut.cz",
+  port = 3306,
+  username = "guest",
+  password = "relational",
+  dbname = "sakila"
+)
 
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = 'G'")
 df <- dbFetch(res, n = 3)
@@ -125,7 +132,7 @@ Currently there is no list of which placeholder scheme a particular DBMS support
 For now all we can recommend is consulting the documentation for the DBMS driver you are using.
 
 Placeholders only work for literal values.
-Other parts of the query, e.g. table or column identifiers, still need to be quoted with `dbQuoteIdentifier()`. 
+Other parts of the query, e.g. table or column identifiers, still need to be quoted with `dbQuoteIdentifier()`.
 
 For a single set of parameters, the `params` argument to `dbSendQuery()` or `dbGetQuery()` can be used.
 It takes a list and its members are substituted in order for the placeholders within the query.

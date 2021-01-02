@@ -50,7 +50,15 @@ The database represents a fictional movie rental business and includes tables de
 ```{r}
 library(DBI)
 
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
+con <- dbConnect(
+  MariaDB::MariaDB(),
+  host = "relational.fit.cvut.cz",
+  port = 3306,
+  username = "guest",
+  password = "relational",
+  dbname = "sakila"
+)
+
 dbListTables(con)
 dbDisconnect(con)
 ```
