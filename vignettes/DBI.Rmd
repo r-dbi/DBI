@@ -29,7 +29,7 @@ DBI currently supports about 30 DBMS, including:
 * Postgres, using the R-package [RPostgres](https://github.com/r-dbi/RPostgres)
 * SQLite, using the R-package [RSQLite](https://github.com/r-dbi/RSQLite)
 
-For the full list of supported DBMS visit [https://github.com/r-dbi/backends](https://github.com/r-dbi/backends).
+For a more complete list of supported DBMS visit [https://github.com/r-dbi/backends#readme](https://github.com/r-dbi/backends).
 You may need to install the package specific to your DBMS.
 
 The functionality currently supported for each of these DBMS's includes:
