@@ -104,7 +104,7 @@ head(df,3)
 We could also retrieve movies released in 2006 that are rated "G".
 Note that character strings must be quoted.
 As the query itself is contained within double quotes, we use single quotes around the rating.
-See `dbQuoteLiteral()` for programmatically converting arbitrary R values to SQL.
+See `dbQuoteLiteral()` for programmatically converting arbitrary R values to SQL, this is covered in more detail in `vignette("DBI-advanced", package = "DBI")`.
 
 ```{r}
 df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006 and rating = 'G'")
