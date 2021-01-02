@@ -28,11 +28,15 @@ Depends:
 Suggests:
     blob,
     covr,
+    dbplyr,
+    dplyr,
+    glue,
     hms,
     knitr,
     magrittr,
     rmarkdown,
     rprojroot,
+    RMariaDB,
     RSQLite (>= 1.1-2),
     testthat,
     xml2
