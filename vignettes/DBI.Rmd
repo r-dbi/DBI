@@ -67,7 +67,7 @@ Connections to databases are created using the `dbConnect()` function.
 The first argument to the function is the driver for the DBMS you are connecting to.
 In the example above we are connecting to a MariaDB instance, so we use the `RMariaDB::MariaDB()` driver.
 The other arguments depend on the authentication required by the DBMS.
-In the example username, password, host, port, dbname are required.
+In the example host, port, username, password, dbname are required.
 See the documentation for the DBMS driver package that you are using for specifics.
 
 The function `dbListTables()` takes a database connection as its only argument and returns a character vector with all table and view names in the database.
