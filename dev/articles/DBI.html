@@ -96,7 +96,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to DBI</h1>
-                        <h4 class="author">James Wondrasek, Katharina Brunner</h4>
+                        <h4 class="author">James Wondrasek, Katharina Brunner, Kirill Müller</h4>
             
             <h4 class="date">27 February 2020</h4>
       
@@ -123,7 +123,7 @@
 <li>SQLite, using the R-package <a href="https://github.com/r-dbi/RSQLite">RSQLite</a>
 </li>
 </ul>
-<p>For the full list of supported DBMS visit <a href="https://github.com/r-dbi/backends">https://github.com/r-dbi/backends</a>. You may need to install the package specific to your DBMS.</p>
+<p>For a more complete list of supported DBMS visit <a href="https://github.com/r-dbi/backends#readme">https://github.com/r-dbi/backends</a>. You may need to install the package specific to your DBMS.</p>
 <p>The functionality currently supported for each of these DBMS’s includes:</p>
 <ul>
 <li>manage a connection to a database</li>
@@ -208,7 +208,7 @@
 ## 1     A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies
 ## 2 A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
 ## 3     A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory</code></pre>
-<p>We could also retrieve movies released in 2006 that are rated “G”. Note that character strings must be quoted. As the query itself is contained within double quotes, we use single quotes around the rating. See <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> for programmatically converting arbitrary R values to SQL.</p>
+<p>We could also retrieve movies released in 2006 that are rated “G”. Note that character strings must be quoted. As the query itself is contained within double quotes, we use single quotes around the rating. See <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> for programmatically converting arbitrary R values to SQL, this is covered in more detail in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT film_id, title, description FROM film WHERE release_year = 2006 and rating = 'G'"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
@@ -220,7 +220,7 @@
 ## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
 ## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank
 ## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</code></pre>
-<p>The equivalent operation using <code>dplyr</code> reconstructs the SQL query using three functions to specify the table (<code>tbl</code>), the subset of the rows (<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>), and the data we require (<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>).</p>
+<p>The equivalent operation using <code>dplyr</code> reconstructs the SQL query using three functions to specify the table (<code><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl()</a></code>), the subset of the rows (<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>), and the columns we require (<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>).</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 
@@ -258,7 +258,7 @@
 </li>
 <li>The DBI specification: <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>
 </li>
-<li><a href="https://github.com/r-dbi/backends">List of supported DBMS</a></li>
+<li><a href="https://github.com/r-dbi/backends#readme">List of supported DBMS</a></li>
 </ul>
 </div>
   </div>
