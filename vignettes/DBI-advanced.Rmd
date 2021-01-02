@@ -30,10 +30,6 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL's transaction features.
 See `vignette("DBI", package = "DBI")` for a more basic tutorial covering connections and execution of simple queries.
 
-```{r}
-library(DBI)
-```
-
 ## How to run more complex queries using DBI
 
 `dbGetQuery()` works by calling a number of functions behind the scenes.
@@ -51,6 +47,8 @@ These functions are:
   It releases the resources associated with the `result` object.
 
 ```{r}
+library(DBI)
+
 con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
 
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = 'G'")
