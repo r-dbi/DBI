@@ -29,7 +29,7 @@ DBI currently supports about 30 DBMS, including:
 * Postgres, using the R-package [RPostgres](https://github.com/r-dbi/RPostgres)
 * SQLite, using the R-package [RSQLite](https://github.com/r-dbi/RSQLite)
 
-For a more complete list of supported DBMS visit [https://github.com/r-dbi/backends#readme](https://github.com/r-dbi/backends).
+For a more complete list of supported DBMS visit [https://github.com/r-dbi/backends](https://github.com/r-dbi/backends#readme).
 You may need to install the package specific to your DBMS.
 
 The functionality currently supported for each of these DBMS's includes:
@@ -144,4 +144,4 @@ If you need to work with databases that will not fit in memory, or want to run m
 
 * An overview on [working with databases in R on Rstudio.com](https://db.rstudio.com/)
 * The DBI specification: `vignette("spec", package = "DBI")`
-* [List of supported DBMS](https://github.com/r-dbi/backends)
+* [List of supported DBMS](https://github.com/r-dbi/backends#readme)
