@@ -1,3 +1,9 @@
+# DBI 1.1.0.9003 (2021-01-03)
+
+- `dbAppendTable()` now allows columns named `sep` (#336).
+- `dbAppendTable()` shows a better error message if the input has zero columns (#313).
+
+
 # DBI 1.1.0.9002 (2021-01-02)
 
 - Expand "Get started" vignette to two tutorials, basic and advanced (#332, @jawond).
