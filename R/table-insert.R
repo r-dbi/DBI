@@ -44,7 +44,7 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
     fields <- dbQuoteIdentifier(con, names(sql_values))
 
     # Convert fields into a character matrix
-    rows <- do.call(paste, c(sql_values, sep = ", "))
+    rows <- do.call(paste, c(unname(sql_values), sep = ", "))
     SQL(paste0(
       "INSERT INTO ", table, "\n",
       "  (", paste(fields, collapse = ", "), ")\n",
