@@ -27,6 +27,7 @@ Start by creating a package. It's up to you what to call the package, but follow
 A ready-to-use template package is available at https://github.com/r-dbi/RKazam/.
 You can start by creating a new GitHub repository from this template, or by copying the package code.
 Rename "Kazam" to your desired name everywhere.
+The template package already contains dummy implementations for all classes and methods.
 
 If you chose to create the package manually, make sure to include in your `DESCRIPTION`:
 
