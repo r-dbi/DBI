@@ -1,3 +1,8 @@
+# DBI 1.1.1 (2021-01-04)
+
+- Internal changes only.
+
+
 # DBI 1.1.0.9003 (2021-01-03)
 
 - `dbAppendTable()` now allows columns named `sep` (#336).
