@@ -41,11 +41,7 @@ Importing `DBI` is fine, because your users are not supposed to *attach* your pa
 
 Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don't worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.
 
-Take the time now to head over to the `DBItest` vignette. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.
-
-```r
-vignette("test", package = "DBItest")
-```
+Take the time now to head over to the `DBItest` vignette at `vignette("test", package = "DBItest")`. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.
 
 Add custom tests that are not covered by `DBItest` at your discretion, or enhance `DBItest` and file a pull request if the test is generic enough to be useful for many DBI backends.
 
