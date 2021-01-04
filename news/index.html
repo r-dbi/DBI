@@ -142,51 +142,37 @@
 <h1 class="page-header" data-toc-text="1.1.1">
 <a href="#dbi-111-2021-01-04" class="anchor"></a>DBI 1.1.1 (2021-01-04)<small> Unreleased </small>
 </h1>
+<div id="documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#documentation" class="anchor"></a>Documentation</h2>
 <ul>
-<li>Internal changes only.</li>
+<li>Expand “Get started” vignette to two tutorials, basic and advanced (<a href='https://github.com/r-dbi/DBI/issues/332'>#332</a>, <a href='https://github.com/jawond'>@jawond</a>).</li>
 </ul>
 </div>
-    <div id="dbi-1109003-2021-01-03" class="section level1">
-<h1 class="page-header" data-toc-text="1.1.0.9003">
-<a href="#dbi-1109003-2021-01-03" class="anchor"></a>DBI 1.1.0.9003 (2021-01-03)<small> Unreleased </small>
-</h1>
+<div id="bug-fixes" class="section level2">
+<h2 class="hasAnchor">
+<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>
 <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code> now allows columns named <code>sep</code> (<a href='https://github.com/r-dbi/DBI/issues/336'>#336</a>).</li>
 <li>
 <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code> shows a better error message if the input has zero columns (<a href='https://github.com/r-dbi/DBI/issues/313'>#313</a>).</li>
-</ul>
-</div>
-    <div id="dbi-1109002-2021-01-02" class="section level1">
-<h1 class="page-header" data-toc-text="1.1.0.9002">
-<a href="#dbi-1109002-2021-01-02" class="anchor"></a>DBI 1.1.0.9002 (2021-01-02)<small> Unreleased </small>
-</h1>
-<ul>
-<li>Expand “Get started” vignette to two tutorials, basic and advanced (<a href='https://github.com/r-dbi/DBI/issues/332'>#332</a>, <a href='https://github.com/jawond'>@jawond</a>).</li>
 <li>
 <code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> now correctly interprets consecutive comments (<a href='https://github.com/r-dbi/DBI/issues/329'>#329</a>, <a href='https://github.com/rnorberg'>@rnorberg</a>).</li>
-</ul>
-</div>
-    <div id="dbi-1109001-2020-12-22" class="section level1">
-<h1 class="page-header" data-toc-text="1.1.0.9001">
-<a href="#dbi-1109001-2020-12-22" class="anchor"></a>DBI 1.1.0.9001 (2020-12-22)<small> Unreleased </small>
-</h1>
-<ul>
 <li>
 <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> works for difftime objects (<a href='https://github.com/r-dbi/DBI/issues/325'>#325</a>).</li>
 <li>
 <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> quotes dates as <code>YYYY-MM-DD</code> without time zone (<a href='https://github.com/r-dbi/DBI/issues/331'>#331</a>).</li>
+</ul>
+</div>
+<div id="internal" class="section level2">
+<h2 class="hasAnchor">
+<a href="#internal" class="anchor"></a>Internal</h2>
+<ul>
 <li>Switch to GitHub Actions (<a href='https://github.com/r-dbi/DBI/issues/326'>#326</a>).</li>
 <li>Update URL in DESCRIPTION.</li>
 </ul>
 </div>
-    <div id="dbi-1109000" class="section level1">
-<h1 class="page-header" data-toc-text="1.1.0.9000">
-<a href="#dbi-1109000" class="anchor"></a>DBI 1.1.0.9000<small> Unreleased </small>
-</h1>
-<ul>
-<li>Same as previous version.</li>
-</ul>
 </div>
     <div id="dbi-110" class="section level1">
 <h1 class="page-header" data-toc-text="1.1.0">
@@ -202,9 +188,9 @@
 <li><p><code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> now supports <code><a href="../reference/Id-class.html">Id()</a></code> objects with <code>catalog</code> members (<a href='https://github.com/r-dbi/DBI/issues/266'>#266</a>, <a href='https://github.com/raffscallion'>@raffscallion</a>). It also handles unquoted identifiers of the form <code>table</code>, <code>schema.table</code> or <code>catalog.schema.table</code>, for compatibility with dbplyr.</p></li>
 </ul>
 </div>
-<div id="documentation" class="section level2">
+<div id="documentation-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#documentation" class="anchor"></a>Documentation</h2>
+<a href="#documentation-1" class="anchor"></a>Documentation</h2>
 <ul>
 <li><p>New DBI intro article (<a href='https://github.com/r-dbi/DBI/issues/286'>#286</a>, <a href='https://github.com/cutterkom'>@cutterkom</a>).</p></li>
 <li><p>Add pkgdown reference index (<a href='https://github.com/r-dbi/DBI/issues/288'>#288</a>).</p></li>
@@ -214,9 +200,9 @@
 <li><p>Improve documentation for <code>Id</code>.</p></li>
 </ul>
 </div>
-<div id="internal" class="section level2">
+<div id="internal-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal" class="anchor"></a>Internal</h2>
+<a href="#internal-1" class="anchor"></a>Internal</h2>
 <ul>
 <li><p>Add tests for <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/279'>#279</a>, <a href='https://github.com/baileych'>@baileych</a>).</p></li>
 <li><p><code><a href="../reference/sqlInterpolate.html">sqlInterpolate()</a></code> uses <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> instead of checking the type of the input.</p></li>
@@ -259,9 +245,9 @@
 <li>The dynamic list of methods in help pages doesn’t contain methods in DBI anymore.</li>
 </ul>
 </div>
-<div id="bug-fixes" class="section level2">
+<div id="bug-fixes-1" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Pass missing <code>value</code> argument to secondary <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> call (<a href='https://github.com/r-dbi/DBI/issues/737'>#737</a>, <a href='https://github.com/jimhester'>@jimhester</a>).</li>
 <li>The <code>Id</code> class now uses <code>&lt;Id&gt;</code> and not <code>&lt;Table&gt;</code> when printing.</li>
@@ -320,17 +306,17 @@
 <li>The deprecated <code>print.list.pairs()</code> has been removed.</li>
 </ul>
 </div>
-<div id="bug-fixes-1" class="section level2">
+<div id="bug-fixes-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bug-fixes-1" class="anchor"></a>Bug fixes</h2>
+<a href="#bug-fixes-2" class="anchor"></a>Bug fixes</h2>
 <ul>
 <li>Fix <code><a href="../reference/dbDataType.html">dbDataType()</a></code> for <code>AsIs</code> object (<a href='https://github.com/r-dbi/DBI/issues/198'>#198</a>, <a href='https://github.com/yutannihilation'>@yutannihilation</a>).</li>
 <li>Fix <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to ignore invalid UTF-8 strings (r-dbi/DBItest<a href='https://github.com/r-dbi/DBI/issues/156'>#156</a>).</li>
 </ul>
 </div>
-<div id="documentation-1" class="section level2">
+<div id="documentation-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#documentation-1" class="anchor"></a>Documentation</h2>
+<a href="#documentation-2" class="anchor"></a>Documentation</h2>
 <ul>
 <li>Help pages for generics now contain a dynamic list of methods implemented by DBI backends (<a href='https://github.com/r-dbi/DBI/issues/162'>#162</a>).</li>
 <li>
@@ -339,9 +325,9 @@
 <li>Reflect new ‘r-dbi’ organization in <code>DESCRIPTION</code> (<a href='https://github.com/wibeasley'>@wibeasley</a>, <a href='https://github.com/r-dbi/DBI/issues/207'>#207</a>).</li>
 </ul>
 </div>
-<div id="internal-1" class="section level2">
+<div id="internal-2" class="section level2">
 <h2 class="hasAnchor">
-<a href="#internal-1" class="anchor"></a>Internal</h2>
+<a href="#internal-2" class="anchor"></a>Internal</h2>
 <ul>
 <li>Using switchpatch on the second argument for default implementations of <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</li>
 </ul>
