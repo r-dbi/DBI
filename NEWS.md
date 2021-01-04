@@ -7,7 +7,7 @@
 # DBI 1.1.0.9002 (2021-01-02)
 
 - Expand "Get started" vignette to two tutorials, basic and advanced (#332, @jawond).
-- `sqlInterpolate()` now correctly interpretes consecutive comments (#329, @rnorberg).
+- `sqlInterpolate()` now correctly interprets consecutive comments (#329, @rnorberg).
 
 
 # DBI 1.1.0.9001 (2020-12-22)
