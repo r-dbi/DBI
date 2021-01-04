@@ -71,7 +71,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementing a new backend</h1>
-                        <h4 class="author">Hadley Wickham</h4>
+                        <h4 class="author">Hadley Wickham, Kirill Müller</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/backend.Rmd"><code>vignettes/backend.Rmd</code></a></small>
@@ -88,7 +88,8 @@
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>Start by creating a package. It’s up to you what to call the package, but following the existing pattern of <code>RSQLite</code>, <code>RMySQL</code>, <code>RPostgres</code> and <code>ROracle</code> will make it easier for people to find it. For this example, I’ll call my package <code>RKazam</code>.</p>
-<p>In your <code>DESCRIPTION</code>, make sure to include:</p>
+<p>A ready-to-use template package is available at <a href="https://github.com/r-dbi/RKazam/" class="uri">https://github.com/r-dbi/RKazam/</a>. You can start by creating a new GitHub repository from this template, or by copying the package code. Rename “Kazam” to your desired name everywhere.</p>
+<p>If you chose to create the package manually, make sure to include in your <code>DESCRIPTION</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="at">  DBI (&gt;= 0.3.0),</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="at">  methods</span></span>
