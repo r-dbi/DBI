@@ -87,7 +87,7 @@ with \link{NULL} entries for SQL NULL values
 \item coercible using \code{\link[=as.Date]{as.Date()}} for dates,
 with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_date})
-\item coercible using \code{\link[hms:as_hms]{hms::as_hms()}} for times,
+\item coercible using \code{\link[hms:hms]{hms::as_hms()}} for times,
 with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_time})
 \item coercible using \code{\link[=as.POSIXct]{as.POSIXct()}} for timestamps,

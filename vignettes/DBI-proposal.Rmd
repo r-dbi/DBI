@@ -90,15 +90,15 @@ variety of different devices, such X displays, Postscript, etc.)
 The following verbatim shows the front-end:
 
 ```
-> mgr <- dbManager("Oracle")  
+> mgr <- dbManager("Oracle")
 > con <- dbConnect(mgr, user = "user", passwd = "passwd")
-> rs <- dbExecStatement(con, 
+> rs <- dbExecStatement(con,
           "select fld1, fld2, fld3 from MY_TABLE")
 > tbls <- fetch(rs, n = 100)
 > hasCompleted(rs)
 [1] T
 > close(rs)
-> rs <- dbExecStatement(con, 
+> rs <- dbExecStatement(con,
           "select id_name, q25, q50 from liv2")
 > res <- fetch(rs)
 > getRowCount(rs)
@@ -159,7 +159,7 @@ All these classes should implement the methods `show`, `describe`, and
         > mgr <- dbManager("MySQL")
         > getInfo(mgr, "version")
         > con <- dbConnect(mgr, ...)
-        > getInfo(con, "type")  
+        > getInfo(con, "type")
 
 The reason we implement the meta-data through `getInfo` in this way is
 to simplify the writing of database back-ends. We don’t want to
@@ -538,33 +538,33 @@ necessarily relational.
 # Resources {#sec:resources}
 
 The latest documentation and software on the RS-DBI was available at
-www.omegahat.net (link dead now: `http://www.omegahat.net/contrib/RS-DBI/index.html`).
+www.omegahat.net (link dead now: `https://www.omegahat.net/contrib/RS-DBI/index.html`).
 The R community has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
-interface to the [mSQL](http://www.Hughes.com.au) database written by
-Torsten Hothorn; [RPgSQL](http://www.nceas.ucsb.edu/~keitt/R) is an
-interface to [PostgreSQL](http://www.postgreSQL.org) and was written by
-Timothy H. Keitt; [RODBC](http://www.stats.ox.ac.uk/pub/bdr) is an
+interface to the [mSQL](https://www.Hughes.com.au) database written by
+Torsten Hothorn; [RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
+interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
+Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
 interface to ODBC, and it was written by [Michael
 Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see @R.imp-exp.)
 
 The are R and S-Plus interfaces
 to
-[MySQL](http://www.mysql.org) that follow the propose RS-DBI API
+[MySQL](https://dev.mysql.com/) that follow the propose RS-DBI API
 described here; also, there’s an S-Plus interface
 SOracle @RS-Oracle to
-[Oracle](http://www.oracle.com) (we expect to have an R implementation
+[Oracle](https://www.oracle.com/) (we expect to have an R implementation
 soon.)
 
 The idea of a common interface to databases has been successfully
 implemented in Java’s Database Connectivity (JDBC)
-([www.javasoft.com](http://www.javasoft.com/products/jdbc/index.html)),
+([www.javasoft.com](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)),
 in C through the Open Database Connectivity (ODBC)
 ([www.unixodbc.org](http://www.unixodbc.org/)), in Python’s
 Database Application Programming Interface
-([www.python.org](http://www.python.org)), and in Perl’s Database
-Interface ([www.cpan.org](http://www.cpan.org)).
+([www.python.org](https://www.python.org)), and in Perl’s Database
+Interface ([www.cpan.org](https://www.cpan.org)).
 
 # Acknowledgements
 
@@ -586,137 +586,137 @@ inter-class relationships.
 
 ```R
 ## Define all the classes and methods to be used by an
-## implementation of the RS-DataBase Interface.  Mostly, 
+## implementation of the RS-DataBase Interface.  Mostly,
 ## these classes are virtual and each driver should extend
 ## them to provide the actual implementation.
 
-## Class: dbManager 
+## Class: dbManager
 ## This class identifies the DataBase Management System
 ## (Oracle, MySQL, Informix, PostgreSQL, etc.)
 
 setClass("dbManager", VIRTUAL)
 
-setGeneric("load", 
-   def = function(dbMgr,...) 
+setGeneric("load",
+   def = function(dbMgr,...)
    standardGeneric("load")
    )
-setGeneric("unload", 
+setGeneric("unload",
    def = function(dbMgr,...)
    standardGeneric("unload")
    )
-setGeneric("getVersion", 
-   def = function(dbMgr,...) 
+setGeneric("getVersion",
+   def = function(dbMgr,...)
    standardGeneric("getVersion")
    )
 
-## Class: dbConnections 
-## This class captures a connection to a database instance. 
+## Class: dbConnections
+## This class captures a connection to a database instance.
 
 setClass("dbConnection", VIRTUAL)
 
-setGeneric("dbConnection", 
-   def = function(dbMgr, ...) 
+setGeneric("dbConnection",
+   def = function(dbMgr, ...)
    standardGeneric("dbConnection")
    )
-setGeneric("dbConnect", 
-   def = function(dbMgr, ...) 
+setGeneric("dbConnect",
+   def = function(dbMgr, ...)
    standardGeneric("dbConnect")
    )
-setGeneric("dbExecStatement", 
+setGeneric("dbExecStatement",
    def = function(con, statement, ...)
    standardGeneric("dbExecStatement")
    )
-setGeneric("dbExec", 
-   def = function(con, statement, ...) 
+setGeneric("dbExec",
+   def = function(con, statement, ...)
    standardGeneric("dbExec")
    )
-setGeneric("getResultSet", 
-   def = function(con, ..) 
+setGeneric("getResultSet",
+   def = function(con, ..)
    standardGeneric("getResultSet")
    )
-setGeneric("commit", 
-   def = function(con, ...) 
+setGeneric("commit",
+   def = function(con, ...)
    standardGeneric("commit")
    )
-setGeneric("rollback", 
-   def = function(con, ...) 
+setGeneric("rollback",
+   def = function(con, ...)
    standardGeneric("rollback")
    )
-setGeneric("callProc", 
-   def = function(con, ...) 
+setGeneric("callProc",
+   def = function(con, ...)
    standardGeneric("callProc")
    )
-setMethod("close", 
+setMethod("close",
    signature = list(con="dbConnection", type="missing"),
    def = function(con, type) NULL
    )
 
 ## Class: dbResult
-## This is a base class for arbitrary results from the RDBMS 
-## (INSERT, UPDATE, DELETE).  SELECTs (and SELECT-like) 
-## statements produce "dbResultSet" objects, which extend 
+## This is a base class for arbitrary results from the RDBMS
+## (INSERT, UPDATE, DELETE).  SELECTs (and SELECT-like)
+## statements produce "dbResultSet" objects, which extend
 ## dbResult.
 
 setClass("dbResult", VIRTUAL)
 
-setMethod("close", 
+setMethod("close",
    signature = list(con="dbResult", type="missing"),
    def = function(con, type) NULL
    )
 
 ## Class: dbResultSet
-## Note that we define a resultSet as the result of a 
+## Note that we define a resultSet as the result of a
 ## SELECT  SQL statement.
 
 setClass("dbResultSet", "dbResult")
 
-setGeneric("fetch", 
-   def = function(resultSet,n,...) 
+setGeneric("fetch",
+   def = function(resultSet,n,...)
    standardGeneric("fetch")
    )
 setGeneric("hasCompleted",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("hasCompleted")
    )
 setGeneric("getException",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("getException")
    )
 setGeneric("getDBconnection",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("getDBconnection")
    )
-setGeneric("setDataMappings", 
-   def = function(resultSet, ...) 
+setGeneric("setDataMappings",
+   def = function(resultSet, ...)
    standardGeneric("setDataMappings")
    )
 setGeneric("getFields",
-   def = function(object, table, dbname,  ...) 
+   def = function(object, table, dbname,  ...)
    standardGeneric("getFields")
    )
-setGeneric("getStatement", 
-   def = function(object, ...) 
+setGeneric("getStatement",
+   def = function(object, ...)
    standardGeneric("getStatement")
    )
 setGeneric("getRowsAffected",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("getRowsAffected")
    )
 setGeneric("getRowCount",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("getRowCount")
    )
 setGeneric("getNullOk",
-   def = function(object, ...) 
+   def = function(object, ...)
    standardGeneric("getNullOk")
    )
 
-## Meta-data: 
-setGeneric("getInfo", 
-   def = function(object, ...) 
+## Meta-data:
+setGeneric("getInfo",
+   def = function(object, ...)
    standardGeneric("getInfo")
    )
-setGeneric("describe", 
+setGeneric("describe",
    def = function(object, verbose=F, ...)
    standardGeneric("describe")
    )
@@ -724,20 +724,20 @@ setGeneric("getCurrentDatabase",
    def = function(object, ...)
    standardGeneric("getCurrentDatabase")
    )
-setGeneric("getDatabases", 
+setGeneric("getDatabases",
    def = function(object, ...)
    standardGeneric("getDatabases")
    )
-setGeneric("getTables", 
+setGeneric("getTables",
    def = function(object, dbname, ...)
    standardGeneric("getTables")
    )
-setGeneric("getTableFields", 
+setGeneric("getTableFields",
    def = function(object, table, dbname, ...)
    standardGeneric("getTableFields")
    )
-setGeneric("getTableIndices", 
-   def = function(object, table, dbname, ...) 
+setGeneric("getTableIndices",
+   def = function(object, table, dbname, ...)
    standardGeneric("getTableIndices")
    )
 ```

@@ -16,8 +16,7 @@ knitr::opts_chunk$set(
 # DBI
 
 <!-- badges: start -->
-[![Build Status](https://travis-ci.org/r-dbi/DBI.svg?branch=master)](https://travis-ci.org/r-dbi/DBI)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/r-dbi/DBI?branch=master&svg=true)](https://ci.appveyor.com/project/r-dbi/DBI)
+[![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
@@ -33,10 +32,10 @@ The package defines an interface that is implemented by *DBI backends* such as:
 - [odbc](https://github.com/r-dbi/odbc),
 - [bigrquery](https://github.com/r-dbi/bigrquery),
 
-and many more.
+and many more, see the [list of backends](https://github.com/r-dbi/backends#readme).
 R scripts and packages use DBI to access various databases through their DBI backends.
 
-The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](http://dbi.perl.org/), Java's [JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html), Python's [DB-API](http://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](http://en.wikipedia.org/wiki/ODBC).
+The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/), Java's [JDBC](https://www.oracle.com/java/technologies/javase/javase-tech-database.html), Python's [DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
 It supports the following operations:
 
 * connect/disconnect to the DBMS
@@ -122,7 +121,7 @@ All classes are _virtual_: they cannot be instantiated directly and instead must
 
 ## Further Reading
 
-* [Databases using R](http://db.rstudio.com/) describes the tools and best practices in this ecosystem.
+* [Databases using R](https://db.rstudio.com/) describes the tools and best practices in this ecosystem.
 
 * The [DBI project site](https://www.r-dbi.org/) hosts a blog where recent developments are presented.
 

@@ -53,7 +53,6 @@ NULL
 #' dbReadTable(con, "account")
 #'
 #' dbDisconnect(con)
-#' @name transactions
 NULL
 
 #' @export

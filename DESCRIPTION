@@ -1,7 +1,7 @@
 Package: DBI
 Title: R Database Interface
-Version: 1.1.0
-Date: 2019-12-15
+Version: 1.1.1
+Date: 2021-01-04
 Authors@R: 
     c(person(given = "R Special Interest Group on Databases (R-SIG-DB)",
              role = "aut"),
@@ -20,7 +20,7 @@ Description: A database interface definition for communication
     this package are virtual and need to be extended by the various R/DBMS
     implementations.
 License: LGPL (>= 2.1)
-URL: http://r-dbi.github.io/DBI, https://github.com/r-dbi/DBI
+URL: https://dbi.r-dbi.org, https://github.com/r-dbi/DBI
 BugReports: https://github.com/r-dbi/DBI/issues
 Depends:
     methods,
@@ -28,11 +28,15 @@ Depends:
 Suggests:
     blob,
     covr,
+    dbplyr,
+    dplyr,
+    glue,
     hms,
     knitr,
     magrittr,
     rmarkdown,
     rprojroot,
+    RMariaDB,
     RSQLite (>= 1.1-2),
     testthat,
     xml2
@@ -41,7 +45,7 @@ VignetteBuilder:
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate",
     "namespace", "rd"))
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.1.9000
 Collate: 
     'hidden.R'
     'DBObject.R'
@@ -55,6 +59,7 @@ Collate:
     'data-types.R'
     'data.R'
     'deprecated.R'
+    'hms.R'
     'interpolate.R'
     'list-pairs.R'
     'quote.R'

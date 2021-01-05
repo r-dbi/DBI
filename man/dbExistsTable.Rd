@@ -17,6 +17,7 @@ dbExistsTable(conn, name, ...)
 \value{
 \code{dbExistsTable()} returns a logical scalar, \code{TRUE} if the table or view
 specified by the \code{name} argument exists, \code{FALSE} otherwise.
+
 This includes temporary tables if supported by the database.
 
 An error is raised when calling this method for a closed

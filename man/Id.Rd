@@ -12,7 +12,7 @@ Id(...)
 \item{...}{Components of the hierarchy, e.g. \code{schema}, \code{table},
 or \code{cluster}, \code{catalog}, \code{schema}, \code{table}.
 For more on these concepts, see
-\url{http://stackoverflow.com/questions/7022755/}}
+\url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
 Objects of class \code{Id} have a single slot \code{name}, which is a named

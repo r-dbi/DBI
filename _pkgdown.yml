@@ -89,6 +89,21 @@ reference:
   - '`DBIConnector-class`'
   - '`Id-class`'
 
+articles:
+- title: Tutorials
+  contents:
+  - '`DBI`'
+  - '`DBI-advanced`'
+  - '`backend`'
+- title: Specification
+  contents:
+  - '`spec`'
+- title: Historic
+  contents:
+  - '`DBI-proposal`'
+  - '`DBI-history`'
+  - '`DBI-1`'
+
 development:
   mode: auto
 

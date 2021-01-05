@@ -281,7 +281,7 @@ quote_string <-
     if (length(x) == 0L) {
       SQL(character())
     } else {
-      # Not calling encodeString() here, see also http://stackoverflow.com/a/549244/946850
+      # Not calling encodeString() here, see also https://stackoverflow.com/a/549244/946850
       # and especially the comment by Álvaro González
       str <- paste("'", x, "'", sep = "")
       str[is.na(x)] <- "NULL"
@@ -368,7 +368,9 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       ))
     }
 
-    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x, usetz = TRUE)))
+    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x)))
+
+    if (inherits(x, "difftime")) return(dbQuoteString(conn, format_hms(x)))
 
     if (is.list(x)) {
       blob_data <- vapply(

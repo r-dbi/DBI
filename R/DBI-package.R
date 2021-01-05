@@ -4,9 +4,9 @@
 #' All classes in this package are virtual and need to be extended by
 #' the various R/DBMS implementations (so-called *DBI backends*).
 #'
-#' @inheritSection DBItest::DBIspec Definition
-#' @inheritSection DBItest::DBIspec DBI classes and methods
-#' @inheritSection DBItest::DBIspec Construction of the DBIDriver object
+#' @inheritSection DBItest::spec_getting_started Definition
+#' @inheritSection DBItest::spec_compliance_methods DBI classes and methods
+#' @inheritSection DBItest::spec_driver_constructor Construction of the DBIDriver object
 #'
 #' @examples
 #' RSQLite::SQLite()

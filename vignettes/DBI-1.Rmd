@@ -36,7 +36,7 @@ illustrates some of the DBI capabilities:
 drv <- dbDriver("ODBC")
 con <- dbConnect(drv, "dsn", "usr", "pwd")
 
-## The interface can work at a higher level importing tables 
+## The interface can work at a higher level importing tables
 ## as data.frames and exporting data.frames as DBMS tables.
 
 dbListTables(con)
@@ -414,9 +414,9 @@ procedures. All these functions are optional.*
     vary substantially from one RDBMS to another.]
 
     **Deprecated since 2014:**
-    
+
     The recommended way of calling a stored procedure is now
-    
+
     - `dbGetQuery` if a result set is returned and
     - `dbExecute`  for data manipulation and other cases that do not return a result set.
 
@@ -687,15 +687,15 @@ The idea of a common interface to databases has been successfully
 implemented in various environments, for instance:
 
 Java’s Database Connectivity (JDBC)
-([www.javasoft.com](http://www.javasoft.com/products/jdbc/index.html)).
+([www.javasoft.com](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)).
 
 In C through the Open Database Connectivity (ODBC)
 ([www.unixodbc.org](http://www.unixodbc.org/)).
 
 Python’s Database Application Programming Interface
-([www.python.org](http://www.python.org/topics/database)).
+([www.python.org](https://wiki.python.org/moin/DatabaseProgramming)).
 
-Perl’s Database Interface ([dbi.perl.org](http://dbi.perl.org)).
+Perl’s Database Interface ([dbi.perl.org](https://dbi.perl.org)).
 
 [^1]: A virtual class allows us to group classes that share some common
     characteristics, even if their implementations are radically

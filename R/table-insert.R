@@ -44,7 +44,7 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
     fields <- dbQuoteIdentifier(con, names(sql_values))
 
     # Convert fields into a character matrix
-    rows <- do.call(paste, c(sql_values, sep = ", "))
+    rows <- do.call(paste, c(unname(sql_values), sep = ", "))
     SQL(paste0(
       "INSERT INTO ", table, "\n",
       "  (", paste(fields, collapse = ", "), ")\n",
@@ -70,9 +70,13 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
 sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
   if (missing(row.names)) {
-    warning("Do not rely on the default value of the row.names argument for sqlAppendTableTemplate(), it will change in the future.",
+    warning("Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.",
       call. = FALSE
     )
+  }
+
+  if (length(values) == 0) {
+    stop("Must pass at least one column in `values`", call. = FALSE)
   }
 
   table <- dbQuoteIdentifier(con, table)
@@ -105,7 +109,7 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' beforehand, e.g. with [dbCreateTable()].
 #' The default implementation calls [sqlAppendTableTemplate()] and then
 #' [dbExecute()] with the `param` argument. Backends compliant to
-#' ANSI SQL 99 which use `?` as a placeholder for prepard queries don't need
+#' ANSI SQL 99 which use `?` as a placeholder for prepared queries don't need
 #' to override it. Backends with a different SQL syntax which use `?`
 #' as a placeholder for prepared queries can override [sqlAppendTable()].
 #' Other backends (with different placeholders or with entirely different
