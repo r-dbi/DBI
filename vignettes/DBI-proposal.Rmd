@@ -544,7 +544,7 @@ The R community has developed interfaces to some databases:
 interface to the [mSQL](https://www.Hughes.com.au) database written by
 Torsten Hothorn; [RPgSQL](https://www.nceas.ucsb.edu/~keitt/R) is an
 interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
-Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr) is an
+Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
 interface to ODBC, and it was written by [Michael
 Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see @R.imp-exp.)
@@ -554,7 +554,7 @@ to
 [MySQL](https://www.mysql.org) that follow the propose RS-DBI API
 described here; also, there’s an S-Plus interface
 SOracle @RS-Oracle to
-[Oracle](https://www.oracle.com) (we expect to have an R implementation
+[Oracle](https://www.oracle.com/) (we expect to have an R implementation
 soon.)
 
 The idea of a common interface to databases has been successfully
