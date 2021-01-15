@@ -39,7 +39,7 @@ The functionality currently supported for each of these DBMS's includes:
 - list the column names in a table
 - read a table into a data frame
 
-For more advanced features, such as parameterised queries, transactions, and more see `vignette("DBI-advanced", package = "DBI")`.
+For more advanced features, such as parameterized queries, transactions, and more see `vignette("DBI-advanced", package = "DBI")`.
 
 
 ## How to connect to a database using DBI
@@ -67,12 +67,12 @@ Connections to databases are created using the `dbConnect()` function.
 The first argument to the function is the driver for the DBMS you are connecting to.
 In the example above we are connecting to a MariaDB instance, so we use the `RMariaDB::MariaDB()` driver.
 The other arguments depend on the authentication required by the DBMS.
-In the example host, port, username, password, dbname are required.
+In the example host, port, username, password, and dbname are required.
 See the documentation for the DBMS driver package that you are using for specifics.
 
 The function `dbListTables()` takes a database connection as its only argument and returns a character vector with all table and view names in the database.
 
-After completing a session with a DBMS, we release the connection with a call to `dbDisconnect()`.
+After completing a session with a DBMS, always release the connection with a call to `dbDisconnect()`.
 
 ## How to retrieve column names for a table
 
@@ -112,7 +112,8 @@ head(df,3)
 We could also retrieve movies released in 2006 that are rated "G".
 Note that character strings must be quoted.
 As the query itself is contained within double quotes, we use single quotes around the rating.
-See `dbQuoteLiteral()` for programmatically converting arbitrary R values to SQL, this is covered in more detail in `vignette("DBI-advanced", package = "DBI")`.
+See `dbQuoteLiteral()` for programmatically converting arbitrary R values to SQL.
+This is covered in more detail in `vignette("DBI-advanced", package = "DBI")`.
 
 ```{r}
 df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006 and rating = 'G'")
@@ -132,7 +133,7 @@ lazy_df <-
 head(lazy_df, 3)
 ```
 
-If you want to perform other data manipulation queries such as `UPDATE`s and `DELETE`s, see `dbSendStatement()` which is introduced in `vignette("DBI-advanced", package = "DBI")`.
+If you want to perform other data manipulation queries such as `UPDATE`s and `DELETE`s, see `dbSendStatement()` in `vignette("DBI-advanced", package = "DBI")`.
 
 ## How to end a DBMS session
 
@@ -145,7 +146,7 @@ dbDisconnect(con)
 ## Conclusion
 
 This tutorial has given you the basic techniques for accessing data in any supported DBMS.
-If you need to work with databases that will not fit in memory, or want to run more complex queries, including parameterised queries, please see `vignette("DBI-advanced", package = "DBI")`.
+If you need to work with databases that will not fit in memory, or want to run more complex queries, including parameterized queries, please see `vignette("DBI-advanced", package = "DBI")`.
 
 
 ## Further Reading
