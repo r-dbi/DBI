@@ -197,21 +197,16 @@
 <div id="parameterized-queries" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameterized-queries" class="anchor"></a>Parameterized queries</h3>
-<p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.</p>
-<p>MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values. Other DBMS may use named parameters. We recommend consulting the documentation for the DBMS you are using. As an example, a web search for “mariadb parameterized queries” leads to the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/"><code>PREPARE</code> statement</a> which mentions:</p>
-<blockquote>
-<p>Within the statement, “?” characters can be used as parameter markers to indicate where data values are to be bound to the query later when you execute it.</p>
-</blockquote>
-<p>Currently there is no list of which placeholder scheme a particular DBMS supports.</p>
+<p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression. MariaDB uses a <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> for each parameter and expects an unnamed list of literal values for each placeholder in the query. Other DBMS may use named parameters. Currently there is no list of which placeholder scheme a particular DBMS supports. For now all we can recommend is consulting the documentation for the DBMS driver you are using.</p>
 <p>Placeholders only work for literal values. Other parts of the query, e.g. table or column identifiers, still need to be quoted with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 <p>For a single set of parameters, the <code>params</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It takes a list and its members are substituted in order for the placeholders within the query.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span>
 <span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span>
 
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = ?"</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"SELECT * FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = ?"</span><span class="op">)</span>
 <span class="va">query</span></code></pre></div>
-<pre><code>## [1] "SELECT * FROM film WHERE `rating` = ?"</code></pre>
+<pre><code>## [1] "SELECT * FROM film WHERE  `rating`  = ?"</code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
@@ -239,8 +234,8 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>Below is an example query using multiple placeholders with the MariaDB driver. The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="fl">90</span><span class="op">)</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span>
+<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">'G'</span>, <span class="fl">90</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"SELECT title, rating, length FROM film WHERE rating = ? and length &gt;= ?"</span><span class="op">)</span>
 
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
@@ -327,21 +322,8 @@
 ## 3 2006-02-15 04:03:42</code></pre>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
-<p>Use a list of vectors if your query has multiple parameters:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span>
-
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
-<pre><code>##              title rating length
-## 1 AFFAIR PREJUDICE      G    117
-## 2      AFRICAN EGG      G    130
-## 3  ALAMO VIDEOTAPE      G    126</code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>Always disconnect from the database when done.</p>
-<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -351,7 +333,7 @@
 <p>For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> passes the SQL statement to the DBMS for execution and returns the number of rows affected. <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> performs in the same manner, but returns a result object. Call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> with the result object to get the count of the affected rows. You then need to call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> with the result object afterwards to release resources.</p>
 <p>In actuality, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> is a convenience function that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. You can use these functions if you need more control over the query process.</p>
 <p>The subsequent examples use an in-memory SQL database provided by <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">RSQLite::SQLite()</a></code>, because the remote database used in above examples does not allow writing.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -362,14 +344,14 @@
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span>
 <span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span>
   <span class="va">con</span>,
   <span class="st">"INSERT INTO cars (speed, dist) VALUES (4, 4), (5, 5), (6, 6)"</span>
 <span class="op">)</span>
 <span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span></code></pre></div>
@@ -378,48 +360,43 @@
 ## 2     4   10
 ## 3     7    4
 ## Showing 3 out of 9 rows.</code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="sql-transactions-with-dbi" class="section level2">
 <h2 class="hasAnchor">
 <a href="#sql-transactions-with-dbi" class="anchor"></a>SQL transactions with DBI</h2>
 <p>DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with <code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and ensures that either both tables are updated, or no changes are persisted to the database and an error is thrown.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">withdraw</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># All operations must be carried out as logical unit:</span>
+  <span class="co"># All operations are carried out as logical unit:</span>
   <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
   <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">withdraw_transacted</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
-  <span class="co"># Ensure atomicity</span>
   <span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
-
-  <span class="co"># Perform operation</span>
   <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>
-
-  <span class="co"># Persist results</span>
   <span class="fu"><a href="../reference/transactions.html">dbCommit</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu">withdraw_transacted</span><span class="op">(</span><span class="fl">300</span><span class="op">)</span></code></pre></div>
-<p>After withdrawing 300 credits, the cash is increased and the account is decreased by this amount. The transaction ensures that either both operations succeed, or no change occurs.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<span class="fu">withdraw</span><span class="op">(</span><span class="fl">300</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1    400</code></pre>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1   1700</code></pre>
 <p>We can roll back changes manually if necessary. Do not forget to call <code><a href="../reference/transactions.html">dbRollback()</a></code> in case of error, otherwise the transaction remains open indefinitely.</p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">withdraw_if_funds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
   <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>
@@ -437,16 +414,16 @@
 <span class="fu">withdraw_if_funds</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></code></pre></div>
 <pre><code>## Insufficient funds</code></pre>
 <pre><code>## [1] FALSE</code></pre>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1    400</code></pre>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1   1700</code></pre>
 <p>Use <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> as a safe way to open a transaction, call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> on error.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">withdraw_safely</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span>
     <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>
@@ -458,16 +435,16 @@
 
 <span class="fu">withdraw_safely</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></code></pre></div>
 <pre><code>## Error: Error: insufficient funds</code></pre>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1    400</code></pre>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1   1700</code></pre>
 <p>As usual, do not forget to disconnect from the database when done.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
