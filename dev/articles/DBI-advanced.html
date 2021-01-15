@@ -110,12 +110,12 @@
 <div id="who-this-tutorial-is-for" class="section level2">
 <h2 class="hasAnchor">
 <a href="#who-this-tutorial-is-for" class="anchor"></a>Who this tutorial is for</h2>
-<p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connections and execution of simple queries.</p>
+<p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connecting to DBMS and executing simple queries.</p>
 </div>
 <div id="how-to-run-more-complex-queries-using-dbi" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-run-more-complex-queries-using-dbi" class="anchor"></a>How to run more complex queries using DBI</h2>
-<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.</p>
+<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.</p>
 <p>These functions are:</p>
 <ul>
 <li>
@@ -188,7 +188,7 @@
 <h3 class="hasAnchor">
 <a href="#quoting" class="anchor"></a>Quoting</h3>
 <p>Quoting of parameter values is performed using the function <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code>, which supports many R data types, including date and time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
+<p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span>
 <span class="va">safe_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"G"</span><span class="op">)</span>
@@ -222,7 +222,7 @@
 <div id="parameterized-queries" class="section level3">
 <h3 class="hasAnchor">
 <a href="#parameterized-queries" class="anchor"></a>Parameterized queries</h3>
-<p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression. MariaDB uses a <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> for each parameter and expects an unnamed list of literal values for each placeholder in the query. Other DBMS may use named parameters. Currently there is no list of which placeholder scheme a particular DBMS supports. For now all we can recommend is consulting the documentation for the DBMS driver you are using.</p>
+<p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI simply passes through the SQL expression. MariaDB uses a <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> for each parameter and expects an unnamed list of literal values for each placeholder in the query. Other DBMS may use named parameters. Currently there is no list of which placeholder scheme a particular DBMS supports. For now all we can recommend is consulting the documentation for the DBMS driver you are using.</p>
 <p>Placeholders only work for literal values. Other parts of the query, e.g. table or column identifiers, still need to be quoted with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 <p>For a single set of parameters, the <code>params</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It takes a list and its members are substituted in order for the placeholders within the query.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -447,7 +447,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></code></pre></div>
 <pre><code>##   amount
 ## 1   1700</code></pre>
-<p>Use <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> as a safe way to open a transaction, call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> on error.</p>
+<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> simplifies using transactions. Pass it a connection and the code you want to run as a transaction. It will execute the code and call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> if an error is thrown.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">withdraw_safely</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span>
@@ -480,7 +480,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors, users do not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Users do not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

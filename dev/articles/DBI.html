@@ -131,7 +131,7 @@
 <li>list the column names in a table</li>
 <li>read a table into a data frame</li>
 </ul>
-<p>For more advanced features, such as parameterised queries, transactions, and more see <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
+<p>For more advanced features, such as parameterized queries, transactions, and more see <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 </div>
 <div id="how-to-connect-to-a-database-using-dbi" class="section level2">
 <h2 class="hasAnchor">
@@ -156,9 +156,9 @@
 ## [13] "payment"       "rental"        "staff"         "store"</code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
-<p>Connections to databases are created using the <code><a href="../reference/dbConnect.html">dbConnect()</a></code> function. The first argument to the function is the driver for the DBMS you are connecting to. In the example above we are connecting to a MariaDB instance, so we use the <code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">RMariaDB::MariaDB()</a></code> driver. The other arguments depend on the authentication required by the DBMS. In the example host, port, username, password, dbname are required. See the documentation for the DBMS driver package that you are using for specifics.</p>
+<p>Connections to databases are created using the <code><a href="../reference/dbConnect.html">dbConnect()</a></code> function. The first argument to the function is the driver for the DBMS you are connecting to. In the example above we are connecting to a MariaDB instance, so we use the <code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">RMariaDB::MariaDB()</a></code> driver. The other arguments depend on the authentication required by the DBMS. In the example host, port, username, password, and dbname are required. See the documentation for the DBMS driver package that you are using for specifics.</p>
 <p>The function <code><a href="../reference/dbListTables.html">dbListTables()</a></code> takes a database connection as its only argument and returns a character vector with all table and view names in the database.</p>
-<p>After completing a session with a DBMS, we release the connection with a call to <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>.</p>
+<p>After completing a session with a DBMS, always release the connection with a call to <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>.</p>
 </div>
 <div id="how-to-retrieve-column-names-for-a-table" class="section level2">
 <h2 class="hasAnchor">
@@ -216,7 +216,7 @@
 ## 1     A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies
 ## 2 A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
 ## 3     A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory</code></pre>
-<p>We could also retrieve movies released in 2006 that are rated “G”. Note that character strings must be quoted. As the query itself is contained within double quotes, we use single quotes around the rating. See <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> for programmatically converting arbitrary R values to SQL, this is covered in more detail in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
+<p>We could also retrieve movies released in 2006 that are rated “G”. Note that character strings must be quoted. As the query itself is contained within double quotes, we use single quotes around the rating. See <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> for programmatically converting arbitrary R values to SQL. This is covered in more detail in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT film_id, title, description FROM film WHERE release_year = 2006 and rating = 'G'"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
@@ -244,7 +244,7 @@
 ## 1       1 ACADEMY DINO… A Epic Drama of a Feminist And a Mad Scientist who must…
 ## 2       2 ACE GOLDFING… A Astounding Epistle of a Database Administrator And a …
 ## 3       3 ADAPTATION H… A Astounding Reflection of a Lumberjack And a Car who m…</code></pre>
-<p>If you want to perform other data manipulation queries such as <code>UPDATE</code>s and <code>DELETE</code>s, see <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> which is introduced in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
+<p>If you want to perform other data manipulation queries such as <code>UPDATE</code>s and <code>DELETE</code>s, see <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 </div>
 <div id="how-to-end-a-dbms-session" class="section level2">
 <h2 class="hasAnchor">
@@ -256,7 +256,7 @@
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
-<p>This tutorial has given you the basic techniques for accessing data in any supported DBMS. If you need to work with databases that will not fit in memory, or want to run more complex queries, including parameterised queries, please see <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
+<p>This tutorial has given you the basic techniques for accessing data in any supported DBMS. If you need to work with databases that will not fit in memory, or want to run more complex queries, including parameterized queries, please see <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 </div>
 <div id="further-reading" class="section level2">
 <h2 class="hasAnchor">
