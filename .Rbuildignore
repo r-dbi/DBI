@@ -30,3 +30,4 @@ inst\/doc\/DBI\.b..$
 ^codecov\.yml$
 ^LICENSE\.md$
 ^README\.Rmd$
+^tests/testthat/testthat-problems\.rds$
