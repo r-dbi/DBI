@@ -22,7 +22,7 @@ setClass("Id", slots = list(name = "character"))
 #' @param ... Components of the hierarchy, e.g. `schema`, `table`,
 #'   or `cluster`, `catalog`, `schema`, `table`.
 #'   For more on these concepts, see
-#'   \url{http://stackoverflow.com/questions/7022755/}
+#'   \url{https://stackoverflow.com/questions/7022755/}
 #' @export
 #' @examples
 #' Id(schema = "dbo", table = "Customer")

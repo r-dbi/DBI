@@ -29,10 +29,10 @@ backends](https://github.com/r-dbi/backends#readme). R scripts and
 packages use DBI to access various databases through their DBI backends.
 
 The interface defines a small set of classes and methods similar in
-spirit to Perl’s [DBI](http://dbi.perl.org/), Java’s
-[JDBC](http://www.oracle.com/technetwork/java/javase/jdbc/index.html),
-Python’s [DB-API](http://www.python.org/dev/peps/pep-0249/), and
-Microsoft’s [ODBC](http://en.wikipedia.org/wiki/ODBC). It supports the
+spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s
+[JDBC](https://www.oracle.com/java/technologies/javase/javase-tech-database.html),
+Python’s [DB-API](https://www.python.org/dev/peps/pep-0249/), and
+Microsoft’s [ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the
 following operations:
 
 -   connect/disconnect to the DBMS
@@ -152,7 +152,7 @@ instead must be subclassed.
 
 ## Further Reading
 
--   [Databases using R](http://db.rstudio.com/) describes the tools and
+-   [Databases using R](https://db.rstudio.com/) describes the tools and
     best practices in this ecosystem.
 
 -   The [DBI project site](https://www.r-dbi.org/) hosts a blog where

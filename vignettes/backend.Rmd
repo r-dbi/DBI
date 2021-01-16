@@ -1,7 +1,7 @@
 
 ---
 title: "Implementing a new backend"
-author: "Hadley Wickham"
+author: "Hadley Wickham, Kirill Müller"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Implementing a new backend}
@@ -24,7 +24,12 @@ I'll illustrate the process using a fictional database called Kazam.
 
 Start by creating a package. It's up to you what to call the package, but following the existing pattern of `RSQLite`, `RMySQL`, `RPostgres` and `ROracle` will make it easier for people to find it. For this example, I'll call my package `RKazam`.
 
-In your `DESCRIPTION`, make sure to include:
+A ready-to-use template package is available at https://github.com/r-dbi/RKazam/.
+You can start by creating a new GitHub repository from this template, or by copying the package code.
+Rename "Kazam" to your desired name everywhere.
+The template package already contains dummy implementations for all classes and methods.
+
+If you chose to create the package manually, make sure to include in your `DESCRIPTION`:
 
 ```yaml
 Imports:
@@ -41,11 +46,7 @@ Importing `DBI` is fine, because your users are not supposed to *attach* your pa
 
 Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don't worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.
 
-Take the time now to head over to the `DBItest` vignette. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.
-
-```r
-vignette("test", package = "DBItest")
-```
+Take the time now to head over to the `DBItest` vignette at `vignette("test", package = "DBItest")`. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.
 
 Add custom tests that are not covered by `DBItest` at your discretion, or enhance `DBItest` and file a pull request if the test is generic enough to be useful for many DBI backends.
 

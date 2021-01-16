@@ -538,33 +538,33 @@ necessarily relational.
 # Resources {#sec:resources}
 
 The latest documentation and software on the RS-DBI was available at
-www.omegahat.net (link dead now: `http://www.omegahat.net/contrib/RS-DBI/index.html`).
+www.omegahat.net (link dead now: `https://www.omegahat.net/contrib/RS-DBI/index.html`).
 The R community has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
-interface to the [mSQL](http://www.Hughes.com.au) database written by
-Torsten Hothorn; [RPgSQL](http://www.nceas.ucsb.edu/~keitt/R) is an
-interface to [PostgreSQL](http://www.postgreSQL.org) and was written by
-Timothy H. Keitt; [RODBC](http://www.stats.ox.ac.uk/pub/bdr) is an
+interface to the [mSQL](https://www.Hughes.com.au) database written by
+Torsten Hothorn; [RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
+interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
+Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
 interface to ODBC, and it was written by [Michael
 Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see @R.imp-exp.)
 
 The are R and S-Plus interfaces
 to
-[MySQL](http://www.mysql.org) that follow the propose RS-DBI API
+[MySQL](https://dev.mysql.com/) that follow the propose RS-DBI API
 described here; also, there’s an S-Plus interface
 SOracle @RS-Oracle to
-[Oracle](http://www.oracle.com) (we expect to have an R implementation
+[Oracle](https://www.oracle.com/) (we expect to have an R implementation
 soon.)
 
 The idea of a common interface to databases has been successfully
 implemented in Java’s Database Connectivity (JDBC)
-([www.javasoft.com](http://www.javasoft.com/products/jdbc/index.html)),
+([www.javasoft.com](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)),
 in C through the Open Database Connectivity (ODBC)
 ([www.unixodbc.org](http://www.unixodbc.org/)), in Python’s
 Database Application Programming Interface
-([www.python.org](http://www.python.org)), and in Perl’s Database
-Interface ([www.cpan.org](http://www.cpan.org)).
+([www.python.org](https://www.python.org)), and in Perl’s Database
+Interface ([www.cpan.org](https://www.cpan.org)).
 
 # Acknowledgements
 
