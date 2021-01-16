@@ -20,7 +20,7 @@
 ## Internal
 
 - Switch to GitHub Actions (#326).
-- Update URL in DESCRIPTION.
+- Update URL in `DESCRIPTION`.
 
 
 # DBI 1.1.0
