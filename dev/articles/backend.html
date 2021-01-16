@@ -44,32 +44,8 @@
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/DBI-1.html">A Common Database Interface (DBI)</a>
-    </li>
-    <li>
-      <a href="../articles/DBI-advanced.html">Advanced DBI Usage</a>
-    </li>
-    <li>
-      <a href="../articles/DBI-history.html">History of DBI</a>
-    </li>
-    <li>
-      <a href="../articles/DBI-proposal.html">A Common Interface to Relational Databases from R and S -- A Proposal</a>
-    </li>
-    <li>
-      <a href="../articles/backend.html">Implementing a new backend</a>
-    </li>
-    <li>
-      <a href="../articles/spec.html">DBI specification</a>
-    </li>
-  </ul>
+  <a href="../articles/index.html">Articles</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -96,7 +72,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementing a new backend</h1>
-                        <h4 class="author">Hadley Wickham</h4>
+                        <h4 class="author">Hadley Wickham, Kirill Müller</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/backend.Rmd"><code>vignettes/backend.Rmd</code></a></small>
@@ -113,7 +89,8 @@
 <h2 class="hasAnchor">
 <a href="#getting-started" class="anchor"></a>Getting started</h2>
 <p>Start by creating a package. It’s up to you what to call the package, but following the existing pattern of <code>RSQLite</code>, <code>RMySQL</code>, <code>RPostgres</code> and <code>ROracle</code> will make it easier for people to find it. For this example, I’ll call my package <code>RKazam</code>.</p>
-<p>In your <code>DESCRIPTION</code>, make sure to include:</p>
+<p>A ready-to-use template package is available at <a href="https://github.com/r-dbi/RKazam/" class="uri">https://github.com/r-dbi/RKazam/</a>. You can start by creating a new GitHub repository from this template, or by copying the package code. Rename “Kazam” to your desired name everywhere. The template package already contains dummy implementations for all classes and methods.</p>
+<p>If you chose to create the package manually, make sure to include in your <code>DESCRIPTION</code>:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="at">  DBI (&gt;= 0.3.0),</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="at">  methods</span></span>
@@ -125,16 +102,14 @@
 <h2 class="hasAnchor">
 <a href="#testing" class="anchor"></a>Testing</h2>
 <p>Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don’t worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.</p>
-<p>Take the time now to head over to the <code>DBItest</code> vignette. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"test"</span>, package <span class="op">=</span> <span class="st">"DBItest"</span><span class="op">)</span></code></pre></div>
+<p>Take the time now to head over to the <code>DBItest</code> vignette at <code>vignette("test", package = "DBItest")</code>. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.</p>
 <p>Add custom tests that are not covered by <code>DBItest</code> at your discretion, or enhance <code>DBItest</code> and file a pull request if the test is generic enough to be useful for many DBI backends.</p>
 </div>
 <div id="driver" class="section level2">
 <h2 class="hasAnchor">
 <a href="#driver" class="anchor"></a>Driver</h2>
 <p>Start by making a driver class which inherits from <code>DBIDriver</code>. This class doesn’t need to do anything, it’s just used to dispatch other generics to the right method. Users don’t need to know about this, so you can remove it from the default help listing with <code>@keywords internal</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Driver for Kazam database.</span>
 <span class="co">#'</span>
 <span class="co">#' @keywords internal</span>
@@ -143,7 +118,7 @@
 <span class="co">#' @import methods</span>
 <span class="kw">setClass</span><span class="op">(</span><span class="st">"KazamDriver"</span>, contains <span class="op">=</span> <span class="st">"DBIDriver"</span><span class="op">)</span></code></pre></div>
 <p>The driver class was more important in older versions of DBI, so you should also provide a dummy <code><a href="../reference/dbDriver.html">dbUnloadDriver()</a></code> method.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="co">#' @rdname Kazam-class</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbUnloadDriver"</span>, <span class="st">"KazamDriver"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -151,12 +126,12 @@
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>If your package needs global setup or tear down, do this in the <code><a href="https://rdrr.io/r/base/ns-hooks.html">.onLoad()</a></code> and <code><a href="https://rdrr.io/r/base/ns-hooks.html">.onUnload()</a></code> functions.</p>
 <p>You might also want to add a show method so the object prints nicely:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">setMethod</span><span class="op">(</span><span class="st">"show"</span>, <span class="st">"KazamDriver"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">object</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"&lt;KazamDriver&gt;\n"</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>Next create <code>Kazam()</code> which instantiates this class.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="va">Kazam</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu">new</span><span class="op">(</span><span class="st">"KazamDriver"</span><span class="op">)</span>
@@ -169,7 +144,7 @@
 <h2 class="hasAnchor">
 <a href="#connection" class="anchor"></a>Connection</h2>
 <p>Next create a connection class that inherits from <code>DBIConnection</code>. This should store all the information needed to connect to the database. If you’re talking to a C api, this will include a slot that holds an external pointer.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam connection class.</span>
 <span class="co">#'</span>
 <span class="co">#' @export</span>
@@ -184,7 +159,7 @@
   <span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Now you have some of the boilerplate out of the way, you can start work on the connection. The most important method here is <code><a href="../reference/dbConnect.html">dbConnect()</a></code> which allows you to connect to a specified instance of the database. Note the use of <code>@rdname Kazam</code>. This ensures that <code>Kazam()</code> and the connect method are documented together.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @param drv An object created by \code{Kazam()}</span>
 <span class="co">#' @rdname Kazam</span>
 <span class="co">#' @export</span>
@@ -209,7 +184,7 @@
 <h2 class="hasAnchor">
 <a href="#results" class="anchor"></a>Results</h2>
 <p>Finally, you’re ready to implement the meat of the system: fetching results of a query into a data frame. First define a results class:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam results class.</span>
 <span class="co">#'</span>
 <span class="co">#' @keywords internal</span>
@@ -219,7 +194,7 @@
   slots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>ptr <span class="op">=</span> <span class="st">"externalptr"</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>Then write a <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> method. This takes a connection and SQL string as arguments, and returns a result object. Again <code>...</code> is needed for compatibility with the generic, but you can add other arguments if you need them.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Send a query to Kazam.</span>
 <span class="co">#'</span>
 <span class="co">#' @export</span>
@@ -230,14 +205,14 @@
   <span class="fu">new</span><span class="op">(</span><span class="st">"KazamResult"</span>, <span class="va">...</span><span class="op">)</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>Next, implement <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>, which should close the result set and free all resources associated with it:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbClearResult"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># free resources</span>
   <span class="cn">TRUE</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>The hardest part of every DBI package is writing the <code><a href="../reference/dbFetch.html">dbFetch()</a></code> method. This needs to take a result set and (optionally) number of records to return, and create a dataframe. Mapping R’s data types to those of your database may require a custom implementation of the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> method for your connection class:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Retrieve records from Kazam query</span>
 <span class="co">#' @export</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbFetch"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">n</span> <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
@@ -252,7 +227,7 @@
   <span class="va">...</span>
 <span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>Next, implement <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> which should return a <code>logical</code> indicating if there are any rows remaining to be fetched.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' @export</span>
 <span class="kw">setMethod</span><span class="op">(</span><span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span>
 
