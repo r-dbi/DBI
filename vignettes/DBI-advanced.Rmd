@@ -125,11 +125,16 @@ head(df, 3)
 ### Parameterized queries
 
 Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query.
-Different DBMS use different placeholder schemes, DBI simply passes through the SQL expression.
-MariaDB uses a `?` for each parameter and expects an unnamed list of literal values for each placeholder in the query.
+Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.
+
+MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values.
 Other DBMS may use named parameters.
+We recommend consulting the documentation for the DBMS you are using.
+As an example, a web search for "mariadb parameterized queries" leads to the documentation for the [`PREPARE` statement](https://mariadb.com/kb/en/prepare-statement/) which mentions:
+
+> Within the statement, "?" characters can be used as parameter markers to indicate where data values are to be bound to the query later when you execute it.
+
 Currently there is no list of which placeholder scheme a particular DBMS supports.
-For now all we can recommend is consulting the documentation for the DBMS driver you are using.
 
 Placeholders only work for literal values.
 Other parts of the query, e.g. table or column identifiers, still need to be quoted with `dbQuoteIdentifier()`.
@@ -141,7 +146,7 @@ It takes a list and its members are substituted in order for the placeholders wi
 params <- list("G")
 safe_id <- dbQuoteIdentifier(con, "rating")
 
-query <- paste("SELECT * FROM film WHERE ", safe_id, " = ?")
+query <- paste0("SELECT * FROM film WHERE ", safe_id, " = ?")
 query
 
 res <- dbSendQuery(con, query, params = params)
@@ -153,8 +158,8 @@ Below is an example query using multiple placeholders with the MariaDB driver.
 The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query.
 
 ```{r multi-param}
-q_params <- list('G', 90)
-query <- paste("SELECT title, rating, length FROM film WHERE rating = ? and length >= ?")
+q_params <- list("G", 90)
+query <- "SELECT title, rating, length FROM film WHERE rating = ? AND length >= ?"
 
 res <- dbSendQuery(con, query, params = q_params)
 dbFetch(res, n = 3)
@@ -180,6 +185,17 @@ Secondly, `dbBind()` can be used to execute the same statement with multiple val
 ```{r bind_quotestring}
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
 dbBind(res, list(c("G", "PG")))
+dbFetch(res, n = 3)
+dbClearResult(res)
+```
+
+Use a list of vectors if your query has multiple parameters:
+
+```{r bind-multi-param}
+q_params <- list(c("G", "PG"), c(90, 120))
+query <- "SELECT title, rating, length FROM film WHERE rating = ? AND length >= ?"
+
+res <- dbSendQuery(con, query, params = q_params)
 dbFetch(res, n = 3)
 dbClearResult(res)
 ```
@@ -240,19 +256,29 @@ dbWriteTable(con, "cash", data.frame(amount = 100))
 dbWriteTable(con, "account", data.frame(amount = 2000))
 
 withdraw <- function(amount) {
-  # All operations are carried out as logical unit:
+  # All operations must be carried out as logical unit:
   dbExecute(con, "UPDATE cash SET amount = amount + ?", list(amount))
   dbExecute(con, "UPDATE account SET amount = amount - ?", list(amount))
 }
 
 withdraw_transacted <- function(amount) {
+  # Ensure atomicity
   dbBegin(con)
+
+  # Perform operation
   withdraw(amount)
+
+  # Persist results
   dbCommit(con)
 }
 
-withdraw(300)
+withdraw_transacted(300)
+```
 
+After withdrawing 300 credits, the cash is increased and the account is decreased by this amount.
+The transaction ensures that either both operations succeed, or no change occurs.
+
+```{r}
 dbReadTable(con, "cash")
 dbReadTable(con, "account")
 ```
