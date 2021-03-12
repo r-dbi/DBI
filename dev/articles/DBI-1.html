@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,11 +74,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Common Database Interface (DBI)</h1>
-                        <h4 class="author">R-Databases Special Interest Group</h4>
+                        <h4 data-toc-skip class="author">R-Databases Special Interest Group</h4>
             
-            <h4 class="date">16 June 2003</h4>
+            <h4 data-toc-skip class="date">16 June 2003</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI-1.Rmd"><code>vignettes/DBI-1.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI-1.Rmd" class="external-link"><code>vignettes/DBI-1.Rmd</code></a></small>
       <div class="hidden name"><code>DBI-1.Rmd</code></div>
 
     </div>
@@ -109,7 +111,7 @@
 <span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span>, <span class="va">new.output</span><span class="op">)</span>
 
 <span class="co">## The interface allows lower-level interface to the DBMS</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span>
             <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,
             <span class="st">"FROM geom_table as g, elec_measures as e"</span>,
             <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,
@@ -117,7 +119,7 @@
 <span class="va">out</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
 <span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
    <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span>
-   <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">doit</span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
+   <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">doit</span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="co">## Free up resources</span>
@@ -189,17 +191,17 @@
 <p>The methods <code>format</code>, <code>print</code>, <code>show</code>, <code>dbGetInfo</code>, and <code>summary</code> are defined (and <em>implemented</em> in the <code>DBI</code> package) for the <code>DBIObject</code> base class, thus available to all implementations; individual drivers, however, are free to override them as they see fit.</p>
 <dl>
 <dt>
-<code><a href="https://rdrr.io/r/base/format.html">format(x, ...)</a></code>:</dt>
+<code><a href="https://rdrr.io/r/base/format.html" class="external-link">format(x, ...)</a></code>:</dt>
 <dd>
 <p>produces a concise character representation (label) for the <code>DBIObject</code> <code>x</code>.</p>
 </dd>
 <dt>
-<code><a href="https://rdrr.io/r/base/print.html">print(x, ...)</a></code>/<code>show(x)</code>:</dt>
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print(x, ...)</a></code>/<code>show(x)</code>:</dt>
 <dd>
 <p>prints a one-line identification of the object <code>x</code>.</p>
 </dd>
 <dt>
-<code><a href="https://rdrr.io/r/base/summary.html">summary(object, ...)</a></code>:</dt>
+<code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary(object, ...)</a></code>:</dt>
 <dd>
 <p>produces a concise description of the object. The default method for <code>DBIObject</code> simply invokes <code><a href="../reference/dbGetInfo.html">dbGetInfo(dbObj)</a></code> and prints the name-value pairs one per line. Individual implementations may tailor this appropriately.</p>
 </dd>
@@ -620,10 +622,10 @@
 <h1 class="hasAnchor">
 <a href="#sec:resources" class="anchor"></a>Resources</h1>
 <p>The idea of a common interface to databases has been successfully implemented in various environments, for instance:</p>
-<p>Java’s Database Connectivity (JDBC) (<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/">www.javasoft.com</a>).</p>
-<p>In C through the Open Database Connectivity (ODBC) (<a href="http://www.unixodbc.org/">www.unixodbc.org</a>).</p>
-<p>Python’s Database Application Programming Interface (<a href="https://wiki.python.org/moin/DatabaseProgramming">www.python.org</a>).</p>
-<p>Perl’s Database Interface (<a href="https://dbi.perl.org">dbi.perl.org</a>).</p>
+<p>Java’s Database Connectivity (JDBC) (<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="external-link">www.javasoft.com</a>).</p>
+<p>In C through the Open Database Connectivity (ODBC) (<a href="http://www.unixodbc.org/" class="external-link">www.unixodbc.org</a>).</p>
+<p>Python’s Database Application Programming Interface (<a href="https://wiki.python.org/moin/DatabaseProgramming" class="external-link">www.python.org</a>).</p>
+<p>Perl’s Database Interface (<a href="https://dbi.perl.org" class="external-link">dbi.perl.org</a>).</p>
 <div id="refs" class="references">
 <div id="ref-data-management:1991">
 <p>Chambers, John M. 1991. “Data Management in S.” Bell Labs, Lucent Technologies.</p>
@@ -653,11 +655,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p></p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
@@ -665,6 +669,8 @@
 
   
 
+
+  
 
   </body>
 </html>

@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,11 +74,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Advanced DBI Usage</h1>
-                        <h4 class="author">James Wondrasek, Kirill Müller</h4>
+                        <h4 data-toc-skip class="author">James Wondrasek, Kirill Müller</h4>
             
-            <h4 class="date">17/03/2020</h4>
+            <h4 data-toc-skip class="date">17/03/2020</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI-advanced.Rmd"><code>vignettes/DBI-advanced.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI-advanced.Rmd" class="external-link"><code>vignettes/DBI-advanced.Rmd</code></a></small>
       <div class="hidden name"><code>DBI-advanced.Rmd</code></div>
 
     </div>
@@ -102,10 +104,10 @@
 <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> is called when you have finished retrieving data. It releases the resources associated with the <code>result</code> object.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>
-  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
   host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>,
   port <span class="op">=</span> <span class="fl">3306</span>,
   username <span class="op">=</span> <span class="st">"guest"</span>,
@@ -117,7 +119,7 @@
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
 
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       2   ACE GOLDFINGER
 ## 2       4 AFFAIR PREJUDICE
@@ -147,7 +149,7 @@
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film"</span><span class="op">)</span>
 <span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">300</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 <pre><code>## [1] 300
 ## [1] 300
@@ -169,7 +171,7 @@
 <code class="sourceCode R"><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span>
 <span class="va">safe_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"G"</span><span class="op">)</span>
 
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"SELECT title, "</span>, <span class="va">safe_id</span>, <span class="st">" FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = "</span>, <span class="va">safe_param</span> <span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"SELECT title, "</span>, <span class="va">safe_id</span>, <span class="st">" FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = "</span>, <span class="va">safe_param</span> <span class="op">)</span>
 <span class="va">query</span></code></pre></div>
 <pre><code>## [1] "SELECT title, `rating` FROM film WHERE `rating` = 'G'"</code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -182,14 +184,14 @@
 ## Showing 3 out of 178 rows.</code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
-<p>The same result can be had by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html">glue::glue_sql()</a></code>. It performs the same safe quoting on any variable or R statement appearing between braces within the query string.</p>
+<p>The same result can be had by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue::glue_sql()</a></code>. It performs the same safe quoting on any variable or R statement appearing between braces within the query string.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">id</span> <span class="op">&lt;-</span> <span class="st">"rating"</span>
 <span class="va">param</span> <span class="op">&lt;-</span> <span class="st">"G"</span>
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue_sql.html">glue_sql</a></span><span class="op">(</span><span class="st">"SELECT title, {`id`} FROM film WHERE {`id`} = {param}"</span>, .con <span class="op">=</span> <span class="va">con</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue_sql</a></span><span class="op">(</span><span class="st">"SELECT title, {`id`} FROM film WHERE {`id`} = {param}"</span>, .con <span class="op">=</span> <span class="va">con</span><span class="op">)</span>
 
 <span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##              title rating
 ## 1   ACE GOLDFINGER      G
 ## 2 AFFAIR PREJUDICE      G
@@ -199,7 +201,7 @@
 <h3 class="hasAnchor">
 <a href="#parameterized-queries" class="anchor"></a>Parameterized queries</h3>
 <p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.</p>
-<p>MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values. Other DBMS may use named parameters. We recommend consulting the documentation for the DBMS you are using. As an example, a web search for “mariadb parameterized queries” leads to the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/"><code>PREPARE</code> statement</a> which mentions:</p>
+<p>MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values. Other DBMS may use named parameters. We recommend consulting the documentation for the DBMS you are using. As an example, a web search for “mariadb parameterized queries” leads to the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/" class="external-link"><code>PREPARE</code> statement</a> which mentions:</p>
 <blockquote>
 <p>Within the statement, “?” characters can be used as parameter markers to indicate where data values are to be bound to the query later when you execute it.</p>
 </blockquote>
@@ -207,10 +209,10 @@
 <p>Placeholders only work for literal values. Other parts of the query, e.g. table or column identifiers, still need to be quoted with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 <p>For a single set of parameters, the <code>params</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It takes a list and its members are substituted in order for the placeholders within the query.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span>
 <span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span>
 
-<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = ?"</span><span class="op">)</span>
+<span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = ?"</span><span class="op">)</span>
 <span class="va">query</span></code></pre></div>
 <pre><code>## [1] "SELECT * FROM film WHERE `rating` = ?"</code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
@@ -240,7 +242,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>Below is an example query using multiple placeholders with the MariaDB driver. The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="fl">90</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="fl">90</span><span class="op">)</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span>
 
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span>
@@ -254,7 +256,7 @@
 <p>When you wish to perform the same query with different sets of parameter values, <code><a href="../reference/dbBind.html">dbBind()</a></code> is used. There are two ways to use <code><a href="../reference/dbBind.html">dbBind()</a></code>. Firstly, it can be used multiple times with same query.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       2   ACE GOLDFINGER
@@ -277,7 +279,7 @@
 ## 2 2006-02-15 04:03:42
 ## 3 2006-02-15 04:03:42</code></pre>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="st">"PG"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"PG"</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       1 ACADEMY DINOSAUR
@@ -304,7 +306,7 @@
 <p>Secondly, <code><a href="../reference/dbBind.html">dbBind()</a></code> can be used to execute the same statement with multiple values at once.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       2   ACE GOLDFINGER
@@ -330,7 +332,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 <p>Use a list of vectors if your query has multiple parameters:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span>
 <span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span>
 
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span>
@@ -351,12 +353,12 @@
 <a href="#sql-data-manipulation---update-delete-and-friends" class="anchor"></a>SQL data manipulation - UPDATE, DELETE and friends</h2>
 <p>For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> passes the SQL statement to the DBMS for execution and returns the number of rows affected. <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> performs in the same manner, but returns a result object. Call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> with the result object to get the count of the affected rows. You then need to call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> with the result object afterwards to release resources.</p>
 <p>In actuality, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> is a convenience function that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. You can use these functions if you need more control over the query process.</p>
-<p>The subsequent examples use an in-memory SQL database provided by <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">RSQLite::SQLite()</a></code>, because the remote database used in above examples does not allow writing.</p>
+<p>The subsequent examples use an in-memory SQL database provided by <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::SQLite()</a></code>, because the remote database used in above examples does not allow writing.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
-<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span>
   <span class="va">con</span>,
@@ -387,15 +389,15 @@
 <a href="#sql-transactions-with-dbi" class="anchor"></a>SQL transactions with DBI</h2>
 <p>DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with <code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and ensures that either both tables are updated, or no changes are persisted to the database and an error is thrown.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">withdraw</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># All operations must be carried out as logical unit:</span>
-  <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
-  <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">amount</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
 
 <span class="va">withdraw_transacted</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
@@ -429,7 +431,7 @@
     <span class="fu"><a href="../reference/transactions.html">dbCommit</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
     <span class="cn">TRUE</span>
   <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="st">"Insufficient funds"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">message</a></span><span class="op">(</span><span class="st">"Insufficient funds"</span><span class="op">)</span>
     <span class="fu"><a href="../reference/transactions.html">dbRollback</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
     <span class="cn">FALSE</span>
   <span class="op">}</span>
@@ -452,7 +454,7 @@
   <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span>
     <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span>
     <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&lt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-      <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Error: insufficient funds"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+      <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Error: insufficient funds"</span>, call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
     <span class="op">}</span>
   <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span>
@@ -474,7 +476,7 @@
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
 <a href="#conclusion" class="anchor"></a>Conclusion</h2>
-<p>That concludes the major features of DBI. For more details on the library functions covered in this tutorial and the <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> introductory tutorial see the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>. If you are after a data manipulation library that works at a higher level of abstraction, check out <a href="https://dplyr.tidyverse.org">dplyr</a>. It is a grammar of data manipulation that can work with local dataframes and remote databases and uses DBI under the hood.</p>
+<p>That concludes the major features of DBI. For more details on the library functions covered in this tutorial and the <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> introductory tutorial see the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>. If you are after a data manipulation library that works at a higher level of abstraction, check out <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. It is a grammar of data manipulation that can work with local dataframes and remote databases and uses DBI under the hood.</p>
 </div>
 <div class="footnotes">
 <hr>
@@ -495,11 +497,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p></p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
@@ -507,6 +511,8 @@
 
   
 
+
+  
 
   </body>
 </html>

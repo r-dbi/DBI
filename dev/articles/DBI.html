@@ -20,6 +20,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -53,7 +55,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,11 +74,11 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to DBI</h1>
-                        <h4 class="author">James Wondrasek, Katharina Brunner, Kirill Müller</h4>
+                        <h4 data-toc-skip class="author">James Wondrasek, Katharina Brunner, Kirill Müller</h4>
             
-            <h4 class="date">27 February 2020</h4>
+            <h4 data-toc-skip class="date">27 February 2020</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI.Rmd"><code>vignettes/DBI.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/DBI.Rmd" class="external-link"><code>vignettes/DBI.Rmd</code></a></small>
       <div class="hidden name"><code>DBI.Rmd</code></div>
 
     </div>
@@ -86,20 +88,20 @@
 <div id="who-this-tutorial-is-for" class="section level2">
 <h2 class="hasAnchor">
 <a href="#who-this-tutorial-is-for" class="anchor"></a>Who this tutorial is for</h2>
-<p>This tutorial is for you if you want to access or manipulate data in a database that may be on your machine or on a different computer on the internet, and you have found libraries that use a higher level of abstraction, such as <a href="https://dbplyr.tidyverse.org/">dbplyr</a>, are not suitable for your purpose. Depending on what you want to achieve, you may find it useful to have an understanding of SQL before using DBI.</p>
+<p>This tutorial is for you if you want to access or manipulate data in a database that may be on your machine or on a different computer on the internet, and you have found libraries that use a higher level of abstraction, such as <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a>, are not suitable for your purpose. Depending on what you want to achieve, you may find it useful to have an understanding of SQL before using DBI.</p>
 <p>The DBI (<strong>D</strong>ata<strong>B</strong>ase <strong>I</strong>nterface) package provides a simple, consistent interface between R and database management systems (DBMS). Each supported DBMS is supported by its own R package that implements the DBI specification in <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.</p>
 <p>DBI currently supports about 30 DBMS, including:</p>
 <ul>
-<li>MySQL, using the R-package <a href="https://github.com/r-dbi/RMySQL">RMySQL</a>
+<li>MySQL, using the R-package <a href="https://github.com/r-dbi/RMySQL" class="external-link">RMySQL</a>
 </li>
-<li>MariaDB, using the R-package <a href="https://github.com/r-dbi/RMariaDB">RMariaDB</a>
+<li>MariaDB, using the R-package <a href="https://github.com/r-dbi/RMariaDB" class="external-link">RMariaDB</a>
 </li>
-<li>Postgres, using the R-package <a href="https://github.com/r-dbi/RPostgres">RPostgres</a>
+<li>Postgres, using the R-package <a href="https://github.com/r-dbi/RPostgres" class="external-link">RPostgres</a>
 </li>
-<li>SQLite, using the R-package <a href="https://github.com/r-dbi/RSQLite">RSQLite</a>
+<li>SQLite, using the R-package <a href="https://github.com/r-dbi/RSQLite" class="external-link">RSQLite</a>
 </li>
 </ul>
-<p>For a more complete list of supported DBMS visit <a href="https://github.com/r-dbi/backends#readme">https://github.com/r-dbi/backends</a>. You may need to install the package specific to your DBMS.</p>
+<p>For a more complete list of supported DBMS visit <a href="https://github.com/r-dbi/backends#readme" class="external-link">https://github.com/r-dbi/backends</a>. You may need to install the package specific to your DBMS.</p>
 <p>The functionality currently supported for each of these DBMS’s includes:</p>
 <ul>
 <li>manage a connection to a database</li>
@@ -112,12 +114,12 @@
 <div id="how-to-connect-to-a-database-using-dbi" class="section level2">
 <h2 class="hasAnchor">
 <a href="#how-to-connect-to-a-database-using-dbi" class="anchor"></a>How to connect to a database using DBI</h2>
-<p>The following code establishes a connection to the <a href="https://relational.fit.cvut.cz/dataset/Sakila"><code>Sakila</code></a> database hosted by the Relational Dataset Repository, lists all tables on the database, and closes the connection. The database represents a fictional movie rental business and includes tables describing films, actors, customers, stores, etc.:</p>
+<p>The following code establishes a connection to the <a href="https://relational.fit.cvut.cz/dataset/Sakila" class="external-link"><code>Sakila</code></a> database hosted by the Relational Dataset Repository, lists all tables on the database, and closes the connection. The database represents a fictional movie rental business and includes tables describing films, actors, customers, stores, etc.:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 
 <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>
-  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
   host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>,
   port <span class="op">=</span> <span class="fl">3306</span>,
   username <span class="op">=</span> <span class="st">"guest"</span>,
@@ -132,16 +134,16 @@
 ## [13] "payment"       "rental"        "staff"         "store"</code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
-<p>Connections to databases are created using the <code><a href="../reference/dbConnect.html">dbConnect()</a></code> function. The first argument to the function is the driver for the DBMS you are connecting to. In the example above we are connecting to a MariaDB instance, so we use the <code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">RMariaDB::MariaDB()</a></code> driver. The other arguments depend on the authentication required by the DBMS. In the example host, port, username, password, and dbname are required. See the documentation for the DBMS driver package that you are using for specifics.</p>
+<p>Connections to databases are created using the <code><a href="../reference/dbConnect.html">dbConnect()</a></code> function. The first argument to the function is the driver for the DBMS you are connecting to. In the example above we are connecting to a MariaDB instance, so we use the <code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">RMariaDB::MariaDB()</a></code> driver. The other arguments depend on the authentication required by the DBMS. In the example host, port, username, password, and dbname are required. See the documentation for the DBMS driver package that you are using for specifics.</p>
 <p>The function <code><a href="../reference/dbListTables.html">dbListTables()</a></code> takes a database connection as its only argument and returns a character vector with all table and view names in the database.</p>
 <p>After completing a session with a DBMS, always release the connection with a call to <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>.</p>
 <div id="secure-password-storage" class="section level3">
 <h3 class="hasAnchor">
 <a href="#secure-password-storage" class="anchor"></a>Secure password storage</h3>
-<p>The above example contains the password in the code, which should be avoided for databases with secured access. One way to use the credentials securely is to store it in your system’s credential store and then query it with the <a href="https://github.com/r-lib/keyring#readme">keyring</a> package. The code to connect to the database could then look like this:</p>
+<p>The above example contains the password in the code, which should be avoided for databases with secured access. One way to use the credentials securely is to store it in your system’s credential store and then query it with the <a href="https://github.com/r-lib/keyring#readme" class="external-link">keyring</a> package. The code to connect to the database could then look like this:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>
-  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
+  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,
   host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>,
   port <span class="op">=</span> <span class="fl">3306</span>,
   username <span class="op">=</span> <span class="st">"guest"</span>,
@@ -155,7 +157,7 @@
 <a href="#how-to-retrieve-column-names-for-a-table" class="anchor"></a>How to retrieve column names for a table</h2>
 <p>We can list the column names for a table with the function <code><a href="../reference/dbListFields.html">dbListFields()</a></code>. It takes as arguments a database connection and a table name and returns a character vector of the column names in order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html">MariaDB</a></span><span class="op">(</span><span class="op">)</span>, username <span class="op">=</span> <span class="st">"guest"</span>, password <span class="op">=</span> <span class="st">"relational"</span>, host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>, port <span class="op">=</span> <span class="fl">3306</span>, dbname <span class="op">=</span> <span class="st">"sakila"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>, username <span class="op">=</span> <span class="st">"guest"</span>, password <span class="op">=</span> <span class="st">"relational"</span>, host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>, port <span class="op">=</span> <span class="fl">3306</span>, dbname <span class="op">=</span> <span class="st">"sakila"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] "film_id"              "title"                "description"         
 ##  [4] "release_year"         "language_id"          "original_language_id"
@@ -169,7 +171,7 @@
 <p>The function <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> reads an entire table and returns it as a data frame. It is equivalent to the SQL query <code>SELECT * FROM &lt;name&gt;</code>. The columns of the returned data frame share the same names as the columns in the table. DBI and the database backends do their best to coerce data to equivalent R data types.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       1 ACADEMY DINOSAUR
 ## 2       2   ACE GOLDFINGER
@@ -197,7 +199,7 @@
 <p>To read a subset of the data in a table into a data frame, DBI provides functions to run custom SQL queries and manage the results. For small datasets where you do not need to manage the number of results being returned, the function <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> takes a SQL <code>SELECT</code> query to execute and returns a data frame. Below is a basic query that specifies the columns we require (<code>film_id</code>, <code>title</code> and <code>description</code>) and which rows (records) we are interested in. Here we retrieve films released in the year 2006.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT film_id, title, description FROM film WHERE release_year = 2006"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       1 ACADEMY DINOSAUR
 ## 2       2   ACE GOLDFINGER
@@ -209,7 +211,7 @@
 <p>We could also retrieve movies released in 2006 that are rated “G”. Note that character strings must be quoted. As the query itself is contained within double quotes, we use single quotes around the rating. See <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> for programmatically converting arbitrary R values to SQL. This is covered in more detail in <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT film_id, title, description FROM film WHERE release_year = 2006 AND rating = 'G'"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">df</span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>,<span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>##   film_id            title
 ## 1       2   ACE GOLDFINGER
 ## 2       4 AFFAIR PREJUDICE
@@ -218,15 +220,15 @@
 ## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
 ## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank
 ## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</code></pre>
-<p>The equivalent operation using <code>dplyr</code> reconstructs the SQL query using three functions to specify the table (<code><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl()</a></code>), the subset of the rows (<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>), and the columns we require (<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>). Note that dplyr takes care of the quoting.</p>
+<p>The equivalent operation using <code>dplyr</code> reconstructs the SQL query using three functions to specify the table (<code><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl()</a></code>), the subset of the rows (<code><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter()</a></code>), and the columns we require (<code><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select()</a></code>). Note that dplyr takes care of the quoting.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span>
 
 <span class="va">lazy_df</span> <span class="op">&lt;-</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">release_year</span> <span class="op">==</span> <span class="fl">2006</span> <span class="op">&amp;</span> <span class="va">rating</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">film_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">lazy_df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html" class="external-link">tbl</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">release_year</span> <span class="op">==</span> <span class="fl">2006</span> <span class="op">&amp;</span> <span class="va">rating</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">film_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lazy_df</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## # Source:   lazy query [?? x 3]
 ## # Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
 ##   film_id title         description                                             
@@ -252,11 +254,11 @@
 <h2 class="hasAnchor">
 <a href="#further-reading" class="anchor"></a>Further Reading</h2>
 <ul>
-<li>An overview on <a href="https://db.rstudio.com/">working with databases in R on Rstudio.com</a>
+<li>An overview on <a href="https://db.rstudio.com/" class="external-link">working with databases in R on Rstudio.com</a>
 </li>
 <li>The DBI specification: <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>
 </li>
-<li><a href="https://github.com/r-dbi/backends#readme">List of supported DBMS</a></li>
+<li><a href="https://github.com/r-dbi/backends#readme" class="external-link">List of supported DBMS</a></li>
 </ul>
 </div>
   </div>
@@ -272,11 +274,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p></p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
@@ -284,6 +288,8 @@
 
   
 
+
+  
 
   </body>
 </html>
