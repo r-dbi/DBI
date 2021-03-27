@@ -62,6 +62,9 @@ RSQLite::dbUnquoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -130,7 +133,7 @@ RSQLite::dbUnquoteIdentifier(&quot;SQLiteConnection&quot;, &quot;SQL&quot;)
 
     <div class="ref-description">
     <p>Call this method to convert a <a href='SQL.html'>SQL</a> object created by <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>
-back to a list of <a href='Id-class.html'>Id</a> objects.</p>
+back to a list of <a href='Id.html'>Id</a> objects.</p>
 <p><h3 class='hasAnchor' id='methods-in-other-packages'><a class='anchor' href='#methods-in-other-packages'></a>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbUnquoteIdentifier("SQLiteConnection", "SQL")</code></p></li>
 </ul></p>
@@ -148,7 +151,7 @@ back to a list of <a href='Id-class.html'>Id</a> objects.</p>
     </tr>
     <tr>
       <th>x</th>
-      <td><p>An <a href='SQL.html'>SQL</a> or <a href='Id-class.html'>Id</a> object.</p></td>
+      <td><p>An <a href='SQL.html'>SQL</a> or <a href='Id.html'>Id</a> object.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -165,8 +168,8 @@ The names of the input argument are preserved in the output.
 When passing the first element of a returned object again to
 <code>dbUnquoteIdentifier()</code> as <code>x</code>
 argument, it is returned unchanged (but wrapped in a list).
-Passing objects of class <a href='Id-class.html'>Id</a> should also return them unchanged (but wrapped in a list).
-(For backends it may be most convenient to return <a href='Id-class.html'>Id</a> objects
+Passing objects of class <a href='Id.html'>Id</a> should also return them unchanged (but wrapped in a list).
+(For backends it may be most convenient to return <a href='Id.html'>Id</a> objects
 to achieve this behavior, but this is not required.)</p>
 <p>An error is raised if plain character vectors are passed as the <code>x</code>
 argument.</p>
@@ -189,7 +192,7 @@ and then quoting via <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()<
 quoting the string.
 Similarly, unquoting expressions of the form <code><a href='SQL.html'>SQL("schema.table")</a></code>
 and then quoting gives the same result as quoting the identifier
-constructed by <code><a href='Id-class.html'>Id(schema = "schema", table = "table")</a></code>.</p>
+constructed by <code><a href='Id.html'>Id(schema = "schema", table = "table")</a></code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Other DBIResult generics: 
@@ -229,7 +232,7 @@ constructed by <code><a href='Id-class.html'>Id(schema = "schema", table = "tabl
 <span class='co'># also for Id objects</span>
 <span class='fu'>dbUnquoteIdentifier</span><span class='op'>(</span>
   <span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>,
-  <span class='fu'><a href='Id-class.html'>Id</a></span><span class='op'>(</span>catalog <span class='op'>=</span> <span class='st'>"Catalog"</span>, schema <span class='op'>=</span> <span class='st'>"Schema"</span>, table <span class='op'>=</span> <span class='st'>"Table"</span><span class='op'>)</span>
+  <span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>catalog <span class='op'>=</span> <span class='st'>"Catalog"</span>, schema <span class='op'>=</span> <span class='st'>"Schema"</span>, table <span class='op'>=</span> <span class='st'>"Table"</span><span class='op'>)</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; [[1]]
 #&gt; &lt;Id&gt; catalog = Catalog, schema = Schema, table = Table
@@ -243,7 +246,7 @@ constructed by <code><a href='Id-class.html'>Id(schema = "schema", table = "tabl
 </div><div class='output co'>#&gt; &lt;SQL&gt; "UnqualifiedTable"</div><div class='input'>
 <span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span>
   <span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>,
-  <span class='fu'>dbUnquoteIdentifier</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='Id-class.html'>Id</a></span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"Schema"</span>, table <span class='op'>=</span> <span class='st'>"Table"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
+  <span class='fu'>dbUnquoteIdentifier</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"Schema"</span>, table <span class='op'>=</span> <span class='st'>"Table"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span>
 <span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;SQL&gt; "Schema"."Table"</div></pre>
   </div>
@@ -257,11 +260,11 @@ constructed by <code><a href='Id-class.html'>Id(schema = "schema", table = "tabl
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
+  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

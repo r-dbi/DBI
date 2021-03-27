@@ -71,6 +71,9 @@ Objects of this class are also returned from dbListObjects().
 
 
 
+<!-- dependencies from examples -->
+
+
   
 
   
@@ -154,7 +157,7 @@ Objects of this class are also returned from <code><a href='dbListObjects.html'>
 
     </div>
 
-    <pre class="usage"><span class='fu'>Id</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -170,9 +173,9 @@ For more on these concepts, see
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>Id</span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"dbo"</span>, table <span class='op'>=</span> <span class='st'>"Customer"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;Id&gt; schema = dbo, table = Customer</div><div class='input'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'>Id</span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"nycflights13"</span>, table <span class='op'>=</span> <span class='st'>"flights"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; "nycflights13"."flights"</div><div class='input'><span class='fu'>Id</span><span class='op'>(</span>cluster <span class='op'>=</span> <span class='st'>"mycluster"</span>, catalog <span class='op'>=</span> <span class='st'>"mycatalog"</span>, schema <span class='op'>=</span> <span class='st'>"myschema"</span>, table <span class='op'>=</span> <span class='st'>"mytable"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"dbo"</span>, table <span class='op'>=</span> <span class='st'>"Customer"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;Id&gt; schema = dbo, table = Customer</div><div class='input'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"nycflights13"</span>, table <span class='op'>=</span> <span class='st'>"flights"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; &lt;SQL&gt; "nycflights13"."flights"</div><div class='input'><span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>cluster <span class='op'>=</span> <span class='st'>"mycluster"</span>, catalog <span class='op'>=</span> <span class='st'>"mycatalog"</span>, schema <span class='op'>=</span> <span class='st'>"myschema"</span>, table <span class='op'>=</span> <span class='st'>"mytable"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;Id&gt; cluster = mycluster, catalog = mycatalog, schema = myschema, table = mytable</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -185,11 +188,11 @@ For more on these concepts, see
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
+  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>

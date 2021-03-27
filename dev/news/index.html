@@ -57,6 +57,7 @@
 
 
 
+
   
 
   
@@ -177,7 +178,7 @@
 <li><p>New <code>DBIConnector</code> class (<a href='https://github.com/r-dbi/DBI/issues/280'>#280</a>).</p></li>
 <li><p>Specify <code>immediate</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> and <code><a href="../reference/dbExecute.html">dbExecute()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/268'>#268</a>).</p></li>
 <li><p>Use specification for <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> (<a href='https://github.com/r-dbi/DBI/issues/271'>#271</a>).</p></li>
-<li><p><code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> now supports <code><a href="../reference/Id-class.html">Id()</a></code> objects with <code>catalog</code> members (<a href='https://github.com/r-dbi/DBI/issues/266'>#266</a>, <a href='https://github.com/raffscallion'>@raffscallion</a>). It also handles unquoted identifiers of the form <code>table</code>, <code>schema.table</code> or <code>catalog.schema.table</code>, for compatibility with dbplyr.</p></li>
+<li><p><code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> now supports <code><a href="../reference/Id.html">Id()</a></code> objects with <code>catalog</code> members (<a href='https://github.com/r-dbi/DBI/issues/266'>#266</a>, <a href='https://github.com/raffscallion'>@raffscallion</a>). It also handles unquoted identifiers of the form <code>table</code>, <code>schema.table</code> or <code>catalog.schema.table</code>, for compatibility with dbplyr.</p></li>
 </ul>
 </div>
 <div id="documentation-1" class="section level2">
@@ -264,7 +265,7 @@
 <h2 class="hasAnchor">
 <a href="#new-generics-1" class="anchor"></a>New generics</h2>
 <ul>
-<li>Schema support: Export <code><a href="../reference/Id-class.html">Id()</a></code>, new generics <code><a href="../reference/dbListObjects.html">dbListObjects()</a></code> and <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>, methods for <code>Id</code> that call <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and then forward (<a href='https://github.com/r-dbi/DBI/issues/220'>#220</a>).</li>
+<li>Schema support: Export <code><a href="../reference/Id.html">Id()</a></code>, new generics <code><a href="../reference/dbListObjects.html">dbListObjects()</a></code> and <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>, methods for <code>Id</code> that call <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> and then forward (<a href='https://github.com/r-dbi/DBI/issues/220'>#220</a>).</li>
 <li>New <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> generic. The default implementation uses switchpatch to avoid dispatch ambiguities, and forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Backends may override methods that also dispatch on the second argument, but in this case also an override for the <code>"SQL"</code> class is necessary (<a href='https://github.com/r-dbi/DBI/issues/172'>#172</a>).</li>
 </ul>
 </div>
@@ -652,11 +653,11 @@
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
+  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9000.</p></p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
