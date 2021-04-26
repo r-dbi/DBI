@@ -24,6 +24,10 @@ NULL
 #' @param temporary If `TRUE`, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
+#' @param pk Primary key columns.
+#'   For some DBMS this must be specified at creation time.
+#'   Even if not strictly necessary, it may save substantial processing time later on.
+#'   This argument is processed with [dbQuoteIdentifier()].
 #' @export
 #' @examples
 #' sqlCreateTable(ANSI(), "my-table", c(a = "integer", b = "text"))
@@ -33,13 +37,13 @@ NULL
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5])
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5], row.names = FALSE)
 setGeneric("sqlCreateTable",
-  def = function(con, table, fields, row.names = NA, temporary = FALSE, ...) standardGeneric("sqlCreateTable")
+  def = function(con, table, fields, row.names = NA, temporary = FALSE, ..., pk = NULL) standardGeneric("sqlCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("sqlCreateTable", signature("DBIConnection"),
-  function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+  function(con, table, fields, row.names = NA, temporary = FALSE, ..., pk = NULL) {
     if (missing(row.names)) {
       warning("Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.",
         call. = FALSE
@@ -59,7 +63,9 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 
     SQL(paste0(
       "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
-      "  ", paste(fields, collapse = ",\n  "), "\n)\n"
+      "  ", paste(fields, collapse = ",\n  "),
+      if (!is.null(pk)) paste0(",\n  PRIMARY KEY (", paste(dbQuoteIdentifier(con, pk), collapse = ", "), ")"),
+      "\n)\n"
     ))
   }
 )

@@ -4,7 +4,15 @@
 \alias{sqlCreateTable}
 \title{Compose query to create a simple table}
 \usage{
-sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
+sqlCreateTable(
+  con,
+  table,
+  fields,
+  row.names = NA,
+  temporary = FALSE,
+  ...,
+  pk = NULL
+)
 }
 \arguments{
 \item{con}{A database connection.}
@@ -35,6 +43,11 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
 
 \item{...}{Other arguments used by individual methods.}
+
+\item{pk}{Primary key columns.
+For some DBMS this must be specified at creation time.
+Even if not strictly necessary, it may save substantial processing time later on.
+This argument is processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 }
 \description{
 Exposes an interface to simple \verb{CREATE TABLE} commands. The default
