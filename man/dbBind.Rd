@@ -151,8 +151,11 @@ At least the following data types are accepted on input (including \link{NA}):
 \item \link{factor} (bound as character,
 with warning)
 \item \link{Date}
+(also when stored internally as integer)
 \item \link{POSIXct} timestamps
 \item \link{POSIXlt} timestamps
+\item \link{difftime} values
+(also with units other than seconds)
 \item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
 \item objects of type \link[blob:blob]{blob::blob}
 }
