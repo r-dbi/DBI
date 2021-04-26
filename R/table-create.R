@@ -57,13 +57,20 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
       fields <- vapply(fields, function(x) DBI::dbDataType(con, x), character(1))
     }
 
+    if (!is.null(pk)) {
+      stopifnot(all(pk %in% names(fields)))
+      nullable <- ifelse(names(fields) %in% pk, " NOT NULL", "")
+    } else {
+      nullable <- ""
+    }
+
     field_names <- dbQuoteIdentifier(con, names(fields))
     field_types <- unname(fields)
     fields <- paste0(field_names, " ", field_types)
 
     SQL(paste0(
       "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
-      "  ", paste(fields, collapse = ",\n  "),
+      "  ", paste0(fields, nullable, collapse = ",\n  "),
       if (!is.null(pk)) paste0(",\n  PRIMARY KEY (", paste(dbQuoteIdentifier(con, pk), collapse = ", "), ")"),
       "\n)\n"
     ))
