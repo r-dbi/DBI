@@ -142,7 +142,7 @@ statements that contain placeholders for values. The <code>dbBind()</code> funct
 binds these placeholders
 to actual values, and is intended to be called on the result set
 before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a href='dbGetRowsAffected.html'>dbGetRowsAffected()</a></code>.</p>
-<p><h3 class='hasAnchor' id='methods-in-other-packages'><a class='anchor' href='#methods-in-other-packages'></a>Methods in other packages</h3><ul>
+<p><h3 class='hasAnchor' id='methods-in-other-packages'><a class='anchor' aria-hidden='true' href='#methods-in-other-packages'></a>Methods in other packages</h3><ul>
 <li><p><code>RSQLite::dbBind("SQLiteResult")</code></p></li>
 </ul></p>
     </div>
@@ -287,9 +287,12 @@ their order in the <code>params</code> argument is not important.</p>
 <li><p><a href='https://rdrr.io/r/base/character.html'>character</a></p></li>
 <li><p><a href='https://rdrr.io/r/base/factor.html'>factor</a> (bound as character,
 with warning)</p></li>
-<li><p><a href='https://rdrr.io/r/base/Dates.html'>Date</a></p></li>
+<li><p><a href='https://rdrr.io/r/base/Dates.html'>Date</a>
+(also when stored internally as integer)</p></li>
 <li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXct</a> timestamps</p></li>
 <li><p><a href='https://rdrr.io/r/base/DateTimeClasses.html'>POSIXlt</a> timestamps</p></li>
+<li><p><a href='https://rdrr.io/r/base/difftime.html'>difftime</a> values
+(also with units other than seconds)</p></li>
 <li><p>lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
 <li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a></p></li>
 </ul>
@@ -355,7 +358,7 @@ with warning)</p></li>
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
+  <p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p></p>
 </div>
 
 <div class="pkgdown">

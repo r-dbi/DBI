@@ -87,7 +87,7 @@
     
 <div id="who-this-tutorial-is-for" class="section level2">
 <h2 class="hasAnchor">
-<a href="#who-this-tutorial-is-for" class="anchor"></a>Who this tutorial is for</h2>
+<a href="#who-this-tutorial-is-for" class="anchor" aria-hidden="true"></a>Who this tutorial is for</h2>
 <p>This tutorial is for you if you want to access or manipulate data in a database that may be on your machine or on a different computer on the internet, and you have found libraries that use a higher level of abstraction, such as <a href="https://dbplyr.tidyverse.org/" class="external-link">dbplyr</a>, are not suitable for your purpose. Depending on what you want to achieve, you may find it useful to have an understanding of SQL before using DBI.</p>
 <p>The DBI (<strong>D</strong>ata<strong>B</strong>ase <strong>I</strong>nterface) package provides a simple, consistent interface between R and database management systems (DBMS). Each supported DBMS is supported by its own R package that implements the DBI specification in <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.</p>
 <p>DBI currently supports about 30 DBMS, including:</p>
@@ -113,7 +113,7 @@
 </div>
 <div id="how-to-connect-to-a-database-using-dbi" class="section level2">
 <h2 class="hasAnchor">
-<a href="#how-to-connect-to-a-database-using-dbi" class="anchor"></a>How to connect to a database using DBI</h2>
+<a href="#how-to-connect-to-a-database-using-dbi" class="anchor" aria-hidden="true"></a>How to connect to a database using DBI</h2>
 <p>The following code establishes a connection to the <a href="https://relational.fit.cvut.cz/dataset/Sakila" class="external-link"><code>Sakila</code></a> database hosted by the Relational Dataset Repository, lists all tables on the database, and closes the connection. The database represents a fictional movie rental business and includes tables describing films, actors, customers, stores, etc.:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
@@ -139,7 +139,7 @@
 <p>After completing a session with a DBMS, always release the connection with a call to <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>.</p>
 <div id="secure-password-storage" class="section level3">
 <h3 class="hasAnchor">
-<a href="#secure-password-storage" class="anchor"></a>Secure password storage</h3>
+<a href="#secure-password-storage" class="anchor" aria-hidden="true"></a>Secure password storage</h3>
 <p>The above example contains the password in the code, which should be avoided for databases with secured access. One way to use the credentials securely is to store it in your system’s credential store and then query it with the <a href="https://github.com/r-lib/keyring#readme" class="external-link">keyring</a> package. The code to connect to the database could then look like this:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span>
@@ -154,7 +154,7 @@
 </div>
 <div id="how-to-retrieve-column-names-for-a-table" class="section level2">
 <h2 class="hasAnchor">
-<a href="#how-to-retrieve-column-names-for-a-table" class="anchor"></a>How to retrieve column names for a table</h2>
+<a href="#how-to-retrieve-column-names-for-a-table" class="anchor" aria-hidden="true"></a>How to retrieve column names for a table</h2>
 <p>We can list the column names for a table with the function <code><a href="../reference/dbListFields.html">dbListFields()</a></code>. It takes as arguments a database connection and a table name and returns a character vector of the column names in order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>, username <span class="op">=</span> <span class="st">"guest"</span>, password <span class="op">=</span> <span class="st">"relational"</span>, host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>, port <span class="op">=</span> <span class="fl">3306</span>, dbname <span class="op">=</span> <span class="st">"sakila"</span><span class="op">)</span>
@@ -167,7 +167,7 @@
 </div>
 <div id="read-a-table-into-a-data-frame" class="section level2">
 <h2 class="hasAnchor">
-<a href="#read-a-table-into-a-data-frame" class="anchor"></a>Read a table into a data frame</h2>
+<a href="#read-a-table-into-a-data-frame" class="anchor" aria-hidden="true"></a>Read a table into a data frame</h2>
 <p>The function <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> reads an entire table and returns it as a data frame. It is equivalent to the SQL query <code>SELECT * FROM &lt;name&gt;</code>. The columns of the returned data frame share the same names as the columns in the table. DBI and the database backends do their best to coerce data to equivalent R data types.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span>
@@ -195,7 +195,7 @@
 </div>
 <div id="read-only-selected-rows-and-columns-into-a-data-frame" class="section level2">
 <h2 class="hasAnchor">
-<a href="#read-only-selected-rows-and-columns-into-a-data-frame" class="anchor"></a>Read only selected rows and columns into a data frame</h2>
+<a href="#read-only-selected-rows-and-columns-into-a-data-frame" class="anchor" aria-hidden="true"></a>Read only selected rows and columns into a data frame</h2>
 <p>To read a subset of the data in a table into a data frame, DBI provides functions to run custom SQL queries and manage the results. For small datasets where you do not need to manage the number of results being returned, the function <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> takes a SQL <code>SELECT</code> query to execute and returns a data frame. Below is a basic query that specifies the columns we require (<code>film_id</code>, <code>title</code> and <code>description</code>) and which rows (records) we are interested in. Here we retrieve films released in the year 2006.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT film_id, title, description FROM film WHERE release_year = 2006"</span><span class="op">)</span>
@@ -240,19 +240,19 @@
 </div>
 <div id="how-to-end-a-dbms-session" class="section level2">
 <h2 class="hasAnchor">
-<a href="#how-to-end-a-dbms-session" class="anchor"></a>How to end a DBMS session</h2>
+<a href="#how-to-end-a-dbms-session" class="anchor" aria-hidden="true"></a>How to end a DBMS session</h2>
 <p>When finished accessing the DBMS, always close the connection using <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="conclusion" class="section level2">
 <h2 class="hasAnchor">
-<a href="#conclusion" class="anchor"></a>Conclusion</h2>
+<a href="#conclusion" class="anchor" aria-hidden="true"></a>Conclusion</h2>
 <p>This tutorial has given you the basic techniques for accessing data in any supported DBMS. If you need to work with databases that will not fit in memory, or want to run more complex queries, including parameterized queries, please see <code><a href="../articles/DBI-advanced.html">vignette("DBI-advanced", package = "DBI")</a></code>.</p>
 </div>
 <div id="further-reading" class="section level2">
 <h2 class="hasAnchor">
-<a href="#further-reading" class="anchor"></a>Further Reading</h2>
+<a href="#further-reading" class="anchor" aria-hidden="true"></a>Further Reading</h2>
 <ul>
 <li>An overview on <a href="https://db.rstudio.com/" class="external-link">working with databases in R on Rstudio.com</a>
 </li>
@@ -275,7 +275,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">

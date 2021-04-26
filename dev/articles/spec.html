@@ -90,44 +90,44 @@
     
 <div id="dbi-r-database-interface" class="section level2">
 <h2 class="hasAnchor">
-<a href="#dbi-r-database-interface" class="anchor"></a>DBI: R Database Interface</h2>
+<a href="#dbi-r-database-interface" class="anchor" aria-hidden="true"></a>DBI: R Database Interface</h2>
 <p>DBI defines an interface for communication between R and relational database management systems. All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called <em>DBI backends</em>).</p>
 <div id="definition" class="section level3">
 <h3 class="hasAnchor">
-<a href="#definition" class="anchor"></a>Definition</h3>
+<a href="#definition" class="anchor" aria-hidden="true"></a>Definition</h3>
 <p>A DBI backend is an R package which imports the <span class="pkg">DBI</span> and <span class="pkg">methods</span> packages. For better or worse, the names of many existing backends start with ‘R’, e.g., <span class="pkg">RSQLite</span>, <span class="pkg">RMySQL</span>, <span class="pkg">RSQLServer</span>; it is up to the backend author to adopt this convention or not.</p>
 </div>
 <div id="dbi-classes-and-methods" class="section level3">
 <h3 class="hasAnchor">
-<a href="#dbi-classes-and-methods" class="anchor"></a>DBI classes and methods</h3>
+<a href="#dbi-classes-and-methods" class="anchor" aria-hidden="true"></a>DBI classes and methods</h3>
 <p>A backend defines three classes, which are subclasses of DBIDriver, DBIConnection, and DBIResult. The backend provides implementation for all methods of these base classes that are defined but not implemented by DBI. All methods defined in <span class="pkg">DBI</span> are reexported (so that the package can be used without having to attach <span class="pkg">DBI</span>), and have an ellipsis <code>...</code> in their formals for extensibility.</p>
 </div>
 <div id="construction-of-the-dbidriver-object" class="section level3">
 <h3 class="hasAnchor">
-<a href="#construction-of-the-dbidriver-object" class="anchor"></a>Construction of the DBIDriver object</h3>
+<a href="#construction-of-the-dbidriver-object" class="anchor" aria-hidden="true"></a>Construction of the DBIDriver object</h3>
 <p>The backend must support creation of an instance of its DBIDriver subclass with a constructor function. By default, its name is the package name without the leading ‘R’ (if it exists), e.g., <code>SQLite</code> for the <span class="pkg">RSQLite</span> package. However, backend authors may choose a different name. The constructor must be exported, and it must be a function that is callable without arguments. DBI recommends to define a constructor with an empty argument list.</p>
 </div>
 <div id="examples" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h3>
+<a href="#examples" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="determine-the-sql-data-type-of-an-object" class="section level2">
 <h2 class="hasAnchor">
-<a href="#determine-the-sql-data-type-of-an-object" class="anchor"></a>Determine the SQL data type of an object</h2>
+<a href="#determine-the-sql-data-type-of-an-object" class="anchor" aria-hidden="true"></a>Determine the SQL data type of an object</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h3>
+<a href="#description" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns an SQL string that describes the SQL data type to be used for an object. The default implementation of this generic determines the SQL type of an R object according to the SQL 92 specification, which may serve as a starting point for driver implementations. DBI also provides an implementation for data.frame which will return a character vector giving the type for each column in the dataframe.</p>
 </div>
 <div id="arguments" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments" class="anchor"></a>Arguments</h3>
+<a href="#arguments" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>dbObj</code></td>
@@ -145,7 +145,7 @@
 </div>
 <div id="details" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details" class="anchor"></a>Details</h3>
+<a href="#details" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>The data types supported by databases are different than the data types in R, but the mapping between the primitive types is straightforward:</p>
 <ul>
 <li><p>Any of the many fixed and varying length character types are mapped to character vectors</p></li>
@@ -155,19 +155,19 @@
 </div>
 <div id="value" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value" class="anchor"></a>Value</h3>
+<a href="#value" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> returns the SQL type that corresponds to the <code>obj</code> argument as a non-empty character string. For data frames, a character vector with one element per column is returned. An error is raised for invalid values for the <code>obj</code> argument such as a <code>NULL</code> value.</p>
 </div>
 <div id="specification" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification" class="anchor"></a>Specification</h3>
+<a href="#specification" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The backend can override the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> generic for its driver class.</p>
 <p>This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code><a href="https://rdrr.io/r/utils/example.html" class="external-link">example(dbDataType, package = "DBI")</a></code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.</p>
 <p>All data types returned by <code><a href="../reference/dbDataType.html">dbDataType()</a></code> are usable in an SQL statement of the form <code>"CREATE TABLE test (a ...)"</code>.</p>
 </div>
 <div id="examples-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-1" class="anchor"></a>Examples</h3>
+<a href="#examples-1" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span>
@@ -200,18 +200,18 @@
 </div>
 <div id="create-a-connection-to-a-dbms" class="section level2">
 <h2 class="hasAnchor">
-<a href="#create-a-connection-to-a-dbms" class="anchor"></a>Create a connection to a DBMS</h2>
+<a href="#create-a-connection-to-a-dbms" class="anchor" aria-hidden="true"></a>Create a connection to a DBMS</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-1" class="anchor"></a>Description</h3>
+<a href="#description-1" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Connect to a DBMS going through the appropriate authentication procedure. Some implementations may allow you to have multiple connections open, so you may invoke this function repeatedly assigning its output to different objects. The authentication mechanism is left unspecified, so check the documentation of individual drivers for details. Use <code><a href="../reference/dbCanConnect.html">dbCanConnect()</a></code> to check if a connection can be established.</p>
 </div>
 <div id="arguments-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-1" class="anchor"></a>Arguments</h3>
+<a href="#arguments-1" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
 <col width="2%">
@@ -231,13 +231,13 @@
 </div>
 <div id="value-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-1" class="anchor"></a>Value</h3>
+<a href="#value-1" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbConnect.html">dbConnect()</a></code> returns an S4 object that inherits from DBIConnection. This object is used to communicate with the database engine.</p>
 <p>A <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> method is defined for the connection object. It returns a string that consists of a single line of text.</p>
 </div>
 <div id="specification-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-1" class="anchor"></a>Specification</h3>
+<a href="#specification-1" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>DBI recommends using the following argument names for authentication parameters, with <code>NULL</code> default:</p>
 <ul>
 <li><p><code>user</code> for the user name (default: current user)</p></li>
@@ -257,7 +257,7 @@
 </div>
 <div id="examples-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-2" class="anchor"></a>Examples</h3>
+<a href="#examples-2" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span>
 <span class="co"># path that creates an in-memory database.) Other database drivers</span>
@@ -277,18 +277,18 @@
 </div>
 <div id="disconnect-close-a-connection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#disconnect-close-a-connection" class="anchor"></a>Disconnect (close) a connection</h2>
+<a href="#disconnect-close-a-connection" class="anchor" aria-hidden="true"></a>Disconnect (close) a connection</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-2" class="anchor"></a>Description</h3>
+<a href="#description-2" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>This closes the connection, discards all pending work, and frees resources (e.g., memory, sockets).</p>
 </div>
 <div id="arguments-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-2" class="anchor"></a>Arguments</h3>
+<a href="#arguments-2" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -302,17 +302,17 @@
 </div>
 <div id="value-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-2" class="anchor"></a>Value</h3>
+<a href="#value-2" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> returns <code>TRUE</code>, invisibly.</p>
 </div>
 <div id="specification-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-2" class="anchor"></a>Specification</h3>
+<a href="#specification-2" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>A warning is issued on garbage collection when a connection has been released without calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>, but this cannot be tested automatically. A warning is issued immediately when calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> on an already disconnected or invalid connection.</p>
 </div>
 <div id="examples-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-3" class="anchor"></a>Examples</h3>
+<a href="#examples-3" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
@@ -320,18 +320,18 @@
 </div>
 <div id="execute-a-query-on-a-given-database-connection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#execute-a-query-on-a-given-database-connection" class="anchor"></a>Execute a query on a given database connection</h2>
+<a href="#execute-a-query-on-a-given-database-connection" class="anchor" aria-hidden="true"></a>Execute a query on a given database connection</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-3" class="anchor"></a>Description</h3>
+<a href="#description-3" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>The <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> method only submits and synchronously executes the SQL query to the database engine. It does <em>not</em> extract any records — for that you need to use the <code><a href="../reference/dbFetch.html">dbFetch()</a></code> method, and then you must call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> when you finish fetching the records you need. For interactive use, you should almost always prefer <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>.</p>
 </div>
 <div id="arguments-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-3" class="anchor"></a>Arguments</h3>
+<a href="#arguments-3" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -349,7 +349,7 @@
 </div>
 <div id="additional-arguments" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
@@ -359,14 +359,14 @@
 </div>
 <div id="specification-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-3" class="anchor"></a>Specification</h3>
+<a href="#specification-3" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed.</p>
 <p>If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 </div>
 <div id="specification-for-the-immediate-argument" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-for-the-immediate-argument" class="anchor"></a>Specification for the <code>immediate</code> argument</h3>
+<a href="#specification-for-the-immediate-argument" class="anchor" aria-hidden="true"></a>Specification for the <code>immediate</code> argument</h3>
 <p>The <code>immediate</code> argument supports distinguishing between “direct” and “prepared” APIs offered by many database drivers. Passing <code>immediate = TRUE</code> leads to immediate execution of the query or statement, via the “direct” API (if supported by the driver). The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database, and (if relevant) tries the other API if the first attempt fails. A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument. Examples for possible behaviors:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -405,18 +405,18 @@
 </div>
 <div id="details-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-1" class="anchor"></a>Details</h3>
+<a href="#details-1" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>This method is for <code>SELECT</code> queries only. Some backends may support data manipulation queries through this method for compatibility reasons. However, callers are strongly encouraged to use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> for data manipulation statements.</p>
 <p>The query is submitted to the database server and the DBMS executes it, possibly generating vast amounts of data. Where these data live is driver-specific: some drivers may choose to leave the output on the server and transfer them piecemeal to R, others may transfer all the data to the client – but not necessarily to the memory that R manages. See individual drivers’ <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> documentation for details.</p>
 </div>
 <div id="value-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-3" class="anchor"></a>Value</h3>
+<a href="#value-3" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to extract records. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a query over a closed or invalid connection, or if the query is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 </div>
 <div id="examples-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-4" class="anchor"></a>Examples</h3>
+<a href="#examples-4" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -447,7 +447,7 @@
 </div>
 <div id="fetch-records-from-a-previously-executed-query" class="section level2">
 <h2 class="hasAnchor">
-<a href="#fetch-records-from-a-previously-executed-query" class="anchor"></a>Fetch records from a previously executed query</h2>
+<a href="#fetch-records-from-a-previously-executed-query" class="anchor" aria-hidden="true"></a>Fetch records from a previously executed query</h2>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
@@ -455,12 +455,12 @@
 <span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-4" class="anchor"></a>Description</h3>
+<a href="#description-4" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Fetch the next <code>n</code> elements (rows) from the result set and return them as a data.frame.</p>
 </div>
 <div id="arguments-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-4" class="anchor"></a>Arguments</h3>
+<a href="#arguments-4" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
 <col width="2%">
@@ -484,17 +484,17 @@
 </div>
 <div id="details-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-2" class="anchor"></a>Details</h3>
+<a href="#details-2" class="anchor" aria-hidden="true"></a>Details</h3>
 <p><code><a href="../reference/dbFetch.html">fetch()</a></code> is provided for compatibility with older DBI clients - for all new code you are strongly encouraged to use <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The default implementation for <code><a href="../reference/dbFetch.html">dbFetch()</a></code> calls <code><a href="../reference/dbFetch.html">fetch()</a></code> so that it is compatible with existing code. Modern backends should implement for <code><a href="../reference/dbFetch.html">dbFetch()</a></code> only.</p>
 </div>
 <div id="value-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-4" class="anchor"></a>Value</h3>
+<a href="#value-4" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbFetch.html">dbFetch()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows. An attempt to fetch from a closed result set raises an error. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> with proper <code>n</code> argument succeeds. Calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> on a result set from a data manipulation query created by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> can be fetched and return an empty data frame, with a warning.</p>
 </div>
 <div id="specification-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-4" class="anchor"></a>Specification</h3>
+<a href="#specification-4" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>Fetching multi-row queries with one or more columns by default returns the entire result. Multi-row queries can also be fetched progressively by passing a whole number (integer or numeric) as the <code>n</code> argument. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched, the result is returned in full without warning. If fewer rows than requested are returned, further fetches will return a data frame with zero rows. If zero rows are fetched, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued when clearing the result set.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
 <p>The column types of the returned data frame depend on the data returned:</p>
@@ -523,7 +523,7 @@
 </div>
 <div id="examples-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-5" class="anchor"></a>Examples</h3>
+<a href="#examples-5" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -547,18 +547,18 @@
 </div>
 <div id="clear-a-result-set" class="section level2">
 <h2 class="hasAnchor">
-<a href="#clear-a-result-set" class="anchor"></a>Clear a result set</h2>
+<a href="#clear-a-result-set" class="anchor" aria-hidden="true"></a>Clear a result set</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-5" class="anchor"></a>Description</h3>
+<a href="#description-5" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Frees all resources (local and remote) associated with a result set. In some cases (e.g., very large result sets) this can be a critical step to avoid exhausting resources (memory, file descriptors, etc.)</p>
 </div>
 <div id="arguments-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-5" class="anchor"></a>Arguments</h3>
+<a href="#arguments-5" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -572,17 +572,17 @@
 </div>
 <div id="value-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-5" class="anchor"></a>Value</h3>
+<a href="#value-5" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> returns <code>TRUE</code>, invisibly, for result sets obtained from both <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. An attempt to close an already closed result set issues a warning in both cases.</p>
 </div>
 <div id="specification-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-5" class="anchor"></a>Specification</h3>
+<a href="#specification-5" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> frees all resources associated with retrieving the result of a query or update operation. The DBI backend can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> for each <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> call.</p>
 </div>
 <div id="examples-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-6" class="anchor"></a>Examples</h3>
+<a href="#examples-6" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -595,18 +595,18 @@
 </div>
 <div id="bind-values-to-a-parameterizedprepared-statement" class="section level2">
 <h2 class="hasAnchor">
-<a href="#bind-values-to-a-parameterizedprepared-statement" class="anchor"></a>Bind values to a parameterized/prepared statement</h2>
+<a href="#bind-values-to-a-parameterizedprepared-statement" class="anchor" aria-hidden="true"></a>Bind values to a parameterized/prepared statement</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-6" class="anchor"></a>Description</h3>
+<a href="#description-6" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>For parametrized or prepared statements, the <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> functions can be called with statements that contain placeholders for values. The <code><a href="../reference/dbBind.html">dbBind()</a></code> function binds these placeholders to actual values, and is intended to be called on the result set before calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>.</p>
 </div>
 <div id="arguments-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-6" class="anchor"></a>Arguments</h3>
+<a href="#arguments-6" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -624,7 +624,7 @@
 </div>
 <div id="details-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-3" class="anchor"></a>Details</h3>
+<a href="#details-3" class="anchor" aria-hidden="true"></a>Details</h3>
 <p><span class="pkg">DBI</span> supports parametrized (or prepared) queries and statements via the <code><a href="../reference/dbBind.html">dbBind()</a></code> generic. Parametrized queries are different from normal queries in that they allow an arbitrary number of placeholders, which are later substituted by actual values. Parametrized queries (and statements) serve two purposes:</p>
 <ul>
 <li><p>The same query can be executed more than once with different values. The DBMS may cache intermediate information for the query, such as the execution plan, and execute it faster.</p></li>
@@ -639,13 +639,13 @@
 </div>
 <div id="value-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-6" class="anchor"></a>Value</h3>
+<a href="#value-6" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbBind.html">dbBind()</a></code> returns the result set, invisibly, for queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and also for data manipulation statements issued by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> for a query without parameters raises an error. Binding too many or not enough values, or parameters with wrong names or unequal length, also raises an error. If the placeholders in the query are named, all parameter values must have names (which must not be empty or <code>NA</code>), and vice versa, otherwise an error is raised. The behavior for mixing placeholders of different types (in particular mixing positional and named placeholders) is not specified.</p>
 <p>Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> on a result set already cleared by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> also raises an error.</p>
 </div>
 <div id="specification-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-6" class="anchor"></a>Specification</h3>
+<a href="#specification-6" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -678,16 +678,17 @@
 <li><p>logical for Boolean values</p></li>
 <li><p>character</p></li>
 <li><p>factor (bound as character, with warning)</p></li>
-<li><p>Date</p></li>
+<li><p>Date (also when stored internally as integer)</p></li>
 <li><p>POSIXct timestamps</p></li>
 <li><p>POSIXlt timestamps</p></li>
+<li><p>difftime values (also with units other than seconds)</p></li>
 <li><p>lists of raw for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
 <li><p>objects of type <a href="blob::blob" class="uri">blob::blob</a></p></li>
 </ul>
 </div>
 <div id="examples-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-7" class="anchor"></a>Examples</h3>
+<a href="#examples-7" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -714,18 +715,18 @@
 </div>
 <div id="send-query-retrieve-results-and-then-clear-result-set" class="section level2">
 <h2 class="hasAnchor">
-<a href="#send-query-retrieve-results-and-then-clear-result-set" class="anchor"></a>Send query, retrieve results and then clear result set</h2>
+<a href="#send-query-retrieve-results-and-then-clear-result-set" class="anchor" aria-hidden="true"></a>Send query, retrieve results and then clear result set</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-7" class="anchor"></a>Description</h3>
+<a href="#description-7" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns the result of a query as a data frame. <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 </div>
 <div id="arguments-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-7" class="anchor"></a>Arguments</h3>
+<a href="#arguments-7" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -743,7 +744,7 @@
 </div>
 <div id="additional-arguments-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-1" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-1" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>n</code> (default: -1)</p></li>
@@ -754,14 +755,14 @@
 </div>
 <div id="specification-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-7" class="anchor"></a>Specification</h3>
+<a href="#specification-7" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
 <p>The <code>n</code> argument specifies the number of rows to be fetched. If omitted, fetching multi-row queries with one or more columns returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning. If zero rows are requested, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 </div>
 <div id="specification-for-the-immediate-argument-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-for-the-immediate-argument-1" class="anchor"></a>Specification for the <code>immediate</code> argument</h3>
+<a href="#specification-for-the-immediate-argument-1" class="anchor" aria-hidden="true"></a>Specification for the <code>immediate</code> argument</h3>
 <p>The <code>immediate</code> argument supports distinguishing between “direct” and “prepared” APIs offered by many database drivers. Passing <code>immediate = TRUE</code> leads to immediate execution of the query or statement, via the “direct” API (if supported by the driver). The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database, and (if relevant) tries the other API if the first attempt fails. A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument. Examples for possible behaviors:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -800,24 +801,24 @@
 </div>
 <div id="details-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-4" class="anchor"></a>Details</h3>
+<a href="#details-4" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>This method is for <code>SELECT</code> queries only (incl. other SQL statements that return a <code>SELECT</code>-alike result, e. g. execution of a stored procedure).</p>
 <p>To execute a stored procedure that does not return a result set, use <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.</p>
 <p>Some backends may support data manipulation statements through this method for compatibility reasons. However, callers are strongly advised to use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> for data manipulation statements.</p>
 </div>
 <div id="value-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-7" class="anchor"></a>Value</h3>
+<a href="#value-7" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows. An error is raised when issuing a query over a closed or invalid connection, if the syntax of the query is invalid, or if the query is not a non-<code>NA</code> string. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with proper <code>n</code> argument succeeds.</p>
 </div>
 <div id="implementation-notes" class="section level3">
 <h3 class="hasAnchor">
-<a href="#implementation-notes" class="anchor"></a>Implementation notes</h3>
+<a href="#implementation-notes" class="anchor" aria-hidden="true"></a>Implementation notes</h3>
 <p>Subclasses should override this method only if they provide some sort of performance optimization.</p>
 </div>
 <div id="examples-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-8" class="anchor"></a>Examples</h3>
+<a href="#examples-8" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -840,18 +841,18 @@
 </div>
 <div id="execute-a-data-manipulation-statement-on-a-given-database-connection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#execute-a-data-manipulation-statement-on-a-given-database-connection" class="anchor"></a>Execute a data manipulation statement on a given database connection</h2>
+<a href="#execute-a-data-manipulation-statement-on-a-given-database-connection" class="anchor" aria-hidden="true"></a>Execute a data manipulation statement on a given database connection</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-8" class="anchor"></a>Description</h3>
+<a href="#description-8" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>The <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> method only submits and synchronously executes the SQL data manipulation statement (e.g., <code>UPDATE</code>, <code>DELETE</code>, <code>INSERT INTO</code>, <code>DROP TABLE</code>, …) to the database engine. To query the number of affected rows, call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> on the returned result object. You must also call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> after that. For interactive use, you should almost always prefer <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.</p>
 </div>
 <div id="arguments-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-8" class="anchor"></a>Arguments</h3>
+<a href="#arguments-8" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -869,7 +870,7 @@
 </div>
 <div id="additional-arguments-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-2" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-2" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
@@ -879,13 +880,13 @@
 </div>
 <div id="specification-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-8" class="anchor"></a>Specification</h3>
+<a href="#specification-8" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed. If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 </div>
 <div id="specification-for-the-immediate-argument-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-for-the-immediate-argument-2" class="anchor"></a>Specification for the <code>immediate</code> argument</h3>
+<a href="#specification-for-the-immediate-argument-2" class="anchor" aria-hidden="true"></a>Specification for the <code>immediate</code> argument</h3>
 <p>The <code>immediate</code> argument supports distinguishing between “direct” and “prepared” APIs offered by many database drivers. Passing <code>immediate = TRUE</code> leads to immediate execution of the query or statement, via the “direct” API (if supported by the driver). The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database, and (if relevant) tries the other API if the first attempt fails. A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument. Examples for possible behaviors:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -924,17 +925,17 @@
 </div>
 <div id="details-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-5" class="anchor"></a>Details</h3>
+<a href="#details-5" class="anchor" aria-hidden="true"></a>Details</h3>
 <p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> comes with a default implementation that simply forwards to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, to support backends that only implement the latter.</p>
 </div>
 <div id="value-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-8" class="anchor"></a>Value</h3>
+<a href="#value-8" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to determine the number of rows affected by the query. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a statement over a closed or invalid connection, or if the statement is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 </div>
 <div id="examples-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-9" class="anchor"></a>Examples</h3>
+<a href="#examples-9" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -972,18 +973,18 @@
 </div>
 <div id="execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set" class="section level2">
 <h2 class="hasAnchor">
-<a href="#execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set" class="anchor"></a>Execute an update statement, query number of rows affected, and then close result set</h2>
+<a href="#execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set" class="anchor" aria-hidden="true"></a>Execute an update statement, query number of rows affected, and then close result set</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-9" class="anchor"></a>Description</h3>
+<a href="#description-9" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Executes a statement and returns the number of rows affected. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 </div>
 <div id="arguments-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-9" class="anchor"></a>Arguments</h3>
+<a href="#arguments-9" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1001,7 +1002,7 @@
 </div>
 <div id="additional-arguments-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-3" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-3" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbExecute.html">dbExecute()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>params</code> (default: <code>NULL</code>)</p></li>
@@ -1011,12 +1012,12 @@
 </div>
 <div id="specification-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-9" class="anchor"></a>Specification</h3>
+<a href="#specification-9" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 </div>
 <div id="specification-for-the-immediate-argument-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-for-the-immediate-argument-3" class="anchor"></a>Specification for the <code>immediate</code> argument</h3>
+<a href="#specification-for-the-immediate-argument-3" class="anchor" aria-hidden="true"></a>Specification for the <code>immediate</code> argument</h3>
 <p>The <code>immediate</code> argument supports distinguishing between “direct” and “prepared” APIs offered by many database drivers. Passing <code>immediate = TRUE</code> leads to immediate execution of the query or statement, via the “direct” API (if supported by the driver). The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database, and (if relevant) tries the other API if the first attempt fails. A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument. Examples for possible behaviors:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -1055,22 +1056,22 @@
 </div>
 <div id="details-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-6" class="anchor"></a>Details</h3>
+<a href="#details-6" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>You can also use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> to call a stored procedure that performs data manipulation or other actions that do not return a result set. To execute a stored procedure that returns a result set use <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
 </div>
 <div id="value-9" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-9" class="anchor"></a>Value</h3>
+<a href="#value-9" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbExecute.html">dbExecute()</a></code> always returns a scalar numeric that specifies the number of rows affected by the statement. An error is raised when issuing a statement over a closed or invalid connection, if the syntax of the statement is invalid, or if the statement is not a non-<code>NA</code> string.</p>
 </div>
 <div id="implementation-notes-1" class="section level3">
 <h3 class="hasAnchor">
-<a href="#implementation-notes-1" class="anchor"></a>Implementation notes</h3>
+<a href="#implementation-notes-1" class="anchor" aria-hidden="true"></a>Implementation notes</h3>
 <p>Subclasses should override this method only if they provide some sort of performance optimization.</p>
 </div>
 <div id="examples-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-10" class="anchor"></a>Examples</h3>
+<a href="#examples-10" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1095,18 +1096,18 @@
 </div>
 <div id="quote-literal-strings" class="section level2">
 <h2 class="hasAnchor">
-<a href="#quote-literal-strings" class="anchor"></a>Quote literal strings</h2>
+<a href="#quote-literal-strings" class="anchor" aria-hidden="true"></a>Quote literal strings</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-10" class="anchor"></a>Description</h3>
+<a href="#description-10" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Call this method to generate a string that is suitable for use in a query as a string literal, to make sure that you generate valid SQL and protect against SQL injection attacks.</p>
 </div>
 <div id="arguments-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-10" class="anchor"></a>Arguments</h3>
+<a href="#arguments-10" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1124,20 +1125,20 @@
 </div>
 <div id="value-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-10" class="anchor"></a>Value</h3>
+<a href="#value-10" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object.</p>
 <p>When passing the returned object again to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)</p>
 </div>
 <div id="specification-10" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-10" class="anchor"></a>Specification</h3>
+<a href="#specification-10" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The returned expression can be used in a <code>SELECT ...</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>. The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.</p>
 <p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code> returns one row.</p>
 <p>Passing a numeric, integer, logical, or raw vector, or a list for the <code>x</code> argument raises an error.</p>
 </div>
 <div id="examples-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-11" class="anchor"></a>Examples</h3>
+<a href="#examples-11" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
 <span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
@@ -1157,18 +1158,18 @@
 </div>
 <div id="quote-identifiers" class="section level2">
 <h2 class="hasAnchor">
-<a href="#quote-identifiers" class="anchor"></a>Quote identifiers</h2>
+<a href="#quote-identifiers" class="anchor" aria-hidden="true"></a>Quote identifiers</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-11" class="anchor"></a>Description</h3>
+<a href="#description-11" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Call this method to generate a string that is suitable for use in a query as a column or table name, to make sure that you generate valid SQL and protect against SQL injection attacks. The inverse operation is <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.</p>
 </div>
 <div id="arguments-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-11" class="anchor"></a>Arguments</h3>
+<a href="#arguments-11" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1186,19 +1187,19 @@
 </div>
 <div id="value-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-11" class="anchor"></a>Value</h3>
+<a href="#value-11" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. The names of the input argument are preserved in the output. When passing the returned object again to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)</p>
 <p>An error is raised if the input contains <code>NA</code>, but not for an empty string.</p>
 </div>
 <div id="specification-11" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-11" class="anchor"></a>Specification</h3>
+<a href="#specification-11" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>Calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code> returns a data frame with the identifier, unquoted, as column name. Quoted identifiers can be used as table and column names in SQL queries, in particular in queries like <code>SELECT 1 AS ...</code> and <code>SELECT * FROM (SELECT 1) ...</code>. The method must use a quoting mechanism that is unambiguously different from the quoting mechanism used for strings, so that a query like <code>SELECT ... FROM (SELECT 1 AS ...)</code> throws an error if the column names do not match.</p>
 <p>The method can quote column names that contain special characters such as a space, a dot, a comma, or quotes used to mark strings or identifiers, if the database supports this. In any case, checking the validity of the identifier should be performed only when executing a query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 </div>
 <div id="examples-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-12" class="anchor"></a>Examples</h3>
+<a href="#examples-12" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
 <span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
@@ -1216,18 +1217,18 @@
 </div>
 <div id="copy-data-frames-from-database-tables" class="section level2">
 <h2 class="hasAnchor">
-<a href="#copy-data-frames-from-database-tables" class="anchor"></a>Copy data frames from database tables</h2>
+<a href="#copy-data-frames-from-database-tables" class="anchor" aria-hidden="true"></a>Copy data frames from database tables</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-12" class="anchor"></a>Description</h3>
+<a href="#description-12" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Reads a database table to a data frame, optionally converting a column to row names and converting the column names to valid R identifiers.</p>
 </div>
 <div id="arguments-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-12" class="anchor"></a>Arguments</h3>
+<a href="#arguments-12" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
 <col width="5%">
@@ -1251,7 +1252,7 @@
 </div>
 <div id="additional-arguments-4" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-4" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-4" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
@@ -1261,7 +1262,7 @@
 </div>
 <div id="specification-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-12" class="anchor"></a>Specification</h3>
+<a href="#specification-12" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> will do the quoting, perhaps by calling <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(conn, x = name)</a></code></p></li>
@@ -1270,7 +1271,7 @@
 </div>
 <div id="value-12" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-12" class="anchor"></a>Value</h3>
+<a href="#value-12" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.</p>
 <p>The presence of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> for details:</p>
 <ul>
@@ -1285,7 +1286,7 @@
 </div>
 <div id="examples-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-13" class="anchor"></a>Examples</h3>
+<a href="#examples-13" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1297,18 +1298,18 @@
 </div>
 <div id="copy-data-frames-to-database-tables" class="section level2">
 <h2 class="hasAnchor">
-<a href="#copy-data-frames-to-database-tables" class="anchor"></a>Copy data frames to database tables</h2>
+<a href="#copy-data-frames-to-database-tables" class="anchor" aria-hidden="true"></a>Copy data frames to database tables</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-13" class="anchor"></a>Description</h3>
+<a href="#description-13" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Writes, overwrites or appends a data frame to a database table, optionally converting row names to a column and specifying SQL data types for fields. New code should prefer <code><a href="../reference/dbCreateTable.html">dbCreateTable()</a></code> and <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code>.</p>
 </div>
 <div id="arguments-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-13" class="anchor"></a>Arguments</h3>
+<a href="#arguments-13" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
 <col width="6%">
@@ -1336,7 +1337,7 @@
 </div>
 <div id="additional-arguments-5" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-5" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-5" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
@@ -1349,7 +1350,7 @@
 </div>
 <div id="specification-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-13" class="anchor"></a>Specification</h3>
+<a href="#specification-13" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> will do the quoting, perhaps by calling <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(conn, x = name)</a></code></p></li>
@@ -1394,13 +1395,13 @@
 </div>
 <div id="value-13" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-13" class="anchor"></a>Value</h3>
+<a href="#value-13" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> returns <code>TRUE</code>, invisibly. If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset, or <code>append = TRUE</code> and the data frame with the new data has different column names, an error is raised; the remote table remains unchanged.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Invalid values for the additional arguments <code>row.names</code>, <code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code> (non-scalars, unsupported data types, <code>NA</code>, incompatible values, duplicate or missing names, incompatible columns) also raise an error.</p>
 </div>
 <div id="examples-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-14" class="anchor"></a>Examples</h3>
+<a href="#examples-14" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1420,18 +1421,18 @@
 </div>
 <div id="list-remote-tables" class="section level2">
 <h2 class="hasAnchor">
-<a href="#list-remote-tables" class="anchor"></a>List remote tables</h2>
+<a href="#list-remote-tables" class="anchor" aria-hidden="true"></a>List remote tables</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-14" class="anchor"></a>Description</h3>
+<a href="#description-14" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns the unquoted names of remote tables accessible through this connection. This should include views and temporary objects, but not all database backends (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.</p>
 </div>
 <div id="arguments-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-14" class="anchor"></a>Arguments</h3>
+<a href="#arguments-14" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1445,14 +1446,14 @@
 </div>
 <div id="value-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-14" class="anchor"></a>Value</h3>
+<a href="#value-14" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbListTables.html">dbListTables()</a></code> returns a character vector that enumerates all tables and views in the database. Tables added with <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> are part of the list. As soon a table is removed from the database, it is also removed from the list of database tables.</p>
 <p>The same applies to temporary tables if supported by the database.</p>
 <p>The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. An error is raised when calling this method for a closed or invalid connection.</p>
 </div>
 <div id="examples-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-15" class="anchor"></a>Examples</h3>
+<a href="#examples-15" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1465,18 +1466,18 @@
 </div>
 <div id="does-a-table-exist" class="section level2">
 <h2 class="hasAnchor">
-<a href="#does-a-table-exist" class="anchor"></a>Does a table exist?</h2>
+<a href="#does-a-table-exist" class="anchor" aria-hidden="true"></a>Does a table exist?</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-15" class="anchor"></a>Description</h3>
+<a href="#description-15" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns if a table given by name exists in the database.</p>
 </div>
 <div id="arguments-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-15" class="anchor"></a>Arguments</h3>
+<a href="#arguments-15" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1494,14 +1495,14 @@
 </div>
 <div id="value-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-15" class="anchor"></a>Value</h3>
+<a href="#value-15" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.</p>
 <p>This includes temporary tables if supported by the database.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
 </div>
 <div id="specification-14" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-14" class="anchor"></a>Specification</h3>
+<a href="#specification-14" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> will do the quoting, perhaps by calling <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier(conn, x = name)</a></code></p></li>
@@ -1511,7 +1512,7 @@
 </div>
 <div id="examples-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-16" class="anchor"></a>Examples</h3>
+<a href="#examples-16" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1524,18 +1525,18 @@
 </div>
 <div id="remove-a-table-from-the-database" class="section level2">
 <h2 class="hasAnchor">
-<a href="#remove-a-table-from-the-database" class="anchor"></a>Remove a table from the database</h2>
+<a href="#remove-a-table-from-the-database" class="anchor" aria-hidden="true"></a>Remove a table from the database</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-16" class="anchor"></a>Description</h3>
+<a href="#description-16" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Remove a remote table (e.g., created by <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>) from the database.</p>
 </div>
 <div id="arguments-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-16" class="anchor"></a>Arguments</h3>
+<a href="#arguments-16" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1553,7 +1554,7 @@
 </div>
 <div id="additional-arguments-6" class="section level3">
 <h3 class="hasAnchor">
-<a href="#additional-arguments-6" class="anchor"></a>Additional arguments</h3>
+<a href="#additional-arguments-6" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
@@ -1565,7 +1566,7 @@
 </div>
 <div id="specification-15" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-15" class="anchor"></a>Specification</h3>
+<a href="#specification-15" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>A table removed by <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> doesn’t appear in the list of tables returned by <code><a href="../reference/dbListTables.html">dbListTables()</a></code>, and <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns <code>FALSE</code>. The removal propagates immediately to other connections to the same database. This function can also be used to remove a temporary table.</p>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
@@ -1575,13 +1576,13 @@
 </div>
 <div id="value-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-16" class="anchor"></a>Value</h3>
+<a href="#value-16" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly. If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
 </div>
 <div id="examples-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-17" class="anchor"></a>Examples</h3>
+<a href="#examples-17" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1596,18 +1597,18 @@
 </div>
 <div id="list-field-names-of-a-remote-table" class="section level2">
 <h2 class="hasAnchor">
-<a href="#list-field-names-of-a-remote-table" class="anchor"></a>List field names of a remote table</h2>
+<a href="#list-field-names-of-a-remote-table" class="anchor" aria-hidden="true"></a>List field names of a remote table</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-17" class="anchor"></a>Description</h3>
+<a href="#description-17" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>List field names of a remote table</p>
 </div>
 <div id="arguments-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-17" class="anchor"></a>Arguments</h3>
+<a href="#arguments-17" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1625,12 +1626,12 @@
 </div>
 <div id="value-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-17" class="anchor"></a>Value</h3>
+<a href="#value-17" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbListFields.html">dbListFields()</a></code> returns a character vector that enumerates all fields in the table in the correct order. This also works for temporary tables if supported by the database. The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. If the table does not exist, an error is raised. Invalid types for the <code>name</code> argument (e.g., <code>character</code> of length not equal to one, or numeric) lead to an error. An error is also raised when calling this method for a closed or invalid connection.</p>
 </div>
 <div id="specification-16" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-16" class="anchor"></a>Specification</h3>
+<a href="#specification-16" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument can be</p>
 <ul>
 <li><p>a string</p></li>
@@ -1641,7 +1642,7 @@
 </div>
 <div id="examples-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-18" class="anchor"></a>Examples</h3>
+<a href="#examples-18" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1653,18 +1654,18 @@
 </div>
 <div id="is-this-dbms-object-still-valid" class="section level2">
 <h2 class="hasAnchor">
-<a href="#is-this-dbms-object-still-valid" class="anchor"></a>Is this DBMS object still valid?</h2>
+<a href="#is-this-dbms-object-still-valid" class="anchor" aria-hidden="true"></a>Is this DBMS object still valid?</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-18" class="anchor"></a>Description</h3>
+<a href="#description-18" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>This generic tests whether a database object is still valid (i.e. it hasn’t been disconnected or cleared).</p>
 </div>
 <div id="arguments-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-18" class="anchor"></a>Arguments</h3>
+<a href="#arguments-18" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
 <col width="7%">
@@ -1684,12 +1685,12 @@
 </div>
 <div id="value-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-18" class="anchor"></a>Value</h3>
+<a href="#value-18" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> returns a logical scalar, <code>TRUE</code> if the object specified by <code>dbObj</code> is valid, <code>FALSE</code> otherwise. A DBIConnection object is initially valid, and becomes invalid after disconnecting with <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>. For an invalid connection object (e.g., for some drivers if the object is saved to a file and then restored), the method also returns <code>FALSE</code>. A DBIResult object is valid after a call to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, and stays valid even after all rows have been fetched; only clearing it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> invalidates it. A DBIResult object is also valid after a call to <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, and stays valid after querying the number of rows affected; only clearing it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> invalidates it. If the connection to the database system is dropped (e.g., due to connectivity problems, server failure, etc.), <code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> should return <code>FALSE</code>. This is not tested automatically.</p>
 </div>
 <div id="examples-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-19" class="anchor"></a>Examples</h3>
+<a href="#examples-19" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
@@ -1708,18 +1709,18 @@
 </div>
 <div id="completion-status" class="section level2">
 <h2 class="hasAnchor">
-<a href="#completion-status" class="anchor"></a>Completion status</h2>
+<a href="#completion-status" class="anchor" aria-hidden="true"></a>Completion status</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-19" class="anchor"></a>Description</h3>
+<a href="#description-19" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>This method returns if the operation has completed. A <code>SELECT</code> query is completed if all rows have been fetched. A data manipulation statement is always completed.</p>
 </div>
 <div id="arguments-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-19" class="anchor"></a>Arguments</h3>
+<a href="#arguments-19" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -1733,17 +1734,17 @@
 </div>
 <div id="value-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-19" class="anchor"></a>Value</h3>
+<a href="#value-19" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns a logical scalar. For a query initiated by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code> initially and <code>TRUE</code> after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit. For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> always returns <code>TRUE</code>. Attempting to query completion status for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 </div>
 <div id="specification-17" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-17" class="anchor"></a>Specification</h3>
+<a href="#specification-17" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The completion status for a query is only guaranteed to be set to <code>FALSE</code> after attempting to fetch past the end of the entire result. Therefore, for a query with an empty result set, the initial return value is unspecified, but the result value is <code>TRUE</code> after trying to fetch only one row. Similarly, for a query with a result set of length n, the return value is unspecified after fetching n rows, but the result value is <code>TRUE</code> after trying to fetch only one more row.</p>
 </div>
 <div id="examples-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-20" class="anchor"></a>Examples</h3>
+<a href="#examples-20" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1762,18 +1763,18 @@
 </div>
 <div id="get-the-statement-associated-with-a-result-set" class="section level2">
 <h2 class="hasAnchor">
-<a href="#get-the-statement-associated-with-a-result-set" class="anchor"></a>Get the statement associated with a result set</h2>
+<a href="#get-the-statement-associated-with-a-result-set" class="anchor" aria-hidden="true"></a>Get the statement associated with a result set</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-20" class="anchor"></a>Description</h3>
+<a href="#description-20" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns the statement that was passed to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
 </div>
 <div id="arguments-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-20" class="anchor"></a>Arguments</h3>
+<a href="#arguments-20" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -1787,12 +1788,12 @@
 </div>
 <div id="value-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-20" class="anchor"></a>Value</h3>
+<a href="#value-20" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code> returns a string, the query used in either <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. Attempting to query the statement for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 </div>
 <div id="examples-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-21" class="anchor"></a>Examples</h3>
+<a href="#examples-21" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1806,18 +1807,18 @@
 </div>
 <div id="the-number-of-rows-fetched-so-far" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-number-of-rows-fetched-so-far" class="anchor"></a>The number of rows fetched so far</h2>
+<a href="#the-number-of-rows-fetched-so-far" class="anchor" aria-hidden="true"></a>The number of rows fetched so far</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-21" class="anchor"></a>Description</h3>
+<a href="#description-21" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns the total number of rows actually fetched with calls to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> for this result set.</p>
 </div>
 <div id="arguments-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-21" class="anchor"></a>Arguments</h3>
+<a href="#arguments-21" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -1831,12 +1832,12 @@
 </div>
 <div id="value-21" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-21" class="anchor"></a>Value</h3>
+<a href="#value-21" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> returns a scalar number (integer or numeric), the number of rows fetched so far. After calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, the row count is initially zero. After a call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit, the row count matches the total number of rows returned. Fetching a limited number of rows increases the number of rows by the number of rows returned, even if fetching past the end of the result set. For queries with an empty result set, zero is returned even after fetching. For data manipulation statements issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, zero is returned before and after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. Attempting to get the row count for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 </div>
 <div id="examples-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-22" class="anchor"></a>Examples</h3>
+<a href="#examples-22" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1856,18 +1857,18 @@
 </div>
 <div id="the-number-of-rows-affected" class="section level2">
 <h2 class="hasAnchor">
-<a href="#the-number-of-rows-affected" class="anchor"></a>The number of rows affected</h2>
+<a href="#the-number-of-rows-affected" class="anchor" aria-hidden="true"></a>The number of rows affected</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-22" class="anchor"></a>Description</h3>
+<a href="#description-22" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>This method returns the number of rows that were added, deleted, or updated by a data manipulation statement.</p>
 </div>
 <div id="arguments-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-22" class="anchor"></a>Arguments</h3>
+<a href="#arguments-22" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -1881,12 +1882,12 @@
 </div>
 <div id="value-22" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-22" class="anchor"></a>Value</h3>
+<a href="#value-22" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns a scalar number (integer or numeric), the number of rows affected by a data manipulation statement issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. The value is available directly after the call and does not change after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. For queries issued with <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, zero is returned before and after the call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. Attempting to get the rows affected for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 </div>
 <div id="examples-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-23" class="anchor"></a>Examples</h3>
+<a href="#examples-23" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1901,18 +1902,18 @@
 </div>
 <div id="information-about-result-types" class="section level2">
 <h2 class="hasAnchor">
-<a href="#information-about-result-types" class="anchor"></a>Information about result types</h2>
+<a href="#information-about-result-types" class="anchor" aria-hidden="true"></a>Information about result types</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-23" class="anchor"></a>Description</h3>
+<a href="#description-23" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Produces a data.frame that describes the output of a query. The data.frame should have as many rows as there are output fields in the result set, and each column in the data.frame describes an aspect of the result set field (field name, type, etc.)</p>
 </div>
 <div id="arguments-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-23" class="anchor"></a>Arguments</h3>
+<a href="#arguments-23" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>res</code></td>
@@ -1926,19 +1927,19 @@
 </div>
 <div id="value-23" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-23" class="anchor"></a>Value</h3>
+<a href="#value-23" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> returns a data frame with at least two columns <code>"name"</code> and <code>"type"</code> (in that order) (and optional columns that start with a dot). The <code>"name"</code> and <code>"type"</code> columns contain the names and types of the R columns of the data frame that is returned from <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The <code>"type"</code> column is of type <code>character</code> and only for information. Do not compute on the <code>"type"</code> column, instead use <code><a href="../reference/dbFetch.html">dbFetch(res, n = 0)</a></code> to create a zero-row data frame initialized with the correct data types.</p>
 <p>An attempt to query columns for a closed result set raises an error.</p>
 </div>
 <div id="specification-18" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-18" class="anchor"></a>Specification</h3>
+<a href="#specification-18" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
 <p>The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. If the query returns unnamed columns, unique non-empty and non-<code>NA</code> names are assigned. In the case of a duplicate column name, the first occurrence retains the original name, and unique names are assigned for the other occurrences. Column names that correspond to SQL or R keywords are left unchanged.</p>
 </div>
 <div id="examples-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-24" class="anchor"></a>Examples</h3>
+<a href="#examples-24" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1952,7 +1953,7 @@
 </div>
 <div id="begincommitrollback-sql-transactions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#begincommitrollback-sql-transactions" class="anchor"></a>Begin/commit/rollback SQL transactions</h2>
+<a href="#begincommitrollback-sql-transactions" class="anchor" aria-hidden="true"></a>Begin/commit/rollback SQL transactions</h2>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
@@ -1962,12 +1963,12 @@
 <span class="fu"><a href="../reference/transactions.html">dbRollback</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 <div id="description-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-24" class="anchor"></a>Description</h3>
+<a href="#description-24" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>A transaction encapsulates several SQL statements in an atomic unit. It is initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with <code><a href="../reference/transactions.html">dbRollback()</a></code>. In any case, the DBMS guarantees that either all or none of the statements have a permanent effect. This helps ensuring consistency of write operations to multiple tables.</p>
 </div>
 <div id="arguments-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-24" class="anchor"></a>Arguments</h3>
+<a href="#arguments-24" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -1981,17 +1982,17 @@
 </div>
 <div id="details-7" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-7" class="anchor"></a>Details</h3>
+<a href="#details-7" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>Not all database engines implement transaction management, in which case these methods should not be implemented for the specific DBIConnection subclass.</p>
 </div>
 <div id="value-24" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-24" class="anchor"></a>Value</h3>
+<a href="#value-24" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/transactions.html">dbBegin()</a></code>, <code><a href="../reference/transactions.html">dbCommit()</a></code> and <code><a href="../reference/transactions.html">dbRollback()</a></code> return <code>TRUE</code>, invisibly. The implementations are expected to raise an error in case of failure, but this is not tested. In any way, all generics throw an error with a closed or invalid connection. In addition, a call to <code><a href="../reference/transactions.html">dbCommit()</a></code> or <code><a href="../reference/transactions.html">dbRollback()</a></code> without a prior call to <code><a href="../reference/transactions.html">dbBegin()</a></code> raises an error. Nested transactions are not supported by DBI, an attempt to call <code><a href="../reference/transactions.html">dbBegin()</a></code> twice yields an error.</p>
 </div>
 <div id="specification-19" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-19" class="anchor"></a>Specification</h3>
+<a href="#specification-19" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>Actual support for transactions may vary between backends. A transaction is initiated by a call to <code><a href="../reference/transactions.html">dbBegin()</a></code> and committed by a call to <code><a href="../reference/transactions.html">dbCommit()</a></code>. Data written in a transaction must persist after the transaction is committed. For example, a record that is missing when the transaction is started but is created during the transaction must exist both during and after the transaction, and also in a new connection.</p>
 <p>A transaction can also be aborted with <code><a href="../reference/transactions.html">dbRollback()</a></code>. All data written in such a transaction must be removed after the transaction is rolled back. For example, a record that is missing when the transaction is started but is created during the transaction must not exist anymore after the rollback.</p>
 <p>Disconnection from a connection with an open transaction effectively rolls back the transaction. All data written in such a transaction must be removed after the transaction is rolled back.</p>
@@ -2000,7 +2001,7 @@
 </div>
 <div id="examples-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-25" class="anchor"></a>Examples</h3>
+<a href="#examples-25" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -2036,7 +2037,7 @@
 </div>
 <div id="self-contained-sql-transactions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#self-contained-sql-transactions" class="anchor"></a>Self-contained SQL transactions</h2>
+<a href="#self-contained-sql-transactions" class="anchor" aria-hidden="true"></a>Self-contained SQL transactions</h2>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">code</span>, <span class="va">...</span><span class="op">)</span>
@@ -2044,12 +2045,12 @@
 <span class="fu"><a href="../reference/dbWithTransaction.html">dbBreak</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div id="description-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#description-25" class="anchor"></a>Description</h3>
+<a href="#description-25" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Given that transactions are implemented, this function allows you to pass in code that is run in a transaction. The default method of <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> calls <code><a href="../reference/transactions.html">dbBegin()</a></code> before executing the code, and <code><a href="../reference/transactions.html">dbCommit()</a></code> after successful completion, or <code><a href="../reference/transactions.html">dbRollback()</a></code> in case of an error. The advantage is that you don’t have to remember to do <code><a href="../reference/transactions.html">dbBegin()</a></code> and <code><a href="../reference/transactions.html">dbCommit()</a></code> or <code><a href="../reference/transactions.html">dbRollback()</a></code> – that is all taken care of. The special function <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code> allows an early exit with rollback, it can be called only inside <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>.</p>
 </div>
 <div id="arguments-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#arguments-25" class="anchor"></a>Arguments</h3>
+<a href="#arguments-25" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table"><tbody>
 <tr class="odd">
 <td><code>conn</code></td>
@@ -2067,22 +2068,22 @@
 </div>
 <div id="details-8" class="section level3">
 <h3 class="hasAnchor">
-<a href="#details-8" class="anchor"></a>Details</h3>
+<a href="#details-8" class="anchor" aria-hidden="true"></a>Details</h3>
 <p>DBI implements <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>, backends should need to override this generic only if they implement specialized handling.</p>
 </div>
 <div id="value-25" class="section level3">
 <h3 class="hasAnchor">
-<a href="#value-25" class="anchor"></a>Value</h3>
+<a href="#value-25" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> returns the value of the executed code. Failure to initiate the transaction (e.g., if the connection is closed or invalid of if <code><a href="../reference/transactions.html">dbBegin()</a></code> has been called already) gives an error.</p>
 </div>
 <div id="specification-20" class="section level3">
 <h3 class="hasAnchor">
-<a href="#specification-20" class="anchor"></a>Specification</h3>
+<a href="#specification-20" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> initiates a transaction with <code><a href="../reference/transactions.html">dbBegin()</a></code>, executes the code given in the <code>code</code> argument, and commits the transaction with <code><a href="../reference/transactions.html">dbCommit()</a></code>. If the code raises an error, the transaction is instead aborted with <code><a href="../reference/transactions.html">dbRollback()</a></code>, and the error is propagated. If the code calls <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code>, execution of the code stops and the transaction is silently aborted. All side effects caused by the code (such as the creation of new variables) propagate to the calling environment.</p>
 </div>
 <div id="examples-26" class="section level3">
 <h3 class="hasAnchor">
-<a href="#examples-26" class="anchor"></a>Examples</h3>
+<a href="#examples-26" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -2140,7 +2141,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">

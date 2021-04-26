@@ -89,7 +89,7 @@
 <p>I’ll illustrate the process using a fictional database called Kazam.</p>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting started</h2>
+<a href="#getting-started" class="anchor" aria-hidden="true"></a>Getting started</h2>
 <p>Start by creating a package. It’s up to you what to call the package, but following the existing pattern of <code>RSQLite</code>, <code>RMySQL</code>, <code>RPostgres</code> and <code>ROracle</code> will make it easier for people to find it. For this example, I’ll call my package <code>RKazam</code>.</p>
 <p>A ready-to-use template package is available at <a href="https://github.com/r-dbi/RKazam/" class="external-link uri">https://github.com/r-dbi/RKazam/</a>. You can start by creating a new GitHub repository from this template, or by copying the package code. Rename “Kazam” to your desired name everywhere. The template package already contains dummy implementations for all classes and methods.</p>
 <p>If you chose to create the package manually, make sure to include in your <code>DESCRIPTION</code>:</p>
@@ -102,14 +102,14 @@
 </div>
 <div id="testing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#testing" class="anchor"></a>Testing</h2>
+<a href="#testing" class="anchor" aria-hidden="true"></a>Testing</h2>
 <p>Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don’t worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.</p>
 <p>Take the time now to head over to the <code>DBItest</code> vignette at <code>vignette("test", package = "DBItest")</code>. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.</p>
 <p>Add custom tests that are not covered by <code>DBItest</code> at your discretion, or enhance <code>DBItest</code> and file a pull request if the test is generic enough to be useful for many DBI backends.</p>
 </div>
 <div id="driver" class="section level2">
 <h2 class="hasAnchor">
-<a href="#driver" class="anchor"></a>Driver</h2>
+<a href="#driver" class="anchor" aria-hidden="true"></a>Driver</h2>
 <p>Start by making a driver class which inherits from <code>DBIDriver</code>. This class doesn’t need to do anything, it’s just used to dispatch other generics to the right method. Users don’t need to know about this, so you can remove it from the default help listing with <code>@keywords internal</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Driver for Kazam database.</span>
@@ -144,7 +144,7 @@
 </div>
 <div id="connection" class="section level2">
 <h2 class="hasAnchor">
-<a href="#connection" class="anchor"></a>Connection</h2>
+<a href="#connection" class="anchor" aria-hidden="true"></a>Connection</h2>
 <p>Next create a connection class that inherits from <code>DBIConnection</code>. This should store all the information needed to connect to the database. If you’re talking to a C api, this will include a slot that holds an external pointer.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam connection class.</span>
@@ -184,7 +184,7 @@
 </div>
 <div id="results" class="section level2">
 <h2 class="hasAnchor">
-<a href="#results" class="anchor"></a>Results</h2>
+<a href="#results" class="anchor" aria-hidden="true"></a>Results</h2>
 <p>Finally, you’re ready to implement the meat of the system: fetching results of a query into a data frame. First define a results class:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam results class.</span>
@@ -238,7 +238,7 @@
 </div>
 <div id="sql-methods" class="section level2">
 <h2 class="hasAnchor">
-<a href="#sql-methods" class="anchor"></a>SQL methods</h2>
+<a href="#sql-methods" class="anchor" aria-hidden="true"></a>SQL methods</h2>
 <p>You’re now on the home stretch, and can make your wrapper substantially more useful by implementing methods that wrap around variations in SQL across databases:</p>
 <ul>
 <li><p><code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code>dbQuoteIdentifer()</code> are used to safely quote strings and identifiers to avoid SQL injection attacks. Note that the former must be vectorized, but not the latter.</p></li>
@@ -252,7 +252,7 @@
 </div>
 <div id="metadata-methods" class="section level2">
 <h2 class="hasAnchor">
-<a href="#metadata-methods" class="anchor"></a>Metadata methods</h2>
+<a href="#metadata-methods" class="anchor" aria-hidden="true"></a>Metadata methods</h2>
 <p>There are a lot of extra metadata methods for result sets (and one for the connection) that you might want to implement. They are described in the following.</p>
 <ul>
 <li><p><code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> returns if a connection or a result set is open (<code>TRUE</code>) or closed (<code>FALSE</code>). All further methods in this section are valid for result sets only.</p></li>
@@ -264,7 +264,7 @@
 </div>
 <div id="full-dbi-compliance" class="section level2">
 <h2 class="hasAnchor">
-<a href="#full-dbi-compliance" class="anchor"></a>Full DBI compliance</h2>
+<a href="#full-dbi-compliance" class="anchor" aria-hidden="true"></a>Full DBI compliance</h2>
 <p>By now, your package should implement all methods defined in the DBI specification. If you want to walk the extra mile, offer a read-only mode that allows your users to be sure that their valuable data doesn’t get destroyed inadvertently.</p>
 </div>
   </div>
@@ -281,7 +281,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
