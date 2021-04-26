@@ -97,13 +97,13 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbCreateTable",
-  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) standardGeneric("dbCreateTable")
+  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE, pk = NULL) standardGeneric("dbCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbCreateTable", signature("DBIConnection"),
-  function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+  function(conn, name, fields, ..., row.names = NULL, temporary = FALSE, pk = NULL) {
     stopifnot(is.null(row.names))
     stopifnot(is.logical(temporary), length(temporary) == 1L)
 
@@ -113,7 +113,8 @@ setMethod("dbCreateTable", signature("DBIConnection"),
       fields = fields,
       row.names = row.names,
       temporary = temporary,
-      ...
+      ...,
+      pk = pk
     )
     dbExecute(conn, query)
     invisible(TRUE)

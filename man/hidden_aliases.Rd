@@ -168,7 +168,15 @@
   pk = NULL
 )
 
-\S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
+\S4method{dbCreateTable}{DBIConnection}(
+  conn,
+  name,
+  fields,
+  ...,
+  row.names = NULL,
+  temporary = FALSE,
+  pk = NULL
+)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA, ...)
 

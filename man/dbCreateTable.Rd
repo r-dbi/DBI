@@ -4,7 +4,15 @@
 \alias{dbCreateTable}
 \title{Create a table in the database}
 \usage{
-dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
+dbCreateTable(
+  conn,
+  name,
+  fields,
+  ...,
+  row.names = NULL,
+  temporary = FALSE,
+  pk = NULL
+)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -26,6 +34,11 @@ A data frame: field types are generated using
 \item{row.names}{Must be \code{NULL}.}
 
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
+
+\item{pk}{Primary key columns.
+For some DBMS this must be specified at creation time.
+Even if not strictly necessary, it may save substantial processing time later on.
+This argument is processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 }
 \description{
 The default \code{dbCreateTable()} method calls \code{\link[=sqlCreateTable]{sqlCreateTable()}} and
