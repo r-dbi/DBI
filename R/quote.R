@@ -355,11 +355,17 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
     # Switchpatching to avoid ambiguous S4 dispatch, so that our method
     # is used only if no alternatives are available.
 
-    if (is(x, "SQL")) return(x)
+    if (is(x, "SQL")) {
+      return(x)
+    }
 
-    if (is.factor(x)) return(dbQuoteString(conn, as.character(x)))
+    if (is.factor(x)) {
+      return(dbQuoteString(conn, as.character(x)))
+    }
 
-    if (is.character(x)) return(dbQuoteString(conn, x))
+    if (is.character(x)) {
+      return(dbQuoteString(conn, x))
+    }
 
     if (inherits(x, "POSIXt")) {
       return(dbQuoteString(
@@ -368,9 +374,13 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       ))
     }
 
-    if (inherits(x, "Date")) return(dbQuoteString(conn, as.character(x)))
+    if (inherits(x, "Date")) {
+      return(dbQuoteString(conn, as.character(x)))
+    }
 
-    if (inherits(x, "difftime")) return(dbQuoteString(conn, format_hms(x)))
+    if (inherits(x, "difftime")) {
+      return(dbQuoteString(conn, format_hms(x)))
+    }
 
     if (is.list(x)) {
       blob_data <- vapply(
@@ -389,7 +399,10 @@ setMethod("dbQuoteLiteral", signature("DBIConnection"),
       return(SQL(blob_data, names = names(x)))
     }
 
-    if (is.logical(x)) x <- as.numeric(x)
+    if (is.logical(x)) {
+      x <- as.numeric(x)
+    }
+
     x <- as.character(x)
     x[is.na(x)] <- "NULL"
     SQL(x, names = names(x))
