@@ -140,7 +140,9 @@ setGeneric("dbAppendTable",
 #' @export
 setMethod("dbAppendTable", signature("DBIConnection"),
   function(conn, name, value, ..., row.names = NULL) {
-    stopifnot(is.null(row.names))
+    if (!is.null(row.names)) {
+      stop("Can't pass `row.names` to `dbAppendTable()`", call. = FALSE)
+    }
 
     query <- sqlAppendTableTemplate(
       con = conn,
