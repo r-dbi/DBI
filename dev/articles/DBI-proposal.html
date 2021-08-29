@@ -439,17 +439,17 @@
 <span class="co">## This class identifies the DataBase Management System</span>
 <span class="co">## (Oracle, MySQL, Informix, PostgreSQL, etc.)</span>
 
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"dbManager"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"dbManager"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
 
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"load"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"load"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">dbMgr</span>,<span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"load"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"unload"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"unload"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">dbMgr</span>,<span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"unload"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getVersion"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getVersion"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">dbMgr</span>,<span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getVersion"</span><span class="op">)</span>
    <span class="op">)</span>
@@ -457,41 +457,41 @@
 <span class="co">## Class: dbConnections</span>
 <span class="co">## This class captures a connection to a database instance.</span>
 
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"dbConnection"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"dbConnection"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
 
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"dbConnection"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"dbConnection"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">dbMgr</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"dbConnection"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"dbConnect"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"dbConnect"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">dbMgr</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"dbConnect"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"dbExecStatement"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"dbExecStatement"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"dbExecStatement"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"dbExec"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"dbExec"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"dbExec"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getResultSet"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getResultSet"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">..</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getResultSet"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"commit"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"commit"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"commit"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"rollback"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"rollback"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"rollback"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"callProc"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"callProc"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"callProc"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setMethod</span><span class="op">(</span><span class="st">"close"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setMethod.html" class="external-link">setMethod</a></span><span class="op">(</span><span class="st">"close"</span>,
    signature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>con<span class="op">=</span><span class="st">"dbConnection"</span>, type<span class="op">=</span><span class="st">"missing"</span><span class="op">)</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">type</span><span class="op">)</span> <span class="cn">NULL</span>
    <span class="op">)</span>
@@ -502,9 +502,9 @@
 <span class="co">## statements produce "dbResultSet" objects, which extend</span>
 <span class="co">## dbResult.</span>
 
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"dbResult"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"dbResult"</span>, <span class="va">VIRTUAL</span><span class="op">)</span>
 
-<span class="kw">setMethod</span><span class="op">(</span><span class="st">"close"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setMethod.html" class="external-link">setMethod</a></span><span class="op">(</span><span class="st">"close"</span>,
    signature <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>con<span class="op">=</span><span class="st">"dbResult"</span>, type<span class="op">=</span><span class="st">"missing"</span><span class="op">)</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">con</span>, <span class="va">type</span><span class="op">)</span> <span class="cn">NULL</span>
    <span class="op">)</span>
@@ -513,75 +513,75 @@
 <span class="co">## Note that we define a resultSet as the result of a</span>
 <span class="co">## SELECT  SQL statement.</span>
 
-<span class="kw">setClass</span><span class="op">(</span><span class="st">"dbResultSet"</span>, <span class="st">"dbResult"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">setClass</a></span><span class="op">(</span><span class="st">"dbResultSet"</span>, <span class="st">"dbResult"</span><span class="op">)</span>
 
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"fetch"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"fetch"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">resultSet</span>,<span class="va">n</span>,<span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"fetch"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"hasCompleted"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"hasCompleted"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"hasCompleted"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getException"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getException"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getException"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getDBconnection"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getDBconnection"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getDBconnection"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"setDataMappings"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"setDataMappings"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">resultSet</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"setDataMappings"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getFields"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getFields"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>,  <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getFields"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getStatement"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getStatement"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getStatement"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getRowsAffected"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getRowsAffected"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getRowsAffected"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getRowCount"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getRowCount"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getRowCount"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getNullOk"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getNullOk"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getNullOk"</span><span class="op">)</span>
    <span class="op">)</span>
 
 <span class="co">## Meta-data:</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getInfo"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getInfo"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getInfo"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"describe"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"describe"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">verbose</span><span class="op">=</span><span class="cn">F</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"describe"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getCurrentDatabase"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getCurrentDatabase"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getCurrentDatabase"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getDatabases"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getDatabases"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getDatabases"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getTables"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getTables"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getTables"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getTableFields"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getTableFields"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getTableFields"</span><span class="op">)</span>
    <span class="op">)</span>
-<span class="kw">setGeneric</span><span class="op">(</span><span class="st">"getTableIndices"</span>,
+<span class="kw"><a href="https://rdrr.io/r/methods/setGeneric.html" class="external-link">setGeneric</a></span><span class="op">(</span><span class="st">"getTableIndices"</span>,
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getTableIndices"</span><span class="op">)</span>
    <span class="op">)</span></code></pre></div>

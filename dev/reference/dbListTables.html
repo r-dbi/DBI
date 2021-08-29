@@ -64,9 +64,6 @@ RSQLite::dbListTables(&quot;SQLiteConnection&quot;)
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -143,7 +140,7 @@ This should include views and temporary objects, but not all database backends
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -199,14 +196,16 @@ or invalid connection.</p>
 <code><a href='dbWriteTable.html'>dbWriteTable</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
-
-<span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; character(0)</div><div class='input'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>)</span>
-<span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "mtcars"</div><div class='input'>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> character(0)</span>
+<span class='r-in'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>dbListTables</span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "mtcars"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

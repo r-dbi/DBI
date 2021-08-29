@@ -66,9 +66,6 @@ The SQL class has associated the SQL() constructor function." />
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -147,7 +144,7 @@ anymore, to prevent double escaping.
 The <code>SQL</code> class has associated the <code>SQL()</code> constructor function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>SQL</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, names <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>SQL</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span>, names <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -178,24 +175,30 @@ The <code>SQL</code> class has associated the <code>SQL()</code> constructor fun
 uses a different convention, you will need to provide your own methods.
 Note that because of the way that S4 dispatch finds methods and because
 SQL inherits from character, if you implement (e.g.) a method for
-<code><a href='dbQuoteString.html'>dbQuoteString(MyConnection, character)</a></code>, you will also need to
-implement <code><a href='dbQuoteString.html'>dbQuoteString(MyConnection, SQL)</a></code> - this should simply
+<code>dbQuoteString(MyConnection, character)</code>, you will also need to
+implement <code>dbQuoteString(MyConnection, SQL)</code> - this should simply
 return <code>x</code> unchanged.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; "SELECT"</div><div class='input'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; 'SELECT'</div><div class='input'>
-<span class='co'># SQL vectors are always passed through as is</span>
-<span class='va'>var_name</span> <span class='op'>&lt;-</span> <span class='fu'>SQL</span><span class='op'>(</span><span class='st'>"SELECT"</span><span class='op'>)</span>
-<span class='va'>var_name</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; SELECT</div><div class='input'>
-<span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>var_name</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; SELECT</div><div class='input'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>var_name</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; SELECT</div><div class='input'>
-<span class='co'># This mechanism is used to prevent double escaping</span>
-<span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;SQL&gt; 'SELECT'</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; "SELECT"</span>
+<span class='r-in'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; 'SELECT'</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># SQL vectors are always passed through as is</span></span>
+<span class='r-in'><span class='va'>var_name</span> <span class='op'>&lt;-</span> <span class='fu'>SQL</span><span class='op'>(</span><span class='st'>"SELECT"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>var_name</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; SELECT</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>var_name</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; SELECT</span>
+<span class='r-in'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>var_name</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; SELECT</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># This mechanism is used to prevent double escaping</span></span>
+<span class='r-in'><span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='dbQuoteString.html'>dbQuoteString</a></span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>"SELECT"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; 'SELECT'</span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

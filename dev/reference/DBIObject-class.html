@@ -59,9 +59,6 @@ is a virtual Class: No objects may be created from it." />
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -156,7 +153,7 @@ or parent of the class hierarchy.</p>
 <p>It MAY also provide methods for:</p>
 <ul>
 <li><p><code><a href='https://rdrr.io/r/base/summary.html'>summary()</a></code>. Print a concise description of the
-object. The default method invokes <code><a href='dbGetInfo.html'>dbGetInfo(dbObj)</a></code> and prints
+object. The default method invokes <code>dbGetInfo(dbObj)</code> and prints
 the name-value pairs one per line.  Individual implementations may
 tailor this appropriately.</p></li>
 </ul>
@@ -170,17 +167,20 @@ tailor this appropriately.</p></li>
 <code><a href='DBIResult-class.html'>DBIResult-class</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>drv</span> <span class='op'>&lt;-</span> <span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>
-<span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='va'>drv</span><span class='op'>)</span>
-
-<span class='va'>rs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT 1"</span><span class='op'>)</span>
-<span class='fu'>is</span><span class='op'>(</span><span class='va'>drv</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span>   <span class='co'>## True</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span>   <span class='co'>## True</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is</span><span class='op'>(</span><span class='va'>rs</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>drv</span> <span class='op'>&lt;-</span> <span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='va'>drv</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>rs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT 1"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/methods/is.html'>is</a></span><span class='op'>(</span><span class='va'>drv</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span>   <span class='co'>## True</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/methods/is.html'>is</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span>   <span class='co'>## True</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/methods/is.html'>is</a></span><span class='op'>(</span><span class='va'>rs</span>, <span class='st'>"DBIObject"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] TRUE</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>rs</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

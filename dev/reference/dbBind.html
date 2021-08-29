@@ -66,9 +66,6 @@ RSQLite::dbBind(&quot;SQLiteResult&quot;)
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -147,7 +144,7 @@ before calling <code><a href='dbFetch.html'>dbFetch()</a></code> or <code><a hre
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>res</span>, <span class='va'>params</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>res</span>, <span class='va'>params</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -294,7 +291,7 @@ with warning)</p></li>
 <li><p><a href='https://rdrr.io/r/base/difftime.html'>difftime</a> values
 (also with units other than seconds)</p></li>
 <li><p>lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
-<li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a></p></li>
+<li><p>objects of type <a href='https://blob.tidyverse.org/reference/blob.html'>blob::blob</a></p></li>
 </ul>
 
 
@@ -318,35 +315,39 @@ with warning)</p></li>
 <code><a href='dbUnquoteIdentifier.html'>dbUnquoteIdentifier</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
-
-<span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span>, <span class='va'>iris</span><span class='op'>)</span>
-
-<span class='co'># Using the same query for different values</span>
-<span class='va'>iris_result</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class='op'>)</span>
-<span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>2.3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species
-#&gt; 1          6.3         3.3          6.0         2.5 virginica
-#&gt; 2          7.2         3.6          6.1         2.5 virginica
-#&gt; 3          5.8         2.8          5.1         2.4 virginica
-#&gt; 4          6.3         3.4          5.6         2.4 virginica
-#&gt; 5          6.7         3.1          5.6         2.4 virginica
-#&gt; 6          6.7         3.3          5.7         2.5 virginica</div><div class='input'><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     
-#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span>
-
-<span class='co'># Executing the same statement with different values at once</span>
-<span class='va'>iris_result</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendStatement.html'>dbSendStatement</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"DELETE FROM iris WHERE [Species] = $species"</span><span class='op'>)</span>
-<span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"setosa"</span>, <span class='st'>"versicolor"</span>, <span class='st'>"unknown"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span>
-
-<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] 50</div><div class='input'>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbWriteTable.html'>dbWriteTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span>, <span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Using the same query for different values</span></span>
+<span class='r-in'><span class='va'>iris_result</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendQuery.html'>dbSendQuery</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>2.3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1          6.3         3.3          6.0         2.5 virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2          7.2         3.6          6.1         2.5 virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3          5.8         2.8          5.1         2.4 virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4          6.3         3.4          5.6         2.4 virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5          6.7         3.1          5.6         2.4 virginica</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6          6.7         3.3          5.7         2.5 virginica</span>
+<span class='r-in'><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbFetch.html'>dbFetch</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;0 rows&gt; (or 0-length row.names)</span>
+<span class='r-in'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># Executing the same statement with different values at once</span></span>
+<span class='r-in'><span class='va'>iris_result</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbSendStatement.html'>dbSendStatement</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"DELETE FROM iris WHERE [Species] = $species"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>dbBind</span><span class='op'>(</span><span class='va'>iris_result</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>species <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"setosa"</span>, <span class='st'>"versicolor"</span>, <span class='st'>"unknown"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbGetRowsAffected.html'>dbGetRowsAffected</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 100</span>
+<span class='r-in'><span class='fu'><a href='dbClearResult.html'>dbClearResult</a></span><span class='op'>(</span><span class='va'>iris_result</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"iris"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 50</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -68,9 +68,6 @@ RSQLite::dbDataType(&quot;SQLiteDriver&quot;)
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -151,7 +148,7 @@ column in the dataframe.</p>
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>dbObj</span>, <span class='va'>obj</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>dbObj</span>, <span class='va'>obj</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,7 +198,7 @@ problems with under/overflows and loss of precision.</p>
 for its driver class.</p>
 <p>This generic expects an arbitrary object as second argument.
 To query the values returned by the default implementation,
-run <code><a href='https://rdrr.io/r/utils/example.html'>example(dbDataType, package = "DBI")</a></code>.
+run <code>example(dbDataType, package = "DBI")</code>.
 If the backend needs to override this generic,
 it must accept all basic R data types as its second argument, namely
 <a href='https://rdrr.io/r/base/logical.html'>logical</a>,
@@ -213,7 +210,7 @@ date-time (see <a href='https://rdrr.io/r/base/DateTimeClasses.html'>DateTimeCla
 and <a href='https://rdrr.io/r/base/difftime.html'>difftime</a>.
 If the database supports blobs,
 this method also must accept lists of <a href='https://rdrr.io/r/base/raw.html'>raw</a> vectors,
-and <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a> objects.
+and <a href='https://blob.tidyverse.org/reference/blob.html'>blob::blob</a> objects.
 As-is objects (i.e., wrapped by <code><a href='https://rdrr.io/r/base/AsIs.html'>I()</a></code>) must be
 supported and return the same results as their unwrapped counterparts.
 The SQL data type for <a href='https://rdrr.io/r/base/factor.html'>factor</a>
@@ -264,36 +261,56 @@ of the form
 <code><a href='dbIsReadOnly.html'>dbIsReadOnly</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "INT"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "SMALLINT"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "DATE"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "TIMESTAMP"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "TIME"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"abc"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "TEXT"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "BLOB"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "DOUBLE"</div><div class='input'>
-<span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
-#&gt;     "DOUBLE"     "DOUBLE"     "DOUBLE"     "DOUBLE"       "TEXT" </div><div class='input'>
-<span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
-
-<span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "INTEGER"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "REAL"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "INTEGER"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "REAL"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "REAL"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "REAL"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"abc"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "TEXT"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "BLOB"</div><div class='input'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "REAL"</div><div class='input'>
-<span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='va'>iris</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species 
-#&gt;     "DOUBLE"     "DOUBLE"     "DOUBLE"     "DOUBLE"       "TEXT" </div><div class='input'>
-<span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "INT"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "DOUBLE"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "SMALLINT"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "DATE"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "TIMESTAMP"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "TIME"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"abc"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "TEXT"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "BLOB"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "DOUBLE"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     "DOUBLE"     "DOUBLE"     "DOUBLE"     "DOUBLE"       "TEXT" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "INTEGER"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "REAL"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "INTEGER"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "REAL"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "REAL"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.time</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>-</span> <span class='fu'><a href='https://rdrr.io/r/base/as.POSIXlt.html'>as.POSIXct</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/Sys.time.html'>Sys.Date</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "REAL"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"x"</span>, <span class='st'>"abc"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "TEXT"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/raw.html'>raw</a></span><span class='op'>(</span><span class='fl'>20</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "BLOB"</span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='fu'><a href='https://rdrr.io/r/base/AsIs.html'>I</a></span><span class='op'>(</span><span class='fl'>3</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "REAL"</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbDataType</span><span class='op'>(</span><span class='va'>con</span>, <span class='va'>iris</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     "DOUBLE"     "DOUBLE"     "DOUBLE"     "DOUBLE"       "TEXT" </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'><a href='dbDisconnect.html'>dbDisconnect</a></span><span class='op'>(</span><span class='va'>con</span><span class='op'>)</span></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -64,9 +64,6 @@ RSQLite::dbWriteTable(&quot;SQLiteConnection&quot;, &quot;character&quot;, &quot
 
 
 
-<!-- dependencies from examples -->
-
-
   
 
   
@@ -143,7 +140,7 @@ New code should prefer <code><a href='dbCreateTable.html'>dbCreateTable()</a></c
 </ul></p>
     </div>
 
-    <pre class="usage"><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>name</span>, <span class='va'>value</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <div class="ref-usage sourceCode"><pre class='sourceCode r'><code><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>conn</span>, <span class='va'>name</span>, <span class='va'>value</span>, <span class='va'>...</span><span class='op'>)</span></code></pre></div>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -215,7 +212,7 @@ See the "Specification" and "Value" sections for details on their usage.</p>
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul>
 <li><p>If an unquoted table name as string: <code>dbWriteTable()</code> will do the quoting,
-perhaps by calling <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier(conn, x = name)</a></code></p></li>
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href='dbQuoteIdentifier.html'>dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
 
@@ -254,7 +251,7 @@ before and after a non-empty string</p></li>
 <li><p>factor (returned as character)</p></li>
 <li><p>list of raw
 (if supported by the database)</p></li>
-<li><p>objects of type <a href='https://rdrr.io/pkg/blob/man/blob.html'>blob::blob</a>
+<li><p>objects of type <a href='https://blob.tidyverse.org/reference/blob.html'>blob::blob</a>
 (if supported by the database)</p></li>
 <li><p>date
 (if supported by the database;
@@ -279,7 +276,7 @@ from the input data with <code><a href='dbDataType.html'>dbDataType()</a></code>
 see <code><a href='rownames.html'>sqlRownamesToColumn()</a></code> for details:</p><ul>
 <li><p>If <code>FALSE</code> or <code>NULL</code>, row names are ignored.</p></li>
 <li><p>If <code>TRUE</code>, row names are converted to a column named "row_names",
-even if the input data frame only has natural row names from 1 to <code><a href='https://rdrr.io/r/base/nrow.html'>nrow(...)</a></code>.</p></li>
+even if the input data frame only has natural row names from 1 to <code>nrow(...)</code>.</p></li>
 <li><p>If <code>NA</code>, a column named "row_names" is created if the data has custom row names,
 no extra column is created in the case of natural row names.</p></li>
 <li><p>If a string, this specifies the name of the column in the remote table
@@ -313,57 +310,61 @@ even if the input data frame only has natural row names.</p></li>
 <code><a href='dbSendStatement.html'>dbSendStatement</a>()</code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span>
-
-<span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span><span class='op'>)</span>
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;    mpg cyl disp  hp drat    wt  qsec vs am gear carb
-#&gt; 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
-#&gt; 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
-#&gt; 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
-#&gt; 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
-#&gt; 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</div><div class='input'>
-<span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>6</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, append <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-#&gt; 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-#&gt; 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-#&gt; 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-#&gt; 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-#&gt; 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-#&gt; 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-#&gt; 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-#&gt; 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-#&gt; 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-#&gt; 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</div><div class='input'>
-<span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-#&gt; 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-#&gt; 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-#&gt; 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-#&gt; 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-#&gt; 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-#&gt; 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-#&gt; 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-#&gt; 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-#&gt; 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-#&gt; 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</div><div class='input'>
-<span class='co'># No row names</span>
-<span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, row.names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
-#&gt; 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
-#&gt; 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
-#&gt; 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
-#&gt; 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
-#&gt; 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
-#&gt; 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
-#&gt; 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
-#&gt; 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
-#&gt; 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
-#&gt; 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</div><div class='input'>
-</div></pre>
+    <div class="ref-examples sourceCode"><pre class='sourceCode r'><code><span class='r-in'><span class='va'>con</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dbConnect.html'>dbConnect</a></span><span class='op'>(</span><span class='fu'>RSQLite</span><span class='fu'>::</span><span class='fu'><a href='https://rsqlite.r-dbi.org/reference/SQLite.html'>SQLite</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='st'>":memory:"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>, <span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>6</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, append <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># No row names</span></span>
+<span class='r-in'><span class='fu'>dbWriteTable</span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span>, <span class='va'>mtcars</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, overwrite <span class='op'>=</span> <span class='cn'>TRUE</span>, row.names <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'><a href='dbReadTable.html'>dbReadTable</a></span><span class='op'>(</span><span class='va'>con</span>, <span class='st'>"mtcars"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
+<span class='r-in'></span>
+</code></pre></div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
