@@ -542,7 +542,7 @@
 <li><p>Date (also when stored internally as integer)</p></li>
 <li><p>POSIXct timestamps</p></li>
 <li><p>POSIXlt timestamps</p></li>
-<li><p>difftime values (also with units other than seconds)</p></li>
+<li><p>difftime values (also with units other than seconds and with the value stored as integer)</p></li>
 <li><p>lists of raw for blobs (with <code>NULL</code> entries for SQL NULL values)</p></li>
 <li><p>objects of type <a href="blob::blob" class="uri">blob::blob</a></p></li>
 </ul>
@@ -950,57 +950,113 @@
 <span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"Robert'); DROP TABLE Students;--"</span>
 <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span>
 
+<span class="co"># Use Id() to specify other components such as the schema</span>
+<span class="va">id_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/Id.html">Id</a></span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"schema_name"</span>, table <span class="op">=</span> <span class="st">"table_name"</span><span class="op">)</span>
+<span class="va">id_name</span>
+<span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">id_name</span><span class="op">)</span>
+
 <span class="co"># SQL vectors are always passed through as is</span>
 <span class="va">var_name</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/SQL.html">SQL</a></span><span class="op">(</span><span class="st">"select"</span><span class="op">)</span>
 <span class="va">var_name</span>
-
 <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span>
 
 <span class="co"># This mechanism is used to prevent double escaping</span>
 <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="container">
-<h2 id="copy-data-frames-from-database-tables">Copy data frames from database tables</h2>
+
+<div id="copy-data-frames-from-database-tables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#copy-data-frames-from-database-tables" class="anchor" aria-hidden="true"></a>Copy data frames from database tables</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
-<h3 id="description-12">Description</h3>
+<div id="description-12" class="section level3">
+<h3 class="hasAnchor">
+<a href="#description-12" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Reads a database table to a data frame, optionally converting a column to row names and converting the column names to valid R identifiers.</p>
-<h3 id="arguments-12">Arguments</h3>
+</div>
+<div id="arguments-12" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-12" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
-<col width="5%">
-<col width="94%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><code>conn</code></td>
-<td>A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.</td>
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>name</code></td>
-<td>A character string specifying the unquoted DBMS table name, or the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</td>
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+The table name, passed on to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p>
+<ul>
+<li>
+<p>
+a character string with the unquoted DBMS table name, e.g. <code>“table_name”</code>,
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/Id.html">Id()</a></code> with components to the fully qualified table name, e.g. <code>Id(schema = “my_schema”, table = “table_name”)</code>
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim, e.g. <code>SQL(‘“my_schema”.“table_name”’)</code>
+</p>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="odd">
-<td><code>...</code></td>
-<td>Other parameters passed on to methods.</td>
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
 </tr>
 </tbody>
 </table>
-<h3 id="additional-arguments-4">Additional arguments</h3>
+</div>
+<div id="additional-arguments-4" class="section level3">
+<h3 class="hasAnchor">
+<a href="#additional-arguments-4" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
 <li><p><code>check.names</code></p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Value” section for details on their usage.</p>
-<h3 id="specification-12">Specification</h3>
+</div>
+<div id="specification-12" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specification-12" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> will do the quoting, perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
-<h3 id="value-12">Value</h3>
+</div>
+<div id="value-12" class="section level3">
+<h3 class="hasAnchor">
+<a href="#value-12" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.</p>
 <p>The presence of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> for details:</p>
 <ul>
@@ -1012,7 +1068,10 @@
 <p>The default is <code>row.names = FALSE</code>.</p>
 <p>If the database supports identifiers with special characters, the columns in the returned data frame are converted to valid R identifiers if the <code>check.names</code> argument is <code>TRUE</code>, If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Unsupported values for <code>row.names</code> and <code>check.names</code> (non-scalars, unsupported data types, <code>NA</code> for <code>check.names</code>) also raise an error.</p>
-<h3 id="examples-13">Examples</h3>
+</div>
+<div id="examples-13" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-13" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1022,38 +1081,92 @@
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="container">
-<h2 id="copy-data-frames-to-database-tables">Copy data frames to database tables</h2>
+
+</div>
+</div>
+<div id="copy-data-frames-to-database-tables" class="section level2">
+<h2 class="hasAnchor">
+<a href="#copy-data-frames-to-database-tables" class="anchor" aria-hidden="true"></a>Copy data frames to database tables</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
-<h3 id="description-13">Description</h3>
+<div id="description-13" class="section level3">
+<h3 class="hasAnchor">
+<a href="#description-13" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Writes, overwrites or appends a data frame to a database table, optionally converting row names to a column and specifying SQL data types for fields. New code should prefer <code><a href="../reference/dbCreateTable.html">dbCreateTable()</a></code> and <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code>.</p>
-<h3 id="arguments-13">Arguments</h3>
+</div>
+<div id="arguments-13" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-13" class="anchor" aria-hidden="true"></a>Arguments</h3>
 <table class="table">
 <colgroup>
-<col width="6%">
-<col width="93%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <tbody>
 <tr class="odd">
-<td><code>conn</code></td>
-<td>A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.</td>
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>name</code></td>
-<td>A character string specifying the unquoted DBMS table name, or the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</td>
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+The table name, passed on to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p>
+<ul>
+<li>
+<p>
+a character string with the unquoted DBMS table name, e.g. <code>“table_name”</code>,
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/Id.html">Id()</a></code> with components to the fully qualified table name, e.g. <code>Id(schema = “my_schema”, table = “table_name”)</code>
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim, e.g. <code>SQL(‘“my_schema”.“table_name”’)</code>
+</p>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="odd">
-<td><code>value</code></td>
-<td>a data.frame (or coercible to data.frame).</td>
+<td>
+<code>value</code>
+</td>
+<td>
+<p>
+a data.frame (or coercible to data.frame).
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>...</code></td>
-<td>Other parameters passed on to methods.</td>
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
 </tr>
 </tbody>
 </table>
-<h3 id="additional-arguments-5">Additional arguments</h3>
+</div>
+<div id="additional-arguments-5" class="section level3">
+<h3 class="hasAnchor">
+<a href="#additional-arguments-5" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
@@ -1063,7 +1176,10 @@
 <li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Specification” and “Value” sections for details on their usage.</p>
-<h3 id="specification-13">Specification</h3>
+</div>
+<div id="specification-13" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specification-13" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> will do the quoting, perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
@@ -1105,10 +1221,16 @@
 <li><p>If a string, this specifies the name of the column in the remote table that contains the row names, even if the input data frame only has natural row names.</p></li>
 </ul>
 <p>The default is <code>row.names = FALSE</code>.</p>
-<h3 id="value-13">Value</h3>
+</div>
+<div id="value-13" class="section level3">
+<h3 class="hasAnchor">
+<a href="#value-13" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> returns <code>TRUE</code>, invisibly. If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset, or <code>append = TRUE</code> and the data frame with the new data has different column names, an error is raised; the remote table remains unchanged.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Invalid values for the additional arguments <code>row.names</code>, <code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code> (non-scalars, unsupported data types, <code>NA</code>, incompatible values, duplicate or missing names, incompatible columns) also raise an error.</p>
-<h3 id="examples-14">Examples</h3>
+</div>
+<div id="examples-14" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-14" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1158,39 +1280,99 @@
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="container">
-<h2 id="does-a-table-exist">Does a table exist?</h2>
+
+</div>
+</div>
+<div id="does-a-table-exist" class="section level2">
+<h2 class="hasAnchor">
+<a href="#does-a-table-exist" class="anchor" aria-hidden="true"></a>Does a table exist?</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
-<h3 id="description-15">Description</h3>
+<div id="description-15" class="section level3">
+<h3 class="hasAnchor">
+<a href="#description-15" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Returns if a table given by name exists in the database.</p>
-<h3 id="arguments-15">Arguments</h3>
-<table class="table"><tbody>
+</div>
+<div id="arguments-15" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-15" class="anchor" aria-hidden="true"></a>Arguments</h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
 <tr class="odd">
-<td><code>conn</code></td>
-<td>A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.</td>
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>name</code></td>
-<td>A character string specifying a DBMS table name.</td>
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+The table name, passed on to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p>
+<ul>
+<li>
+<p>
+a character string with the unquoted DBMS table name, e.g. <code>“table_name”</code>,
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/Id.html">Id()</a></code> with components to the fully qualified table name, e.g. <code>Id(schema = “my_schema”, table = “table_name”)</code>
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim, e.g. <code>SQL(‘“my_schema”.“table_name”’)</code>
+</p>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="odd">
-<td><code>...</code></td>
-<td>Other parameters passed on to methods.</td>
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
 </tr>
-</tbody></table>
-<h3 id="value-15">Value</h3>
+</tbody>
+</table>
+</div>
+<div id="value-15" class="section level3">
+<h3 class="hasAnchor">
+<a href="#value-15" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.</p>
 <p>This includes temporary tables if supported by the database.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
-<h3 id="specification-14">Specification</h3>
+</div>
+<div id="specification-14" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specification-14" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> will do the quoting, perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
 <p>For all tables listed by <code><a href="../reference/dbListTables.html">dbListTables()</a></code>, <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns <code>TRUE</code>.</p>
-<h3 id="examples-16">Examples</h3>
+</div>
+<div id="examples-16" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-16" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1201,28 +1383,82 @@
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="container">
-<h2 id="remove-a-table-from-the-database">Remove a table from the database</h2>
+
+</div>
+</div>
+<div id="remove-a-table-from-the-database" class="section level2">
+<h2 class="hasAnchor">
+<a href="#remove-a-table-from-the-database" class="anchor" aria-hidden="true"></a>Remove a table from the database</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
-<h3 id="description-16">Description</h3>
+<div id="description-16" class="section level3">
+<h3 class="hasAnchor">
+<a href="#description-16" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>Remove a remote table (e.g., created by <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>) from the database.</p>
-<h3 id="arguments-16">Arguments</h3>
-<table class="table"><tbody>
+</div>
+<div id="arguments-16" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-16" class="anchor" aria-hidden="true"></a>Arguments</h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
 <tr class="odd">
-<td><code>conn</code></td>
-<td>A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.</td>
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>name</code></td>
-<td>A character string specifying a DBMS table name.</td>
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+The table name, passed on to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p>
+<ul>
+<li>
+<p>
+a character string with the unquoted DBMS table name, e.g. <code>“table_name”</code>,
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/Id.html">Id()</a></code> with components to the fully qualified table name, e.g. <code>Id(schema = “my_schema”, table = “table_name”)</code>
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim, e.g. <code>SQL(‘“my_schema”.“table_name”’)</code>
+</p>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="odd">
-<td><code>...</code></td>
-<td>Other parameters passed on to methods.</td>
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
 </tr>
-</tbody></table>
-<h3 id="additional-arguments-6">Additional arguments</h3>
+</tbody>
+</table>
+</div>
+<div id="additional-arguments-6" class="section level3">
+<h3 class="hasAnchor">
+<a href="#additional-arguments-6" class="anchor" aria-hidden="true"></a>Additional arguments</h3>
 <p>The following arguments are not part of the <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> generic (to improve compatibility across backends) but are part of the DBI specification:</p>
 <ul>
 <li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
@@ -1231,17 +1467,26 @@
 <p>These arguments must be provided as named arguments.</p>
 <p>If <code>temporary</code> is <code>TRUE</code>, the call to <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> will consider only temporary tables. Not all backends support this argument. In particular, permanent tables of the same name are left untouched.</p>
 <p>If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> succeeds if the table does not exist.</p>
-<h3 id="specification-15">Specification</h3>
+</div>
+<div id="specification-15" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specification-15" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>A table removed by <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> doesn’t appear in the list of tables returned by <code><a href="../reference/dbListTables.html">dbListTables()</a></code>, and <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns <code>FALSE</code>. The removal propagates immediately to other connections to the same database. This function can also be used to remove a temporary table.</p>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> will do the quoting, perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
-<h3 id="value-16">Value</h3>
+</div>
+<div id="value-16" class="section level3">
+<h3 class="hasAnchor">
+<a href="#value-16" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly. If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
-<h3 id="examples-17">Examples</h3>
+</div>
+<div id="examples-17" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-17" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1254,30 +1499,87 @@
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="container">
-<h2 id="list-field-names-of-a-remote-table">List field names of a remote table</h2>
+
+</div>
+</div>
+<div id="list-field-names-of-a-remote-table" class="section level2">
+<h2 class="hasAnchor">
+<a href="#list-field-names-of-a-remote-table" class="anchor" aria-hidden="true"></a>List field names of a remote table</h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
-<h3 id="description-17">Description</h3>
+<div id="description-17" class="section level3">
+<h3 class="hasAnchor">
+<a href="#description-17" class="anchor" aria-hidden="true"></a>Description</h3>
 <p>List field names of a remote table</p>
-<h3 id="arguments-17">Arguments</h3>
-<table class="table"><tbody>
+</div>
+<div id="arguments-17" class="section level3">
+<h3 class="hasAnchor">
+<a href="#arguments-17" class="anchor" aria-hidden="true"></a>Arguments</h3>
+<table class="table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<tbody>
 <tr class="odd">
-<td><code>conn</code></td>
-<td>A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.</td>
+<td>
+<code>conn</code>
+</td>
+<td>
+<p>
+A DBIConnection object, as returned by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+</p>
+</td>
 </tr>
 <tr class="even">
-<td><code>name</code></td>
-<td>a character string with the name of the remote table.</td>
+<td>
+<code>name</code>
+</td>
+<td>
+<p>
+The table name, passed on to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p>
+<ul>
+<li>
+<p>
+a character string with the unquoted DBMS table name, e.g. <code>“table_name”</code>,
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/Id.html">Id()</a></code> with components to the fully qualified table name, e.g. <code>Id(schema = “my_schema”, table = “table_name”)</code>
+</p>
+</li>
+<li>
+<p>
+a call to <code><a href="../reference/SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim, e.g. <code>SQL(‘“my_schema”.“table_name”’)</code>
+</p>
+</li>
+</ul>
+</td>
 </tr>
 <tr class="odd">
-<td><code>...</code></td>
-<td>Other parameters passed on to methods.</td>
+<td>
+<code>…</code>
+</td>
+<td>
+<p>
+Other parameters passed on to methods.
+</p>
+</td>
 </tr>
-</tbody></table>
-<h3 id="value-17">Value</h3>
+</tbody>
+</table>
+</div>
+<div id="value-17" class="section level3">
+<h3 class="hasAnchor">
+<a href="#value-17" class="anchor" aria-hidden="true"></a>Value</h3>
 <p><code><a href="../reference/dbListFields.html">dbListFields()</a></code> returns a character vector that enumerates all fields in the table in the correct order. This also works for temporary tables if supported by the database. The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. If the table does not exist, an error is raised. Invalid types for the <code>name</code> argument (e.g., <code>character</code> of length not equal to one, or numeric) lead to an error. An error is also raised when calling this method for a closed or invalid connection.</p>
-<h3 id="specification-16">Specification</h3>
+</div>
+<div id="specification-16" class="section level3">
+<h3 class="hasAnchor">
+<a href="#specification-16" class="anchor" aria-hidden="true"></a>Specification</h3>
 <p>The <code>name</code> argument can be</p>
 <ul>
 <li><p>a string</p></li>
@@ -1285,7 +1587,10 @@
 <li><p>a value from the <code>table</code> column from the return value of <code><a href="../reference/dbListObjects.html">dbListObjects()</a></code> where <code>is_prefix</code> is <code>FALSE</code></p></li>
 </ul>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
-<h3 id="examples-18">Examples</h3>
+</div>
+<div id="examples-18" class="section level3">
+<h3 class="hasAnchor">
+<a href="#examples-18" class="anchor" aria-hidden="true"></a>Examples</h3>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
 
@@ -1647,11 +1952,15 @@
 
 <span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
+</div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 

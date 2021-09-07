@@ -225,11 +225,17 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
 <span class='r-in'><span class='fu'>dbQuoteIdentifier</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>name</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; "Robert'); DROP TABLE Students;--"</span>
 <span class='r-in'></span>
+<span class='r-in'><span class='co'># Use Id() to specify other components such as the schema</span></span>
+<span class='r-in'><span class='va'>id_name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='Id.html'>Id</a></span><span class='op'>(</span>schema <span class='op'>=</span> <span class='st'>"schema_name"</span>, table <span class='op'>=</span> <span class='st'>"table_name"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>id_name</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;Id&gt; schema = schema_name, table = table_name</span>
+<span class='r-in'><span class='fu'>dbQuoteIdentifier</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>id_name</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; "schema_name"."table_name"</span>
+<span class='r-in'></span>
 <span class='r-in'><span class='co'># SQL vectors are always passed through as is</span></span>
 <span class='r-in'><span class='va'>var_name</span> <span class='op'>&lt;-</span> <span class='fu'><a href='SQL.html'>SQL</a></span><span class='op'>(</span><span class='st'>"select"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>var_name</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; select</span>
-<span class='r-in'></span>
 <span class='r-in'><span class='fu'>dbQuoteIdentifier</span><span class='op'>(</span><span class='fu'><a href='ANSI.html'>ANSI</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>var_name</span><span class='op'>)</span></span>
 <span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;SQL&gt; select</span>
 <span class='r-in'></span>
