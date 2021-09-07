@@ -79,10 +79,9 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' The argument order is different from the `sqlCreateTable()` method, the
 #' latter will be adapted in a later release of DBI.
 #'
-#' @param name Name of the table, escaped with [dbQuoteIdentifier()].
+#' @inheritParams dbReadTable
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlCreateTable
-#' @inheritParams dbDisconnect
 #' @family DBIConnection generics
 #' @export
 #' @examples

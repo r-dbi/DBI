@@ -10,12 +10,13 @@ dbAppendTable(conn, name, value, ..., row.names = NULL)
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{Name of the table, escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+\item{name}{A character string specifying the unquoted DBMS table name,
+or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{value}{A data frame of values. The column names must be consistent
 with those in the target table in the database.}
 
-\item{...}{Other arguments used by individual methods.}
+\item{...}{Other parameters passed on to methods.}
 
 \item{row.names}{Must be \code{NULL}.}
 }

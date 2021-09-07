@@ -383,8 +383,7 @@ setGeneric("dbListResults",
 
 #' List field names of a remote table
 #'
-#' @inheritParams dbGetQuery
-#' @param name a character string with the name of the remote table.
+#' @inheritParams dbReadTable
 #'
 #' @inherit DBItest::spec_sql_list_fields return
 #' @inheritSection DBItest::spec_sql_list_fields Specification
@@ -635,8 +634,7 @@ setMethod("dbWriteTable", signature("DBIConnection", "Id", "ANY"),
 #' @inherit DBItest::spec_sql_exists_table return
 #' @inheritSection DBItest::spec_sql_exists_table Specification
 #'
-#' @inheritParams dbGetQuery
-#' @param name A character string specifying a DBMS table name.
+#' @inheritParams dbReadTable
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -672,8 +670,7 @@ setMethod("dbExistsTable", signature("DBIConnection", "Id"),
 #' @inheritSection DBItest::spec_sql_remove_table Additional arguments
 #' @inheritSection DBItest::spec_sql_remove_table Specification
 #'
-#' @inheritParams dbGetQuery
-#' @param name A character string specifying a DBMS table name.
+#' @inheritParams dbReadTable
 #' @family DBIConnection generics
 #' @export
 #' @examples

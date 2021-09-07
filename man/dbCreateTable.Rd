@@ -10,7 +10,8 @@ dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
 \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{Name of the table, escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+\item{name}{A character string specifying the unquoted DBMS table name,
+or the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
 
 \item{fields}{Either a character vector or a data frame.
 
@@ -21,7 +22,7 @@ Field types are unescaped.
 A data frame: field types are generated using
 \code{\link[=dbDataType]{dbDataType()}}.}
 
-\item{...}{Other arguments used by individual methods.}
+\item{...}{Other parameters passed on to methods.}
 
 \item{row.names}{Must be \code{NULL}.}
 
