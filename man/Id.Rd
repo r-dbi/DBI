@@ -10,7 +10,8 @@ Id(...)
 }
 \arguments{
 \item{...}{Components of the hierarchy, e.g. \code{schema}, \code{table},
-or \code{cluster}, \code{catalog}, \code{schema}, \code{table}.
+or \code{cluster}, \code{catalog}, \code{schema}, \code{table},
+depending on the database backend.
 For more on these concepts, see
 \url{https://stackoverflow.com/questions/7022755/}}
 }

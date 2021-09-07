@@ -20,7 +20,8 @@ setClass("Id", slots = list(name = "character"))
 #' Objects of this class are also returned from [dbListObjects()].
 #'
 #' @param ... Components of the hierarchy, e.g. `schema`, `table`,
-#'   or `cluster`, `catalog`, `schema`, `table`.
+#'   or `cluster`, `catalog`, `schema`, `table`,
+#'   depending on the database backend.
 #'   For more on these concepts, see
 #'   \url{https://stackoverflow.com/questions/7022755/}
 #' @export
