@@ -20,7 +20,7 @@ Objects of class \code{Id} have a single slot \code{name}, which is a named
 character vector.
 The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
 Support for \code{Id} objects depends on the database backend.
-They can be used in the following methods as \code{name} argument:
+They can be used in the following methods as \code{name} or \code{table} argument:
 \itemize{
 \item \code{\link[=dbCreateTable]{dbCreateTable()}}
 \item \code{\link[=dbAppendTable]{dbAppendTable()}}

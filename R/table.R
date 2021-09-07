@@ -10,7 +10,7 @@ setClass("Id", slots = list(name = "character"))
 #' character vector.
 #' The [dbQuoteIdentifier()] method converts `Id` objects to strings.
 #' Support for `Id` objects depends on the database backend.
-#' They can be used in the following methods as `name` argument:
+#' They can be used in the following methods as `name` or `table` argument:
 #' - [dbCreateTable()]
 #' - [dbAppendTable()]
 #' - [dbReadTable()]
