@@ -155,7 +155,8 @@ with warning)
 \item \link{POSIXct} timestamps
 \item \link{POSIXlt} timestamps
 \item \link{difftime} values
-(also with units other than seconds)
+(also with units other than seconds
+and with the value stored as integer)
 \item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
 \item objects of type \link[blob:blob]{blob::blob}
 }

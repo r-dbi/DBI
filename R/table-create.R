@@ -11,8 +11,13 @@ NULL
 #' a compatibility warning.  The default will be changed in a later release.
 #'
 #' @param con A database connection.
-#' @param table Name of the table. Escaped with
-#'   [dbQuoteIdentifier()].
+#' @param table The table name, passed on to [dbQuoteIdentifier()]. Options are:
+#'   - a character string with the unquoted DBMS table name,
+#'     e.g. `"table_name"`,
+#'   - a call to [Id()] with components to the fully qualified table name,
+#'     e.g. `Id(schema = "my_schema", table = "table_name")`
+#'   - a call to [SQL()] with the quoted and fully qualified table name
+#'     given verbatim, e.g. `SQL('"my_schema"."table_name"')`
 #' @param fields Either a character vector or a data frame.
 #'
 #'   A named character vector: Names are column names, values are types.
@@ -79,10 +84,9 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' The argument order is different from the `sqlCreateTable()` method, the
 #' latter will be adapted in a later release of DBI.
 #'
-#' @param name Name of the table, escaped with [dbQuoteIdentifier()].
+#' @inheritParams dbReadTable
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlCreateTable
-#' @inheritParams dbDisconnect
 #' @family DBIConnection generics
 #' @export
 #' @examples

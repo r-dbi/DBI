@@ -118,12 +118,11 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #' The `row.names` argument is not supported by this method.
 #' Process the values with [sqlRownamesToColumn()] before calling this method.
 #'
-#' @param name Name of the table, escaped with [dbQuoteIdentifier()].
+#' @inheritParams dbReadTable
 #' @param value A data frame of values. The column names must be consistent
 #'   with those in the target table in the database.
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlAppendTableTemplate
-#' @inheritParams dbDisconnect
 #' @family DBIConnection generics
 #' @export
 #' @examples
@@ -143,6 +142,8 @@ setMethod("dbAppendTable", signature("DBIConnection"),
     if (!is.null(row.names)) {
       stop("Can't pass `row.names` to `dbAppendTable()`", call. = FALSE)
     }
+    stopifnot(is.character(name), length(name) == 1)
+    stopifnot(is.data.frame(value))
 
     query <- sqlAppendTableTemplate(
       con = conn,
