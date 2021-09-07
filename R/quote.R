@@ -92,10 +92,14 @@ setMethod("show", "SQL", function(object) {
 #' name <- "Robert'); DROP TABLE Students;--"
 #' dbQuoteIdentifier(ANSI(), name)
 #'
+#' # Use Id() to specify other components such as the schema
+#' id_name <- Id(schema = "schema_name", table = "table_name")
+#' id_name
+#' dbQuoteIdentifier(ANSI(), id_name)
+#'
 #' # SQL vectors are always passed through as is
 #' var_name <- SQL("select")
 #' var_name
-#'
 #' dbQuoteIdentifier(ANSI(), var_name)
 #'
 #' # This mechanism is used to prevent double escaping

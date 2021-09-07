@@ -20,8 +20,15 @@ sqlAppendTableTemplate(
 \arguments{
 \item{con}{A database connection.}
 
-\item{table}{Name of the table. Escaped with
-\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.}
+\item{table}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\itemize{
+\item a character string with the unquoted DBMS table name,
+e.g. \code{"table_name"},
+\item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
+e.g. \code{Id(schema = "my_schema", table = "table_name")}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
+given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+}}
 
 \item{values}{A data frame. Factors will be converted to character vectors.
 Character vectors will be escaped with \code{\link[=dbQuoteString]{dbQuoteString()}}.}
