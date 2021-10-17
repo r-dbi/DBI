@@ -88,8 +88,8 @@
 <p>If you are writing a package that connects a database to R, I highly recommend that you make it DBI compatible because it makes your life easier by spelling out exactly what you need to do. The consistent interface provided by DBI makes it easier for you to implement the package (because you have fewer arbitrary choices to make), and easier for your users (because it follows a familiar pattern). In addition, the <code>DBItest</code> package provides test cases which you can easily incorporate in your package.</p>
 <p>I’ll illustrate the process using a fictional database called Kazam.</p>
 <div id="getting-started" class="section level2">
-<h2 class="hasAnchor">
-<a href="#getting-started" class="anchor" aria-hidden="true"></a>Getting started</h2>
+<h2>Getting started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
+</h2>
 <p>Start by creating a package. It’s up to you what to call the package, but following the existing pattern of <code>RSQLite</code>, <code>RMySQL</code>, <code>RPostgres</code> and <code>ROracle</code> will make it easier for people to find it. For this example, I’ll call my package <code>RKazam</code>.</p>
 <p>A ready-to-use template package is available at <a href="https://github.com/r-dbi/RKazam/" class="external-link uri">https://github.com/r-dbi/RKazam/</a>. You can start by creating a new GitHub repository from this template, or by copying the package code. Rename “Kazam” to your desired name everywhere. The template package already contains dummy implementations for all classes and methods.</p>
 <p>If you chose to create the package manually, make sure to include in your <code>DESCRIPTION</code>:</p>
@@ -101,15 +101,15 @@
 <p>Importing <code>DBI</code> is fine, because your users are not supposed to <em>attach</em> your package anyway; the preferred method is to attach <code>DBI</code> and use explicit qualification via <code>::</code> to access the driver in your package (which needs to be done only once).</p>
 </div>
 <div id="testing" class="section level2">
-<h2 class="hasAnchor">
-<a href="#testing" class="anchor" aria-hidden="true"></a>Testing</h2>
+<h2>Testing<a class="anchor" aria-label="anchor" href="#testing"></a>
+</h2>
 <p>Why testing at this early stage? Because testing should be an integral part of the software development cycle. Test right from the start, add automated tests as you go, finish faster (because tests are automated) while maintaining superb code quality (because tests also check corner cases that you might not be aware of). Don’t worry: if some test cases are difficult or impossible to satisfy, or take too long to run, you can just turn them off.</p>
 <p>Take the time now to head over to the <code>DBItest</code> vignette at <code>vignette("test", package = "DBItest")</code>. You will find a vast amount of ready-to-use test cases that will help you in the process of implementing your new DBI backend.</p>
 <p>Add custom tests that are not covered by <code>DBItest</code> at your discretion, or enhance <code>DBItest</code> and file a pull request if the test is generic enough to be useful for many DBI backends.</p>
 </div>
 <div id="driver" class="section level2">
-<h2 class="hasAnchor">
-<a href="#driver" class="anchor" aria-hidden="true"></a>Driver</h2>
+<h2>Driver<a class="anchor" aria-label="anchor" href="#driver"></a>
+</h2>
 <p>Start by making a driver class which inherits from <code>DBIDriver</code>. This class doesn’t need to do anything, it’s just used to dispatch other generics to the right method. Users don’t need to know about this, so you can remove it from the default help listing with <code>@keywords internal</code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Driver for Kazam database.</span>
@@ -143,8 +143,8 @@
 <span class="co">#&gt; &lt;KazamDriver&gt;</span></code></pre></div>
 </div>
 <div id="connection" class="section level2">
-<h2 class="hasAnchor">
-<a href="#connection" class="anchor" aria-hidden="true"></a>Connection</h2>
+<h2>Connection<a class="anchor" aria-label="anchor" href="#connection"></a>
+</h2>
 <p>Next create a connection class that inherits from <code>DBIConnection</code>. This should store all the information needed to connect to the database. If you’re talking to a C api, this will include a slot that holds an external pointer.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam connection class.</span>
@@ -183,8 +183,8 @@
 <p>Next, implement <code><a href="https://rdrr.io/r/methods/show.html" class="external-link">show()</a></code> and <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> methods.</p>
 </div>
 <div id="results" class="section level2">
-<h2 class="hasAnchor">
-<a href="#results" class="anchor" aria-hidden="true"></a>Results</h2>
+<h2>Results<a class="anchor" aria-label="anchor" href="#results"></a>
+</h2>
 <p>Finally, you’re ready to implement the meat of the system: fetching results of a query into a data frame. First define a results class:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' Kazam results class.</span>
@@ -237,8 +237,8 @@
 <p>With these four methods in place, you can now use the default <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database, or relax and let the <code>DBItest</code> package do the work for you.</p>
 </div>
 <div id="sql-methods" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sql-methods" class="anchor" aria-hidden="true"></a>SQL methods</h2>
+<h2>SQL methods<a class="anchor" aria-label="anchor" href="#sql-methods"></a>
+</h2>
 <p>You’re now on the home stretch, and can make your wrapper substantially more useful by implementing methods that wrap around variations in SQL across databases:</p>
 <ul>
 <li><p><code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> and <code>dbQuoteIdentifer()</code> are used to safely quote strings and identifiers to avoid SQL injection attacks. Note that the former must be vectorized, but not the latter.</p></li>
@@ -251,8 +251,8 @@
 </ul>
 </div>
 <div id="metadata-methods" class="section level2">
-<h2 class="hasAnchor">
-<a href="#metadata-methods" class="anchor" aria-hidden="true"></a>Metadata methods</h2>
+<h2>Metadata methods<a class="anchor" aria-label="anchor" href="#metadata-methods"></a>
+</h2>
 <p>There are a lot of extra metadata methods for result sets (and one for the connection) that you might want to implement. They are described in the following.</p>
 <ul>
 <li><p><code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> returns if a connection or a result set is open (<code>TRUE</code>) or closed (<code>FALSE</code>). All further methods in this section are valid for result sets only.</p></li>
@@ -263,8 +263,8 @@
 </ul>
 </div>
 <div id="full-dbi-compliance" class="section level2">
-<h2 class="hasAnchor">
-<a href="#full-dbi-compliance" class="anchor" aria-hidden="true"></a>Full DBI compliance</h2>
+<h2>Full DBI compliance<a class="anchor" aria-label="anchor" href="#full-dbi-compliance"></a>
+</h2>
 <p>By now, your package should implement all methods defined in the DBI specification. If you want to walk the extra mile, offer a read-only mode that allows your users to be sure that their valuable data doesn’t get destroyed inadvertently.</p>
 </div>
   </div>
@@ -286,7 +286,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>
