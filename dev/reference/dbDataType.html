@@ -7,10 +7,7 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 
-
-RSQLite::dbDataType("SQLiteConnection")
-RSQLite::dbDataType("SQLiteDriver")
-
+Methods in other packages
 RSQLite::dbDataType("SQLiteConnection")
 RSQLite::dbDataType("SQLiteDriver")
 
@@ -50,7 +47,7 @@ RSQLite::dbDataType("SQLiteDriver")
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -65,7 +62,7 @@ RSQLite::dbDataType("SQLiteDriver")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Determine the SQL data type of an object</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R"><code>R/DBDriver.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a></small>
     <div class="hidden name"><code>dbDataType.Rd</code></div>
     </div>
 
@@ -77,29 +74,26 @@ R object according to the SQL 92 specification, which may serve as a starting
 point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.</p>
-<p></p><div id="methods-in-other-packages">
-<h3><ul><li><p><code>RSQLite::dbDataType("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbDataType("SQLiteDriver")</code></p></li>
-</ul><a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbDataType("SQLiteConnection")</code></p></li>
+<p></p><div class="section">
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbDataType("SQLiteConnection")</code></p></li>
 <li><p><code>RSQLite::dbDataType("SQLiteDriver")</code></p></li>
 </ul></div>
     </div>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbDataType</span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>dbObj</th>
-      <td><p>A object inheriting from <a href="DBIDriver-class.html">DBIDriver</a>
-or <a href="DBIConnection-class.html">DBIConnection</a></p></td>
-    </tr><tr><th>obj</th>
-      <td><p>An R object whose SQL type we want to determine.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments passed on to methods.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>dbObj</dt><dd><p>A object inheriting from <a href="DBIDriver-class.html">DBIDriver</a>
+or <a href="DBIConnection-class.html">DBIConnection</a></p></dd>
+</dl><dl><dt>obj</dt><dd><p>An R object whose SQL type we want to determine.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments passed on to methods.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p><code>dbDataType()</code> returns the SQL type that corresponds to the <code>obj</code> argument
 as a non-empty
 character string.
@@ -109,7 +103,7 @@ An error is raised for invalid values for the <code>obj</code> argument such as 
 <code>NULL</code> value.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The data types supported by databases are different than the data types in R,
 but the mapping between the primitive types is straightforward:</p><ul><li><p>Any of the many fixed and varying length character types are mapped to
 character vectors</p></li>
@@ -119,7 +113,7 @@ integer vectors.</p></li>
 problems with under/overflows and loss of precision.</p>
     </div>
     <div id="specification">
-    <h2>Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+    <h2>Specification</h2>
     
 
 
@@ -130,20 +124,20 @@ To query the values returned by the default implementation,
 run <code>example(dbDataType, package = "DBI")</code>.
 If the backend needs to override this generic,
 it must accept all basic R data types as its second argument, namely
-<a href="https://rdrr.io/r/base/logical.html">logical</a>,
-<a href="https://rdrr.io/r/base/integer.html">integer</a>,
-<a href="https://rdrr.io/r/base/numeric.html">numeric</a>,
-<a href="https://rdrr.io/r/base/character.html">character</a>,
-dates (see <a href="https://rdrr.io/r/base/Dates.html">Dates</a>),
-date-time (see <a href="https://rdrr.io/r/base/DateTimeClasses.html">DateTimeClasses</a>),
-and <a href="https://rdrr.io/r/base/difftime.html">difftime</a>.
+<a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a>,
+<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a>,
+<a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a>,
+<a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
+dates (see <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Dates</a>),
+date-time (see <a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">DateTimeClasses</a>),
+and <a href="https://rdrr.io/r/base/difftime.html" class="external-link">difftime</a>.
 If the database supports blobs,
-this method also must accept lists of <a href="https://rdrr.io/r/base/raw.html">raw</a> vectors,
-and <a href="https://blob.tidyverse.org/reference/blob.html">blob::blob</a> objects.
-As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html">I()</a></code>) must be
+this method also must accept lists of <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a> vectors,
+and <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a> objects.
+As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be
 supported and return the same results as their unwrapped counterparts.
-The SQL data type for <a href="https://rdrr.io/r/base/factor.html">factor</a>
-and <a href="https://rdrr.io/r/base/factor.html">ordered</a> is the same as for character.
+The SQL data type for <a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a>
+and <a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a> is the same as for character.
 The behavior for other object types is not specified.</p>
 
 
@@ -153,7 +147,7 @@ of the form
 <code>"CREATE TABLE test (a ...)"</code>.</p>
     </div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other DBIDriver generics: 
 <code><a href="DBIDriver-class.html">DBIDriver-class</a></code>,
 <code><a href="dbCanConnect.html">dbCanConnect</a>()</code>,
@@ -190,33 +184,34 @@ of the form
 <code><a href="dbGetConnectArgs.html">dbGetConnectArgs</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "INT"</span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fl">1</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DOUBLE"</span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SMALLINT"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DATE"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TIMESTAMP"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TIME"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TEXT"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BLOB"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "DOUBLE"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sepal.Length  Sepal.Width Petal.Length  Petal.Width      Species </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     "DOUBLE"     "DOUBLE"     "DOUBLE"     "DOUBLE"       "TEXT" </span>
 <span class="r-in"></span>
-<span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "INTEGER"</span>
@@ -224,17 +219,17 @@ of the form
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REAL"</span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "INTEGER"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REAL"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REAL"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.Date</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REAL"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="st">"abc"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "TEXT"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a></span><span class="op">(</span><span class="fl">20</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "BLOB"</span>
-<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "REAL"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu">dbDataType</span><span class="op">(</span><span class="va">con</span>, <span class="va">iris</span><span class="op">)</span></span>

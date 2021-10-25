@@ -39,7 +39,7 @@ These methods are mostly useful for backend implementers."><meta name="robots" c
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -54,7 +54,7 @@ These methods are mostly useful for backend implementers."><meta name="robots" c
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compose query to insert rows into a table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-insert.R"><code>R/table-insert.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-insert.R" class="external-link"><code>R/table-insert.R</code></a></small>
     <div class="hidden name"><code>sqlAppendTable.Rd</code></div>
     </div>
 
@@ -78,49 +78,44 @@ These methods are mostly useful for backend implementers.</p>
   pattern <span class="op">=</span> <span class="st">""</span>
 <span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>con</th>
-      <td><p>A database connection.</p></td>
-    </tr><tr><th>table</th>
-      <td><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
+    <h2>Arguments</h2>
+    
+
+<dl><dt>con</dt><dd><p>A database connection.</p></dd>
+</dl><dl><dt>table</dt><dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
 <li><p>a call to <code><a href="Id.html">Id()</a></code> with components to the fully qualified table name,
 e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
-</ul></td>
-    </tr><tr><th>values</th>
-      <td><p>A data frame. Factors will be converted to character vectors.
-Character vectors will be escaped with <code><a href="dbQuoteString.html">dbQuoteString()</a></code>.</p></td>
-    </tr><tr><th>row.names</th>
-      <td><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
-<p>If <code>TRUE</code>, always translate row names to a column called "row_names".
+</ul></dd>
+</dl><dl><dt>values</dt><dd><p>A data frame. Factors will be converted to character vectors.
+Character vectors will be escaped with <code><a href="dbQuoteString.html">dbQuoteString()</a></code>.</p></dd>
+</dl><dl><dt>row.names</dt><dd><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.If <code>TRUE</code>, always translate row names to a column called "row_names".
 If <code>FALSE</code>, never translate row names. If <code>NA</code>, translate
-rownames only if they're a character vector.</p>
-<p>A string is equivalent to <code>TRUE</code>, but allows you to override the
-default name.</p>
-<p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments used by individual methods.</p></td>
-    </tr><tr><th>prefix</th>
-      <td><p>Parameter prefix to use for placeholders.</p></td>
-    </tr><tr><th>pattern</th>
-      <td><p>Parameter pattern to use for placeholders:</p><ul><li><p><code>""</code>: no pattern</p></li>
+rownames only if they're a character vector.A string is equivalent to <code>TRUE</code>, but allows you to override the
+default name.For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments used by individual methods.</p></dd>
+</dl><dl><dt>prefix</dt><dd><p>Parameter prefix to use for placeholders.</p></dd>
+</dl><dl><dt>pattern</dt><dd><p>Parameter pattern to use for placeholders:
+</p><ul><li><p><code>""</code>: no pattern</p></li>
 <li><p><code>"1"</code>: position</p></li>
 <li><p>anything else: field name</p></li>
-</ul></td>
-    </tr></table></div>
-
+</ul></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The <code>row.names</code> argument must be passed explicitly in order to avoid
 a compatibility warning.  The default will be changed in a later release.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "iris"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species")</span>
@@ -132,7 +127,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (5, 3.6, 1.4, 0.2, 'setosa'),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (5.4, 3.9, 1.7, 0.4, 'setosa')</span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("row_names", "mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
@@ -143,7 +138,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Hornet 4 Drive', 21.4, 6, 258, 110, 3.08, 3.215, 19.44, 1, 0, 3, 1),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Hornet Sportabout', 18.7, 8, 360, 175, 3.15, 3.44, 17.02, 0, 0, 3, 2),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Valiant', 18.1, 6, 225, 105, 2.76, 3.46, 20.22, 1, 0, 3, 1)</span>
-<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VALUES</span>

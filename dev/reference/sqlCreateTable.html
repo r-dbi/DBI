@@ -37,7 +37,7 @@ This method is mostly useful for backend implementers."><meta name="robots" cont
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -52,7 +52,7 @@ This method is mostly useful for backend implementers."><meta name="robots" cont
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compose query to create a simple table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-create.R"><code>R/table-create.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-create.R" class="external-link"><code>R/table-create.R</code></a></small>
     <div class="hidden name"><code>sqlCreateTable.Rd</code></div>
     </div>
 
@@ -64,48 +64,41 @@ This method is mostly useful for backend implementers.</p>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">fields</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>con</th>
-      <td><p>A database connection.</p></td>
-    </tr><tr><th>table</th>
-      <td><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
+    <h2>Arguments</h2>
+    
+
+<dl><dt>con</dt><dd><p>A database connection.</p></dd>
+</dl><dl><dt>table</dt><dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
 <li><p>a call to <code><a href="Id.html">Id()</a></code> with components to the fully qualified table name,
 e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
-</ul></td>
-    </tr><tr><th>fields</th>
-      <td><p>Either a character vector or a data frame.</p>
-<p>A named character vector: Names are column names, values are types.
+</ul></dd>
+</dl><dl><dt>fields</dt><dd><p>Either a character vector or a data frame.A named character vector: Names are column names, values are types.
 Names are escaped with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
-Field types are unescaped.</p>
-<p>A data frame: field types are generated using
-<code><a href="dbDataType.html">dbDataType()</a></code>.</p></td>
-    </tr><tr><th>row.names</th>
-      <td><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
-<p>If <code>TRUE</code>, always translate row names to a column called "row_names".
+Field types are unescaped.A data frame: field types are generated using
+<code><a href="dbDataType.html">dbDataType()</a></code>.</p></dd>
+</dl><dl><dt>row.names</dt><dd><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.If <code>TRUE</code>, always translate row names to a column called "row_names".
 If <code>FALSE</code>, never translate row names. If <code>NA</code>, translate
-rownames only if they're a character vector.</p>
-<p>A string is equivalent to <code>TRUE</code>, but allows you to override the
-default name.</p>
-<p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></td>
-    </tr><tr><th>temporary</th>
-      <td><p>If <code>TRUE</code>, will generate a temporary table statement.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments used by individual methods.</p></td>
-    </tr></table></div>
-
+rownames only if they're a character vector.A string is equivalent to <code>TRUE</code>, but allows you to override the
+default name.For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></dd>
+</dl><dl><dt>temporary</dt><dd><p>If <code>TRUE</code>, will generate a temporary table statement.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments used by individual methods.</p></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The <code>row.names</code> argument must be passed explicitly in order to avoid
 a compatibility warning.  The default will be changed in a later release.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"my-table"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"integer"</span>, b <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"my-table"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"integer"</span>, b <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; CREATE TABLE "my-table" (</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   "a" integer,</span>

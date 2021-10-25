@@ -85,13 +85,13 @@
 
     
     
-<div id="who-this-tutorial-is-for" class="section level2">
-<h2>Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
+<div class="section level2">
+<h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
 <p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connecting to DBMS and executing simple queries.</p>
 </div>
-<div id="how-to-run-more-complex-queries-using-dbi" class="section level2">
-<h2>How to run more complex queries using DBI<a class="anchor" aria-label="anchor" href="#how-to-run-more-complex-queries-using-dbi"></a>
+<div class="section level2">
+<h2 id="how-to-run-more-complex-queries-using-dbi">How to run more complex queries using DBI<a class="anchor" aria-label="anchor" href="#how-to-run-more-complex-queries-using-dbi"></a>
 </h2>
 <p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.</p>
 <p>These functions are:</p>
@@ -141,8 +141,8 @@
 ## 2 2006-02-15 04:03:42
 ## 3 2006-02-15 04:03:42</code></pre>
 </div>
-<div id="how-to-read-part-of-a-table-from-a-database" class="section level2">
-<h2>How to read part of a table from a database<a class="anchor" aria-label="anchor" href="#how-to-read-part-of-a-table-from-a-database"></a>
+<div class="section level2">
+<h2 id="how-to-read-part-of-a-table-from-a-database">How to read part of a table from a database<a class="anchor" aria-label="anchor" href="#how-to-read-part-of-a-table-from-a-database"></a>
 </h2>
 <p>If your dataset is large you may want to fetch a limited number of rows at a time. As demonstrated below, this can be accomplished by using a while loop where the function <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> is used to check for ongoing rows, and <code><a href="../reference/dbFetch.html">dbFetch()</a></code> is used with the <code>n = X</code> argument, specifying how many rows to return on each iteration. Again, we call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> at the end to release resources.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
@@ -158,12 +158,12 @@
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="how-to-use-parameters-safely-in-sql-queries" class="section level2">
-<h2>How to use parameters (safely) in SQL queries<a class="anchor" aria-label="anchor" href="#how-to-use-parameters-safely-in-sql-queries"></a>
+<div class="section level2">
+<h2 id="how-to-use-parameters-safely-in-sql-queries">How to use parameters (safely) in SQL queries<a class="anchor" aria-label="anchor" href="#how-to-use-parameters-safely-in-sql-queries"></a>
 </h2>
 <p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> can be used with parameterized SQL queries. DBI supports two ways to avoid SQL injection attacks from user-supplied parameters: quoting and parameterized queries.</p>
-<div id="quoting" class="section level3">
-<h3>Quoting<a class="anchor" aria-label="anchor" href="#quoting"></a>
+<div class="section level3">
+<h3 id="quoting">Quoting<a class="anchor" aria-label="anchor" href="#quoting"></a>
 </h3>
 <p>Quoting of parameter values is performed using the function <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code>, which supports many R data types, including date and time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 <p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
@@ -197,8 +197,8 @@
 ## 2 AFFAIR PREJUDICE      G
 ## 3      AFRICAN EGG      G</code></pre>
 </div>
-<div id="parameterized-queries" class="section level3">
-<h3>Parameterized queries<a class="anchor" aria-label="anchor" href="#parameterized-queries"></a>
+<div class="section level3">
+<h3 id="parameterized-queries">Parameterized queries<a class="anchor" aria-label="anchor" href="#parameterized-queries"></a>
 </h3>
 <p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.</p>
 <p>MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values. Other DBMS may use named parameters. We recommend consulting the documentation for the DBMS you are using. As an example, a web search for “mariadb parameterized queries” leads to the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/" class="external-link"><code>PREPARE</code> statement</a> which mentions:</p>
@@ -348,8 +348,8 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="sql-data-manipulation---update-delete-and-friends" class="section level2">
-<h2>SQL data manipulation - UPDATE, DELETE and friends<a class="anchor" aria-label="anchor" href="#sql-data-manipulation---update-delete-and-friends"></a>
+<div class="section level2">
+<h2 id="sql-data-manipulation---update-delete-and-friends">SQL data manipulation - UPDATE, DELETE and friends<a class="anchor" aria-label="anchor" href="#sql-data-manipulation---update-delete-and-friends"></a>
 </h2>
 <p>For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> passes the SQL statement to the DBMS for execution and returns the number of rows affected. <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> performs in the same manner, but returns a result object. Call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> with the result object to get the count of the affected rows. You then need to call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> with the result object afterwards to release resources.</p>
 <p>In actuality, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> is a convenience function that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. You can use these functions if you need more control over the query process.</p>
@@ -384,8 +384,8 @@
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="sql-transactions-with-dbi" class="section level2">
-<h2>SQL transactions with DBI<a class="anchor" aria-label="anchor" href="#sql-transactions-with-dbi"></a>
+<div class="section level2">
+<h2 id="sql-transactions-with-dbi">SQL transactions with DBI<a class="anchor" aria-label="anchor" href="#sql-transactions-with-dbi"></a>
 </h2>
 <p>DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with <code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and ensures that either both tables are updated, or no changes are persisted to the database and an error is thrown.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
@@ -473,8 +473,8 @@
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="conclusion" class="section level2">
-<h2>Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+<div class="section level2">
+<h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
 <p>That concludes the major features of DBI. For more details on the library functions covered in this tutorial and the <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> introductory tutorial see the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>. If you are after a data manipulation library that works at a higher level of abstraction, check out <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. It is a grammar of data manipulation that can work with local dataframes and remote databases and uses DBI under the hood.</p>
 </div>
@@ -498,12 +498,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>

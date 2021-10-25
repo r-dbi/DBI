@@ -38,7 +38,7 @@ comment specifications."><meta name="robots" content="noindex"><!-- mathjax --><
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -53,7 +53,7 @@ comment specifications."><meta name="robots" content="noindex"><!-- mathjax --><
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Parse interpolated variables from SQL.</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/interpolate.R"><code>R/interpolate.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/interpolate.R" class="external-link"><code>R/interpolate.R</code></a></small>
     <div class="hidden name"><code>sqlParseVariables.Rd</code></div>
     </div>
 
@@ -72,35 +72,31 @@ comment specifications.</p>
 
 <span class="fu">sqlParseVariablesImpl</span><span class="op">(</span><span class="va">sql</span>, <span class="va">quotes</span>, <span class="va">comments</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>sql</th>
-      <td><p>SQL to parse (a character string)</p></td>
-    </tr><tr><th>start, end</th>
-      <td><p>Start and end characters for quotes and comments</p></td>
-    </tr><tr><th>endRequired</th>
-      <td><p>Is the ending character of a comment required?</p></td>
-    </tr><tr><th>escape</th>
-      <td><p>What character can be used to escape quoting characters?
-Defaults to <code>""</code>, i.e. nothing.</p></td>
-    </tr><tr><th>doubleEscape</th>
-      <td><p>Can quoting characters be escaped by doubling them?
-Defaults to <code>TRUE</code>.</p></td>
-    </tr><tr><th>quotes</th>
-      <td><p>A list of <code>QuoteSpec</code> calls defining the quoting
-specification.</p></td>
-    </tr><tr><th>comments</th>
-      <td><p>A list of <code>CommentSpec</code> calls defining the commenting
-specification.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>sql</dt><dd><p>SQL to parse (a character string)</p></dd>
+</dl><dl><dt>start, end</dt><dd><p>Start and end characters for quotes and comments</p></dd>
+</dl><dl><dt>endRequired</dt><dd><p>Is the ending character of a comment required?</p></dd>
+</dl><dl><dt>escape</dt><dd><p>What character can be used to escape quoting characters?
+Defaults to <code>""</code>, i.e. nothing.</p></dd>
+</dl><dl><dt>doubleEscape</dt><dd><p>Can quoting characters be escaped by doubling them?
+Defaults to <code>TRUE</code>.</p></dd>
+</dl><dl><dt>quotes</dt><dd><p>A list of <code>QuoteSpec</code> calls defining the quoting
+specification.</p></dd>
+</dl><dl><dt>comments</dt><dd><p>A list of <code>CommentSpec</code> calls defining the commenting
+specification.</p></dd>
+</dl></div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Use [] for quoting and no comments</span></span>
 <span class="r-in"><span class="fu">sqlParseVariablesImpl</span><span class="op">(</span><span class="st">"[?a]"</span>,</span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">"["</span>, <span class="st">"]"</span>, <span class="st">"\\"</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">"["</span>, <span class="st">"]"</span>, <span class="st">"\\"</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $start</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> integer(0)</span>
@@ -111,8 +107,8 @@ specification.</p></td>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Standard quotes, use # for commenting</span></span>
 <span class="r-in"><span class="fu">sqlParseVariablesImpl</span><span class="op">(</span><span class="st">"# ?a\n?b"</span>,</span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">"'"</span>, <span class="st">"'"</span><span class="op">)</span>, <span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">'"'</span>, <span class="st">'"'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu">sqlCommentSpec</span><span class="op">(</span><span class="st">"#"</span>, <span class="st">"\n"</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">"'"</span>, <span class="st">"'"</span><span class="op">)</span>, <span class="fu">sqlQuoteSpec</span><span class="op">(</span><span class="st">'"'</span>, <span class="st">'"'</span><span class="op">)</span><span class="op">)</span>,</span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu">sqlCommentSpec</span><span class="op">(</span><span class="st">"#"</span>, <span class="st">"\n"</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $start</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>

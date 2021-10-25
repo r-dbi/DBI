@@ -35,7 +35,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -50,7 +50,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Set data mappings between an DBMS and R.</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/deprecated.R"><code>R/deprecated.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>dbSetDataMappings.Rd</code></div>
     </div>
 
@@ -60,23 +60,23 @@
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbSetDataMappings</span><span class="op">(</span><span class="va">res</span>, <span class="va">flds</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>res</th>
-      <td><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></td>
-    </tr><tr><th>flds</th>
-      <td><p>a field description object as returned by <code>dbColumnInfo</code>.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments passed on to methods.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>res</dt><dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></dd>
+</dl><dl><dt>flds</dt><dd><p>a field description object as returned by <code>dbColumnInfo</code>.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments passed on to methods.</p></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>Sets one or more conversion functions to handle the translation of DBMS data
 types to R objects.  This is only needed for non-primitive data, since all
 DBI drivers handle the common base types (integers, numeric, strings, etc.)</p>
 <p>The details on conversion functions (e.g., arguments, whether they can invoke
 initializers and/or destructors) have not been specified.</p>
+    </div>
     </div>
 
   </div>

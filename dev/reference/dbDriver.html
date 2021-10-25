@@ -43,7 +43,7 @@ dbUnloadDriver() is not implemented for modern backends."><meta name="robots" co
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -58,7 +58,7 @@ dbUnloadDriver() is not implemented for modern backends."><meta name="robots" co
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Load and unload database drivers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R"><code>R/DBDriver.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a></small>
     <div class="hidden name"><code>dbDriver.Rd</code></div>
     </div>
 
@@ -78,19 +78,18 @@ to, you should call the function directly.</p>
 
 <span class="fu">dbUnloadDriver</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>drvName</th>
-      <td><p>character name of the driver to instantiate.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>any other arguments are passed to the driver <code>drvName</code>.</p></td>
-    </tr><tr><th>drv</th>
-      <td><p>an object that inherits from <code>DBIDriver</code> as created by
-<code>dbDriver</code>.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>drvName</dt><dd><p>character name of the driver to instantiate.</p></dd>
+</dl><dl><dt>...</dt><dd><p>any other arguments are passed to the driver <code>drvName</code>.</p></dd>
+</dl><dl><dt>drv</dt><dd><p>an object that inherits from <code>DBIDriver</code> as created by
+<code>dbDriver</code>.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>In the case of <code>dbDriver</code>, an driver object whose class extends
 <code>DBIDriver</code>. This object may be used to create connections to the
 actual DBMS engine.</p>
@@ -98,14 +97,14 @@ actual DBMS engine.</p>
 operation succeeded or not.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The client part of the database communication is
 initialized (typically dynamically loading C code, etc.) but note that
 connecting to the database engine itself needs to be done through calls to
 <code>dbConnect</code>.</p>
     </div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other DBIDriver generics: 
 <code><a href="DBIDriver-class.html">DBIDriver-class</a></code>,
 <code><a href="dbCanConnect.html">dbCanConnect</a>()</code>,
@@ -125,16 +124,17 @@ connecting to the database engine itself needs to be done through calls to
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListConnections.html">dbListConnections</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create a RSQLite driver with a string</span></span>
 <span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">dbDriver</span><span class="op">(</span><span class="st">"SQLite"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">d</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteDriver&gt;</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># But better, access the object directly</span></span>
-<span class="r-in"><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteDriver&gt;</span>
 </code></pre></div>
     </div>

@@ -36,7 +36,7 @@ DBIConnection or DBIResult."><meta name="robots" content="noindex"><!-- mathjax 
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -51,7 +51,7 @@ DBIConnection or DBIResult."><meta name="robots" content="noindex"><!-- mathjax 
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get DBMS metadata</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBObject.R"><code>R/DBObject.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/master/R/DBResult.R"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBObject.R" class="external-link"><code>R/DBObject.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/master/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
     <div class="hidden name"><code>dbGetInfo.Rd</code></div>
     </div>
 
@@ -62,18 +62,18 @@ DBIConnection or DBIResult."><meta name="robots" content="noindex"><!-- mathjax 
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbGetInfo</span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>dbObj</th>
-      <td><p>An object inheriting from <a href="DBIObject-class.html">DBIObject</a>,
-i.e. <a href="DBIDriver-class.html">DBIDriver</a>, <a href="DBIConnection-class.html">DBIConnection</a>,
-or a <a href="DBIResult-class.html">DBIResult</a></p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments to methods.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>dbObj</dt><dd><p>An object inheriting from <a href="DBIObject-class.html">DBIObject</a>,
+i.e. <a href="DBIDriver-class.html">DBIDriver</a>, <a href="DBIConnection-class.html">DBIConnection</a>,
+or a <a href="DBIResult-class.html">DBIResult</a></p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments to methods.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>For objects of class <a href="DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code>
 returns a named list
 that contains at least the following components:</p><ul><li><p><code>driver.version</code>: the package version of the DBI backend,</p></li>
@@ -100,7 +100,7 @@ if the query or statement has completed,
 as returned by <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code>.</p></li>
 </ul></div>
     <div id="implementation-notes">
-    <h2>Implementation notes<a class="anchor" aria-label="anchor" href="#implementation-notes"></a></h2>
+    <h2>Implementation notes</h2>
     
 
 <p>The default implementation for <code>DBIResult objects</code>
@@ -109,7 +109,7 @@ constructs such a list from the return values of the corresponding methods,
 <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code>.</p>
     </div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other DBIDriver generics: 
 <code><a href="DBIDriver-class.html">DBIDriver-class</a></code>,
 <code><a href="dbCanConnect.html">dbCanConnect</a>()</code>,
@@ -156,6 +156,7 @@ constructs such a list from the return values of the corresponding methods,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
 <code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
 <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+    </div>
     </div>
 
   </div>

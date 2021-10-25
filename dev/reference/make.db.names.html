@@ -36,7 +36,7 @@
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -51,7 +51,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make R identifiers into legal SQL identifiers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/deprecated.R"><code>R/deprecated.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>make.db.names.Rd</code></div>
     </div>
 
@@ -80,46 +80,40 @@
   <span class="va">dbObj</span>,
   <span class="va">name</span>,
   keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
-  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
+  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
   <span class="va">...</span>
 <span class="op">)</span>
 
 <span class="fu">isSQLKeyword.default</span><span class="op">(</span>
   <span class="va">name</span>,
   keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
-  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
+  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
 <span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>dbObj</th>
-      <td><p>any DBI object (e.g., <code>DBIDriver</code>).</p></td>
-    </tr><tr><th>snames</th>
-      <td><p>a character vector of R identifiers (symbols) from which we
-need to make SQL identifiers.</p></td>
-    </tr><tr><th>keywords</th>
-      <td><p>a character vector with SQL keywords, by default it's
-<code>.SQL92Keywords</code> defined by the DBI.</p></td>
-    </tr><tr><th>unique</th>
-      <td><p>logical describing whether the resulting set of SQL names
+    <h2>Arguments</h2>
+    
+
+<dl><dt>dbObj</dt><dd><p>any DBI object (e.g., <code>DBIDriver</code>).</p></dd>
+</dl><dl><dt>snames</dt><dd><p>a character vector of R identifiers (symbols) from which we
+need to make SQL identifiers.</p></dd>
+</dl><dl><dt>keywords</dt><dd><p>a character vector with SQL keywords, by default it's
+<code>.SQL92Keywords</code> defined by the DBI.</p></dd>
+</dl><dl><dt>unique</dt><dd><p>logical describing whether the resulting set of SQL names
 should be unique.  Its default is <code>TRUE</code>.  Following the SQL 92
 standard, uniqueness of SQL identifiers is determined regardless of whether
-letters are upper or lower case.</p></td>
-    </tr><tr><th>allow.keywords</th>
-      <td><p>logical describing whether SQL keywords should be
-allowed in the resulting set of SQL names.  Its default is <code>TRUE</code></p></td>
-    </tr><tr><th>...</th>
-      <td><p>any other argument are passed to the driver implementation.</p></td>
-    </tr><tr><th>name</th>
-      <td><p>a character vector with database identifier candidates we need
-to determine whether they are legal SQL identifiers or not.</p></td>
-    </tr><tr><th>case</th>
-      <td><p>a character string specifying whether to make the comparison as
-lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p></td>
-    </tr></table></div>
-
+letters are upper or lower case.</p></dd>
+</dl><dl><dt>allow.keywords</dt><dd><p>logical describing whether SQL keywords should be
+allowed in the resulting set of SQL names.  Its default is <code>TRUE</code></p></dd>
+</dl><dl><dt>...</dt><dd><p>any other argument are passed to the driver implementation.</p></dd>
+</dl><dl><dt>name</dt><dd><p>a character vector with database identifier candidates we need
+to determine whether they are legal SQL identifiers or not.</p></dd>
+</dl><dl><dt>case</dt><dd><p>a character string specifying whether to make the comparison as
+lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p><code>make.db.names</code> returns a character vector of legal SQL
 identifiers corresponding to its <code>snames</code> argument.</p>
 <p><code>SQLKeywords</code> returns a character vector of all known keywords for the
@@ -127,7 +121,7 @@ database-engine associated with <code>dbObj</code>.</p>
 <p><code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The algorithm in <code>make.db.names</code> first invokes <code>make.names</code> and
 then replaces each occurrence of a dot <code>.</code> by an underscore <code>_</code>.  If
 <code>allow.keywords</code> is <code>FALSE</code> and identifiers collide with SQL
@@ -139,7 +133,7 @@ in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
     </div>
     <div id="bugs">
-    <h2>Bugs<a class="anchor" aria-label="anchor" href="#bugs"></a></h2>
+    <h2>Bugs</h2>
     
 
 <p>The current mapping is not guaranteed to be fully reversible: some SQL
@@ -149,11 +143,12 @@ original SQL identifiers (e.g., compound SQL identifiers of the form
 <code>username.tablename</code> will loose the dot ``.'').</p>
     </div>
     <div id="references">
-    <h2>References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <h2>References</h2>
     <p>The set of SQL keywords is stored in the character vector
 <code>.SQL92Keywords</code> and reflects the SQL ANSI/ISO standard as documented
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
+    </div>
     </div>
 
   </div>

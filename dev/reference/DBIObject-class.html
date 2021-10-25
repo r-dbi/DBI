@@ -36,7 +36,7 @@ is a virtual Class: No objects may be created from it."><meta name="robots" cont
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -51,7 +51,7 @@ is a virtual Class: No objects may be created from it."><meta name="robots" cont
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBIObject class</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBObject.R"><code>R/DBObject.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBObject.R" class="external-link"><code>R/DBObject.R</code></a></small>
     <div class="hidden name"><code>DBIObject-class.Rd</code></div>
     </div>
 
@@ -61,9 +61,9 @@ is a virtual Class: No objects may be created from it.</p>
     </div>
 
 
-
+    <div id="ref-sections">
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>More generally, the DBI defines a very small set of classes and generics that
 allows users and applications access DBMS with a common interface.  The
 virtual classes are <code>DBIDriver</code> that individual drivers extend,
@@ -73,37 +73,38 @@ classes extend the basic class of <code>DBIObject</code>, which serves as the ro
 or parent of the class hierarchy.</p>
     </div>
     <div id="implementation-notes">
-    <h2>Implementation notes<a class="anchor" aria-label="anchor" href="#implementation-notes"></a></h2>
+    <h2>Implementation notes</h2>
     
 
 <p>An implementation MUST provide methods for the following generics:</p>
 <ul><li><p><code><a href="dbGetInfo.html">dbGetInfo()</a></code>.</p></li>
 </ul><p>It MAY also provide methods for:</p>
-<ul><li><p><code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>. Print a concise description of the
+<ul><li><p><code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code>. Print a concise description of the
 object. The default method invokes <code>dbGetInfo(dbObj)</code> and prints
 the name-value pairs one per line.  Individual implementations may
 tailor this appropriately.</p></li>
 </ul></div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other DBI classes: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="DBIConnector-class.html">DBIConnector-class</a></code>,
 <code><a href="DBIDriver-class.html">DBIDriver-class</a></code>,
 <code><a href="DBIResult-class.html">DBIResult-class</a></code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">drv</span> <span class="op">&lt;-</span> <span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">drv</span> <span class="op">&lt;-</span> <span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html">is</a></span><span class="op">(</span><span class="va">drv</span>, <span class="st">"DBIObject"</span><span class="op">)</span>   <span class="co">## True</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html" class="external-link">is</a></span><span class="op">(</span><span class="va">drv</span>, <span class="st">"DBIObject"</span><span class="op">)</span>   <span class="co">## True</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html">is</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DBIObject"</span><span class="op">)</span>   <span class="co">## True</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html" class="external-link">is</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DBIObject"</span><span class="op">)</span>   <span class="co">## True</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html">is</a></span><span class="op">(</span><span class="va">rs</span>, <span class="st">"DBIObject"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/methods/is.html" class="external-link">is</a></span><span class="op">(</span><span class="va">rs</span>, <span class="st">"DBIObject"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>

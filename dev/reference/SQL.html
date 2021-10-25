@@ -43,7 +43,7 @@ The SQL class has associated the SQL() constructor function."><meta name="robots
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -58,7 +58,7 @@ The SQL class has associated the SQL() constructor function."><meta name="robots
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>SQL quoting</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/quote.R"><code>R/quote.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/quote.R" class="external-link"><code>R/quote.R</code></a></small>
     <div class="hidden name"><code>SQL.Rd</code></div>
     </div>
 
@@ -76,22 +76,21 @@ The <code>SQL</code> class has associated the <code>SQL()</code> constructor fun
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">SQL</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>x</th>
-      <td><p>A character vector to label as being escaped SQL.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other arguments passed on to methods. Not otherwise used.</p></td>
-    </tr><tr><th>names</th>
-      <td><p>Names for the returned object, must have the same length as <code>x</code>.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>x</dt><dd><p>A character vector to label as being escaped SQL.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other arguments passed on to methods. Not otherwise used.</p></dd>
+</dl><dl><dt>names</dt><dd><p>Names for the returned object, must have the same length as <code>x</code>.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>An object of class <code>SQL</code>.</p>
     </div>
     <div id="implementation-notes">
-    <h2>Implementation notes<a class="anchor" aria-label="anchor" href="#implementation-notes"></a></h2>
+    <h2>Implementation notes</h2>
     
 
 
@@ -103,9 +102,10 @@ SQL inherits from character, if you implement (e.g.) a method for
 implement <code>dbQuoteString(MyConnection, SQL)</code> - this should simply
 return <code>x</code> unchanged.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; "SELECT"</span>
 <span class="r-in"><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span>

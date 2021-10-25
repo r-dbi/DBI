@@ -43,7 +43,7 @@ ways to create tables) need to override the dbAppendTable() method."><meta name=
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -58,7 +58,7 @@ ways to create tables) need to override the dbAppendTable() method."><meta name=
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Insert rows into a table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-insert.R"><code>R/table-insert.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/table-insert.R" class="external-link"><code>R/table-insert.R</code></a></small>
     <div class="hidden name"><code>dbAppendTable.Rd</code></div>
     </div>
 
@@ -76,35 +76,33 @@ ways to create tables) need to override the <code>dbAppendTable()</code> method.
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbAppendTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>conn</th>
-      <td><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
-<code><a href="dbConnect.html">dbConnect()</a></code>.</p></td>
-    </tr><tr><th>name</th>
-      <td><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
+    <h2>Arguments</h2>
+    
+
+<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+<code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+</dl><dl><dt>name</dt><dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:
+</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
 <li><p>a call to <code><a href="Id.html">Id()</a></code> with components to the fully qualified table name,
 e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
-</ul></td>
-    </tr><tr><th>value</th>
-      <td><p>A data frame of values. The column names must be consistent
-with those in the target table in the database.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other parameters passed on to methods.</p></td>
-    </tr><tr><th>row.names</th>
-      <td><p>Must be <code>NULL</code>.</p></td>
-    </tr></table></div>
-
+</ul></dd>
+</dl><dl><dt>value</dt><dd><p>A data frame of values. The column names must be consistent
+with those in the target table in the database.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other parameters passed on to methods.</p></dd>
+</dl><dl><dt>row.names</dt><dd><p>Must be <code>NULL</code>.</p></dd>
+</dl></div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>The <code>row.names</code> argument is not supported by this method.
 Process the values with <code><a href="rownames.html">sqlRownamesToColumn()</a></code> before calling this method.</p>
     </div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -127,10 +125,11 @@ Process the values with <code><a href="rownames.html">sqlRownamesToColumn()</a><
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="dbCreateTable.html">dbCreateTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">dbAppendTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Factors converted to character</span>

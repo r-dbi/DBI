@@ -42,7 +42,7 @@ dbExecute().
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -57,7 +57,7 @@ dbExecute().
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Execute a data manipulation statement on a given database connection</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBConnection.R"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
     <div class="hidden name"><code>dbSendStatement.Rd</code></div>
     </div>
 
@@ -74,19 +74,18 @@ that. For interactive use, you should almost always prefer
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbSendStatement</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>conn</th>
-      <td><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
-<code><a href="dbConnect.html">dbConnect()</a></code>.</p></td>
-    </tr><tr><th>statement</th>
-      <td><p>a character string containing SQL.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other parameters passed on to methods.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+<code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+</dl><dl><dt>statement</dt><dd><p>a character string containing SQL.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other parameters passed on to methods.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p><code>dbSendStatement()</code> returns
 an S4 object that inherits from <a href="DBIResult-class.html">DBIResult</a>.
 The result set can be used with <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to
@@ -101,13 +100,13 @@ and all query parameters are given (by passing the <code>params</code> argument)
 or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p><code>dbSendStatement()</code> comes with a default implementation that simply
 forwards to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, to support backends that only
 implement the latter.</p>
     </div>
     <div id="additional-arguments">
-    <h2>Additional arguments<a class="anchor" aria-label="anchor" href="#additional-arguments"></a></h2>
+    <h2>Additional arguments</h2>
     
 
 
@@ -119,7 +118,7 @@ but are part of the DBI specification:</p><ul><li><p><code>params</code> (defaul
 See the "Specification" sections for details on their usage.</p>
     </div>
     <div id="specification">
-    <h2>Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+    <h2>Specification</h2>
     
 
 
@@ -138,7 +137,7 @@ and must be cleared with <code><a href="dbClearResult.html">dbClearResult()</a><
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
     </div>
     <div id="specification-for-the-immediate-argument">
-    <h2>Specification for the <code>immediate</code> argument<a class="anchor" aria-label="anchor" href="#specification-for-the-immediate-argument"></a></h2>
+    <h2>Specification for the <code>immediate</code> argument</h2>
     
 
 
@@ -169,7 +168,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </ol></li>
 </ol></div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>For queries: <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbGetQuery.html">dbGetQuery()</a></code>.</p>
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
@@ -193,12 +192,13 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendStatement</span><span class="op">(</span></span>
 <span class="r-in">  <span class="va">con</span>,</span>
@@ -222,7 +222,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendStatement</span><span class="op">(</span></span>
 <span class="r-in">  <span class="va">con</span>,</span>
 <span class="r-in">  <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,</span>
-<span class="r-in">  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">4L</span>, <span class="fl">5L</span><span class="op">)</span></span>
+<span class="r-in">  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">4L</span>, <span class="fl">5L</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
 <span class="r-in"></span>
@@ -231,8 +231,8 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-in">  <span class="va">con</span>,</span>
 <span class="r-in">  <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span></span>
 <span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">7L</span>, <span class="fl">8L</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">6</span><span class="op">:</span><span class="fl">7</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">rs</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">7L</span>, <span class="fl">8L</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 10 rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    speed dist</span>

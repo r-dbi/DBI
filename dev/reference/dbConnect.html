@@ -7,10 +7,7 @@ The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 Use dbCanConnect() to check if a connection can be established.
 
-
-RSQLite::dbConnect("SQLiteConnection")
-RSQLite::dbConnect("SQLiteDriver")
-
+Methods in other packages
 RSQLite::dbConnect("SQLiteConnection")
 RSQLite::dbConnect("SQLiteDriver")
 
@@ -50,7 +47,7 @@ RSQLite::dbConnect("SQLiteDriver")
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -65,7 +62,7 @@ RSQLite::dbConnect("SQLiteDriver")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Create a connection to a DBMS</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R"><code>R/DBDriver.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a></small>
     <div class="hidden name"><code>dbConnect.Rd</code></div>
     </div>
 
@@ -77,37 +74,35 @@ objects.
 The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 Use <code><a href="dbCanConnect.html">dbCanConnect()</a></code> to check if a connection can be established.</p>
-<p></p><div id="methods-in-other-packages">
-<h3><ul><li><p><code>RSQLite::dbConnect("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbConnect("SQLiteDriver")</code></p></li>
-</ul><a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbConnect("SQLiteConnection")</code></p></li>
+<p></p><div class="section">
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbConnect("SQLiteConnection")</code></p></li>
 <li><p><code>RSQLite::dbConnect("SQLiteDriver")</code></p></li>
 </ul></div>
     </div>
 
     <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbConnect</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>drv</th>
-      <td><p>an object that inherits from <a href="DBIDriver-class.html">DBIDriver</a>,
-or an existing <a href="DBIConnection-class.html">DBIConnection</a>
-object (in order to clone an existing connection).</p></td>
-    </tr><tr><th>...</th>
-      <td><p>authentication arguments needed by the DBMS instance; these
-typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
-For details see the appropriate <code>DBIDriver</code>.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>drv</dt><dd><p>an object that inherits from <a href="DBIDriver-class.html">DBIDriver</a>,
+or an existing <a href="DBIConnection-class.html">DBIConnection</a>
+object (in order to clone an existing connection).</p></dd>
+</dl><dl><dt>...</dt><dd><p>authentication arguments needed by the DBMS instance; these
+typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
+For details see the appropriate <code>DBIDriver</code>.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p><code>dbConnect()</code> returns an S4 object that inherits from <a href="DBIConnection-class.html">DBIConnection</a>.
 This object is used to communicate with the database engine.</p>
-<p>A <code><a href="https://rdrr.io/r/base/format.html">format()</a></code> method is defined for the connection object.
+<p>A <code><a href="https://rdrr.io/r/base/format.html" class="external-link">format()</a></code> method is defined for the connection object.
 It returns a string that consists of a single line of text.</p>
     </div>
     <div id="specification">
-    <h2>Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+    <h2>Specification</h2>
     
 
 
@@ -126,11 +121,11 @@ this is different to a TCP/IP connection to <code>localhost</code>.</p>
 <li><p><code>"numeric"</code>: always return as <code>numeric</code>, silently round</p></li>
 <li><p><code>"character"</code>: always return the decimal representation as <code>character</code></p></li>
 <li><p><code>"integer64"</code>: return as a data type that can be coerced using
-<code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code> (with warning on overflow), <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>
-and <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code></p></li>
+<code><a href="https://rdrr.io/r/base/integer.html" class="external-link">as.integer()</a></code> (with warning on overflow), <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">as.numeric()</a></code>
+and <code><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character()</a></code></p></li>
 </ul></div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p><code><a href="dbDisconnect.html">dbDisconnect()</a></code> to disconnect from a database.</p>
 <p>Other DBIDriver generics: 
 <code><a href="DBIDriver-class.html">DBIDriver-class</a></code>,
@@ -147,13 +142,14 @@ and <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></co
 <code><a href="dbGetConnectArgs.html">dbGetConnectArgs</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code></p></div>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span></span>
 <span class="r-in"><span class="co"># path that creates an in-memory database.) Other database drivers</span></span>
 <span class="r-in"><span class="co"># will require more details (like user, password, host, port, etc.)</span></span>
-<span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">con</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteConnection&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Path: :memory:</span>
@@ -167,7 +163,7 @@ and <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></co
 <span class="r-in"><span class="co"># Bad, for subtle reasons:</span></span>
 <span class="r-in"><span class="co"># This code fails when RSQLite isn't loaded yet,</span></span>
 <span class="r-in"><span class="co"># because dbConnect() doesn't know yet about RSQLite.</span></span>
-<span class="r-in"><span class="fu"><a href="dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> character(0)</span>
 </code></pre></div>
     </div>

@@ -6,11 +6,7 @@ In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 
-
-RSQLite::dbBegin("SQLiteConnection")
-RSQLite::dbCommit("SQLiteConnection")
-RSQLite::dbRollback("SQLiteConnection")
-
+Methods in other packages
 RSQLite::dbBegin("SQLiteConnection")
 RSQLite::dbCommit("SQLiteConnection")
 RSQLite::dbRollback("SQLiteConnection")
@@ -51,7 +47,7 @@ RSQLite::dbRollback("SQLiteConnection")
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -66,7 +62,7 @@ RSQLite::dbRollback("SQLiteConnection")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Begin/commit/rollback SQL transactions</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/transactions.R"><code>R/transactions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/transactions.R" class="external-link"><code>R/transactions.R</code></a></small>
     <div class="hidden name"><code>transactions.Rd</code></div>
     </div>
 
@@ -77,11 +73,8 @@ or undone with <code>dbRollback()</code>.
 In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.</p>
-<p></p><div id="methods-in-other-packages">
-<h3><ul><li><p><code>RSQLite::dbBegin("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbCommit("SQLiteConnection")</code></p></li>
-<li><p><code>RSQLite::dbRollback("SQLiteConnection")</code></p></li>
-</ul><a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbBegin("SQLiteConnection")</code></p></li>
+<p></p><div class="section">
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbBegin("SQLiteConnection")</code></p></li>
 <li><p><code>RSQLite::dbCommit("SQLiteConnection")</code></p></li>
 <li><p><code>RSQLite::dbRollback("SQLiteConnection")</code></p></li>
 </ul></div>
@@ -93,17 +86,17 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 
 <span class="fu">dbRollback</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>conn</th>
-      <td><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
-<code><a href="dbConnect.html">dbConnect()</a></code>.</p></td>
-    </tr><tr><th>...</th>
-      <td><p>Other parameters passed on to methods.</p></td>
-    </tr></table></div>
+    <h2>Arguments</h2>
+    
 
+<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+<code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+</dl><dl><dt>...</dt><dd><p>Other parameters passed on to methods.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.
 The implementations are expected to raise an error in case of failure,
 but this is not tested.
@@ -117,13 +110,13 @@ an attempt to call <code>dbBegin()</code> twice
 yields an error.</p>
     </div>
     <div id="details">
-    <h2>Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <h2>Details</h2>
     <p>Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
 <a href="DBIConnection-class.html">DBIConnection</a> subclass.</p>
     </div>
     <div id="specification">
-    <h2>Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+    <h2>Specification</h2>
     
 
 
@@ -155,23 +148,24 @@ if the <code>name</code> argument is set.</p>
 <p>The transaction isolation level is not specified by DBI.</p>
     </div>
     <div id="see-also">
-    <h2>See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <h2>See also</h2>
     <div class="dont-index"><p>Self-contained transactions: <code><a href="dbWithTransaction.html">dbWithTransaction()</a></code></p></div>
+    </div>
     </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <h2>Examples</h2>
+    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># All operations are carried out as logical unit:</span></span>
 <span class="r-in"><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">300</span></span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-in"><span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span class="r-in"></span>
@@ -185,9 +179,9 @@ if the <code>name</code> argument is set.</p>
 <span class="r-in"><span class="co"># Rolling back after detecting negative value on account:</span></span>
 <span class="r-in"><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
 <span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>

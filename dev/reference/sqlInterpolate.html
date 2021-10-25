@@ -47,7 +47,7 @@ used in the query."><meta name="robots" content="noindex"><!-- mathjax --><scrip
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul><ul class="nav navbar-nav navbar-right"><li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -62,7 +62,7 @@ used in the query."><meta name="robots" content="noindex"><!-- mathjax --><scrip
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Safely interpolate values into an SQL string</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/interpolate.R"><code>R/interpolate.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/interpolate.R" class="external-link"><code>R/interpolate.R</code></a></small>
     <div class="hidden name"><code>sqlInterpolate.Rd</code></div>
     </div>
 
@@ -74,39 +74,38 @@ to protect against SQL injection attacks.</p>
 <p>Placeholders can be specified with one of two syntaxes:</p><ul><li><p><code>?</code>: each occurrence of a standalone <code>?</code> is replaced with a value</p></li>
 <li><p><code>?name1</code>, <code>?name2</code>, ...: values are given as named arguments or a
 named list, the names are used to match the values</p></li>
-</ul><p>Mixing <code>?</code> and <code><a href="https://rdrr.io/r/base/name.html">?name</a></code> syntaxes is an error.
+</ul><p>Mixing <code>?</code> and <code><a href="https://rdrr.io/r/base/name.html" class="external-link">?name</a></code> syntaxes is an error.
 The number and names of values supplied must correspond to the placeholders
 used in the query.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlInterpolate</span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span>, .dots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlInterpolate</span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span>, .dots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 
+    <div id="ref-sections">
     <div id="arguments">
-    <h2>Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <table class="ref-arguments"><colgroup><col class="name"><col class="desc"></colgroup><tr><th>conn</th>
-      <td><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
-<code><a href="dbConnect.html">dbConnect()</a></code>.</p></td>
-    </tr><tr><th>sql</th>
-      <td><p>A SQL string containing variables to interpolate.
+    <h2>Arguments</h2>
+    
+
+<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+<code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+</dl><dl><dt>sql</dt><dd><p>A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or <code>.</code>, and be followed
-by a letter, digit, <code>.</code> or <code>_</code>.</p></td>
-    </tr><tr><th>..., .dots</th>
-      <td><p>Values (for <code>...</code>) or a list (for <code>.dots</code>)
+by a letter, digit, <code>.</code> or <code>_</code>.</p></dd>
+</dl><dl><dt>..., .dots</dt><dd><p>Values (for <code>...</code>) or a list (for <code>.dots</code>)
 to interpolate into a string.
-Names are required if  <code>sql</code> uses the <code><a href="https://rdrr.io/r/base/name.html">?name</a></code> syntax for placeholders.
+Names are required if  <code>sql</code> uses the <code><a href="https://rdrr.io/r/base/name.html" class="external-link">?name</a></code> syntax for placeholders.
 All values will be first escaped with <code><a href="dbQuoteLiteral.html">dbQuoteLiteral()</a></code> prior
 to interpolation to protect against SQL injection attacks.
-Arguments created by <code><a href="SQL.html">SQL()</a></code> or <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> remain unchanged.</p></td>
-    </tr></table></div>
-
+Arguments created by <code><a href="SQL.html">SQL()</a></code> or <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> remain unchanged.</p></dd>
+</dl></div>
     <div id="value">
-    <h2>Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <h2>Value</h2>
     <p>The <code>sql</code> query with the values from <code>...</code> and <code>.dots</code> safely
 embedded.</p>
     </div>
     <div id="backend-authors">
-    <h2>Backend authors<a class="anchor" aria-label="anchor" href="#backend-authors"></a></h2>
+    <h2>Backend authors</h2>
     
 
 <p>If you are implementing an SQL backend with non-ANSI quoting rules, you'll
@@ -114,9 +113,10 @@ need to implement a method for <code><a href="sqlParseVariables.html">sqlParseVa
 do so does not expose you to SQL injection attacks, but will (rarely) result
 in errors matching supplied and interpolated variables.</p>
     </div>
+    </div>
 
     <div id="examples">
-    <h2>Examples<a class="anchor" aria-label="anchor" href="#examples"></a></h2>
+    <h2>Examples</h2>
     <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sql</span> <span class="op">&lt;-</span> <span class="st">"SELECT * FROM X WHERE name = ?name"</span></span>
 <span class="r-in"><span class="fu">sqlInterpolate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">sql</span>, name <span class="op">=</span> <span class="st">"Hadley"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; SELECT * FROM X WHERE name = 'Hadley'</span>
@@ -128,7 +128,7 @@ in errors matching supplied and interpolated variables.</p>
 <span class="r-in"><span class="co"># Using paste0() could lead to dangerous SQL with carefully crafted inputs</span></span>
 <span class="r-in"><span class="co"># (SQL injection)</span></span>
 <span class="r-in"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"H'); DROP TABLE--;"</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM X WHERE name = '"</span>, <span class="va">name</span>, <span class="st">"'"</span><span class="op">)</span></span>
+<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM X WHERE name = '"</span>, <span class="va">name</span>, <span class="st">"'"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "SELECT * FROM X WHERE name = 'H'); DROP TABLE--;'"</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Use SQL() or dbQuoteIdentifier() to avoid escaping</span></span>
@@ -147,11 +147,11 @@ in errors matching supplied and interpolated variables.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; SELECT * FROM X; DELETE FROM X; SELECT * FROM X WHERE name in ('a', 'b')</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># Use dbGetQuery() or dbExecute() to process these queries:</span></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"RSQLite"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"RSQLite"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in">  <span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in">  <span class="va">sql</span> <span class="op">&lt;-</span> <span class="st">"SELECT ?value AS value"</span></span>
 <span class="r-in">  <span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">sqlInterpolate</span><span class="op">(</span><span class="va">con</span>, <span class="va">sql</span>, value <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   value</span>
