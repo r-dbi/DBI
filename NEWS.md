@@ -18,7 +18,7 @@
 - Update URL in DESCRIPTION.
 
 
-# DBI 1.1.0
+# DBI 1.1.0 (2019-12-15)
 
 ## New features
 
