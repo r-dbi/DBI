@@ -1,7 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dbi.r-dbi.org/404.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/ISSUE_TEMPLATE.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/DBI-1.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/DBI-advanced.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/DBI-history.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/DBI-proposal.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/DBI.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/backend.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/articles/spec.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/authors.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/news/index.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/reference/ANSI.html</loc>
@@ -157,6 +202,9 @@
     <loc>https://dbi.r-dbi.org/reference/hidden_aliases.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/reference/make.db.names.html</loc>
   </url>
   <url>
@@ -181,24 +229,6 @@
     <loc>https://dbi.r-dbi.org/reference/transactions.html</loc>
   </url>
   <url>
-    <loc>https://dbi.r-dbi.org/articles/DBI-1.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/DBI-advanced.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/DBI-history.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/DBI-proposal.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/DBI.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/backend.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/articles/spec.html</loc>
+    <loc>https://dbi.r-dbi.org/security.html</loc>
   </url>
 </urlset>

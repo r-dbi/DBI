@@ -22,6 +22,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -55,7 +57,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/r-dbi/DBI/">
+  <a href="https://github.com/r-dbi/DBI/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -72,26 +74,26 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="dbi" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#dbi" class="anchor"></a>DBI</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="dbi">DBI<a class="anchor" aria-label="anchor" href="#dbi"></a>
+</h1></div>
 <!-- badges: start -->
 
 <p>The DBI package helps connecting R to database management systems (DBMS). DBI separates the connectivity to the DBMS into a “front-end” and a “back-end”. The package defines an interface that is implemented by <em>DBI backends</em> such as:</p>
 <ul>
 <li>
-<a href="https://rpostgres.r-dbi.org">RPostgres</a>,</li>
+<a href="https://rpostgres.r-dbi.org" class="external-link">RPostgres</a>,</li>
 <li>
-<a href="https://rmariadb.r-dbi.org">RMariaDB</a>,</li>
+<a href="https://rmariadb.r-dbi.org" class="external-link">RMariaDB</a>,</li>
 <li>
-<a href="https://rsqlite.r-dbi.org">RSQLite</a>,</li>
+<a href="https://rsqlite.r-dbi.org" class="external-link">RSQLite</a>,</li>
 <li>
-<a href="https://github.com/r-dbi/odbc">odbc</a>,</li>
+<a href="https://github.com/r-dbi/odbc" class="external-link">odbc</a>,</li>
 <li>
-<a href="https://github.com/r-dbi/bigrquery">bigrquery</a>,</li>
+<a href="https://github.com/r-dbi/bigrquery" class="external-link">bigrquery</a>,</li>
 </ul>
-<p>and many more, see the <a href="https://github.com/r-dbi/backends#readme">list of backends</a>. R scripts and packages use DBI to access various databases through their DBI backends.</p>
-<p>The interface defines a small set of classes and methods similar in spirit to Perl’s <a href="https://dbi.perl.org/">DBI</a>, Java’s <a href="https://www.oracle.com/java/technologies/javase/javase-tech-database.html">JDBC</a>, Python’s <a href="https://www.python.org/dev/peps/pep-0249/">DB-API</a>, and Microsoft’s <a href="https://en.wikipedia.org/wiki/ODBC">ODBC</a>. It supports the following operations:</p>
+<p>and many more, see the <a href="https://github.com/r-dbi/backends#readme" class="external-link">list of backends</a>. R scripts and packages use DBI to access various databases through their DBI backends.</p>
+<p>The interface defines a small set of classes and methods similar in spirit to Perl’s <a href="https://dbi.perl.org/" class="external-link">DBI</a>, Java’s <a href="https://www.oracle.com/java/technologies/javase/javase-tech-database.html" class="external-link">JDBC</a>, Python’s <a href="https://www.python.org/dev/peps/pep-0249/" class="external-link">DB-API</a>, and Microsoft’s <a href="https://en.wikipedia.org/wiki/ODBC" class="external-link">ODBC</a>. It supports the following operations:</p>
 <ul>
 <li>connect/disconnect to the DBMS</li>
 <li>create and execute statements in the DBMS</li>
@@ -100,39 +102,39 @@
 <li>information (meta-data) from database objects</li>
 <li>transaction management (optional)</li>
 </ul>
-<div id="installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
 <p>Most users who want to access a database do not need to install DBI directly. It will be installed automatically when you install one of the database backends:</p>
 <ul>
 <li>
-<a href="https://rpostgres.r-dbi.org">RPostgres</a> for PostgreSQL,</li>
+<a href="https://rpostgres.r-dbi.org" class="external-link">RPostgres</a> for PostgreSQL,</li>
 <li>
-<a href="https://rmariadb.r-dbi.org">RMariaDB</a> for MariaDB or MySQL,</li>
+<a href="https://rmariadb.r-dbi.org" class="external-link">RMariaDB</a> for MariaDB or MySQL,</li>
 <li>
-<a href="https://rsqlite.r-dbi.org">RSQLite</a> for SQLite,</li>
+<a href="https://rsqlite.r-dbi.org" class="external-link">RSQLite</a> for SQLite,</li>
 <li>
-<a href="https://github.com/r-dbi/odbc">odbc</a> for databases that you can access via <a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity">ODBC</a>,</li>
+<a href="https://github.com/r-dbi/odbc" class="external-link">odbc</a> for databases that you can access via <a href="https://en.wikipedia.org/wiki/Open_Database_Connectivity" class="external-link">ODBC</a>,</li>
 <li>
-<a href="https://github.com/r-dbi/bigrquery">bigrquery</a>,</li>
+<a href="https://github.com/r-dbi/bigrquery" class="external-link">bigrquery</a>,</li>
 <li>… .</li>
 </ul>
-<p>You can install the released version of DBI from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>You can install the released version of DBI from <a href="https://CRAN.R-project.org" class="external-link">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DBI"</span><span class="op">)</span></code></pre></div>
-<p>And the development version from <a href="https://github.com/">GitHub</a> with:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"DBI"</span><span class="op">)</span></code></pre></div>
+<p>And the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("devtools")</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r-dbi/DBI"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="example" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example" class="anchor"></a>Example</h2>
+<div class="section level2">
+<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+</h2>
 <p>The following example illustrates some of the DBI capabilities:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span>
 <span class="co"># Create an ephemeral in-memory RSQLite database</span>
-<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span>
+<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span>
 
 <span class="fu"><a href="reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
 <span class="co">#&gt; character(0)</span>
@@ -176,7 +178,7 @@
 <span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span>
 <span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="co">#&gt; [1] 5</span>
 <span class="co">#&gt; [1] 5</span>
@@ -185,9 +187,9 @@
 
 <span class="fu"><a href="reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="class-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#class-structure" class="anchor"></a>Class structure</h2>
+<div class="section level2">
+<h2 id="class-structure">Class structure<a class="anchor" aria-label="anchor" href="#class-structure"></a>
+</h2>
 <p>There are four main DBI classes. Three which are each extended by individual database backends:</p>
 <ul>
 <li><p><code>DBIObject</code>: a common base class for all DBI.</p></li>
@@ -197,13 +199,13 @@
 </ul>
 <p>All classes are <em>virtual</em>: they cannot be instantiated directly and instead must be subclassed.</p>
 </div>
-<div id="further-reading" class="section level2">
-<h2 class="hasAnchor">
-<a href="#further-reading" class="anchor"></a>Further Reading</h2>
+<div class="section level2">
+<h2 id="further-reading">Further Reading<a class="anchor" aria-label="anchor" href="#further-reading"></a>
+</h2>
 <ul>
-<li><p><a href="https://db.rstudio.com/">Databases using R</a> describes the tools and best practices in this ecosystem.</p></li>
-<li><p>The <a href="https://www.r-dbi.org/">DBI project site</a> hosts a blog where recent developments are presented.</p></li>
-<li><p><a href="https://r-dbi.github.io/DBI/articles/DBI-history.html">A history of DBI</a> by David James, the driving force behind the development of DBI, and many of the packages that implement it.</p></li>
+<li><p><a href="https://db.rstudio.com/" class="external-link">Databases using R</a> describes the tools and best practices in this ecosystem.</p></li>
+<li><p>The <a href="https://www.r-dbi.org/" class="external-link">DBI project site</a> hosts a blog where recent developments are presented.</p></li>
+<li><p><a href="https://r-dbi.github.io/DBI/articles/DBI-history.html" class="external-link">A history of DBI</a> by David James, the driving force behind the development of DBI, and many of the packages that implement it.</p></li>
 </ul>
 <hr>
 <p>Please note that the <em>DBI</em> project is released with a <a href="https://dbi.r-dbi.org/code_of_conduct">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
@@ -213,66 +215,67 @@
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=DBI">https://​cloud.r-project.org/​package=DBI</a>
-</li>
-<li>Browse source code at <br><a href="https://github.com/r-dbi/DBI/">https://​github.com/​r-dbi/​DBI/​</a>
-</li>
-<li>Report a bug at <br><a href="https://github.com/r-dbi/DBI/issues">https://​github.com/​r-dbi/​DBI/​issues</a>
-</li>
-<li>Report a security vulnerability at <br><a href="https://dbi.r-dbi.org/security.html">https://​dbi.r-dbi.org/​security.html</a>
-</li>
-<li>DBI project website at <br><a href="https://r-dbi.org">https://​r-dbi.org</a>
-</li>
+<li><a href="https://cloud.r-project.org/package=DBI" class="external-link">View on CRAN</a></li>
+<li><a href="https://github.com/r-dbi/DBI/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/r-dbi/DBI/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://dbi.r-dbi.org/security.html">Report a security vulnerability</a></li>
+<li><a href="https://r-dbi.org" class="external-link">DBI project website</a></li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>LGPL (&gt;= 2.1)</small></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>R Special Interest Group on Databases (R-SIG-DB) <br><small class="roles"> Author </small>  </li>
 <li>
-<a href="http://hadley.nz">Hadley Wickham</a> <br><small class="roles"> Author </small>  </li>
+<a href="http://hadley.nz" class="external-link">Hadley Wickham</a> <br><small class="roles"> Author </small>  </li>
 <li>
-<a href="http://krlmlr.info">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<a href="http://krlmlr.info" class="external-link">Kirill Müller</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-1416-3412" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
-<a href="https://www.r-consortium.org">R Consortium</a> <br><small class="roles"> Funder </small>  </li>
+<a href="https://www.r-consortium.org" class="external-link">R Consortium</a> <br><small class="roles"> Funder </small>  </li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/r-dbi/DBI/actions"><img src="https://github.com/r-dbi/DBI/workflows/rcc/badge.svg" alt="rcc"></a></li>
-<li><a href="https://codecov.io/github/r-dbi/DBI?branch=master"><img src="https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg" alt="Coverage Status"></a></li>
-<li><a href="https://cran.r-project.org/package=DBI"><img src="https://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>
-<li><a href="https://bestpractices.coreinfrastructure.org/projects/1882"><img src="https://bestpractices.coreinfrastructure.org/projects/1882/badge" alt="CII Best Practices"></a></li>
+<li><a href="https://github.com/r-dbi/DBI/actions" class="external-link"><img src="https://github.com/r-dbi/DBI/workflows/rcc/badge.svg" alt="rcc"></a></li>
+<li><a href="https://codecov.io/github/r-dbi/DBI?branch=master" class="external-link"><img src="https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg" alt="Coverage Status"></a></li>
+<li><a href="https://cran.r-project.org/package=DBI" class="external-link"><img src="https://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://bestpractices.coreinfrastructure.org/projects/1882" class="external-link"><img src="https://bestpractices.coreinfrastructure.org/projects/1882/badge" alt="CII Best Practices"></a></li>
 </ul>
 </div>
-</div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz">Hadley Wickham</a>, <a href="http://krlmlr.info">Kirill Müller</a>, <a href="https://www.r-consortium.org">R Consortium</a>.</p>
+  <p></p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
 </div>
 
       </footer>
@@ -280,6 +283,8 @@
 
   
 
+
+  
 
   </body>
 </html>
