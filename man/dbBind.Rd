@@ -148,6 +148,7 @@ At least the following data types are accepted on input (including \link{NA}):
 \item \link{numeric}
 \item \link{logical} for Boolean values
 \item \link{character}
+(also with special characters such as spaces, newlines, quotes, and backslashes)
 \item \link{factor} (bound as character,
 with warning)
 \item \link{Date}

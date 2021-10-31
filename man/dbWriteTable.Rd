@@ -84,6 +84,10 @@ perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }
 
+The \code{value} argument must be a data frame
+with a subset of the columns of the existing table if \code{append = TRUE}.
+The order of the columns does not matter with \code{append = TRUE}.
+
 If the \code{overwrite} argument is \code{TRUE}, an existing table of the same name
 will be overwritten.
 This argument doesn't change behavior if the table does not exist yet.
@@ -95,13 +99,16 @@ If the table doesn't exist yet, it is created.
 If the \code{temporary} argument is \code{TRUE}, the table is not available in a
 second connection and is gone after reconnecting.
 Not all backends support this argument.
-A regular, non-temporary table is visible in a second connection
+A regular, non-temporary table is visible in a second connection,
+in a pre-existing connection,
 and after reconnecting to the database.
 
 SQL keywords can be used freely in table names, column names, and data.
-Quotes, commas, and spaces can also be used in the data,
+Quotes, commas, spaces, and other special characters such as newlines and tabs,
+can also be used in the data,
 and, if the database supports non-syntactic identifiers,
-also for table names and column names.
+also for table names
+and column names.
 
 The following data types must be supported at least,
 and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
