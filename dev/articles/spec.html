@@ -77,7 +77,7 @@
                         <h4 data-toc-skip class="author">Kirill Müller</h4>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/vignettes/spec.Rmd" class="external-link"><code>vignettes/spec.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/vignettes/spec.Rmd" class="external-link"><code>vignettes/spec.Rmd</code></a></small>
       <div class="hidden name"><code>spec.Rmd</code></div>
 
     </div>
@@ -537,7 +537,7 @@
 <li><p>integer</p></li>
 <li><p>numeric</p></li>
 <li><p>logical for Boolean values</p></li>
-<li><p>character</p></li>
+<li><p>character (also with special characters such as spaces, newlines, quotes, and backslashes)</p></li>
 <li><p>factor (bound as character, with warning)</p></li>
 <li><p>Date (also when stored internally as integer)</p></li>
 <li><p>POSIXct timestamps</p></li>
@@ -1185,10 +1185,11 @@ Other parameters passed on to methods.
 <li><p>If an unquoted table name as string: <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> will do the quoting, perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul>
+<p>The <code>value</code> argument must be a data frame with a subset of the columns of the existing table if <code>append = TRUE</code>. The order of the columns does not matter with <code>append = TRUE</code>.</p>
 <p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name will be overwritten. This argument doesn’t change behavior if the table does not exist yet.</p>
 <p>If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are preserved, and the new data are appended. If the table doesn’t exist yet, it is created.</p>
-<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a second connection and is gone after reconnecting. Not all backends support this argument. A regular, non-temporary table is visible in a second connection and after reconnecting to the database.</p>
-<p>SQL keywords can be used freely in table names, column names, and data. Quotes, commas, and spaces can also be used in the data, and, if the database supports non-syntactic identifiers, also for table names and column names.</p>
+<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a second connection and is gone after reconnecting. Not all backends support this argument. A regular, non-temporary table is visible in a second connection, in a pre-existing connection, and after reconnecting to the database.</p>
+<p>SQL keywords can be used freely in table names, column names, and data. Quotes, commas, spaces, and other special characters such as newlines and tabs, can also be used in the data, and, if the database supports non-syntactic identifiers, also for table names and column names.</p>
 <p>The following data types must be supported at least, and be read identically with <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code>:</p>
 <ul>
 <li><p>integer</p></li>
@@ -1802,7 +1803,7 @@ Other parameters passed on to methods.
 <p>An attempt to query columns for a closed result set raises an error.</p>
 <h3 id="specification-18">Specification</h3>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
-<p>The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. If the query returns unnamed columns, unique non-empty and non-<code>NA</code> names are assigned. In the case of a duplicate column name, the first occurrence retains the original name, and unique names are assigned for the other occurrences. Column names that correspond to SQL or R keywords are left unchanged.</p>
+<p>The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. If the query returns unnamed columns, non-empty and non-<code>NA</code> names are assigned. Column names that correspond to SQL or R keywords are left unchanged.</p>
 <h3 id="examples-24">Examples</h3>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1973,7 +1974,7 @@ Other parameters passed on to methods.
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer>

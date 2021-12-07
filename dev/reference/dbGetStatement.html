@@ -56,7 +56,7 @@ RSQLite::dbGetStatement("SQLiteResult")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get the statement associated with a result set</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
     <div class="hidden name"><code>dbGetStatement.Rd</code></div>
     </div>
 
@@ -68,21 +68,21 @@ or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
 </ul></div>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbGetStatement</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbGetStatement</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>res</dt><dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Other arguments passed on to methods.</p></dd>
+    <dl><dt>res</dt>
+<dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></dd>
+<dt>...</dt>
+<dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p><code>dbGetStatement()</code> returns a string, the query used in
-either <code><a href="dbSendQuery.html">dbSendQuery()</a></code>
-or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.
+either <code><a href="dbSendQuery.html">dbSendQuery()</a></code>or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.
 Attempting to query the statement for a result set cleared with
 <code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
     </div>
@@ -105,11 +105,10 @@ Attempting to query the statement for a result set cleared with
 <code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
 <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span>
@@ -132,7 +131,7 @@ Attempting to query the statement for a result set cleared with
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

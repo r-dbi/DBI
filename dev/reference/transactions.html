@@ -62,7 +62,7 @@ RSQLite::dbRollback("SQLiteConnection")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Begin/commit/rollback SQL transactions</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/transactions.R" class="external-link"><code>R/transactions.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/transactions.R" class="external-link"><code>R/transactions.R</code></a></small>
     <div class="hidden name"><code>transactions.Rd</code></div>
     </div>
 
@@ -80,20 +80,21 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 </ul></div>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbBegin</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbBegin</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="fu">dbCommit</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="fu">dbRollback</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+    <dl><dt>conn</dt>
+<dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Other parameters passed on to methods.</p></dd>
+<dt>...</dt>
+<dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -102,9 +103,7 @@ The implementations are expected to raise an error in case of failure,
 but this is not tested.
 In any way, all generics throw an error with a closed
 or invalid connection.
-In addition, a call to <code>dbCommit()</code>
-or <code>dbRollback()</code>
-without a prior call to <code>dbBegin()</code> raises an error.
+In addition, a call to <code>dbCommit()</code>or <code>dbRollback()</code>without a prior call to <code>dbBegin()</code> raises an error.
 Nested transactions are not supported by DBI,
 an attempt to call <code>dbBegin()</code> twice
 yields an error.</p>
@@ -151,11 +150,10 @@ if the <code>name</code> argument is set.</p>
     <h2>See also</h2>
     <div class="dont-index"><p>Self-contained transactions: <code><a href="dbWithTransaction.html">dbWithTransaction()</a></code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
@@ -211,7 +209,7 @@ if the <code>name</code> argument is set.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

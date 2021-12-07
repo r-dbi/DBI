@@ -51,7 +51,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Make R identifiers into legal SQL identifiers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a></small>
     <div class="hidden name"><code>make.db.names.Rd</code></div>
     </div>
 
@@ -60,7 +60,8 @@
 (or possibly <code><a href="dbQuoteString.html">dbQuoteString()</a></code>) instead.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">make.db.names</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">make.db.names</span><span class="op">(</span>
   <span class="va">dbObj</span>,
   <span class="va">snames</span>,
   keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
@@ -89,36 +90,42 @@
   keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
   case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>
 <span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>dbObj</dt><dd><p>any DBI object (e.g., <code>DBIDriver</code>).</p></dd>
-</dl><dl><dt>snames</dt><dd><p>a character vector of R identifiers (symbols) from which we
+    <dl><dt>dbObj</dt>
+<dd><p>any DBI object (e.g., <code>DBIDriver</code>).</p></dd>
+<dt>snames</dt>
+<dd><p>a character vector of R identifiers (symbols) from which we
 need to make SQL identifiers.</p></dd>
-</dl><dl><dt>keywords</dt><dd><p>a character vector with SQL keywords, by default it's
+<dt>keywords</dt>
+<dd><p>a character vector with SQL keywords, by default it's
 <code>.SQL92Keywords</code> defined by the DBI.</p></dd>
-</dl><dl><dt>unique</dt><dd><p>logical describing whether the resulting set of SQL names
+<dt>unique</dt>
+<dd><p>logical describing whether the resulting set of SQL names
 should be unique.  Its default is <code>TRUE</code>.  Following the SQL 92
 standard, uniqueness of SQL identifiers is determined regardless of whether
 letters are upper or lower case.</p></dd>
-</dl><dl><dt>allow.keywords</dt><dd><p>logical describing whether SQL keywords should be
+<dt>allow.keywords</dt>
+<dd><p>logical describing whether SQL keywords should be
 allowed in the resulting set of SQL names.  Its default is <code>TRUE</code></p></dd>
-</dl><dl><dt>...</dt><dd><p>any other argument are passed to the driver implementation.</p></dd>
-</dl><dl><dt>name</dt><dd><p>a character vector with database identifier candidates we need
+<dt>...</dt>
+<dd><p>any other argument are passed to the driver implementation.</p></dd>
+<dt>name</dt>
+<dd><p>a character vector with database identifier candidates we need
 to determine whether they are legal SQL identifiers or not.</p></dd>
-</dl><dl><dt>case</dt><dd><p>a character string specifying whether to make the comparison as
+<dt>case</dt>
+<dd><p>a character string specifying whether to make the comparison as
 lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
     <p><code>make.db.names</code> returns a character vector of legal SQL
-identifiers corresponding to its <code>snames</code> argument.</p>
-<p><code>SQLKeywords</code> returns a character vector of all known keywords for the
-database-engine associated with <code>dbObj</code>.</p>
-<p><code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
+identifiers corresponding to its <code>snames</code> argument.
+<code>SQLKeywords</code> returns a character vector of all known keywords for the
+database-engine associated with <code>dbObj</code>.
+<code>isSQLKeyword</code> returns a logical vector parallel to <code>name</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -149,7 +156,6 @@ original SQL identifiers (e.g., compound SQL identifiers of the form
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
     </div>
-    </div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -163,7 +169,7 @@ override or update this vector.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

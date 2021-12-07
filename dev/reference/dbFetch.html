@@ -56,7 +56,7 @@ RSQLite::dbFetch("SQLiteResult")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fetch records from a previously executed query</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
     <div class="hidden name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -68,27 +68,28 @@ as a data.frame.</p>
 </ul></div>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="fu">fetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>res</dt><dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>, created by
+    <dl><dt>res</dt>
+<dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>, created by
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>.</p></dd>
-</dl><dl><dt>n</dt><dd><p>maximum number of records to retrieve per fetch. Use <code>n = -1</code>
+<dt>n</dt>
+<dd><p>maximum number of records to retrieve per fetch. Use <code>n = -1</code>
 or <code>n = Inf</code>
 to retrieve all pending records.  Some implementations may recognize other
 special values.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Other arguments passed on to methods.</p></dd>
+<dt>...</dt>
+<dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>
-with as many rows as records were fetched and as many
+    <p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -98,8 +99,7 @@ If the <code>n</code> argument is not an atomic whole number
 greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.
 Calling <code>dbFetch()</code> on a result set from a data manipulation query
-created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
-can be fetched and return an empty data frame, with a warning.</p>
+created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>can be fetched and return an empty data frame, with a warning.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -189,11 +189,10 @@ finish retrieving the records you want.</p>
 <code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
 <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
 <span class="r-in"></span>
@@ -241,7 +240,7 @@ finish retrieving the records you want.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

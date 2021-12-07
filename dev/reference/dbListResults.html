@@ -52,7 +52,7 @@ functionality."><meta name="robots" content="noindex"><!-- mathjax --><script sr
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>A list of all pending results</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
     <div class="hidden name"><code>dbListResults.Rd</code></div>
     </div>
 
@@ -62,16 +62,17 @@ you need to keep track of the result sets you open if you need this
 functionality.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbListResults</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbListResults</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>conn</dt><dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
+    <dl><dt>conn</dt>
+<dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
-</dl><dl><dt>...</dt><dd><p>Other parameters passed on to methods.</p></dd>
+<dt>...</dt>
+<dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -102,7 +103,6 @@ a single result is active, a list with one element.</p>
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
-    </div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -116,7 +116,7 @@ a single result is active, a list with one element.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

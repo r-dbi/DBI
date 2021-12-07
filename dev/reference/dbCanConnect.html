@@ -54,7 +54,7 @@ a lighter-weight check.
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Check if a connection to a DBMS can be established</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a></small>
     <div class="hidden name"><code>dbCanConnect.Rd</code></div>
     </div>
 
@@ -66,17 +66,18 @@ a lighter-weight check.</p>
 <p></p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbCanConnect</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbCanConnect</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
-    
-
-<dl><dt>drv</dt><dd><p>an object that inherits from <a href="DBIDriver-class.html">DBIDriver</a>,
+    <dl><dt>drv</dt>
+<dd><p>an object that inherits from <a href="DBIDriver-class.html">DBIDriver</a>,
 or an existing <a href="DBIConnection-class.html">DBIConnection</a>
 object (in order to clone an existing connection).</p></dd>
-</dl><dl><dt>...</dt><dd><p>authentication arguments needed by the DBMS instance; these
+<dt>...</dt>
+<dd><p>authentication arguments needed by the DBMS instance; these
 typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
 For details see the appropriate <code>DBIDriver</code>.</p></dd>
 </dl></div>
@@ -97,11 +98,10 @@ a reason for failure.</p>
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListConnections.html">dbListConnections</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span></span>
 <span class="r-in"><span class="co"># path that creates an in-memory database.) Other database drivers</span></span>
 <span class="r-in"><span class="co"># will require more details (like user, password, host, port, etc.)</span></span>
 <span class="r-in"><span class="fu">dbCanConnect</span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
@@ -120,7 +120,7 @@ a reason for failure.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

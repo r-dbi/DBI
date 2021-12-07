@@ -52,7 +52,7 @@ access to dynamic queries, result sets, DBMS session management
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>DBIConnection class</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/master/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
     <div class="hidden name"><code>DBIConnection-class.Rd</code></div>
     </div>
 
@@ -63,7 +63,6 @@ access to dynamic queries, result sets, DBMS session management
     </div>
 
 
-    <div id="ref-sections">
     <div id="implementation-note">
     <h2>Implementation note</h2>
     
@@ -100,11 +99,10 @@ connections.</p>
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">con</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteConnection&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Path: :memory:</span>
@@ -130,7 +128,7 @@ connections.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
