@@ -12,7 +12,7 @@ runs:
         }
       shell: Rscript {0}
 
-    - name: Define R CMD check error condition
+    - name: Define _R_CHECK_FORCE_SUGGESTS_
       run: |
         if (getRversion() < "3.5") {
           message("Setting _R_CHECK_FORCE_SUGGESTS_")
