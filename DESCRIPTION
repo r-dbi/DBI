@@ -67,6 +67,7 @@ Collate:
     'quote.R'
     'rd.R'
     'rownames.R'
+    'show_AnsiConnection.R'
     'table-create.R'
     'table-insert.R'
     'transactions.R'

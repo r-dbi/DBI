@@ -12,9 +12,3 @@ setClass("AnsiConnection", contains = "DBIConnection")
 ANSI <- function() {
   new("AnsiConnection")
 }
-
-#' @rdname hidden_aliases
-#' @export
-setMethod("show", "AnsiConnection", function(object) {
-  cat("<AnsiConnection>\n")
-})
