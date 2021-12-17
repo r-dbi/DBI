@@ -1,6 +1,4 @@
-setGeneric("dbiDataType",
-  def = function(x, ...) standardGeneric("dbiDataType")
-)
+#' @include dbiDataType.R
 
 data_frame_data_type <- function(x) {
   vapply(x, dbiDataType, FUN.VALUE = character(1), USE.NAMES = TRUE)
@@ -28,16 +26,16 @@ as_is_data_type <- function(x) {
 }
 
 setOldClass("difftime")
+
 setOldClass("AsIs")
 
 setMethod("dbiDataType", signature("data.frame"), data_frame_data_type)
-setMethod("dbiDataType", signature("integer"),    function(x) "INT")
-setMethod("dbiDataType", signature("numeric"),    function(x) "DOUBLE")
-setMethod("dbiDataType", signature("logical"),    function(x) "SMALLINT")
-setMethod("dbiDataType", signature("Date"),       function(x) "DATE")
-setMethod("dbiDataType", signature("difftime"),   function(x) "TIME")
-setMethod("dbiDataType", signature("POSIXct"),    function(x) "TIMESTAMP")
+
 setMethod("dbiDataType", signature("character"),  varchar_data_type)
+
 setMethod("dbiDataType", signature("factor"),     varchar_data_type)
+
 setMethod("dbiDataType", signature("list"),       list_data_type)
+
 setMethod("dbiDataType", signature("AsIs"),       as_is_data_type)
+
