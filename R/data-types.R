@@ -1,9 +1,5 @@
 #' @include dbiDataType.R
 
-varchar_data_type <- function(x) {
-  "TEXT"
-}
-
 list_data_type <- function(x) {
   check_raw_list(x)
   "BLOB"
@@ -24,10 +20,6 @@ as_is_data_type <- function(x) {
 setOldClass("difftime")
 
 setOldClass("AsIs")
-
-setMethod("dbiDataType", signature("character"),  varchar_data_type)
-
-setMethod("dbiDataType", signature("factor"),     varchar_data_type)
 
 setMethod("dbiDataType", signature("list"),       list_data_type)
 
