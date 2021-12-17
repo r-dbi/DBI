@@ -28,8 +28,9 @@ They can be used in the following methods as \code{name} or \code{table} argumen
 \item \code{\link[=dbWriteTable]{dbWriteTable()}}
 \item \code{\link[=dbExistsTable]{dbExistsTable()}}
 \item \code{\link[=dbRemoveTable]{dbRemoveTable()}}
-Objects of this class are also returned from \code{\link[=dbListObjects]{dbListObjects()}}.
 }
+
+Objects of this class are also returned from \code{\link[=dbListObjects]{dbListObjects()}}.
 }
 \examples{
 Id(schema = "dbo", table = "Customer")

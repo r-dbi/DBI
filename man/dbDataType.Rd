@@ -20,8 +20,6 @@ as a non-empty
 character string.
 For data frames, a character vector with one element per column
 is returned.
-An error is raised for invalid values for the \code{obj} argument such as a
-\code{NULL} value.
 }
 \description{
 Returns an SQL string that describes the SQL data type to be used for an
@@ -47,6 +45,14 @@ integer vectors.
 Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.
 }
+\section{Failure modes}{
+
+
+An error is raised for invalid values for the \code{obj} argument such as a
+\code{NULL} value.
+
+}
+
 \section{Specification}{
 
 

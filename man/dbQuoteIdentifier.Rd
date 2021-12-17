@@ -25,9 +25,6 @@ argument, it is returned unchanged.
 Passing objects of class \link{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link{SQL} objects
 to achieve this behavior, but this is not required.)
-
-An error is raised if the input contains \code{NA},
-but not for an empty string.
 }
 \description{
 Call this method to generate a string that is suitable for
@@ -37,6 +34,15 @@ operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteIdentifier")}
 }
+\section{Failure modes}{
+
+
+
+An error is raised if the input contains \code{NA},
+but not for an empty string.
+
+}
+
 \section{Specification}{
 
 

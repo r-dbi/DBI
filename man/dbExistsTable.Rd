@@ -27,18 +27,23 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 specified by the \code{name} argument exists, \code{FALSE} otherwise.
 
 This includes temporary tables if supported by the database.
-
-An error is raised when calling this method for a closed
-or invalid connection.
-An error is also raised
-if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-or if this results in a non-scalar.
 }
 \description{
 Returns if a table given by name exists in the database.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExistsTable")}
 }
+\section{Failure modes}{
+
+
+An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+or if this results in a non-scalar.
+
+}
+
 \section{Specification}{
 
 

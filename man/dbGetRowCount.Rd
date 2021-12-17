@@ -28,8 +28,6 @@ For data manipulation statements issued with
 \code{\link[=dbSendStatement]{dbSendStatement()}},
 zero is returned before
 and after calling \code{dbFetch()}.
-Attempting to get the row count for a result set cleared with
-\code{\link[=dbClearResult]{dbClearResult()}} gives an error.
 }
 \description{
 Returns the total number of rows actually fetched with calls to \code{\link[=dbFetch]{dbFetch()}}
@@ -37,6 +35,14 @@ for this result set.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetRowCount")}
 }
+\section{Failure modes}{
+
+
+Attempting to get the row count for a result set cleared with
+\code{\link[=dbClearResult]{dbClearResult()}} gives an error.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

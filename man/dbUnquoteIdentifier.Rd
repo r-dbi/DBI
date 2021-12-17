@@ -25,9 +25,6 @@ argument, it is returned unchanged (but wrapped in a list).
 Passing objects of class \link{Id} should also return them unchanged (but wrapped in a list).
 (For backends it may be most convenient to return \link{Id} objects
 to achieve this behavior, but this is not required.)
-
-An error is raised if plain character vectors are passed as the \code{x}
-argument.
 }
 \description{
 Call this method to convert a \link{SQL} object created by \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
@@ -35,6 +32,15 @@ back to a list of \link{Id} objects.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbUnquoteIdentifier")}
 }
+\section{Failure modes}{
+
+
+
+An error is raised if plain character vectors are passed as the \code{x}
+argument.
+
+}
+
 \section{Specification}{
 
 

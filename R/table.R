@@ -6,17 +6,20 @@ setClass("Id", slots = list(name = "character"))
 
 #' Refer to a table nested in a hierarchy (e.g. within a schema)
 #'
+#' @description
 #' Objects of class `Id` have a single slot `name`, which is a named
 #' character vector.
 #' The [dbQuoteIdentifier()] method converts `Id` objects to strings.
 #' Support for `Id` objects depends on the database backend.
 #' They can be used in the following methods as `name` or `table` argument:
+#'
 #' - [dbCreateTable()]
 #' - [dbAppendTable()]
 #' - [dbReadTable()]
 #' - [dbWriteTable()]
 #' - [dbExistsTable()]
 #' - [dbRemoveTable()]
+#'
 #' Objects of this class are also returned from [dbListObjects()].
 #'
 #' @param ... Components of the hierarchy, e.g. `schema`, `table`,

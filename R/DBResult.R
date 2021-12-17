@@ -64,6 +64,7 @@ show_result <- function(object) {
 #' @templateVar method_name dbFetch
 #'
 #' @inherit DBItest::spec_result_fetch return
+#' @inheritSection DBItest::spec_result_fetch Failure modes
 #' @inheritSection DBItest::spec_result_fetch Specification
 #' @inheritSection DBItest::spec_result_roundtrip Specification
 #'
@@ -125,6 +126,7 @@ setGeneric("fetch",
 #' @templateVar method_name dbClearResult
 #'
 #' @inherit DBItest::spec_result_clear_result return
+#' @inheritSection DBItest::spec_result_clear_result Failure modes
 #' @inheritSection DBItest::spec_result_clear_result Specification
 #'
 #' @param res An object inheriting from [DBIResult-class].
@@ -153,6 +155,7 @@ setGeneric("dbClearResult",
 #' @inheritParams dbClearResult
 #'
 #' @inherit DBItest::spec_meta_column_info return
+#' @inheritSection DBItest::spec_meta_column_info Failure modes
 #' @inheritSection DBItest::spec_meta_column_info Specification
 #'
 #' @family DBIResult generics
@@ -180,6 +183,7 @@ setGeneric("dbColumnInfo",
 #' @templateVar method_name dbGetStatement
 #'
 #' @inherit DBItest::spec_meta_get_statement return
+#' @inheritSection DBItest::spec_meta_get_statement Failure modes
 #'
 #' @inheritParams dbClearResult
 #' @family DBIResult generics
@@ -209,6 +213,7 @@ setGeneric("dbGetStatement",
 #' @templateVar method_name dbHasCompleted
 #'
 #' @inherit DBItest::spec_meta_has_completed return
+#' @inheritSection DBItest::spec_meta_has_completed Failure modes
 #' @inheritSection DBItest::spec_meta_has_completed Specification
 #'
 #' @inheritParams dbClearResult
@@ -243,6 +248,7 @@ setGeneric("dbHasCompleted",
 #' @templateVar method_name dbGetRowsAffected
 #'
 #' @inherit DBItest::spec_meta_get_rows_affected return
+#' @inheritSection DBItest::spec_meta_get_rows_affected Failure modes
 #'
 #' @inheritParams dbClearResult
 #' @family DBIResult generics
@@ -272,6 +278,7 @@ setGeneric("dbGetRowsAffected",
 #' @templateVar method_name dbGetRowCount
 #'
 #' @inherit DBItest::spec_meta_get_row_count return
+#' @inheritSection DBItest::spec_meta_get_row_count Failure modes
 #'
 #' @inheritParams dbClearResult
 #' @family DBIResult generics
@@ -352,6 +359,7 @@ setMethod("dbGetInfo", signature("DBIResult"), function(dbObj, ...) {
 #' @templateVar method_name dbBind
 #'
 #' @inherit DBItest::spec_meta_bind return
+#' @inheritSection DBItest::spec_meta_bind Failure modes
 #' @inheritSection DBItest::spec_meta_bind Specification
 #'
 #' @inheritParams dbClearResult

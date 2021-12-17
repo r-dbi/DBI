@@ -33,6 +33,19 @@ generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteString")}
 }
+\section{Failure modes}{
+
+
+
+Passing a numeric,
+integer,
+logical,
+or raw vector,
+or a list
+for the \code{x} argument raises an error.
+
+}
+
 \section{Specification}{
 
 
@@ -56,13 +69,6 @@ The strings \code{"NA"} or \code{"NULL"} are not treated specially.
 \code{NA} should be translated to an unquoted SQL \code{NULL},
 so that the query \verb{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
-
-Passing a numeric,
-integer,
-logical,
-or raw vector,
-or a list
-for the \code{x} argument raises an error.
 
 }
 

@@ -20,10 +20,6 @@ scalar
 numeric
 that specifies the number of rows affected
 by the statement.
-An error is raised when issuing a statement over a closed
-or invalid connection,
-if the syntax of the statement is invalid,
-or if the statement is not a non-\code{NA} string.
 }
 \description{
 Executes a statement and returns the number of rows affected.
@@ -43,6 +39,16 @@ To execute a stored procedure that returns a result set use \code{\link[=dbGetQu
 
 Subclasses should override this method only if they provide some sort of
 performance optimization.
+}
+
+\section{Failure modes}{
+
+
+An error is raised when issuing a statement over a closed
+or invalid connection,
+if the syntax of the statement is invalid,
+or if the statement is not a non-\code{NA} string.
+
 }
 
 \section{Additional arguments}{
