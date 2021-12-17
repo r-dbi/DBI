@@ -92,8 +92,16 @@ When passing the first element of a returned object again to
 <code>dbUnquoteIdentifier()</code> as <code>x</code>argument, it is returned unchanged (but wrapped in a list).
 Passing objects of class <a href="Id.html">Id</a> should also return them unchanged (but wrapped in a list).
 (For backends it may be most convenient to return <a href="Id.html">Id</a> objects
-to achieve this behavior, but this is not required.)
-An error is raised if plain character vectors are passed as the <code>x</code>argument.</p>
+to achieve this behavior, but this is not required.)</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>An error is raised if plain character vectors are passed as the <code>x</code>
+argument.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>

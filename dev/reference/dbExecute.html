@@ -88,11 +88,7 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
 scalar
 numeric
 that specifies the number of rows affected
-by the statement.
-An error is raised when issuing a statement over a closed
-or invalid connection,
-if the syntax of the statement is invalid,
-or if the statement is not a non-<code>NA</code> string.</p>
+by the statement.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -106,6 +102,16 @@ To execute a stored procedure that returns a result set use <code><a href="dbGet
 
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when issuing a statement over a closed
+or invalid connection,
+if the syntax of the statement is invalid,
+or if the statement is not a non-<code>NA</code> string.</p>
     </div>
     <div id="additional-arguments">
     <h2>Additional arguments</h2>

@@ -96,13 +96,7 @@ records you need. For interactive use, you should almost always prefer
 an S4 object that inherits from <a href="DBIResult-class.html">DBIResult</a>.
 The result set can be used with <code><a href="dbFetch.html">dbFetch()</a></code> to extract records.
 Once you have finished using a result, make sure to clear it
-with <code><a href="dbClearResult.html">dbClearResult()</a></code>.
-An error is raised when issuing a query over a closed
-or invalid connection,
-or if the query is not a non-<code>NA</code> string.
-An error is also raised if the syntax of the query is invalid
-and all query parameters are given (by passing the <code>params</code> argument)
-or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+with <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -116,6 +110,21 @@ is driver-specific: some drivers may choose to leave the output on the server
 and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' <code>dbSendQuery()</code> documentation for details.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when issuing a query over a closed
+or invalid connection,
+or if the query is not a non-<code>NA</code> string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the <code>params</code> argument)
+or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+
+
+
     </div>
     <div id="additional-arguments">
     <h2>Additional arguments</h2>

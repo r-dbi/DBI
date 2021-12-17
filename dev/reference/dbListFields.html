@@ -84,8 +84,14 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 that enumerates all fields
 in the table in the correct order.
 This also works for temporary tables if supported by the database.
-The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
-If the table does not exist, an error is raised.
+The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>If the table does not exist, an error is raised.
 Invalid types for the <code>name</code> argument
 (e.g., <code>character</code> of length not equal to one,
 or numeric)

@@ -88,8 +88,14 @@ The value is available directly after the call
 and does not change after calling <code><a href="dbFetch.html">dbFetch()</a></code>.
 For queries issued with <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 zero is returned before
-and after the call to <code><a href="dbFetch.html">dbFetch()</a></code>.
-Attempting to get the rows affected for a result set cleared with
+and after the call to <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>Attempting to get the rows affected for a result set cleared with
 <code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
     </div>
     <div id="see-also">

@@ -82,11 +82,28 @@ generate valid SQL and protect against SQL injection attacks.</p>
     <h2>Value</h2>
     <p><code>dbQuoteLiteral()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
 of the same length as the input.
-For an empty character vector this function returns a length-0 object.
+For an empty
+integer,
+numeric,
+character,
+logical,
+date,
+time,
+or blob vector,
+this function returns a length-0 object.
 When passing the returned object again to <code>dbQuoteLiteral()</code>as <code>x</code>argument, it is returned unchanged.
 Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
 (For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>Passing a list
+for the <code>x</code> argument raises an error.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>
@@ -107,8 +124,6 @@ The literals <code>"NA"</code> or <code>"NULL"</code> are not treated specially.
 <p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
 so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
 returns one row.</p>
-<p>Passing a list
-for the <code>x</code> argument raises an error.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>

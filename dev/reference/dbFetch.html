@@ -93,13 +93,7 @@ special values.</p></dd>
 columns as fields in the result set,
 even if the result is a single value
 or has one
-or zero rows.
-An attempt to fetch from a closed result set raises an error.
-If the <code>n</code> argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
-but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.
-Calling <code>dbFetch()</code> on a result set from a data manipulation query
-created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>can be fetched and return an empty data frame, with a warning.</p>
+or zero rows.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -107,6 +101,19 @@ created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>can 
 new code you are strongly encouraged to use <code>dbFetch()</code>. The default
 implementation for <code>dbFetch()</code> calls <code>fetch()</code> so that it is compatible with
 existing code. Modern backends should implement for <code>dbFetch()</code> only.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An attempt to fetch from a closed result set raises an error.
+If the <code>n</code> argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.
+Calling <code>dbFetch()</code> on a result set from a data manipulation query
+created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+can be fetched and return an empty data frame, with a warning.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>

@@ -97,8 +97,15 @@ The names of the input argument are preserved in the output.
 When passing the returned object again to <code>dbQuoteIdentifier()</code>as <code>x</code>argument, it is returned unchanged.
 Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
 (For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
-to achieve this behavior, but this is not required.)
-An error is raised if the input contains <code>NA</code>,
+to achieve this behavior, but this is not required.)</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>An error is raised if the input contains <code>NA</code>,
 but not for an empty string.</p>
     </div>
     <div id="specification">

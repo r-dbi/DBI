@@ -88,6 +88,19 @@ Passing objects of class <a href="SQL.html">SQL</a> should also return them unch
 (For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
     </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>Passing a numeric,
+integer,
+logical,
+or raw vector,
+or a list
+for the <code>x</code> argument raises an error.</p>
+    </div>
     <div id="specification">
     <h2>Specification</h2>
     
@@ -112,12 +125,6 @@ The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.<
 <p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
 so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
 returns one row.</p>
-<p>Passing a numeric,
-integer,
-logical,
-or raw vector,
-or a list
-for the <code>x</code> argument raises an error.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>

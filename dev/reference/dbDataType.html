@@ -100,9 +100,7 @@ or <a href="DBIConnection-class.html">DBIConnection</a></p></dd>
 as a non-empty
 character string.
 For data frames, a character vector with one element per column
-is returned.
-An error is raised for invalid values for the <code>obj</code> argument such as a
-<code>NULL</code> value.</p>
+is returned.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -113,6 +111,14 @@ character vectors</p></li>
 integer vectors.</p></li>
 </ul><p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised for invalid values for the <code>obj</code> argument such as a
+<code>NULL</code> value.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>

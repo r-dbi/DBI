@@ -98,21 +98,29 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.
-The implementations are expected to raise an error in case of failure,
-but this is not tested.
-In any way, all generics throw an error with a closed
-or invalid connection.
-In addition, a call to <code>dbCommit()</code>or <code>dbRollback()</code>without a prior call to <code>dbBegin()</code> raises an error.
-Nested transactions are not supported by DBI,
-an attempt to call <code>dbBegin()</code> twice
-yields an error.</p>
+    <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
     <p>Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
 <a href="DBIConnection-class.html">DBIConnection</a> subclass.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>The implementations are expected to raise an error in case of failure,
+but this is not tested.
+In any way, all generics throw an error with a closed
+or invalid connection.
+In addition, a call to <code>dbCommit()</code>
+or <code>dbRollback()</code>
+without a prior call to <code>dbBegin()</code> raises an error.
+Nested transactions are not supported by DBI,
+an attempt to call <code>dbBegin()</code> twice
+yields an error.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>

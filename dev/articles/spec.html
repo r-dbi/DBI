@@ -131,7 +131,9 @@
 </ul>
 <p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential problems with under/overflows and loss of precision.</p>
 <h3 id="value">Value</h3>
-<p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> returns the SQL type that corresponds to the <code>obj</code> argument as a non-empty character string. For data frames, a character vector with one element per column is returned. An error is raised for invalid values for the <code>obj</code> argument such as a <code>NULL</code> value.</p>
+<p><code><a href="../reference/dbDataType.html">dbDataType()</a></code> returns the SQL type that corresponds to the <code>obj</code> argument as a non-empty character string. For data frames, a character vector with one element per column is returned.</p>
+<h3 id="failure-modes">Failure modes</h3>
+<p>An error is raised for invalid values for the <code>obj</code> argument such as a <code>NULL</code> value.</p>
 <h3 id="specification">Specification</h3>
 <p>The backend can override the <code><a href="../reference/dbDataType.html">dbDataType()</a></code> generic for its driver class.</p>
 <p>This generic expects an arbitrary object as second argument. To query the values returned by the default implementation, run <code>example(dbDataType, package = "DBI")</code>. If the backend needs to override this generic, it must accept all basic R data types as its second argument, namely logical, integer, numeric, character, dates (see Dates), date-time (see DateTimeClasses), and difftime. If the database supports blobs, this method also must accept lists of raw vectors, and <a href="blob::blob" class="uri">blob::blob</a> objects. As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be supported and return the same results as their unwrapped counterparts. The SQL data type for factor and ordered is the same as for character. The behavior for other object types is not specified.</p>
@@ -247,7 +249,7 @@
 </tbody></table>
 <h3 id="value-2">Value</h3>
 <p><code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> returns <code>TRUE</code>, invisibly.</p>
-<h3 id="specification-2">Specification</h3>
+<h3 id="failure-modes-1">Failure modes</h3>
 <p>A warning is issued on garbage collection when a connection has been released without calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>, but this cannot be tested automatically. A warning is issued immediately when calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> on an already disconnected or invalid connection.</p>
 <h3 id="examples-3">Examples</h3>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -283,7 +285,7 @@
 <li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Specification” sections for details on their usage.</p>
-<h3 id="specification-3">Specification</h3>
+<h3 id="specification-2">Specification</h3>
 <p>No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed.</p>
 <p>If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
@@ -327,7 +329,9 @@
 <p>This method is for <code>SELECT</code> queries only. Some backends may support data manipulation queries through this method for compatibility reasons. However, callers are strongly encouraged to use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> for data manipulation statements.</p>
 <p>The query is submitted to the database server and the DBMS executes it, possibly generating vast amounts of data. Where these data live is driver-specific: some drivers may choose to leave the output on the server and transfer them piecemeal to R, others may transfer all the data to the client – but not necessarily to the memory that R manages. See individual drivers’ <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> documentation for details.</p>
 <h3 id="value-3">Value</h3>
-<p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to extract records. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a query over a closed or invalid connection, or if the query is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+<p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to extract records. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
+<h3 id="failure-modes-2">Failure modes</h3>
+<p>An error is raised when issuing a query over a closed or invalid connection, or if the query is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <h3 id="examples-4">Examples</h3>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -389,8 +393,10 @@
 <h3 id="details-2">Details</h3>
 <p><code><a href="../reference/dbFetch.html">fetch()</a></code> is provided for compatibility with older DBI clients - for all new code you are strongly encouraged to use <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The default implementation for <code><a href="../reference/dbFetch.html">dbFetch()</a></code> calls <code><a href="../reference/dbFetch.html">fetch()</a></code> so that it is compatible with existing code. Modern backends should implement for <code><a href="../reference/dbFetch.html">dbFetch()</a></code> only.</p>
 <h3 id="value-4">Value</h3>
-<p><code><a href="../reference/dbFetch.html">dbFetch()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows. An attempt to fetch from a closed result set raises an error. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> with proper <code>n</code> argument succeeds. Calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> on a result set from a data manipulation query created by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> can be fetched and return an empty data frame, with a warning.</p>
-<h3 id="specification-4">Specification</h3>
+<p><code><a href="../reference/dbFetch.html">dbFetch()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows.</p>
+<h3 id="failure-modes-3">Failure modes</h3>
+<p>An attempt to fetch from a closed result set raises an error. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> with proper <code>n</code> argument succeeds. Calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> on a result set from a data manipulation query created by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> can be fetched and return an empty data frame, with a warning.</p>
+<h3 id="specification-3">Specification</h3>
 <p>Fetching multi-row queries with one or more columns by default returns the entire result. Multi-row queries can also be fetched progressively by passing a whole number (integer or numeric) as the <code>n</code> argument. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched, the result is returned in full without warning. If fewer rows than requested are returned, further fetches will return a data frame with zero rows. If zero rows are fetched, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued when clearing the result set.</p>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
 <p>The column types of the returned data frame depend on the data returned:</p>
@@ -456,8 +462,10 @@
 </tr>
 </tbody></table>
 <h3 id="value-5">Value</h3>
-<p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> returns <code>TRUE</code>, invisibly, for result sets obtained from both <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. An attempt to close an already closed result set issues a warning in both cases.</p>
-<h3 id="specification-5">Specification</h3>
+<p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> returns <code>TRUE</code>, invisibly, for result sets obtained from both <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
+<h3 id="failure-modes-4">Failure modes</h3>
+<p>An attempt to close an already closed result set issues a warning in both cases.</p>
+<h3 id="specification-4">Specification</h3>
 <p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> frees all resources associated with retrieving the result of a query or update operation. The DBI backend can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> for each <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> call.</p>
 <h3 id="examples-6">Examples</h3>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -504,9 +512,11 @@
 <li><p><code>:name</code> and <code>\$name</code> (named matching) in <span class="pkg">RSQLite</span></p></li>
 </ul>
 <h3 id="value-6">Value</h3>
-<p><code><a href="../reference/dbBind.html">dbBind()</a></code> returns the result set, invisibly, for queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and also for data manipulation statements issued by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> for a query without parameters raises an error. Binding too many or not enough values, or parameters with wrong names or unequal length, also raises an error. If the placeholders in the query are named, all parameter values must have names (which must not be empty or <code>NA</code>), and vice versa, otherwise an error is raised. The behavior for mixing placeholders of different types (in particular mixing positional and named placeholders) is not specified.</p>
+<p><code><a href="../reference/dbBind.html">dbBind()</a></code> returns the result set, invisibly, for queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and also for data manipulation statements issued by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
+<h3 id="failure-modes-5">Failure modes</h3>
+<p>Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> for a query without parameters raises an error. Binding too many or not enough values, or parameters with wrong names or unequal length, also raises an error. If the placeholders in the query are named, all parameter values must have names (which must not be empty or <code>NA</code>), and vice versa, otherwise an error is raised. The behavior for mixing placeholders of different types (in particular mixing positional and named placeholders) is not specified.</p>
 <p>Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> on a result set already cleared by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> also raises an error.</p>
-<h3 id="specification-6">Specification</h3>
+<h3 id="specification-5">Specification</h3>
 <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -600,7 +610,7 @@
 <li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Specification” and “Value” sections for details on their usage.</p>
-<h3 id="specification-7">Specification</h3>
+<h3 id="specification-6">Specification</h3>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
 <p>The <code>n</code> argument specifies the number of rows to be fetched. If omitted, fetching multi-row queries with one or more columns returns the entire result. A value of Inf for the <code>n</code> argument is supported and also returns the full result. If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning. If zero rows are requested, the columns of the data frame are still fully typed. Fetching fewer rows than available is permitted, no warning is issued.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
@@ -645,9 +655,11 @@
 <p>To execute a stored procedure that does not return a result set, use <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.</p>
 <p>Some backends may support data manipulation statements through this method for compatibility reasons. However, callers are strongly advised to use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> for data manipulation statements.</p>
 <h3 id="value-7">Value</h3>
-<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows. An error is raised when issuing a query over a closed or invalid connection, if the syntax of the query is invalid, or if the query is not a non-<code>NA</code> string. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with proper <code>n</code> argument succeeds.</p>
+<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows.</p>
 <h3 id="implementation-notes">Implementation notes</h3>
 <p>Subclasses should override this method only if they provide some sort of performance optimization.</p>
+<h3 id="failure-modes-6">Failure modes</h3>
+<p>An error is raised when issuing a query over a closed or invalid connection, if the syntax of the query is invalid, or if the query is not a non-<code>NA</code> string. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with proper <code>n</code> argument succeeds.</p>
 <h3 id="examples-8">Examples</h3>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -697,7 +709,7 @@
 <li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Specification” sections for details on their usage.</p>
-<h3 id="specification-8">Specification</h3>
+<h3 id="specification-7">Specification</h3>
 <p>No warnings occur under normal conditions. When done, the DBIResult object must be cleared with a call to <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. Failure to clear the result set leads to a warning when the connection is closed. If the backend supports only one open result set per connection, issuing a second query invalidates an already open result set and raises a warning. The newly opened result set is valid and must be cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 <h3 id="specification-for-the-immediate-argument-2">Specification for the <code>immediate</code> argument</h3>
@@ -739,7 +751,9 @@
 <h3 id="details-5">Details</h3>
 <p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> comes with a default implementation that simply forwards to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, to support backends that only implement the latter.</p>
 <h3 id="value-8">Value</h3>
-<p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to determine the number of rows affected by the query. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. An error is raised when issuing a statement over a closed or invalid connection, or if the statement is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+<p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to determine the number of rows affected by the query. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
+<h3 id="failure-modes-7">Failure modes</h3>
+<p>An error is raised when issuing a statement over a closed or invalid connection, or if the statement is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <h3 id="examples-9">Examples</h3>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -804,7 +818,7 @@
 <li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul>
 <p>They must be provided as named arguments. See the “Specification” sections for details on their usage.</p>
-<h3 id="specification-9">Specification</h3>
+<h3 id="specification-8">Specification</h3>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code> for details.</p>
 <h3 id="specification-for-the-immediate-argument-3">Specification for the <code>immediate</code> argument</h3>
 <p>The <code>immediate</code> argument supports distinguishing between “direct” and “prepared” APIs offered by many database drivers. Passing <code>immediate = TRUE</code> leads to immediate execution of the query or statement, via the “direct” API (if supported by the driver). The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database, and (if relevant) tries the other API if the first attempt fails. A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument. Examples for possible behaviors:</p>
@@ -845,9 +859,11 @@
 <h3 id="details-6">Details</h3>
 <p>You can also use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> to call a stored procedure that performs data manipulation or other actions that do not return a result set. To execute a stored procedure that returns a result set use <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
 <h3 id="value-9">Value</h3>
-<p><code><a href="../reference/dbExecute.html">dbExecute()</a></code> always returns a scalar numeric that specifies the number of rows affected by the statement. An error is raised when issuing a statement over a closed or invalid connection, if the syntax of the statement is invalid, or if the statement is not a non-<code>NA</code> string.</p>
+<p><code><a href="../reference/dbExecute.html">dbExecute()</a></code> always returns a scalar numeric that specifies the number of rows affected by the statement.</p>
 <h3 id="implementation-notes-1">Implementation notes</h3>
 <p>Subclasses should override this method only if they provide some sort of performance optimization.</p>
+<h3 id="failure-modes-8">Failure modes</h3>
+<p>An error is raised when issuing a statement over a closed or invalid connection, if the syntax of the statement is invalid, or if the statement is not a non-<code>NA</code> string.</p>
 <h3 id="examples-10">Examples</h3>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -895,10 +911,11 @@
 <h3 id="value-10">Value</h3>
 <p><code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object.</p>
 <p>When passing the returned object again to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)</p>
-<h3 id="specification-10">Specification</h3>
+<h3 id="failure-modes-9">Failure modes</h3>
+<p>Passing a numeric, integer, logical, or raw vector, or a list for the <code>x</code> argument raises an error.</p>
+<h3 id="specification-9">Specification</h3>
 <p>The returned expression can be used in a <code>SELECT ...</code> query, and for any scalar character <code>x</code> the value of <code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code> must be identical to <code>x</code>, even if <code>x</code> contains spaces, tabs, quotes (single or double), backticks, or newlines (in any combination) or is itself the result of a <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> call coerced back to character (even repeatedly). If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>. The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.</p>
 <p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>, so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code> returns one row.</p>
-<p>Passing a numeric, integer, logical, or raw vector, or a list for the <code>x</code> argument raises an error.</p>
 <h3 id="examples-11">Examples</h3>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Quoting ensures that arbitrary input is safe for use in a query</span>
@@ -940,8 +957,9 @@
 </tbody></table>
 <h3 id="value-11">Value</h3>
 <p><code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> returns an object that can be coerced to character, of the same length as the input. For an empty character vector this function returns a length-0 object. The names of the input argument are preserved in the output. When passing the returned object again to <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> as <code>x</code> argument, it is returned unchanged. Passing objects of class SQL should also return them unchanged. (For backends it may be most convenient to return SQL objects to achieve this behavior, but this is not required.)</p>
+<h3 id="failure-modes-10">Failure modes</h3>
 <p>An error is raised if the input contains <code>NA</code>, but not for an empty string.</p>
-<h3 id="specification-11">Specification</h3>
+<h3 id="specification-10">Specification</h3>
 <p>Calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code> returns a data frame with the identifier, unquoted, as column name. Quoted identifiers can be used as table and column names in SQL queries, in particular in queries like <code>SELECT 1 AS ...</code> and <code>SELECT * FROM (SELECT 1) ...</code>. The method must use a quoting mechanism that is unambiguously different from the quoting mechanism used for strings, so that a query like <code>SELECT ... FROM (SELECT 1 AS ...)</code> throws an error if the column names do not match.</p>
 <p>The method can quote column names that contain special characters such as a space, a dot, a comma, or quotes used to mark strings or identifiers, if the database supports this. In any case, checking the validity of the identifier should be performed only when executing a query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 <h3 id="examples-12">Examples</h3>
@@ -1046,7 +1064,7 @@ Other parameters passed on to methods.
 <p>They must be provided as named arguments. See the “Value” section for details on their usage.</p>
 </div>
 <div class="section level3">
-<h3 id="specification-12">Specification<a class="anchor" aria-label="anchor" href="#specification-12"></a>
+<h3 id="specification-11">Specification<a class="anchor" aria-label="anchor" href="#specification-11"></a>
 </h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
@@ -1057,16 +1075,26 @@ Other parameters passed on to methods.
 <div class="section level3">
 <h3 id="value-12">Value<a class="anchor" aria-label="anchor" href="#value-12"></a>
 </h3>
-<p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>. An error is raised if the table does not exist. An empty table is returned as a data frame with zero rows.</p>
+<p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data from the remote table, effectively the result of calling <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>.</p>
+<p>An empty table is returned as a data frame with zero rows.</p>
 <p>The presence of rownames depends on the <code>row.names</code> argument, see <code><a href="../reference/rownames.html">sqlColumnToRownames()</a></code> for details:</p>
 <ul>
 <li><p>If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn’t have row names.</p></li>
-<li><p>If <code>TRUE</code>, a column named “row_names” is converted to row names, an error is raised if no such column exists.</p></li>
+<li><p>If <code>TRUE</code>, a column named “row_names” is converted to row names.</p></li>
+</ul>
+<!-- end list --><ul>
 <li><p>If <code>NA</code>, a column named “row_names” is converted to row names if it exists, otherwise no translation occurs.</p></li>
-<li><p>If a string, this specifies the name of the column in the remote table that contains the row names, an error is raised if no such column exists.</p></li>
+<li><p>If a string, this specifies the name of the column in the remote table that contains the row names.</p></li>
 </ul>
 <p>The default is <code>row.names = FALSE</code>.</p>
 <p>If the database supports identifiers with special characters, the columns in the returned data frame are converted to valid R identifiers if the <code>check.names</code> argument is <code>TRUE</code>, If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
+</div>
+<div class="section level3">
+<h3 id="failure-modes-11">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-11"></a>
+</h3>
+<p>An error is raised if the table does not exist.</p>
+<p>An error is raised if <code>row.names</code> is <code>TRUE</code> and no “row_names” column exists,</p>
+<p>An error is raised if <code>row.names</code> is set to a string and and no corresponding column exists.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Unsupported values for <code>row.names</code> and <code>check.names</code> (non-scalars, unsupported data types, <code>NA</code> for <code>check.names</code>) also raise an error.</p>
 </div>
 <div class="section level3">
@@ -1178,7 +1206,7 @@ Other parameters passed on to methods.
 <p>They must be provided as named arguments. See the “Specification” and “Value” sections for details on their usage.</p>
 </div>
 <div class="section level3">
-<h3 id="specification-13">Specification<a class="anchor" aria-label="anchor" href="#specification-13"></a>
+<h3 id="specification-12">Specification<a class="anchor" aria-label="anchor" href="#specification-12"></a>
 </h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
@@ -1208,9 +1236,9 @@ Other parameters passed on to methods.
 <li><p>factor (returned as character)</p></li>
 <li><p>list of raw (if supported by the database)</p></li>
 <li><p>objects of type <a href="blob::blob" class="uri">blob::blob</a> (if supported by the database)</p></li>
-<li><p>date (if supported by the database; returned as <code>Date</code>)</p></li>
+<li><p>date (if supported by the database; returned as <code>Date</code>), also for dates prior to 1970 or 1900 or after 2038</p></li>
 <li><p>time (if supported by the database; returned as objects that inherit from <code>difftime</code>)</p></li>
-<li><p>timestamp (if supported by the database; returned as <code>POSIXct</code> respecting the time zone but not necessarily preserving the input time zone)</p></li>
+<li><p>timestamp (if supported by the database; returned as <code>POSIXct</code> respecting the time zone but not necessarily preserving the input time zone), also for timestamps prior to 1970 or 1900 or after 2038 respecting the time zone but not necessarily preserving the input time zone)</p></li>
 </ul>
 <p>Mixing column types in the same table is supported.</p>
 <p>The <code>field.types</code> argument must be a named character vector with at most one entry for each column. It indicates the SQL data type to be used for a new column. If a column is missed from <code>field.types</code>, the type is inferred from the input data with <code><a href="../reference/dbDataType.html">dbDataType()</a></code>.</p>
@@ -1226,7 +1254,12 @@ Other parameters passed on to methods.
 <div class="section level3">
 <h3 id="value-13">Value<a class="anchor" aria-label="anchor" href="#value-13"></a>
 </h3>
-<p><code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> returns <code>TRUE</code>, invisibly. If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset, or <code>append = TRUE</code> and the data frame with the new data has different column names, an error is raised; the remote table remains unchanged.</p>
+<p><code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> returns <code>TRUE</code>, invisibly.</p>
+</div>
+<div class="section level3">
+<h3 id="failure-modes-12">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-12"></a>
+</h3>
+<p>If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset, or <code>append = TRUE</code> and the data frame with the new data has different column names, an error is raised; the remote table remains unchanged.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar. Invalid values for the additional arguments <code>row.names</code>, <code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code> (non-scalars, unsupported data types, <code>NA</code>, incompatible values, duplicate or missing names, incompatible columns) also raise an error.</p>
 </div>
 <div class="section level3">
@@ -1269,7 +1302,9 @@ Other parameters passed on to methods.
 <h3 id="value-14">Value</h3>
 <p><code><a href="../reference/dbListTables.html">dbListTables()</a></code> returns a character vector that enumerates all tables and views in the database. Tables added with <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> are part of the list. As soon a table is removed from the database, it is also removed from the list of database tables.</p>
 <p>The same applies to temporary tables if supported by the database.</p>
-<p>The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. An error is raised when calling this method for a closed or invalid connection.</p>
+<p>The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+<h3 id="failure-modes-13">Failure modes</h3>
+<p>An error is raised when calling this method for a closed or invalid connection.</p>
 <h3 id="examples-15">Examples</h3>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1359,10 +1394,14 @@ Other parameters passed on to methods.
 </h3>
 <p><code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns a logical scalar, <code>TRUE</code> if the table or view specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.</p>
 <p>This includes temporary tables if supported by the database.</p>
+</div>
+<div class="section level3">
+<h3 id="failure-modes-14">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-14"></a>
+</h3>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
 </div>
 <div class="section level3">
-<h3 id="specification-14">Specification<a class="anchor" aria-label="anchor" href="#specification-14"></a>
+<h3 id="specification-13">Specification<a class="anchor" aria-label="anchor" href="#specification-13"></a>
 </h3>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
 <ul>
@@ -1470,7 +1509,7 @@ Other parameters passed on to methods.
 <p>If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> succeeds if the table does not exist.</p>
 </div>
 <div class="section level3">
-<h3 id="specification-15">Specification<a class="anchor" aria-label="anchor" href="#specification-15"></a>
+<h3 id="specification-14">Specification<a class="anchor" aria-label="anchor" href="#specification-14"></a>
 </h3>
 <p>A table removed by <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> doesn’t appear in the list of tables returned by <code><a href="../reference/dbListTables.html">dbListTables()</a></code>, and <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> returns <code>FALSE</code>. The removal propagates immediately to other connections to the same database. This function can also be used to remove a temporary table.</p>
 <p>The <code>name</code> argument is processed as follows, to support databases that allow non-syntactic names for their objects:</p>
@@ -1482,7 +1521,12 @@ Other parameters passed on to methods.
 <div class="section level3">
 <h3 id="value-16">Value<a class="anchor" aria-label="anchor" href="#value-16"></a>
 </h3>
-<p><code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly. If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.</p>
+<p><code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> returns <code>TRUE</code>, invisibly.</p>
+</div>
+<div class="section level3">
+<h3 id="failure-modes-15">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-15"></a>
+</h3>
+<p>If the table does not exist, an error is raised. An attempt to remove a view with this function may result in an error.</p>
 <p>An error is raised when calling this method for a closed or invalid connection. An error is also raised if <code>name</code> cannot be processed with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or if this results in a non-scalar.</p>
 </div>
 <div class="section level3">
@@ -1576,10 +1620,15 @@ Other parameters passed on to methods.
 <div class="section level3">
 <h3 id="value-17">Value<a class="anchor" aria-label="anchor" href="#value-17"></a>
 </h3>
-<p><code><a href="../reference/dbListFields.html">dbListFields()</a></code> returns a character vector that enumerates all fields in the table in the correct order. This also works for temporary tables if supported by the database. The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. If the table does not exist, an error is raised. Invalid types for the <code>name</code> argument (e.g., <code>character</code> of length not equal to one, or numeric) lead to an error. An error is also raised when calling this method for a closed or invalid connection.</p>
+<p><code><a href="../reference/dbListFields.html">dbListFields()</a></code> returns a character vector that enumerates all fields in the table in the correct order. This also works for temporary tables if supported by the database. The returned names are suitable for quoting with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
 </div>
 <div class="section level3">
-<h3 id="specification-16">Specification<a class="anchor" aria-label="anchor" href="#specification-16"></a>
+<h3 id="failure-modes-16">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-16"></a>
+</h3>
+<p>If the table does not exist, an error is raised. Invalid types for the <code>name</code> argument (e.g., <code>character</code> of length not equal to one, or numeric) lead to an error. An error is also raised when calling this method for a closed or invalid connection.</p>
+</div>
+<div class="section level3">
+<h3 id="specification-15">Specification<a class="anchor" aria-label="anchor" href="#specification-15"></a>
 </h3>
 <p>The <code>name</code> argument can be</p>
 <ul>
@@ -1661,9 +1710,12 @@ Other parameters passed on to methods.
 </tr>
 </tbody></table>
 <h3 id="value-19">Value</h3>
-<p><code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns a logical scalar. For a query initiated by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code> initially and <code>TRUE</code> after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit. For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> always returns <code>TRUE</code>. Attempting to query completion status for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
-<h3 id="specification-17">Specification</h3>
-<p>The completion status for a query is only guaranteed to be set to <code>FALSE</code> after attempting to fetch past the end of the entire result. Therefore, for a query with an empty result set, the initial return value is unspecified, but the result value is <code>TRUE</code> after trying to fetch only one row. Similarly, for a query with a result set of length n, the return value is unspecified after fetching n rows, but the result value is <code>TRUE</code> after trying to fetch only one more row.</p>
+<p><code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns a logical scalar. For a query initiated by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code> initially and <code>TRUE</code> after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit. For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> always returns <code>TRUE</code>.</p>
+<h3 id="failure-modes-17">Failure modes</h3>
+<p>Attempting to query completion status for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<h3 id="specification-16">Specification</h3>
+<p>The completion status for a query is only guaranteed to be set to <code>FALSE</code> after attempting to fetch past the end of the entire result. Therefore, for a query with an empty result set, the initial return value is unspecified, but the result value is <code>TRUE</code> after trying to fetch only one row.</p>
+<p>Similarly, for a query with a result set of length n, the return value is unspecified after fetching n rows, but the result value is <code>TRUE</code> after trying to fetch only one more row.</p>
 <h3 id="examples-20">Examples</h3>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1699,7 +1751,9 @@ Other parameters passed on to methods.
 </tr>
 </tbody></table>
 <h3 id="value-20">Value</h3>
-<p><code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code> returns a string, the query used in either <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. Attempting to query the statement for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<p><code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code> returns a string, the query used in either <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
+<h3 id="failure-modes-18">Failure modes</h3>
+<p>Attempting to query the statement for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 <h3 id="examples-21">Examples</h3>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1730,7 +1784,9 @@ Other parameters passed on to methods.
 </tr>
 </tbody></table>
 <h3 id="value-21">Value</h3>
-<p><code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> returns a scalar number (integer or numeric), the number of rows fetched so far. After calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, the row count is initially zero. After a call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit, the row count matches the total number of rows returned. Fetching a limited number of rows increases the number of rows by the number of rows returned, even if fetching past the end of the result set. For queries with an empty result set, zero is returned even after fetching. For data manipulation statements issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, zero is returned before and after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. Attempting to get the row count for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<p><code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> returns a scalar number (integer or numeric), the number of rows fetched so far. After calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, the row count is initially zero. After a call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit, the row count matches the total number of rows returned. Fetching a limited number of rows increases the number of rows by the number of rows returned, even if fetching past the end of the result set. For queries with an empty result set, zero is returned even after fetching. For data manipulation statements issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, zero is returned before and after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p>
+<h3 id="failure-modes-19">Failure modes</h3>
+<p>Attempting to get the row count for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 <h3 id="examples-22">Examples</h3>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1767,7 +1823,9 @@ Other parameters passed on to methods.
 </tr>
 </tbody></table>
 <h3 id="value-22">Value</h3>
-<p><code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns a scalar number (integer or numeric), the number of rows affected by a data manipulation statement issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. The value is available directly after the call and does not change after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. For queries issued with <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, zero is returned before and after the call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. Attempting to get the rows affected for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<p><code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns a scalar number (integer or numeric), the number of rows affected by a data manipulation statement issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. The value is available directly after the call and does not change after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. For queries issued with <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, zero is returned before and after the call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p>
+<h3 id="failure-modes-20">Failure modes</h3>
+<p>Attempting to get the rows affected for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
 <h3 id="examples-23">Examples</h3>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1800,10 +1858,13 @@ Other parameters passed on to methods.
 </tbody></table>
 <h3 id="value-23">Value</h3>
 <p><code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> returns a data frame with at least two columns <code>"name"</code> and <code>"type"</code> (in that order) (and optional columns that start with a dot). The <code>"name"</code> and <code>"type"</code> columns contain the names and types of the R columns of the data frame that is returned from <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The <code>"type"</code> column is of type <code>character</code> and only for information. Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code> to create a zero-row data frame initialized with the correct data types.</p>
+<h3 id="failure-modes-21">Failure modes</h3>
 <p>An attempt to query columns for a closed result set raises an error.</p>
-<h3 id="specification-18">Specification</h3>
+<h3 id="specification-17">Specification</h3>
 <p>A column named <code>row_names</code> is treated like any other column.</p>
-<p>The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. If the query returns unnamed columns, non-empty and non-<code>NA</code> names are assigned. Column names that correspond to SQL or R keywords are left unchanged.</p>
+<p>The column names are always consistent with the data returned by <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p>
+<p>If the query returns unnamed columns, non-empty and non-<code>NA</code> names are assigned.</p>
+<p>Column names that correspond to SQL or R keywords are left unchanged.</p>
 <h3 id="examples-24">Examples</h3>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span>
@@ -1840,8 +1901,10 @@ Other parameters passed on to methods.
 <h3 id="details-7">Details</h3>
 <p>Not all database engines implement transaction management, in which case these methods should not be implemented for the specific DBIConnection subclass.</p>
 <h3 id="value-24">Value</h3>
-<p><code><a href="../reference/transactions.html">dbBegin()</a></code>, <code><a href="../reference/transactions.html">dbCommit()</a></code> and <code><a href="../reference/transactions.html">dbRollback()</a></code> return <code>TRUE</code>, invisibly. The implementations are expected to raise an error in case of failure, but this is not tested. In any way, all generics throw an error with a closed or invalid connection. In addition, a call to <code><a href="../reference/transactions.html">dbCommit()</a></code> or <code><a href="../reference/transactions.html">dbRollback()</a></code> without a prior call to <code><a href="../reference/transactions.html">dbBegin()</a></code> raises an error. Nested transactions are not supported by DBI, an attempt to call <code><a href="../reference/transactions.html">dbBegin()</a></code> twice yields an error.</p>
-<h3 id="specification-19">Specification</h3>
+<p><code><a href="../reference/transactions.html">dbBegin()</a></code>, <code><a href="../reference/transactions.html">dbCommit()</a></code> and <code><a href="../reference/transactions.html">dbRollback()</a></code> return <code>TRUE</code>, invisibly.</p>
+<h3 id="failure-modes-22">Failure modes</h3>
+<p>The implementations are expected to raise an error in case of failure, but this is not tested. In any way, all generics throw an error with a closed or invalid connection. In addition, a call to <code><a href="../reference/transactions.html">dbCommit()</a></code> or <code><a href="../reference/transactions.html">dbRollback()</a></code> without a prior call to <code><a href="../reference/transactions.html">dbBegin()</a></code> raises an error. Nested transactions are not supported by DBI, an attempt to call <code><a href="../reference/transactions.html">dbBegin()</a></code> twice yields an error.</p>
+<h3 id="specification-18">Specification</h3>
 <p>Actual support for transactions may vary between backends. A transaction is initiated by a call to <code><a href="../reference/transactions.html">dbBegin()</a></code> and committed by a call to <code><a href="../reference/transactions.html">dbCommit()</a></code>. Data written in a transaction must persist after the transaction is committed. For example, a record that is missing when the transaction is started but is created during the transaction must exist both during and after the transaction, and also in a new connection.</p>
 <p>A transaction can also be aborted with <code><a href="../reference/transactions.html">dbRollback()</a></code>. All data written in such a transaction must be removed after the transaction is rolled back. For example, a record that is missing when the transaction is started but is created during the transaction must not exist anymore after the rollback.</p>
 <p>Disconnection from a connection with an open transaction effectively rolls back the transaction. All data written in such a transaction must be removed after the transaction is rolled back.</p>
@@ -1907,8 +1970,10 @@ Other parameters passed on to methods.
 <h3 id="details-8">Details</h3>
 <p>DBI implements <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>, backends should need to override this generic only if they implement specialized handling.</p>
 <h3 id="value-25">Value</h3>
-<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> returns the value of the executed code. Failure to initiate the transaction (e.g., if the connection is closed or invalid of if <code><a href="../reference/transactions.html">dbBegin()</a></code> has been called already) gives an error.</p>
-<h3 id="specification-20">Specification</h3>
+<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> returns the value of the executed code.</p>
+<h3 id="failure-modes-23">Failure modes</h3>
+<p>Failure to initiate the transaction (e.g., if the connection is closed or invalid of if <code><a href="../reference/transactions.html">dbBegin()</a></code> has been called already) gives an error.</p>
+<h3 id="specification-19">Specification</h3>
 <p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> initiates a transaction with <code><a href="../reference/transactions.html">dbBegin()</a></code>, executes the code given in the <code>code</code> argument, and commits the transaction with <code><a href="../reference/transactions.html">dbCommit()</a></code>. If the code raises an error, the transaction is instead aborted with <code><a href="../reference/transactions.html">dbRollback()</a></code>, and the error is propagated. If the code calls <code><a href="../reference/dbWithTransaction.html">dbBreak()</a></code>, execution of the code stops and the transaction is silently aborted. All side effects caused by the code (such as the creation of new variables) propagate to the calling environment.</p>
 <h3 id="examples-26">Examples</h3>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">

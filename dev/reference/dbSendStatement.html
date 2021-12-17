@@ -93,19 +93,28 @@ an S4 object that inherits from <a href="DBIResult-class.html">DBIResult</a>.
 The result set can be used with <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to
 determine the number of rows affected by the query.
 Once you have finished using a result, make sure to clear it
-with <code><a href="dbClearResult.html">dbClearResult()</a></code>.
-An error is raised when issuing a statement over a closed
-or invalid connection,
-or if the statement is not a non-<code>NA</code> string.
-An error is also raised if the syntax of the query is invalid
-and all query parameters are given (by passing the <code>params</code> argument)
-or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+with <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
     <p><code>dbSendStatement()</code> comes with a default implementation that simply
 forwards to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, to support backends that only
 implement the latter.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when issuing a statement over a closed
+or invalid connection,
+or if the statement is not a non-<code>NA</code> string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the <code>params</code> argument)
+or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+
+
+
     </div>
     <div id="additional-arguments">
     <h2>Additional arguments</h2>

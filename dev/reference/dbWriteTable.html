@@ -96,17 +96,25 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbWriteTable()</code> returns <code>TRUE</code>, invisibly.
-If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset,
+    <p><code>dbWriteTable()</code> returns <code>TRUE</code>, invisibly.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset,
 or <code>append = TRUE</code> and the data frame with the new data has different
 column names,
-an error is raised; the remote table remains unchanged.
-An error is raised when calling this method for a closed
+an error is raised; the remote table remains unchanged.</p>
+<p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>or if this results in a non-scalar.
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+or if this results in a non-scalar.
 Invalid values for the additional arguments <code>row.names</code>,
-<code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code>(non-scalars,
+<code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code>
+(non-scalars,
 unsupported data types,
 <code>NA</code>,
 incompatible values,
@@ -182,13 +190,17 @@ before and after a non-empty string</p></li>
 (if supported by the database)</p></li>
 <li><p>date
 (if supported by the database;
-returned as <code>Date</code>)</p></li>
+returned as <code>Date</code>),
+also for dates prior to 1970 or 1900 or after 2038</p></li>
 <li><p>time
 (if supported by the database;
 returned as objects that inherit from <code>difftime</code>)</p></li>
 <li><p>timestamp
 (if supported by the database;
 returned as <code>POSIXct</code>
+respecting the time zone but not necessarily preserving the
+input time zone),
+also for timestamps prior to 1970 or 1900 or after 2038
 respecting the time zone but not necessarily preserving the
 input time zone)</p></li>
 </ul><p>Mixing column types in the same table is supported.</p>

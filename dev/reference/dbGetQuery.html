@@ -88,14 +88,7 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
 columns as fields in the result set,
 even if the result is a single value
 or has one
-or zero rows.
-An error is raised when issuing a query over a closed
-or invalid connection,
-if the syntax of the query is invalid,
-or if the query is not a non-<code>NA</code> string.
-If the <code>n</code> argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
-but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
+or zero rows.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -115,6 +108,19 @@ reasons.  However, callers are strongly advised to use
 
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-<code>NA</code> string.
+If the <code>n</code> argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
     </div>
     <div id="additional-arguments">
     <h2>Additional arguments</h2>
