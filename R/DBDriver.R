@@ -64,7 +64,7 @@ setGeneric("dbDriver",
 
 #' @rdname hidden_aliases
 setMethod("dbDriver", signature("character"),
-  definition = function(drvName, ...) {
+  function(drvName, ...) {
     findDriver(drvName)(...)
   }
 )
