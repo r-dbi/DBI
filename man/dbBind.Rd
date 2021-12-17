@@ -19,25 +19,6 @@ invisibly,
 for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}}
 and also for data manipulation statements issued by
 \code{\link[=dbSendStatement]{dbSendStatement()}}.
-Calling \code{dbBind()} for a query without parameters
-raises an error.
-Binding too many
-or not enough values,
-or parameters with wrong names
-or unequal length,
-also raises an error.
-If the placeholders in the query are named,
-all parameter values must have names
-(which must not be empty
-or \code{NA}),
-and vice versa,
-otherwise an error is raised.
-The behavior for mixing placeholders of different types
-(in particular mixing positional and named placeholders)
-is not specified.
-
-Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearResult]{dbClearResult()}}
-also raises an error.
 }
 \description{
 For parametrized or prepared statements,
@@ -76,6 +57,31 @@ Known examples are:
 \item \verb{:name} and \verb{$name} (named matching) in \pkg{RSQLite}
 }
 }
+\section{Failure modes}{
+
+
+Calling \code{dbBind()} for a query without parameters
+raises an error.
+Binding too many
+or not enough values,
+or parameters with wrong names
+or unequal length,
+also raises an error.
+If the placeholders in the query are named,
+all parameter values must have names
+(which must not be empty
+or \code{NA}),
+and vice versa,
+otherwise an error is raised.
+The behavior for mixing placeholders of different types
+(in particular mixing positional and named placeholders)
+is not specified.
+
+Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearResult]{dbClearResult()}}
+also raises an error.
+
+}
+
 \section{Specification}{
 
 

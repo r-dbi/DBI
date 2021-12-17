@@ -21,7 +21,7 @@ resources (e.g., memory, sockets).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbDisconnect")}
 }
-\section{Specification}{
+\section{Failure modes}{
 
 
 A warning is issued on garbage collection when a connection has been

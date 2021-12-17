@@ -83,6 +83,7 @@ setMethod("show", "SQL", function(object) {
 #' @templateVar method_name dbQuoteIdentifier
 #'
 #' @inherit DBItest::spec_sql_quote_identifier return
+#' @inheritSection DBItest::spec_sql_quote_identifier Failure modes
 #' @inheritSection DBItest::spec_sql_quote_identifier Specification
 #'
 #' @family DBIResult generics
@@ -161,6 +162,7 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), quote_identifie
 #' @templateVar method_name dbUnquoteIdentifier
 #'
 #' @inherit DBItest::spec_sql_unquote_identifier return
+#' @inheritSection DBItest::spec_sql_unquote_identifier Failure modes
 #' @inheritSection DBItest::spec_sql_unquote_identifier Specification
 #'
 #' @family DBIResult generics
@@ -251,6 +253,7 @@ as_table <- function(catalog, schema, table) {
 #' @templateVar method_name dbQuoteString
 #'
 #' @inherit DBItest::spec_sql_quote_string return
+#' @inheritSection DBItest::spec_sql_quote_string Failure modes
 #' @inheritSection DBItest::spec_sql_quote_string Specification
 #'
 #' @family DBIResult generics
@@ -321,6 +324,7 @@ setMethod("dbQuoteString", signature("DBIConnection", "SQL"), quote_string)
 #' @templateVar method_name dbQuoteLiteral
 #'
 #' @inherit DBItest::spec_sql_quote_literal return
+#' @inheritSection DBItest::spec_sql_quote_literal Failure modes
 #' @inheritSection DBItest::spec_sql_quote_literal Specification
 #'
 #' @family DBIResult generics

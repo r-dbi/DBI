@@ -24,6 +24,16 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 }
 \value{
 \code{dbRemoveTable()} returns \code{TRUE}, invisibly.
+}
+\description{
+Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}})
+from the database.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbRemoveTable")}
+}
+\section{Failure modes}{
+
+
 If the table does not exist, an error is raised.
 An attempt to remove a view with this function may result in an error.
 
@@ -32,13 +42,9 @@ or invalid connection.
 An error is also raised
 if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
 or if this results in a non-scalar.
-}
-\description{
-Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}})
-from the database.
 
-\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbRemoveTable")}
 }
+
 \section{Additional arguments}{
 
 

@@ -37,8 +37,6 @@ it is also removed from the data frame of database objects.
 The same applies to temporary objects if supported by the database.
 
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
-An error is raised when calling this method for a closed
-or invalid connection.
 }
 \description{
 Returns the names of remote objects accessible through this connection
@@ -53,6 +51,14 @@ namespace.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListObjects")}
 }
+\section{Failure modes}{
+
+
+An error is raised when calling this method for a closed
+or invalid connection.
+
+}
+
 \section{Specification}{
 
 

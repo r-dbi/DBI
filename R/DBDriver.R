@@ -262,6 +262,7 @@ setGeneric("dbListConnections",
 #' @templateVar method_name dbDataType
 #'
 #' @inherit DBItest::spec_driver_data_type return
+#' @inheritSection DBItest::spec_driver_data_type Failure modes
 #' @inheritSection DBItest::spec_driver_data_type Specification
 #' @inheritSection DBItest::spec_result_create_table_with_data_type Specification
 #'

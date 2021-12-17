@@ -26,6 +26,17 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 }
 \value{
 \code{dbWriteTable()} returns \code{TRUE}, invisibly.
+}
+\description{
+Writes, overwrites or appends a data frame to a database table, optionally
+converting row names to a column and specifying SQL data types for fields.
+New code should prefer \code{\link[=dbCreateTable]{dbCreateTable()}} and \code{\link[=dbAppendTable]{dbAppendTable()}}.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
+}
+\section{Failure modes}{
+
+
 If the table exists, and both \code{append} and \code{overwrite} arguments are unset,
 or \code{append = TRUE} and the data frame with the new data has different
 column names,
@@ -46,14 +57,9 @@ duplicate
 or missing names,
 incompatible columns)
 also raise an error.
-}
-\description{
-Writes, overwrites or appends a data frame to a database table, optionally
-converting row names to a column and specifying SQL data types for fields.
-New code should prefer \code{\link[=dbCreateTable]{dbCreateTable()}} and \code{\link[=dbAppendTable]{dbAppendTable()}}.
 
-\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
 }
+
 \section{Additional arguments}{
 
 
@@ -136,13 +142,17 @@ before and after a non-empty string
 (if supported by the database)
 \item date
 (if supported by the database;
-returned as \code{Date})
+returned as \code{Date}),
+also for dates prior to 1970 or 1900 or after 2038
 \item time
 (if supported by the database;
 returned as objects that inherit from \code{difftime})
 \item timestamp
 (if supported by the database;
 returned as \code{POSIXct}
+respecting the time zone but not necessarily preserving the
+input time zone),
+also for timestamps prior to 1970 or 1900 or after 2038
 respecting the time zone but not necessarily preserving the
 input time zone)
 }

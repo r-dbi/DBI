@@ -41,6 +41,15 @@ generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteLiteral")}
 }
+\section{Failure modes}{
+
+
+
+Passing a list
+for the \code{x} argument raises an error.
+
+}
+
 \section{Specification}{
 
 
@@ -59,9 +68,6 @@ The literals \code{"NA"} or \code{"NULL"} are not treated specially.
 \code{NA} should be translated to an unquoted SQL \code{NULL},
 so that the query \verb{SELECT * FROM (SELECT 1) a WHERE ... IS NULL}
 returns one row.
-
-Passing a list
-for the \code{x} argument raises an error.
 
 }
 

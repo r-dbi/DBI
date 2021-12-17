@@ -21,13 +21,6 @@ columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
-An error is raised when issuing a query over a closed
-or invalid connection,
-if the syntax of the query is invalid,
-or if the query is not a non-\code{NA} string.
-If the \code{n} argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
-but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
 }
 \description{
 Returns the result of a query as a data frame.
@@ -55,6 +48,19 @@ reasons.  However, callers are strongly advised to use
 
 Subclasses should override this method only if they provide some sort of
 performance optimization.
+}
+
+\section{Failure modes}{
+
+
+An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-\code{NA} string.
+If the \code{n} argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
+
 }
 
 \section{Additional arguments}{

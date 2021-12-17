@@ -59,7 +59,7 @@ show_connection <- function(object) {
 #' @templateVar method_name dbDisconnect
 #'
 #' @inherit DBItest::spec_connection_disconnect return
-#' @inheritSection DBItest::spec_connection_disconnect Specification
+#' @inheritSection DBItest::spec_connection_disconnect Failure modes
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
@@ -96,6 +96,7 @@ setGeneric("dbDisconnect",
 #' @templateVar method_name dbSendQuery
 #'
 #' @inherit DBItest::spec_result_send_query return
+#' @inheritSection DBItest::spec_result_send_query Failure modes
 #' @inheritSection DBItest::spec_result_send_query Additional arguments
 #' @inheritSection DBItest::spec_result_send_query Specification
 #' @inheritSection DBItest::spec_result_send_query Specification for the `immediate` argument
@@ -155,6 +156,7 @@ setGeneric("dbSendQuery",
 #' @templateVar method_name dbSendStatement
 #'
 #' @inherit DBItest::spec_result_send_statement return
+#' @inheritSection DBItest::spec_result_send_statement Failure modes
 #' @inheritSection DBItest::spec_result_send_statement Additional arguments
 #' @inheritSection DBItest::spec_result_send_statement Specification
 #' @inheritSection DBItest::spec_result_send_statement Specification for the `immediate` argument
@@ -236,6 +238,7 @@ setMethod(
 #' @templateVar method_name dbGetQuery
 #'
 #' @inherit DBItest::spec_result_get_query return
+#' @inheritSection DBItest::spec_result_get_query Failure modes
 #' @inheritSection DBItest::spec_result_get_query Additional arguments
 #' @inheritSection DBItest::spec_result_get_query Specification
 #' @inheritSection DBItest::spec_result_get_query Specification for the `immediate` argument
@@ -305,6 +308,7 @@ setMethod("dbGetQuery", signature("DBIConnection", "character"),
 #' performance optimization.
 #'
 #' @inherit DBItest::spec_result_execute return
+#' @inheritSection DBItest::spec_result_execute Failure modes
 #' @inheritSection DBItest::spec_result_execute Additional arguments
 #' @inheritSection DBItest::spec_result_execute Specification
 #' @inheritSection DBItest::spec_result_execute Specification for the `immediate` argument
@@ -386,6 +390,7 @@ setGeneric("dbListResults",
 #' @inheritParams dbReadTable
 #'
 #' @inherit DBItest::spec_sql_list_fields return
+#' @inheritSection DBItest::spec_sql_list_fields Failure modes
 #' @inheritSection DBItest::spec_sql_list_fields Specification
 #'
 #' @family DBIConnection generics
@@ -444,6 +449,7 @@ list_fields <- function(conn, name) {
 #' @templateVar method_name dbListTables
 #'
 #' @inherit DBItest::spec_sql_list_tables return
+#' @inheritSection DBItest::spec_sql_list_tables Failure modes
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
@@ -477,7 +483,7 @@ setGeneric("dbListTables",
 #' @templateVar method_name dbListObjects
 #'
 #' @inherit DBItest::spec_sql_list_objects return
-#' @inheritSection DBItest::spec_sql_list_objects Additional arguments
+#' @inheritSection DBItest::spec_sql_list_objects Failure modes
 #' @inheritSection DBItest::spec_sql_list_objects Specification
 #'
 #' @inheritParams dbGetQuery
@@ -524,6 +530,7 @@ setMethod("dbListObjects", signature("DBIConnection", "ANY"),
 #' @templateVar method_name dbReadTable
 #'
 #' @inherit DBItest::spec_sql_read_table return
+#' @inheritSection DBItest::spec_sql_read_table Failure modes
 #' @inheritSection DBItest::spec_sql_read_table Additional arguments
 #' @inheritSection DBItest::spec_sql_read_table Specification
 #'
@@ -592,6 +599,7 @@ setMethod("dbReadTable", signature("DBIConnection", "Id"),
 #' @templateVar method_name dbWriteTable
 #'
 #' @inherit DBItest::spec_sql_write_table return
+#' @inheritSection DBItest::spec_sql_write_table Failure modes
 #' @inheritSection DBItest::spec_sql_write_table Additional arguments
 #' @inheritSection DBItest::spec_sql_write_table Specification
 #'
@@ -637,6 +645,7 @@ setMethod("dbWriteTable", signature("DBIConnection", "Id", "ANY"),
 #' @templateVar method_name dbExistsTable
 #'
 #' @inherit DBItest::spec_sql_exists_table return
+#' @inheritSection DBItest::spec_sql_exists_table Failure modes
 #' @inheritSection DBItest::spec_sql_exists_table Specification
 #'
 #' @inheritParams dbReadTable
@@ -672,6 +681,7 @@ setMethod("dbExistsTable", signature("DBIConnection", "Id"),
 #' @templateVar method_name dbRemoveTable
 #'
 #' @inherit DBItest::spec_sql_remove_table return
+#' @inheritSection DBItest::spec_sql_remove_table Failure modes
 #' @inheritSection DBItest::spec_sql_remove_table Additional arguments
 #' @inheritSection DBItest::spec_sql_remove_table Specification
 #'

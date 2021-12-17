@@ -18,6 +18,7 @@ NULL
 #' @templateVar method_name transactions
 #'
 #' @inherit DBItest::spec_transaction_begin_commit_rollback return
+#' @inheritSection DBItest::spec_transaction_begin_commit_rollback Failure modes
 #' @inheritSection DBItest::spec_transaction_begin_commit_rollback Specification
 #'
 #' @inheritParams dbGetQuery
@@ -94,6 +95,7 @@ setGeneric("dbRollback",
 #' @templateVar method_name dbWithTransaction
 #'
 #' @inherit DBItest::spec_transaction_with_transaction return
+#' @inheritSection DBItest::spec_transaction_with_transaction Failure modes
 #' @inheritSection DBItest::spec_transaction_with_transaction Specification
 #'
 #' @inheritParams dbGetQuery
