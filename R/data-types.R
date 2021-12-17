@@ -1,9 +1,5 @@
 #' @include dbiDataType.R
 
-data_frame_data_type <- function(x) {
-  vapply(x, dbiDataType, FUN.VALUE = character(1), USE.NAMES = TRUE)
-}
-
 varchar_data_type <- function(x) {
   "TEXT"
 }
@@ -28,8 +24,6 @@ as_is_data_type <- function(x) {
 setOldClass("difftime")
 
 setOldClass("AsIs")
-
-setMethod("dbiDataType", signature("data.frame"), data_frame_data_type)
 
 setMethod("dbiDataType", signature("character"),  varchar_data_type)
 

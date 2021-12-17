@@ -63,6 +63,7 @@ Collate:
     'data.R'
     'dbiDataType_Date.R'
     'dbiDataType_POSIXct.R'
+    'dbiDataType_data.frame.R'
     'dbiDataType_difftime.R'
     'dbiDataType_integer.R'
     'dbiDataType_logical.R'
