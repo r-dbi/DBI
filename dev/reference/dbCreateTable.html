@@ -99,12 +99,72 @@ Field types are unescaped.</p>
 <dt>temporary</dt>
 <dd><p>If <code>TRUE</code>, will generate a temporary table statement.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbCreateTable()</code> returns <code>TRUE</code>, invisibly.</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
     <p>The <code>row.names</code> argument is not supported by this method.
 Process the values with <code><a href="rownames.html">sqlRownamesToColumn()</a></code> before calling this method.</p>
 <p>The argument order is different from the <code><a href="sqlCreateTable.html">sqlCreateTable()</a></code> method, the
 latter will be adapted in a later release of DBI.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>If the table exists, an error is raised; the remote table remains unchanged.</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+or if this results in a non-scalar.
+Invalid values for the <code>row.names</code> and <code>temporary</code> arguments
+(non-scalars,
+unsupported data types,
+<code>NA</code>,
+incompatible values,
+duplicate names)
+also raise an error.</p>
+    </div>
+    <div id="additional-arguments">
+    <h2>Additional arguments</h2>
+    
+
+
+<p>The following arguments are not part of the <code>dbCreateTable()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul><li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
+</ul><p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbCreateTable()</code> will do the quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+</ul><p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection,
+in a pre-existing connection,
+and after reconnecting to the database.</p>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, and spaces can also be used  for table names and column names,
+if the database supports non-syntactic identifiers.</p>
+<p>The <code>row.names</code> argument must be missing
+or <code>NULL</code>, the default value.
+All other values for the <code>row.names</code> argument
+(in particular <code>TRUE</code>,
+<code>NA</code>,
+and a string)
+raise an error.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>
