@@ -67,6 +67,7 @@ Collate:
     'dbiDataType_data.frame.R'
     'dbiDataType_difftime.R'
     'dbiDataType_integer.R'
+    'dbiDataType_list.R'
     'dbiDataType_logical.R'
     'dbiDataType_numeric.R'
     'deprecated.R'
