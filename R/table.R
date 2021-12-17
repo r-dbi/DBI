@@ -40,14 +40,8 @@ Id <- function(...) {
   new("Id", name = components)
 }
 
-#' @rdname hidden_aliases
-#' @param object Table object to print
-#' @export
-setMethod("show", signature("Id"), function(object) {
-  cat(toString(object), "\n", sep = "")
-})
-
 #' @export
 toString.Id <- function(x, ...) {
   paste0("<Id> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
 }
+

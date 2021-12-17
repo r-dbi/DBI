@@ -51,3 +51,4 @@ methods_as_rd <- function(method) {
     "}}\n"
   )
 }
+
