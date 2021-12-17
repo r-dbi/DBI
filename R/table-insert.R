@@ -123,6 +123,11 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 #'   with those in the target table in the database.
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlAppendTableTemplate
+#'
+#' @inherit DBItest::spec_sql_append_table return
+#' @inheritSection DBItest::spec_sql_append_table Failure modes
+#' @inheritSection DBItest::spec_sql_append_table Specification
+#'
 #' @family DBIConnection generics
 #' @export
 #' @examples

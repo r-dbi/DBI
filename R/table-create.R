@@ -87,6 +87,12 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' @inheritParams dbReadTable
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlCreateTable
+#'
+#' @inherit DBItest::spec_sql_create_table return
+#' @inheritSection DBItest::spec_sql_create_table Failure modes
+#' @inheritSection DBItest::spec_sql_create_table Additional arguments
+#' @inheritSection DBItest::spec_sql_create_table Specification
+#'
 #' @family DBIConnection generics
 #' @export
 #' @examples
