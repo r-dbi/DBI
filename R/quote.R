@@ -1,5 +1,4 @@
 #' @include hidden.R
-#' @include DBConnection.R
 NULL
 
 #' SQL quoting

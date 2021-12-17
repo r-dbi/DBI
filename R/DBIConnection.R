@@ -26,7 +26,6 @@ NULL
 #' dbDisconnect(con)
 #' }
 #' @export
-#' @include DBObject.R
 setClass("DBIConnection", contains = c("DBIObject", "VIRTUAL"))
 
 show_connection <- function(object) {

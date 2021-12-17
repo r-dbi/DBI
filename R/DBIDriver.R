@@ -14,7 +14,7 @@ NULL
 #' @family DBI classes
 #' @family DBIDriver generics
 #' @export
-#' @include DBObject.R
+#' @include DBIObject.R
 setClass("DBIDriver", contains = c("DBIObject", "VIRTUAL"))
 
 show_driver <- function(object) {

@@ -21,7 +21,6 @@ NULL
 #' @family DBI classes
 #' @family DBIResult generics
 #' @export
-#' @include DBObject.R
 setClass("DBIResult", contains = c("DBIObject", "VIRTUAL"))
 
 show_result <- function(object) {

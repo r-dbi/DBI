@@ -26,7 +26,6 @@ NULL
 #' @family DBI classes
 #' @family DBIConnector generics
 #' @export
-#' @include DBDriver_.R
 #' @examples
 #' # Create a connector:
 #' cnr <- new("DBIConnector",
