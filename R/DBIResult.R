@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' DBIResult class
@@ -43,4 +42,3 @@ show_result <- function(object) {
 #' [dbGetStatement()], [dbGetRowCount()],
 #' [dbGetRowsAffected()], and [dbHasCompleted()].
 NULL
-

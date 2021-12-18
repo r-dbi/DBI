@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' DBIConnector class

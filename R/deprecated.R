@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 ## produce legal SQL identifiers from strings in a character vector
@@ -97,4 +96,3 @@ dbGetDBIVersion <- function() {
   .Deprecated("packageVersion('DBI')")
   utils::packageVersion("DBI")
 }
-

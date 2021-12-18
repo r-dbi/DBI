@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' SQL quoting
@@ -140,4 +139,3 @@ setMethod("dbQuoteString", signature("DBIConnection", "character"), quote_string
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbQuoteString", signature("DBIConnection", "SQL"), quote_string)
-

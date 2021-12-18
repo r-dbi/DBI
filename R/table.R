@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' @rdname Id
@@ -44,4 +43,3 @@ Id <- function(...) {
 toString.Id <- function(x, ...) {
   paste0("<Id> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
 }
-

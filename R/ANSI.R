@@ -1,4 +1,3 @@
-#' @include hidden.R
 #' @include DBIConnection.R
 #' @include DBIDriver.R
 setClass("AnsiConnection", contains = "DBIConnection")
@@ -12,3 +11,13 @@ setClass("AnsiConnection", contains = "DBIConnection")
 ANSI <- function() {
   new("AnsiConnection")
 }
+
+#' Internal page for hidden aliases
+#'
+#' For S4 methods that require a documentation entry but only clutter the index.
+#'
+#' @usage NULL
+#' @format NULL
+#' @keywords internal
+#' @docType methods
+hidden_aliases <- NULL

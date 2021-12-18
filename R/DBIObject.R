@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' DBIObject class
@@ -46,4 +45,3 @@ NULL
 #' @export
 #' @name DBIObject-class
 setClass("DBIObject", "VIRTUAL")
-

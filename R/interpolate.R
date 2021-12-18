@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' @export
@@ -127,4 +126,3 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   }
   list(start = var_pos_start, end = var_pos_end)
 }
-

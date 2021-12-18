@@ -49,7 +49,6 @@ Roxygen: list(markdown = TRUE, roclets = c("collate",
 RoxygenNote: 7.1.2
 Config/Needs/website: RMariaDB, RPostgres, odbc, duckdb
 Collate: 
-    'hidden.R'
     'DBIObject.R'
     'DBIDriver.R'
     'table.R'
@@ -146,6 +145,7 @@ Collate:
     'dbiDataType_numeric.R'
     'deprecated.R'
     'fetch.R'
+    'hidden.R'
     'hms.R'
     'interpolate.R'
     'isSQLKeyword.R'

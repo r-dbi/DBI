@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' Begin/commit/rollback SQL transactions
@@ -67,4 +66,3 @@ dbBreak <- function() {
   )
   stop("Invalid usage of dbBreak().", call. = FALSE)
 }
-

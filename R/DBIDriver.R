@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' DBIDriver class
@@ -57,4 +56,3 @@ get2 <- function(x, env) {
 is_attached <- function(x) {
   x %in% loadedNamespaces()
 }
-

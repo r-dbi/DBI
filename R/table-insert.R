@@ -1,4 +1,3 @@
-#' @include hidden.R
 NULL
 
 #' @rdname sqlAppendTable
@@ -49,4 +48,3 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
     row.names = row.names
   )
 }
-
