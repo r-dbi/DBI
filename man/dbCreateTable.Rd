@@ -35,9 +35,6 @@ A data frame: field types are generated using
 
 \item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
 }
-\value{
-\code{dbCreateTable()} returns \code{TRUE}, invisibly.
-}
 \description{
 The default \code{dbCreateTable()} method calls \code{\link[=sqlCreateTable]{sqlCreateTable()}} and
 \code{\link[=dbExecute]{dbExecute()}}.
@@ -53,73 +50,6 @@ Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}
 The argument order is different from the \code{sqlCreateTable()} method, the
 latter will be adapted in a later release of DBI.
 }
-\section{Failure modes}{
-
-
-If the table exists, an error is raised; the remote table remains unchanged.
-
-An error is raised when calling this method for a closed
-or invalid connection.
-An error is also raised
-if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-or if this results in a non-scalar.
-Invalid values for the \code{row.names} and \code{temporary} arguments
-(non-scalars,
-unsupported data types,
-\code{NA},
-incompatible values,
-duplicate names)
-also raise an error.
-
-}
-
-\section{Additional arguments}{
-
-
-The following arguments are not part of the \code{dbCreateTable()} generic
-(to improve compatibility across backends)
-but are part of the DBI specification:
-\itemize{
-\item \code{temporary} (default: \code{FALSE})
-}
-
-They must be provided as named arguments.
-See the "Specification" and "Value" sections for details on their usage.
-
-}
-
-\section{Specification}{
-
-
-The \code{name} argument is processed as follows,
-to support databases that allow non-syntactic names for their objects:
-\itemize{
-\item If an unquoted table name as string: \code{dbCreateTable()} will do the quoting,
-perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
-\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
-}
-
-If the \code{temporary} argument is \code{TRUE}, the table is not available in a
-second connection and is gone after reconnecting.
-Not all backends support this argument.
-A regular, non-temporary table is visible in a second connection,
-in a pre-existing connection,
-and after reconnecting to the database.
-
-SQL keywords can be used freely in table names, column names, and data.
-Quotes, commas, and spaces can also be used  for table names and column names,
-if the database supports non-syntactic identifiers.
-
-The \code{row.names} argument must be missing
-or \code{NULL}, the default value.
-All other values for the \code{row.names} argument
-(in particular \code{TRUE},
-\code{NA},
-and a string)
-raise an error.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbCreateTable(con, "iris", iris)

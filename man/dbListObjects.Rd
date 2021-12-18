@@ -16,28 +16,6 @@ If given the method will return all objects accessible through this prefix.}
 
 \item{...}{Other parameters passed on to methods.}
 }
-\value{
-\code{dbListObjects()}
-returns a data frame
-with columns
-\code{table} and \code{is_prefix} (in that order),
-optionally with other columns with a dot (\code{.}) prefix.
-The \code{table} column is of type list.
-Each object in this list is suitable for use as argument in \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-The \code{is_prefix} column is a logical.
-This data frame contains one row for each object (schema, table
-and view)
-accessible from the prefix (if passed) or from the global namespace
-(if prefix is omitted).
-Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
-are part of the data frame.
-As soon a table is removed from the database,
-it is also removed from the data frame of database objects.
-
-The same applies to temporary objects if supported by the database.
-
-The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
-}
 \description{
 Returns the names of remote objects accessible through this connection
 as a data frame.
@@ -51,38 +29,6 @@ namespace.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListObjects")}
 }
-\section{Failure modes}{
-
-
-An error is raised when calling this method for a closed
-or invalid connection.
-
-}
-
-\section{Specification}{
-
-
-The \code{table} object can be quoted with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-The result of quoting can be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
-The unquoted results are equal to the original \code{table} object.
-(For backends it may be convenient to use the \link{Id} class, but this is
-not required.)
-
-The \code{prefix} column indicates if the \code{table} value refers to a table
-or a prefix.
-For a call with the default \code{prefix = NULL}, the \code{table}
-values that have \code{is_prefix == FALSE} correspond to the tables
-returned from \code{\link[=dbListTables]{dbListTables()}},
-
-Values in \code{table} column that have \code{is_prefix == TRUE} can be
-passed as the \code{prefix} argument to another call to \code{dbListObjects()}.
-For the data frame returned from a \code{dbListObject()} call with the
-\code{prefix} argument set, all \code{table} values where \code{is_prefix} is
-\code{FALSE} can be used in a call to \code{\link[=dbExistsTable]{dbExistsTable()}} which returns
-\code{TRUE}.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

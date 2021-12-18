@@ -22,46 +22,9 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 
 \item{...}{Other parameters passed on to methods.}
 }
-\value{
-\code{dbListFields()}
-returns a character vector
-that enumerates all fields
-in the table in the correct order.
-This also works for temporary tables if supported by the database.
-The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
-}
 \description{
 List field names of a remote table
 }
-\section{Failure modes}{
-
-
-If the table does not exist, an error is raised.
-Invalid types for the \code{name} argument
-(e.g., \code{character} of length not equal to one,
-or numeric)
-lead to an error.
-An error is also raised when calling this method for a closed
-or invalid connection.
-
-}
-
-\section{Specification}{
-
-
-
-The \code{name} argument can be
-\itemize{
-\item a string
-\item the return value of \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-\item a value from the \code{table} column from the return value of
-\code{\link[=dbListObjects]{dbListObjects()}} where \code{is_prefix} is \code{FALSE}
-}
-
-A column named \code{row_names} is treated like any other column.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

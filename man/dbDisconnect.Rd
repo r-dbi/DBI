@@ -12,27 +12,12 @@ dbDisconnect(conn, ...)
 
 \item{...}{Other parameters passed on to methods.}
 }
-\value{
-\code{dbDisconnect()} returns \code{TRUE}, invisibly.
-}
 \description{
 This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbDisconnect")}
 }
-\section{Failure modes}{
-
-
-A warning is issued on garbage collection when a connection has been
-released without calling \code{dbDisconnect()},
-but this cannot be tested automatically.
-A warning is issued immediately when calling \code{dbDisconnect()} on an
-already disconnected
-or invalid connection.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
