@@ -46,7 +46,6 @@ dbReadTable(con, "mtcars")
 # No row names
 dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
-
 }
 \seealso{
 Other DBIConnection generics: 
