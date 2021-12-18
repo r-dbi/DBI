@@ -35,7 +35,7 @@ setMethod("sqlAppendTable", signature("DBIConnection"),
 
     if (missing(row.names)) {
       warning("Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.",
-              call. = FALSE
+        call. = FALSE
       )
     }
 
