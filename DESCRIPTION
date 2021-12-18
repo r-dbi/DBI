@@ -155,7 +155,7 @@ Collate:
     'isSQLKeyword_DBIObject_character.R'
     'make.db.names.R'
     'make.db.names_DBIObject_character.R'
-    'rd.R'
+    'methods_as_rd.R'
     'rownames.R'
     'show_AnsiConnection.R'
     'show_DBIConnection.R'
@@ -165,6 +165,7 @@ Collate:
     'show_Id.R'
     'show_SQL.R'
     'sqlAppendTable.R'
+    'sqlAppendTableTemplate.R'
     'sqlAppendTable_DBIConnection.R'
     'sqlCreateTable.R'
     'sqlCreateTable_DBIConnection.R'
@@ -176,8 +177,6 @@ Collate:
     'sqlParseVariables_DBIConnection.R'
     'summary.R'
     'summary_DBIObject.R'
-    'table-create.R'
-    'table-insert.R'
     'transactions.R'
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false

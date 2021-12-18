@@ -1,5 +1,3 @@
-NULL
-
 #' @rdname sqlAppendTable
 #' @inheritParams sqlCreateTable
 #' @inheritParams rownames
