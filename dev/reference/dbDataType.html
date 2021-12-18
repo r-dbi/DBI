@@ -94,14 +94,6 @@ or <a href="DBIConnection-class.html">DBIConnection</a></p></dd>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbDataType()</code> returns the SQL type that corresponds to the <code>obj</code> argument
-as a non-empty
-character string.
-For data frames, a character vector with one element per column
-is returned.</p>
-    </div>
     <div id="details">
     <h2>Details</h2>
     <p>The data types supported by databases are different than the data types in R,
@@ -111,48 +103,6 @@ character vectors</p></li>
 integer vectors.</p></li>
 </ul><p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>An error is raised for invalid values for the <code>obj</code> argument such as a
-<code>NULL</code> value.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-<p>The backend can override the <code>dbDataType()</code> generic
-for its driver class.</p>
-<p>This generic expects an arbitrary object as second argument.
-To query the values returned by the default implementation,
-run <code>example(dbDataType, package = "DBI")</code>.
-If the backend needs to override this generic,
-it must accept all basic R data types as its second argument, namely
-<a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a>,
-<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a>,
-<a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a>,
-<a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
-dates (see <a href="https://rdrr.io/r/base/Dates.html" class="external-link">Dates</a>),
-date-time (see <a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">DateTimeClasses</a>),
-and <a href="https://rdrr.io/r/base/difftime.html" class="external-link">difftime</a>.
-If the database supports blobs,
-this method also must accept lists of <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a> vectors,
-and <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a> objects.
-As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be
-supported and return the same results as their unwrapped counterparts.
-The SQL data type for <a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a>
-and <a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a> is the same as for character.
-The behavior for other object types is not specified.</p>
-
-
-
-<p>All data types returned by <code>dbDataType()</code> are usable in an SQL statement
-of the form
-<code>"CREATE TABLE test (a ...)"</code>.</p>
     </div>
     <div id="see-also">
     <h2>See also</h2>

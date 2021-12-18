@@ -82,14 +82,6 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>with as many rows as records were fetched and as many
-columns as fields in the result set,
-even if the result is a single value
-or has one
-or zero rows.</p>
-    </div>
     <div id="details">
     <h2>Details</h2>
     <p>This method is for <code>SELECT</code> queries only
@@ -109,83 +101,6 @@ reasons.  However, callers are strongly advised to use
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.</p>
     </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>An error is raised when issuing a query over a closed
-or invalid connection,
-if the syntax of the query is invalid,
-or if the query is not a non-<code>NA</code> string.
-If the <code>n</code> argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
-but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
-    </div>
-    <div id="additional-arguments">
-    <h2>Additional arguments</h2>
-    
-
-
-<p>The following arguments are not part of the <code>dbGetQuery()</code> generic
-(to improve compatibility across backends)
-but are part of the DBI specification:</p><ul><li><p><code>n</code> (default: -1)</p></li>
-<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
-<li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
-</ul><p>They must be provided as named arguments.
-See the "Specification" and "Value" sections for details on their usage.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-
-<p>A column named <code>row_names</code> is treated like any other column.</p>
-<p>The <code>n</code> argument specifies the number of rows to be fetched.
-If omitted, fetching multi-row queries with one
-or more columns returns the entire result.
-A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported
-and also returns the full result.
-If more rows than available are fetched (by passing a too large value for
-<code>n</code>), the result is returned in full without warning.
-If zero rows are requested, the columns of the data frame are still fully
-typed.
-Fetching fewer rows than available is permitted,
-no warning is issued.</p>
-<p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
-    </div>
-    <div id="specification-for-the-immediate-argument">
-    <h2>Specification for the <code>immediate</code> argument</h2>
-    
-
-
-
-<p>The <code>immediate</code> argument supports distinguishing between "direct"
-and "prepared" APIs offered by many database drivers.
-Passing <code>immediate = TRUE</code> leads to immediate execution of the
-query or statement, via the "direct" API (if supported by the driver).
-The default <code>NULL</code> means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-<code>immediate</code> argument.
-Examples for possible behaviors:</p><ol><li><p>DBI backend defaults to <code>immediate = TRUE</code> internally</p><ol><li><p>A query without parameters is passed: query is executed</p></li>
-<li><p>A query with parameters is passed:</p><ol><li><p><code>params</code> not given: rejected immediately by the database
-because of a syntax error in the query, the backend tries
-<code>immediate = FALSE</code> (and gives a message)</p></li>
-<li><p><code>params</code> given: query is executed using <code>immediate = FALSE</code></p></li>
-</ol></li>
-</ol></li>
-<li><p>DBI backend defaults to <code>immediate = FALSE</code> internally</p><ol><li><p>A query without parameters is passed:</p><ol><li><p>simple query: query is executed</p></li>
-<li><p>"special" query (such as setting a config options): fails,
-the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
-</ol></li>
-<li><p>A query with parameters is passed:</p><ol><li><p><code>params</code> not given: waiting for parameters via <code><a href="dbBind.html">dbBind()</a></code></p></li>
-<li><p><code>params</code> given: query is executed</p></li>
-</ol></li>
-</ol></li>
-</ol></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>For updates: <code><a href="dbSendStatement.html">dbSendStatement()</a></code> and <code><a href="dbExecute.html">dbExecute()</a></code>.</p>

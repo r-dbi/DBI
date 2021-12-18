@@ -81,29 +81,6 @@ exhausting resources (memory, file descriptors, etc.)</p>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
-both <code><a href="dbSendQuery.html">dbSendQuery()</a></code>and <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>An attempt to close an already closed result set issues a warning
-in both cases.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-<p><code>dbClearResult()</code> frees all resources associated with retrieving
-the result of a query or update operation.
-The DBI backend can expect a call to <code>dbClearResult()</code> for each
-<code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code> call.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

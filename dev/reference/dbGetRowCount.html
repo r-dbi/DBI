@@ -79,33 +79,6 @@ for this result set.</p>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbGetRowCount()</code> returns a scalar number (integer or numeric),
-the number of rows fetched so far.
-After calling <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
-the row count is initially zero.
-After a call to <code><a href="dbFetch.html">dbFetch()</a></code> without limit,
-the row count matches the total number of rows returned.
-Fetching a limited number of rows
-increases the number of rows by the number of rows returned,
-even if fetching past the end of the result set.
-For queries with an empty result set,
-zero is returned
-even after fetching.
-For data manipulation statements issued with
-<code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-zero is returned before
-and after calling <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>Attempting to get the row count for a result set cleared with
-<code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

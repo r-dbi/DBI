@@ -88,51 +88,6 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
-of the same length as the input.
-For an empty character vector this function returns a length-0 object.
-The names of the input argument are preserved in the output.
-When passing the returned object again to <code>dbQuoteIdentifier()</code>as <code>x</code>argument, it is returned unchanged.
-Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
-(For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
-to achieve this behavior, but this is not required.)</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-
-<p>An error is raised if the input contains <code>NA</code>,
-but not for an empty string.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-<p>Calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
-returns a data frame with the identifier, unquoted, as column name.
-Quoted identifiers can be used as table and column names in SQL queries,
-in particular in queries like <code>SELECT 1 AS ...</code>
-and <code>SELECT * FROM (SELECT 1) ...</code>.
-The method must use a quoting mechanism that is unambiguously different
-from the quoting mechanism used for strings, so that a query like
-<code>SELECT ... FROM (SELECT 1 AS ...)</code>
-throws an error if the column names do not match.</p>
-<p>The method can quote column names that
-contain special characters such as a space,
-a dot,
-a comma,
-or quotes used to mark strings
-or identifiers,
-if the database supports this.
-In any case, checking the validity of the identifier
-should be performed only when executing a query,
-and not by <code>dbQuoteIdentifier()</code>.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

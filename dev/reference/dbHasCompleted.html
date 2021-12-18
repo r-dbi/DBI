@@ -81,39 +81,6 @@ A data manipulation statement is always completed.</p>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbHasCompleted()</code> returns a logical scalar.
-For a query initiated by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set,
-<code>dbHasCompleted()</code> returns <code>FALSE</code> initially
-and <code>TRUE</code> after calling <code><a href="dbFetch.html">dbFetch()</a></code> without limit.
-For a query initiated by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-<code>dbHasCompleted()</code> always returns <code>TRUE</code>.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>Attempting to query completion status for a result set cleared with
-<code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-<p>The completion status for a query is only guaranteed to be set to
-<code>FALSE</code> after attempting to fetch past the end of the entire result.
-Therefore, for a query with an empty result set,
-the initial return value is unspecified,
-but the result value is <code>TRUE</code> after trying to fetch only one row.</p>
-
-<p>Similarly, for a query with a result set of length n,
-the return value is unspecified after fetching n rows,
-but the result value is <code>TRUE</code> after trying to fetch only one more
-row.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

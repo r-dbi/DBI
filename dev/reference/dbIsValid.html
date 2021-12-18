@@ -85,25 +85,6 @@ or a <a href="DBIResult-class.html">DBIResult</a></p></dd>
 <dt>...</dt>
 <dd><p>Other arguments to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbIsValid()</code> returns a logical scalar,
-<code>TRUE</code> if the object specified by <code>dbObj</code> is valid,
-<code>FALSE</code> otherwise.
-A <a href="DBIConnection-class.html">DBIConnection</a> object is initially valid,
-and becomes invalid after disconnecting with <code><a href="dbDisconnect.html">dbDisconnect()</a></code>.
-For an invalid connection object (e.g., for some drivers if the object
-is saved to a file and then restored), the method also returns <code>FALSE</code>.
-A <a href="DBIResult-class.html">DBIResult</a> object is valid after a call to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
-and stays valid even after all rows have been fetched;
-only clearing it with <code><a href="dbClearResult.html">dbClearResult()</a></code> invalidates it.
-A <a href="DBIResult-class.html">DBIResult</a> object is also valid after a call to <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-and stays valid after querying the number of rows affected;
-only clearing it with <code><a href="dbClearResult.html">dbClearResult()</a></code> invalidates it.
-If the connection to the database system is dropped (e.g., due to
-connectivity problems, server failure, etc.), <code>dbIsValid()</code> should return
-<code>FALSE</code>. This is not tested automatically.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIDriver generics: 

@@ -73,30 +73,6 @@ or a <a href="DBIResult-class.html">DBIResult</a></p></dd>
 <dt>...</dt>
 <dd><p>Other arguments to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p>For objects of class <a href="DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code>returns a named list
-that contains at least the following components:</p><ul><li><p><code>driver.version</code>: the package version of the DBI backend,</p></li>
-<li><p><code>client.version</code>: the version of the DBMS client library.</p></li>
-</ul><p>For objects of class <a href="DBIConnection-class.html">DBIConnection</a>, <code>dbGetInfo()</code>returns a named list
-that contains at least the following components:</p><ul><li><p><code>db.version</code>: version of the database server,</p></li>
-<li><p><code>dbname</code>: database name,</p></li>
-<li><p><code>username</code>: username to connect to the database,</p></li>
-<li><p><code>host</code>: hostname of the database server,</p></li>
-<li><p><code>port</code>: port on the database server.
-It must not contain a <code>password</code> component.
-Components that are not applicable should be set to <code>NA</code>.</p></li>
-</ul><p>For objects of class <a href="DBIResult-class.html">DBIResult</a>, <code>dbGetInfo()</code>returns a named list
-that contains at least the following components:</p><ul><li><p><code>statatment</code>: the statement used with <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbExecute.html">dbExecute()</a></code>,
-as returned by <code><a href="dbGetStatement.html">dbGetStatement()</a></code>,</p></li>
-<li><p><code>row.count</code>: the number of rows fetched so far (for queries),
-as returned by <code><a href="dbGetRowCount.html">dbGetRowCount()</a></code>,</p></li>
-<li><p><code>rows.affected</code>: the number of rows affected (for statements),
-as returned by <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code></p></li>
-<li><p><code>has.completed</code>: a logical that indicates
-if the query or statement has completed,
-as returned by <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code>.</p></li>
-</ul></div>
     <div id="implementation-notes">
     <h2>Implementation notes</h2>
     

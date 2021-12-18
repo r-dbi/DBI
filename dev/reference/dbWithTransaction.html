@@ -96,41 +96,10 @@ it can be called only inside <code>dbWithTransaction()</code>.</p>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbWithTransaction()</code> returns the value of the executed code.</p>
-    </div>
     <div id="details">
     <h2>Details</h2>
     <p>DBI implements <code>dbWithTransaction()</code>, backends should need to override this
 generic only if they implement specialized handling.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>Failure to initiate the transaction
-(e.g., if the connection is closed
-or invalid
-of if <code><a href="transactions.html">dbBegin()</a></code> has been called already)
-gives an error.</p>
-    </div>
-    <div id="specification">
-    <h2>Specification</h2>
-    
-
-
-<p><code>dbWithTransaction()</code> initiates a transaction with <code><a href="transactions.html">dbBegin()</a></code>, executes
-the code given in the <code>code</code> argument, and commits the transaction with
-<code><a href="transactions.html">dbCommit()</a></code>.
-If the code raises an error, the transaction is instead aborted with
-<code><a href="transactions.html">dbRollback()</a></code>, and the error is propagated.
-If the code calls <code>dbBreak()</code>, execution of the code stops and the
-transaction is silently aborted.
-All side effects caused by the code
-(such as the creation of new variables)
-propagate to the calling environment.</p>
     </div>
 
     <div id="ref-examples">

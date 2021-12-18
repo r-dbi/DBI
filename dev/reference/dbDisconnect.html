@@ -80,22 +80,6 @@ resources (e.g., memory, sockets).</p>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
-    <div id="value">
-    <h2>Value</h2>
-    <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
-    </div>
-    <div id="failure-modes">
-    <h2>Failure modes</h2>
-    
-
-
-<p>A warning is issued on garbage collection when a connection has been
-released without calling <code>dbDisconnect()</code>,
-but this cannot be tested automatically.
-A warning is issued immediately when calling <code>dbDisconnect()</code> on an
-already disconnected
-or invalid connection.</p>
-    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
