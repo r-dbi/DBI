@@ -20,7 +20,6 @@ NULL
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' con
 #' dbDisconnect(con)
-#'
 #' \dontrun{
 #' con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
 #' con
@@ -623,7 +622,6 @@ setMethod("dbReadTable", signature("DBIConnection", "Id"),
 #' # No row names
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 #' dbReadTable(con, "mtcars")
-#'
 #' @export
 setGeneric("dbWriteTable",
   def = function(conn, name, value, ...) standardGeneric("dbWriteTable")

@@ -68,3 +68,5 @@ Collate:
     'table-create.R'
     'table-insert.R'
     'transactions.R'
+Config/autostyle/scope: line_breaks
+Config/autostyle/strict: false

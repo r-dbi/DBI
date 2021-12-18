@@ -73,14 +73,14 @@ test_that("unquoted strings", {
 
 test_that("some more complex case works as well", {
   expect_equal(
-    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ? ?bar", faa = "abc", fuu=42L),
+    sqlInterpolate(ANSI(), "asdf ?faa /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' ?fuu -- ? ?bar", faa = "abc", fuu = 42L),
     SQL("asdf 'abc' /*fdsa'zsc' */ qwer 'wer' \"bnmvbn\" -- Zc \n '234' 42 -- ? ?bar")
   )
 })
 
 test_that("escaping quotes with doubling works", {
   expect_equal(
-    sqlInterpolate(ANSI(), "'this is a single '' one ?quoted string' ?bar ", bar=42),
+    sqlInterpolate(ANSI(), "'this is a single '' one ?quoted string' ?bar ", bar = 42),
     SQL("'this is a single '' one ?quoted string' 42 ")
   )
 })
@@ -130,8 +130,7 @@ test_that("corner cases work", {
       list(
         sqlQuoteSpec("'", "'", escape = "\\", doubleEscape = FALSE)
       ),
-      list(
-      )
+      list()
     ),
     list(
       start = c(1L, 13L, 21L),

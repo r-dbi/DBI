@@ -99,8 +99,7 @@ setMethod("sqlInterpolate", signature("DBIConnection"), function(conn, sql, ...,
     if (any(names(values) != "")) {
       stop("Positional variables don't take named arguments")
     }
-  }
-  else {
+  } else {
     if (!setequal(vars, names(values))) {
       stop("Supplied values don't match named vars to interpolate", call. = FALSE)
     }
