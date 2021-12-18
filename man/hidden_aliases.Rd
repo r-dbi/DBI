@@ -10,13 +10,14 @@
 %   R/dbIsReadOnly_DBIConnector.R, R/dbIsReadOnly_DBIObject.R,
 %   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R,
-%   R/dbQuoteLiteral_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
+%   R/dbQuoteIdentifier_DBIConnection.R, R/dbQuoteLiteral_DBIConnection.R,
+%   R/dbQuoteString_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
 %   R/dbReadTable_DBIConnection_character.R, R/dbRemoveTable_DBIConnection_Id.R,
 %   R/dbSendStatement_DBIConnection_character.R,
 %   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
 %   R/dbWriteTable_DBIConnection_Id_ANY.R, R/isSQLKeyword_DBIObject_character.R,
-%   R/make.db.names_DBIObject_character.R, R/quote.R,
-%   R/show_AnsiConnection.R, R/show_DBIConnection.R, R/show_DBIConnector.R,
+%   R/make.db.names_DBIObject_character.R, R/show_AnsiConnection.R,
+%   R/show_DBIConnection.R, R/show_DBIConnector.R,
 %   R/show_DBIDriver.R, R/show_DBIResult.R, R/show_Id.R, R/show_SQL.R,
 %   R/sqlAppendTable_DBIConnection.R, R/sqlCreateTable_DBIConnection.R,
 %   R/sqlData_DBIConnection.R, R/sqlInterpolate_DBIConnection.R,
@@ -64,8 +65,17 @@
 \alias{dbListFields,DBIConnection,character-method}
 \alias{dbListObjects_DBIConnection_ANY}
 \alias{dbListObjects,DBIConnection-method}
+\alias{dbQuoteIdentifier_DBIConnection}
+\alias{dbQuoteIdentifier,DBIConnection,ANY-method}
+\alias{dbQuoteIdentifier,DBIConnection,character-method}
+\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
+\alias{dbQuoteIdentifier,DBIConnection,Id-method}
 \alias{dbQuoteLiteral_DBIConnection}
 \alias{dbQuoteLiteral,DBIConnection-method}
+\alias{dbQuoteString_DBIConnection}
+\alias{dbQuoteString,DBIConnection,ANY-method}
+\alias{dbQuoteString,DBIConnection,character-method}
+\alias{dbQuoteString,DBIConnection,SQL-method}
 \alias{dbReadTable_DBIConnection_Id}
 \alias{dbReadTable,DBIConnection,Id-method}
 \alias{dbReadTable_DBIConnection_character}
@@ -84,13 +94,6 @@
 \alias{isSQLKeyword,DBIObject,character-method}
 \alias{make.db.names_DBIObject_character}
 \alias{make.db.names,DBIObject,character-method}
-\alias{dbQuoteIdentifier,DBIConnection,ANY-method}
-\alias{dbQuoteIdentifier,DBIConnection,character-method}
-\alias{dbQuoteIdentifier,DBIConnection,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection,Id-method}
-\alias{dbQuoteString,DBIConnection,ANY-method}
-\alias{dbQuoteString,DBIConnection,character-method}
-\alias{dbQuoteString,DBIConnection,SQL-method}
 \alias{show_AnsiConnection}
 \alias{show,AnsiConnection-method}
 \alias{show_DBIConnection}
@@ -157,7 +160,21 @@
 
 \S4method{dbListObjects}{DBIConnection}(conn, prefix = NULL, ...)
 
+\S4method{dbQuoteIdentifier}{DBIConnection,ANY}(conn, x, ...)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
+
+\S4method{dbQuoteIdentifier}{DBIConnection,Id}(conn, x, ...)
+
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,ANY}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,character}(conn, x, ...)
+
+\S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
@@ -189,20 +206,6 @@
   allow.keywords = TRUE,
   ...
 )
-
-\S4method{dbQuoteIdentifier}{DBIConnection,ANY}(conn, x, ...)
-
-\S4method{dbQuoteIdentifier}{DBIConnection,character}(conn, x, ...)
-
-\S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
-
-\S4method{dbQuoteIdentifier}{DBIConnection,Id}(conn, x, ...)
-
-\S4method{dbQuoteString}{DBIConnection,ANY}(conn, x, ...)
-
-\S4method{dbQuoteString}{DBIConnection,character}(conn, x, ...)
-
-\S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
 \S4method{show}{AnsiConnection}(object)
 

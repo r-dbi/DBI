@@ -32,6 +32,14 @@ dbUnquoteIdentifier_DBIConnection <- function(conn, x, ...) {
   }
   stop("x must be SQL or Id", call. = FALSE)
 }
+
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), dbUnquoteIdentifier_DBIConnection)
+
+as_table <- function(catalog, schema, table) {
+  args <- c(catalog = catalog, schema = schema, table = table)
+  # Also omits NA args
+  args <- args[!is.na(args) & args != ""]
+  do.call(Id, as.list(args))
+}
