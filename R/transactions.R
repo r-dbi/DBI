@@ -1,5 +1,3 @@
-NULL
-
 #' Begin/commit/rollback SQL transactions
 #'
 #' A transaction encapsulates several SQL statements in an atomic unit.
@@ -54,15 +52,3 @@ NULL
 #'
 #' dbDisconnect(con)
 NULL
-
-#' @export
-#' @rdname dbWithTransaction
-dbBreak <- function() {
-  signalCondition(
-    structure(
-      list(message = "Aborting DBI processing", call = NULL),
-      class = c("dbi_abort", "condition")
-    )
-  )
-  stop("Invalid usage of dbBreak().", call. = FALSE)
-}

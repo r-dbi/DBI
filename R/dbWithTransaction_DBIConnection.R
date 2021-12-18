@@ -37,6 +37,19 @@ dbWithTransaction_DBIConnection <- function(conn, code) {
     error = rollback_because
   )
 }
+
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbWithTransaction", signature("DBIConnection"), dbWithTransaction_DBIConnection)
+
+#' @export
+#' @rdname dbWithTransaction
+dbBreak <- function() {
+  signalCondition(
+    structure(
+      list(message = "Aborting DBI processing", call = NULL),
+      class = c("dbi_abort", "condition")
+    )
+  )
+  stop("Invalid usage of dbBreak().", call. = FALSE)
+}
