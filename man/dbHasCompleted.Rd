@@ -11,14 +11,6 @@ dbHasCompleted(res, ...)
 
 \item{...}{Other arguments passed on to methods.}
 }
-\value{
-\code{dbHasCompleted()} returns a logical scalar.
-For a query initiated by \code{\link[=dbSendQuery]{dbSendQuery()}} with non-empty result set,
-\code{dbHasCompleted()} returns \code{FALSE} initially
-and \code{TRUE} after calling \code{\link[=dbFetch]{dbFetch()}} without limit.
-For a query initiated by \code{\link[=dbSendStatement]{dbSendStatement()}},
-\code{dbHasCompleted()} always returns \code{TRUE}.
-}
 \description{
 This method returns if the operation has completed.
 A \code{SELECT} query is completed if all rows have been fetched.
@@ -26,31 +18,6 @@ A data manipulation statement is always completed.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbHasCompleted")}
 }
-\section{Failure modes}{
-
-
-Attempting to query completion status for a result set cleared with
-\code{\link[=dbClearResult]{dbClearResult()}} gives an error.
-
-}
-
-\section{Specification}{
-
-
-The completion status for a query is only guaranteed to be set to
-\code{FALSE} after attempting to fetch past the end of the entire result.
-Therefore, for a query with an empty result set,
-the initial return value is unspecified,
-but the result value is \code{TRUE} after trying to fetch only one row.
-
-
-Similarly, for a query with a result set of length n,
-the return value is unspecified after fetching n rows,
-but the result value is \code{TRUE} after trying to fetch only one more
-row.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

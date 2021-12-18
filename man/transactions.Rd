@@ -19,9 +19,6 @@ dbRollback(conn, ...)
 
 \item{...}{Other parameters passed on to methods.}
 }
-\value{
-\code{dbBegin()}, \code{dbCommit()} and \code{dbRollback()} return \code{TRUE}, invisibly.
-}
 \description{
 A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
@@ -37,58 +34,6 @@ Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
 \linkS4class{DBIConnection} subclass.
 }
-\section{Failure modes}{
-
-
-The implementations are expected to raise an error in case of failure,
-but this is not tested.
-In any way, all generics throw an error with a closed
-or invalid connection.
-In addition, a call to \code{dbCommit()}
-or \code{dbRollback()}
-without a prior call to \code{dbBegin()} raises an error.
-Nested transactions are not supported by DBI,
-an attempt to call \code{dbBegin()} twice
-yields an error.
-
-}
-
-\section{Specification}{
-
-
-Actual support for transactions may vary between backends.
-A transaction is initiated by a call to \code{dbBegin()}
-and committed by a call to \code{dbCommit()}.
-Data written in a transaction must persist after the transaction is committed.
-For example, a record that is missing when the transaction is started
-but is created during the transaction
-must exist
-both during
-and after the transaction,
-and also in a new connection.
-
-A transaction
-can also be aborted with \code{dbRollback()}.
-All data written in such a transaction must be removed after the
-transaction is rolled back.
-For example, a record that is missing when the transaction is started
-but is created during the transaction
-must not exist anymore after the rollback.
-
-Disconnection from a connection with an open transaction
-effectively rolls back the transaction.
-All data written in such a transaction must be removed after the
-transaction is rolled back.
-
-The behavior is not specified if other arguments are passed to these
-functions. In particular, \pkg{RSQLite} issues named transactions
-with support for nesting
-if the \code{name} argument is set.
-
-The transaction isolation level is not specified by DBI.
-
-}
-
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
