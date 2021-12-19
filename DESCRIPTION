@@ -47,6 +47,7 @@ RoxygenNote: 7.1.2
 Config/Needs/website: 
     AzureKusto,
     bigrquery,
+    DatabaseConnector,
     dittodb,
     duckdb,
     implyr,
@@ -56,6 +57,7 @@ Config/Needs/website:
     RAthena,
     RClickhouse,
     RH2,
+    RJDBC,
     RMariaDB,
     RMySQL,
     RPostgres,
