@@ -3,7 +3,7 @@ methods_as_rd <- function(method) {
     method <- c("dbBegin", "dbCommit", "dbRollback")
   }
 
-  if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
+  if (identical(Sys.getenv("IN_PKGDOWN"), "true") && file.exists("DESCRIPTION")) {
     packages <- strsplit(read.dcf("DESCRIPTION")[, "Config/Needs/website"], ",( |\n)*", perl = TRUE)[[1]]
     packages <- grep("/", packages, invert = TRUE, value = TRUE)
     for (package in packages) {
