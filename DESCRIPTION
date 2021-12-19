@@ -29,6 +29,7 @@ Suggests:
     blob,
     covr,
     dbplyr,
+    downlit,
     dplyr,
     glue,
     hms,

@@ -3,6 +3,13 @@ methods_as_rd <- function(method) {
     method <- c("dbBegin", "dbCommit", "dbRollback")
   }
 
+  if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
+    packages <- strsplit(read.dcf("DESCRIPTION")[, "Config/Needs/website"], ",( |\n)*", perl = TRUE)[[1]]
+    for (package in packages) {
+      stopifnot(requireNamespace(package, quietly = TRUE))
+    }
+  }
+
   methods <- unlist(lapply(method, methods::findMethods), recursive = FALSE)
 
   # Extracted from roxygen2::object_topic.s4method
@@ -31,10 +38,14 @@ methods_as_rd <- function(method) {
   item_text <- vapply(methods@.Data, s4_topic, character(1))
   item_text <- item_text[!is.na(item_text)]
 
-  if (length(item_text) == 0) return("")
+  if (length(item_text) == 0) {
+    return("")
+  }
 
   paste0(
     "\\subsection{Methods in other packages}{\n\n",
+    "This documentation page describes the generics. ",
+    "Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.",
     "\\itemize{\n",
     paste0("\\item ", item_text, "\n", collapse = ""),
     "}}\n"
