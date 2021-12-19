@@ -30,9 +30,19 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \description{
 Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
-New code should prefer \code{\link[=dbCreateTable]{dbCreateTable()}} and \code{\link[=dbAppendTable]{dbAppendTable()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
+}
+\details{
+This function is useful if you want to create and load a table at the same time.
+Use \code{\link[=dbAppendTable]{dbAppendTable()}} for appending data to a table,
+and \code{\link[=dbCreateTable]{dbCreateTable()}}, \code{\link[=dbExistsTable]{dbExistsTable()}} and \code{\link[=dbRemoveTable]{dbRemoveTable()}}
+for more control over the individual operations.
+
+DBI only standardizes writing data frames.
+Some backends might implement methods that can consume CSV files
+or other data formats.
+For details, see the documentation for the individual methods.
 }
 \section{Failure modes}{
 
