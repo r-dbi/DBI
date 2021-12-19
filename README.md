@@ -7,7 +7,7 @@
 
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage
-Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
+Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=main)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best
 Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
