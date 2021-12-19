@@ -44,7 +44,7 @@ For more advanced features, such as parameterized queries, transactions, and mor
 
 ## How to connect to a database using DBI
 
-The following code establishes a connection to the [`Sakila`](https://relational.fit.cvut.cz/dataset/Sakila) database hosted by the Relational Dataset Repository, lists all tables on the database, and closes the connection.
+The following code establishes a connection to the Sakila database hosted by the Relational Dataset Repository at `https://relational.fit.cvut.cz/dataset/Sakila`, lists all tables on the database, and closes the connection.
 The database represents a fictional movie rental business and includes tables describing films, actors, customers, stores, etc.:
 
 ```{r}
