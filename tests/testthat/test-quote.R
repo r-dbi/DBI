@@ -35,12 +35,12 @@ test_that("unquote SQL", {
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"a"')), list(Id(table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL("a")), list(Id(table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"b"."a"')), list(Id(schema = "b", table = "a")))
-  expect_equal(dbUnquoteIdentifier(ANSI(), SQL('b.a')), list(Id(schema = "b", table = "a")))
+  expect_equal(dbUnquoteIdentifier(ANSI(), SQL("b.a")), list(Id(schema = "b", table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"c"."b"."a"')),
     list(Id(catalog = "c", schema = "b", table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"c"."b"."a"')),
     list(Id(catalog = "c", schema = "b", table = "a")))
-  expect_equal(dbUnquoteIdentifier(ANSI(), SQL('c.b.a')),
+  expect_equal(dbUnquoteIdentifier(ANSI(), SQL("c.b.a")),
     list(Id(catalog = "c", schema = "b", table = "a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), SQL('"c"."b.d"."a"')),
     list(Id(catalog = "c", schema = "b.d", table = "a")))
