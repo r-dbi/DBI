@@ -50,7 +50,9 @@ runs:
       env:
         GITHUB_PAT: ${{ inputs.token }}
       with:
-        needs: check ${{ inputs.needs }}
+        needs:
+          - check
+          - ${{ inputs.needs }}
         extra-packages: ${{ inputs.extra-packages }} ${{ matrix.config.covr && 'covr' }}
         cache-version: ${{ inputs.cache-version }}
 
