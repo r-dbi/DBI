@@ -28,9 +28,19 @@ setClass("Id", slots = list(name = "character"))
 #'   \url{https://stackoverflow.com/questions/7022755/}
 #' @export
 #' @examples
+#' # Identifies a table in a specific schema:
 #' Id(schema = "dbo", table = "Customer")
-#' dbQuoteIdentifier(ANSI(), Id(schema = "nycflights13", table = "flights"))
+#'
+#' # Identifies a table in a specific cluster, catalog, and schema:
 #' Id(cluster = "mycluster", catalog = "mycatalog", schema = "myschema", table = "mytable")
+#'
+#' # Create a SQL expression for an identifier:
+#' dbQuoteIdentifier(ANSI(), Id(schema = "nycflights13", table = "flights"))
+#'
+#' # Write a table in a specific schema:
+#' \dontrun{
+#' dbWriteTable(con, Id(schema = "myschema", table = "mytable"), data.frame(a = 1))
+#' }
 Id <- function(...) {
   components <- c(...)
   if (is.null(names(components)) || any(names(components) == "")) {
