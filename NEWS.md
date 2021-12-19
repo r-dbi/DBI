@@ -2,25 +2,19 @@
 
 # DBI 1.1.2 (2021-12-19)
 
-- Same as previous version.
+## Features
 
+- Use `dbQuoteLiteral()` in default method for `sqlData()` (#362, #371).
+- Update specification with changes from DBItest 1.7.2 (#367).
 
-# DBI 1.1.1.9001 (2021-12-19)
+## Documentation
 
 - Method documentation on pkgdown is clickable and contains methods from all known DBI backends except ROracle (#360).
 - `?Id` gains better examples (#295, #370).
-- Use `dbQuoteLiteral()` in default method for `sqlData()` (#362, #371).
 - Elaborate on status of `dbWriteTable()` in the documentation (#352, #372).
 - Make method definition more similar to S3. All `setMethod()` calls refer to top-level functions (#368).
 - The pkgdown documentation for DBI generics (e.g. `?dbConnect`) contains clickable links to many known backends, and an explanatory sentence (#360).
-- Update specification with changes from DBItest 1.7.2 (#367).
-- Align specification with DBItest.
 - `?dbReadTable` and other pages gain pointers to `Id()` and `SQL()` (#359).
-
-
-# DBI 1.1.1.9000 (2021-01-04)
-
-- Internal changes only.
 
 
 # DBI 1.1.1 (2021-01-04)
