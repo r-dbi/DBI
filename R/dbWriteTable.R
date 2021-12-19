@@ -2,7 +2,17 @@
 #'
 #' Writes, overwrites or appends a data frame to a database table, optionally
 #' converting row names to a column and specifying SQL data types for fields.
-#' New code should prefer [dbCreateTable()] and [dbAppendTable()].
+#'
+#' @details
+#' This function is useful if you want to create and load a table at the same time.
+#' Use [dbAppendTable()] for appending data to a table,
+#' and [dbCreateTable()], [dbExistsTable()] and [dbRemoveTable()]
+#' for more control over the individual operations.
+#'
+#' DBI only standardizes writing data frames.
+#' Some backends might implement methods that can consume CSV files
+#' or other data formats.
+#' For details, see the documentation for the individual methods.
 #'
 #' @template methods
 #' @templateVar method_name dbWriteTable
