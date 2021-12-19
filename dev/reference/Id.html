@@ -97,12 +97,22 @@ For more on these concepts, see
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"dbo"</span>, table <span class="op">=</span> <span class="st">"Customer"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Identifies a table in a specific schema:</span></span>
+<span class="r-in"><span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"dbo"</span>, table <span class="op">=</span> <span class="st">"Customer"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; schema = dbo, table = Customer</span>
-<span class="r-in"><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"nycflights13"</span>, table <span class="op">=</span> <span class="st">"flights"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; "nycflights13"."flights"</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Identifies a table in a specific cluster, catalog, and schema:</span></span>
 <span class="r-in"><span class="fu">Id</span><span class="op">(</span>cluster <span class="op">=</span> <span class="st">"mycluster"</span>, catalog <span class="op">=</span> <span class="st">"mycatalog"</span>, schema <span class="op">=</span> <span class="st">"myschema"</span>, table <span class="op">=</span> <span class="st">"mytable"</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; cluster = mycluster, catalog = mycatalog, schema = myschema, table = mytable</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Create a SQL expression for an identifier:</span></span>
+<span class="r-in"><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"nycflights13"</span>, table <span class="op">=</span> <span class="st">"flights"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; "nycflights13"."flights"</span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Write a table in a specific schema:</span></span>
+<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"myschema"</span>, table <span class="op">=</span> <span class="st">"mytable"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
 </code></pre></div>
     </div>
   </div>
