@@ -101,4 +101,3 @@ decompose <- function(x) {
 
   out
 }
-
