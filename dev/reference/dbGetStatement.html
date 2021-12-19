@@ -3,10 +3,19 @@
 or dbSendStatement().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+RAthena::dbGetStatement("AthenaResult")
+bigrquery::dbGetStatement("BigQueryResult")
+RClickhouse::dbGetStatement("ClickhouseResult")
+DatabaseConnector::dbGetStatement("DatabaseConnectorResult")
+sparklyr::dbGetStatement("DBISparkResult")
+sergeant::dbGetStatement("DrillResult")
 duckdb::dbGetStatement("duckdb_result")
 RMariaDB::dbGetStatement("MariaDBResult")
+RMySQL::dbGetStatement("MySQLResult")
 odbc::dbGetStatement("OdbcResult")
+RPostgreSQL::dbGetStatement("PostgreSQLResult")
 RPostgres::dbGetStatement("PqResult")
+RPresto::dbGetStatement("PrestoResult")
 RSQLite::dbGetStatement("SQLiteResult")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -68,10 +77,19 @@ RSQLite::dbGetStatement("SQLiteResult")
     <p>Returns the statement that was passed to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>
 or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetStatement("duckdb_result")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetStatement.html" class="external-link">RAthena::dbGetStatement("AthenaResult")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetStatement("BigQueryResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseResult-class.html" class="external-link">RClickhouse::dbGetStatement("ClickhouseResult")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorResult-method.html" class="external-link">DatabaseConnector::dbGetStatement("DatabaseConnectorResult")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbGetStatement("DBISparkResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/sergeant/man/DrillResult-class.html" class="external-link">sergeant::dbGetStatement("DrillResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetStatement("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbGetStatement("MariaDBResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbGetStatement("MySQLResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbGetStatement("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html" class="external-link">RPostgreSQL::dbGetStatement("PostgreSQLResult")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/PqResult-class.html" class="external-link">RPostgres::dbGetStatement("PqResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbGetStatement("PrestoResult")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html" class="external-link">RSQLite::dbGetStatement("SQLiteResult")</a></code></p></li>
 </ul></div>
     </div>

@@ -3,11 +3,25 @@
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-duckdb::dbFetch("duckdb_result")
-RMariaDB::dbFetch("MariaDBResult")
-odbc::dbFetch("OdbcResult")
-RPostgres::dbFetch("PqResult")
-RSQLite::dbFetch("SQLiteResult")
+RAthena::dbFetch("AthenaResult", "ANY")
+AzureKusto::dbFetch("AzureKustoResult", "ANY")
+bigrquery::dbFetch("BigQueryResult", "ANY")
+RClickhouse::dbFetch("ClickhouseResult", "ANY")
+DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")
+dittodb::dbFetch("DBIMockResult", "ANY")
+sparklyr::dbFetch("DBISparkResult", "ANY")
+sergeant::dbFetch("DrillResult", "ANY")
+duckdb::dbFetch("duckdb_result", "ANY")
+RMariaDB::dbFetch("MariaDBResult", "ANY")
+RMySQL::dbFetch("MySQLResult", "missing")
+RMySQL::dbFetch("MySQLResult", "numeric")
+odbc::dbFetch("OdbcResult", "ANY")
+RPostgres::dbFetch("PqResult", "ANY")
+RPresto::dbFetch("PrestoResult", "integer")
+RPresto::dbFetch("PrestoResult", "missing")
+RPresto::dbFetch("PrestoResult", "numeric")
+lazysf::dbFetch("SFSQLResult", "ANY")
+RSQLite::dbFetch("SQLiteResult", "ANY")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -68,11 +82,25 @@ RSQLite::dbFetch("SQLiteResult")
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbFetch("duckdb_result")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbFetch("MariaDBResult")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbFetch("OdbcResult")</a></code></p></li>
-<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-query.html" class="external-link">RPostgres::dbFetch("PqResult")</a></code></p></li>
-<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html" class="external-link">RSQLite::dbFetch("SQLiteResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="NA">RAthena::dbFetch("AthenaResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">AzureKusto::dbFetch("AzureKustoResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">bigrquery::dbFetch("BigQueryResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RClickhouse::dbFetch("ClickhouseResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">dittodb::dbFetch("DBIMockResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbFetch("DBISparkResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">sergeant::dbFetch("DrillResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">duckdb::dbFetch("duckdb_result", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RMariaDB::dbFetch("MariaDBResult", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "missing")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "numeric")</a></code></p></li>
+<li><p><code><a href="NA">odbc::dbFetch("OdbcResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RPostgres::dbFetch("PqResult", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "integer")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "missing")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "numeric")</a></code></p></li>
+<li><p><code><a href="NA">lazysf::dbFetch("SFSQLResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RSQLite::dbFetch("SQLiteResult", "ANY")</a></code></p></li>
 </ul></div>
     </div>
 
