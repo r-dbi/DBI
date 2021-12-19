@@ -5,6 +5,7 @@ methods_as_rd <- function(method) {
 
   if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
     packages <- strsplit(read.dcf("DESCRIPTION")[, "Config/Needs/website"], ",( |\n)*", perl = TRUE)[[1]]
+    packages <- grep("/", packages, invert = TRUE, value = TRUE)
     for (package in packages) {
       stopifnot(requireNamespace(package, quietly = TRUE))
     }
