@@ -39,7 +39,7 @@ methods_as_rd <- function(method) {
 
   item_list <- lapply(methods@.Data, s4_topic)
   items <- do.call(rbind, item_list)
-  if (ncol(items) == 0) {
+  if (is.null(items) || ncol(items) == 0) {
     return("")
   }
 
