@@ -18,7 +18,7 @@ inputs:
   extra-packages:
     description: Passed on to r-lib/actions/setup-r-dependencies@v2
     required: false
-    default: rcmdcheck
+    default: any::rcmdcheck
   cache-version:
     description: Passed on to r-lib/actions/setup-r-dependencies@v2
     required: false
