@@ -10,8 +10,8 @@ user, including those that can only be accessed by giving the full
 namespace.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-RMariaDB::dbListObjects("MariaDBConnection")
 pool::dbListObjects("Pool")
+RMariaDB::dbListObjects("MariaDBConnection")
 RPostgres::dbListObjects("PqConnection")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -65,7 +65,7 @@ RPostgres::dbListObjects("PqConnection")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List remote objects</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbListObjects.R" class="external-link"><code>R/dbListObjects.R</code></a></small>
     <div class="hidden name"><code>dbListObjects.Rd</code></div>
     </div>
 
@@ -80,8 +80,8 @@ This allows exploration of all database objects available to the current
 user, including those that can only be accessed by giving the full
 namespace.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbListObjects("MariaDBConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbListObjects("Pool")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbListObjects("Pool")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbListObjects("MariaDBConnection")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbListObjects("PqConnection")</a></code></p></li>
 </ul></div>
     </div>
@@ -102,6 +102,55 @@ If given the method will return all objects accessible through this prefix.</p><
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbListObjects()</code>returns a data frame
+with columns
+<code>table</code> and <code>is_prefix</code> (in that order),
+optionally with other columns with a dot (<code>.</code>) prefix.
+The <code>table</code> column is of type list.
+Each object in this list is suitable for use as argument in <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+The <code>is_prefix</code> column is a logical.
+This data frame contains one row for each object (schema, table
+and view)
+accessible from the prefix (if passed) or from the global namespace
+(if prefix is omitted).
+Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code>are part of the data frame.
+As soon a table is removed from the database,
+it is also removed from the data frame of database objects.
+The same applies to temporary objects if supported by the database.
+The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when calling this method for a closed
+or invalid connection.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>The <code>table</code> object can be quoted with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+The result of quoting can be passed to <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
+The unquoted results are equal to the original <code>table</code> object.
+(For backends it may be convenient to use the <a href="Id.html">Id</a> class, but this is
+not required.)</p>
+<p>The <code>prefix</code> column indicates if the <code>table</code> value refers to a table
+or a prefix.
+For a call with the default <code>prefix = NULL</code>, the <code>table</code>
+values that have <code>is_prefix == FALSE</code> correspond to the tables
+returned from <code><a href="dbListTables.html">dbListTables()</a></code>,</p>
+<p>Values in <code>table</code> column that have <code>is_prefix == TRUE</code> can be
+passed as the <code>prefix</code> argument to another call to <code>dbListObjects()</code>.
+For the data frame returned from a <code>dbListObject()</code> call with the
+<code>prefix</code> argument set, all <code>table</code> values where <code>is_prefix</code> is
+<code>FALSE</code> can be used in a call to <code><a href="dbExistsTable.html">dbExistsTable()</a></code> which returns
+<code>TRUE</code>.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 

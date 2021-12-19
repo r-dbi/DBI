@@ -53,7 +53,7 @@ field (field name, type, etc.)"><meta name="robots" content="noindex"><!-- mathj
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Information about result types</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbColumnInfo.R" class="external-link"><code>R/dbColumnInfo.R</code></a></small>
     <div class="hidden name"><code>dbColumnInfo.Rd</code></div>
     </div>
 
@@ -75,6 +75,36 @@ field (field name, type, etc.)</p>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbColumnInfo()</code>returns a data frame
+with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
+(and optional columns that start with a dot).
+The <code>"name"</code> and <code>"type"</code> columns contain the names and types
+of the R columns of the data frame that is returned from <code><a href="dbFetch.html">dbFetch()</a></code>.
+The <code>"type"</code> column is of type <code>character</code> and only for information.
+Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code>to create a zero-row data frame initialized with the correct data types.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An attempt to query columns for a closed result set raises an error.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+
+<p>A column named <code>row_names</code> is treated like any other column.</p>
+<p>The column names are always consistent
+with the data returned by <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
+<p>If the query returns unnamed columns,
+non-empty and non-<code>NA</code> names are assigned.</p>
+<p>Column names that correspond to SQL or R keywords are left unchanged.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

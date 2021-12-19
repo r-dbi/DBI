@@ -65,6 +65,52 @@ the various R/DBMS implementations (so-called <em>DBI backends</em>).</p>
     </div>
 
 
+    <div id="definition">
+    <h2>Definition</h2>
+    
+
+
+<p>A DBI backend is an R package
+which imports the <span class="pkg">DBI</span>
+and <span class="pkg">methods</span>
+packages.
+For better or worse, the names of many existing backends start with
+‘R’, e.g., <span class="pkg">RSQLite</span>, <span class="pkg">RMySQL</span>, <span class="pkg">RSQLServer</span>; it is up
+to the backend author to adopt this convention or not.</p>
+    </div>
+    <div id="dbi-classes-and-methods">
+    <h2>DBI classes and methods</h2>
+    
+
+
+<p>A backend defines three classes,
+which are subclasses of
+<a href="DBIDriver-class.html">DBIDriver</a>,
+<a href="DBIConnection-class.html">DBIConnection</a>,
+and <a href="DBIResult-class.html">DBIResult</a>.
+The backend provides implementation for all methods
+of these base classes
+that are defined but not implemented by DBI.
+All methods defined in <span class="pkg">DBI</span> are reexported (so that the package can
+be used without having to attach <span class="pkg">DBI</span>),
+and have an ellipsis <code>...</code> in their formals for extensibility.</p>
+    </div>
+    <div id="construction-of-the-dbidriver-object">
+    <h2>Construction of the DBIDriver object</h2>
+    
+
+
+<p>The backend must support creation of an instance of its <a href="DBIDriver-class.html">DBIDriver</a>
+subclass
+with a <dfn>constructor function</dfn>.
+By default, its name is the package name without the leading ‘R’
+(if it exists), e.g., <code>SQLite</code> for the <span class="pkg">RSQLite</span> package.
+However, backend authors may choose a different name.
+The constructor must be exported, and
+it must be a function
+that is callable without arguments.
+DBI recommends to define a constructor with an empty argument list.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Important generics: <code><a href="dbConnect.html">dbConnect()</a></code>, <code><a href="dbGetQuery.html">dbGetQuery()</a></code>,

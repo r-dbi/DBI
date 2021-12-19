@@ -50,7 +50,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>List field names of a remote table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbListFields.R" class="external-link"><code>R/dbListFields.R</code></a></small>
     <div class="hidden name"><code>dbListFields.Rd</code></div>
     </div>
 
@@ -78,6 +78,39 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbListFields()</code>returns a character vector
+that enumerates all fields
+in the table in the correct order.
+This also works for temporary tables if supported by the database.
+The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>If the table does not exist, an error is raised.
+Invalid types for the <code>name</code> argument
+(e.g., <code>character</code> of length not equal to one,
+or numeric)
+lead to an error.
+An error is also raised when calling this method for a closed
+or invalid connection.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+
+<p>The <code>name</code> argument can be</p><ul><li><p>a string</p></li>
+<li><p>the return value of <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code></p></li>
+<li><p>a value from the <code>table</code> column from the return value of
+<code><a href="dbListObjects.html">dbListObjects()</a></code> where <code>is_prefix</code> is <code>FALSE</code></p></li>
+</ul><p>A column named <code>row_names</code> is treated like any other column.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p><code><a href="dbColumnInfo.html">dbColumnInfo()</a></code> to get the type of the fields.</p>

@@ -3,24 +3,24 @@
 resources (e.g., memory, sockets).
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-RAthena::dbDisconnect("AthenaConnection")
-AzureKusto::dbDisconnect("AzureKustoDriver")
 bigrquery::dbDisconnect("BigQueryConnection")
-RClickhouse::dbDisconnect("ClickhouseConnection")
-DatabaseConnector::dbDisconnect("DatabaseConnectorConnection")
 dittodb::dbDisconnect("DBIMockConnection")
-sergeant::dbDisconnect("DrillConnection")
+DatabaseConnector::dbDisconnect("DatabaseConnectorConnection")
+AzureKusto::dbDisconnect("AzureKustoDriver")
 duckdb::dbDisconnect("duckdb_connection")
-RJDBC::dbDisconnect("JDBCConnection")
-RMariaDB::dbDisconnect("MariaDBConnection")
-RMySQL::dbDisconnect("MySQLConnection")
-odbc::dbDisconnect("OdbcConnection")
-RPostgreSQL::dbDisconnect("PostgreSQLConnection")
-RPostgres::dbDisconnect("PqConnection")
-RPresto::dbDisconnect("PrestoConnection")
-lazysf::dbDisconnect("SFSQLConnection")
-RSQLite::dbDisconnect("SQLiteConnection")
 implyr::dbDisconnect("src_impala")
+lazysf::dbDisconnect("SFSQLConnection")
+odbc::dbDisconnect("OdbcConnection")
+RAthena::dbDisconnect("AthenaConnection")
+RClickhouse::dbDisconnect("ClickhouseConnection")
+RJDBC::dbDisconnect("JDBCConnection")
+RMySQL::dbDisconnect("MySQLConnection")
+RPostgreSQL::dbDisconnect("PostgreSQLConnection")
+RPresto::dbDisconnect("PrestoConnection")
+sergeant::dbDisconnect("DrillConnection")
+RMariaDB::dbDisconnect("MariaDBConnection")
+RPostgres::dbDisconnect("PqConnection")
+RSQLite::dbDisconnect("SQLiteConnection")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -73,7 +73,7 @@ implyr::dbDisconnect("src_impala")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Disconnect (close) a connection</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbDisconnect.R" class="external-link"><code>R/dbDisconnect.R</code></a></small>
     <div class="hidden name"><code>dbDisconnect.Rd</code></div>
     </div>
 
@@ -81,24 +81,24 @@ implyr::dbDisconnect("src_impala")
     <p>This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDisconnect.html" class="external-link">RAthena::dbDisconnect("AthenaConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html" class="external-link">AzureKusto::dbDisconnect("AzureKustoDriver")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbDisconnect("BigQueryConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbDisconnect("ClickhouseConnection")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbDisconnect-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbDisconnect("DatabaseConnectorConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbDisconnect("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbDisconnect("DBIMockConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/sergeant/man/dbDisconnect-DrillConnection-method.html" class="external-link">sergeant::dbDisconnect("DrillConnection")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbDisconnect-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbDisconnect("DatabaseConnectorConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html" class="external-link">AzureKusto::dbDisconnect("AzureKustoDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb.html" class="external-link">duckdb::dbDisconnect("duckdb_connection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbDisconnect("JDBCConnection")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/MariaDBConnection-class.html" class="external-link">RMariaDB::dbDisconnect("MariaDBConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbDisconnect("MySQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDisconnect("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html" class="external-link">RPostgreSQL::dbDisconnect("PostgreSQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rpostgres.r-dbi.org/reference/Postgres.html" class="external-link">RPostgres::dbDisconnect("PqConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/Presto.html" class="external-link">RPresto::dbDisconnect("PrestoConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbDisconnect("SFSQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::dbDisconnect("SQLiteConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/implyr/man/dbDisconnect-src_impala-method.html" class="external-link">implyr::dbDisconnect("src_impala")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbDisconnect("SFSQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDisconnect("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDisconnect.html" class="external-link">RAthena::dbDisconnect("AthenaConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbDisconnect("ClickhouseConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbDisconnect("JDBCConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbDisconnect("MySQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html" class="external-link">RPostgreSQL::dbDisconnect("PostgreSQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/Presto.html" class="external-link">RPresto::dbDisconnect("PrestoConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/sergeant/man/dbDisconnect-DrillConnection-method.html" class="external-link">sergeant::dbDisconnect("DrillConnection")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/MariaDBConnection-class.html" class="external-link">RMariaDB::dbDisconnect("MariaDBConnection")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/Postgres.html" class="external-link">RPostgres::dbDisconnect("PqConnection")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::dbDisconnect("SQLiteConnection")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -114,6 +114,22 @@ resources (e.g., memory, sockets).</p>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>A warning is issued on garbage collection when a connection has been
+released without calling <code>dbDisconnect()</code>,
+but this cannot be tested automatically.
+A warning is issued immediately when calling <code>dbDisconnect()</code> on an
+already disconnected
+or invalid connection.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 

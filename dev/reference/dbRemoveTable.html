@@ -3,22 +3,22 @@
 from the database.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-RAthena::dbRemoveTable("AthenaConnection", "character")
-AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
-RClickhouse::dbRemoveTable("ClickhouseConnection", "character")
-DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")
 dittodb::dbRemoveTable("DBIMockConnection", "character")
+DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")
+AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
 duckdb::dbRemoveTable("duckdb_connection", "character")
-RJDBC::dbRemoveTable("JDBCConnection", "ANY")
-RMariaDB::dbRemoveTable("MariaDBConnection", "character")
-RMySQL::dbRemoveTable("MySQLConnection", "character")
 odbc::dbRemoveTable("OdbcConnection", "character")
 pool::dbRemoveTable("Pool", "ANY")
+RAthena::dbRemoveTable("AthenaConnection", "character")
+RClickhouse::dbRemoveTable("ClickhouseConnection", "character")
+RJDBC::dbRemoveTable("JDBCConnection", "ANY")
+RMySQL::dbRemoveTable("MySQLConnection", "character")
 RPostgreSQL::dbRemoveTable("PostgreSQLConnection", "character")
+RMariaDB::dbRemoveTable("MariaDBConnection", "character")
 RPostgres::dbRemoveTable("PqConnection", "character")
-sparklyr::dbRemoveTable("spark_connection", "character")
 RSQLite::dbRemoveTable("SQLiteConnection", "character")
+sparklyr::dbRemoveTable("spark_connection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -71,7 +71,7 @@ RSQLite::dbRemoveTable("SQLiteConnection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Remove a table from the database</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbRemoveTable.R" class="external-link"><code>R/dbRemoveTable.R</code></a></small>
     <div class="hidden name"><code>dbRemoveTable.Rd</code></div>
     </div>
 
@@ -79,22 +79,22 @@ RSQLite::dbRemoveTable("SQLiteConnection", "character")
     <p>Remove a remote table (e.g., created by <code><a href="dbWriteTable.html">dbWriteTable()</a></code>)
 from the database.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbRemoveTable.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbRemoveTable("ClickhouseConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRemoveTable("JDBCConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbRemoveTable("MariaDBConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbRemoveTable("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbRemoveTable("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbRemoveTable("Pool", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbRemoveTable.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbRemoveTable("ClickhouseConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRemoveTable("JDBCConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbRemoveTable("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbRemoveTable("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbRemoveTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbRemoveTable("PqConnection", "character")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbRemoveTable("spark_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbRemoveTable("SQLiteConnection", "character")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbRemoveTable("spark_connection", "character")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -118,6 +118,56 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbRemoveTable()</code> returns <code>TRUE</code>, invisibly.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>If the table does not exist, an error is raised.
+An attempt to remove a view with this function may result in an error.</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+or if this results in a non-scalar.</p>
+    </div>
+    <div id="additional-arguments">
+    <h2>Additional arguments</h2>
+    
+
+
+<p>The following arguments are not part of the <code>dbRemoveTable()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul><li><p><code>temporary</code> (default: <code>FALSE</code>)</p></li>
+<li><p><code>fail_if_missing</code> (default: <code>TRUE</code>)</p></li>
+</ul><p>These arguments must be provided as named arguments.</p>
+<p>If <code>temporary</code> is <code>TRUE</code>, the call to <code>dbRemoveTable()</code>
+will consider only temporary tables.
+Not all backends support this argument.
+In particular, permanent tables of the same name are left untouched.</p>
+<p>If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code>dbRemoveTable()</code>
+succeeds if the table does not exist.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>A table removed by <code>dbRemoveTable()</code> doesn't appear in the list of tables
+returned by <code><a href="dbListTables.html">dbListTables()</a></code>,
+and <code><a href="dbExistsTable.html">dbExistsTable()</a></code> returns <code>FALSE</code>.
+The removal propagates immediately to other connections to the same database.
+This function can also be used to remove a temporary table.</p>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbRemoveTable()</code> will do the
+quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+</ul></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 

@@ -7,25 +7,25 @@ operation is dbUnquoteIdentifier().
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")
-RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")
-RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")
-DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
 dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")
 dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "SQL")
-implyr::dbQuoteIdentifier("impala_connection", "character")
-implyr::dbQuoteIdentifier("impala_connection", "ident")
+DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
+odbc::dbQuoteIdentifier("OdbcConnection", "character")
+pool::dbQuoteIdentifier("Pool", "ANY")
+RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")
+RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")
+RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")
-RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
-odbc::dbQuoteIdentifier("OdbcConnection", "character")
-pool::dbQuoteIdentifier("Pool", "ANY")
 RPostgres::dbQuoteIdentifier("PqConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "Id")
 RPostgres::dbQuoteIdentifier("PqConnection", "SQL")
-sparklyr::dbQuoteIdentifier("spark_connection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
+implyr::dbQuoteIdentifier("impala_connection", "character")
+implyr::dbQuoteIdentifier("impala_connection", "ident")
+sparklyr::dbQuoteIdentifier("spark_connection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -78,7 +78,7 @@ RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Quote identifiers</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/quote.R" class="external-link"><code>R/quote.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbQuoteIdentifier.R" class="external-link"><code>R/dbQuoteIdentifier.R</code></a></small>
     <div class="hidden name"><code>dbQuoteIdentifier.Rd</code></div>
     </div>
 
@@ -90,25 +90,25 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbQuoteIdentifier-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "character")</a></code></p></li>
-<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "ident")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbQuoteIdentifier-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteIdentifier("Pool", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteIdentifier("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbQuoteIdentifier("spark_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "character")</a></code></p></li>
+<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "ident")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbQuoteIdentifier("spark_connection", "character")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -126,6 +126,51 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.
+The names of the input argument are preserved in the output.
+When passing the returned object again to <code>dbQuoteIdentifier()</code>as <code>x</code>argument, it is returned unchanged.
+Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
+to achieve this behavior, but this is not required.)</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>An error is raised if the input contains <code>NA</code>,
+but not for an empty string.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>Calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
+returns a data frame with the identifier, unquoted, as column name.
+Quoted identifiers can be used as table and column names in SQL queries,
+in particular in queries like <code>SELECT 1 AS ...</code>
+and <code>SELECT * FROM (SELECT 1) ...</code>.
+The method must use a quoting mechanism that is unambiguously different
+from the quoting mechanism used for strings, so that a query like
+<code>SELECT ... FROM (SELECT 1 AS ...)</code>
+throws an error if the column names do not match.</p>
+<p>The method can quote column names that
+contain special characters such as a space,
+a dot,
+a comma,
+or quotes used to mark strings
+or identifiers,
+if the database supports this.
+In any case, checking the validity of the identifier
+should be performed only when executing a query,
+and not by <code>dbQuoteIdentifier()</code>.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

@@ -4,22 +4,22 @@ use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+bigrquery::dbQuoteString("BigQueryConnection", "character")
+bigrquery::dbQuoteString("BigQueryConnection", "SQL")
+DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
+odbc::dbQuoteString("Hive", "character")
+pool::dbQuoteString("Pool", "ANY")
 RAthena::dbQuoteString("AthenaConnection", "character")
 RAthena::dbQuoteString("AthenaConnection", "Date")
 RAthena::dbQuoteString("AthenaConnection", "POSIXct")
-bigrquery::dbQuoteString("BigQueryConnection", "character")
-bigrquery::dbQuoteString("BigQueryConnection", "SQL")
 RClickhouse::dbQuoteString("ClickhouseConnection", "character")
 RClickhouse::dbQuoteString("ClickhouseConnection", "SQL")
-DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
-odbc::dbQuoteString("Hive", "character")
 RMariaDB::dbQuoteString("MariaDBConnection", "character")
 RMariaDB::dbQuoteString("MariaDBConnection", "SQL")
-RMySQL::dbQuoteString("MySQLConnection", "character")
-RMySQL::dbQuoteString("MySQLConnection", "SQL")
-pool::dbQuoteString("Pool", "ANY")
 RPostgres::dbQuoteString("PqConnection", "character")
 RPostgres::dbQuoteString("PqConnection", "SQL")
+RMySQL::dbQuoteString("MySQLConnection", "character")
+RMySQL::dbQuoteString("MySQLConnection", "SQL")
 sparklyr::dbQuoteString("spark_connection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -73,7 +73,7 @@ sparklyr::dbQuoteString("spark_connection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Quote literal strings</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/quote.R" class="external-link"><code>R/quote.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbQuoteString.R" class="external-link"><code>R/dbQuoteString.R</code></a></small>
     <div class="hidden name"><code>dbQuoteString.Rd</code></div>
     </div>
 
@@ -82,22 +82,22 @@ sparklyr::dbQuoteString("spark_connection", "character")
 use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "Date")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "POSIXct")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbQuoteString-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbQuoteString-methods.html" class="external-link">odbc::dbQuoteString("Hive", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteString("Pool", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "Date")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "POSIXct")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteString("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteString("MariaDBConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="NA">RMySQL::dbQuoteString("MySQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="NA">RMySQL::dbQuoteString("MySQLConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteString("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteString("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteString("PqConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="NA">RMySQL::dbQuoteString("MySQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="NA">RMySQL::dbQuoteString("MySQLConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="NA">sparklyr::dbQuoteString("spark_connection", "character")</a></code></p></li>
 </ul></div>
     </div>
@@ -116,6 +116,54 @@ generate valid SQL and protect against SQL injection attacks.</p>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbQuoteString()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
+of the same length as the input.
+For an empty character vector this function returns a length-0 object.
+When passing the returned object again to <code>dbQuoteString()</code>as <code>x</code>argument, it is returned unchanged.
+Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
+to achieve this behavior, but this is not required.)</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+
+<p>Passing a numeric,
+integer,
+logical,
+or raw vector,
+or a list
+for the <code>x</code> argument raises an error.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>The returned expression can be used in a <code>SELECT ...</code> query,
+and for any scalar character <code>x</code> the value of
+<code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code>
+must be identical to <code>x</code>,
+even if <code>x</code> contains
+spaces,
+tabs,
+quotes (single
+or double),
+backticks,
+or newlines
+(in any combination)
+or is itself the result of a <code>dbQuoteString()</code> call coerced back to
+character (even repeatedly).
+If <code>x</code> is <code>NA</code>, the result must merely satisfy <code><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na()</a></code>.
+The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.</p>
+<p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
+so that the query <code>SELECT * FROM (SELECT 1) a WHERE ... IS NULL</code>
+returns one row.</p>
+    </div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIResult generics: 

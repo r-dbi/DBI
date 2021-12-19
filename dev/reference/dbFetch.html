@@ -3,25 +3,25 @@
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-RAthena::dbFetch("AthenaResult", "ANY")
-AzureKusto::dbFetch("AzureKustoResult", "ANY")
-bigrquery::dbFetch("BigQueryResult", "ANY")
-RClickhouse::dbFetch("ClickhouseResult", "ANY")
-DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")
-dittodb::dbFetch("DBIMockResult", "ANY")
-sparklyr::dbFetch("DBISparkResult", "ANY")
-sergeant::dbFetch("DrillResult", "ANY")
-duckdb::dbFetch("duckdb_result", "ANY")
-RMariaDB::dbFetch("MariaDBResult", "ANY")
 RMySQL::dbFetch("MySQLResult", "missing")
 RMySQL::dbFetch("MySQLResult", "numeric")
-odbc::dbFetch("OdbcResult", "ANY")
-RPostgres::dbFetch("PqResult", "ANY")
 RPresto::dbFetch("PrestoResult", "integer")
 RPresto::dbFetch("PrestoResult", "missing")
 RPresto::dbFetch("PrestoResult", "numeric")
+AzureKusto::dbFetch("AzureKustoResult", "ANY")
+bigrquery::dbFetch("BigQueryResult", "ANY")
+DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")
+dittodb::dbFetch("DBIMockResult", "ANY")
+duckdb::dbFetch("duckdb_result", "ANY")
 lazysf::dbFetch("SFSQLResult", "ANY")
+odbc::dbFetch("OdbcResult", "ANY")
+RAthena::dbFetch("AthenaResult", "ANY")
+RClickhouse::dbFetch("ClickhouseResult", "ANY")
+RMariaDB::dbFetch("MariaDBResult", "ANY")
+RPostgres::dbFetch("PqResult", "ANY")
 RSQLite::dbFetch("SQLiteResult", "ANY")
+sergeant::dbFetch("DrillResult", "ANY")
+sparklyr::dbFetch("DBISparkResult", "ANY")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -74,7 +74,7 @@ RSQLite::dbFetch("SQLiteResult", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fetch records from a previously executed query</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
     <div class="hidden name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -82,25 +82,25 @@ RSQLite::dbFetch("SQLiteResult", "ANY")
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="NA">RAthena::dbFetch("AthenaResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">AzureKusto::dbFetch("AzureKustoResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">bigrquery::dbFetch("BigQueryResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RClickhouse::dbFetch("ClickhouseResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">dittodb::dbFetch("DBIMockResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbFetch("DBISparkResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sergeant::dbFetch("DrillResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">duckdb::dbFetch("duckdb_result", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RMariaDB::dbFetch("MariaDBResult", "ANY")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "missing")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "missing")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "numeric")</a></code></p></li>
-<li><p><code><a href="NA">odbc::dbFetch("OdbcResult", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPostgres::dbFetch("PqResult", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "integer")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "missing")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "numeric")</a></code></p></li>
+<li><p><code><a href="NA">AzureKusto::dbFetch("AzureKustoResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">bigrquery::dbFetch("BigQueryResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">dittodb::dbFetch("DBIMockResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">duckdb::dbFetch("duckdb_result", "ANY")</a></code></p></li>
 <li><p><code><a href="NA">lazysf::dbFetch("SFSQLResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">odbc::dbFetch("OdbcResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RAthena::dbFetch("AthenaResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RClickhouse::dbFetch("ClickhouseResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RMariaDB::dbFetch("MariaDBResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RPostgres::dbFetch("PqResult", "ANY")</a></code></p></li>
 <li><p><code><a href="NA">RSQLite::dbFetch("SQLiteResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">sergeant::dbFetch("DrillResult", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbFetch("DBISparkResult", "ANY")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -123,6 +123,14 @@ special values.</p></dd>
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>with as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.</p>
+    </div>
     <div id="details">
     <h2>Details</h2>
     <p><code>fetch()</code> is provided for compatibility with older DBI clients - for all
@@ -130,6 +138,79 @@ new code you are strongly encouraged to use <code>dbFetch()</code>. The default
 implementation for <code>dbFetch()</code> calls <code>fetch()</code> so that it is compatible with
 existing code. Modern backends should implement for <code>dbFetch()</code> only.</p>
     </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An attempt to fetch from a closed result set raises an error.
+If the <code>n</code> argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.
+Calling <code>dbFetch()</code> on a result set from a data manipulation query
+created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+can be fetched and return an empty data frame, with a warning.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>Fetching multi-row queries with one
+or more columns by default returns the entire result.
+Multi-row queries can also be fetched progressively
+by passing a whole number (<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a>
+or <a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a>)
+as the <code>n</code> argument.
+A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported
+and also returns the full result.
+If more rows than available are fetched, the result is returned in full
+without warning.
+If fewer rows than requested are returned, further fetches will
+return a data frame with zero rows.
+If zero rows are fetched, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued when clearing the result set.</p>
+<p>A column named <code>row_names</code> is treated like any other column.</p>
+
+
+
+<p>The column types of the returned data frame depend on the data returned:</p><ul><li><p><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a> (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
+with <a href="https://rdrr.io/r/base/NA.html" class="external-link">NA</a> for SQL <code>NULL</code> values</p></li>
+<li><p><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a> for numbers with a fractional component,
+with NA for SQL <code>NULL</code> values</p></li>
+<li><p><a href="https://rdrr.io/r/base/logical.html" class="external-link">logical</a> for Boolean values (some backends may return an integer);
+with NA for SQL <code>NULL</code> values</p></li>
+<li><p><a href="https://rdrr.io/r/base/character.html" class="external-link">character</a> for text,
+with NA for SQL <code>NULL</code> values</p></li>
+<li><p>lists of <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a> for blobs
+with <a href="https://rdrr.io/r/base/NULL.html" class="external-link">NULL</a> entries for SQL NULL values</p></li>
+<li><p>coercible using <code><a href="https://rdrr.io/r/base/as.Date.html" class="external-link">as.Date()</a></code> for dates,
+with NA for SQL <code>NULL</code> values
+(also applies to the return value of the SQL function <code>current_date</code>)</p></li>
+<li><p>coercible using <code><a href="https://hms.tidyverse.org/reference/hms.html" class="external-link">hms::as_hms()</a></code> for times,
+with NA for SQL <code>NULL</code> values
+(also applies to the return value of the SQL function <code>current_time</code>)</p></li>
+<li><p>coercible using <code><a href="https://rdrr.io/r/base/as.POSIXlt.html" class="external-link">as.POSIXct()</a></code> for timestamps,
+with NA for SQL <code>NULL</code> values
+(also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
+</ul><p>If dates and timestamps are supported by the backend, the following R types are
+used:</p><ul><li><p><a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> for dates
+(also applies to the return value of the SQL function <code>current_date</code>)</p></li>
+<li><p><a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">POSIXct</a> for timestamps
+(also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
+</ul><p>R has no built-in type with lossless support for the full range of 64-bit
+or larger integers. If 64-bit integers are returned from a query,
+the following rules apply:</p><ul><li><p>Values are returned in a container with support for the full range of
+valid 64-bit values (such as the <code>integer64</code> class of the <span class="pkg">bit64</span>
+package)</p></li>
+<li><p>Coercion to numeric always returns a number that is as close as possible
+to the true value</p></li>
+<li><p>Loss of precision when converting to numeric gives a warning</p></li>
+<li><p>Conversion to character always returns a lossless decimal representation
+of the data</p></li>
+</ul></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Close the result set with <code><a href="dbClearResult.html">dbClearResult()</a></code> as soon as you

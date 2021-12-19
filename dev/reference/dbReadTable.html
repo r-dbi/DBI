@@ -4,20 +4,20 @@ a column to row names and converting the column names to valid
 R identifiers.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-AzureKusto::dbReadTable("AzureKustoConnection", "character")
 bigrquery::dbReadTable("BigQueryConnection", "character")
-RClickhouse::dbReadTable("ClickhouseConnection", "character")
 DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")
+AzureKusto::dbReadTable("AzureKustoConnection", "character")
+lazysf::dbReadTable("SFSQLConnection", "character")
+pool::dbReadTable("Pool", "character")
+RClickhouse::dbReadTable("ClickhouseConnection", "character")
 RJDBC::dbReadTable("JDBCConnection", "ANY")
 RJDBC::dbReadTable("JDBCConnection", "character")
-RMariaDB::dbReadTable("MariaDBConnection", "character")
 RMySQL::dbReadTable("MySQLConnection", "character")
-pool::dbReadTable("Pool", "character")
 RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")
+RMariaDB::dbReadTable("MariaDBConnection", "character")
 RPostgres::dbReadTable("PqConnection", "character")
-lazysf::dbReadTable("SFSQLConnection", "character")
-sparklyr::dbReadTable("spark_connection", "character")
 RSQLite::dbReadTable("SQLiteConnection", "character")
+sparklyr::dbReadTable("spark_connection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -70,7 +70,7 @@ RSQLite::dbReadTable("SQLiteConnection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames from database tables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbReadTable.R" class="external-link"><code>R/dbReadTable.R</code></a></small>
     <div class="hidden name"><code>dbReadTable.Rd</code></div>
     </div>
 
@@ -79,20 +79,20 @@ RSQLite::dbReadTable("SQLiteConnection", "character")
 a column to row names and converting the column names to valid
 R identifiers.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbReadTable("AzureKustoConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbReadTable("ClickhouseConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbReadTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbReadTable("AzureKustoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbReadTable("SFSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbReadTable("Pool", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbReadTable("ClickhouseConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbReadTable("JDBCConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbReadTable("JDBCConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbReadTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbReadTable("MySQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbReadTable("Pool", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbReadTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbReadTable("PqConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbReadTable("SFSQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbReadTable("spark_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbReadTable-SQLiteConnection-character-method.html" class="external-link">RSQLite::dbReadTable("SQLiteConnection", "character")</a></code></p></li>
+<li><p><code><a href="NA">sparklyr::dbReadTable("spark_connection", "character")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -116,6 +116,70 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
 </dl></div>
+    <div id="value">
+    <h2>Value</h2>
+    <p><code>dbReadTable()</code> returns a data frame that contains the complete data
+from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code>with <code>SELECT * FROM &lt;name&gt;</code>.
+An empty table is returned as a data frame with zero rows.
+The presence of <a href="rownames.html">rownames</a> depends on the <code>row.names</code> argument,
+see <code><a href="rownames.html">sqlColumnToRownames()</a></code> for details:</p><ul><li><p>If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn't have row names.</p></li>
+<li><p>If <code>TRUE</code>, a column named "row_names" is converted to row names.</p></li>
+</ul><ul><li><p>If <code>NA</code>, a column named "row_names" is converted to row names if it exists,
+otherwise no translation occurs.</p></li>
+<li><p>If a string, this specifies the name of the column in the remote table
+that contains the row names.</p></li>
+</ul><p>The default is <code>row.names = FALSE</code>.
+If the database supports identifiers with special characters,
+the columns in the returned data frame are converted to valid R
+identifiers
+if the <code>check.names</code> argument is <code>TRUE</code>,
+If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised if the table does not exist.</p>
+
+<p>An error is raised if <code>row.names</code> is <code>TRUE</code> and no "row_names" column exists,</p>
+
+<p>An error is raised if <code>row.names</code> is set to a string and and no corresponding column exists.</p>
+
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is raised
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+or if this results in a non-scalar.
+Unsupported values for <code>row.names</code> and <code>check.names</code>
+(non-scalars,
+unsupported data types,
+<code>NA</code> for <code>check.names</code>)
+also raise an error.</p>
+    </div>
+    <div id="additional-arguments">
+    <h2>Additional arguments</h2>
+    
+
+
+<p>The following arguments are not part of the <code>dbReadTable()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:</p><ul><li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
+<li><p><code>check.names</code></p></li>
+</ul><p>They must be provided as named arguments.
+See the "Value" section for details on their usage.</p>
+    </div>
+    <div id="specification">
+    <h2>Specification</h2>
+    
+
+
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbReadTable()</code> will do the
+quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+</ul></div>
     <div id="see-also">
     <h2>See also</h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
