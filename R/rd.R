@@ -3,6 +3,13 @@ methods_as_rd <- function(method) {
     method <- c("dbBegin", "dbCommit", "dbRollback")
   }
 
+  if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
+    packages <- strsplit(read.dcf("DESCRIPTION")[, "Config/Needs/website"], ",( |\n)*", perl = TRUE)[[1]]
+    for (package in packages) {
+      stopifnot(requireNamespace(package, quietly = TRUE))
+    }
+  }
+
   methods <- unlist(lapply(method, methods::findMethods), recursive = FALSE)
 
   # Extracted from roxygen2::object_topic.s4method
