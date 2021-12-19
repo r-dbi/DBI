@@ -6,9 +6,9 @@ dbSendQuery(), then dbFetch(), ensuring that
 the result is always free-d by dbClearResult().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")
-DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
+DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")
+dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")
 implyr::dbGetQuery("src_impala", "character")
 odbc::dbGetQuery("OdbcConnection", "character")
 pool::dbGetQuery("Pool", "character")
@@ -81,9 +81,9 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="dbFetch.html">dbFetch()</a></code>, ensuring that
 the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetQuery-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/implyr/man/dbGetQuery-src_impala-character-method.html" class="external-link">implyr::dbGetQuery("src_impala", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbGetQuery("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbGetQuery("Pool", "character")</a></code></p></li>
@@ -92,7 +92,7 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbGetQuery("JDBCConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html" class="external-link">RPostgreSQL::dbGetQuery("PostgreSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbGetQuery("PrestoConnection", "character")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbGetQuery("spark_connection", "ANY")</a></code></p></li>
+<li><p><code>sparklyr::dbGetQuery("spark_connection", "ANY")</code></p></li>
 </ul></div>
     </div>
 

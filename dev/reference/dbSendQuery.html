@@ -7,25 +7,25 @@ records you need. For interactive use, you should almost always prefer
 dbGetQuery().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")
 bigrquery::dbSendQuery("BigQueryConnection", "character")
-dittodb::dbSendQuery("DBIMockConnection", "character")
 DatabaseConnector::dbSendQuery("DatabaseConnectorDbiConnection", "character")
 DatabaseConnector::dbSendQuery("DatabaseConnectorJdbcConnection", "character")
+dittodb::dbSendQuery("DBIMockConnection", "character")
 duckdb::dbSendQuery("duckdb_connection", "character")
+lazysf::dbSendQuery("SFSQLConnection", "ANY")
 odbc::dbSendQuery("OdbcConnection", "character")
+pool::dbSendQuery("Pool", "ANY")
 RAthena::dbSendQuery("AthenaConnection", "character")
 RClickhouse::dbSendQuery("ClickhouseConnection", "character")
 RH2::dbSendQuery("H2Connection", "character")
 RJDBC::dbSendQuery("JDBCConnection", "character")
+RMariaDB::dbSendQuery("MariaDBConnection", "character")
 RMySQL::dbSendQuery("MySQLConnection", "character")
+RPostgres::dbSendQuery("PqConnection", "ANY")
 RPostgreSQL::dbSendQuery("PostgreSQLConnection", "character")
 RPresto::dbSendQuery("PrestoConnection", "character")
-RMariaDB::dbSendQuery("MariaDBConnection", "character")
 RSQLite::dbSendQuery("SQLiteConnection", "character")
-AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")
-lazysf::dbSendQuery("SFSQLConnection", "ANY")
-pool::dbSendQuery("Pool", "ANY")
-RPostgres::dbSendQuery("PqConnection", "ANY")
 sergeant::dbSendQuery("DrillConnection", "ANY")
 sparklyr::dbSendQuery("spark_connection", "ANY")
 
@@ -92,27 +92,27 @@ then you must call <code><a href="dbClearResult.html">dbClearResult()</a></code>
 records you need. For interactive use, you should almost always prefer
 <code><a href="dbGetQuery.html">dbGetQuery()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbSendQuery("BigQueryConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbSendQuery("DBIMockConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")</code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbSendQuery("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbSendQuery-DatabaseConnectorDbiConnection-character-method.html" class="external-link">DatabaseConnector::dbSendQuery("DatabaseConnectorDbiConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbSendQuery-DatabaseConnectorJdbcConnection-character-method.html" class="external-link">DatabaseConnector::dbSendQuery("DatabaseConnectorJdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbSendQuery("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbSendQuery("duckdb_connection", "character")</a></code></p></li>
+<li><p><code>lazysf::dbSendQuery("SFSQLConnection", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbSendQuery("OdbcConnection", "character")</a></code></p></li>
+<li><p><code>pool::dbSendQuery("Pool", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/Query.html" class="external-link">RAthena::dbSendQuery("AthenaConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbSendQuery("ClickhouseConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RH2/man/H2Connection-methods.html" class="external-link">RH2::dbSendQuery("H2Connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbSendQuery("JDBCConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbSendQuery("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbSendQuery("MySQLConnection", "character")</a></code></p></li>
+<li><p><code>RPostgres::dbSendQuery("PqConnection", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html" class="external-link">RPostgreSQL::dbSendQuery("PostgreSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbSendQuery("PrestoConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbSendQuery("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbSendQuery("SQLiteConnection", "character")</a></code></p></li>
-<li><p><code><a href="NA">AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">lazysf::dbSendQuery("SFSQLConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">pool::dbSendQuery("Pool", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPostgres::dbSendQuery("PqConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sergeant::dbSendQuery("DrillConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbSendQuery("spark_connection", "ANY")</a></code></p></li>
+<li><p><code>sergeant::dbSendQuery("DrillConnection", "ANY")</code></p></li>
+<li><p><code>sparklyr::dbSendQuery("spark_connection", "ANY")</code></p></li>
 </ul></div>
     </div>
 

@@ -5,23 +5,23 @@ This should include views and temporary objects, but not all database backends
 (in particular RMariaDB and RMySQL) support this.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-bigrquery::dbListTables("BigQueryConnection")
-dittodb::dbListTables("DBIMockConnection")
-DatabaseConnector::dbListTables("DatabaseConnectorConnection")
 AzureKusto::dbListTables("AzureKustoConnection")
+bigrquery::dbListTables("BigQueryConnection")
+DatabaseConnector::dbListTables("DatabaseConnectorConnection")
+dittodb::dbListTables("DBIMockConnection")
 duckdb::dbListTables("duckdb_connection")
 lazysf::dbListTables("SFSQLConnection")
-odbc::dbListTables("Teradata")
 odbc::dbListTables("OdbcConnection")
+odbc::dbListTables("Teradata")
 pool::dbListTables("Pool")
 RAthena::dbListTables("AthenaConnection")
 RClickhouse::dbListTables("ClickhouseConnection")
 RJDBC::dbListTables("JDBCConnection")
+RMariaDB::dbListTables("MariaDBConnection")
 RMySQL::dbListTables("MySQLConnection")
+RPostgres::dbListTables("PqConnection")
 RPostgreSQL::dbListTables("PostgreSQLConnection")
 RPresto::dbListTables("PrestoConnection")
-RMariaDB::dbListTables("MariaDBConnection")
-RPostgres::dbListTables("PqConnection")
 RSQLite::dbListTables("SQLiteConnection")
 sparklyr::dbListTables("spark_connection")
 
@@ -86,25 +86,25 @@ connection.
 This should include views and temporary objects, but not all database backends
 (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListTables("BigQueryConnection")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbListTables("DBIMockConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbListTables("AzureKustoConnection")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListTables("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbListTables-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbListTables("DatabaseConnectorConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbListTables("AzureKustoConnection")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbListTables("DBIMockConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbListTables("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbListTables("SFSQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListTables-methods.html" class="external-link">odbc::dbListTables("Teradata")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListTables-OdbcConnection-method.html" class="external-link">odbc::dbListTables("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListTables-methods.html" class="external-link">odbc::dbListTables("Teradata")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbListTables("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbListTables.html" class="external-link">RAthena::dbListTables("AthenaConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbListTables("ClickhouseConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbListTables("JDBCConnection")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbListTables("MariaDBConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbListTables("MySQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbListTables("PqConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbListTables-methods.html" class="external-link">RPostgreSQL::dbListTables("PostgreSQLConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbListTables("PrestoConnection")</a></code></p></li>
-<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbListTables("MariaDBConnection")</a></code></p></li>
-<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbListTables("PqConnection")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbListTables("SQLiteConnection")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbListTables("spark_connection")</a></code></p></li>
+<li><p><code>sparklyr::dbListTables("spark_connection")</code></p></li>
 </ul></div>
     </div>
 

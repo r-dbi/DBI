@@ -24,18 +24,18 @@ RClickhouse::dbCommit("ClickhouseConnection")
 RClickhouse::dbRollback("ClickhouseConnection")
 RJDBC::dbCommit("JDBCConnection")
 RJDBC::dbRollback("JDBCConnection")
-RMySQL::dbBegin("MySQLConnection")
-RMySQL::dbCommit("MySQLConnection")
-RMySQL::dbRollback("MySQLConnection")
-RPostgreSQL::dbBegin("PostgreSQLConnection")
-RPostgreSQL::dbCommit("PostgreSQLConnection")
-RPostgreSQL::dbRollback("PostgreSQLConnection")
 RMariaDB::dbBegin("MariaDBConnection")
 RMariaDB::dbCommit("MariaDBConnection")
 RMariaDB::dbRollback("MariaDBConnection")
+RMySQL::dbBegin("MySQLConnection")
+RMySQL::dbCommit("MySQLConnection")
+RMySQL::dbRollback("MySQLConnection")
 RPostgres::dbBegin("PqConnection")
 RPostgres::dbCommit("PqConnection")
 RPostgres::dbRollback("PqConnection")
+RPostgreSQL::dbBegin("PostgreSQLConnection")
+RPostgreSQL::dbCommit("PostgreSQLConnection")
+RPostgreSQL::dbRollback("PostgreSQLConnection")
 RSQLite::dbBegin("SQLiteConnection")
 RSQLite::dbCommit("SQLiteConnection")
 RSQLite::dbRollback("SQLiteConnection")
@@ -123,24 +123,24 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbRollback("ClickhouseConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbCommit("JDBCConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRollback("JDBCConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbBegin("MySQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbCommit("MySQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbRollback("MySQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbBegin("PostgreSQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbCommit("PostgreSQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbRollback("PostgreSQLConnection")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/transactions.html" class="external-link">RMariaDB::dbBegin("MariaDBConnection")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/transactions.html" class="external-link">RMariaDB::dbCommit("MariaDBConnection")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/transactions.html" class="external-link">RMariaDB::dbRollback("MariaDBConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbBegin("MySQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbCommit("MySQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/transactions.html" class="external-link">RMySQL::dbRollback("MySQLConnection")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-transactions.html" class="external-link">RPostgres::dbBegin("PqConnection")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-transactions.html" class="external-link">RPostgres::dbCommit("PqConnection")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-transactions.html" class="external-link">RPostgres::dbRollback("PqConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbBegin("PostgreSQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbCommit("PostgreSQLConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbCommit-methods.html" class="external-link">RPostgreSQL::dbRollback("PostgreSQLConnection")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/sqlite-transaction.html" class="external-link">RSQLite::dbBegin("SQLiteConnection")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/sqlite-transaction.html" class="external-link">RSQLite::dbCommit("SQLiteConnection")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/sqlite-transaction.html" class="external-link">RSQLite::dbRollback("SQLiteConnection")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbBegin("spark_connection")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbCommit("spark_connection")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbRollback("spark_connection")</a></code></p></li>
+<li><p><code>sparklyr::dbBegin("spark_connection")</code></p></li>
+<li><p><code>sparklyr::dbCommit("spark_connection")</code></p></li>
+<li><p><code>sparklyr::dbRollback("spark_connection")</code></p></li>
 </ul></div>
     </div>
 

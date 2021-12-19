@@ -7,24 +7,24 @@ operation is dbUnquoteIdentifier().
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")
+DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
 dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")
 dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "SQL")
-DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
+implyr::dbQuoteIdentifier("impala_connection", "character")
+implyr::dbQuoteIdentifier("impala_connection", "ident")
 odbc::dbQuoteIdentifier("OdbcConnection", "character")
 pool::dbQuoteIdentifier("Pool", "ANY")
 RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")
 RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")
-RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")
+RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "Id")
 RPostgres::dbQuoteIdentifier("PqConnection", "SQL")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
-implyr::dbQuoteIdentifier("impala_connection", "character")
-implyr::dbQuoteIdentifier("impala_connection", "ident")
 sparklyr::dbQuoteIdentifier("spark_connection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -90,25 +90,25 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbQuoteIdentifier-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbQuoteIdentifier-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code>implyr::dbQuoteIdentifier("impala_connection", "character")</code></p></li>
+<li><p><code>implyr::dbQuoteIdentifier("impala_connection", "ident")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteIdentifier("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteIdentifier("ClickhouseConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "character")</a></code></p></li>
-<li><p><code><a href="NA">implyr::dbQuoteIdentifier("impala_connection", "ident")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbQuoteIdentifier("spark_connection", "character")</a></code></p></li>
+<li><p><code>sparklyr::dbQuoteIdentifier("spark_connection", "character")</code></p></li>
 </ul></div>
     </div>
 

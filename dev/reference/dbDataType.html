@@ -8,23 +8,21 @@ for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-sf::dbDataType("DBIObject", "sf")
-sf::dbDataType("PostgreSQLConnection", "sf")
+bigrquery::dbDataType("BigQueryConnection", "ANY")
+bigrquery::dbDataType("BigQueryDriver", "ANY")
+duckdb::dbDataType("duckdb_connection", "ANY")
+duckdb::dbDataType("duckdb_driver", "ANY")
 lazysf::dbDataType("SFSQLDriver", "ANY")
 odbc::dbDataType("OdbcConnection", "ANY")
 odbc::dbDataType("OdbcConnection", "data.frame")
 odbc::dbDataType("OdbcDriver", "ANY")
 odbc::dbDataType("OdbcDriver", "data.frame")
 odbc::dbDataType("OdbcDriver", "list")
+pool::dbDataType("Pool", "ANY")
 RAthena::dbDataType("AthenaConnection", "ANY")
 RAthena::dbDataType("AthenaConnection", "data.frame")
 RAthena::dbDataType("AthenaDriver", "ANY")
 RAthena::dbDataType("AthenaDriver", "list")
-bigrquery::dbDataType("BigQueryConnection", "ANY")
-bigrquery::dbDataType("BigQueryDriver", "ANY")
-duckdb::dbDataType("duckdb_connection", "ANY")
-duckdb::dbDataType("duckdb_driver", "ANY")
-pool::dbDataType("Pool", "ANY")
 RClickhouse::dbDataType("ClickhouseConnection", "ANY")
 RClickhouse::dbDataType("ClickhouseDriver", "ANY")
 RH2::dbDataType("H2Connection", "ANY")
@@ -40,6 +38,8 @@ RPresto::dbDataType("PrestoDriver", "ANY")
 RSQLite::dbDataType("SQLiteConnection", "ANY")
 RSQLite::dbDataType("SQLiteDriver", "ANY")
 sergeant::dbDataType("DrillConnection", "ANY")
+sf::dbDataType("DBIObject", "sf")
+sf::dbDataType("PostgreSQLConnection", "sf")
 sparklyr::dbDataType("spark_connection", "ANY")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -106,39 +106,39 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://r-spatial.github.io/sf/reference/dbDataType.html" class="external-link">sf::dbDataType("DBIObject", "sf")</a></code></p></li>
-<li><p><code><a href="https://r-spatial.github.io/sf/reference/dbDataType.html" class="external-link">sf::dbDataType("PostgreSQLConnection", "sf")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>bigrquery::dbDataType("BigQueryConnection", "ANY")</code></p></li>
+<li><p><code>bigrquery::dbDataType("BigQueryDriver", "ANY")</code></p></li>
+<li><p><code>duckdb::dbDataType("duckdb_connection", "ANY")</code></p></li>
+<li><p><code>duckdb::dbDataType("duckdb_driver", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLDriver-class.html" class="external-link">lazysf::dbDataType("SFSQLDriver", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "list")</a></code></p></li>
+<li><p><code>pool::dbDataType("Pool", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaConnection", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaDriver", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaDriver", "list")</a></code></p></li>
-<li><p><code><a href="NA">bigrquery::dbDataType("BigQueryConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">bigrquery::dbDataType("BigQueryDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">duckdb::dbDataType("duckdb_connection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">duckdb::dbDataType("duckdb_driver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">pool::dbDataType("Pool", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RClickhouse::dbDataType("ClickhouseConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RClickhouse::dbDataType("ClickhouseDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RH2::dbDataType("H2Connection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RJDBC::dbDataType("JDBCConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RMariaDB::dbDataType("MariaDBConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RMariaDB::dbDataType("MariaDBDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RMySQL::dbDataType("MySQLConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RMySQL::dbDataType("MySQLDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPostgres::dbDataType("PqConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPostgres::dbDataType("PqDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPostgreSQL::dbDataType("PostgreSQLObject", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RPresto::dbDataType("PrestoDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RSQLite::dbDataType("SQLiteConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">RSQLite::dbDataType("SQLiteDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sergeant::dbDataType("DrillConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="NA">sparklyr::dbDataType("spark_connection", "ANY")</a></code></p></li>
+<li><p><code>RClickhouse::dbDataType("ClickhouseConnection", "ANY")</code></p></li>
+<li><p><code>RClickhouse::dbDataType("ClickhouseDriver", "ANY")</code></p></li>
+<li><p><code>RH2::dbDataType("H2Connection", "ANY")</code></p></li>
+<li><p><code>RJDBC::dbDataType("JDBCConnection", "ANY")</code></p></li>
+<li><p><code>RMariaDB::dbDataType("MariaDBConnection", "ANY")</code></p></li>
+<li><p><code>RMariaDB::dbDataType("MariaDBDriver", "ANY")</code></p></li>
+<li><p><code>RMySQL::dbDataType("MySQLConnection", "ANY")</code></p></li>
+<li><p><code>RMySQL::dbDataType("MySQLDriver", "ANY")</code></p></li>
+<li><p><code>RPostgres::dbDataType("PqConnection", "ANY")</code></p></li>
+<li><p><code>RPostgres::dbDataType("PqDriver", "ANY")</code></p></li>
+<li><p><code>RPostgreSQL::dbDataType("PostgreSQLObject", "ANY")</code></p></li>
+<li><p><code>RPresto::dbDataType("PrestoDriver", "ANY")</code></p></li>
+<li><p><code>RSQLite::dbDataType("SQLiteConnection", "ANY")</code></p></li>
+<li><p><code>RSQLite::dbDataType("SQLiteDriver", "ANY")</code></p></li>
+<li><p><code>sergeant::dbDataType("DrillConnection", "ANY")</code></p></li>
+<li><p><code><a href="https://r-spatial.github.io/sf/reference/dbDataType.html" class="external-link">sf::dbDataType("DBIObject", "sf")</a></code></p></li>
+<li><p><code><a href="https://r-spatial.github.io/sf/reference/dbDataType.html" class="external-link">sf::dbDataType("PostgreSQLConnection", "sf")</a></code></p></li>
+<li><p><code>sparklyr::dbDataType("spark_connection", "ANY")</code></p></li>
 </ul></div>
     </div>
 
