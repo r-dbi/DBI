@@ -16,12 +16,12 @@ methods_as_rd <- function(method) {
   s4_topic <- function(x) {
     sig <- paste0(x@defined, collapse = ",")
     sig_text <- paste0('"', x@defined, '"', collapse = ", ")
-    package <- tryCatch(
+    package <- unname(tryCatch(
       getNamespaceName(environment(x@.Data)),
       error = function(e) NA
-    )
+    ))
     if (is.na(package) || package == "DBI") {
-      return(NA_character_)
+      return(data.frame())
     }
 
     topic <- paste0(x@generic, ",", sig, "-method")
@@ -29,17 +29,26 @@ methods_as_rd <- function(method) {
 
     if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
       url <- downlit::autolink_url(paste0("?", package, "::`", topic, "`"))
-      paste0("\\code{\\href{", url, "}{", call, "}}")
     } else {
-      paste0("\\code{\\link[=", topic, "]{", call, "}}")
+      url <- NA
     }
+
+    data.frame(package, topic, call, url, stringsAsFactors = FALSE)
   }
 
-  item_text <- vapply(methods@.Data, s4_topic, character(1))
-  item_text <- sort(item_text[!is.na(item_text)])
-
-  if (length(item_text) == 0) {
+  item_list <- lapply(methods@.Data, s4_topic)
+  items <- do.call(rbind, item_list)
+  if (ncol(items) == 0) {
     return("")
+  }
+
+  items <- items[order(items$call), ]
+
+  if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
+    linked <- ifelse(is.na(items$url), items$call, paste0("\\href{", items$url, "}{", items$call, "}"))
+    item_text <- paste0("\\code{", linked, "}")
+  } else {
+    item_text <- paste0("\\code{\\link[=", items$topic, "]{", items$call, "}}")
   }
 
   paste0(
