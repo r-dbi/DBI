@@ -1,16 +1,19 @@
-DBI 1.1.1
+DBI 1.1.2
 
 ## Cran Repository Policy
 
-- [x] Reviewed CRP last edited 2020-10-29.
+- [ ] Reviewed CRP last edited 2021-09-25.
+
+See changes at https://github.com/eddelbuettel/crp/compare/master@%7B2020-10-29%7D...master@%7B2021-09-25%7D
 
 ## R CMD check results
 
-- [x] Checked locally, R 4.0.3
-- [x] Checked on CI system, R 4.0.3
-- [x] Checked on win-builder, R devel
+- [x] Checked locally, R 4.1.1
+- [ ] Checked on CI system, R 4.1.2
+- [ ] Checked on win-builder, R devel
+
+Check the boxes above after successful execution and remove this line. Then run `fledge::release()`.
 
 ## Current CRAN check results
 
-- [x] Checked on 2021-01-04, problems found: https://cran.r-project.org/web/checks/check_results_DBI.html
-- [x] WARN: r-release-macos-x86_64: misconfigured check system
+- [x] Checked on 2021-12-19, no problems found.
