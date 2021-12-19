@@ -68,7 +68,6 @@ Config/Needs/website:
     RPostgreSQL,
     RPresto,
     RSQLite,
-    RSQLServer,
     sergeant,
     sparklyr
 Collate: 
