@@ -47,7 +47,30 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate",
     "namespace", "rd"))
 RoxygenNote: 7.1.2
-Config/Needs/website: RMariaDB, RPostgres, odbc, duckdb
+Config/Needs/website: 
+    AzureKusto,
+    bigrquery,
+    DatabaseConnector,
+    dittodb,
+    duckdb,
+    implyr,
+    lazysf,
+    odbc,
+    pool,
+    RAthena,
+    RClickhouse,
+    RH2,
+    RJDBC,
+    RMariaDB,
+    RMySQL,
+    ROracle,
+    RPostgres,
+    RPostgreSQL,
+    RPresto,
+    RSQLite,
+    RSQLServer,
+    sergeant,
+    sparklyr
 Collate: 
     'hidden.R'
     'DBObject.R'
