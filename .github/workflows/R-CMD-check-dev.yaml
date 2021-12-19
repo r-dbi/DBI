@@ -71,6 +71,7 @@ jobs:
         with:
           install-r: false
           cache-version: rcc-dev-${{ matrix.package }}-1
+          needs: check
           extra-packages: "rcmdcheck remotes"
           token: ${{ secrets.GITHUB_TOKEN }}
 

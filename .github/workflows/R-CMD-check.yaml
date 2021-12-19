@@ -47,6 +47,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           install-r: false
           cache-version: rcc-smoke-1
+          needs: check
           extra-packages: rcmdcheck roxygen2 styler
 
       - uses: ./.github/workflows/custom/after-install
@@ -139,6 +140,7 @@ jobs:
           r-version: ${{ matrix.config.r }}
           cache-version: rcc-main-1
           token: ${{ secrets.GITHUB_TOKEN }}
+          needs: check
 
       - uses: ./.github/workflows/custom/after-install
 
@@ -196,6 +198,7 @@ jobs:
           r-version: ${{ matrix.config.r }}
           cache-version: rcc-main-1
           token: ${{ secrets.GITHUB_TOKEN }}
+          needs: check
 
       - uses: ./.github/workflows/custom/after-install
 
