@@ -5,8 +5,10 @@ generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 duckdb::dbQuoteLiteral("duckdb_connection")
+pool::dbQuoteLiteral("Pool")
 RMariaDB::dbQuoteLiteral("MariaDBConnection")
 RPostgres::dbQuoteLiteral("PqConnection")
+sparklyr::dbQuoteLiteral("spark_connection")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -26,7 +28,7 @@ RPostgres::dbQuoteLiteral("PqConnection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.1.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
       </span>
     </div>
 
@@ -69,8 +71,10 @@ use in a query as a literal value of the correct type, to make sure that you
 generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteLiteral("duckdb_connection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-quote.html" class="external-link">pool::dbQuoteLiteral("Pool")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteLiteral("MariaDBConnection")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteLiteral("PqConnection")</a></code></p></li>
+<li><p><code>sparklyr::dbQuoteLiteral("spark_connection")</code></p></li>
 </ul></div>
     </div>
 
