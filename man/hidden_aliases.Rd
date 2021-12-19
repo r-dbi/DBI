@@ -158,9 +158,25 @@
 
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
-\S4method{sqlCreateTable}{DBIConnection}(con, table, fields, row.names = NA, temporary = FALSE, ...)
+\S4method{sqlCreateTable}{DBIConnection}(
+  con,
+  table,
+  fields,
+  row.names = NA,
+  temporary = FALSE,
+  ...,
+  pk = NULL
+)
 
-\S4method{dbCreateTable}{DBIConnection}(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
+\S4method{dbCreateTable}{DBIConnection}(
+  conn,
+  name,
+  fields,
+  ...,
+  row.names = NULL,
+  temporary = FALSE,
+  pk = NULL
+)
 
 \S4method{sqlAppendTable}{DBIConnection}(con, table, values, row.names = NA, ...)
 

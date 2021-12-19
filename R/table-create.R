@@ -29,6 +29,10 @@ NULL
 #' @param temporary If `TRUE`, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
+#' @param pk A character vector giving the names of primary key columns.
+#'   For some DBMS this must be specified at creation time.
+#'   Even if not strictly necessary, it may save substantial processing time later on.
+#'   This argument is processed with [dbQuoteIdentifier()].
 #' @export
 #' @examples
 #' sqlCreateTable(ANSI(), "my-table", c(a = "integer", b = "text"))
@@ -38,13 +42,13 @@ NULL
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5])
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5], row.names = FALSE)
 setGeneric("sqlCreateTable",
-  def = function(con, table, fields, row.names = NA, temporary = FALSE, ...) standardGeneric("sqlCreateTable")
+  def = function(con, table, fields, row.names = NA, temporary = FALSE, ..., pk = NULL) standardGeneric("sqlCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("sqlCreateTable", signature("DBIConnection"),
-  function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+  function(con, table, fields, row.names = NA, temporary = FALSE, ..., pk = NULL) {
     if (missing(row.names)) {
       warning("Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.",
         call. = FALSE
@@ -58,13 +62,22 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
       fields <- vapply(fields, function(x) DBI::dbDataType(con, x), character(1))
     }
 
+    if (!is.null(pk)) {
+      stopifnot(all(pk %in% names(fields)))
+      nullable <- ifelse(names(fields) %in% pk, " NOT NULL", "")
+    } else {
+      nullable <- ""
+    }
+
     field_names <- dbQuoteIdentifier(con, names(fields))
     field_types <- unname(fields)
     fields <- paste0(field_names, " ", field_types)
 
     SQL(paste0(
       "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
-      "  ", paste(fields, collapse = ",\n  "), "\n)\n"
+      "  ", paste0(fields, nullable, collapse = ",\n  "),
+      if (!is.null(pk)) paste0(",\n  PRIMARY KEY (", paste(dbQuoteIdentifier(con, pk), collapse = ", "), ")"),
+      "\n)\n"
     ))
   }
 )
@@ -101,13 +114,13 @@ setMethod("sqlCreateTable", signature("DBIConnection"),
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbCreateTable",
-  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) standardGeneric("dbCreateTable")
+  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE, pk = NULL) standardGeneric("dbCreateTable")
 )
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbCreateTable", signature("DBIConnection"),
-  function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+  function(conn, name, fields, ..., row.names = NULL, temporary = FALSE, pk = NULL) {
     stopifnot(is.null(row.names))
     stopifnot(is.logical(temporary), length(temporary) == 1L)
 
@@ -117,7 +130,8 @@ setMethod("dbCreateTable", signature("DBIConnection"),
       fields = fields,
       row.names = row.names,
       temporary = temporary,
-      ...
+      ...,
+      pk = pk
     )
     dbExecute(conn, query)
     invisible(TRUE)
