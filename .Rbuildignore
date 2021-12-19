@@ -31,3 +31,4 @@ inst\/doc\/DBI\.b..$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^tests/testthat/testthat-problems\.rds$
+^CRAN-SUBMISSION$
