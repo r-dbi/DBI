@@ -11,12 +11,46 @@ dbColumnInfo(res, ...)
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbColumnInfo()}
+returns a data frame
+with at least two columns \code{"name"} and \code{"type"} (in that order)
+(and optional columns that start with a dot).
+The \code{"name"} and \code{"type"} columns contain the names and types
+of the R columns of the data frame that is returned from \code{\link[=dbFetch]{dbFetch()}}.
+The \code{"type"} column is of type \code{character} and only for information.
+Do not compute on the \code{"type"} column, instead use \code{dbFetch(res, n = 0)}
+to create a zero-row data frame initialized with the correct data types.
+}
 \description{
 Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
 each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)
 }
+\section{Failure modes}{
+
+
+An attempt to query columns for a closed result set raises an error.
+
+}
+
+\section{Specification}{
+
+
+
+A column named \code{row_names} is treated like any other column.
+
+The column names are always consistent
+with the data returned by \code{dbFetch()}.
+
+If the query returns unnamed columns,
+non-empty and non-\code{NA} names are assigned.
+
+Column names that correspond to SQL or R keywords are left unchanged.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

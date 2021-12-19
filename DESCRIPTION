@@ -148,7 +148,6 @@ Collate:
     'dbiDataType_numeric.R'
     'deprecated.R'
     'fetch.R'
-    'hidden.R'
     'hms.R'
     'interpolate.R'
     'isSQLKeyword.R'

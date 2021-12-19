@@ -18,6 +18,9 @@ dbBreak()
 
 \item{...}{Other parameters passed on to methods.}
 }
+\value{
+\code{dbWithTransaction()} returns the value of the executed code.
+}
 \description{
 Given that \link{transactions} are implemented, this function
 allows you to pass in code that is run in a transaction.
@@ -37,6 +40,33 @@ it can be called only inside \code{dbWithTransaction()}.
 DBI implements \code{dbWithTransaction()}, backends should need to override this
 generic only if they implement specialized handling.
 }
+\section{Failure modes}{
+
+
+Failure to initiate the transaction
+(e.g., if the connection is closed
+or invalid
+of if \code{\link[=dbBegin]{dbBegin()}} has been called already)
+gives an error.
+
+}
+
+\section{Specification}{
+
+
+\code{dbWithTransaction()} initiates a transaction with \code{dbBegin()}, executes
+the code given in the \code{code} argument, and commits the transaction with
+\code{\link[=dbCommit]{dbCommit()}}.
+If the code raises an error, the transaction is instead aborted with
+\code{\link[=dbRollback]{dbRollback()}}, and the error is propagated.
+If the code calls \code{dbBreak()}, execution of the code stops and the
+transaction is silently aborted.
+All side effects caused by the code
+(such as the creation of new variables)
+propagate to the calling environment.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

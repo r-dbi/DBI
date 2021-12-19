@@ -12,6 +12,21 @@ dbListTables(conn, ...)
 
 \item{...}{Other parameters passed on to methods.}
 }
+\value{
+\code{dbListTables()}
+returns a character vector
+that enumerates all tables
+and views
+in the database.
+Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
+are part of the list.
+As soon a table is removed from the database,
+it is also removed from the list of database tables.
+
+The same applies to temporary tables if supported by the database.
+
+The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
+}
 \description{
 Returns the unquoted names of remote tables accessible through this
 connection.
@@ -20,6 +35,14 @@ This should include views and temporary objects, but not all database backends
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}
 }
+\section{Failure modes}{
+
+
+An error is raised when calling this method for a closed
+or invalid connection.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

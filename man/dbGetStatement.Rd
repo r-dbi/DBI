@@ -11,12 +11,25 @@ dbGetStatement(res, ...)
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbGetStatement()} returns a string, the query used in
+either \code{\link[=dbSendQuery]{dbSendQuery()}}
+or \code{\link[=dbSendStatement]{dbSendStatement()}}.
+}
 \description{
 Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}
 or \code{\link[=dbSendStatement]{dbSendStatement()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetStatement")}
 }
+\section{Failure modes}{
+
+
+Attempting to query the statement for a result set cleared with
+\code{\link[=dbClearResult]{dbClearResult()}} gives an error.
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

@@ -13,6 +13,13 @@ dbBind(res, params, ...)
 
 \item{...}{Other arguments passed on to methods.}
 }
+\value{
+\code{dbBind()} returns the result set,
+invisibly,
+for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}}
+and also for data manipulation statements issued by
+\code{\link[=dbSendStatement]{dbSendStatement()}}.
+}
 \description{
 For parametrized or prepared statements,
 the \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbSendStatement]{dbSendStatement()}} functions can be called with
@@ -50,6 +57,119 @@ Known examples are:
 \item \verb{:name} and \verb{$name} (named matching) in \pkg{RSQLite}
 }
 }
+\section{Failure modes}{
+
+
+Calling \code{dbBind()} for a query without parameters
+raises an error.
+Binding too many
+or not enough values,
+or parameters with wrong names
+or unequal length,
+also raises an error.
+If the placeholders in the query are named,
+all parameter values must have names
+(which must not be empty
+or \code{NA}),
+and vice versa,
+otherwise an error is raised.
+The behavior for mixing placeholders of different types
+(in particular mixing positional and named placeholders)
+is not specified.
+
+Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearResult]{dbClearResult()}}
+also raises an error.
+
+}
+
+\section{Specification}{
+
+
+\pkg{DBI} clients execute parametrized statements as follows:
+\enumerate{
+\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} with a query or statement
+that contains placeholders,
+store the returned \linkS4class{DBIResult} object in a variable.
+Mixing placeholders (in particular, named and unnamed ones) is not
+recommended.
+It is good practice to register a call to \code{\link[=dbClearResult]{dbClearResult()}} via
+\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
+(see the last enumeration item).
+Until \code{dbBind()} has been called, the returned result set object has the
+following behavior:
+\itemize{
+\item \code{\link[=dbFetch]{dbFetch()}} raises an error (for \code{dbSendQuery()})
+\item \code{\link[=dbGetRowCount]{dbGetRowCount()}} returns zero (for \code{dbSendQuery()})
+\item \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} returns an integer \code{NA} (for \code{dbSendStatement()})
+\item \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}
+\item \code{\link[=dbHasCompleted]{dbHasCompleted()}} returns \code{FALSE}
+}
+\item Construct a list with parameters
+that specify actual values for the placeholders.
+The list must be named or unnamed,
+depending on the kind of placeholders used.
+Named values are matched to named parameters, unnamed values
+are matched by position in the list of parameters.
+All elements in this list must have the same lengths and contain values
+supported by the backend; a \link{data.frame} is internally stored as such
+a list.
+The parameter list is passed to a call to \code{dbBind()} on the \code{DBIResult}
+object.
+\item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
+\itemize{
+\item For queries issued by \code{dbSendQuery()},
+call \code{\link[=dbFetch]{dbFetch()}}.
+\item For statements issued by \code{dbSendStatements()},
+call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{dbBind()} call,
+the statement is processed entirely before the function returns.)
+}
+\item Repeat 2. and 3. as necessary.
+\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
+}
+
+
+The elements of the \code{params} argument do not need to be scalars,
+vectors of arbitrary length
+(including length 0)
+are supported.
+For queries, calling \code{dbFetch()} binding such parameters returns
+concatenated results, equivalent to binding and fetching for each set
+of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the
+total number of rows affected if binding non-scalar parameters.
+\code{dbBind()} also accepts repeated calls on the same result set
+for both queries
+and data manipulation statements,
+even if no results are fetched between calls to \code{dbBind()},
+for both queries
+and data manipulation statements.
+
+If the placeholders in the query are named,
+their order in the \code{params} argument is not important.
+
+At least the following data types are accepted on input (including \link{NA}):
+\itemize{
+\item \link{integer}
+\item \link{numeric}
+\item \link{logical} for Boolean values
+\item \link{character}
+(also with special characters such as spaces, newlines, quotes, and backslashes)
+\item \link{factor} (bound as character,
+with warning)
+\item \link{Date}
+(also when stored internally as integer)
+\item \link{POSIXct} timestamps
+\item \link{POSIXlt} timestamps
+\item \link{difftime} values
+(also with units other than seconds
+and with the value stored as integer)
+\item lists of \link{raw} for blobs (with \code{NULL} entries for SQL NULL values)
+\item objects of type \link[blob:blob]{blob::blob}
+}
+
+}
+
 \examples{
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
