@@ -7,9 +7,20 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 
-Methods in other packages
-RSQLite::dbDataType("SQLiteConnection")
-RSQLite::dbDataType("SQLiteDriver")
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+duckdb::dbDataType("duckdb_connection", "ANY")
+duckdb::dbDataType("duckdb_driver", "ANY")
+RMariaDB::dbDataType("MariaDBConnection", "ANY")
+RMariaDB::dbDataType("MariaDBDriver", "ANY")
+odbc::dbDataType("OdbcConnection", "ANY")
+odbc::dbDataType("OdbcConnection", "data.frame")
+odbc::dbDataType("OdbcDriver", "ANY")
+odbc::dbDataType("OdbcDriver", "data.frame")
+odbc::dbDataType("OdbcDriver", "list")
+RPostgres::dbDataType("PqConnection", "ANY")
+RPostgres::dbDataType("PqDriver", "ANY")
+RSQLite::dbDataType("SQLiteConnection", "ANY")
+RSQLite::dbDataType("SQLiteDriver", "ANY")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -75,8 +86,19 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbDataType("SQLiteConnection")</a></code></p></li>
-<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteDriver-class.html" class="external-link">RSQLite::dbDataType("SQLiteDriver")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="NA">duckdb::dbDataType("duckdb_connection", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">duckdb::dbDataType("duckdb_driver", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RMariaDB::dbDataType("MariaDBConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RMariaDB::dbDataType("MariaDBDriver", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "list")</a></code></p></li>
+<li><p><code><a href="NA">RPostgres::dbDataType("PqConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RPostgres::dbDataType("PqDriver", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RSQLite::dbDataType("SQLiteConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="NA">RSQLite::dbDataType("SQLiteDriver", "ANY")</a></code></p></li>
 </ul></div>
     </div>
 

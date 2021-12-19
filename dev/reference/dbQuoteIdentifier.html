@@ -4,7 +4,14 @@ use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is dbUnquoteIdentifier().
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")
+RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")
+RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")
+odbc::dbQuoteIdentifier("OdbcConnection", "character")
+RPostgres::dbQuoteIdentifier("PqConnection", "character")
+RPostgres::dbQuoteIdentifier("PqConnection", "Id")
+RPostgres::dbQuoteIdentifier("PqConnection", "SQL")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
 
@@ -69,7 +76,14 @@ use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</a></code></p></li>
 </ul></div>
     </div>

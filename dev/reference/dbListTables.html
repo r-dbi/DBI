@@ -4,8 +4,13 @@ connection.
 This should include views and temporary objects, but not all database backends
 (in particular RMariaDB and RMySQL) support this.
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+duckdb::dbListTables("duckdb_connection")
+RMariaDB::dbListTables("MariaDBConnection")
+odbc::dbListTables("OdbcConnection")
+RPostgres::dbListTables("PqConnection")
 RSQLite::dbListTables("SQLiteConnection")
+odbc::dbListTables("Teradata")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -68,7 +73,12 @@ connection.
 This should include views and temporary objects, but not all database backends
 (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbListTables("SQLiteConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbListTables("duckdb_connection")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbListTables("MariaDBConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListTables-OdbcConnection-method.html" class="external-link">odbc::dbListTables("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbListTables("PqConnection")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbListTables("SQLiteConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListTables-methods.html" class="external-link">odbc::dbListTables("Teradata")</a></code></p></li>
 </ul></div>
     </div>
 

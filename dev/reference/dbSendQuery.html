@@ -6,7 +6,11 @@ then you must call dbClearResult() when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 dbGetQuery().
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+duckdb::dbSendQuery("duckdb_connection", "character")
+RMariaDB::dbSendQuery("MariaDBConnection", "character")
+odbc::dbSendQuery("OdbcConnection", "character")
+RPostgres::dbSendQuery("PqConnection", "ANY")
 RSQLite::dbSendQuery("SQLiteConnection", "character")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -72,7 +76,11 @@ then you must call <code><a href="dbClearResult.html">dbClearResult()</a></code>
 records you need. For interactive use, you should almost always prefer
 <code><a href="dbGetQuery.html">dbGetQuery()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbSendQuery("SQLiteConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbSendQuery("duckdb_connection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbSendQuery("MariaDBConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbSendQuery("OdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="NA">RPostgres::dbSendQuery("PqConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbSendQuery("SQLiteConnection", "character")</a></code></p></li>
 </ul></div>
     </div>
 

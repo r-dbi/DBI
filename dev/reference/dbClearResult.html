@@ -3,7 +3,11 @@
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+duckdb::dbClearResult("duckdb_result")
+RMariaDB::dbClearResult("MariaDBResult")
+odbc::dbClearResult("OdbcResult")
+RPostgres::dbClearResult("PqResult")
 RSQLite::dbClearResult("SQLiteResult")
 
 '><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -66,7 +70,11 @@ RSQLite::dbClearResult("SQLiteResult")
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html" class="external-link">RSQLite::dbClearResult("SQLiteResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbClearResult("duckdb_result")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbClearResult("MariaDBResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbClearResult("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-query.html" class="external-link">RPostgres::dbClearResult("PqResult")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html" class="external-link">RSQLite::dbClearResult("SQLiteResult")</a></code></p></li>
 </ul></div>
     </div>
 

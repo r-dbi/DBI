@@ -3,7 +3,14 @@
 converting row names to a column and specifying SQL data types for fields.
 New code should prefer dbCreateTable() and dbAppendTable().
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+duckdb::dbWriteTable("duckdb_connection", "character", "data.frame")
+RMariaDB::dbWriteTable("MariaDBConnection", "character", "character")
+RMariaDB::dbWriteTable("MariaDBConnection", "character", "data.frame")
+odbc::dbWriteTable("OdbcConnection", "character", "data.frame")
+odbc::dbWriteTable("OdbcConnection", "Id", "data.frame")
+odbc::dbWriteTable("OdbcConnection", "SQL", "data.frame")
+RPostgres::dbWriteTable("PqConnection", "character", "data.frame")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "character")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 
@@ -67,7 +74,14 @@ RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 converting row names to a column and specifying SQL data types for fields.
 New code should prefer <code><a href="dbCreateTable.html">dbCreateTable()</a></code> and <code><a href="dbAppendTable.html">dbAppendTable()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbWriteTable("duckdb_connection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbWriteTable("MariaDBConnection", "character", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbWriteTable("MariaDBConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "Id", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "SQL", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbWriteTable("PqConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")</a></code></p></li>
 </ul></div>
     </div>
