@@ -17,3 +17,4 @@
 #'   Formal specification (currently work in progress and incomplete):
 #'   `vignette("spec", package = "DBI")`
 "_PACKAGE"
+

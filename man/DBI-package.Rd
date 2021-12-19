@@ -11,6 +11,52 @@ management systems.
 All classes in this package are virtual and need to be extended by
 the various R/DBMS implementations (so-called \emph{DBI backends}).
 }
+\section{Definition}{
+
+
+A DBI backend is an R package
+which imports the \pkg{DBI}
+and \pkg{methods}
+packages.
+For better or worse, the names of many existing backends start with
+\sQuote{R}, e.g., \pkg{RSQLite}, \pkg{RMySQL}, \pkg{RSQLServer}; it is up
+to the backend author to adopt this convention or not.
+
+}
+
+\section{DBI classes and methods}{
+
+
+A backend defines three classes,
+which are subclasses of
+\linkS4class{DBIDriver},
+\linkS4class{DBIConnection},
+and \linkS4class{DBIResult}.
+The backend provides implementation for all methods
+of these base classes
+that are defined but not implemented by DBI.
+All methods defined in \pkg{DBI} are reexported (so that the package can
+be used without having to attach \pkg{DBI}),
+and have an ellipsis \code{...} in their formals for extensibility.
+
+}
+
+\section{Construction of the DBIDriver object}{
+
+
+The backend must support creation of an instance of its \linkS4class{DBIDriver}
+subclass
+with a \dfn{constructor function}.
+By default, its name is the package name without the leading \sQuote{R}
+(if it exists), e.g., \code{SQLite} for the \pkg{RSQLite} package.
+However, backend authors may choose a different name.
+The constructor must be exported, and
+it must be a function
+that is callable without arguments.
+DBI recommends to define a constructor with an empty argument list.
+
+}
+
 \examples{
 RSQLite::SQLite()
 }
