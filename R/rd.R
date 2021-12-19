@@ -22,7 +22,7 @@ methods_as_rd <- function(method) {
 
     if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
       url <- downlit::autolink_url(paste0("?", package, "::`", topic, "`"))
-      paste0("\\code{\\href{", url , "}{", call, "}}")
+      paste0("\\code{\\href{", url, "}{", call, "}}")
     } else {
       paste0("\\code{\\link[=", topic, "]{", call, "}}")
     }
