@@ -14,8 +14,7 @@ sqlData_DBIConnection <- function(con, value, row.names = NA, ...) {
   })
 
   # Convert everything to character and turn NAs into NULL
-  value[] <- lapply(value, as.character)
-  value[is.na(value)] <- "NULL"
+  value[!is_char] <- lapply(value[!is_char], dbQuoteLiteral, conn = con)
 
   value
 }
