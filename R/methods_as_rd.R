@@ -36,7 +36,7 @@ methods_as_rd <- function(method) {
   }
 
   item_text <- vapply(methods@.Data, s4_topic, character(1))
-  item_text <- item_text[!is.na(item_text)]
+  item_text <- sort(item_text[!is.na(item_text)])
 
   if (length(item_text) == 0) {
     return("")
