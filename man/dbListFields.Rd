@@ -31,7 +31,9 @@ This also works for temporary tables if supported by the database.
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
-List field names of a remote table
+Returns the field names of a remote table as a character vector.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListFields")}
 }
 \section{Failure modes}{
 

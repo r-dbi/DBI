@@ -45,6 +45,8 @@ Backends compliant to ANSI SQL 99 don't need to override it.
 Backends with a different SQL syntax can override \code{sqlCreateTable()},
 backends with entirely different ways to create tables need to
 override this method.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbCreateTable")}
 }
 \details{
 The \code{row.names} argument is not supported by this method.

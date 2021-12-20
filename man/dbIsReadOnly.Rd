@@ -15,6 +15,8 @@ or a \linkS4class{DBIResult}}
 }
 \description{
 This generic tests whether a database object is read only.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbIsReadOnly")}
 }
 \examples{
 dbIsReadOnly(ANSI())

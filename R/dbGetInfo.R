@@ -7,6 +7,10 @@
 #'  i.e. [DBIDriver-class], [DBIConnection-class],
 #'  or a [DBIResult-class]
 #' @param ... Other arguments to methods.
+#'
+#' @template methods
+#' @templateVar method_name dbGetInfo
+#'
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @family DBIResult generics

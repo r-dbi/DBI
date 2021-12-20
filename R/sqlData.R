@@ -7,16 +7,19 @@
 #' This method is mostly useful for backend implementers.
 #'
 #' The default method:
-#' \itemize{
-#'   \item Converts factors to characters
-#'   \item Quotes all strings
-#'   \item Converts all columns to strings
-#'   \item Replaces NA with NULL
-#' }
+#'
+#' - Converts factors to characters
+#' - Quotes all strings with [dbQuoteIdentifier()]
+#' - Converts all columns to strings with [dbQuoteLiteral()]
+#' - Replaces NA with NULL
 #'
 #' @inheritParams sqlCreateTable
 #' @inheritParams rownames
 #' @param value A data frame
+#'
+#' @template methods
+#' @templateVar method_name sqlData
+#'
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

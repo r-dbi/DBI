@@ -47,6 +47,8 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 Exposes an interface to simple \verb{CREATE TABLE} commands. The default
 method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlCreateTable")}
 }
 \details{
 The \code{row.names} argument must be passed explicitly in order to avoid

@@ -42,6 +42,8 @@ to override it. Backends with a different SQL syntax which use \verb{?}
 as a placeholder for prepared queries can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}.
 Other backends (with different placeholders or with entirely different
 ways to create tables) need to override the \code{dbAppendTable()} method.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbAppendTable")}
 }
 \details{
 The \code{row.names} argument is not supported by this method.

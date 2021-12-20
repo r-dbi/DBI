@@ -35,6 +35,10 @@
 #'   Arguments created by [SQL()] or [dbQuoteIdentifier()] remain unchanged.
 #' @return The `sql` query with the values from `...` and `.dots` safely
 #'   embedded.
+#'
+#' @template methods
+#' @templateVar method_name sqlInterpolate
+#'
 #' @export
 #' @examples
 #' sql <- "SELECT * FROM X WHERE name = ?name"
