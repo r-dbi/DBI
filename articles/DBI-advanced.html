@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@
 
       
 
-      </header><script src="DBI-advanced_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Advanced DBI Usage</h1>
@@ -87,12 +87,12 @@
 <div class="section level2">
 <h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
-<p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connections and execution of simple queries.</p>
+<p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connecting to DBMS and executing simple queries.</p>
 </div>
 <div class="section level2">
 <h2 id="how-to-run-more-complex-queries-using-dbi">How to run more complex queries using DBI<a class="anchor" aria-label="anchor" href="#how-to-run-more-complex-queries-using-dbi"></a>
 </h2>
-<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.</p>
+<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.</p>
 <p>These functions are:</p>
 <ul>
 <li>
@@ -165,7 +165,7 @@
 <h3 id="quoting">Quoting<a class="anchor" aria-label="anchor" href="#quoting"></a>
 </h3>
 <p>Quoting of parameter values is performed using the function <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code>, which supports many R data types, including date and time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
+<p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span>
 <span class="va">safe_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"G"</span><span class="op">)</span>
@@ -447,7 +447,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">##   amount</span>
 <span class="co">## 1   1700</span></code></pre>
-<p>Use <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> as a safe way to open a transaction, call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> on error.</p>
+<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> simplifies using transactions. Pass it a connection and the code you want to run as a transaction. It will execute the code and call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> if an error is thrown.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">withdraw_safely</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span>
@@ -480,7 +480,7 @@
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors, users do not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Users do not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -497,12 +497,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer>

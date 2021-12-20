@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@
 
       
 
-      </header><script src="backend_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Implementing a new backend</h1>
@@ -92,11 +92,11 @@
 <p>Start by creating a package. It’s up to you what to call the package, but following the existing pattern of <code>RSQLite</code>, <code>RMySQL</code>, <code>RPostgres</code> and <code>ROracle</code> will make it easier for people to find it. For this example, I’ll call my package <code>RKazam</code>.</p>
 <p>A ready-to-use template package is available at <a href="https://github.com/r-dbi/RKazam/" class="external-link uri">https://github.com/r-dbi/RKazam/</a>. You can start by creating a new GitHub repository from this template, or by copying the package code. Rename “Kazam” to your desired name everywhere. The template package already contains dummy implementations for all classes and methods.</p>
 <p>If you chose to create the package manually, make sure to include in your <code>DESCRIPTION</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="at">  DBI (&gt;= 0.3.0),</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="at">  methods</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">Suggests</span><span class="kw">:</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a><span class="at">  DBItest, testthat</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Imports</span><span class="kw">:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  DBI (&gt;= 0.3.0),</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  methods</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">Suggests</span><span class="kw">:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="at">  DBItest, testthat</span></span></code></pre></div>
 <p>Importing <code>DBI</code> is fine, because your users are not supposed to <em>attach</em> your package anyway; the preferred method is to attach <code>DBI</code> and use explicit qualification via <code>::</code> to access the driver in your package (which needs to be done only once).</p>
 </div>
 <div class="section level2">
@@ -280,12 +280,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer>

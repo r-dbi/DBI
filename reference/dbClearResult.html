@@ -3,8 +3,24 @@
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+bigrquery::dbClearResult("BigQueryResult")
+DatabaseConnector::dbClearResult("DatabaseConnectorResult")
+dittodb::dbClearResult("DBIMockResult")
+duckdb::dbClearResult("duckdb_result")
+lazysf::dbClearResult("SFSQLResult")
+odbc::dbClearResult("OdbcResult")
+RAthena::dbClearResult("AthenaResult")
+RClickhouse::dbClearResult("ClickhouseResult")
+RJDBC::dbClearResult("JDBCResult")
+RMariaDB::dbClearResult("MariaDBResult")
+RMySQL::dbClearResult("MySQLResult")
+RPostgres::dbClearResult("PqResult")
+RPostgreSQL::dbClearResult("PostgreSQLResult")
+RPresto::dbClearResult("PrestoResult")
 RSQLite::dbClearResult("SQLiteResult")
+sergeant::dbClearResult("DrillResult")
+sparklyr::dbClearResult("DBISparkResult")
 
 '><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -24,7 +40,7 @@ RSQLite::dbClearResult("SQLiteResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -57,7 +73,7 @@ RSQLite::dbClearResult("SQLiteResult")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Clear a result set</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBResult.R" class="external-link"><code>R/DBResult.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbClearResult.R" class="external-link"><code>R/dbClearResult.R</code></a></small>
     <div class="hidden name"><code>dbClearResult.Rd</code></div>
     </div>
 
@@ -66,13 +82,30 @@ RSQLite::dbClearResult("SQLiteResult")
 cases (e.g., very large result sets) this can be a critical step to avoid
 exhausting resources (memory, file descriptors, etc.)</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbClearResult("SQLiteResult")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbClearResult("BigQueryResult")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbClearResult-DatabaseConnectorResult-method.html" class="external-link">DatabaseConnector::dbClearResult("DatabaseConnectorResult")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbClearResult("DBIMockResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbClearResult("duckdb_result")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLResult-class.html" class="external-link">lazysf::dbClearResult("SFSQLResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbClearResult("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbClearResult.html" class="external-link">RAthena::dbClearResult("AthenaResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseResult-class.html" class="external-link">RClickhouse::dbClearResult("ClickhouseResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCResult-methods.html" class="external-link">RJDBC::dbClearResult("JDBCResult")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbClearResult("MariaDBResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbClearResult("MySQLResult")</a></code></p></li>
+<li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-query.html" class="external-link">RPostgres::dbClearResult("PqResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html" class="external-link">RPostgreSQL::dbClearResult("PostgreSQLResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbClearResult("PrestoResult")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html" class="external-link">RSQLite::dbClearResult("SQLiteResult")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/sergeant/man/DrillResult-class.html" class="external-link">sergeant::dbClearResult("DrillResult")</a></code></p></li>
+<li><p><code>sparklyr::dbClearResult("DBISparkResult")</code></p></li>
 </ul></div>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbClearResult</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbClearResult</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>res</dt>
@@ -83,8 +116,14 @@ exhausting resources (memory, file descriptors, etc.)</p>
     <div id="value">
     <h2>Value</h2>
     <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
-both <code><a href="dbSendQuery.html">dbSendQuery()</a></code>and <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.
-An attempt to close an already closed result set issues a warning
+both <code><a href="dbSendQuery.html">dbSendQuery()</a></code>and <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An attempt to close an already closed result set issues a warning
 in both cases.</p>
     </div>
     <div id="specification">
@@ -116,11 +155,10 @@ The DBI backend can expect a call to <code>dbClearResult()</code> for each
 <code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
 <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span>
@@ -139,11 +177,11 @@ The DBI backend can expect a call to <code>dbClearResult()</code> for each
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

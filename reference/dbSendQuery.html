@@ -6,8 +6,28 @@ then you must call dbClearResult() when you finish fetching the
 records you need. For interactive use, you should almost always prefer
 dbGetQuery().
 
-Methods in other packages
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")
+bigrquery::dbSendQuery("BigQueryConnection", "character")
+DatabaseConnector::dbSendQuery("DatabaseConnectorDbiConnection", "character")
+DatabaseConnector::dbSendQuery("DatabaseConnectorJdbcConnection", "character")
+dittodb::dbSendQuery("DBIMockConnection", "character")
+duckdb::dbSendQuery("duckdb_connection", "character")
+lazysf::dbSendQuery("SFSQLConnection", "ANY")
+odbc::dbSendQuery("OdbcConnection", "character")
+pool::dbSendQuery("Pool", "ANY")
+RAthena::dbSendQuery("AthenaConnection", "character")
+RClickhouse::dbSendQuery("ClickhouseConnection", "character")
+RH2::dbSendQuery("H2Connection", "character")
+RJDBC::dbSendQuery("JDBCConnection", "character")
+RMariaDB::dbSendQuery("MariaDBConnection", "character")
+RMySQL::dbSendQuery("MySQLConnection", "character")
+RPostgres::dbSendQuery("PqConnection", "ANY")
+RPostgreSQL::dbSendQuery("PostgreSQLConnection", "character")
+RPresto::dbSendQuery("PrestoConnection", "character")
 RSQLite::dbSendQuery("SQLiteConnection", "character")
+sergeant::dbSendQuery("DrillConnection", "ANY")
+sparklyr::dbSendQuery("spark_connection", "ANY")
 
 '><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -27,7 +47,7 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -60,7 +80,7 @@ RSQLite::dbSendQuery("SQLiteConnection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Execute a query on a given database connection</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBConnection.R" class="external-link"><code>R/DBConnection.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbSendQuery.R" class="external-link"><code>R/dbSendQuery.R</code></a></small>
     <div class="hidden name"><code>dbSendQuery.Rd</code></div>
     </div>
 
@@ -72,13 +92,34 @@ then you must call <code><a href="dbClearResult.html">dbClearResult()</a></code>
 records you need. For interactive use, you should almost always prefer
 <code><a href="dbGetQuery.html">dbGetQuery()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><ul><li><p><code>RSQLite::dbSendQuery("SQLiteConnection", "character")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")</code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbSendQuery("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbSendQuery-DatabaseConnectorDbiConnection-character-method.html" class="external-link">DatabaseConnector::dbSendQuery("DatabaseConnectorDbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbSendQuery-DatabaseConnectorJdbcConnection-character-method.html" class="external-link">DatabaseConnector::dbSendQuery("DatabaseConnectorJdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbSendQuery("DBIMockConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbSendQuery("duckdb_connection", "character")</a></code></p></li>
+<li><p><code>lazysf::dbSendQuery("SFSQLConnection", "ANY")</code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbSendQuery("OdbcConnection", "character")</a></code></p></li>
+<li><p><code>pool::dbSendQuery("Pool", "ANY")</code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/Query.html" class="external-link">RAthena::dbSendQuery("AthenaConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbSendQuery("ClickhouseConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RH2/man/H2Connection-methods.html" class="external-link">RH2::dbSendQuery("H2Connection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbSendQuery("JDBCConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbSendQuery("MariaDBConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbSendQuery("MySQLConnection", "character")</a></code></p></li>
+<li><p><code>RPostgres::dbSendQuery("PqConnection", "ANY")</code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html" class="external-link">RPostgreSQL::dbSendQuery("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbSendQuery("PrestoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbSendQuery("SQLiteConnection", "character")</a></code></p></li>
+<li><p><code>sergeant::dbSendQuery("DrillConnection", "ANY")</code></p></li>
+<li><p><code>sparklyr::dbSendQuery("spark_connection", "ANY")</code></p></li>
 </ul></div>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>conn</dt>
@@ -95,13 +136,7 @@ records you need. For interactive use, you should almost always prefer
 an S4 object that inherits from <a href="DBIResult-class.html">DBIResult</a>.
 The result set can be used with <code><a href="dbFetch.html">dbFetch()</a></code> to extract records.
 Once you have finished using a result, make sure to clear it
-with <code><a href="dbClearResult.html">dbClearResult()</a></code>.
-An error is raised when issuing a query over a closed
-or invalid connection,
-or if the query is not a non-<code>NA</code> string.
-An error is also raised if the syntax of the query is invalid
-and all query parameters are given (by passing the <code>params</code> argument)
-or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+with <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -115,6 +150,21 @@ is driver-specific: some drivers may choose to leave the output on the server
 and transfer them piecemeal to R, others may transfer all the data to the
 client -- but not necessarily to the memory that R manages. See individual
 drivers' <code>dbSendQuery()</code> documentation for details.</p>
+    </div>
+    <div id="failure-modes">
+    <h2>Failure modes</h2>
+    
+
+
+<p>An error is raised when issuing a query over a closed
+or invalid connection,
+or if the query is not a non-<code>NA</code> string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the <code>params</code> argument)
+or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
+
+
+
     </div>
     <div id="additional-arguments">
     <h2>Additional arguments</h2>
@@ -201,11 +251,10 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span>
@@ -287,11 +336,11 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

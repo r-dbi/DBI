@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -50,7 +50,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Internal page for hidden aliases</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/hidden.R" class="external-link"><code>R/hidden.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBObject.R" class="external-link"><code>R/DBObject.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBDriver.R" class="external-link"><code>R/DBDriver.R</code></a>, and 12 more</small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/ANSI.R" class="external-link"><code>R/ANSI.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/SQLKeywords_DBIObject.R" class="external-link"><code>R/SQLKeywords_DBIObject.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/SQLKeywords_missing.R" class="external-link"><code>R/SQLKeywords_missing.R</code></a>, and 42 more</small>
     <div class="hidden name"><code>hidden_aliases.Rd</code></div>
     </div>
 
@@ -58,89 +58,120 @@
     <p>For S4 methods that require a documentation entry but only clutter the index.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for DBIObject</span>
-<span class="fu"><a href="dbIsReadOnly.html">dbIsReadOnly</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="co"># S4 method for DBIObject</span>
+<span class="fu"><a href="make.db.names.html">SQLKeywords</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="co"># S4 method for character</span>
-<span class="fu"><a href="dbDriver.html">dbDriver</a></span><span class="op">(</span><span class="va">drvName</span>, <span class="va">...</span><span class="op">)</span>
+<span class="co"># S4 method for missing</span>
+<span class="fu"><a href="make.db.names.html">SQLKeywords</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="co"># S4 method for DBIDriver</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="dbAppendTable.html">dbAppendTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIDriver</span>
 <span class="fu"><a href="dbCanConnect.html">dbCanConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span>
 
+<span class="co"># S4 method for DBIConnector</span>
+<span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="dbCreateTable.html">dbCreateTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">fields</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnector</span>
+<span class="fu"><a href="dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span>
+
 <span class="co"># S4 method for DBIObject</span>
 <span class="fu"><a href="dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="co"># S4 method for Id</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1L</span><span class="op">)</span>
+<span class="co"># S4 method for character</span>
+<span class="fu"><a href="dbDriver.html">dbDriver</a></span><span class="op">(</span><span class="va">drvName</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection,character</span>
 <span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span>
 
+<span class="co"># S4 method for DBIConnection,Id</span>
+<span class="fu"><a href="dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIResult</span>
+<span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnector</span>
+<span class="fu"><a href="dbGetConnectArgs.html">dbGetConnectArgs</a></span><span class="op">(</span><span class="va">drv</span>, eval <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIResult</span>
+<span class="fu"><a href="dbGetInfo.html">dbGetInfo</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
+
 <span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
+<span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1L</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnector</span>
+<span class="fu"><a href="dbIsReadOnly.html">dbIsReadOnly</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIObject</span>
+<span class="fu"><a href="dbIsReadOnly.html">dbIsReadOnly</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection,Id</span>
+<span class="fu"><a href="dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,character</span>
 <span class="fu"><a href="dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
 <span class="fu"><a href="dbListObjects.html">dbListObjects</a></span><span class="op">(</span><span class="va">conn</span>, prefix <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">...</span><span class="op">)</span>
 
+<span class="co"># S4 method for DBIConnection,ANY</span>
+<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
 <span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span>, check.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,SQL</span>
+<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,Id</span>
+<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,ANY</span>
+<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,character</span>
+<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,SQL</span>
+<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection,Id</span>
 <span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="co"># S4 method for DBIConnection,Id</span>
-<span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,Id</span>
-<span class="fu"><a href="dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
+<span class="co"># S4 method for DBIConnection,character</span>
+<span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span>, check.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection,Id</span>
 <span class="fu"><a href="dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span>
 
-<span class="co"># S4 method for AnsiConnection</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnector</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnector</span>
-<span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnector</span>
-<span class="fu"><a href="dbGetConnectArgs.html">dbGetConnectArgs</a></span><span class="op">(</span><span class="va">drv</span>, eval <span class="op">=</span> <span class="cn">TRUE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnector</span>
-<span class="fu"><a href="dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnector</span>
-<span class="fu"><a href="dbIsReadOnly.html">dbIsReadOnly</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIResult</span>
-<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIResult</span>
-<span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIResult</span>
-<span class="fu"><a href="dbGetInfo.html">dbGetInfo</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
+<span class="co"># S4 method for DBIConnection,character</span>
+<span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="sqlData.html">sqlData</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">value</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span>
+<span class="fu"><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">code</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection,Id</span>
+<span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIObject,character</span>
+<span class="fu"><a href="make.db.names.html">isSQLKeyword</a></span><span class="op">(</span>
+  <span class="va">dbObj</span>,
+  <span class="va">name</span>,
+  keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
+  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
+  <span class="va">...</span>
+<span class="op">)</span>
 
 <span class="co"># S4 method for DBIObject,character</span>
 <span class="fu"><a href="make.db.names.html">make.db.names</a></span><span class="op">(</span>
@@ -152,81 +183,50 @@
   <span class="va">...</span>
 <span class="op">)</span>
 
-<span class="co"># S4 method for DBIObject,character</span>
-<span class="fu"><a href="make.db.names.html">isSQLKeyword</a></span><span class="op">(</span>
-  <span class="va">dbObj</span>,
-  <span class="va">name</span>,
-  keywords <span class="op">=</span> <span class="va">.SQL92Keywords</span>,
-  case <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"lower"</span>, <span class="st">"upper"</span>, <span class="st">"any"</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="co"># S4 method for DBIObject</span>
-<span class="fu"><a href="make.db.names.html">SQLKeywords</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for missing</span>
-<span class="fu"><a href="make.db.names.html">SQLKeywords</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span>
+<span class="co"># S4 method for AnsiConnection</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="sqlInterpolate.html">sqlInterpolate</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span>, .dots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
 
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="sqlParseVariables.html">sqlParseVariables</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span><span class="op">)</span>
+<span class="co"># S4 method for DBIConnector</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIDriver</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIResult</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
+
+<span class="co"># S4 method for Id</span>
+<span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
 
 <span class="co"># S4 method for SQL</span>
 <span class="fu"><a href="https://rdrr.io/r/methods/show.html" class="external-link">show</a></span><span class="op">(</span><span class="va">object</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,ANY</span>
-<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,SQL</span>
-<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,Id</span>
-<span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,ANY</span>
-<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,character</span>
-<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection,SQL</span>
-<span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="sqlCreateTable.html">sqlCreateTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">fields</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="dbCreateTable.html">dbCreateTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">fields</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
 <span class="fu"><a href="sqlAppendTable.html">sqlAppendTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">values</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="dbAppendTable.html">dbAppendTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span>
+<span class="fu"><a href="sqlCreateTable.html">sqlCreateTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">fields</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="co"># S4 method for DBIConnection</span>
-<span class="fu"><a href="dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">code</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="sqlData.html">sqlData</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">value</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span>
 
-    <div id="ref-sections">
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="sqlInterpolate.html">sqlInterpolate</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span>, .dots <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+
+<span class="co"># S4 method for DBIConnection</span>
+<span class="fu"><a href="sqlParseVariables.html">sqlParseVariables</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">sql</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
+
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>object</dt>
-<dd><p>Object to display</p></dd>
-<dt>n</dt>
+    <dl><dt>n</dt>
 <dd><p>Number of rows to fetch, default -1</p></dd>
+<dt>object</dt>
+<dd><p>Table object to print</p></dd>
 </dl></div>
-    </div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -236,11 +236,11 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

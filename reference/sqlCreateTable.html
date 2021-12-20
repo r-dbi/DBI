@@ -19,7 +19,7 @@ This method is mostly useful for backend implementers."><!-- mathjax --><script 
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -52,7 +52,7 @@ This method is mostly useful for backend implementers."><!-- mathjax --><script 
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Compose query to create a simple table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/table-create.R" class="external-link"><code>R/table-create.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/sqlCreateTable.R" class="external-link"><code>R/sqlCreateTable.R</code></a></small>
     <div class="hidden name"><code>sqlCreateTable.Rd</code></div>
     </div>
 
@@ -62,16 +62,22 @@ method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">fields</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">fields</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>con</dt>
 <dd><p>A database connection.</p></dd>
 <dt>table</dt>
-<dd><p>Name of the table. Escaped with
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p></dd>
+<dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,</p></li>
+<li><p>a call to <code><a href="Id.html">Id()</a></code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
+<li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
+</ul></dd>
 <dt>fields</dt>
 <dd><p>Either a character vector or a data frame.</p>
 <p>A named character vector: Names are column names, values are types.
@@ -97,11 +103,10 @@ default name.</p>
     <p>The <code>row.names</code> argument must be passed explicitly in order to avoid
 a compatibility warning.  The default will be changed in a later release.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"my-table"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"integer"</span>, b <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlCreateTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"my-table"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>a <span class="op">=</span> <span class="st">"integer"</span>, b <span class="op">=</span> <span class="st">"text"</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; CREATE TABLE "my-table" (</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   "a" integer,</span>
@@ -150,11 +155,11 @@ a compatibility warning.  The default will be changed in a later release.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

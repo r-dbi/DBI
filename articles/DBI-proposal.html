@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -69,7 +69,7 @@
 
       
 
-      </header><script src="DBI-proposal_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Common Interface to Relational Databases from R and S – A Proposal</h1>
@@ -84,12 +84,12 @@
 
     
     
-<p>For too long S and similar data analysis environments have lacked good interfaces to relational database systems (RDBMS). For the last twenty years or so these RDBMS have evolved into highly optimized client-server systems for data storage and manipulation, and currently they serve as repositories for most of the business, industrial, and research “raw” data that analysts work with. Other analysis packages, such as SAS, have traditionally provided good data connectivity, but S and GNU R have relied on intermediate text files as means of importing data (but see <span class="citation">(<em>R Data Import/Export</em> 2001)</span> and <span class="citation">(<em>Using Relational Database Systems with R</em> 2000)</span>.) Although this simple approach works well for relatively modest amounts of mostly static data, it does not scale up to larger amounts of data distributed over machines and locations, nor does it scale up to data that is highly dynamic – situations that are becoming increasingly common.</p>
+<p>For too long S and similar data analysis environments have lacked good interfaces to relational database systems (RDBMS). For the last twenty years or so these RDBMS have evolved into highly optimized client-server systems for data storage and manipulation, and currently they serve as repositories for most of the business, industrial, and research “raw” data that analysts work with. Other analysis packages, such as SAS, have traditionally provided good data connectivity, but S and GNU R have relied on intermediate text files as means of importing data (but see <span class="citation"><em><span>R</span> Data Import/Export</em> (2001)</span> and <span class="citation"><em>Using Relational Database Systems with <span>R</span></em> (2000)</span>.) Although this simple approach works well for relatively modest amounts of mostly static data, it does not scale up to larger amounts of data distributed over machines and locations, nor does it scale up to data that is highly dynamic – situations that are becoming increasingly common.</p>
 <p>We want to propose a common interface between R/S and RDBMS that would allow users to access data stored on database servers in a uniform and predictable manner irrespective of the database engine. The interface defines a small set of classes and methods similar in spirit to Python’s DB-API, Java’s JDBC, Microsoft’s ODBC, Perl’s DBI, etc., but it conforms to the “whole-object” philosophy so natural in S and R.</p>
 <div class="section level1">
 <h1 id="sec:distr">Computing with Distributed Data<a class="anchor" aria-label="anchor" href="#sec:distr"></a>
 </h1>
-<p>As data analysts, we are increasingly faced with the challenge of larger data sources distributed over machines and locations; most of these data sources reside in relational database management systems (RDBMS). These relational databases represent a mature client-server distributed technology that we as analysts could be exploiting more that we’ve done in the past. The relational technology provides a well-defined standard, the ANSI SQL-92 <span class="citation">(<em>X/Open CAE Specification: SQL and RDA</em> 1994)</span>, both for defining and manipulating data in a highly optimized fashion from virtually any application.</p>
+<p>As data analysts, we are increasingly faced with the challenge of larger data sources distributed over machines and locations; most of these data sources reside in relational database management systems (RDBMS). These relational databases represent a mature client-server distributed technology that we as analysts could be exploiting more that we’ve done in the past. The relational technology provides a well-defined standard, the ANSI SQL-92 <span class="citation"><em><span class="nocase">X/Open CAE Specification: SQL and RDA</span></em> (1994)</span>, both for defining and manipulating data in a highly optimized fashion from virtually any application.</p>
 <p>In contrast, S and Splus have provided somewhat limited tools for coping with the challenges of larger and distributed data sets (Splus does provide an <code>import</code> function to import from databases, but it is quite limited in terms of SQL facilities). The R community has been more resourceful and has developed a number of good libraries for connecting to mSQL, MySQL, PostgreSQL, and ODBC; each library, however, has defined its own interface to each database engine a bit differently. We think it would be to everybody’s advantage to coordinate the definition of a common interface, an effort not unlike those taken in the Python and Perl communities.</p>
 <p>The goal of a common, seamless access to distributed data is a modest one in our evolution towards a fully distributed computing environment. We recognize the greater goal of distributed computing as the means to fully integrate diverse systems – not just databases – into a truly flexible analysis environment. Good connectivity to databases, however, is of immediate necessity both in practical terms and as a means to help us transition from monolithic, self-contained systems to those in which computations, not only the data, can be carried out in parallel over a wide number of computers and/or systems <span class="citation">Temple Lang (2000)</span>. Issues of reliability, security, location transparency, persistence, etc., will be new to most of us and working with distributed data may provide a more gradual change to ease in the ultimate goal of full distributed computing.</p>
 </div>
@@ -404,15 +404,15 @@
 <div class="section level2">
 <h2 id="sec:corba">CORBA and a 3-tier Architecture<a class="anchor" aria-label="anchor" href="#sec:corba"></a>
 </h2>
-<p>Yet another approach is to move the interface to RDBMS out of R and S altogether into a separate system or server that would serve as a proxy between R/S and databases. The communication to this middle-layer proxy could be done through CORBA <span class="citation">(John M. Chambers et al. 1998, @corba:siegel.96)</span>, Java’s RMI, or some other similar technology. Such a design could be very flexible, but the CORBA facilities both in R and S are not widely available yet, and we do not know whether this will be made available to Splus5 users from MathSoft. Also, my experience with this technology is rather limited.</p>
+<p>Yet another approach is to move the interface to RDBMS out of R and S altogether into a separate system or server that would serve as a proxy between R/S and databases. The communication to this middle-layer proxy could be done through CORBA <span class="citation">Siegel (1996)</span>, Java’s RMI, or some other similar technology. Such a design could be very flexible, but the CORBA facilities both in R and S are not widely available yet, and we do not know whether this will be made available to Splus5 users from MathSoft. Also, my experience with this technology is rather limited.</p>
 <p>On the other hand, this 3-tier architecture seem to offer the most flexibility to cope with very large distributed databases, not necessarily relational.</p>
 </div>
 </div>
 <div class="section level1">
 <h1 id="sec:resources">Resources<a class="anchor" aria-label="anchor" href="#sec:resources"></a>
 </h1>
-<p>The latest documentation and software on the RS-DBI was available at www.omegahat.net (link dead now: <code>https://www.omegahat.net/contrib/RS-DBI/index.html</code>). The R community has developed interfaces to some databases: <a href="https://cran.r-project.org/src/contrib/Archive/RmSQL/" class="external-link">RmSQL</a> is an interface to the <a href="https://www.Hughes.com.au" class="external-link">mSQL</a> database written by Torsten Hothorn; <a href="https://sites.cns.utexas.edu/keittlab/software-0" class="external-link">RPgSQL</a> is an interface to <a href="https://www.postgreSQL.org" class="external-link">PostgreSQL</a> and was written by Timothy H. Keitt; <a href="https://www.stats.ox.ac.uk/pub/bdr/" class="external-link">RODBC</a> is an interface to ODBC, and it was written by <a href="mailto:mlapsley@sthelier.sghms.ac.uk">Michael Lapsley</a>. (For more details on all these see <span class="citation">(<em>R Data Import/Export</em> 2001)</span>.)</p>
-<p>The are R and S-Plus interfaces to <a href="https://dev.mysql.com/" class="external-link">MySQL</a> that follow the propose RS-DBI API described here; also, there’s an S-Plus interface SOracle <span class="citation">James (n.d.)</span> to <a href="https://www.oracle.com/" class="external-link">Oracle</a> (we expect to have an R implementation soon.)</p>
+<p>The latest documentation and software on the RS-DBI was available at www.omegahat.net (link dead now: <code>https://www.omegahat.net/contrib/RS-DBI/index.html</code>). The R community has developed interfaces to some databases: <a href="https://cran.r-project.org/src/contrib/Archive/RmSQL/" class="external-link">RmSQL</a> is an interface to the <a href="https://www.Hughes.com.au" class="external-link">mSQL</a> database written by Torsten Hothorn; <a href="https://sites.cns.utexas.edu/keittlab/software-0" class="external-link">RPgSQL</a> is an interface to <a href="https://www.postgreSQL.org" class="external-link">PostgreSQL</a> and was written by Timothy H. Keitt; <a href="https://www.stats.ox.ac.uk/pub/bdr/" class="external-link">RODBC</a> is an interface to ODBC, and it was written by <a href="mailto:mlapsley@sthelier.sghms.ac.uk">Michael Lapsley</a>. (For more details on all these see <span class="citation"><em><span>R</span> Data Import/Export</em> (2001)</span>.)</p>
+<p>The are R and S-Plus interfaces to <a href="https://dev.mysql.com/" class="external-link">MySQL</a> that follow the propose RS-DBI API described here; also, there’s an S-Plus interface SOracle <span class="citation">James (In preparation)</span> to <a href="https://www.oracle.com/" class="external-link">Oracle</a> (we expect to have an R implementation soon.)</p>
 <p>The idea of a common interface to databases has been successfully implemented in Java’s Database Connectivity (JDBC) (<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="external-link">www.javasoft.com</a>), in C through the Open Database Connectivity (ODBC) (<a href="http://www.unixodbc.org/" class="external-link">www.unixodbc.org</a>), in Python’s Database Application Programming Interface (<a href="https://www.python.org" class="external-link">www.python.org</a>), and in Perl’s Database Interface (<a href="https://www.cpan.org" class="external-link">www.cpan.org</a>).</p>
 </div>
 <div class="section level1">
@@ -580,33 +580,33 @@
    def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span>
    <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getTableIndices"</span><span class="op">)</span>
    <span class="op">)</span></code></pre></div>
-<div id="refs" class="references">
-<div id="ref-S4">
-<p>Chambers, J. M. 1998. <em>Programming with Data: A Guide to the S Language</em>. New York: Springer.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-S4" class="csl-entry">
+Chambers, J. M. 1998. <em>Programming with Data: A Guide to the s Language</em>. New York: Springer.
 </div>
-<div id="ref-s-corba.98">
-<p>Chambers, John M., Mark H. Hansen, David A. James, and Duncan Temple Lang. 1998. “Distributed Computing with Data: A Corba-Based Approach.” In <em>Computing Science and Statistics</em>. Inteface Foundation of North America.</p>
+<div id="ref-s-corba.98" class="csl-entry">
+Chambers, John M., Mark H. Hansen, David A. James, and Duncan Temple Lang. 1998. <span>“Distributed Computing with Data: A CORBA-Based Approach.”</span> In <em>Computing Science and Statistics</em>. Inteface Foundation of North America.
 </div>
-<div id="ref-odbc.lj">
-<p>Harvey, Peter. 1999. “Open Database Connectivity.” <em>Linux Journal</em> Nov. (67): 68–72.</p>
+<div id="ref-odbc.lj" class="csl-entry">
+Harvey, Peter. 1999. <span>“<span>Open Database Connectivity</span>.”</span> <em><span>Linux Journal</span></em> Nov. (67): 68–72.
 </div>
-<div id="ref-RS-Oracle">
-<p>James, David A. n.d. “An R/S Interface to the Oracle Database.” www.omegahat.org: Bell Labs, Lucent Technologies.</p>
+<div id="ref-RS-Oracle" class="csl-entry">
+James, David A. In preparation. <span>“An <span>R</span>/<span>S</span> Interface to the <span>Oracle</span> Database.”</span> www.omegahat.org: Bell Labs, Lucent Technologies.
 </div>
-<div id="ref-R.imp-exp">
-<p><em>R Data Import/Export</em>. 2001. R-Development Core Team.</p>
+<div id="ref-R.imp-exp" class="csl-entry">
+<em><span>R</span> Data Import/Export</em>. 2001. R-Development Core Team.
 </div>
-<div id="ref-corba:siegel.96">
-<p>Siegel, Jon. 1996. <em>CORBA Fundamentals and Programming</em>. New York: Wiley.</p>
+<div id="ref-corba:siegel.96" class="csl-entry">
+Siegel, Jon. 1996. <em>CORBA Fundamentals and Programming</em>. New York: Wiley.
 </div>
-<div id="ref-duncan2000">
-<p>Temple Lang, Duncan. 2000. “The Omegahat Environment: New Possibilities for Statistical Computing.” <em>Journal of Computational and Graphical Statistics</em> to appear.</p>
+<div id="ref-duncan2000" class="csl-entry">
+Temple Lang, Duncan. 2000. <span>“<span class="nocase">The Omegahat Environment: New Possibilities for Statistical Computing</span>.”</span> <em>Journal of Computational and Graphical Statistics</em> to appear.
 </div>
-<div id="ref-R-dbms">
-<p><em>Using Relational Database Systems with R</em>. 2000. R-Developemt Core Team.</p>
+<div id="ref-R-dbms" class="csl-entry">
+<em>Using Relational Database Systems with <span>R</span></em>. 2000. R-Developemt Core Team.
 </div>
-<div id="ref-sql92">
-<p><em>X/Open CAE Specification: SQL and RDA</em>. 1994. Reading, UK: X/Open Company Ltd.</p>
+<div id="ref-sql92" class="csl-entry">
+<em><span class="nocase">X/Open CAE Specification: SQL and RDA</span></em>. 1994. Reading, UK: X/Open Company Ltd.
 </div>
 </div>
 </div>
@@ -631,12 +631,12 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer>

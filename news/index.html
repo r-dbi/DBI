@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
       </span>
     </div>
 
@@ -54,6 +54,25 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="1.1.2" id="dbi-112-2021-12-19">DBI 1.1.2 (2021-12-19)<a class="anchor" aria-label="anchor" href="#dbi-112-2021-12-19"></a></h2>
+<div class="section level3">
+<h3 id="features-1-1-2">Features<a class="anchor" aria-label="anchor" href="#features-1-1-2"></a></h3>
+<ul><li>Use <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> in default method for <code><a href="../reference/sqlData.html">sqlData()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/362" class="external-link">#362</a>, <a href="https://github.com/r-dbi/DBI/issues/371" class="external-link">#371</a>).</li>
+<li>Update specification with changes from DBItest 1.7.2 (<a href="https://github.com/r-dbi/DBI/issues/367" class="external-link">#367</a>).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="documentation-1-1-2">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-1-2"></a></h3>
+<ul><li>Method documentation on pkgdown is clickable and contains methods from all known DBI backends except ROracle (<a href="https://github.com/r-dbi/DBI/issues/360" class="external-link">#360</a>).</li>
+<li>
+<code><a href="../reference/Id.html">?Id</a></code> gains better examples (<a href="https://github.com/r-dbi/DBI/issues/295" class="external-link">#295</a>, <a href="https://github.com/r-dbi/DBI/issues/370" class="external-link">#370</a>).</li>
+<li>Elaborate on status of <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code> in the documentation (<a href="https://github.com/r-dbi/DBI/issues/352" class="external-link">#352</a>, <a href="https://github.com/r-dbi/DBI/issues/372" class="external-link">#372</a>).</li>
+<li>Make method definition more similar to S3. All <code><a href="https://rdrr.io/r/methods/setMethod.html" class="external-link">setMethod()</a></code> calls refer to top-level functions (<a href="https://github.com/r-dbi/DBI/issues/368" class="external-link">#368</a>).</li>
+<li>The pkgdown documentation for DBI generics (e.g. <code><a href="../reference/dbConnect.html">?dbConnect</a></code>) contains clickable links to many known backends, and an explanatory sentence (<a href="https://github.com/r-dbi/DBI/issues/360" class="external-link">#360</a>).</li>
+<li>
+<code><a href="../reference/dbReadTable.html">?dbReadTable</a></code> and other pages gain pointers to <code><a href="../reference/Id.html">Id()</a></code> and <code><a href="../reference/SQL.html">SQL()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/359" class="external-link">#359</a>).</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="1.1.1" id="dbi-111-2021-01-04">DBI 1.1.1 (2021-01-04)<a class="anchor" aria-label="anchor" href="#dbi-111-2021-01-04"></a></h2>
 <div class="section level3">
 <h3 id="documentation-1-1-1">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-1-1"></a></h3>
@@ -75,7 +94,7 @@
 <div class="section level3">
 <h3 id="internal-1-1-1">Internal<a class="anchor" aria-label="anchor" href="#internal-1-1-1"></a></h3>
 <ul><li>Switch to GitHub Actions (<a href="https://github.com/r-dbi/DBI/issues/326" class="external-link">#326</a>).</li>
-<li>Update URL in DESCRIPTION.</li>
+<li>Update URL in <code>DESCRIPTION</code>.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -336,7 +355,7 @@
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2-5" id="version-02-5">Version 0.2-5<a class="anchor" aria-label="anchor" href="#version-02-5"></a></h2>
 <ul><li><p>Code cleanups contributed by Matthias Burger: avoid partial argument name matching and use TRUE/FALSE, not T/F.</p></li>
-<li><p>Change behavior of make.db.names.default to quote SQL keywords if allow.keywords is FALSE. Previously, SQL keywords would be name mangled with underscores and a digit. Now they are quoted using ‘"’.</p></li>
+<li><p>Change behavior of make.db.names.default to quote SQL keywords if allow.keywords is FALSE. Previously, SQL keywords would be name mangled with underscores and a digit. Now they are quoted using ‘“’.</p></li>
 </ul></div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2-4" id="version-02-4">Version 0.2-4<a class="anchor" aria-label="anchor" href="#version-02-4"></a></h2>
@@ -392,11 +411,11 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="http://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
