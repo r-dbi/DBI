@@ -4,7 +4,14 @@ dbExecute().
 Backends compliant to ANSI SQL 99 don't need to override it.
 Backends with a different SQL syntax can override sqlCreateTable(),
 backends with entirely different ways to create tables need to
-override this method."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+override this method.
+
+Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+AzureKusto::dbCreateTable(&quot;AzureKustoConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
+DatabaseConnector::dbCreateTable(&quot;DatabaseConnectorConnection&quot;, &quot;character&quot;, &quot;data.frame&quot;)
+pool::dbCreateTable(&quot;Pool&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
+
+"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -66,6 +73,11 @@ Backends compliant to ANSI SQL 99 don't need to override it.
 Backends with a different SQL syntax can override <code><a href="sqlCreateTable.html">sqlCreateTable()</a></code>,
 backends with entirely different ways to create tables need to
 override this method.</p>
+<p></p><div class="section">
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbCreateTable("AzureKustoConnection", "ANY", "ANY")</code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbCreateTable-DatabaseConnectorConnection-character-data.frame-method.html" class="external-link">DatabaseConnector::dbCreateTable("DatabaseConnectorConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code>pool::dbCreateTable("Pool", "ANY", "ANY")</code></p></li>
+</ul></div>
     </div>
 
     <div id="ref-usage">
