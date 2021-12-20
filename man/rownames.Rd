@@ -42,5 +42,4 @@ sqlRownamesToColumn(head(mtcars), "ROWNAMES")
 sqlRownamesToColumn(head(iris))
 sqlRownamesToColumn(head(iris), TRUE)
 sqlRownamesToColumn(head(iris), "ROWNAMES")
-
 }

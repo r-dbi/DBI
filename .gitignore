@@ -7,3 +7,5 @@ inst/web
 /.drake
 /docs
 CRAN-RELEASE
+tests/testthat/testthat-problems.rds
+CRAN-SUBMISSION

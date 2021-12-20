@@ -1,6 +1,5 @@
-#' @include hidden.R
-#' @include DBConnection.R
-#' @include DBDriver.R
+#' @include DBIConnection.R
+#' @include DBIDriver.R
 setClass("AnsiConnection", contains = "DBIConnection")
 
 #' A dummy DBI connector that simulates ANSI-SQL compliance
@@ -13,8 +12,12 @@ ANSI <- function() {
   new("AnsiConnection")
 }
 
-#' @rdname hidden_aliases
-#' @export
-setMethod("show", "AnsiConnection", function(object) {
-  cat("<AnsiConnection>\n")
-})
+#' Internal page for hidden aliases
+#'
+#' For S4 methods that require a documentation entry but only clutter the index.
+#'
+#' @usage NULL
+#' @format NULL
+#' @keywords internal
+#' @docType methods
+hidden_aliases <- NULL

@@ -29,7 +29,6 @@
 #' sqlRownamesToColumn(head(iris))
 #' sqlRownamesToColumn(head(iris), TRUE)
 #' sqlRownamesToColumn(head(iris), "ROWNAMES")
-#'
 NULL
 
 #' @export
@@ -102,3 +101,4 @@ guessColName <- function(df, row.names) {
     stop("Unknown input")
   }
 }
+

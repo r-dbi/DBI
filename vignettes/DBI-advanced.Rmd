@@ -28,12 +28,12 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 ## Who this tutorial is for
 
 This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL's transaction features.
-See `vignette("DBI", package = "DBI")` for a more basic tutorial covering connections and execution of simple queries.
+See `vignette("DBI", package = "DBI")` for a more basic tutorial covering connecting to DBMS and executing simple queries.
 
 ## How to run more complex queries using DBI
 
 `dbGetQuery()` works by calling a number of functions behind the scenes.
-If you need more control, you can manually build your own query, retrieve results at your selected rate, and release the resources involved, by calling the same functions.
+If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.
 
 These functions are:
 
@@ -91,9 +91,9 @@ DBI supports two ways to avoid SQL injection attacks from user-supplied paramete
 
 Quoting of parameter values is performed using the function `dbQuoteLiteral()`, which supports many R data types, including date and time.[^quote-string]
 
-[^quote-string]: An older method, `dbQuoteString()`, was used to quote string values only. The `dbQuoteLiteral()` method forwards to `dbQuoteString()` for character vectors, users do not need to distinguish between these two cases.
+[^quote-string]: An older method, `dbQuoteString()`, was used to quote string values only. The `dbQuoteLiteral()` method forwards to `dbQuoteString()` for character vectors. Users do not need to distinguish between these two cases.
 
-In cases where users may be supplying table or column names to use in the query for data retrieval, those names, or identifiers, must also be escaped.
+In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped.
 As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
 
 ```{r quote}
@@ -306,7 +306,9 @@ dbReadTable(con, "cash")
 dbReadTable(con, "account")
 ```
 
-Use `dbWithTransaction()` as a safe way to open a transaction, call `dbCommit()` on success and call `dbRollback()` on error.
+`dbWithTransaction()` simplifies using transactions. 
+Pass it a connection and the code you want to run as a transaction. 
+It will execute the code and call `dbCommit()` on success and call `dbRollback()` if an error is thrown.
 
 ```{r error = TRUE}
 withdraw_safely <- function(amount) {
