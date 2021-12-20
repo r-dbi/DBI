@@ -7,6 +7,9 @@
 #'
 #' @inheritParams dbClearResult
 #'
+#' @template methods
+#' @templateVar method_name dbColumnInfo
+#'
 #' @inherit DBItest::spec_meta_column_info return
 #' @inheritSection DBItest::spec_meta_column_info Failure modes
 #' @inheritSection DBItest::spec_meta_column_info Specification

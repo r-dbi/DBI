@@ -22,6 +22,9 @@
 #' @inheritSection DBItest::spec_sql_create_table Additional arguments
 #' @inheritSection DBItest::spec_sql_create_table Specification
 #'
+#' @template methods
+#' @templateVar method_name dbCreateTable
+#'
 #' @family DBIConnection generics
 #' @export
 #' @examples

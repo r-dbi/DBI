@@ -26,6 +26,10 @@
 #' @param temporary If `TRUE`, will generate a temporary table statement.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
+#'
+#' @template methods
+#' @templateVar method_name sqlCreateTable
+#'
 #' @export
 #' @examples
 #' sqlCreateTable(ANSI(), "my-table", c(a = "integer", b = "text"))

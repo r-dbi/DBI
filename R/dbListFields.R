@@ -1,6 +1,11 @@
 #' List field names of a remote table
 #'
+#' Returns the field names of a remote table as a character vector.
+#'
 #' @inheritParams dbReadTable
+#'
+#' @template methods
+#' @templateVar method_name dbListFields
 #'
 #' @inherit DBItest::spec_sql_list_fields return
 #' @inheritSection DBItest::spec_sql_list_fields Failure modes

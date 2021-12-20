@@ -19,6 +19,9 @@
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlAppendTableTemplate
 #'
+#' @template methods
+#' @templateVar method_name dbAppendTable
+#'
 #' @inherit DBItest::spec_sql_append_table return
 #' @inheritSection DBItest::spec_sql_append_table Failure modes
 #' @inheritSection DBItest::spec_sql_append_table Specification

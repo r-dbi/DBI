@@ -61,6 +61,8 @@ data frame into an existing table. \code{sqlAppendTableTemplate()} generates
 a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
 The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlAppendTable")}
 }
 \details{
 The \code{row.names} argument must be passed explicitly in order to avoid

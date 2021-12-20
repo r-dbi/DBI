@@ -30,13 +30,15 @@ upload to the database. The output will vary a little from method to
 method depending on whether the main upload device is through a single
 SQL string or multiple parameterized queries.
 This method is mostly useful for backend implementers.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlData")}
 }
 \details{
 The default method:
 \itemize{
 \item Converts factors to characters
-\item Quotes all strings
-\item Converts all columns to strings
+\item Quotes all strings with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+\item Converts all columns to strings with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}}
 \item Replaces NA with NULL
 }
 }

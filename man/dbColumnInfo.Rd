@@ -27,6 +27,8 @@ Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
 each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbColumnInfo")}
 }
 \section{Failure modes}{
 

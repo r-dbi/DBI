@@ -42,6 +42,8 @@ named list, the names are used to match the values
 Mixing \verb{?} and \code{?name} syntaxes is an error.
 The number and names of values supplied must correspond to the placeholders
 used in the query.
+
+\Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlInterpolate")}
 }
 \section{Backend authors}{
 
