@@ -101,4 +101,3 @@ guessColName <- function(df, row.names) {
     stop("Unknown input")
   }
 }
-
