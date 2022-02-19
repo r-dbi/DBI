@@ -56,7 +56,7 @@ Config/Needs/website:
     odbc,
     pool,
     RAthena,
-    RClickhouse,
+    IMSMWU/RClickhouse,
     RH2,
     RJDBC,
     RMariaDB,
