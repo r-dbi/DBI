@@ -27,5 +27,5 @@ test_that("appending with Id works (#380)", {
   on.exit(dbDisconnect(db))
 
   dbExecute(db, "create table T(n integer primary key)")
-  expect_error(dbAppendTable(db, Id(table = "T"), data.frame()), "column")
+  expect_equal(dbAppendTable(db, Id(table = "T"), data.frame(n = 1:10)), 10)
 })
