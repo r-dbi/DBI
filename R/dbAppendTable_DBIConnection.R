@@ -4,7 +4,6 @@ dbAppendTable_DBIConnection <- function(conn, name, value, ..., row.names = NULL
   if (!is.null(row.names)) {
     stop("Can't pass `row.names` to `dbAppendTable()`", call. = FALSE)
   }
-  stopifnot(is.character(name), length(name) == 1)
   stopifnot(is.data.frame(value))
 
   query <- sqlAppendTableTemplate(
