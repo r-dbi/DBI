@@ -43,7 +43,7 @@ Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Config/Needs/website: 
     r-dbi/DBItest,
     AzureKusto,
