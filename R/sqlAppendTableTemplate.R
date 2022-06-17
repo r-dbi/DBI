@@ -25,6 +25,10 @@ sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = 
 
   table <- dbQuoteIdentifier(con, table)
 
+  if (length(table) != 1) {
+    stop("Must pass one table name", call. = FALSE)
+  }
+
   values <- sqlRownamesToColumn(values[0, , drop = FALSE], row.names)
   fields <- dbQuoteIdentifier(con, names(values))
 
