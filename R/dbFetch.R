@@ -8,6 +8,8 @@
 #' implementation for `dbFetch()` calls `fetch()` so that it is compatible with
 #' existing code. Modern backends should implement for `dbFetch()` only.
 #'
+#' @inheritSection dbBind The data retrieval flow
+#'
 #' @template methods
 #' @templateVar method_name dbFetch
 #'

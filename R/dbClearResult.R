@@ -1,8 +1,11 @@
 #' Clear a result set
 #'
-#' Frees all resources (local and remote) associated with a result set.  In some
-#' cases (e.g., very large result sets) this can be a critical step to avoid
-#' exhausting resources (memory, file descriptors, etc.)
+#' Frees all resources (local and remote) associated with a result set.
+#' This step is mandatory for all objects obtained by calling
+#' [dbSendQuery()] or [dbSendStatement()].
+#'
+#' @inheritSection dbBind The data retrieval flow
+#' @inheritSection dbBind The command execution flow
 #'
 #' @template methods
 #' @templateVar method_name dbClearResult

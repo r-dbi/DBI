@@ -3,6 +3,8 @@
 #' This method returns the number of rows that were added, deleted, or updated
 #' by a data manipulation statement.
 #'
+#' @inheritSection dbBind The command execution flow
+#'
 #' @template methods
 #' @templateVar method_name dbGetRowsAffected
 #'

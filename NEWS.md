@@ -2,9 +2,16 @@
 
 # DBI 1.1.3 (2022-06-18)
 
-## Features 
+## Features
 
 - `dbAppendTable()` accepts `Id` (#381, @renkun-ken).
+
+
+## Documentation
+
+- `?dbSendQuery` and related methods gain a section "The data retrieval flow" (#386).
+
+- `?dbSendStatement` and related methods gain a section "The command execution flow" (#386).
 
 
 # DBI 1.1.2 (2021-12-19)

@@ -5,10 +5,14 @@
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
 #' the result is always free-d by [dbClearResult()].
+#' For passing query parameters, see [dbBind()], in particular
+#' the "The command execution flow" section.
 #'
 #' You can also use `dbExecute()` to call a stored procedure
 #' that performs data manipulation or other actions that do not return a result set.
-#' To execute a stored procedure that returns a result set use [dbGetQuery()] instead.
+#' To execute a stored procedure that returns a result set,
+#' or a data manipulation query that also returns a result set
+#' such as `INSERT INTO ... RETURNING ...`, use [dbGetQuery()] instead.
 #'
 #' @template methods
 #' @templateVar method_name dbExecute
