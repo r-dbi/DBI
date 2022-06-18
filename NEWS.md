@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9000 (2022-06-18)
+
+- Internal changes only.
+
+
 # DBI 1.1.3 (2022-06-18)
 
 - Same as previous version.
