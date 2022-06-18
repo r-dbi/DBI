@@ -42,7 +42,7 @@ sergeant::dbListFields("DrillResult", "missing")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -85,9 +85,9 @@ sergeant::dbListFields("DrillResult", "missing")
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbListFields("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListFields("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbListFields-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbListFields("DatabaseConnectorConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbListFields("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/dbListFields-OdbcConnection-character-method.html" class="external-link">odbc::dbListFields("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbListFields("Pool", "character")</a></code></p></li>
@@ -115,6 +115,8 @@ sergeant::dbListFields("DrillResult", "missing")
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -123,12 +125,20 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbListFields()</code>returns a character vector
+    
+
+<p><code>dbListFields()</code></p>
+
+
+<p>returns a character vector
 that enumerates all fields
 in the table in the correct order.
 This also works for temporary tables if supported by the database.
@@ -209,7 +219,7 @@ or invalid connection.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

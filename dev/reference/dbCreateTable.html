@@ -29,7 +29,7 @@ pool::dbCreateTable(&quot;Pool&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -89,6 +89,8 @@ override this method.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -97,6 +99,8 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>fields</dt>
 <dd><p>Either a character vector or a data frame.</p>
 <p>A named character vector: Names are column names, values are types.
@@ -104,16 +108,25 @@ Names are escaped with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier(
 Field types are unescaped.</p>
 <p>A data frame: field types are generated using
 <code><a href="dbDataType.html">dbDataType()</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
+
 <dt>row.names</dt>
 <dd><p>Must be <code>NULL</code>.</p></dd>
+
+
 <dt>temporary</dt>
 <dd><p>If <code>TRUE</code>, will generate a temporary table statement.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbCreateTable()</code> returns <code>TRUE</code>, invisibly.</p>
+    
+
+<p><code>dbCreateTable()</code> returns <code>TRUE</code>, invisibly.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -225,7 +238,7 @@ raise an error.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

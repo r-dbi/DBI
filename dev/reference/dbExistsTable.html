@@ -42,7 +42,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -85,8 +85,8 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExistsTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbExistsTable("SFSQLConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "character")</a></code></p></li>
@@ -115,6 +115,8 @@ sparklyr::dbExistsTable("spark_connection", "character")
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -123,14 +125,21 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
-specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.
-This includes temporary tables if supported by the database.</p>
+    
+
+<p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
+specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.</p>
+
+
+<p>This includes temporary tables if supported by the database.</p>
     </div>
     <div id="failure-modes">
     <h2>Failure modes</h2>
@@ -205,7 +214,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

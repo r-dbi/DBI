@@ -31,7 +31,7 @@ sparklyr::dbExecute("spark_connection", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -93,14 +93,21 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>statement</dt>
 <dd><p>a character string containing SQL.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbExecute()</code> always returns a
+    
+
+<p><code>dbExecute()</code> always returns a
 scalar
 numeric
 that specifies the number of rows affected
@@ -265,7 +272,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

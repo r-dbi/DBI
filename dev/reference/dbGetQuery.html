@@ -37,7 +37,7 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -83,7 +83,7 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetQuery-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetQuery("DBIMockRPostgreSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/implyr/man/dbGetQuery-src_impala-character-method.html" class="external-link">implyr::dbGetQuery("src_impala", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbGetQuery("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbGetQuery("Pool", "character")</a></code></p></li>
@@ -105,14 +105,24 @@ the result is always free-d by <code><a href="dbClearResult.html">dbClearResult(
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>statement</dt>
 <dd><p>a character string containing SQL.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>with as many rows as records were fetched and as many
+    
+
+<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+
+
+<p>with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -322,7 +332,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

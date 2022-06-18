@@ -36,7 +36,7 @@ sparklyr::dbReadTable("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -103,6 +103,8 @@ R identifiers.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -111,23 +113,37 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbReadTable()</code> returns a data frame that contains the complete data
-from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code>with <code>SELECT * FROM &lt;name&gt;</code>.
-An empty table is returned as a data frame with zero rows.
-The presence of <a href="rownames.html">rownames</a> depends on the <code>row.names</code> argument,
+    
+
+<p><code>dbReadTable()</code> returns a data frame that contains the complete data
+from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code></p>
+
+
+<p>with <code>SELECT * FROM &lt;name&gt;</code>.</p>
+
+
+<p>An empty table is returned as a data frame with zero rows.</p>
+
+
+<p>The presence of <a href="rownames.html">rownames</a> depends on the <code>row.names</code> argument,
 see <code><a href="rownames.html">sqlColumnToRownames()</a></code> for details:</p><ul><li><p>If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn't have row names.</p></li>
 <li><p>If <code>TRUE</code>, a column named "row_names" is converted to row names.</p></li>
 </ul><ul><li><p>If <code>NA</code>, a column named "row_names" is converted to row names if it exists,
 otherwise no translation occurs.</p></li>
 <li><p>If a string, this specifies the name of the column in the remote table
 that contains the row names.</p></li>
-</ul><p>The default is <code>row.names = FALSE</code>.
-If the database supports identifiers with special characters,
+</ul><p>The default is <code>row.names = FALSE</code>.</p>
+
+
+<p>If the database supports identifiers with special characters,
 the columns in the returned data frame are converted to valid R
 identifiers
 if the <code>check.names</code> argument is <code>TRUE</code>,
@@ -236,7 +252,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

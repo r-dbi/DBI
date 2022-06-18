@@ -39,7 +39,7 @@ sparklyr::dbColumnInfo("DBISparkResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -85,7 +85,7 @@ field (field name, type, etc.)</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbColumnInfo("AzureKustoResult")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbColumnInfo("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbColumnInfo-DatabaseConnectorResult-method.html" class="external-link">DatabaseConnector::dbColumnInfo("DatabaseConnectorResult")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbColumnInfo("DBIMockResult")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbColumnInfo("DBIMockResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbColumnInfo("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbColumnInfo("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbColumnInfo.html" class="external-link">RAthena::dbColumnInfo("AthenaResult")</a></code></p></li>
@@ -108,18 +108,29 @@ field (field name, type, etc.)</p>
     <h2>Arguments</h2>
     <dl><dt>res</dt>
 <dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbColumnInfo()</code>returns a data frame
+    
+
+<p><code>dbColumnInfo()</code></p>
+
+
+<p>returns a data frame
 with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
 (and optional columns that start with a dot).
 The <code>"name"</code> and <code>"type"</code> columns contain the names and types
 of the R columns of the data frame that is returned from <code><a href="dbFetch.html">dbFetch()</a></code>.
 The <code>"type"</code> column is of type <code>character</code> and only for information.
-Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code>to create a zero-row data frame initialized with the correct data types.</p>
+Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code></p>
+
+
+<p>to create a zero-row data frame initialized with the correct data types.</p>
     </div>
     <div id="failure-modes">
     <h2>Failure modes</h2>
@@ -190,7 +201,7 @@ non-empty and non-<code>NA</code> names are assigned.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

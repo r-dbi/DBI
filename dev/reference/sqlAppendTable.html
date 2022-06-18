@@ -26,7 +26,7 @@ pool::sqlAppendTable("Pool")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.2.9001</span>
       </span>
     </div>
 
@@ -92,6 +92,8 @@ These methods are mostly useful for backend implementers.</p>
     <h2>Arguments</h2>
     <dl><dt>con</dt>
 <dd><p>A database connection.</p></dd>
+
+
 <dt>table</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -100,9 +102,13 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>values</dt>
 <dd><p>A data frame. Factors will be converted to character vectors.
 Character vectors will be escaped with <code><a href="dbQuoteString.html">dbQuoteString()</a></code>.</p></dd>
+
+
 <dt>row.names</dt>
 <dd><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
 <p>If <code>TRUE</code>, always translate row names to a column called "row_names".
@@ -111,15 +117,22 @@ rownames only if they're a character vector.</p>
 <p>A string is equivalent to <code>TRUE</code>, but allows you to override the
 default name.</p>
 <p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments used by individual methods.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>Parameter prefix to use for placeholders.</p></dd>
+
+
 <dt>pattern</dt>
 <dd><p>Parameter pattern to use for placeholders:</p><ul><li><p><code>""</code>: no pattern</p></li>
 <li><p><code>"1"</code>: position</p></li>
 <li><p>anything else: field name</p></li>
 </ul></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -194,7 +207,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>
