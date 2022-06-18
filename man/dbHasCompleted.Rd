@@ -33,8 +33,9 @@ This section gives a complete overview over the flow
 for the execution of queries that return tabular data.
 
 Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient unless you want
-to access the results in a paged way.
+is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
+unless you want to access the results in a paged way
+or you have a parameterized query.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
