@@ -27,13 +27,17 @@ Executes a statement and returns the number of rows affected.
 (which should work with most backends) that calls
 \code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
+For passing query parameters, see \code{\link[=dbBind]{dbBind()}}, in particular
+the "The command execution flow" section.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExecute")}
 }
 \details{
 You can also use \code{dbExecute()} to call a stored procedure
 that performs data manipulation or other actions that do not return a result set.
-To execute a stored procedure that returns a result set use \code{\link[=dbGetQuery]{dbGetQuery()}} instead.
+To execute a stored procedure that returns a result set,
+or a data manipulation query that also returns a result set
+such as \verb{INSERT INTO ... RETURNING ...}, use \code{\link[=dbGetQuery]{dbGetQuery()}} instead.
 }
 \section{Implementation notes}{
 

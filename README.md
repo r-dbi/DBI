@@ -7,8 +7,8 @@
 
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage
-Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=main)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
+Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best
 Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
 <!-- badges: end -->
@@ -29,11 +29,10 @@ backends](https://github.com/r-dbi/backends#readme). R scripts and
 packages use DBI to access various databases through their DBI backends.
 
 The interface defines a small set of classes and methods similar in
-spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s
-[JDBC](https://www.oracle.com/java/technologies/javase/javase-tech-database.html),
-Python’s [DB-API](https://www.python.org/dev/peps/pep-0249/), and
-Microsoft’s [ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the
-following operations:
+spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s JDBC, Python’s
+[DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft’s
+[ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the following
+operations:
 
 -   connect/disconnect to the DBMS
 -   create and execute statements in the DBMS

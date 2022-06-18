@@ -554,7 +554,7 @@ to
 [MySQL](https://dev.mysql.com/) that follow the propose RS-DBI API
 described here; also, there’s an S-Plus interface
 SOracle @RS-Oracle to
-[Oracle](https://www.oracle.com/) (we expect to have an R implementation
+Oracle (we expect to have an R implementation
 soon.)
 
 The idea of a common interface to databases has been successfully

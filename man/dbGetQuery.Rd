@@ -28,14 +28,16 @@ Returns the result of a query as a data frame.
 (which should work with most backends) that calls
 \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
 the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
+For retrieving chunked/paged results or for passing query parameters,
+see \code{\link[=dbSendQuery]{dbSendQuery()}}, in particular the "The data retrieval flow" section.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQuery")}
 }
 \details{
 This method is for \code{SELECT} queries only
 (incl. other SQL statements that return a \code{SELECT}-alike result,
-e. g. execution of a stored procedure).
-
+e. g. execution of a stored procedure or data manipulation queries
+like \verb{INSERT INTO ... RETURNING ...}).
 To execute a stored procedure that does not return a result set,
 use \code{\link[=dbExecute]{dbExecute()}}.
 

@@ -7,19 +7,16 @@
 
 # DBI 1.1.3 (2022-06-18)
 
-- Same as previous version.
+## Features
+
+- `dbAppendTable()` accepts `Id` (#381, @renkun-ken).
 
 
-# DBI 1.1.2.9001 (2022-06-18)
+## Documentation
 
-## Features 
+- `?dbSendQuery` and related methods gain a section "The data retrieval flow" (#386).
 
-- `dbAppendTable` accepts `Id` (#381, @renkun-ken).
-
-
-# DBI 1.1.2.9000 (2021-12-19)
-
-- Same as previous version.
+- `?dbSendStatement` and related methods gain a section "The command execution flow" (#386).
 
 
 # DBI 1.1.2 (2021-12-19)

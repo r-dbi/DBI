@@ -27,6 +27,34 @@ by a data manipulation statement.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetRowsAffected")}
 }
+\section{The command execution flow}{
+
+
+This section gives a complete overview over the flow
+for the execution of SQL statements that have side effects
+such as stored procedures, inserting or deleting data,
+Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
+is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
+for non-parameterized queries.
+This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+See also \code{vignette("dbi-advanced")} for a walkthrough.
+\enumerate{
+\item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class
+\linkS4class{DBIResult}.
+For some queries you need to pass \code{immediate = TRUE}.
+\item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}}.
+This is required only if the query contains placeholders
+such as \verb{?} or \verb{$1}, depending on the database backend.
+\item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number
+of rows affected by the query.
+\item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
+This step is mandatory even if no rows have been fetched
+or if an error has occured during the processing.
+It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+to ensure that this step is always executed.
+}
+}
+
 \section{Failure modes}{
 
 

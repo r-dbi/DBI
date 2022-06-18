@@ -19,6 +19,8 @@
 #' client -- but not necessarily to the memory that R manages. See individual
 #' drivers' `dbSendQuery()` documentation for details.
 #'
+#' @inheritSection dbBind The data retrieval flow
+#'
 #' @template methods
 #' @templateVar method_name dbSendQuery
 #'

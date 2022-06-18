@@ -12,6 +12,8 @@
 #' forwards to [dbSendQuery()], to support backends that only
 #' implement the latter.
 #'
+#' @inheritSection dbBind The command execution flow
+#'
 #' @template methods
 #' @templateVar method_name dbSendStatement
 #'

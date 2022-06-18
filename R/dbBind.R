@@ -31,6 +31,66 @@
 #' - `$1` (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
 #' - `:name` and `$name` (named matching) in \pkg{RSQLite}
 #'
+#' @section The data retrieval flow:
+#'
+#' This section gives a complete overview over the flow
+#' for the execution of queries that return tabular data.
+#'
+#' Most of this flow, except calling [dbBind()],
+#' is implemented by [dbGetQuery()], which should be sufficient
+#' unless you want to access the results in a paged way
+#' or you have a parameterized query.
+#' This flow requires an active connection established by [dbConnect()].
+#' See also `vignette("dbi-advanced")` for a walkthrough.
+#'
+#' 1. Use [dbSendQuery()] to create a result set object of class
+#'    [DBIResult-class].
+#' 1. Optionally, bind query parameters with [dbBind()].
+#'    This is required only if the query contains placeholders
+#'    such as `?` or `$1`, depending on the database backend.
+#' 1. Optionally, use [dbColumnInfo()] to retrieve the structure of the result set
+#'    without retrieving actual data.
+#' 1. Use [dbFetch()] to get the entire result set, a page of results,
+#'    or the remaining rows.
+#'    Fetching zero rows is also possible to retrieeve the structure of the result set
+#'    as a data frame.
+#'    This step can be called multiple times.
+#'    Only forward paging is supported, you need to cache previous pages
+#'    if you need to navigate backwards.
+#' 1. Use [dbHasCompleted()] to tell when you're done.
+#'    This method returns `TRUE` if no more rows are available for fetching.
+#' 1. Use [dbClearResult()] to clean up the result set object.
+#'    This step is mandatory even if no rows have been fetched
+#'    or if an error has occured during the processing.
+#'    It is good practice to use [on.exit()] or [withr::defer()]
+#'    to ensure that this step is always executed.
+#'
+#' @section The command execution flow:
+#'
+#' This section gives a complete overview over the flow
+#' for the execution of SQL statements that have side effects
+#' such as stored procedures, inserting or deleting data,
+# 'or setting database or connection options.
+#' Most of this flow, except calling [dbBind()],
+#' is implemented by [dbExecute()], which should be sufficient
+#' for non-parameterized queries.
+#' This flow requires an active connection established by [dbConnect()].
+#' See also `vignette("dbi-advanced")` for a walkthrough.
+#'
+#' 1. Use [dbSendStatement()] to create a result set object of class
+#'    [DBIResult-class].
+#'    For some queries you need to pass `immediate = TRUE`.
+#' 1. Optionally, bind query parameters with [dbBind()].
+#'    This is required only if the query contains placeholders
+#'    such as `?` or `$1`, depending on the database backend.
+#' 1. Optionally, use [dbGetRowsAffected()] to retrieve the number
+#'    of rows affected by the query.
+#' 1. Use [dbClearResult()] to clean up the result set object.
+#'    This step is mandatory even if no rows have been fetched
+#'    or if an error has occured during the processing.
+#'    It is good practice to use [on.exit()] or [withr::defer()]
+#'    to ensure that this step is always executed.
+#'
 #' @template methods
 #' @templateVar method_name dbBind
 #'
