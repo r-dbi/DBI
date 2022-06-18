@@ -422,7 +422,7 @@
 <h3 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
@@ -519,7 +519,7 @@
 <h3 id="the-data-retrieval-flow-1">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-1"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
@@ -621,7 +621,7 @@
 <h3 id="the-data-retrieval-flow-2">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-2"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
@@ -718,7 +718,7 @@
 <h3 id="the-data-retrieval-flow-3">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-3"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
@@ -2119,7 +2119,7 @@ Other parameters passed on to methods.
 <h3 id="the-data-retrieval-flow-4">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-4"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
@@ -2358,7 +2358,7 @@ Other parameters passed on to methods.
 <h3 id="the-data-retrieval-flow-5">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-5"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>

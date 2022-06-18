@@ -164,8 +164,9 @@ drivers' <code>dbSendQuery()</code> documentation for details.</p>
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data.</p>
 <p>Most of this flow, except calling <code><a href="dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want
-to access the results in a paged way.
+is implemented by <code><a href="dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+unless you want to access the results in a paged way
+or you have a parameterized query.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code>dbSendQuery()</code> to create a result set object of class
 <a href="DBIResult-class.html">DBIResult</a>.</p></li>
