@@ -4,7 +4,7 @@
 
 ## Features 
 
-- `dbAppendTable` accepts `Id` (#381, @renkun-ken).
+- `dbAppendTable()` accepts `Id` (#381, @renkun-ken).
 
 
 # DBI 1.1.2 (2021-12-19)
