@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.2.9001 (2022-06-18)
+
+## Features 
+
+- `dbAppendTable` accepts `Id` (#381, @renkun-ken).
+
+
 # DBI 1.1.2.9000 (2021-12-19)
 
 - Same as previous version.
