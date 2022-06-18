@@ -4,6 +4,8 @@ dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
 the result is always free-d by dbClearResult().
+For retrieving chunked/paged results or for passing query parameters,
+see dbSendQuery(), in particular the "The data retrieval flow" section.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
@@ -79,7 +81,9 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 <code>dbGetQuery()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="dbFetch.html">dbFetch()</a></code>, ensuring that
-the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
+the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
+For retrieving chunked/paged results or for passing query parameters,
+see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the "The data retrieval flow" section.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetQuery-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")</a></code></p></li>
@@ -132,8 +136,9 @@ or zero rows.</p>
     <h2>Details</h2>
     <p>This method is for <code>SELECT</code> queries only
 (incl. other SQL statements that return a <code>SELECT</code>-alike result,
-e. g. execution of a stored procedure).</p>
-<p>To execute a stored procedure that does not return a result set,
+e. g. execution of a stored procedure or data manipulation queries
+like <code>INSERT INTO ... RETURNING ...</code>).
+To execute a stored procedure that does not return a result set,
 use <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
 <p>Some backends may
 support data manipulation statements through this method for compatibility

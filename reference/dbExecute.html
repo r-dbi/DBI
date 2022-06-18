@@ -4,6 +4,8 @@ dbExecute() comes with a default implementation
 (which should work with most backends) that calls
 dbSendStatement(), then dbGetRowsAffected(), ensuring that
 the result is always free-d by dbClearResult().
+For passing query parameters, see dbBind(), in particular
+the "The command execution flow" section.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbExecute("AzureKustoConnection", "character")
@@ -73,7 +75,9 @@ sparklyr::dbExecute("spark_connection", "ANY")
 <code>dbExecute()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, ensuring that
-the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
+the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
+For passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code>, in particular
+the "The command execution flow" section.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbExecute("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExecute-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExecute("DatabaseConnectorConnection", "character")</a></code></p></li>
@@ -117,7 +121,9 @@ by the statement.</p>
     <h2>Details</h2>
     <p>You can also use <code>dbExecute()</code> to call a stored procedure
 that performs data manipulation or other actions that do not return a result set.
-To execute a stored procedure that returns a result set use <code><a href="dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
+To execute a stored procedure that returns a result set,
+or a data manipulation query that also returns a result set
+such as <code>INSERT INTO ... RETURNING ...</code>, use <code><a href="dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
     </div>
     <div id="implementation-notes">
     <h2>Implementation notes</h2>
