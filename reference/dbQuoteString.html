@@ -12,8 +12,6 @@ pool::dbQuoteString("Pool", "ANY")
 RAthena::dbQuoteString("AthenaConnection", "character")
 RAthena::dbQuoteString("AthenaConnection", "Date")
 RAthena::dbQuoteString("AthenaConnection", "POSIXct")
-RClickhouse::dbQuoteString("ClickhouseConnection", "character")
-RClickhouse::dbQuoteString("ClickhouseConnection", "SQL")
 RMariaDB::dbQuoteString("MariaDBConnection", "character")
 RMariaDB::dbQuoteString("MariaDBConnection", "SQL")
 RMySQL::dbQuoteString("MySQLConnection", "character")
@@ -40,7 +38,7 @@ sparklyr::dbQuoteString("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -90,8 +88,6 @@ generate valid SQL and protect against SQL injection attacks.</p>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "Date")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbQuote.html" class="external-link">RAthena::dbQuoteString("AthenaConnection", "POSIXct")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbQuoteString("ClickhouseConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteString("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteString("MariaDBConnection", "SQL")</a></code></p></li>
 <li><p><code>RMySQL::dbQuoteString("MySQLConnection", "character")</code></p></li>
@@ -111,17 +107,32 @@ generate valid SQL and protect against SQL injection attacks.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>x</dt>
 <dd><p>A character vector to quote as string.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbQuoteString()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
+    
+
+<p><code>dbQuoteString()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
 of the same length as the input.
-For an empty character vector this function returns a length-0 object.
-When passing the returned object again to <code>dbQuoteString()</code>as <code>x</code>argument, it is returned unchanged.
+For an empty character vector this function returns a length-0 object.</p>
+
+
+<p>When passing the returned object again to <code>dbQuoteString()</code></p>
+
+
+<p>as <code>x</code></p>
+
+
+<p>argument, it is returned unchanged.
 Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
 (For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
@@ -216,11 +227,11 @@ returns one row.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

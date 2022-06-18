@@ -11,7 +11,6 @@ duckdb::dbRemoveTable("duckdb_connection", "character")
 odbc::dbRemoveTable("OdbcConnection", "character")
 pool::dbRemoveTable("Pool", "ANY")
 RAthena::dbRemoveTable("AthenaConnection", "character")
-RClickhouse::dbRemoveTable("ClickhouseConnection", "character")
 RJDBC::dbRemoveTable("JDBCConnection", "ANY")
 RMariaDB::dbRemoveTable("MariaDBConnection", "character")
 RMySQL::dbRemoveTable("MySQLConnection", "character")
@@ -38,7 +37,7 @@ sparklyr::dbRemoveTable("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -82,12 +81,11 @@ from the database.</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbRemoveTable("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbRemoveTable("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbRemoveTable.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbRemoveTable("ClickhouseConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRemoveTable("JDBCConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbRemoveTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbRemoveTable("MySQLConnection", "character")</a></code></p></li>
@@ -107,6 +105,8 @@ from the database.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>name</dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -115,12 +115,17 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbRemoveTable()</code> returns <code>TRUE</code>, invisibly.</p>
+    
+
+<p><code>dbRemoveTable()</code> returns <code>TRUE</code>, invisibly.</p>
     </div>
     <div id="failure-modes">
     <h2>Failure modes</h2>
@@ -217,11 +222,11 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

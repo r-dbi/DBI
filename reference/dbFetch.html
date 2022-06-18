@@ -11,7 +11,6 @@ duckdb::dbFetch("duckdb_result", "ANY")
 lazysf::dbFetch("SFSQLResult", "ANY")
 odbc::dbFetch("OdbcResult", "ANY")
 RAthena::dbFetch("AthenaResult", "ANY")
-RClickhouse::dbFetch("ClickhouseResult", "ANY")
 RMariaDB::dbFetch("MariaDBResult", "ANY")
 RMySQL::dbFetch("MySQLResult", "missing")
 RMySQL::dbFetch("MySQLResult", "numeric")
@@ -41,7 +40,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -90,7 +89,6 @@ as a data.frame.</p>
 <li><p><code>lazysf::dbFetch("SFSQLResult", "ANY")</code></p></li>
 <li><p><code>odbc::dbFetch("OdbcResult", "ANY")</code></p></li>
 <li><p><code>RAthena::dbFetch("AthenaResult", "ANY")</code></p></li>
-<li><p><code>RClickhouse::dbFetch("ClickhouseResult", "ANY")</code></p></li>
 <li><p><code>RMariaDB::dbFetch("MariaDBResult", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "missing")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "numeric")</a></code></p></li>
@@ -115,17 +113,27 @@ as a data.frame.</p>
     <dl><dt>res</dt>
 <dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>, created by
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>.</p></dd>
+
+
 <dt>n</dt>
 <dd><p>maximum number of records to retrieve per fetch. Use <code>n = -1</code>
 or <code>n = Inf</code>
 to retrieve all pending records.  Some implementations may recognize other
 special values.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>with as many rows as records were fetched and as many
+    
+
+<p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+
+
+<p>with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -279,11 +287,11 @@ finish retrieving the records you want.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

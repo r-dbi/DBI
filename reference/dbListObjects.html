@@ -32,7 +32,7 @@ RPostgres::dbListObjects("PqConnection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -95,16 +95,26 @@ namespace.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>prefix</dt>
 <dd><p>A fully qualified path in the database's namespace, or <code>NULL</code>.
 This argument will be processed with <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
 If given the method will return all objects accessible through this prefix.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbListObjects()</code>returns a data frame
+    
+
+<p><code>dbListObjects()</code></p>
+
+
+<p>returns a data frame
 with columns
 <code>table</code> and <code>is_prefix</code> (in that order),
 optionally with other columns with a dot (<code>.</code>) prefix.
@@ -115,11 +125,18 @@ This data frame contains one row for each object (schema, table
 and view)
 accessible from the prefix (if passed) or from the global namespace
 (if prefix is omitted).
-Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code>are part of the data frame.
+Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code></p>
+
+
+<p>are part of the data frame.
 As soon a table is removed from the database,
-it is also removed from the data frame of database objects.
-The same applies to temporary objects if supported by the database.
-The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+it is also removed from the data frame of database objects.</p>
+
+
+<p>The same applies to temporary objects if supported by the database.</p>
+
+
+<p>The returned names are suitable for quoting with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
     </div>
     <div id="failure-modes">
     <h2>Failure modes</h2>
@@ -199,11 +216,11 @@ For the data frame returned from a <code>dbListObject()</code> call with the
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

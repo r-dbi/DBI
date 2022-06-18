@@ -35,7 +35,7 @@ sparklyr::sqlInterpolate("spark_connection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -98,11 +98,15 @@ used in the query.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>sql</dt>
 <dd><p>A SQL string containing variables to interpolate.
 Variables must start with a question mark and can be any valid R
 identifier, i.e. it must start with a letter or <code>.</code>, and be followed
 by a letter, digit, <code>.</code> or <code>_</code>.</p></dd>
+
+
 <dt>..., .dots</dt>
 <dd><p>Values (for <code>...</code>) or a list (for <code>.dots</code>)
 to interpolate into a string.
@@ -110,10 +114,13 @@ Names are required if  <code>sql</code> uses the <code><a href="https://rdrr.io/
 All values will be first escaped with <code><a href="dbQuoteLiteral.html">dbQuoteLiteral()</a></code> prior
 to interpolation to protect against SQL injection attacks.
 Arguments created by <code><a href="SQL.html">SQL()</a></code> or <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> remain unchanged.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>The <code>sql</code> query with the values from <code>...</code> and <code>.dots</code> safely
+    
+
+<p>The <code>sql</code> query with the values from <code>...</code> and <code>.dots</code> safely
 embedded.</p>
     </div>
     <div id="backend-authors">
@@ -177,11 +184,11 @@ in errors matching supplied and interpolated variables.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

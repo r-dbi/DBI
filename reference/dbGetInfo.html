@@ -16,8 +16,6 @@ odbc::dbGetInfo("OdbcDriver")
 pool::dbGetInfo("Pool")
 RAthena::dbGetInfo("AthenaConnection")
 RAthena::dbGetInfo("AthenaResult")
-RClickhouse::dbGetInfo("ClickhouseConnection")
-RClickhouse::dbGetInfo("ClickhouseDriver")
 RJDBC::dbGetInfo("JDBCConnection")
 RJDBC::dbGetInfo("JDBCDriver")
 RJDBC::dbGetInfo("JDBCResult")
@@ -58,7 +56,7 @@ sparklyr::dbGetInfo("spark_connection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -101,8 +99,8 @@ sparklyr::dbGetInfo("spark_connection")
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryDriver")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockConnection")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockResult")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockConnection")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbGetInfo("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_driver-class.html" class="external-link">duckdb::dbGetInfo("duckdb_driver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetInfo("duckdb_result")</a></code></p></li>
@@ -112,8 +110,6 @@ sparklyr::dbGetInfo("spark_connection")
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-object.html" class="external-link">pool::dbGetInfo("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaResult")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbGetInfo("ClickhouseConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseDriver-class.html" class="external-link">RClickhouse::dbGetInfo("ClickhouseDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbGetInfo("JDBCConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCDriver-methods.html" class="external-link">RJDBC::dbGetInfo("JDBCDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCResult-methods.html" class="external-link">RJDBC::dbGetInfo("JDBCResult")</a></code></p></li>
@@ -148,15 +144,26 @@ sparklyr::dbGetInfo("spark_connection")
 <dd><p>An object inheriting from <a href="DBIObject-class.html">DBIObject</a>,
 i.e. <a href="DBIDriver-class.html">DBIDriver</a>, <a href="DBIConnection-class.html">DBIConnection</a>,
 or a <a href="DBIResult-class.html">DBIResult</a></p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>For objects of class <a href="DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code>returns a named list
+    
+
+<p>For objects of class <a href="DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code></p>
+
+
+<p>returns a named list
 that contains at least the following components:</p><ul><li><p><code>driver.version</code>: the package version of the DBI backend,</p></li>
 <li><p><code>client.version</code>: the version of the DBMS client library.</p></li>
-</ul><p>For objects of class <a href="DBIConnection-class.html">DBIConnection</a>, <code>dbGetInfo()</code>returns a named list
+</ul><p>For objects of class <a href="DBIConnection-class.html">DBIConnection</a>, <code>dbGetInfo()</code></p>
+
+
+<p>returns a named list
 that contains at least the following components:</p><ul><li><p><code>db.version</code>: version of the database server,</p></li>
 <li><p><code>dbname</code>: database name,</p></li>
 <li><p><code>username</code>: username to connect to the database,</p></li>
@@ -164,7 +171,10 @@ that contains at least the following components:</p><ul><li><p><code>db.version<
 <li><p><code>port</code>: port on the database server.
 It must not contain a <code>password</code> component.
 Components that are not applicable should be set to <code>NA</code>.</p></li>
-</ul><p>For objects of class <a href="DBIResult-class.html">DBIResult</a>, <code>dbGetInfo()</code>returns a named list
+</ul><p>For objects of class <a href="DBIResult-class.html">DBIResult</a>, <code>dbGetInfo()</code></p>
+
+
+<p>returns a named list
 that contains at least the following components:</p><ul><li><p><code>statatment</code>: the statement used with <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbExecute.html">dbExecute()</a></code>,
 as returned by <code><a href="dbGetStatement.html">dbGetStatement()</a></code>,</p></li>
 <li><p><code>row.count</code>: the number of rows fetched so far (for queries),
@@ -242,11 +252,11 @@ constructs such a list from the return values of the corresponding methods,
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

@@ -19,9 +19,7 @@ odbc::dbRollback("OdbcConnection")
 pool::dbBegin("Pool")
 pool::dbCommit("Pool")
 pool::dbRollback("Pool")
-RClickhouse::dbBegin("ClickhouseConnection")
-RClickhouse::dbCommit("ClickhouseConnection")
-RClickhouse::dbRollback("ClickhouseConnection")
+RJDBC::dbBegin("JDBCConnection")
 RJDBC::dbCommit("JDBCConnection")
 RJDBC::dbRollback("JDBCConnection")
 RMariaDB::dbBegin("MariaDBConnection")
@@ -61,7 +59,7 @@ sparklyr::dbRollback("spark_connection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -118,9 +116,7 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-transaction.html" class="external-link">pool::dbBegin("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-transaction.html" class="external-link">pool::dbCommit("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection-transaction.html" class="external-link">pool::dbRollback("Pool")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbBegin("ClickhouseConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbCommit("ClickhouseConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseConnection-class.html" class="external-link">RClickhouse::dbRollback("ClickhouseConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbBegin("JDBCConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbCommit("JDBCConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRollback("JDBCConnection")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/transactions.html" class="external-link">RMariaDB::dbBegin("MariaDBConnection")</a></code></p></li>
@@ -157,12 +153,17 @@ This helps ensuring consistency of write operations to multiple tables.</p>
     <dl><dt>conn</dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.</p>
+    
+
+<p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -277,11 +278,11 @@ if the <code>name</code> argument is set.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

@@ -11,7 +11,6 @@ duckdb::dbHasCompleted("duckdb_result")
 lazysf::dbHasCompleted("SFSQLResult")
 odbc::dbHasCompleted("OdbcResult")
 RAthena::dbHasCompleted("AthenaResult")
-RClickhouse::dbHasCompleted("ClickhouseResult")
 RJDBC::dbHasCompleted("JDBCResult")
 RMariaDB::dbHasCompleted("MariaDBResult")
 RMySQL::dbHasCompleted("MySQLResult")
@@ -40,7 +39,7 @@ sparklyr::dbHasCompleted("DBISparkResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -84,12 +83,11 @@ A data manipulation statement is always completed.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbHasCompleted("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbHasCompleted-DatabaseConnectorResult-method.html" class="external-link">DatabaseConnector::dbHasCompleted("DatabaseConnectorResult")</a></code></p></li>
-<li><p><code><a href="https://dittodb.jonkeane.com//reference/mock-db-methods.html" class="external-link">dittodb::dbHasCompleted("DBIMockResult")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbHasCompleted("DBIMockResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbHasCompleted("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLResult-class.html" class="external-link">lazysf::dbHasCompleted("SFSQLResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbHasCompleted("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbHasCompleted.html" class="external-link">RAthena::dbHasCompleted("AthenaResult")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RClickhouse/man/ClickhouseResult-class.html" class="external-link">RClickhouse::dbHasCompleted("ClickhouseResult")</a></code></p></li>
 <li><p><code>RJDBC::dbHasCompleted("JDBCResult")</code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/result-meta.html" class="external-link">RMariaDB::dbHasCompleted("MariaDBResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/result-meta.html" class="external-link">RMySQL::dbHasCompleted("MySQLResult")</a></code></p></li>
@@ -110,12 +108,17 @@ A data manipulation statement is always completed.</p>
     <h2>Arguments</h2>
     <dl><dt>res</dt>
 <dd><p>An object inheriting from <a href="DBIResult-class.html">DBIResult</a>.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p><code>dbHasCompleted()</code> returns a logical scalar.
+    
+
+<p><code>dbHasCompleted()</code> returns a logical scalar.
 For a query initiated by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set,
 <code>dbHasCompleted()</code> returns <code>FALSE</code> initially
 and <code>TRUE</code> after calling <code><a href="dbFetch.html">dbFetch()</a></code> without limit.
@@ -194,11 +197,11 @@ row.</p>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer></div>

@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.1.3</span>
       </span>
     </div>
 
@@ -85,14 +85,14 @@
     
     
 <p>This document describes a common interface between the S language (in its R and S-Plus implementations) and database management systems (DBMS). The interface defines a small set of classes and methods similar in spirit to Perl’s DBI, Java’s JDBC, Python’s DB-API, and Microsoft’s ODBC.</p>
-<div class="section level1">
-<h1 id="sec:version">Version<a class="anchor" aria-label="anchor" href="#sec:version"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:version">Version<a class="anchor" aria-label="anchor" href="#sec:version"></a>
+</h2>
 <p>This document describes version 0.1-6 of the database interface API (application programming interface).</p>
 </div>
-<div class="section level1">
-<h1 id="sec:intro">Introduction<a class="anchor" aria-label="anchor" href="#sec:intro"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:intro">Introduction<a class="anchor" aria-label="anchor" href="#sec:intro"></a>
+</h2>
 <p>The database interface (DBI) separates the connectivity to the DBMS into a “front-end” and a “back-end”. Applications use only the exposed “front-end” API. The facilities that communicate with specific DBMS (Oracle, PostgreSQL, etc.) are provided by “device drivers” that get invoked automatically by the S language evaluator. The following example illustrates some of the DBI capabilities:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Choose the proper DBMS driver and connect to the server</span>
@@ -155,9 +155,9 @@
 </li>
 </ol>
 </div>
-<div class="section level1">
-<h1 id="sec:DBIClasses">DBI Classes and Methods<a class="anchor" aria-label="anchor" href="#sec:DBIClasses"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:DBIClasses">DBI Classes and Methods<a class="anchor" aria-label="anchor" href="#sec:DBIClasses"></a>
+</h2>
 <p>The following are the main DBI classes. They need to be extended by individual database back-ends (Sybase, Oracle, etc.) Individual drivers need to provide methods for the generic functions listed here (those methods that are optional are so indicated).</p>
 <p><em>Note: Although R releases prior to 1.4 do not have a formal concept of classes, we will use the syntax of the S Version 4 classes and methods (available in R releases 1.4 and later as library <code>methods</code>) to convey precisely the DBI class hierarchy, its methods, and intended behavior.</em></p>
 <p>The DBI classes are <code>DBIObject</code>, <code>DBIDriver</code>, <code>DBIConnection</code> and <code>DBIResult</code>. All these are <em>virtual</em> classes. Drivers define new classes that extend these, e.g., <code>PgSQLDriver</code>, <code>PgSQLConnection</code>, and so on.</p>
@@ -212,14 +212,14 @@
 </dd>
 </dl>
 <p>In the next few sub-sections we describe in detail each of these classes and their methods.</p>
-<div class="section level2">
-<h2 id="sec:DBIObject">Class <code>DBIObject</code><a class="anchor" aria-label="anchor" href="#sec:DBIObject"></a>
-</h2>
+<div class="section level3">
+<h3 id="sec:DBIObject">Class <code>DBIObject</code><a class="anchor" aria-label="anchor" href="#sec:DBIObject"></a>
+</h3>
 <p>This class simply groups all DBI classes, and thus all extend it.</p>
 </div>
-<div class="section level2">
-<h2 id="sec:DBIDriver">Class <code>DBIDriver</code><a class="anchor" aria-label="anchor" href="#sec:DBIDriver"></a>
-</h2>
+<div class="section level3">
+<h3 id="sec:DBIDriver">Class <code>DBIDriver</code><a class="anchor" aria-label="anchor" href="#sec:DBIDriver"></a>
+</h3>
 <p>This class identifies the database management system. It needs to be extended by individual back-ends (Oracle, PostgreSQL, etc.)</p>
 <p>The DBI provides the generator <code>dbDriver(driverName)</code> which simply invokes the function <code>driverName</code>, which in turn instantiates the corresponding driver object.</p>
 <p>The <code>DBIDriver</code> class defines the following methods:</p>
@@ -275,9 +275,9 @@
 </dd>
 </dl>
 </div>
-<div class="section level2">
-<h2 id="sec:DBIConnection">Class <code>DBIConnection</code><a class="anchor" aria-label="anchor" href="#sec:DBIConnection"></a>
-</h2>
+<div class="section level3">
+<h3 id="sec:DBIConnection">Class <code>DBIConnection</code><a class="anchor" aria-label="anchor" href="#sec:DBIConnection"></a>
+</h3>
 <p>This virtual class encapsulates the connection to a DBMS, and it provides access to dynamic queries, result sets, DBMS session management (transactions), etc.</p>
 <p><em>Note:</em> Individual drivers are free to implement single or multiple simultaneous connections.</p>
 <p>The methods defined by the <code>DBIConnection</code> class include:</p>
@@ -411,9 +411,9 @@
 </dd>
 </dl>
 </div>
-<div class="section level2">
-<h2 id="sec:DBIResult">Class <code>DBIResult</code><a class="anchor" aria-label="anchor" href="#sec:DBIResult"></a>
-</h2>
+<div class="section level3">
+<h3 id="sec:DBIResult">Class <code>DBIResult</code><a class="anchor" aria-label="anchor" href="#sec:DBIResult"></a>
+</h3>
 <p>This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query). The result set <code>res</code> keeps track of whether the statement produces output for R/S, how many rows were affected by the operation, how many rows have been fetched (if statement is a query), whether there are more rows to fetch, etc.</p>
 <p><em>Note: Individual drivers are free to allow single or multiple active results per connection.</em></p>
 <p>[Q: Should we distinguish between results that return no data from those that return data?]</p>
@@ -528,16 +528,16 @@
 </dl>
 </div>
 </div>
-<div class="section level1">
-<h1 id="sec:data-mappings">Data Type Mappings<a class="anchor" aria-label="anchor" href="#sec:data-mappings"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:data-mappings">Data Type Mappings<a class="anchor" aria-label="anchor" href="#sec:data-mappings"></a>
+</h2>
 <p>The data types supported by databases are different than the data types in R and S, but the mapping between the “primitive” types is straightforward: Any of the many fixed and varying length character types are mapped to R/S <code>character</code>. Fixed-precision (non-IEEE) numbers are mapped into either doubles (<code>numeric</code>) or long (<code>integer</code>). Notice that many DBMS do not follow the so-called IEEE arithmetic, so there are potential problems with under/overflows and loss of precision, but given the R/S primitive types we cannot do too much but identify these situations and warn the application (how?).</p>
 <p>By default dates and date-time objects are mapped to character using the appropriate <code>TO_CHAR</code> function in the DBMS (which should take care of any locale information). Some RDBMS support the type <code>CURRENCY</code> or <code>MONEY</code> which should be mapped to <code>numeric</code> (again with potential round off errors). Large objects (character, binary, file, etc.) also need to be mapped. User-defined functions may be specified to do the actual conversion (as has been done in other inter-systems packages <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>).</p>
 <p>Specifying user-defined conversion functions still needs to be defined.</p>
 </div>
-<div class="section level1">
-<h1 id="sec:utilities">Utilities<a class="anchor" aria-label="anchor" href="#sec:utilities"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:utilities">Utilities<a class="anchor" aria-label="anchor" href="#sec:utilities"></a>
+</h2>
 <p>The core DBI implementation should make available to all drivers some common basic utilities. For instance:</p>
 <dl>
 <dt>
@@ -567,9 +567,9 @@
 </dd>
 </dl>
 </div>
-<div class="section level1">
-<h1 id="sec:open-issues">Open Issues and Limitations<a class="anchor" aria-label="anchor" href="#sec:open-issues"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:open-issues">Open Issues and Limitations<a class="anchor" aria-label="anchor" href="#sec:open-issues"></a>
+</h2>
 <p>There are a number of issues and limitations that the current DBI conscientiously does not address on the interest of simplicity. We do list here the most important ones.</p>
 <dl>
 <dt>Non-SQL:</dt>
@@ -613,9 +613,9 @@
 </dd>
 </dl>
 </div>
-<div class="section level1">
-<h1 id="sec:resources">Resources<a class="anchor" aria-label="anchor" href="#sec:resources"></a>
-</h1>
+<div class="section level2">
+<h2 id="sec:resources">Resources<a class="anchor" aria-label="anchor" href="#sec:resources"></a>
+</h2>
 <p>The idea of a common interface to databases has been successfully implemented in various environments, for instance:</p>
 <p>Java’s Database Connectivity (JDBC) (<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="external-link">www.javasoft.com</a>).</p>
 <p>In C through the Open Database Connectivity (ODBC) (<a href="http://www.unixodbc.org/" class="external-link">www.unixodbc.org</a>).</p>
@@ -651,12 +651,12 @@ Chambers, John M. 1991. <span>“Data Management in <span>S</span>.”</span> Be
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="http://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, <a href="https://www.r-consortium.org" class="external-link">R Consortium</a>.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
 </div>
 
       </footer>
