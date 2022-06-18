@@ -420,6 +420,20 @@
 <p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to extract records. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 </div>
 <div class="section level3">
+<h3 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="failure-modes-2">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-2"></a>
 </h3>
 <p>An error is raised when issuing a query over a closed or invalid connection, or if the query is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
@@ -503,6 +517,20 @@
 <p><code><a href="../reference/dbFetch.html">dbFetch()</a></code> always returns a data.frame with as many rows as records were fetched and as many columns as fields in the result set, even if the result is a single value or has one or zero rows.</p>
 </div>
 <div class="section level3">
+<h3 id="the-data-retrieval-flow-1">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-1"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="failure-modes-3">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-3"></a>
 </h3>
 <p>An attempt to fetch from a closed result set raises an error. If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised, but a subsequent call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code> with proper <code>n</code> argument succeeds. Calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> on a result set from a data manipulation query created by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> can be fetched and return an empty data frame, with a warning.</p>
@@ -569,7 +597,7 @@
 <div class="section level3">
 <h3 id="description-5">Description<a class="anchor" aria-label="anchor" href="#description-5"></a>
 </h3>
-<p>Frees all resources (local and remote) associated with a result set. In some cases (e.g., very large result sets) this can be a critical step to avoid exhausting resources (memory, file descriptors, etc.)</p>
+<p>Frees all resources (local and remote) associated with a result set. This step is mandatory for all objects obtained by calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-5">Arguments<a class="anchor" aria-label="anchor" href="#arguments-5"></a>
@@ -589,6 +617,31 @@
 <h3 id="value-5">Value<a class="anchor" aria-label="anchor" href="#value-5"></a>
 </h3>
 <p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> returns <code>TRUE</code>, invisibly, for result sets obtained from both <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
+</div>
+<div class="section level3">
+<h3 id="the-data-retrieval-flow-2">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-2"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="the-command-execution-flow">The command execution flow<a class="anchor" aria-label="anchor" href="#the-command-execution-flow"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of SQL statements that have side effects such as stored procedures, inserting or deleting data, Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for non-parameterized queries. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object of class DBIResult. For some queries you need to pass <code>immediate = TRUE</code>.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number of rows affected by the query.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
 </div>
 <div class="section level3">
 <h3 id="failure-modes-4">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-4"></a>
@@ -661,6 +714,31 @@
 <h3 id="value-6">Value<a class="anchor" aria-label="anchor" href="#value-6"></a>
 </h3>
 <p><code><a href="../reference/dbBind.html">dbBind()</a></code> returns the result set, invisibly, for queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and also for data manipulation statements issued by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
+</div>
+<div class="section level3">
+<h3 id="the-data-retrieval-flow-3">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-3"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="the-command-execution-flow-1">The command execution flow<a class="anchor" aria-label="anchor" href="#the-command-execution-flow-1"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of SQL statements that have side effects such as stored procedures, inserting or deleting data, Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for non-parameterized queries. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object of class DBIResult. For some queries you need to pass <code>immediate = TRUE</code>.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number of rows affected by the query.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
 </div>
 <div class="section level3">
 <h3 id="failure-modes-5">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-5"></a>
@@ -746,7 +824,7 @@
 <div class="section level3">
 <h3 id="description-7">Description<a class="anchor" aria-label="anchor" href="#description-7"></a>
 </h3>
-<p>Returns the result of a query as a data frame. <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
+<p>Returns the result of a query as a data frame. <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. For retrieving chunked/paged results or for passing query parameters, see <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, in particular the “The data retrieval flow” section.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a>
@@ -826,8 +904,7 @@
 <div class="section level3">
 <h3 id="details-4">Details<a class="anchor" aria-label="anchor" href="#details-4"></a>
 </h3>
-<p>This method is for <code>SELECT</code> queries only (incl. other SQL statements that return a <code>SELECT</code>-alike result, e. g. execution of a stored procedure).</p>
-<p>To execute a stored procedure that does not return a result set, use <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.</p>
+<p>This method is for <code>SELECT</code> queries only (incl. other SQL statements that return a <code>SELECT</code>-alike result, e. g. execution of a stored procedure or data manipulation queries like <code>⁠INSERT INTO ... RETURNING ...⁠</code>). To execute a stored procedure that does not return a result set, use <code><a href="../reference/dbExecute.html">dbExecute()</a></code>.</p>
 <p>Some backends may support data manipulation statements through this method for compatibility reasons. However, callers are strongly advised to use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> for data manipulation statements.</p>
 </div>
 <div class="section level3">
@@ -963,6 +1040,17 @@
 <p><code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> returns an S4 object that inherits from DBIResult. The result set can be used with <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to determine the number of rows affected by the query. Once you have finished using a result, make sure to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
 </div>
 <div class="section level3">
+<h3 id="the-command-execution-flow-2">The command execution flow<a class="anchor" aria-label="anchor" href="#the-command-execution-flow-2"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of SQL statements that have side effects such as stored procedures, inserting or deleting data, Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for non-parameterized queries. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object of class DBIResult. For some queries you need to pass <code>immediate = TRUE</code>.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number of rows affected by the query.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="failure-modes-7">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-7"></a>
 </h3>
 <p>An error is raised when issuing a statement over a closed or invalid connection, or if the statement is not a non-<code>NA</code> string. An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the <code>params</code> argument) or the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
@@ -1014,7 +1102,7 @@
 <div class="section level3">
 <h3 id="description-9">Description<a class="anchor" aria-label="anchor" href="#description-9"></a>
 </h3>
-<p>Executes a statement and returns the number of rows affected. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
+<p>Executes a statement and returns the number of rows affected. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> comes with a default implementation (which should work with most backends) that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, ensuring that the result is always free-d by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. For passing query parameters, see <code><a href="../reference/dbBind.html">dbBind()</a></code>, in particular the “The command execution flow” section.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-9">Arguments<a class="anchor" aria-label="anchor" href="#arguments-9"></a>
@@ -1091,7 +1179,7 @@
 <div class="section level3">
 <h3 id="details-6">Details<a class="anchor" aria-label="anchor" href="#details-6"></a>
 </h3>
-<p>You can also use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> to call a stored procedure that performs data manipulation or other actions that do not return a result set. To execute a stored procedure that returns a result set use <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
+<p>You can also use <code><a href="../reference/dbExecute.html">dbExecute()</a></code> to call a stored procedure that performs data manipulation or other actions that do not return a result set. To execute a stored procedure that returns a result set, or a data manipulation query that also returns a result set such as <code>⁠INSERT INTO ... RETURNING ...⁠</code>, use <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> instead.</p>
 </div>
 <div class="section level3">
 <h3 id="value-9">Value<a class="anchor" aria-label="anchor" href="#value-9"></a>
@@ -2029,6 +2117,20 @@ Other parameters passed on to methods.
 <p><code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns a logical scalar. For a query initiated by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> with non-empty result set, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code> initially and <code>TRUE</code> after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code> without limit. For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> always returns <code>TRUE</code>.</p>
 </div>
 <div class="section level3">
+<h3 id="the-data-retrieval-flow-4">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-4"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="failure-modes-17">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-17"></a>
 </h3>
 <p>Attempting to query completion status for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
@@ -2193,6 +2295,17 @@ Other parameters passed on to methods.
 <p><code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns a scalar number (integer or numeric), the number of rows affected by a data manipulation statement issued with <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>. The value is available directly after the call and does not change after calling <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. For queries issued with <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, zero is returned before and after the call to <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p>
 </div>
 <div class="section level3">
+<h3 id="the-command-execution-flow-3">The command execution flow<a class="anchor" aria-label="anchor" href="#the-command-execution-flow-3"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of SQL statements that have side effects such as stored procedures, inserting or deleting data, Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for non-parameterized queries. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object of class DBIResult. For some queries you need to pass <code>immediate = TRUE</code>.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number of rows affected by the query.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="failure-modes-20">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-20"></a>
 </h3>
 <p>Attempting to get the rows affected for a result set cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
@@ -2241,6 +2354,20 @@ Other parameters passed on to methods.
 <h3 id="value-23">Value<a class="anchor" aria-label="anchor" href="#value-23"></a>
 </h3>
 <p><code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> returns a data frame with at least two columns <code>"name"</code> and <code>"type"</code> (in that order) (and optional columns that start with a dot). The <code>"name"</code> and <code>"type"</code> columns contain the names and types of the R columns of the data frame that is returned from <code><a href="../reference/dbFetch.html">dbFetch()</a></code>. The <code>"type"</code> column is of type <code>character</code> and only for information. Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code> to create a zero-row data frame initialized with the correct data types.</p>
+</div>
+<div class="section level3">
+<h3 id="the-data-retrieval-flow-5">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-5"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data.</p>
+<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to access the results in a paged way or you have a parameterized query. This flow requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of class DBIResult.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set without retrieving actual data.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page of results, or the remaining rows. Fetching zero rows is also possible to retrieeve the structure of the result set as a data frame. This step can be called multiple times. Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.</p></li>
+<li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set object. This step is mandatory even if no rows have been fetched or if an error has occured during the processing. It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that this step is always executed.</p></li>
+</ol>
 </div>
 <div class="section level3">
 <h3 id="failure-modes-21">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-21"></a>

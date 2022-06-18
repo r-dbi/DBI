@@ -126,6 +126,32 @@ with <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
 forwards to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, to support backends that only
 implement the latter.</p>
     </div>
+    <div id="the-command-execution-flow">
+    <h2>The command execution flow</h2>
+    
+
+
+<p>This section gives a complete overview over the flow
+for the execution of SQL statements that have side effects
+such as stored procedures, inserting or deleting data,
+Most of this flow, except calling <code><a href="dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="dbExecute.html">dbExecute()</a></code>, which should be sufficient
+for non-parameterized queries.
+This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code>dbSendStatement()</code> to create a result set object of class
+<a href="DBIResult-class.html">DBIResult</a>.
+For some queries you need to pass <code>immediate = TRUE</code>.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="dbBind.html">dbBind()</a></code>.
+This is required only if the query contains placeholders
+such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
+<li><p>Optionally, use <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number
+of rows affected by the query.</p></li>
+<li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
+This step is mandatory even if no rows have been fetched
+or if an error has occured during the processing.
+It is good practice to use <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code>
+to ensure that this step is always executed.</p></li>
+</ol></div>
     <div id="failure-modes">
     <h2>Failure modes</h2>
     
