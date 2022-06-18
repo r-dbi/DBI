@@ -191,5 +191,13 @@ Other DBIConnection generics:
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
 \code{\link{dbWriteTable}()}
+
+Other data retrieval generics: 
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbFetch}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbSendQuery}()}
 }
 \concept{DBIConnection generics}
+\concept{data retrieval generics}

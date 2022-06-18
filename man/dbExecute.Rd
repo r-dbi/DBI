@@ -168,5 +168,12 @@ Other DBIConnection generics:
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
 \code{\link{dbWriteTable}()}
+
+Other command execution generics: 
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbGetRowsAffected}()},
+\code{\link{dbSendStatement}()}
 }
 \concept{DBIConnection generics}
+\concept{command execution generics}

@@ -28,6 +28,7 @@
 #' @seealso Close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
 #' @family DBIResult generics
+#' @family data retrieval generics
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'

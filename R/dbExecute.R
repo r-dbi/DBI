@@ -30,6 +30,7 @@
 #' @inheritParams dbGetQuery
 #' @param statement a character string containing SQL.
 #' @family DBIConnection generics
+#' @family command execution generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @export
 #' @examples

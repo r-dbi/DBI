@@ -34,6 +34,7 @@
 #' @param statement a character string containing SQL.
 #'
 #' @family DBIConnection generics
+#' @family data retrieval generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

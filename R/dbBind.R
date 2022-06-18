@@ -61,7 +61,7 @@
 #'    This method returns `TRUE` if no more rows are available for fetching.
 #' 1. Use [dbClearResult()] to clean up the result set object.
 #'    This step is mandatory even if no rows have been fetched
-#'    or if an error has occured during the processing.
+#'    or if an error has occurred during the processing.
 #'    It is good practice to use [on.exit()] or [withr::defer()]
 #'    to ensure that this step is always executed.
 #'
@@ -87,7 +87,7 @@
 #'    of rows affected by the query.
 #' 1. Use [dbClearResult()] to clean up the result set object.
 #'    This step is mandatory even if no rows have been fetched
-#'    or if an error has occured during the processing.
+#'    or if an error has occurred during the processing.
 #'    It is good practice to use [on.exit()] or [withr::defer()]
 #'    to ensure that this step is always executed.
 #'
@@ -101,6 +101,8 @@
 #' @inheritParams dbClearResult
 #' @param params A list of bindings, named or unnamed.
 #' @family DBIResult generics
+#' @family data retrieval generics
+#' @family command execution generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

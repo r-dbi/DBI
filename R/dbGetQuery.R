@@ -38,6 +38,7 @@
 #' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
 #' @family DBIConnection generics
+#' @family data retrieval generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
 #' @examples

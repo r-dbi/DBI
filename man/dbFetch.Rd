@@ -71,7 +71,7 @@ if you need to navigate backwards.
 This method returns \code{TRUE} if no more rows are available for fetching.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
-or if an error has occured during the processing.
+or if an error has occurred during the processing.
 It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
@@ -203,5 +203,13 @@ Other DBIResult generics:
 \code{\link{dbQuoteLiteral}()},
 \code{\link{dbQuoteString}()},
 \code{\link{dbUnquoteIdentifier}()}
+
+Other data retrieval generics: 
+\code{\link{dbBind}()},
+\code{\link{dbClearResult}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbSendQuery}()}
 }
 \concept{DBIResult generics}
+\concept{data retrieval generics}

@@ -15,6 +15,7 @@
 #'
 #' @inheritParams dbClearResult
 #' @family DBIResult generics
+#' @family data retrieval generics
 #' @export
 #' @examples
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
