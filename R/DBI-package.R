@@ -24,3 +24,10 @@ require_arrow <- function() {
   }
   stop("The arrow package is required for this functionality.")
 }
+
+if (requireNamespace("arrow", quietly = TRUE)) {
+  setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
+  setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
+} else {
+  setClass("ArrowObject", "VIRTUAL")
+}

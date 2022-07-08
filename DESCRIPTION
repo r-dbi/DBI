@@ -159,6 +159,8 @@ Collate:
     'dbWithTransaction_DBIConnection.R'
     'dbWriteTable.R'
     'dbWriteTable_DBIConnection_Id_ANY.R'
+    'dbWriteTable_DBIConnection_Id_ArrowTabular.R'
+    'dbWriteTable_DBIConnection_character_ArrowTabular.R'
     'dbiDataType.R'
     'dbiDataType_AsIs.R'
     'dbiDataType_Date.R'

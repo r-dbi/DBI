@@ -39,7 +39,7 @@ Use \code{\link[=dbAppendTable]{dbAppendTable()}} for appending data to a table,
 and \code{\link[=dbCreateTable]{dbCreateTable()}}, \code{\link[=dbExistsTable]{dbExistsTable()}} and \code{\link[=dbRemoveTable]{dbRemoveTable()}}
 for more control over the individual operations.
 
-DBI only standardizes writing data frames.
+DBI only standardizes writing data frames and \code{ArrowTabular} objects.
 Some backends might implement methods that can consume CSV files
 or other data formats.
 For details, see the documentation for the individual methods.
@@ -207,6 +207,17 @@ dbReadTable(con, "mtcars")
 # No row names
 dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
+
+# Arrow table
+dbRemoveTable(con, "mtcars")
+dbWriteTable(con, "mtcars", arrow::as_arrow_table(mtcars[1:5, ]))
+dbReadTable(con, "mtcars")
+
+# Arrow record batch
+dbRemoveTable(con, "mtcars")
+dbWriteTable(con, "mtcars", arrow::as_record_batch(mtcars[1:5, ]))
+dbReadTable(con, "mtcars")
+
 }
 \seealso{
 Other DBIConnection generics: 

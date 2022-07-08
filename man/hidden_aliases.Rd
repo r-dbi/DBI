@@ -16,10 +16,12 @@
 %   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
 %   R/dbRemoveTable_DBIConnection_Id.R,
 %   R/dbSendStatement_DBIConnection_character.R,
-%   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
-%   R/dbWriteTable_DBIConnection_Id_ANY.R, R/isSQLKeyword_DBIObject_character.R,
-%   R/make.db.names_DBIObject_character.R, R/show_AnsiConnection.R,
-%   R/show_DBIConnection.R, R/show_DBIConnector.R,
+%   R/dbUnquoteIdentifier_DBIConnection.R,
+%   R/dbWithTransaction_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
+%   R/dbWriteTable_DBIConnection_Id_ArrowTabular.R,
+%   R/dbWriteTable_DBIConnection_character_ArrowTabular.R,
+%   R/isSQLKeyword_DBIObject_character.R, R/make.db.names_DBIObject_character.R,
+%   R/show_AnsiConnection.R, R/show_DBIConnection.R, R/show_DBIConnector.R,
 %   R/show_DBIDriver.R, R/show_DBIResult.R, R/show_Id.R, R/show_SQL.R,
 %   R/sqlAppendTable_DBIConnection.R, R/sqlCreateTable_DBIConnection.R,
 %   R/sqlData_DBIConnection.R, R/sqlInterpolate_DBIConnection.R,
@@ -95,7 +97,11 @@
 \alias{dbWithTransaction_DBIConnection}
 \alias{dbWithTransaction,DBIConnection-method}
 \alias{dbWriteTable_DBIConnection_Id_ANY}
-\alias{dbWriteTable,DBIConnection,Id-method}
+\alias{dbWriteTable,DBIConnection,Id,ANY-method}
+\alias{dbWriteTable_DBIConnection_Id_ArrowTabular}
+\alias{dbWriteTable,DBIConnection,Id,ArrowTabular-method}
+\alias{dbWriteTable_DBIConnection_character_ArrowTabular}
+\alias{dbWriteTable,DBIConnection,character,ArrowTabular-method}
 \alias{isSQLKeyword_DBIObject_character}
 \alias{isSQLKeyword,DBIObject,character-method}
 \alias{make.db.names_DBIObject_character}
@@ -198,7 +204,11 @@
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 
-\S4method{dbWriteTable}{DBIConnection,Id}(conn, name, value, ...)
+\S4method{dbWriteTable}{DBIConnection,Id,ANY}(conn, name, value, ...)
+
+\S4method{dbWriteTable}{DBIConnection,Id,ArrowTabular}(conn, name, value, ...)
+
+\S4method{dbWriteTable}{DBIConnection,character,ArrowTabular}(conn, name, value, ...)
 
 \S4method{isSQLKeyword}{DBIObject,character}(
   dbObj,
