@@ -29,5 +29,5 @@ if (requireNamespace("arrow", quietly = TRUE)) {
   setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
   setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
 } else {
-  setClass("ArrowObject", "VIRTUAL")
+  setClass("ArrowTabular", "VIRTUAL")
 }
