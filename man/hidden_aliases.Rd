@@ -9,10 +9,12 @@
 %   R/dbGetInfo_DBIResult.R, R/dbGetQuery_DBIConnection_character.R,
 %   R/dbIsReadOnly_DBIConnector.R, R/dbIsReadOnly_DBIObject.R,
 %   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
-%   R/dbListObjects_DBIConnection_ANY.R,
-%   R/dbQuoteIdentifier_DBIConnection.R, R/dbQuoteLiteral_DBIConnection.R,
-%   R/dbQuoteString_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
-%   R/dbReadTable_DBIConnection_character.R, R/dbRemoveTable_DBIConnection_Id.R,
+%   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
+%   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
+%   R/dbReadTableArrow_DBIConnection_Id.R,
+%   R/dbReadTableArrow_DBIConnection_character.R,
+%   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
+%   R/dbRemoveTable_DBIConnection_Id.R,
 %   R/dbSendStatement_DBIConnection_character.R,
 %   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
 %   R/dbWriteTable_DBIConnection_Id_ANY.R, R/isSQLKeyword_DBIObject_character.R,
@@ -76,6 +78,10 @@
 \alias{dbQuoteString,DBIConnection,ANY-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
+\alias{dbReadTableArrow_DBIConnection_Id}
+\alias{dbReadTableArrow,DBIConnection,Id-method}
+\alias{dbReadTableArrow_DBIConnection_character}
+\alias{dbReadTableArrow,DBIConnection,character-method}
 \alias{dbReadTable_DBIConnection_Id}
 \alias{dbReadTable,DBIConnection,Id-method}
 \alias{dbReadTable_DBIConnection_character}
@@ -175,6 +181,10 @@
 \S4method{dbQuoteString}{DBIConnection,character}(conn, x, ...)
 
 \S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
+
+\S4method{dbReadTableArrow}{DBIConnection,Id}(conn, name, ...)
+
+\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ...)
 
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 

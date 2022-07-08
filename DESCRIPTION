@@ -35,7 +35,8 @@ Suggests:
     rprojroot,
     RSQLite (>= 1.1-2),
     testthat,
-    xml2
+    xml2,
+    arrow
 VignetteBuilder: 
     knitr
 Config/autostyle/scope: line_breaks
@@ -139,6 +140,9 @@ Collate:
     'dbQuoteString.R'
     'dbQuoteString_DBIConnection.R'
     'dbReadTable.R'
+    'dbReadTableArrow.R'
+    'dbReadTableArrow_DBIConnection_Id.R'
+    'dbReadTableArrow_DBIConnection_character.R'
     'dbReadTable_DBIConnection_Id.R'
     'dbReadTable_DBIConnection_character.R'
     'dbRemoveTable.R'
