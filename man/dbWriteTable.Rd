@@ -208,16 +208,6 @@ dbReadTable(con, "mtcars")
 dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
 
-# Arrow table
-dbRemoveTable(con, "mtcars")
-dbWriteTable(con, "mtcars", arrow::as_arrow_table(mtcars[1:5, ]))
-dbReadTable(con, "mtcars")
-
-# Arrow record batch
-dbRemoveTable(con, "mtcars")
-dbWriteTable(con, "mtcars", arrow::as_record_batch(mtcars[1:5, ]))
-dbReadTable(con, "mtcars")
-
 }
 \seealso{
 Other DBIConnection generics: 
