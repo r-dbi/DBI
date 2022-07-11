@@ -123,6 +123,7 @@ dbWriteTable(con, "mtcars", mtcars[1:10, ])
 dbReadTable(con, "mtcars")
 
 dbDisconnect(con)
+# Read data as Arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:10, ])

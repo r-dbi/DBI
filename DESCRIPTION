@@ -109,6 +109,8 @@ Collate:
     'dbExistsTable.R'
     'dbExistsTable_DBIConnection_Id.R'
     'dbFetch.R'
+    'dbFetchArrow.R'
+    'dbFetchArrow_DBIResult.R'
     'dbFetch_DBIResult.R'
     'dbGetConnectArgs.R'
     'dbGetConnectArgs_DBIConnector.R'

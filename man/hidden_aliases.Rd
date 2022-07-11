@@ -5,10 +5,11 @@
 %   R/dbCreateTable_DBIConnection.R, R/dbDataType_DBIConnector.R,
 %   R/dbDataType_DBIObject.R, R/dbDriver_character.R,
 %   R/dbExecute_DBIConnection_character.R, R/dbExistsTable_DBIConnection_Id.R,
-%   R/dbFetch_DBIResult.R, R/dbGetConnectArgs_DBIConnector.R,
-%   R/dbGetInfo_DBIResult.R, R/dbGetQuery_DBIConnection_character.R,
-%   R/dbIsReadOnly_DBIConnector.R, R/dbIsReadOnly_DBIObject.R,
-%   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
+%   R/dbFetchArrow_DBIResult.R, R/dbFetch_DBIResult.R,
+%   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIResult.R,
+%   R/dbGetQuery_DBIConnection_character.R, R/dbIsReadOnly_DBIConnector.R,
+%   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
+%   R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
 %   R/dbReadTableArrow_DBIConnection_Id.R,
@@ -51,6 +52,8 @@
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbExistsTable_DBIConnection_Id}
 \alias{dbExistsTable,DBIConnection,Id-method}
+\alias{dbFetchArrow_DBIResult}
+\alias{dbFetchArrow,DBIResult-method}
 \alias{dbFetch_DBIResult}
 \alias{dbFetch,DBIResult-method}
 \alias{dbGetConnectArgs_DBIConnector}
@@ -153,6 +156,8 @@
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbExistsTable}{DBIConnection,Id}(conn, name, ...)
+
+\S4method{dbFetchArrow}{DBIResult}(res, n = -1, ...)
 
 \S4method{dbFetch}{DBIResult}(res, n = -1, ...)
 
