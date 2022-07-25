@@ -203,6 +203,7 @@ dbFetch(rs)
 dbClearResult(rs)
 
 dbDisconnect(con)
+# Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
