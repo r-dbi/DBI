@@ -51,5 +51,5 @@
 #' @export
 setGeneric("dbFetch",
   def = function(res, n = -1, ...) standardGeneric("dbFetch"),
-  valueClass = "data.frame"
+  valueClass = c("data.frame", "ArrowTabular")
 )
