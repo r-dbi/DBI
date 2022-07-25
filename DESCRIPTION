@@ -89,6 +89,7 @@ Collate:
     'dbAppendTable_DBIConnection.R'
     'dbBegin.R'
     'dbBind.R'
+    'dbBind_DBIArrowResult.R'
     'dbCallProc.R'
     'dbCanConnect.R'
     'dbCanConnect_DBIDriver.R'
