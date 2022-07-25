@@ -206,7 +206,7 @@
 
 \S4method{dbReadTableArrow}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ...)
+\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ..., row.names = FALSE, check.names = TRUE)
 
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
