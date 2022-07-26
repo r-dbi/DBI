@@ -7,9 +7,11 @@
 %   R/dbDataType_DBIObject.R, R/dbDriver_character.R,
 %   R/dbExecute_DBIConnection_character.R, R/dbExistsTable_DBIConnection_Id.R,
 %   R/dbFetch_DBIArrowResult.R, R/dbFetch_DBIResult.R,
-%   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIResult.R,
-%   R/dbGetQueryArrow_DBIConnection_character.R,
-%   R/dbGetQuery_DBIConnection_character.R, R/dbIsReadOnly_DBIConnector.R,
+%   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIArrowResult.R,
+%   R/dbGetInfo_DBIResult.R, R/dbGetQueryArrow_DBIConnection_character.R,
+%   R/dbGetQuery_DBIConnection_character.R, R/dbGetRowCount_DBIArrowResult.R,
+%   R/dbGetRowsAffected_DBIArrowResult.R, R/dbGetStatement_DBIArrowResult.R,
+%   R/dbHasCompleted_DBIArrowResult.R, R/dbIsReadOnly_DBIConnector.R,
 %   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
 %   R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
@@ -64,12 +66,22 @@
 \alias{dbFetch,DBIResult-method}
 \alias{dbGetConnectArgs_DBIConnector}
 \alias{dbGetConnectArgs,DBIConnector-method}
+\alias{dbGetInfo_DBIArrowResult}
+\alias{dbGetInfo,DBIArrowResult-method}
 \alias{dbGetInfo_DBIResult}
 \alias{dbGetInfo,DBIResult-method}
 \alias{dbGetQueryArrow_DBIConnection_character}
 \alias{dbGetQueryArrow,DBIConnection,character-method}
 \alias{dbGetQuery_DBIConnection_character}
 \alias{dbGetQuery,DBIConnection,character-method}
+\alias{dbGetRowCount_DBIArrowResult}
+\alias{dbGetRowCount,DBIArrowResult-method}
+\alias{dbGetRowsAffected_DBIArrowResult}
+\alias{dbGetRowsAffected,DBIArrowResult-method}
+\alias{dbGetStatement_DBIArrowResult}
+\alias{dbGetStatement,DBIArrowResult-method}
+\alias{dbHasCompleted_DBIArrowResult}
+\alias{dbHasCompleted,DBIArrowResult-method}
 \alias{dbIsReadOnly_DBIConnector}
 \alias{dbIsReadOnly,DBIConnector-method}
 \alias{dbIsReadOnly_DBIObject}
@@ -177,11 +189,21 @@
 
 \S4method{dbGetConnectArgs}{DBIConnector}(drv, eval = TRUE, ...)
 
+\S4method{dbGetInfo}{DBIArrowResult}(dbObj, ...)
+
 \S4method{dbGetInfo}{DBIResult}(dbObj, ...)
 
 \S4method{dbGetQueryArrow}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
+
+\S4method{dbGetRowCount}{DBIArrowResult}(res, ...)
+
+\S4method{dbGetRowsAffected}{DBIArrowResult}(res, ...)
+
+\S4method{dbGetStatement}{DBIArrowResult}(res, ...)
+
+\S4method{dbHasCompleted}{DBIArrowResult}(res, ...)
 
 \S4method{dbIsReadOnly}{DBIConnector}(dbObj, ...)
 
