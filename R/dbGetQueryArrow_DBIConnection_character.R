@@ -4,7 +4,7 @@ dbGetQueryArrow_DBIConnection_character <- function(conn, statement, ...) {
   rs <- dbSendQueryArrow(conn, statement, ...)
   on.exit(dbClearResult(rs))
 
-  dbFetch(rs, ...)
+  dbStream(rs, ...)
 }
 #' @rdname hidden_aliases
 #' @export

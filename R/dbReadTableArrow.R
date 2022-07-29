@@ -13,5 +13,5 @@ setGeneric("dbReadTableArrow",
     require_arrow()
     standardGeneric("dbReadTableArrow")
   },
-  valueClass = "ArrowTabular"
+  valueClass = "RecordBatchReader"
 )

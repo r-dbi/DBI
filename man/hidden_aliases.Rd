@@ -6,7 +6,7 @@
 %   R/dbCreateTable_DBIConnection.R, R/dbDataType_DBIConnector.R,
 %   R/dbDataType_DBIObject.R, R/dbDriver_character.R,
 %   R/dbExecute_DBIConnection_character.R, R/dbExistsTable_DBIConnection_Id.R,
-%   R/dbFetch_DBIArrowResult.R, R/dbFetch_DBIResult.R,
+%   R/dbFetch_DBIResult.R, R/dbFetch_DBIResultArrow.R,
 %   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIArrowResult.R,
 %   R/dbGetInfo_DBIResult.R, R/dbGetQueryArrow_DBIConnection_character.R,
 %   R/dbGetQuery_DBIConnection_character.R, R/dbGetRowCount_DBIArrowResult.R,
@@ -21,7 +21,7 @@
 %   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
 %   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
-%   R/dbUnquoteIdentifier_DBIConnection.R,
+%   R/dbStream_DBIArrowResult.R, R/dbUnquoteIdentifier_DBIConnection.R,
 %   R/dbWithTransaction_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
 %   R/dbWriteTable_DBIConnection_Id_ArrowTabular.R,
 %   R/dbWriteTable_DBIConnection_character_ArrowTabular.R,
@@ -60,10 +60,10 @@
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbExistsTable_DBIConnection_Id}
 \alias{dbExistsTable,DBIConnection,Id-method}
-\alias{dbFetch_DBIArrowResult}
-\alias{dbFetch,DBIArrowResult-method}
 \alias{dbFetch_DBIResult}
 \alias{dbFetch,DBIResult-method}
+\alias{dbFetch_DBIResultArrow}
+\alias{dbFetch,DBIArrowResult-method}
 \alias{dbGetConnectArgs_DBIConnector}
 \alias{dbGetConnectArgs,DBIConnector-method}
 \alias{dbGetInfo_DBIArrowResult}
@@ -117,6 +117,8 @@
 \alias{dbSendQueryArrow,DBIConnection-method}
 \alias{dbSendStatement_DBIConnection_character}
 \alias{dbSendStatement,DBIConnection,character-method}
+\alias{dbStream_DBIArrowResult}
+\alias{dbStream,DBIArrowResult-method}
 \alias{dbUnquoteIdentifier_DBIConnection}
 \alias{dbUnquoteIdentifier,DBIConnection-method}
 \alias{dbWithTransaction_DBIConnection}
@@ -183,9 +185,9 @@
 
 \S4method{dbExistsTable}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbFetch}{DBIArrowResult}(res, n = -1, ...)
-
 \S4method{dbFetch}{DBIResult}(res, n = -1, ...)
+
+\S4method{dbFetch}{DBIArrowResult}(res, n = -1, ...)
 
 \S4method{dbGetConnectArgs}{DBIConnector}(drv, eval = TRUE, ...)
 
@@ -233,7 +235,7 @@
 
 \S4method{dbReadTableArrow}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ..., row.names = FALSE, check.names = TRUE)
+\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ..., row.names = FALSE)
 
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
@@ -244,6 +246,8 @@
 \S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
+
+\S4method{dbStream}{DBIArrowResult}(res, ...)
 
 \S4method{dbUnquoteIdentifier}{DBIConnection}(conn, x, ...)
 
