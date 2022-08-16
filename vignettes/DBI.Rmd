@@ -135,7 +135,7 @@ This is covered in more detail in `vignette("DBI-advanced", package = "DBI")`.
 
 ```{r}
 df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006 AND rating = 'G'")
-head(df,3)
+head(df, 3)
 ```
 
 

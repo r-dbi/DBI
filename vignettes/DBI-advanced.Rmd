@@ -101,7 +101,7 @@ As there may be DBMS-specific rules for escaping these identifiers, DBI provides
 safe_id <- dbQuoteIdentifier(con, "rating")
 safe_param <- dbQuoteLiteral(con, "G")
 
-query <- paste0("SELECT title, ", safe_id, " FROM film WHERE ", safe_id, " = ", safe_param )
+query <- paste0("SELECT title, ", safe_id, " FROM film WHERE ", safe_id, " = ", safe_param)
 query
 
 res <- dbSendQuery(con, query)
