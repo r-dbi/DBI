@@ -16,11 +16,11 @@
 %   R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
-%   R/dbReadTableArrow_DBIConnection_Id.R,
-%   R/dbReadTableArrow_DBIConnection_character.R,
 %   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
 %   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
+%   R/dbStreamTable_DBIConnection_Id.R,
+%   R/dbStreamTable_DBIConnection_character.R,
 %   R/dbStream_DBIArrowResult.R, R/dbUnquoteIdentifier_DBIConnection.R,
 %   R/dbWithTransaction_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
 %   R/dbWriteTable_DBIConnection_Id_ArrowTabular.R,
@@ -103,10 +103,6 @@
 \alias{dbQuoteString,DBIConnection,ANY-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
-\alias{dbReadTableArrow_DBIConnection_Id}
-\alias{dbReadTableArrow,DBIConnection,Id-method}
-\alias{dbReadTableArrow_DBIConnection_character}
-\alias{dbReadTableArrow,DBIConnection,character-method}
 \alias{dbReadTable_DBIConnection_Id}
 \alias{dbReadTable,DBIConnection,Id-method}
 \alias{dbReadTable_DBIConnection_character}
@@ -117,6 +113,10 @@
 \alias{dbSendQueryArrow,DBIConnection-method}
 \alias{dbSendStatement_DBIConnection_character}
 \alias{dbSendStatement,DBIConnection,character-method}
+\alias{dbStreamTable_DBIConnection_Id}
+\alias{dbStreamTable,DBIConnection,Id-method}
+\alias{dbStreamTable_DBIConnection_character}
+\alias{dbStreamTable,DBIConnection,character-method}
 \alias{dbStream_DBIArrowResult}
 \alias{dbStream,DBIArrowResult-method}
 \alias{dbUnquoteIdentifier_DBIConnection}
@@ -233,10 +233,6 @@
 
 \S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
-\S4method{dbReadTableArrow}{DBIConnection,Id}(conn, name, ...)
-
-\S4method{dbReadTableArrow}{DBIConnection,character}(conn, name, ..., row.names = FALSE)
-
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ..., row.names = FALSE, check.names = TRUE)
@@ -246,6 +242,10 @@
 \S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
+
+\S4method{dbStreamTable}{DBIConnection,Id}(conn, name, ...)
+
+\S4method{dbStreamTable}{DBIConnection,character}(conn, name, ..., row.names = FALSE)
 
 \S4method{dbStream}{DBIArrowResult}(res, ...)
 
