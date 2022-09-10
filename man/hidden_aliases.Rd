@@ -260,7 +260,7 @@
 
 \S4method{dbWriteStream}{DBIConnection,character,ArrowTabular}(conn, name, value, ...)
 
-\S4method{dbWriteStream}{DBIConnection,character,RecordBatchReader}(conn, name, value, append = TRUE, overwrite = FALSE, ...)
+\S4method{dbWriteStream}{DBIConnection,character,RecordBatchReader}(conn, name, value, append = FALSE, overwrite = FALSE, ...)
 
 \S4method{dbWriteTable}{DBIConnection,Id}(conn, name, value, ...)
 

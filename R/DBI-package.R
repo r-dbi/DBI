@@ -32,7 +32,8 @@ if (has_arrow()) {
   setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
   setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
 } else {
-  setClass(c("Table", "ArrowTabular"), "VIRTUAL")
-  setClass(c("RecordBatch", "ArrowTabular"), "VIRTUAL")
-  setClass("ArrowTabular", "VIRTUAL")
+  setClass("RecordBatchReader", contains = "VIRTUAL")
+  setClass("ArrowTabular", contains = "VIRTUAL")
+  setClass("Table", contains = "ArrowTabular")
+  setClass("RecordBatch", contains = "ArrowTabular")
 }
