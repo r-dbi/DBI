@@ -23,6 +23,7 @@
 %   R/dbStreamTable_DBIConnection_character.R,
 %   R/dbStream_DBIArrowResult.R, R/dbUnquoteIdentifier_DBIConnection.R,
 %   R/dbWithTransaction_DBIConnection.R, R/dbWriteStream_DBIConnection_Id_ANY.R,
+%   R/dbWriteStream_DBIConnection_character_ArrowTabular.R,
 %   R/dbWriteStream_DBIConnection_character_RecordBatchReader.R,
 %   R/dbWriteTable_DBIConnection_Id_ANY.R, R/isSQLKeyword_DBIObject_character.R,
 %   R/make.db.names_DBIObject_character.R, R/show_AnsiConnection.R,
@@ -125,6 +126,8 @@
 \alias{dbWithTransaction,DBIConnection-method}
 \alias{dbWriteStream_DBIConnection_Id_ANY}
 \alias{dbWriteStream,DBIConnection,Id,ANY-method}
+\alias{dbWriteStream_DBIConnection_character_ArrowTabular}
+\alias{dbWriteStream,DBIConnection,character,ArrowTabular-method}
 \alias{dbWriteStream_DBIConnection_character_RecordBatchReader}
 \alias{dbWriteStream,DBIConnection,character,RecordBatchReader-method}
 \alias{dbWriteTable_DBIConnection_Id_ANY}
@@ -255,7 +258,9 @@
 
 \S4method{dbWriteStream}{DBIConnection,Id,ANY}(conn, name, value, ...)
 
-\S4method{dbWriteStream}{DBIConnection,character,RecordBatchReader}(conn, name, value, overwrite = FALSE, append = TRUE, ...)
+\S4method{dbWriteStream}{DBIConnection,character,ArrowTabular}(conn, name, value, ...)
+
+\S4method{dbWriteStream}{DBIConnection,character,RecordBatchReader}(conn, name, value, append = TRUE, overwrite = FALSE, ...)
 
 \S4method{dbWriteTable}{DBIConnection,Id}(conn, name, value, ...)
 

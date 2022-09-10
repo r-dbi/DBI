@@ -29,6 +29,10 @@ require_arrow <- function() {
 
 if (has_arrow()) {
   setOldClass(c("RecordBatchReader", "ArrowObject", "R6"))
+  setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
+  setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
 } else {
-  setClass("RecordBatchReader", "VIRTUAL")
+  setClass(c("Table", "ArrowTabular"), "VIRTUAL")
+  setClass(c("RecordBatch", "ArrowTabular"), "VIRTUAL")
+  setClass("ArrowTabular", "VIRTUAL")
 }

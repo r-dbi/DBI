@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbWriteStream_DBIConnection_character_RecordBatchReader <- function(conn, name, value, append = TRUE, overwrite = FALSE, ...) {
+dbWriteStream_DBIConnection_character_RecordBatchReader <- function(conn, name, value, append = FALSE, overwrite = FALSE, ...) {
   require_arrow()
 
   if (overwrite && append) {
@@ -8,7 +8,7 @@ dbWriteStream_DBIConnection_character_RecordBatchReader <- function(conn, name, 
   }
 
   if (overwrite || !append) {
-    dbWriteTable(conn, name, as.data.frame(value$read_next_batch()), ...)
+    dbWriteTable(conn, name, as.data.frame(value$read_next_batch()), ..., append = append, overwrite = overwrite)
   }
 
   while(TRUE) {
