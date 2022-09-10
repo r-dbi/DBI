@@ -44,7 +44,7 @@ Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.1
 Config/Needs/website: 
     r-dbi/DBItest,
     AzureKusto,
@@ -121,8 +121,6 @@ Collate:
     'dbGetInfo_DBIArrowResult.R'
     'dbGetInfo_DBIResult.R'
     'dbGetQuery.R'
-    'dbGetQueryArrow.R'
-    'dbGetQueryArrow_DBIConnection_character.R'
     'dbGetQuery_DBIConnection_character.R'
     'dbGetRowCount.R'
     'dbGetRowCount_DBIArrowResult.R'
@@ -130,6 +128,8 @@ Collate:
     'dbGetRowsAffected_DBIArrowResult.R'
     'dbGetStatement.R'
     'dbGetStatement_DBIArrowResult.R'
+    'dbGetStream.R'
+    'dbGetStream_DBIConnection_character.R'
     'dbHasCompleted.R'
     'dbHasCompleted_DBIArrowResult.R'
     'dbIsReadOnly.R'
