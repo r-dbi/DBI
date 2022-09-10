@@ -245,7 +245,7 @@
 
 \S4method{dbStreamTable}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbStreamTable}{DBIConnection,character}(conn, name, ..., row.names = FALSE)
+\S4method{dbStreamTable}{DBIConnection,character}(conn, name, ...)
 
 \S4method{dbStream}{DBIArrowResult}(res, ...)
 
