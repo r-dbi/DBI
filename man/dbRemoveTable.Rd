@@ -120,6 +120,6 @@ Other DBIConnection generics:
 \code{\link{dbReadTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbWriteStream}()}
 }
 \concept{DBIConnection generics}

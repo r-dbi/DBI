@@ -236,7 +236,7 @@ Other DBIConnection generics:
 \code{\link{dbReadTable}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbWriteStream}()}
 
 Other data retrieval generics: 
 \code{\link{dbBind}()},

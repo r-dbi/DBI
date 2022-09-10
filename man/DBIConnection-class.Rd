@@ -52,7 +52,7 @@ Other DBIConnection generics:
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbWriteStream}()}
 }
 \concept{DBI classes}
 \concept{DBIConnection generics}

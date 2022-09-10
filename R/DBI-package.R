@@ -18,16 +18,17 @@
 #'   `vignette("spec", package = "DBI")`
 "_PACKAGE"
 
+has_arrow <- function() requireNamespace("arrow", quietly = TRUE)
+
 require_arrow <- function() {
-  if (requireNamespace("arrow", quietly = TRUE)) {
+  if (has_arrow()) {
     return(invisible(TRUE))
   }
   stop("The arrow package is required for this functionality.")
 }
 
-if (requireNamespace("arrow", quietly = TRUE)) {
-  setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
-  setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
+if (has_arrow()) {
+  setOldClass(c("RecordBatchReader", "ArrowObject", "R6"))
 } else {
-  setClass("ArrowTabular", "VIRTUAL")
+  setClass("RecordBatchReader", "VIRTUAL")
 }
