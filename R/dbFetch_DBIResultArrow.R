@@ -16,4 +16,4 @@ dbFetch_DBIResultArrow <- function(res, n = -1, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbFetch", signature("DBIArrowResult"), dbFetch_DBIResultArrow)
+setMethod("dbFetch", signature("DBIResultArrow"), dbFetch_DBIResultArrow)

@@ -2,7 +2,7 @@
 #' @usage NULL
 dbSendQueryArrow_DBIConnection <- function(conn, statement, ...) {
   new(
-    "DBIArrowResult",
+    "DBIResultArrowDefault",
     result = dbSendQuery(conn, statement, ...)
   )
 }

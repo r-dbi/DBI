@@ -5,4 +5,4 @@ dbGetRowsAffected_DBIArrowResult <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetRowsAffected", signature("DBIArrowResult"), dbGetRowsAffected_DBIArrowResult)
+setMethod("dbGetRowsAffected", signature("DBIResultArrow"), dbGetRowsAffected_DBIArrowResult)

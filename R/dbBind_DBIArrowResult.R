@@ -5,4 +5,4 @@ dbBind_DBIArrowResult <- function(res, params, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbBind", signature("DBIArrowResult"), dbBind_DBIArrowResult)
+setMethod("dbBind", signature("DBIResultArrow"), dbBind_DBIArrowResult)

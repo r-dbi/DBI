@@ -4,7 +4,7 @@
 \name{DBIResult-class}
 \alias{DBIResult-class}
 \alias{DBIResultArrow-class}
-\alias{DBIArrowResult-class}
+\alias{DBIResultArrowDefault-class}
 \title{DBIResult class}
 \description{
 This virtual class describes the result and state of execution of

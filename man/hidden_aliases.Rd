@@ -42,11 +42,11 @@
 \alias{dbAppendTable_DBIConnection}
 \alias{dbAppendTable,DBIConnection-method}
 \alias{dbBind_DBIArrowResult}
-\alias{dbBind,DBIArrowResult-method}
+\alias{dbBind,DBIResultArrow-method}
 \alias{dbCanConnect_DBIDriver}
 \alias{dbCanConnect,DBIDriver-method}
 \alias{dbClearResult_DBIArrowResult}
-\alias{dbClearResult,DBIArrowResult-method}
+\alias{dbClearResult,DBIResultArrow-method}
 \alias{dbConnect_DBIConnector}
 \alias{dbConnect,DBIConnector-method}
 \alias{dbCreateTable_DBIConnection}
@@ -64,25 +64,25 @@
 \alias{dbFetch_DBIResult}
 \alias{dbFetch,DBIResult-method}
 \alias{dbFetch_DBIResultArrow}
-\alias{dbFetch,DBIArrowResult-method}
+\alias{dbFetch,DBIResultArrow-method}
 \alias{dbGetConnectArgs_DBIConnector}
 \alias{dbGetConnectArgs,DBIConnector-method}
 \alias{dbGetInfo_DBIArrowResult}
-\alias{dbGetInfo,DBIArrowResult-method}
+\alias{dbGetInfo,DBIResultArrow-method}
 \alias{dbGetInfo_DBIResult}
 \alias{dbGetInfo,DBIResult-method}
 \alias{dbGetQuery_DBIConnection_character}
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbGetRowCount_DBIArrowResult}
-\alias{dbGetRowCount,DBIArrowResult-method}
+\alias{dbGetRowCount,DBIResultArrow-method}
 \alias{dbGetRowsAffected_DBIArrowResult}
-\alias{dbGetRowsAffected,DBIArrowResult-method}
+\alias{dbGetRowsAffected,DBIResultArrow-method}
 \alias{dbGetStatement_DBIArrowResult}
-\alias{dbGetStatement,DBIArrowResult-method}
+\alias{dbGetStatement,DBIResultArrow-method}
 \alias{dbGetStream_DBIConnection_character}
 \alias{dbGetStream,DBIConnection,character-method}
 \alias{dbHasCompleted_DBIArrowResult}
-\alias{dbHasCompleted,DBIArrowResult-method}
+\alias{dbHasCompleted,DBIResultArrow-method}
 \alias{dbIsReadOnly_DBIConnector}
 \alias{dbIsReadOnly,DBIConnector-method}
 \alias{dbIsReadOnly_DBIObject}
@@ -119,7 +119,7 @@
 \alias{dbStreamTable_DBIConnection_character}
 \alias{dbStreamTable,DBIConnection,character-method}
 \alias{dbStream_DBIArrowResult}
-\alias{dbStream,DBIArrowResult-method}
+\alias{dbStream,DBIResultArrow-method}
 \alias{dbUnquoteIdentifier_DBIConnection}
 \alias{dbUnquoteIdentifier,DBIConnection-method}
 \alias{dbWithTransaction_DBIConnection}
@@ -168,11 +168,11 @@
 
 \S4method{dbAppendTable}{DBIConnection}(conn, name, value, ..., row.names = NULL)
 
-\S4method{dbBind}{DBIArrowResult}(res, params, ...)
+\S4method{dbBind}{DBIResultArrow}(res, params, ...)
 
 \S4method{dbCanConnect}{DBIDriver}(drv, ...)
 
-\S4method{dbClearResult}{DBIArrowResult}(res, ...)
+\S4method{dbClearResult}{DBIResultArrow}(res, ...)
 
 \S4method{dbConnect}{DBIConnector}(drv, ...)
 
@@ -190,25 +190,25 @@
 
 \S4method{dbFetch}{DBIResult}(res, n = -1, ...)
 
-\S4method{dbFetch}{DBIArrowResult}(res, n = -1, ...)
+\S4method{dbFetch}{DBIResultArrow}(res, n = -1, ...)
 
 \S4method{dbGetConnectArgs}{DBIConnector}(drv, eval = TRUE, ...)
 
-\S4method{dbGetInfo}{DBIArrowResult}(dbObj, ...)
+\S4method{dbGetInfo}{DBIResultArrow}(dbObj, ...)
 
 \S4method{dbGetInfo}{DBIResult}(dbObj, ...)
 
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
 
-\S4method{dbGetRowCount}{DBIArrowResult}(res, ...)
+\S4method{dbGetRowCount}{DBIResultArrow}(res, ...)
 
-\S4method{dbGetRowsAffected}{DBIArrowResult}(res, ...)
+\S4method{dbGetRowsAffected}{DBIResultArrow}(res, ...)
 
-\S4method{dbGetStatement}{DBIArrowResult}(res, ...)
+\S4method{dbGetStatement}{DBIResultArrow}(res, ...)
 
 \S4method{dbGetStream}{DBIConnection,character}(conn, statement, ...)
 
-\S4method{dbHasCompleted}{DBIArrowResult}(res, ...)
+\S4method{dbHasCompleted}{DBIResultArrow}(res, ...)
 
 \S4method{dbIsReadOnly}{DBIConnector}(dbObj, ...)
 
@@ -250,7 +250,7 @@
 
 \S4method{dbStreamTable}{DBIConnection,character}(conn, name, ...)
 
-\S4method{dbStream}{DBIArrowResult}(res, ...)
+\S4method{dbStream}{DBIResultArrow}(res, ...)
 
 \S4method{dbUnquoteIdentifier}{DBIConnection}(conn, x, ...)
 

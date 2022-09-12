@@ -5,4 +5,4 @@ dbHasCompleted_DBIArrowResult <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbHasCompleted", signature("DBIArrowResult"), dbHasCompleted_DBIArrowResult)
+setMethod("dbHasCompleted", signature("DBIResultArrow"), dbHasCompleted_DBIArrowResult)

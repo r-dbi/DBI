@@ -5,4 +5,4 @@ dbGetInfo_DBIArrowResult <- function(dbObj, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetInfo", signature("DBIArrowResult"), dbGetInfo_DBIArrowResult)
+setMethod("dbGetInfo", signature("DBIResultArrow"), dbGetInfo_DBIArrowResult)

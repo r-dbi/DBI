@@ -7,4 +7,4 @@ dbStream_DBIArrowResult <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbStream", signature("DBIArrowResult"), dbStream_DBIArrowResult)
+setMethod("dbStream", signature("DBIResultArrow"), dbStream_DBIArrowResult)

@@ -5,4 +5,4 @@ dbGetRowCount_DBIArrowResult <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetRowCount", signature("DBIArrowResult"), dbGetRowCount_DBIArrowResult)
+setMethod("dbGetRowCount", signature("DBIResultArrow"), dbGetRowCount_DBIArrowResult)
