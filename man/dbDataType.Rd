@@ -149,7 +149,7 @@ Other DBIConnection generics:
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteStream}()}
+\code{\link{dbWriteTable}()}
 
 Other DBIConnector generics: 
 \code{\link{DBIConnector-class}},

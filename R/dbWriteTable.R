@@ -42,7 +42,6 @@
 #' # No row names
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 #' dbReadTable(con, "mtcars")
-#'
 setGeneric("dbWriteTable",
   def = function(conn, name, value, ...) standardGeneric("dbWriteTable")
 )

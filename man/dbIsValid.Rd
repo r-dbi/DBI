@@ -83,7 +83,7 @@ Other DBIConnection generics:
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteStream}()}
+\code{\link{dbWriteTable}()}
 
 Other DBIResult generics: 
 \code{\link{DBIResult-class}},
