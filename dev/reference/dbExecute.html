@@ -89,7 +89,7 @@ the "The command execution flow" section.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbExecute</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbExecute</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -226,20 +226,20 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are 3 rows</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">cars</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are 3 rows</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   speed dist</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     4   10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3     7    4</span>
-<span class="r-in"><span class="fu">dbExecute</span><span class="op">(</span></span>
-<span class="r-in">  <span class="va">con</span>,</span>
-<span class="r-in">  <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">dbExecute</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">con</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 6 rows</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 6 rows</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   speed dist</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1     4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2     4   10</span>
@@ -247,15 +247,15 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4     1    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5     2    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6     3    3</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Pass values using the param argument:</span></span>
-<span class="r-in"><span class="fu">dbExecute</span><span class="op">(</span></span>
-<span class="r-in">  <span class="va">con</span>,</span>
-<span class="r-in">  <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,</span>
-<span class="r-in">  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Pass values using the param argument:</span></span></span>
+<span class="r-in"><span><span class="fu">dbExecute</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">con</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"INSERT INTO cars (speed, dist) VALUES (?, ?)"</span>,</span></span>
+<span class="r-in"><span>  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">4</span><span class="op">:</span><span class="fl">7</span>, <span class="fl">5</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 10 rows</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span>   <span class="co"># there are now 10 rows</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    speed dist</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1      4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2      4   10</span>
@@ -267,8 +267,8 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8      5    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9      6    7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10     7    8</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -283,7 +283,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

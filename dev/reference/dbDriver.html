@@ -75,9 +75,9 @@ to, you should call the function directly.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbDriver</span><span class="op">(</span><span class="va">drvName</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">dbUnloadDriver</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbDriver</span><span class="op">(</span><span class="va">drvName</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbUnloadDriver</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -138,13 +138,13 @@ connecting to the database engine itself needs to be done through calls to
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create a RSQLite driver with a string</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">dbDriver</span><span class="op">(</span><span class="st">"SQLite"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">d</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a RSQLite driver with a string</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">dbDriver</span><span class="op">(</span><span class="st">"SQLite"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteDriver&gt;</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># But better, access the object directly</span></span>
-<span class="r-in"><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># But better, access the object directly</span></span></span>
+<span class="r-in"><span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteDriver&gt;</span>
 </code></pre></div>
     </div>
@@ -160,7 +160,7 @@ connecting to the database engine itself needs to be done through calls to
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

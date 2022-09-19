@@ -93,30 +93,30 @@ In such a case, the function is evaluated transparently when connecting in
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Create a connector:</span></span>
-<span class="r-in"><span class="va">cnr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/new.html" class="external-link">new</a></span><span class="op">(</span><span class="st">"DBIConnector"</span>,</span>
-<span class="r-in">  .drv <span class="op">=</span> <span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span class="r-in">  .conn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
-<span class="r-in"><span class="va">cnr</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a connector:</span></span></span>
+<span class="r-in"><span><span class="va">cnr</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/methods/new.html" class="external-link">new</a></span><span class="op">(</span><span class="st">"DBIConnector"</span>,</span></span>
+<span class="r-in"><span>  .drv <span class="op">=</span> <span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  .conn_args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>dbname <span class="op">=</span> <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cnr</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;DBIConnector&gt;&lt;SQLiteDriver&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Arguments:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $dbname</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] ":memory:"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Establish a connection through this connector:</span></span>
-<span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">cnr</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">con</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Establish a connection through this connector:</span></span></span>
+<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">cnr</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">con</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQLiteConnection&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Path: :memory:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Extensions: TRUE</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Access the database through this connection:</span></span>
-<span class="r-in"><span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1 AS a"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Access the database through this connection:</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT 1 AS a"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   a</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 1</span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -131,7 +131,7 @@ In such a case, the function is evaluated transparently when connecting in
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

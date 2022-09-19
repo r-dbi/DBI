@@ -89,7 +89,7 @@ before calling <code><a href="dbFetch.html">dbFetch()</a></code> or <code><a hre
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbBind</span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbBind</span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -330,14 +330,14 @@ and with the value stored as integer)</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Using the same query for different values</span></span>
-<span class="r-in"><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">2.3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Using the same query for different values</span></span></span>
+<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">2.3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          6.3         3.3          6.0         2.5 virginica</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2          7.2         3.6          6.1         2.5 virginica</span>
@@ -345,23 +345,23 @@ and with the value stored as integer)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4          6.3         3.4          5.6         2.4 virginica</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5          6.7         3.1          5.6         2.4 virginica</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6          6.7         3.3          5.7         2.5 virginica</span>
-<span class="r-in"><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;0 rows&gt; (or 0-length row.names)</span>
-<span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Executing the same statement with different values at once</span></span>
-<span class="r-in"><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM iris WHERE [Species] = $species"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Executing the same statement with different values at once</span></span></span>
+<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM iris WHERE [Species] = $species"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbBind</span><span class="op">(</span><span class="va">iris_result</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>species <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 100</span>
-<span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 50</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -376,7 +376,7 @@ and with the value stored as integer)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

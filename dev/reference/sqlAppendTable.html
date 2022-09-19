@@ -75,17 +75,17 @@ These methods are mostly useful for backend implementers.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">values</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">sqlAppendTableTemplate</span><span class="op">(</span>
-  <span class="va">con</span>,
-  <span class="va">table</span>,
-  <span class="va">values</span>,
-  row.names <span class="op">=</span> <span class="cn">NA</span>,
-  prefix <span class="op">=</span> <span class="st">"?"</span>,
-  <span class="va">...</span>,
-  pattern <span class="op">=</span> <span class="st">""</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">values</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span></span>
+<span>  <span class="va">con</span>,</span>
+<span>  <span class="va">table</span>,</span>
+<span>  <span class="va">values</span>,</span>
+<span>  row.names <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  prefix <span class="op">=</span> <span class="st">"?"</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  pattern <span class="op">=</span> <span class="st">""</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -142,7 +142,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "iris"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species")</span>
@@ -153,8 +153,8 @@ a compatibility warning.  The default will be changed in a later release.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (4.6, 3.1, 1.5, 0.2, 'setosa'),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (5, 3.6, 1.4, 0.2, 'setosa'),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (5.4, 3.9, 1.7, 0.4, 'setosa')</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the row.names argument for sqlAppendTable(), it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("row_names", "mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
@@ -165,7 +165,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Hornet 4 Drive', 21.4, 6, 258, 110, 3.08, 3.215, 19.44, 1, 0, 3, 1),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Hornet Sportabout', 18.7, 8, 360, 175, 3.15, 3.44, 17.02, 0, 0, 3, 2),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ('Valiant', 18.1, 6, 225, 105, 2.76, 3.46, 20.22, 1, 0, 3, 1)</span>
-<span class="r-in"><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VALUES</span>
@@ -175,20 +175,20 @@ a compatibility warning.  The default will be changed in a later release.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (21.4, 6, 258, 110, 3.08, 3.215, 19.44, 1, 0, 3, 1),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (18.7, 8, 360, 175, 3.15, 3.44, 17.02, 0, 0, 3, 2),</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (18.1, 6, 225, 105, 2.76, 3.46, 20.22, 1, 0, 3, 1)</span>
-<span class="r-in"><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "iris"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width", "Species")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VALUES</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (?, ?, ?, ?, ?)</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("row_names", "mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VALUES</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)</span>
-<span class="r-in"><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">sqlAppendTableTemplate</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; INSERT INTO "mtcars"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   ("mpg", "cyl", "disp", "hp", "drat", "wt", "qsec", "vs", "am", "gear", "carb")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> VALUES</span>
@@ -207,7 +207,7 @@ a compatibility warning.  The default will be changed in a later release.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

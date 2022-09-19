@@ -101,7 +101,7 @@ see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -263,10 +263,10 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
@@ -300,7 +300,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span>
-<span class="r-in"><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span>, n <span class="op">=</span> <span class="fl">6</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
@@ -308,16 +308,16 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Pass values using the param argument:</span></span>
-<span class="r-in"><span class="co"># (This query runs eight times, once for each different</span></span>
-<span class="r-in"><span class="co"># parameter. The resulting rows are combined into a single</span></span>
-<span class="r-in"><span class="co"># data frame.)</span></span>
-<span class="r-in"><span class="fu">dbGetQuery</span><span class="op">(</span></span>
-<span class="r-in">  <span class="va">con</span>,</span>
-<span class="r-in">  <span class="st">"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>,</span>
-<span class="r-in">  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Pass values using the param argument:</span></span></span>
+<span class="r-in"><span><span class="co"># (This query runs eight times, once for each different</span></span></span>
+<span class="r-in"><span><span class="co"># parameter. The resulting rows are combined into a single</span></span></span>
+<span class="r-in"><span><span class="co"># data frame.)</span></span></span>
+<span class="r-in"><span><span class="fu">dbGetQuery</span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="va">con</span>,</span></span>
+<span class="r-in"><span>  <span class="st">"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>,</span></span>
+<span class="r-in"><span>  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   COUNT(*)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1        0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2        0</span>
@@ -327,8 +327,8 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6        7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7        0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8       14</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -343,7 +343,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

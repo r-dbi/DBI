@@ -96,36 +96,36 @@
 </h2>
 <p>The database interface (DBI) separates the connectivity to the DBMS into a “front-end” and a “back-end”. Applications use only the exposed “front-end” API. The facilities that communicate with specific DBMS (Oracle, PostgreSQL, etc.) are provided by “device drivers” that get invoked automatically by the S language evaluator. The following example illustrates some of the DBI capabilities:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">## Choose the proper DBMS driver and connect to the server</span>
-
-<span class="va">drv</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbDriver.html">dbDriver</a></span><span class="op">(</span><span class="st">"ODBC"</span><span class="op">)</span>
-<span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="st">"dsn"</span>, <span class="st">"usr"</span>, <span class="st">"pwd"</span><span class="op">)</span>
-
-<span class="co">## The interface can work at a higher level importing tables</span>
-<span class="co">## as data.frames and exporting data.frames as DBMS tables.</span>
-
-<span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"quakes"</span><span class="op">)</span>
-<span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span><span class="op">)</span><span class="op">)</span>
-   <span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span>, <span class="va">new.output</span><span class="op">)</span>
-
-<span class="co">## The interface allows lower-level interface to the DBMS</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span>
-            <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,
-            <span class="st">"FROM geom_table as g, elec_measures as e"</span>,
-            <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,
-            <span class="st">"ORDER BY g.diam"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">out</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
-<span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-   <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span>
-   <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">doit</span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="co">## Free up resources</span>
-<span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span>
-<span class="fu"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co">## Choose the proper DBMS driver and connect to the server</span></span>
+<span></span>
+<span><span class="va">drv</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbDriver.html">dbDriver</a></span><span class="op">(</span><span class="st">"ODBC"</span><span class="op">)</span></span>
+<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="st">"dsn"</span>, <span class="st">"usr"</span>, <span class="st">"pwd"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## The interface can work at a higher level importing tables</span></span>
+<span><span class="co">## as data.frames and exporting data.frames as DBMS tables.</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"quakes"</span><span class="op">)</span></span>
+<span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span><span class="op">)</span><span class="op">)</span></span>
+<span>   <span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"new_results"</span>, <span class="va">new.output</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## The interface allows lower-level interface to the DBMS</span></span>
+<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span></span>
+<span>            <span class="st">"SELECT g.id, g.mirror, g.diam, e.voltage"</span>,</span>
+<span>            <span class="st">"FROM geom_table as g, elec_measures as e"</span>,</span>
+<span>            <span class="st">"WHERE g.id = e.id and g.mirrortype = 'inside'"</span>,</span>
+<span>            <span class="st">"ORDER BY g.diam"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">out</span> <span class="op">&lt;-</span> <span class="cn">NULL</span></span>
+<span><span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>   <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">10000</span><span class="op">)</span></span>
+<span>   <span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">out</span>, <span class="fu">doit</span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="co">## Free up resources</span></span>
+<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></span></code></pre></div>
 <p>(only the first 2 expressions are DBMS-specific – all others are independent of the database engine itself).</p>
 <p>Individual DBI drivers need not implement all the features we list below (we indicate those that are optional). Furthermore, drivers may extend the core DBI facilities, but we suggest to have these extensions clearly indicated and documented.</p>
 <p>The following are the elements of the DBI:</p>
@@ -657,7 +657,7 @@ Chambers, John M. 1991. <span>“Data Management in <span>S</span>.”</span> Be
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer>

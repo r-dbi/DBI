@@ -5,6 +5,7 @@ by a data manipulation statement.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 bigrquery::dbGetRowsAffected("BigQueryResult")
 DatabaseConnector::dbGetRowsAffected("DatabaseConnectorResult")
+dittodb::dbGetRowsAffected("DBIMockResult")
 duckdb::dbGetRowsAffected("duckdb_result")
 odbc::dbGetRowsAffected("OdbcResult")
 RMariaDB::dbGetRowsAffected("MariaDBResult")
@@ -75,6 +76,7 @@ by a data manipulation statement.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetRowsAffected("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorResult-method.html" class="external-link">DatabaseConnector::dbGetRowsAffected("DatabaseConnectorResult")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetRowsAffected("DBIMockResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetRowsAffected("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcResult.html" class="external-link">odbc::dbGetRowsAffected("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/result-meta.html" class="external-link">RMariaDB::dbGetRowsAffected("MariaDBResult")</a></code></p></li>
@@ -87,7 +89,7 @@ by a data manipulation statement.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbGetRowsAffected</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetRowsAffected</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -174,17 +176,17 @@ to ensure that this step is always executed.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM mtcars"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">dbGetRowsAffected</span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"DELETE FROM mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbGetRowsAffected</span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -199,7 +201,7 @@ to ensure that this step is always executed.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

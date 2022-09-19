@@ -10,6 +10,9 @@ Methods in other packagesThis documentation page describes the generics. Refer t
 bigrquery::dbBegin("BigQueryConnection")
 bigrquery::dbCommit("BigQueryConnection")
 bigrquery::dbRollback("BigQueryConnection")
+dittodb::dbBegin("DBIMockConnection")
+dittodb::dbCommit("DBIMockConnection")
+dittodb::dbRollback("DBIMockConnection")
 duckdb::dbBegin("duckdb_connection")
 duckdb::dbCommit("duckdb_connection")
 duckdb::dbRollback("duckdb_connection")
@@ -107,6 +110,9 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBegin("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbCommit("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRollback("BigQueryConnection")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbBegin("DBIMockConnection")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbCommit("DBIMockConnection")</a></code></p></li>
+<li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbRollback("DBIMockConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbBegin("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbCommit("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRollback("duckdb_connection")</a></code></p></li>
@@ -141,11 +147,11 @@ This helps ensuring consistency of write operations to multiple tables.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbBegin</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">dbCommit</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">dbRollback</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbBegin</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbCommit</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbRollback</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -226,48 +232,48 @@ if the <code>name</code> argument is set.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># All operations are carried out as logical unit:</span></span>
-<span class="r-in"><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">300</span></span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">2000</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># All operations are carried out as logical unit:</span></span></span>
+<span class="r-in"><span><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">300</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   amount</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    400</span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   amount</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1700</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Rolling back after detecting negative value on account:</span></span>
-<span class="r-in"><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Rolling back after detecting negative value on account:</span></span></span>
+<span class="r-in"><span><span class="fu">dbBegin</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">withdrawal</span> <span class="op">&lt;-</span> <span class="fl">5000</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">withdrawal</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">dbRollback</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span><span class="op">$</span><span class="va">amount</span> <span class="op">&gt;=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">dbCommit</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">dbRollback</span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   amount</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1    400</span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   amount</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1   1700</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -282,7 +288,7 @@ if the <code>name</code> argument is set.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

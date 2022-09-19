@@ -121,7 +121,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -315,19 +315,19 @@ even if the input data frame only has natural row names.</p></li>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    mpg cyl disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 4 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 5 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, append <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">6</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, append <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
@@ -339,9 +339,9 @@ even if the input data frame only has natural row names.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
@@ -353,10 +353,10 @@ even if the input data frame only has natural row names.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># No row names</span></span>
-<span class="r-in"><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># No row names</span></span></span>
+<span class="r-in"><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span>, row.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4</span>
@@ -382,7 +382,7 @@ even if the input data frame only has natural row names.</p></li>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>

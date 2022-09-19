@@ -75,7 +75,7 @@ The <code>SQL</code> class has associated the <code>SQL()</code> constructor fun
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">SQL</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">SQL</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span>, names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -114,23 +114,23 @@ return <code>x</code> unchanged.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; "SELECT"</span>
-<span class="r-in"><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; 'SELECT'</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># SQL vectors are always passed through as is</span></span>
-<span class="r-in"><span class="va">var_name</span> <span class="op">&lt;-</span> <span class="fu">SQL</span><span class="op">(</span><span class="st">"SELECT"</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">var_name</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># SQL vectors are always passed through as is</span></span></span>
+<span class="r-in"><span><span class="va">var_name</span> <span class="op">&lt;-</span> <span class="fu">SQL</span><span class="op">(</span><span class="st">"SELECT"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">var_name</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; SELECT</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; SELECT</span>
-<span class="r-in"><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">var_name</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; SELECT</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># This mechanism is used to prevent double escaping</span></span>
-<span class="r-in"><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># This mechanism is used to prevent double escaping</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"SELECT"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; 'SELECT'</span>
 </code></pre></div>
     </div>
@@ -146,7 +146,7 @@ return <code>x</code> unchanged.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.9000.</p>
 </div>
 
       </footer></div>
