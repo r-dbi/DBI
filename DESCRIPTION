@@ -5,7 +5,7 @@ Date: 2022-06-18
 Authors@R: c(
     person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
     person("Hadley", "Wickham", role = "aut"),
-    person("Kirill", "Müller", , "krlmlr+r@mailbox.org", role = c("aut", "cre"),
+    person("Kirill", "Müller", , "kirill@cynkra.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-1416-3412")),
     person("R Consortium", role = "fnd")
   )
