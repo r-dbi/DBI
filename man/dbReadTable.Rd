@@ -67,7 +67,7 @@ An error is raised if the table does not exist.
 An error is raised if \code{row.names} is \code{TRUE} and no "row_names" column exists,
 
 
-An error is raised if \code{row.names} is set to a string and and no corresponding column exists.
+An error is raised if \code{row.names} is set to a string and no corresponding column exists.
 
 
 An error is raised when calling this method for a closed
