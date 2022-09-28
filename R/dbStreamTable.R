@@ -12,6 +12,5 @@ setGeneric("dbStreamTable",
   def = function(conn, name, ...) {
     require_arrow()
     standardGeneric("dbStreamTable")
-  },
-  valueClass = "RecordBatchReader"
+  }
 )

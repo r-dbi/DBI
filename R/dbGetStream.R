@@ -9,6 +9,5 @@
 #' dbDisconnect(con)
 #' @rdname dbGetQuery
 setGeneric("dbGetStream",
-  def = function(conn, statement, ...) standardGeneric("dbGetStream"),
-  valueClass = "RecordBatchReader"
+  def = function(conn, statement, ...) standardGeneric("dbGetStream")
 )

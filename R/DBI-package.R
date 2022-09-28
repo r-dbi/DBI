@@ -26,14 +26,3 @@ require_arrow <- function() {
   }
   stop("The arrow package is required for this functionality.")
 }
-
-if (has_arrow()) {
-  setOldClass(c("RecordBatchReader", "ArrowObject", "R6"))
-  setOldClass(c("Table", "ArrowTabular", "ArrowObject", "R6"))
-  setOldClass(c("RecordBatch", "ArrowTabular", "ArrowObject", "R6"))
-} else {
-  setClass("RecordBatchReader", contains = "VIRTUAL")
-  setClass("ArrowTabular", contains = "VIRTUAL")
-  setClass("Table", contains = "ArrowTabular")
-  setClass("RecordBatch", contains = "ArrowTabular")
-}
