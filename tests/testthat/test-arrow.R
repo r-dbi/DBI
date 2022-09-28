@@ -20,4 +20,16 @@ test_that("write arrow to sqlite", {
     dbStreamTable(con, "mtcars_tbl")$read_table(),
     tbl
   )
+
+  expect_equal(
+    as.data.frame(dbGetStream(con, "SELECT COUNT(*) FROM mtcars_tbl")$read_table())[[1]],
+    nrow(tbl)
+  )
+
+  res <- dbSendQueryArrow(con, "SELECT COUNT(*) FROM mtcars_tbl")
+  expect_equal(
+    as.data.frame(dbStream(res)$read_table())[[1]],
+    nrow(tbl)
+  )
+  dbClearResult(res)
 })
