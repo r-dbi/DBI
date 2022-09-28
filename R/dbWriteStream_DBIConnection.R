@@ -1,7 +1,11 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbWriteStream_DBIConnection_character_RecordBatchReader <- function(conn, name, value, append = FALSE, overwrite = FALSE, ...) {
+dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ...) {
   require_arrow()
+
+  name <- dbQuoteIdentifier(conn, name)
+
+  value <- arrow::as_record_batch_reader(value)
 
   if (overwrite && append) {
     stop("overwrite and append cannot both be TRUE")
@@ -23,4 +27,4 @@ dbWriteStream_DBIConnection_character_RecordBatchReader <- function(conn, name, 
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWriteStream", signature("DBIConnection", "character", "RecordBatchReader"), dbWriteStream_DBIConnection_character_RecordBatchReader)
+setMethod("dbWriteStream", signature("DBIConnection"), dbWriteStream_DBIConnection)

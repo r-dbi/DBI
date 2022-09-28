@@ -8,4 +8,4 @@ dbGetStream_DBIConnection_character <- function(conn, statement, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetStream", signature("DBIConnection", "character"), dbGetStream_DBIConnection_character)
+setMethod("dbGetStream", signature("DBIConnection"), dbGetStream_DBIConnection_character)
