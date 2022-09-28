@@ -10,7 +10,7 @@
 %   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIArrowResult.R,
 %   R/dbGetInfo_DBIResult.R, R/dbGetQuery_DBIConnection_character.R,
 %   R/dbGetRowCount_DBIArrowResult.R, R/dbGetRowsAffected_DBIArrowResult.R,
-%   R/dbGetStatement_DBIArrowResult.R, R/dbGetStream_DBIConnection_character.R,
+%   R/dbGetStatement_DBIArrowResult.R, R/dbGetStream_DBIConnection.R,
 %   R/dbHasCompleted_DBIArrowResult.R, R/dbIsReadOnly_DBIConnector.R,
 %   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
 %   R/dbListFields_DBIConnection_character.R,
@@ -20,14 +20,11 @@
 %   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
 %   R/dbStreamTable_DBIConnection_Id.R,
-%   R/dbStreamTable_DBIConnection_character.R,
-%   R/dbStream_DBIArrowResult.R, R/dbUnquoteIdentifier_DBIConnection.R,
-%   R/dbWithTransaction_DBIConnection.R, R/dbWriteStream_DBIConnection_Id_ANY.R,
-%   R/dbWriteStream_DBIConnection_character_ArrowTabular.R,
-%   R/dbWriteStream_DBIConnection_character_RecordBatchReader.R,
-%   R/dbWriteTable_DBIConnection_Id_ANY.R, R/isSQLKeyword_DBIObject_character.R,
-%   R/make.db.names_DBIObject_character.R, R/show_AnsiConnection.R,
-%   R/show_DBIConnection.R, R/show_DBIConnector.R,
+%   R/dbStreamTable_DBIConnection_character.R, R/dbStream_DBIArrowResult.R,
+%   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
+%   R/dbWriteStream_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
+%   R/isSQLKeyword_DBIObject_character.R, R/make.db.names_DBIObject_character.R,
+%   R/show_AnsiConnection.R, R/show_DBIConnection.R, R/show_DBIConnector.R,
 %   R/show_DBIDriver.R, R/show_DBIResult.R, R/show_Id.R, R/show_SQL.R,
 %   R/sqlAppendTable_DBIConnection.R, R/sqlCreateTable_DBIConnection.R,
 %   R/sqlData_DBIConnection.R, R/sqlInterpolate_DBIConnection.R,
@@ -80,7 +77,7 @@
 \alias{dbGetStatement_DBIArrowResult}
 \alias{dbGetStatement,DBIResultArrow-method}
 \alias{dbGetStream_DBIConnection_character}
-\alias{dbGetStream,DBIConnection,character-method}
+\alias{dbGetStream,DBIConnection-method}
 \alias{dbHasCompleted_DBIArrowResult}
 \alias{dbHasCompleted,DBIResultArrow-method}
 \alias{dbIsReadOnly_DBIConnector}
@@ -124,12 +121,8 @@
 \alias{dbUnquoteIdentifier,DBIConnection-method}
 \alias{dbWithTransaction_DBIConnection}
 \alias{dbWithTransaction,DBIConnection-method}
-\alias{dbWriteStream_DBIConnection_Id_ANY}
-\alias{dbWriteStream,DBIConnection,Id,ANY-method}
-\alias{dbWriteStream_DBIConnection_character_ArrowTabular}
-\alias{dbWriteStream,DBIConnection,character,ArrowTabular-method}
-\alias{dbWriteStream_DBIConnection_character_RecordBatchReader}
-\alias{dbWriteStream,DBIConnection,character,RecordBatchReader-method}
+\alias{dbWriteStream_DBIConnection}
+\alias{dbWriteStream,DBIConnection-method}
 \alias{dbWriteTable_DBIConnection_Id_ANY}
 \alias{dbWriteTable,DBIConnection,Id-method}
 \alias{isSQLKeyword_DBIObject_character}
@@ -206,7 +199,7 @@
 
 \S4method{dbGetStatement}{DBIResultArrow}(res, ...)
 
-\S4method{dbGetStream}{DBIConnection,character}(conn, statement, ...)
+\S4method{dbGetStream}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbHasCompleted}{DBIResultArrow}(res, ...)
 
@@ -256,11 +249,7 @@
 
 \S4method{dbWithTransaction}{DBIConnection}(conn, code)
 
-\S4method{dbWriteStream}{DBIConnection,Id,ANY}(conn, name, value, ...)
-
-\S4method{dbWriteStream}{DBIConnection,character,ArrowTabular}(conn, name, value, ...)
-
-\S4method{dbWriteStream}{DBIConnection,character,RecordBatchReader}(conn, name, value, append = FALSE, overwrite = FALSE, ...)
+\S4method{dbWriteStream}{DBIConnection}(conn, name, value, append = FALSE, overwrite = FALSE, ...)
 
 \S4method{dbWriteTable}{DBIConnection,Id}(conn, name, value, ...)
 
