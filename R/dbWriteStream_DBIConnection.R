@@ -12,10 +12,12 @@ dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overw
   }
 
   if (overwrite || !append) {
+    # Create table *and* append first batch if needed
     dbWriteTable(conn, name, as.data.frame(value$read_next_batch()), ..., append = append, overwrite = overwrite)
   }
 
   while(TRUE) {
+    # Append next batch (starting with the first or second, doesn't matter)
     tmp <- value$read_next_batch()
     if (is.null(tmp)) {
       break
