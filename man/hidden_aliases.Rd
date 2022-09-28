@@ -19,8 +19,7 @@
 %   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
 %   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
-%   R/dbStreamTable_DBIConnection_Id.R,
-%   R/dbStreamTable_DBIConnection_character.R, R/dbStream_DBIArrowResult.R,
+%   R/dbStreamTable_DBIConnection.R, R/dbStream_DBIArrowResult.R,
 %   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
 %   R/dbWriteStream_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
 %   R/isSQLKeyword_DBIObject_character.R, R/make.db.names_DBIObject_character.R,
@@ -111,10 +110,8 @@
 \alias{dbSendQueryArrow,DBIConnection-method}
 \alias{dbSendStatement_DBIConnection_character}
 \alias{dbSendStatement,DBIConnection,character-method}
-\alias{dbStreamTable_DBIConnection_Id}
-\alias{dbStreamTable,DBIConnection,Id-method}
-\alias{dbStreamTable_DBIConnection_character}
-\alias{dbStreamTable,DBIConnection,character-method}
+\alias{dbStreamTable_DBIConnection}
+\alias{dbStreamTable,DBIConnection-method}
 \alias{dbStream_DBIArrowResult}
 \alias{dbStream,DBIResultArrow-method}
 \alias{dbUnquoteIdentifier_DBIConnection}
@@ -239,9 +236,7 @@
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
-\S4method{dbStreamTable}{DBIConnection,Id}(conn, name, ...)
-
-\S4method{dbStreamTable}{DBIConnection,character}(conn, name, ...)
+\S4method{dbStreamTable}{DBIConnection}(conn, name, ...)
 
 \S4method{dbStream}{DBIResultArrow}(res, ...)
 
