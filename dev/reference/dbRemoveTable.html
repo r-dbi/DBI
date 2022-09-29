@@ -5,7 +5,7 @@ from the database.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
-DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")
+DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")
 dittodb::dbRemoveTable("DBIMockConnection", "character")
 duckdb::dbRemoveTable("duckdb_connection", "character")
 odbc::dbRemoveTable("OdbcConnection", "character")
@@ -16,6 +16,7 @@ RMariaDB::dbRemoveTable("MariaDBConnection", "character")
 RMySQL::dbRemoveTable("MySQLConnection", "character")
 RPostgres::dbRemoveTable("PqConnection", "character")
 RPostgreSQL::dbRemoveTable("PostgreSQLConnection", "character")
+RPresto::dbRemoveTable("PrestoConnection", "character")
 RSQLite::dbRemoveTable("SQLiteConnection", "character")
 sparklyr::dbRemoveTable("spark_connection", "character")
 
@@ -80,7 +81,7 @@ from the database.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/DatabaseConnectorConnection-class.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbRemoveTable("OdbcConnection", "character")</a></code></p></li>
@@ -91,6 +92,7 @@ from the database.</p>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbRemoveTable("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbRemoveTable("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbRemoveTable("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbRemoveTable("PrestoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbRemoveTable("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code>sparklyr::dbRemoveTable("spark_connection", "character")</code></p></li>
 </ul></div>

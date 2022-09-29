@@ -4,12 +4,13 @@ pkgdown_sha: 956f076f661eb2de9413f64ea24a580cf444466d
 articles:
   DBI-1: DBI-1.html
   DBI-advanced: DBI-advanced.html
+  DBI-arrow: DBI-arrow.html
   DBI-history: DBI-history.html
   DBI-proposal: DBI-proposal.html
   DBI: DBI.html
   backend: backend.html
   spec: spec.html
-last_built: 2022-09-19T02:48Z
+last_built: 2022-09-29T08:12Z
 urls:
   reference: https://dbi.r-dbi.org/reference
   article: https://dbi.r-dbi.org/articles

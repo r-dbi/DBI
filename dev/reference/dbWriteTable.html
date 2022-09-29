@@ -5,7 +5,7 @@ converting row names to a column and specifying SQL data types for fields.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbWriteTable("AzureKustoConnection", "ANY", "ANY")
 bigrquery::dbWriteTable("BigQueryConnection", "character", "data.frame")
-DatabaseConnector::dbWriteTable("DatabaseConnectorConnection", "character", "data.frame")
+DatabaseConnector::dbWriteTable("DatabaseConnectorConnection", "ANY", "ANY")
 dittodb::dbWriteTable("DBIMockConnection", "character", "data.frame")
 duckdb::dbWriteTable("duckdb_connection", "character", "data.frame")
 odbc::dbWriteTable("OdbcConnection", "character", "data.frame")
@@ -25,6 +25,7 @@ RMySQL::dbWriteTable("MySQLConnection", "character", "data.frame")
 RPostgres::dbWriteTable("PqConnection", "character", "data.frame")
 RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "character")
 RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "data.frame")
+RPresto::dbWriteTable("PrestoConnection", "character", "data.frame")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "character")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 sf::dbWriteTable("DBIObject", "character", "sf")
@@ -82,7 +83,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames to database tables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteTable.R" class="external-link"><code>R/dbWriteTable.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteStream.R" class="external-link"><code>R/dbWriteStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteTable.R" class="external-link"><code>R/dbWriteTable.R</code></a></small>
     <div class="hidden name"><code>dbWriteTable.Rd</code></div>
     </div>
 
@@ -92,7 +93,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbWriteTable("AzureKustoConnection", "ANY", "ANY")</code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbWriteTable("BigQueryConnection", "character", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbWriteTable-DatabaseConnectorConnection-character-data.frame-method.html" class="external-link">DatabaseConnector::dbWriteTable("DatabaseConnectorConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code>DatabaseConnector::dbWriteTable("DatabaseConnectorConnection", "ANY", "ANY")</code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbWriteTable("DBIMockConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbWriteTable("duckdb_connection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "character", "data.frame")</a></code></p></li>
@@ -112,6 +113,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbWriteTable("PqConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbWriteTable("PrestoConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://r-spatial.github.io/sf/reference/dbWriteTable.html" class="external-link">sf::dbWriteTable("DBIObject", "character", "sf")</a></code></p></li>
@@ -121,7 +123,9 @@ converting row names to a column and specifying SQL data types for fields.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbWriteStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -161,7 +165,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 Use <code><a href="dbAppendTable.html">dbAppendTable()</a></code> for appending data to a table,
 and <code><a href="dbCreateTable.html">dbCreateTable()</a></code>, <code><a href="dbExistsTable.html">dbExistsTable()</a></code> and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code>
 for more control over the individual operations.</p>
-<p>DBI only standardizes writing data frames.
+<p>DBI only standardizes writing data frames and <code>ArrowTabular</code> objects.
 Some backends might implement methods that can consume CSV files
 or other data formats.
 For details, see the documentation for the individual methods.</p>

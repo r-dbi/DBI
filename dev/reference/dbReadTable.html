@@ -15,6 +15,7 @@ RMariaDB::dbReadTable("MariaDBConnection", "character")
 RMySQL::dbReadTable("MySQLConnection", "character")
 RPostgres::dbReadTable("PqConnection", "character")
 RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")
+RPresto::dbReadTable("PrestoConnection", "character")
 RSQLite::dbReadTable("SQLiteConnection", "character")
 sparklyr::dbReadTable("spark_connection", "character")
 
@@ -69,7 +70,7 @@ sparklyr::dbReadTable("spark_connection", "character")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames from database tables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbReadTable.R" class="external-link"><code>R/dbReadTable.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbReadTable.R" class="external-link"><code>R/dbReadTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbStreamTable.R" class="external-link"><code>R/dbStreamTable.R</code></a></small>
     <div class="hidden name"><code>dbReadTable.Rd</code></div>
     </div>
 
@@ -80,7 +81,7 @@ R identifiers.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbReadTable("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbReadTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/DatabaseConnectorConnection-class.html" class="external-link">DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbReadTable("SFSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbReadTable("Pool", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbReadTable("JDBCConnection", "ANY")</a></code></p></li>
@@ -89,13 +90,16 @@ R identifiers.</p>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbReadTable("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbReadTable("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbReadTable.html" class="external-link">RSQLite::dbReadTable("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code>sparklyr::dbReadTable("spark_connection", "character")</code></p></li>
 </ul></div>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbReadTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbReadTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbStreamTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -236,6 +240,27 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Read data as Arrow table</span></span></span>
+<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbStreamTable</span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RecordBatchReader</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> drat: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> qsec: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> vs: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> am: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gear: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> carb: double</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> See $metadata for additional Schema metadata</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>

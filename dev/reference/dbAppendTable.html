@@ -10,13 +10,13 @@ Other backends (with different placeholders or with entirely different
 ways to create tables) need to override the dbAppendTable() method.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-DatabaseConnector::dbAppendTable(&quot;DatabaseConnectorConnection&quot;, &quot;character&quot;, &quot;data.frame&quot;)
-duckdb::dbAppendTable(&quot;duckdb_connection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-odbc::dbAppendTable(&quot;OdbcConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-pool::dbAppendTable(&quot;Pool&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-RMariaDB::dbAppendTable(&quot;MariaDBConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-RPostgres::dbAppendTable(&quot;PqConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-RSQLite::dbAppendTable(&quot;SQLiteConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
+DatabaseConnector::dbAppendTable(&quot;DatabaseConnectorConnection&quot;, &quot;character&quot;)
+duckdb::dbAppendTable(&quot;duckdb_connection&quot;, &quot;ANY&quot;)
+odbc::dbAppendTable(&quot;OdbcConnection&quot;, &quot;ANY&quot;)
+pool::dbAppendTable(&quot;Pool&quot;, &quot;ANY&quot;)
+RMariaDB::dbAppendTable(&quot;MariaDBConnection&quot;, &quot;ANY&quot;)
+RPostgres::dbAppendTable(&quot;PqConnection&quot;, &quot;ANY&quot;)
+RSQLite::dbAppendTable(&quot;SQLiteConnection&quot;, &quot;ANY&quot;)
 
 "><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -84,13 +84,13 @@ as a placeholder for prepared queries can override <code><a href="sqlAppendTable
 Other backends (with different placeholders or with entirely different
 ways to create tables) need to override the <code>dbAppendTable()</code> method.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbAppendTable-DatabaseConnectorConnection-character-data.frame-method.html" class="external-link">DatabaseConnector::dbAppendTable("DatabaseConnectorConnection", "character", "data.frame")</a></code></p></li>
-<li><p><code>duckdb::dbAppendTable("duckdb_connection", "ANY", "ANY")</code></p></li>
-<li><p><code>odbc::dbAppendTable("OdbcConnection", "ANY", "ANY")</code></p></li>
-<li><p><code>pool::dbAppendTable("Pool", "ANY", "ANY")</code></p></li>
-<li><p><code>RMariaDB::dbAppendTable("MariaDBConnection", "ANY", "ANY")</code></p></li>
-<li><p><code>RPostgres::dbAppendTable("PqConnection", "ANY", "ANY")</code></p></li>
-<li><p><code>RSQLite::dbAppendTable("SQLiteConnection", "ANY", "ANY")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/DatabaseConnectorConnection-class.html" class="external-link">DatabaseConnector::dbAppendTable("DatabaseConnectorConnection", "character")</a></code></p></li>
+<li><p><code>duckdb::dbAppendTable("duckdb_connection", "ANY")</code></p></li>
+<li><p><code>odbc::dbAppendTable("OdbcConnection", "ANY")</code></p></li>
+<li><p><code>pool::dbAppendTable("Pool", "ANY")</code></p></li>
+<li><p><code>RMariaDB::dbAppendTable("MariaDBConnection", "ANY")</code></p></li>
+<li><p><code>RPostgres::dbAppendTable("PqConnection", "ANY")</code></p></li>
+<li><p><code>RSQLite::dbAppendTable("SQLiteConnection", "ANY")</code></p></li>
 </ul></div>
     </div>
 

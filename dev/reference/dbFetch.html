@@ -15,7 +15,6 @@ RMariaDB::dbFetch("MariaDBResult", "ANY")
 RMySQL::dbFetch("MySQLResult", "missing")
 RMySQL::dbFetch("MySQLResult", "numeric")
 RPostgres::dbFetch("PqResult", "ANY")
-RPresto::dbFetch("PrestoResult", "integer")
 RPresto::dbFetch("PrestoResult", "missing")
 RPresto::dbFetch("PrestoResult", "numeric")
 RSQLite::dbFetch("SQLiteResult", "ANY")
@@ -73,7 +72,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fetch records from a previously executed query</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbStream.R" class="external-link"><code>R/dbStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
     <div class="hidden name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -93,7 +92,6 @@ as a data.frame.</p>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "missing")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbFetch("MySQLResult", "numeric")</a></code></p></li>
 <li><p><code>RPostgres::dbFetch("PqResult", "ANY")</code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "integer")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "missing")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html" class="external-link">RPresto::dbFetch("PrestoResult", "numeric")</a></code></p></li>
 <li><p><code>RSQLite::dbFetch("SQLiteResult", "ANY")</code></p></li>
@@ -104,6 +102,8 @@ as a data.frame.</p>
 
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbStream</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
