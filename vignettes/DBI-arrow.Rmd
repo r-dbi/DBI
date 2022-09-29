@@ -1,0 +1,131 @@
+---
+title: "Using DBI with Arrow"
+author: "Kirill Müller"
+date: "29/09/2022"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{"Using DBI with Arrow"}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"))
+
+knit_print.data.frame <- function(x, ...) {
+  print(head(x, 3))
+  if (nrow(x) > 3) {
+    cat("Showing 3 out of", nrow(x), "rows.\n")
+  }
+  invisible(x)
+}
+
+registerS3method("knit_print", "data.frame", "knit_print.data.frame")
+```
+
+## Who this tutorial is for
+
+This tutorial is for you if you want to leverage [Apache Arrow](https://arrow.apache.org/) for accessing and manipulating data on databases.
+See `vignette("DBI", package = "DBI")` and `vignette("DBI", package = "DBI-advanced")` for tutorials on accessing data using R's data frames instead of Arrow's structures.
+
+## Rationale
+
+Apache Arrow is
+
+> a cross-language development platform for in-memory analytics.
+
+- suitable for large and huge data, also out-of-memory
+- data exchange format, good support for data types used in SQL databases
+- new extension points to allow backends (currently DuckDB and adbc) to make use of the data exchange format
+- faster data retrieval and loading
+- fundamental data structure: `arrow::RecordBatchReader`
+
+## New classes and generics
+
+- Zero chance of interfering with existing DBI backends
+- Fully functional fallback implementation for all existing DBI backends
+- Requires {arrow} R package
+
+- New generics:
+    - `dbStreamTable()`
+    - `dbGetStream()`
+    - `dbSendQueryArrow()`
+    - `dbStream()`
+    - `dbWriteStream()`
+
+- New classes:
+    - `DBIResultArrow`
+    - `DBIResultArrowDefault`
+
+## Prepare
+
+```{r}
+library(DBI)
+
+con <- dbConnect(RSQLite::SQLite())
+
+data <- data.frame(
+  a = 1:3,
+  b = 4.5,
+  c = "five"
+)
+
+dbWriteTable(con, "tbl", data)
+```
+
+## Read all rows from a table
+
+```{r}
+dbStreamTable(con, "tbl")
+as.data.frame(dbStreamTable(con, "tbl"))
+```
+
+## Run queries
+
+```{r}
+stream <- dbGetStream(con, "SELECT COUNT(*) FROM tbl WHERE a < 3")
+stream
+as.data.frame(stream)
+```
+
+## Process data piecemeal
+
+```{r}
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < 3")
+stream
+stream$read_next_batch()
+stream$read_next_batch()
+```
+
+## Prepared queries
+
+```{r eval = FALSE}
+result <- dbGetStream(con, "SELECT COUNT(*) FROM tbl WHERE a < ?")
+stream <- dbStream(result, params = ...)
+stream$read_next_batch()
+stream <- dbStream(result, params = ...)
+stream$read_next_batch()
+```
+
+## Writing data
+
+```{r}
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < 3")
+dbWriteStream(con, "tbl_new", stream)
+dbReadTable(con, "tbl_new")
+```
+
+As usual, do not forget to disconnect from the database when done.
+
+```{r}
+dbDisconnect(con)
+```
+
+## Conclusion
+
+That concludes the major features of DBI.
+For more details on the library functions covered in this tutorial see the DBI specification at `vignette("spec", package = "DBI")`.
+
+- See arrow package for further processing
