@@ -17,3 +17,12 @@
 #'   Formal specification (currently work in progress and incomplete):
 #'   `vignette("spec", package = "DBI")`
 "_PACKAGE"
+
+has_arrow <- function() requireNamespace("arrow", quietly = TRUE)
+
+require_arrow <- function() {
+  if (has_arrow()) {
+    return(invisible(TRUE))
+  }
+  stop("The arrow package is required for this functionality.")
+}

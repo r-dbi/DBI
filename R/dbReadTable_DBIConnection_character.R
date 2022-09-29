@@ -1,10 +1,7 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbReadTable_DBIConnection_character <- function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
-  sql_name <- dbQuoteIdentifier(conn, x = name, ...)
-  if (length(sql_name) != 1L) {
-    stop("Invalid name: ", format(name), call. = FALSE)
-  }
+  sql_name <- dbReadTable_toSqlName(conn, name, ...)
   if (!is.null(row.names)) {
     stopifnot(length(row.names) == 1L)
     stopifnot(is.logical(row.names) || is.character(row.names))
@@ -19,6 +16,13 @@ dbReadTable_DBIConnection_character <- function(conn, name, ..., row.names = FAL
     names(out) <- make.names(names(out), unique = TRUE)
   }
   out
+}
+dbReadTable_toSqlName <- function(conn, name, ...) {
+  sql_name <- dbQuoteIdentifier(conn, x = name, ...)
+  if (length(sql_name) != 1L) {
+    stop("Invalid name: ", format(name), call. = FALSE)
+  }
+  sql_name
 }
 #' @rdname hidden_aliases
 #' @export

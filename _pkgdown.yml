@@ -94,6 +94,7 @@ articles:
   contents:
   - '`DBI`'
   - '`DBI-advanced`'
+  - '`DBI-arrow`'
   - '`backend`'
 - title: Specification
   contents:
