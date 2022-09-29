@@ -8,7 +8,7 @@ test_that("write arrow to sqlite", {
   on.exit(dbDisconnect(con))
 
   data <- data.frame(
-    a = 1L,
+    a = 1:3,
     b = 2.5,
     c = "three",
     stringsAsFactors = FALSE
