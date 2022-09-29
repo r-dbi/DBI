@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9001 (2022-09-29)
+
+## Features
+
+- New generics to support Arrow-compatible backends (@nbenn, #390).
+
+## Documentation
+
+- Tweak typo, add families for data retrieval and command execution
+
+
 # DBI 1.1.3.9000 (2022-06-18)
 
 - Internal changes only.
