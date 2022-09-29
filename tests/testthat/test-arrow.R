@@ -13,6 +13,8 @@ test_that("write arrow to sqlite", {
     c = "three",
     stringsAsFactors = FALSE
   )
+  # https://issues.apache.org/jira/projects/ARROW/issues/ARROW-17885
+  # data$d <- blob::blob(as.raw(1:10))
 
   tbl <- arrow::as_arrow_table(data)
 
