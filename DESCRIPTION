@@ -181,6 +181,7 @@ Collate:
     'dbiDataType_POSIXct.R'
     'dbiDataType_character.R'
     'dbiDataType_data.frame.R'
+    'dbiDataType_default.R'
     'dbiDataType_difftime.R'
     'dbiDataType_integer.R'
     'dbiDataType_list.R'
