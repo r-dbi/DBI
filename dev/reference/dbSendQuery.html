@@ -80,7 +80,7 @@ sparklyr::dbSendQuery("spark_connection", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Execute a query on a given database connection</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbSendQuery.R" class="external-link"><code>R/dbSendQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbSendQueryArrow.R" class="external-link"><code>R/dbSendQueryArrow.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbSendQuery.R" class="external-link"><code>R/dbSendQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbSendQueryStream.R" class="external-link"><code>R/dbSendQueryStream.R</code></a></small>
     <div class="hidden name"><code>dbSendQuery.Rd</code></div>
     </div>
 
@@ -119,7 +119,7 @@ records you need. For interactive use, you should almost always prefer
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">dbSendQueryArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">dbSendQueryStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -379,7 +379,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendQueryArrow</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendQueryStream</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
