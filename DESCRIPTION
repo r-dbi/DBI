@@ -36,6 +36,7 @@ Suggests:
     rprojroot,
     RSQLite (>= 1.1-2),
     testthat,
+    vctrs,
     xml2
 VignetteBuilder: 
     knitr
@@ -85,6 +86,8 @@ Collate:
     'SQLKeywords_missing.R'
     'data-types.R'
     'data.R'
+    'dbAppendStream.R'
+    'dbAppendStream_DBIConnection.R'
     'dbAppendTable.R'
     'dbAppendTable_DBIConnection.R'
     'dbBegin.R'
@@ -99,6 +102,8 @@ Collate:
     'dbCommit.R'
     'dbConnect.R'
     'dbConnect_DBIConnector.R'
+    'dbCreateFromStream.R'
+    'dbCreateFromStream_DBIConnection.R'
     'dbCreateTable.R'
     'dbCreateTable_DBIConnection.R'
     'dbDataType.R'

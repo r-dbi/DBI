@@ -101,12 +101,10 @@ stream$read_next_batch()
 
 ## Prepared queries
 
-```{r eval = FALSE}
-result <- dbGetStream(con, "SELECT COUNT(*) FROM tbl WHERE a < ?")
-stream <- dbStream(result, params = ...)
-stream$read_next_batch()
-stream <- dbStream(result, params = ...)
-stream$read_next_batch()
+```{r}
+in_stream <- arrow::as_arrow_table(data.frame(a = 1:4))
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < $a", param = in_stream)
+as.data.frame(stream)
 ```
 
 ## Writing data
@@ -115,6 +113,17 @@ stream$read_next_batch()
 stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < 3")
 dbWriteStream(con, "tbl_new", stream)
 dbReadTable(con, "tbl_new")
+```
+
+## Appending data
+
+```{r}
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < 3")
+dbCreateFromStream(con, "tbl_split", stream)
+dbAppendStream(con, "tbl_split", stream)
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a >= 3")
+dbAppendStream(con, "tbl_split", stream)
+dbReadTable(con, "tbl_split")
 ```
 
 As usual, do not forget to disconnect from the database when done.

@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ...) {
+dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ..., temporary = FALSE) {
   require_arrow()
 
   name <- dbQuoteIdentifier(conn, name)
@@ -11,19 +11,15 @@ dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overw
     stop("overwrite and append cannot both be TRUE")
   }
 
-  if (overwrite || !append) {
-    # Create table *and* append first batch if needed
-    dbWriteTable(conn, name, as.data.frame(value$read_next_batch()), ..., append = append, overwrite = overwrite)
+  if (overwrite && dbExistsTable(conn, name)) {
+    dbRemoveTable(conn, name)
   }
 
-  while (TRUE) {
-    # Append next batch (starting with the first or second, doesn't matter)
-    tmp <- value$read_next_batch()
-    if (is.null(tmp)) {
-      break
-    }
-    dbAppendTable(conn, name, as.data.frame(tmp), ...)
+  if (overwrite || !append) {
+    dbCreateFromStream(conn, name, value, temporary = temporary)
   }
+
+  dbAppendStream(conn, name, value)
 
   TRUE
 }
