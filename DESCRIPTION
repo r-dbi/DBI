@@ -36,6 +36,7 @@ Suggests:
     rprojroot,
     RSQLite (>= 1.1-2),
     testthat,
+    vctrs,
     xml2
 VignetteBuilder: 
     knitr
