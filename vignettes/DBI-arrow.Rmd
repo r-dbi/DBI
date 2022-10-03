@@ -56,8 +56,8 @@ Apache Arrow is
     - `dbWriteStream()`
 
 - New classes:
-    - `DBIResultArrow`
-    - `DBIResultArrowDefault`
+    - `DBIResultStream`
+    - `DBIResultStreamDefault`
 
 ## Prepare
 

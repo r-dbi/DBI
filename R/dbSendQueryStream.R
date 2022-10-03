@@ -15,5 +15,5 @@ setGeneric("dbSendQueryStream",
     require_arrow()
     standardGeneric("dbSendQueryStream")
   },
-  valueClass = "DBIResultArrow"
+  valueClass = "DBIResultStream"
 )
