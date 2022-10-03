@@ -18,7 +18,15 @@ test_that("write arrow to sqlite", {
 
   tbl <- arrow::as_arrow_table(data)
 
-  res <- dbWriteStream(con, "data_tbl", tbl)
+  dbCreateFromStream(con, "data_tbl", tbl)
+  dbAppendStream(con, "data_tbl", tbl)
+
+  expect_equal(
+    dbReadTable(con, "data_tbl"),
+    as.data.frame(tbl)
+  )
+
+  res <- dbWriteStream(con, "data_tbl", tbl, overwrite = TRUE)
 
   expect_equal(
     dbReadTable(con, "data_tbl"),
