@@ -55,6 +55,6 @@ test_that("write arrow to sqlite", {
   stream <- dbGetStream(con, "SELECT * FROM data_tbl WHERE a < $a", params = tbl["a"])
   expect_equal(
     as.data.frame(stream$read_table()),
-    as.data.frame(data[c(1, 1, 2), ], row.names = 1:3)
+    as.data.frame(data[c(1, 1:2), ], row.names = 1:3)
   )
 })

@@ -101,12 +101,10 @@ stream$read_next_batch()
 
 ## Prepared queries
 
-```{r eval = FALSE}
-result <- dbGetStream(con, "SELECT COUNT(*) FROM tbl WHERE a < ?")
-stream <- dbStream(result, params = ...)
-stream$read_next_batch()
-stream <- dbStream(result, params = ...)
-stream$read_next_batch()
+```{r}
+in_stream <- arrow::as_arrow_table(data.frame(a = 1:4))
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < $a", param = in_stream)
+as.data.frame(stream)
 ```
 
 ## Writing data
