@@ -117,6 +117,17 @@ dbWriteStream(con, "tbl_new", stream)
 dbReadTable(con, "tbl_new")
 ```
 
+## Appending data
+
+```{r}
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a < 3")
+dbCreateFromStream(con, "tbl_split", stream)
+dbAppendStream(con, "tbl_split", stream)
+stream <- dbGetStream(con, "SELECT * FROM tbl WHERE a >= 3")
+dbAppendStream(con, "tbl_split", stream)
+dbReadTable(con, "tbl_split")
+```
+
 As usual, do not forget to disconnect from the database when done.
 
 ```{r}
