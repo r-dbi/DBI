@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9002 (2022-10-03)
+
+## Features
+
+- New `dbCreateFromStream()` and `dbAppendStream()` (#396).
+
+## Chore
+
+- `dbSendQueryArrow()` -> `dbSendQueryStream()`, `ResultArrow|ArrowResult -> ResultStream` (#397).
+
+
 # DBI 1.1.3.9001 (2022-09-29)
 
 ## Features
