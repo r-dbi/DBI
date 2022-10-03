@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9002</span>
       </span>
     </div>
 
@@ -210,26 +210,48 @@
 <h2 id="prepared-queries">Prepared queries<a class="anchor" aria-label="anchor" href="#prepared-queries"></a>
 </h2>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT COUNT(*) FROM tbl WHERE a &lt; ?"</span><span class="op">)</span></span>
-<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbStream</a></span><span class="op">(</span><span class="va">result</span>, params <span class="op">=</span> <span class="va">...</span><span class="op">)</span></span>
-<span><span class="va">stream</span><span class="op">$</span><span class="fu">read_next_batch</span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbStream</a></span><span class="op">(</span><span class="va">result</span>, params <span class="op">=</span> <span class="va">...</span><span class="op">)</span></span>
-<span><span class="va">stream</span><span class="op">$</span><span class="fu">read_next_batch</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">in_stream</span> <span class="op">&lt;-</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/as_arrow_table.html" class="external-link">as_arrow_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; $a"</span>, param <span class="op">=</span> <span class="va">in_stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   a   b    c</span></span>
+<span><span class="co">## 1 1 4.5 five</span></span>
+<span><span class="co">## 2 1 4.5 five</span></span>
+<span><span class="co">## 3 2 4.5 five</span></span>
+<span><span class="co">## Showing 3 out of 6 rows.</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="writing-data">Writing data<a class="anchor" aria-label="anchor" href="#writing-data"></a>
 </h2>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="appending-data">Appending data<a class="anchor" aria-label="anchor" href="#appending-data"></a>
+</h2>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTable.html">dbCreateFromStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &gt;= 3"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   a   b    c</span></span>
+<span><span class="co">## 1 1 4.5 five</span></span>
+<span><span class="co">## 2 2 4.5 five</span></span>
+<span><span class="co">## 3 3 4.5 five</span></span></code></pre>
 <p>As usual, do not forget to disconnect from the database when done.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">

@@ -50,7 +50,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9001</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9002</span>
       </span>
     </div>
 
@@ -83,7 +83,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames to database tables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteStream.R" class="external-link"><code>R/dbWriteStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteTable.R" class="external-link"><code>R/dbWriteTable.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendStream.R" class="external-link"><code>R/dbAppendStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbCreateFromStream.R" class="external-link"><code>R/dbCreateFromStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteStream.R" class="external-link"><code>R/dbWriteStream.R</code></a>, and 1 more</small>
     <div class="hidden name"><code>dbWriteTable.Rd</code></div>
     </div>
 
@@ -123,7 +123,11 @@ converting row names to a column and specifying SQL data types for fields.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbWriteStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbAppendStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbCreateFromStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbWriteStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
