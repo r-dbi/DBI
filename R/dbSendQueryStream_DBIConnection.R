@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbSendQueryArrow_DBIConnection <- function(conn, statement, ...) {
+dbSendQueryStream_DBIConnection <- function(conn, statement, ...) {
   new(
     "DBIResultArrowDefault",
     result = dbSendQuery(conn, statement, ...)
@@ -8,4 +8,4 @@ dbSendQueryArrow_DBIConnection <- function(conn, statement, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbSendQueryArrow", signature("DBIConnection"), dbSendQueryArrow_DBIConnection)
+setMethod("dbSendQueryStream", signature("DBIConnection"), dbSendQueryStream_DBIConnection)

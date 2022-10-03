@@ -35,7 +35,7 @@ test_that("write arrow to sqlite", {
     nrow(tbl)
   )
 
-  res <- dbSendQueryArrow(con, "SELECT COUNT(*) FROM data_tbl")
+  res <- dbSendQueryStream(con, "SELECT COUNT(*) FROM data_tbl")
   expect_equal(
     as.data.frame(dbStream(res)$read_table())[[1]],
     nrow(tbl)

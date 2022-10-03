@@ -17,7 +17,7 @@
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
 %   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
-%   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
+%   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryStream_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
 %   R/dbStreamTable_DBIConnection.R, R/dbStream_DBIArrowResult.R,
 %   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
@@ -106,8 +106,8 @@
 \alias{dbReadTable,DBIConnection,character-method}
 \alias{dbRemoveTable_DBIConnection_Id}
 \alias{dbRemoveTable,DBIConnection,Id-method}
-\alias{dbSendQueryArrow_DBIConnection}
-\alias{dbSendQueryArrow,DBIConnection-method}
+\alias{dbSendQueryStream_DBIConnection}
+\alias{dbSendQueryStream,DBIConnection-method}
 \alias{dbSendStatement_DBIConnection_character}
 \alias{dbSendStatement,DBIConnection,character-method}
 \alias{dbStreamTable_DBIConnection}
@@ -232,7 +232,7 @@
 
 \S4method{dbRemoveTable}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, ...)
+\S4method{dbSendQueryStream}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
