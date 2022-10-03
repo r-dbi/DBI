@@ -51,13 +51,13 @@ Apache Arrow is
 - New generics:
     - `dbStreamTable()`
     - `dbGetStream()`
-    - `dbSendQueryArrow()`
+    - `dbSendQueryStream()`
     - `dbStream()`
     - `dbWriteStream()`
 
 - New classes:
-    - `DBIResultArrow`
-    - `DBIResultArrowDefault`
+    - `DBIResultStream`
+    - `DBIResultStreamDefault`
 
 ## Prepare
 
