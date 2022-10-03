@@ -14,7 +14,7 @@ get_arrow_ptype <- function(value) {
   stopifnot(!is.null(schema))
 
   arrays <- lapply(
-    setNames(schema$fields, schema$names),
+    stats::setNames(schema$fields, schema$names),
     function(field) arrow::concat_arrays(type = field$type)
   )
   vectors <- lapply(
