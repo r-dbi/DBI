@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9003 (2022-10-19)
+
+## Features
+
+- `dbAppendStream()` silences warnings about converting factors to character
+
+- `dbWriteStream()` returns invisibly
+
+- Implement `dbiDataType()` for objects of class `"blob"`
+
+
 # DBI 1.1.3.9002 (2022-10-03)
 
 ## Features
