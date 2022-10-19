@@ -21,7 +21,7 @@ dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overw
 
   dbAppendStream(conn, name, value)
 
-  TRUE
+  invisible(TRUE)
 }
 #' @rdname hidden_aliases
 #' @export
