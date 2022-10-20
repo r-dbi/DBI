@@ -29,7 +29,7 @@ stream_append_data <- function(value) {
 }
 
 factor_to_string <- function(value, warn = FALSE) {
-  is_factor <- vlpply(value, is.factor, logical(1))
+  is_factor <- vapply(value, is.factor, logical(1))
   if (warn && any(is_factor)) {
     warning("Factors converted to character", call. = FALSE)
   }
@@ -38,7 +38,7 @@ factor_to_string <- function(value, warn = FALSE) {
 }
 
 raw_to_string <- function(value) {
-  is_raw <- vlpply(value, is.raw, logical(1))
+  is_raw <- vapply(value, is.raw, logical(1))
 
   if (any(is_raw)) {
     warning("Creating a TEXT column from raw, use lists of raw to create BLOB columns", call. = FALSE)
@@ -49,13 +49,13 @@ raw_to_string <- function(value) {
 }
 
 quote_string <- function(value, conn) {
-  is_character <- vlpply(value, is.character, logical(1))
+  is_character <- vapply(value, is.character, logical(1))
   value[is_character] <- lapply(value[is_character], dbQuoteString, conn = conn)
   value
 }
 
 string_to_utf8 <- function(value) {
-  is_char <- vlpply(value, is.character, logical(1))
+  is_char <- vapply(value, is.character, logical(1))
   value[is_char] <- lapply(value[is_char], enc2utf8)
   value
 }
