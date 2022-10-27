@@ -74,7 +74,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>A Common Database Interface (DBI)</h1>
-                        <h4 data-toc-skip class="author">R-Databases Special Interest Group</h4>
+                        <h4 data-toc-skip class="author">R-Databases
+Special Interest Group</h4>
             
             <h4 data-toc-skip class="date">16 June 2003</h4>
       
@@ -85,16 +86,26 @@
 
     
     
-<p>This document describes a common interface between the S language (in its R and S-Plus implementations) and database management systems (DBMS). The interface defines a small set of classes and methods similar in spirit to Perl’s DBI, Java’s JDBC, Python’s DB-API, and Microsoft’s ODBC.</p>
+<p>This document describes a common interface between the S language (in
+its R and S-Plus implementations) and database management systems
+(DBMS). The interface defines a small set of classes and methods similar
+in spirit to Perl’s DBI, Java’s JDBC, Python’s DB-API, and Microsoft’s
+ODBC.</p>
 <div class="section level2">
 <h2 id="sec:version">Version<a class="anchor" aria-label="anchor" href="#sec:version"></a>
 </h2>
-<p>This document describes version 0.1-6 of the database interface API (application programming interface).</p>
+<p>This document describes version 0.1-6 of the database interface API
+(application programming interface).</p>
 </div>
 <div class="section level2">
 <h2 id="sec:intro">Introduction<a class="anchor" aria-label="anchor" href="#sec:intro"></a>
 </h2>
-<p>The database interface (DBI) separates the connectivity to the DBMS into a “front-end” and a “back-end”. Applications use only the exposed “front-end” API. The facilities that communicate with specific DBMS (Oracle, PostgreSQL, etc.) are provided by “device drivers” that get invoked automatically by the S language evaluator. The following example illustrates some of the DBI capabilities:</p>
+<p>The database interface (DBI) separates the connectivity to the DBMS
+into a “front-end” and a “back-end”. Applications use only the exposed
+“front-end” API. The facilities that communicate with specific DBMS
+(Oracle, PostgreSQL, etc.) are provided by “device drivers” that get
+invoked automatically by the S language evaluator. The following example
+illustrates some of the DBI capabilities:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Choose the proper DBMS driver and connect to the server</span></span>
 <span></span>
@@ -126,12 +137,17 @@
 <span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbDriver.html">dbUnloadDriver</a></span><span class="op">(</span><span class="va">drv</span><span class="op">)</span></span></code></pre></div>
-<p>(only the first 2 expressions are DBMS-specific – all others are independent of the database engine itself).</p>
-<p>Individual DBI drivers need not implement all the features we list below (we indicate those that are optional). Furthermore, drivers may extend the core DBI facilities, but we suggest to have these extensions clearly indicated and documented.</p>
+<p>(only the first 2 expressions are DBMS-specific – all others are
+independent of the database engine itself).</p>
+<p>Individual DBI drivers need not implement all the features we list
+below (we indicate those that are optional). Furthermore, drivers may
+extend the core DBI facilities, but we suggest to have these extensions
+clearly indicated and documented.</p>
 <p>The following are the elements of the DBI:</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>A set of classes and methods (Section [sec:DBIClasses]) that defines what operations are possible and how they are defined, e.g.:</p>
+<p>A set of classes and methods (Section [sec:DBIClasses]) that
+defines what operations are possible and how they are defined, e.g.:</p>
 <ul>
 <li><p>connect/disconnect to the DBMS</p></li>
 <li><p>create and execute statements in the DBMS</p></li>
@@ -140,30 +156,55 @@
 <li><p>information (meta-data) from database objects</p></li>
 <li><p>transaction management (optional)</p></li>
 </ul>
-<p>Some things are left explicitly unspecified, e.g., authentication and even the query language, although it is hard to avoid references to SQL and relational database management systems (RDBMS).</p>
+<p>Some things are left explicitly unspecified, e.g., authentication and
+even the query language, although it is hard to avoid references to SQL
+and relational database management systems (RDBMS).</p>
 </li>
 <li>
 <p>Drivers</p>
-<p>Drivers are collection of functions that implement the functionality defined above in the context of specific DBMS, e.g., mSQL, Informix.</p>
+<p>Drivers are collection of functions that implement the functionality
+defined above in the context of specific DBMS, e.g., mSQL,
+Informix.</p>
 </li>
 <li>
 <p>Data type mappings (Section [sec:data-mappings].)</p>
-<p>Mappings and conversions between DBMS data types and R/S objects. All drivers should implement the “basic” primitives (see below), but may chose to add user-defined conversion function to handle more generic objects (e.g., factors, ordered factors, time series, arrays, images).</p>
+<p>Mappings and conversions between DBMS data types and R/S objects. All
+drivers should implement the “basic” primitives (see below), but may
+chose to add user-defined conversion function to handle more generic
+objects (e.g., factors, ordered factors, time series, arrays,
+images).</p>
 </li>
 <li>
 <p>Utilities (Section [sec:utilities].)</p>
-<p>These facilities help with details such as mapping of identifiers between S and DBMS (e.g., <code>_</code> is illegal in R/S names, and <code>.</code> is used for constructing compound SQL identifiers), etc.</p>
+<p>These facilities help with details such as mapping of identifiers
+between S and DBMS (e.g., <code>_</code> is illegal in R/S names, and
+<code>.</code> is used for constructing compound SQL identifiers),
+etc.</p>
 </li>
 </ol>
 </div>
 <div class="section level2">
 <h2 id="sec:DBIClasses">DBI Classes and Methods<a class="anchor" aria-label="anchor" href="#sec:DBIClasses"></a>
 </h2>
-<p>The following are the main DBI classes. They need to be extended by individual database back-ends (Sybase, Oracle, etc.) Individual drivers need to provide methods for the generic functions listed here (those methods that are optional are so indicated).</p>
-<p><em>Note: Although R releases prior to 1.4 do not have a formal concept of classes, we will use the syntax of the S Version 4 classes and methods (available in R releases 1.4 and later as library <code>methods</code>) to convey precisely the DBI class hierarchy, its methods, and intended behavior.</em></p>
-<p>The DBI classes are <code>DBIObject</code>, <code>DBIDriver</code>, <code>DBIConnection</code> and <code>DBIResult</code>. All these are <em>virtual</em> classes. Drivers define new classes that extend these, e.g., <code>PgSQLDriver</code>, <code>PgSQLConnection</code>, and so on.</p>
+<p>The following are the main DBI classes. They need to be extended by
+individual database back-ends (Sybase, Oracle, etc.) Individual drivers
+need to provide methods for the generic functions listed here (those
+methods that are optional are so indicated).</p>
+<p><em>Note: Although R releases prior to 1.4 do not have a formal
+concept of classes, we will use the syntax of the S Version 4 classes
+and methods (available in R releases 1.4 and later as library
+<code>methods</code>) to convey precisely the DBI class hierarchy, its
+methods, and intended behavior.</em></p>
+<p>The DBI classes are <code>DBIObject</code>, <code>DBIDriver</code>,
+<code>DBIConnection</code> and <code>DBIResult</code>. All these are
+<em>virtual</em> classes. Drivers define new classes that extend these,
+e.g., <code>PgSQLDriver</code>, <code>PgSQLConnection</code>, and so
+on.</p>
 <div class="figure">
-<img src="hierarchy.png" alt=""><p class="caption">Class hierarchy for the DBI. The top two layers are comprised of virtual classes and each lower layer represents a set of driver-specific implementation classes that provide the functionality defined by the virtual classes above.</p>
+<img src="hierarchy.png" alt=""><p class="caption">Class hierarchy for the DBI. The top two layers are
+comprised of virtual classes and each lower layer represents a set of
+driver-specific implementation classes that provide the functionality
+defined by the virtual classes above.</p>
 </div>
 <dl>
 <dt>
@@ -174,7 +215,10 @@
 <dt>
 <code>DBIDriver</code>:</dt>
 <dd>
-<p>Virtual class that groups all DBMS drivers. Each DBMS driver extends this class. Typically generator functions instantiate the actual driver objects, e.g., <code>PgSQL</code>, <code>HDF5</code>, <code>BerkeleyDB</code>.</p>
+<p>Virtual class that groups all DBMS drivers. Each DBMS driver extends
+this class. Typically generator functions instantiate the actual driver
+objects, e.g., <code>PgSQL</code>, <code>HDF5</code>,
+<code>BerkeleyDB</code>.</p>
 </dd>
 <dt>
 <code>DBIConnection</code>:</dt>
@@ -184,16 +228,25 @@
 <dt>
 <code>DBIResult</code>:</dt>
 <dd>
-<p>Virtual class that describes the result of a DBMS query or statement.</p>
-<p>[Q: Should we distinguish between a simple result of DBMS statements e.g., as <code>delete</code> from DBMS queries (i.e., those that generate data).]</p>
+<p>Virtual class that describes the result of a DBMS query or
+statement.</p>
+<p>[Q: Should we distinguish between a simple result of DBMS statements
+e.g., as <code>delete</code> from DBMS queries (i.e., those that
+generate data).]</p>
 </dd>
 </dl>
-<p>The methods <code>format</code>, <code>print</code>, <code>show</code>, <code>dbGetInfo</code>, and <code>summary</code> are defined (and <em>implemented</em> in the <code>DBI</code> package) for the <code>DBIObject</code> base class, thus available to all implementations; individual drivers, however, are free to override them as they see fit.</p>
+<p>The methods <code>format</code>, <code>print</code>,
+<code>show</code>, <code>dbGetInfo</code>, and <code>summary</code> are
+defined (and <em>implemented</em> in the <code>DBI</code> package) for
+the <code>DBIObject</code> base class, thus available to all
+implementations; individual drivers, however, are free to override them
+as they see fit.</p>
 <dl>
 <dt>
 <code>format(x, ...)</code>:</dt>
 <dd>
-<p>produces a concise character representation (label) for the <code>DBIObject</code> <code>x</code>.</p>
+<p>produces a concise character representation (label) for the
+<code>DBIObject</code> <code>x</code>.</p>
 </dd>
 <dt>
 <code>print(x, ...)</code>/<code>show(x)</code>:</dt>
@@ -203,16 +256,25 @@
 <dt>
 <code>summary(object, ...)</code>:</dt>
 <dd>
-<p>produces a concise description of the object. The default method for <code>DBIObject</code> simply invokes <code>dbGetInfo(dbObj)</code> and prints the name-value pairs one per line. Individual implementations may tailor this appropriately.</p>
+<p>produces a concise description of the object. The default method for
+<code>DBIObject</code> simply invokes <code>dbGetInfo(dbObj)</code> and
+prints the name-value pairs one per line. Individual implementations may
+tailor this appropriately.</p>
 </dd>
 <dt>
 <code>dbGetInfo(dbObj, ...)</code>:</dt>
 <dd>
-<p>extracts information (meta-data) relevant for the <code>DBIObject</code> <code>dbObj</code>. It may return a list of key/value pairs, individual meta-data if supplied in the call, or <code>NULL</code> if the requested meta-data is not available.</p>
-<p><em>Hint:</em> Driver implementations may choose to allow an argument <code>what</code> to specify individual meta-data, e.g., <code>dbGetInfo(drv, what = max.connections)</code>.</p>
+<p>extracts information (meta-data) relevant for the
+<code>DBIObject</code> <code>dbObj</code>. It may return a list of
+key/value pairs, individual meta-data if supplied in the call, or
+<code>NULL</code> if the requested meta-data is not available.</p>
+<p><em>Hint:</em> Driver implementations may choose to allow an argument
+<code>what</code> to specify individual meta-data, e.g.,
+<code>dbGetInfo(drv, what = max.connections)</code>.</p>
 </dd>
 </dl>
-<p>In the next few sub-sections we describe in detail each of these classes and their methods.</p>
+<p>In the next few sub-sections we describe in detail each of these
+classes and their methods.</p>
 <div class="section level3">
 <h3 id="sec:DBIObject">Class <code>DBIObject</code><a class="anchor" aria-label="anchor" href="#sec:DBIObject"></a>
 </h3>
@@ -221,24 +283,36 @@
 <div class="section level3">
 <h3 id="sec:DBIDriver">Class <code>DBIDriver</code><a class="anchor" aria-label="anchor" href="#sec:DBIDriver"></a>
 </h3>
-<p>This class identifies the database management system. It needs to be extended by individual back-ends (Oracle, PostgreSQL, etc.)</p>
-<p>The DBI provides the generator <code>dbDriver(driverName)</code> which simply invokes the function <code>driverName</code>, which in turn instantiates the corresponding driver object.</p>
+<p>This class identifies the database management system. It needs to be
+extended by individual back-ends (Oracle, PostgreSQL, etc.)</p>
+<p>The DBI provides the generator <code>dbDriver(driverName)</code>
+which simply invokes the function <code>driverName</code>, which in turn
+instantiates the corresponding driver object.</p>
 <p>The <code>DBIDriver</code> class defines the following methods:</p>
 <dl>
 <dt>
 <code>driverName</code>:</dt>
 <dd>
-<p>[meth:driverName] initializes the driver code. The name <code>driverName</code> refers to the actual generator function for the DBMS, e.g., <code>RPgSQL</code>, <code>RODBC</code>, <code>HDF5</code>. The driver instance object is used with <code>dbConnect</code> (see page ) for opening one or possibly more connections to one or more DBMS.</p>
+<p>[meth:driverName] initializes the driver code. The name
+<code>driverName</code> refers to the actual generator function for the
+DBMS, e.g., <code>RPgSQL</code>, <code>RODBC</code>, <code>HDF5</code>.
+The driver instance object is used with <code>dbConnect</code> (see
+page ) for opening one or possibly more connections to one or more
+DBMS.</p>
 </dd>
 <dt>
 <code>dbListConnections(drv, ...)</code>:</dt>
 <dd>
-<p>list of current connections being handled by the <code>drv</code> driver. May be <code>NULL</code> if there are no open connections. Drivers that do not support multiple connections may return the one open connection.</p>
+<p>list of current connections being handled by the <code>drv</code>
+driver. May be <code>NULL</code> if there are no open connections.
+Drivers that do not support multiple connections may return the one open
+connection.</p>
 </dd>
 <dt>
 <code>dbGetInfo(dbObj, ...)</code>:</dt>
 <dd>
-<p>returns a list of name-value pairs of information about the driver.</p>
+<p>returns a list of name-value pairs of information about the
+driver.</p>
 <p><em>Hint:</em> Useful entries could include</p>
 <dl>
 <dt>
@@ -254,12 +328,14 @@
 <dt>
 <code>DBI.version</code>:</dt>
 <dd>
-<p>the version of the DBI that the driver implements, e.g., <code>0.1-2</code>;</p>
+<p>the version of the DBI that the driver implements, e.g.,
+<code>0.1-2</code>;</p>
 </dd>
 <dt>
 <code>client.version</code>:</dt>
 <dd>
-<p>of the client DBMS libraries (e.g., version of the <code>libpq</code> library in the case of <code>RPgSQL</code>);</p>
+<p>of the client DBMS libraries (e.g., version of the <code>libpq</code>
+library in the case of <code>RPgSQL</code>);</p>
 </dd>
 <dt>
 <code>max.connections</code>:</dt>
@@ -267,52 +343,83 @@
 <p>maximum number of simultaneous connections;</p>
 </dd>
 </dl>
-<p>plus any other relevant information about the implementation, for instance, how the driver handles upper/lower case in identifiers.</p>
+<p>plus any other relevant information about the implementation, for
+instance, how the driver handles upper/lower case in identifiers.</p>
 </dd>
 <dt>
 <code>dbUnloadDriver(driverName)</code> (optional):</dt>
 <dd>
-<p>frees all resources (local and remote) used by the driver. Returns a logical to indicate if it succeeded or not.</p>
+<p>frees all resources (local and remote) used by the driver. Returns a
+logical to indicate if it succeeded or not.</p>
 </dd>
 </dl>
 </div>
 <div class="section level3">
 <h3 id="sec:DBIConnection">Class <code>DBIConnection</code><a class="anchor" aria-label="anchor" href="#sec:DBIConnection"></a>
 </h3>
-<p>This virtual class encapsulates the connection to a DBMS, and it provides access to dynamic queries, result sets, DBMS session management (transactions), etc.</p>
-<p><em>Note:</em> Individual drivers are free to implement single or multiple simultaneous connections.</p>
-<p>The methods defined by the <code>DBIConnection</code> class include:</p>
+<p>This virtual class encapsulates the connection to a DBMS, and it
+provides access to dynamic queries, result sets, DBMS session management
+(transactions), etc.</p>
+<p><em>Note:</em> Individual drivers are free to implement single or
+multiple simultaneous connections.</p>
+<p>The methods defined by the <code>DBIConnection</code> class
+include:</p>
 <dl>
 <dt>
 <code>dbConnect(drv, ...)</code>:</dt>
 <dd>
-<p>[meth:dbConnect] creates and opens a connection to the database implemented by the driver <code>drv</code> (see Section [sec:DBIDriver]). Each driver will define what other arguments are required, e.g., <code>dbname</code> or <code>dsn</code> for the database name, <code>user</code>, and <code>password</code>. It returns an object that extends <code>DBIConnection</code> in a driver-specific manner (e.g., the MySQL implementation could create an object of class <code>MySQLConnection</code> that extends <code>DBIConnection</code>).</p>
+<p>[meth:dbConnect] creates and opens a connection to the database
+implemented by the driver <code>drv</code> (see
+Section [sec:DBIDriver]). Each driver will define what other arguments
+are required, e.g., <code>dbname</code> or <code>dsn</code> for the
+database name, <code>user</code>, and <code>password</code>. It returns
+an object that extends <code>DBIConnection</code> in a driver-specific
+manner (e.g., the MySQL implementation could create an object of class
+<code>MySQLConnection</code> that extends
+<code>DBIConnection</code>).</p>
 </dd>
 <dt>
 <code>dbDisconnect(conn, ...)</code>:</dt>
 <dd>
-<p>closes the connection, discards all pending work, and frees resources (e.g., memory, sockets). Returns a logical indicating whether it succeeded or not.</p>
+<p>closes the connection, discards all pending work, and frees resources
+(e.g., memory, sockets). Returns a logical indicating whether it
+succeeded or not.</p>
 </dd>
 <dt>
 <code>dbSendQuery(conn, statement, ...)</code>:</dt>
 <dd>
-<p>submits one statement to the DBMS. It returns a <code>DBIResult</code> object. This object is needed for fetching data in case the statement generates output (see <code>fetch</code> on page ), and it may be used for querying the state of the operation; see <code>dbGetInfo</code> and other meta-data methods on page .</p>
+<p>submits one statement to the DBMS. It returns a
+<code>DBIResult</code> object. This object is needed for fetching data
+in case the statement generates output (see <code>fetch</code> on
+page ), and it may be used for querying the state of the operation; see
+<code>dbGetInfo</code> and other meta-data methods on page .</p>
 </dd>
 <dt>
 <code>dbGetQuery(conn, statement, ...)</code>:</dt>
 <dd>
-<p>submit, execute, and extract output in one operation. The resulting object may be a <code>data.frame</code> if the <code>statement</code> generates output. Otherwise the return value should be a logical indicating whether the query succeeded or not.</p>
+<p>submit, execute, and extract output in one operation. The resulting
+object may be a <code>data.frame</code> if the <code>statement</code>
+generates output. Otherwise the return value should be a logical
+indicating whether the query succeeded or not.</p>
 </dd>
 <dt>
 <code>dbGetException(conn, ...)</code>:</dt>
 <dd>
-<p>returns a list with elements <code>errNum</code> and <code>errMsg</code> with the status of the last DBMS statement sent on a given connection (this information may also be provided by the <code>dbGetInfo</code> meta-data function on the <code>conn</code> object.</p>
-<p><em>Hint:</em> The ANSI SQL-92 defines both a status code and an status message that could be return as members of the list.</p>
+<p>returns a list with elements <code>errNum</code> and
+<code>errMsg</code> with the status of the last DBMS statement sent on a
+given connection (this information may also be provided by the
+<code>dbGetInfo</code> meta-data function on the <code>conn</code>
+object.</p>
+<p><em>Hint:</em> The ANSI SQL-92 defines both a status code and an
+status message that could be return as members of the list.</p>
 </dd>
 <dt>
 <code>dbGetInfo(dbObj, ...)</code>:</dt>
 <dd>
-<p>returns a list of name-value pairs describing the state of the connection; it may return one or more meta-data, the actual driver method allows to specify individual pieces of meta-data (e.g., maximum number of open results/cursors).</p>
+<p>returns a list of name-value pairs describing the state of the
+connection; it may return one or more meta-data, the actual driver
+method allows to specify individual pieces of meta-data (e.g., maximum
+number of open results/cursors).</p>
 <p><em>Hint:</em> Useful entries could include</p>
 <dl>
 <dt>
@@ -341,73 +448,109 @@
 <p>password (is this safe?);</p>
 </dd>
 </dl>
-<p>plus any other arguments related to the connection (e.g., thread id, socket or TCP connection type).</p>
+<p>plus any other arguments related to the connection (e.g., thread id,
+socket or TCP connection type).</p>
 </dd>
 <dt>
 <code>dbListResults(conn, ...)</code>:</dt>
 <dd>
-<p>list of <code>DBIResult</code> objects currently active on the connection <code>conn</code>. May be <code>NULL</code> if no result set is active on <code>conn</code>. Drivers that implement only one result set per connection could return that one object (no need to wrap it in a list).</p>
+<p>list of <code>DBIResult</code> objects currently active on the
+connection <code>conn</code>. May be <code>NULL</code> if no result set
+is active on <code>conn</code>. Drivers that implement only one result
+set per connection could return that one object (no need to wrap it in a
+list).</p>
 </dd>
 </dl>
-<p><em>Note: The following are convenience methods that simplify the import/export of (mainly) data.frames. The first five methods implement the core methods needed to <code>attach</code> remote DBMS to the S search path. (For details, see <span class="citation">Chambers (1991, 1998)</span>.)</em></p>
-<p><em>Hint:</em> For relational DBMS these methods may be easily implemented using the core DBI methods <code>dbConnect</code>, <code>dbSendQuery</code>, and <code>fetch</code>, due to SQL reflectance (i.e., one easily gets this meta-data by querying the appropriate tables on the RDBMS).</p>
+<p><em>Note: The following are convenience methods that simplify the
+import/export of (mainly) data.frames. The first five methods implement
+the core methods needed to <code>attach</code> remote DBMS to the S
+search path. (For details, see <span class="citation">Chambers (1991,
+1998)</span>.)</em></p>
+<p><em>Hint:</em> For relational DBMS these methods may be easily
+implemented using the core DBI methods <code>dbConnect</code>,
+<code>dbSendQuery</code>, and <code>fetch</code>, due to SQL reflectance
+(i.e., one easily gets this meta-data by querying the appropriate tables
+on the RDBMS).</p>
 <dl>
 <dt>
 <code>dbListTables(conn, ...)</code>:</dt>
 <dd>
-<p>returns a character vector (possibly of zero-length) of object (table) names available on the <code>conn</code> connection.</p>
+<p>returns a character vector (possibly of zero-length) of object
+(table) names available on the <code>conn</code> connection.</p>
 </dd>
 <dt>
 <code>dbReadTable(conn, name, ...)</code>:</dt>
 <dd>
-<p>imports the data stored remotely in the table <code>name</code> on connection <code>conn</code>. Use the field <code>row.names</code> as the <code>row.names</code> attribute of the output data.frame. Returns a <code>data.frame</code>.</p>
-<p>[Q: should we spell out how row.names should be created? E.g., use a field (with unique values) as row.names? Also, should <code>dbReadTable</code> reproduce a data.frame exported with <code>dbWriteTable</code>?]</p>
+<p>imports the data stored remotely in the table <code>name</code> on
+connection <code>conn</code>. Use the field <code>row.names</code> as
+the <code>row.names</code> attribute of the output data.frame. Returns a
+<code>data.frame</code>.</p>
+<p>[Q: should we spell out how row.names should be created? E.g., use a
+field (with unique values) as row.names? Also, should
+<code>dbReadTable</code> reproduce a data.frame exported with
+<code>dbWriteTable</code>?]</p>
 </dd>
 <dt>
 <code>dbWriteTable(conn, name, value, ...)</code>:</dt>
 <dd>
-<p>write the object <code>value</code> (perhaps after coercing it to data.frame) into the remote object <code>name</code> in connection <code>conn</code>. Returns a logical indicating whether the operation succeeded or not.</p>
+<p>write the object <code>value</code> (perhaps after coercing it to
+data.frame) into the remote object <code>name</code> in connection
+<code>conn</code>. Returns a logical indicating whether the operation
+succeeded or not.</p>
 </dd>
 <dt>
 <code>dbExistsTable(conn, name, ...)</code>:</dt>
 <dd>
-<p>does remote object <code>name</code> exist on <code>conn</code>? Returns a logical.</p>
+<p>does remote object <code>name</code> exist on <code>conn</code>?
+Returns a logical.</p>
 </dd>
 <dt>
 <code>dbRemoveTable(conn, name, ...)</code>:</dt>
 <dd>
-<p>removes remote object <code>name</code> on connection <code>conn</code>. Returns a logical indicating whether the operation succeeded or not.</p>
+<p>removes remote object <code>name</code> on connection
+<code>conn</code>. Returns a logical indicating whether the operation
+succeeded or not.</p>
 </dd>
 <dt>
 <code>dbListFields(conn, name, ...)</code>:</dt>
 <dd>
-<p>returns a character vector listing the field names of the remote table <code>name</code> on connection <code>conn</code> (see <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> for extracting data type on a table).</p>
+<p>returns a character vector listing the field names of the remote
+table <code>name</code> on connection <code>conn</code> (see
+<code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> for extracting data type on a table).</p>
 </dd>
 </dl>
-<p><em>Note: The following methods deal with transactions and stored procedures. All these functions are optional.</em></p>
+<p><em>Note: The following methods deal with transactions and stored
+procedures. All these functions are optional.</em></p>
 <dl>
 <dt>
 <code>dbCommit(conn, ...)</code>(optional):</dt>
 <dd>
-<p>commits pending transaction on the connection and returns <code>TRUE</code> or <code>FALSE</code> depending on whether the operation succeeded or not.</p>
+<p>commits pending transaction on the connection and returns
+<code>TRUE</code> or <code>FALSE</code> depending on whether the
+operation succeeded or not.</p>
 </dd>
 <dt>
 <code>dbRollback(conn, ...)</code>(optional):</dt>
 <dd>
-<p>undoes current transaction on the connection and returns <code>TRUE</code> or <code>FALSE</code> depending on whether the operation succeeded or not.</p>
+<p>undoes current transaction on the connection and returns
+<code>TRUE</code> or <code>FALSE</code> depending on whether the
+operation succeeded or not.</p>
 </dd>
 <dt>
 <code>dbCallProc(conn, storedProc, ...)</code>(optional):</dt>
 <dd>
-<p>invokes a stored procedure in the DBMS and returns a <code>DBIResult</code> object.</p>
-<p>[Stored procedures are <em>not</em> part of the ANSI SQL-92 standard and vary substantially from one RDBMS to another.]</p>
+<p>invokes a stored procedure in the DBMS and returns a
+<code>DBIResult</code> object.</p>
+<p>[Stored procedures are <em>not</em> part of the ANSI SQL-92 standard
+and vary substantially from one RDBMS to another.]</p>
 <p><strong>Deprecated since 2014:</strong></p>
 <p>The recommended way of calling a stored procedure is now</p>
 <ul>
 <li>
 <code>dbGetQuery</code> if a result set is returned and</li>
 <li>
-<code>dbExecute</code> for data manipulation and other cases that do not return a result set.</li>
+<code>dbExecute</code> for data manipulation and other cases that do
+not return a result set.</li>
 </ul>
 </dd>
 </dl>
@@ -415,20 +558,31 @@
 <div class="section level3">
 <h3 id="sec:DBIResult">Class <code>DBIResult</code><a class="anchor" aria-label="anchor" href="#sec:DBIResult"></a>
 </h3>
-<p>This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query). The result set <code>res</code> keeps track of whether the statement produces output for R/S, how many rows were affected by the operation, how many rows have been fetched (if statement is a query), whether there are more rows to fetch, etc.</p>
-<p><em>Note: Individual drivers are free to allow single or multiple active results per connection.</em></p>
-<p>[Q: Should we distinguish between results that return no data from those that return data?]</p>
+<p>This virtual class describes the result and state of execution of a
+DBMS statement (any statement, query or non-query). The result set
+<code>res</code> keeps track of whether the statement produces output
+for R/S, how many rows were affected by the operation, how many rows
+have been fetched (if statement is a query), whether there are more rows
+to fetch, etc.</p>
+<p><em>Note: Individual drivers are free to allow single or multiple
+active results per connection.</em></p>
+<p>[Q: Should we distinguish between results that return no data from
+those that return data?]</p>
 <p>The class <code>DBIResult</code> defines the following methods:</p>
 <dl>
 <dt>
 <code>fetch(res, n, ...)</code>:</dt>
 <dd>
-<p>[meth:fetch] fetches the next <code>n</code> elements (rows) from the result set <code>res</code> and return them as a data.frame. A value of <code>n=-1</code> is interpreted as “return all elements/rows”.</p>
+<p>[meth:fetch] fetches the next <code>n</code> elements (rows) from the
+result set <code>res</code> and return them as a data.frame. A value of
+<code>n=-1</code> is interpreted as “return all elements/rows”.</p>
 </dd>
 <dt>
 <code>dbClearResult(res, ...)</code>:</dt>
 <dd>
-<p>flushes any pending data and frees all resources (local and remote) used by the object <code>res</code> on both sides of the connection. Returns a logical indicating success or not.</p>
+<p>flushes any pending data and frees all resources (local and remote)
+used by the object <code>res</code> on both sides of the connection.
+Returns a logical indicating success or not.</p>
 </dd>
 <dt>
 <code>dbGetInfo(dbObj, ...)</code>:</dt>
@@ -439,12 +593,14 @@
 <dt>
 <code>statement</code>:</dt>
 <dd>
-<p>a character string representation of the statement being executed;</p>
+<p>a character string representation of the statement being
+executed;</p>
 </dd>
 <dt>
 <code>rows.affected</code>:</dt>
 <dd>
-<p>number of affected records (changed, deleted, inserted, or extracted);</p>
+<p>number of affected records (changed, deleted, inserted, or
+extracted);</p>
 </dd>
 <dt>
 <code>row.count</code>:</dt>
@@ -459,7 +615,8 @@
 <dt>
 <code>is.select</code>:</dt>
 <dd>
-<p>a logical describing whether or not the statement generates output;</p>
+<p>a logical describing whether or not the statement generates
+output;</p>
 </dd>
 </dl>
 <p>plus any other relevant driver-specific meta-data.</p>
@@ -467,7 +624,10 @@
 <dt>
 <code>dbColumnInfo(res, ...)</code>:</dt>
 <dd>
-<p>produces a data.frame that describes the output of a query. The data.frame should have as many rows as there are output fields in the result set, and each column in the data.frame should describe an aspect of the result set field (field name, type, etc.)</p>
+<p>produces a data.frame that describes the output of a query. The
+data.frame should have as many rows as there are output fields in the
+result set, and each column in the data.frame should describe an aspect
+of the result set field (field name, type, etc.)</p>
 <p><em>Hint:</em> The data.frame columns could include</p>
 <dl>
 <dt>
@@ -488,12 +648,14 @@
 <dt>
 <code>precision</code>/<code>scale</code>:</dt>
 <dd>
-<p>(as in ODBC terminology), display width and number of decimal digits, respectively;</p>
+<p>(as in ODBC terminology), display width and number of decimal digits,
+respectively;</p>
 </dd>
 <dt>
 <code>nullable</code>:</dt>
 <dd>
-<p>whether the corresponding field may contain (DBMS) <code>NULL</code> values;</p>
+<p>whether the corresponding field may contain (DBMS) <code>NULL</code>
+values;</p>
 </dd>
 </dl>
 <p>plus other driver-specific information.</p>
@@ -501,25 +663,35 @@
 <dt>
 <code>dbSetDataMappings(flds, ...)</code>(optional):</dt>
 <dd>
-<p>defines a conversion between internal DBMS data types and R/S classes. We expect the default mappings (see Section [sec:data-mappings]) to be by far the most common ones, but users that need more control may specify a class generator for individual fields in the result set. [This topic needs further discussion.]</p>
+<p>defines a conversion between internal DBMS data types and R/S
+classes. We expect the default mappings (see
+Section [sec:data-mappings]) to be by far the most common ones, but
+users that need more control may specify a class generator for
+individual fields in the result set. [This topic needs further
+discussion.]</p>
 </dd>
 </dl>
-<p><em>Note: The following are convenience methods that extract information from the result object (they may be implemented by invoking <code>dbGetInfo</code> with appropriate arguments).</em></p>
+<p><em>Note: The following are convenience methods that extract
+information from the result object (they may be implemented by invoking
+<code>dbGetInfo</code> with appropriate arguments).</em></p>
 <dl>
 <dt>
 <code>dbGetStatement(res, ...)</code>(optional):</dt>
 <dd>
-<p>returns the DBMS statement (as a character string) associated with the result <code>res</code>.</p>
+<p>returns the DBMS statement (as a character string) associated with
+the result <code>res</code>.</p>
 </dd>
 <dt>
 <code>dbGetRowsAffected(res, ...)</code>(optional):</dt>
 <dd>
-<p>returns the number of rows affected by the executed statement (number of records deleted, modified, extracted, etc.)</p>
+<p>returns the number of rows affected by the executed statement (number
+of records deleted, modified, extracted, etc.)</p>
 </dd>
 <dt>
 <code>dbHasCompleted(res, ...)</code>(optional):</dt>
 <dd>
-<p>returns a logical that indicates whether the operation has been completed (e.g., are there more records to be fetched?).</p>
+<p>returns a logical that indicates whether the operation has been
+completed (e.g., are there more records to be fetched?).</p>
 </dd>
 <dt>
 <code>dbGetRowCount(res, ...)</code>(optional):</dt>
@@ -532,14 +704,32 @@
 <div class="section level2">
 <h2 id="sec:data-mappings">Data Type Mappings<a class="anchor" aria-label="anchor" href="#sec:data-mappings"></a>
 </h2>
-<p>The data types supported by databases are different than the data types in R and S, but the mapping between the “primitive” types is straightforward: Any of the many fixed and varying length character types are mapped to R/S <code>character</code>. Fixed-precision (non-IEEE) numbers are mapped into either doubles (<code>numeric</code>) or long (<code>integer</code>). Notice that many DBMS do not follow the so-called IEEE arithmetic, so there are potential problems with under/overflows and loss of precision, but given the R/S primitive types we cannot do too much but identify these situations and warn the application (how?).</p>
-<p>By default dates and date-time objects are mapped to character using the appropriate <code>TO_CHAR</code> function in the DBMS (which should take care of any locale information). Some RDBMS support the type <code>CURRENCY</code> or <code>MONEY</code> which should be mapped to <code>numeric</code> (again with potential round off errors). Large objects (character, binary, file, etc.) also need to be mapped. User-defined functions may be specified to do the actual conversion (as has been done in other inter-systems packages <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>).</p>
-<p>Specifying user-defined conversion functions still needs to be defined.</p>
+<p>The data types supported by databases are different than the data
+types in R and S, but the mapping between the “primitive” types is
+straightforward: Any of the many fixed and varying length character
+types are mapped to R/S <code>character</code>. Fixed-precision
+(non-IEEE) numbers are mapped into either doubles (<code>numeric</code>)
+or long (<code>integer</code>). Notice that many DBMS do not follow the
+so-called IEEE arithmetic, so there are potential problems with
+under/overflows and loss of precision, but given the R/S primitive types
+we cannot do too much but identify these situations and warn the
+application (how?).</p>
+<p>By default dates and date-time objects are mapped to character using
+the appropriate <code>TO_CHAR</code> function in the DBMS (which should
+take care of any locale information). Some RDBMS support the type
+<code>CURRENCY</code> or <code>MONEY</code> which should be mapped to
+<code>numeric</code> (again with potential round off errors). Large
+objects (character, binary, file, etc.) also need to be mapped.
+User-defined functions may be specified to do the actual conversion (as
+has been done in other inter-systems packages <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>).</p>
+<p>Specifying user-defined conversion functions still needs to be
+defined.</p>
 </div>
 <div class="section level2">
 <h2 id="sec:utilities">Utilities<a class="anchor" aria-label="anchor" href="#sec:utilities"></a>
 </h2>
-<p>The core DBI implementation should make available to all drivers some common basic utilities. For instance:</p>
+<p>The core DBI implementation should make available to all drivers some
+common basic utilities. For instance:</p>
 <dl>
 <dt>
 <code>dbGetDBIVersion</code>:</dt>
@@ -549,53 +739,90 @@
 <dt>
 <code>dbDataType(dbObj, obj, ...)</code>:</dt>
 <dd>
-<p>returns a string with the (approximately) appropriate data type for the R/S object <code>obj</code>. The DBI can implement this following the ANSI-92 standard, but individual drivers may want/need to extend it to make use of DBMS-specific types.</p>
+<p>returns a string with the (approximately) appropriate data type for
+the R/S object <code>obj</code>. The DBI can implement this following
+the ANSI-92 standard, but individual drivers may want/need to extend it
+to make use of DBMS-specific types.</p>
 </dd>
 <dt>
 <code>make.db.names(dbObj, snames, ...)</code>:</dt>
 <dd>
-<p>maps R/S names (identifiers) to SQL identifiers replacing illegal characters (as <code>.</code>) by the legal SQL <code>_</code>.</p>
+<p>maps R/S names (identifiers) to SQL identifiers replacing illegal
+characters (as <code>.</code>) by the legal SQL <code>_</code>.</p>
 </dd>
 <dt>
 <code>SQLKeywords(dbObj, ...)</code>:</dt>
 <dd>
-<p>returns a character vector of SQL keywords (reserved words). The default method returns the list of <code>.SQL92Keywords</code>, but drivers should update this vector with the DBMS-specific additional reserved words.</p>
+<p>returns a character vector of SQL keywords (reserved words). The
+default method returns the list of <code>.SQL92Keywords</code>, but
+drivers should update this vector with the DBMS-specific additional
+reserved words.</p>
 </dd>
 <dt>
 <code>isSQLKeyword(dbObj, name, ...)</code>:</dt>
 <dd>
-<p>for each element in the character vector <code>name</code> determine whether or not it is an SQL keyword, as reported by the generic function <code>SQLKeywords</code>. Returns a logical vector parallel to the input object <code>name</code>.</p>
+<p>for each element in the character vector <code>name</code> determine
+whether or not it is an SQL keyword, as reported by the generic function
+<code>SQLKeywords</code>. Returns a logical vector parallel to the input
+object <code>name</code>.</p>
 </dd>
 </dl>
 </div>
 <div class="section level2">
 <h2 id="sec:open-issues">Open Issues and Limitations<a class="anchor" aria-label="anchor" href="#sec:open-issues"></a>
 </h2>
-<p>There are a number of issues and limitations that the current DBI conscientiously does not address on the interest of simplicity. We do list here the most important ones.</p>
+<p>There are a number of issues and limitations that the current DBI
+conscientiously does not address on the interest of simplicity. We do
+list here the most important ones.</p>
 <dl>
 <dt>Non-SQL:</dt>
 <dd>
-<p>Is it realistic to attempt to encompass non-relational databases, like HDF5, Berkeley DB, etc.?</p>
+<p>Is it realistic to attempt to encompass non-relational databases,
+like HDF5, Berkeley DB, etc.?</p>
 </dd>
 <dt>Security:</dt>
 <dd>
-<p>allowing users to specify their passwords on R/S scripts may be unacceptable for some applications. We need to consider alternatives where users could store authentication on files (perhaps similar to ODBC’s <code>odbc.ini</code>) with more stringent permissions.</p>
+<p>allowing users to specify their passwords on R/S scripts may be
+unacceptable for some applications. We need to consider alternatives
+where users could store authentication on files (perhaps similar to
+ODBC’s <code>odbc.ini</code>) with more stringent permissions.</p>
 </dd>
 <dt>Exceptions:</dt>
 <dd>
-<p>the exception mechanism is a bit too simple, and it does not provide for information when problems stem from the DBMS interface itself. For instance, under/overflow or loss of precision as we move numeric data from DBMS to the more limited primitives in R/S.</p>
+<p>the exception mechanism is a bit too simple, and it does not provide
+for information when problems stem from the DBMS interface itself. For
+instance, under/overflow or loss of precision as we move numeric data
+from DBMS to the more limited primitives in R/S.</p>
 </dd>
 <dt>Asynchronous communication:</dt>
 <dd>
-<p>most DBMS support both synchronous and asynchronous communications, allowing applications to submit a query and proceed while the database server process the query. The application is then notified (or it may need to poll the server) when the query has completed. For large computations, this could be very useful, but the DBI would need to specify how to interrupt the server (if necessary) plus other details. Also, some DBMS require applications to use threads to implement asynchronous communication, something that neither R nor S-Plus currently addresses.</p>
+<p>most DBMS support both synchronous and asynchronous communications,
+allowing applications to submit a query and proceed while the database
+server process the query. The application is then notified (or it may
+need to poll the server) when the query has completed. For large
+computations, this could be very useful, but the DBI would need to
+specify how to interrupt the server (if necessary) plus other details.
+Also, some DBMS require applications to use threads to implement
+asynchronous communication, something that neither R nor S-Plus
+currently addresses.</p>
 </dd>
 <dt>SQL scripts:</dt>
 <dd>
-<p>the DBI only defines how to execute one SQL statement at a time, forcing users to split SQL scripts into individual statements. We need a mechanism by which users can submit SQL scripts that could possibly generate multiple result sets; in this case we may need to introduce new methods to loop over multiple results (similar to Python’s <code>nextResultSet</code>).</p>
+<p>the DBI only defines how to execute one SQL statement at a time,
+forcing users to split SQL scripts into individual statements. We need a
+mechanism by which users can submit SQL scripts that could possibly
+generate multiple result sets; in this case we may need to introduce new
+methods to loop over multiple results (similar to Python’s
+<code>nextResultSet</code>).</p>
 </dd>
 <dt>BLOBS/CLOBS:</dt>
 <dd>
-<p>large objects (both character and binary) present some challenges both to R and S-Plus. It is becoming more common to store images, sounds, and other data types as binary objects in DBMS, some of which can be in principle quite large. The SQL-92 ANSI standard allows up to 2 gigabytes for some of these objects. We need to carefully plan how to deal with binary objects.</p>
+<p>large objects (both character and binary) present some challenges
+both to R and S-Plus. It is becoming more common to store images,
+sounds, and other data types as binary objects in DBMS, some of which
+can be in principle quite large. The SQL-92 ANSI standard allows up to 2
+gigabytes for some of these objects. We need to carefully plan how to
+deal with binary objects.</p>
 </dd>
 <dt>Transactions:</dt>
 <dd>
@@ -603,39 +830,55 @@
 </dd>
 <dt>Additional methods:</dt>
 <dd>
-<p>Do we need any additional methods? (e.g., <code>dbListDatabases(conn)</code>, <code>dbListTableIndices(conn, name)</code>, how do we list all available drivers?)</p>
+<p>Do we need any additional methods? (e.g.,
+<code>dbListDatabases(conn)</code>,
+<code>dbListTableIndices(conn, name)</code>, how do we list all
+available drivers?)</p>
 </dd>
 <dt>Bind variables:</dt>
 <dd>
-<p>the interface is heavily biased towards queries, as opposed to general purpose database development. In particular we made no attempt to define “bind variables”; this is a mechanism by which the contents of R/S objects are implicitly moved to the database during SQL execution. For instance, the following embedded SQL statement</p>
+<p>the interface is heavily biased towards queries, as opposed to
+general purpose database development. In particular we made no attempt
+to define “bind variables”; this is a mechanism by which the contents of
+R/S objects are implicitly moved to the database during SQL execution.
+For instance, the following embedded SQL statement</p>
 <pre><code>  /* SQL */
   SELECT * from emp_table where emp_id = :sampleEmployee</code></pre>
-<p>would take the vector <code>sampleEmployee</code> and iterate over each of its elements to get the result. Perhaps the DBI could at some point in the future implement this feature.</p>
+<p>would take the vector <code>sampleEmployee</code> and iterate over
+each of its elements to get the result. Perhaps the DBI could at some
+point in the future implement this feature.</p>
 </dd>
 </dl>
 </div>
 <div class="section level2">
 <h2 id="sec:resources">Resources<a class="anchor" aria-label="anchor" href="#sec:resources"></a>
 </h2>
-<p>The idea of a common interface to databases has been successfully implemented in various environments, for instance:</p>
+<p>The idea of a common interface to databases has been successfully
+implemented in various environments, for instance:</p>
 <p>Java’s Database Connectivity (JDBC) (<a href="https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/" class="external-link">www.javasoft.com</a>).</p>
 <p>In C through the Open Database Connectivity (ODBC) (<a href="http://www.unixodbc.org/" class="external-link">www.unixodbc.org</a>).</p>
 <p>Python’s Database Application Programming Interface (<a href="https://wiki.python.org/moin/DatabaseProgramming" class="external-link">www.python.org</a>).</p>
 <p>Perl’s Database Interface (<a href="https://dbi.perl.org" class="external-link">dbi.perl.org</a>).</p>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-data-management:1991" class="csl-entry">
-Chambers, John M. 1991. <span>“Data Management in <span>S</span>.”</span> Bell Labs, Lucent Technologies.
+Chambers, John M. 1991. <span>“Data Management in
+<span>S</span>.”</span> Bell Labs, Lucent Technologies.
 </div>
 <div id="ref-database-classes:1999" class="csl-entry">
-———. 1998. <span>“Database Classes.”</span> Bell Labs, Lucent Technologies.
+———. 1998. <span>“Database Classes.”</span> Bell Labs, Lucent
+Technologies.
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p>A virtual class allows us to group classes that share some common characteristics, even if their implementations are radically different.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data conversion code found in R-Java, R-Perl, and R-Python packages to the DBI<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>A virtual class allows us to group classes that share
+some common characteristics, even if their implementations are radically
+different.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Duncan Temple Lang has volunteered to port the data
+conversion code found in R-Java, R-Perl, and R-Python packages to the
+DBI<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

@@ -1,6 +1,6 @@
-pandoc: 2.14.2
+pandoc: 2.19.2
 pkgdown: 2.0.6.9000
-pkgdown_sha: 7fe9e802df2964d483d0267f1d5a59aa7b3c685d
+pkgdown_sha: 0183403320bf81d68a14ab062e746de87fe24ebc
 articles:
   DBI-1: DBI-1.html
   DBI-advanced: DBI-advanced.html
@@ -10,7 +10,7 @@ articles:
   DBI: DBI.html
   backend: backend.html
   spec: spec.html
-last_built: 2022-10-23T20:45Z
+last_built: 2022-10-27T14:20Z
 urls:
   reference: https://dbi.r-dbi.org/reference
   article: https://dbi.r-dbi.org/articles

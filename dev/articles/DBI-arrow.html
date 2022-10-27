@@ -74,7 +74,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using DBI with Arrow</h1>
-                        <h4 data-toc-skip class="author">Kirill Müller</h4>
+                        <h4 data-toc-skip class="author">Kirill
+Müller</h4>
             
             <h4 data-toc-skip class="date">29/09/2022</h4>
       
@@ -88,7 +89,11 @@
 <div class="section level2">
 <h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
-<p>This tutorial is for you if you want to leverage <a href="https://arrow.apache.org/" class="external-link">Apache Arrow</a> for accessing and manipulating data on databases. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> and <code>vignette("DBI", package = "DBI-advanced")</code> for tutorials on accessing data using R’s data frames instead of Arrow’s structures.</p>
+<p>This tutorial is for you if you want to leverage <a href="https://arrow.apache.org/" class="external-link">Apache Arrow</a> for accessing and
+manipulating data on databases. See
+<code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> and
+<code>vignette("DBI", package = "DBI-advanced")</code> for tutorials on
+accessing data using R’s data frames instead of Arrow’s structures.</p>
 </div>
 <div class="section level2">
 <h2 id="rationale">Rationale<a class="anchor" aria-label="anchor" href="#rationale"></a>
@@ -99,10 +104,13 @@
 </blockquote>
 <ul>
 <li>suitable for large and huge data, also out-of-memory</li>
-<li>data exchange format, good support for data types used in SQL databases</li>
-<li>new extension points to allow backends (currently DuckDB and adbc) to make use of the data exchange format</li>
+<li>data exchange format, good support for data types used in SQL
+databases</li>
+<li>new extension points to allow backends (currently DuckDB and adbc)
+to make use of the data exchange format</li>
 <li>faster data retrieval and loading</li>
-<li>fundamental data structure: <code><a href="https://arrow.apache.org/docs/r/reference/RecordBatchReader.html" class="external-link">arrow::RecordBatchReader</a></code>
+<li>fundamental data structure:
+<code><a href="https://arrow.apache.org/docs/r/reference/RecordBatchReader.html" class="external-link">arrow::RecordBatchReader</a></code>
 </li>
 </ul>
 </div>
@@ -111,7 +119,8 @@
 </h2>
 <ul>
 <li><p>Zero chance of interfering with existing DBI backends</p></li>
-<li><p>Fully functional fallback implementation for all existing DBI backends</p></li>
+<li><p>Fully functional fallback implementation for all existing DBI
+backends</p></li>
 <li><p>Requires {arrow} R package</p></li>
 <li>
 <p>New generics:</p>
@@ -248,14 +257,17 @@
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span>
 <span><span class="co">## 3 3 4.5 five</span></span></code></pre>
-<p>As usual, do not forget to disconnect from the database when done.</p>
+<p>As usual, do not forget to disconnect from the database when
+done.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
-<p>That concludes the major features of DBI. For more details on the library functions covered in this tutorial see the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.</p>
+<p>That concludes the major features of DBI. For more details on the
+library functions covered in this tutorial see the DBI specification at
+<code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.</p>
 <ul>
 <li>See arrow package for further processing</li>
 </ul>

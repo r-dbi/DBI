@@ -74,7 +74,8 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Advanced DBI Usage</h1>
-                        <h4 data-toc-skip class="author">James Wondrasek, Kirill Müller</h4>
+                        <h4 data-toc-skip class="author">James
+Wondrasek, Kirill Müller</h4>
             
             <h4 data-toc-skip class="date">17/03/2020</h4>
       
@@ -88,20 +89,36 @@
 <div class="section level2">
 <h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
-<p>This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL’s transaction features. See <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial covering connecting to DBMS and executing simple queries.</p>
+<p>This tutorial is for you if you need to use a richer set of SQL
+features such as data manipulation queries, parameterized queries and
+queries performed using SQL’s transaction features. See
+<code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> for a more basic tutorial
+covering connecting to DBMS and executing simple queries.</p>
 </div>
 <div class="section level2">
 <h2 id="how-to-run-more-complex-queries-using-dbi">How to run more complex queries using DBI<a class="anchor" aria-label="anchor" href="#how-to-run-more-complex-queries-using-dbi"></a>
 </h2>
-<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions behind the scenes. If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.</p>
+<p><code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> works by calling a number of functions
+behind the scenes. If you need more control you can manually build your
+own query, retrieve results at your selected rate, and release the
+resources involved by calling the same functions.</p>
 <p>These functions are:</p>
 <ul>
 <li>
-<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> sends the SQL query to the DBMS and returns a <code>result</code> object. The query is limited to <code>SELECT</code> statements. If you want to send other statements, such as <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, etc, use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</li>
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> sends the SQL query to the DBMS and
+returns a <code>result</code> object. The query is limited to
+<code>SELECT</code> statements. If you want to send other statements,
+such as <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>,
+etc, use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</li>
 <li>
-<code><a href="../reference/dbFetch.html">dbFetch()</a></code> is called with the <code>result</code> object returned by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>. It also accepts an argument specifying the number of rows to be returned, e.g. <code>n = 200</code>. If you want to fetch all the rows, use <code>n = -1</code>.</li>
+<code><a href="../reference/dbFetch.html">dbFetch()</a></code> is called with the <code>result</code> object
+returned by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>. It also accepts an argument
+specifying the number of rows to be returned, e.g. <code>n = 200</code>.
+If you want to fetch all the rows, use <code>n = -1</code>.</li>
 <li>
-<code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> is called when you have finished retrieving data. It releases the resources associated with the <code>result</code> object.</li>
+<code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> is called when you have finished
+retrieving data. It releases the resources associated with the
+<code>result</code> object.</li>
 </ul>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
@@ -144,7 +161,13 @@
 <div class="section level2">
 <h2 id="how-to-read-part-of-a-table-from-a-database">How to read part of a table from a database<a class="anchor" aria-label="anchor" href="#how-to-read-part-of-a-table-from-a-database"></a>
 </h2>
-<p>If your dataset is large you may want to fetch a limited number of rows at a time. As demonstrated below, this can be accomplished by using a while loop where the function <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> is used to check for ongoing rows, and <code><a href="../reference/dbFetch.html">dbFetch()</a></code> is used with the <code>n = X</code> argument, specifying how many rows to return on each iteration. Again, we call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> at the end to release resources.</p>
+<p>If your dataset is large you may want to fetch a limited number of
+rows at a time. As demonstrated below, this can be accomplished by using
+a while loop where the function <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> is used to
+check for ongoing rows, and <code><a href="../reference/dbFetch.html">dbFetch()</a></code> is used with the
+<code>n = X</code> argument, specifying how many rows to return on each
+iteration. Again, we call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> at the end to
+release resources.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film"</span><span class="op">)</span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
@@ -161,12 +184,20 @@
 <div class="section level2">
 <h2 id="how-to-use-parameters-safely-in-sql-queries">How to use parameters (safely) in SQL queries<a class="anchor" aria-label="anchor" href="#how-to-use-parameters-safely-in-sql-queries"></a>
 </h2>
-<p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> can be used with parameterized SQL queries. DBI supports two ways to avoid SQL injection attacks from user-supplied parameters: quoting and parameterized queries.</p>
+<p><code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> can be used with parameterized SQL
+queries. DBI supports two ways to avoid SQL injection attacks from
+user-supplied parameters: quoting and parameterized queries.</p>
 <div class="section level3">
 <h3 id="quoting">Quoting<a class="anchor" aria-label="anchor" href="#quoting"></a>
 </h3>
-<p>Quoting of parameter values is performed using the function <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code>, which supports many R data types, including date and time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p>In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped. As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> to generate a safe string representation.</p>
+<p>Quoting of parameter values is performed using the function
+<code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code>, which supports many R data types,
+including date and time.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>In cases where users may be supplying table or column names to use in
+the query for data retrieval, those names or identifiers must also be
+escaped. As there may be DBMS-specific rules for escaping these
+identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
+to generate a safe string representation.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span></span>
 <span><span class="va">safe_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"G"</span><span class="op">)</span></span>
@@ -184,7 +215,9 @@
 <span><span class="co">## Showing 3 out of 178 rows.</span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p>The same result can be had by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue::glue_sql()</a></code>. It performs the same safe quoting on any variable or R statement appearing between braces within the query string.</p>
+<p>The same result can be had by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue::glue_sql()</a></code>. It
+performs the same safe quoting on any variable or R statement appearing
+between braces within the query string.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">id</span> <span class="op">&lt;-</span> <span class="st">"rating"</span></span>
 <span><span class="va">param</span> <span class="op">&lt;-</span> <span class="st">"G"</span></span>
@@ -200,14 +233,30 @@
 <div class="section level3">
 <h3 id="parameterized-queries">Parameterized queries<a class="anchor" aria-label="anchor" href="#parameterized-queries"></a>
 </h3>
-<p>Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query. Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.</p>
-<p>MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values. Other DBMS may use named parameters. We recommend consulting the documentation for the DBMS you are using. As an example, a web search for “mariadb parameterized queries” leads to the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/" class="external-link"><code>PREPARE</code> statement</a> which mentions:</p>
+<p>Rather than performing the parameter substitution ourselves, we can
+push it to the DBMS by including placeholders in the query. Different
+DBMS use different placeholder schemes, DBI passes through the SQL
+expression unchanged.</p>
+<p>MariaDB uses a question mark (?) as placeholder and expects an
+unnamed list of parameter values. Other DBMS may use named parameters.
+We recommend consulting the documentation for the DBMS you are using. As
+an example, a web search for “mariadb parameterized queries” leads to
+the documentation for the <a href="https://mariadb.com/kb/en/prepare-statement/" class="external-link"><code>PREPARE</code>
+statement</a> which mentions:</p>
 <blockquote>
-<p>Within the statement, “?” characters can be used as parameter markers to indicate where data values are to be bound to the query later when you execute it.</p>
+<p>Within the statement, “?” characters can be used as parameter markers
+to indicate where data values are to be bound to the query later when
+you execute it.</p>
 </blockquote>
-<p>Currently there is no list of which placeholder scheme a particular DBMS supports.</p>
-<p>Placeholders only work for literal values. Other parts of the query, e.g. table or column identifiers, still need to be quoted with <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
-<p>For a single set of parameters, the <code>params</code> argument to <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It takes a list and its members are substituted in order for the placeholders within the query.</p>
+<p>Currently there is no list of which placeholder scheme a particular
+DBMS supports.</p>
+<p>Placeholders only work for literal values. Other parts of the query,
+e.g. table or column identifiers, still need to be quoted with
+<code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.</p>
+<p>For a single set of parameters, the <code>params</code> argument to
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It
+takes a list and its members are substituted in order for the
+placeholders within the query.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span></span>
 <span><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span></span>
@@ -240,7 +289,9 @@
 <span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p>Below is an example query using multiple placeholders with the MariaDB driver. The placeholders are supplied as a list of values ordered to match the position of the placeholders in the query.</p>
+<p>Below is an example query using multiple placeholders with the
+MariaDB driver. The placeholders are supplied as a list of values
+ordered to match the position of the placeholders in the query.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="fl">90</span><span class="op">)</span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span></span>
@@ -253,7 +304,10 @@
 <span><span class="co">## 3  ALAMO VIDEOTAPE      G    126</span></span></code></pre>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p>When you wish to perform the same query with different sets of parameter values, <code><a href="../reference/dbBind.html">dbBind()</a></code> is used. There are two ways to use <code><a href="../reference/dbBind.html">dbBind()</a></code>. Firstly, it can be used multiple times with same query.</p>
+<p>When you wish to perform the same query with different sets of
+parameter values, <code><a href="../reference/dbBind.html">dbBind()</a></code> is used. There are two ways to
+use <code><a href="../reference/dbBind.html">dbBind()</a></code>. Firstly, it can be used multiple times with
+same query.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span><span class="op">)</span></span>
@@ -303,7 +357,8 @@
 <span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
-<p>Secondly, <code><a href="../reference/dbBind.html">dbBind()</a></code> can be used to execute the same statement with multiple values at once.</p>
+<p>Secondly, <code><a href="../reference/dbBind.html">dbBind()</a></code> can be used to execute the same
+statement with multiple values at once.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -351,9 +406,22 @@
 <div class="section level2">
 <h2 id="sql-data-manipulation---update-delete-and-friends">SQL data manipulation - UPDATE, DELETE and friends<a class="anchor" aria-label="anchor" href="#sql-data-manipulation---update-delete-and-friends"></a>
 </h2>
-<p>For SQL queries that affect the underlying database, such as UPDATE, DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions. <code><a href="../reference/dbExecute.html">dbExecute()</a></code> passes the SQL statement to the DBMS for execution and returns the number of rows affected. <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> performs in the same manner, but returns a result object. Call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> with the result object to get the count of the affected rows. You then need to call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> with the result object afterwards to release resources.</p>
-<p>In actuality, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> is a convenience function that calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. You can use these functions if you need more control over the query process.</p>
-<p>The subsequent examples use an in-memory SQL database provided by <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::SQLite()</a></code>, because the remote database used in above examples does not allow writing.</p>
+<p>For SQL queries that affect the underlying database, such as UPDATE,
+DELETE, INSERT INTO, and DROP TABLE, DBI provides two functions.
+<code><a href="../reference/dbExecute.html">dbExecute()</a></code> passes the SQL statement to the DBMS for
+execution and returns the number of rows affected.
+<code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> performs in the same manner, but returns
+a result object. Call <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> with the result
+object to get the count of the affected rows. You then need to call
+<code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> with the result object afterwards to
+release resources.</p>
+<p>In actuality, <code><a href="../reference/dbExecute.html">dbExecute()</a></code> is a convenience function that
+calls <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>,
+and <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. You can use these functions if you
+need more control over the query process.</p>
+<p>The subsequent examples use an in-memory SQL database provided by
+<code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::SQLite()</a></code>, because the remote database used in
+above examples does not allow writing.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
@@ -387,7 +455,12 @@
 <div class="section level2">
 <h2 id="sql-transactions-with-dbi">SQL transactions with DBI<a class="anchor" aria-label="anchor" href="#sql-transactions-with-dbi"></a>
 </h2>
-<p>DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with <code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and ensures that either both tables are updated, or no changes are persisted to the database and an error is thrown.</p>
+<p>DBI allows you to group multiple queries into a single atomic
+transaction. Transactions are initiated with <code><a href="../reference/transactions.html">dbBegin()</a></code> and
+either made persistent with <code><a href="../reference/transactions.html">dbCommit()</a></code> or undone with
+<code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and
+ensures that either both tables are updated, or no changes are persisted
+to the database and an error is thrown.</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span></span>
@@ -412,7 +485,9 @@
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu">withdraw_transacted</span><span class="op">(</span><span class="fl">300</span><span class="op">)</span></span></code></pre></div>
-<p>After withdrawing 300 credits, the cash is increased and the account is decreased by this amount. The transaction ensures that either both operations succeed, or no change occurs.</p>
+<p>After withdrawing 300 credits, the cash is increased and the account
+is decreased by this amount. The transaction ensures that either both
+operations succeed, or no change occurs.</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   amount</span></span>
@@ -421,7 +496,9 @@
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   amount</span></span>
 <span><span class="co">## 1   1700</span></span></code></pre>
-<p>We can roll back changes manually if necessary. Do not forget to call <code><a href="../reference/transactions.html">dbRollback()</a></code> in case of error, otherwise the transaction remains open indefinitely.</p>
+<p>We can roll back changes manually if necessary. Do not forget to call
+<code><a href="../reference/transactions.html">dbRollback()</a></code> in case of error, otherwise the transaction
+remains open indefinitely.</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">withdraw_if_funds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
@@ -448,7 +525,10 @@
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   amount</span></span>
 <span><span class="co">## 1   1700</span></span></code></pre>
-<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> simplifies using transactions. Pass it a connection and the code you want to run as a transaction. It will execute the code and call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call <code><a href="../reference/transactions.html">dbRollback()</a></code> if an error is thrown.</p>
+<p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> simplifies using transactions. Pass
+it a connection and the code you want to run as a transaction. It will
+execute the code and call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call
+<code><a href="../reference/transactions.html">dbRollback()</a></code> if an error is thrown.</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">withdraw_safely</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span></span>
@@ -469,19 +549,30 @@
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   amount</span></span>
 <span><span class="co">## 1   1700</span></span></code></pre>
-<p>As usual, do not forget to disconnect from the database when done.</p>
+<p>As usual, do not forget to disconnect from the database when
+done.</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
-<p>That concludes the major features of DBI. For more details on the library functions covered in this tutorial and the <code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> introductory tutorial see the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>. If you are after a data manipulation library that works at a higher level of abstraction, check out <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. It is a grammar of data manipulation that can work with local dataframes and remote databases and uses DBI under the hood.</p>
+<p>That concludes the major features of DBI. For more details on the
+library functions covered in this tutorial and the
+<code><a href="../articles/DBI.html">vignette("DBI", package = "DBI")</a></code> introductory tutorial see
+the DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.
+If you are after a data manipulation library that works at a higher
+level of abstraction, check out <a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a>. It is a grammar of data
+manipulation that can work with local dataframes and remote databases
+and uses DBI under the hood.</p>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Users do not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>An older method, <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code>, was used
+to quote string values only. The <code><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral()</a></code> method
+forwards to <code><a href="../reference/dbQuoteString.html">dbQuoteString()</a></code> for character vectors. Users do
+not need to distinguish between these two cases.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
