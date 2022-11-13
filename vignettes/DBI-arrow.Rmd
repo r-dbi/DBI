@@ -39,7 +39,9 @@ Apache Arrow is
 - suitable for large and huge data, also out-of-memory
 - data exchange format, good support for data types used in SQL databases
 - new extension points to allow backends (currently DuckDB and adbc) to make use of the data exchange format
-- faster data retrieval and loading
+- faster data retrieval and loading, by avoiding serialization in some cases
+- better support for reading and summarizing data from a database that is larger than memory
+- better type fidelity with workflows centered around Arrow
 - fundamental data structure: `arrow::RecordBatchReader`
 
 ## New classes and generics
@@ -50,6 +52,8 @@ Apache Arrow is
 
 - New generics:
     - `dbStreamTable()`
+    - `dbCreateFromStream()`
+    - `dbAppendStream()`
     - `dbGetStream()`
     - `dbSendQueryStream()`
     - `dbStream()`
