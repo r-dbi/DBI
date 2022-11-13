@@ -1,4 +1,5 @@
-#' @name dbWriteTable
+#' @include dbAppendTable.R
+#' @name dbAppendTable
 #' @aliases dbAppendStream
 #' @export
 setGeneric("dbAppendStream",
