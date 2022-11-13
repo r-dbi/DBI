@@ -1,3 +1,4 @@
+#' @include dbWriteTable.R
 #' @name dbWriteTable
 #' @aliases dbWriteStream
 #' @export
