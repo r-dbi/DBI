@@ -108,7 +108,11 @@ accessing data using R’s data frames instead of Arrow’s structures.</p>
 databases</li>
 <li>new extension points to allow backends (currently DuckDB and adbc)
 to make use of the data exchange format</li>
-<li>faster data retrieval and loading</li>
+<li>faster data retrieval and loading, by avoiding serialization in some
+cases</li>
+<li>better support for reading and summarizing data from a database that
+is larger than memory</li>
+<li>better type fidelity with workflows centered around Arrow</li>
 <li>fundamental data structure:
 <code><a href="https://arrow.apache.org/docs/r/reference/RecordBatchReader.html" class="external-link">arrow::RecordBatchReader</a></code>
 </li>
@@ -126,6 +130,8 @@ backends</p></li>
 <p>New generics:</p>
 <ul>
 <li><code><a href="../reference/dbReadTable.html">dbStreamTable()</a></code></li>
+<li><code><a href="../reference/dbCreateTable.html">dbCreateFromStream()</a></code></li>
+<li><code><a href="../reference/dbAppendTable.html">dbAppendStream()</a></code></li>
 <li><code><a href="../reference/dbGetQuery.html">dbGetStream()</a></code></li>
 <li><code><a href="../reference/dbSendQuery.html">dbSendQueryStream()</a></code></li>
 <li><code><a href="../reference/dbFetch.html">dbStream()</a></code></li>

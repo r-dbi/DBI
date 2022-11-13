@@ -119,9 +119,10 @@ This step is mandatory for all objects obtained by calling
     
 
 <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
-<code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
-<code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-or <code><a href="dbSendQuery.html">dbSendQueryStream()</a></code>,</p>
+both <code><a href="dbSendQuery.html">dbSendQuery()</a></code></p>
+
+
+<p>and <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
     </div>
     <div id="the-data-retrieval-flow">
     <h2>The data retrieval flow</h2>
@@ -189,9 +190,7 @@ to ensure that this step is always executed.</p></li>
 
 
 <p>An attempt to close an already closed result set issues a warning
-for <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
-<code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-and <code><a href="dbSendQuery.html">dbSendQueryStream()</a></code>,</p>
+in both cases.</p>
     </div>
     <div id="specification">
     <h2>Specification</h2>
