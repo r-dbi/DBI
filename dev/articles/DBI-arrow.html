@@ -244,12 +244,12 @@ backends</p></li>
 </h2>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbCreateFromStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbCreateTable.html">dbCreateFromStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbAppendTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &gt;= 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbAppendTable.html">dbAppendStream</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span><span class="op">)</span></span></code></pre></div>

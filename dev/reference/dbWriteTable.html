@@ -83,7 +83,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Copy data frames to database tables</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendStream.R" class="external-link"><code>R/dbAppendStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbCreateFromStream.R" class="external-link"><code>R/dbCreateFromStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteStream.R" class="external-link"><code>R/dbWriteStream.R</code></a>, and 1 more</small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteTable.R" class="external-link"><code>R/dbWriteTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbWriteStream.R" class="external-link"><code>R/dbWriteStream.R</code></a></small>
     <div class="hidden name"><code>dbWriteTable.Rd</code></div>
     </div>
 
@@ -123,13 +123,9 @@ converting row names to a column and specifying SQL data types for fields.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbAppendStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">dbCreateFromStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbWriteStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">dbWriteStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -150,7 +146,8 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 
 
 <dt>value</dt>
-<dd><p>a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> (or coercible to data.frame).</p></dd>
+<dd><p>For <code>dbWriteTable()</code>, a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> (or coercible to data.frame).
+For <code>dbWriteStream()</code>, an object coercible to an Arrow RecordBatchReader.</p></dd>
 
 
 <dt>...</dt>
@@ -166,9 +163,9 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
     <div id="details">
     <h2>Details</h2>
     <p>This function is useful if you want to create and load a table at the same time.
-Use <code><a href="dbAppendTable.html">dbAppendTable()</a></code> for appending data to a table,
-and <code><a href="dbCreateTable.html">dbCreateTable()</a></code>, <code><a href="dbExistsTable.html">dbExistsTable()</a></code> and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code>
-for more control over the individual operations.</p>
+Use <code><a href="dbAppendTable.html">dbAppendTable()</a></code> or <code><a href="dbAppendTable.html">dbAppendStream()</a></code> for appending data to an existing
+table, <code><a href="dbCreateTable.html">dbCreateTable()</a></code> or <code><a href="dbCreateTable.html">dbCreateFromStream()</a></code> for creating a table,
+and <code><a href="dbExistsTable.html">dbExistsTable()</a></code> and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code> for overwriting tables.</p>
 <p>DBI only standardizes writing data frames and <code>ArrowTabular</code> objects.
 Some backends might implement methods that can consume CSV files
 or other data formats.
