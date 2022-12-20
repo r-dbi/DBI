@@ -1,7 +1,7 @@
 context("arrow")
 
 test_that("write arrow to sqlite", {
-  skip_if_not_installed("arrow")
+  skip_if_not_installed("arrow", "10.0.1")
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -13,8 +13,7 @@ test_that("write arrow to sqlite", {
     c = "three",
     stringsAsFactors = FALSE
   )
-  # https://issues.apache.org/jira/projects/ARROW/issues/ARROW-17885
-  # data$d <- blob::blob(as.raw(1:10))
+  data$d <- blob::blob(as.raw(1:10))
 
   tbl <- arrow::as_arrow_table(data)
 
