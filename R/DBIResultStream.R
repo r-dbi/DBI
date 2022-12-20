@@ -1,11 +1,11 @@
 #' @rdname DBIResult-class
 #' @export
-setClass("DBIResultStream", contains = c("DBIObject", "VIRTUAL"))
+setClass("DBIResultArrow", contains = c("DBIObject", "VIRTUAL"))
 
 #' @rdname DBIResult-class
 #' @export
-setClass("DBIResultStreamDefault",
-  contains = "DBIResultStream",
+setClass("DBIResultArrowDefault",
+  contains = "DBIResultArrow",
   slots = list(
     result = "DBIResult"
   )

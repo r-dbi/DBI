@@ -4,9 +4,9 @@
 
 ## Features
 
-- `dbAppendStream()` silences warnings about converting factors to character
+- `dbAppendTableArrow()` silences warnings about converting factors to character
 
-- `dbWriteStream()` returns invisibly
+- `dbWriteTableArrow()` returns invisibly
 
 - Implement `dbiDataType()` for objects of class `"blob"`
 
@@ -15,11 +15,11 @@
 
 ## Features
 
-- New `dbCreateFromStream()` and `dbAppendStream()` (#396).
+- New `dbCreateTableArrow()` and `dbAppendTableArrow()` (#396).
 
 ## Chore
 
-- `dbSendQueryArrow()` -> `dbSendQueryStream()`, `ResultArrow|ArrowResult -> ResultStream` (#397).
+- `dbSendQueryArrow()` -> `dbSendQueryArrow()`, `ResultArrow|ArrowResult -> ResultArrow` (#397).
 
 
 # DBI 1.1.3.9001 (2022-09-29)

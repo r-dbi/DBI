@@ -1,5 +1,5 @@
 #' @rdname dbFetch
 #' @export
-setGeneric("dbStream",
-  def = function(res, ...) standardGeneric("dbStream")
+setGeneric("dbFetchArrow",
+  def = function(res, ...) standardGeneric("dbFetchArrow")
 )

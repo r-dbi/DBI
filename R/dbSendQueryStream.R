@@ -4,16 +4,16 @@
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' rs <- dbSendQueryStream(con, "SELECT * FROM mtcars WHERE cyl = 4")
+#' rs <- dbSendQueryArrow(con, "SELECT * FROM mtcars WHERE cyl = 4")
 #' dbFetch(rs)
 #' dbClearResult(rs)
 #'
 #' dbDisconnect(con)
 #' @export
-setGeneric("dbSendQueryStream",
+setGeneric("dbSendQueryArrow",
   def = function(conn, statement, ...) {
     require_arrow()
-    standardGeneric("dbSendQueryStream")
+    standardGeneric("dbSendQueryArrow")
   },
-  valueClass = "DBIResultStream"
+  valueClass = "DBIResultArrow"
 )

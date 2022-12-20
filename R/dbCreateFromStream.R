@@ -1,8 +1,8 @@
 #' @include dbCreateTable.R
 #' @name dbCreateTable
-#' @aliases dbCreateFromStream
+#' @aliases dbCreateTableArrow
 #' @param value An object coercible to an Arrow RecordBatchReader.
 #' @export
-setGeneric("dbCreateFromStream",
-  def = function(conn, name, value, ...) standardGeneric("dbCreateFromStream")
+setGeneric("dbCreateTableArrow",
+  def = function(conn, name, value, ...) standardGeneric("dbCreateTableArrow")
 )

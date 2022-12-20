@@ -1,7 +1,7 @@
 #' @include dbAppendTable.R
 #' @name dbAppendTable
-#' @aliases dbAppendStream
+#' @aliases dbAppendTableArrow
 #' @export
-setGeneric("dbAppendStream",
-  def = function(conn, name, value, ...) standardGeneric("dbAppendStream")
+setGeneric("dbAppendTableArrow",
+  def = function(conn, name, value, ...) standardGeneric("dbAppendTableArrow")
 )

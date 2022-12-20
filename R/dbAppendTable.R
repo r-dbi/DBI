@@ -15,7 +15,7 @@
 #'
 #' @inheritParams dbReadTable
 #' @param value For `dbAppendTable()`, a [data.frame] (or coercible to data.frame).
-#'   For `dbAppendStream()`, an object coercible to an Arrow RecordBatchReader.
+#'   For `dbAppendTableArrow()`, an object coercible to an Arrow RecordBatchReader.
 #' @param row.names Must be `NULL`.
 #' @inheritParams sqlAppendTableTemplate
 #'

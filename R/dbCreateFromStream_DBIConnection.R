@@ -1,15 +1,15 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbCreateFromStream_DBIConnection <- function(conn, name, value, ..., temporary = FALSE) {
+dbCreateTableArrow_DBIConnection <- function(conn, name, value, ..., temporary = FALSE) {
   require_arrow()
 
   value <- arrow::as_record_batch_reader(value)
 
-  ptype <- get_arrow_ptype(value)
+  ptype <- get_query_arrow_ptype(value)
   dbCreateTable(conn, name, ptype, ..., temporary = temporary)
 }
 
-get_arrow_ptype <- function(value) {
+get_query_arrow_ptype <- function(value) {
   schema <- value$schema
   stopifnot(!is.null(schema))
 
@@ -30,4 +30,4 @@ get_arrow_ptype <- function(value) {
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbCreateFromStream", signature("DBIConnection"), dbCreateFromStream_DBIConnection)
+setMethod("dbCreateTableArrow", signature("DBIConnection"), dbCreateTableArrow_DBIConnection)

@@ -1,7 +1,7 @@
 #' @include dbWriteTable.R
 #' @name dbWriteTable
-#' @aliases dbWriteStream
+#' @aliases dbWriteTableArrow
 #' @export
-setGeneric("dbWriteStream",
-  def = function(conn, name, value, ...) standardGeneric("dbWriteStream")
+setGeneric("dbWriteTableArrow",
+  def = function(conn, name, value, ...) standardGeneric("dbWriteTableArrow")
 )

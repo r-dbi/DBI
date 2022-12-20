@@ -1,8 +1,8 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbClearResult_DBIResultStream <- function(res, ...) {
+dbClearResult_DBIResultArrow <- function(res, ...) {
   dbClearResult(res@result, ...)
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbClearResult", signature("DBIResultStream"), dbClearResult_DBIResultStream)
+setMethod("dbClearResult", signature("DBIResultArrow"), dbClearResult_DBIResultArrow)

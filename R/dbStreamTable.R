@@ -5,12 +5,12 @@
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ])
-#' dbStreamTable(con, "mtcars")
+#' dbReadTableArrow(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbStreamTable",
+setGeneric("dbReadTableArrow",
   def = function(conn, name, ...) {
     require_arrow()
-    standardGeneric("dbStreamTable")
+    standardGeneric("dbReadTableArrow")
   }
 )

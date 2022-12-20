@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ..., temporary = FALSE) {
+dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ..., temporary = FALSE) {
   require_arrow()
 
   name <- dbQuoteIdentifier(conn, name)
@@ -16,13 +16,13 @@ dbWriteStream_DBIConnection <- function(conn, name, value, append = FALSE, overw
   }
 
   if (overwrite || !append) {
-    dbCreateFromStream(conn, name, value, temporary = temporary)
+    dbCreateTableArrow(conn, name, value, temporary = temporary)
   }
 
-  dbAppendStream(conn, name, value)
+  dbAppendTableArrow(conn, name, value)
 
   invisible(TRUE)
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWriteStream", signature("DBIConnection"), dbWriteStream_DBIConnection)
+setMethod("dbWriteTableArrow", signature("DBIConnection"), dbWriteTableArrow_DBIConnection)

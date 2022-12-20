@@ -1,8 +1,8 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbHasCompleted_DBIResultStream <- function(res, ...) {
+dbHasCompleted_DBIResultArrow <- function(res, ...) {
   dbHasCompleted(res@result, ...)
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbHasCompleted", signature("DBIResultStream"), dbHasCompleted_DBIResultStream)
+setMethod("dbHasCompleted", signature("DBIResultArrow"), dbHasCompleted_DBIResultArrow)
