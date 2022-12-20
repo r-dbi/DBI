@@ -1,5 +1,5 @@
 #' @export
-#' @examples
+#' @examplesIf packageVersion("arrow") >= "9.0.0"
 #' # Retrieve data as arrow table
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
