@@ -1,7 +1,7 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbGetStream_DBIConnection_character <- function(conn, statement, ...) {
-  rs <- dbSendQueryArrow(conn, statement, ...)
+  rs <- dbSendQueryStream(conn, statement, ...)
   on.exit(dbClearResult(rs))
 
   dbStream(rs, ...)

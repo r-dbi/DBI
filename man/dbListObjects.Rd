@@ -62,17 +62,22 @@ or invalid connection.
 \section{Specification}{
 
 
-The \code{table} object can be quoted with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-The result of quoting can be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
-The unquoted results are equal to the original \code{table} object.
-(For backends it may be convenient to use the \link{Id} class, but this is
-not required.)
-
 The \code{prefix} column indicates if the \code{table} value refers to a table
 or a prefix.
 For a call with the default \code{prefix = NULL}, the \code{table}
 values that have \code{is_prefix == FALSE} correspond to the tables
 returned from \code{\link[=dbListTables]{dbListTables()}},
+
+The \code{table} object can be quoted with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+The result of quoting can be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
+(We have to assume that the resulting identifier is a table, because one
+cannot always tell from a quoted identifier alone whether it is a table
+or a schema for example. As a consequence, the quote-unquote roundtrip
+only works for tables (possibly schema-qualified), but not for other
+database objects like schemata or columns.)
+The unquoted results are equal to the original \code{table} object.
+(For backends it may be convenient to use the \link{Id} class, but this is
+not required.)
 
 Values in \code{table} column that have \code{is_prefix == TRUE} can be
 passed as the \code{prefix} argument to another call to \code{dbListObjects()}.

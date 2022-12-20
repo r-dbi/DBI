@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbFetch_DBIResultArrow <- function(res, n = -1, ...) {
+dbFetch_DBIResultStream <- function(res, n = -1, ...) {
 
   if (is.infinite(n)) {
     n <- -1
@@ -16,4 +16,4 @@ dbFetch_DBIResultArrow <- function(res, n = -1, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbFetch", signature("DBIResultArrow"), dbFetch_DBIResultArrow)
+setMethod("dbFetch", signature("DBIResultStream"), dbFetch_DBIResultStream)

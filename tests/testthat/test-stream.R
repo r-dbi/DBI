@@ -17,7 +17,15 @@ test_that("write arrow to sqlite", {
 
   tbl <- arrow::as_arrow_table(data)
 
-  res <- dbWriteStream(con, "data_tbl", tbl)
+  dbCreateFromStream(con, "data_tbl", tbl)
+  dbAppendStream(con, "data_tbl", tbl)
+
+  expect_equal(
+    dbReadTable(con, "data_tbl"),
+    as.data.frame(tbl)
+  )
+
+  res <- dbWriteStream(con, "data_tbl", tbl, overwrite = TRUE)
 
   expect_equal(
     dbReadTable(con, "data_tbl"),
@@ -29,15 +37,23 @@ test_that("write arrow to sqlite", {
     tbl
   )
 
+  stream <- dbGetStream(con, "SELECT COUNT(*) FROM data_tbl")
   expect_equal(
-    as.data.frame(dbGetStream(con, "SELECT COUNT(*) FROM data_tbl")$read_table())[[1]],
+    as.data.frame(stream$read_table())[[1]],
     nrow(tbl)
   )
 
-  res <- dbSendQueryArrow(con, "SELECT COUNT(*) FROM data_tbl")
+  res <- dbSendQueryStream(con, "SELECT COUNT(*) FROM data_tbl")
   expect_equal(
     as.data.frame(dbStream(res)$read_table())[[1]],
     nrow(tbl)
   )
   dbClearResult(res)
+
+  # Implicit test for dbBind()
+  stream <- dbGetStream(con, "SELECT * FROM data_tbl WHERE a < $a", params = tbl["a"])
+  expect_equal(
+    as.data.frame(stream$read_table()),
+    as.data.frame(data[c(1, 1:2), ], row.names = 1:3)
+  )
 })

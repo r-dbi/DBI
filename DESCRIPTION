@@ -1,7 +1,7 @@
 Package: DBI
 Title: R Database Interface
-Version: 1.1.3.9001
-Date: 2022-09-29
+Version: 1.1.3.9003
+Date: 2022-10-19
 Authors@R: c(
     person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
     person("Hadley", "Wickham", role = "aut"),
@@ -36,6 +36,7 @@ Suggests:
     rprojroot,
     RSQLite (>= 1.1-2),
     testthat,
+    vctrs,
     xml2
 VignetteBuilder: 
     knitr
@@ -44,7 +45,7 @@ Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2
 Config/Needs/website: 
     r-dbi/DBItest,
     AzureKusto,
@@ -78,7 +79,7 @@ Collate:
     'DBI-package.R'
     'DBIConnector.R'
     'DBIResult.R'
-    'DBIResultArrow.R'
+    'DBIResultStream.R'
     'SQL.R'
     'SQLKeywords.R'
     'SQLKeywords_DBIObject.R'
@@ -86,20 +87,24 @@ Collate:
     'data-types.R'
     'data.R'
     'dbAppendTable.R'
+    'dbAppendStream.R'
+    'dbAppendStream_DBIConnection.R'
     'dbAppendTable_DBIConnection.R'
     'dbBegin.R'
     'dbBind.R'
-    'dbBind_DBIArrowResult.R'
+    'dbBind_DBIResultStream.R'
     'dbCallProc.R'
     'dbCanConnect.R'
     'dbCanConnect_DBIDriver.R'
     'dbClearResult.R'
-    'dbClearResult_DBIArrowResult.R'
+    'dbClearResult_DBIResultStream.R'
     'dbColumnInfo.R'
     'dbCommit.R'
     'dbConnect.R'
     'dbConnect_DBIConnector.R'
     'dbCreateTable.R'
+    'dbCreateFromStream.R'
+    'dbCreateFromStream_DBIConnection.R'
     'dbCreateTable_DBIConnection.R'
     'dbDataType.R'
     'dbDataType_DBIConnector.R'
@@ -113,25 +118,25 @@ Collate:
     'dbExistsTable_DBIConnection_Id.R'
     'dbFetch.R'
     'dbFetch_DBIResult.R'
-    'dbFetch_DBIResultArrow.R'
+    'dbFetch_DBIResultStream.R'
     'dbGetConnectArgs.R'
     'dbGetConnectArgs_DBIConnector.R'
     'dbGetException.R'
     'dbGetInfo.R'
-    'dbGetInfo_DBIArrowResult.R'
     'dbGetInfo_DBIResult.R'
+    'dbGetInfo_DBIResultStream.R'
     'dbGetQuery.R'
     'dbGetQuery_DBIConnection_character.R'
     'dbGetRowCount.R'
-    'dbGetRowCount_DBIArrowResult.R'
+    'dbGetRowCount_DBIResultStream.R'
     'dbGetRowsAffected.R'
-    'dbGetRowsAffected_DBIArrowResult.R'
+    'dbGetRowsAffected_DBIResultStream.R'
     'dbGetStatement.R'
-    'dbGetStatement_DBIArrowResult.R'
+    'dbGetStatement_DBIResultStream.R'
     'dbGetStream.R'
     'dbGetStream_DBIConnection.R'
     'dbHasCompleted.R'
-    'dbHasCompleted_DBIArrowResult.R'
+    'dbHasCompleted_DBIResultStream.R'
     'dbIsReadOnly.R'
     'dbIsReadOnly_DBIConnector.R'
     'dbIsReadOnly_DBIObject.R'
@@ -157,25 +162,26 @@ Collate:
     'dbRemoveTable_DBIConnection_Id.R'
     'dbRollback.R'
     'dbSendQuery.R'
-    'dbSendQueryArrow.R'
-    'dbSendQueryArrow_DBIConnection.R'
+    'dbSendQueryStream.R'
+    'dbSendQueryStream_DBIConnection.R'
     'dbSendStatement.R'
     'dbSendStatement_DBIConnection_character.R'
     'dbSetDataMappings.R'
     'dbStream.R'
     'dbStreamTable.R'
     'dbStreamTable_DBIConnection.R'
-    'dbStream_DBIArrowResult.R'
+    'dbStream_DBIResultStream.R'
     'dbUnloadDriver.R'
     'dbUnquoteIdentifier.R'
     'dbUnquoteIdentifier_DBIConnection.R'
     'dbWithTransaction.R'
     'dbWithTransaction_DBIConnection.R'
+    'dbWriteTable.R'
     'dbWriteStream.R'
     'dbWriteStream_DBIConnection.R'
-    'dbWriteTable.R'
     'dbWriteTable_DBIConnection_Id_ANY.R'
     'dbiDataType.R'
+    'dbiDataType_ANY.R'
     'dbiDataType_AsIs.R'
     'dbiDataType_Date.R'
     'dbiDataType_POSIXct.R'
