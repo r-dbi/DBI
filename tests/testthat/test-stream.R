@@ -1,7 +1,7 @@
 context("arrow")
 
 test_that("write arrow to sqlite", {
-  skip_if_not_installed("arrow")
+  skip_if_not_installed("arrow", "10.0.1")
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
