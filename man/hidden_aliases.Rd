@@ -7,20 +7,20 @@
 %   R/dbCreateTable_DBIConnection.R, R/dbDataType_DBIConnector.R,
 %   R/dbDataType_DBIObject.R, R/dbDriver_character.R,
 %   R/dbExecute_DBIConnection_character.R, R/dbExistsTable_DBIConnection_Id.R,
-%   R/dbFetch_DBIResult.R, R/dbFetch_DBIResultArrow.R,
-%   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIResult.R,
-%   R/dbGetInfo_DBIResultArrow.R, R/dbGetQuery_DBIConnection_character.R,
+%   R/dbFetchArrow_DBIResultArrow.R, R/dbFetch_DBIResult.R,
+%   R/dbFetch_DBIResultArrow.R, R/dbGetConnectArgs_DBIConnector.R,
+%   R/dbGetInfo_DBIResult.R, R/dbGetInfo_DBIResultArrow.R,
+%   R/dbGetQueryArrow_DBIConnection.R, R/dbGetQuery_DBIConnection_character.R,
 %   R/dbGetRowCount_DBIResultArrow.R, R/dbGetRowsAffected_DBIResultArrow.R,
-%   R/dbGetStatement_DBIResultArrow.R, R/dbGetQueryArrow_DBIConnection.R,
-%   R/dbHasCompleted_DBIResultArrow.R, R/dbIsReadOnly_DBIConnector.R,
-%   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
-%   R/dbListFields_DBIConnection_character.R,
+%   R/dbGetStatement_DBIResultArrow.R, R/dbHasCompleted_DBIResultArrow.R,
+%   R/dbIsReadOnly_DBIConnector.R, R/dbIsReadOnly_DBIObject.R,
+%   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
-%   R/dbReadTable_DBIConnection_Id.R, R/dbReadTable_DBIConnection_character.R,
+%   R/dbReadTableArrow_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
+%   R/dbReadTable_DBIConnection_character.R,
 %   R/dbRemoveTable_DBIConnection_Id.R, R/dbSendQueryArrow_DBIConnection.R,
 %   R/dbSendStatement_DBIConnection_character.R,
-%   R/dbReadTableArrow_DBIConnection.R, R/dbFetchArrow_DBIResultArrow.R,
 %   R/dbUnquoteIdentifier_DBIConnection.R, R/dbWithTransaction_DBIConnection.R,
 %   R/dbWriteTableArrow_DBIConnection.R, R/dbWriteTable_DBIConnection_Id_ANY.R,
 %   R/isSQLKeyword_DBIObject_character.R, R/make.db.names_DBIObject_character.R,
@@ -62,6 +62,8 @@
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbExistsTable_DBIConnection_Id}
 \alias{dbExistsTable,DBIConnection,Id-method}
+\alias{dbFetchArrow_DBIResultArrow}
+\alias{dbFetchArrow,DBIResultArrow-method}
 \alias{dbFetch_DBIResult}
 \alias{dbFetch,DBIResult-method}
 \alias{dbFetch_DBIResultArrow}
@@ -72,6 +74,8 @@
 \alias{dbGetInfo,DBIResult-method}
 \alias{dbGetInfo_DBIResultArrow}
 \alias{dbGetInfo,DBIResultArrow-method}
+\alias{dbGetQueryArrow_DBIConnection_character}
+\alias{dbGetQueryArrow,DBIConnection-method}
 \alias{dbGetQuery_DBIConnection_character}
 \alias{dbGetQuery,DBIConnection,character-method}
 \alias{dbGetRowCount_DBIResultArrow}
@@ -80,8 +84,6 @@
 \alias{dbGetRowsAffected,DBIResultArrow-method}
 \alias{dbGetStatement_DBIResultArrow}
 \alias{dbGetStatement,DBIResultArrow-method}
-\alias{dbGetQueryArrow_DBIConnection_character}
-\alias{dbGetQueryArrow,DBIConnection-method}
 \alias{dbHasCompleted_DBIResultArrow}
 \alias{dbHasCompleted,DBIResultArrow-method}
 \alias{dbIsReadOnly_DBIConnector}
@@ -105,6 +107,8 @@
 \alias{dbQuoteString,DBIConnection,ANY-method}
 \alias{dbQuoteString,DBIConnection,character-method}
 \alias{dbQuoteString,DBIConnection,SQL-method}
+\alias{dbReadTableArrow_DBIConnection}
+\alias{dbReadTableArrow,DBIConnection-method}
 \alias{dbReadTable_DBIConnection_Id}
 \alias{dbReadTable,DBIConnection,Id-method}
 \alias{dbReadTable_DBIConnection_character}
@@ -115,10 +119,6 @@
 \alias{dbSendQueryArrow,DBIConnection-method}
 \alias{dbSendStatement_DBIConnection_character}
 \alias{dbSendStatement,DBIConnection,character-method}
-\alias{dbReadTableArrow_DBIConnection}
-\alias{dbReadTableArrow,DBIConnection-method}
-\alias{dbFetchArrow_DBIResultArrow}
-\alias{dbFetchArrow,DBIResultArrow-method}
 \alias{dbUnquoteIdentifier_DBIConnection}
 \alias{dbUnquoteIdentifier,DBIConnection-method}
 \alias{dbWithTransaction_DBIConnection}
@@ -187,6 +187,8 @@
 
 \S4method{dbExistsTable}{DBIConnection,Id}(conn, name, ...)
 
+\S4method{dbFetchArrow}{DBIResultArrow}(res, ...)
+
 \S4method{dbFetch}{DBIResult}(res, n = -1, ...)
 
 \S4method{dbFetch}{DBIResultArrow}(res, n = -1, ...)
@@ -197,6 +199,8 @@
 
 \S4method{dbGetInfo}{DBIResultArrow}(dbObj, ...)
 
+\S4method{dbGetQueryArrow}{DBIConnection}(conn, statement, ...)
+
 \S4method{dbGetQuery}{DBIConnection,character}(conn, statement, ..., n = -1L)
 
 \S4method{dbGetRowCount}{DBIResultArrow}(res, ...)
@@ -204,8 +208,6 @@
 \S4method{dbGetRowsAffected}{DBIResultArrow}(res, ...)
 
 \S4method{dbGetStatement}{DBIResultArrow}(res, ...)
-
-\S4method{dbGetQueryArrow}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbHasCompleted}{DBIResultArrow}(res, ...)
 
@@ -235,6 +237,8 @@
 
 \S4method{dbQuoteString}{DBIConnection,SQL}(conn, x, ...)
 
+\S4method{dbReadTableArrow}{DBIConnection}(conn, name, ...)
+
 \S4method{dbReadTable}{DBIConnection,Id}(conn, name, ...)
 
 \S4method{dbReadTable}{DBIConnection,character}(conn, name, ..., row.names = FALSE, check.names = TRUE)
@@ -244,10 +248,6 @@
 \S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, ...)
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
-
-\S4method{dbReadTableArrow}{DBIConnection}(conn, name, ...)
-
-\S4method{dbFetchArrow}{DBIResultArrow}(res, ...)
 
 \S4method{dbUnquoteIdentifier}{DBIConnection}(conn, x, ...)
 
