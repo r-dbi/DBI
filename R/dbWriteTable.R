@@ -5,8 +5,8 @@
 #'
 #' @details
 #' This function is useful if you want to create and load a table at the same time.
-#' Use [dbAppendTable()] or [dbAppendStream()] for appending data to an existing
-#' table, [dbCreateTable()] or [dbCreateFromStream()] for creating a table,
+#' Use [dbAppendTable()] or [dbAppendTableArrow()] for appending data to an existing
+#' table, [dbCreateTable()] or [dbCreateTableArrow()] for creating a table,
 #' and [dbExistsTable()] and [dbRemoveTable()] for overwriting tables.
 #'
 #' DBI only standardizes writing data frames and `ArrowTabular` objects.
@@ -25,7 +25,7 @@
 #' @inheritParams dbGetQuery
 #' @inheritParams dbReadTable
 #' @param value For `dbWriteTable()`, a [data.frame] (or coercible to data.frame).
-#'   For `dbWriteStream()`, an object coercible to an Arrow RecordBatchReader.
+#'   For `dbWriteTableArrow()`, an object coercible to an Arrow RecordBatchReader.
 #' @family DBIConnection generics
 #' @export
 #' @examples

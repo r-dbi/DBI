@@ -1,6 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbAppendStream_DBIConnection <- function(conn, name, value, ...) {
+dbAppendTableArrow_DBIConnection <- function(conn, name, value, ...) {
   require_arrow()
 
   name <- dbQuoteIdentifier(conn, name)
@@ -20,7 +20,7 @@ dbAppendStream_DBIConnection <- function(conn, name, value, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbAppendStream", signature("DBIConnection"), dbAppendStream_DBIConnection)
+setMethod("dbAppendTableArrow", signature("DBIConnection"), dbAppendTableArrow_DBIConnection)
 
 stream_append_data <- function(value) {
   value <- factor_to_string(value)

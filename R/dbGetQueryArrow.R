@@ -4,10 +4,10 @@
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)
-#' dbGetStream(con, "SELECT * FROM mtcars")
+#' dbGetQueryArrow(con, "SELECT * FROM mtcars")
 #'
 #' dbDisconnect(con)
 #' @rdname dbGetQuery
-setGeneric("dbGetStream",
-  def = function(conn, statement, ...) standardGeneric("dbGetStream")
+setGeneric("dbGetQueryArrow",
+  def = function(conn, statement, ...) standardGeneric("dbGetQueryArrow")
 )
