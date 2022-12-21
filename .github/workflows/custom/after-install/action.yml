@@ -13,3 +13,20 @@ runs:
       run: |
         mysql -e "CREATE DATABASE IF NOT EXISTS test; ALTER DATABASE test CHARACTER SET 'utf8'; FLUSH PRIVILEGES;"
       shell: bash
+
+    # Must happen after R is installed...
+    - name: Define R CMD check error condition
+      run: |
+        if (getRversion() < "3.5" || (.Platform$OS.type == "windows" && getRversion() < "4.0")) {
+          message("Setting RCMDCHECK_ERROR_ON")
+          cat('RCMDCHECK_ERROR_ON="warning"\n', file = Sys.getenv("GITHUB_ENV"), append = TRUE)
+        }
+      shell: Rscript {0}
+
+    - name: Define _R_CHECK_FORCE_SUGGESTS_
+      run: |
+        if (getRversion() < "3.5") {
+          message("Setting _R_CHECK_FORCE_SUGGESTS_")
+          cat('_R_CHECK_FORCE_SUGGESTS_=false\n', file = Sys.getenv("GITHUB_ENV"), append = TRUE)
+        }
+      shell: Rscript {0}

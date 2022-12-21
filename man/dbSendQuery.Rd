@@ -203,6 +203,7 @@ dbFetch(rs)
 dbClearResult(rs)
 
 dbDisconnect(con)
+\dontshow{if (packageVersion("arrow") >= "9.0.0") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -212,6 +213,7 @@ dbFetch(rs)
 dbClearResult(rs)
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 For updates: \code{\link[=dbSendStatement]{dbSendStatement()}} and \code{\link[=dbExecute]{dbExecute()}}.
