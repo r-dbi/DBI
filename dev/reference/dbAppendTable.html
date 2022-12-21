@@ -70,7 +70,7 @@ RSQLite::dbAppendTable(&quot;SQLiteConnection&quot;, &quot;ANY&quot;, &quot;ANY&
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Insert rows into a table</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendTable.R" class="external-link"><code>R/dbAppendTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendStream.R" class="external-link"><code>R/dbAppendStream.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendTable.R" class="external-link"><code>R/dbAppendTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbAppendTableArrow.R" class="external-link"><code>R/dbAppendTableArrow.R</code></a></small>
     <div class="hidden name"><code>dbAppendTable.Rd</code></div>
     </div>
 
@@ -99,7 +99,7 @@ ways to create tables) need to override the <code>dbAppendTable()</code> method.
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbAppendTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">dbAppendStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">dbAppendTableArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -121,7 +121,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 
 <dt>value</dt>
 <dd><p>For <code>dbAppendTable()</code>, a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> (or coercible to data.frame).
-For <code>dbAppendStream()</code>, an object coercible to an Arrow RecordBatchReader.</p></dd>
+For <code>dbAppendTableArrow()</code>, an object coercible to an Arrow RecordBatchReader.</p></dd>
 
 
 <dt>...</dt>

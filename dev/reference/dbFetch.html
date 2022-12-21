@@ -72,7 +72,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Fetch records from a previously executed query</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbStream.R" class="external-link"><code>R/dbStream.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrow.R" class="external-link"><code>R/dbFetchArrow.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
     <div class="hidden name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -103,7 +103,7 @@ as a data.frame.</p>
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">dbStream</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
+<span><span class="fu">dbFetchArrow</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>

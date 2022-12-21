@@ -72,7 +72,7 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Send query, retrieve results and then clear result set</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetStream.R" class="external-link"><code>R/dbGetStream.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQueryArrow.R" class="external-link"><code>R/dbGetQueryArrow.R</code></a></small>
     <div class="hidden name"><code>dbGetQuery.Rd</code></div>
     </div>
 
@@ -103,7 +103,7 @@ see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the
     <div id="ref-usage">
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">dbGetStream</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -335,7 +335,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">dbGetStream</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RecordBatchReader</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg: double</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cyl: double</span>
