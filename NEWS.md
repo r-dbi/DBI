@@ -1,5 +1,21 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9004 (2022-12-21)
+
+## Chore
+
+- Rename Stream to Arrow (#407).
+
+## Features
+
+- Enable BLOB tests for arrow >= 10.0.0 (#395).
+
+
+## Documentation
+
+- Harmonize table documentation (#400).
+
+
 # DBI 1.1.3.9003 (2022-10-19)
 
 ## Features
