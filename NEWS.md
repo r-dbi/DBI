@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
 
+# DBI 1.1.3.9005 (2022-12-24)
+
+## Continuous integration
+
+- Fix Windows tests on GHA (#406).
+
+
 # DBI 1.1.3.9004 (2022-12-21)
 
 ## Chore
