@@ -20,7 +20,7 @@ RMySQL::dbExistsTable("MySQLConnection", "character")
 RPostgres::dbExistsTable("PqConnection", "character")
 RPostgres::dbExistsTable("PqConnection", "Id")
 RPostgreSQL::dbExistsTable("PostgreSQLConnection", "character")
-RPresto::dbExistsTable("PrestoConnection", "character")
+RPresto::dbExistsTable("PrestoConnection", "ANY")
 RSQLite::dbExistsTable("SQLiteConnection", "character")
 sparklyr::dbExistsTable("spark_connection", "character")
 
@@ -42,7 +42,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -89,10 +89,10 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbExistsTable("SFSQLConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "Id")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbExistsTable("Pool", "ANY")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbExistsTable("OdbcConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbExistsTable("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbExistsTable.html" class="external-link">RAthena::dbExistsTable("AthenaConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbExistsTable("JDBCConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbExistsTable("MariaDBConnection", "character")</a></code></p></li>
@@ -100,7 +100,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbExistsTable("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbExistsTable("PqConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbExistsTable("PostgreSQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbExistsTable("PrestoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbExistsTable("PrestoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbExistsTable("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code>sparklyr::dbExistsTable("spark_connection", "character")</code></p></li>
 </ul></div>

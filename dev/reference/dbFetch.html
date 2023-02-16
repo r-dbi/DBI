@@ -5,7 +5,8 @@ as a data.frame.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbFetch("AzureKustoResult", "ANY")
 bigrquery::dbFetch("BigQueryResult", "ANY")
-DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")
+DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")
+DatabaseConnector::dbFetch("DatabaseConnectorJdbcResult", "ANY")
 dittodb::dbFetch("DBIMockResult", "ANY")
 duckdb::dbFetch("duckdb_result", "ANY")
 lazysf::dbFetch("SFSQLResult", "ANY")
@@ -39,7 +40,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -82,7 +83,8 @@ as a data.frame.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbFetch("AzureKustoResult", "ANY")</code></p></li>
 <li><p><code>bigrquery::dbFetch("BigQueryResult", "ANY")</code></p></li>
-<li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorResult", "ANY")</code></p></li>
+<li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")</code></p></li>
+<li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorJdbcResult", "ANY")</code></p></li>
 <li><p><code>dittodb::dbFetch("DBIMockResult", "ANY")</code></p></li>
 <li><p><code>duckdb::dbFetch("duckdb_result", "ANY")</code></p></li>
 <li><p><code>lazysf::dbFetch("SFSQLResult", "ANY")</code></p></li>

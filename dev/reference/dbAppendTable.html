@@ -16,7 +16,7 @@ odbc::dbAppendTable(&quot;OdbcConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;
 pool::dbAppendTable(&quot;Pool&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
 RMariaDB::dbAppendTable(&quot;MariaDBConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
 RPostgres::dbAppendTable(&quot;PqConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
-RPresto::dbAppendTable(&quot;PrestoConnection&quot;, &quot;character&quot;, &quot;data.frame&quot;)
+RPresto::dbAppendTable(&quot;PrestoConnection&quot;, &quot;ANY&quot;, &quot;data.frame&quot;)
 RSQLite::dbAppendTable(&quot;SQLiteConnection&quot;, &quot;ANY&quot;, &quot;ANY&quot;)
 
 "><meta name="robots" content="noindex"><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -37,7 +37,7 @@ RSQLite::dbAppendTable(&quot;SQLiteConnection&quot;, &quot;ANY&quot;, &quot;ANY&
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -91,7 +91,7 @@ ways to create tables) need to override the <code>dbAppendTable()</code> method.
 <li><p><code>pool::dbAppendTable("Pool", "ANY", "ANY")</code></p></li>
 <li><p><code>RMariaDB::dbAppendTable("MariaDBConnection", "ANY", "ANY")</code></p></li>
 <li><p><code>RPostgres::dbAppendTable("PqConnection", "ANY", "ANY")</code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbAppendTable("PrestoConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbAppendTable("PrestoConnection", "ANY", "data.frame")</a></code></p></li>
 <li><p><code>RSQLite::dbAppendTable("SQLiteConnection", "ANY", "ANY")</code></p></li>
 </ul></div>
     </div>

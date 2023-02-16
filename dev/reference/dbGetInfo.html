@@ -5,6 +5,8 @@ DBIConnection or DBIResult.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 bigrquery::dbGetInfo("BigQueryConnection")
 bigrquery::dbGetInfo("BigQueryDriver")
+DatabaseConnector::dbGetInfo("DatabaseConnectorConnection")
+DatabaseConnector::dbGetInfo("DatabaseConnectorDriver")
 dittodb::dbGetInfo("DBIMockConnection")
 dittodb::dbGetInfo("DBIMockResult")
 duckdb::dbGetInfo("duckdb_connection")
@@ -56,7 +58,7 @@ sparklyr::dbGetInfo("spark_connection")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -99,15 +101,17 @@ sparklyr::dbGetInfo("spark_connection")
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryDriver")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/DatabaseConnectorConnection-class.html" class="external-link">DatabaseConnector::dbGetInfo("DatabaseConnectorConnection")</a></code></p></li>
+<li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetInfo-DatabaseConnectorDriver-method.html" class="external-link">DatabaseConnector::dbGetInfo("DatabaseConnectorDriver")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockConnection")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetInfo("DBIMockResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbGetInfo("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_driver-class.html" class="external-link">duckdb::dbGetInfo("duckdb_driver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetInfo("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLDriver-class.html" class="external-link">lazysf::dbGetInfo("SFSQLDriver")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcConnection.html" class="external-link">odbc::dbGetInfo("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/OdbcDriver.html" class="external-link">odbc::dbGetInfo("OdbcDriver")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-object.html" class="external-link">pool::dbGetInfo("Pool")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbGetInfo("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbGetInfo("OdbcDriver")</a></code></p></li>
+<li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbGetInfo("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbGetInfo("JDBCConnection")</a></code></p></li>

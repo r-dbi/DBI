@@ -8,14 +8,18 @@ AzureKusto::dbReadTable("AzureKustoConnection", "character")
 bigrquery::dbReadTable("BigQueryConnection", "character")
 DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")
 lazysf::dbReadTable("SFSQLConnection", "character")
-pool::dbReadTable("Pool", "character")
+pool::dbReadTable("Pool", "ANY")
 RJDBC::dbReadTable("JDBCConnection", "ANY")
 RJDBC::dbReadTable("JDBCConnection", "character")
 RMariaDB::dbReadTable("MariaDBConnection", "character")
 RMySQL::dbReadTable("MySQLConnection", "character")
 RPostgres::dbReadTable("PqConnection", "character")
 RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")
+RPresto::dbReadTable("PrestoConnection", "ANY")
 RPresto::dbReadTable("PrestoConnection", "character")
+RPresto::dbReadTable("PrestoConnection", "dbplyr_schema")
+RPresto::dbReadTable("PrestoConnection", "Id")
+RPresto::dbReadTable("PrestoConnection", "SQL")
 RSQLite::dbReadTable("SQLiteConnection", "character")
 sparklyr::dbReadTable("spark_connection", "character")
 
@@ -37,7 +41,7 @@ sparklyr::dbReadTable("spark_connection", "character")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -83,14 +87,18 @@ R identifiers.</p>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/DatabaseConnectorConnection-class.html" class="external-link">DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbReadTable("SFSQLConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/pool/man/DBI-connection.html" class="external-link">pool::dbReadTable("Pool", "character")</a></code></p></li>
+<li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbReadTable("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbReadTable("JDBCConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbReadTable("JDBCConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbReadTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbReadTable.html" class="external-link">RMySQL::dbReadTable("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbReadTable("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "dbplyr_schema")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbReadTable("PrestoConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbReadTable.html" class="external-link">RSQLite::dbReadTable("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code>sparklyr::dbReadTable("spark_connection", "character")</code></p></li>
 </ul></div>

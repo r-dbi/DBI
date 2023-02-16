@@ -25,7 +25,7 @@ RMySQL::dbWriteTable("MySQLConnection", "character", "data.frame")
 RPostgres::dbWriteTable("PqConnection", "character", "data.frame")
 RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "character")
 RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "data.frame")
-RPresto::dbWriteTable("PrestoConnection", "character", "data.frame")
+RPresto::dbWriteTable("PrestoConnection", "ANY", "data.frame")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "character")
 RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")
 sf::dbWriteTable("DBIObject", "character", "sf")
@@ -50,7 +50,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9006</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9007</span>
       </span>
     </div>
 
@@ -96,9 +96,9 @@ converting row names to a column and specifying SQL data types for fields.</p>
 <li><p><code>DatabaseConnector::dbWriteTable("DatabaseConnectorConnection", "ANY", "ANY")</code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbWriteTable("DBIMockConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbWriteTable("duckdb_connection", "character", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "character", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "Id", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/odbc/man/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "SQL", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "Id", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.github.io/odbc/reference/odbc-tables.html" class="external-link">odbc::dbWriteTable("OdbcConnection", "SQL", "data.frame")</a></code></p></li>
 <li><p><code>pool::dbWriteTable("Pool", "ANY", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/AthenaWriteTables.html" class="external-link">RAthena::dbWriteTable("AthenaConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/AthenaWriteTables.html" class="external-link">RAthena::dbWriteTable("AthenaConnection", "Id", "data.frame")</a></code></p></li>
@@ -113,7 +113,7 @@ converting row names to a column and specifying SQL data types for fields.</p>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/postgres-tables.html" class="external-link">RPostgres::dbWriteTable("PqConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html" class="external-link">RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbWriteTable("PrestoConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbWriteTable("PrestoConnection", "ANY", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/dbWriteTable.html" class="external-link">RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")</a></code></p></li>
 <li><p><code><a href="https://r-spatial.github.io/sf/reference/dbWriteTable.html" class="external-link">sf::dbWriteTable("DBIObject", "character", "sf")</a></code></p></li>
