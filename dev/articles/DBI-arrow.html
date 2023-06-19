@@ -168,12 +168,10 @@ backends</p></li>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## RecordBatchReader</span></span>
-<span><span class="co">## a: int32</span></span>
-<span><span class="co">## b: double</span></span>
-<span><span class="co">## c: string</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## See $metadata for additional Schema metadata</span></span></code></pre>
+<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
+<span><span class="co">##  $ get_schema:function ()  </span></span>
+<span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
+<span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
@@ -187,10 +185,10 @@ backends</p></li>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT COUNT(*) FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="va">stream</span></span></code></pre></div>
-<pre><code><span><span class="co">## RecordBatchReader</span></span>
-<span><span class="co">## COUNT(*): int32</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## See $metadata for additional Schema metadata</span></span></code></pre>
+<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;COUNT(*): int32&gt;&gt;</span></span>
+<span><span class="co">##  $ get_schema:function ()  </span></span>
+<span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
+<span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   COUNT(*)</span></span>
@@ -202,37 +200,66 @@ backends</p></li>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="va">stream</span></span></code></pre></div>
-<pre><code><span><span class="co">## RecordBatchReader</span></span>
-<span><span class="co">## a: int32</span></span>
-<span><span class="co">## b: double</span></span>
-<span><span class="co">## c: string</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## See $metadata for additional Schema metadata</span></span></code></pre>
+<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
+<span><span class="co">##  $ get_schema:function ()  </span></span>
+<span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
+<span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">read_next_batch</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## RecordBatch</span></span>
-<span><span class="co">## 2 rows x 3 columns</span></span>
-<span><span class="co">## $a &lt;int32&gt;</span></span>
-<span><span class="co">## $b &lt;double&gt;</span></span>
-<span><span class="co">## $c &lt;string&gt;</span></span>
-<span><span class="co">## </span></span>
-<span><span class="co">## See $metadata for additional Schema metadata</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_next</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## &lt;nanoarrow_array struct[2]&gt;</span></span>
+<span><span class="co">##  $ length    : int 2</span></span>
+<span><span class="co">##  $ null_count: int 0</span></span>
+<span><span class="co">##  $ offset    : int 0</span></span>
+<span><span class="co">##  $ buffers   :List of 1</span></span>
+<span><span class="co">##   ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##  $ children  :List of 3</span></span>
+<span><span class="co">##   ..$ a:&lt;nanoarrow_array int32[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 2</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;int32&gt;[2][8 b]&gt; `1 2`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##   ..$ b:&lt;nanoarrow_array double[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 2</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;double&gt;[2][16 b]&gt; `4.5 4.5`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##   ..$ c:&lt;nanoarrow_array string[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 3</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data_offset&lt;int32&gt;[3][12 b]&gt; `0 4 8`</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;string&gt;[8 b]&gt; `fivefive`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##  $ dictionary: NULL</span></span></code></pre>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">read_next_batch</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_next</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## NULL</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="prepared-queries">Prepared queries<a class="anchor" aria-label="anchor" href="#prepared-queries"></a>
 </h2>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/as_arrow_table.html" class="external-link">as_arrow_table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; $a"</span>, param <span class="op">=</span> <span class="va">in_arrow</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, param <span class="op">=</span> <span class="va">in_arrow</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   a   b    c</span></span>
-<span><span class="co">## 1 1 4.5 five</span></span>
-<span><span class="co">## 2 1 4.5 five</span></span>
-<span><span class="co">## 3 2 4.5 five</span></span>
-<span><span class="co">## Showing 3 out of 6 rows.</span></span></code></pre>
+<pre><code><span><span class="co">##   batch a   b    c</span></span>
+<span><span class="co">## 1     2 1 4.5 five</span></span>
+<span><span class="co">## 2     3 1 4.5 five</span></span>
+<span><span class="co">## 3     3 2 4.5 five</span></span>
+<span><span class="co">## 4     4 1 4.5 five</span></span>
+<span><span class="co">## 5     4 2 4.5 five</span></span>
+<span><span class="co">## 6     4 3 4.5 five</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="writing-data">Writing data<a class="anchor" aria-label="anchor" href="#writing-data"></a>
