@@ -203,7 +203,7 @@ dbFetch(rs)
 dbClearResult(rs)
 
 dbDisconnect(con)
-\dontshow{if (packageVersion("arrow") >= "9.0.0") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (packageVersion("nanoarrow") >= "0.1.0.2") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
