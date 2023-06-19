@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9008</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9009</span>
       </span>
     </div>
 
@@ -1991,9 +1991,9 @@ identifiers.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>conn</code>
+<code id="dbReadTable_:_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2001,9 +2001,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>name</code>
+<code id="dbReadTable_:_name">name</code>
 </td>
 <td>
 <p>
@@ -2032,9 +2032,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>…</code>
+<code id="dbReadTable_:_...">…</code>
 </td>
 <td>
 <p>
@@ -2159,9 +2159,9 @@ types for fields.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>conn</code>
+<code id="dbWriteTable_:_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2169,9 +2169,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>name</code>
+<code id="dbWriteTable_:_name">name</code>
 </td>
 <td>
 <p>
@@ -2200,9 +2200,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>value</code>
+<code id="dbWriteTable_:_value">value</code>
 </td>
 <td>
 <p>
@@ -2212,9 +2212,9 @@ to an Arrow RecordBatchReader.
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>…</code>
+<code id="dbWriteTable_:_...">…</code>
 </td>
 <td>
 <p>
@@ -2468,9 +2468,9 @@ connection.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>conn</code>
+<code id="dbExistsTable_:_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2478,9 +2478,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>name</code>
+<code id="dbExistsTable_:_name">name</code>
 </td>
 <td>
 <p>
@@ -2509,9 +2509,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>…</code>
+<code id="dbExistsTable_:_...">…</code>
 </td>
 <td>
 <p>
@@ -2587,9 +2587,9 @@ from the database.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>conn</code>
+<code id="dbRemoveTable_:_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2597,9 +2597,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>name</code>
+<code id="dbRemoveTable_:_name">name</code>
 </td>
 <td>
 <p>
@@ -2628,9 +2628,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>…</code>
+<code id="dbRemoveTable_:_...">…</code>
 </td>
 <td>
 <p>
@@ -2729,9 +2729,9 @@ non-scalar.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>conn</code>
+<code id="dbListFields_:_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2739,9 +2739,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even" style="vertical-align: top;">
+<tr class="even">
 <td>
-<code>name</code>
+<code id="dbListFields_:_name">name</code>
 </td>
 <td>
 <p>
@@ -2770,9 +2770,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd" style="vertical-align: top;">
+<tr class="odd">
 <td>
-<code>…</code>
+<code id="dbListFields_:_...">…</code>
 </td>
 <td>
 <p>
