@@ -1,4 +1,3 @@
-#' @include dbAppendTable.R
 #' @name dbAppendTable
 #' @aliases dbAppendTableArrow
 #' @export

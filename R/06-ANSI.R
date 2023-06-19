@@ -1,5 +1,3 @@
-#' @include DBIConnection.R
-#' @include DBIDriver.R
 setClass("AnsiConnection", contains = "DBIConnection")
 
 #' A dummy DBI connector that simulates ANSI-SQL compliance

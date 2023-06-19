@@ -1,4 +1,3 @@
-#' @include dbWriteTable.R
 #' @name dbWriteTable
 #' @aliases dbWriteTableArrow
 #' @export

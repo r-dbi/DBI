@@ -1,6 +1,3 @@
-#' @include Id.R
-NULL
-
 #' DBIConnection class
 #'
 #' This virtual class encapsulates the connection to a DBMS, and it provides
