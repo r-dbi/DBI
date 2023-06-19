@@ -41,7 +41,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Remotes: 
-    nanoarrow=apache/arrow-nanoarrow/r
+    nanoarrow=url::https://apache.r-universe.dev/src/contrib/nanoarrow_0.1.0.9000.tar.gz
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
