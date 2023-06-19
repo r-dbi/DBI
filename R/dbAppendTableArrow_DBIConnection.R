@@ -5,16 +5,18 @@ dbAppendTableArrow_DBIConnection <- function(conn, name, value, ...) {
 
   name <- dbQuoteIdentifier(conn, name)
 
-  value <- arrow::as_record_batch_reader(value)
+  value <- nanoarrow::as_nanoarrow_array_stream(value)
 
   while (TRUE) {
     # Append next batch (starting with the first or second, doesn't matter)
-    tmp <- value$read_next_batch()
+    tmp <- value$get_next()
     if (is.null(tmp)) {
       break
     }
     dbAppendTable(conn, name, stream_append_data(as.data.frame(tmp)), ...)
   }
+
+  value$release()
 
   TRUE
 }

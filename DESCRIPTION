@@ -20,7 +20,6 @@ Depends:
     methods,
     R (>= 3.0.0)
 Suggests:
-    arrow,
     blob,
     covr,
     DBItest,
@@ -31,6 +30,7 @@ Suggests:
     hms,
     knitr,
     magrittr,
+    nanoarrow,
     RMariaDB,
     rmarkdown,
     rprojroot,

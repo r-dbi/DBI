@@ -3,29 +3,17 @@
 dbCreateTableArrow_DBIConnection <- function(conn, name, value, ..., temporary = FALSE) {
   require_arrow()
 
-  value <- arrow::as_record_batch_reader(value)
+  value <- nanoarrow::as_nanoarrow_array_stream(value)
 
   ptype <- get_query_arrow_ptype(value)
   dbCreateTable(conn, name, ptype, ..., temporary = temporary)
 }
 
 get_query_arrow_ptype <- function(value) {
-  schema <- value$schema
+  schema <- value$get_schema()
   stopifnot(!is.null(schema))
 
-  arrays <- lapply(
-    stats::setNames(schema$fields, schema$names),
-    function(field) arrow::concat_arrays(type = field$type)
-  )
-  vectors <- lapply(
-    arrays,
-    function(array) tryCatch(
-      as.vector(array),
-      error = function(...) vctrs::unspecified()
-    )
-  )
-
-  vctrs::new_data_frame(vectors, n = 0L)
+  nanoarrow::infer_nanoarrow_ptype(schema)
 }
 
 #' @rdname hidden_aliases

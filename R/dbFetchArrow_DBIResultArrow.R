@@ -1,7 +1,7 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbFetchArrow_DBIResultArrow <- function(res, ...) {
-  arrow::as_record_batch_reader(
+  nanoarrow::as_nanoarrow_array_stream(
     dbFetch(res@result, n = -1, ...)
   )
 }

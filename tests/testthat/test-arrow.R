@@ -1,7 +1,7 @@
 context("arrow")
 
 test_that("write arrow to sqlite", {
-  skip_if_not_installed("arrow", "10.0.1")
+  skip_if_not_installed("nanoarrow")
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -15,45 +15,54 @@ test_that("write arrow to sqlite", {
   )
   data$d <- blob::blob(as.raw(1:10))
 
-  tbl <- arrow::as_arrow_table(data)
+  tbl <- nanoarrow::as_nanoarrow_array_stream(data)
 
   dbCreateTableArrow(con, "data_tbl", tbl)
   dbAppendTableArrow(con, "data_tbl", tbl)
 
+  tbl$release()
+
   expect_equal(
     dbReadTable(con, "data_tbl"),
-    as.data.frame(tbl)
+    data
   )
+
+  tbl <- nanoarrow::as_nanoarrow_array_stream(data)
 
   res <- dbWriteTableArrow(con, "data_tbl", tbl, overwrite = TRUE)
 
+  tbl$release()
+
   expect_equal(
     dbReadTable(con, "data_tbl"),
-    as.data.frame(tbl)
+    data
   )
 
   expect_equal(
-    dbReadTableArrow(con, "data_tbl")$read_table(),
-    tbl
+    as.data.frame(dbReadTableArrow(con, "data_tbl")),
+    data
   )
 
   stream <- dbGetQueryArrow(con, "SELECT COUNT(*) FROM data_tbl")
   expect_equal(
-    as.data.frame(stream$read_table())[[1]],
-    nrow(tbl)
+    as.data.frame(stream)[[1]],
+    nrow(data)
   )
+  stream$release()
 
   res <- dbSendQueryArrow(con, "SELECT COUNT(*) FROM data_tbl")
   expect_equal(
-    as.data.frame(dbFetchArrow(res)$read_table())[[1]],
-    nrow(tbl)
+    as.data.frame(dbFetchArrow(res))[[1]],
+    nrow(data)
   )
   dbClearResult(res)
 
   # Implicit test for dbBind()
-  stream <- dbGetQueryArrow(con, "SELECT * FROM data_tbl WHERE a < $a", params = tbl["a"])
+  tbl <- nanoarrow::as_nanoarrow_array_stream(data["a"])
+  stream <- dbGetQueryArrow(con, "SELECT * FROM data_tbl WHERE a < $a", params = tbl)
   expect_equal(
-    as.data.frame(stream$read_table()),
+    as.data.frame(stream),
     as.data.frame(data[c(1, 1:2), ], row.names = 1:3)
   )
+  tbl$release()
 })
