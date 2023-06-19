@@ -32,3 +32,4 @@ inst\/doc\/DBI\.b..$
 ^README\.Rmd$
 ^tests/testthat/testthat-problems\.rds$
 ^CRAN-SUBMISSION$
+^R/zzz\.R$
