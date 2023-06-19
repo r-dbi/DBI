@@ -15,9 +15,9 @@ opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"))
 
 knit_print.data.frame <- function(x, ...) {
-  print(head(x, 3))
-  if (nrow(x) > 3) {
-    cat("Showing 3 out of", nrow(x), "rows.\n")
+  print(head(x, 6))
+  if (nrow(x) > 6) {
+    cat("Showing 6 out of", nrow(x), "rows.\n")
   }
   invisible(x)
 }
@@ -99,15 +99,15 @@ as.data.frame(stream)
 ```{r}
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
 stream
-stream$read_next_batch()
-stream$read_next_batch()
+stream$get_next()
+stream$get_next()
 ```
 
 ## Prepared queries
 
 ```{r}
-in_arrow <- arrow::as_arrow_table(data.frame(a = 1:4))
-stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < $a", param = in_arrow)
+in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1:4))
+stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", param = in_arrow)
 as.data.frame(stream)
 ```
 

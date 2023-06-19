@@ -1,6 +1,6 @@
 #' @rdname dbReadTable
 #' @export
-#' @examplesIf packageVersion("arrow") >= "9.0.0"
+#' @examplesIf packageVersion("nanoarrow") >= "0.1.0.2"
 #' # Read data as Arrow table
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'

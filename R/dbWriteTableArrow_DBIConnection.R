@@ -5,7 +5,7 @@ dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, o
 
   name <- dbQuoteIdentifier(conn, name)
 
-  value <- arrow::as_record_batch_reader(value)
+  value <- nanoarrow::as_nanoarrow_array_stream(value)
 
   if (overwrite && append) {
     stop("overwrite and append cannot both be TRUE")

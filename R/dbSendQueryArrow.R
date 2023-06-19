@@ -1,5 +1,5 @@
 #' @rdname dbSendQuery
-#' @examplesIf packageVersion("arrow") >= "9.0.0"
+#' @examplesIf packageVersion("nanoarrow") >= "0.1.0.2"
 #' # Retrieve data as arrow table
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'

@@ -245,7 +245,7 @@
 
 \S4method{dbRemoveTable}{DBIConnection,Id}(conn, name, ...)
 
-\S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, ...)
+\S4method{dbSendQueryArrow}{DBIConnection}(conn, statement, params = NULL, ...)
 
 \S4method{dbSendStatement}{DBIConnection,character}(conn, statement, ...)
 
