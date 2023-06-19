@@ -244,6 +244,7 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()}
 
 Other data retrieval generics: 
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},

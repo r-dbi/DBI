@@ -125,6 +125,7 @@ dbDisconnect(con)
 \seealso{
 Other DBIResult generics: 
 \code{\link{DBIResult-class}},
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbColumnInfo}()},
 \code{\link{dbFetch}()},
@@ -141,6 +142,7 @@ Other DBIResult generics:
 \code{\link{dbUnquoteIdentifier}()}
 
 Other data retrieval generics: 
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbFetch}()},
 \code{\link{dbGetQuery}()},
@@ -148,6 +150,7 @@ Other data retrieval generics:
 \code{\link{dbSendQuery}()}
 
 Other command execution generics: 
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbExecute}()},
 \code{\link{dbGetRowsAffected}()},

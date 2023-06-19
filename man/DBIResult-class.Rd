@@ -30,6 +30,7 @@ Other DBI classes:
 \code{\link{DBIObject-class}}
 
 Other DBIResult generics: 
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},

@@ -64,6 +64,7 @@ dbDisconnect(con)
 \seealso{
 Other DBIResult generics: 
 \code{\link{DBIResult-class}},
+\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
