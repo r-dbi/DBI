@@ -15,9 +15,9 @@ opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"))
 
 knit_print.data.frame <- function(x, ...) {
-  print(head(x, 3))
-  if (nrow(x) > 3) {
-    cat("Showing 3 out of", nrow(x), "rows.\n")
+  print(head(x, 6))
+  if (nrow(x) > 6) {
+    cat("Showing 6 out of", nrow(x), "rows.\n")
   }
   invisible(x)
 }
