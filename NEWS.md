@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9010 (2023-06-20)
+
+## Bug fixes
+
+- Avoid collate altogether.
+
+- Don't collate zzz.R.
+
+## Features
+
+- Switch to nanoarrow (#414).
+
+## Chore
+
+- Fix lazytest, upstream: https://github.com/r-lib/pkgload/issues/247.
+
+
 # DBI 1.1.3.9009 (2023-03-24)
 
 - Internal changes only.
