@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9011 (2023-08-27)
+
+## Chore
+
+- Install nanoarrow from CRAN.
+
+
 # DBI 1.1.3.9010 (2023-06-20)
 
 ## Bug fixes
