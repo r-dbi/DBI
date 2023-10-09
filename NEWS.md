@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9012 (2023-10-09)
+
+- Internal changes only.
+
+
 # DBI 1.1.3.9011 (2023-08-27)
 
 ## Chore
