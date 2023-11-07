@@ -4,7 +4,7 @@ author: "Kirill Müller"
 date: "29/09/2022"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{"Using DBI with Arrow"}
+  %\VignetteIndexEntry{Using DBI with Arrow}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
