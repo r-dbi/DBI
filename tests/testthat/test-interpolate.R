@@ -1,5 +1,3 @@
-context("sqlInterpolate")
-
 test_that("parameter names matched", {
   expect_equal(
     sqlInterpolate(ANSI(), "?a ?b", a = 1, b = 2),

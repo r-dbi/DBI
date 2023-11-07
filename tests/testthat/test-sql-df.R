@@ -1,5 +1,3 @@
-context("sqlData")
-
 test_that("NAs turn in NULLs", {
   df <- data.frame(
     x = c(1, NA),

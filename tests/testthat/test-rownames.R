@@ -1,5 +1,3 @@
-context("Rowname translation")
-
 test_that("logical row names uses default name", {
   df <- data.frame(x = c(a = 1))
 

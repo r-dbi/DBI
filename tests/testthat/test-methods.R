@@ -1,5 +1,3 @@
-context("methods")
-
 expect_ellipsis <- function(name, method) {
   sym <- as.name(name)
   eval(bquote({
