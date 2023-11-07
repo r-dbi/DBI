@@ -9,17 +9,15 @@
 Id(...)
 }
 \arguments{
-\item{...}{Components of the hierarchy, e.g. \code{schema}, \code{table},
-or \code{cluster}, \code{catalog}, \code{schema}, \code{table},
-depending on the database backend.
-For more on these concepts, see
-\url{https://stackoverflow.com/questions/7022755/}}
+\item{...}{Components of the hierarchy, e.g. \code{schema}, \code{table}, or \code{cluster},
+\code{catalog}, \code{schema}, \code{table}, depending on the database backend. For more
+on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
-Objects of class \code{Id} have a single slot \code{name}, which is a named
-character vector.
+Objects of class \code{Id} have a single slot \code{name}, which is a vector.
 The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
 Support for \code{Id} objects depends on the database backend.
+
 They can be used in the following methods as \code{name} or \code{table} argument:
 \itemize{
 \item \code{\link[=dbCreateTable]{dbCreateTable()}}
@@ -34,16 +32,15 @@ Objects of this class are also returned from \code{\link[=dbListObjects]{dbListO
 }
 \examples{
 # Identifies a table in a specific schema:
+Id("dbo", "Customer")
+# You can name the components if you want, but it's not needed
 Id(schema = "dbo", table = "Customer")
 
-# Identifies a table in a specific cluster, catalog, and schema:
-Id(cluster = "mycluster", catalog = "mycatalog", schema = "myschema", table = "mytable")
-
 # Create a SQL expression for an identifier:
-dbQuoteIdentifier(ANSI(), Id(schema = "nycflights13", table = "flights"))
+dbQuoteIdentifier(ANSI(), Id("nycflights13", "flights"))
 
 # Write a table in a specific schema:
 \dontrun{
-dbWriteTable(con, Id(schema = "myschema", table = "mytable"), data.frame(a = 1))
+dbWriteTable(con, Id("myschema", "mytable"), data.frame(a = 1))
 }
 }
