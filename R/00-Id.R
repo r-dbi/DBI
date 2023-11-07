@@ -49,5 +49,10 @@ Id <- function(...) {
 
 #' @export
 toString.Id <- function(x, ...) {
-  paste0("<Id> ", paste0('"', x@name, '"', collapse = "."))
+  paste0("<Id> ", dbQuoteIdentifier(ANSI(), x))
+}
+
+
+dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
+  SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = "."))
 }
