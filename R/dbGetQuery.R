@@ -41,7 +41,7 @@
 #' @family data retrieval generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)

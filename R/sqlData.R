@@ -21,7 +21,7 @@
 #' @templateVar method_name sqlData
 #'
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' sqlData(con, head(iris))

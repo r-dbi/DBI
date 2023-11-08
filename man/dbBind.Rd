@@ -236,6 +236,7 @@ and with the value stored as integer)
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "iris", iris)
@@ -257,6 +258,7 @@ dbClearResult(iris_result)
 nrow(dbReadTable(con, "iris"))
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIResult generics: 

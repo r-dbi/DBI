@@ -101,6 +101,7 @@ dbDataType(ANSI(), list(raw(10), raw(20)))
 dbDataType(ANSI(), I(3))
 
 dbDataType(ANSI(), iris)
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -117,6 +118,7 @@ dbDataType(con, I(3))
 dbDataType(con, iris)
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIDriver generics: 

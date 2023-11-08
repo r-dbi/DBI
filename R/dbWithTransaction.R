@@ -26,7 +26,7 @@
 #' @param code An arbitrary block of R code.
 #'
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "cash", data.frame(amount = 100))

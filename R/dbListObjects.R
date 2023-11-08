@@ -23,7 +23,7 @@
 #'   If given the method will return all objects accessible through this prefix.
 #' @family DBIConnection generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbListObjects(con)

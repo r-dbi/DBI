@@ -36,6 +36,7 @@ tailor this appropriately.
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 drv <- RSQLite::SQLite()
 con <- dbConnect(drv)
 
@@ -46,6 +47,7 @@ is(rs, "DBIObject")
 
 dbClearResult(rs)
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBI classes: 

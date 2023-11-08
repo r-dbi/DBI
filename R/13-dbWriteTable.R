@@ -28,7 +28,7 @@
 #'   For `dbWriteTableArrow()`, an object coercible to an Arrow RecordBatchReader.
 #' @family DBIConnection generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars[1:5, ])

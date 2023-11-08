@@ -24,9 +24,16 @@ vignette: >
 ---
 
 ```{r echo = FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  eval = requireNamespace("magrittr", quietly = TRUE) && requireNamespace("xml2", quietly = TRUE)
+)
+```
+
+
+```{r echo = FALSE}
 library(magrittr)
 library(xml2)
-knitr::opts_chunk$set(echo = FALSE)
 r <- rprojroot::is_r_package$make_fix_file()
 ```
 

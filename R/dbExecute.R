@@ -33,7 +33,7 @@
 #' @family command execution generics
 #' @seealso For queries: [dbSendQuery()] and [dbGetQuery()].
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "cars", head(cars, 3))

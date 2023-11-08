@@ -20,6 +20,7 @@ In such a case, the function is evaluated transparently when connecting in
 \code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}.
 }
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create a connector:
 cnr <- new("DBIConnector",
   .drv = RSQLite::SQLite(),
@@ -34,6 +35,7 @@ con
 # Access the database through this connection:
 dbGetQuery(con, "SELECT 1 AS a")
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBI classes: 

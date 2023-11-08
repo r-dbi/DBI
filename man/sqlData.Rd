@@ -43,10 +43,12 @@ The default method:
 }
 }
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 sqlData(con, head(iris))
 sqlData(con, head(mtcars))
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }

@@ -14,7 +14,7 @@
 #' @inheritParams dbConnect
 #' @family DBIDriver generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' # SQLite only needs a path to the database. (Here, ":memory:" is a special
 #' # path that creates an in-memory database.) Other database drivers
 #' # will require more details (like user, password, host, port, etc.)

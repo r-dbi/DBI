@@ -28,7 +28,7 @@
 #'
 #' @family DBIConnection generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbCreateTable(con, "iris", iris)
 #' dbAppendTable(con, "iris", iris)

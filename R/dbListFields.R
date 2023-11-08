@@ -14,7 +14,7 @@
 #' @family DBIConnection generics
 #' @seealso [dbColumnInfo()] to get the type of the fields.
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars)

@@ -197,6 +197,7 @@ The default is \code{row.names = FALSE}.
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:5, ])
@@ -211,6 +212,7 @@ dbReadTable(con, "mtcars")
 # No row names
 dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIConnection generics: 

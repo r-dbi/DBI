@@ -31,7 +31,7 @@ NULL
 #'
 #' @docType class
 #' @family DBI classes
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' drv <- RSQLite::SQLite()
 #' con <- dbConnect(drv)
 #'

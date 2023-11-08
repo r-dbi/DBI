@@ -22,7 +22,7 @@
 #'     given verbatim, e.g. `SQL('"my_schema"."table_name"')`
 #' @family DBIConnection generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ])

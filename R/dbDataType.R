@@ -45,6 +45,7 @@
 #' dbDataType(ANSI(), I(3))
 #'
 #' dbDataType(ANSI(), iris)
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #'
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
