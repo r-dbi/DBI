@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9013 (2023-11-08)
+
+## Chore
+
+- Add Aviator configuration.
+
+## Documentation
+
+- Correct vignette titles (#419).
+
+## Testing
+
+- Fix checks without suggested packages (#420).
+
+- `use_testthat(3)` (#416).
+
+
 # DBI 1.1.3.9012 (2023-10-09)
 
 - Internal changes only.
