@@ -1,5 +1,3 @@
-context("Quoting")
-
 test_that("NA becomes NULL", {
   expect_equal(dbQuoteString(ANSI(), NA_character_), SQL("NULL"))
 })

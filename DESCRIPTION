@@ -35,7 +35,7 @@ Suggests:
     rmarkdown,
     rprojroot,
     RSQLite (>= 1.1-2),
-    testthat,
+    testthat (>= 3.0.0),
     vctrs,
     xml2
 VignetteBuilder: 
@@ -70,3 +70,4 @@ Config/Needs/website:
     sergeant,
     sparklyr,
     withr
+Config/testthat/edition: 3

@@ -1,5 +1,3 @@
-context("arrow")
-
 test_that("write arrow to sqlite", {
   skip_if_not_installed("nanoarrow")
   skip_if_not_installed("RSQLite")

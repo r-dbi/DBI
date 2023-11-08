@@ -1,5 +1,3 @@
-context("quote")
-
 test_that("identifier", {
   expect_equal(dbQuoteIdentifier(ANSI(), character()), SQL(character()))
   expect_equal(dbQuoteIdentifier(ANSI(), "a"), SQL('"a"'))
