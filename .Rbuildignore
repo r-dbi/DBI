@@ -33,3 +33,4 @@ inst\/doc\/DBI\.b..$
 ^tests/testthat/testthat-problems\.rds$
 ^CRAN-SUBMISSION$
 ^R/zzz\.R$
+^\.aviator/config\.yml$
