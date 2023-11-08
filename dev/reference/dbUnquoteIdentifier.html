@@ -27,7 +27,7 @@ RSQLite::dbUnquoteIdentifier("SQLiteConnection", "SQL")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9012</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9013</span>
       </span>
     </div>
 
@@ -171,13 +171,13 @@ constructed by <code>Id(schema = "schema", table = "table")</code>.</p>
 <span class="r-in"><span>  <span class="fu"><a href="SQL.html">SQL</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'"Catalog"."Schema"."Table"'</span>, <span class="st">'"Schema"."Table"'</span>, <span class="st">'"UnqualifiedTable"'</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; catalog = Catalog, schema = Schema, table = Table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "Catalog"."Schema"."Table"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; schema = Schema, table = Table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "Schema"."Table"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; table = UnqualifiedTable</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "UnqualifiedTable"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># The returned object is always a list,</span></span></span>
@@ -187,7 +187,7 @@ constructed by <code>Id(schema = "schema", table = "table")</code>.</p>
 <span class="r-in"><span>  <span class="fu"><a href="Id.html">Id</a></span><span class="op">(</span>catalog <span class="op">=</span> <span class="st">"Catalog"</span>, schema <span class="op">=</span> <span class="st">"Schema"</span>, table <span class="op">=</span> <span class="st">"Table"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; catalog = Catalog, schema = Schema, table = Table</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "Catalog"."Schema"."Table"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Quoting is the inverse operation to unquoting the elements</span></span></span>
