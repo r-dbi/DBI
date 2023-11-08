@@ -240,9 +240,14 @@ dbGetRowsAffected(rs)
 dbClearResult(rs)
 
 dbReadTable(con, "cars")
+```
 
+Do not forget to disconnect from the database at the end.
+
+```{r}
 dbDisconnect(con)
 ```
+
 
 ## SQL transactions with DBI
 
