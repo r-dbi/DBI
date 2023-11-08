@@ -14,7 +14,7 @@ Id(...)
 on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
-Objects of class \code{Id} have a single slot \code{name}, which is a vector.
+Objects of class \code{Id} have a single slot \code{name}, which is a character vector.
 The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
 Support for \code{Id} objects depends on the database backend.
 
