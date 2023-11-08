@@ -44,6 +44,7 @@ Attempting to get the row count for a result set cleared with
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -58,6 +59,7 @@ nrow(ret1) + nrow(ret2)
 
 dbClearResult(rs)
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIResult generics: 

@@ -124,6 +124,7 @@ the backend tries \code{immediate = TRUE} (and gives a message)
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
@@ -143,6 +144,7 @@ dbExecute(
 dbReadTable(con, "cars")   # there are now 10 rows
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.

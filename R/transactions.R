@@ -20,7 +20,7 @@
 #'
 #' @inheritParams dbGetQuery
 #' @seealso Self-contained transactions: [dbWithTransaction()]
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' dbWriteTable(con, "cash", data.frame(amount = 100))

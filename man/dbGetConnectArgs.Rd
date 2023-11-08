@@ -23,12 +23,14 @@ and usually does not need to be called directly.
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetConnectArgs")}
 }
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 cnr <- new("DBIConnector",
   .drv = RSQLite::SQLite(),
   .conn_args = list(dbname = ":memory:", password = function() "supersecret")
 )
 dbGetConnectArgs(cnr)
 dbGetConnectArgs(cnr, eval = FALSE)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIConnector generics: 

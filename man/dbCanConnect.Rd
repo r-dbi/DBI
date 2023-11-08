@@ -28,10 +28,12 @@ a lighter-weight check.
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbCanConnect")}
 }
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # SQLite only needs a path to the database. (Here, ":memory:" is a special
 # path that creates an in-memory database.) Other database drivers
 # will require more details (like user, password, host, port, etc.)
 dbCanConnect(RSQLite::SQLite(), ":memory:")
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIDriver generics: 

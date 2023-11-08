@@ -44,6 +44,7 @@ or invalid connection.
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbListTables(con)
@@ -51,6 +52,7 @@ dbWriteTable(con, "mtcars", mtcars)
 dbListTables(con)
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIConnection generics: 

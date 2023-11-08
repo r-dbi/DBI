@@ -12,7 +12,7 @@
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
 setGeneric("dbDisconnect",

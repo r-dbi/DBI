@@ -12,7 +12,7 @@
 #' @name DBIConnection-class
 #' @family DBI classes
 #' @family DBIConnection generics
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' con
 #' dbDisconnect(con)

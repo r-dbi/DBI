@@ -61,6 +61,7 @@ For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbEx
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbExistsTable(con, "iris")
@@ -68,6 +69,7 @@ dbWriteTable(con, "iris", iris)
 dbExistsTable(con, "iris")
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Other DBIConnection generics: 

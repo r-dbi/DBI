@@ -25,7 +25,7 @@ NULL
 #' @family DBI classes
 #' @family DBIConnector generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' # Create a connector:
 #' cnr <- new("DBIConnector",
 #'   .drv = RSQLite::SQLite(),

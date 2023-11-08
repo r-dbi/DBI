@@ -13,7 +13,7 @@
 #'   instead of evaluating them.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
 #' @family DBIConnector generics
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' cnr <- new("DBIConnector",
 #'   .drv = RSQLite::SQLite(),
 #'   .conn_args = list(dbname = ":memory:", password = function() "supersecret")

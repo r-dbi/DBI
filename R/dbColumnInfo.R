@@ -18,7 +18,7 @@
 #'
 #' @family DBIResult generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
 #' rs <- dbSendQuery(con, "SELECT 1 AS a, 2 AS b")

@@ -8,7 +8,7 @@
 #' @inheritSection DBItest::spec_compliance_methods DBI classes and methods
 #' @inheritSection DBItest::spec_driver_constructor Construction of the DBIDriver object
 #'
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' RSQLite::SQLite()
 #' @seealso
 #'   Important generics: [dbConnect()], [dbGetQuery()],

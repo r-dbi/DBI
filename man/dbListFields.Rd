@@ -65,12 +65,14 @@ A column named \code{row_names} is treated like any other column.
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
 dbListFields(con, "mtcars")
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=dbColumnInfo]{dbColumnInfo()}} to get the type of the fields.

@@ -13,7 +13,7 @@
 #' @family DBIConnection generics
 #' @family DBIResult generics
 #' @export
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' dbIsValid(RSQLite::SQLite())
 #'
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")

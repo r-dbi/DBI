@@ -65,6 +65,7 @@ and \code{\link[=as.character]{as.character()}}
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # SQLite only needs a path to the database. (Here, ":memory:" is a special
 # path that creates an in-memory database.) Other database drivers
 # will require more details (like user, password, host, port, etc.)
@@ -79,6 +80,7 @@ dbDisconnect(con)
 # This code fails when RSQLite isn't loaded yet,
 # because dbConnect() doesn't know yet about RSQLite.
 dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \code{\link[=dbDisconnect]{dbDisconnect()}} to disconnect from a database.

@@ -68,6 +68,7 @@ propagate to the calling environment.
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cash", data.frame(amount = 100))
@@ -108,4 +109,5 @@ dbReadTable(con, "cash")
 dbReadTable(con, "account")
 
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }

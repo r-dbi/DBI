@@ -167,6 +167,7 @@ of the data
 }
 
 \examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -185,6 +186,7 @@ while (!dbHasCompleted(rs)) {
 
 dbClearResult(rs)
 dbDisconnect(con)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you

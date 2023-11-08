@@ -31,7 +31,7 @@
 #' @family DBIDriver generics
 #' @export
 #' @keywords internal
-#' @examples
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' # Create a RSQLite driver with a string
 #' d <- dbDriver("SQLite")
 #' d
