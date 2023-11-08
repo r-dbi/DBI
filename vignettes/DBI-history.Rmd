@@ -3,7 +3,7 @@ title: "History of DBI"
 author: "David James"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{"History of DBI"}
+  %\VignetteIndexEntry{History of DBI}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

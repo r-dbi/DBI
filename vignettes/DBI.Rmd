@@ -4,7 +4,7 @@ author: "James Wondrasek, Katharina Brunner, Kirill Müller"
 date: "27 February 2020"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{"Introduction to DBI"}
+  %\VignetteIndexEntry{Introduction to DBI}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
