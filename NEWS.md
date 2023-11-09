@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9014 (2023-11-09)
+
+## Features
+
+- `Id()` now accepts unnamed components (#417).
+
+
 # DBI 1.1.3.9013 (2023-11-08)
 
 ## Chore
