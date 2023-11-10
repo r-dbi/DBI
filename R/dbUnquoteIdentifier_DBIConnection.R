@@ -1,45 +1,37 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbUnquoteIdentifier_DBIConnection <- function(conn, x, ...) {
-  if (is(x, "SQL")) {
-    id_rx <- '(?:"((?:[^"]|"")+)"|([^". ]+))'
+  # Determine quoting character
+  quote_char <- substr(dbQuoteIdentifier(conn, ""), 1, 1)
 
-    rx <- paste0(
-      "^",
-      "(?:|(?:|", id_rx, "[.])",
-      id_rx, "[.])",
-      "(?:|", id_rx, ")",
-      "$"
-    )
-
-    bad <- grep(rx, x, invert = TRUE)
-    if (length(bad) > 0) {
-      stop("Can't unquote ", x[bad[[1]]], call. = FALSE)
-    }
-    catalog <- gsub(rx, "\\1\\2", x)
-    catalog <- gsub('""', '"', catalog)
-    schema <- gsub(rx, "\\3\\4", x)
-    schema <- gsub('""', '"', schema)
-    table <- gsub(rx, "\\5\\6", x)
-    table <- gsub('""', '"', table)
-
-    ret <- Map(catalog, schema, table, f = as_table)
-    names(ret) <- names(x)
-    return(ret)
+  if (is(x, "SQL") || is.character(x)) {
+    x <- lapply(x, unquote, quote_char = quote_char)
+    lapply(x, Id)
+  } else if (is(x, "Id")) {
+    list(x)
+  } else {
+    stop("x must be SQL, Id, or character", call. = FALSE)
   }
-  if (is(x, "Id")) {
-    return(list(x))
-  }
-  stop("x must be SQL or Id", call. = FALSE)
+}
+
+unquote <- function(x, quote_char) {
+  # replace doubled quotes with escaped quote
+  gsub <- gsub(
+    pattern = paste0(quote_char, quote_char),
+    replacement = paste0("\\", quote_char),
+    x
+  )
+
+  scan(
+    text = x,
+    what = character(),
+    quote = quote_char,
+    quiet = TRUE,
+    na.strings = character(),
+    sep = "."
+  )
 }
 
 #' @rdname hidden_aliases
 #' @export
 setMethod("dbUnquoteIdentifier", signature("DBIConnection"), dbUnquoteIdentifier_DBIConnection)
-
-as_table <- function(catalog, schema, table) {
-  args <- c(catalog = catalog, schema = schema, table = table)
-  # Also omits NA args
-  args <- args[!is.na(args) & args != ""]
-  do.call(Id, as.list(args))
-}
