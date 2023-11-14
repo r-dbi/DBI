@@ -7,14 +7,15 @@
 %   R/dbCreateTable_DBIConnection.R, R/dbDataType_DBIConnector.R,
 %   R/dbDataType_DBIObject.R, R/dbDriver_character.R,
 %   R/dbExecute_DBIConnection_character.R, R/dbExistsTable_DBIConnection_Id.R,
-%   R/dbFetchArrow_DBIResultArrow.R, R/dbFetch_DBIResult.R,
-%   R/dbFetch_DBIResultArrow.R, R/dbGetConnectArgs_DBIConnector.R,
-%   R/dbGetInfo_DBIResult.R, R/dbGetInfo_DBIResultArrow.R,
-%   R/dbGetQueryArrow_DBIConnection.R, R/dbGetQuery_DBIConnection_character.R,
-%   R/dbGetRowCount_DBIResultArrow.R, R/dbGetRowsAffected_DBIResultArrow.R,
-%   R/dbGetStatement_DBIResultArrow.R, R/dbHasCompleted_DBIResultArrow.R,
-%   R/dbIsReadOnly_DBIConnector.R, R/dbIsReadOnly_DBIObject.R,
-%   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
+%   R/dbFetchArrowChunk_DBIResultArrow.R, R/dbFetchArrow_DBIResultArrow.R,
+%   R/dbFetch_DBIResult.R, R/dbFetch_DBIResultArrow.R,
+%   R/dbGetConnectArgs_DBIConnector.R, R/dbGetInfo_DBIResult.R,
+%   R/dbGetInfo_DBIResultArrow.R, R/dbGetQueryArrow_DBIConnection.R,
+%   R/dbGetQuery_DBIConnection_character.R, R/dbGetRowCount_DBIResultArrow.R,
+%   R/dbGetRowsAffected_DBIResultArrow.R, R/dbGetStatement_DBIResultArrow.R,
+%   R/dbHasCompleted_DBIResultArrow.R, R/dbIsReadOnly_DBIConnector.R,
+%   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
+%   R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
 %   R/dbReadTableArrow_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
@@ -62,6 +63,8 @@
 \alias{dbExecute,DBIConnection,character-method}
 \alias{dbExistsTable_DBIConnection_Id}
 \alias{dbExistsTable,DBIConnection,Id-method}
+\alias{dbFetchArrowChunk_DBIResultArrow}
+\alias{dbFetchArrowChunk,DBIResultArrow-method}
 \alias{dbFetchArrow_DBIResultArrow}
 \alias{dbFetchArrow,DBIResultArrow-method}
 \alias{dbFetch_DBIResult}
@@ -186,6 +189,8 @@
 \S4method{dbExecute}{DBIConnection,character}(conn, statement, ...)
 
 \S4method{dbExistsTable}{DBIConnection,Id}(conn, name, ...)
+
+\S4method{dbFetchArrowChunk}{DBIResultArrow}(res, ...)
 
 \S4method{dbFetchArrow}{DBIResultArrow}(res, ...)
 
