@@ -57,6 +57,7 @@ Apache Arrow is
     - `dbGetQueryArrow()`
     - `dbSendQueryArrow()`
     - `dbFetchArrow()`
+    - `dbFetchArrowChunk()`
     - `dbWriteTableArrow()`
 
 - New classes:
