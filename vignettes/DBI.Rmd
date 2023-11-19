@@ -9,9 +9,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include=FALSE,warning=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"))
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"),
+  # FIXME: Bring back when relational.fit clone is up
+  eval = FALSE
+)
 ```
 
 ## Who this tutorial is for
