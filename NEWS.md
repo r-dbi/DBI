@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9015 (2023-11-20)
+
+## Documentation
+
+- Deal with sundown of <https://relational.fit.cvut.cz> (#423).
+
+
 # DBI 1.1.3.9014 (2023-11-09)
 
 ## Features
