@@ -5,10 +5,9 @@ dbSendQueryArrow_DBIConnection <- function(conn, statement, params = NULL, ...) 
     params <- as.data.frame(params)
   }
 
-  new(
-    "DBIResultArrowDefault",
-    result = dbSendQuery(conn, statement, params = params, ...)
-  )
+  result <- dbSendQuery(conn, statement, params = params, ...)
+
+  new("DBIResultArrowDefault", result = result)
 }
 #' @rdname hidden_aliases
 #' @export
