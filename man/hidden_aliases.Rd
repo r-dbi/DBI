@@ -14,8 +14,8 @@
 %   R/dbGetQuery_DBIConnection_character.R, R/dbGetRowCount_DBIResultArrow.R,
 %   R/dbGetRowsAffected_DBIResultArrow.R, R/dbGetStatement_DBIResultArrow.R,
 %   R/dbHasCompleted_DBIResultArrow.R, R/dbIsReadOnly_DBIConnector.R,
-%   R/dbIsReadOnly_DBIObject.R, R/dbListFields_DBIConnection_Id.R,
-%   R/dbListFields_DBIConnection_character.R,
+%   R/dbIsReadOnly_DBIObject.R, R/dbIsValid_DBIResultArrowDefault.R,
+%   R/dbListFields_DBIConnection_Id.R, R/dbListFields_DBIConnection_character.R,
 %   R/dbListObjects_DBIConnection_ANY.R, R/dbQuoteIdentifier_DBIConnection.R,
 %   R/dbQuoteLiteral_DBIConnection.R, R/dbQuoteString_DBIConnection.R,
 %   R/dbReadTableArrow_DBIConnection.R, R/dbReadTable_DBIConnection_Id.R,
@@ -93,6 +93,8 @@
 \alias{dbIsReadOnly,DBIConnector-method}
 \alias{dbIsReadOnly_DBIObject}
 \alias{dbIsReadOnly,DBIObject-method}
+\alias{dbIsValid_DBIResultArrowDefault}
+\alias{dbIsValid,DBIResultArrowDefault-method}
 \alias{dbListFields_DBIConnection_Id}
 \alias{dbListFields,DBIConnection,Id-method}
 \alias{dbListFields_DBIConnection_character}
@@ -219,6 +221,8 @@
 \S4method{dbIsReadOnly}{DBIConnector}(dbObj, ...)
 
 \S4method{dbIsReadOnly}{DBIObject}(dbObj, ...)
+
+\S4method{dbIsValid}{DBIResultArrowDefault}(dbObj, ...)
 
 \S4method{dbListFields}{DBIConnection,Id}(conn, name, ...)
 
