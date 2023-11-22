@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9016 (2023-11-22)
+
+## Features
+
+- New `dbIsValid()` method for `"DBIResultArrowDefault"` objects implemented by DBI (#425).
+
+- New `dbFetchArrowChunk()` generic with different semantics (#424).
+
+
 # DBI 1.1.3.9015 (2023-11-20)
 
 ## Documentation
