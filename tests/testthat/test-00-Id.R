@@ -16,7 +16,7 @@ test_that("each element is quoted individually", {
   )
 })
 
-test_that("Id organizes standard named elements", {
+test_that("Id organizes the standard named elements", {
  expect_equal(
    dbQuoteIdentifier(ANSI(), Id("unnamed",
                                 table = "last", schema = "3rd",

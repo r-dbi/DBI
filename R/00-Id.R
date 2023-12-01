@@ -28,7 +28,7 @@ setClass("Id", slots = list(name = "character"))
 #' @examples
 #' # Identifies a table in a specific schema:
 #' Id("dbo", "Customer")
-#' # You can name the components to ensure a correct output order,
+#' # You can name the components to order `Id()` output,
 #' #  but names are not required, e.g:
 #' Id(table = "Customer", schema = "dbo")
 #'
@@ -40,9 +40,7 @@ setClass("Id", slots = list(name = "character"))
 #' dbWriteTable(con, Id("myschema", "mytable"), data.frame(a = 1))
 #' }
 Id <- function(...) {
-
   components <- orderIdParams(...)
-
   if (!is.character(components)) {
     stop("All elements of `...` must be strings.", call. = FALSE)
   }
