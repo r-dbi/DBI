@@ -80,14 +80,13 @@ dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
 orderIdParams <- function(..., database = NULL,
                           catalog = NULL, cluster = NULL,
                           schema = NULL, table = NULL){
-
-  list(
+  c(
     database = database,
     cluster = cluster,
     catalog = catalog,
     schema = schema,
     ...,
     table = table
-  ) |> unlist()
+    )
 
 }
