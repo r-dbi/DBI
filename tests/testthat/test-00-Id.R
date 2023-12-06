@@ -3,15 +3,12 @@ test_that("Id() requires a character vector", {
 })
 
 test_that("has a decent print method", {
-  expect_equal(
-    utils::capture.output(Id(schema = "a", table = "b")),
-    "<Id> \"a\".\"b\""
-  )
+  expect_snapshot(Id("a", "b"))
 })
 
 test_that("each element is quoted individually", {
   expect_equal(
-    dbQuoteIdentifier(ANSI(), Id("a", "b.c")),
+    DBI::dbQuoteIdentifier(ANSI(), Id("a", "b.c")),
     SQL('"a"."b.c"')
   )
 })

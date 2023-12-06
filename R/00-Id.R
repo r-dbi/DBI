@@ -22,14 +22,13 @@ setClass("Id", slots = list(name = "character"))
 #' Objects of this class are also returned from [dbListObjects()].
 #'
 #' @param ... Components of the hierarchy, e.g. `cluster`,
-#'  `catalog`, `schema`, `table`, depending on the database backend. For more
+#'  `catalog`, `schema`, or `table`, depending on the database backend. For more
 #'  on these concepts, see <https://stackoverflow.com/questions/7022755/>
 #' @export
 #' @examples
 #' # Identifies a table in a specific schema:
 #' Id("dbo", "Customer")
-#' # You can name the components to order `Id()` output,
-#' #  but names are not required, e.g:
+#' # You can name the components if you want, but it's not needed
 #' Id(table = "Customer", schema = "dbo")
 #'
 #' # Create a SQL expression for an identifier:
@@ -45,7 +44,7 @@ Id <- function(...) {
     stop("All elements of `...` must be strings.", call. = FALSE)
   }
 
-  methods::new("Id", name = components)
+  new("Id", name = components)
 }
 
 #' @export
