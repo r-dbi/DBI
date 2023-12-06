@@ -66,6 +66,6 @@ orderIdParams <- function(..., database = NULL,
     catalog = catalog,
     schema = schema,
     ...,
-    table = table)
-
+    table = table
+  )
 }
