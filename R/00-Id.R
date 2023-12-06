@@ -59,34 +59,14 @@ dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
 }
 
 
-#' Order DBI::Id() user inputs
-#'
-#' Create the specific order:
-#' catalog > cluster > schema > table
-#'
-#' @param ... table param and unnamed `Id` components
-#' @param database optional database `Id` component
-#' @param catalog optional catalog `Id` component
-#' @param cluster optional cluster `Id` component
-#' @param schema optional schema `Id` component
-#' @param table optional table `Id` component
-#'
-#' @return vector of user's inputs, with names if specified, in correct SQL order
-#'
-#' @examples
-#' DBI:::orderIdParams(table = "flights", schema = "nycflights13", 'unnamed_id')
-#' DBI:::orderIdParams("nycflights13", "flights")
-#'
 orderIdParams <- function(..., database = NULL,
                           catalog = NULL, cluster = NULL,
                           schema = NULL, table = NULL){
-  c(
-    database = database,
+  c(database = database,
     cluster = cluster,
     catalog = catalog,
     schema = schema,
     ...,
-    table = table
-    )
+    table = table)
 
 }
