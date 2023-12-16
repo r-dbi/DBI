@@ -36,7 +36,7 @@ Objects of this class are also returned from \code{\link[=dbListObjects]{dbListO
 Id("dbo", "Customer")
 
 # You can name the components if you want, but it's not needed
-Id(table = "Customer", schema = "dbo")
+Id(schema = "dbo", table = "Customer")
 
 # If the names are given out of order, the correct order is restored
 Id(table = "Customer", schema = "dbo")
