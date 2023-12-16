@@ -21,15 +21,15 @@ setClass("Id", slots = list(name = "character"))
 #'
 #' Objects of this class are also returned from [dbListObjects()].
 #'
-#' @param ... Components of the hierarchy, e.g. `schema`, `table`, or `cluster`,
-#'  `catalog`, `schema`, `table`, depending on the database backend. For more
+#' @param ... Components of the hierarchy, e.g. `cluster`,
+#'  `catalog`, `schema`, or `table`, depending on the database backend. For more
 #'  on these concepts, see <https://stackoverflow.com/questions/7022755/>
 #' @export
 #' @examples
 #' # Identifies a table in a specific schema:
 #' Id("dbo", "Customer")
 #' # You can name the components if you want, but it's not needed
-#' Id(schema = "dbo", table = "Customer")
+#' Id(table = "Customer", schema = "dbo")
 #'
 #' # Create a SQL expression for an identifier:
 #' dbQuoteIdentifier(ANSI(), Id("nycflights13", "flights"))
@@ -39,12 +39,12 @@ setClass("Id", slots = list(name = "character"))
 #' dbWriteTable(con, Id("myschema", "mytable"), data.frame(a = 1))
 #' }
 Id <- function(...) {
-  components <- c(...)
+  components <- orderIdParams(...)
   if (!is.character(components)) {
     stop("All elements of `...` must be strings.", call. = FALSE)
   }
 
-  new("Id", name = c(...))
+  new("Id", name = components)
 }
 
 #' @export
@@ -55,4 +55,17 @@ toString.Id <- function(x, ...) {
 
 dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
   SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = "."))
+}
+
+
+orderIdParams <- function(..., database = NULL,
+                          catalog = NULL, cluster = NULL,
+                          schema = NULL, table = NULL){
+  c(database = database,
+    cluster = cluster,
+    catalog = catalog,
+    schema = schema,
+    ...,
+    table = table
+  )
 }
