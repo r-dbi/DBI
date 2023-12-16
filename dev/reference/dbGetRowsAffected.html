@@ -115,9 +115,13 @@ the number of rows affected by a data manipulation statement
 issued with <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.
 The value is available directly after the call
 and does not change after calling <code><a href="dbFetch.html">dbFetch()</a></code>.
-For queries issued with <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
+<code>NA_integer_</code> or <code>NA_numeric_</code> are allowed if the number of rows affected is not known.</p>
+
+
+<p>For queries issued with <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 zero is returned before
-and after the call to <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
+and after the call to <code><a href="dbFetch.html">dbFetch()</a></code>.
+<code>NA</code> values are not allowed.</p>
     </div>
     <div id="the-command-execution-flow">
     <h2>The command execution flow</h2>
@@ -127,7 +131,7 @@ and after the call to <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
-Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBind()</a></code>,
+Most of this flow, except calling <code><a href="dbBind.html">dbBind()</a></code>,
 is implemented by <code><a href="dbExecute.html">dbExecute()</a></code>, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
@@ -139,7 +143,6 @@ This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
 <li><p>Optionally, use <code>dbGetRowsAffected()</code> to retrieve the number
 of rows affected by the query.</p></li>
-<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.

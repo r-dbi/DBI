@@ -86,8 +86,8 @@ Support for <code>Id</code> objects depends on the database backend.</p>
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>...</dt>
-<dd><p>Components of the hierarchy, e.g. <code>schema</code>, <code>table</code>, or <code>cluster</code>,
-<code>catalog</code>, <code>schema</code>, <code>table</code>, depending on the database backend. For more
+<dd><p>Components of the hierarchy, e.g. <code>cluster</code>,
+<code>catalog</code>, <code>schema</code>, or <code>table</code>, depending on the database backend. For more
 on these concepts, see <a href="https://stackoverflow.com/questions/7022755/" class="external-link">https://stackoverflow.com/questions/7022755/</a></p></dd>
 
 </dl></div>
@@ -98,7 +98,7 @@ on these concepts, see <a href="https://stackoverflow.com/questions/7022755/" cl
 <span class="r-in"><span><span class="fu">Id</span><span class="op">(</span><span class="st">"dbo"</span>, <span class="st">"Customer"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "dbo"."Customer"</span>
 <span class="r-in"><span><span class="co"># You can name the components if you want, but it's not needed</span></span></span>
-<span class="r-in"><span><span class="fu">Id</span><span class="op">(</span>schema <span class="op">=</span> <span class="st">"dbo"</span>, table <span class="op">=</span> <span class="st">"Customer"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">Id</span><span class="op">(</span>table <span class="op">=</span> <span class="st">"Customer"</span>, schema <span class="op">=</span> <span class="st">"dbo"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;Id&gt; "dbo"."Customer"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create a SQL expression for an identifier:</span></span></span>
