@@ -563,8 +563,8 @@ clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -586,6 +586,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -714,8 +715,8 @@ rows in the result set.</p>
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -737,6 +738,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -879,8 +881,8 @@ for result sets obtained from <code><a href="../reference/dbSendQuery.html">dbSe
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -902,6 +904,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -915,7 +918,7 @@ this step is always executed.</p></li>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
 procedures, inserting or deleting data, Most of this flow, except
-calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
+repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
 <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
 non-parameterized queries. This flow requires an active connection
 established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -930,6 +933,7 @@ This is required only if the query contains placeholders such as
 backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -1040,8 +1044,8 @@ statements issued by <code><a href="../reference/dbSendStatement.html">dbSendSta
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -1063,6 +1067,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -1076,7 +1081,7 @@ this step is always executed.</p></li>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
 procedures, inserting or deleting data, Most of this flow, except
-calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
+repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
 <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
 non-parameterized queries. This flow requires an active connection
 established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -1091,6 +1096,7 @@ This is required only if the query contains placeholders such as
 backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -1553,7 +1559,7 @@ to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
 procedures, inserting or deleting data, Most of this flow, except
-calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
+repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
 <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
 non-parameterized queries. This flow requires an active connection
 established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -1568,6 +1574,7 @@ This is required only if the query contains placeholders such as
 backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -2948,8 +2955,8 @@ For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSen
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -2971,6 +2978,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -3179,7 +3187,7 @@ values are not allowed.</p>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
 procedures, inserting or deleting data, Most of this flow, except
-calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
+repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
 <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
 non-parameterized queries. This flow requires an active connection
 established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -3194,6 +3202,7 @@ This is required only if the query contains placeholders such as
 backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
@@ -3268,8 +3277,8 @@ frame initialized with the correct data types.</p>
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="../reference/dbBind.html">dbBind()</a></code>, is
-implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
+is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way or you have a
 parameterized query. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
@@ -3291,6 +3300,7 @@ to cache previous pages if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you’re done. This
 method returns <code>TRUE</code> if no more rows are available for
 fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
 an error has occurred during the processing. It is good practice to use
