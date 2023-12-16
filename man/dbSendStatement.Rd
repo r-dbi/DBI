@@ -44,7 +44,7 @@ implement the latter.
 This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
-Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
+Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
@@ -58,6 +58,7 @@ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number
 of rows affected by the query.
+\item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
