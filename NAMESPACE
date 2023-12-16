@@ -3,6 +3,7 @@
 S3method("[",SQL)
 S3method("[[",SQL)
 S3method(toString,Id)
+S3method(toString,UnnamedId)
 export(.SQL92Keywords)
 export(ANSI)
 export(Id)

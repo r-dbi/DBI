@@ -110,7 +110,7 @@
 \alias{dbQuoteIdentifier,DBIConnection,ANY-method}
 \alias{dbQuoteIdentifier,DBIConnection,character-method}
 \alias{dbQuoteIdentifier,DBIConnection,SQL-method}
-\alias{dbQuoteIdentifier,DBIConnection,Id-method}
+\alias{dbQuoteIdentifier,DBIConnection,UnnamedId-method}
 \alias{dbQuoteLiteral_DBIConnection}
 \alias{dbQuoteLiteral,DBIConnection-method}
 \alias{dbQuoteString_DBIConnection}
@@ -151,8 +151,8 @@
 \alias{show,DBIDriver-method}
 \alias{show_DBIResult}
 \alias{show,DBIResult-method}
-\alias{show_Id}
-\alias{show,Id-method}
+\alias{show_UnnamedId}
+\alias{show,UnnamedId-method}
 \alias{show_SQL}
 \alias{show,SQL-method}
 \alias{sqlAppendTable_DBIConnection}
@@ -245,7 +245,7 @@
 
 \S4method{dbQuoteIdentifier}{DBIConnection,SQL}(conn, x, ...)
 
-\S4method{dbQuoteIdentifier}{DBIConnection,Id}(conn, x, ...)
+\S4method{dbQuoteIdentifier}{DBIConnection,UnnamedId}(conn, x, ...)
 
 \S4method{dbQuoteLiteral}{DBIConnection}(conn, x, ...)
 
@@ -310,7 +310,7 @@
 
 \S4method{show}{DBIResult}(object)
 
-\S4method{show}{Id}(object)
+\S4method{show}{UnnamedId}(object)
 
 \S4method{show}{SQL}(object)
 

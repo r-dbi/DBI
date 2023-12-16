@@ -4,6 +4,7 @@ test_that("Id() requires a character vector", {
 
 test_that("has a decent print method", {
   expect_snapshot(Id("a", "b"))
+  expect_snapshot(Id(schema = "a", table = "b"))
 })
 
 test_that("each element is quoted individually", {

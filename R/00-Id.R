@@ -1,7 +1,7 @@
 NULL
 
 #' @rdname Id
-setClass("Id", slots = list(name = "character"))
+setClass("UnnamedId", slots = list(name = "character"))
 
 #' Refer to a table nested in a hierarchy (e.g. within a schema)
 #'
@@ -28,7 +28,11 @@ setClass("Id", slots = list(name = "character"))
 #' @examples
 #' # Identifies a table in a specific schema:
 #' Id("dbo", "Customer")
+#'
 #' # You can name the components if you want, but it's not needed
+#' Id(schema = "dbo", table = "Customer")
+#'
+#' # If the names are given out of order, the correct order is restored
 #' Id(table = "Customer", schema = "dbo")
 #'
 #' # Create a SQL expression for an identifier:
@@ -44,19 +48,36 @@ Id <- function(...) {
     stop("All elements of `...` must be strings.", call. = FALSE)
   }
 
-  new("Id", name = components)
+  if (is.null(names(components))) {
+    new("UnnamedId", name = components)
+  } else {
+    if (any(names(components) == "")) {
+      stop("All arguments to Id() must be named or unnamed.", call. = FALSE)
+    }
+    new("Id", name = components)
+  }
 }
 
 #' @export
-toString.Id <- function(x, ...) {
-  paste0("<Id> ", dbQuoteIdentifier(ANSI(), x))
+toString.UnnamedId <- function(x, ...) {
+  paste0("<UnnamedId> ", dbQuoteIdentifier(ANSI(), x))
 }
 
 
-dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
+dbQuoteIdentifier_DBIConnection_UnnamedId <- function(conn, x, ...) {
   SQL(paste0(dbQuoteIdentifier(conn, x@name), collapse = "."))
 }
 
+
+NULL
+
+#' @rdname Id
+setClass("Id", contains = "UnnamedId")
+
+#' @export
+toString.Id <- function(x, ...) {
+  paste0("<Id> ", paste0(names(x@name), " = ", x@name, collapse = ", "))
+}
 
 orderIdParams <- function(..., database = NULL,
                           catalog = NULL, cluster = NULL,

@@ -34,4 +34,4 @@ setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), dbQuoteIdentif
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), dbQuoteIdentifier_DBIConnection_Id)
+setMethod("dbQuoteIdentifier", signature("DBIConnection", "UnnamedId"), dbQuoteIdentifier_DBIConnection_UnnamedId)
