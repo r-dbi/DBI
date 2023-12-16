@@ -40,6 +40,8 @@ Suggests:
     xml2
 VignetteBuilder: 
     knitr
+Remotes: 
+    r-dbi/DBItest
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
