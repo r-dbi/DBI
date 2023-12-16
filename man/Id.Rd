@@ -9,8 +9,8 @@
 Id(...)
 }
 \arguments{
-\item{...}{Components of the hierarchy, e.g. \code{schema}, \code{table}, or \code{cluster},
-\code{catalog}, \code{schema}, \code{table}, depending on the database backend. For more
+\item{...}{Components of the hierarchy, e.g. \code{cluster},
+\code{catalog}, \code{schema}, or \code{table}, depending on the database backend. For more
 on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
@@ -34,7 +34,7 @@ Objects of this class are also returned from \code{\link[=dbListObjects]{dbListO
 # Identifies a table in a specific schema:
 Id("dbo", "Customer")
 # You can name the components if you want, but it's not needed
-Id(schema = "dbo", table = "Customer")
+Id(table = "Customer", schema = "dbo")
 
 # Create a SQL expression for an identifier:
 dbQuoteIdentifier(ANSI(), Id("nycflights13", "flights"))

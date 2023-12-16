@@ -17,9 +17,12 @@ the number of rows affected by a data manipulation statement
 issued with \code{\link[=dbSendStatement]{dbSendStatement()}}.
 The value is available directly after the call
 and does not change after calling \code{\link[=dbFetch]{dbFetch()}}.
+\code{NA_integer_} or \code{NA_numeric_} are allowed if the number of rows affected is not known.
+
 For queries issued with \code{\link[=dbSendQuery]{dbSendQuery()}},
 zero is returned before
 and after the call to \code{dbFetch()}.
+\code{NA} values are not allowed.
 }
 \description{
 This method returns the number of rows that were added, deleted, or updated

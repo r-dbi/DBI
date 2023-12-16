@@ -14,12 +14,12 @@ test_that("each element is quoted individually", {
 })
 
 test_that("Id organizes the standard named elements", {
- expect_equal(
-   dbQuoteIdentifier(ANSI(), Id("unnamed",
-                                table = "last", schema = "3rd",
-                                cluster = '1st', catalog = "2nd")),
-   SQL('"1st"."2nd"."3rd"."unnamed"."last"')
- )
+  expect_equal(
+    dbQuoteIdentifier(ANSI(), Id("unnamed",
+      table = "last", schema = "3rd",
+      cluster = '1st', catalog = "2nd")),
+    SQL('"1st"."2nd"."3rd"."unnamed"."last"')
+  )
 })
 
 test_that("Id organizes mingled named and unnamed elements; ignores NULL", {
@@ -29,4 +29,3 @@ test_that("Id organizes mingled named and unnamed elements; ignores NULL", {
     SQL('"1"."2"."3"."4"')
   )
 })
-

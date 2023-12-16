@@ -60,7 +60,7 @@ dbQuoteIdentifier_DBIConnection_Id <- function(conn, x, ...) {
 
 orderIdParams <- function(..., database = NULL,
                           catalog = NULL, cluster = NULL,
-                          schema = NULL, table = NULL){
+                          schema = NULL, table = NULL) {
   c(database = database,
     cluster = cluster,
     catalog = catalog,
