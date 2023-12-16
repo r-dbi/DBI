@@ -55,7 +55,7 @@ existing code. Modern backends should implement for \code{dbFetch()} only.
 This section gives a complete overview over the flow
 for the execution of queries that return tabular data.
 
-Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
+Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
 unless you want to access the results in a paged way
 or you have a parameterized query.
@@ -78,6 +78,7 @@ Only forward paging is supported, you need to cache previous pages
 if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
 This method returns \code{TRUE} if no more rows are available for fetching.
+\item Repeat the last four steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.

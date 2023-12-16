@@ -36,7 +36,7 @@
 #' This section gives a complete overview over the flow
 #' for the execution of queries that return tabular data.
 #'
-#' Most of this flow, except calling [dbBind()],
+#' Most of this flow, except repeated calling of [dbBind()],
 #' is implemented by [dbGetQuery()], which should be sufficient
 #' unless you want to access the results in a paged way
 #' or you have a parameterized query.
@@ -59,6 +59,7 @@
 #'    if you need to navigate backwards.
 #' 1. Use [dbHasCompleted()] to tell when you're done.
 #'    This method returns `TRUE` if no more rows are available for fetching.
+#' 1. Repeat the last four steps as necessary.
 #' 1. Use [dbClearResult()] to clean up the result set object.
 #'    This step is mandatory even if no rows have been fetched
 #'    or if an error has occurred during the processing.
@@ -71,7 +72,7 @@
 #' for the execution of SQL statements that have side effects
 #' such as stored procedures, inserting or deleting data,
 # 'or setting database or connection options.
-#' Most of this flow, except calling [dbBind()],
+#' Most of this flow, except repeated calling of [dbBind()],
 #' is implemented by [dbExecute()], which should be sufficient
 #' for non-parameterized queries.
 #' This flow requires an active connection established by [dbConnect()].
@@ -85,6 +86,7 @@
 #'    such as `?` or `$1`, depending on the database backend.
 #' 1. Optionally, use [dbGetRowsAffected()] to retrieve the number
 #'    of rows affected by the query.
+#' 1. Repeat the last two steps as necessary.
 #' 1. Use [dbClearResult()] to clean up the result set object.
 #'    This step is mandatory even if no rows have been fetched
 #'    or if an error has occurred during the processing.

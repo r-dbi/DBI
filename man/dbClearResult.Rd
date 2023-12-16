@@ -30,7 +30,7 @@ This step is mandatory for all objects obtained by calling
 This section gives a complete overview over the flow
 for the execution of queries that return tabular data.
 
-Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
+Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
 unless you want to access the results in a paged way
 or you have a parameterized query.
@@ -53,6 +53,7 @@ Only forward paging is supported, you need to cache previous pages
 if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
 This method returns \code{TRUE} if no more rows are available for fetching.
+\item Repeat the last four steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
@@ -67,7 +68,7 @@ to ensure that this step is always executed.
 This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
-Most of this flow, except calling \code{\link[=dbBind]{dbBind()}},
+Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
@@ -81,6 +82,7 @@ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number
 of rows affected by the query.
+\item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
