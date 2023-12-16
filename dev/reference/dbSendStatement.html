@@ -35,7 +35,7 @@ sparklyr::dbSendStatement("spark_connection", "ANY")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9015</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9016</span>
       </span>
     </div>
 
@@ -136,7 +136,7 @@ implement the latter.</p>
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
-Most of this flow, except calling <code><a href="dbBind.html">dbBind()</a></code>,
+Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBind()</a></code>,
 is implemented by <code><a href="dbExecute.html">dbExecute()</a></code>, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
@@ -148,6 +148,7 @@ This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
 <li><p>Optionally, use <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the number
 of rows affected by the query.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.

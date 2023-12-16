@@ -40,7 +40,7 @@ sparklyr::dbColumnInfo("DBISparkResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9015</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9016</span>
       </span>
     </div>
 
@@ -141,7 +141,7 @@ Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res,
 
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except calling <code><a href="dbBind.html">dbBind()</a></code>,
+<p>Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBind()</a></code>,
 is implemented by <code><a href="dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way
 or you have a parameterized query.
@@ -162,6 +162,7 @@ Only forward paging is supported, you need to cache previous pages
 if you need to navigate backwards.</p></li>
 <li><p>Use <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code> to tell when you're done.
 This method returns <code>TRUE</code> if no more rows are available for fetching.</p></li>
+<li><p>Repeat the last four steps as necessary.</p></li>
 <li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
 This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
