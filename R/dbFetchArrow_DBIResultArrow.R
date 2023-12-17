@@ -2,16 +2,24 @@
 #' @usage NULL
 dbFetchArrow_DBIResultArrow <- function(res, ...) {
   chunk <- dbFetchArrowChunk_DBIResultArrow(res)
-  out <- list(chunk)
   # Corner case: add empty chunk only for zero rows, for schema
   if (chunk$length == 0) {
-    return(nanoarrow::basic_array_stream(out, validate = FALSE))
+    return(nanoarrow::basic_array_stream(
+      list(),
+      schema = nanoarrow::infer_nanoarrow_schema(chunk),
+      validate = FALSE
+    ))
   }
 
+  out <- list(chunk)
   repeat {
     chunk <- dbFetchArrowChunk_DBIResultArrow(res)
     if (chunk$length == 0) {
-      return(nanoarrow::basic_array_stream(out, validate = FALSE))
+      return(nanoarrow::basic_array_stream(
+        out,
+        schema = nanoarrow::infer_nanoarrow_schema(out[[1]]),
+        validate = FALSE
+      ))
     }
     out <- c(out, list(chunk))
   }
