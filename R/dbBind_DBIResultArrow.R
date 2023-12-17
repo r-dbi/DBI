@@ -2,6 +2,7 @@
 #' @usage NULL
 dbBind_DBIResultArrow <- function(res, params, ...) {
   dbBind(res@result, params = as.list(as.data.frame(params)), ...)
+  invisible(res)
 }
 #' @rdname hidden_aliases
 #' @export
