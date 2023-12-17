@@ -562,20 +562,21 @@ clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()</a
 <h3 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page
@@ -714,20 +715,21 @@ rows in the result set.</p>
 <h3 id="the-data-retrieval-flow-1">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-1"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page
@@ -880,20 +882,21 @@ for result sets obtained from <code><a href="../reference/dbSendQuery.html">dbSe
 <h3 id="the-data-retrieval-flow-2">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-2"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page
@@ -917,20 +920,20 @@ this step is always executed.</p></li>
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
-procedures, inserting or deleting data, Most of this flow, except
-repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
-<code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
-non-parameterized queries. This flow requires an active connection
-established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
-<code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+procedures, inserting or deleting data, or setting database or
+connection options. Most of this flow, except repeated calling of
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>,
+which should be sufficient for non-parameterized queries. This flow
+requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object
 of class DBIResult. For some queries you need to pass
 <code>immediate = TRUE</code>.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with<code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
@@ -972,46 +975,64 @@ can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResu
 <div class="section level2 container">
 <h2 id="bind-values-to-a-parameterizedprepared-statement">Bind values to a parameterized/prepared statement<a class="anchor" aria-label="anchor" href="#bind-values-to-a-parameterizedprepared-statement"></a>
 </h2>
-<p>This section describes the behavior of the following method:</p>
+<p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-6">Description<a class="anchor" aria-label="anchor" href="#description-6"></a>
 </h3>
 <p>For parametrized or prepared statements, the
-<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> functions
-can be called with statements that contain placeholders for values. The
-<code><a href="../reference/dbBind.html">dbBind()</a></code> function binds these placeholders to actual
-values, and is intended to be called on the result set before calling
-<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>.</p>
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>, and
+<code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> functions can be called with statements
+that contain placeholders for values. The <code><a href="../reference/dbBind.html">dbBind()</a></code> and
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code> functions bind these placeholders to actual
+values, and are intended to be called on the result set before calling
+<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code>. The values are
+passed to <code><a href="../reference/dbBind.html">dbBind()</a></code> as lists or data frames, and to
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code> as a stream created by
+<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>. This works in all
+combinations. <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> is compatible with
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, and <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code> is
+compatible with <code><a href="../reference/dbBind.html">dbBind()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-6">Arguments<a class="anchor" aria-label="anchor" href="#arguments-6"></a>
 </h3>
-<table class="table"><tbody>
+<table class="table">
+<colgroup>
+<col width="4%">
+<col width="95%">
+</colgroup>
+<tbody>
 <tr class="odd">
 <td><code>res</code></td>
 <td>An object inheriting from DBIResult.</td>
 </tr>
 <tr class="even">
 <td><code>params</code></td>
-<td>A list of bindings, named or unnamed.</td>
+<td>For <code><a href="../reference/dbBind.html">dbBind()</a></code>, a list of values, named or unnamed, or a
+data frame, with one element/column per query parameter. For
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, values as a nanoarrow stream, with one
+column per query parameter.</td>
 </tr>
 <tr class="odd">
 <td><code>...</code></td>
 <td>Other arguments passed on to methods.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </div>
 <div class="section level3">
 <h3 id="details-3">Details<a class="anchor" aria-label="anchor" href="#details-3"></a>
 </h3>
 <p><span class="pkg">DBI</span> supports parametrized (or prepared)
-queries and statements via the <code><a href="../reference/dbBind.html">dbBind()</a></code> generic.
-Parametrized queries are different from normal queries in that they
-allow an arbitrary number of placeholders, which are later substituted
-by actual values. Parametrized queries (and statements) serve two
-purposes:</p>
+queries and statements via the <code><a href="../reference/dbBind.html">dbBind()</a></code> and
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code> generics. Parametrized queries are different
+from normal queries in that they allow an arbitrary number of
+placeholders, which are later substituted by actual values. Parametrized
+queries (and statements) serve two purposes:</p>
 <ul>
 <li><p>The same query can be executed more than once with different
 values. The DBMS may cache intermediate information for the query, such
@@ -1026,7 +1047,7 @@ syntax with the <code>placeholder_pattern</code> tweak. Known examples
 are:</p>
 <ul>
 <li><p><code>⁠?⁠</code> (positional matching in order of appearance) in
-<span class="pkg">RMySQL</span> and <span class="pkg">RSQLite</span></p></li>
+<span class="pkg">RMariaDB</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>⁠\$1⁠</code> (positional matching by index) in <span class="pkg">RPostgres</span> and <span class="pkg">RSQLite</span></p></li>
 <li><p><code>⁠:name⁠</code> and <code>⁠\$name⁠</code> (named matching) in
 <span class="pkg">RSQLite</span></p></li>
@@ -1043,20 +1064,21 @@ statements issued by <code><a href="../reference/dbSendStatement.html">dbSendSta
 <h3 id="the-data-retrieval-flow-3">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-3"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page
@@ -1076,24 +1098,51 @@ this step is always executed.</p></li>
 </ol>
 </div>
 <div class="section level3">
+<h3 id="the-data-retrieval-flow-for-arrow-streams">The data retrieval flow for Arrow streams<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-for-arrow-streams"></a>
+</h3>
+<p>This section gives a complete overview over the flow for the
+execution of queries that return tabular data as an Arrow stream.</p>
+<p>Most of this flow, except repeated calling of
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code> or <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQueryArrow()</a></code>, which should be sufficient unless you
+have a parameterized query that you want to reuse. This flow requires an
+active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
+<code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+<ol style="list-style-type: decimal">
+<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code> to create a result set object
+of class DBIResultArrow.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>
+or <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
+<li><p>Use <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
+<li><p>Repeat the last two steps as necessary.</p></li>
+<li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
+object. This step is mandatory even if no rows have been fetched or if
+an error has occurred during the processing. It is good practice to use
+<code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> or <code><a href="https://withr.r-lib.org/reference/defer.html" class="external-link">withr::defer()</a></code> to ensure that
+this step is always executed.</p></li>
+</ol>
+</div>
+<div class="section level3">
 <h3 id="the-command-execution-flow-1">The command execution flow<a class="anchor" aria-label="anchor" href="#the-command-execution-flow-1"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
-procedures, inserting or deleting data, Most of this flow, except
-repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
-<code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
-non-parameterized queries. This flow requires an active connection
-established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
-<code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+procedures, inserting or deleting data, or setting database or
+connection options. Most of this flow, except repeated calling of
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>,
+which should be sufficient for non-parameterized queries. This flow
+requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object
 of class DBIResult. For some queries you need to pass
 <code>immediate = TRUE</code>.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with<code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
@@ -1203,27 +1252,61 @@ NULL values)</p></li>
 <div class="section level3">
 <h3 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)))</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame flow:</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)))</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow flow:</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQueryArrow</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  iris_result,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="fl">2.3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  iris_result,</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="dv">3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(iris_result, nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>)))</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
 <div class="section level2 container">
@@ -1558,20 +1641,20 @@ to clear it with <code><a href="../reference/dbClearResult.html">dbClearResult()
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
-procedures, inserting or deleting data, Most of this flow, except
-repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
-<code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
-non-parameterized queries. This flow requires an active connection
-established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
-<code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+procedures, inserting or deleting data, or setting database or
+connection options. Most of this flow, except repeated calling of
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>,
+which should be sufficient for non-parameterized queries. This flow
+requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object
 of class DBIResult. For some queries you need to pass
 <code>immediate = TRUE</code>.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with<code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
@@ -2954,20 +3037,21 @@ For a query initiated by <code><a href="../reference/dbSendStatement.html">dbSen
 <h3 id="the-data-retrieval-flow-4">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-4"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page
@@ -3186,20 +3270,20 @@ values are not allowed.</p>
 </h3>
 <p>This section gives a complete overview over the flow for the
 execution of SQL statements that have side effects such as stored
-procedures, inserting or deleting data, Most of this flow, except
-repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
-<code><a href="../reference/dbExecute.html">dbExecute()</a></code>, which should be sufficient for
-non-parameterized queries. This flow requires an active connection
-established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
-<code>vignette("dbi-advanced")</code> for a walkthrough.</p>
+procedures, inserting or deleting data, or setting database or
+connection options. Most of this flow, except repeated calling of
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by <code><a href="../reference/dbExecute.html">dbExecute()</a></code>,
+which should be sufficient for non-parameterized queries. This flow
+requires an active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> to create a result set object
 of class DBIResult. For some queries you need to pass
 <code>immediate = TRUE</code>.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with<code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> to retrieve the
 number of rows affected by the query.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
@@ -3276,20 +3360,21 @@ frame initialized with the correct data types.</p>
 <h3 id="the-data-retrieval-flow-5">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-5"></a>
 </h3>
 <p>This section gives a complete overview over the flow for the
-execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
-unless you want to access the results in a paged way or you have a
-parameterized query. This flow requires an active connection established
+execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="../reference/dbBind.html">dbBind()</a></code>
+or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, is implemented by
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient unless you want to
+access the results in a paged way or you have a parameterized query that
+you want to reuse. This flow requires an active connection established
 by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
 <li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> to create a result set object of
 class DBIResult.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code>.
-This is required only if the query contains placeholders such as
-<code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on the database
-backend.</p></li>
+<li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>. This is required only if the query contains
+placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
+the database backend.</p></li>
 <li><p>Optionally, use <code><a href="../reference/dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the
 structure of the result set without retrieving actual data.</p></li>
 <li><p>Use <code><a href="../reference/dbFetch.html">dbFetch()</a></code> to get the entire result set, a page

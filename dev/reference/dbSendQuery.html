@@ -166,15 +166,15 @@ drivers' <code>dbSendQuery()</code> documentation for details.</p>
 
 
 <p>This section gives a complete overview over the flow
-for the execution of queries that return tabular data.</p>
-<p>Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBind()</a></code>,
+for the execution of queries that return tabular data as data frames.</p>
+<p>Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBind()</a></code> or <code><a href="dbBind.html">dbBindArrow()</a></code>,
 is implemented by <code><a href="dbGetQuery.html">dbGetQuery()</a></code>, which should be sufficient
 unless you want to access the results in a paged way
-or you have a parameterized query.
+or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code>dbSendQuery()</code> to create a result set object of class
 <a href="DBIResult-class.html">DBIResult</a>.</p></li>
-<li><p>Optionally, bind query parameters with <code><a href="dbBind.html">dbBind()</a></code>.
+<li><p>Optionally, bind query parameters with <code><a href="dbBind.html">dbBind()</a></code> or <code><a href="dbBind.html">dbBindArrow()</a></code>.
 This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
 <li><p>Optionally, use <code><a href="dbColumnInfo.html">dbColumnInfo()</a></code> to retrieve the structure of the result set
