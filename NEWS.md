@@ -1,5 +1,24 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9017 (2023-12-17)
+
+## Features
+
+- Arrange the `DBI::Id()` object in SQL order (@eauleaf, #427).
+
+## Chore
+
+- Test with dev version of DBItest (#432).
+
+## Documentation
+
+- Clarify repeated parameter binding (#430).
+
+## Testing
+
+- Run DBItest for SQLite as part of the checks here (#431).
+
+
 # DBI 1.1.3.9016 (2023-11-22)
 
 ## Features
