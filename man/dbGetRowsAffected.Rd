@@ -36,7 +36,8 @@ by a data manipulation statement.
 This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
-Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}},
+or setting database or connection options.
+Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
@@ -45,7 +46,7 @@ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class
 \linkS4class{DBIResult}.
 For some queries you need to pass \code{immediate = TRUE}.
-\item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}}.
+\item Optionally, bind query parameters with\code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number
@@ -83,7 +84,6 @@ dbDisconnect(con)
 \seealso{
 Other DBIResult generics: 
 \code{\link{DBIResult-class}},
-\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
@@ -100,7 +100,6 @@ Other DBIResult generics:
 \code{\link{dbUnquoteIdentifier}()}
 
 Other command execution generics: 
-\code{\link{dbBindArrow}()},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbExecute}()},
