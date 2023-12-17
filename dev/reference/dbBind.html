@@ -33,7 +33,7 @@ sparklyr::dbBind("DBISparkResult")
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9016</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9017</span>
       </span>
     </div>
 
@@ -66,7 +66,7 @@ sparklyr::dbBind("DBISparkResult")
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Bind values to a parameterized/prepared statement</h1>
-    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbBind.R" class="external-link"><code>R/dbBind.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/15-dbBind.R" class="external-link"><code>R/15-dbBind.R</code></a></small>
     <div class="hidden name"><code>dbBind.Rd</code></div>
     </div>
 
@@ -207,8 +207,9 @@ to ensure that this step is always executed.</p></li>
 
 
 <p>Calling <code>dbBind()</code> for a query without parameters
-raises an error.
-Binding too many
+raises an error.</p>
+
+<p>Binding too many
 or not enough values,
 or parameters with wrong names
 or unequal length,

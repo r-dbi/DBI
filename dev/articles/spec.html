@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9016</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.1.3.9017</span>
       </span>
     </div>
 
@@ -1108,13 +1108,13 @@ this step is always executed.</p></li>
 <h3 id="failure-modes-5">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-5"></a>
 </h3>
 <p>Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> for a query without parameters raises
-an error. Binding too many or not enough values, or parameters with
-wrong names or unequal length, also raises an error. If the placeholders
-in the query are named, all parameter values must have names (which must
-not be empty or <code>NA</code>), and vice versa, otherwise an error is
-raised. The behavior for mixing placeholders of different types (in
-particular mixing positional and named placeholders) is not
-specified.</p>
+an error.</p>
+<p>Binding too many or not enough values, or parameters with wrong names
+or unequal length, also raises an error. If the placeholders in the
+query are named, all parameter values must have names (which must not be
+empty or <code>NA</code>), and vice versa, otherwise an error is raised.
+The behavior for mixing placeholders of different types (in particular
+mixing positional and named placeholders) is not specified.</p>
 <p>Calling <code><a href="../reference/dbBind.html">dbBind()</a></code> on a result set already cleared by
 <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> also raises an error.</p>
 </div>
