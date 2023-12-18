@@ -1,5 +1,24 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.3.9018 (2023-12-18)
+
+## Bug fixes
+
+- Return original result set invisibly from `dbBind()` (#435).
+
+## Features
+
+- New `dbBindArrow()` to support passing nanoarrow streams for parameter binding (#415).
+
+- Better default `dbFetchArrow()` regarding corner cases and schema inference (#434).
+
+## Chore
+
+- `dbBind()` for `DBIResultArrow` passes `params` as is (#436).
+
+- Rename files (#433).
+
+
 # DBI 1.1.3.9017 (2023-12-17)
 
 ## Features
