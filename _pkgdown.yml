@@ -5,8 +5,10 @@ template:
   bootswatch: flatly # https://bootswatch.com/flatly/
   bslib:
     danger: "#F8C9C4"
+    success: "white"
     link-color: "#116074"
-    link-hover-decoration: "wavy underline #116074"
+    link-hover-color: "#116074"
+    link-hover-decoration: "wavy underline"
 
 home:
   links:
