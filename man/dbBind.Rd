@@ -22,7 +22,7 @@ with one column per query parameter.}
 \value{
 \code{dbBind()} returns the result set,
 invisibly,
-for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}}
+for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}
 and also for data manipulation statements issued by
 \code{\link[=dbSendStatement]{dbSendStatement()}}.
 }
@@ -197,8 +197,8 @@ also raises an error.
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}} with a query or statement
-that contains placeholders,
+\item Call \code{\link[=dbSendQuery]{dbSendQuery()}}, \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[=dbSendStatement]{dbSendStatement()}}
+with a query or statement that contains placeholders,
 store the returned \linkS4class{DBIResult} object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
