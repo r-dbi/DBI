@@ -3,6 +3,9 @@ url: https://dbi.r-dbi.org
 template:
   bootstrap: 5
   bootswatch: flatly # https://bootswatch.com/flatly/
+  bslib:
+    link-color: "#116074"
+    danger: "#F8C9C4"
 
 home:
   links:
