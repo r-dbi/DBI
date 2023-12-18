@@ -1,8 +1,8 @@
 url: https://dbi.r-dbi.org
 
 template:
-  params:
-    bootswatch: flatly # https://bootswatch.com/flatly/
+  bootstrap: 5
+  bootswatch: flatly # https://bootswatch.com/flatly/
 
 home:
   links:
