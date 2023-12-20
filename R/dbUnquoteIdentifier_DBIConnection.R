@@ -5,6 +5,9 @@ dbUnquoteIdentifier_DBIConnection <- function(conn, x, ...) {
   quote_char <- substr(dbQuoteIdentifier(conn, ""), 1, 1)
 
   if (is(x, "SQL") || is.character(x)) {
+    if (is.character(x)) {
+      stopifnot(!anyNA(x))
+    }
     x <- lapply(x, unquote, quote_char = quote_char)
     lapply(x, Id)
   } else if (is(x, "Id")) {
