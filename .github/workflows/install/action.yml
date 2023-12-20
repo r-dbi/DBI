@@ -37,6 +37,7 @@ runs:
         echo "R_KEEP_PKG_SOURCE=yes" | tee -a $GITHUB_ENV
         echo "_R_CHECK_SYSTEM_CLOCK_=false" | tee -a $GITHUB_ENV
         echo "_R_CHECK_FUTURE_FILE_TIMESTAMPS_=false" | tee -a $GITHUB_ENV
+        echo "_R_CHECK_UNDOC_USE_ALL_NAMES_=true" | tee -a $GITHUB_ENV
         # prevent rgl issues because no X11 display is available
         echo "RGL_USE_NULL=true" | tee -a $GITHUB_ENV
       shell: bash
