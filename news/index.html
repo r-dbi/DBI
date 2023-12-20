@@ -53,71 +53,33 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="dbi-120-2023-12-20">DBI 1.2.0 (2023-12-20)<a class="anchor" aria-label="anchor" href="#dbi-120-2023-12-20"></a></h2>
 <div class="section level3">
-<h3 id="bug-fixes-1-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-2-0"></a></h3>
-<ul><li>Return original result set invisibly from <code><a href="../reference/dbBind.html">dbBind()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/435" class="external-link">#435</a>).</li>
-<li>Avoid collate altogether.</li>
-<li>Don’t collate zzz.R.</li>
+<h3 id="breaking-changes-1-2-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-2-0"></a></h3>
+<ul><li>
+<code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> creates <code><a href="../reference/Id.html">Id()</a></code> objects without component names and allows non-<code>NA</code> character input (<a href="https://github.com/r-dbi/DBI/issues/421" class="external-link">#421</a>, <a href="https://github.com/r-dbi/DBI/issues/422" class="external-link">#422</a>).</li>
 </ul></div>
 <div class="section level3">
 <h3 id="features-1-2-0">Features<a class="anchor" aria-label="anchor" href="#features-1-2-0"></a></h3>
-<ul><li>
-<code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> creates <code><a href="../reference/Id.html">Id()</a></code> objects without component names (<a href="https://github.com/r-dbi/DBI/issues/421" class="external-link">#421</a>, <a href="https://github.com/r-dbi/DBI/issues/422" class="external-link">#422</a>).</li>
-<li>New <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> to support passing nanoarrow streams for parameter binding (<a href="https://github.com/r-dbi/DBI/issues/415" class="external-link">#415</a>).</li>
-<li>Better default <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code> regarding corner cases and schema inference (<a href="https://github.com/r-dbi/DBI/issues/434" class="external-link">#434</a>).</li>
-<li>Arrange the <code><a href="../reference/Id.html">DBI::Id()</a></code> object in SQL order (<a href="https://github.com/eauleaf" class="external-link">@eauleaf</a>, <a href="https://github.com/r-dbi/DBI/issues/427" class="external-link">#427</a>).</li>
-<li>New <code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> method for <code>"DBIResultArrowDefault"</code> objects implemented by DBI (<a href="https://github.com/r-dbi/DBI/issues/425" class="external-link">#425</a>).</li>
-<li>New <code><a href="../reference/dbFetch.html">dbFetchArrowChunk()</a></code> generic with different semantics (<a href="https://github.com/r-dbi/DBI/issues/424" class="external-link">#424</a>).</li>
-<li>
-<code><a href="../reference/Id.html">Id()</a></code> now accepts unnamed components (<a href="https://github.com/r-dbi/DBI/issues/417" class="external-link">#417</a>).</li>
-<li>Switch to nanoarrow (<a href="https://github.com/r-dbi/DBI/issues/414" class="external-link">#414</a>).</li>
-<li>Enable BLOB tests for arrow &gt;= 10.0.0 (<a href="https://github.com/r-dbi/DBI/issues/395" class="external-link">#395</a>).</li>
-<li>
-<code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code> silences warnings about converting factors to character</li>
-<li>
-<code><a href="../reference/dbWriteTable.html">dbWriteTableArrow()</a></code> returns invisibly</li>
-<li>Implement <code>dbiDataType()</code> for objects of class <code>"blob"</code>
-</li>
-<li>New <code><a href="../reference/dbCreateTable.html">dbCreateTableArrow()</a></code> and <code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/396" class="external-link">#396</a>).</li>
-<li>New generics to support Arrow-compatible backends (<a href="https://github.com/nbenn" class="external-link">@nbenn</a>, <a href="https://github.com/r-dbi/DBI/issues/390" class="external-link">#390</a>).</li>
-</ul></div>
-<div class="section level3">
-<h3 id="chore-1-2-0">Chore<a class="anchor" aria-label="anchor" href="#chore-1-2-0"></a></h3>
-<ul><li>
-<code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> fails with character vectors containing <code>NA</code>. CC <a href="https://github.com/hadley" class="external-link">@hadley</a></li>
-<li>
-<code><a href="../reference/dbBind.html">dbBind()</a></code> for <code>DBIResultArrow</code> passes <code>params</code> as is (<a href="https://github.com/r-dbi/DBI/issues/436" class="external-link">#436</a>).</li>
-<li>Rename files (<a href="https://github.com/r-dbi/DBI/issues/433" class="external-link">#433</a>).</li>
-<li>Test with dev version of DBItest (<a href="https://github.com/r-dbi/DBI/issues/432" class="external-link">#432</a>).</li>
-<li>Add Aviator configuration.</li>
-<li>Install nanoarrow from CRAN.</li>
-<li>Fix lazytest, upstream: <a href="https://github.com/r-lib/pkgload/issues/247" class="external-link uri">https://github.com/r-lib/pkgload/issues/247</a>.</li>
-<li>Rename Stream to Arrow (<a href="https://github.com/r-dbi/DBI/issues/407" class="external-link">#407</a>).</li>
-<li>
-<code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code> -&gt; <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>, <code>ResultArrow|ArrowResult -&gt; ResultArrow</code> (<a href="https://github.com/r-dbi/DBI/issues/397" class="external-link">#397</a>).</li>
-</ul></div>
-<div class="section level3">
-<h3 id="continuous-integration-1-2-0">Continuous integration<a class="anchor" aria-label="anchor" href="#continuous-integration-1-2-0"></a></h3>
-<ul><li>Fix Windows tests on GHA (<a href="https://github.com/r-dbi/DBI/issues/406" class="external-link">#406</a>).</li>
+<ul><li><p>New generics <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>, <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code>, <code><a href="../reference/dbGetQuery.html">dbGetQueryArrow()</a></code>, <code><a href="../reference/dbReadTable.html">dbReadTableArrow()</a></code>, <code><a href="../reference/dbWriteTable.html">dbWriteTableArrow()</a></code> (<a href="https://github.com/nbenn" class="external-link">@nbenn</a>, <a href="https://github.com/r-dbi/DBI/issues/390" class="external-link">#390</a>), <code><a href="../reference/dbCreateTable.html">dbCreateTableArrow()</a></code>, <code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/396" class="external-link">#396</a>), <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/415" class="external-link">#415</a>) and <code><a href="../reference/dbFetch.html">dbFetchArrowChunk()</a></code> (<a href="https://github.com/r-dbi/DBI/issues/424" class="external-link">#424</a>), with default implementations via nanoarrow (<a href="https://github.com/r-dbi/DBI/issues/414" class="external-link">#414</a>).</p></li>
+<li><p><code><a href="../reference/Id.html">Id()</a></code> now accepts unnamed components (<a href="https://github.com/r-dbi/DBI/issues/417" class="external-link">#417</a>). If names are provided, the components are arranged in SQL order (<a href="https://github.com/eauleaf" class="external-link">@eauleaf</a>, <a href="https://github.com/r-dbi/DBI/issues/427" class="external-link">#427</a>).</p></li>
+<li><p>New <code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> method for <code>"DBIResultArrowDefault"</code> objects implemented by DBI (<a href="https://github.com/r-dbi/DBI/issues/425" class="external-link">#425</a>).</p></li>
+<li><p>Implement <code>dbiDataType()</code> for objects of class <code>"blob"</code>.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="documentation-1-2-0">Documentation<a class="anchor" aria-label="anchor" href="#documentation-1-2-0"></a></h3>
-<ul><li>Update template (<a href="https://github.com/maelle" class="external-link">@maelle</a>, <a href="https://github.com/r-dbi/DBI/issues/428" class="external-link">#428</a>, <a href="https://github.com/r-dbi/DBI/issues/438" class="external-link">#438</a>, <a href="https://github.com/r-dbi/DBI/issues/437" class="external-link">#437</a>).</li>
-<li>Clarify repeated parameter binding (<a href="https://github.com/r-dbi/DBI/issues/430" class="external-link">#430</a>).</li>
-<li>Deal with sundown of <code>https://relational.fit.cvut.cz</code> (<a href="https://github.com/r-dbi/DBI/issues/423" class="external-link">#423</a>).</li>
-<li>Correct vignette titles (<a href="https://github.com/r-dbi/DBI/issues/419" class="external-link">#419</a>).</li>
-<li>Harmonize table documentation (<a href="https://github.com/r-dbi/DBI/issues/400" class="external-link">#400</a>).</li>
-<li>Tweak typo, add families for data retrieval and command execution</li>
+<ul><li><p>Update pkgdown template (<a href="https://github.com/maelle" class="external-link">@maelle</a>, <a href="https://github.com/r-dbi/DBI/issues/428" class="external-link">#428</a>, <a href="https://github.com/r-dbi/DBI/issues/438" class="external-link">#438</a>, <a href="https://github.com/r-dbi/DBI/issues/437" class="external-link">#437</a>).</p></li>
+<li><p>Clarify repeated parameter binding (<a href="https://github.com/r-dbi/DBI/issues/430" class="external-link">#430</a>).</p></li>
+<li><p>Deal with sundown of <code>https://relational.fit.cvut.cz</code> (<a href="https://github.com/r-dbi/DBI/issues/423" class="external-link">#423</a>).</p></li>
+<li><p>Correct vignette titles (<a href="https://github.com/r-dbi/DBI/issues/419" class="external-link">#419</a>).</p></li>
+<li><p>Harmonize table documentation (<a href="https://github.com/r-dbi/DBI/issues/400" class="external-link">#400</a>).</p></li>
+<li><p>Tweak typo, add families for data retrieval and command execution.</p></li>
 </ul></div>
 <div class="section level3">
 <h3 id="testing-1-2-0">Testing<a class="anchor" aria-label="anchor" href="#testing-1-2-0"></a></h3>
-<ul><li>Run DBItest for SQLite as part of the checks here (<a href="https://github.com/r-dbi/DBI/issues/431" class="external-link">#431</a>).</li>
-<li>Fix checks without suggested packages (<a href="https://github.com/r-dbi/DBI/issues/420" class="external-link">#420</a>).</li>
-<li>
-<code>use_testthat(3)</code> (<a href="https://github.com/r-dbi/DBI/issues/416" class="external-link">#416</a>).</li>
-</ul></div>
-<div class="section level3">
-<h3 id="uncategorized-1-2-0">Uncategorized<a class="anchor" aria-label="anchor" href="#uncategorized-1-2-0"></a></h3>
-<ul><li>Internal changes only.</li>
+<ul><li><p>Enable BLOB tests for arrow &gt;= 10.0.0 (<a href="https://github.com/r-dbi/DBI/issues/395" class="external-link">#395</a>).</p></li>
+<li><p>Run DBItest for SQLite as part of the checks here (<a href="https://github.com/r-dbi/DBI/issues/431" class="external-link">#431</a>).</p></li>
+<li><p>Fix checks without suggested packages (<a href="https://github.com/r-dbi/DBI/issues/420" class="external-link">#420</a>).</p></li>
+<li><p>Fix Windows tests on GHA (<a href="https://github.com/r-dbi/DBI/issues/406" class="external-link">#406</a>).</p></li>
+<li><p><code>testthat::use_testthat(3)</code> (<a href="https://github.com/r-dbi/DBI/issues/416" class="external-link">#416</a>).</p></li>
 </ul></div>
 </div>
     <div class="section level2">
