@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.1.99.9001 (2023-12-20)
+
+## Chore
+
+- `dbUnquoteIdentifier()` fails with character vectors containing `NA`.
+
+  CC @hadley
+
+
 # DBI 1.1.99.9000 (2023-12-20)
 
 ## Bug fixes
