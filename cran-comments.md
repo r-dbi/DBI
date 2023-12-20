@@ -1,3 +1,5 @@
+Resubmission.
+
 DBI 1.2.0
 
 ## R CMD check results
