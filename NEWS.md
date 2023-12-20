@@ -2,64 +2,47 @@
 
 # DBI 1.2.0 (2023-12-20)
 
-## Bug fixes
+## Breaking changes
 
-- Return original result set invisibly from `dbBind()` (#435).
-- Avoid collate altogether.
-- Don't collate zzz.R.
+- `dbUnquoteIdentifier()` creates `Id()` objects without component names  and allows non-`NA` character input (#421, #422).
+
 
 ## Features
 
-- `dbUnquoteIdentifier()` creates `Id()` objects without component names (#421, #422).
-- New `dbBindArrow()` to support passing nanoarrow streams for parameter binding (#415).
-- Better default `dbFetchArrow()` regarding corner cases and schema inference (#434).
-- Arrange the `DBI::Id()` object in SQL order (@eauleaf, #427).
+- New generics `dbSendQueryArrow()`, `dbFetchArrow()`, `dbGetQueryArrow()`, `dbReadTableArrow()`, `dbWriteTableArrow()`  (@nbenn, #390),  `dbCreateTableArrow()`, `dbAppendTableArrow()` (#396),
+`dbBindArrow()` (#415) and `dbFetchArrowChunk()` (#424), with default implementations via nanoarrow (#414).
+
+- `Id()` now accepts unnamed components (#417). If names are provided, the components are arranged in SQL order (@eauleaf, #427).
+
 - New `dbIsValid()` method for `"DBIResultArrowDefault"` objects implemented by DBI (#425).
-- New `dbFetchArrowChunk()` generic with different semantics (#424).
-- `Id()` now accepts unnamed components (#417).
-- Switch to nanoarrow (#414).
-- Enable BLOB tests for arrow \>= 10.0.0 (#395).
-- `dbAppendTableArrow()` silences warnings about converting factors to character
-- `dbWriteTableArrow()` returns invisibly
-- Implement `dbiDataType()` for objects of class `"blob"`
-- New `dbCreateTableArrow()` and `dbAppendTableArrow()` (#396).
-- New generics to support Arrow-compatible backends (@nbenn, #390).
 
-## Chore
-
-- `dbUnquoteIdentifier()` fails with character vectors containing `NA`.
-  CC @hadley
-- `dbBind()` for `DBIResultArrow` passes `params` as is (#436).
-- Rename files (#433).
-- Test with dev version of DBItest (#432).
-- Add Aviator configuration.
-- Install nanoarrow from CRAN.
-- Fix lazytest, upstream: https://github.com/r-lib/pkgload/issues/247.
-- Rename Stream to Arrow (#407).
-- `dbSendQueryArrow()` -\> `dbSendQueryArrow()`, `ResultArrow|ArrowResult -> ResultArrow` (#397).
-
-## Continuous integration
-
-- Fix Windows tests on GHA (#406).
+- Implement `dbiDataType()` for objects of class `"blob"`.
 
 ## Documentation
 
-- Update template (@maelle, #428, #438, #437).
+- Update pkgdown template (@maelle, #428, #438, #437).
+
 - Clarify repeated parameter binding (#430).
+
 - Deal with sundown of `https://relational.fit.cvut.cz` (#423).
+
 - Correct vignette titles (#419).
+
 - Harmonize table documentation (#400).
-- Tweak typo, add families for data retrieval and command execution
+
+- Tweak typo, add families for data retrieval and command execution.
 
 ## Testing
 
+- Enable BLOB tests for arrow \>= 10.0.0 (#395).
+
 - Run DBItest for SQLite as part of the checks here (#431).
+
 - Fix checks without suggested packages (#420).
-- `use_testthat(3)` (#416).
 
-## Uncategorized
+- Fix Windows tests on GHA (#406).
 
-- Internal changes only.
+- `testthat::use_testthat(3)` (#416).
 
 
 # DBI 1.1.3 (2022-06-18)
