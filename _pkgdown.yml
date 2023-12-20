@@ -95,6 +95,11 @@ reference:
   - '`DBIConnector-class`'
   - '`Id-class`'
 
+- title: Data
+  desc: S4 classes defined by DBI.
+  contents:
+  - '`.SQL92Keywords`'
+
 articles:
 - title: Tutorials
   contents:
