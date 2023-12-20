@@ -1,206 +1,48 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# DBI 1.1.99.9001 (2023-12-20)
+# DBI 1.2.0 (2023-12-20)
 
-## Chore
+## Breaking changes
 
-- `dbUnquoteIdentifier()` fails with character vectors containing `NA`.
+- `dbUnquoteIdentifier()` creates `Id()` objects without component names  and allows non-`NA` character input (#421, #422).
 
-  CC @hadley
-
-
-# DBI 1.1.99.9000 (2023-12-20)
-
-## Bug fixes
-
-- Return original result set invisibly from `dbBind()` (#435).
 
 ## Features
 
-- `dbUnquoteIdentifier()` creates `Id()` objects without component names (#421, #422).
+- New generics `dbSendQueryArrow()`, `dbFetchArrow()`, `dbGetQueryArrow()`, `dbReadTableArrow()`, `dbWriteTableArrow()`  (@nbenn, #390),  `dbCreateTableArrow()`, `dbAppendTableArrow()` (#396),
+`dbBindArrow()` (#415) and `dbFetchArrowChunk()` (#424), with default implementations via nanoarrow (#414).
 
-- New `dbBindArrow()` to support passing nanoarrow streams for parameter binding (#415).
-
-- Better default `dbFetchArrow()` regarding corner cases and schema inference (#434).
-
-## Chore
-
-- `dbBind()` for `DBIResultArrow` passes `params` as is (#436).
-
-- Rename files (#433).
-
-## Documentation
-
-- Update template (@maelle, #428, #438, #437).
-
-
-# DBI 1.1.3.9017 (2023-12-17)
-
-## Features
-
-- Arrange the `DBI::Id()` object in SQL order (@eauleaf, #427).
-
-## Chore
-
-- Test with dev version of DBItest (#432).
-
-## Documentation
-
-- Clarify repeated parameter binding (#430).
-
-## Testing
-
-- Run DBItest for SQLite as part of the checks here (#431).
-
-
-# DBI 1.1.3.9016 (2023-11-22)
-
-## Features
+- `Id()` now accepts unnamed components (#417). If names are provided, the components are arranged in SQL order (@eauleaf, #427).
 
 - New `dbIsValid()` method for `"DBIResultArrowDefault"` objects implemented by DBI (#425).
 
-- New `dbFetchArrowChunk()` generic with different semantics (#424).
-
-
-# DBI 1.1.3.9015 (2023-11-20)
+- Implement `dbiDataType()` for objects of class `"blob"`.
 
 ## Documentation
 
-- Deal with sundown of <https://relational.fit.cvut.cz> (#423).
+- Update pkgdown template (@maelle, #428, #438, #437).
 
+- Clarify repeated parameter binding (#430).
 
-# DBI 1.1.3.9014 (2023-11-09)
-
-## Features
-
-- `Id()` now accepts unnamed components (#417).
-
-
-# DBI 1.1.3.9013 (2023-11-08)
-
-## Chore
-
-- Add Aviator configuration.
-
-## Documentation
+- Deal with sundown of `https://relational.fit.cvut.cz` (#423).
 
 - Correct vignette titles (#419).
 
+- Harmonize table documentation (#400).
+
+- Tweak typo, add families for data retrieval and command execution.
+
 ## Testing
+
+- Enable BLOB tests for arrow \>= 10.0.0 (#395).
+
+- Run DBItest for SQLite as part of the checks here (#431).
 
 - Fix checks without suggested packages (#420).
 
-- `use_testthat(3)` (#416).
-
-
-# DBI 1.1.3.9012 (2023-10-09)
-
-- Internal changes only.
-
-
-# DBI 1.1.3.9011 (2023-08-27)
-
-## Chore
-
-- Install nanoarrow from CRAN.
-
-
-# DBI 1.1.3.9010 (2023-06-20)
-
-## Bug fixes
-
-- Avoid collate altogether.
-
-- Don't collate zzz.R.
-
-## Features
-
-- Switch to nanoarrow (#414).
-
-## Chore
-
-- Fix lazytest, upstream: https://github.com/r-lib/pkgload/issues/247.
-
-
-# DBI 1.1.3.9009 (2023-03-24)
-
-- Internal changes only.
-
-
-# DBI 1.1.3.9008 (2023-02-17)
-
-- Internal changes only.
-
-
-# DBI 1.1.3.9007 (2022-12-30)
-
-- Internal changes only.
-
-
-# DBI 1.1.3.9006 (2022-12-26)
-
-- Internal changes only.
-
-
-# DBI 1.1.3.9005 (2022-12-24)
-
-## Continuous integration
-
 - Fix Windows tests on GHA (#406).
 
-
-# DBI 1.1.3.9004 (2022-12-21)
-
-## Chore
-
-- Rename Stream to Arrow (#407).
-
-## Features
-
-- Enable BLOB tests for arrow >= 10.0.0 (#395).
-
-
-## Documentation
-
-- Harmonize table documentation (#400).
-
-
-# DBI 1.1.3.9003 (2022-10-19)
-
-## Features
-
-- `dbAppendTableArrow()` silences warnings about converting factors to character
-
-- `dbWriteTableArrow()` returns invisibly
-
-- Implement `dbiDataType()` for objects of class `"blob"`
-
-
-# DBI 1.1.3.9002 (2022-10-03)
-
-## Features
-
-- New `dbCreateTableArrow()` and `dbAppendTableArrow()` (#396).
-
-## Chore
-
-- `dbSendQueryArrow()` -> `dbSendQueryArrow()`, `ResultArrow|ArrowResult -> ResultArrow` (#397).
-
-
-# DBI 1.1.3.9001 (2022-09-29)
-
-## Features
-
-- New generics to support Arrow-compatible backends (@nbenn, #390).
-
-## Documentation
-
-- Tweak typo, add families for data retrieval and command execution
-
-
-# DBI 1.1.3.9000 (2022-06-18)
-
-- Internal changes only.
+- `testthat::use_testthat(3)` (#416).
 
 
 # DBI 1.1.3 (2022-06-18)

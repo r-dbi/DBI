@@ -21,95 +21,100 @@ reference:
 - title: Connecting and disconnecting
   desc: Connecting to and disconnecting from databases.
   contents:
-  - '`dbConnect`'
-  - '`dbDisconnect`'
-  - '`dbCanConnect`'
-  - '`dbGetInfo`'
-  - '`dbIsValid`'
-  - '`dbIsReadOnly`'
-  - '`DBIConnector-class`'
-  - '`dbGetConnectArgs`'
+  - dbConnect
+  - dbDisconnect
+  - dbCanConnect
+  - dbGetInfo
+  - dbIsValid
+  - dbIsReadOnly
+  - DBIConnector-class
+  - dbGetConnectArgs
 
 - title: Tables
   desc: Reading and writing entire tables.
   contents:
-  - '`dbReadTable`'
-  - '`dbWriteTable`'
-  - '`dbCreateTable`'
-  - '`dbAppendTable`'
-  - '`dbRemoveTable`'
-  - '`dbListTables`'
-  - '`dbListFields`'
-  - '`dbExistsTable`'
-  - '`dbListObjects`'
-  - '`rownames`'
+  - dbReadTable
+  - dbWriteTable
+  - dbCreateTable
+  - dbAppendTable
+  - dbRemoveTable
+  - dbListTables
+  - dbListFields
+  - dbExistsTable
+  - dbListObjects
+  - rownames
 
 - title: Queries and statements
   desc: Sending queries and executing statements.
   contents:
-  - '`dbGetQuery`'
-  - '`dbExecute`'
+  - dbGetQuery
+  - dbExecute
 
 - title: Results
   desc: More control for sending queries and executing statements.
   contents:
-  - '`dbSendQuery`'
-  - '`dbSendStatement`'
-  - '`dbBind`'
-  - '`dbFetch`'
-  - '`dbGetRowCount`'
-  - '`dbGetRowsAffected`'
-  - '`dbGetStatement`'
-  - '`dbHasCompleted`'
-  - '`dbColumnInfo`'
-  - '`dbClearResult`'
+  - dbSendQuery
+  - dbSendStatement
+  - dbBind
+  - dbFetch
+  - dbGetRowCount
+  - dbGetRowsAffected
+  - dbGetStatement
+  - dbHasCompleted
+  - dbColumnInfo
+  - dbClearResult
 
 - title: Transactions
   desc: Ensuring multiple statements are executed together, or not at all.
   contents:
-  - '`transactions`'
-  - '`dbWithTransaction`'
+  - transactions
+  - dbWithTransaction
 
 - title: SQL
   desc: Tools for creating and parsing SQL queries.
   contents:
-  - '`SQL`'
-  - '`dbDataType`'
-  - '`dbQuoteIdentifier`'
-  - '`dbQuoteLiteral`'
-  - '`dbQuoteString`'
-  - '`sqlCreateTable`'
-  - '`sqlAppendTable`'
-  - '`sqlData`'
-  - '`dbUnquoteIdentifier`'
-  - '`sqlInterpolate`'
+  - SQL
+  - dbDataType
+  - dbQuoteIdentifier
+  - dbQuoteLiteral
+  - dbQuoteString
+  - sqlCreateTable
+  - sqlAppendTable
+  - sqlData
+  - dbUnquoteIdentifier
+  - sqlInterpolate
 
 - title: Classes
   desc: S4 classes defined by DBI.
   contents:
-  - '`DBI-package`'
-  - '`DBIObject-class`'
-  - '`DBIDriver-class`'
-  - '`DBIConnection-class`'
-  - '`DBIResult-class`'
-  - '`DBIConnector-class`'
-  - '`Id-class`'
+  - DBI-package
+  - DBIObject-class
+  - DBIDriver-class
+  - DBIConnection-class
+  - DBIResult-class
+  - DBIConnector-class
+  - Id-class
+
+- title: Data
+  desc: S4 classes defined by DBI.
+  contents:
+  - .SQL92Keywords
 
 articles:
 - title: Tutorials
   contents:
-  - '`DBI`'
-  - '`DBI-advanced`'
-  - '`DBI-arrow`'
-  - '`backend`'
+  - DBI
+  - DBI-advanced
+  - DBI-arrow
+  - backend
 - title: Specification
   contents:
-  - '`spec`'
+  - spec
 - title: Historic
   contents:
-  - '`DBI-proposal`'
-  - '`DBI-history`'
-  - '`DBI-1`'
+  - DBI-proposal
+  - DBI-history
+  - DBI-1
 
 development:
   mode: auto

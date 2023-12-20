@@ -1,6 +1,6 @@
 Package: DBI
 Title: R Database Interface
-Version: 1.1.99.9001
+Version: 1.2.0
 Date: 2023-12-20
 Authors@R: c(
     person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
@@ -40,8 +40,6 @@ Suggests:
     xml2
 VignetteBuilder: 
     knitr
-Remotes: 
-    r-dbi/DBItest
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
