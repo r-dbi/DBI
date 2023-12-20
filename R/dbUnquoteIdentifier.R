@@ -26,13 +26,9 @@
 #'
 #' # The returned object is always a list,
 #' # also for Id objects
-#' dbUnquoteIdentifier(
-#'   ANSI(),
-#'   Id(catalog = "Catalog", schema = "Schema", table = "Table")
-#' )
+#' dbUnquoteIdentifier(ANSI(), Id("Catalog", "Schema", "Table"))
 #'
-#' # Quoting is the inverse operation to unquoting the elements
-#' # of the returned list
+#' # Quoting and unquoting are inverses
 #' dbQuoteIdentifier(
 #'   ANSI(),
 #'   dbUnquoteIdentifier(ANSI(), SQL("UnqualifiedTable"))[[1]]
@@ -40,7 +36,7 @@
 #'
 #' dbQuoteIdentifier(
 #'   ANSI(),
-#'   dbUnquoteIdentifier(ANSI(), Id(schema = "Schema", table = "Table"))[[1]]
+#'   dbUnquoteIdentifier(ANSI(), Id("Schema", "Table"))[[1]]
 #' )
 setGeneric("dbUnquoteIdentifier",
   def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
