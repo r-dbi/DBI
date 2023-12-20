@@ -7,7 +7,7 @@
 
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage
-Status](https://codecov.io/gh/r-dbi/DBI/branch/master/graph/badge.svg)](https://codecov.io/github/r-dbi/DBI?branch=master)
+Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://app.codecov.io/github/r-dbi/DBI?branch=main)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best
 Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
@@ -158,12 +158,12 @@ instead must be subclassed.
     recent developments are presented.
 
 -   [A history of
-    DBI](https://r-dbi.github.io/DBI/articles/DBI-history.html) by David
+    DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David
     James, the driving force behind the development of DBI, and many of
     the packages that implement it.
 
 ------------------------------------------------------------------------
 
 Please note that the *DBI* project is released with a [Contributor Code
-of Conduct](https://dbi.r-dbi.org/code_of_conduct). By contributing to
+of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html). By contributing to
 this project, you agree to abide by its terms.

@@ -46,7 +46,7 @@
 
 - Update template (@maelle, #428, #438, #437).
 - Clarify repeated parameter binding (#430).
-- Deal with sundown of <https://relational.fit.cvut.cz> (#423).
+- Deal with sundown of `https://relational.fit.cvut.cz` (#423).
 - Correct vignette titles (#419).
 - Harmonize table documentation (#400).
 - Tweak typo, add families for data retrieval and command execution

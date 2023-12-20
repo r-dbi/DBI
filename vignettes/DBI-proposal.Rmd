@@ -498,7 +498,7 @@ The ODBC protocol was developed by Microsoft to allow connectivity among
 C/C++ applications and RDBMS. As you would expect, originally
 implementations of the ODBC were only available under Windows
 environments. There are various effort to create a Unix implementation
-(see [the Unix ODBC](http://www.unixodbc.org/) web-site and @odbc.lj).
+(see [the Unix ODBC](https://www.unixodbc.org/) web-site and @odbc.lj).
 This approach looks promising because it allows us to write only one
 back-end, instead of one per RDBMS. Since most RDBMS already provide
 ODBC drivers, this could greatly simplify development. Unfortunately,
@@ -541,7 +541,7 @@ The latest documentation and software on the RS-DBI was available at
 www.omegahat.net (link dead now: `https://www.omegahat.net/contrib/RS-DBI/index.html`).
 The R community has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
-interface to the [mSQL](https://www.Hughes.com.au) database written by
+interface to the [mSQL](https://www.hughes.com.au/) database written by
 Torsten Hothorn; [RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
 interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
 Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
@@ -561,7 +561,7 @@ The idea of a common interface to databases has been successfully
 implemented in Java’s Database Connectivity (JDBC)
 ([www.javasoft.com](https://docs.oracle.com/javase/8/docs/technotes/guides/jdbc/)),
 in C through the Open Database Connectivity (ODBC)
-([www.unixodbc.org](http://www.unixodbc.org/)), in Python’s
+([www.unixodbc.org](https://www.unixodbc.org/)), in Python’s
 Database Application Programming Interface
 ([www.python.org](https://www.python.org)), and in Perl’s Database
 Interface ([www.cpan.org](https://www.cpan.org)).
