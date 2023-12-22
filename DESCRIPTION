@@ -51,7 +51,7 @@ Config/Needs/website:
     AzureKusto,
     bigrquery,
     DatabaseConnector,
-    maelle/dbitemplate,
+    r-dbi/dbitemplate,
     dittodb,
     duckdb,
     implyr,
