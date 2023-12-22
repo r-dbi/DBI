@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9002 (2023-12-22)
+
+## Chore
+
+- Change maintainer e-mail.
+
+  Revert "Back to the auto-check train"
+
+  This reverts commit 53c84f4466aa727f39775ac4d272645e19d20400.
+
+
 # DBI 1.2.0.9001 (2023-12-21)
 
 - Merge branch 'cran-1.2.0'.
