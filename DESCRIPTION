@@ -30,7 +30,7 @@ Suggests:
     hms,
     knitr,
     magrittr,
-    nanoarrow,
+    nanoarrow (>= 0.3.0.1),
     RMariaDB,
     rmarkdown,
     rprojroot,

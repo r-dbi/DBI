@@ -206,7 +206,7 @@ dbClearResult(rs)
 
 dbDisconnect(con)
 \dontshow{\}) # examplesIf}
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE) && packageVersion("nanoarrow") >= "0.1.0.2") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
