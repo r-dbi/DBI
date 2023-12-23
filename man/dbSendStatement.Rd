@@ -222,7 +222,8 @@ Other DBIConnection generics:
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 
 Other command execution generics: 
 \code{\link{dbBind}()},

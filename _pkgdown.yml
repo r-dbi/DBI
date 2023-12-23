@@ -81,6 +81,7 @@ reference:
   desc: Returning and sending data in the Arrow format.
   contents:
   - dbReadTableArrow
+  - dbWriteTableArrow
 
 - title: Classes
   desc: S4 classes defined by DBI.

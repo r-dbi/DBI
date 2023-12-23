@@ -4,12 +4,15 @@
 #' converting row names to a column and specifying SQL data types for fields.
 #'
 #' @details
+#' This function expects a data frame.
+#' Use [dbWriteTableArrow()] to write an Arrow object.
+#'
 #' This function is useful if you want to create and load a table at the same time.
 #' Use [dbAppendTable()] or [dbAppendTableArrow()] for appending data to an existing
 #' table, [dbCreateTable()] or [dbCreateTableArrow()] for creating a table,
 #' and [dbExistsTable()] and [dbRemoveTable()] for overwriting tables.
 #'
-#' DBI only standardizes writing data frames and `ArrowTabular` objects.
+#' DBI only standardizes writing data frames with `dbWriteTable()`.
 #' Some backends might implement methods that can consume CSV files
 #' or other data formats.
 #' For details, see the documentation for the individual methods.
@@ -24,8 +27,7 @@
 #'
 #' @inheritParams dbGetQuery
 #' @inheritParams dbReadTable
-#' @param value For `dbWriteTable()`, a [data.frame] (or coercible to data.frame).
-#'   For `dbWriteTableArrow()`, an object coercible to an Arrow RecordBatchReader.
+#' @param value A [data.frame] (or coercible to data.frame).
 #' @family DBIConnection generics
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)

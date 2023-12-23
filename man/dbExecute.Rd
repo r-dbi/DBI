@@ -170,7 +170,8 @@ Other DBIConnection generics:
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 
 Other command execution generics: 
 \code{\link{dbBind}()},
