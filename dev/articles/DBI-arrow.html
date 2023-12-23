@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9002</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -127,7 +127,7 @@ backends</p></li>
 <li>
 <p>New generics:</p>
 <ul>
-<li><code><a href="../reference/dbReadTable.html">dbReadTableArrow()</a></code></li>
+<li><code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code></li>
 <li><code><a href="../reference/dbCreateTable.html">dbCreateTableArrow()</a></code></li>
 <li><code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code></li>
 <li><code><a href="../reference/dbGetQuery.html">dbGetQueryArrow()</a></code></li>
@@ -166,13 +166,13 @@ backends</p></li>
 <h2 id="read-all-rows-from-a-table">Read all rows from a table<a class="anchor" aria-label="anchor" href="#read-all-rows-from-a-table"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
 <span><span class="co">##  $ get_schema:function ()  </span></span>
 <span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
 <span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span>

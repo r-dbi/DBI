@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9002</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -2065,13 +2065,11 @@ query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIde
 </div>
 </div>
 <div class="section level2 container">
-<h2 id="copy-data-frames-from-database-tables">Copy data frames from database tables<a class="anchor" aria-label="anchor" href="#copy-data-frames-from-database-tables"></a>
+<h2 id="read-database-tables-as-data-frames">Read database tables as data frames<a class="anchor" aria-label="anchor" href="#read-database-tables-as-data-frames"></a>
 </h2>
-<p>This section describes the behavior of the following methods:</p>
+<p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-12">Description<a class="anchor" aria-label="anchor" href="#description-12"></a>
 </h3>
@@ -2220,15 +2218,6 @@ non-scalar. Unsupported values for <code>row.names</code> and
 <span></span>
 <span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Read data as Arrow table</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
