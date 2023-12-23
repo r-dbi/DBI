@@ -2167,6 +2167,12 @@ more quoting is done</p></li>
 </ul>
 </div>
 <div class="section level3">
+<h3 id="details-7">Details<a class="anchor" aria-label="anchor" href="#details-7"></a>
+</h3>
+<p>This function returns a data frame. Use
+<code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code> to obtain an Arrow object.</p>
+</div>
+<div class="section level3">
 <h3 id="value-12">Value<a class="anchor" aria-label="anchor" href="#value-12"></a>
 </h3>
 <p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the
@@ -2419,7 +2425,7 @@ natural row names.</p></li>
 <p>The default is <code>row.names = FALSE</code>.</p>
 </div>
 <div class="section level3">
-<h3 id="details-7">Details<a class="anchor" aria-label="anchor" href="#details-7"></a>
+<h3 id="details-8">Details<a class="anchor" aria-label="anchor" href="#details-8"></a>
 </h3>
 <p>This function is useful if you want to create and load a table at the
 same time. Use <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code> or
@@ -3449,7 +3455,7 @@ write operations to multiple tables.</p>
 </tbody></table>
 </div>
 <div class="section level3">
-<h3 id="details-8">Details<a class="anchor" aria-label="anchor" href="#details-8"></a>
+<h3 id="details-9">Details<a class="anchor" aria-label="anchor" href="#details-9"></a>
 </h3>
 <p>Not all database engines implement transaction management, in which
 case these methods should not be implemented for the specific
@@ -3573,7 +3579,7 @@ can be called only inside <code><a href="../reference/dbWithTransaction.html">db
 </tbody></table>
 </div>
 <div class="section level3">
-<h3 id="details-9">Details<a class="anchor" aria-label="anchor" href="#details-9"></a>
+<h3 id="details-10">Details<a class="anchor" aria-label="anchor" href="#details-10"></a>
 </h3>
 <p>DBI implements <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>, backends should need
 to override this generic only if they implement specialized
