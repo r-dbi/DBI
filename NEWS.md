@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9003 (2023-12-23)
+
+## Documentation
+
+- Use dbitemplate (@maelle, #442).
+
+
 # DBI 1.2.0.9002 (2023-12-22)
 
 ## Chore
