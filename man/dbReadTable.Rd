@@ -133,6 +133,7 @@ Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
 \code{\link{dbDisconnect}()},
 \code{\link{dbExecute}()},

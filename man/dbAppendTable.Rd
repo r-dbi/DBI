@@ -166,6 +166,7 @@ dbDisconnect(con)
 Other DBIConnection generics: 
 \code{\link{DBIConnection-class}},
 \code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
 \code{\link{dbDisconnect}()},
 \code{\link{dbExecute}()},
