@@ -134,7 +134,7 @@ backends</p></li>
 <li><code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code></li>
 <li><code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code></li>
 <li><code><a href="../reference/dbFetch.html">dbFetchArrowChunk()</a></code></li>
-<li><code><a href="../reference/dbWriteTable.html">dbWriteTableArrow()</a></code></li>
+<li><code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code></li>
 </ul>
 </li>
 <li>
@@ -265,7 +265,7 @@ backends</p></li>
 </h2>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
