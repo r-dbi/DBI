@@ -88,31 +88,14 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code><a href="dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the complete data
-from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code></p>
+<p><code>dbReadTableArrow()</code> returns a data frame that contains the complete data
+from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQueryArrow()</a></code></p>
 
 
 <p>with <code>SELECT * FROM &lt;name&gt;</code>.</p>
 
 
 <p>An empty table is returned as a data frame with zero rows.</p>
-
-
-<p>The presence of <a href="rownames.html">rownames</a> depends on the <code>row.names</code> argument,
-see <code><a href="rownames.html">sqlColumnToRownames()</a></code> for details:</p><ul><li><p>If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn't have row names.</p></li>
-<li><p>If <code>TRUE</code>, a column named "row_names" is converted to row names.</p></li>
-</ul><ul><li><p>If <code>NA</code>, a column named "row_names" is converted to row names if it exists,
-otherwise no translation occurs.</p></li>
-<li><p>If a string, this specifies the name of the column in the remote table
-that contains the row names.</p></li>
-</ul><p>The default is <code>row.names = FALSE</code>.</p>
-
-
-<p>If the database supports identifiers with special characters,
-the columns in the returned data frame are converted to valid R
-identifiers
-if the <code>check.names</code> argument is <code>TRUE</code>,
-If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.</p>
     </div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
@@ -121,32 +104,11 @@ If <code>check.names = FALSE</code>, the returned table has non-syntactic column
 
 <p>An error is raised if the table does not exist.</p>
 
-<p>An error is raised if <code>row.names</code> is <code>TRUE</code> and no "row_names" column exists,</p>
-
-<p>An error is raised if <code>row.names</code> is set to a string and no corresponding column exists.</p>
-
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is raised
 if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
-or if this results in a non-scalar.
-Unsupported values for <code>row.names</code> and <code>check.names</code>
-(non-scalars,
-unsupported data types,
-<code>NA</code> for <code>check.names</code>)
-also raise an error.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="additional-arguments">Additional arguments<a class="anchor" aria-label="anchor" href="#additional-arguments"></a></h2>
-    
-
-
-<p>The following arguments are not part of the <code><a href="dbReadTable.html">dbReadTable()</a></code> generic
-(to improve compatibility across backends)
-but are part of the DBI specification:</p><ul><li><p><code>row.names</code> (default: <code>FALSE</code>)</p></li>
-<li><p><code>check.names</code></p></li>
-</ul><p>They must be provided as named arguments.
-See the "Value" section for details on their usage.</p>
+or if this results in a non-scalar.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
@@ -154,7 +116,7 @@ See the "Value" section for details on their usage.</p>
 
 
 <p>The <code>name</code> argument is processed as follows,
-to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code><a href="dbReadTable.html">dbReadTable()</a></code> will do the
+to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbReadTableArrow()</code> will do the
 quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
