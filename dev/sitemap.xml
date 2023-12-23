@@ -79,6 +79,9 @@
     <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTable.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbBind.html</loc>
   </url>
   <url>

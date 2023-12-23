@@ -101,7 +101,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 Convert a data frame to an Arrow object with <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code> or
 use <code><a href="dbWriteTable.html">dbWriteTable()</a></code> to write a data frame.</p>
 <p>This function is useful if you want to create and load a table at the same time.
-Use <code><a href="dbAppendTable.html">dbAppendTableArrow()</a></code> for appending data to an existing
+Use <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> for appending data to an existing
 table, <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> for creating a table and specifying field types,
 and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code> for overwriting tables.</p>
     </div>
@@ -215,6 +215,7 @@ input time zone)</p></li>
     <div class="dont-index"><p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
 <code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
