@@ -127,14 +127,14 @@ backends</p></li>
 <li>
 <p>New generics:</p>
 <ul>
-<li><code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code></li>
-<li><code><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow()</a></code></li>
-<li><code><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow()</a></code></li>
+<li><code><a href="../reference/dbReadTable.html">dbReadTableArrow()</a></code></li>
+<li><code><a href="../reference/dbCreateTable.html">dbCreateTableArrow()</a></code></li>
+<li><code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code></li>
 <li><code><a href="../reference/dbGetQuery.html">dbGetQueryArrow()</a></code></li>
 <li><code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code></li>
 <li><code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code></li>
 <li><code><a href="../reference/dbFetch.html">dbFetchArrowChunk()</a></code></li>
-<li><code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code></li>
+<li><code><a href="../reference/dbWriteTable.html">dbWriteTableArrow()</a></code></li>
 </ul>
 </li>
 <li>
@@ -166,13 +166,13 @@ backends</p></li>
 <h2 id="read-all-rows-from-a-table">Read all rows from a table<a class="anchor" aria-label="anchor" href="#read-all-rows-from-a-table"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
 <span><span class="co">##  $ get_schema:function ()  </span></span>
 <span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
 <span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span>
@@ -265,7 +265,7 @@ backends</p></li>
 </h2>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
@@ -276,12 +276,12 @@ backends</p></li>
 </h2>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbCreateTable.html">dbCreateTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbAppendTable.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &gt;= 3"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbAppendTable.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span><span class="op">)</span></span></code></pre></div>
