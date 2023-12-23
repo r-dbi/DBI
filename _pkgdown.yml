@@ -83,6 +83,7 @@ reference:
   - dbReadTableArrow
   - dbWriteTableArrow
   - dbCreateTableArrow
+  - dbAppendTableArrow
 
 - title: Classes
   desc: S4 classes defined by DBI.

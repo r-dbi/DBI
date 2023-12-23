@@ -25,6 +25,7 @@ functionality.
 Other DBIConnection generics: 
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
+\code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},
 \code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
