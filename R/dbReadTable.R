@@ -1,8 +1,13 @@
-#' Copy data frames from database tables
+#' Read database tables as data frames
 #'
 #' Reads a database table to a data frame, optionally converting
 #' a column to row names and converting the column names to valid
 #' R identifiers.
+#' Use [dbReadTableArrow()] instead to obtain an Arrow object.
+#'
+#' @details
+#' This function returns a data frame.
+#' Use [dbReadTableArrow()] to obtain an Arrow object.
 #'
 #' @template methods
 #' @templateVar method_name dbReadTable

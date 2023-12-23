@@ -77,6 +77,11 @@ reference:
   - dbUnquoteIdentifier
   - sqlInterpolate
 
+- title: Arrow
+  desc: Returning and sending data in the Arrow format.
+  contents:
+  - dbReadTableArrow
+
 - title: Classes
   desc: S4 classes defined by DBI.
   contents:

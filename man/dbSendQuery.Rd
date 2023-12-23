@@ -239,6 +239,7 @@ Other DBIConnection generics:
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
 \code{\link{dbReadTable}()},
+\code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendStatement}()},
 \code{\link{dbWriteTable}()}
