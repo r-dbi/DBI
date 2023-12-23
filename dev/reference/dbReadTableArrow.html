@@ -98,6 +98,12 @@ from the remote table, effectively the result of calling <code><a href="dbGetQue
 <p>An empty table is returned as a data frame with zero rows.</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>This function returns an Arrow object.
+Convert it to a data frame with <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code> or
+use <code><a href="dbReadTable.html">dbReadTable()</a></code> to obtain a data frame.</p>
+    </div>
+    <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
     
 
