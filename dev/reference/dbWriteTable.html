@@ -194,7 +194,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 Use <code><a href="dbWriteTableArrow.html">dbWriteTableArrow()</a></code> to write an Arrow object.</p>
 <p>This function is useful if you want to create and load a table at the same time.
 Use <code><a href="dbAppendTable.html">dbAppendTable()</a></code> or <code><a href="dbAppendTable.html">dbAppendTableArrow()</a></code> for appending data to an existing
-table, <code><a href="dbCreateTable.html">dbCreateTable()</a></code> or <code><a href="dbCreateTable.html">dbCreateTableArrow()</a></code> for creating a table,
+table, <code><a href="dbCreateTable.html">dbCreateTable()</a></code> or <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> for creating a table,
 and <code><a href="dbExistsTable.html">dbExistsTable()</a></code> and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code> for overwriting tables.</p>
 <p>DBI only standardizes writing data frames with <code>dbWriteTable()</code>.
 Some backends might implement methods that can consume CSV files
@@ -329,6 +329,7 @@ even if the input data frame only has natural row names.</p></li>
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,

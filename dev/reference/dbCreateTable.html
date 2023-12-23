@@ -73,7 +73,7 @@ RPresto::dbCreateTable(&quot;PrestoConnection&quot;)
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Create a table in the database</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/12-dbCreateTable.R" class="external-link"><code>R/12-dbCreateTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/22-dbCreateTableArrow.R" class="external-link"><code>R/22-dbCreateTableArrow.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/12-dbCreateTable.R" class="external-link"><code>R/12-dbCreateTable.R</code></a></small>
       <div class="d-none name"><code>dbCreateTable.Rd</code></div>
     </div>
 
@@ -94,9 +94,7 @@ override this method.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbCreateTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">fields</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbCreateTableArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbCreateTable</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">fields</span>, <span class="va">...</span>, row.names <span class="op">=</span> <span class="cn">NULL</span>, temporary <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -135,10 +133,6 @@ Field types are unescaped.</p>
 
 <dt>temporary</dt>
 <dd><p>If <code>TRUE</code>, will generate a temporary table statement.</p></dd>
-
-
-<dt>value</dt>
-<dd><p>An object coercible to an Arrow RecordBatchReader.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -215,6 +209,7 @@ raise an error.</p>
     <div class="dont-index"><p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
