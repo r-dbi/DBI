@@ -221,7 +221,7 @@ to ensure that this step is always executed.</p></li>
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as an Arrow stream.</p>
 <p>Most of this flow, except repeated calling of <code>dbBindArrow()</code> or <code>dbBind()</code>,
-is implemented by <code><a href="dbGetQuery.html">dbGetQueryArrow()</a></code>,
+is implemented by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>,
 which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
@@ -387,6 +387,7 @@ and with the value stored as integer)</p></li>
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p>
 <p>Other command execution generics: 
