@@ -144,7 +144,7 @@ This step is mandatory for all objects obtained by calling
 <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-or <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
+or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
     </div>
     <div class="section level2">
     <h2 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a></h2>
@@ -217,7 +217,7 @@ to ensure that this step is always executed.</p></li>
 <p>An attempt to close an already closed result set issues a warning
 for <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-and <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
+and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
@@ -253,7 +253,8 @@ The DBI backend can expect a call to <code>dbClearResult()</code> for each
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,

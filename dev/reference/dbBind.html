@@ -99,7 +99,7 @@ sparklyr::dbBind("DBISparkResult")
 
     <div class="ref-description section level2">
     <p>For parametrized or prepared statements,
-the <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>, and <code><a href="dbSendStatement.html">dbSendStatement()</a></code> functions
+the <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, and <code><a href="dbSendStatement.html">dbSendStatement()</a></code> functions
 can be called with statements that contain placeholders for values.
 The <code>dbBind()</code> and <code>dbBindArrow()</code> functions bind these placeholders
 to actual values,
@@ -109,7 +109,7 @@ The values are passed to <code>dbBind()</code> as lists or data frames,
 and to <code>dbBindArrow()</code> as a stream
 created by <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.
 This works in all combinations.
-<code><a href="dbSendQuery.html">dbSendQuery()</a></code> is compatible with <code>dbBindArrow()</code>, and <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>
+<code><a href="dbSendQuery.html">dbSendQuery()</a></code> is compatible with <code>dbBindArrow()</code>, and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>
 is compatible with <code>dbBind()</code>.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBind("BigQueryResult")</a></code></p></li>
@@ -152,7 +152,7 @@ with one column per query parameter.</p></dd>
 
 <p><code>dbBind()</code> returns the result set,
 invisibly,
-for queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code></p>
+for queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code></p>
 
 
 <p>and also for data manipulation statements issued by
@@ -225,7 +225,7 @@ is implemented by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></co
 which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
-See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> to create a result set object of class
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object of class
 <a href="DBIResult-class.html">DBIResultArrow</a>.</p></li>
 <li><p>Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
 This is required only if the query contains placeholders
@@ -296,7 +296,7 @@ also raises an error.</p>
     
 
 
-<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
 with a query or statement that contains placeholders,
 store the returned <a href="DBIResult-class.html">DBIResult</a> object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
@@ -389,7 +389,8 @@ and with the value stored as integer)</p></li>
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -439,7 +440,7 @@ and with the value stored as integer)</p></li>
 <span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using the same query for different values</span></span></span>
-<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQueryArrow.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">dbBindArrow</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">iris_result</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fl">2.3</span>, fix.empty.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>

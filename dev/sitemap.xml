@@ -196,6 +196,9 @@
     <loc>https://dbi.r-dbi.org/dev/reference/dbSendQuery.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbSendStatement.html</loc>
   </url>
   <url>
