@@ -169,7 +169,7 @@
 <span></span>
 <span><span class="co"># Or a chunk at a time</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span>
-<span><span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
@@ -252,6 +252,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
+<li><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a></li>
 <li><a href="https://github.com/r-dbi/DBI/actions" class="external-link"><img src="https://github.com/r-dbi/DBI/workflows/rcc/badge.svg" alt="rcc"></a></li>
 <li><a href="https://app.codecov.io/github/r-dbi/DBI?branch=main" class="external-link"><img src="https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg" alt="Coverage Status"></a></li>
 <li><a href="https://cran.r-project.org/package=DBI" class="external-link"><img src="https://www.r-pkg.org/badges/version/DBI" alt="CRAN_Status_Badge"></a></li>

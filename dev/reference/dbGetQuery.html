@@ -3,9 +3,10 @@
 dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
-the result is always free-d by dbClearResult().
+the result is always freed by dbClearResult().
 For retrieving chunked/paged results or for passing query parameters,
 see dbSendQuery(), in particular the "The data retrieval flow" section.
+For retrieving results as an Arrow object, see dbGetQueryArrow().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
@@ -21,13 +22,14 @@ RPostgreSQL::dbGetQuery("PostgreSQLConnection", "character")
 RPresto::dbGetQuery("PrestoConnection", "character")
 sparklyr::dbGetQuery("spark_connection", "ANY")
 
-'><title>Send query, retrieve results and then clear result set — dbGetQuery • DBI</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Send query, retrieve results and then clear result set — dbGetQuery"><meta property="og:description" content='Returns the result of a query as a data frame.
+'><title>Retrieve results from a query — dbGetQuery • DBI</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Retrieve results from a query — dbGetQuery"><meta property="og:description" content='Returns the result of a query as a data frame.
 dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
-the result is always free-d by dbClearResult().
+the result is always freed by dbClearResult().
 For retrieving chunked/paged results or for passing query parameters,
 see dbSendQuery(), in particular the "The data retrieval flow" section.
+For retrieving results as an Arrow object, see dbGetQueryArrow().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
@@ -90,8 +92,8 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Send query, retrieve results and then clear result set</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQueryArrow.R" class="external-link"><code>R/dbGetQueryArrow.R</code></a></small>
+      <img src="" class="logo" alt=""><h1>Retrieve results from a query</h1>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a></small>
       <div class="d-none name"><code>dbGetQuery.Rd</code></div>
     </div>
 
@@ -100,9 +102,10 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 <code>dbGetQuery()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="dbFetch.html">dbFetch()</a></code>, ensuring that
-the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
+the result is always freed by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
 For retrieving chunked/paged results or for passing query parameters,
-see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the "The data retrieval flow" section.</p>
+see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the "The data retrieval flow" section.
+For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetQuery-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")</a></code></p></li>
@@ -121,9 +124,7 @@ see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -145,10 +146,8 @@ see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
-
-
-<p>with as many rows as records were fetched and as many
+<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>, with
+as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -158,7 +157,7 @@ or zero rows.</p>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This method is for <code>SELECT</code> queries only
 (incl. other SQL statements that return a <code>SELECT</code>-alike result,
-e. g. execution of a stored procedure or data manipulation queries
+e.g., execution of a stored procedure or data manipulation queries
 like <code>INSERT INTO ... RETURNING ...</code>).
 To execute a stored procedure that does not return a result set,
 use <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
@@ -257,30 +256,42 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
 <code><a href="dbExistsTable.html">dbExistsTable</a>()</code>,
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p></div>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
     </div>
 
     <div class="section level2">
@@ -349,17 +360,6 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6        7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7        0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8       14</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># Retrieve data as arrow table</span></span></span>
-<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array_stream struct&lt;mpg: double, cyl: double, disp: double, hp: double, drat: double, wt: double, qsec: double, vs: double, am: double, gear: double, carb: double&gt;&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_schema:function ()  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ release   :function ()  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
