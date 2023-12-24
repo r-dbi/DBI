@@ -151,6 +151,7 @@ Other DBIConnection generics:
 \code{\link{dbGetException}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListFields}()},

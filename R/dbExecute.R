@@ -4,7 +4,7 @@
 #' `dbExecute()` comes with a default implementation
 #' (which should work with most backends) that calls
 #' [dbSendStatement()], then [dbGetRowsAffected()], ensuring that
-#' the result is always free-d by [dbClearResult()].
+#' the result is always freed by [dbClearResult()].
 #' For passing query parameters, see [dbBind()], in particular
 #' the "The command execution flow" section.
 #'

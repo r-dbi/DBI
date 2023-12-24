@@ -234,6 +234,7 @@ Other DBIConnection generics:
 \code{\link{dbGetException}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListFields}()},
@@ -252,6 +253,7 @@ Other data retrieval generics:
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()}
 }
 \concept{DBIConnection generics}

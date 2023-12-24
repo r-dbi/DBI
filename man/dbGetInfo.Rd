@@ -87,6 +87,7 @@ Other DBIConnection generics:
 \code{\link{dbExistsTable}()},
 \code{\link{dbGetException}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListFields}()},
