@@ -48,10 +48,11 @@ Roxygen: list(markdown = TRUE, roclets = c("collate", "namespace", "rd"))
 RoxygenNote: 7.2.3
 Config/Needs/website: 
     r-dbi/DBItest,
+    r-dbi/dbitemplate,
+    adbi,
     AzureKusto,
     bigrquery,
     DatabaseConnector,
-    r-dbi/dbitemplate,
     dittodb,
     duckdb,
     implyr,
