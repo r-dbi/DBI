@@ -38,7 +38,7 @@ reference:
   - rownames
 
 - title: Queries and statements
-  desc: Sending queries and executing statements.
+  desc: Communicate with the DBMS.
   contents:
   - dbGetQuery
   - dbExecute
