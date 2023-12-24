@@ -104,7 +104,7 @@ can be called with statements that contain placeholders for values.
 The <code>dbBind()</code> and <code>dbBindArrow()</code> functions bind these placeholders
 to actual values,
 and are intended to be called on the result set
-before calling <code><a href="dbFetch.html">dbFetch()</a></code> or <code><a href="dbFetch.html">dbFetchArrow()</a></code>.
+before calling <code><a href="dbFetch.html">dbFetch()</a></code> or <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code>.
 The values are passed to <code>dbBind()</code> as lists or data frames,
 and to <code>dbBindArrow()</code> as a stream
 created by <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.
@@ -226,11 +226,11 @@ which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object of class
-<a href="DBIResult-class.html">DBIResultArrow</a>.</p></li>
+<a href="DBIResultArrow-class.html">DBIResultArrow</a>.</p></li>
 <li><p>Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
 This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
-<li><p>Use <code><a href="dbFetch.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
+<li><p>Use <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
 This step is mandatory even if no rows have been fetched
@@ -379,13 +379,20 @@ and with the value stored as integer)</p></li>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
+<p>Other DBIResultArrow generics: 
+<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
+<code><a href="dbClearResult.html">dbClearResult</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
+<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
+<code><a href="dbIsValid.html">dbIsValid</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
@@ -445,7 +452,7 @@ and with the value stored as integer)</p></li>
 <span class="r-in"><span>  <span class="va">iris_result</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fl">2.3</span>, fix.empty.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          6.3         3.3          6.0         2.5 virginica</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2          7.2         3.6          6.1         2.5 virginica</span>
@@ -457,7 +464,7 @@ and with the value stored as integer)</p></li>
 <span class="r-in"><span>  <span class="va">iris_result</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fl">3</span>, fix.empty.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;0 rows&gt; (or 0-length row.names)</span>
 <span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>

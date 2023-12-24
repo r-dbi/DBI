@@ -640,10 +640,6 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetchArrowChunk</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
 <span><span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-4">Description<a class="anchor" aria-label="anchor" href="#description-4"></a>
@@ -976,7 +972,7 @@ can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResu
 that contain placeholders for values. The <code><a href="../reference/dbBind.html">dbBind()</a></code> and
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> functions bind these placeholders to actual
 values, and are intended to be called on the result set before calling
-<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code>. The values are
+<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code>. The values are
 passed to <code><a href="../reference/dbBind.html">dbBind()</a></code> as lists or data frames, and to
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> as a stream created by
 <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>. This works in all
@@ -1103,7 +1099,7 @@ of class DBIResultArrow.</p></li>
 or <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains
 placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
 the database backend.</p></li>
-<li><p>Use <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
+<li><p>Use <code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if

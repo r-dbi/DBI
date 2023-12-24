@@ -70,6 +70,9 @@
     <loc>https://dbi.r-dbi.org/dev/reference/DBIResult-class.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/Id.html</loc>
   </url>
   <url>
@@ -122,6 +125,12 @@
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbFetch.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrow.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrowChunk.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbGetConnectArgs.html</loc>

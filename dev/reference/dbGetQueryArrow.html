@@ -71,7 +71,7 @@ For retrieving results as a data frame, see dbGetQuery().
     <p>Returns the result of a query as a data frame.
 <code><a href="dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation
 (which should work with most backends) that calls
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, then <code><a href="dbFetch.html">dbFetchArrow()</a></code>, ensuring that
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, then <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code>, ensuring that
 the result is always freed by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
 For passing query parameters,
 see <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, in particular the "The data retrieval flow" section.
@@ -231,18 +231,22 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
 <code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
 <code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
 <code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
