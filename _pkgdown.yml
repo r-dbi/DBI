@@ -78,7 +78,12 @@ reference:
   - sqlInterpolate
 
 - title: Arrow
-  desc: Returning and sending data in the Arrow format.
+  desc: >
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html">
+      <img src="figures/lifecycle-experimental.svg" alt="Experimental lifecycle"/>
+    </a></p>
+
+    Returning and sending data in the Arrow format.
   contents:
   - dbReadTableArrow
   - dbWriteTableArrow
