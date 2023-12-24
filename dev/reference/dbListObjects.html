@@ -40,7 +40,7 @@ RPostgres::dbListObjects("PqConnection")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,12 +171,6 @@ values that have <code>is_prefix == FALSE</code> correspond to the tables
 returned from <code><a href="dbListTables.html">dbListTables()</a></code>,</p>
 <p>The <code>table</code> object can be quoted with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
 The result of quoting can be passed to <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
-(We have to assume that the resulting identifier is a table, because one
-cannot always tell from a quoted identifier alone whether it is a table
-or a schema for example. As a consequence, the quote-unquote roundtrip
-only works for tables (possibly schema-qualified), but not for other
-database objects like schemata or columns.)
-The unquoted results are equal to the original <code>table</code> object.
 (For backends it may be convenient to use the <a href="Id.html">Id</a> class, but this is
 not required.)</p>
 <p>Values in <code>table</code> column that have <code>is_prefix == TRUE</code> can be
@@ -191,9 +185,7 @@ For the data frame returned from a <code>dbListObject()</code> call with the
     <div class="dont-index"><p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
-<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
-<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -201,22 +193,16 @@ For the data frame returned from a <code>dbListObject()</code> call with the
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
-<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
-<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p></div>
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
     </div>
 
     <div class="section level2">

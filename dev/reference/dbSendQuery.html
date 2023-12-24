@@ -3,10 +3,8 @@
 SQL query to the database engine.  It does not extract any
 records --- for that you need to use the dbFetch() method, and
 then you must call dbClearResult() when you finish fetching the
-records you need.
-For interactive use, you should almost always prefer dbGetQuery().
-Use dbSendQueryArrow() or dbGetQueryArrow() instead to retrieve the results
-as an Arrow object.
+records you need. For interactive use, you should almost always prefer
+dbGetQuery().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")
@@ -35,10 +33,8 @@ sparklyr::dbSendQuery("spark_connection", "ANY")
 SQL query to the database engine.  It does not extract any
 records --- for that you need to use the dbFetch() method, and
 then you must call dbClearResult() when you finish fetching the
-records you need.
-For interactive use, you should almost always prefer dbGetQuery().
-Use dbSendQueryArrow() or dbGetQueryArrow() instead to retrieve the results
-as an Arrow object.
+records you need. For interactive use, you should almost always prefer
+dbGetQuery().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")
@@ -74,7 +70,7 @@ sparklyr::dbSendQuery("spark_connection", "ANY")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -111,7 +107,7 @@ sparklyr::dbSendQuery("spark_connection", "ANY")
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Execute a query on a given database connection</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/14-dbSendQuery.R" class="external-link"><code>R/14-dbSendQuery.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/14-dbSendQuery.R" class="external-link"><code>R/14-dbSendQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/24-dbSendQueryArrow.R" class="external-link"><code>R/24-dbSendQueryArrow.R</code></a></small>
       <div class="d-none name"><code>dbSendQuery.Rd</code></div>
     </div>
 
@@ -120,10 +116,8 @@ sparklyr::dbSendQuery("spark_connection", "ANY")
 SQL query to the database engine.  It does <em>not</em> extract any
 records --- for that you need to use the <code><a href="dbFetch.html">dbFetch()</a></code> method, and
 then you must call <code><a href="dbClearResult.html">dbClearResult()</a></code> when you finish fetching the
-records you need.
-For interactive use, you should almost always prefer <code><a href="dbGetQuery.html">dbGetQuery()</a></code>.
-Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> or <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> instead to retrieve the results
-as an Arrow object.</p>
+records you need. For interactive use, you should almost always prefer
+<code><a href="dbGetQuery.html">dbGetQuery()</a></code>.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")</code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbSendQuery("BigQueryConnection", "character")</a></code></p></li>
@@ -151,7 +145,9 @@ as an Arrow object.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbSendQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbSendQueryArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -308,9 +304,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
-<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
-<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -318,32 +312,22 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
-<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
-<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
-<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
+<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code></p></div>
     </div>
 
     <div class="section level2">
@@ -417,6 +401,27 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 12 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8</span>
+<span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Retrieve data as arrow table</span></span></span>
+<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu">dbSendQueryArrow</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</span>
 <span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>

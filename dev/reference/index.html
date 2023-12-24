@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,22 +113,22 @@
 
       <dl><dt>
           
-          <code><a href="dbReadTable.html">dbReadTable()</a></code> 
+          <code><a href="dbReadTable.html">dbReadTable()</a></code> <code><a href="dbReadTable.html">dbReadTableArrow()</a></code> 
         </dt>
-        <dd>Read database tables as data frames</dd>
+        <dd>Copy data frames from database tables</dd>
       </dl><dl><dt>
           
-          <code><a href="dbWriteTable.html">dbWriteTable()</a></code> 
+          <code><a href="dbWriteTable.html">dbWriteTable()</a></code> <code><a href="dbWriteTable.html">dbWriteTableArrow()</a></code> 
         </dt>
         <dd>Copy data frames to database tables</dd>
       </dl><dl><dt>
           
-          <code><a href="dbCreateTable.html">dbCreateTable()</a></code> 
+          <code><a href="dbCreateTable.html">dbCreateTable()</a></code> <code><a href="dbCreateTable.html">dbCreateTableArrow()</a></code> 
         </dt>
         <dd>Create a table in the database</dd>
       </dl><dl><dt>
           
-          <code><a href="dbAppendTable.html">dbAppendTable()</a></code> 
+          <code><a href="dbAppendTable.html">dbAppendTable()</a></code> <code><a href="dbAppendTable.html">dbAppendTableArrow()</a></code> 
         </dt>
         <dd>Insert rows into a table</dd>
       </dl><dl><dt>
@@ -174,7 +174,7 @@
 
       <dl><dt>
           
-          <code><a href="dbGetQuery.html">dbGetQuery()</a></code> 
+          <code><a href="dbGetQuery.html">dbGetQuery()</a></code> <code><a href="dbGetQuery.html">dbGetQueryArrow()</a></code> 
         </dt>
         <dd>Send query, retrieve results and then clear result set</dd>
       </dl><dl><dt>
@@ -195,7 +195,7 @@
 
       <dl><dt>
           
-          <code><a href="dbSendQuery.html">dbSendQuery()</a></code> 
+          <code><a href="dbSendQuery.html">dbSendQuery()</a></code> <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> 
         </dt>
         <dd>Execute a query on a given database connection</dd>
       </dl><dl><dt>
@@ -210,7 +210,7 @@
         <dd>Bind values to a parameterized/prepared statement</dd>
       </dl><dl><dt>
           
-          <code><a href="dbFetch.html">dbFetch()</a></code> <code><a href="dbFetch.html">fetch()</a></code> 
+          <code><a href="dbFetch.html">dbFetch()</a></code> <code><a href="dbFetch.html">dbFetchArrow()</a></code> <code><a href="dbFetch.html">dbFetchArrowChunk()</a></code> <code><a href="dbFetch.html">fetch()</a></code> 
         </dt>
         <dd>Fetch records from a previously executed query</dd>
       </dl><dl><dt>
@@ -326,62 +326,6 @@
         </dt>
         <dd>Safely interpolate values into an SQL string</dd>
       </dl></div><div class="section level2">
-      <h2 id="arrow">Arrow<a class="anchor" aria-label="anchor" href="#arrow"></a></h2>
-      
-      <p class="section-desc"></p><p>Returning and sending data in the Arrow format.</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="dbReadTableArrow.html">dbReadTableArrow()</a></code> 
-        </dt>
-        <dd>Read database tables as Arrow objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbWriteTableArrow.html">dbWriteTableArrow()</a></code> 
-        </dt>
-        <dd>Copy Arrow objects to database tables</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> 
-        </dt>
-        <dd>Create a table in the database based on an Arrow object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> 
-        </dt>
-        <dd>Insert rows into a table from an Arrow stream</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> 
-        </dt>
-        <dd>Send query, retrieve results as an Arrow object and then clear result set</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> 
-        </dt>
-        <dd>Execute a query on a given database connection</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbBind.html">dbBind()</a></code> <code><a href="dbBind.html">dbBindArrow()</a></code> 
-        </dt>
-        <dd>Bind values to a parameterized/prepared statement</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> 
-        </dt>
-        <dd>Fetch records from a previously executed query as an Arrow object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code> 
-        </dt>
-        <dd>Fetch the next batch of records from a previously executed query as an Arrow object</dd>
-      </dl></div><div class="section level2">
       <h2 id="classes">Classes<a class="anchor" aria-label="anchor" href="#classes"></a></h2>
       
       <p class="section-desc"></p><p>S4 classes defined by DBI.</p>
@@ -414,14 +358,9 @@
         <dd>DBIConnection class</dd>
       </dl><dl><dt>
           
-          <code><a href="DBIResult-class.html">DBIResult-class</a></code> 
+          <code><a href="DBIResult-class.html">DBIResult-class</a></code> <code><a href="DBIResult-class.html">DBIResultArrow-class</a></code> <code><a href="DBIResult-class.html">DBIResultArrowDefault-class</a></code> 
         </dt>
         <dd>DBIResult class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code> <code><a href="DBIResultArrow-class.html">DBIResultArrowDefault-class</a></code> 
-        </dt>
-        <dd>DBIResultArrow class</dd>
       </dl><dl><dt>
           
           <code><a href="DBIConnector-class.html">DBIConnector-class</a></code> 

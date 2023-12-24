@@ -3,10 +3,9 @@
 dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
-the result is always freed by dbClearResult().
+the result is always free-d by dbClearResult().
 For retrieving chunked/paged results or for passing query parameters,
 see dbSendQuery(), in particular the "The data retrieval flow" section.
-For retrieving results as an Arrow object, see dbGetQueryArrow().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
@@ -26,10 +25,9 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 dbGetQuery() comes with a default implementation
 (which should work with most backends) that calls
 dbSendQuery(), then dbFetch(), ensuring that
-the result is always freed by dbClearResult().
+the result is always free-d by dbClearResult().
 For retrieving chunked/paged results or for passing query parameters,
 see dbSendQuery(), in particular the "The data retrieval flow" section.
-For retrieving results as an Arrow object, see dbGetQueryArrow().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbGetQuery("AzureKustoConnection", "character")
@@ -56,7 +54,7 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9003</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +91,7 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Send query, retrieve results and then clear result set</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQuery.R" class="external-link"><code>R/dbGetQuery.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbGetQueryArrow.R" class="external-link"><code>R/dbGetQueryArrow.R</code></a></small>
       <div class="d-none name"><code>dbGetQuery.Rd</code></div>
     </div>
 
@@ -102,10 +100,9 @@ sparklyr::dbGetQuery("spark_connection", "ANY")
 <code>dbGetQuery()</code> comes with a default implementation
 (which should work with most backends) that calls
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, then <code><a href="dbFetch.html">dbFetch()</a></code>, ensuring that
-the result is always freed by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
+the result is always free-d by <code><a href="dbClearResult.html">dbClearResult()</a></code>.
 For retrieving chunked/paged results or for passing query parameters,
-see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the "The data retrieval flow" section.
-For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>.</p>
+see <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, in particular the "The data retrieval flow" section.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbGetQuery("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetQuery-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbGetQuery("DatabaseConnectorConnection", "character")</a></code></p></li>
@@ -124,7 +121,9 @@ For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.ht
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbGetQuery</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -146,7 +145,7 @@ For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.ht
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
 
 
 <p>with as many rows as records were fetched and as many
@@ -159,7 +158,7 @@ or zero rows.</p>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This method is for <code>SELECT</code> queries only
 (incl. other SQL statements that return a <code>SELECT</code>-alike result,
-e.g., execution of a stored procedure or data manipulation queries
+e. g. execution of a stored procedure or data manipulation queries
 like <code>INSERT INTO ... RETURNING ...</code>).
 To execute a stored procedure that does not return a result set,
 use <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
@@ -184,23 +183,41 @@ performance optimization.</p>
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-<code>NA</code> string.
-The object returned by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> can also be passed to
-<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code> to create a nanoarrow
-array stream object that can be used to read the result set
-in batches.
-The chunk size is implementation-specific.</p>
+If the <code>n</code> argument is not an atomic whole number
+greater or equal to -1 or Inf, an error is raised,
+but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
     </div>
     <div class="section level2">
     <h2 id="additional-arguments">Additional arguments<a class="anchor" aria-label="anchor" href="#additional-arguments"></a></h2>
     
 
 
-<p>The following arguments are not part of the <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> generic
+<p>The following arguments are not part of the <code>dbGetQuery()</code> generic
 (to improve compatibility across backends)
-but are part of the DBI specification:</p><ul><li><p><code>params</code> (default: <code>NULL</code>)</p></li>
+but are part of the DBI specification:</p><ul><li><p><code>n</code> (default: -1)</p></li>
+<li><p><code>params</code> (default: <code>NULL</code>)</p></li>
 <li><p><code>immediate</code> (default: <code>NULL</code>)</p></li>
 </ul><p>They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+    
+
+
+
+<p>A column named <code>row_names</code> is treated like any other column.</p>
+<p>The <code>n</code> argument specifies the number of rows to be fetched.
+If omitted, fetching multi-row queries with one
+or more columns returns the entire result.
+A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported
+and also returns the full result.
+If more rows than available are fetched (by passing a too large value for
+<code>n</code>), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully
+typed.
+Fetching fewer rows than available is permitted,
+no warning is issued.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
     </div>
     <div class="section level2">
@@ -240,42 +257,30 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
-<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
-<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
 <code><a href="dbExistsTable.html">dbExistsTable</a>()</code>,
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
-<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
-<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p></div>
     </div>
 
     <div class="section level2">
@@ -344,6 +349,17 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6        7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 7        0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 8       14</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Retrieve data as arrow table</span></span></span>
+<span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">dbGetQueryArrow</span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;nanoarrow_array_stream struct&lt;mpg: double, cyl: double, disp: double, hp: double, drat: double, wt: double, qsec: double, vs: double, am: double, gear: double, carb: double&gt;&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_schema:function ()  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  $ release   :function ()  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
 </code></pre></div>
