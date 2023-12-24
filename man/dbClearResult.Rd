@@ -129,6 +129,7 @@ Other DBIResult generics:
 \code{\link{dbBind}()},
 \code{\link{dbColumnInfo}()},
 \code{\link{dbFetch}()},
+\code{\link{dbFetchArrow}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetRowCount}()},
 \code{\link{dbGetRowsAffected}()},
@@ -144,6 +145,7 @@ Other DBIResult generics:
 Other data retrieval generics: 
 \code{\link{dbBind}()},
 \code{\link{dbFetch}()},
+\code{\link{dbFetchArrow}()},
 \code{\link{dbGetQuery}()},
 \code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()},

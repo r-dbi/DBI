@@ -88,6 +88,7 @@ Other DBIResult generics:
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
 \code{\link{dbFetch}()},
+\code{\link{dbFetchArrow}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetRowCount}()},
 \code{\link{dbGetStatement}()},

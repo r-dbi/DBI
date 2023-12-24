@@ -29,6 +29,7 @@
 #'   finish retrieving the records you want.
 #' @family DBIResult generics
 #' @family data retrieval generics
+#' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'
@@ -48,7 +49,6 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-#' @export
 setGeneric("dbFetch",
   def = function(res, n = -1, ...) standardGeneric("dbFetch"),
   valueClass = "data.frame"

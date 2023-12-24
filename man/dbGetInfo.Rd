@@ -109,6 +109,7 @@ Other DBIResult generics:
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
 \code{\link{dbFetch}()},
+\code{\link{dbFetchArrow}()},
 \code{\link{dbGetRowCount}()},
 \code{\link{dbGetRowsAffected}()},
 \code{\link{dbGetStatement}()},
