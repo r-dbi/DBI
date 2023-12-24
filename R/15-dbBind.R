@@ -1,5 +1,6 @@
 #' Bind values to a parameterized/prepared statement
 #'
+#' @description
 #' For parametrized or prepared statements,
 #' the [dbSendQuery()], [dbSendQueryArrow()], and [dbSendStatement()] functions
 #' can be called with statements that contain placeholders for values.
@@ -10,10 +11,14 @@
 #' The values are passed to `dbBind()` as lists or data frames,
 #' and to `dbBindArrow()` as a stream
 #' created by [nanoarrow::as_nanoarrow_array_stream()].
-#' This works in all combinations.
+#'
+#' `r lifecycle::badge('experimental')`
+#'
+#' `dbBindArrow()` is experimental, as are the other `*Arrow` functions.
 #' `dbSendQuery()` is compatible with `dbBindArrow()`, and `dbSendQueryArrow()`
 #' is compatible with `dbBind()`.
 #'
+#' @details
 #' \pkg{DBI} supports parametrized (or prepared) queries and statements
 #' via the `dbBind()` and `dbBindArrow()` generics.
 #' Parametrized queries are different from normal queries

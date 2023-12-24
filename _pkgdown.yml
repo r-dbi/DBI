@@ -86,6 +86,7 @@ reference:
   - dbAppendTableArrow
   - dbGetQueryArrow
   - dbSendQueryArrow
+  - dbBindArrow
 
 - title: Classes
   desc: S4 classes defined by DBI.

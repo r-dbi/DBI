@@ -37,7 +37,10 @@ before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbFetchArrow]{d
 The values are passed to \code{dbBind()} as lists or data frames,
 and to \code{dbBindArrow()} as a stream
 created by \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.
-This works in all combinations.
+
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+\code{dbBindArrow()} is experimental, as are the other \verb{*Arrow} functions.
 \code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()}
 is compatible with \code{dbBind()}.
 
