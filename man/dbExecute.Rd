@@ -2,7 +2,7 @@
 % Please edit documentation in R/dbExecute.R
 \name{dbExecute}
 \alias{dbExecute}
-\title{Execute an update statement, query number of rows affected, and then close result set}
+\title{Change database state}
 \usage{
 dbExecute(conn, statement, ...)
 }

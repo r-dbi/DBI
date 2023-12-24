@@ -3,7 +3,7 @@
 \name{dbGetQuery}
 \alias{dbGetQuery}
 \alias{dbGetQueryArrow}
-\title{Send query, retrieve results and then clear result set}
+\title{Retrieve results from a query}
 \usage{
 dbGetQuery(conn, statement, ...)
 

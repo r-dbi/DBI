@@ -1,4 +1,4 @@
-#' Execute an update statement, query number of rows affected, and then close result set
+#' Change database state
 #'
 #' Executes a statement and returns the number of rows affected.
 #' `dbExecute()` comes with a default implementation

@@ -1,4 +1,4 @@
-#' Send query, retrieve results and then clear result set
+#' Retrieve results from a query
 #'
 #' Returns the result of a query as a data frame.
 #' `dbGetQuery()` comes with a default implementation
