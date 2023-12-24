@@ -3,7 +3,7 @@
 \docType{data}
 \name{.SQL92Keywords}
 \alias{.SQL92Keywords}
-\title{Keywords according to the SQL-92 sta}
+\title{Keywords according to the SQL-92 standard}
 \format{
 An object of class \code{character} of length 220.
 }
