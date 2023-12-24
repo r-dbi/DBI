@@ -180,6 +180,7 @@ Other data retrieval generics:
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},
 \code{\link{dbFetchArrow}()},
+\code{\link{dbFetchArrowChunk}()},
 \code{\link{dbGetQuery}()},
 \code{\link{dbHasCompleted}()},
 \code{\link{dbSendQuery}()},

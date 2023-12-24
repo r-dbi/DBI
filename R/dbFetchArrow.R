@@ -4,6 +4,7 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' Fetch the result set and return it as an Arrow object.
+#' Use [dbFetchArrowChunk()] to fetch results in chunks.
 #'
 #' @inheritSection dbBind The data retrieval flow for Arrow streams
 #'
