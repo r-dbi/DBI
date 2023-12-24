@@ -109,8 +109,6 @@ Other DBIResult generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetRowCount}()},
 \code{\link{dbGetRowsAffected}()},
@@ -118,9 +116,7 @@ Other DBIResult generics:
 \code{\link{dbHasCompleted}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbQuoteString}()}
 }
 \concept{DBIResult generics}

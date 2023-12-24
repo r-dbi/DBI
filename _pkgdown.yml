@@ -98,6 +98,7 @@ reference:
   - DBIDriver-class
   - DBIConnection-class
   - DBIResult-class
+  - DBIResultArrow-class
   - DBIConnector-class
   - Id-class
 

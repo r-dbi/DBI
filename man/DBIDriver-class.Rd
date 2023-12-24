@@ -16,7 +16,8 @@ Other DBI classes:
 \code{\link{DBIConnection-class}},
 \code{\link{DBIConnector-class}},
 \code{\link{DBIObject-class}},
-\code{\link{DBIResult-class}}
+\code{\link{DBIResult-class}},
+\code{\link{DBIResultArrow-class}}
 
 Other DBIDriver generics: 
 \code{\link{dbCanConnect}()},

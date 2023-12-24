@@ -142,6 +142,7 @@
 #'   For `dbBindArrow()`, values as a nanoarrow stream,
 #'   with one column per query parameter.
 #' @family DBIResult generics
+#' @family DBIResultArrow generics
 #' @family data retrieval generics
 #' @family command execution generics
 #' @export

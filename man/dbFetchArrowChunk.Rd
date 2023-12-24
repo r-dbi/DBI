@@ -97,24 +97,13 @@ dbDisconnect(con)
 Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
 finish retrieving the records you want.
 
-Other DBIResult generics: 
-\code{\link{DBIResult-class}},
+Other DBIResultArrow generics: 
+\code{\link{DBIResultArrow-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
-\code{\link{dbColumnInfo}()},
-\code{\link{dbFetch}()},
 \code{\link{dbFetchArrow}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
 \code{\link{dbHasCompleted}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbIsValid}()}
 
 Other data retrieval generics: 
 \code{\link{dbBind}()},
@@ -127,5 +116,5 @@ Other data retrieval generics:
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendQueryArrow}()}
 }
-\concept{DBIResult generics}
+\concept{DBIResultArrow generics}
 \concept{data retrieval generics}

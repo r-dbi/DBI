@@ -51,12 +51,14 @@ Other DBIConnection generics:
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
+\code{\link{dbUnquoteIdentifier}()},
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 
@@ -66,18 +68,14 @@ Other DBIResult generics:
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
 \code{\link{dbFetch}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetRowCount}()},
 \code{\link{dbGetRowsAffected}()},
 \code{\link{dbGetStatement}()},
 \code{\link{dbHasCompleted}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbQuoteString}()}
 
 Other DBIConnector generics: 
 \code{\link{DBIConnector-class}},

@@ -15,6 +15,7 @@
 #'
 #' @inheritParams dbClearResult
 #' @family DBIResult generics
+#' @family DBIResultArrow generics
 #' @family data retrieval generics
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)

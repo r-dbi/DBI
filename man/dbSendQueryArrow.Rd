@@ -199,11 +199,13 @@ Other DBIConnection generics:
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendStatement}()},
+\code{\link{dbUnquoteIdentifier}()},
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 

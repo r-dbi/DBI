@@ -14,7 +14,7 @@
 #' @inheritSection DBItest::spec_sql_unquote_identifier Failure modes
 #' @inheritSection DBItest::spec_sql_unquote_identifier Specification
 #'
-#' @family DBIResult generics
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' # Unquoting allows to understand the structure of a

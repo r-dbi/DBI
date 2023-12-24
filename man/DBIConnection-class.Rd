@@ -32,7 +32,8 @@ Other DBI classes:
 \code{\link{DBIConnector-class}},
 \code{\link{DBIDriver-class}},
 \code{\link{DBIObject-class}},
-\code{\link{DBIResult-class}}
+\code{\link{DBIResult-class}},
+\code{\link{DBIResultArrow-class}}
 
 Other DBIConnection generics: 
 \code{\link{dbAppendTable}()},
@@ -53,12 +54,14 @@ Other DBIConnection generics:
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
 \code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
+\code{\link{dbUnquoteIdentifier}()},
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 }

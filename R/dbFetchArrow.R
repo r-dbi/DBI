@@ -20,7 +20,7 @@
 #' @param ... Other arguments passed on to methods.
 #' @seealso Close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
-#' @family DBIResult generics
+#' @family DBIResultArrow generics
 #' @family data retrieval generics
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)
