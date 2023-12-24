@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9004 (2023-12-24)
+
+## Features
+
+- Use `nanoarrow::infer_nanoarrow_schema()` in the default method for `dbCreateTable()` (#445).
+
+
 # DBI 1.2.0.9003 (2023-12-23)
 
 ## Documentation
