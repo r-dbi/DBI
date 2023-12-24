@@ -223,7 +223,8 @@ Other data retrieval generics:
 \code{\link{dbGetQuery}()},
 \code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()}
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()}
 }
 \concept{DBIResult generics}
 \concept{data retrieval generics}

@@ -196,6 +196,7 @@ Other DBIConnection generics:
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
@@ -206,7 +207,8 @@ Other data retrieval generics:
 \code{\link{dbFetch}()},
 \code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()}
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()}
 }
 \concept{DBIConnection generics}
 \concept{data retrieval generics}

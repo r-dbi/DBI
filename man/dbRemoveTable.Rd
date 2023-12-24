@@ -125,6 +125,7 @@ Other DBIConnection generics:
 \code{\link{dbReadTable}()},
 \code{\link{dbReadTableArrow}()},
 \code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}

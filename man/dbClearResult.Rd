@@ -147,7 +147,8 @@ Other data retrieval generics:
 \code{\link{dbGetQuery}()},
 \code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()}
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()}
 
 Other command execution generics: 
 \code{\link{dbBind}()},
