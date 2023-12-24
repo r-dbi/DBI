@@ -3,15 +3,8 @@
 dbCreateTableArrow_DBIConnection <- function(conn, name, value, ..., temporary = FALSE) {
   require_arrow()
 
-  ptype <- get_query_arrow_ptype(value)
+  ptype <- nanoarrow::infer_nanoarrow_ptype(value)
   dbCreateTable(conn, name, ptype, ..., temporary = temporary)
-}
-
-get_query_arrow_ptype <- function(value) {
-  schema <- nanoarrow::infer_nanoarrow_schema(value)
-  stopifnot(!is.null(schema))
-
-  nanoarrow::infer_nanoarrow_ptype(schema)
 }
 
 #' @rdname hidden_aliases
