@@ -4,8 +4,6 @@ This step is mandatory for all objects obtained by calling
 dbSendQuery() or dbSendStatement().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbClearResult("AdbiResult")
-adbi::dbClearResult("AdbiResultArrow")
 bigrquery::dbClearResult("BigQueryResult")
 DatabaseConnector::dbClearResult("DatabaseConnectorDbiResult")
 DatabaseConnector::dbClearResult("DatabaseConnectorJdbcResult")
@@ -29,8 +27,6 @@ This step is mandatory for all objects obtained by calling
 dbSendQuery() or dbSendStatement().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbClearResult("AdbiResult")
-adbi::dbClearResult("AdbiResultArrow")
 bigrquery::dbClearResult("BigQueryResult")
 DatabaseConnector::dbClearResult("DatabaseConnectorDbiResult")
 DatabaseConnector::dbClearResult("DatabaseConnectorJdbcResult")
@@ -106,9 +102,7 @@ sparklyr::dbClearResult("DBISparkResult")
 This step is mandatory for all objects obtained by calling
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbClearResult("AdbiResult")</a></code></p></li>
-<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbClearResult("AdbiResultArrow")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbClearResult("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbClearResult("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbClearResult-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbClearResult("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbClearResult-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbClearResult("DatabaseConnectorJdbcResult")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbClearResult("DBIMockResult")</a></code></p></li>
@@ -150,7 +144,7 @@ This step is mandatory for all objects obtained by calling
 <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
 <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
+or <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
     </div>
     <div class="section level2">
     <h2 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a></h2>
@@ -223,7 +217,7 @@ to ensure that this step is always executed.</p></li>
 <p>An attempt to close an already closed result set issues a warning
 for <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>,
-and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
+and <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
@@ -249,25 +243,16 @@ The DBI backend can expect a call to <code>dbClearResult()</code> for each
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
-<p>Other DBIResultArrow generics: 
-<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
-<code><a href="dbBind.html">dbBind</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
-<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbIsValid.html">dbIsValid</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,

@@ -113,22 +113,22 @@
 
       <dl><dt>
           
-          <code><a href="dbReadTable.html">dbReadTable()</a></code> 
+          <code><a href="dbReadTable.html">dbReadTable()</a></code> <code><a href="dbReadTable.html">dbReadTableArrow()</a></code> 
         </dt>
-        <dd>Read database tables as data frames</dd>
+        <dd>Copy data frames from database tables</dd>
       </dl><dl><dt>
           
-          <code><a href="dbWriteTable.html">dbWriteTable()</a></code> 
+          <code><a href="dbWriteTable.html">dbWriteTable()</a></code> <code><a href="dbWriteTable.html">dbWriteTableArrow()</a></code> 
         </dt>
         <dd>Copy data frames to database tables</dd>
       </dl><dl><dt>
           
-          <code><a href="dbCreateTable.html">dbCreateTable()</a></code> 
+          <code><a href="dbCreateTable.html">dbCreateTable()</a></code> <code><a href="dbCreateTable.html">dbCreateTableArrow()</a></code> 
         </dt>
         <dd>Create a table in the database</dd>
       </dl><dl><dt>
           
-          <code><a href="dbAppendTable.html">dbAppendTable()</a></code> 
+          <code><a href="dbAppendTable.html">dbAppendTable()</a></code> <code><a href="dbAppendTable.html">dbAppendTableArrow()</a></code> 
         </dt>
         <dd>Insert rows into a table</dd>
       </dl><dl><dt>
@@ -164,7 +164,7 @@
       </dl></div><div class="section level2">
       <h2 id="queries-and-statements">Queries and statements<a class="anchor" aria-label="anchor" href="#queries-and-statements"></a></h2>
       
-      <p class="section-desc"></p><p>Communicate with the DBMS.</p>
+      <p class="section-desc"></p><p>Sending queries and executing statements.</p>
 
       
     </div><div id="" class="section level2">
@@ -174,14 +174,14 @@
 
       <dl><dt>
           
-          <code><a href="dbGetQuery.html">dbGetQuery()</a></code> 
+          <code><a href="dbGetQuery.html">dbGetQuery()</a></code> <code><a href="dbGetQuery.html">dbGetQueryArrow()</a></code> 
         </dt>
-        <dd>Retrieve results from a query</dd>
+        <dd>Send query, retrieve results and then clear result set</dd>
       </dl><dl><dt>
           
           <code><a href="dbExecute.html">dbExecute()</a></code> 
         </dt>
-        <dd>Change database state</dd>
+        <dd>Execute an update statement, query number of rows affected, and then close result set</dd>
       </dl></div><div class="section level2">
       <h2 id="results">Results<a class="anchor" aria-label="anchor" href="#results"></a></h2>
       
@@ -195,7 +195,7 @@
 
       <dl><dt>
           
-          <code><a href="dbSendQuery.html">dbSendQuery()</a></code> 
+          <code><a href="dbSendQuery.html">dbSendQuery()</a></code> <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> 
         </dt>
         <dd>Execute a query on a given database connection</dd>
       </dl><dl><dt>
@@ -210,7 +210,7 @@
         <dd>Bind values to a parameterized/prepared statement</dd>
       </dl><dl><dt>
           
-          <code><a href="dbFetch.html">dbFetch()</a></code> <code><a href="dbFetch.html">fetch()</a></code> 
+          <code><a href="dbFetch.html">dbFetch()</a></code> <code><a href="dbFetch.html">dbFetchArrow()</a></code> <code><a href="dbFetch.html">dbFetchArrowChunk()</a></code> <code><a href="dbFetch.html">fetch()</a></code> 
         </dt>
         <dd>Fetch records from a previously executed query</dd>
       </dl><dl><dt>
@@ -326,64 +326,6 @@
         </dt>
         <dd>Safely interpolate values into an SQL string</dd>
       </dl></div><div class="section level2">
-      <h2 id="arrow">Arrow<a class="anchor" aria-label="anchor" href="#arrow"></a></h2>
-      
-      <p class="section-desc"></p><p>
-<a href="https://lifecycle.r-lib.org/articles/stages.html" class="external-link"> <img src="figures/lifecycle-experimental.svg" alt="Experimental lifecycle"></a>
-</p><p>Returning and sending data in the Arrow format.</p>
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="dbReadTableArrow.html">dbReadTableArrow()</a></code> 
-        </dt>
-        <dd>Read database tables as Arrow objects</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbWriteTableArrow.html">dbWriteTableArrow()</a></code> 
-        </dt>
-        <dd>Copy Arrow objects to database tables</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> 
-        </dt>
-        <dd>Create a table in the database based on an Arrow object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> 
-        </dt>
-        <dd>Insert rows into a table from an Arrow stream</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> 
-        </dt>
-        <dd>Retrieve results from a query as an Arrow object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> 
-        </dt>
-        <dd>Execute a query on a given database connection for retrieval via Arrow</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbBind.html">dbBind()</a></code> <code><a href="dbBind.html">dbBindArrow()</a></code> 
-        </dt>
-        <dd>Bind values to a parameterized/prepared statement</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> 
-        </dt>
-        <dd>Fetch records from a previously executed query as an Arrow object</dd>
-      </dl><dl><dt>
-          
-          <code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code> 
-        </dt>
-        <dd>Fetch the next batch of records from a previously executed query as an Arrow object</dd>
-      </dl></div><div class="section level2">
       <h2 id="classes">Classes<a class="anchor" aria-label="anchor" href="#classes"></a></h2>
       
       <p class="section-desc"></p><p>S4 classes defined by DBI.</p>
@@ -416,14 +358,9 @@
         <dd>DBIConnection class</dd>
       </dl><dl><dt>
           
-          <code><a href="DBIResult-class.html">DBIResult-class</a></code> 
+          <code><a href="DBIResult-class.html">DBIResult-class</a></code> <code><a href="DBIResult-class.html">DBIResultArrow-class</a></code> <code><a href="DBIResult-class.html">DBIResultArrowDefault-class</a></code> 
         </dt>
         <dd>DBIResult class</dd>
-      </dl><dl><dt>
-          
-          <code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code> <code><a href="DBIResultArrow-class.html">DBIResultArrowDefault-class</a></code> 
-        </dt>
-        <dd>DBIResultArrow class</dd>
       </dl><dl><dt>
           
           <code><a href="DBIConnector-class.html">DBIConnector-class</a></code> 
@@ -449,7 +386,7 @@
           
           <code><a href="dot-SQL92Keywords.html">.SQL92Keywords</a></code> 
         </dt>
-        <dd>Keywords according to the SQL-92 standard</dd>
+        <dd>Keywords according to the SQL-92 sta</dd>
       </dl></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>

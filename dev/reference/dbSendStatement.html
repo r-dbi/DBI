@@ -8,7 +8,6 @@ that. For interactive use, you should almost always prefer
 dbExecute().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbSendStatement("AdbiConnection", "character")
 AzureKusto::dbSendStatement("AzureKustoConnection", "character")
 DatabaseConnector::dbSendStatement("DatabaseConnectorConnection", "character")
 dittodb::dbSendStatement("DBIMockConnection", "character")
@@ -27,7 +26,6 @@ that. For interactive use, you should almost always prefer
 dbExecute().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbSendStatement("AdbiConnection", "character")
 AzureKusto::dbSendStatement("AzureKustoConnection", "character")
 DatabaseConnector::dbSendStatement("DatabaseConnectorConnection", "character")
 dittodb::dbSendStatement("DBIMockConnection", "character")
@@ -98,8 +96,7 @@ returned result object.  You must also call <code><a href="dbClearResult.html">d
 that. For interactive use, you should almost always prefer
 <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/dbSendQuery.html" class="external-link">adbi::dbSendStatement("AdbiConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbSendStatement("AzureKustoConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbSendStatement("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbSendStatement-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbSendStatement("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbSendStatement("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbSendStatement("OdbcConnection", "character")</a></code></p></li>
@@ -258,9 +255,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
-<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
-<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -268,22 +263,16 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
-<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
-<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,

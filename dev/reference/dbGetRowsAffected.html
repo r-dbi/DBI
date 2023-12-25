@@ -3,8 +3,6 @@
 by a data manipulation statement.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbGetRowsAffected("AdbiResult")
-adbi::dbGetRowsAffected("AdbiResultArrow")
 bigrquery::dbGetRowsAffected("BigQueryResult")
 DatabaseConnector::dbGetRowsAffected("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetRowsAffected("DatabaseConnectorJdbcResult")
@@ -23,8 +21,6 @@ sparklyr::dbGetRowsAffected("DBISparkResult")
 by a data manipulation statement.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbGetRowsAffected("AdbiResult")
-adbi::dbGetRowsAffected("AdbiResultArrow")
 bigrquery::dbGetRowsAffected("BigQueryResult")
 DatabaseConnector::dbGetRowsAffected("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetRowsAffected("DatabaseConnectorJdbcResult")
@@ -95,9 +91,7 @@ sparklyr::dbGetRowsAffected("DBISparkResult")
     <p>This method returns the number of rows that were added, deleted, or updated
 by a data manipulation statement.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbGetRowsAffected("AdbiResult")</a></code></p></li>
-<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbGetRowsAffected("AdbiResultArrow")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetRowsAffected("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetRowsAffected("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbGetRowsAffected("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbGetRowsAffected("DatabaseConnectorJdbcResult")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbGetRowsAffected("DBIMockResult")</a></code></p></li>
@@ -195,8 +189,10 @@ to ensure that this step is always executed.</p></li>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,

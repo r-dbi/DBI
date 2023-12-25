@@ -9,14 +9,11 @@ before calling dbFetch() or dbFetchArrow().
 The values are passed to dbBind() as lists or data frames,
 and to dbBindArrow() as a stream
 created by nanoarrow::as_nanoarrow_array_stream().
-
-dbBindArrow() is experimental, as are the other *Arrow functions.
+This works in all combinations.
 dbSendQuery() is compatible with dbBindArrow(), and dbSendQueryArrow()
 is compatible with dbBind().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbBind("AdbiResult")
-adbi::dbBind("AdbiResultArrow")
 bigrquery::dbBind("BigQueryResult")
 duckdb::dbBind("duckdb_result")
 odbc::dbBind("OdbcResult")
@@ -35,14 +32,11 @@ before calling dbFetch() or dbFetchArrow().
 The values are passed to dbBind() as lists or data frames,
 and to dbBindArrow() as a stream
 created by nanoarrow::as_nanoarrow_array_stream().
-
-dbBindArrow() is experimental, as are the other *Arrow functions.
+This works in all combinations.
 dbSendQuery() is compatible with dbBindArrow(), and dbSendQueryArrow()
 is compatible with dbBind().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
-adbi::dbBind("AdbiResult")
-adbi::dbBind("AdbiResultArrow")
 bigrquery::dbBind("BigQueryResult")
 duckdb::dbBind("duckdb_result")
 odbc::dbBind("OdbcResult")
@@ -105,23 +99,20 @@ sparklyr::dbBind("DBISparkResult")
 
     <div class="ref-description section level2">
     <p>For parametrized or prepared statements,
-the <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, and <code><a href="dbSendStatement.html">dbSendStatement()</a></code> functions
+the <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>, and <code><a href="dbSendStatement.html">dbSendStatement()</a></code> functions
 can be called with statements that contain placeholders for values.
 The <code>dbBind()</code> and <code>dbBindArrow()</code> functions bind these placeholders
 to actual values,
 and are intended to be called on the result set
-before calling <code><a href="dbFetch.html">dbFetch()</a></code> or <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code>.
+before calling <code><a href="dbFetch.html">dbFetch()</a></code> or <code><a href="dbFetch.html">dbFetchArrow()</a></code>.
 The values are passed to <code>dbBind()</code> as lists or data frames,
 and to <code>dbBindArrow()</code> as a stream
-created by <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p>
-<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
-<p><code>dbBindArrow()</code> is experimental, as are the other <code>*Arrow</code> functions.
-<code><a href="dbSendQuery.html">dbSendQuery()</a></code> is compatible with <code>dbBindArrow()</code>, and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>
+created by <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.
+This works in all combinations.
+<code><a href="dbSendQuery.html">dbSendQuery()</a></code> is compatible with <code>dbBindArrow()</code>, and <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code>
 is compatible with <code>dbBind()</code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbBind("AdbiResult")</a></code></p></li>
-<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbBind("AdbiResultArrow")</a></code></p></li>
-<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBind("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBind("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbBind("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcResult.html" class="external-link">odbc::dbBind("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbBind("MariaDBResult")</a></code></p></li>
@@ -161,7 +152,7 @@ with one column per query parameter.</p></dd>
 
 <p><code>dbBind()</code> returns the result set,
 invisibly,
-for queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> and
+for queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> and
 also for data manipulation statements issued by
 <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
     </div>
@@ -228,16 +219,16 @@ to ensure that this step is always executed.</p></li>
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as an Arrow stream.</p>
 <p>Most of this flow, except repeated calling of <code>dbBindArrow()</code> or <code>dbBind()</code>,
-is implemented by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>,
+is implemented by <code><a href="dbGetQuery.html">dbGetQueryArrow()</a></code>,
 which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
-See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object of class
-<a href="DBIResultArrow-class.html">DBIResultArrow</a>.</p></li>
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> to create a result set object of class
+<a href="DBIResult-class.html">DBIResultArrow</a>.</p></li>
 <li><p>Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
 This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
-<li><p>Use <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
+<li><p>Use <code><a href="dbFetch.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="dbClearResult.html">dbClearResult()</a></code> to clean up the result set object.
 This step is mandatory even if no rows have been fetched
@@ -303,7 +294,7 @@ also raises an error.</p>
     
 
 
-<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQuery.html">dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
 with a query or statement that contains placeholders,
 store the returned <a href="DBIResult-class.html">DBIResult</a> object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
@@ -386,25 +377,16 @@ and with the value stored as integer)</p></li>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
-<p>Other DBIResultArrow generics: 
-<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
-<code><a href="dbClearResult.html">dbClearResult</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
-<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbIsValid.html">dbIsValid</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetch.html">dbFetch</a>()</code>,
-<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
-<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
-<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
-<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p>
 <p>Other command execution generics: 
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -454,12 +436,12 @@ and with the value stored as integer)</p></li>
 <span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"iris"</span>, <span class="va">iris</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Using the same query for different values</span></span></span>
-<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQueryArrow.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">iris_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbSendQuery.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">dbBindArrow</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="va">iris_result</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fl">2.3</span>, fix.empty.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1          6.3         3.3          6.0         2.5 virginica</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2          7.2         3.6          6.1         2.5 virginica</span>
@@ -471,7 +453,7 @@ and with the value stored as integer)</p></li>
 <span class="r-in"><span>  <span class="va">iris_result</span>,</span></span>
 <span class="r-in"><span>  <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">as_nanoarrow_array_stream</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span><span class="fl">3</span>, fix.empty.names <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] Sepal.Length Sepal.Width  Petal.Length Petal.Width  Species     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;0 rows&gt; (or 0-length row.names)</span>
 <span class="r-in"><span><span class="fu"><a href="dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">iris_result</span><span class="op">)</span></span></span>
