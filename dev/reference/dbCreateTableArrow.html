@@ -155,6 +155,11 @@ See the "Specification" and "Value" sections for details on their usage.</p>
 to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbCreateTableArrow()</code> will do the quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+</ul><p>The <code>value</code> argument can be:</p><ul><li><p>a data frame,</p></li>
+<li><p>a nanoarrow array</p></li>
+<li><p>a nanoarrow array stream
+(which will still contain the data after the call)</p></li>
+<li><p>a nanoarrow schema</p></li>
 </ul><p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
 second connection and is gone after reconnecting.
 Not all backends support this argument.
@@ -168,6 +173,7 @@ if the database supports non-syntactic identifiers.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -179,7 +185,6 @@ if the database supports non-syntactic identifiers.</p>
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
