@@ -70,6 +70,9 @@
     <loc>https://dbi.r-dbi.org/dev/reference/DBIResult-class.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/Id.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTable.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbBind.html</loc>
@@ -100,6 +106,9 @@
     <loc>https://dbi.r-dbi.org/dev/reference/dbCreateTable.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbCreateTableArrow.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbDataType.html</loc>
   </url>
   <url>
@@ -118,6 +127,12 @@
     <loc>https://dbi.r-dbi.org/dev/reference/dbFetch.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrow.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrowChunk.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbGetConnectArgs.html</loc>
   </url>
   <url>
@@ -131,6 +146,9 @@
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbGetQuery.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbGetQueryArrow.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbGetRowCount.html</loc>
@@ -178,10 +196,16 @@
     <loc>https://dbi.r-dbi.org/dev/reference/dbReadTable.html</loc>
   </url>
   <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbReadTableArrow.html</loc>
+  </url>
+  <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbRemoveTable.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbSendQuery.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbSendStatement.html</loc>
@@ -197,6 +221,9 @@
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dbWriteTable.html</loc>
+  </url>
+  <url>
+    <loc>https://dbi.r-dbi.org/dev/reference/dbWriteTableArrow.html</loc>
   </url>
   <url>
     <loc>https://dbi.r-dbi.org/dev/reference/dot-SQL92Keywords.html</loc>

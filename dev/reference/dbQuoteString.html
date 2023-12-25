@@ -4,6 +4,7 @@ use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteString("AdbiConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
@@ -29,6 +30,7 @@ use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteString("AdbiConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
@@ -106,7 +108,8 @@ sparklyr::dbQuoteString("spark_connection", "character")
 use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteString("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "SQL")</a></code></p></li>
 <li><p><code>DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")</code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteString("DBIMockMariaDBConnection", "character")</a></code></p></li>
@@ -221,9 +224,7 @@ returns one row.</p>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
-<code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code></p></div>
     </div>
 
     <div class="section level2">

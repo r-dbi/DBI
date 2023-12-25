@@ -416,11 +416,9 @@ connection.</p>
 <div class="section level2 container">
 <h2 id="execute-a-query-on-a-given-database-connection">Execute a query on a given database connection<a class="anchor" aria-label="anchor" href="#execute-a-query-on-a-given-database-connection"></a>
 </h2>
-<p>This section describes the behavior of the following methods:</p>
+<p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-3">Description<a class="anchor" aria-label="anchor" href="#description-3"></a>
 </h3>
@@ -430,7 +428,9 @@ extract any records — for that you need to use the
 <code><a href="../reference/dbFetch.html">dbFetch()</a></code> method, and then you must call
 <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> when you finish fetching the records you
 need. For interactive use, you should almost always prefer
-<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>.</p>
+<code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code>. Use <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code> or
+<code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code> instead to retrieve the results as an
+Arrow object.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-3">Arguments<a class="anchor" aria-label="anchor" href="#arguments-3"></a>
@@ -630,17 +630,6 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Retrieve data as arrow table</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
-<span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
-<span></span>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -650,10 +639,6 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetchArrowChunk</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbFetch.html">fetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
@@ -874,7 +859,7 @@ This step is mandatory for all objects obtained by calling
 </h3>
 <p><code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> returns <code>TRUE</code>, invisibly,
 for result sets obtained from <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>,
-<code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, or <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
+<code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, or <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
 </div>
 <div class="section level3">
 <h3 id="the-data-retrieval-flow-2">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-2"></a>
@@ -947,7 +932,7 @@ this step is always executed.</p></li>
 </h3>
 <p>An attempt to close an already closed result set issues a warning for
 <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, and
-<code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>,</p>
+<code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>,</p>
 </div>
 <div class="section level3">
 <h3 id="specification-4">Specification<a class="anchor" aria-label="anchor" href="#specification-4"></a>
@@ -982,17 +967,19 @@ can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResu
 <h3 id="description-6">Description<a class="anchor" aria-label="anchor" href="#description-6"></a>
 </h3>
 <p>For parametrized or prepared statements, the
-<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>, and
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, and
 <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> functions can be called with statements
 that contain placeholders for values. The <code><a href="../reference/dbBind.html">dbBind()</a></code> and
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> functions bind these placeholders to actual
 values, and are intended to be called on the result set before calling
-<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code>. The values are
+<code><a href="../reference/dbFetch.html">dbFetch()</a></code> or <code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code>. The values are
 passed to <code><a href="../reference/dbBind.html">dbBind()</a></code> as lists or data frames, and to
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> as a stream created by
-<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>. This works in all
-combinations. <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> is compatible with
-<code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, and <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code> is
+<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="../help/figures/lifecycle-experimental.svg" alt="Experimental"></a></p>
+<p><code><a href="../reference/dbBind.html">dbBindArrow()</a></code> is experimental, as are the other
+<code>⁠*Arrow⁠</code> functions. <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> is compatible
+with <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, and <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code> is
 compatible with <code><a href="../reference/dbBind.html">dbBind()</a></code>.</p>
 </div>
 <div class="section level3">
@@ -1055,7 +1042,7 @@ are:</p>
 <h3 id="value-6">Value<a class="anchor" aria-label="anchor" href="#value-6"></a>
 </h3>
 <p><code><a href="../reference/dbBind.html">dbBind()</a></code> returns the result set, invisibly, for queries
-issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>
+issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>
 and also for data manipulation statements issued by
 <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>.</p>
 </div>
@@ -1103,18 +1090,18 @@ this step is always executed.</p></li>
 execution of queries that return tabular data as an Arrow stream.</p>
 <p>Most of this flow, except repeated calling of
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> or <code><a href="../reference/dbBind.html">dbBind()</a></code>, is implemented by
-<code><a href="../reference/dbGetQuery.html">dbGetQueryArrow()</a></code>, which should be sufficient unless you
+<code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code>, which should be sufficient unless you
 have a parameterized query that you want to reuse. This flow requires an
 active connection established by <code><a href="../reference/dbConnect.html">dbConnect()</a></code>. See also
 <code>vignette("dbi-advanced")</code> for a walkthrough.</p>
 <ol style="list-style-type: decimal">
-<li><p>Use <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code> to create a result set object
+<li><p>Use <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object
 of class DBIResultArrow.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>
 or <code><a href="../reference/dbBind.html">dbBind()</a></code>. This is required only if the query contains
 placeholders such as <code>⁠?⁠</code> or <code>⁠\$1⁠</code>, depending on
 the database backend.</p></li>
-<li><p>Use <code><a href="../reference/dbFetch.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
+<li><p>Use <code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code> to get a data stream.</p></li>
 <li><p>Repeat the last two steps as necessary.</p></li>
 <li><p>Use <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> to clean up the result set
 object. This step is mandatory even if no rows have been fetched or if
@@ -1173,7 +1160,7 @@ mixing positional and named placeholders) is not specified.</p>
 as follows:</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Call <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendQuery.html">dbSendQueryArrow()</a></code>
+<p>Call <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>
 or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code> with a query or statement that
 contains placeholders, store the returned DBIResult object in a
 variable. Mixing placeholders (in particular, named and unnamed ones) is
@@ -1309,23 +1296,22 @@ NULL values)</p></li>
 </div>
 </div>
 <div class="section level2 container">
-<h2 id="send-query-retrieve-results-and-then-clear-result-set">Send query, retrieve results and then clear result set<a class="anchor" aria-label="anchor" href="#send-query-retrieve-results-and-then-clear-result-set"></a>
+<h2 id="retrieve-results-from-a-query">Retrieve results from a query<a class="anchor" aria-label="anchor" href="#retrieve-results-from-a-query"></a>
 </h2>
-<p>This section describes the behavior of the following methods:</p>
+<p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-7">Description<a class="anchor" aria-label="anchor" href="#description-7"></a>
 </h3>
 <p>Returns the result of a query as a data frame.
 <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> comes with a default implementation (which
 should work with most backends) that calls <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>,
-then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always free-d
-by <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. For retrieving chunked/paged results or
+then <code><a href="../reference/dbFetch.html">dbFetch()</a></code>, ensuring that the result is always freed by
+<code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. For retrieving chunked/paged results or
 for passing query parameters, see <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, in
-particular the “The data retrieval flow” section.</p>
+particular the “The data retrieval flow” section. For retrieving results
+as an Arrow object, see <code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code>.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-7">Arguments<a class="anchor" aria-label="anchor" href="#arguments-7"></a>
@@ -1436,7 +1422,7 @@ message)</p></li>
 <h3 id="details-4">Details<a class="anchor" aria-label="anchor" href="#details-4"></a>
 </h3>
 <p>This method is for <code>SELECT</code> queries only (incl. other SQL
-statements that return a <code>SELECT</code>-alike result, e. g.
+statements that return a <code>SELECT</code>-alike result, e.g.,
 execution of a stored procedure or data manipulation queries like
 <code>⁠INSERT INTO ... RETURNING ...⁠</code>). To execute a stored
 procedure that does not return a result set, use
@@ -1487,15 +1473,6 @@ raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">db
 <span>  <span class="st">"SELECT COUNT(*) FROM mtcars WHERE cyl = ?"</span>,</span>
 <span>  params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span><span class="op">)</span></span>
 <span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Retrieve data as arrow table</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -1712,8 +1689,7 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 </div>
 </div>
 <div class="section level2 container">
-<h2 id="execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set">Execute an update statement, query number of rows affected, and then
-close result set<a class="anchor" aria-label="anchor" href="#execute-an-update-statement-query-number-of-rows-affected-and-then-close-result-set"></a>
+<h2 id="change-database-state">Change database state<a class="anchor" aria-label="anchor" href="#change-database-state"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
@@ -1725,7 +1701,7 @@ close result set<a class="anchor" aria-label="anchor" href="#execute-an-update-s
 <code><a href="../reference/dbExecute.html">dbExecute()</a></code> comes with a default implementation (which
 should work with most backends) that calls
 <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>, then <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>,
-ensuring that the result is always free-d by
+ensuring that the result is always freed by
 <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>. For passing query parameters, see
 <code><a href="../reference/dbBind.html">dbBind()</a></code>, in particular the “The command execution flow”
 section.</p>
@@ -2065,19 +2041,18 @@ query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIde
 </div>
 </div>
 <div class="section level2 container">
-<h2 id="copy-data-frames-from-database-tables">Copy data frames from database tables<a class="anchor" aria-label="anchor" href="#copy-data-frames-from-database-tables"></a>
+<h2 id="read-database-tables-as-data-frames">Read database tables as data frames<a class="anchor" aria-label="anchor" href="#read-database-tables-as-data-frames"></a>
 </h2>
-<p>This section describes the behavior of the following methods:</p>
+<p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-12">Description<a class="anchor" aria-label="anchor" href="#description-12"></a>
 </h3>
 <p>Reads a database table to a data frame, optionally converting a
 column to row names and converting the column names to valid R
-identifiers.</p>
+identifiers. Use <code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code> instead to obtain an
+Arrow object.</p>
 </div>
 <div class="section level3">
 <h3 id="arguments-12">Arguments<a class="anchor" aria-label="anchor" href="#arguments-12"></a>
@@ -2169,6 +2144,12 @@ more quoting is done</p></li>
 </ul>
 </div>
 <div class="section level3">
+<h3 id="details-7">Details<a class="anchor" aria-label="anchor" href="#details-7"></a>
+</h3>
+<p>This function returns a data frame. Use
+<code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code> to obtain an Arrow object.</p>
+</div>
+<div class="section level3">
 <h3 id="value-12">Value<a class="anchor" aria-label="anchor" href="#value-12"></a>
 </h3>
 <p><code><a href="../reference/dbReadTable.html">dbReadTable()</a></code> returns a data frame that contains the
@@ -2221,26 +2202,15 @@ non-scalar. Unsupported values for <code>row.names</code> and
 <span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
-<span></span>
-<span></span>
-<span><span class="co"># Read data as Arrow table</span></span>
-<span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span>, <span class="va">mtcars</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span>
-<span></span>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2 container">
 <h2 id="copy-data-frames-to-database-tables">Copy data frames to database tables<a class="anchor" aria-label="anchor" href="#copy-data-frames-to-database-tables"></a>
 </h2>
-<p>This section describes the behavior of the following methods:</p>
+<p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="description-13">Description<a class="anchor" aria-label="anchor" href="#description-13"></a>
 </h3>
@@ -2304,9 +2274,7 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </td>
 <td>
 <p>
-For <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>, a data.frame (or coercible to
-data.frame). For <code><a href="../reference/dbWriteTable.html">dbWriteTableArrow()</a></code>, an object coercible
-to an Arrow RecordBatchReader.
+A data.frame (or coercible to data.frame).
 </p>
 </td>
 </tr>
@@ -2430,17 +2398,19 @@ natural row names.</p></li>
 <p>The default is <code>row.names = FALSE</code>.</p>
 </div>
 <div class="section level3">
-<h3 id="details-7">Details<a class="anchor" aria-label="anchor" href="#details-7"></a>
+<h3 id="details-8">Details<a class="anchor" aria-label="anchor" href="#details-8"></a>
 </h3>
+<p>This function expects a data frame. Use
+<code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code> to write an Arrow object.</p>
 <p>This function is useful if you want to create and load a table at the
 same time. Use <code><a href="../reference/dbAppendTable.html">dbAppendTable()</a></code> or
-<code><a href="../reference/dbAppendTable.html">dbAppendTableArrow()</a></code> for appending data to an existing
-table, <code><a href="../reference/dbCreateTable.html">dbCreateTable()</a></code> or <code><a href="../reference/dbCreateTable.html">dbCreateTableArrow()</a></code>
+<code><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow()</a></code> for appending data to an existing
+table, <code><a href="../reference/dbCreateTable.html">dbCreateTable()</a></code> or <code><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow()</a></code>
 for creating a table, and <code><a href="../reference/dbExistsTable.html">dbExistsTable()</a></code> and
 <code><a href="../reference/dbRemoveTable.html">dbRemoveTable()</a></code> for overwriting tables.</p>
-<p>DBI only standardizes writing data frames and
-<code>ArrowTabular</code> objects. Some backends might implement methods
-that can consume CSV files or other data formats. For details, see the
+<p>DBI only standardizes writing data frames with
+<code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>. Some backends might implement methods that
+can consume CSV files or other data formats. For details, see the
 documentation for the individual methods.</p>
 </div>
 <div class="section level3">
@@ -3460,7 +3430,7 @@ write operations to multiple tables.</p>
 </tbody></table>
 </div>
 <div class="section level3">
-<h3 id="details-8">Details<a class="anchor" aria-label="anchor" href="#details-8"></a>
+<h3 id="details-9">Details<a class="anchor" aria-label="anchor" href="#details-9"></a>
 </h3>
 <p>Not all database engines implement transaction management, in which
 case these methods should not be implemented for the specific
@@ -3584,7 +3554,7 @@ can be called only inside <code><a href="../reference/dbWithTransaction.html">db
 </tbody></table>
 </div>
 <div class="section level3">
-<h3 id="details-9">Details<a class="anchor" aria-label="anchor" href="#details-9"></a>
+<h3 id="details-10">Details<a class="anchor" aria-label="anchor" href="#details-10"></a>
 </h3>
 <p>DBI implements <code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code>, backends should need
 to override this generic only if they implement specialized

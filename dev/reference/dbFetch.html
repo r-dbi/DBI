@@ -3,6 +3,7 @@
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetch("AdbiResult", "ANY")
 AzureKusto::dbFetch("AzureKustoResult", "ANY")
 bigrquery::dbFetch("BigQueryResult", "ANY")
 DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")
@@ -26,6 +27,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetch("AdbiResult", "ANY")
 AzureKusto::dbFetch("AzureKustoResult", "ANY")
 bigrquery::dbFetch("BigQueryResult", "ANY")
 DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")
@@ -93,7 +95,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Fetch records from a previously executed query</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrow.R" class="external-link"><code>R/dbFetchArrow.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrowChunk.R" class="external-link"><code>R/dbFetchArrowChunk.R</code></a>, and 1 more</small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
       <div class="d-none name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -101,7 +103,8 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbFetch("AzureKustoResult", "ANY")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>adbi::dbFetch("AdbiResult", "ANY")</code></p></li>
+<li><p><code>AzureKusto::dbFetch("AzureKustoResult", "ANY")</code></p></li>
 <li><p><code>bigrquery::dbFetch("BigQueryResult", "ANY")</code></p></li>
 <li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")</code></p></li>
 <li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorJdbcResult", "ANY")</code></p></li>
@@ -125,10 +128,6 @@ as a data.frame.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbFetchArrow</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbFetchArrowChunk</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -295,16 +294,18 @@ finish retrieving the records you want.</p>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p></div>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
     </div>
 
     <div class="section level2">

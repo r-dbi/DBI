@@ -3,6 +3,8 @@
 from the database.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbRemoveTable("AdbiConnection", "character")
+adbi::dbRemoveTable("AdbiConnection", "Id")
 AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
 DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")
@@ -24,6 +26,8 @@ sparklyr::dbRemoveTable("spark_connection", "character")
 from the database.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbRemoveTable("AdbiConnection", "character")
+adbi::dbRemoveTable("AdbiConnection", "Id")
 AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
 DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")
@@ -97,7 +101,9 @@ sparklyr::dbRemoveTable("spark_connection", "character")
     <p>Remove a remote table (e.g., created by <code><a href="dbWriteTable.html">dbWriteTable()</a></code>)
 from the database.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbRemoveTable("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbRemoveTable("AdbiConnection", "Id")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-ANY-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
@@ -199,7 +205,9 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
     <div class="dont-index"><p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -207,16 +215,22 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p></div>
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p></div>
     </div>
 
     <div class="section level2">
