@@ -76,8 +76,8 @@ this method also must accept lists of \link{raw} vectors,
 and \link[blob:blob]{blob::blob} objects.
 As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
 supported and return the same results as their unwrapped counterparts.
-The SQL data type for \link{factor}
-and \link{ordered} is the same as for character.
+The SQL data type for \link{factor} and
+\link{ordered} is the same as for character.
 The behavior for other object types is not specified.
 
 
