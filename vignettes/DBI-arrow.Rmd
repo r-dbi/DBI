@@ -1,7 +1,7 @@
 ---
 title: "Using DBI with Arrow"
 author: "Kirill Müller"
-date: "29/09/2022"
+date: "25/12/2023"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using DBI with Arrow}
@@ -42,23 +42,24 @@ Apache Arrow is
 - faster data retrieval and loading, by avoiding serialization in some cases
 - better support for reading and summarizing data from a database that is larger than memory
 - better type fidelity with workflows centered around Arrow
-- fundamental data structure: `arrow::RecordBatchReader`
+- fundamental data structure: `nanoarrow::as_nanoarrow_array` and `nanoarrow::as_nanoarrow_array_stream`
 
 ## New classes and generics
 
 - Zero chance of interfering with existing DBI backends
 - Fully functional fallback implementation for all existing DBI backends
-- Requires {arrow} R package
+- Requires {nanoarrow} R package
 
 - New generics:
     - `dbReadTableArrow()`
+    - `dbWriteTableArrow()`
     - `dbCreateTableArrow()`
     - `dbAppendTableArrow()`
     - `dbGetQueryArrow()`
     - `dbSendQueryArrow()`
+    - `dbBindArrow()`
     - `dbFetchArrow()`
     - `dbFetchArrowChunk()`
-    - `dbWriteTableArrow()`
 
 - New classes:
     - `DBIResultArrow`
@@ -107,9 +108,38 @@ stream$get_next()
 ## Prepared queries
 
 ```{r}
-in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1:4))
-stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", param = in_arrow)
+params <- data.frame(a = 3L)
+stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", params = params)
 as.data.frame(stream)
+
+params <- data.frame(a = c(2L, 4L))
+# Equivalent to dbBind()
+stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", params = params)
+as.data.frame(stream)
+```
+
+## Manual flow
+
+```{r}
+rs <- dbSendQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a")
+
+in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1L))
+dbBindArrow(rs, in_arrow)
+as.data.frame(dbFetchArrow(rs))
+
+in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 2L))
+dbBindArrow(rs, in_arrow)
+as.data.frame(dbFetchArrow(rs))
+
+in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 3L))
+dbBindArrow(rs, in_arrow)
+as.data.frame(dbFetchArrow(rs))
+
+in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1:4L))
+dbBindArrow(rs, in_arrow)
+as.data.frame(dbFetchArrow(rs))
+
+dbClearResult(rs)
 ```
 
 ## Writing data
