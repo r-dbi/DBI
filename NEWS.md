@@ -1,5 +1,14 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9005 (2023-12-25)
+
+## Chore
+
+- Fix type inference in default method for `dbCreateTableArrow()` (#448).
+
+- Add Aviator configuration.
+
+
 # DBI 1.2.0.9004 (2023-12-24)
 
 ## Features
