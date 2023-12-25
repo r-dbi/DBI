@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![Lifecycle:
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage
 Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://app.codecov.io/github/r-dbi/DBI?branch=main)
@@ -18,11 +20,11 @@ The DBI package helps connecting R to database management systems
 and a “back-end”. The package defines an interface that is implemented
 by *DBI backends* such as:
 
--   [RPostgres](https://rpostgres.r-dbi.org),
--   [RMariaDB](https://rmariadb.r-dbi.org),
--   [RSQLite](https://rsqlite.r-dbi.org),
--   [odbc](https://github.com/r-dbi/odbc),
--   [bigrquery](https://github.com/r-dbi/bigrquery),
+- [RPostgres](https://rpostgres.r-dbi.org),
+- [RMariaDB](https://rmariadb.r-dbi.org),
+- [RSQLite](https://rsqlite.r-dbi.org),
+- [odbc](https://github.com/r-dbi/odbc),
+- [bigrquery](https://github.com/r-dbi/bigrquery),
 
 and many more, see the [list of
 backends](https://github.com/r-dbi/backends#readme). R scripts and
@@ -34,12 +36,12 @@ spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s JDBC, Python’s
 [ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the following
 operations:
 
--   connect/disconnect to the DBMS
--   create and execute statements in the DBMS
--   extract results/output from statements
--   error/exception handling
--   information (meta-data) from database objects
--   transaction management (optional)
+- connect/disconnect to the DBMS
+- create and execute statements in the DBMS
+- extract results/output from statements
+- error/exception handling
+- information (meta-data) from database objects
+- transaction management (optional)
 
 ## Installation
 
@@ -47,14 +49,14 @@ Most users who want to access a database do not need to install DBI
 directly. It will be installed automatically when you install one of the
 database backends:
 
--   [RPostgres](https://rpostgres.r-dbi.org) for PostgreSQL,
--   [RMariaDB](https://rmariadb.r-dbi.org) for MariaDB or MySQL,
--   [RSQLite](https://rsqlite.r-dbi.org) for SQLite,
--   [odbc](https://github.com/r-dbi/odbc) for databases that you can
-    access via
-    [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
--   [bigrquery](https://github.com/r-dbi/bigrquery),
--   … .
+- [RPostgres](https://rpostgres.r-dbi.org) for PostgreSQL,
+- [RMariaDB](https://rmariadb.r-dbi.org) for MariaDB or MySQL,
+- [RSQLite](https://rsqlite.r-dbi.org) for SQLite,
+- [odbc](https://github.com/r-dbi/odbc) for databases that you can
+  access via
+  [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
+- [bigrquery](https://github.com/r-dbi/bigrquery),
+- … .
 
 You can install the released version of DBI from
 [CRAN](https://CRAN.R-project.org) with:
@@ -119,7 +121,7 @@ dbClearResult(res)
 
 # Or a chunk at a time
 res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
-while(!dbHasCompleted(res)){
+while (!dbHasCompleted(res)) {
   chunk <- dbFetch(res, n = 5)
   print(nrow(chunk))
 }
@@ -136,34 +138,33 @@ dbDisconnect(con)
 There are four main DBI classes. Three which are each extended by
 individual database backends:
 
--   `DBIObject`: a common base class for all DBI.
+- `DBIObject`: a common base class for all DBI.
 
--   `DBIDriver`: a base class representing overall DBMS properties.
-    Typically generator functions instantiate the driver objects like
-    `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
+- `DBIDriver`: a base class representing overall DBMS properties.
+  Typically generator functions instantiate the driver objects like
+  `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
 
--   `DBIConnection`: represents a connection to a specific database
+- `DBIConnection`: represents a connection to a specific database
 
--   `DBIResult`: the result of a DBMS query or statement.
+- `DBIResult`: the result of a DBMS query or statement.
 
 All classes are *virtual*: they cannot be instantiated directly and
 instead must be subclassed.
 
 ## Further Reading
 
--   [Databases using R](https://db.rstudio.com/) describes the tools and
-    best practices in this ecosystem.
+- [Databases using R](https://db.rstudio.com/) describes the tools and
+  best practices in this ecosystem.
 
--   The [DBI project site](https://www.r-dbi.org/) hosts a blog where
-    recent developments are presented.
+- The [DBI project site](https://www.r-dbi.org/) hosts a blog where
+  recent developments are presented.
 
--   [A history of
-    DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David
-    James, the driving force behind the development of DBI, and many of
-    the packages that implement it.
+- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by
+  David James, the driving force behind the development of DBI, and many
+  of the packages that implement it.
 
 ------------------------------------------------------------------------
 
 Please note that the *DBI* project is released with a [Contributor Code
-of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html). By contributing to
-this project, you agree to abide by its terms.
+of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html). By contributing
+to this project, you agree to abide by its terms.

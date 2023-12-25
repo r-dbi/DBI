@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # DBI
 
 <!-- badges: start -->
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
 [![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://app.codecov.io/github/r-dbi/DBI?branch=main)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)

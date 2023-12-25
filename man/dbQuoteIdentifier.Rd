@@ -88,21 +88,34 @@ dbQuoteIdentifier(ANSI(), var_name)
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: 
-\code{\link{DBIResult-class}},
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbColumnInfo}()},
-\code{\link{dbFetch}()},
+Other DBIConnection generics: 
+\code{\link{DBIConnection-class}},
+\code{\link{dbAppendTable}()},
+\code{\link{dbAppendTableArrow}()},
+\code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
+\code{\link{dbDataType}()},
+\code{\link{dbDisconnect}()},
+\code{\link{dbExecute}()},
+\code{\link{dbExistsTable}()},
+\code{\link{dbGetException}()},
 \code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
-\code{\link{dbHasCompleted}()},
+\code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbListFields}()},
+\code{\link{dbListObjects}()},
+\code{\link{dbListResults}()},
+\code{\link{dbListTables}()},
+\code{\link{dbReadTable}()},
+\code{\link{dbReadTableArrow}()},
+\code{\link{dbRemoveTable}()},
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
+\code{\link{dbSendStatement}()},
+\code{\link{dbUnquoteIdentifier}()},
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 }
-\concept{DBIResult generics}
+\concept{DBIConnection generics}

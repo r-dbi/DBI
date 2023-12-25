@@ -80,7 +80,9 @@ dbDisconnect(con)
 Other DBIConnection generics: 
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
+\code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
 \code{\link{dbDisconnect}()},
 \code{\link{dbExecute}()},
@@ -88,15 +90,21 @@ Other DBIConnection generics:
 \code{\link{dbGetException}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
+\code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbUnquoteIdentifier}()},
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 }
 \concept{DBIConnection generics}

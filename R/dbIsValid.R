@@ -12,6 +12,7 @@
 #' @family DBIDriver generics
 #' @family DBIConnection generics
 #' @family DBIResult generics
+#' @family DBIResultArrow generics
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' dbIsValid(RSQLite::SQLite())

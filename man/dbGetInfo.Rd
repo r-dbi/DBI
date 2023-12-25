@@ -78,24 +78,32 @@ Other DBIDriver generics:
 Other DBIConnection generics: 
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
+\code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
 \code{\link{dbDisconnect}()},
 \code{\link{dbExecute}()},
 \code{\link{dbExistsTable}()},
 \code{\link{dbGetException}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListFields}()},
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
+\code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbUnquoteIdentifier}()},
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 
 Other DBIResult generics: 
 \code{\link{DBIResult-class}},
@@ -109,10 +117,8 @@ Other DBIResult generics:
 \code{\link{dbHasCompleted}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbQuoteString}()}
 }
 \concept{DBIConnection generics}
 \concept{DBIDriver generics}

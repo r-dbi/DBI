@@ -1,16 +1,17 @@
-#' Send query, retrieve results and then clear result set
+#' Retrieve results from a query
 #'
 #' Returns the result of a query as a data frame.
 #' `dbGetQuery()` comes with a default implementation
 #' (which should work with most backends) that calls
 #' [dbSendQuery()], then [dbFetch()], ensuring that
-#' the result is always free-d by [dbClearResult()].
+#' the result is always freed by [dbClearResult()].
 #' For retrieving chunked/paged results or for passing query parameters,
 #' see [dbSendQuery()], in particular the "The data retrieval flow" section.
+#' For retrieving results as an Arrow object, see [dbGetQueryArrow()].
 #'
 #' This method is for `SELECT` queries only
 #' (incl. other SQL statements that return a `SELECT`-alike result,
-#'  e. g. execution of a stored procedure or data manipulation queries
+#' e.g., execution of a stored procedure or data manipulation queries
 #' like `INSERT INTO ... RETURNING ...`).
 #' To execute a stored procedure that does not return a result set,
 #' use [dbExecute()].

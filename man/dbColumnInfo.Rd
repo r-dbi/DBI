@@ -116,9 +116,7 @@ Other DBIResult generics:
 \code{\link{dbHasCompleted}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbQuoteString}()}
 }
 \concept{DBIResult generics}

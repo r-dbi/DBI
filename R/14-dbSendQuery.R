@@ -4,8 +4,10 @@
 #' SQL query to the database engine.  It does \emph{not} extract any
 #' records --- for that you need to use the [dbFetch()] method, and
 #' then you must call [dbClearResult()] when you finish fetching the
-#' records you need. For interactive use, you should almost always prefer
-#' [dbGetQuery()].
+#' records you need.
+#' For interactive use, you should almost always prefer [dbGetQuery()].
+#' Use [dbSendQueryArrow()] or [dbGetQueryArrow()] instead to retrieve the results
+#' as an Arrow object.
 #'
 #' This method is for `SELECT` queries only.  Some backends may
 #' support data manipulation queries through this method for compatibility
@@ -36,6 +38,7 @@
 #' @family DBIConnection generics
 #' @family data retrieval generics
 #' @seealso For updates: [dbSendStatement()] and [dbExecute()].
+#' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #'

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dbExecute.R
 \name{dbExecute}
 \alias{dbExecute}
-\title{Execute an update statement, query number of rows affected, and then close result set}
+\title{Change database state}
 \usage{
 dbExecute(conn, statement, ...)
 }
@@ -26,7 +26,7 @@ Executes a statement and returns the number of rows affected.
 \code{dbExecute()} comes with a default implementation
 (which should work with most backends) that calls
 \code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
-the result is always free-d by \code{\link[=dbClearResult]{dbClearResult()}}.
+the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
 For passing query parameters, see \code{\link[=dbBind]{dbBind()}}, in particular
 the "The command execution flow" section.
 
@@ -152,24 +152,32 @@ For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQue
 Other DBIConnection generics: 
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
+\code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},
+\code{\link{dbCreateTableArrow}()},
 \code{\link{dbDataType}()},
 \code{\link{dbDisconnect}()},
 \code{\link{dbExistsTable}()},
 \code{\link{dbGetException}()},
 \code{\link{dbGetInfo}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
 \code{\link{dbListFields}()},
 \code{\link{dbListObjects}()},
 \code{\link{dbListResults}()},
 \code{\link{dbListTables}()},
+\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbReadTable}()},
+\code{\link{dbReadTableArrow}()},
 \code{\link{dbRemoveTable}()},
 \code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()},
 \code{\link{dbSendStatement}()},
-\code{\link{dbWriteTable}()}
+\code{\link{dbUnquoteIdentifier}()},
+\code{\link{dbWriteTable}()},
+\code{\link{dbWriteTableArrow}()}
 
 Other command execution generics: 
 \code{\link{dbBind}()},

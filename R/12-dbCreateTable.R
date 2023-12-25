@@ -2,6 +2,8 @@
 #'
 #' The default `dbCreateTable()` method calls [sqlCreateTable()] and
 #' [dbExecute()].
+#' Use [dbCreateTableArrow()] to create a table from an Arrow schema.
+#'
 #' Backends compliant to ANSI SQL 99 don't need to override it.
 #' Backends with a different SQL syntax can override `sqlCreateTable()`,
 #' backends with entirely different ways to create tables need to

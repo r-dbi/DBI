@@ -37,7 +37,10 @@ before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbFetchArrow]{d
 The values are passed to \code{dbBind()} as lists or data frames,
 and to \code{dbBindArrow()} as a stream
 created by \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.
-This works in all combinations.
+
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
+\code{dbBindArrow()} is experimental, as are the other \verb{*Arrow} functions.
 \code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()}
 is compatible with \code{dbBind()}.
 
@@ -305,7 +308,7 @@ nrow(dbReadTable(con, "iris"))
 
 dbDisconnect(con)
 \dontshow{\}) # examplesIf}
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE) && packageVersion("nanoarrow") >= "0.1.0.2") (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Arrow flow:
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -352,17 +355,27 @@ Other DBIResult generics:
 \code{\link{dbHasCompleted}()},
 \code{\link{dbIsReadOnly}()},
 \code{\link{dbIsValid}()},
-\code{\link{dbQuoteIdentifier}()},
 \code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()},
-\code{\link{dbUnquoteIdentifier}()}
+\code{\link{dbQuoteString}()}
+
+Other DBIResultArrow generics: 
+\code{\link{DBIResultArrow-class}},
+\code{\link{dbClearResult}()},
+\code{\link{dbFetchArrow}()},
+\code{\link{dbFetchArrowChunk}()},
+\code{\link{dbHasCompleted}()},
+\code{\link{dbIsValid}()}
 
 Other data retrieval generics: 
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},
+\code{\link{dbFetchArrow}()},
+\code{\link{dbFetchArrowChunk}()},
 \code{\link{dbGetQuery}()},
+\code{\link{dbGetQueryArrow}()},
 \code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()}
+\code{\link{dbSendQuery}()},
+\code{\link{dbSendQueryArrow}()}
 
 Other command execution generics: 
 \code{\link{dbClearResult}()},
@@ -371,5 +384,6 @@ Other command execution generics:
 \code{\link{dbSendStatement}()}
 }
 \concept{DBIResult generics}
+\concept{DBIResultArrow generics}
 \concept{command execution generics}
 \concept{data retrieval generics}

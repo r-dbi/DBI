@@ -50,7 +50,7 @@ isSQLKeyword.default <- function(name, keywords = .SQL92Keywords,
   match(name, keywords, nomatch = 0) > 0
 }
 
-#' Keywords according to the SQL-92 sta
+#' Keywords according to the SQL-92 standard
 #'
 #' A character vector of SQL-92 keywords, uppercase.
 #'

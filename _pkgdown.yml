@@ -38,7 +38,7 @@ reference:
   - rownames
 
 - title: Queries and statements
-  desc: Sending queries and executing statements.
+  desc: Communicate with the DBMS.
   contents:
   - dbGetQuery
   - dbExecute
@@ -77,6 +77,24 @@ reference:
   - dbUnquoteIdentifier
   - sqlInterpolate
 
+- title: Arrow
+  desc: >
+    <p><a href="https://lifecycle.r-lib.org/articles/stages.html">
+      <img src="figures/lifecycle-experimental.svg" alt="Experimental lifecycle"/>
+    </a></p>
+
+    Returning and sending data in the Arrow format.
+  contents:
+  - dbReadTableArrow
+  - dbWriteTableArrow
+  - dbCreateTableArrow
+  - dbAppendTableArrow
+  - dbGetQueryArrow
+  - dbSendQueryArrow
+  - dbBindArrow
+  - dbFetchArrow
+  - dbFetchArrowChunk
+
 - title: Classes
   desc: S4 classes defined by DBI.
   contents:
@@ -85,6 +103,7 @@ reference:
   - DBIDriver-class
   - DBIConnection-class
   - DBIResult-class
+  - DBIResultArrow-class
   - DBIConnector-class
   - Id-class
 
