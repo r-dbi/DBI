@@ -146,10 +146,8 @@ For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.ht
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
-
-
-<p>with as many rows as records were fetched and as many
+<p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>, with
+as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -256,6 +254,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>For updates: <code><a href="dbSendStatement.html">dbSendStatement()</a></code> and <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
 <p>Other DBIConnection generics: 
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -267,7 +266,6 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
