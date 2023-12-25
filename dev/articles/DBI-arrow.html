@@ -76,7 +76,7 @@
                         <h4 data-toc-skip class="author">Kirill
 Müller</h4>
             
-            <h4 data-toc-skip class="date">29/09/2022</h4>
+            <h4 data-toc-skip class="date">25/12/2023</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/vignettes/DBI-arrow.Rmd" class="external-link"><code>vignettes/DBI-arrow.Rmd</code></a></small>
       <div class="d-none name"><code>DBI-arrow.Rmd</code></div>
@@ -112,7 +112,8 @@ cases</li>
 is larger than memory</li>
 <li>better type fidelity with workflows centered around Arrow</li>
 <li>fundamental data structure:
-<code>arrow::RecordBatchReader</code>
+<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">nanoarrow::as_nanoarrow_array</a></code> and
+<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream</a></code>
 </li>
 </ul>
 </div>
@@ -123,18 +124,19 @@ is larger than memory</li>
 <li><p>Zero chance of interfering with existing DBI backends</p></li>
 <li><p>Fully functional fallback implementation for all existing DBI
 backends</p></li>
-<li><p>Requires {arrow} R package</p></li>
+<li><p>Requires {nanoarrow} R package</p></li>
 <li>
 <p>New generics:</p>
 <ul>
 <li><code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code></li>
+<li><code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code></li>
 <li><code><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow()</a></code></li>
 <li><code><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow()</a></code></li>
 <li><code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code></li>
 <li><code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code></li>
+<li><code><a href="../reference/dbBind.html">dbBindArrow()</a></code></li>
 <li><code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code></li>
 <li><code><a href="../reference/dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code></li>
-<li><code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code></li>
 </ul>
 </li>
 <li>
@@ -249,9 +251,51 @@ backends</p></li>
 <h2 id="prepared-queries">Prepared queries<a class="anchor" aria-label="anchor" href="#prepared-queries"></a>
 </h2>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, param <span class="op">=</span> <span class="va">in_arrow</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span></span>
+<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   batch a   b    c</span></span>
+<span><span class="co">## 1     3 1 4.5 five</span></span>
+<span><span class="co">## 2     3 2 4.5 five</span></span></code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># Equivalent to dbBind()</span></span>
+<span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   batch a   b    c</span></span>
+<span><span class="co">## 1     2 1 4.5 five</span></span>
+<span><span class="co">## 2     4 1 4.5 five</span></span>
+<span><span class="co">## 3     4 2 4.5 five</span></span>
+<span><span class="co">## 4     4 3 4.5 five</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="manual-flow">Manual flow<a class="anchor" aria-label="anchor" href="#manual-flow"></a>
+</h2>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] batch a     b     c    </span></span>
+<span><span class="co">## &lt;0 rows&gt; (or 0-length row.names)</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   batch a   b    c</span></span>
+<span><span class="co">## 1     2 1 4.5 five</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   batch a   b    c</span></span>
+<span><span class="co">## 1     3 1 4.5 five</span></span>
+<span><span class="co">## 2     3 2 4.5 five</span></span></code></pre>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4L</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   batch a   b    c</span></span>
 <span><span class="co">## 1     2 1 4.5 five</span></span>
 <span><span class="co">## 2     3 1 4.5 five</span></span>
@@ -259,11 +303,13 @@ backends</p></li>
 <span><span class="co">## 4     4 1 4.5 five</span></span>
 <span><span class="co">## 5     4 2 4.5 five</span></span>
 <span><span class="co">## 6     4 3 4.5 five</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="writing-data">Writing data<a class="anchor" aria-label="anchor" href="#writing-data"></a>
 </h2>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span><span class="op">)</span></span></code></pre></div>
@@ -274,16 +320,16 @@ backends</p></li>
 <div class="section level2">
 <h2 id="appending-data">Appending data<a class="anchor" aria-label="anchor" href="#appending-data"></a>
 </h2>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &gt;= 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
@@ -291,7 +337,7 @@ backends</p></li>
 <span><span class="co">## 3 3 4.5 five</span></span></code></pre>
 <p>As usual, do not forget to disconnect from the database when
 done.</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
