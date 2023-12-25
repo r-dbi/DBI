@@ -24,7 +24,7 @@ adbi::dbFetchArrow("AdbiResultArrow")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -94,8 +94,10 @@ Use <code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code> to fet
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code>dbFetchArrow()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with
-as many rows as records were fetched and as many
+<p><code>dbFetchArrow()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+
+
+<p>with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -151,11 +153,11 @@ The chunk size is implementation-specific.</p>
     <div class="dont-index"><p>Close the result set with <code><a href="dbClearResult.html">dbClearResult()</a></code> as soon as you
 finish retrieving the records you want.</p>
 <p>Other DBIResultArrow generics: 
-<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
 <code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
+<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,

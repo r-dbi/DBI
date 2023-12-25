@@ -60,7 +60,7 @@ sparklyr::dbReadTable("spark_connection", "character")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -159,8 +159,10 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
     
 
 <p><code>dbReadTable()</code> returns a data frame that contains the complete data
-from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code> with
-<code>SELECT * FROM &lt;name&gt;</code>.</p>
+from the remote table, effectively the result of calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code></p>
+
+
+<p>with <code>SELECT * FROM &lt;name&gt;</code>.</p>
 
 
 <p>An empty table is returned as a data frame with zero rows.</p>
@@ -235,7 +237,6 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -248,6 +249,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,

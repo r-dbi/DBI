@@ -32,7 +32,7 @@ RSQLite::dbUnquoteIdentifier("SQLiteConnection", "SQL")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -150,8 +150,8 @@ a comma,
 or quotes used to mark strings
 or identifiers,
 if the database supports this.</p>
-<p>Unquoting simple strings (consisting of only letters) wrapped with <code><a href="SQL.html">SQL()</a></code> and
-then quoting via <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> gives the same result as just
+<p>Unquoting simple strings (consisting of only letters) wrapped with <code><a href="SQL.html">SQL()</a></code>
+and then quoting via <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> gives the same result as just
 quoting the string.
 Similarly, unquoting expressions of the form <code>SQL("schema.table")</code>
 and then quoting gives the same result as quoting the identifier
@@ -160,7 +160,6 @@ constructed by <code>Id("schema", "table")</code>.</p>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -173,6 +172,7 @@ constructed by <code>Id("schema", "table")</code>.</p>
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,

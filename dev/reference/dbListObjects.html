@@ -40,7 +40,7 @@ RPostgres::dbListObjects("PqConnection")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,8 +138,10 @@ This data frame contains one row for each object (schema, table
 and view)
 accessible from the prefix (if passed) or from the global namespace
 (if prefix is omitted).
-Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code> are
-part of the data frame.
+Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code></p>
+
+
+<p>are part of the data frame.
 As soon a table is removed from the database,
 it is also removed from the data frame of database objects.</p>
 
@@ -181,7 +183,6 @@ For the data frame returned from a <code>dbListObject()</code> call with the
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other DBIConnection generics: 
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -194,6 +195,7 @@ For the data frame returned from a <code>dbListObject()</code> call with the
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
 <code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,

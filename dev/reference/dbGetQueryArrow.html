@@ -30,7 +30,7 @@ For retrieving results as a data frame, see dbGetQuery().
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,8 +109,10 @@ For retrieving results as a data frame, see <code><a href="dbGetQuery.html">dbGe
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code>dbGetQueryArrow()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>, with
-as many rows as records were fetched and as many
+<p><code>dbGetQueryArrow()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
+
+
+<p>with as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -199,7 +201,6 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>For updates: <code>dbSendStatementArrow()</code> and <code><a href="dbExecute.html">dbExecute()</a></code>.</p>
 <p>Other DBIConnection generics: 
-<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
 <code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
@@ -211,6 +212,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
