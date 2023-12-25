@@ -44,8 +44,7 @@ and have an ellipsis \code{...} in their formals for extensibility.
 \section{Construction of the DBIDriver object}{
 
 
-The backend must support creation of an instance of its \linkS4class{DBIDriver}
-subclass
+The backend must support creation of an instance of its \linkS4class{DBIDriver} subclass
 with a \dfn{constructor function}.
 By default, its name is the package name without the leading \sQuote{R}
 (if it exists), e.g., \code{SQLite} for the \pkg{RSQLite} package.

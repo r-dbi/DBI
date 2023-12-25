@@ -57,8 +57,8 @@ or quotes used to mark strings
 or identifiers,
 if the database supports this.
 
-Unquoting simple strings (consisting of only letters) wrapped with \code{\link[=SQL]{SQL()}}
-and then quoting via \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} gives the same result as just
+Unquoting simple strings (consisting of only letters) wrapped with \code{\link[=SQL]{SQL()}} and
+then quoting via \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} gives the same result as just
 quoting the string.
 Similarly, unquoting expressions of the form \code{SQL("schema.table")}
 and then quoting gives the same result as quoting the identifier

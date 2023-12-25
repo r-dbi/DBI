@@ -18,8 +18,8 @@ dbGetQueryArrow(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbGetQuery()} always returns a \link{data.frame}
-with as many rows as records were fetched and as many
+\code{dbGetQuery()} always returns a \link{data.frame}, with
+as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one

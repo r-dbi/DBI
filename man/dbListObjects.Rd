@@ -29,8 +29,8 @@ This data frame contains one row for each object (schema, table
 and view)
 accessible from the prefix (if passed) or from the global namespace
 (if prefix is omitted).
-Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}}
-are part of the data frame.
+Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}} are
+part of the data frame.
 As soon a table is removed from the database,
 it is also removed from the data frame of database objects.
 
