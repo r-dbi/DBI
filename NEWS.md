@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9006 (2023-12-26)
+
+## Features
+
+- Avoid coercing `params` in default implementation for `dbSendQueryArrow()` (#447).
+
+## Chore
+
+- Fix type inference in default method for `dbCreateTableArrow()` (#450).
+
+## Documentation
+
+- Document new Arrow generics (#444, #449).
+
+
 # DBI 1.2.0.9005 (2023-12-25)
 
 ## Chore
