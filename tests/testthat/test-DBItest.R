@@ -33,4 +33,11 @@ tryCatch(skip = function(e) message(conditionMessage(e)), {
 skip_on_cran()
 skip_if_not_installed("DBItest")
 
-DBItest::test_all()
+DBItest::test_all(
+  skip = c(
+    if (getRversion() < "4.0") c(
+      "stream_bind_too_many",
+      "arrow_stream_bind_too_many"
+    )
+  )
+)

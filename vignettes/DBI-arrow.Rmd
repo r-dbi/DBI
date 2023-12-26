@@ -34,38 +34,50 @@ See `vignette("DBI", package = "DBI")` and `vignette("DBI", package = "DBI-advan
 
 Apache Arrow is
 
-> a cross-language development platform for in-memory analytics.
+> a cross-language development platform for in-memory analytics,
 
-- suitable for large and huge data, also out-of-memory
-- data exchange format, good support for data types used in SQL databases
-- new extension points to allow backends (currently DuckDB and adbc) to make use of the data exchange format
-- faster data retrieval and loading, by avoiding serialization in some cases
-- better support for reading and summarizing data from a database that is larger than memory
-- better type fidelity with workflows centered around Arrow
-- fundamental data structure: `nanoarrow::as_nanoarrow_array` and `nanoarrow::as_nanoarrow_array_stream`
+suitable for large and huge data, with support for out-of-memory operation.
+Arrow is also a data exchange format, the data types covered by Arrow are a superset of the data types supported by SQL databases.
+
+DBI 1.2.0 introduced support for Arrow as a format for exchanging data between R and databases.
+The aim is to:
+
+- accelerate data retrieval and loading, by using fewer costly data conversions
+- better support reading and summarizing data from a database that is larger than memory
+- provide better type fidelity with workflows centered around Arrow
+
+This allows existing code to be used with Arrow, and it allows new code to be written that is more efficient and more flexible than code that uses R's data frames.
+
+The interface is built around the {nanoarrow} R package, with `nanoarrow::as_nanoarrow_array` and `nanoarrow::as_nanoarrow_array_stream` as fundamental data structures.
 
 ## New classes and generics
 
-- Zero chance of interfering with existing DBI backends
-- Fully functional fallback implementation for all existing DBI backends
-- Requires {nanoarrow} R package
+DBI 1.2.0 introduces new classes and generics for working with Arrow data:
 
-- New generics:
-    - `dbReadTableArrow()`
-    - `dbWriteTableArrow()`
-    - `dbCreateTableArrow()`
-    - `dbAppendTableArrow()`
-    - `dbGetQueryArrow()`
-    - `dbSendQueryArrow()`
-    - `dbBindArrow()`
-    - `dbFetchArrow()`
-    - `dbFetchArrowChunk()`
+- `dbReadTableArrow()`
+- `dbWriteTableArrow()`
+- `dbCreateTableArrow()`
+- `dbAppendTableArrow()`
+- `dbGetQueryArrow()`
+- `dbSendQueryArrow()`
+- `dbBindArrow()`
+- `dbFetchArrow()`
+- `dbFetchArrowChunk()`
+- `DBIResultArrow`
+- `DBIResultArrowDefault`
 
-- New classes:
-    - `DBIResultArrow`
-    - `DBIResultArrowDefault`
+Compatibility is important for DBI, and implementing new generics and classes greatly reduces the risk of breaking existing code.
+The DBI package comes with a fully functional fallback implementation for all existing DBI backends.
+The fallback is not improving performance, but it allows existing code to be used with Arrow before switching to a backend with native Arrow support.
+Backends with native support, like the [adbi](https://adbi.r-dbi.org/) package, implement the new generics and classes for direct support and improved performance.
+
+In the remainder of this tutorial, we will demonstrate the new generics and classes using the RSQLite package.
+SQLite is an in-memory database, this code does not need a database server to be installed and running.
+
 
 ## Prepare
+
+We start by setting up a database connection and creating a table with some data, using the original `dbWriteTable()` method.
 
 ```{r}
 library(DBI)
@@ -83,29 +95,32 @@ dbWriteTable(con, "tbl", data)
 
 ## Read all rows from a table
 
+The `dbReadTableArrow()` method reads all rows from a table into an Arrow stream, similarly to `dbReadTable()`.
+Arrow objects implement the `as.data.frame()` method, so we can convert the stream to a data frame.
+
 ```{r}
 dbReadTableArrow(con, "tbl")
-as.data.frame(dbReadTableArrow(con, "tbl"))
-```
-
-## Run queries
-
-```{r}
-stream <- dbGetQueryArrow(con, "SELECT COUNT(*) FROM tbl WHERE a < 3")
+stream <- dbReadTableArrow(con, "tbl")
 stream
 as.data.frame(stream)
 ```
 
-## Process data piecemeal
+## Run queries
+
+The `dbGetQueryArrow()` method runs a query and returns the result as an Arrow stream.
+This stream can be turned into an `arrow::RecordBatchReader` object and processed further, without bringing it into R.
 
 ```{r}
-stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
+stream <- dbGetQueryArrow(con, "SELECT COUNT(*) AS n FROM tbl WHERE a < 3")
 stream
-stream$get_next()
-stream$get_next()
+path <- tempfile(fileext = ".parquet")
+arrow::write_parquet(arrow::as_record_batch_reader(stream), path)
+arrow::read_parquet(path)
 ```
 
 ## Prepared queries
+
+The `dbGetQueryArrow()` method supports prepared queries, using the `params` argument which accepts a data frame or a list.
 
 ```{r}
 params <- data.frame(a = 3L)
@@ -119,6 +134,10 @@ as.data.frame(stream)
 ```
 
 ## Manual flow
+
+For the manual flow, use `dbSendQueryArrow()` to send a query to the database, and `dbFetchArrow()` to fetch the result.
+This also allows using the new `dbBindArrow()` method to bind data in Arrow format to a prepared query.
+Result objects must be cleared with `dbClearResult()`.
 
 ```{r}
 rs <- dbSendQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a")
@@ -144,6 +163,8 @@ dbClearResult(rs)
 
 ## Writing data
 
+Streams returned by `dbGetQueryArrow()` and `dbReadTableArrow()` can be written to a table using `dbWriteTableArrow()`.
+
 ```{r}
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
 dbWriteTableArrow(con, "tbl_new", stream)
@@ -151,6 +172,8 @@ dbReadTable(con, "tbl_new")
 ```
 
 ## Appending data
+
+For more control over the writing process, use `dbCreateTableArrow()` and `dbAppendTableArrow()`.
 
 ```{r}
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
@@ -161,15 +184,14 @@ dbAppendTableArrow(con, "tbl_split", stream)
 dbReadTable(con, "tbl_split")
 ```
 
-As usual, do not forget to disconnect from the database when done.
+## Conclusion
+
+Do not forget to disconnect from the database when done.
 
 ```{r}
 dbDisconnect(con)
 ```
 
-## Conclusion
-
-That concludes the major features of DBI.
+That concludes the major features of DBI's new Arrow interface.
 For more details on the library functions covered in this tutorial see the DBI specification at `vignette("spec", package = "DBI")`.
-
-- See arrow package for further processing
+See the [adbi](https://adbi.r-dbi.org/) package for a backend with native Arrow support, and [nanoarrow](https://github.com/apache/arrow-nanoarrow) and [arrow](https://arrow.apache.org/docs/r/) for packages to work with the Arrow format.
