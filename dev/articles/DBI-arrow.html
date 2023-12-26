@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9006</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -98,35 +98,35 @@ accessing data using R’s data frames instead of Arrow’s structures.</p>
 </h2>
 <p>Apache Arrow is</p>
 <blockquote>
-<p>a cross-language development platform for in-memory analytics,</p>
+<p>a cross-language development platform for in-memory analytics.</p>
 </blockquote>
-<p>suitable for large and huge data, with support for out-of-memory
-operation. Arrow is also a data exchange format, the data types covered
-by Arrow are a superset of the data types supported by SQL
-databases.</p>
-<p>DBI 1.2.0 introduced support for Arrow as a format for exchanging
-data between R and databases. The aim is to:</p>
 <ul>
-<li>accelerate data retrieval and loading, by using fewer costly data
-conversions</li>
-<li>better support reading and summarizing data from a database that is
-larger than memory</li>
-<li>provide better type fidelity with workflows centered around
-Arrow</li>
-</ul>
-<p>This allows existing code to be used with Arrow, and it allows new
-code to be written that is more efficient and more flexible than code
-that uses R’s data frames.</p>
-<p>The interface is built around the {nanoarrow} R package, with
+<li>suitable for large and huge data, also out-of-memory</li>
+<li>data exchange format, good support for data types used in SQL
+databases</li>
+<li>new extension points to allow backends (currently DuckDB and adbc)
+to make use of the data exchange format</li>
+<li>faster data retrieval and loading, by avoiding serialization in some
+cases</li>
+<li>better support for reading and summarizing data from a database that
+is larger than memory</li>
+<li>better type fidelity with workflows centered around Arrow</li>
+<li>fundamental data structure:
 <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">nanoarrow::as_nanoarrow_array</a></code> and
-<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream</a></code> as fundamental data
-structures.</p>
+<code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream</a></code>
+</li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="new-classes-and-generics">New classes and generics<a class="anchor" aria-label="anchor" href="#new-classes-and-generics"></a>
 </h2>
-<p>DBI 1.2.0 introduces new classes and generics for working with Arrow
-data:</p>
+<ul>
+<li><p>Zero chance of interfering with existing DBI backends</p></li>
+<li><p>Fully functional fallback implementation for all existing DBI
+backends</p></li>
+<li><p>Requires {nanoarrow} R package</p></li>
+<li>
+<p>New generics:</p>
 <ul>
 <li><code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code></li>
 <li><code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code></li>
@@ -137,27 +137,20 @@ data:</p>
 <li><code><a href="../reference/dbBind.html">dbBindArrow()</a></code></li>
 <li><code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code></li>
 <li><code><a href="../reference/dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code></li>
+</ul>
+</li>
+<li>
+<p>New classes:</p>
+<ul>
 <li><code>DBIResultArrow</code></li>
 <li><code>DBIResultArrowDefault</code></li>
 </ul>
-<p>Compatibility is important for DBI, and implementing new generics and
-classes greatly reduces the risk of breaking existing code. The DBI
-package comes with a fully functional fallback implementation for all
-existing DBI backends. The fallback is not improving performance, but it
-allows existing code to be used with Arrow before switching to a backend
-with native Arrow support. Backends with native support, like the <a href="https://adbi.r-dbi.org/" class="external-link">adbi</a> package, implement the new
-generics and classes for direct support and improved performance.</p>
-<p>In the remainder of this tutorial, we will demonstrate the new
-generics and classes using the RSQLite package. SQLite is an in-memory
-database, this code does not need a database server to be installed and
-running.</p>
+</li>
+</ul>
 </div>
 <div class="section level2">
 <h2 id="prepare">Prepare<a class="anchor" aria-label="anchor" href="#prepare"></a>
 </h2>
-<p>We start by setting up a database connection and creating a table
-with some data, using the original <code><a href="../reference/dbWriteTable.html">dbWriteTable()</a></code>
-method.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
 <span></span>
@@ -174,10 +167,6 @@ method.</p>
 <div class="section level2">
 <h2 id="read-all-rows-from-a-table">Read all rows from a table<a class="anchor" aria-label="anchor" href="#read-all-rows-from-a-table"></a>
 </h2>
-<p>The <code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code> method reads all rows from a
-table into an Arrow stream, similarly to <code><a href="../reference/dbReadTable.html">dbReadTable()</a></code>.
-Arrow objects implement the <code><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame()</a></code> method, so we
-can convert the stream to a data frame.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
@@ -185,14 +174,7 @@ can convert the stream to a data frame.</p>
 <span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
 <span><span class="co">##  $ release   :function ()</span></span></code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span></span>
-<span><span class="va">stream</span></span></code></pre></div>
-<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
-<span><span class="co">##  $ get_schema:function ()  </span></span>
-<span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
-<span><span class="co">##  $ release   :function ()</span></span></code></pre>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbReadTableArrow.html">dbReadTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span>
@@ -201,38 +183,81 @@ can convert the stream to a data frame.</p>
 <div class="section level2">
 <h2 id="run-queries">Run queries<a class="anchor" aria-label="anchor" href="#run-queries"></a>
 </h2>
-<p>The <code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code> method runs a query and returns
-the result as an Arrow stream. This stream can be turned into an
-<code><a href="https://arrow.apache.org/docs/r/reference/RecordBatchReader.html" class="external-link">arrow::RecordBatchReader</a></code> object and processed further,
-without bringing it into R.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT COUNT(*) AS n FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT COUNT(*) FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="va">stream</span></span></code></pre></div>
-<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;n: int32&gt;&gt;</span></span>
+<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;COUNT(*): int32&gt;&gt;</span></span>
 <span><span class="co">##  $ get_schema:function ()  </span></span>
 <span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
 <span><span class="co">##  $ release   :function ()</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   COUNT(*)</span></span>
+<span><span class="co">## 1        2</span></span></code></pre>
+</div>
+<div class="section level2">
+<h2 id="process-data-piecemeal">Process data piecemeal<a class="anchor" aria-label="anchor" href="#process-data-piecemeal"></a>
+</h2>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempfile</a></span><span class="op">(</span>fileext <span class="op">=</span> <span class="st">".parquet"</span><span class="op">)</span></span>
-<span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/write_parquet.html" class="external-link">write_parquet</a></span><span class="op">(</span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/as_record_batch_reader.html" class="external-link">as_record_batch_reader</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span>, <span class="va">path</span><span class="op">)</span></span>
-<span><span class="fu">arrow</span><span class="fu">::</span><span class="fu"><a href="https://arrow.apache.org/docs/r/reference/read_parquet.html" class="external-link">read_parquet</a></span><span class="op">(</span><span class="va">path</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   n</span></span>
-<span><span class="co">## 1 2</span></span></code></pre>
+<code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
+<span><span class="va">stream</span></span></code></pre></div>
+<pre><code><span><span class="co">## &lt;nanoarrow_array_stream struct&lt;a: int32, b: double, c: string&gt;&gt;</span></span>
+<span><span class="co">##  $ get_schema:function ()  </span></span>
+<span><span class="co">##  $ get_next  :function (schema = x$get_schema(), validate = TRUE)  </span></span>
+<span><span class="co">##  $ release   :function ()</span></span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_next</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## &lt;nanoarrow_array struct[2]&gt;</span></span>
+<span><span class="co">##  $ length    : int 2</span></span>
+<span><span class="co">##  $ null_count: int 0</span></span>
+<span><span class="co">##  $ offset    : int 0</span></span>
+<span><span class="co">##  $ buffers   :List of 1</span></span>
+<span><span class="co">##   ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##  $ children  :List of 3</span></span>
+<span><span class="co">##   ..$ a:&lt;nanoarrow_array int32[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 2</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;int32&gt;[2][8 b]&gt; `1 2`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##   ..$ b:&lt;nanoarrow_array double[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 2</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;double&gt;[2][16 b]&gt; `4.5 4.5`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##   ..$ c:&lt;nanoarrow_array string[2]&gt;</span></span>
+<span><span class="co">##   .. ..$ length    : int 2</span></span>
+<span><span class="co">##   .. ..$ null_count: int 0</span></span>
+<span><span class="co">##   .. ..$ offset    : int 0</span></span>
+<span><span class="co">##   .. ..$ buffers   :List of 3</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer validity&lt;bool&gt;[0][0 b]&gt; ``</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data_offset&lt;int32&gt;[3][12 b]&gt; `0 4 8`</span></span>
+<span><span class="co">##   .. .. ..$ :&lt;nanoarrow_buffer data&lt;string&gt;[8 b]&gt; `fivefive`</span></span>
+<span><span class="co">##   .. ..$ dictionary: NULL</span></span>
+<span><span class="co">##   .. ..$ children  : list()</span></span>
+<span><span class="co">##  $ dictionary: NULL</span></span></code></pre>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">stream</span><span class="op">$</span><span class="fu">get_next</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## NULL</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="prepared-queries">Prepared queries<a class="anchor" aria-label="anchor" href="#prepared-queries"></a>
 </h2>
-<p>The <code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code> method supports prepared queries,
-using the <code>params</code> argument which accepts a data frame or a
-list.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span></span>
 <span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   batch a   b    c</span></span>
 <span><span class="co">## 1     3 1 4.5 five</span></span>
 <span><span class="co">## 2     3 2 4.5 five</span></span></code></pre>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2L</span>, <span class="fl">4L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co"># Equivalent to dbBind()</span></span>
 <span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
@@ -246,12 +271,7 @@ list.</p>
 <div class="section level2">
 <h2 id="manual-flow">Manual flow<a class="anchor" aria-label="anchor" href="#manual-flow"></a>
 </h2>
-<p>For the manual flow, use <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to send a
-query to the database, and <code><a href="../reference/dbFetchArrow.html">dbFetchArrow()</a></code> to fetch the
-result. This also allows using the new <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> method
-to bind data in Arrow format to a prepared query. Result objects must be
-cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code>.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT $a AS batch, * FROM tbl WHERE a &lt; $a"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span><span class="op">)</span></span>
@@ -259,20 +279,20 @@ cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] batch a     b     c    </span></span>
 <span><span class="co">## &lt;0 rows&gt; (or 0-length row.names)</span></span></code></pre>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   batch a   b    c</span></span>
 <span><span class="co">## 1     2 1 4.5 five</span></span></code></pre>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   batch a   b    c</span></span>
 <span><span class="co">## 1     3 1 4.5 five</span></span>
 <span><span class="co">## 2     3 2 4.5 five</span></span></code></pre>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">in_arrow</span> <span class="op">&lt;-</span> <span class="fu">nanoarrow</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array.html" class="external-link">as_nanoarrow_array</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">4L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBindArrow</a></span><span class="op">(</span><span class="va">rs</span>, <span class="va">in_arrow</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="fu"><a href="../reference/dbFetchArrow.html">dbFetchArrow</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -283,16 +303,13 @@ cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a>
 <span><span class="co">## 4     4 1 4.5 five</span></span>
 <span><span class="co">## 5     4 2 4.5 five</span></span>
 <span><span class="co">## 6     4 3 4.5 five</span></span></code></pre>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="writing-data">Writing data<a class="anchor" aria-label="anchor" href="#writing-data"></a>
 </h2>
-<p>Streams returned by <code><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow()</a></code> and
-<code><a href="../reference/dbReadTableArrow.html">dbReadTableArrow()</a></code> can be written to a table using
-<code><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow()</a></code>.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbWriteTableArrow.html">dbWriteTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_new"</span><span class="op">)</span></span></code></pre></div>
@@ -303,37 +320,35 @@ cleared with <code><a href="../reference/dbClearResult.html">dbClearResult()</a>
 <div class="section level2">
 <h2 id="appending-data">Appending data<a class="anchor" aria-label="anchor" href="#appending-data"></a>
 </h2>
-<p>For more control over the writing process, use
-<code><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow()</a></code> and
-<code><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow()</a></code>.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &lt; 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbCreateTableArrow.html">dbCreateTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQueryArrow.html">dbGetQueryArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM tbl WHERE a &gt;= 3"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbAppendTableArrow.html">dbAppendTableArrow</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span>, <span class="va">stream</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1] TRUE</span></span></code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"tbl_split"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##   a   b    c</span></span>
 <span><span class="co">## 1 1 4.5 five</span></span>
 <span><span class="co">## 2 2 4.5 five</span></span>
 <span><span class="co">## 3 3 4.5 five</span></span></code></pre>
+<p>As usual, do not forget to disconnect from the database when
+done.</p>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h2>
-<p>Do not forget to disconnect from the database when done.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
-<p>That concludes the major features of DBI’s new Arrow interface. For
-more details on the library functions covered in this tutorial see the
-DBI specification at <code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>. See
-the <a href="https://adbi.r-dbi.org/" class="external-link">adbi</a> package for a backend
-with native Arrow support, and <a href="https://github.com/apache/arrow-nanoarrow" class="external-link">nanoarrow</a> and <a href="https://arrow.apache.org/docs/r/" class="external-link">arrow</a> for packages to work
-with the Arrow format.</p>
+<p>That concludes the major features of DBI. For more details on the
+library functions covered in this tutorial see the DBI specification at
+<code><a href="../articles/spec.html">vignette("spec", package = "DBI")</a></code>.</p>
+<ul>
+<li>See arrow package for further processing</li>
+</ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
