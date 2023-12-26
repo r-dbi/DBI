@@ -33,7 +33,7 @@ A data frame: field types are generated using
 
 \item{row.names}{Must be \code{NULL}.}
 
-\item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
+\item{temporary}{If \code{TRUE}, will generate a temporary table.}
 }
 \value{
 \code{dbCreateTable()} returns \code{TRUE}, invisibly.
