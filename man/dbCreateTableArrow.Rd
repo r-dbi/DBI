@@ -4,7 +4,7 @@
 \alias{dbCreateTableArrow}
 \title{Create a table in the database based on an Arrow object}
 \usage{
-dbCreateTableArrow(conn, name, value, ...)
+dbCreateTableArrow(conn, name, value, ..., temporary = FALSE)
 }
 \arguments{
 \item{conn}{A \linkS4class{DBIConnection} object, as returned by
@@ -24,6 +24,8 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \code{\link[nanoarrow:as_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}}.}
 
 \item{...}{Other parameters passed on to methods.}
+
+\item{temporary}{If \code{TRUE}, will generate a temporary table.}
 }
 \value{
 \code{dbCreateTableArrow()} returns \code{TRUE}, invisibly.

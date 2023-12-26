@@ -23,7 +23,7 @@
 #'
 #'   A data frame: field types are generated using
 #'   [dbDataType()].
-#' @param temporary If `TRUE`, will generate a temporary table statement.
+#' @param temporary If `TRUE`, will generate a temporary table.
 #' @inheritParams rownames
 #' @param ... Other arguments used by individual methods.
 #'

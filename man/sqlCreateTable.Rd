@@ -39,7 +39,7 @@ default name.
 
 For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
-\item{temporary}{If \code{TRUE}, will generate a temporary table statement.}
+\item{temporary}{If \code{TRUE}, will generate a temporary table.}
 
 \item{...}{Other arguments used by individual methods.}
 }

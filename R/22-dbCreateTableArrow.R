@@ -33,5 +33,5 @@
 #' dbReadTable(con, "df")
 #' dbDisconnect(con)
 setGeneric("dbCreateTableArrow",
-  def = function(conn, name, value, ...) standardGeneric("dbCreateTableArrow")
+  def = function(conn, name, value, ..., temporary = FALSE) standardGeneric("dbCreateTableArrow")
 )
