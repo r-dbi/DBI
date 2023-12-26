@@ -6,6 +6,8 @@
 \alias{DBIResultArrowDefault-class}
 \title{DBIResultArrow class}
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+
 This virtual class describes the result and state of execution of
 a DBMS statement (any statement, query or non-query)
 for returning data as an Arrow object.
