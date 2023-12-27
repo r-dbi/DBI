@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9007 (2023-12-27)
+
+## Features
+
+- `dbAppendTableArrow()` returns number of rows (#454).
+
+- Add `temporary` argument to `dbCreateTableArrow()` (#453).
+
+## Chore
+
+- Add badge to `DBIResultArrow` class (#452).
+
+## Documentation
+
+- Finalize Arrow vignette (#451).
+
+
 # DBI 1.2.0.9006 (2023-12-26)
 
 ## Features
