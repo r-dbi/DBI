@@ -28,7 +28,7 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 ## Who this tutorial is for
 
 This tutorial is for you if you want to leverage [Apache Arrow](https://arrow.apache.org/) for accessing and manipulating data on databases.
-See `vignette("DBI", package = "DBI")` and `vignette("DBI", package = "DBI-advanced")` for tutorials on accessing data using R's data frames instead of Arrow's structures.
+See `vignette("DBI", package = "DBI")` and `vignette("DBI-advanced", package = "DBI")` for tutorials on accessing data using R's data frames instead of Arrow's structures.
 
 ## Rationale
 
@@ -37,14 +37,14 @@ Apache Arrow is
 > a cross-language development platform for in-memory analytics,
 
 suitable for large and huge data, with support for out-of-memory operation.
-Arrow is also a data exchange format, the data types covered by Arrow are a superset of the data types supported by SQL databases.
+Arrow is also a data exchange format, the data types covered by Arrow align well with the data types supported by SQL databases.
 
 DBI 1.2.0 introduced support for Arrow as a format for exchanging data between R and databases.
 The aim is to:
 
-- accelerate data retrieval and loading, by using fewer costly data conversions
-- better support reading and summarizing data from a database that is larger than memory
-- provide better type fidelity with workflows centered around Arrow
+- accelerate data retrieval and loading, by using fewer costly data conversions;
+- better support reading and summarizing data from a database that is larger than memory;
+- provide better type fidelity with workflows centered around Arrow.
 
 This allows existing code to be used with Arrow, and it allows new code to be written that is more efficient and more flexible than code that uses R's data frames.
 
@@ -63,8 +63,8 @@ DBI 1.2.0 introduces new classes and generics for working with Arrow data:
 - `dbBindArrow()`
 - `dbFetchArrow()`
 - `dbFetchArrowChunk()`
-- `DBIResultArrow`
-- `DBIResultArrowDefault`
+- `DBIResultArrow-class`
+- `DBIResultArrowDefault-class`
 
 Compatibility is important for DBI, and implementing new generics and classes greatly reduces the risk of breaking existing code.
 The DBI package comes with a fully functional fallback implementation for all existing DBI backends.
@@ -99,7 +99,6 @@ The `dbReadTableArrow()` method reads all rows from a table into an Arrow stream
 Arrow objects implement the `as.data.frame()` method, so we can convert the stream to a data frame.
 
 ```{r}
-dbReadTableArrow(con, "tbl")
 stream <- dbReadTableArrow(con, "tbl")
 stream
 as.data.frame(stream)
