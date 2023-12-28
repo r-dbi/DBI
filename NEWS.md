@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.0.9008 (2023-12-28)
+
+## Documentation
+
+- Fix typos in Arrow vignette (#455).
+
+
 # DBI 1.2.0.9007 (2023-12-27)
 
 ## Features
