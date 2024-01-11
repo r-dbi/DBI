@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -1167,33 +1167,38 @@ variable. Mixing placeholders (in particular, named and unnamed ones) is
 not recommended. It is good practice to register a call to
 <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> via <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> right after
 calling <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>
-(see the last enumeration item). Until <code><a href="../reference/dbBind.html">dbBind()</a></code> has been
-called, the returned result set object has the following behavior:</p>
+(see the last enumeration item). Until <code><a href="../reference/dbBind.html">dbBind()</a></code> or
+<code><a href="../reference/dbBind.html">dbBindArrow()</a></code> have been called, the returned result set
+object has the following behavior:</p>
 <ul>
 <li><p><code><a href="../reference/dbFetch.html">dbFetch()</a></code> raises an error (for
-<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>)</p></li>
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
 <li><p><code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code> returns zero (for
-<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>)</p></li>
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
 <li><p><code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns an integer
 <code>NA</code> (for <code><a href="../reference/dbSendStatement.html">dbSendStatement()</a></code>)</p></li>
 <li><p><code><a href="../reference/dbIsValid.html">dbIsValid()</a></code> returns <code>TRUE</code></p></li>
 <li><p><code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code></p></li>
 </ul>
 </li>
-<li><p>Construct a list with parameters that specify actual values for
-the placeholders. The list must be named or unnamed, depending on the
-kind of placeholders used. Named values are matched to named parameters,
-unnamed values are matched by position in the list of parameters. All
-elements in this list must have the same lengths and contain values
-supported by the backend; a data.frame is internally stored as such a
-list. The parameter list is passed to a call to <code><a href="../reference/dbBind.html">dbBind()</a></code> on
-the <code>DBIResult</code> object.</p></li>
+<li>
+<p>Call <code><a href="../reference/dbBind.html">dbBind()</a></code> or <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>:</p>
+<ul>
+<li><p>For <code><a href="../reference/dbBind.html">dbBind()</a></code>, the <code>params</code> argument must
+be a list where all elements have the same lengths and contain values
+supported by the backend. A data.frame is internally stored as such a
+list.</p></li>
+<li><p>For <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, the <code>params</code> argument
+must be a nanoarrow array stream, with one column per query
+parameter.</p></li>
+</ul>
+</li>
 <li>
 <p>Retrieve the data or the number of affected rows from the
 <code>DBIResult</code> object.</p>
 <ul>
-<li><p>For queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code>, call
-<code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p></li>
+<li><p>For queries issued by <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or
+<code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, call <code><a href="../reference/dbFetch.html">dbFetch()</a></code>.</p></li>
 <li><p>For statements issued by <code>dbSendStatements()</code>, call
 <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>. (Execution begins immediately after
 the <code><a href="../reference/dbBind.html">dbBind()</a></code> call, the statement is processed entirely

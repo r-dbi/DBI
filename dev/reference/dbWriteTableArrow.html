@@ -14,7 +14,7 @@ Writes, overwrites or appends an Arrow object to a database table.
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -128,8 +128,6 @@ Invalid values for the additional arguments
 unsupported data types,
 <code>NA</code>,
 incompatible values,
-duplicate
-or missing names,
 incompatible columns)
 also raise an error.</p>
     </div>
@@ -191,9 +189,7 @@ representation</p></li>
 and native encodings),
 supporting empty strings
 before and after a non-empty string</p></li>
-<li><p>factor (returned as character)</p></li>
-<li><p>list of raw
-(if supported by the database)</p></li>
+<li><p>factor (possibly returned as character)</p></li>
 <li><p>objects of type <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a>
 (if supported by the database)</p></li>
 <li><p>date

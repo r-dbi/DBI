@@ -30,7 +30,7 @@ RPresto::dbCreateTable("PrestoConnection")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -183,7 +183,7 @@ to support databases that allow non-syntactic names for their objects:</p><ul><l
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 <li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul><p>The <code>value</code> argument can be:</p><ul><li><p>a data frame,</p></li>
-<li><p>a named list of vectors</p></li>
+<li><p>a named list of SQL types</p></li>
 </ul><p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
 second connection and is gone after reconnecting.
 Not all backends support this argument.

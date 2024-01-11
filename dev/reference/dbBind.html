@@ -62,7 +62,7 @@ sparklyr::dbBind("DBISparkResult")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9007</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9008</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -311,26 +311,20 @@ recommended.
 It is good practice to register a call to <code><a href="dbClearResult.html">dbClearResult()</a></code> via
 <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> right after calling <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
 (see the last enumeration item).
-Until <code>dbBind()</code> has been called, the returned result set object has the
-following behavior:</p><ul><li><p><code><a href="dbFetch.html">dbFetch()</a></code> raises an error (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code>)</p></li>
-<li><p><code><a href="dbGetRowCount.html">dbGetRowCount()</a></code> returns zero (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code>)</p></li>
+Until <code>dbBind()</code> or <code>dbBindArrow()</code> have been called,
+the returned result set object has the following behavior:</p><ul><li><p><code><a href="dbFetch.html">dbFetch()</a></code> raises an error (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
+<li><p><code><a href="dbGetRowCount.html">dbGetRowCount()</a></code> returns zero (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
 <li><p><code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns an integer <code>NA</code> (for <code><a href="dbSendStatement.html">dbSendStatement()</a></code>)</p></li>
 <li><p><code><a href="dbIsValid.html">dbIsValid()</a></code> returns <code>TRUE</code></p></li>
 <li><p><code><a href="dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code></p></li>
 </ul></li>
-<li><p>Construct a list with parameters
-that specify actual values for the placeholders.
-The list must be named or unnamed,
-depending on the kind of placeholders used.
-Named values are matched to named parameters, unnamed values
-are matched by position in the list of parameters.
-All elements in this list must have the same lengths and contain values
-supported by the backend; a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> is internally stored as such
-a list.
-The parameter list is passed to a call to <code>dbBind()</code> on the <code>DBIResult</code>
-object.</p></li>
-<li><p>Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.</p><ul><li><p>For queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code>,
-call <code><a href="dbFetch.html">dbFetch()</a></code>.</p></li>
+<li><p>Call <code>dbBind()</code> or <code>dbBindArrow()</code>:</p><ul><li><p>For <code>dbBind()</code>, the <code>params</code> argument must be a list where all elements
+have the same lengths and contain values supported by the backend.
+A <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> is internally stored as such a list.</p></li>
+<li><p>For <code>dbBindArrow()</code>, the <code>params</code> argument must be a
+nanoarrow array stream, with one column per query parameter.</p></li>
+</ul></li>
+<li><p>Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.</p><ul><li><p>For queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, call <code><a href="dbFetch.html">dbFetch()</a></code>.</p></li>
 <li><p>For statements issued by <code>dbSendStatements()</code>,
 call <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code>.
 (Execution begins immediately after the <code>dbBind()</code> call,
