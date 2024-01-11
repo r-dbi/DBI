@@ -64,8 +64,6 @@ Invalid values for the additional arguments
 unsupported data types,
 \code{NA},
 incompatible values,
-duplicate
-or missing names,
 incompatible columns)
 also raise an error.
 
@@ -144,9 +142,7 @@ representation
 and native encodings),
 supporting empty strings
 before and after a non-empty string
-\item factor (returned as character)
-\item list of raw
-(if supported by the database)
+\item factor (possibly returned as character)
 \item objects of type \link[blob:blob]{blob::blob}
 (if supported by the database)
 \item date

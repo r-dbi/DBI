@@ -84,10 +84,7 @@ representation
 and native encodings),
 supporting empty strings
 (before and after non-empty strings)
-\item factor (returned as character,
-with a warning)
-\item list of raw
-(if supported by the database)
+\item factor (possibly returned as character)
 \item objects of type \link[blob:blob]{blob::blob}
 (if supported by the database)
 \item date
