@@ -208,33 +208,29 @@ recommended.
 It is good practice to register a call to \code{\link[=dbClearResult]{dbClearResult()}} via
 \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
 (see the last enumeration item).
-Until \code{dbBind()} has been called, the returned result set object has the
-following behavior:
+Until \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}} have been called,
+the returned result set object has the following behavior:
 \itemize{
-\item \code{\link[=dbFetch]{dbFetch()}} raises an error (for \code{dbSendQuery()})
-\item \code{\link[=dbGetRowCount]{dbGetRowCount()}} returns zero (for \code{dbSendQuery()})
+\item \code{\link[=dbFetch]{dbFetch()}} raises an error (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
+\item \code{\link[=dbGetRowCount]{dbGetRowCount()}} returns zero (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
 \item \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} returns an integer \code{NA} (for \code{dbSendStatement()})
 \item \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}
 \item \code{\link[=dbHasCompleted]{dbHasCompleted()}} returns \code{FALSE}
 }
-\item Construct a list with parameters
-that specify actual values for the placeholders.
-The list must be named or unnamed,
-depending on the kind of placeholders used.
-Named values are matched to named parameters, unnamed values
-are matched by position in the list of parameters.
-All elements in this list must have the same lengths and contain values
-supported by the backend; a \link{data.frame} is internally stored as such
-a list.
-The parameter list is passed to a call to \code{dbBind()} on the \code{DBIResult}
-object.
+\item Call \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}:
+\itemize{
+\item For \code{\link[=dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements
+have the same lengths and contain values supported by the backend.
+A \link{data.frame} is internally stored as such a list.
+\item For \code{\link[=dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a
+nanoarrow array stream, with one column per query parameter.
+}
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
-\item For queries issued by \code{dbSendQuery()},
-call \code{\link[=dbFetch]{dbFetch()}}.
+\item For queries issued by \code{dbSendQuery()} or \code{dbSendQueryArrow()}, call \code{\link[=dbFetch]{dbFetch()}}.
 \item For statements issued by \code{dbSendStatements()},
 call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
-(Execution begins immediately after the \code{dbBind()} call,
+(Execution begins immediately after the \code{\link[=dbBind]{dbBind()}} call,
 the statement is processed entirely before the function returns.)
 }
 \item Repeat 2. and 3. as necessary.

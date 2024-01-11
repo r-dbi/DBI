@@ -7,7 +7,7 @@ runs:
     # https://github.com/ankane/setup-mariadb/issues/2
     - uses: ankane/setup-mariadb@v1
       with:
-        mariadb-version: 10.9
+        mariadb-version: "10.11"
 
     - name: Create database, set it to UTF-8
       run: |

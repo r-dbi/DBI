@@ -106,7 +106,7 @@ perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 The \code{value} argument can be:
 \itemize{
 \item a data frame,
-\item a named list of vectors
+\item a named list of SQL types
 }
 
 If the \code{temporary} argument is \code{TRUE}, the table is not available in a
