@@ -3,6 +3,16 @@
 dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ..., temporary = FALSE) {
   require_arrow()
 
+  stopifnot(is.logical(append))
+  stopifnot(length(append) == 1)
+  stopifnot(!is.na(append))
+  stopifnot(is.logical(overwrite))
+  stopifnot(length(overwrite) == 1)
+  stopifnot(!is.na(overwrite))
+  stopifnot(is.logical(temporary))
+  stopifnot(length(temporary) == 1)
+  stopifnot(!is.na(temporary))
+
   name <- dbQuoteIdentifier(conn, name)
 
   value <- nanoarrow::as_nanoarrow_array_stream(value)
@@ -11,11 +21,12 @@ dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, o
     stop("overwrite and append cannot both be TRUE")
   }
 
-  if (overwrite && dbExistsTable(conn, name)) {
+  exists <- dbExistsTable(conn, name)
+  if (overwrite && exists) {
     dbRemoveTable(conn, name)
   }
 
-  if (overwrite || !append) {
+  if (overwrite || !append || !exists) {
     dbCreateTableArrow(conn, name, value, temporary = temporary)
   }
 
