@@ -5,6 +5,7 @@ generate valid SQL and protect against SQL injection attacks. The inverse
 operation is dbUnquoteIdentifier().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteIdentifier("AdbiConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
@@ -36,6 +37,7 @@ generate valid SQL and protect against SQL injection attacks. The inverse
 operation is dbUnquoteIdentifier().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteIdentifier("AdbiConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")
 bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")
@@ -72,7 +74,7 @@ sparklyr::dbQuoteIdentifier("spark_connection", "character")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,7 +121,8 @@ use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteIdentifier("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")</a></code></p></li>
 <li><p><code>DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")</a></code></p></li>
@@ -130,7 +133,7 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "SQL")</a></code></p></li>
 <li><p><code>implyr::dbQuoteIdentifier("impala_connection", "character")</code></p></li>
 <li><p><code>implyr::dbQuoteIdentifier("impala_connection", "ident")</code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbQuoteIdentifier("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")</a></code></p></li>
@@ -221,22 +224,35 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Other DBIResult generics: 
-<code><a href="DBIResult-class.html">DBIResult-class</a></code>,
-<code><a href="dbBind.html">dbBind</a>()</code>,
-<code><a href="dbClearResult.html">dbClearResult</a>()</code>,
-<code><a href="dbColumnInfo.html">dbColumnInfo</a>()</code>,
-<code><a href="dbFetch.html">dbFetch</a>()</code>,
+    <div class="dont-index"><p>Other DBIConnection generics: 
+<code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
+<code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
+<code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
+<code><a href="dbDataType.html">dbDataType</a>()</code>,
+<code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
+<code><a href="dbExecute.html">dbExecute</a>()</code>,
+<code><a href="dbExistsTable.html">dbExistsTable</a>()</code>,
+<code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
-<code><a href="dbGetRowCount.html">dbGetRowCount</a>()</code>,
-<code><a href="dbGetRowsAffected.html">dbGetRowsAffected</a>()</code>,
-<code><a href="dbGetStatement.html">dbGetStatement</a>()</code>,
-<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
+<code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbListFields.html">dbListFields</a>()</code>,
+<code><a href="dbListObjects.html">dbListObjects</a>()</code>,
+<code><a href="dbListResults.html">dbListResults</a>()</code>,
+<code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
+<code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
+<code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p></div>
     </div>
 
     <div class="section level2">

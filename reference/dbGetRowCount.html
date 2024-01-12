@@ -3,6 +3,8 @@
 for this result set.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetRowCount("AdbiResult")
+adbi::dbGetRowCount("AdbiResultArrow")
 bigrquery::dbGetRowCount("BigQueryResult")
 DatabaseConnector::dbGetRowCount("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetRowCount("DatabaseConnectorJdbcResult")
@@ -20,6 +22,8 @@ sparklyr::dbGetRowCount("DBISparkResult")
 for this result set.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetRowCount("AdbiResult")
+adbi::dbGetRowCount("AdbiResultArrow")
 bigrquery::dbGetRowCount("BigQueryResult")
 DatabaseConnector::dbGetRowCount("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetRowCount("DatabaseConnectorJdbcResult")
@@ -44,7 +48,7 @@ sparklyr::dbGetRowCount("DBISparkResult")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,11 +93,13 @@ sparklyr::dbGetRowCount("DBISparkResult")
     <p>Returns the total number of rows actually fetched with calls to <code><a href="dbFetch.html">dbFetch()</a></code>
 for this result set.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetRowCount("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbGetRowCount("AdbiResult")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbGetRowCount("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetRowCount("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowCount-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbGetRowCount("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowCount-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbGetRowCount("DatabaseConnectorJdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetRowCount("duckdb_result")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcResult.html" class="external-link">odbc::dbGetRowCount("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcResult.html" class="external-link">odbc::dbGetRowCount("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/result-meta.html" class="external-link">RMariaDB::dbGetRowCount("MariaDBResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/result-meta.html" class="external-link">RMySQL::dbGetRowCount("MySQLResult")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/PqResult-class.html" class="external-link">RPostgres::dbGetRowCount("PqResult")</a></code></p></li>
@@ -162,10 +168,8 @@ and after calling <code><a href="dbFetch.html">dbFetch()</a></code>.</p>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p></div>
     </div>
 
     <div class="section level2">

@@ -3,6 +3,7 @@
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetch("AdbiResult", "ANY")
 AzureKusto::dbFetch("AzureKustoResult", "ANY")
 bigrquery::dbFetch("BigQueryResult", "ANY")
 DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")
@@ -26,6 +27,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
 as a data.frame.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetch("AdbiResult", "ANY")
 AzureKusto::dbFetch("AzureKustoResult", "ANY")
 bigrquery::dbFetch("BigQueryResult", "ANY")
 DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")
@@ -56,7 +58,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +95,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Fetch records from a previously executed query</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrow.R" class="external-link"><code>R/dbFetchArrow.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrowChunk.R" class="external-link"><code>R/dbFetchArrowChunk.R</code></a>, and 1 more</small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetch.R" class="external-link"><code>R/dbFetch.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/fetch.R" class="external-link"><code>R/fetch.R</code></a></small>
       <div class="d-none name"><code>dbFetch.Rd</code></div>
     </div>
 
@@ -101,7 +103,8 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
     <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>AzureKusto::dbFetch("AzureKustoResult", "ANY")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>adbi::dbFetch("AdbiResult", "ANY")</code></p></li>
+<li><p><code>AzureKusto::dbFetch("AzureKustoResult", "ANY")</code></p></li>
 <li><p><code>bigrquery::dbFetch("BigQueryResult", "ANY")</code></p></li>
 <li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorDbiResult", "ANY")</code></p></li>
 <li><p><code>DatabaseConnector::dbFetch("DatabaseConnectorJdbcResult", "ANY")</code></p></li>
@@ -125,10 +128,6 @@ as a data.frame.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbFetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbFetchArrow</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">dbFetchArrowChunk</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">fetch</span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
@@ -155,10 +154,8 @@ special values.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></p>
-
-
-<p>with as many rows as records were fetched and as many
+<p><code>dbFetch()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with
+as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
 or has one
@@ -218,8 +215,8 @@ If the <code>n</code> argument is not an atomic whole number
 greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.</p>
 <p>Calling <code>dbFetch()</code> on a result set from a data manipulation query
-created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
-can be fetched and return an empty data frame, with a warning.</p>
+created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code> can
+be fetched and return an empty data frame, with a warning.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
@@ -229,8 +226,8 @@ can be fetched and return an empty data frame, with a warning.</p>
 <p>Fetching multi-row queries with one
 or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
-by passing a whole number (<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a>
-or <a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a>)
+by passing a whole number (<a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a> or
+<a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric</a>)
 as the <code>n</code> argument.
 A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported
 and also returns the full result.
@@ -297,16 +294,18 @@ finish retrieving the records you want.</p>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
 <p>Other data retrieval generics: 
 <code><a href="dbBind.html">dbBind</a>()</code>,
 <code><a href="dbClearResult.html">dbClearResult</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
-<code><a href="dbSendQuery.html">dbSendQuery</a>()</code></p></div>
+<code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
     </div>
 
     <div class="section level2">

@@ -3,6 +3,8 @@
 DBIConnection or DBIResult.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetInfo("AdbiConnection")
+adbi::dbGetInfo("AdbiDriver")
 bigrquery::dbGetInfo("BigQueryConnection")
 bigrquery::dbGetInfo("BigQueryDriver")
 DatabaseConnector::dbGetInfo("DatabaseConnectorConnection")
@@ -44,6 +46,8 @@ sparklyr::dbGetInfo("spark_connection")
 DBIConnection or DBIResult.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetInfo("AdbiConnection")
+adbi::dbGetInfo("AdbiDriver")
 bigrquery::dbGetInfo("BigQueryConnection")
 bigrquery::dbGetInfo("BigQueryDriver")
 DatabaseConnector::dbGetInfo("DatabaseConnectorConnection")
@@ -92,7 +96,7 @@ sparklyr::dbGetInfo("spark_connection")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +141,9 @@ sparklyr::dbGetInfo("spark_connection")
     <p>Retrieves information on objects of class <a href="DBIDriver-class.html">DBIDriver</a>,
 <a href="DBIConnection-class.html">DBIConnection</a> or <a href="DBIResult-class.html">DBIResult</a>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbGetInfo("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiDriver-class.html" class="external-link">adbi::dbGetInfo("AdbiDriver")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetInfo("BigQueryDriver")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetInfo-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbGetInfo("DatabaseConnectorConnection")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetInfo-DatabaseConnectorDriver-method.html" class="external-link">DatabaseConnector::dbGetInfo("DatabaseConnectorDriver")</a></code></p></li>
@@ -147,8 +153,8 @@ sparklyr::dbGetInfo("spark_connection")
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_driver-class.html" class="external-link">duckdb::dbGetInfo("duckdb_driver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetInfo("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLDriver-class.html" class="external-link">lazysf::dbGetInfo("SFSQLDriver")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbGetInfo("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbGetInfo("OdbcDriver")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbGetInfo("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcDriver.html" class="external-link">odbc::dbGetInfo("OdbcDriver")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbGetInfo("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetInfo.html" class="external-link">RAthena::dbGetInfo("AthenaResult")</a></code></p></li>
@@ -251,24 +257,32 @@ constructs such a list from the return values of the corresponding methods,
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
 <code><a href="dbExistsTable.html">dbExistsTable</a>()</code>,
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
 <p>Other DBIResult generics: 
 <code><a href="DBIResult-class.html">DBIResult-class</a></code>,
 <code><a href="dbBind.html">dbBind</a>()</code>,
@@ -281,10 +295,8 @@ constructs such a list from the return values of the corresponding methods,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p></div>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

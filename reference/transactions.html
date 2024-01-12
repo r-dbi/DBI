@@ -7,6 +7,9 @@ have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbBegin("AdbiConnection")
+adbi::dbCommit("AdbiConnection")
+adbi::dbRollback("AdbiConnection")
 bigrquery::dbBegin("BigQueryConnection")
 bigrquery::dbCommit("BigQueryConnection")
 bigrquery::dbRollback("BigQueryConnection")
@@ -55,6 +58,9 @@ have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbBegin("AdbiConnection")
+adbi::dbCommit("AdbiConnection")
+adbi::dbRollback("AdbiConnection")
 bigrquery::dbBegin("BigQueryConnection")
 bigrquery::dbCommit("BigQueryConnection")
 bigrquery::dbRollback("BigQueryConnection")
@@ -106,7 +112,7 @@ sparklyr::dbRollback("spark_connection")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -155,7 +161,10 @@ In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBegin("BigQueryConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbBegin("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbCommit("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbRollback("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbBegin("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbCommit("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRollback("BigQueryConnection")</a></code></p></li>
 <li><p><code>DatabaseConnector::dbBegin("DatabaseConnectorConnection")</code></p></li>
@@ -167,9 +176,9 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbBegin("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbCommit("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRollback("duckdb_connection")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbBegin("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbCommit("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbRollback("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbBegin("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbCommit("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbRollback("OdbcConnection")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbBegin("Pool")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbCommit("Pool")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbRollback("Pool")</a></code></p></li>

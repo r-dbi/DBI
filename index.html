@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -168,7 +168,7 @@
 <span></span>
 <span><span class="co"># Or a chunk at a time</span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM mtcars WHERE cyl = 4"</span><span class="op">)</span></span>
-<span><span class="kw">while</span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>

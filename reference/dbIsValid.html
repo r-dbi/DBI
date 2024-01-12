@@ -3,6 +3,10 @@
 been disconnected or cleared).
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbIsValid(&quot;AdbiConnection&quot;)
+adbi::dbIsValid(&quot;AdbiDriver&quot;)
+adbi::dbIsValid(&quot;AdbiResult&quot;)
+adbi::dbIsValid(&quot;AdbiResultArrow&quot;)
 bigrquery::dbIsValid(&quot;BigQueryConnection&quot;)
 bigrquery::dbIsValid(&quot;BigQueryDriver&quot;)
 bigrquery::dbIsValid(&quot;BigQueryResult&quot;)
@@ -41,6 +45,10 @@ sparklyr::dbIsValid(&quot;spark_connection&quot;)
 been disconnected or cleared).
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbIsValid(&quot;AdbiConnection&quot;)
+adbi::dbIsValid(&quot;AdbiDriver&quot;)
+adbi::dbIsValid(&quot;AdbiResult&quot;)
+adbi::dbIsValid(&quot;AdbiResultArrow&quot;)
 bigrquery::dbIsValid(&quot;BigQueryConnection&quot;)
 bigrquery::dbIsValid(&quot;BigQueryDriver&quot;)
 bigrquery::dbIsValid(&quot;BigQueryResult&quot;)
@@ -86,7 +94,7 @@ sparklyr::dbIsValid(&quot;spark_connection&quot;)
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -131,7 +139,11 @@ sparklyr::dbIsValid(&quot;spark_connection&quot;)
     <p>This generic tests whether a database object is still valid (i.e. it hasn't
 been disconnected or cleared).</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbIsValid("BigQueryConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbIsValid("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiDriver-class.html" class="external-link">adbi::dbIsValid("AdbiDriver")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbIsValid("AdbiResult")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbIsValid("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbIsValid("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbIsValid("BigQueryDriver")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbIsValid("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbIsValid-DatabaseConnectorDbiConnection-method.html" class="external-link">DatabaseConnector::dbIsValid("DatabaseConnectorDbiConnection")</a></code></p></li>
@@ -140,9 +152,9 @@ been disconnected or cleared).</p>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_driver-class.html" class="external-link">duckdb::dbIsValid("duckdb_driver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbIsValid("duckdb_result")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLDriver-class.html" class="external-link">lazysf::dbIsValid("SFSQLDriver")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbIsValid("OdbcConnection")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbIsValid("OdbcDriver")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcResult.html" class="external-link">odbc::dbIsValid("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbIsValid("OdbcConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcDriver.html" class="external-link">odbc::dbIsValid("OdbcDriver")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcResult.html" class="external-link">odbc::dbIsValid("OdbcResult")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-custom.html" class="external-link">pool::dbIsValid("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbIsValid.html" class="external-link">RAthena::dbIsValid("AthenaConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbIsValid.html" class="external-link">RAthena::dbIsValid("AthenaResult")</a></code></p></li>
@@ -219,7 +231,9 @@ connectivity problems, server failure, etc.), <code>dbIsValid()</code> should re
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDataType.html">dbDataType</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
@@ -227,16 +241,22 @@ connectivity problems, server failure, etc.), <code>dbIsValid()</code> should re
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
 <p>Other DBIResult generics: 
 <code><a href="DBIResult-class.html">DBIResult-class</a></code>,
 <code><a href="dbBind.html">dbBind</a>()</code>,
@@ -249,10 +269,15 @@ connectivity problems, server failure, etc.), <code>dbIsValid()</code> should re
 <code><a href="dbGetStatement.html">dbGetStatement</a>()</code>,
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p>
+<p>Other DBIResultArrow generics: 
+<code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
+<code><a href="dbBind.html">dbBind</a>()</code>,
+<code><a href="dbClearResult.html">dbClearResult</a>()</code>,
+<code><a href="dbFetchArrow.html">dbFetchArrow</a>()</code>,
+<code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk</a>()</code>,
+<code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code></p></div>
     </div>
 
     <div class="section level2">

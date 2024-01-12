@@ -8,6 +8,8 @@ for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbDataType("AdbiConnection", "ANY")
+adbi::dbDataType("AdbiDriver", "ANY")
 bigrquery::dbDataType("BigQueryConnection", "ANY")
 bigrquery::dbDataType("BigQueryDriver", "ANY")
 duckdb::dbDataType("duckdb_connection", "ANY")
@@ -49,6 +51,8 @@ for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbDataType("AdbiConnection", "ANY")
+adbi::dbDataType("AdbiDriver", "ANY")
 bigrquery::dbDataType("BigQueryConnection", "ANY")
 bigrquery::dbDataType("BigQueryDriver", "ANY")
 duckdb::dbDataType("duckdb_connection", "ANY")
@@ -92,7 +96,7 @@ sparklyr::dbDataType("spark_connection", "ANY")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -142,16 +146,18 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>bigrquery::dbDataType("BigQueryConnection", "ANY")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>adbi::dbDataType("AdbiConnection", "ANY")</code></p></li>
+<li><p><code>adbi::dbDataType("AdbiDriver", "ANY")</code></p></li>
+<li><p><code>bigrquery::dbDataType("BigQueryConnection", "ANY")</code></p></li>
 <li><p><code>bigrquery::dbDataType("BigQueryDriver", "ANY")</code></p></li>
 <li><p><code>duckdb::dbDataType("duckdb_connection", "ANY")</code></p></li>
 <li><p><code>duckdb::dbDataType("duckdb_driver", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLDriver-class.html" class="external-link">lazysf::dbDataType("SFSQLDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "ANY")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "data.frame")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "list")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbDataType("OdbcConnection", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "ANY")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcDriver.html" class="external-link">odbc::dbDataType("OdbcDriver", "list")</a></code></p></li>
 <li><p><code>pool::dbDataType("Pool", "ANY")</code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbDataType.html" class="external-link">RAthena::dbDataType("AthenaConnection", "data.frame")</a></code></p></li>
@@ -248,8 +254,8 @@ this method also must accept lists of <a href="https://rdrr.io/r/base/raw.html" 
 and <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a> objects.
 As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be
 supported and return the same results as their unwrapped counterparts.
-The SQL data type for <a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a>
-and <a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a> is the same as for character.
+The SQL data type for <a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a> and
+<a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a> is the same as for character.
 The behavior for other object types is not specified.</p>
 
 
@@ -272,24 +278,32 @@ of the form
 <p>Other DBIConnection generics: 
 <code><a href="DBIConnection-class.html">DBIConnection-class</a></code>,
 <code><a href="dbAppendTable.html">dbAppendTable</a>()</code>,
+<code><a href="dbAppendTableArrow.html">dbAppendTableArrow</a>()</code>,
 <code><a href="dbCreateTable.html">dbCreateTable</a>()</code>,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow</a>()</code>,
 <code><a href="dbDisconnect.html">dbDisconnect</a>()</code>,
 <code><a href="dbExecute.html">dbExecute</a>()</code>,
 <code><a href="dbExistsTable.html">dbExistsTable</a>()</code>,
 <code><a href="dbGetException.html">dbGetException</a>()</code>,
 <code><a href="dbGetInfo.html">dbGetInfo</a>()</code>,
 <code><a href="dbGetQuery.html">dbGetQuery</a>()</code>,
+<code><a href="dbGetQueryArrow.html">dbGetQueryArrow</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListFields.html">dbListFields</a>()</code>,
 <code><a href="dbListObjects.html">dbListObjects</a>()</code>,
 <code><a href="dbListResults.html">dbListResults</a>()</code>,
 <code><a href="dbListTables.html">dbListTables</a>()</code>,
+<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbReadTable.html">dbReadTable</a>()</code>,
+<code><a href="dbReadTableArrow.html">dbReadTableArrow</a>()</code>,
 <code><a href="dbRemoveTable.html">dbRemoveTable</a>()</code>,
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
+<code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code>,
 <code><a href="dbSendStatement.html">dbSendStatement</a>()</code>,
-<code><a href="dbWriteTable.html">dbWriteTable</a>()</code></p>
+<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code>,
+<code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
+<code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p>
 <p>Other DBIConnector generics: 
 <code><a href="DBIConnector-class.html">DBIConnector-class</a></code>,
 <code><a href="dbConnect.html">dbConnect</a>()</code>,

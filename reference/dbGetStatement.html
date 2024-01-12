@@ -3,6 +3,8 @@
 or dbSendStatement().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetStatement("AdbiResult")
+adbi::dbGetStatement("AdbiResultArrow")
 bigrquery::dbGetStatement("BigQueryResult")
 DatabaseConnector::dbGetStatement("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetStatement("DatabaseConnectorJdbcResult")
@@ -22,6 +24,8 @@ sparklyr::dbGetStatement("DBISparkResult")
 or dbSendStatement().
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbGetStatement("AdbiResult")
+adbi::dbGetStatement("AdbiResultArrow")
 bigrquery::dbGetStatement("BigQueryResult")
 DatabaseConnector::dbGetStatement("DatabaseConnectorDbiResult")
 DatabaseConnector::dbGetStatement("DatabaseConnectorJdbcResult")
@@ -48,7 +52,7 @@ sparklyr::dbGetStatement("DBISparkResult")
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.1</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,11 +97,13 @@ sparklyr::dbGetStatement("DBISparkResult")
     <p>Returns the statement that was passed to <code><a href="dbSendQuery.html">dbSendQuery()</a></code>
 or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetStatement("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbGetStatement("AdbiResult")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbGetStatement("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbGetStatement("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbGetStatement("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbGetStatement("DatabaseConnectorJdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_result-class.html" class="external-link">duckdb::dbGetStatement("duckdb_result")</a></code></p></li>
-<li><p><code><a href="https://r-dbi.github.io/odbc/reference/OdbcResult.html" class="external-link">odbc::dbGetStatement("OdbcResult")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcResult.html" class="external-link">odbc::dbGetStatement("OdbcResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbGetStatement.html" class="external-link">RAthena::dbGetStatement("AthenaResult")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/query.html" class="external-link">RMariaDB::dbGetStatement("MariaDBResult")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/query.html" class="external-link">RMySQL::dbGetStatement("MySQLResult")</a></code></p></li>
@@ -130,10 +136,8 @@ or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
     
 
 <p><code>dbGetStatement()</code> returns a string, the query used in
-either <code><a href="dbSendQuery.html">dbSendQuery()</a></code></p>
-
-
-<p>or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
+either <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or
+<code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
@@ -157,10 +161,8 @@ either <code><a href="dbSendQuery.html">dbSendQuery()</a></code></p>
 <code><a href="dbHasCompleted.html">dbHasCompleted</a>()</code>,
 <code><a href="dbIsReadOnly.html">dbIsReadOnly</a>()</code>,
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
-<code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier</a>()</code>,
 <code><a href="dbQuoteLiteral.html">dbQuoteLiteral</a>()</code>,
-<code><a href="dbQuoteString.html">dbQuoteString</a>()</code>,
-<code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier</a>()</code></p></div>
+<code><a href="dbQuoteString.html">dbQuoteString</a>()</code></p></div>
     </div>
 
     <div class="section level2">
