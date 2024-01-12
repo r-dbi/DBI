@@ -1,95 +1,40 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# DBI 1.2.0.9009 (2024-01-12)
+# DBI 1.2.1 (2024-01-12)
 
 ## Bug fixes
 
 - Fix `dbWriteTableArrow()` according to spec (#457).
 
-## Continuous integration
-
-- Bump MariaDB version (#458).
-
-
-# DBI 1.2.0.9008 (2023-12-28)
-
-## Documentation
-
-- Fix typos in Arrow vignette (#455).
-
-
-# DBI 1.2.0.9007 (2023-12-27)
-
 ## Features
 
 - `dbAppendTableArrow()` returns number of rows (#454).
-
 - Add `temporary` argument to `dbCreateTableArrow()` (#453).
+- Avoid coercing `params` in default implementation for `dbSendQueryArrow()` (#447).
+- Use `nanoarrow::infer_nanoarrow_schema()` in the default method for `dbCreateTable()` (#445).
 
 ## Chore
 
 - Add badge to `DBIResultArrow` class (#452).
-
-## Documentation
-
-- Finalize Arrow vignette (#451).
-
-
-# DBI 1.2.0.9006 (2023-12-26)
-
-## Features
-
-- Avoid coercing `params` in default implementation for `dbSendQueryArrow()` (#447).
-
-## Chore
-
 - Fix type inference in default method for `dbCreateTableArrow()` (#450).
-
-## Documentation
-
-- Document new Arrow generics (#444, #449).
-
-
-# DBI 1.2.0.9005 (2023-12-25)
-
-## Chore
-
 - Fix type inference in default method for `dbCreateTableArrow()` (#448).
-
 - Add Aviator configuration.
-
-
-# DBI 1.2.0.9004 (2023-12-24)
-
-## Features
-
-- Use `nanoarrow::infer_nanoarrow_schema()` in the default method for `dbCreateTable()` (#445).
-
-
-# DBI 1.2.0.9003 (2023-12-23)
-
-## Documentation
-
-- Use dbitemplate (@maelle, #442).
-
-
-# DBI 1.2.0.9002 (2023-12-22)
-
-## Chore
-
 - Change maintainer e-mail.
-
   Revert "Back to the auto-check train"
-
   This reverts commit 53c84f4466aa727f39775ac4d272645e19d20400.
 
+## Continuous integration
 
-# DBI 1.2.0.9001 (2023-12-21)
+- Bump MariaDB version (#458).
 
-- Merge branch 'cran-1.2.0'.
+## Documentation
 
+- Fix typos in Arrow vignette (#455).
+- Finalize Arrow vignette (#451).
+- Document new Arrow generics (#444, #449).
+- Use dbitemplate (@maelle, #442).
 
-# DBI 1.2.0.9000 (2023-12-20)
+## Uncategorized
 
 - Merge branch 'cran-1.2.0'.
 
