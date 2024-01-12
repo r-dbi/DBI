@@ -6,37 +6,31 @@
 
 - Fix `dbWriteTableArrow()` according to spec (#457).
 
+- Fix type inference in default method for `dbCreateTableArrow()` (#450).
+
 ## Features
 
 - `dbAppendTableArrow()` returns number of rows (#454).
+
 - Add `temporary` argument to `dbCreateTableArrow()` (#453).
+
 - Avoid coercing `params` in default implementation for `dbSendQueryArrow()` (#447).
+
 - Use `nanoarrow::infer_nanoarrow_schema()` in the default method for `dbCreateTable()` (#445).
 
 ## Chore
 
 - Add badge to `DBIResultArrow` class (#452).
-- Fix type inference in default method for `dbCreateTableArrow()` (#450).
-- Fix type inference in default method for `dbCreateTableArrow()` (#448).
-- Add Aviator configuration.
+
 - Change maintainer e-mail.
-  Revert "Back to the auto-check train"
-  This reverts commit 53c84f4466aa727f39775ac4d272645e19d20400.
-
-## Continuous integration
-
-- Bump MariaDB version (#458).
 
 ## Documentation
 
-- Fix typos in Arrow vignette (#455).
-- Finalize Arrow vignette (#451).
+- Finalize Arrow vignette (#451, #455).
+
 - Document new Arrow generics (#444, #449).
+
 - Use dbitemplate (@maelle, #442).
-
-## Uncategorized
-
-- Merge branch 'cran-1.2.0'.
 
 
 # DBI 1.2.0 (2023-12-20)
