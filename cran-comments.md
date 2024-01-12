@@ -1,6 +1,4 @@
-Resubmission.
-
-DBI 1.2.0
+DBI 1.2.1
 
 ## R CMD check results
 
@@ -10,5 +8,6 @@ DBI 1.2.0
 
 ## Current CRAN check results
 
-- [x] Checked on 2023-12-20, problems found: https://cran.r-project.org/web/checks/check_results_DBI.html
-- [x] NOTE: r-devel-linux-x86_64-fedora-clang: Undeclared package ‘withr’ in Rd xrefs: Can't reproduce
+- [x] Checked on 2024-01-12, problems found: https://cran.r-project.org/web/checks/check_results_DBI.html
+- [x] NOTE: r-devel-linux-x86_64-fedora-clang: Can't reproduce.
+     Undeclared package ‘withr’ in Rd xrefs
