@@ -35,7 +35,7 @@ if (Sys.getenv("CI") == "") {
     textConnectionValue(conn)
   }
 
-  xml_topic <- function(name, patcher) {
+  create_xml_topic <- function(name, patcher) {
     html <- html_topic(name)
     x <- xml2::read_html(paste(html, collapse = "\n"))
 
@@ -47,11 +47,6 @@ if (Sys.getenv("CI") == "") {
     xx %>% xml2::xml_find_first("//table") %>% xml2::xml_remove()
     xx %>% xml2::xml_find_all("//pre") %>% xml2::xml_set_attr("class", "r")
     patcher(xx)
-  }
-
-  out_topic <- function(name, patcher = identity) {
-    xml <- lapply(name, xml_topic, patcher = patcher)
-    sapply(xml, as.character) %>% paste(collapse = "\n")
   }
 
   patch_package_doc <- function(x) {
@@ -162,10 +157,12 @@ if (Sys.getenv("CI") == "") {
     "dbWithTransaction"
   )
 
-  html <- c(
-    out_topic("DBI-package", patch_package_doc),
-    out_topic(topics, patch_method_doc)
+  xml <- c(
+    list(create_xml_topic("DBI-package", patcher = patch_package_doc)),
+    lapply(topics, create_xml_topic, patcher = patch_method_doc)
   )
+
+  html <- unlist(lapply(xml, as.character))
 
   temp_html <- r("vignettes/spec.html")
   temp_md <- r("vignettes/spec.md")
