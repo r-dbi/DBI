@@ -7,10 +7,6 @@
 - `Id()` does not assign empty names to the components if all arguments are unnamed (#464).
 - Add spec to version control to avoid weird pandoc errors on CRAN (#465).
 
-## Uncategorized
-
-- Merge branch 'cran-1.2.1'.
-
 
 # DBI 1.2.1 (2024-01-12)
 
