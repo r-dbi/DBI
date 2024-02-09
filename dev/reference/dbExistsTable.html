@@ -7,6 +7,7 @@ adbi::dbExistsTable("AdbiConnection", "Id")
 adbi::dbExistsTable("AdbiConnection", "SQL")
 AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")
 bigrquery::dbExistsTable("BigQueryConnection", "character")
+bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
@@ -38,6 +39,7 @@ adbi::dbExistsTable("AdbiConnection", "Id")
 adbi::dbExistsTable("AdbiConnection", "SQL")
 AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")
 bigrquery::dbExistsTable("BigQueryConnection", "character")
+bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
@@ -68,11 +70,11 @@ sparklyr::dbExistsTable("spark_connection", "character")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,6 +123,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbExistsTable("AdbiConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExistsTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
@@ -256,7 +259,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

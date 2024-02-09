@@ -5,6 +5,7 @@ generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbQuoteLiteral("AdbiConnection", "character")
+bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")
 duckdb::dbQuoteLiteral("duckdb_connection", "ANY")
 pool::dbQuoteLiteral("Pool", "ANY")
 RMariaDB::dbQuoteLiteral("MariaDBConnection", "ANY")
@@ -18,6 +19,7 @@ generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbQuoteLiteral("AdbiConnection", "character")
+bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")
 duckdb::dbQuoteLiteral("duckdb_connection", "ANY")
 pool::dbQuoteLiteral("Pool", "ANY")
 RMariaDB::dbQuoteLiteral("MariaDBConnection", "ANY")
@@ -32,11 +34,11 @@ sparklyr::dbQuoteLiteral("spark_connection", "ANY")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,6 +85,7 @@ use in a query as a literal value of the correct type, to make sure that you
 generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteLiteral("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")</a></code></p></li>
 <li><p><code>duckdb::dbQuoteLiteral("duckdb_connection", "ANY")</code></p></li>
 <li><p><code>pool::dbQuoteLiteral("Pool", "ANY")</code></p></li>
 <li><p><code>RMariaDB::dbQuoteLiteral("MariaDBConnection", "ANY")</code></p></li>
@@ -229,7 +232,7 @@ returns one row.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

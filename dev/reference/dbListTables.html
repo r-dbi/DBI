@@ -12,6 +12,7 @@ DatabaseConnector::dbListTables("DatabaseConnectorConnection")
 dittodb::dbListTables("DBIMockConnection")
 duckdb::dbListTables("duckdb_connection")
 lazysf::dbListTables("SFSQLConnection")
+odbc::dbListTables("Microsoft SQL Server")
 odbc::dbListTables("OdbcConnection")
 pool::dbListTables("Pool")
 RAthena::dbListTables("AthenaConnection")
@@ -37,6 +38,7 @@ DatabaseConnector::dbListTables("DatabaseConnectorConnection")
 dittodb::dbListTables("DBIMockConnection")
 duckdb::dbListTables("duckdb_connection")
 lazysf::dbListTables("SFSQLConnection")
+odbc::dbListTables("Microsoft SQL Server")
 odbc::dbListTables("OdbcConnection")
 pool::dbListTables("Pool")
 RAthena::dbListTables("AthenaConnection")
@@ -56,11 +58,11 @@ sparklyr::dbListTables("spark_connection")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,6 +116,7 @@ This should include views and temporary objects, but not all database backends
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListTables("DBIMockConnection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbListTables("duckdb_connection")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbListTables("SFSQLConnection")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/SQLServer.html" class="external-link">odbc::dbListTables("Microsoft SQL Server")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/dbListTables-OdbcConnection-method.html" class="external-link">odbc::dbListTables("OdbcConnection")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbListTables("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbListTables.html" class="external-link">RAthena::dbListTables("AthenaConnection")</a></code></p></li>
@@ -225,7 +228,7 @@ or invalid connection.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

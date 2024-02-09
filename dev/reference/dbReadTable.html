@@ -7,6 +7,7 @@ Use dbReadTableArrow() instead to obtain an Arrow object.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbReadTable("AzureKustoConnection", "character")
 bigrquery::dbReadTable("BigQueryConnection", "character")
+bigrquery::dbReadTable("BigQueryConnection", "Id")
 DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")
 lazysf::dbReadTable("SFSQLConnection", "character")
 pool::dbReadTable("Pool", "ANY")
@@ -32,6 +33,7 @@ Use dbReadTableArrow() instead to obtain an Arrow object.
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbReadTable("AzureKustoConnection", "character")
 bigrquery::dbReadTable("BigQueryConnection", "character")
+bigrquery::dbReadTable("BigQueryConnection", "Id")
 DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")
 lazysf::dbReadTable("SFSQLConnection", "character")
 pool::dbReadTable("Pool", "ANY")
@@ -56,11 +58,11 @@ sparklyr::dbReadTable("spark_connection", "character")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,6 +111,7 @@ Use <code><a href="dbReadTableArrow.html">dbReadTableArrow()</a></code> instead 
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbReadTable("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbReadTable("BigQueryConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbReadTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbReadTable("SFSQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbReadTable("Pool", "ANY")</a></code></p></li>
@@ -291,7 +294,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

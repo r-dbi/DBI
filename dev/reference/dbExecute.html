@@ -9,8 +9,10 @@ the "The command execution flow" section.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbExecute("AzureKustoConnection", "character")
+bigrquery::dbExecute("BigQueryConnection", "character")
 DatabaseConnector::dbExecute("DatabaseConnectorConnection", "character")
 implyr::dbExecute("src_impala", "character")
+odbc::dbExecute("OdbcConnection", "character")
 pool::dbExecute("Pool", "ANY")
 RAthena::dbExecute("AthenaConnection", "character")
 sparklyr::dbExecute("spark_connection", "ANY")
@@ -25,8 +27,10 @@ the "The command execution flow" section.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbExecute("AzureKustoConnection", "character")
+bigrquery::dbExecute("BigQueryConnection", "character")
 DatabaseConnector::dbExecute("DatabaseConnectorConnection", "character")
 implyr::dbExecute("src_impala", "character")
+odbc::dbExecute("OdbcConnection", "character")
 pool::dbExecute("Pool", "ANY")
 RAthena::dbExecute("AthenaConnection", "character")
 sparklyr::dbExecute("spark_connection", "ANY")
@@ -38,11 +42,11 @@ sparklyr::dbExecute("spark_connection", "ANY")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,8 +97,10 @@ For passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code
 the "The command execution flow" section.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbExecute("AzureKustoConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExecute("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExecute-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExecute("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/implyr/man/dbExecute-src_impala-character-method.html" class="external-link">implyr::dbExecute("src_impala", "character")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbExecute("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbExecute("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/Query.html" class="external-link">RAthena::dbExecute("AthenaConnection", "character")</a></code></p></li>
 <li><p><code>sparklyr::dbExecute("spark_connection", "ANY")</code></p></li>
@@ -298,7 +304,7 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

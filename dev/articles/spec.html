@@ -23,11 +23,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -97,7 +97,7 @@ Müller</h4>
       the tests will be reflected in this document.</p>
     </div>
     
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="dbi-r-database-interface">DBI: R Database Interface<a class="anchor" aria-label="anchor" href="#dbi-r-database-interface"></a>
 </h2>
 <p>DBI defines an interface for communication between R and relational
@@ -143,7 +143,7 @@ list.</p>
 <code class="sourceCode R"><span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="determine-the-sql-data-type-of-an-object">Determine the SQL data type of an object<a class="anchor" aria-label="anchor" href="#determine-the-sql-data-type-of-an-object"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -259,7 +259,7 @@ SQL statement of the form <code>"CREATE TABLE test (a ...)"</code>.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="create-a-connection-to-a-dbms">Create a connection to a DBMS<a class="anchor" aria-label="anchor" href="#create-a-connection-to-a-dbms"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -364,7 +364,7 @@ coerced using <code><a href="https://rdrr.io/r/base/integer.html" class="externa
 <span><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="disconnect-close-a-connection">Disconnect (close) a connection<a class="anchor" aria-label="anchor" href="#disconnect-close-a-connection"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -413,7 +413,7 @@ connection.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="execute-a-query-on-a-given-database-connection">Execute a query on a given database connection<a class="anchor" aria-label="anchor" href="#execute-a-query-on-a-given-database-connection"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -633,7 +633,7 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="fetch-records-from-a-previously-executed-query">Fetch records from a previously executed query<a class="anchor" aria-label="anchor" href="#fetch-records-from-a-previously-executed-query"></a>
 </h2>
 <p>This section describes the behavior of the following methods:</p>
@@ -827,7 +827,7 @@ representation of the data</p></li>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="clear-a-result-set">Clear a result set<a class="anchor" aria-label="anchor" href="#clear-a-result-set"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -955,7 +955,7 @@ can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResu
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="bind-values-to-a-parameterizedprepared-statement">Bind values to a parameterized/prepared statement<a class="anchor" aria-label="anchor" href="#bind-values-to-a-parameterizedprepared-statement"></a>
 </h2>
 <p>This section describes the behavior of the following methods:</p>
@@ -976,7 +976,7 @@ values, and are intended to be called on the result set before calling
 passed to <code><a href="../reference/dbBind.html">dbBind()</a></code> as lists or data frames, and to
 <code><a href="../reference/dbBind.html">dbBindArrow()</a></code> as a stream created by
 <code><a href="https://rdrr.io/pkg/nanoarrow/man/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p>
-<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="../help/figures/lifecycle-experimental.svg" alt="Experimental"></a></p>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="Experimental"></a></p>
 <p><code><a href="../reference/dbBind.html">dbBindArrow()</a></code> is experimental, as are the other
 <code>⁠*Arrow⁠</code> functions. <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> is compatible
 with <code><a href="../reference/dbBind.html">dbBindArrow()</a></code>, and <code><a href="../reference/dbSendQueryArrow.html">dbSendQueryArrow()</a></code> is
@@ -1300,7 +1300,7 @@ NULL values)</p></li>
 <span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="retrieve-results-from-a-query">Retrieve results from a query<a class="anchor" aria-label="anchor" href="#retrieve-results-from-a-query"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -1482,7 +1482,7 @@ raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">db
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="execute-a-data-manipulation-statement-on-a-given-database-connection">Execute a data manipulation statement on a given database
 connection<a class="anchor" aria-label="anchor" href="#execute-a-data-manipulation-statement-on-a-given-database-connection"></a>
 </h2>
@@ -1693,7 +1693,7 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="change-database-state">Change database state<a class="anchor" aria-label="anchor" href="#change-database-state"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -1858,7 +1858,7 @@ statement is not a non-<code>NA</code> string.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="quote-literal-strings">Quote literal strings<a class="anchor" aria-label="anchor" href="#quote-literal-strings"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -1946,7 +1946,7 @@ row.</p>
 <span><span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="quote-identifiers">Quote identifiers<a class="anchor" aria-label="anchor" href="#quote-identifiers"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2045,7 +2045,7 @@ query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIde
 <span><span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="fu"><a href="../reference/ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="va">name</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="read-database-tables-as-data-frames">Read database tables as data frames<a class="anchor" aria-label="anchor" href="#read-database-tables-as-data-frames"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2210,7 +2210,7 @@ non-scalar. Unsupported values for <code>row.names</code> and
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="copy-data-frames-to-database-tables">Copy data frames to database tables<a class="anchor" aria-label="anchor" href="#copy-data-frames-to-database-tables"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2460,7 +2460,7 @@ or missing names, incompatible columns) also raise an error.</p>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"mtcars"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="list-remote-tables">List remote tables<a class="anchor" aria-label="anchor" href="#list-remote-tables"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2521,7 +2521,7 @@ connection.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="does-a-table-exist">Does a table exist?<a class="anchor" aria-label="anchor" href="#does-a-table-exist"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2639,7 +2639,7 @@ more quoting is done</p></li>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="remove-a-table-from-the-database">Remove a table from the database<a class="anchor" aria-label="anchor" href="#remove-a-table-from-the-database"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2782,7 +2782,7 @@ non-scalar.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="list-field-names-of-a-remote-table">List field names of a remote table<a class="anchor" aria-label="anchor" href="#list-field-names-of-a-remote-table"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2898,7 +2898,7 @@ column.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="is-this-dbms-object-still-valid">Is this DBMS object still valid?<a class="anchor" aria-label="anchor" href="#is-this-dbms-object-still-valid"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -2970,7 +2970,7 @@ failure, etc.), <code><a href="../reference/dbIsValid.html">dbIsValid()</a></cod
 <span><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="completion-status">Completion status<a class="anchor" aria-label="anchor" href="#completion-status"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -3081,7 +3081,7 @@ value is unspecified after fetching n rows, but the result value is
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="get-the-statement-associated-with-a-result-set">Get the statement associated with a result set<a class="anchor" aria-label="anchor" href="#get-the-statement-associated-with-a-result-set"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -3133,7 +3133,7 @@ either <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="the-number-of-rows-fetched-so-far">The number of rows fetched so far<a class="anchor" aria-label="anchor" href="#the-number-of-rows-fetched-so-far"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -3199,7 +3199,7 @@ before and after calling <code><a href="../reference/dbFetch.html">dbFetch()</a>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="the-number-of-rows-affected">The number of rows affected<a class="anchor" aria-label="anchor" href="#the-number-of-rows-affected"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -3289,7 +3289,7 @@ this step is always executed.</p></li>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="information-about-result-types">Information about result types<a class="anchor" aria-label="anchor" href="#information-about-result-types"></a>
 </h2>
 <p>This section describes the behavior of the following method:</p>
@@ -3399,7 +3399,7 @@ unchanged.</p>
 <span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="begincommitrollback-sql-transactions">Begin/commit/rollback SQL transactions<a class="anchor" aria-label="anchor" href="#begincommitrollback-sql-transactions"></a>
 </h2>
 <p>This section describes the behavior of the following methods:</p>
@@ -3517,7 +3517,7 @@ is set.</p>
 <span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
-<div class="section level2 container">
+<div class="section level2">
 <h2 id="self-contained-sql-transactions">Self-contained SQL transactions<a class="anchor" aria-label="anchor" href="#self-contained-sql-transactions"></a>
 </h2>
 <p>This section describes the behavior of the following methods:</p>
@@ -3644,7 +3644,7 @@ environment.</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

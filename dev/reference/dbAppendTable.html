@@ -7,6 +7,8 @@ Use dbAppendTableArrow() to append data from an Arrow stream.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbAppendTable("AdbiConnection", "ANY", "ANY")
+bigrquery::dbAppendTable("BigQueryConnection", "character", "data.frame")
+bigrquery::dbAppendTable("BigQueryConnection", "Id", "data.frame")
 DatabaseConnector::dbAppendTable("DatabaseConnectorConnection", "character", "ANY")
 duckdb::dbAppendTable("duckdb_connection", "ANY", "ANY")
 odbc::dbAppendTable("OdbcConnection", "ANY", "ANY")
@@ -24,6 +26,8 @@ Use dbAppendTableArrow() to append data from an Arrow stream.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbAppendTable("AdbiConnection", "ANY", "ANY")
+bigrquery::dbAppendTable("BigQueryConnection", "character", "data.frame")
+bigrquery::dbAppendTable("BigQueryConnection", "Id", "data.frame")
 DatabaseConnector::dbAppendTable("DatabaseConnectorConnection", "character", "ANY")
 duckdb::dbAppendTable("duckdb_connection", "ANY", "ANY")
 odbc::dbAppendTable("OdbcConnection", "ANY", "ANY")
@@ -40,11 +44,11 @@ RSQLite::dbAppendTable("SQLiteConnection", "ANY", "ANY")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +97,8 @@ The default implementation calls <code><a href="sqlAppendTable.html">sqlAppendTa
 Use <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> to append data from an Arrow stream.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>adbi::dbAppendTable("AdbiConnection", "ANY", "ANY")</code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbAppendTable("BigQueryConnection", "character", "data.frame")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbAppendTable("BigQueryConnection", "Id", "data.frame")</a></code></p></li>
 <li><p><code>DatabaseConnector::dbAppendTable("DatabaseConnectorConnection", "character", "ANY")</code></p></li>
 <li><p><code>duckdb::dbAppendTable("duckdb_connection", "ANY", "ANY")</code></p></li>
 <li><p><code>odbc::dbAppendTable("OdbcConnection", "ANY", "ANY")</code></p></li>
@@ -443,7 +449,7 @@ The order of the columns does not matter.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

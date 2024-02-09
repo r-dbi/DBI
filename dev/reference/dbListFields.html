@@ -7,6 +7,7 @@ adbi::dbListFields("AdbiConnection", "Id")
 adbi::dbListFields("AdbiConnection", "SQL")
 AzureKusto::dbListFields("AzureKustoConnection", "character")
 bigrquery::dbListFields("BigQueryConnection", "character")
+bigrquery::dbListFields("BigQueryConnection", "Id")
 DatabaseConnector::dbListFields("DatabaseConnectorConnection", "character")
 dittodb::dbListFields("DBIMockConnection", "ANY")
 dittodb::dbListFields("DBIMockConnection", "character")
@@ -39,6 +40,7 @@ adbi::dbListFields("AdbiConnection", "Id")
 adbi::dbListFields("AdbiConnection", "SQL")
 AzureKusto::dbListFields("AzureKustoConnection", "character")
 bigrquery::dbListFields("BigQueryConnection", "character")
+bigrquery::dbListFields("BigQueryConnection", "Id")
 DatabaseConnector::dbListFields("DatabaseConnectorConnection", "character")
 dittodb::dbListFields("DBIMockConnection", "ANY")
 dittodb::dbListFields("DBIMockConnection", "character")
@@ -70,11 +72,11 @@ sergeant::dbListFields("DrillResult", "missing")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0.9009</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.1.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,6 +125,7 @@ sergeant::dbListFields("DrillResult", "missing")
 <li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbListFields("AdbiConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbListFields("AzureKustoConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListFields("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListFields("BigQueryConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbListFields-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbListFields("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListFields("DBIMockConnection", "character")</a></code></p></li>
@@ -264,7 +267,7 @@ or invalid connection.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">
