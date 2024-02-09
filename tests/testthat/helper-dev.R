@@ -167,8 +167,8 @@ if (Sys.getenv("CI") == "") {
     out_topic(topics, patch_method_doc)
   )
 
-  temp_html <- tempfile(fileext = ".html")
-  temp_md <- tempfile(fileext = ".md")
+  temp_html <- r("vignettes/spec.html")
+  temp_md <- r("vignettes/spec.md")
 
   # temp_html <- "out.html"
   # temp_md <- "out.md"
@@ -177,5 +177,5 @@ if (Sys.getenv("CI") == "") {
 
   writeLines(html, temp_html)
   rmarkdown::pandoc_convert(temp_html, "gfm", verbose = FALSE, output = temp_md)
-  writeLines(readLines(temp_md), r("vignettes/spec.md"))
+  writeLines(readLines(temp_md), temp_md)
 }
