@@ -108,6 +108,13 @@ if (Sys.getenv("CI") == "") {
     x
   }
 
+  patch_lifecycle_badges <- function(x) {
+    img <-
+      x %>% xml2::xml_find_all("//img[@src='../help/figures/lifecycle-experimental.svg']")
+
+    xml2::xml_set_attr(img, "src", "https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg")
+  }
+
   remove_see_also_section <- function(x) {
     # https://stackoverflow.com/a/3839299/946850 and some trial and error
     x %>%
@@ -130,6 +137,8 @@ if (Sys.getenv("CI") == "") {
     move_contents_of_usage_section(x)
     remove_see_also_section(x)
     move_additional_arguments_section(x)
+    patch_lifecycle_badges(x)
+
     x %>%
       xml2::xml_find_first("div") %>%
       xml2::xml_children()

@@ -778,7 +778,7 @@ or `dbFetchArrow()`. The values are passed to `dbBind()` as lists or
 data frames, and to `dbBindArrow()` as a stream created by
 `nanoarrow::as_nanoarrow_array_stream()`.
 
-[![\[Experimental\]](../help/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![\[Experimental\]](https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 
 `dbBindArrow()` is experimental, as are the other `⁠*Arrow⁠` functions.
 `dbSendQuery()` is compatible with `dbBindArrow()`, and
