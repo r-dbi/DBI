@@ -50,12 +50,17 @@ if (Sys.getenv("CI") == "") {
   }
 
   patch_package_doc <- function(x) {
-    x %>% xml2::xml_find_first("//h3") %>% xml2::xml_remove()
+    x %>%
+      xml2::xml_find_first("//h3") %>%
+      xml2::xml_remove()
 
     remove_see_also_section(x)
     remove_authors_section(x)
 
-    x
+    x %>%
+      xml2::xml_find_first("div") %>%
+      xml2::xml_children() %>%
+      as.list()
   }
 
   move_contents_of_usage_section <- function(x) {
@@ -125,7 +130,9 @@ if (Sys.getenv("CI") == "") {
     move_contents_of_usage_section(x)
     remove_see_also_section(x)
     move_additional_arguments_section(x)
-    x
+    x %>%
+      xml2::xml_find_first("div") %>%
+      xml2::xml_children()
   }
 
   topics <- c(

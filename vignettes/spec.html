@@ -1,19 +1,10 @@
-<body>
-<div class="container">
-
 <h2 id="DBI-package">DBI: R Database Interface</h2>
-
-
-
 <p>DBI defines an interface for communication between R and relational database
 management systems.
 All classes in this package are virtual and need to be extended by
 the various R/DBMS implementations (so-called <em>DBI backends</em>).
 </p>
-
-
 <h3>Definition</h3>
-
 <p>A DBI backend is an R package
 which imports the <span class="pkg">DBI</span>
 and <span class="pkg">methods</span>
@@ -22,10 +13,7 @@ For better or worse, the names of many existing backends start with
 ‘R’, e.g., <span class="pkg">RSQLite</span>, <span class="pkg">RMySQL</span>, <span class="pkg">RSQLServer</span>; it is up
 to the backend author to adopt this convention or not.
 </p>
-
-
 <h3>DBI classes and methods</h3>
-
 <p>A backend defines three classes,
 which are subclasses of
 DBIDriver,
@@ -38,10 +26,7 @@ All methods defined in <span class="pkg">DBI</span> are reexported (so that the 
 be used without having to attach <span class="pkg">DBI</span>),
 and have an ellipsis <code>...</code> in their formals for extensibility.
 </p>
-
-
 <h3>Construction of the DBIDriver object</h3>
-
 <p>The backend must support creation of an instance of its DBIDriver subclass
 with a <dfn>constructor function</dfn>.
 By default, its name is the package name without the leading ‘R’
@@ -52,31 +37,16 @@ it must be a function
 that is callable without arguments.
 DBI recommends to define a constructor with an empty argument list.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 RSQLite::SQLite()
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbDataType">Determine the SQL data type of an object</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbDataType(dbObj, obj, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns an SQL string that describes the SQL data type to be used for an
 object.
 The default implementation of this generic determines the SQL type of an
@@ -85,11 +55,7 @@ point for driver implementations. DBI also provides an implementation
 for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbDataType_:_dbObj">dbObj</code></td>
@@ -111,12 +77,11 @@ or DBIConnection</p>
 </td>
 </tr>
 </table>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>The data types supported by databases are different than the data types in R,
 but the mapping between the primitive types is straightforward:
 </p>
-
 <ul>
 <li>
 <p> Any of the many fixed and varying length character types are mapped to
@@ -129,30 +94,22 @@ integer vectors.
 </p>
 </li>
 </ul>
+
 <p>Notice that many DBMS do not follow IEEE arithmetic, so there are potential
 problems with under/overflows and loss of precision.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbDataType()</code> returns the SQL type that corresponds to the <code>obj</code> argument
 as a non-empty
 character string.
 For data frames, a character vector with one element per column
 is returned.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised for invalid values for the <code>obj</code> argument such as a
 <code>NULL</code> value.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The backend can override the <code>dbDataType()</code> generic
 for its driver class.
 </p>
@@ -181,10 +138,7 @@ The behavior for other object types is not specified.
 of the form
 <code>"CREATE TABLE test (a ...)"</code>.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">dbDataType(ANSI(), 1:5)
 dbDataType(ANSI(), 1)
 dbDataType(ANSI(), TRUE)
@@ -215,23 +169,11 @@ dbDataType(con, iris)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbConnect">Create a connection to a DBMS</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbConnect(drv, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Connect to a DBMS going through the appropriate authentication procedure.
 Some implementations may allow you to have multiple connections open, so you
 may invoke this function repeatedly assigning its output to different
@@ -240,11 +182,7 @@ The authentication mechanism is left unspecified, so check the
 documentation of individual drivers for details.
 Use <code>dbCanConnect()</code> to check if a connection can be established.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbConnect_:_drv">drv</code></td>
@@ -263,22 +201,18 @@ For details see the appropriate <code>DBIDriver</code>.</p>
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbConnect()</code> returns an S4 object that inherits from DBIConnection.
 This object is used to communicate with the database engine.
 </p>
 <p>A <code>format()</code> method is defined for the connection object.
 It returns a string that consists of a single line of text.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>DBI recommends using the following argument names for authentication
 parameters, with <code>NULL</code> default:
 </p>
-
 <ul>
 <li> <p><code>user</code> for the user name (default: current user)
 </p>
@@ -297,6 +231,7 @@ name
 </p>
 </li>
 </ul>
+
 <p>The defaults should provide reasonable behavior, in particular a
 local connection for <code>host = NULL</code>.  For some DBMS (e.g., PostgreSQL),
 this is different to a TCP/IP connection to <code>localhost</code>.
@@ -304,7 +239,6 @@ this is different to a TCP/IP connection to <code>localhost</code>.
 <p>In addition, DBI supports the <code>bigint</code> argument that governs how
 64-bit integer data is returned.  The following values are supported:
 </p>
-
 <ul>
 <li> <p><code>"integer"</code>: always return as <code>integer</code>, silently overflow
 </p>
@@ -321,8 +255,8 @@ and <code>as.character()</code>
 </p>
 </li>
 </ul>
-<h3>Examples</h3>
 
+<h3>Examples</h3>
 <pre class="r"><code class="language-R">
 # SQLite only needs a path to the database. (Here, ":memory:" is a special
 # path that creates an in-memory database.) Other database drivers
@@ -340,31 +274,15 @@ dbDisconnect(con)
 dbListTables(con &lt;- dbConnect(RSQLite::SQLite(), ":memory:"))
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbDisconnect">Disconnect (close) a connection</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbDisconnect(conn, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>This closes the connection, discards all pending work, and frees
 resources (e.g., memory, sockets).
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbDisconnect_:_conn">conn</code></td>
@@ -380,14 +298,11 @@ resources (e.g., memory, sockets).
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbDisconnect()</code> returns <code>TRUE</code>, invisibly.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>A warning is issued on garbage collection when a connection has been
 released without calling <code>dbDisconnect()</code>,
 but this cannot be tested automatically.
@@ -395,32 +310,17 @@ A warning is issued immediately when calling <code>dbDisconnect()</code> on an
 already disconnected
 or invalid connection.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbSendQuery">Execute a query on a given database connection</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbSendQuery(conn, statement, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>The <code>dbSendQuery()</code> method only submits and synchronously executes the
 SQL query to the database engine.  It does <em>not</em> extract any
 records — for that you need to use the <code>dbFetch()</code> method, and
@@ -430,11 +330,7 @@ For interactive use, you should almost always prefer <code>dbGetQuery()</code>.
 Use <code>dbSendQueryArrow()</code> or <code>dbGetQueryArrow()</code> instead to retrieve the results
 as an Arrow object.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbSendQuery_:_conn">conn</code></td>
@@ -456,13 +352,12 @@ as an Arrow object.
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbSendQuery()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>params</code> (default: <code>NULL</code>)
 </p>
@@ -471,13 +366,11 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Specification" sections for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
 <code>dbClearResult()</code>.
@@ -492,10 +385,7 @@ and must be cleared with <code>dbClearResult()</code>.
 </p>
 <p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
 </p>
-
-
 <h3>Specification for the <code>immediate</code> argument</h3>
-
 <p>The <code>immediate</code> argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing <code>immediate = TRUE</code> leads to immediate execution of the
@@ -507,7 +397,6 @@ should result in a message that suggests passing the correct
 <code>immediate</code> argument.
 Examples for possible behaviors:
 </p>
-
 <ol>
 <li>
 <p> DBI backend defaults to <code>immediate = TRUE</code> internally
@@ -572,8 +461,8 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)
 </ol>
 </li>
 </ol>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>This method is for <code>SELECT</code> queries only.  Some backends may
 support data manipulation queries through this method for compatibility
 reasons.  However, callers are strongly encouraged to use
@@ -586,20 +475,14 @@ and transfer them piecemeal to R, others may transfer all the data to the
 client – but not necessarily to the memory that R manages. See individual
 drivers' <code>dbSendQuery()</code> documentation for details.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbSendQuery()</code> returns
 an S4 object that inherits from DBIResult.
 The result set can be used with <code>dbFetch()</code> to extract records.
 Once you have finished using a result, make sure to clear it
 with <code>dbClearResult()</code>.
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -610,7 +493,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -656,8 +538,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>An error is raised when issuing a query over a closed
 or invalid connection,
 or if the query is not a non-<code>NA</code> string.
@@ -665,10 +547,7 @@ An error is also raised if the syntax of the query is invalid
 and all query parameters are given (by passing the <code>params</code> argument)
 or the <code>immediate</code> argument is set to <code>TRUE</code>.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -697,33 +576,17 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbFetch">Fetch records from a previously executed query</h2>
-
 <p>This section describes the behavior of the following methods:</p>
-
 <pre class="r"><code class="language-R">dbFetch(res, n = -1, ...)
 
 fetch(res, n = -1, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Fetch the next <code>n</code> elements (rows) from the result set and return them
 as a data.frame.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbFetch_:_res">res</code></td>
@@ -748,17 +611,14 @@ special values.</p>
 </td>
 </tr>
 </table>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p><code>fetch()</code> is provided for compatibility with older DBI clients - for all
 new code you are strongly encouraged to use <code>dbFetch()</code>. The default
 implementation for <code>dbFetch()</code> calls <code>fetch()</code> so that it is compatible with
 existing code. Modern backends should implement for <code>dbFetch()</code> only.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbFetch()</code> always returns a data.frame with
 as many rows as records were fetched and as many
 columns as fields in the result set,
@@ -768,10 +628,7 @@ or zero rows.
 Passing <code>n = NA</code> is supported and returns an arbitrary number of rows (at least one)
 as specified by the driver, but at most the remaining rows in the result set.
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -782,7 +639,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -828,8 +684,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>An attempt to fetch from a closed result set raises an error.
 If the <code>n</code> argument is not an atomic whole number
 greater or equal to -1 or Inf, an error is raised,
@@ -839,10 +695,7 @@ but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argum
 created by <code>dbSendStatement()</code> can
 be fetched and return an empty data frame, with a warning.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>Fetching multi-row queries with one
 or more columns by default returns the entire result.
 Multi-row queries can also be fetched progressively
@@ -864,7 +717,6 @@ no warning is issued when clearing the result set.
 </p>
 <p>The column types of the returned data frame depend on the data returned:
 </p>
-
 <ul>
 <li> <p>integer (or coercible to an integer) for integer values between -2^31 and 2^31 - 1,
 with NA for SQL <code>NULL</code> values
@@ -906,10 +758,10 @@ with NA for SQL <code>NULL</code> values
 </p>
 </li>
 </ul>
+
 <p>If dates and timestamps are supported by the backend, the following R types are
 used:
 </p>
-
 <ul>
 <li> <p>Date for dates
 (also applies to the return value of the SQL function <code>current_date</code>)
@@ -920,11 +772,11 @@ used:
 </p>
 </li>
 </ul>
+
 <p>R has no built-in type with lossless support for the full range of 64-bit
 or larger integers. If 64-bit integers are returned from a query,
 the following rules apply:
 </p>
-
 <ul>
 <li>
 <p> Values are returned in a container with support for the full range of
@@ -947,8 +799,8 @@ of the data
 </p>
 </li>
 </ul>
-<h3>Examples</h3>
 
+<h3>Examples</h3>
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -970,32 +822,16 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbClearResult">Clear a result set</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbClearResult(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Frees all resources (local and remote) associated with a result set.
 This step is mandatory for all objects obtained by calling
 <code>dbSendQuery()</code> or <code>dbSendStatement()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbClearResult_:_res">res</code></td>
@@ -1010,17 +846,14 @@ This step is mandatory for all objects obtained by calling
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbClearResult()</code> returns <code>TRUE</code>, invisibly, for result sets obtained from
 <code>dbSendQuery()</code>,
 <code>dbSendStatement()</code>,
 or <code>dbSendQueryArrow()</code>,
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -1031,7 +864,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -1077,8 +909,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>The command execution flow</h3>
 
+<h3>The command execution flow</h3>
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
@@ -1089,7 +921,6 @@ for non-parameterized queries.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendStatement()</code> to create a result set object of class
@@ -1121,26 +952,20 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>An attempt to close an already closed result set issues a warning
 for <code>dbSendQuery()</code>,
 <code>dbSendStatement()</code>,
 and <code>dbSendQueryArrow()</code>,
 </p>
-
-
 <h3>Specification</h3>
-
 <p><code>dbClearResult()</code> frees all resources associated with retrieving
 the result of a query or update operation.
 The DBI backend can expect a call to <code>dbClearResult()</code> for each
 <code>dbSendQuery()</code> or <code>dbSendStatement()</code> call.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -1151,25 +976,13 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbBind">Bind values to a parameterized/prepared statement</h2>
-
 <p>This section describes the behavior of the following methods:</p>
-
 <pre class="r"><code class="language-R">dbBind(res, params, ...)
 
 dbBindArrow(res, params, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>For parametrized or prepared statements,
 the <code>dbSendQuery()</code>, <code>dbSendQueryArrow()</code>, and <code>dbSendStatement()</code> functions
 can be called with statements that contain placeholders for values.
@@ -1187,11 +1000,7 @@ created by <code>nanoarrow::as_nanoarrow_array_stream()</code>.
 <code>dbSendQuery()</code> is compatible with <code>dbBindArrow()</code>, and <code>dbSendQueryArrow()</code>
 is compatible with <code>dbBind()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbBind_:_res">res</code></td>
@@ -1215,8 +1024,8 @@ with one column per query parameter.</p>
 </td>
 </tr>
 </table>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p><span class="pkg">DBI</span> supports parametrized (or prepared) queries and statements
 via the <code>dbBind()</code> and <code>dbBindArrow()</code> generics.
 Parametrized queries are different from normal queries
@@ -1224,7 +1033,6 @@ in that they allow an arbitrary number of placeholders,
 which are later substituted by actual values.
 Parametrized queries (and statements) serve two purposes:
 </p>
-
 <ul>
 <li>
 <p> The same query can be executed more than once with different values.
@@ -1237,6 +1045,7 @@ such as the execution plan, and execute it faster.
 </p>
 </li>
 </ul>
+
 <p>The placeholder format is currently not specified by <span class="pkg">DBI</span>;
 in the future, a uniform placeholder syntax may be supported.
 Consult the backend documentation for the supported formats.
@@ -1244,7 +1053,6 @@ For automated testing, backend authors specify the placeholder syntax with
 the <code>placeholder_pattern</code> tweak.
 Known examples are:
 </p>
-
 <ul>
 <li> <p><code style="white-space: pre;">⁠?⁠</code> (positional matching in order of appearance) in <span class="pkg">RMariaDB</span> and <span class="pkg">RSQLite</span>
 </p>
@@ -1256,18 +1064,15 @@ Known examples are:
 </p>
 </li>
 </ul>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbBind()</code> returns the result set,
 invisibly,
 for queries issued by <code>dbSendQuery()</code> or <code>dbSendQueryArrow()</code> and
 also for data manipulation statements issued by
 <code>dbSendStatement()</code>.
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -1278,7 +1083,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -1324,8 +1128,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>The data retrieval flow for Arrow streams</h3>
 
+<h3>The data retrieval flow for Arrow streams</h3>
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as an Arrow stream.
 </p>
@@ -1336,7 +1140,6 @@ unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQueryArrow()</code> to create a result set object of class
@@ -1366,8 +1169,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>The command execution flow</h3>
 
+<h3>The command execution flow</h3>
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
@@ -1378,7 +1181,6 @@ for non-parameterized queries.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendStatement()</code> to create a result set object of class
@@ -1410,8 +1212,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>Calling <code>dbBind()</code> for a query without parameters
 raises an error.
 </p>
@@ -1433,13 +1235,9 @@ is not specified.
 <p>Calling <code>dbBind()</code> on a result set already cleared by <code>dbClearResult()</code>
 also raises an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p><span class="pkg">DBI</span> clients execute parametrized statements as follows:
 </p>
-
 <ol>
 <li>
 <p> Call <code>dbSendQuery()</code>, <code>dbSendQueryArrow()</code> or <code>dbSendStatement()</code>
@@ -1517,6 +1315,7 @@ the statement is processed entirely before the function returns.)
 </p>
 </li>
 </ol>
+
 <p>The elements of the <code>params</code> argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
@@ -1538,7 +1337,6 @@ their order in the <code>params</code> argument is not important.
 </p>
 <p>At least the following data types are accepted on input (including NA):
 </p>
-
 <ul>
 <li> <p>integer
 </p>
@@ -1581,8 +1379,8 @@ and with the value stored as integer)
 </p>
 </li>
 </ul>
-<h3>Examples</h3>
 
+<h3>Examples</h3>
 <pre class="r"><code class="language-R">
 # Data frame flow:
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -1641,23 +1439,11 @@ nrow(dbReadTable(con, "iris"))
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbGetQuery">Retrieve results from a query</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbGetQuery(conn, statement, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns the result of a query as a data frame.
 <code>dbGetQuery()</code> comes with a default implementation
 (which should work with most backends) that calls
@@ -1667,11 +1453,7 @@ For retrieving chunked/paged results or for passing query parameters,
 see <code>dbSendQuery()</code>, in particular the "The data retrieval flow" section.
 For retrieving results as an Arrow object, see <code>dbGetQueryArrow()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbGetQuery_:_conn">conn</code></td>
@@ -1693,13 +1475,12 @@ For retrieving results as an Arrow object, see <code>dbGetQueryArrow()</code>.
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbGetQuery()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>n</code> (default: -1)
 </p>
@@ -1711,13 +1492,11 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>A column named <code>row_names</code> is treated like any other column.
 </p>
 <p>The <code>n</code> argument specifies the number of rows to be fetched.
@@ -1734,10 +1513,7 @@ no warning is issued.
 </p>
 <p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
 </p>
-
-
 <h3>Specification for the <code>immediate</code> argument</h3>
-
 <p>The <code>immediate</code> argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing <code>immediate = TRUE</code> leads to immediate execution of the
@@ -1749,7 +1525,6 @@ should result in a message that suggests passing the correct
 <code>immediate</code> argument.
 Examples for possible behaviors:
 </p>
-
 <ol>
 <li>
 <p> DBI backend defaults to <code>immediate = TRUE</code> internally
@@ -1814,8 +1589,8 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)
 </ol>
 </li>
 </ol>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>This method is for <code>SELECT</code> queries only
 (incl. other SQL statements that return a <code>SELECT</code>-alike result,
 e.g., execution of a stored procedure or data manipulation queries
@@ -1828,10 +1603,7 @@ support data manipulation statements through this method for compatibility
 reasons.  However, callers are strongly advised to use
 <code>dbExecute()</code> for data manipulation statements.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbGetQuery()</code> always returns a data.frame, with
 as many rows as records were fetched and as many
 columns as fields in the result set,
@@ -1839,17 +1611,11 @@ even if the result is a single value
 or has one
 or zero rows.
 </p>
-
-
 <h3>Implementation notes</h3>
-
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
@@ -1858,10 +1624,7 @@ If the <code>n</code> argument is not an atomic whole number
 greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -1882,23 +1645,11 @@ dbGetQuery(
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbSendStatement">Execute a data manipulation statement on a given database connection</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbSendStatement(conn, statement, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>The <code>dbSendStatement()</code> method only submits and synchronously executes the
 SQL data manipulation statement (e.g., <code>UPDATE</code>, <code>DELETE</code>,
 <code style="white-space: pre;">⁠INSERT INTO⁠</code>, <code style="white-space: pre;">⁠DROP TABLE⁠</code>, ...) to the database engine.  To query
@@ -1907,11 +1658,7 @@ returned result object.  You must also call <code>dbClearResult()</code> after
 that. For interactive use, you should almost always prefer
 <code>dbExecute()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbSendStatement_:_conn">conn</code></td>
@@ -1933,13 +1680,12 @@ that. For interactive use, you should almost always prefer
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbSendStatement()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>params</code> (default: <code>NULL</code>)
 </p>
@@ -1948,13 +1694,11 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Specification" sections for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
 <code>dbClearResult()</code>.
@@ -1968,10 +1712,7 @@ and must be cleared with <code>dbClearResult()</code>.
 </p>
 <p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
 </p>
-
-
 <h3>Specification for the <code>immediate</code> argument</h3>
-
 <p>The <code>immediate</code> argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing <code>immediate = TRUE</code> leads to immediate execution of the
@@ -1983,7 +1724,6 @@ should result in a message that suggests passing the correct
 <code>immediate</code> argument.
 Examples for possible behaviors:
 </p>
-
 <ol>
 <li>
 <p> DBI backend defaults to <code>immediate = TRUE</code> internally
@@ -2048,16 +1788,13 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)
 </ol>
 </li>
 </ol>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p><code>dbSendStatement()</code> comes with a default implementation that simply
 forwards to <code>dbSendQuery()</code>, to support backends that only
 implement the latter.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbSendStatement()</code> returns
 an S4 object that inherits from DBIResult.
 The result set can be used with <code>dbGetRowsAffected()</code> to
@@ -2065,10 +1802,7 @@ determine the number of rows affected by the query.
 Once you have finished using a result, make sure to clear it
 with <code>dbClearResult()</code>.
 </p>
-
-
 <h3>The command execution flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
@@ -2079,7 +1813,6 @@ for non-parameterized queries.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendStatement()</code> to create a result set object of class
@@ -2111,8 +1844,8 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>An error is raised when issuing a statement over a closed
 or invalid connection,
 or if the statement is not a non-<code>NA</code> string.
@@ -2120,10 +1853,7 @@ An error is also raised if the syntax of the query is invalid
 and all query parameters are given (by passing the <code>params</code> argument)
 or the <code>immediate</code> argument is set to <code>TRUE</code>.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -2159,23 +1889,11 @@ dbReadTable(con, "cars")   # there are now 10 rows
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbExecute">Change database state</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbExecute(conn, statement, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Executes a statement and returns the number of rows affected.
 <code>dbExecute()</code> comes with a default implementation
 (which should work with most backends) that calls
@@ -2184,11 +1902,7 @@ the result is always freed by <code>dbClearResult()</code>.
 For passing query parameters, see <code>dbBind()</code>, in particular
 the "The command execution flow" section.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbExecute_:_conn">conn</code></td>
@@ -2210,13 +1924,12 @@ the "The command execution flow" section.
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbExecute()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>params</code> (default: <code>NULL</code>)
 </p>
@@ -2225,19 +1938,14 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Specification" sections for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
 </p>
-
-
 <h3>Specification for the <code>immediate</code> argument</h3>
-
 <p>The <code>immediate</code> argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing <code>immediate = TRUE</code> leads to immediate execution of the
@@ -2249,7 +1957,6 @@ should result in a message that suggests passing the correct
 <code>immediate</code> argument.
 Examples for possible behaviors:
 </p>
-
 <ol>
 <li>
 <p> DBI backend defaults to <code>immediate = TRUE</code> internally
@@ -2314,44 +2021,32 @@ the backend tries <code>immediate = TRUE</code> (and gives a message)
 </ol>
 </li>
 </ol>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>You can also use <code>dbExecute()</code> to call a stored procedure
 that performs data manipulation or other actions that do not return a result set.
 To execute a stored procedure that returns a result set,
 or a data manipulation query that also returns a result set
 such as <code style="white-space: pre;">⁠INSERT INTO ... RETURNING ...⁠</code>, use <code>dbGetQuery()</code> instead.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbExecute()</code> always returns a
 scalar
 numeric
 that specifies the number of rows affected
 by the statement.
 </p>
-
-
 <h3>Implementation notes</h3>
-
 <p>Subclasses should override this method only if they provide some sort of
 performance optimization.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised when issuing a statement over a closed
 or invalid connection,
 if the syntax of the statement is invalid,
 or if the statement is not a non-<code>NA</code> string.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -2374,32 +2069,16 @@ dbReadTable(con, "cars")   # there are now 10 rows
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbQuoteString">Quote literal strings</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbQuoteString(conn, x, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Call this method to generate a string that is suitable for
 use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbQuoteString_:_conn">conn</code></td>
@@ -2421,8 +2100,8 @@ generate valid SQL and protect against SQL injection attacks.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbQuoteString()</code> returns an object that can be coerced to character,
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
@@ -2434,10 +2113,7 @@ Passing objects of class SQL should also return them unchanged.
 (For backends it may be most convenient to return SQL objects
 to achieve this behavior, but this is not required.)
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>Passing a numeric,
 integer,
 logical,
@@ -2445,10 +2121,7 @@ or raw vector,
 or a list
 for the <code>x</code> argument raises an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The returned expression can be used in a <code style="white-space: pre;">⁠SELECT ...⁠</code> query,
 and for any scalar character <code>x</code> the value of
 <code>dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]</code>
@@ -2470,10 +2143,7 @@ The strings <code>"NA"</code> or <code>"NULL"</code> are not treated specially.
 so that the query <code style="white-space: pre;">⁠SELECT * FROM (SELECT 1) a WHERE ... IS NULL⁠</code>
 returns one row.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R"># Quoting ensures that arbitrary input is safe for use in a query
 name &lt;- "Robert'); DROP TABLE Students;--"
 dbQuoteString(ANSI(), name)
@@ -2489,33 +2159,17 @@ dbQuoteString(ANSI(), var_name)
 # This mechanism is used to prevent double escaping
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbQuoteIdentifier">Quote identifiers</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbQuoteIdentifier(conn, x, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Call this method to generate a string that is suitable for
 use in a query as a column or table name, to make sure that you
 generate valid SQL and protect against SQL injection attacks. The inverse
 operation is <code>dbUnquoteIdentifier()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbQuoteIdentifier_:_conn">conn</code></td>
@@ -2537,8 +2191,8 @@ operation is <code>dbUnquoteIdentifier()</code>.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbQuoteIdentifier()</code> returns an object that can be coerced to character,
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
@@ -2550,17 +2204,11 @@ Passing objects of class SQL should also return them unchanged.
 (For backends it may be most convenient to return SQL objects
 to achieve this behavior, but this is not required.)
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised if the input contains <code>NA</code>,
 but not for an empty string.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>Calling <code>dbGetQuery()</code> for a query of the format <code style="white-space: pre;">⁠SELECT 1 AS ...⁠</code>
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
@@ -2582,10 +2230,7 @@ In any case, checking the validity of the identifier
 should be performed only when executing a query,
 and not by <code>dbQuoteIdentifier()</code>.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R"># Quoting ensures that arbitrary input is safe for use in a query
 name &lt;- "Robert'); DROP TABLE Students;--"
 dbQuoteIdentifier(ANSI(), name)
@@ -2603,33 +2248,17 @@ dbQuoteIdentifier(ANSI(), var_name)
 # This mechanism is used to prevent double escaping
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbReadTable">Read database tables as data frames</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbReadTable(conn, name, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Reads a database table to a data frame, optionally converting
 a column to row names and converting the column names to valid
 R identifiers.
 Use <code>dbReadTableArrow()</code> instead to obtain an Arrow object.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbReadTable_:_conn">conn</code></td>
@@ -2670,13 +2299,12 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbReadTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>row.names</code> (default: <code>FALSE</code>)
 </p>
@@ -2685,17 +2313,14 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Value" section for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 </p>
-
 <ul>
 <li>
 <p> If an unquoted table name as string: <code>dbReadTable()</code> will do the
@@ -2708,15 +2333,12 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </p>
 </li>
 </ul>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>This function returns a data frame.
 Use <code>dbReadTableArrow()</code> to obtain an Arrow object.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbReadTable()</code> returns a data frame that contains the complete data
 from the remote table, effectively the result of calling <code>dbGetQuery()</code> with
 <code style="white-space: pre;">⁠SELECT * FROM &lt;name&gt;⁠</code>.
@@ -2726,7 +2348,6 @@ from the remote table, effectively the result of calling <code>dbGetQuery()</cod
 <p>The presence of rownames depends on the <code>row.names</code> argument,
 see <code>sqlColumnToRownames()</code> for details:
 </p>
-
 <ul>
 <li>
 <p> If <code>FALSE</code> or <code>NULL</code>, the returned data frame doesn't have row names.
@@ -2737,6 +2358,7 @@ see <code>sqlColumnToRownames()</code> for details:
 </p>
 </li>
 </ul>
+
 <ul>
 <li>
 <p> If <code>NA</code>, a column named "row_names" is converted to row names if it exists,
@@ -2749,6 +2371,7 @@ that contains the row names.
 </p>
 </li>
 </ul>
+
 <p>The default is <code>row.names = FALSE</code>.
 </p>
 <p>If the database supports identifiers with special characters,
@@ -2757,10 +2380,7 @@ identifiers
 if the <code>check.names</code> argument is <code>TRUE</code>,
 If <code>check.names = FALSE</code>, the returned table has non-syntactic column names without quotes.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised if the table does not exist.
 </p>
 <p>An error is raised if <code>row.names</code> is <code>TRUE</code> and no "row_names" column exists,
@@ -2778,10 +2398,7 @@ unsupported data types,
 <code>NA</code> for <code>check.names</code>)
 also raise an error.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -2791,31 +2408,15 @@ dbReadTable(con, "mtcars")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbWriteTable">Copy data frames to database tables</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbWriteTable(conn, name, value, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Writes, overwrites or appends a data frame to a database table, optionally
 converting row names to a column and specifying SQL data types for fields.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbWriteTable_:_conn">conn</code></td>
@@ -2862,13 +2463,12 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbWriteTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>row.names</code> (default: <code>FALSE</code>)
 </p>
@@ -2886,17 +2486,14 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 </p>
-
 <ul>
 <li>
 <p> If an unquoted table name as string: <code>dbWriteTable()</code> will do the quoting,
@@ -2908,6 +2505,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </p>
 </li>
 </ul>
+
 <p>The <code>value</code> argument must be a data frame
 with a subset of the columns of the existing table if <code>append = TRUE</code>.
 The order of the columns does not matter with <code>append = TRUE</code>.
@@ -2937,7 +2535,6 @@ and column names.
 <p>The following data types must be supported at least,
 and be read identically with <code>dbReadTable()</code>:
 </p>
-
 <ul>
 <li>
 <p> integer
@@ -3021,6 +2618,7 @@ input time zone)
 </p>
 </li>
 </ul>
+
 <p>Mixing column types in the same table is supported.
 </p>
 <p>The <code>field.types</code> argument must be a named character vector with at most
@@ -3032,7 +2630,6 @@ from the input data with <code>dbDataType()</code>.
 <p>The interpretation of rownames depends on the <code>row.names</code> argument,
 see <code>sqlRownamesToColumn()</code> for details:
 </p>
-
 <ul>
 <li>
 <p> If <code>FALSE</code> or <code>NULL</code>, row names are ignored.
@@ -3055,12 +2652,10 @@ even if the input data frame only has natural row names.
 </p>
 </li>
 </ul>
+
 <p>The default is <code>row.names = FALSE</code>.
 </p>
-
-
 <h3>Details</h3>
-
 <p>This function expects a data frame.
 Use <code>dbWriteTableArrow()</code> to write an Arrow object.
 </p>
@@ -3074,16 +2669,10 @@ Some backends might implement methods that can consume CSV files
 or other data formats.
 For details, see the documentation for the individual methods.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbWriteTable()</code> returns <code>TRUE</code>, invisibly.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset,
 or <code>append = TRUE</code> and the data frame with the new data has different
 column names,
@@ -3105,10 +2694,7 @@ or missing names,
 incompatible columns)
 also raise an error.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3126,33 +2712,17 @@ dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbListTables">List remote tables</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbListTables(conn, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns the unquoted names of remote tables accessible through this
 connection.
 This should include views and temporary objects, but not all database backends
 (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbListTables_:_conn">conn</code></td>
@@ -3168,8 +2738,8 @@ This should include views and temporary objects, but not all database backends
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbListTables()</code>
 returns a character vector
 that enumerates all tables
@@ -3184,17 +2754,11 @@ it is also removed from the list of database tables.
 </p>
 <p>The returned names are suitable for quoting with <code>dbQuoteIdentifier()</code>.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3205,30 +2769,14 @@ dbListTables(con)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbExistsTable">Does a table exist?</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbExistsTable(conn, name, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns if a table given by name exists in the database.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbExistsTable_:_conn">conn</code></td>
@@ -3269,31 +2817,24 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
 specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.
 </p>
 <p>This includes temporary tables if supported by the database.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
 if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
 if this results in a non-scalar.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 </p>
-
 <ul>
 <li>
 <p> If an unquoted table name as string: <code>dbExistsTable()</code> will do the
@@ -3306,12 +2847,10 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </p>
 </li>
 </ul>
+
 <p>For all tables listed by <code>dbListTables()</code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3322,31 +2861,15 @@ dbExistsTable(con, "iris")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbRemoveTable">Remove a table from the database</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbRemoveTable(conn, name, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Remove a remote table (e.g., created by <code>dbWriteTable()</code>)
 from the database.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbRemoveTable_:_conn">conn</code></td>
@@ -3387,13 +2910,12 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 </table>
-<h3>Additional arguments</h3>
 
+<h3>Additional arguments</h3>
 <p>The following arguments are not part of the <code>dbRemoveTable()</code> generic
 (to improve compatibility across backends)
 but are part of the DBI specification:
 </p>
-
 <ul>
 <li> <p><code>temporary</code> (default: <code>FALSE</code>)
 </p>
@@ -3402,6 +2924,7 @@ but are part of the DBI specification:
 </p>
 </li>
 </ul>
+
 <p>These arguments must be provided as named arguments.
 </p>
 <p>If <code>temporary</code> is <code>TRUE</code>, the call to <code>dbRemoveTable()</code>
@@ -3412,10 +2935,7 @@ In particular, permanent tables of the same name are left untouched.
 <p>If <code>fail_if_missing</code> is <code>FALSE</code>, the call to <code>dbRemoveTable()</code>
 succeeds if the table does not exist.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>A table removed by <code>dbRemoveTable()</code> doesn't appear in the list of tables
 returned by <code>dbListTables()</code>,
 and <code>dbExistsTable()</code> returns <code>FALSE</code>.
@@ -3425,7 +2945,6 @@ This function can also be used to remove a temporary table.
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 </p>
-
 <ul>
 <li>
 <p> If an unquoted table name as string: <code>dbRemoveTable()</code> will do the
@@ -3438,14 +2957,11 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </p>
 </li>
 </ul>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbRemoveTable()</code> returns <code>TRUE</code>, invisibly.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>If the table does not exist, an error is raised.
 An attempt to remove a view with this function may result in an error.
 </p>
@@ -3455,10 +2971,7 @@ An error is also raised
 if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
 if this results in a non-scalar.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3471,30 +2984,14 @@ dbExistsTable(con, "iris")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbListFields">List field names of a remote table</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbListFields(conn, name, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns the field names of a remote table as a character vector.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbListFields_:_conn">conn</code></td>
@@ -3535,8 +3032,8 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbListFields()</code>
 returns a character vector
 that enumerates all fields
@@ -3544,10 +3041,7 @@ in the table in the correct order.
 This also works for temporary tables if supported by the database.
 The returned names are suitable for quoting with <code>dbQuoteIdentifier()</code>.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>If the table does not exist, an error is raised.
 Invalid types for the <code>name</code> argument
 (e.g., <code>character</code> of length not equal to one,
@@ -3556,13 +3050,9 @@ lead to an error.
 An error is also raised when calling this method for a closed
 or invalid connection.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The <code>name</code> argument can be
 </p>
-
 <ul>
 <li>
 <p> a string
@@ -3578,12 +3068,10 @@ or invalid connection.
 </p>
 </li>
 </ul>
+
 <p>A column named <code>row_names</code> is treated like any other column.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3593,31 +3081,15 @@ dbListFields(con, "mtcars")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbIsValid">Is this DBMS object still valid?</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbIsValid(dbObj, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>This generic tests whether a database object is still valid (i.e. it hasn't
 been disconnected or cleared).
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbIsValid_:_dbObj">dbObj</code></td>
@@ -3634,8 +3106,8 @@ or a DBIResult</p>
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbIsValid()</code> returns a logical scalar,
 <code>TRUE</code> if the object specified by <code>dbObj</code> is valid,
 <code>FALSE</code> otherwise.
@@ -3653,10 +3125,7 @@ If the connection to the database system is dropped (e.g., due to
 connectivity problems, server failure, etc.), <code>dbIsValid()</code> should return
 <code>FALSE</code>. This is not tested automatically.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 dbIsValid(RSQLite::SQLite())
 
@@ -3673,32 +3142,16 @@ dbDisconnect(con)
 dbIsValid(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbHasCompleted">Completion status</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbHasCompleted(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>This method returns if the operation has completed.
 A <code>SELECT</code> query is completed if all rows have been fetched.
 A data manipulation statement is always completed.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbHasCompleted_:_res">res</code></td>
@@ -3713,8 +3166,8 @@ A data manipulation statement is always completed.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbHasCompleted()</code> returns a logical scalar.
 For a query initiated by <code>dbSendQuery()</code> with non-empty result set,
 <code>dbHasCompleted()</code> returns <code>FALSE</code> initially
@@ -3722,10 +3175,7 @@ and <code>TRUE</code> after calling <code>dbFetch()</code> without limit.
 For a query initiated by <code>dbSendStatement()</code>,
 <code>dbHasCompleted()</code> always returns <code>TRUE</code>.
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -3736,7 +3186,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -3782,15 +3231,12 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>Attempting to query completion status for a result set cleared with
 <code>dbClearResult()</code> gives an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>The completion status for a query is only guaranteed to be set to
 <code>FALSE</code> after attempting to fetch past the end of the entire result.
 Therefore, for a query with an empty result set,
@@ -3802,10 +3248,7 @@ the return value is unspecified after fetching n rows,
 but the result value is <code>TRUE</code> after trying to fetch only one more
 row.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3822,31 +3265,15 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbGetStatement">Get the statement associated with a result set</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbGetStatement(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns the statement that was passed to <code>dbSendQuery()</code>
 or <code>dbSendStatement()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbGetStatement_:_res">res</code></td>
@@ -3861,23 +3288,17 @@ or <code>dbSendStatement()</code>.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbGetStatement()</code> returns a string, the query used in
 either <code>dbSendQuery()</code> or
 <code>dbSendStatement()</code>.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>Attempting to query the statement for a result set cleared with
 <code>dbClearResult()</code> gives an error.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3889,31 +3310,15 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbGetRowCount">The number of rows fetched so far</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbGetRowCount(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Returns the total number of rows actually fetched with calls to <code>dbFetch()</code>
 for this result set.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbGetRowCount_:_res">res</code></td>
@@ -3928,8 +3333,8 @@ for this result set.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbGetRowCount()</code> returns a scalar number (integer or numeric),
 the number of rows fetched so far.
 After calling <code>dbSendQuery()</code>,
@@ -3947,17 +3352,11 @@ For data manipulation statements issued with
 zero is returned before
 and after calling <code>dbFetch()</code>.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>Attempting to get the row count for a result set cleared with
 <code>dbClearResult()</code> gives an error.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -3975,31 +3374,15 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbGetRowsAffected">The number of rows affected</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbGetRowsAffected(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>This method returns the number of rows that were added, deleted, or updated
 by a data manipulation statement.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbGetRowsAffected_:_res">res</code></td>
@@ -4014,8 +3397,8 @@ by a data manipulation statement.
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbGetRowsAffected()</code> returns a scalar number (integer or numeric),
 the number of rows affected by a data manipulation statement
 issued with <code>dbSendStatement()</code>.
@@ -4028,10 +3411,7 @@ zero is returned before
 and after the call to <code>dbFetch()</code>.
 <code>NA</code> values are not allowed.
 </p>
-
-
 <h3>The command execution flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data,
@@ -4042,7 +3422,6 @@ for non-parameterized queries.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendStatement()</code> to create a result set object of class
@@ -4074,15 +3453,12 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>Attempting to get the rows affected for a result set cleared with
 <code>dbClearResult()</code> gives an error.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4095,33 +3471,17 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbColumnInfo">Information about result types</h2>
-
 <p>This section describes the behavior of the following method:</p>
-
 <pre class="r"><code class="language-R">dbColumnInfo(res, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Produces a data.frame that describes the output of a query. The data.frame
 should have as many rows as there are output fields in the result set, and
 each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbColumnInfo_:_res">res</code></td>
@@ -4136,8 +3496,8 @@ field (field name, type, etc.)
 </td>
 </tr>
 </table>
-<h3>Value</h3>
 
+<h3>Value</h3>
 <p><code>dbColumnInfo()</code>
 returns a data frame
 with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
@@ -4148,10 +3508,7 @@ The <code>"type"</code> column is of type <code>character</code> and only for in
 Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code>
 to create a zero-row data frame initialized with the correct data types.
 </p>
-
-
 <h3>The data retrieval flow</h3>
-
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as data frames.
 </p>
@@ -4162,7 +3519,6 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code>dbConnect()</code>.
 See also <code>vignette("dbi-advanced")</code> for a walkthrough.
 </p>
-
 <ol>
 <li>
 <p> Use <code>dbSendQuery()</code> to create a result set object of class
@@ -4208,14 +3564,11 @@ to ensure that this step is always executed.
 </p>
 </li>
 </ol>
-<h3>Failure modes</h3>
 
+<h3>Failure modes</h3>
 <p>An attempt to query columns for a closed result set raises an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>A column named <code>row_names</code> is treated like any other column.
 </p>
 <p>The column names are always consistent
@@ -4226,10 +3579,7 @@ non-empty and non-<code>NA</code> names are assigned.
 </p>
 <p>Column names that correspond to SQL or R keywords are left unchanged.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4241,27 +3591,15 @@ dbClearResult(rs)
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbBegin">Begin/commit/rollback SQL transactions</h2>
-
 <p>This section describes the behavior of the following methods:</p>
-
 <pre class="r"><code class="language-R">dbBegin(conn, ...)
 
 dbCommit(conn, ...)
 
 dbRollback(conn, ...)
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with <code>dbBegin()</code> and either made persistent with <code>dbCommit()</code>
 or undone with <code>dbRollback()</code>.
@@ -4269,11 +3607,7 @@ In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbBegin_:_conn">conn</code></td>
@@ -4289,22 +3623,16 @@ This helps ensuring consistency of write operations to multiple tables.
 </td>
 </tr>
 </table>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
 DBIConnection subclass.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>The implementations are expected to raise an error in case of failure,
 but this is not tested.
 In any way, all generics throw an error with a closed
@@ -4316,10 +3644,7 @@ Nested transactions are not supported by DBI,
 an attempt to call <code>dbBegin()</code> twice
 yields an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p>Actual support for transactions may vary between backends.
 A transaction is initiated by a call to <code>dbBegin()</code>
 and committed by a call to <code>dbCommit()</code>.
@@ -4351,10 +3676,7 @@ if the <code>name</code> argument is set.
 </p>
 <p>The transaction isolation level is not specified by DBI.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4388,25 +3710,13 @@ dbReadTable(con, "account")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>
-<body>
-<div class="container">
-
 <h2 id="dbWithTransaction">Self-contained SQL transactions</h2>
-
 <p>This section describes the behavior of the following methods:</p>
-
 <pre class="r"><code class="language-R">dbWithTransaction(conn, code, ...)
 
 dbBreak()
 </code></pre>
-
-
 <h3>Description</h3>
-
 <p>Given that transactions are implemented, this function
 allows you to pass in code that is run in a transaction.
 The default method of <code>dbWithTransaction()</code> calls <code>dbBegin()</code>
@@ -4419,11 +3729,7 @@ that you don't have to remember to do <code>dbBegin()</code> and <code>dbCommit(
 The special function <code>dbBreak()</code> allows an early exit with rollback,
 it can be called only inside <code>dbWithTransaction()</code>.
 </p>
-
-
-
 <h3>Arguments</h3>
-
 <table>
 <tr>
 <td><code id="dbWithTransaction_:_conn">conn</code></td>
@@ -4445,31 +3751,22 @@ it can be called only inside <code>dbWithTransaction()</code>.
 </td>
 </tr>
 </table>
-<h3>Details</h3>
 
+<h3>Details</h3>
 <p>DBI implements <code>dbWithTransaction()</code>, backends should need to override this
 generic only if they implement specialized handling.
 </p>
-
-
 <h3>Value</h3>
-
 <p><code>dbWithTransaction()</code> returns the value of the executed code.
 </p>
-
-
 <h3>Failure modes</h3>
-
 <p>Failure to initiate the transaction
 (e.g., if the connection is closed
 or invalid
 of if <code>dbBegin()</code> has been called already)
 gives an error.
 </p>
-
-
 <h3>Specification</h3>
-
 <p><code>dbWithTransaction()</code> initiates a transaction with <code>dbBegin()</code>, executes
 the code given in the <code>code</code> argument, and commits the transaction with
 <code>dbCommit()</code>.
@@ -4481,10 +3778,7 @@ All side effects caused by the code
 (such as the creation of new variables)
 propagate to the calling environment.
 </p>
-
-
 <h3>Examples</h3>
-
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4528,7 +3822,3 @@ dbReadTable(con, "account")
 dbDisconnect(con)
 
 </code></pre>
-
-
-</div>
-</body>

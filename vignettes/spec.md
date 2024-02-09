@@ -1,5 +1,3 @@
-<div class="container">
-
 ## DBI: R Database Interface
 
 DBI defines an interface for communication between R and relational
@@ -42,10 +40,6 @@ argument list.
 ``` r
 RSQLite::SQLite()
 ```
-
-</div>
-
-<div class="container">
 
 ## Determine the SQL data type of an object
 
@@ -150,10 +144,6 @@ dbDataType(con, iris)
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Create a connection to a DBMS
 
 This section describes the behavior of the following method:
@@ -239,10 +229,6 @@ dbDisconnect(con)
 dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 ```
 
-</div>
-
-<div class="container">
-
 ## Disconnect (close) a connection
 
 This section describes the behavior of the following method:
@@ -280,10 +266,6 @@ automatically. A warning is issued immediately when calling
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Execute a query on a given database connection
 
@@ -476,10 +458,6 @@ dbClearResult(rs)
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Fetch records from a previously executed query
 
 This section describes the behavior of the following methods:
@@ -660,10 +638,6 @@ dbClearResult(rs)
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Clear a result set
 
 This section describes the behavior of the following method:
@@ -782,10 +756,6 @@ print(dbFetch(rs))
 dbClearResult(rs)
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Bind values to a parameterized/prepared statement
 
@@ -1124,10 +1094,6 @@ nrow(dbReadTable(con, "iris"))
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Retrieve results from a query
 
 This section describes the behavior of the following method:
@@ -1276,10 +1242,6 @@ dbGetQuery(
 
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Execute a data manipulation statement on a given database connection
 
@@ -1458,10 +1420,6 @@ dbReadTable(con, "cars")   # there are now 10 rows
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Change database state
 
 This section describes the behavior of the following method:
@@ -1592,10 +1550,6 @@ dbReadTable(con, "cars")   # there are now 10 rows
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Quote literal strings
 
 This section describes the behavior of the following method:
@@ -1666,10 +1620,6 @@ dbQuoteString(ANSI(), var_name)
 # This mechanism is used to prevent double escaping
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 ```
-
-</div>
-
-<div class="container">
 
 ## Quote identifiers
 
@@ -1747,10 +1697,6 @@ dbQuoteIdentifier(ANSI(), var_name)
 # This mechanism is used to prevent double escaping
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 ```
-
-</div>
-
-<div class="container">
 
 ## Read database tables as data frames
 
@@ -1886,10 +1832,6 @@ dbReadTable(con, "mtcars")
 
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Copy data frames to database tables
 
@@ -2118,10 +2060,6 @@ dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
 ```
 
-</div>
-
-<div class="container">
-
 ## List remote tables
 
 This section describes the behavior of the following method:
@@ -2171,10 +2109,6 @@ dbListTables(con)
 
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Does a table exist?
 
@@ -2261,10 +2195,6 @@ dbExistsTable(con, "iris")
 
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Remove a table from the database
 
@@ -2377,10 +2307,6 @@ dbExistsTable(con, "iris")
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## List field names of a remote table
 
 This section describes the behavior of the following method:
@@ -2466,10 +2392,6 @@ dbListFields(con, "mtcars")
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Is this DBMS object still valid?
 
 This section describes the behavior of the following method:
@@ -2524,10 +2446,6 @@ dbIsValid(rs)
 dbDisconnect(con)
 dbIsValid(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Completion status
 
@@ -2633,10 +2551,6 @@ dbClearResult(rs)
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Get the statement associated with a result set
 
 This section describes the behavior of the following method:
@@ -2679,10 +2593,6 @@ dbGetStatement(rs)
 dbClearResult(rs)
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## The number of rows fetched so far
 
@@ -2739,10 +2649,6 @@ nrow(ret1) + nrow(ret2)
 dbClearResult(rs)
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## The number of rows affected
 
@@ -2822,10 +2728,6 @@ nrow(mtcars)
 dbClearResult(rs)
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Information about result types
 
@@ -2927,10 +2829,6 @@ dbFetch(rs)
 dbClearResult(rs)
 dbDisconnect(con)
 ```
-
-</div>
-
-<div class="container">
 
 ## Begin/commit/rollback SQL transactions
 
@@ -3039,10 +2937,6 @@ dbReadTable(con, "account")
 dbDisconnect(con)
 ```
 
-</div>
-
-<div class="container">
-
 ## Self-contained SQL transactions
 
 This section describes the behavior of the following methods:
@@ -3140,5 +3034,3 @@ dbReadTable(con, "account")
 
 dbDisconnect(con)
 ```
-
-</div>
