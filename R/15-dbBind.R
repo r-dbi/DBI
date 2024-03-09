@@ -63,7 +63,7 @@
 #'    without retrieving actual data.
 #' 1. Use [dbFetch()] to get the entire result set, a page of results,
 #'    or the remaining rows.
-#'    Fetching zero rows is also possible to retrieeve the structure of the result set
+#'    Fetching zero rows is also possible to retrieve the structure of the result set
 #'    as a data frame.
 #'    This step can be called multiple times.
 #'    Only forward paging is supported, you need to cache previous pages
