@@ -404,7 +404,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
@@ -522,7 +522,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
@@ -688,7 +688,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
@@ -855,7 +855,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
@@ -2500,7 +2500,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
@@ -2785,7 +2785,7 @@ active connection established by `dbConnect()`. See also
     result set without retrieving actual data.
 
 4.  Use `dbFetch()` to get the entire result set, a page of results, or
-    the remaining rows. Fetching zero rows is also possible to retrieeve
+    the remaining rows. Fetching zero rows is also possible to retrieve
     the structure of the result set as a data frame. This step can be
     called multiple times. Only forward paging is supported, you need to
     cache previous pages if you need to navigate backwards.
