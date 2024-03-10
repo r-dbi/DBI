@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9002 (2024-03-10)
+
+## Documentation
+
+- Fix typo (@salim-b, #469).
+
+
 # DBI 1.2.2.9001 (2024-02-16)
 
 - Merge branch 'cran-1.2.2'.
