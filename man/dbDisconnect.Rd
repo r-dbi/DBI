@@ -27,7 +27,7 @@ resources (e.g., memory, sockets).
 A warning is issued on garbage collection when a connection has been
 released without calling \code{dbDisconnect()},
 but this cannot be tested automatically.
-A warning is issued immediately when calling \code{dbDisconnect()} on an
+At least one warning is issued immediately when calling \code{dbDisconnect()} on an
 already disconnected
 or invalid connection.
 
