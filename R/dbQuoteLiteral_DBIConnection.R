@@ -48,8 +48,14 @@ dbQuoteLiteral_DBIConnection <- function(conn, x, ...) {
     return(SQL(blob_data, names = names(x)))
   }
 
+  if (is.double(x)) {
+    out <- sprintf("%.17e", x)
+    out[is.na(x)] <- "NULL"
+    return(SQL(out, names = names(x)))
+  }
+
   if (is.logical(x)) {
-    x <- as.numeric(x)
+    x <- as.integer(x)
   }
 
   x <- as.character(x)
