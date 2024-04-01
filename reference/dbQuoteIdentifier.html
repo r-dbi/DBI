@@ -16,7 +16,7 @@ duckdb::dbQuoteIdentifier("duckdb_connection", "character")
 duckdb::dbQuoteIdentifier("duckdb_connection", "Id")
 duckdb::dbQuoteIdentifier("duckdb_connection", "SQL")
 implyr::dbQuoteIdentifier("impala_connection", "character")
-implyr::dbQuoteIdentifier("impala_connection", "ident")
+implyr::dbQuoteIdentifier("impala_connection", "dbplyr_table_ident")
 odbc::dbQuoteIdentifier("OdbcConnection", "character")
 pool::dbQuoteIdentifier("Pool", "ANY")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")
@@ -48,7 +48,7 @@ duckdb::dbQuoteIdentifier("duckdb_connection", "character")
 duckdb::dbQuoteIdentifier("duckdb_connection", "Id")
 duckdb::dbQuoteIdentifier("duckdb_connection", "SQL")
 implyr::dbQuoteIdentifier("impala_connection", "character")
-implyr::dbQuoteIdentifier("impala_connection", "ident")
+implyr::dbQuoteIdentifier("impala_connection", "dbplyr_table_ident")
 odbc::dbQuoteIdentifier("OdbcConnection", "character")
 pool::dbQuoteIdentifier("Pool", "ANY")
 RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")
@@ -70,7 +70,7 @@ sparklyr::dbQuoteIdentifier("spark_connection", "character")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
@@ -127,12 +127,12 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <li><p><code>DatabaseConnector::dbQuoteIdentifier("DatabaseConnectorConnection", "character")</code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbQuoteIdentifier("DBIMockRPostgresConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "ANY")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "Id")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "character")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "Id")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbQuoteIdentifier("duckdb_connection", "SQL")</a></code></p></li>
 <li><p><code>implyr::dbQuoteIdentifier("impala_connection", "character")</code></p></li>
-<li><p><code>implyr::dbQuoteIdentifier("impala_connection", "ident")</code></p></li>
+<li><p><code>implyr::dbQuoteIdentifier("impala_connection", "dbplyr_table_ident")</code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbQuoteIdentifier("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbQuoteIdentifier("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
@@ -286,7 +286,7 @@ and not by <code>dbQuoteIdentifier()</code>.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

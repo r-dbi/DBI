@@ -5,6 +5,7 @@ Use dbCreateTableArrow() to create a table from an Arrow schema.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbCreateTable("AzureKustoConnection")
+bigrquery::dbCreateTable("BigQueryConnection")
 DatabaseConnector::dbCreateTable("DatabaseConnectorConnection")
 pool::dbCreateTable("Pool")
 RPresto::dbCreateTable("PrestoConnection")
@@ -15,6 +16,7 @@ Use dbCreateTableArrow() to create a table from an Arrow schema.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbCreateTable("AzureKustoConnection")
+bigrquery::dbCreateTable("BigQueryConnection")
 DatabaseConnector::dbCreateTable("DatabaseConnectorConnection")
 pool::dbCreateTable("Pool")
 RPresto::dbCreateTable("PrestoConnection")
@@ -26,7 +28,7 @@ RPresto::dbCreateTable("PrestoConnection")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
@@ -77,6 +79,7 @@ RPresto::dbCreateTable("PrestoConnection")
 Use <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> to create a table from an Arrow schema.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbCreateTable("AzureKustoConnection")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbCreateTable("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbCreateTable-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbCreateTable("DatabaseConnectorConnection")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbCreateTable("Pool")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbCreateTable("PrestoConnection")</a></code></p></li>
@@ -249,7 +252,7 @@ raise an error.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -6,7 +6,9 @@ Methods in other packagesThis documentation page describes the generics. Refer t
 adbi::dbRemoveTable("AdbiConnection", "character")
 adbi::dbRemoveTable("AdbiConnection", "Id")
 AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
+bigrquery::dbRemoveTable("BigQueryConnection", "AsIs")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
+bigrquery::dbRemoveTable("BigQueryConnection", "Id")
 DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")
 dittodb::dbRemoveTable("DBIMockConnection", "character")
 duckdb::dbRemoveTable("duckdb_connection", "character")
@@ -29,7 +31,9 @@ Methods in other packagesThis documentation page describes the generics. Refer t
 adbi::dbRemoveTable("AdbiConnection", "character")
 adbi::dbRemoveTable("AdbiConnection", "Id")
 AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")
+bigrquery::dbRemoveTable("BigQueryConnection", "AsIs")
 bigrquery::dbRemoveTable("BigQueryConnection", "character")
+bigrquery::dbRemoveTable("BigQueryConnection", "Id")
 DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")
 dittodb::dbRemoveTable("DBIMockConnection", "character")
 duckdb::dbRemoveTable("duckdb_connection", "character")
@@ -52,7 +56,7 @@ sparklyr::dbRemoveTable("spark_connection", "character")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
@@ -104,10 +108,12 @@ from the database.</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbRemoveTable("AdbiConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbRemoveTable("AdbiConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "AsIs")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbRemoveTable("BigQueryConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbRemoveTable-DatabaseConnectorConnection-ANY-method.html" class="external-link">DatabaseConnector::dbRemoveTable("DatabaseConnectorConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbRemoveTable("DBIMockConnection", "character")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbRemoveTable("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbRemoveTable("Pool", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbRemoveTable.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
@@ -254,7 +260,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

@@ -6,7 +6,9 @@ adbi::dbExistsTable("AdbiConnection", "character")
 adbi::dbExistsTable("AdbiConnection", "Id")
 adbi::dbExistsTable("AdbiConnection", "SQL")
 AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")
+bigrquery::dbExistsTable("BigQueryConnection", "AsIs")
 bigrquery::dbExistsTable("BigQueryConnection", "character")
+bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
@@ -37,7 +39,9 @@ adbi::dbExistsTable("AdbiConnection", "character")
 adbi::dbExistsTable("AdbiConnection", "Id")
 adbi::dbExistsTable("AdbiConnection", "SQL")
 AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")
+bigrquery::dbExistsTable("BigQueryConnection", "AsIs")
 bigrquery::dbExistsTable("BigQueryConnection", "character")
+bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
@@ -68,7 +72,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
@@ -120,11 +124,13 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbExistsTable("AdbiConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbExistsTable("AdbiConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "AsIs")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbExistsTable("BigQueryConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExistsTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/duckdb/man/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "character")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbExistsTable("SFSQLConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/SQLServer.html" class="external-link">odbc::dbExistsTable("Microsoft SQL Server", "character")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/SQLServer.html" class="external-link">odbc::dbExistsTable("Microsoft SQL Server", "Id")</a></code></p></li>
@@ -256,7 +262,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+  <p></p><p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">

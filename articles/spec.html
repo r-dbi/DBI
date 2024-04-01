@@ -22,7 +22,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
     
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
@@ -1242,61 +1242,61 @@ NULL values)</p></li>
 <div class="section level3">
 <h3 id="examples-7">Examples<a class="anchor" aria-label="anchor" href="#examples-7"></a>
 </h3>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame flow:</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)))</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrow flow:</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
-<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQueryArrow</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
-<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
-<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>  iris_result,</span>
-<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="fl">2.3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
-<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
-<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>  iris_result,</span>
-<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="dv">3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
-<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
-<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
-<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBindArrow</span>(iris_result, nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(</span>
-<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)</span>
-<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>)))</span>
-<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
-<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
-<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
-<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="co"># Data frame flow:</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
+<span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="fl">2.3</span>))</span>
+<span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="dv">3</span>))</span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="fu">dbFetch</span>(iris_result)</span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="fu">dbBind</span>(iris_result, <span class="fu">list</span>(<span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)))</span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co"># Arrow flow:</span></span>
+<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a></span>
+<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"iris"</span>, iris)</span>
+<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co"># Using the same query for different values</span></span>
+<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendQueryArrow</span>(con, <span class="st">"SELECT * FROM iris WHERE [Petal.Width] &gt; ?"</span>)</span>
+<span id="cb15-33"><a href="#cb15-33" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
+<span id="cb15-34"><a href="#cb15-34" tabindex="-1"></a>  iris_result,</span>
+<span id="cb15-35"><a href="#cb15-35" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="fl">2.3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb15-36"><a href="#cb15-36" tabindex="-1"></a>)</span>
+<span id="cb15-37"><a href="#cb15-37" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
+<span id="cb15-38"><a href="#cb15-38" tabindex="-1"></a><span class="fu">dbBindArrow</span>(</span>
+<span id="cb15-39"><a href="#cb15-39" tabindex="-1"></a>  iris_result,</span>
+<span id="cb15-40"><a href="#cb15-40" tabindex="-1"></a>  nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(<span class="dv">3</span>, <span class="at">fix.empty.names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb15-41"><a href="#cb15-41" tabindex="-1"></a>)</span>
+<span id="cb15-42"><a href="#cb15-42" tabindex="-1"></a><span class="fu">as.data.frame</span>(<span class="fu">dbFetchArrow</span>(iris_result))</span>
+<span id="cb15-43"><a href="#cb15-43" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-44"><a href="#cb15-44" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" tabindex="-1"></a><span class="co"># Executing the same statement with different values at once</span></span>
+<span id="cb15-46"><a href="#cb15-46" tabindex="-1"></a>iris_result <span class="ot">&lt;-</span> <span class="fu">dbSendStatement</span>(con, <span class="st">"DELETE FROM iris WHERE [Species] = \$species"</span>)</span>
+<span id="cb15-47"><a href="#cb15-47" tabindex="-1"></a><span class="fu">dbBindArrow</span>(iris_result, nanoarrow<span class="sc">::</span><span class="fu">as_nanoarrow_array_stream</span>(<span class="fu">data.frame</span>(</span>
+<span id="cb15-48"><a href="#cb15-48" tabindex="-1"></a>  <span class="at">species =</span> <span class="fu">c</span>(<span class="st">"setosa"</span>, <span class="st">"versicolor"</span>, <span class="st">"unknown"</span>)</span>
+<span id="cb15-49"><a href="#cb15-49" tabindex="-1"></a>)))</span>
+<span id="cb15-50"><a href="#cb15-50" tabindex="-1"></a><span class="fu">dbGetRowsAffected</span>(iris_result)</span>
+<span id="cb15-51"><a href="#cb15-51" tabindex="-1"></a><span class="fu">dbClearResult</span>(iris_result)</span>
+<span id="cb15-52"><a href="#cb15-52" tabindex="-1"></a></span>
+<span id="cb15-53"><a href="#cb15-53" tabindex="-1"></a><span class="fu">nrow</span>(<span class="fu">dbReadTable</span>(con, <span class="st">"iris"</span>))</span>
+<span id="cb15-54"><a href="#cb15-54" tabindex="-1"></a></span>
+<span id="cb15-55"><a href="#cb15-55" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
 <div class="section level2 container">
@@ -3484,36 +3484,36 @@ is set.</p>
 <div class="section level3">
 <h3 id="examples-25">Examples<a class="anchor" aria-label="anchor" href="#examples-25"></a>
 </h3>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"cash"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">100</span>))</span>
-<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"account"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">2000</span>))</span>
-<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="co"># All operations are carried out as logical unit:</span></span>
-<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBegin</span>(con)</span>
-<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>withdrawal <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="fu">dbCommit</span>(con)</span>
-<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
-<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
-<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Rolling back after detecting negative value on account:</span></span>
-<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbBegin</span>(con)</span>
-<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>withdrawal <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)\<span class="sc">$</span>amount <span class="sc">&gt;=</span> <span class="dv">0</span>) {</span>
-<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbCommit</span>(con)</span>
-<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dbRollback</span>(con)</span>
-<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
-<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
-<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb51-2"><a href="#cb51-2" tabindex="-1"></a></span>
+<span id="cb51-3"><a href="#cb51-3" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"cash"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">100</span>))</span>
+<span id="cb51-4"><a href="#cb51-4" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"account"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">2000</span>))</span>
+<span id="cb51-5"><a href="#cb51-5" tabindex="-1"></a></span>
+<span id="cb51-6"><a href="#cb51-6" tabindex="-1"></a><span class="co"># All operations are carried out as logical unit:</span></span>
+<span id="cb51-7"><a href="#cb51-7" tabindex="-1"></a><span class="fu">dbBegin</span>(con)</span>
+<span id="cb51-8"><a href="#cb51-8" tabindex="-1"></a>withdrawal <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb51-9"><a href="#cb51-9" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb51-10"><a href="#cb51-10" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb51-11"><a href="#cb51-11" tabindex="-1"></a><span class="fu">dbCommit</span>(con)</span>
+<span id="cb51-12"><a href="#cb51-12" tabindex="-1"></a></span>
+<span id="cb51-13"><a href="#cb51-13" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
+<span id="cb51-14"><a href="#cb51-14" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
+<span id="cb51-15"><a href="#cb51-15" tabindex="-1"></a></span>
+<span id="cb51-16"><a href="#cb51-16" tabindex="-1"></a><span class="co"># Rolling back after detecting negative value on account:</span></span>
+<span id="cb51-17"><a href="#cb51-17" tabindex="-1"></a><span class="fu">dbBegin</span>(con)</span>
+<span id="cb51-18"><a href="#cb51-18" tabindex="-1"></a>withdrawal <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb51-19"><a href="#cb51-19" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb51-20"><a href="#cb51-20" tabindex="-1"></a><span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb51-21"><a href="#cb51-21" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)\<span class="sc">$</span>amount <span class="sc">&gt;=</span> <span class="dv">0</span>) {</span>
+<span id="cb51-22"><a href="#cb51-22" tabindex="-1"></a>  <span class="fu">dbCommit</span>(con)</span>
+<span id="cb51-23"><a href="#cb51-23" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb51-24"><a href="#cb51-24" tabindex="-1"></a>  <span class="fu">dbRollback</span>(con)</span>
+<span id="cb51-25"><a href="#cb51-25" tabindex="-1"></a>}</span>
+<span id="cb51-26"><a href="#cb51-26" tabindex="-1"></a></span>
+<span id="cb51-27"><a href="#cb51-27" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
+<span id="cb51-28"><a href="#cb51-28" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
+<span id="cb51-29"><a href="#cb51-29" tabindex="-1"></a></span>
+<span id="cb51-30"><a href="#cb51-30" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
 <div class="section level2 container">
@@ -3593,46 +3593,46 @@ environment.</p>
 <div class="section level3">
 <h3 id="examples-26">Examples<a class="anchor" aria-label="anchor" href="#examples-26"></a>
 </h3>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"cash"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">100</span>))</span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"account"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">2000</span>))</span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="co"># All operations are carried out as logical unit:</span></span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWithTransaction</span>(</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>  con,</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>    withdrawal <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a><span class="co"># The code is executed as if in the curent environment:</span></span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>withdrawal</span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="co"># The changes are committed to the database after successful execution:</span></span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
-<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Rolling back with dbBreak():</span></span>
-<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWithTransaction</span>(</span>
-<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>  con,</span>
-<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>  {</span>
-<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>    withdrawal <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
-<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb53-29"><a href="#cb53-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
-<span id="cb53-30"><a href="#cb53-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)\<span class="sc">$</span>amount <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
-<span id="cb53-31"><a href="#cb53-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">dbBreak</span>()</span>
-<span id="cb53-32"><a href="#cb53-32" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb53-33"><a href="#cb53-33" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb53-34"><a href="#cb53-34" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb53-35"><a href="#cb53-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-36"><a href="#cb53-36" aria-hidden="true" tabindex="-1"></a><span class="co"># These changes were not committed to the database:</span></span>
-<span id="cb53-37"><a href="#cb53-37" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
-<span id="cb53-38"><a href="#cb53-38" aria-hidden="true" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
-<span id="cb53-39"><a href="#cb53-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-40"><a href="#cb53-40" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">":memory:"</span>)</span>
+<span id="cb53-2"><a href="#cb53-2" tabindex="-1"></a></span>
+<span id="cb53-3"><a href="#cb53-3" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"cash"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">100</span>))</span>
+<span id="cb53-4"><a href="#cb53-4" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">"account"</span>, <span class="fu">data.frame</span>(<span class="at">amount =</span> <span class="dv">2000</span>))</span>
+<span id="cb53-5"><a href="#cb53-5" tabindex="-1"></a></span>
+<span id="cb53-6"><a href="#cb53-6" tabindex="-1"></a><span class="co"># All operations are carried out as logical unit:</span></span>
+<span id="cb53-7"><a href="#cb53-7" tabindex="-1"></a><span class="fu">dbWithTransaction</span>(</span>
+<span id="cb53-8"><a href="#cb53-8" tabindex="-1"></a>  con,</span>
+<span id="cb53-9"><a href="#cb53-9" tabindex="-1"></a>  {</span>
+<span id="cb53-10"><a href="#cb53-10" tabindex="-1"></a>    withdrawal <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb53-11"><a href="#cb53-11" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb53-12"><a href="#cb53-12" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb53-13"><a href="#cb53-13" tabindex="-1"></a>  }</span>
+<span id="cb53-14"><a href="#cb53-14" tabindex="-1"></a>)</span>
+<span id="cb53-15"><a href="#cb53-15" tabindex="-1"></a></span>
+<span id="cb53-16"><a href="#cb53-16" tabindex="-1"></a><span class="co"># The code is executed as if in the curent environment:</span></span>
+<span id="cb53-17"><a href="#cb53-17" tabindex="-1"></a>withdrawal</span>
+<span id="cb53-18"><a href="#cb53-18" tabindex="-1"></a></span>
+<span id="cb53-19"><a href="#cb53-19" tabindex="-1"></a><span class="co"># The changes are committed to the database after successful execution:</span></span>
+<span id="cb53-20"><a href="#cb53-20" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
+<span id="cb53-21"><a href="#cb53-21" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
+<span id="cb53-22"><a href="#cb53-22" tabindex="-1"></a></span>
+<span id="cb53-23"><a href="#cb53-23" tabindex="-1"></a><span class="co"># Rolling back with dbBreak():</span></span>
+<span id="cb53-24"><a href="#cb53-24" tabindex="-1"></a><span class="fu">dbWithTransaction</span>(</span>
+<span id="cb53-25"><a href="#cb53-25" tabindex="-1"></a>  con,</span>
+<span id="cb53-26"><a href="#cb53-26" tabindex="-1"></a>  {</span>
+<span id="cb53-27"><a href="#cb53-27" tabindex="-1"></a>    withdrawal <span class="ot">&lt;-</span> <span class="dv">5000</span></span>
+<span id="cb53-28"><a href="#cb53-28" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE cash SET amount = amount + ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb53-29"><a href="#cb53-29" tabindex="-1"></a>    <span class="fu">dbExecute</span>(con, <span class="st">"UPDATE account SET amount = amount - ?"</span>, <span class="fu">list</span>(withdrawal))</span>
+<span id="cb53-30"><a href="#cb53-30" tabindex="-1"></a>    <span class="cf">if</span> (<span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)\<span class="sc">$</span>amount <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
+<span id="cb53-31"><a href="#cb53-31" tabindex="-1"></a>      <span class="fu">dbBreak</span>()</span>
+<span id="cb53-32"><a href="#cb53-32" tabindex="-1"></a>    }</span>
+<span id="cb53-33"><a href="#cb53-33" tabindex="-1"></a>  }</span>
+<span id="cb53-34"><a href="#cb53-34" tabindex="-1"></a>)</span>
+<span id="cb53-35"><a href="#cb53-35" tabindex="-1"></a></span>
+<span id="cb53-36"><a href="#cb53-36" tabindex="-1"></a><span class="co"># These changes were not committed to the database:</span></span>
+<span id="cb53-37"><a href="#cb53-37" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"cash"</span>)</span>
+<span id="cb53-38"><a href="#cb53-38" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
+<span id="cb53-39"><a href="#cb53-39" tabindex="-1"></a></span>
+<span id="cb53-40"><a href="#cb53-40" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
@@ -3643,7 +3643,7 @@ environment.</p>
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by R Special Interest Group on Databases (R-SIG-DB), Hadley Wickham, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
+<p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
 
 <div class="pkgdown-footer-right">
