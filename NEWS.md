@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9004 (2024-04-14)
+
+## Continuous integration
+
+- Avoid broken Windows checks (#475).
+
+
 # DBI 1.2.2.9003 (2024-04-01)
 
 - Internal changes only.
