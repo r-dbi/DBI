@@ -170,7 +170,9 @@ if (Sys.getenv("CI") == "") {
     "dbGetRowsAffected",
     "dbColumnInfo",
     "transactions",
-    "dbWithTransaction"
+    "dbWithTransaction",
+    "dbGetInfo",
+    NULL
   )
 
   xml <- c(
