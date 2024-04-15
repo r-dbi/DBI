@@ -306,7 +306,7 @@ resources (e.g., memory, sockets).
 <p>A warning is issued on garbage collection when a connection has been
 released without calling <code>dbDisconnect()</code>,
 but this cannot be tested automatically.
-A warning is issued immediately when calling <code>dbDisconnect()</code> on an
+At least one warning is issued immediately when calling <code>dbDisconnect()</code> on an
 already disconnected
 or invalid connection.
 </p>
@@ -513,7 +513,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -659,7 +659,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -884,7 +884,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -1103,7 +1103,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -3206,7 +3206,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -3539,7 +3539,7 @@ without retrieving actual data.
 <li>
 <p> Use <code>dbFetch()</code> to get the entire result set, a page of results,
 or the remaining rows.
-Fetching zero rows is also possible to retrieeve the structure of the result set
+Fetching zero rows is also possible to retrieve the structure of the result set
 as a data frame.
 This step can be called multiple times.
 Only forward paging is supported, you need to cache previous pages
@@ -3820,5 +3820,104 @@ dbReadTable(con, "cash")
 dbReadTable(con, "account")
 
 dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbGetInfo">Get DBMS metadata</h2>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbGetInfo(dbObj, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Retrieves information on objects of class DBIDriver,
+DBIConnection or DBIResult.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbGetInfo_:_dbObj">dbObj</code></td>
+<td>
+<p>An object inheriting from DBIObject,
+i.e. DBIDriver, DBIConnection,
+or a DBIResult</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbGetInfo_:_...">...</code></td>
+<td>
+<p>Other arguments to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p>For objects of class DBIDriver, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+<ul>
+<li> <p><code>driver.version</code>: the package version of the DBI backend,
+</p>
+</li>
+<li> <p><code>client.version</code>: the version of the DBMS client library.
+</p>
+</li>
+</ul>
+
+<p>For objects of class DBIConnection, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+<ul>
+<li> <p><code>db.version</code>: version of the database server,
+</p>
+</li>
+<li> <p><code>dbname</code>: database name,
+</p>
+</li>
+<li> <p><code>username</code>: username to connect to the database,
+</p>
+</li>
+<li> <p><code>host</code>: hostname of the database server,
+</p>
+</li>
+<li> <p><code>port</code>: port on the database server.
+It must not contain a <code>password</code> component.
+Components that are not applicable should be set to <code>NA</code>.
+</p>
+</li>
+</ul>
+
+<p>For objects of class DBIResult, <code>dbGetInfo()</code>
+returns a named list
+that contains at least the following components:
+</p>
+<ul>
+<li> <p><code>statatment</code>: the statement used with <code>dbSendQuery()</code> or <code>dbExecute()</code>,
+as returned by <code>dbGetStatement()</code>,
+</p>
+</li>
+<li> <p><code>row.count</code>: the number of rows fetched so far (for queries),
+as returned by <code>dbGetRowCount()</code>,
+</p>
+</li>
+<li> <p><code>rows.affected</code>: the number of rows affected (for statements),
+as returned by <code>dbGetRowsAffected()</code>
+</p>
+</li>
+<li> <p><code>has.completed</code>: a logical that indicates
+if the query or statement has completed,
+as returned by <code>dbHasCompleted()</code>.
+</p>
+</li>
+</ul>
+
+<h3>Implementation notes</h3>
+<p>The default implementation for <code style="white-space: pre;">⁠DBIResult objects⁠</code>
+constructs such a list from the return values of the corresponding methods,
+<code>dbGetStatement()</code>, <code>dbGetRowCount()</code>,
+<code>dbGetRowsAffected()</code>, and <code>dbHasCompleted()</code>.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+dbGetInfo(RSQLite::SQLite())
 
 </code></pre>
