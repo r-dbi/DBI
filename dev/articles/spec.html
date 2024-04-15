@@ -34,7 +34,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">DBI</a>
-        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.9003</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="In-development version">1.2.2.9004</span>
       </span>
     </div>
 
@@ -403,9 +403,9 @@ resources (e.g., memory, sockets).</p>
 </h3>
 <p>A warning is issued on garbage collection when a connection has been
 released without calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code>, but this cannot be
-tested automatically. A warning is issued immediately when calling
-<code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> on an already disconnected or invalid
-connection.</p>
+tested automatically. At least one warning is issued immediately when
+calling <code><a href="../reference/dbDisconnect.html">dbDisconnect()</a></code> on an already disconnected or
+invalid connection.</p>
 </div>
 <div class="section level3">
 <h3 id="examples-3">Examples<a class="anchor" aria-label="anchor" href="#examples-3"></a>
@@ -3636,6 +3636,92 @@ environment.</p>
 <span id="cb53-38"><a href="#cb53-38" tabindex="-1"></a><span class="fu">dbReadTable</span>(con, <span class="st">"account"</span>)</span>
 <span id="cb53-39"><a href="#cb53-39" tabindex="-1"></a></span>
 <span id="cb53-40"><a href="#cb53-40" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="get-dbms-metadata">Get DBMS metadata<a class="anchor" aria-label="anchor" href="#get-dbms-metadata"></a>
+</h2>
+<p>This section describes the behavior of the following method:</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetInfo.html">dbGetInfo</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="description-26">Description<a class="anchor" aria-label="anchor" href="#description-26"></a>
+</h3>
+<p>Retrieves information on objects of class DBIDriver, DBIConnection or
+DBIResult.</p>
+</div>
+<div class="section level3">
+<h3 id="arguments-26">Arguments<a class="anchor" aria-label="anchor" href="#arguments-26"></a>
+</h3>
+<table class="table">
+<colgroup>
+<col width="9%">
+<col width="90%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><code>dbObj</code></td>
+<td>An object inheriting from DBIObject, i.e. DBIDriver, DBIConnection,
+or a DBIResult</td>
+</tr>
+<tr class="even">
+<td><code>...</code></td>
+<td>Other arguments to methods.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="value-26">Value<a class="anchor" aria-label="anchor" href="#value-26"></a>
+</h3>
+<p>For objects of class DBIDriver, <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> returns a
+named list that contains at least the following components:</p>
+<ul>
+<li><p><code>driver.version</code>: the package version of the DBI
+backend,</p></li>
+<li><p><code>client.version</code>: the version of the DBMS client
+library.</p></li>
+</ul>
+<p>For objects of class DBIConnection, <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> returns
+a named list that contains at least the following components:</p>
+<ul>
+<li><p><code>db.version</code>: version of the database server,</p></li>
+<li><p><code>dbname</code>: database name,</p></li>
+<li><p><code>username</code>: username to connect to the
+database,</p></li>
+<li><p><code>host</code>: hostname of the database server,</p></li>
+<li><p><code>port</code>: port on the database server. It must not
+contain a <code>password</code> component. Components that are not
+applicable should be set to <code>NA</code>.</p></li>
+</ul>
+<p>For objects of class DBIResult, <code><a href="../reference/dbGetInfo.html">dbGetInfo()</a></code> returns a
+named list that contains at least the following components:</p>
+<ul>
+<li><p><code>statatment</code>: the statement used with
+<code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbExecute.html">dbExecute()</a></code>, as returned by
+<code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>,</p></li>
+<li><p><code>row.count</code>: the number of rows fetched so far (for
+queries), as returned by <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>,</p></li>
+<li><p><code>rows.affected</code>: the number of rows affected (for
+statements), as returned by <code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code></p></li>
+<li><p><code>has.completed</code>: a logical that indicates if the query
+or statement has completed, as returned by
+<code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>.</p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="implementation-notes-2">Implementation notes<a class="anchor" aria-label="anchor" href="#implementation-notes-2"></a>
+</h3>
+<p>The default implementation for <code>⁠DBIResult objects⁠</code>
+constructs such a list from the return values of the corresponding
+methods, <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></code>, <code><a href="../reference/dbGetRowCount.html">dbGetRowCount()</a></code>,
+<code><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected()</a></code>, and <code><a href="../reference/dbHasCompleted.html">dbHasCompleted()</a></code>.</p>
+</div>
+<div class="section level3">
+<h3 id="examples-27">Examples<a class="anchor" aria-label="anchor" href="#examples-27"></a>
+</h3>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetInfo.html">dbGetInfo</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </div>
