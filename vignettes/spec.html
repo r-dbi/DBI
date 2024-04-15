@@ -3916,58 +3916,8 @@ constructs such a list from the return values of the corresponding methods,
 <code>dbGetStatement()</code>, <code>dbGetRowCount()</code>,
 <code>dbGetRowsAffected()</code>, and <code>dbHasCompleted()</code>.
 </p>
-<p>Other DBIDriver generics: 
-<code>DBIDriver-class</code>,
-<code>dbCanConnect()</code>,
-<code>dbConnect()</code>,
-<code>dbDataType()</code>,
-<code>dbDriver()</code>,
-<code>dbIsReadOnly()</code>,
-<code>dbIsValid()</code>,
-<code>dbListConnections()</code>
-</p>
-<p>Other DBIConnection generics: 
-<code>DBIConnection-class</code>,
-<code>dbAppendTable()</code>,
-<code>dbAppendTableArrow()</code>,
-<code>dbCreateTable()</code>,
-<code>dbCreateTableArrow()</code>,
-<code>dbDataType()</code>,
-<code>dbDisconnect()</code>,
-<code>dbExecute()</code>,
-<code>dbExistsTable()</code>,
-<code>dbGetException()</code>,
-<code>dbGetQuery()</code>,
-<code>dbGetQueryArrow()</code>,
-<code>dbIsReadOnly()</code>,
-<code>dbIsValid()</code>,
-<code>dbListFields()</code>,
-<code>dbListObjects()</code>,
-<code>dbListResults()</code>,
-<code>dbListTables()</code>,
-<code>dbQuoteIdentifier()</code>,
-<code>dbReadTable()</code>,
-<code>dbReadTableArrow()</code>,
-<code>dbRemoveTable()</code>,
-<code>dbSendQuery()</code>,
-<code>dbSendQueryArrow()</code>,
-<code>dbSendStatement()</code>,
-<code>dbUnquoteIdentifier()</code>,
-<code>dbWriteTable()</code>,
-<code>dbWriteTableArrow()</code>
-</p>
-<p>Other DBIResult generics: 
-<code>DBIResult-class</code>,
-<code>dbBind()</code>,
-<code>dbClearResult()</code>,
-<code>dbColumnInfo()</code>,
-<code>dbFetch()</code>,
-<code>dbGetRowCount()</code>,
-<code>dbGetRowsAffected()</code>,
-<code>dbGetStatement()</code>,
-<code>dbHasCompleted()</code>,
-<code>dbIsReadOnly()</code>,
-<code>dbIsValid()</code>,
-<code>dbQuoteLiteral()</code>,
-<code>dbQuoteString()</code>
-</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+dbGetInfo(RSQLite::SQLite())
+
+</code></pre>

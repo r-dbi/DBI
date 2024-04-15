@@ -3100,21 +3100,8 @@ list from the return values of the corresponding methods,
 `dbGetStatement()`, `dbGetRowCount()`, `dbGetRowsAffected()`, and
 `dbHasCompleted()`.
 
-Other DBIDriver generics: `DBIDriver-class`, `dbCanConnect()`,
-`dbConnect()`, `dbDataType()`, `dbDriver()`, `dbIsReadOnly()`,
-`dbIsValid()`, `dbListConnections()`
+### Examples
 
-Other DBIConnection generics: `DBIConnection-class`, `dbAppendTable()`,
-`dbAppendTableArrow()`, `dbCreateTable()`, `dbCreateTableArrow()`,
-`dbDataType()`, `dbDisconnect()`, `dbExecute()`, `dbExistsTable()`,
-`dbGetException()`, `dbGetQuery()`, `dbGetQueryArrow()`,
-`dbIsReadOnly()`, `dbIsValid()`, `dbListFields()`, `dbListObjects()`,
-`dbListResults()`, `dbListTables()`, `dbQuoteIdentifier()`,
-`dbReadTable()`, `dbReadTableArrow()`, `dbRemoveTable()`,
-`dbSendQuery()`, `dbSendQueryArrow()`, `dbSendStatement()`,
-`dbUnquoteIdentifier()`, `dbWriteTable()`, `dbWriteTableArrow()`
-
-Other DBIResult generics: `DBIResult-class`, `dbBind()`,
-`dbClearResult()`, `dbColumnInfo()`, `dbFetch()`, `dbGetRowCount()`,
-`dbGetRowsAffected()`, `dbGetStatement()`, `dbHasCompleted()`,
-`dbIsReadOnly()`, `dbIsValid()`, `dbQuoteLiteral()`, `dbQuoteString()`
+``` r
+dbGetInfo(RSQLite::SQLite())
+```
