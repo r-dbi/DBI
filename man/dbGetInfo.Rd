@@ -64,6 +64,11 @@ constructs such a list from the return values of the corresponding methods,
 \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
 
+\examples{
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+dbGetInfo(RSQLite::SQLite())
+\dontshow{\}) # examplesIf}
+}
 \seealso{
 Other DBIDriver generics: 
 \code{\link{DBIDriver-class}},

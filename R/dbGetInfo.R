@@ -16,6 +16,8 @@
 #' @family DBIResult generics
 #' @inherit DBItest::spec_get_info return
 #' @export
+#' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
+#' dbGetInfo(RSQLite::SQLite())
 setGeneric("dbGetInfo",
   def = function(dbObj, ...) standardGeneric("dbGetInfo")
 )
