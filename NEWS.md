@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9005 (2024-04-16)
+
+## Documentation
+
+- Include `dbGetInfo()` in the spec (#477).
+
+
 # DBI 1.2.2.9004 (2024-04-14)
 
 ## Continuous integration
