@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9006 (2024-04-17)
+
+## Documentation
+
+- Set BS version explicitly for now (@maelle, #478).
+
+
 # DBI 1.2.2.9005 (2024-04-16)
 
 ## Documentation
