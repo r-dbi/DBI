@@ -19,7 +19,7 @@ dbQuoteLiteral_DBIConnection <- function(conn, x, ...) {
   if (inherits(x, "POSIXt")) {
     return(dbQuoteString(
       conn,
-      strftime(as.POSIXct(x), "%Y%m%d%H%M%S", tz = "UTC")
+      strftime(as.POSIXct(x), "%Y-%m-%d %H-%M-%S%z")
     ))
   }
 
