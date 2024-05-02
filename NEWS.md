@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9007 (2024-05-02)
+
+## Bug fixes
+
+- `dbQuoteLiteral()` uses exponential notation for numeric values (#404, #471).
+
+- `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H-%M-%S%z"` which is understood by more databases (#467, #474).
+
+## Chore
+
+- RSQLite test updates (#472).
+
+## Uncategorized
+
+- Merge branch 'docs'.
+
+
 # DBI 1.2.2.9006 (2024-04-17)
 
 ## Documentation
