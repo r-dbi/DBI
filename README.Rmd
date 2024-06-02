@@ -124,7 +124,7 @@ All classes are _virtual_: they cannot be instantiated directly and instead must
 
 * [Databases using R](https://db.rstudio.com/) describes the tools and best practices in this ecosystem.
 
-* The [DBI project site](https://www.r-dbi.org/) hosts a blog where recent developments are presented.
+* The [DBI project site](https://r-dbi.org/) hosts a blog where recent developments are presented.
 
 * [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James, the driving force behind the development of DBI, and many of the packages that implement it.
 
