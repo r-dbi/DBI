@@ -12,9 +12,7 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
-  error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"),
-  # FIXME: Bring back when relational.fit clone is up
-  eval = FALSE
+  error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5")
 )
 ```
 
@@ -48,7 +46,7 @@ For more advanced features, such as parameterized queries, transactions, and mor
 
 ## How to connect to a database using DBI
 
-The following code establishes a connection to the Sakila database hosted by the Relational Dataset Repository at `https://relational.fit.cvut.cz/dataset/Sakila`, lists all tables on the database, and closes the connection.
+The following code establishes a connection to the Sakila database hosted by the Relational Dataset Repository at `https://relational-data.org/dataset/Sakila`, lists all tables on the database, and closes the connection.
 The database represents a fictional movie rental business and includes tables describing films, actors, customers, stores, etc.:
 
 ```{r}
@@ -56,7 +54,7 @@ library(DBI)
 
 con <- dbConnect(
   RMariaDB::MariaDB(),
-  host = "relational.fit.cvut.cz",
+  host = "db.relational-data.org",
   port = 3306,
   username = "guest",
   password = "relational",
@@ -87,10 +85,10 @@ The code to connect to the database could then look like this:
 ```{r eval = FALSE}
 con <- dbConnect(
   RMariaDB::MariaDB(),
-  host = "relational.fit.cvut.cz",
+  host = "db.relational-data.org",
   port = 3306,
   username = "guest",
-  password = keyring::key_get("relational.fit.cvut.cz", "guest"),
+  password = keyring::key_get("db.relational-data.org", "guest"),
   dbname = "sakila"
 )
 ```
@@ -103,7 +101,7 @@ It takes as arguments a database connection and a table name and returns a chara
 
 
 ```{r}
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "relational.fit.cvut.cz", port = 3306, dbname = "sakila")
+con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "db.relational-data.org", port = 3306, dbname = "sakila")
 dbListFields(con, "film")
 ```
 
