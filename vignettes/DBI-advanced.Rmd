@@ -13,9 +13,7 @@ vignette: >
 library(knitr)
 opts_chunk$set(
   echo = TRUE,
-  error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5"),
-  # FIXME: Bring back when relational.fit clone is up
-  eval = FALSE
+  error = Sys.getenv("IN_PKGDOWN") != "true" || (getRversion() < "3.5")
 )
 
 knit_print.data.frame <- function(x, ...) {
@@ -55,7 +53,7 @@ library(DBI)
 
 con <- dbConnect(
   RMariaDB::MariaDB(),
-  host = "relational.fit.cvut.cz",
+  host = "db.relational-data.org",
   port = 3306,
   username = "guest",
   password = "relational",
