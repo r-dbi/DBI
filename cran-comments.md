@@ -9,7 +9,5 @@ DBI 1.2.3
 ## Current CRAN check results
 
 - [x] Checked on 2024-06-02, problems found: https://cran.r-project.org/web/checks/check_results_DBI.html
-- [ ] NOTE: r-devel-linux-x86_64-fedora-clang
-     Undeclared package ‘withr’ in Rd xrefs
-
-Check results at: https://cran.r-project.org/web/checks/check_results_DBI.html
+- [x] NOTE: r-devel-linux-x86_64-fedora-clang
+     Undeclared package ‘withr’ in Rd xrefs: Can't reproduce, fixed in R-devel?

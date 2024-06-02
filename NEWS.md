@@ -7,28 +7,12 @@
 - `dbQuoteLiteral()` uses exponential notation for numeric values (#404, #471).
 - `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H-%M-%S%z"` which is understood by more databases (#467, #474).
 
-## Chore
-
-- RSQLite test updates (#472).
-
-## Continuous integration
-
-- Avoid broken Windows checks (#475).
-
 ## Documentation
 
 - Use relational-data.org as a replacement for relational.fit.cvut.cz.
-- Use canonical URLs.
 - Set BS version explicitly for now (@maelle, #478).
 - Include `dbGetInfo()` in the spec (#477).
-- Fix typo (@salim-b, #469).
-
-## Uncategorized
-
-- Merge pull request #482 from MichaelChirico/typos.
-- Merge branch 'docs'.
-- Internal changes only.
-- Merge branch 'cran-1.2.2'.
+- Fix typos (@salim-b, #469, @MichaelChirico, #482).
 
 
 # DBI 1.2.2 (2024-02-09)
