@@ -9,7 +9,6 @@
 
 ## Bug fixes
 
-- `dbQuoteLiteral()` uses exponential notation for numeric values (#404, #471).
 - `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H-%M-%S%z"` which is understood by more databases (#467, #474).
 
 ## Documentation

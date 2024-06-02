@@ -1,21 +1,21 @@
 test_that("parameter names matched", {
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", a = 1L, b = 2L),
+    sqlInterpolate(ANSI(), "?a ?b", a = 1, b = 2),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", b = 2L, a = 1L),
+    sqlInterpolate(ANSI(), "?a ?b", b = 2, a = 1),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", b = 2L, .dots = list(a = 1L)),
+    sqlInterpolate(ANSI(), "?a ?b", b = 2, .dots = list(a = 1)),
     SQL("1 2")
   )
 
   expect_equal(
-    sqlInterpolate(ANSI(), "?a ?b", .dots = list(a = 1L, b = 2L)),
+    sqlInterpolate(ANSI(), "?a ?b", .dots = list(a = 1, b = 2)),
     SQL("1 2")
   )
 })
@@ -29,21 +29,21 @@ test_that("parameters in strings are ignored", {
 
 test_that("named parameters check matches", {
   expect_error(
-    sqlInterpolate(ANSI(), "?a ?b", a = 1L, d = 2L),
+    sqlInterpolate(ANSI(), "?a ?b", a = 1, d = 2),
     "Supplied values don't match named vars to interpolate"
   )
 })
 
 test_that("positional parameters work", {
   expect_equal(
-    sqlInterpolate(ANSI(), "a ? c ? d ", 1L, 2L),
+    sqlInterpolate(ANSI(), "a ? c ? d ", 1, 2),
     SQL("a 1 c 2 d ")
   )
 })
 
 test_that("positional parameters can't have names", {
   expect_error(
-    sqlInterpolate(ANSI(), "? ?", a = 1L, 2),
+    sqlInterpolate(ANSI(), "? ?", a = 1, 2),
     "Positional variables don't take named arguments"
   )
 })
@@ -78,7 +78,7 @@ test_that("some more complex case works as well", {
 
 test_that("escaping quotes with doubling works", {
   expect_equal(
-    sqlInterpolate(ANSI(), "'this is a single '' one ?quoted string' ?bar ", bar = 42L),
+    sqlInterpolate(ANSI(), "'this is a single '' one ?quoted string' ?bar ", bar = 42),
     SQL("'this is a single '' one ?quoted string' 42 ")
   )
 })
@@ -93,7 +93,7 @@ test_that("corner cases work", {
     "Supplied values don't match positional vars to interpolate"
   )
   expect_equal(
-    sqlInterpolate(ANSI(), "?a", a = 1L),
+    sqlInterpolate(ANSI(), "?a", a = 1),
     SQL("1")
   )
   expect_equal(
@@ -105,7 +105,7 @@ test_that("corner cases work", {
     "Unterminated literal"
   )
   expect_equal(
-    sqlInterpolate(ANSI(), "?a\"\"?b", a = 1L, b = 2L),
+    sqlInterpolate(ANSI(), "?a\"\"?b", a = 1, b = 2),
     SQL("1\"\"2")
   )
   expect_equal(
