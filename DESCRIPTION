@@ -1,6 +1,6 @@
 Package: DBI
 Title: R Database Interface
-Version: 1.2.2.9008
+Version: 1.2.3
 Date: 2024-06-02
 Authors@R: c(
     person("R Special Interest Group on Databases (R-SIG-DB)", role = "aut"),
