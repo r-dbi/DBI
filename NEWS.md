@@ -1,62 +1,30 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# DBI 1.2.2.9007 (2024-05-02)
+# DBI 1.2.3 (2024-06-02)
 
 ## Bug fixes
 
 - `dbQuoteLiteral()` uses exponential notation for numeric values (#404, #471).
-
 - `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H-%M-%S%z"` which is understood by more databases (#467, #474).
 
 ## Chore
 
 - RSQLite test updates (#472).
 
-## Uncategorized
-
-- Merge branch 'docs'.
-
-
-# DBI 1.2.2.9006 (2024-04-17)
-
-## Documentation
-
-- Set BS version explicitly for now (@maelle, #478).
-
-
-# DBI 1.2.2.9005 (2024-04-16)
-
-## Documentation
-
-- Include `dbGetInfo()` in the spec (#477).
-
-
-# DBI 1.2.2.9004 (2024-04-14)
-
 ## Continuous integration
 
 - Avoid broken Windows checks (#475).
 
-
-# DBI 1.2.2.9003 (2024-04-01)
-
-- Internal changes only.
-
-
-# DBI 1.2.2.9002 (2024-03-10)
-
 ## Documentation
 
+- Set BS version explicitly for now (@maelle, #478).
+- Include `dbGetInfo()` in the spec (#477).
 - Fix typo (@salim-b, #469).
 
+## Uncategorized
 
-# DBI 1.2.2.9001 (2024-02-16)
-
-- Merge branch 'cran-1.2.2'.
-
-
-# DBI 1.2.2.9000 (2024-02-09)
-
+- Merge branch 'docs'.
+- Internal changes only.
 - Merge branch 'cran-1.2.2'.
 
 
