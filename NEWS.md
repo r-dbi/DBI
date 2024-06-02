@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.2.9008 (2024-06-02)
+
+## Documentation
+
+- Use relational-data.org as a replacement for relational.fit.cvut.cz.
+
+- Use canonical URLs.
+
+## Uncategorized
+
+- Merge pull request #482 from MichaelChirico/typos.
+
+
 # DBI 1.2.2.9007 (2024-05-02)
 
 ## Bug fixes
