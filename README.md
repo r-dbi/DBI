@@ -156,7 +156,7 @@ instead must be subclassed.
 - [Databases using R](https://db.rstudio.com/) describes the tools and
   best practices in this ecosystem.
 
-- The [DBI project site](https://www.r-dbi.org/) hosts a blog where
+- The [DBI project site](https://r-dbi.org/) hosts a blog where
   recent developments are presented.
 
 - [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by
