@@ -21,7 +21,7 @@ con <- dbConnect(RSQLite::SQLite(), ":memory:")
 con
 dbDisconnect(con)
 \dontrun{
-con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "passsword")
+con <- dbConnect(RPostgreSQL::PostgreSQL(), "username", "password")
 con
 dbDisconnect(con)
 }

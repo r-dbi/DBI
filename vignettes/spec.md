@@ -3008,7 +3008,7 @@ dbWithTransaction(
   }
 )
 
-# The code is executed as if in the curent environment:
+# The code is executed as if in the current environment:
 withdrawal
 
 # The changes are committed to the database after successful execution:
