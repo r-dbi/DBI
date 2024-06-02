@@ -1,264 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/ISSUE_TEMPLATE.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI-1.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI-advanced.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI-arrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI-history.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI-proposal.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/DBI.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/backend.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/articles/spec.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/ANSI.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBI-package.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIConnection-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIConnector-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIDriver-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIObject-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIResult-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/Id.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/SQL.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbBind.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbCallProc.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbCanConnect.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbClearResult.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbColumnInfo.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbConnect.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbCreateTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbCreateTableArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbDataType.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbDisconnect.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbDriver.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbExecute.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbExistsTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbFetch.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrowChunk.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetConnectArgs.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetDBIVersion.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetException.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetInfo.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetQuery.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetQueryArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetRowCount.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbGetStatement.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbHasCompleted.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbIsReadOnly.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbIsValid.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbListConnections.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbListFields.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbListObjects.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbListResults.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbListTables.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbQuoteLiteral.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbQuoteString.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbReadTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbReadTableArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbRemoveTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbSendQuery.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbSendStatement.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbSetDataMappings.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbWithTransaction.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbWriteTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dbWriteTableArrow.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/dot-SQL92Keywords.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/hidden_aliases.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/make.db.names.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/rownames.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/sqlAppendTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/sqlCreateTable.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/sqlData.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/sqlInterpolate.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/sqlParseVariables.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/reference/transactions.html</loc>
-  </url>
-  <url>
-    <loc>https://dbi.r-dbi.org/dev/security.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://dbi.r-dbi.org/dev/CODE_OF_CONDUCT.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/CONTRIBUTING.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/ISSUE_TEMPLATE.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/LICENSE.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI-1.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI-advanced.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI-arrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI-history.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI-proposal.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/DBI.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/backend.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/index.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/articles/spec.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/authors.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/index.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/news/index.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/ANSI.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBI-package.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIConnection-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIConnector-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIDriver-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIObject-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIResult-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/Id.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/SQL.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbAppendTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbBind.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbCallProc.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbCanConnect.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbClearResult.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbColumnInfo.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbConnect.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbCreateTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbCreateTableArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbDataType.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbDisconnect.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbDriver.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbExecute.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbExistsTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbFetch.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbFetchArrowChunk.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetConnectArgs.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetDBIVersion.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetException.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetInfo.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetQuery.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetQueryArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetRowCount.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbGetStatement.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbHasCompleted.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbIsReadOnly.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbIsValid.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbListConnections.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbListFields.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbListObjects.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbListResults.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbListTables.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbQuoteLiteral.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbQuoteString.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbReadTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbReadTableArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbRemoveTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbSendQuery.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbSendStatement.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbSetDataMappings.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbWithTransaction.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbWriteTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dbWriteTableArrow.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/dot-SQL92Keywords.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/hidden_aliases.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/index.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/make.db.names.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/rownames.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/sqlAppendTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/sqlCreateTable.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/sqlData.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/sqlInterpolate.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/sqlParseVariables.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/reference/transactions.html</loc></url>
+<url><loc>https://dbi.r-dbi.org/dev/security.html</loc></url>
 </urlset>
+

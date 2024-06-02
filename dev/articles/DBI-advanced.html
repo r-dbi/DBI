@@ -5,85 +5,53 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="DBI">
 <title>Advanced DBI Usage • DBI</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Advanced DBI Usage">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Advanced DBI Usage">
+<meta name="description" content="DBI">
 <meta property="og:description" content="DBI">
 <meta name="robots" content="noindex">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
-    
-
-    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-primary" data-bs-theme="dark"><div class="container">
-    
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
-
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.2.9006</small>
-
-    
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.2.9007</small>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item">
-  <a class="nav-link" href="../articles/DBI.html">Get started</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../reference/index.html">Reference</a>
-</li>
-<li class="active nav-item">
-  <a class="nav-link" href="../articles/index.html">Articles</a>
-</li>
-<li class="nav-item">
-  <a class="nav-link" href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="active nav-item"><a class="nav-link" href="../articles/index.html">Articles</a></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
-<li><form class="form-inline" role="search">
-<input type="search" class="form-control" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="github">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
-
-    
   </div>
 </nav><div class="container template-article">
 
 
 
-
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="" class="logo" alt=""><h1>Advanced DBI Usage</h1>
+      <h1>Advanced DBI Usage</h1>
                         <h4 data-toc-skip class="author">James
 Wondrasek, Kirill Müller</h4>
-            
-            <h4 data-toc-skip class="date">17/03/2020</h4>
-      
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/vignettes/DBI-advanced.Rmd" class="external-link"><code>vignettes/DBI-advanced.Rmd</code></a></small>
+                        <h4 data-toc-skip class="date">17/03/2020</h4>
+            <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/vignettes/DBI-advanced.Rmd" class="external-link"><code>vignettes/DBI-advanced.Rmd</code></a></small>
       <div class="d-none name"><code>DBI-advanced.Rmd</code></div>
     </div>
-
-    
-    
-<div class="section level2">
+        <div class="section level2">
 <h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
 <p>This tutorial is for you if you need to use a richer set of SQL
@@ -122,7 +90,7 @@ retrieving data. It releases the resources associated with the
 <span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
 <span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  host <span class="op">=</span> <span class="st">"relational.fit.cvut.cz"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
 <span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
 <span>  password <span class="op">=</span> <span class="st">"relational"</span>,</span>
@@ -134,6 +102,26 @@ retrieving data. It releases the resources associated with the
 <span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   film_id            title</span></span>
+<span><span class="co">## 1       2   ACE GOLDFINGER</span></span>
+<span><span class="co">## 2       4 AFFAIR PREJUDICE</span></span>
+<span><span class="co">## 3       5      AFRICAN EGG</span></span>
+<span><span class="co">##                                                                                                             description</span></span>
+<span><span class="co">## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China</span></span>
+<span><span class="co">## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank</span></span>
+<span><span class="co">## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</span></span>
+<span><span class="co">##   release_year language_id original_language_id rental_duration rental_rate</span></span>
+<span><span class="co">## 1         2006           1                   NA               3        4.99</span></span>
+<span><span class="co">## 2         2006           1                   NA               5        2.99</span></span>
+<span><span class="co">## 3         2006           1                   NA               6        2.99</span></span>
+<span><span class="co">##   length replacement_cost rating               special_features</span></span>
+<span><span class="co">## 1     48            12.99      G        Trailers,Deleted Scenes</span></span>
+<span><span class="co">## 2    117            26.99      G Commentaries,Behind the Scenes</span></span>
+<span><span class="co">## 3    130            22.99      G                 Deleted Scenes</span></span>
+<span><span class="co">##           last_update</span></span>
+<span><span class="co">## 1 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 2 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="how-to-read-part-of-a-table-from-a-database">How to read part of a table from a database<a class="anchor" aria-label="anchor" href="#how-to-read-part-of-a-table-from-a-database"></a>
@@ -145,13 +133,18 @@ check for ongoing rows, and <code><a href="../reference/dbFetch.html">dbFetch()<
 <code>n = X</code> argument, specifying how many rows to return on each
 iteration. Again, we call <code><a href="../reference/dbClearResult.html">dbClearResult()</a></code> at the end to
 release resources.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film"</span><span class="op">)</span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">chunk</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">chunk</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="op">}</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 300</span></span>
+<span><span class="co">## [1] 300</span></span>
+<span><span class="co">## [1] 300</span></span>
+<span><span class="co">## [1] 100</span></span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="how-to-use-parameters-safely-in-sql-queries">How to use parameters (safely) in SQL queries<a class="anchor" aria-label="anchor" href="#how-to-use-parameters-safely-in-sql-queries"></a>
@@ -173,26 +166,37 @@ the query for data retrieval, those names or identifiers must also be
 escaped. As there may be DBMS-specific rules for escaping these
 identifiers, DBI provides the function <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
 to generate a safe string representation.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span></span>
 <span><span class="va">safe_param</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteLiteral.html">dbQuoteLiteral</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"G"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"SELECT title, "</span>, <span class="va">safe_id</span>, <span class="st">" FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = "</span>, <span class="va">safe_param</span><span class="op">)</span></span>
-<span><span class="va">query</span></span>
-<span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">query</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "SELECT title, `rating` FROM film WHERE `rating` = 'G'"</span></span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##              title rating</span></span>
+<span><span class="co">## 1   ACE GOLDFINGER      G</span></span>
+<span><span class="co">## 2 AFFAIR PREJUDICE      G</span></span>
+<span><span class="co">## 3      AFRICAN EGG      G</span></span>
+<span><span class="co">## Showing 3 out of 178 rows.</span></span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>The same result can be had by using <code><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue::glue_sql()</a></code>. It
 performs the same safe quoting on any variable or R statement appearing
 between braces within the query string.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">id</span> <span class="op">&lt;-</span> <span class="st">"rating"</span></span>
 <span><span class="va">param</span> <span class="op">&lt;-</span> <span class="st">"G"</span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu">glue</span><span class="fu">::</span><span class="fu"><a href="https://glue.tidyverse.org/reference/glue_sql.html" class="external-link">glue_sql</a></span><span class="op">(</span><span class="st">"SELECT title, {`id`} FROM film WHERE {`id`} = {param}"</span>, .con <span class="op">=</span> <span class="va">con</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">df</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##              title rating</span></span>
+<span><span class="co">## 1   ACE GOLDFINGER      G</span></span>
+<span><span class="co">## 2 AFFAIR PREJUDICE      G</span></span>
+<span><span class="co">## 3      AFRICAN EGG      G</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="parameterized-queries">Parameterized queries<a class="anchor" aria-label="anchor" href="#parameterized-queries"></a>
@@ -221,54 +225,149 @@ e.g. table or column identifiers, still need to be quoted with
 <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> can be used. It
 takes a list and its members are substituted in order for the
 placeholders within the query.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span></span>
 <span><span class="va">safe_id</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"rating"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"SELECT * FROM film WHERE "</span>, <span class="va">safe_id</span>, <span class="st">" = ?"</span><span class="op">)</span></span>
-<span><span class="va">query</span></span>
-<span></span>
-<span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">query</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] "SELECT * FROM film WHERE `rating` = ?"</span></span></code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">params</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   film_id            title</span></span>
+<span><span class="co">## 1       2   ACE GOLDFINGER</span></span>
+<span><span class="co">## 2       4 AFFAIR PREJUDICE</span></span>
+<span><span class="co">## 3       5      AFRICAN EGG</span></span>
+<span><span class="co">##                                                                                                             description</span></span>
+<span><span class="co">## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China</span></span>
+<span><span class="co">## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank</span></span>
+<span><span class="co">## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</span></span>
+<span><span class="co">##   release_year language_id original_language_id rental_duration rental_rate</span></span>
+<span><span class="co">## 1         2006           1                   NA               3        4.99</span></span>
+<span><span class="co">## 2         2006           1                   NA               5        2.99</span></span>
+<span><span class="co">## 3         2006           1                   NA               6        2.99</span></span>
+<span><span class="co">##   length replacement_cost rating               special_features</span></span>
+<span><span class="co">## 1     48            12.99      G        Trailers,Deleted Scenes</span></span>
+<span><span class="co">## 2    117            26.99      G Commentaries,Behind the Scenes</span></span>
+<span><span class="co">## 3    130            22.99      G                 Deleted Scenes</span></span>
+<span><span class="co">##           last_update</span></span>
+<span><span class="co">## 1 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 2 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>Below is an example query using multiple placeholders with the
 MariaDB driver. The placeholders are supplied as a list of values
 ordered to match the position of the placeholders in the query.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="fl">90</span><span class="op">)</span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span></span>
 <span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##              title rating length</span></span>
+<span><span class="co">## 1 AFFAIR PREJUDICE      G    117</span></span>
+<span><span class="co">## 2      AFRICAN EGG      G    130</span></span>
+<span><span class="co">## 3  ALAMO VIDEOTAPE      G    126</span></span></code></pre>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>When you wish to perform the same query with different sets of
 parameter values, <code><a href="../reference/dbBind.html">dbBind()</a></code> is used. There are two ways to
 use <code><a href="../reference/dbBind.html">dbBind()</a></code>. Firstly, it can be used multiple times with
 same query.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"G"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"PG"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   film_id            title</span></span>
+<span><span class="co">## 1       2   ACE GOLDFINGER</span></span>
+<span><span class="co">## 2       4 AFFAIR PREJUDICE</span></span>
+<span><span class="co">## 3       5      AFRICAN EGG</span></span>
+<span><span class="co">##                                                                                                             description</span></span>
+<span><span class="co">## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China</span></span>
+<span><span class="co">## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank</span></span>
+<span><span class="co">## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</span></span>
+<span><span class="co">##   release_year language_id original_language_id rental_duration rental_rate</span></span>
+<span><span class="co">## 1         2006           1                   NA               3        4.99</span></span>
+<span><span class="co">## 2         2006           1                   NA               5        2.99</span></span>
+<span><span class="co">## 3         2006           1                   NA               6        2.99</span></span>
+<span><span class="co">##   length replacement_cost rating               special_features</span></span>
+<span><span class="co">## 1     48            12.99      G        Trailers,Deleted Scenes</span></span>
+<span><span class="co">## 2    117            26.99      G Commentaries,Behind the Scenes</span></span>
+<span><span class="co">## 3    130            22.99      G                 Deleted Scenes</span></span>
+<span><span class="co">##           last_update</span></span>
+<span><span class="co">## 1 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 2 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"PG"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   film_id            title</span></span>
+<span><span class="co">## 1       1 ACADEMY DINOSAUR</span></span>
+<span><span class="co">## 2       6     AGENT TRUMAN</span></span>
+<span><span class="co">## 3      12   ALASKA PHANTOM</span></span>
+<span><span class="co">##                                                                                        description</span></span>
+<span><span class="co">## 1 A Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies</span></span>
+<span><span class="co">## 2        A Intrepid Panorama of a Robot And a Boy who must Escape a Sumo Wrestler in Ancient China</span></span>
+<span><span class="co">## 3               A Fanciful Saga of a Hunter And a Pastry Chef who must Vanquish a Boy in Australia</span></span>
+<span><span class="co">##   release_year language_id original_language_id rental_duration rental_rate</span></span>
+<span><span class="co">## 1         2006           1                   NA               6        0.99</span></span>
+<span><span class="co">## 2         2006           1                   NA               3        2.99</span></span>
+<span><span class="co">## 3         2006           1                   NA               6        0.99</span></span>
+<span><span class="co">##   length replacement_cost rating                 special_features</span></span>
+<span><span class="co">## 1     86            20.99     PG Deleted Scenes,Behind the Scenes</span></span>
+<span><span class="co">## 2    169            17.99     PG                   Deleted Scenes</span></span>
+<span><span class="co">## 3    136            22.99     PG      Commentaries,Deleted Scenes</span></span>
+<span><span class="co">##           last_update</span></span>
+<span><span class="co">## 1 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 2 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>Secondly, <code><a href="../reference/dbBind.html">dbBind()</a></code> can be used to execute the same
 statement with multiple values at once.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"SELECT * FROM film WHERE rating = ?"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   film_id            title</span></span>
+<span><span class="co">## 1       2   ACE GOLDFINGER</span></span>
+<span><span class="co">## 2       4 AFFAIR PREJUDICE</span></span>
+<span><span class="co">## 3       5      AFRICAN EGG</span></span>
+<span><span class="co">##                                                                                                             description</span></span>
+<span><span class="co">## 1                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China</span></span>
+<span><span class="co">## 2                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank</span></span>
+<span><span class="co">## 3 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico</span></span>
+<span><span class="co">##   release_year language_id original_language_id rental_duration rental_rate</span></span>
+<span><span class="co">## 1         2006           1                   NA               3        4.99</span></span>
+<span><span class="co">## 2         2006           1                   NA               5        2.99</span></span>
+<span><span class="co">## 3         2006           1                   NA               6        2.99</span></span>
+<span><span class="co">##   length replacement_cost rating               special_features</span></span>
+<span><span class="co">## 1     48            12.99      G        Trailers,Deleted Scenes</span></span>
+<span><span class="co">## 2    117            26.99      G Commentaries,Behind the Scenes</span></span>
+<span><span class="co">## 3    130            22.99      G                 Deleted Scenes</span></span>
+<span><span class="co">##           last_update</span></span>
+<span><span class="co">## 1 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 2 2006-02-15 04:03:42</span></span>
+<span><span class="co">## 3 2006-02-15 04:03:42</span></span></code></pre>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>Use a list of vectors if your query has multiple parameters:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q_params</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"G"</span>, <span class="st">"PG"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">90</span>, <span class="fl">120</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">query</span> <span class="op">&lt;-</span> <span class="st">"SELECT title, rating, length FROM film WHERE rating = ? AND length &gt;= ?"</span></span>
 <span></span>
 <span><span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">con</span>, <span class="va">query</span>, params <span class="op">=</span> <span class="va">q_params</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##              title rating length</span></span>
+<span><span class="co">## 1 AFFAIR PREJUDICE      G    117</span></span>
+<span><span class="co">## 2      AFRICAN EGG      G    130</span></span>
+<span><span class="co">## 3  ALAMO VIDEOTAPE      G    126</span></span></code></pre>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span><span class="op">)</span></span></code></pre></div>
 <p>Always disconnect from the database when done.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
@@ -291,7 +390,7 @@ need more control over the query process.</p>
 <p>The subsequent examples use an in-memory SQL database provided by
 <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::SQLite()</a></code>, because the remote database used in
 above examples does not allow writing.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span></span>
@@ -300,18 +399,26 @@ above examples does not allow writing.</p>
 <span><span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span></span>
 <span>  <span class="va">con</span>,</span>
 <span>  <span class="st">"INSERT INTO cars (speed, dist) VALUES (1, 1), (2, 2), (3, 3)"</span></span>
-<span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 3</span></span></code></pre>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">rs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span></span>
 <span>  <span class="va">con</span>,</span>
 <span>  <span class="st">"INSERT INTO cars (speed, dist) VALUES (4, 4), (5, 5), (6, 6)"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## [1] 3</span></span></code></pre>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">rs</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cars"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   speed dist</span></span>
+<span><span class="co">## 1     4    2</span></span>
+<span><span class="co">## 2     4   10</span></span>
+<span><span class="co">## 3     7    4</span></span>
+<span><span class="co">## Showing 3 out of 9 rows.</span></span></code></pre>
 <p>Do not forget to disconnect from the database at the end.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -323,7 +430,7 @@ either made persistent with <code><a href="../reference/transactions.html">dbCom
 <code><a href="../reference/transactions.html">dbRollback()</a></code>. The example below updates two tables and
 ensures that either both tables are updated, or no changes are persisted
 to the database and an error is thrown.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>amount <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
@@ -350,13 +457,18 @@ to the database and an error is thrown.</p>
 <p>After withdrawing 300 credits, the cash is increased and the account
 is decreased by this amount. The transaction ensures that either both
 operations succeed, or no change occurs.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1    400</span></span></code></pre>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1   1700</span></span></code></pre>
 <p>We can roll back changes manually if necessary. Do not forget to call
 <code><a href="../reference/transactions.html">dbRollback()</a></code> in case of error, otherwise the transaction
 remains open indefinitely.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">withdraw_if_funds</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span>
 <span>  <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span></span>
@@ -371,14 +483,22 @@ remains open indefinitely.</p>
 <span>  <span class="op">}</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">withdraw_if_funds</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">withdraw_if_funds</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Insufficient funds</span></span></code></pre>
+<pre><code><span><span class="co">## [1] FALSE</span></span></code></pre>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1    400</span></span></code></pre>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1   1700</span></span></code></pre>
 <p><code><a href="../reference/dbWithTransaction.html">dbWithTransaction()</a></code> simplifies using transactions. Pass
 it a connection and the code you want to run as a transaction. It will
 execute the code and call <code><a href="../reference/transactions.html">dbCommit()</a></code> on success and call
 <code><a href="../reference/transactions.html">dbRollback()</a></code> if an error is thrown.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">withdraw_safely</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">con</span>, <span class="op">{</span></span>
 <span>    <span class="fu">withdraw</span><span class="op">(</span><span class="va">amount</span><span class="op">)</span></span>
@@ -388,12 +508,19 @@ execute the code and call <code><a href="../reference/transactions.html">dbCommi
 <span>  <span class="op">}</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
-<span><span class="fu">withdraw_safely</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">withdraw_safely</span><span class="op">(</span><span class="fl">5000</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error: Error: insufficient funds</span></span></code></pre>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"cash"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1    400</span></span></code></pre>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"account"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">##   amount</span></span>
+<span><span class="co">## 1   1700</span></span></code></pre>
 <p>As usual, do not forget to disconnect from the database when
 done.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
@@ -409,26 +536,16 @@ manipulation that can work with local dataframes and remote databases
 and uses DBI under the hood.</p>
 </div>
 
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
-
-
-
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
-
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
-
     </footer>
 </div>
-
-  
-
-  
-
   </body>
 </html>
