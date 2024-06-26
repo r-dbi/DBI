@@ -9,6 +9,8 @@ dbReadTable()
 dbWriteTable()
 dbExistsTable()
 dbRemoveTable()
+
+
 Objects of this class are also returned from dbListObjects()."><meta property="og:description" content="Objects of class Id have a single slot name, which is a character vector.
 The dbQuoteIdentifier() method converts Id objects to strings.
 Support for Id objects depends on the database backend.
@@ -19,14 +21,23 @@ dbReadTable()
 dbWriteTable()
 dbExistsTable()
 dbRemoveTable()
+
+
 Objects of this class are also returned from dbListObjects()."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -36,14 +47,18 @@ Objects of this class are also returned from dbListObjects()."><meta name="robot
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Refer to a table nested in a hierarchy (e.g. within a schema)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/00-Id.R" class="external-link"><code>R/00-Id.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/00-Id.R" class="external-link"><code>R/00-Id.R</code></a></small>
       <div class="d-none name"><code>Id.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>Objects of class <code>Id</code> have a single slot <code>name</code>, which is a character vector.
 The <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> method converts <code>Id</code> objects to strings.
@@ -56,17 +71,23 @@ Support for <code>Id</code> objects depends on the database backend.</p>
 <li><p><code><a href="dbRemoveTable.html">dbRemoveTable()</a></code></p></li>
 </ul><p>Objects of this class are also returned from <code><a href="dbListObjects.html">dbListObjects()</a></code>.</p>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Id</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
+
+
+<dl><dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Components of the hierarchy, e.g. <code>cluster</code>,
 <code>catalog</code>, <code>schema</code>, or <code>table</code>, depending on the database backend. For more
 on these concepts, see <a href="https://stackoverflow.com/questions/7022755/" class="external-link">https://stackoverflow.com/questions/7022755/</a></p></dd>
+
 </dl></div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Identifies a table in a specific schema:</span></span></span>
@@ -81,19 +102,28 @@ on these concepts, see <a href="https://stackoverflow.com/questions/7022755/" cl
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;SQL&gt; "nycflights13"."flights"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Write a table in a specific schema:</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">con</span>, <span class="fu">Id</span><span class="op">(</span><span class="st">"myschema"</span>, <span class="st">"mytable"</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

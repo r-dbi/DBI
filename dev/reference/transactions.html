@@ -5,6 +5,7 @@ or undone with dbRollback().
 In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbBegin("AdbiConnection")
 adbi::dbCommit("AdbiConnection")
@@ -48,12 +49,14 @@ RSQLite::dbRollback("SQLiteConnection")
 sparklyr::dbBegin("spark_connection")
 sparklyr::dbCommit("spark_connection")
 sparklyr::dbRollback("spark_connection")
+
 '><meta property="og:description" content='A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with dbBegin() and either made persistent with dbCommit()
 or undone with dbRollback().
 In any case, the DBMS guarantees that either all or none of the statements
 have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbBegin("AdbiConnection")
 adbi::dbCommit("AdbiConnection")
@@ -97,14 +100,22 @@ RSQLite::dbRollback("SQLiteConnection")
 sparklyr::dbBegin("spark_connection")
 sparklyr::dbCommit("spark_connection")
 sparklyr::dbRollback("spark_connection")
+
 '><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -114,14 +125,18 @@ sparklyr::dbRollback("spark_connection")
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Begin/commit/rollback SQL transactions</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbBegin.R" class="external-link"><code>R/dbBegin.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbCommit.R" class="external-link"><code>R/dbCommit.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbRollback.R" class="external-link"><code>R/dbRollback.R</code></a>, and 1 more</small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/dbBegin.R" class="external-link"><code>R/dbBegin.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/dbCommit.R" class="external-link"><code>R/dbCommit.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/dbRollback.R" class="external-link"><code>R/dbRollback.R</code></a>, and 1 more</small>
       <div class="d-none name"><code>transactions.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with <code>dbBegin()</code> and either made persistent with <code>dbCommit()</code>
@@ -174,6 +189,7 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <li><p><code>sparklyr::dbRollback("spark_connection")</code></p></li>
 </ul></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbBegin</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -182,17 +198,23 @@ This helps ensuring consistency of write operations to multiple tables.</p>
 <span></span>
 <span><span class="fu">dbRollback</span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-conn">conn<a class="anchor" aria-label="anchor" href="#arg-conn"></a></dt>
+
+
+<dl><dt id="arg-conn">conn<a class="anchor" aria-label="anchor" href="#arg-conn"></a></dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.</p>
+    <p><code>dbBegin()</code>, <code>dbCommit()</code> and <code>dbRollback()</code> return <code>TRUE</code>, invisibly.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -202,6 +224,9 @@ these methods should not be implemented for the specific
     </div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
+
+
+
 <p>The implementations are expected to raise an error in case of failure,
 but this is not tested.
 In any way, all generics throw an error with a closed
@@ -215,6 +240,9 @@ yields an error.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+
+
+
 <p>Actual support for transactions may vary between backends.
 A transaction is initiated by a call to <code>dbBegin()</code>
 and committed by a call to <code>dbCommit()</code>.
@@ -246,6 +274,7 @@ if the <code>name</code> argument is set.</p>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Self-contained transactions: <code><a href="dbWithTransaction.html">dbWithTransaction()</a></code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
@@ -294,12 +323,21 @@ if the <code>name</code> argument is set.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

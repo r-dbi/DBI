@@ -5,12 +5,19 @@ access to dynamic queries, result sets, DBMS session management
 access to dynamic queries, result sets, DBMS session management
 (transactions), etc."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -20,21 +27,29 @@ access to dynamic queries, result sets, DBMS session management
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>DBIConnection class</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/03-DBIConnection.R" class="external-link"><code>R/03-DBIConnection.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/03-DBIConnection.R" class="external-link"><code>R/03-DBIConnection.R</code></a></small>
       <div class="d-none name"><code>DBIConnection-class.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>This virtual class encapsulates the connection to a DBMS, and it provides
 access to dynamic queries, result sets, DBMS session management
 (transactions), etc.</p>
     </div>
+
+
     <div class="section level2">
     <h2 id="implementation-note">Implementation note<a class="anchor" aria-label="anchor" href="#implementation-note"></a></h2>
+
+
 <p>Individual drivers are free to implement single or multiple simultaneous
 connections.</p>
     </div>
@@ -76,6 +91,7 @@ connections.</p>
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
 <code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
@@ -84,21 +100,30 @@ connections.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Path: :memory:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Extensions: TRUE</span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RPostgreSQL</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/RPostgreSQL/man/PostgreSQL.html" class="external-link">PostgreSQL</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"username"</span>, <span class="st">"password"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">con</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

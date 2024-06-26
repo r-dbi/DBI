@@ -3,22 +3,33 @@
 Fetch the next chunk of the result set and return it as an Arrow object.
 The chunk size is implementation-specific.
 Use dbFetchArrow() to fetch all results.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbFetchArrowChunk("AdbiResultArrow")
+
 '><meta property="og:description" content='
 Fetch the next chunk of the result set and return it as an Arrow object.
 The chunk size is implementation-specific.
 Use dbFetchArrow() to fetch all results.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbFetchArrowChunk("AdbiResultArrow")
+
 '><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -28,14 +39,18 @@ adbi::dbFetchArrowChunk("AdbiResultArrow")
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Fetch the next batch of records from a previously executed query as an Arrow object</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbFetchArrowChunk.R" class="external-link"><code>R/dbFetchArrowChunk.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/dbFetchArrowChunk.R" class="external-link"><code>R/dbFetchArrowChunk.R</code></a></small>
       <div class="d-none name"><code>dbFetchArrowChunk.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>Fetch the next chunk of the result set and return it as an Arrow object.
@@ -45,21 +60,28 @@ Use <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> to fetch all res
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbFetchArrowChunk("AdbiResultArrow")</a></code></p></li>
 </ul></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbFetchArrowChunk</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-res">res<a class="anchor" aria-label="anchor" href="#arg-res"></a></dt>
+
+
+<dl><dt id="arg-res">res<a class="anchor" aria-label="anchor" href="#arg-res"></a></dt>
 <dd><p>An object inheriting from <a href="DBIResultArrow-class.html">DBIResultArrow</a>, created by
 <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Other arguments passed on to methods.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p><code>dbFetchArrowChunk()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with
+    <p><code>dbFetchArrowChunk()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with
 as many rows as records were fetched and as many
 columns as fields in the result set,
 even if the result is a single value
@@ -68,6 +90,9 @@ or zero rows.</p>
     </div>
     <div class="section level2">
     <h2 id="the-data-retrieval-flow-for-arrow-streams">The data retrieval flow for Arrow streams<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow-for-arrow-streams"></a></h2>
+
+
+
 <p>This section gives a complete overview over the flow
 for the execution of queries that return tabular data as an Arrow stream.</p>
 <p>Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBindArrow()</a></code> or <code><a href="dbBind.html">dbBind()</a></code>,
@@ -90,10 +115,16 @@ to ensure that this step is always executed.</p></li>
 </ol></div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
+
+
+
 <p>An attempt to fetch from a closed result set raises an error.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+
+
+
 <p>Fetching multi-row queries with one
 or more columns returns the next chunk.
 The size of the chunk is implementation-specific.
@@ -123,6 +154,7 @@ finish retrieving the records you want.</p>
 <code><a href="dbSendQuery.html">dbSendQuery</a>()</code>,
 <code><a href="dbSendQueryArrow.html">dbSendQueryArrow</a>()</code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
@@ -158,12 +190,21 @@ finish retrieving the records you want.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

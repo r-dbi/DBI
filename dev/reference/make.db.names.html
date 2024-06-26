@@ -3,12 +3,19 @@
 (or possibly dbQuoteString()) instead."><meta property="og:description" content="These methods are DEPRECATED. Please use dbQuoteIdentifier()
 (or possibly dbQuoteString()) instead."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -18,18 +25,23 @@
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Make R identifiers into legal SQL identifiers</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/isSQLKeyword.R" class="external-link"><code>R/isSQLKeyword.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/make.db.names.R" class="external-link"><code>R/make.db.names.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/deprecated.R" class="external-link"><code>R/deprecated.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/isSQLKeyword.R" class="external-link"><code>R/isSQLKeyword.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/make.db.names.R" class="external-link"><code>R/make.db.names.R</code></a></small>
       <div class="d-none name"><code>make.db.names.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>These methods are DEPRECATED. Please use <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>
 (or possibly <code><a href="dbQuoteString.html">dbQuoteString()</a></code>) instead.</p>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">make.db.names.default</span><span class="op">(</span></span>
@@ -62,36 +74,54 @@
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-snames">snames<a class="anchor" aria-label="anchor" href="#arg-snames"></a></dt>
+
+
+<dl><dt id="arg-snames">snames<a class="anchor" aria-label="anchor" href="#arg-snames"></a></dt>
 <dd><p>a character vector of R identifiers (symbols) from which we
 need to make SQL identifiers.</p></dd>
+
+
 <dt id="arg-keywords">keywords<a class="anchor" aria-label="anchor" href="#arg-keywords"></a></dt>
 <dd><p>a character vector with SQL keywords, by default it's
 <code>.SQL92Keywords</code> defined by the DBI.</p></dd>
+
+
 <dt id="arg-unique">unique<a class="anchor" aria-label="anchor" href="#arg-unique"></a></dt>
 <dd><p>logical describing whether the resulting set of SQL names
 should be unique.  Its default is <code>TRUE</code>.  Following the SQL 92
 standard, uniqueness of SQL identifiers is determined regardless of whether
 letters are upper or lower case.</p></dd>
+
+
 <dt id="arg-allow-keywords">allow.keywords<a class="anchor" aria-label="anchor" href="#arg-allow-keywords"></a></dt>
 <dd><p>logical describing whether SQL keywords should be
 allowed in the resulting set of SQL names.  Its default is <code>TRUE</code></p></dd>
+
+
 <dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
 <dd><p>a character vector with database identifier candidates we need
 to determine whether they are legal SQL identifiers or not.</p></dd>
+
+
 <dt id="arg-case">case<a class="anchor" aria-label="anchor" href="#arg-case"></a></dt>
 <dd><p>a character string specifying whether to make the comparison as
 lower case, upper case, or any of the two.  it defaults to <code>any</code>.</p></dd>
+
+
 <dt id="arg-dbobj">dbObj<a class="anchor" aria-label="anchor" href="#arg-dbobj"></a></dt>
 <dd><p>any DBI object (e.g., <code>DBIDriver</code>).</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>any other argument are passed to the driver implementation.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p><code>make.db.names</code> returns a character vector of legal SQL
+    <p><code>make.db.names</code> returns a character vector of legal SQL
 identifiers corresponding to its <code>snames</code> argument.</p>
 <p><code>SQLKeywords</code> returns a character vector of all known keywords for the
 database-engine associated with <code>dbObj</code>.</p>
@@ -111,6 +141,8 @@ override or update this vector.</p>
     </div>
     <div class="section level2">
     <h2 id="bugs">Bugs<a class="anchor" aria-label="anchor" href="#bugs"></a></h2>
+
+
 <p>The current mapping is not guaranteed to be fully reversible: some SQL
 identifiers that get mapped into R identifiers with <code>make.names</code> and
 then back to SQL with <code>make.db.names()</code> will not be equal to the
@@ -124,14 +156,24 @@ original SQL identifiers (e.g., compound SQL identifiers of the form
 in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 override or update this vector.</p>
     </div>
+
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

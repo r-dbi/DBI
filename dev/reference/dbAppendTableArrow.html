@@ -5,24 +5,35 @@ beforehand, e.g. with dbCreateTableArrow().
 The default implementation calls dbAppendTable() for each chunk
 of the stream.
 Use dbAppendTable() to append data from a data.frame.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 pool::dbAppendTableArrow("Pool")
+
 '><meta property="og:description" content='
 The dbAppendTableArrow() method assumes that the table has been created
 beforehand, e.g. with dbCreateTableArrow().
 The default implementation calls dbAppendTable() for each chunk
 of the stream.
 Use dbAppendTable() to append data from a data.frame.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 pool::dbAppendTableArrow("Pool")
+
 '><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -32,14 +43,18 @@ pool::dbAppendTableArrow("Pool")
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Insert rows into a table from an Arrow stream</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/21-dbAppendTableArrow.R" class="external-link"><code>R/21-dbAppendTableArrow.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/21-dbAppendTableArrow.R" class="external-link"><code>R/21-dbAppendTableArrow.R</code></a></small>
       <div class="d-none name"><code>dbAppendTableArrow.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="figures/lifecycle-experimental.svg" alt="[Experimental]"></a></p>
 <p>The <code>dbAppendTableArrow()</code> method assumes that the table has been created
@@ -51,15 +66,21 @@ Use <code><a href="dbAppendTable.html">dbAppendTable()</a></code> to append data
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbAppendTableArrow("Pool")</a></code></p></li>
 </ul></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbAppendTableArrow</span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-conn">conn<a class="anchor" aria-label="anchor" href="#arg-conn"></a></dt>
+
+
+<dl><dt id="arg-conn">conn<a class="anchor" aria-label="anchor" href="#arg-conn"></a></dt>
 <dd><p>A <a href="DBIConnection-class.html">DBIConnection</a> object, as returned by
 <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+
+
 <dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -68,19 +89,27 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt id="arg-value">value<a class="anchor" aria-label="anchor" href="#arg-value"></a></dt>
 <dd><p>An object coercible with <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Other parameters passed on to methods.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p><code>dbAppendTableArrow()</code> returns a
+    <p><code>dbAppendTableArrow()</code> returns a
 scalar
 numeric.</p>
     </div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
+
+
+
 <p>If the table does not exist,
 or the new data in <code>values</code> is not a data frame or has different column names,
 an error is raised; the remote table remains unchanged.</p>
@@ -92,6 +121,9 @@ if this results in a non-scalar.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
+
+
+
 <p>SQL keywords can be used freely in table names, column names, and data.
 Quotes, commas, spaces, and other special characters such as newlines and tabs,
 can also be used in the data,
@@ -132,6 +164,7 @@ also for timestamps prior to 1970 or 1900 or after 2038
 respecting the time zone but not necessarily preserving the
 input time zone)</p></li>
 </ul><p>Mixing column types in the same table is supported.</p>
+
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbAppendTableArrow()</code> will do the quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
@@ -173,6 +206,7 @@ The order of the columns does not matter.</p>
 <code><a href="dbWriteTable.html">dbWriteTable</a>()</code>,
 <code><a href="dbWriteTableArrow.html">dbWriteTableArrow</a>()</code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">":memory:"</span><span class="op">)</span></span></span>
@@ -191,12 +225,21 @@ The order of the columns does not matter.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

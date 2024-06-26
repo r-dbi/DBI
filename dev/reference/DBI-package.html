@@ -7,12 +7,19 @@ management systems.
 All classes in this package are virtual and need to be extended by
 the various R/DBMS implementations (so-called DBI backends)."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -22,22 +29,31 @@ the various R/DBMS implementations (so-called DBI backends)."><meta name="robots
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>DBI: R Database Interface</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/DBI-package.R" class="external-link"><code>R/DBI-package.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/DBI-package.R" class="external-link"><code>R/DBI-package.R</code></a></small>
       <div class="d-none name"><code>DBI-package.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>DBI defines an interface for communication between R and relational database
 management systems.
 All classes in this package are virtual and need to be extended by
 the various R/DBMS implementations (so-called <em>DBI backends</em>).</p>
     </div>
+
+
     <div class="section level2">
     <h2 id="definition">Definition<a class="anchor" aria-label="anchor" href="#definition"></a></h2>
+
+
+
 <p>A DBI backend is an R package
 which imports the <span class="pkg">DBI</span>
 and <span class="pkg">methods</span>
@@ -48,6 +64,9 @@ to the backend author to adopt this convention or not.</p>
     </div>
     <div class="section level2">
     <h2 id="dbi-classes-and-methods">DBI classes and methods<a class="anchor" aria-label="anchor" href="#dbi-classes-and-methods"></a></h2>
+
+
+
 <p>A backend defines three classes,
 which are subclasses of
 <a href="DBIDriver-class.html">DBIDriver</a>,
@@ -62,6 +81,9 @@ and have an ellipsis <code>...</code> in their formals for extensibility.</p>
     </div>
     <div class="section level2">
     <h2 id="construction-of-the-dbidriver-object">Construction of the DBIDriver object<a class="anchor" aria-label="anchor" href="#construction-of-the-dbidriver-object"></a></h2>
+
+
+
 <p>The backend must support creation of an instance of its <a href="DBIDriver-class.html">DBIDriver</a> subclass
 with a <dfn>constructor function</dfn>.
 By default, its name is the package name without the leading ‘R’
@@ -86,6 +108,7 @@ DBI recommends to define a constructor with an empty argument list.</p>
 <li><p>Hadley Wickham</p></li>
 </ul><p>Other contributors:</p><ul><li><p>R Consortium [funder]</p></li>
 </ul></div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">SQLite</a></span><span class="op">(</span><span class="op">)</span></span></span>
@@ -94,12 +117,21 @@ DBI recommends to define a constructor with an empty argument list.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

@@ -17,12 +17,19 @@ this object in the right places: if you know what database you are connecting
 to, you should call the function directly.
 dbUnloadDriver() is not implemented for modern backends."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -32,14 +39,18 @@ dbUnloadDriver() is not implemented for modern backends."><meta name="robots" co
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Load and unload database drivers</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbDriver.R" class="external-link"><code>R/dbDriver.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbUnloadDriver.R" class="external-link"><code>R/dbUnloadDriver.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/dbDriver.R" class="external-link"><code>R/dbDriver.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/dbUnloadDriver.R" class="external-link"><code>R/dbUnloadDriver.R</code></a></small>
       <div class="d-none name"><code>dbDriver.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>These methods are deprecated, please consult the documentation of the
 individual backends for the construction of driver instances.</p>
@@ -51,25 +62,34 @@ this object in the right places: if you know what database you are connecting
 to, you should call the function directly.</p>
 <p><code>dbUnloadDriver()</code> is not implemented for modern backends.</p>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbDriver</span><span class="op">(</span><span class="va">drvName</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">dbUnloadDriver</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-drvname">drvName<a class="anchor" aria-label="anchor" href="#arg-drvname"></a></dt>
+
+
+<dl><dt id="arg-drvname">drvName<a class="anchor" aria-label="anchor" href="#arg-drvname"></a></dt>
 <dd><p>character name of the driver to instantiate.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>any other arguments are passed to the driver <code>drvName</code>.</p></dd>
+
+
 <dt id="arg-drv">drv<a class="anchor" aria-label="anchor" href="#arg-drv"></a></dt>
 <dd><p>an object that inherits from <code>DBIDriver</code> as created by
 <code>dbDriver</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p>In the case of <code>dbDriver</code>, an driver object whose class extends
+    <p>In the case of <code>dbDriver</code>, an driver object whose class extends
 <code>DBIDriver</code>. This object may be used to create connections to the
 actual DBMS engine.</p>
 <p>In the case of <code>dbUnloadDriver</code>, a logical indicating whether the
@@ -103,6 +123,7 @@ connecting to the database engine itself needs to be done through calls to
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListConnections.html">dbListConnections</a>()</code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Create a RSQLite driver with a string</span></span></span>
@@ -117,12 +138,21 @@ connecting to the database engine itself needs to be done through calls to
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

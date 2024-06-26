@@ -4,23 +4,34 @@ data frame into an existing table. sqlAppendTableTemplate() generates
 a template suitable for use with dbBind().
 The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 pool::sqlAppendTable("Pool")
+
 '><meta property="og:description" content='sqlAppendTable() generates a single SQL string that inserts a
 data frame into an existing table. sqlAppendTableTemplate() generates
 a template suitable for use with dbBind().
 The default methods are ANSI SQL 99 compliant.
 These methods are mostly useful for backend implementers.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 pool::sqlAppendTable("Pool")
+
 '><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -30,14 +41,18 @@ pool::sqlAppendTable("Pool")
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Compose query to insert rows into a table</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/sqlAppendTable.R" class="external-link"><code>R/sqlAppendTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/sqlAppendTableTemplate.R" class="external-link"><code>R/sqlAppendTableTemplate.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/sqlAppendTable.R" class="external-link"><code>R/sqlAppendTable.R</code></a>, <a href="https://github.com/r-dbi/DBI/blob/main/R/sqlAppendTableTemplate.R" class="external-link"><code>R/sqlAppendTableTemplate.R</code></a></small>
       <div class="d-none name"><code>sqlAppendTable.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p><code>sqlAppendTable()</code> generates a single SQL string that inserts a
 data frame into an existing table. <code>sqlAppendTableTemplate()</code> generates
@@ -48,6 +63,7 @@ These methods are mostly useful for backend implementers.</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::sqlAppendTable("Pool")</a></code></p></li>
 </ul></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="va">con</span>, <span class="va">table</span>, <span class="va">values</span>, row.names <span class="op">=</span> <span class="cn">NA</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -62,10 +78,15 @@ These methods are mostly useful for backend implementers.</p>
 <span>  pattern <span class="op">=</span> <span class="st">""</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-con">con<a class="anchor" aria-label="anchor" href="#arg-con"></a></dt>
+
+
+<dl><dt id="arg-con">con<a class="anchor" aria-label="anchor" href="#arg-con"></a></dt>
 <dd><p>A database connection.</p></dd>
+
+
 <dt id="arg-table">table<a class="anchor" aria-label="anchor" href="#arg-table"></a></dt>
 <dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
 e.g. <code>"table_name"</code>,</p></li>
@@ -74,9 +95,13 @@ e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
 <li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
 given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
+
+
 <dt id="arg-values">values<a class="anchor" aria-label="anchor" href="#arg-values"></a></dt>
 <dd><p>A data frame. Factors will be converted to character vectors.
 Character vectors will be escaped with <code><a href="dbQuoteString.html">dbQuoteString()</a></code>.</p></dd>
+
+
 <dt id="arg-row-names">row.names<a class="anchor" aria-label="anchor" href="#arg-row-names"></a></dt>
 <dd><p>Either <code>TRUE</code>, <code>FALSE</code>, <code>NA</code> or a string.</p>
 <p>If <code>TRUE</code>, always translate row names to a column called "row_names".
@@ -85,21 +110,29 @@ rownames only if they're a character vector.</p>
 <p>A string is equivalent to <code>TRUE</code>, but allows you to override the
 default name.</p>
 <p>For backward compatibility, <code>NULL</code> is equivalent to <code>FALSE</code>.</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Other arguments used by individual methods.</p></dd>
+
+
 <dt id="arg-prefix">prefix<a class="anchor" aria-label="anchor" href="#arg-prefix"></a></dt>
 <dd><p>Parameter prefix to use for placeholders.</p></dd>
+
+
 <dt id="arg-pattern">pattern<a class="anchor" aria-label="anchor" href="#arg-pattern"></a></dt>
 <dd><p>Parameter pattern to use for placeholders:</p><ul><li><p><code>""</code>: no pattern</p></li>
 <li><p><code>"1"</code>: position</p></li>
 <li><p>anything else: field name</p></li>
 </ul></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The <code>row.names</code> argument must be passed explicitly in order to avoid
 a compatibility warning.  The default will be changed in a later release.</p>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">sqlAppendTable</span><span class="op">(</span><span class="fu"><a href="ANSI.html">ANSI</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"iris"</span>, <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span><span class="op">)</span></span></span>
@@ -157,12 +190,21 @@ a compatibility warning.  The default will be changed in a later release.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 

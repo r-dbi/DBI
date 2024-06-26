@@ -3,22 +3,33 @@
 a connection object.  The default implementation opens a connection
 and disconnects on success, but individual backends might implement
 a lighter-weight check.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbCanConnect("AzureKustoDriver")
+
 '><meta property="og:description" content='Like dbConnect(), but only checks validity without actually returning
 a connection object.  The default implementation opens a connection
 and disconnects on success, but individual backends might implement
 a lighter-weight check.
+
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 AzureKusto::dbCanConnect("AzureKustoDriver")
+
 '><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
+
     <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9001</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
@@ -28,14 +39,18 @@ AzureKusto::dbCanConnect("AzureKustoDriver")
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
+
+
   </div>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Check if a connection to a DBMS can be established</h1>
-      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/R/dbCanConnect.R" class="external-link"><code>R/dbCanConnect.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/main/R/dbCanConnect.R" class="external-link"><code>R/dbCanConnect.R</code></a></small>
       <div class="d-none name"><code>dbCanConnect.Rd</code></div>
     </div>
+
     <div class="ref-description section level2">
     <p>Like <code><a href="dbConnect.html">dbConnect()</a></code>, but only checks validity without actually returning
 a connection object.  The default implementation opens a connection
@@ -45,24 +60,31 @@ a lighter-weight check.</p>
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html" class="external-link">AzureKusto::dbCanConnect("AzureKustoDriver")</a></code></p></li>
 </ul></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">dbCanConnect</span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
+
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt id="arg-drv">drv<a class="anchor" aria-label="anchor" href="#arg-drv"></a></dt>
+
+
+<dl><dt id="arg-drv">drv<a class="anchor" aria-label="anchor" href="#arg-drv"></a></dt>
 <dd><p>an object that inherits from <a href="DBIDriver-class.html">DBIDriver</a>,
 or an existing <a href="DBIConnection-class.html">DBIConnection</a>
 object (in order to clone an existing connection).</p></dd>
+
+
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>authentication arguments needed by the DBMS instance; these
 typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
 For details see the appropriate <code>DBIDriver</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-<p>A scalar logical.  If <code>FALSE</code>, the <code>"reason"</code> attribute indicates
+    <p>A scalar logical.  If <code>FALSE</code>, the <code>"reason"</code> attribute indicates
 a reason for failure.</p>
     </div>
     <div class="section level2">
@@ -77,6 +99,7 @@ a reason for failure.</p>
 <code><a href="dbIsValid.html">dbIsValid</a>()</code>,
 <code><a href="dbListConnections.html">dbListConnections</a>()</code></p></div>
     </div>
+
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># SQLite only needs a path to the database. (Here, ":memory:" is a special</span></span></span>
@@ -88,12 +111,21 @@ a reason for failure.</p>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
   <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
 </div>
+
     </footer></div>
+
+
+
+
+
   </body></html>
 
