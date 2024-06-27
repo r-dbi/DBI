@@ -1,5 +1,16 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9002 (2024-06-27)
+
+## Bug fixes
+
+- `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H:%M:%S%z"` which is understood by more databases (#486).
+
+## Testing
+
+- Bump DBItest version for internal tests (#487).
+
+
 # DBI 1.2.3.9001 (2024-06-02)
 
 - Merge branch 'cran-1.2.3'.
