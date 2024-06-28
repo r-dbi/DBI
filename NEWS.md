@@ -1,5 +1,26 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9003 (2024-06-28)
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/9692418830
+
+## Continuous integration
+
+- Avoid checking bashisms on Windows.
+
+- Better commit message.
+
+- Harmonize workflows.
+
+- Bump versions, better default, consume custom matrix.
+
+- Recent updates.
+
+
 # DBI 1.2.3.9002 (2024-06-27)
 
 ## Bug fixes
