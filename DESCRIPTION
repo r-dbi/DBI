@@ -46,7 +46,7 @@ Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Config/Needs/website: 
     r-dbi/DBItest,
     r-dbi/dbitemplate,
