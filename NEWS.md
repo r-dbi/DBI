@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9005 (2024-07-02)
+
+## Continuous integration
+
+- Fix on Windows, tweak lock workflow.
+
+
 # DBI 1.2.3.9004 (2024-07-01)
 
 ## Chore
