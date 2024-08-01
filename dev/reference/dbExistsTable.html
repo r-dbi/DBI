@@ -12,7 +12,7 @@ bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
-duckdb::dbExistsTable("duckdb_connection", "character")
+duckdb::dbExistsTable("duckdb_connection", "ANY")
 lazysf::dbExistsTable("SFSQLConnection", "ANY")
 odbc::dbExistsTable("Microsoft SQL Server", "character")
 odbc::dbExistsTable("Microsoft SQL Server", "Id")
@@ -46,7 +46,7 @@ bigrquery::dbExistsTable("BigQueryConnection", "Id")
 DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "character")
 dittodb::dbExistsTable("DBIMockConnection", "Id")
-duckdb::dbExistsTable("duckdb_connection", "character")
+duckdb::dbExistsTable("duckdb_connection", "ANY")
 lazysf::dbExistsTable("SFSQLConnection", "ANY")
 odbc::dbExistsTable("Microsoft SQL Server", "character")
 odbc::dbExistsTable("Microsoft SQL Server", "Id")
@@ -75,7 +75,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9004</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -116,7 +116,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbExistsTable-DatabaseConnectorConnection-character-method.html" class="external-link">DatabaseConnector::dbExistsTable("DatabaseConnectorConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbExistsTable("DBIMockConnection", "Id")</a></code></p></li>
-<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "character")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbExistsTable("duckdb_connection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/SFSQLConnection-class.html" class="external-link">lazysf::dbExistsTable("SFSQLConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/SQLServer.html" class="external-link">odbc::dbExistsTable("Microsoft SQL Server", "character")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/SQLServer.html" class="external-link">odbc::dbExistsTable("Microsoft SQL Server", "Id")</a></code></p></li>
@@ -251,7 +251,7 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.9000.</p>
 </div>
 
     </footer></div>
