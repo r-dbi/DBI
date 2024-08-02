@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9006 (2024-08-02)
+
+## Chore
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/10200154953
+
+## Continuous integration
+
+- Use dev roxygen2 and decor.
+
+
 # DBI 1.2.3.9005 (2024-07-02)
 
 ## Continuous integration
