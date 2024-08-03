@@ -20,7 +20,7 @@ In such a case, the function is evaluated transparently when connecting in
 \code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}.
 }
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # Create a connector:
 cnr <- new("DBIConnector",
   .drv = RSQLite::SQLite(),

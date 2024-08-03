@@ -196,7 +196,7 @@ The default is \code{row.names = FALSE}.
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:5, ])

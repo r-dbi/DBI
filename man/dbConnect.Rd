@@ -65,7 +65,7 @@ and \code{\link[=as.character]{as.character()}}
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # SQLite only needs a path to the database. (Here, ":memory:" is a special
 # path that creates an in-memory database.) Other database drivers
 # will require more details (like user, password, host, port, etc.)

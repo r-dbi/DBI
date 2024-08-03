@@ -71,7 +71,7 @@ perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # Read data as Arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

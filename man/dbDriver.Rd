@@ -45,7 +45,7 @@ connecting to the database engine itself needs to be done through calls to
 \code{dbConnect}.
 }
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # Create a RSQLite driver with a string
 d <- dbDriver("SQLite")
 d

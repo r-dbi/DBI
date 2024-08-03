@@ -112,7 +112,7 @@ if the database supports non-syntactic identifiers.
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 ptype <- data.frame(a = numeric())
 dbCreateTableArrow(con, "df", nanoarrow::infer_nanoarrow_schema(ptype))

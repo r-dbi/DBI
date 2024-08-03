@@ -280,7 +280,7 @@ and with the value stored as integer)
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # Data frame flow:
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -304,7 +304,7 @@ nrow(dbReadTable(con, "iris"))
 
 dbDisconnect(con)
 \dontshow{\}) # examplesIf}
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 # Arrow flow:
 con <- dbConnect(RSQLite::SQLite(), ":memory:")

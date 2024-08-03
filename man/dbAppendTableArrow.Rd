@@ -124,7 +124,7 @@ The order of the columns does not matter.
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbCreateTableArrow(con, "iris", iris[0, ])
 dbAppendTableArrow(con, "iris", iris[1:5, ])

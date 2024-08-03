@@ -164,7 +164,7 @@ the backend tries \code{immediate = TRUE} (and gives a message)
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

@@ -113,7 +113,7 @@ The DBI backend can expect a call to \code{dbClearResult()} for each
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 rs <- dbSendQuery(con, "SELECT 1")

@@ -61,7 +61,7 @@ For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbEx
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbExistsTable(con, "iris")

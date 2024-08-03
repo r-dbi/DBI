@@ -101,7 +101,7 @@ dbDataType(ANSI(), list(raw(10), raw(20)))
 dbDataType(ANSI(), I(3))
 
 dbDataType(ANSI(), iris)
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 

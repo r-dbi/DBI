@@ -57,7 +57,7 @@ DBI recommends to define a constructor with an empty argument list.
 }
 
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 RSQLite::SQLite()
 \dontshow{\}) # examplesIf}
 }

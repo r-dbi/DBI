@@ -38,7 +38,7 @@ been disconnected or cleared).
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbIsValid")}
 }
 \examples{
-\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}
 dbIsValid(RSQLite::SQLite())
 
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
