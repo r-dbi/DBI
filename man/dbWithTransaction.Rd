@@ -46,7 +46,7 @@ generic only if they implement specialized handling.
 Failure to initiate the transaction
 (e.g., if the connection is closed
 or invalid
-of if \code{\link[=dbBegin]{dbBegin()}} has been called already)
+of if \code{\link[DBI:transactions]{DBI::dbBegin()}} has been called already)
 gives an error.
 
 }
@@ -56,9 +56,9 @@ gives an error.
 
 \code{dbWithTransaction()} initiates a transaction with \code{dbBegin()}, executes
 the code given in the \code{code} argument, and commits the transaction with
-\code{\link[=dbCommit]{dbCommit()}}.
+\code{\link[DBI:transactions]{DBI::dbCommit()}}.
 If the code raises an error, the transaction is instead aborted with
-\code{\link[=dbRollback]{dbRollback()}}, and the error is propagated.
+\code{\link[DBI:transactions]{DBI::dbRollback()}}, and the error is propagated.
 If the code calls \code{dbBreak()}, execution of the code stops and the
 transaction is silently aborted.
 All side effects caused by the code

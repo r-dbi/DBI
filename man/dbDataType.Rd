@@ -56,7 +56,7 @@ An error is raised for invalid values for the \code{obj} argument such as a
 \section{Specification}{
 
 
-The backend can override the \code{\link[=dbDataType]{dbDataType()}} generic
+The backend can override the \code{\link[DBI:dbDataType]{DBI::dbDataType()}} generic
 for its driver class.
 
 This generic expects an arbitrary object as second argument.

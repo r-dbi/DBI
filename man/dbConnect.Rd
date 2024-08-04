@@ -16,7 +16,7 @@ typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{
 For details see the appropriate \code{DBIDriver}.}
 }
 \value{
-\code{dbConnect()} returns an S4 object that inherits from \linkS4class{DBIConnection}.
+\code{dbConnect()} returns an S4 object that inherits from \link[DBI:DBIConnection-class]{DBI::DBIConnection}.
 This object is used to communicate with the database engine.
 
 A \code{\link[=format]{format()}} method is defined for the connection object.

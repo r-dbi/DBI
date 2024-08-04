@@ -85,7 +85,7 @@ but are part of the DBI specification:
 They must be provided as named arguments.
 See the "Specification" and "Value" sections for details on their usage.
 
-The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+The \code{param} argument allows passing query parameters, see \code{\link[DBI:dbBind]{DBI::dbBind()}} for details.
 
 }
 
@@ -125,7 +125,7 @@ the backend tries \code{immediate = TRUE} (and gives a message)
 }
 \item A query with parameters is passed:
 \enumerate{
-\item \code{params} not given: waiting for parameters via \code{\link[=dbBind]{dbBind()}}
+\item \code{params} not given: waiting for parameters via \code{\link[DBI:dbBind]{DBI::dbBind()}}
 \item \code{params} given: query is executed
 }
 }

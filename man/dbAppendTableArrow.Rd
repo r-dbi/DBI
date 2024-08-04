@@ -50,7 +50,7 @@ an error is raised; the remote table remains unchanged.
 An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} or
+if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}} or
 if this results in a non-scalar.
 
 }
@@ -66,7 +66,7 @@ also for table names
 and column names.
 
 The following data types must be supported at least,
-and be read identically with \code{\link[=dbReadTable]{dbReadTable()}}:
+and be read identically with \code{\link[DBI:dbReadTable]{DBI::dbReadTable()}}:
 \itemize{
 \item integer
 \item numeric
@@ -112,7 +112,7 @@ to support databases that allow non-syntactic names for their objects:
 \itemize{
 \item If an unquoted table name as string: \code{dbAppendTableArrow()} will do the quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
-\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+\item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}}: no more quoting is done
 to support databases that allow non-syntactic names for their objects:
 }
 

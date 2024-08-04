@@ -89,7 +89,7 @@ greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 
 Calling \code{dbFetch()} on a result set from a data manipulation query
-created by \code{\link[=dbSendStatement]{dbSendStatement()}} can
+created by \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} can
 be fetched and return an empty data frame, with a warning.
 
 }
@@ -145,9 +145,9 @@ with NA for SQL \code{NULL} values
 If dates and timestamps are supported by the backend, the following R types are
 used:
 \itemize{
-\item \link{Date} for dates
+\item \link[lubridate:date_utils]{lubridate::Date} for dates
 (also applies to the return value of the SQL function \code{current_date})
-\item \link{POSIXct} for timestamps
+\item \link[lubridate:posix_utils]{lubridate::POSIXct} for timestamps
 (also applies to the return value of the SQL function \code{current_timestamp})
 }
 

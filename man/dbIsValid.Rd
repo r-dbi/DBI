@@ -17,16 +17,16 @@ or a \linkS4class{DBIResult}}
 \code{dbIsValid()} returns a logical scalar,
 \code{TRUE} if the object specified by \code{dbObj} is valid,
 \code{FALSE} otherwise.
-A \linkS4class{DBIConnection} object is initially valid,
-and becomes invalid after disconnecting with \code{\link[=dbDisconnect]{dbDisconnect()}}.
+A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object is initially valid,
+and becomes invalid after disconnecting with \code{\link[DBI:dbDisconnect]{DBI::dbDisconnect()}}.
 For an invalid connection object (e.g., for some drivers if the object
 is saved to a file and then restored), the method also returns \code{FALSE}.
-A \linkS4class{DBIResult} object is valid after a call to \code{\link[=dbSendQuery]{dbSendQuery()}},
+A \link[DBI:DBIResult-class]{DBI::DBIResult} object is valid after a call to \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}},
 and stays valid even after all rows have been fetched;
-only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
-A \linkS4class{DBIResult} object is also valid after a call to \code{\link[=dbSendStatement]{dbSendStatement()}},
+only clearing it with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} invalidates it.
+A \link[DBI:DBIResult-class]{DBI::DBIResult} object is also valid after a call to \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}},
 and stays valid after querying the number of rows affected;
-only clearing it with \code{\link[=dbClearResult]{dbClearResult()}} invalidates it.
+only clearing it with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} invalidates it.
 If the connection to the database system is dropped (e.g., due to
 connectivity problems, server failure, etc.), \code{dbIsValid()} should return
 \code{FALSE}. This is not tested automatically.

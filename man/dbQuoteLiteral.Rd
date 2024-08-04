@@ -30,8 +30,8 @@ this function returns a length-0 object.
 When passing the returned object again to \code{dbQuoteLiteral()}
 as \code{x}
 argument, it is returned unchanged.
-Passing objects of class \link{SQL} should also return them unchanged.
-(For backends it may be most convenient to return \link{SQL} objects
+Passing objects of class \link[DBI:SQL]{DBI::SQL} should also return them unchanged.
+(For backends it may be most convenient to return \link[DBI:SQL]{DBI::SQL} objects
 to achieve this behavior, but this is not required.)
 }
 \description{

@@ -23,13 +23,13 @@ with columns
 \code{table} and \code{is_prefix} (in that order),
 optionally with other columns with a dot (\code{.}) prefix.
 The \code{table} column is of type list.
-Each object in this list is suitable for use as argument in \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Each object in this list is suitable for use as argument in \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}}.
 The \code{is_prefix} column is a logical.
 This data frame contains one row for each object (schema, table
 and view)
 accessible from the prefix (if passed) or from the global namespace
 (if prefix is omitted).
-Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}} are
+Tables added with \code{\link[DBI:dbWriteTable]{DBI::dbWriteTable()}} are
 part of the data frame.
 As soon a table is removed from the database,
 it is also removed from the data frame of database objects.
@@ -66,18 +66,18 @@ The \code{prefix} column indicates if the \code{table} value refers to a table
 or a prefix.
 For a call with the default \code{prefix = NULL}, the \code{table}
 values that have \code{is_prefix == FALSE} correspond to the tables
-returned from \code{\link[=dbListTables]{dbListTables()}},
+returned from \code{\link[DBI:dbListTables]{DBI::dbListTables()}},
 
-The \code{table} object can be quoted with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-The result of quoting can be passed to \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
-(For backends it may be convenient to use the \link{Id} class, but this is
+The \code{table} object can be quoted with \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}}.
+The result of quoting can be passed to \code{\link[DBI:dbUnquoteIdentifier]{DBI::dbUnquoteIdentifier()}}.
+(For backends it may be convenient to use the \link[DBI:Id]{DBI::Id} class, but this is
 not required.)
 
 Values in \code{table} column that have \code{is_prefix == TRUE} can be
 passed as the \code{prefix} argument to another call to \code{dbListObjects()}.
 For the data frame returned from a \code{dbListObject()} call with the
 \code{prefix} argument set, all \code{table} values where \code{is_prefix} is
-\code{FALSE} can be used in a call to \code{\link[=dbExistsTable]{dbExistsTable()}} which returns
+\code{FALSE} can be used in a call to \code{\link[DBI:dbExistsTable]{DBI::dbExistsTable()}} which returns
 \code{TRUE}.
 
 }

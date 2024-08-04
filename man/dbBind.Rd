@@ -22,9 +22,9 @@ with one column per query parameter.}
 \value{
 \code{dbBind()} returns the result set,
 invisibly,
-for queries issued by \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} and
+for queries issued by \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}} or \code{\link[DBI:dbSendQueryArrow]{DBI::dbSendQueryArrow()}} and
 also for data manipulation statements issued by
-\code{\link[=dbSendStatement]{dbSendStatement()}}.
+\code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}.
 }
 \description{
 For parametrized or prepared statements,
@@ -190,7 +190,7 @@ The behavior for mixing placeholders of different types
 (in particular mixing positional and named placeholders)
 is not specified.
 
-Calling \code{dbBind()} on a result set already cleared by \code{\link[=dbClearResult]{dbClearResult()}}
+Calling \code{dbBind()} on a result set already cleared by \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}
 also raises an error.
 
 }
@@ -200,41 +200,41 @@ also raises an error.
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[=dbSendQuery]{dbSendQuery()}}, \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[=dbSendStatement]{dbSendStatement()}}
+\item Call \code{\link[DBI:dbSendQuery]{DBI::dbSendQuery()}}, \code{\link[DBI:dbSendQueryArrow]{DBI::dbSendQueryArrow()}} or \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}}
 with a query or statement that contains placeholders,
-store the returned \linkS4class{DBIResult} object in a variable.
+store the returned \link[DBI:DBIResult-class]{DBI::DBIResult} object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
-It is good practice to register a call to \code{\link[=dbClearResult]{dbClearResult()}} via
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}} via
 \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
 (see the last enumeration item).
-Until \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}} have been called,
+Until \code{\link[DBI:dbBind]{DBI::dbBind()}} or \code{\link[DBI:dbBind]{DBI::dbBindArrow()}} have been called,
 the returned result set object has the following behavior:
 \itemize{
-\item \code{\link[=dbFetch]{dbFetch()}} raises an error (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
-\item \code{\link[=dbGetRowCount]{dbGetRowCount()}} returns zero (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
-\item \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} returns an integer \code{NA} (for \code{dbSendStatement()})
-\item \code{\link[=dbIsValid]{dbIsValid()}} returns \code{TRUE}
-\item \code{\link[=dbHasCompleted]{dbHasCompleted()}} returns \code{FALSE}
+\item \code{\link[DBI:dbFetch]{DBI::dbFetch()}} raises an error (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
+\item \code{\link[DBI:dbGetRowCount]{DBI::dbGetRowCount()}} returns zero (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
+\item \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}} returns an integer \code{NA} (for \code{dbSendStatement()})
+\item \code{\link[DBI:dbIsValid]{DBI::dbIsValid()}} returns \code{TRUE}
+\item \code{\link[DBI:dbHasCompleted]{DBI::dbHasCompleted()}} returns \code{FALSE}
 }
-\item Call \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}:
+\item Call \code{\link[DBI:dbBind]{DBI::dbBind()}} or \code{\link[DBI:dbBind]{DBI::dbBindArrow()}}:
 \itemize{
-\item For \code{\link[=dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements
+\item For \code{\link[DBI:dbBind]{DBI::dbBind()}}, the \code{params} argument must be a list where all elements
 have the same lengths and contain values supported by the backend.
 A \link{data.frame} is internally stored as such a list.
-\item For \code{\link[=dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a
+\item For \code{\link[DBI:dbBind]{DBI::dbBindArrow()}}, the \code{params} argument must be a
 nanoarrow array stream, with one column per query parameter.
 }
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
-\item For queries issued by \code{dbSendQuery()} or \code{dbSendQueryArrow()}, call \code{\link[=dbFetch]{dbFetch()}}.
+\item For queries issued by \code{dbSendQuery()} or \code{dbSendQueryArrow()}, call \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
 \item For statements issued by \code{dbSendStatements()},
-call \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}.
-(Execution begins immediately after the \code{\link[=dbBind]{dbBind()}} call,
+call \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}}.
+(Execution begins immediately after the \code{\link[DBI:dbBind]{DBI::dbBind()}} call,
 the statement is processed entirely before the function returns.)
 }
 \item Repeat 2. and 3. as necessary.
-\item Close the result set via \code{\link[=dbClearResult]{dbClearResult()}}.
+\item Close the result set via \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 }
 
 
@@ -266,9 +266,9 @@ At least the following data types are accepted on input (including \link{NA}):
 (also with special characters such as spaces, newlines, quotes, and backslashes)
 \item \link{factor} (bound as character,
 with warning)
-\item \link{Date}
+\item \link[lubridate:date_utils]{lubridate::Date}
 (also when stored internally as integer)
-\item \link{POSIXct} timestamps
+\item \link[lubridate:posix_utils]{lubridate::POSIXct} timestamps
 \item \link{POSIXlt} timestamps
 \item \link{difftime} values
 (also with units other than seconds

@@ -18,7 +18,7 @@ returns a character vector
 that enumerates all tables
 and views
 in the database.
-Tables added with \code{\link[=dbWriteTable]{dbWriteTable()}} are
+Tables added with \code{\link[DBI:dbWriteTable]{DBI::dbWriteTable()}} are
 part of the list.
 As soon a table is removed from the database,
 it is also removed from the list of database tables.

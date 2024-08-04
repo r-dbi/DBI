@@ -16,10 +16,10 @@ dbSendQueryArrow(conn, statement, ...)
 }
 \value{
 \code{dbSendQueryArrow()} returns
-an S4 object that inherits from \linkS4class{DBIResultArrow}.
-The result set can be used with \code{\link[=dbFetchArrow]{dbFetchArrow()}} to extract records.
+an S4 object that inherits from \link[DBI:DBIResultArrow-class]{DBI::DBIResultArrow}.
+The result set can be used with \code{\link[DBI:dbFetchArrow]{DBI::dbFetchArrow()}} to extract records.
 Once you have finished using a result, make sure to clear it
-with \code{\link[=dbClearResult]{dbClearResult()}}.
+with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -105,7 +105,7 @@ See the "Specification" sections for details on their usage.
 
 No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
-\code{\link[=dbClearResult]{dbClearResult()}}.
+\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
 Failure to clear the result set leads to a warning
 when the connection is closed.
 
@@ -115,7 +115,7 @@ and raises a warning.
 The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
-The \code{param} argument allows passing query parameters, see \code{\link[=dbBind]{dbBind()}} for details.
+The \code{param} argument allows passing query parameters, see \code{\link[DBI:dbBind]{DBI::dbBind()}} for details.
 
 }
 
@@ -155,7 +155,7 @@ the backend tries \code{immediate = TRUE} (and gives a message)
 }
 \item A query with parameters is passed:
 \enumerate{
-\item \code{params} not given: waiting for parameters via \code{\link[=dbBind]{dbBind()}}
+\item \code{params} not given: waiting for parameters via \code{\link[DBI:dbBind]{DBI::dbBind()}}
 \item \code{params} given: query is executed
 }
 }

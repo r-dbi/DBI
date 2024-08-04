@@ -39,7 +39,7 @@ Returns if a table given by name exists in the database.
 An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if \code{name} cannot be processed with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} or
+if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}} or
 if this results in a non-scalar.
 
 }
@@ -53,10 +53,10 @@ to support databases that allow non-syntactic names for their objects:
 \item If an unquoted table name as string: \code{dbExistsTable()} will do the
 quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
-\item If the result of a call to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
+\item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}}: no more quoting is done
 }
 
-For all tables listed by \code{\link[=dbListTables]{dbListTables()}}, \code{dbExistsTable()} returns \code{TRUE}.
+For all tables listed by \code{\link[DBI:dbListTables]{DBI::dbListTables()}}, \code{dbExistsTable()} returns \code{TRUE}.
 
 }
 

@@ -22,9 +22,9 @@ The names of the input argument are preserved in the output.
 If \code{x} is a value returned by \code{dbUnquoteIdentifier()},
 calling \code{dbUnquoteIdentifier(..., dbQuoteIdentifier(..., x))}
 returns \code{list(x)}.
-If \code{x} is an object of class \link{Id},
+If \code{x} is an object of class \link[DBI:Id]{DBI::Id},
 calling \code{dbUnquoteIdentifier(..., x)} returns \code{list(x)}.
-(For backends it may be most convenient to return \link{Id} objects
+(For backends it may be most convenient to return \link[DBI:Id]{DBI::Id} objects
 to achieve this behavior, but this is not required.)
 
 Plain character vectors can also be passed to \code{dbUnquoteIdentifier()}.
@@ -47,7 +47,7 @@ as the \code{x} argument.
 \section{Specification}{
 
 
-For any character vector of length one, quoting (with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}})
+For any character vector of length one, quoting (with \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}})
 then unquoting then quoting the first element is identical to just quoting.
 This is also true for strings that
 contain special characters such as a space,
@@ -57,8 +57,8 @@ or quotes used to mark strings
 or identifiers,
 if the database supports this.
 
-Unquoting simple strings (consisting of only letters) wrapped with \code{\link[=SQL]{SQL()}} and
-then quoting via \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} gives the same result as just
+Unquoting simple strings (consisting of only letters) wrapped with \code{\link[DBI:SQL]{DBI::SQL()}} and
+then quoting via \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}} gives the same result as just
 quoting the string.
 Similarly, unquoting expressions of the form \code{SQL("schema.table")}
 and then quoting gives the same result as quoting the identifier

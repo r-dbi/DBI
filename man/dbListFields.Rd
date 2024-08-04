@@ -55,9 +55,9 @@ or invalid connection.
 The \code{name} argument can be
 \itemize{
 \item a string
-\item the return value of \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
+\item the return value of \code{\link[DBI:dbQuoteIdentifier]{DBI::dbQuoteIdentifier()}}
 \item a value from the \code{table} column from the return value of
-\code{\link[=dbListObjects]{dbListObjects()}} where \code{is_prefix} is \code{FALSE}
+\code{\link[DBI:dbListObjects]{DBI::dbListObjects()}} where \code{is_prefix} is \code{FALSE}
 }
 
 A column named \code{row_names} is treated like any other column.

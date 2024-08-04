@@ -17,7 +17,7 @@ returns a data frame
 with at least two columns \code{"name"} and \code{"type"} (in that order)
 (and optional columns that start with a dot).
 The \code{"name"} and \code{"type"} columns contain the names and types
-of the R columns of the data frame that is returned from \code{\link[=dbFetch]{dbFetch()}}.
+of the R columns of the data frame that is returned from \code{\link[DBI:dbFetch]{DBI::dbFetch()}}.
 The \code{"type"} column is of type \code{character} and only for information.
 Do not compute on the \code{"type"} column, instead use \code{dbFetch(res, n = 0)}
 to create a zero-row data frame initialized with the correct data types.
