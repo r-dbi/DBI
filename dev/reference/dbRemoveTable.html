@@ -57,7 +57,7 @@ sparklyr::dbRemoveTable("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -154,7 +154,7 @@ An attempt to remove a view with this function may result in an error.</p>
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code> or
 if this results in a non-scalar.</p>
     </div>
     <div class="section level2">
@@ -180,15 +180,15 @@ succeeds if the table does not exist.</p>
 
 
 <p>A table removed by <code>dbRemoveTable()</code> doesn't appear in the list of tables
-returned by <code><a href="dbListTables.html">dbListTables()</a></code>,
-and <code><a href="dbExistsTable.html">dbExistsTable()</a></code> returns <code>FALSE</code>.
+returned by <code><a href="dbListTables.html">DBI::dbListTables()</a></code>,
+and <code><a href="dbExistsTable.html">DBI::dbExistsTable()</a></code> returns <code>FALSE</code>.
 The removal propagates immediately to other connections to the same database.
 This function can also be used to remove a temporary table.</p>
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbRemoveTable()</code> will do the
 quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
-<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

@@ -37,7 +37,7 @@ RPostgres::dbListObjects("PqConnection")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,13 +114,13 @@ with columns
 <code>table</code> and <code>is_prefix</code> (in that order),
 optionally with other columns with a dot (<code>.</code>) prefix.
 The <code>table</code> column is of type list.
-Each object in this list is suitable for use as argument in <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+Each object in this list is suitable for use as argument in <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code>.
 The <code>is_prefix</code> column is a logical.
 This data frame contains one row for each object (schema, table
 and view)
 accessible from the prefix (if passed) or from the global namespace
 (if prefix is omitted).
-Tables added with <code><a href="dbWriteTable.html">dbWriteTable()</a></code> are
+Tables added with <code><a href="dbWriteTable.html">DBI::dbWriteTable()</a></code> are
 part of the data frame.
 As soon a table is removed from the database,
 it is also removed from the data frame of database objects.</p>
@@ -144,16 +144,16 @@ or invalid connection.</p>
 or a prefix.
 For a call with the default <code>prefix = NULL</code>, the <code>table</code>
 values that have <code>is_prefix == FALSE</code> correspond to the tables
-returned from <code><a href="dbListTables.html">dbListTables()</a></code>,</p>
-<p>The <code>table</code> object can be quoted with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
-The result of quoting can be passed to <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code>.
-(For backends it may be convenient to use the <a href="Id.html">Id</a> class, but this is
+returned from <code><a href="dbListTables.html">DBI::dbListTables()</a></code>,</p>
+<p>The <code>table</code> object can be quoted with <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code>.
+The result of quoting can be passed to <code><a href="dbUnquoteIdentifier.html">DBI::dbUnquoteIdentifier()</a></code>.
+(For backends it may be convenient to use the <a href="Id.html">DBI::Id</a> class, but this is
 not required.)</p>
 <p>Values in <code>table</code> column that have <code>is_prefix == TRUE</code> can be
 passed as the <code>prefix</code> argument to another call to <code>dbListObjects()</code>.
 For the data frame returned from a <code>dbListObject()</code> call with the
 <code>prefix</code> argument set, all <code>table</code> values where <code>is_prefix</code> is
-<code>FALSE</code> can be used in a call to <code><a href="dbExistsTable.html">dbExistsTable()</a></code> which returns
+<code>FALSE</code> can be used in a call to <code><a href="dbExistsTable.html">DBI::dbExistsTable()</a></code> which returns
 <code>TRUE</code>.</p>
     </div>
     <div class="section level2">

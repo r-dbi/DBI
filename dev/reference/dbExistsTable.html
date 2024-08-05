@@ -75,7 +75,7 @@ sparklyr::dbExistsTable("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -181,7 +181,7 @@ specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code> or
 if this results in a non-scalar.</p>
     </div>
     <div class="section level2">
@@ -193,8 +193,8 @@ if this results in a non-scalar.</p>
 to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbExistsTable()</code> will do the
 quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
-<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
-</ul><p>For all tables listed by <code><a href="dbListTables.html">dbListTables()</a></code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.</p>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+</ul><p>For all tables listed by <code><a href="dbListTables.html">DBI::dbListTables()</a></code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

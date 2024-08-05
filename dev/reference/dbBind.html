@@ -59,7 +59,7 @@ sparklyr::dbBind("DBISparkResult")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,9 +145,9 @@ with one column per query parameter.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>dbBind()</code> returns the result set,
 invisibly,
-for queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> and
+for queries issued by <code><a href="dbSendQuery.html">DBI::dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">DBI::dbSendQueryArrow()</a></code> and
 also for data manipulation statements issued by
-<code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
+<code><a href="dbSendStatement.html">DBI::dbSendStatement()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -279,7 +279,7 @@ otherwise an error is raised.
 The behavior for mixing placeholders of different types
 (in particular mixing positional and named placeholders)
 is not specified.</p>
-<p>Calling <code>dbBind()</code> on a result set already cleared by <code><a href="dbClearResult.html">dbClearResult()</a></code>
+<p>Calling <code>dbBind()</code> on a result set already cleared by <code><a href="dbClearResult.html">DBI::dbClearResult()</a></code>
 also raises an error.</p>
     </div>
     <div class="section level2">
@@ -287,35 +287,35 @@ also raises an error.</p>
 
 
 
-<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+<p><span class="pkg">DBI</span> clients execute parametrized statements as follows:</p><ol><li><p>Call <code><a href="dbSendQuery.html">DBI::dbSendQuery()</a></code>, <code><a href="dbSendQueryArrow.html">DBI::dbSendQueryArrow()</a></code> or <code><a href="dbSendStatement.html">DBI::dbSendStatement()</a></code>
 with a query or statement that contains placeholders,
-store the returned <a href="DBIResult-class.html">DBIResult</a> object in a variable.
+store the returned <a href="DBIResult-class.html">DBI::DBIResult</a> object in a variable.
 Mixing placeholders (in particular, named and unnamed ones) is not
 recommended.
-It is good practice to register a call to <code><a href="dbClearResult.html">dbClearResult()</a></code> via
+It is good practice to register a call to <code><a href="dbClearResult.html">DBI::dbClearResult()</a></code> via
 <code><a href="https://rdrr.io/r/base/on.exit.html" class="external-link">on.exit()</a></code> right after calling <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
 (see the last enumeration item).
-Until <code>dbBind()</code> or <code>dbBindArrow()</code> have been called,
-the returned result set object has the following behavior:</p><ul><li><p><code><a href="dbFetch.html">dbFetch()</a></code> raises an error (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
-<li><p><code><a href="dbGetRowCount.html">dbGetRowCount()</a></code> returns zero (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
-<li><p><code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code> returns an integer <code>NA</code> (for <code><a href="dbSendStatement.html">dbSendStatement()</a></code>)</p></li>
-<li><p><code><a href="dbIsValid.html">dbIsValid()</a></code> returns <code>TRUE</code></p></li>
-<li><p><code><a href="dbHasCompleted.html">dbHasCompleted()</a></code> returns <code>FALSE</code></p></li>
+Until <code>DBI::dbBind()</code> or <code>DBI::dbBindArrow()</code> have been called,
+the returned result set object has the following behavior:</p><ul><li><p><code><a href="dbFetch.html">DBI::dbFetch()</a></code> raises an error (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
+<li><p><code><a href="dbGetRowCount.html">DBI::dbGetRowCount()</a></code> returns zero (for <code><a href="dbSendQuery.html">dbSendQuery()</a></code> and <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>)</p></li>
+<li><p><code><a href="dbGetRowsAffected.html">DBI::dbGetRowsAffected()</a></code> returns an integer <code>NA</code> (for <code><a href="dbSendStatement.html">dbSendStatement()</a></code>)</p></li>
+<li><p><code><a href="dbIsValid.html">DBI::dbIsValid()</a></code> returns <code>TRUE</code></p></li>
+<li><p><code><a href="dbHasCompleted.html">DBI::dbHasCompleted()</a></code> returns <code>FALSE</code></p></li>
 </ul></li>
-<li><p>Call <code>dbBind()</code> or <code>dbBindArrow()</code>:</p><ul><li><p>For <code>dbBind()</code>, the <code>params</code> argument must be a list where all elements
+<li><p>Call <code>DBI::dbBind()</code> or <code>DBI::dbBindArrow()</code>:</p><ul><li><p>For <code>DBI::dbBind()</code>, the <code>params</code> argument must be a list where all elements
 have the same lengths and contain values supported by the backend.
 A <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> is internally stored as such a list.</p></li>
-<li><p>For <code>dbBindArrow()</code>, the <code>params</code> argument must be a
+<li><p>For <code>DBI::dbBindArrow()</code>, the <code>params</code> argument must be a
 nanoarrow array stream, with one column per query parameter.</p></li>
 </ul></li>
-<li><p>Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.</p><ul><li><p>For queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, call <code><a href="dbFetch.html">dbFetch()</a></code>.</p></li>
+<li><p>Retrieve the data or the number of affected rows from the <code>DBIResult</code> object.</p><ul><li><p>For queries issued by <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>, call <code><a href="dbFetch.html">DBI::dbFetch()</a></code>.</p></li>
 <li><p>For statements issued by <code>dbSendStatements()</code>,
-call <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code>.
-(Execution begins immediately after the <code>dbBind()</code> call,
+call <code><a href="dbGetRowsAffected.html">DBI::dbGetRowsAffected()</a></code>.
+(Execution begins immediately after the <code>DBI::dbBind()</code> call,
 the statement is processed entirely before the function returns.)</p></li>
 </ul></li>
 <li><p>Repeat 2. and 3. as necessary.</p></li>
-<li><p>Close the result set via <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p></li>
+<li><p>Close the result set via <code><a href="dbClearResult.html">DBI::dbClearResult()</a></code>.</p></li>
 </ol><p>The elements of the <code>params</code> argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
@@ -340,9 +340,9 @@ their order in the <code>params</code> argument is not important.</p>
 (also with special characters such as spaces, newlines, quotes, and backslashes)</p></li>
 <li><p><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a> (bound as character,
 with warning)</p></li>
-<li><p><a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a>
+<li><p>lubridate::Date
 (also when stored internally as integer)</p></li>
-<li><p><a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">POSIXct</a> timestamps</p></li>
+<li><p>lubridate::POSIXct timestamps</p></li>
 <li><p><a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">POSIXlt</a> timestamps</p></li>
 <li><p><a href="https://rdrr.io/r/base/difftime.html" class="external-link">difftime</a> values
 (also with units other than seconds

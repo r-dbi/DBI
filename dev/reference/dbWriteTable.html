@@ -83,7 +83,7 @@ sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -212,7 +212,7 @@ an error is raised; the remote table remains unchanged.</p>
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
-if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or
+if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code> or
 if this results in a non-scalar.
 Invalid values for the additional arguments <code>row.names</code>,
 <code>overwrite</code>, <code>append</code>, <code>field.types</code>, and <code>temporary</code>
@@ -248,7 +248,7 @@ See the "Specification" and "Value" sections for details on their usage.</p>
 <p>The <code>name</code> argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:</p><ul><li><p>If an unquoted table name as string: <code>dbWriteTable()</code> will do the quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
-<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
+<li><p>If the result of a call to <code><a href="dbQuoteIdentifier.html">DBI::dbQuoteIdentifier()</a></code>: no more quoting is done</p></li>
 </ul><p>The <code>value</code> argument must be a data frame
 with a subset of the columns of the existing table if <code>append = TRUE</code>.
 The order of the columns does not matter with <code>append = TRUE</code>.</p>
@@ -271,7 +271,7 @@ and, if the database supports non-syntactic identifiers,
 also for table names
 and column names.</p>
 <p>The following data types must be supported at least,
-and be read identically with <code><a href="dbReadTable.html">dbReadTable()</a></code>:</p><ul><li><p>integer</p></li>
+and be read identically with <code><a href="dbReadTable.html">DBI::dbReadTable()</a></code>:</p><ul><li><p>integer</p></li>
 <li><p>numeric
 (the behavior for <code>Inf</code> and <code>NaN</code> is not specified)</p></li>
 <li><p>logical</p></li>
@@ -310,9 +310,9 @@ input time zone)</p></li>
 one entry for each column.
 It indicates the SQL data type to be used for a new column.
 If a column is missed from <code>field.types</code>, the type is inferred
-from the input data with <code><a href="dbDataType.html">dbDataType()</a></code>.</p>
+from the input data with <code><a href="dbDataType.html">DBI::dbDataType()</a></code>.</p>
 <p>The interpretation of <a href="rownames.html">rownames</a> depends on the <code>row.names</code> argument,
-see <code><a href="rownames.html">sqlRownamesToColumn()</a></code> for details:</p><ul><li><p>If <code>FALSE</code> or <code>NULL</code>, row names are ignored.</p></li>
+see <code><a href="rownames.html">DBI::sqlRownamesToColumn()</a></code> for details:</p><ul><li><p>If <code>FALSE</code> or <code>NULL</code>, row names are ignored.</p></li>
 <li><p>If <code>TRUE</code>, row names are converted to a column named "row_names",
 even if the input data frame only has natural row names from 1 to <code>nrow(...)</code>.</p></li>
 <li><p>If <code>NA</code>, a column named "row_names" is created if the data has custom row names,

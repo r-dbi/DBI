@@ -49,7 +49,7 @@ sparklyr::dbGetStatement("DBISparkResult")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,8 +120,8 @@ or <code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>dbGetStatement()</code> returns a string, the query used in
-either <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or
-<code><a href="dbSendStatement.html">dbSendStatement()</a></code>.</p>
+either <code><a href="dbSendQuery.html">DBI::dbSendQuery()</a></code> or
+<code><a href="dbSendStatement.html">DBI::dbSendStatement()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="failure-modes">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes"></a></h2>
@@ -129,7 +129,7 @@ either <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or
 
 
 <p>Attempting to query the statement for a result set cleared with
-<code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<code><a href="dbClearResult.html">DBI::dbClearResult()</a></code> gives an error.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

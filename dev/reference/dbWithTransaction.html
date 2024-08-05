@@ -37,7 +37,7 @@ pool::dbWithTransaction(&quot;Pool&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,7 +123,7 @@ generic only if they implement specialized handling.</p>
 <p>Failure to initiate the transaction
 (e.g., if the connection is closed
 or invalid
-of if <code><a href="transactions.html">dbBegin()</a></code> has been called already)
+of if <code><a href="transactions.html">DBI::dbBegin()</a></code> has been called already)
 gives an error.</p>
     </div>
     <div class="section level2">
@@ -133,9 +133,9 @@ gives an error.</p>
 
 <p><code>dbWithTransaction()</code> initiates a transaction with <code><a href="transactions.html">dbBegin()</a></code>, executes
 the code given in the <code>code</code> argument, and commits the transaction with
-<code><a href="transactions.html">dbCommit()</a></code>.
+<code><a href="transactions.html">DBI::dbCommit()</a></code>.
 If the code raises an error, the transaction is instead aborted with
-<code><a href="transactions.html">dbRollback()</a></code>, and the error is propagated.
+<code><a href="transactions.html">DBI::dbRollback()</a></code>, and the error is propagated.
 If the code calls <code>dbBreak()</code>, execution of the code stops and the
 transaction is silently aborted.
 All side effects caused by the code

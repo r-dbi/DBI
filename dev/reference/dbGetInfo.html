@@ -93,7 +93,7 @@ sparklyr::dbGetInfo("spark_connection")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,11 +187,11 @@ or a <a href="DBIResult-class.html">DBIResult</a></p></dd>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>For objects of class <a href="DBIDriver-class.html">DBIDriver</a>, <code>dbGetInfo()</code>
+    <p>For objects of class <a href="DBIDriver-class.html">DBI::DBIDriver</a>, <code>dbGetInfo()</code>
 returns a named list
 that contains at least the following components:</p><ul><li><p><code>driver.version</code>: the package version of the DBI backend,</p></li>
 <li><p><code>client.version</code>: the version of the DBMS client library.</p></li>
-</ul><p>For objects of class <a href="DBIConnection-class.html">DBIConnection</a>, <code>dbGetInfo()</code>
+</ul><p>For objects of class <a href="DBIConnection-class.html">DBI::DBIConnection</a>, <code>dbGetInfo()</code>
 returns a named list
 that contains at least the following components:</p><ul><li><p><code>db.version</code>: version of the database server,</p></li>
 <li><p><code>dbname</code>: database name,</p></li>
@@ -200,17 +200,17 @@ that contains at least the following components:</p><ul><li><p><code>db.version<
 <li><p><code>port</code>: port on the database server.
 It must not contain a <code>password</code> component.
 Components that are not applicable should be set to <code>NA</code>.</p></li>
-</ul><p>For objects of class <a href="DBIResult-class.html">DBIResult</a>, <code>dbGetInfo()</code>
+</ul><p>For objects of class <a href="DBIResult-class.html">DBI::DBIResult</a>, <code>dbGetInfo()</code>
 returns a named list
-that contains at least the following components:</p><ul><li><p><code>statatment</code>: the statement used with <code><a href="dbSendQuery.html">dbSendQuery()</a></code> or <code><a href="dbExecute.html">dbExecute()</a></code>,
-as returned by <code><a href="dbGetStatement.html">dbGetStatement()</a></code>,</p></li>
+that contains at least the following components:</p><ul><li><p><code>statatment</code>: the statement used with <code><a href="dbSendQuery.html">DBI::dbSendQuery()</a></code> or <code><a href="dbExecute.html">DBI::dbExecute()</a></code>,
+as returned by <code><a href="dbGetStatement.html">DBI::dbGetStatement()</a></code>,</p></li>
 <li><p><code>row.count</code>: the number of rows fetched so far (for queries),
-as returned by <code><a href="dbGetRowCount.html">dbGetRowCount()</a></code>,</p></li>
+as returned by <code><a href="dbGetRowCount.html">DBI::dbGetRowCount()</a></code>,</p></li>
 <li><p><code>rows.affected</code>: the number of rows affected (for statements),
-as returned by <code><a href="dbGetRowsAffected.html">dbGetRowsAffected()</a></code></p></li>
+as returned by <code><a href="dbGetRowsAffected.html">DBI::dbGetRowsAffected()</a></code></p></li>
 <li><p><code>has.completed</code>: a logical that indicates
 if the query or statement has completed,
-as returned by <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code>.</p></li>
+as returned by <code><a href="dbHasCompleted.html">DBI::dbHasCompleted()</a></code>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="implementation-notes">Implementation notes<a class="anchor" aria-label="anchor" href="#implementation-notes"></a></h2>

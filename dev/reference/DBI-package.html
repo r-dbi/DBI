@@ -13,7 +13,7 @@ the various R/DBMS implementations (so-called DBI backends)."><meta name="robots
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,9 +69,9 @@ to the backend author to adopt this convention or not.</p>
 
 <p>A backend defines three classes,
 which are subclasses of
-<a href="DBIDriver-class.html">DBIDriver</a>,
-<a href="DBIConnection-class.html">DBIConnection</a>,
-and <a href="DBIResult-class.html">DBIResult</a>.
+<a href="DBIDriver-class.html">DBI::DBIDriver</a>,
+<a href="DBIConnection-class.html">DBI::DBIConnection</a>,
+and <a href="DBIResult-class.html">DBI::DBIResult</a>.
 The backend provides implementation for all methods
 of these base classes
 that are defined but not implemented by DBI.
@@ -84,7 +84,7 @@ and have an ellipsis <code>...</code> in their formals for extensibility.</p>
 
 
 
-<p>The backend must support creation of an instance of its <a href="DBIDriver-class.html">DBIDriver</a> subclass
+<p>The backend must support creation of an instance of its <a href="DBIDriver-class.html">DBI::DBIDriver</a> subclass
 with a <dfn>constructor function</dfn>.
 By default, its name is the package name without the leading ‘R’
 (if it exists), e.g., <code>SQLite</code> for the <span class="pkg">RSQLite</span> package.

@@ -71,7 +71,7 @@ sparklyr::dbQuoteIdentifier("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -164,8 +164,8 @@ The names of the input argument are preserved in the output.
 When passing the returned object again to <code>dbQuoteIdentifier()</code>
 as <code>x</code>
 argument, it is returned unchanged.
-Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
-(For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
+Passing objects of class <a href="SQL.html">DBI::SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href="SQL.html">DBI::SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
     </div>
     <div class="section level2">
@@ -182,7 +182,7 @@ but not for an empty string.</p>
 
 
 
-<p>Calling <code><a href="dbGetQuery.html">dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
+<p>Calling <code><a href="dbGetQuery.html">DBI::dbGetQuery()</a></code> for a query of the format <code>SELECT 1 AS ...</code>
 returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like <code>SELECT 1 AS ...</code>

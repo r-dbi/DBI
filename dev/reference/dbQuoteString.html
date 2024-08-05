@@ -59,7 +59,7 @@ sparklyr::dbQuoteString("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,8 +145,8 @@ For an empty character vector this function returns a length-0 object.</p>
 <p>When passing the returned object again to <code>dbQuoteString()</code>
 as <code>x</code>
 argument, it is returned unchanged.
-Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
-(For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
+Passing objects of class <a href="SQL.html">DBI::SQL</a> should also return them unchanged.
+(For backends it may be most convenient to return <a href="SQL.html">DBI::SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
     </div>
     <div class="section level2">

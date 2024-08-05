@@ -55,7 +55,7 @@ sparklyr::dbFetch("DBISparkResult", "ANY")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -199,7 +199,7 @@ If the <code>n</code> argument is not an atomic whole number
 greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.</p>
 <p>Calling <code>dbFetch()</code> on a result set from a data manipulation query
-created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code> can
+created by <code><a href="dbSendStatement.html">DBI::dbSendStatement()</a></code> can
 be fetched and return an empty data frame, with a warning.</p>
     </div>
     <div class="section level2">
@@ -247,9 +247,9 @@ with NA for SQL <code>NULL</code> values
 with NA for SQL <code>NULL</code> values
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul><p>If dates and timestamps are supported by the backend, the following R types are
-used:</p><ul><li><p><a href="https://rdrr.io/r/base/Dates.html" class="external-link">Date</a> for dates
+used:</p><ul><li><p>lubridate::Date for dates
 (also applies to the return value of the SQL function <code>current_date</code>)</p></li>
-<li><p><a href="https://rdrr.io/r/base/DateTimeClasses.html" class="external-link">POSIXct</a> for timestamps
+<li><p>lubridate::POSIXct for timestamps
 (also applies to the return value of the SQL function <code>current_timestamp</code>)</p></li>
 </ul><p>R has no built-in type with lossless support for the full range of 64-bit
 or larger integers. If 64-bit integers are returned from a query,

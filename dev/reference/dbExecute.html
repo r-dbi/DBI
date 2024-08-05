@@ -43,7 +43,7 @@ sparklyr::dbExecute("spark_connection", "ANY")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9005</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9008</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -164,7 +164,7 @@ See the "Specification" sections for details on their usage.</p>
 
 
 
-<p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">DBI::dbBind()</a></code> for details.</p>
     </div>
     <div class="section level2">
     <h2 id="specification-for-the-immediate-argument">Specification for the <code>immediate</code> argument<a class="anchor" aria-label="anchor" href="#specification-for-the-immediate-argument"></a></h2>
@@ -192,7 +192,7 @@ because of a syntax error in the query, the backend tries
 <li><p>"special" query (such as setting a config options): fails,
 the backend tries <code>immediate = TRUE</code> (and gives a message)</p></li>
 </ol></li>
-<li><p>A query with parameters is passed:</p><ol><li><p><code>params</code> not given: waiting for parameters via <code><a href="dbBind.html">dbBind()</a></code></p></li>
+<li><p>A query with parameters is passed:</p><ol><li><p><code>params</code> not given: waiting for parameters via <code><a href="dbBind.html">DBI::dbBind()</a></code></p></li>
 <li><p><code>params</code> given: query is executed</p></li>
 </ol></li>
 </ol></li>
