@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9009 (2024-08-06)
+
+## Continuous integration
+
+- Inline action.
+
+
 # DBI 1.2.3.9008 (2024-08-05)
 
 ## Chore
