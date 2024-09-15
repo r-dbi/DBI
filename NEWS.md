@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9013 (2024-09-15)
+
+## Continuous integration
+
+  - Import from actions-sync, check carefully (#489).
+
+
 # DBI 1.2.3.9012 (2024-08-31)
 
 ## Continuous integration
