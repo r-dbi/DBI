@@ -21,7 +21,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9012</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -280,9 +280,7 @@ connection class:</p>
 fetched.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">#' @export</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/methods/setMethod.html" class="external-link">setMethod</a></span><span class="op">(</span><span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/methods/setMethod.html" class="external-link">setMethod</a></span><span class="op">(</span><span class="st">"dbHasCompleted"</span>, <span class="st">"KazamResult"</span>, <span class="kw">function</span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <p>With these four methods in place, you can now use the default
 <code><a href="../reference/dbGetQuery.html">dbGetQuery()</a></code> to send a query to the database, retrieve
 results if available and then clean up. Spend some time now making sure
@@ -366,7 +364,7 @@ get destroyed inadvertently.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
 </div>
 
     </footer>
