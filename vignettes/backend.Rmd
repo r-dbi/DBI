@@ -208,9 +208,7 @@ Next, implement `dbHasCompleted()` which should return a `logical` indicating if
 
 ```{r}
 #' @export
-setMethod("dbHasCompleted", "KazamResult", function(res, ...) {
-
-})
+setMethod("dbHasCompleted", "KazamResult", function(res, ...) {})
 ```
 
 With these four methods in place, you can now use the default `dbGetQuery()` to send a query to the database, retrieve results if available and then clean up. Spend some time now making sure this works with an existing database, or relax and let the `DBItest` package do the work for you.
