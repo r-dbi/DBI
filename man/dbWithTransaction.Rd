@@ -11,8 +11,8 @@ dbWithTransaction(conn, code, ...)
 dbBreak()
 }
 \arguments{
-\item{conn}{A \linkS4class{DBIConnection} object, as returned by
-\code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object,
+as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{code}{An arbitrary block of R code.}
 

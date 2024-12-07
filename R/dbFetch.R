@@ -18,8 +18,8 @@
 #' @inheritSection DBItest::spec_result_fetch Specification
 #' @inheritSection DBItest::spec_result_roundtrip Specification
 #'
-#' @param res An object inheriting from [DBIResult-class], created by
-#'   [dbSendQuery()].
+#' @param res An object inheriting from \link[DBI:DBIResult-class]{DBI::DBIResult},
+#'   created by [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch. Use `n = -1`
 #'   or `n = Inf`
 #'   to retrieve all pending records.  Some implementations may recognize other

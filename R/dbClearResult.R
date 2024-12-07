@@ -14,7 +14,7 @@
 #' @inheritSection DBItest::spec_result_clear_result Failure modes
 #' @inheritSection DBItest::spec_result_clear_result Specification
 #'
-#' @param res An object inheriting from [DBIResult-class].
+#' @param res An object inheriting from \link[DBI:DBIResult-class]{DBI::DBIResult}.
 #' @param ... Other arguments passed on to methods.
 #' @family DBIResult generics
 #' @family DBIResultArrow generics

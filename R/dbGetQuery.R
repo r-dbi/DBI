@@ -34,8 +34,8 @@
 #' Subclasses should override this method only if they provide some sort of
 #' performance optimization.
 #'
-#' @param conn A [DBIConnection-class] object, as returned by
-#'   [dbConnect()].
+#' @param conn A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object,
+#'   as returned by [dbConnect()].
 #' @param statement a character string containing SQL.
 #' @param ... Other parameters passed on to methods.
 #' @family DBIConnection generics

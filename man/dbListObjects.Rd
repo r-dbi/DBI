@@ -7,8 +7,8 @@
 dbListObjects(conn, prefix = NULL, ...)
 }
 \arguments{
-\item{conn}{A \linkS4class{DBIConnection} object, as returned by
-\code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object,
+as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{prefix}{A fully qualified path in the database's namespace, or \code{NULL}.
 This argument will be processed with \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.

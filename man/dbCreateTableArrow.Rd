@@ -7,8 +7,8 @@
 dbCreateTableArrow(conn, name, value, ..., temporary = FALSE)
 }
 \arguments{
-\item{conn}{A \linkS4class{DBIConnection} object, as returned by
-\code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object,
+as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
 \itemize{

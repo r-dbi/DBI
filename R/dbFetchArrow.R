@@ -15,8 +15,8 @@
 #' @inheritSection DBItest::spec_arrow_fetch_arrow Failure modes
 #' @inheritSection DBItest::spec_arrow_fetch_arrow Specification
 #'
-#' @param res An object inheriting from [DBIResultArrow-class], created by
-#'   [dbSendQueryArrow()].
+#' @param res An object inheriting from \link[DBI:DBIResultArrow-class]{DBI::DBIResultArrow},
+#'    created by [dbSendQueryArrow()].
 #' @param ... Other arguments passed on to methods.
 #' @seealso Close the result set with [dbClearResult()] as soon as you
 #'   finish retrieving the records you want.
