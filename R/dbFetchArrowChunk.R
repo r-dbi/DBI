@@ -16,7 +16,7 @@
 #' @inheritSection DBItest::spec_arrow_fetch_arrow_chunk Failure modes
 #' @inheritSection DBItest::spec_arrow_fetch_arrow_chunk Specification
 #'
-#' @param res An object inheriting from \link[DBI:DBIResultArrow-class]{DBI::DBIResultArrow},
+#' @param res An object inheriting from [DBI::DBIResultArrow][DBIResultArrow-class],
 #'   created by [dbSendQueryArrow()].
 #' @param ... Other arguments passed on to methods.
 #' @seealso Close the result set with [dbClearResult()] as soon as you

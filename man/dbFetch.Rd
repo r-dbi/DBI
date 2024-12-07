@@ -10,7 +10,7 @@ dbFetch(res, n = -1, ...)
 fetch(res, n = -1, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[DBI:DBIResult-class]{DBI::DBIResult},
+\item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult},
 created by \code{\link[=dbSendQuery]{dbSendQuery()}}.}
 
 \item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1}

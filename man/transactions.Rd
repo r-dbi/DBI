@@ -15,7 +15,7 @@ dbCommit(conn, ...)
 dbRollback(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[DBI:DBIConnection-class]{DBI::DBIConnection} object,
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
 as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}

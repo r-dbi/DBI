@@ -7,7 +7,7 @@
 dbFetchArrow(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[DBI:DBIResultArrow-class]{DBI::DBIResultArrow},
+\item{res}{An object inheriting from \link[=DBIResultArrow-class]{DBI::DBIResultArrow},
 created by \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}.}
 
 \item{...}{Other arguments passed on to methods.}

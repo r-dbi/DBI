@@ -18,7 +18,7 @@
 #' @inheritSection DBItest::spec_result_fetch Specification
 #' @inheritSection DBItest::spec_result_roundtrip Specification
 #'
-#' @param res An object inheriting from \link[DBI:DBIResult-class]{DBI::DBIResult},
+#' @param res An object inheriting from [DBI::DBIResult][DBIResult-class],
 #'   created by [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch. Use `n = -1`
 #'   or `n = Inf`

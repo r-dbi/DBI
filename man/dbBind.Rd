@@ -10,7 +10,7 @@ dbBind(res, params, ...)
 dbBindArrow(res, params, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[DBI:DBIResult-class]{DBI::DBIResult}.}
+\item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult}.}
 
 \item{params}{For \code{dbBind()}, a list of values, named or unnamed,
 or a data frame, with one element/column per query parameter.
