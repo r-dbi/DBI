@@ -27,8 +27,8 @@
 #' @inheritSection DBItest::spec_result_create_table_with_data_type Specification
 #'
 #' @inheritParams dbListConnections
-#' @param dbObj A object inheriting from [DBIDriver-class]
-#'   or [DBIConnection-class]
+#' @param dbObj A object inheriting from [DBI::DBIDriver][DBIDriver-class]
+#'   or [DBI::DBIConnection][DBIConnection-class]
 #' @param obj An R object whose SQL type we want to determine.
 #' @family DBIDriver generics
 #' @family DBIConnection generics

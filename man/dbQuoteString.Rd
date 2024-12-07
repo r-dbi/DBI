@@ -7,8 +7,8 @@
 dbQuoteString(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \linkS4class{DBIConnection} object, as returned by
-\code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
+as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A character vector to quote as string.}
 

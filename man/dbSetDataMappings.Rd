@@ -7,7 +7,7 @@
 dbSetDataMappings(res, flds, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \linkS4class{DBIResult}.}
+\item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult}.}
 
 \item{flds}{a field description object as returned by \code{dbColumnInfo}.}
 

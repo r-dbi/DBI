@@ -14,10 +14,10 @@
 #' @inherit DBItest::spec_driver_connect return
 #' @inheritSection DBItest::spec_driver_connect Specification
 #'
-#' @param drv an object that inherits from [DBIDriver-class],
-#'   or an existing [DBIConnection-class]
+#' @param drv An object that inherits from [DBI::DBIDriver][DBIDriver-class],
+#'   or an existing [DBI::DBIConnection][DBIConnection-class]
 #'   object (in order to clone an existing connection).
-#' @param ... authentication arguments needed by the DBMS instance; these
+#' @param ... Authentication arguments needed by the DBMS instance; these
 #'   typically include `user`, `password`, `host`, `port`, `dbname`, etc.
 #'   For details see the appropriate `DBIDriver`.
 #' @seealso [dbDisconnect()] to disconnect from a database.
