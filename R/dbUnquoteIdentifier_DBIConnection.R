@@ -1,13 +1,12 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbUnquoteIdentifier_DBIConnection <- function(conn, x, ...) {
-  # Determine quoting character
-  quote_char <- substr(dbQuoteIdentifier(conn, ""), 1, 1)
-
   if (is(x, "SQL") || is.character(x)) {
     if (is.character(x)) {
       stopifnot(!anyNA(x))
     }
+    # Determine quoting character
+    quote_char <- substr(dbQuoteIdentifier(conn, ""), 1L, 1L)
     x <- lapply(x, unquote, quote_char = quote_char)
     lapply(x, Id)
   } else if (is(x, "Id")) {
