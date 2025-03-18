@@ -17,7 +17,8 @@ duckdb::dbConnect("duckdb_driver")
 lazysf::dbConnect("SFSQLDriver")
 odbc::dbConnect("DatabricksOdbcDriver")
 odbc::dbConnect("OdbcDriver")
-odbc::dbConnect("Snowflake")
+odbc::dbConnect("RedshiftOdbcDriver")
+odbc::dbConnect("SnowflakeOdbcDriver")
 RAthena::dbConnect("AthenaDriver")
 RH2::dbConnect("H2Driver")
 RJDBC::dbConnect("JDBCDriver")
@@ -52,7 +53,8 @@ duckdb::dbConnect("duckdb_driver")
 lazysf::dbConnect("SFSQLDriver")
 odbc::dbConnect("DatabricksOdbcDriver")
 odbc::dbConnect("OdbcDriver")
-odbc::dbConnect("Snowflake")
+odbc::dbConnect("RedshiftOdbcDriver")
+odbc::dbConnect("SnowflakeOdbcDriver")
 RAthena::dbConnect("AthenaDriver")
 RH2::dbConnect("H2Driver")
 RJDBC::dbConnect("JDBCDriver")
@@ -77,7 +79,7 @@ sergeant::dbConnect("DrillDriver")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9026</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9027</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,13 +125,14 @@ Use <code><a href="dbCanConnect.html">dbCanConnect()</a></code> to check if a co
 <li><p><code><a href="https://rdrr.io/pkg/lazysf/man/dbConnect-SFSQLDriver-method.html" class="external-link">lazysf::dbConnect("SFSQLDriver")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/databricks.html" class="external-link">odbc::dbConnect("DatabricksOdbcDriver")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/dbConnect-OdbcDriver-method.html" class="external-link">odbc::dbConnect("OdbcDriver")</a></code></p></li>
-<li><p><code><a href="https://odbc.r-dbi.org/reference/snowflake.html" class="external-link">odbc::dbConnect("Snowflake")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/redshift.html" class="external-link">odbc::dbConnect("RedshiftOdbcDriver")</a></code></p></li>
+<li><p><code><a href="https://odbc.r-dbi.org/reference/snowflake.html" class="external-link">odbc::dbConnect("SnowflakeOdbcDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbConnect-AthenaDriver-method.html" class="external-link">RAthena::dbConnect("AthenaDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RH2/man/H2Driver-methods.html" class="external-link">RH2::dbConnect("H2Driver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCDriver-methods.html" class="external-link">RJDBC::dbConnect("JDBCDriver")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">RMariaDB::dbConnect("MariaDBDriver")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbConnect("MySQLConnection")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbConnect("MySQLDriver")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.r-universe.dev/RMySQL/reference/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbConnect("MySQLConnection")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.r-universe.dev/RMySQL/reference/dbConnect-MySQLDriver-method.html" class="external-link">RMySQL::dbConnect("MySQLDriver")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/Postgres.html" class="external-link">RPostgres::dbConnect("PqDriver")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/Redshift.html" class="external-link">RPostgres::dbConnect("RedshiftDriver")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html" class="external-link">RPostgreSQL::dbConnect("character")</a></code></p></li>

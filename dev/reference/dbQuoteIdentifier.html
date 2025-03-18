@@ -26,7 +26,9 @@ RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "Id")
 RPostgres::dbQuoteIdentifier("PqConnection", "SQL")
+RPresto::dbQuoteIdentifier("PrestoConnection", "AsIs")
 RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_schema")
+RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_table_path")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
 sparklyr::dbQuoteIdentifier("spark_connection", "character")
@@ -58,7 +60,9 @@ RMySQL::dbQuoteIdentifier("MySQLConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "character")
 RPostgres::dbQuoteIdentifier("PqConnection", "Id")
 RPostgres::dbQuoteIdentifier("PqConnection", "SQL")
+RPresto::dbQuoteIdentifier("PrestoConnection", "AsIs")
 RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_schema")
+RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_table_path")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")
 RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")
 sparklyr::dbQuoteIdentifier("spark_connection", "character")
@@ -71,7 +75,7 @@ sparklyr::dbQuoteIdentifier("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9026</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9027</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,11 +126,13 @@ operation is <code><a href="dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a><
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-quoting.html" class="external-link">RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://r-dbi.r-universe.dev/RMySQL/reference/dbQuoteIdentifier-MySQLConnection-character-method.html" class="external-link">RMySQL::dbQuoteIdentifier("MySQLConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rpostgres.r-dbi.org/reference/quote.html" class="external-link">RPostgres::dbQuoteIdentifier("PqConnection", "SQL")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbQuoteIdentifier("PrestoConnection", "AsIs")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_schema")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html" class="external-link">RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_table_path")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html" class="external-link">RSQLite::dbQuoteIdentifier("SQLiteConnection", "SQL")</a></code></p></li>
 <li><p><code>sparklyr::dbQuoteIdentifier("spark_connection", "character")</code></p></li>
