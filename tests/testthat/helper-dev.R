@@ -21,16 +21,13 @@ if (Sys.getenv("CI") == "") {
 
   rd_db <- tools::Rd_db(dir = r())
 
-  Links <- tools::findHTMLlinks()
-
   html_topic <- function(name) {
     rd <- rd_db[[paste0(name, ".Rd")]]
 
     conn <- textConnection(NULL, "w")
     on.exit(close(conn))
 
-    # tools::Rd2HTML(rd, conn, Links = Links)
-    tools::Rd2HTML(rd, conn)
+    tools::Rd2HTML(rd, conn, standalone = FALSE)
 
     textConnectionValue(conn)
   }
@@ -44,7 +41,6 @@ if (Sys.getenv("CI") == "") {
     xml2::xml_text(codes) <- gsub("[$]", "\\\\$", xml2::xml_text(codes))
 
     xx <- x %>% xml2::xml_find_first("/html/body")
-    xx %>% xml2::xml_find_first("//table") %>% xml2::xml_remove()
     xx %>% xml2::xml_find_all("//pre") %>% xml2::xml_set_attr("class", "r")
     patcher(xx)
   }
@@ -58,7 +54,6 @@ if (Sys.getenv("CI") == "") {
     remove_authors_section(x)
 
     x %>%
-      xml2::xml_find_first("div") %>%
       xml2::xml_children() %>%
       as.list()
   }
@@ -140,7 +135,6 @@ if (Sys.getenv("CI") == "") {
     patch_lifecycle_badges(x)
 
     x %>%
-      xml2::xml_find_first("div") %>%
       xml2::xml_children()
   }
 
@@ -189,6 +183,8 @@ if (Sys.getenv("CI") == "") {
   # temp_md <- "out.md"
 
   # html <- '<html><body><pre class="r">\na\nb\n</pre></body></html>'
+
+  html <- gsub("DBI::", "", html)
 
   writeLines(html, temp_html)
   rmarkdown::pandoc_convert(temp_html, "gfm", verbose = FALSE, output = temp_md)

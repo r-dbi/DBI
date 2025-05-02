@@ -1,4 +1,7 @@
 <h2 id="DBI-package">DBI: R Database Interface</h2>
+
+<span id="topic+DBI"></span>
+<span id="topic+DBI-package"></span>
 <p>DBI defines an interface for communication between R and relational database
 management systems.
 All classes in this package are virtual and need to be extended by
@@ -43,6 +46,8 @@ RSQLite::SQLite()
 
 </code></pre>
 <h2 id="dbDataType">Determine the SQL data type of an object</h2>
+
+<span id="topic+dbDataType"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbDataType(dbObj, obj, ...)
 </code></pre>
@@ -58,20 +63,20 @@ column in the dataframe.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbDataType_:_dbObj">dbObj</code></td>
+<td><code id="dbDataType_+3A_dbobj">dbObj</code></td>
 <td>
 <p>A object inheriting from DBIDriver
 or DBIConnection</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbDataType_:_obj">obj</code></td>
+<td><code id="dbDataType_+3A_obj">obj</code></td>
 <td>
 <p>An R object whose SQL type we want to determine.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbDataType_:_...">...</code></td>
+<td><code id="dbDataType_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -170,6 +175,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbConnect">Create a connection to a DBMS</h2>
+
+<span id="topic+dbConnect"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbConnect(drv, ...)
 </code></pre>
@@ -185,17 +192,17 @@ Use <code>dbCanConnect()</code> to check if a connection can be established.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbConnect_:_drv">drv</code></td>
+<td><code id="dbConnect_+3A_drv">drv</code></td>
 <td>
-<p>an object that inherits from DBIDriver,
+<p>An object that inherits from DBIDriver,
 or an existing DBIConnection
 object (in order to clone an existing connection).</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbConnect_:_...">...</code></td>
+<td><code id="dbConnect_+3A_...">...</code></td>
 <td>
-<p>authentication arguments needed by the DBMS instance; these
+<p>Authentication arguments needed by the DBMS instance; these
 typically include <code>user</code>, <code>password</code>, <code>host</code>, <code>port</code>, <code>dbname</code>, etc.
 For details see the appropriate <code>DBIDriver</code>.</p>
 </td>
@@ -275,6 +282,8 @@ dbListTables(con &lt;- dbConnect(RSQLite::SQLite(), ":memory:"))
 
 </code></pre>
 <h2 id="dbDisconnect">Disconnect (close) a connection</h2>
+
+<span id="topic+dbDisconnect"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbDisconnect(conn, ...)
 </code></pre>
@@ -285,14 +294,14 @@ resources (e.g., memory, sockets).
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbDisconnect_:_conn">conn</code></td>
+<td><code id="dbDisconnect_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbDisconnect_:_...">...</code></td>
+<td><code id="dbDisconnect_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -317,6 +326,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbSendQuery">Execute a query on a given database connection</h2>
+
+<span id="topic+dbSendQuery"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbSendQuery(conn, statement, ...)
 </code></pre>
@@ -333,20 +344,20 @@ as an Arrow object.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbSendQuery_:_conn">conn</code></td>
+<td><code id="dbSendQuery_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbSendQuery_:_statement">statement</code></td>
+<td><code id="dbSendQuery_+3A_statement">statement</code></td>
 <td>
 <p>a character string containing SQL.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbSendQuery_:_...">...</code></td>
+<td><code id="dbSendQuery_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -577,6 +588,9 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbFetch">Fetch records from a previously executed query</h2>
+
+<span id="topic+dbFetch"></span>
+<span id="topic+fetch"></span>
 <p>This section describes the behavior of the following methods:</p>
 <pre class="r"><code class="language-R">dbFetch(res, n = -1, ...)
 
@@ -589,14 +603,14 @@ as a data.frame.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbFetch_:_res">res</code></td>
+<td><code id="dbFetch_+3A_res">res</code></td>
 <td>
-<p>An object inheriting from DBIResult, created by
-<code>dbSendQuery()</code>.</p>
+<p>An object inheriting from DBIResult,
+created by <code>dbSendQuery()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbFetch_:_n">n</code></td>
+<td><code id="dbFetch_+3A_n">n</code></td>
 <td>
 <p>maximum number of records to retrieve per fetch. Use <code>n = -1</code>
 or <code>n = Inf</code>
@@ -605,7 +619,7 @@ special values.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbFetch_:_...">...</code></td>
+<td><code id="dbFetch_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -823,6 +837,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbClearResult">Clear a result set</h2>
+
+<span id="topic+dbClearResult"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbClearResult(res, ...)
 </code></pre>
@@ -834,13 +850,13 @@ This step is mandatory for all objects obtained by calling
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbClearResult_:_res">res</code></td>
+<td><code id="dbClearResult_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbClearResult_:_...">...</code></td>
+<td><code id="dbClearResult_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -977,6 +993,9 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbBind">Bind values to a parameterized/prepared statement</h2>
+
+<span id="topic+dbBind"></span>
+<span id="topic+dbBindArrow"></span>
 <p>This section describes the behavior of the following methods:</p>
 <pre class="r"><code class="language-R">dbBind(res, params, ...)
 
@@ -1003,13 +1022,13 @@ is compatible with <code>dbBind()</code>.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbBind_:_res">res</code></td>
+<td><code id="dbBind_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbBind_:_params">params</code></td>
+<td><code id="dbBind_+3A_params">params</code></td>
 <td>
 <p>For <code>dbBind()</code>, a list of values, named or unnamed,
 or a data frame, with one element/column per query parameter.
@@ -1018,7 +1037,7 @@ with one column per query parameter.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbBind_:_...">...</code></td>
+<td><code id="dbBind_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -1440,6 +1459,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbGetQuery">Retrieve results from a query</h2>
+
+<span id="topic+dbGetQuery"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbGetQuery(conn, statement, ...)
 </code></pre>
@@ -1456,20 +1477,20 @@ For retrieving results as an Arrow object, see <code>dbGetQueryArrow()</code>.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbGetQuery_:_conn">conn</code></td>
+<td><code id="dbGetQuery_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetQuery_:_statement">statement</code></td>
+<td><code id="dbGetQuery_+3A_statement">statement</code></td>
 <td>
 <p>a character string containing SQL.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetQuery_:_...">...</code></td>
+<td><code id="dbGetQuery_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -1646,6 +1667,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbSendStatement">Execute a data manipulation statement on a given database connection</h2>
+
+<span id="topic+dbSendStatement"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbSendStatement(conn, statement, ...)
 </code></pre>
@@ -1661,20 +1684,20 @@ that. For interactive use, you should almost always prefer
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbSendStatement_:_conn">conn</code></td>
+<td><code id="dbSendStatement_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbSendStatement_:_statement">statement</code></td>
+<td><code id="dbSendStatement_+3A_statement">statement</code></td>
 <td>
 <p>a character string containing SQL.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbSendStatement_:_...">...</code></td>
+<td><code id="dbSendStatement_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -1890,6 +1913,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbExecute">Change database state</h2>
+
+<span id="topic+dbExecute"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbExecute(conn, statement, ...)
 </code></pre>
@@ -1905,20 +1930,20 @@ the "The command execution flow" section.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbExecute_:_conn">conn</code></td>
+<td><code id="dbExecute_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbExecute_:_statement">statement</code></td>
+<td><code id="dbExecute_+3A_statement">statement</code></td>
 <td>
 <p>a character string containing SQL.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbExecute_:_...">...</code></td>
+<td><code id="dbExecute_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2070,6 +2095,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbQuoteString">Quote literal strings</h2>
+
+<span id="topic+dbQuoteString"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbQuoteString(conn, x, ...)
 </code></pre>
@@ -2081,20 +2108,20 @@ generate valid SQL and protect against SQL injection attacks.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbQuoteString_:_conn">conn</code></td>
+<td><code id="dbQuoteString_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbQuoteString_:_x">x</code></td>
+<td><code id="dbQuoteString_+3A_x">x</code></td>
 <td>
 <p>A character vector to quote as string.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbQuoteString_:_...">...</code></td>
+<td><code id="dbQuoteString_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -2160,6 +2187,8 @@ dbQuoteString(ANSI(), var_name)
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 </code></pre>
 <h2 id="dbQuoteIdentifier">Quote identifiers</h2>
+
+<span id="topic+dbQuoteIdentifier"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbQuoteIdentifier(conn, x, ...)
 </code></pre>
@@ -2172,20 +2201,20 @@ operation is <code>dbUnquoteIdentifier()</code>.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbQuoteIdentifier_:_conn">conn</code></td>
+<td><code id="dbQuoteIdentifier_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbQuoteIdentifier_:_x">x</code></td>
+<td><code id="dbQuoteIdentifier_+3A_x">x</code></td>
 <td>
 <p>A character vector, SQL or Id object to quote as identifier.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbQuoteIdentifier_:_...">...</code></td>
+<td><code id="dbQuoteIdentifier_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -2249,6 +2278,8 @@ dbQuoteIdentifier(ANSI(), var_name)
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 </code></pre>
 <h2 id="dbReadTable">Read database tables as data frames</h2>
+
+<span id="topic+dbReadTable"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbReadTable(conn, name, ...)
 </code></pre>
@@ -2261,14 +2292,14 @@ Use <code>dbReadTableArrow()</code> instead to obtain an Arrow object.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbReadTable_:_conn">conn</code></td>
+<td><code id="dbReadTable_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbReadTable_:_name">name</code></td>
+<td><code id="dbReadTable_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -2293,7 +2324,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbReadTable_:_...">...</code></td>
+<td><code id="dbReadTable_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2409,6 +2440,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbWriteTable">Copy data frames to database tables</h2>
+
+<span id="topic+dbWriteTable"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbWriteTable(conn, name, value, ...)
 </code></pre>
@@ -2419,14 +2452,14 @@ converting row names to a column and specifying SQL data types for fields.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbWriteTable_:_conn">conn</code></td>
+<td><code id="dbWriteTable_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbWriteTable_:_name">name</code></td>
+<td><code id="dbWriteTable_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -2451,13 +2484,13 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbWriteTable_:_value">value</code></td>
+<td><code id="dbWriteTable_+3A_value">value</code></td>
 <td>
 <p>A data.frame (or coercible to data.frame).</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbWriteTable_:_...">...</code></td>
+<td><code id="dbWriteTable_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2713,6 +2746,8 @@ dbReadTable(con, "mtcars")
 
 </code></pre>
 <h2 id="dbListTables">List remote tables</h2>
+
+<span id="topic+dbListTables"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbListTables(conn, ...)
 </code></pre>
@@ -2725,14 +2760,14 @@ This should include views and temporary objects, but not all database backends
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbListTables_:_conn">conn</code></td>
+<td><code id="dbListTables_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbListTables_:_...">...</code></td>
+<td><code id="dbListTables_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2770,6 +2805,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbExistsTable">Does a table exist?</h2>
+
+<span id="topic+dbExistsTable"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbExistsTable(conn, name, ...)
 </code></pre>
@@ -2779,14 +2816,14 @@ dbDisconnect(con)
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbExistsTable_:_conn">conn</code></td>
+<td><code id="dbExistsTable_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbExistsTable_:_name">name</code></td>
+<td><code id="dbExistsTable_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -2811,7 +2848,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbExistsTable_:_...">...</code></td>
+<td><code id="dbExistsTable_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2862,6 +2899,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbRemoveTable">Remove a table from the database</h2>
+
+<span id="topic+dbRemoveTable"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbRemoveTable(conn, name, ...)
 </code></pre>
@@ -2872,14 +2911,14 @@ from the database.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbRemoveTable_:_conn">conn</code></td>
+<td><code id="dbRemoveTable_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbRemoveTable_:_name">name</code></td>
+<td><code id="dbRemoveTable_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -2904,7 +2943,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbRemoveTable_:_...">...</code></td>
+<td><code id="dbRemoveTable_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -2985,6 +3024,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbListFields">List field names of a remote table</h2>
+
+<span id="topic+dbListFields"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbListFields(conn, name, ...)
 </code></pre>
@@ -2994,14 +3035,14 @@ dbDisconnect(con)
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbListFields_:_conn">conn</code></td>
+<td><code id="dbListFields_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbListFields_:_name">name</code></td>
+<td><code id="dbListFields_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -3026,7 +3067,7 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbListFields_:_...">...</code></td>
+<td><code id="dbListFields_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -3082,6 +3123,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbIsValid">Is this DBMS object still valid?</h2>
+
+<span id="topic+dbIsValid"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbIsValid(dbObj, ...)
 </code></pre>
@@ -3092,7 +3135,7 @@ been disconnected or cleared).
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbIsValid_:_dbObj">dbObj</code></td>
+<td><code id="dbIsValid_+3A_dbobj">dbObj</code></td>
 <td>
 <p>An object inheriting from DBIObject,
 i.e. DBIDriver, DBIConnection,
@@ -3100,7 +3143,7 @@ or a DBIResult</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbIsValid_:_...">...</code></td>
+<td><code id="dbIsValid_+3A_...">...</code></td>
 <td>
 <p>Other arguments to methods.</p>
 </td>
@@ -3143,6 +3186,8 @@ dbIsValid(con)
 
 </code></pre>
 <h2 id="dbHasCompleted">Completion status</h2>
+
+<span id="topic+dbHasCompleted"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbHasCompleted(res, ...)
 </code></pre>
@@ -3154,13 +3199,13 @@ A data manipulation statement is always completed.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbHasCompleted_:_res">res</code></td>
+<td><code id="dbHasCompleted_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbHasCompleted_:_...">...</code></td>
+<td><code id="dbHasCompleted_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -3266,6 +3311,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbGetStatement">Get the statement associated with a result set</h2>
+
+<span id="topic+dbGetStatement"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbGetStatement(res, ...)
 </code></pre>
@@ -3276,13 +3323,13 @@ or <code>dbSendStatement()</code>.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbGetStatement_:_res">res</code></td>
+<td><code id="dbGetStatement_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetStatement_:_...">...</code></td>
+<td><code id="dbGetStatement_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -3311,6 +3358,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbGetRowCount">The number of rows fetched so far</h2>
+
+<span id="topic+dbGetRowCount"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbGetRowCount(res, ...)
 </code></pre>
@@ -3321,13 +3370,13 @@ for this result set.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbGetRowCount_:_res">res</code></td>
+<td><code id="dbGetRowCount_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetRowCount_:_...">...</code></td>
+<td><code id="dbGetRowCount_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -3375,6 +3424,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbGetRowsAffected">The number of rows affected</h2>
+
+<span id="topic+dbGetRowsAffected"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbGetRowsAffected(res, ...)
 </code></pre>
@@ -3385,13 +3436,13 @@ by a data manipulation statement.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbGetRowsAffected_:_res">res</code></td>
+<td><code id="dbGetRowsAffected_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetRowsAffected_:_...">...</code></td>
+<td><code id="dbGetRowsAffected_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -3472,6 +3523,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbColumnInfo">Information about result types</h2>
+
+<span id="topic+dbColumnInfo"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbColumnInfo(res, ...)
 </code></pre>
@@ -3484,13 +3537,13 @@ field (field name, type, etc.)
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbColumnInfo_:_res">res</code></td>
+<td><code id="dbColumnInfo_+3A_res">res</code></td>
 <td>
 <p>An object inheriting from DBIResult.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbColumnInfo_:_...">...</code></td>
+<td><code id="dbColumnInfo_+3A_...">...</code></td>
 <td>
 <p>Other arguments passed on to methods.</p>
 </td>
@@ -3592,6 +3645,11 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbBegin">Begin/commit/rollback SQL transactions</h2>
+
+<span id="topic+dbBegin"></span>
+<span id="topic+dbCommit"></span>
+<span id="topic+dbRollback"></span>
+<span id="topic+transactions"></span>
 <p>This section describes the behavior of the following methods:</p>
 <pre class="r"><code class="language-R">dbBegin(conn, ...)
 
@@ -3610,14 +3668,14 @@ This helps ensuring consistency of write operations to multiple tables.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbBegin_:_conn">conn</code></td>
+<td><code id="dbBegin_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbBegin_:_...">...</code></td>
+<td><code id="dbBegin_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -3711,6 +3769,9 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbWithTransaction">Self-contained SQL transactions</h2>
+
+<span id="topic+dbWithTransaction"></span>
+<span id="topic+dbBreak"></span>
 <p>This section describes the behavior of the following methods:</p>
 <pre class="r"><code class="language-R">dbWithTransaction(conn, code, ...)
 
@@ -3732,20 +3793,20 @@ it can be called only inside <code>dbWithTransaction()</code>.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbWithTransaction_:_conn">conn</code></td>
+<td><code id="dbWithTransaction_+3A_conn">conn</code></td>
 <td>
-<p>A DBIConnection object, as returned by
-<code>dbConnect()</code>.</p>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbWithTransaction_:_code">code</code></td>
+<td><code id="dbWithTransaction_+3A_code">code</code></td>
 <td>
 <p>An arbitrary block of R code.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbWithTransaction_:_...">...</code></td>
+<td><code id="dbWithTransaction_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
@@ -3763,7 +3824,7 @@ generic only if they implement specialized handling.
 <p>Failure to initiate the transaction
 (e.g., if the connection is closed
 or invalid
-of if <code>dbBegin()</code> has been called already)
+or if <code>dbBegin()</code> has been called already)
 gives an error.
 </p>
 <h3>Specification</h3>
@@ -3823,6 +3884,8 @@ dbDisconnect(con)
 
 </code></pre>
 <h2 id="dbGetInfo">Get DBMS metadata</h2>
+
+<span id="topic+dbGetInfo"></span>
 <p>This section describes the behavior of the following method:</p>
 <pre class="r"><code class="language-R">dbGetInfo(dbObj, ...)
 </code></pre>
@@ -3833,7 +3896,7 @@ DBIConnection or DBIResult.
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbGetInfo_:_dbObj">dbObj</code></td>
+<td><code id="dbGetInfo_+3A_dbobj">dbObj</code></td>
 <td>
 <p>An object inheriting from DBIObject,
 i.e. DBIDriver, DBIConnection,
@@ -3841,7 +3904,7 @@ or a DBIResult</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbGetInfo_:_...">...</code></td>
+<td><code id="dbGetInfo_+3A_...">...</code></td>
 <td>
 <p>Other arguments to methods.</p>
 </td>
