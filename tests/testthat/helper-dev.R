@@ -33,6 +33,7 @@ if (Sys.getenv("CI") == "") {
   }
 
   create_xml_topic <- function(name, patcher) {
+    message(name)
     html <- html_topic(name)
     x <- xml2::read_html(paste(html, collapse = "\n"))
 
@@ -150,13 +151,18 @@ if (Sys.getenv("CI") == "") {
     "dbSendStatement",
     "dbExecute",
     "dbQuoteString",
+    "dbQuoteLiteral",
     "dbQuoteIdentifier",
+    "dbUnquoteIdentifier",
     "dbReadTable",
     "dbWriteTable",
-    "dbListTables",
-    "dbExistsTable",
+    "dbCreateTable",
+    "dbAppendTable",
     "dbRemoveTable",
+    "dbListTables",
     "dbListFields",
+    "dbExistsTable",
+    "dbListObjects",
     "dbIsValid",
     "dbHasCompleted",
     "dbGetStatement",
@@ -166,6 +172,18 @@ if (Sys.getenv("CI") == "") {
     "transactions",
     "dbWithTransaction",
     "dbGetInfo",
+    "dbSendQueryArrow",
+    "dbFetchArrow",
+    "dbFetchArrowChunk",
+    # "dbBindArrow", # Part of dbBind
+    "dbGetQueryArrow",
+    "dbReadTableArrow",
+    "dbWriteTableArrow",
+    "dbCreateTableArrow",
+    "dbAppendTableArrow",
+    # "dbCanConnect", # not a method?
+    # "dbIsReadOnly", # no good way to tell, except for RSQLite and DuckDB?
+    # "dbGetConnectArgs", # Connector
     NULL
   )
 

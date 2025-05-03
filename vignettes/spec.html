@@ -2186,6 +2186,103 @@ dbQuoteString(ANSI(), var_name)
 # This mechanism is used to prevent double escaping
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 </code></pre>
+<h2 id="dbQuoteLiteral">Quote literal values</h2>
+
+<span id="topic+dbQuoteLiteral"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbQuoteLiteral(conn, x, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Call these methods to generate a string that is suitable for
+use in a query as a literal value of the correct type, to make sure that you
+generate valid SQL and protect against SQL injection attacks.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbQuoteLiteral_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbQuoteLiteral_+3A_x">x</code></td>
+<td>
+<p>A vector to quote as string.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbQuoteLiteral_+3A_...">...</code></td>
+<td>
+<p>Other arguments passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbQuoteLiteral()</code> returns an object that can be coerced to character,
+of the same length as the input.
+For an empty
+integer,
+numeric,
+character,
+logical,
+date,
+time,
+or blob vector,
+this function returns a length-0 object.
+</p>
+<p>When passing the returned object again to <code>dbQuoteLiteral()</code>
+as <code>x</code>
+argument, it is returned unchanged.
+Passing objects of class SQL should also return them unchanged.
+(For backends it may be most convenient to return SQL objects
+to achieve this behavior, but this is not required.)
+</p>
+<h3>Failure modes</h3>
+<p>Passing a list
+for the <code>x</code> argument raises an error.
+</p>
+<h3>Specification</h3>
+<p>The returned expression can be used in a <code style="white-space: pre;">⁠SELECT ...⁠</code> query,
+and the value of
+<code>dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]</code>
+must be equal to <code>x</code>
+for any scalar
+integer,
+numeric,
+string,
+and logical.
+If <code>x</code> is <code>NA</code>, the result must merely satisfy <code>is.na()</code>.
+The literals <code>"NA"</code> or <code>"NULL"</code> are not treated specially.
+</p>
+<p><code>NA</code> should be translated to an unquoted SQL <code>NULL</code>,
+so that the query <code style="white-space: pre;">⁠SELECT * FROM (SELECT 1) a WHERE ... IS NULL⁠</code>
+returns one row.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R"># Quoting ensures that arbitrary input is safe for use in a query
+name &lt;- "Robert'); DROP TABLE Students;--"
+dbQuoteLiteral(ANSI(), name)
+
+# NAs become NULL
+dbQuoteLiteral(ANSI(), c(1:3, NA))
+
+# Logicals become integers by default
+dbQuoteLiteral(ANSI(), c(TRUE, FALSE, NA))
+
+# Raw vectors become hex strings by default
+dbQuoteLiteral(ANSI(), list(as.raw(1:3), NULL))
+
+# SQL vectors are always passed through as is
+var_name &lt;- SQL("select")
+var_name
+dbQuoteLiteral(ANSI(), var_name)
+
+# This mechanism is used to prevent double escaping
+dbQuoteLiteral(ANSI(), dbQuoteLiteral(ANSI(), name))
+</code></pre>
 <h2 id="dbQuoteIdentifier">Quote identifiers</h2>
 
 <span id="topic+dbQuoteIdentifier"></span>
@@ -2276,6 +2373,99 @@ dbQuoteIdentifier(ANSI(), var_name)
 
 # This mechanism is used to prevent double escaping
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
+</code></pre>
+<h2 id="dbUnquoteIdentifier">Unquote identifiers</h2>
+
+<span id="topic+dbUnquoteIdentifier"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbUnquoteIdentifier(conn, x, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Call this method to convert a SQL object created by <code>dbQuoteIdentifier()</code>
+back to a list of Id objects.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbUnquoteIdentifier_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbUnquoteIdentifier_+3A_x">x</code></td>
+<td>
+<p>An SQL or Id object.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbUnquoteIdentifier_+3A_...">...</code></td>
+<td>
+<p>Other arguments passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbUnquoteIdentifier()</code> returns a list of objects
+of the same length as the input.
+For an empty vector, this function returns a length-0 object.
+The names of the input argument are preserved in the output.
+If <code>x</code> is a value returned by <code>dbUnquoteIdentifier()</code>,
+calling <code>dbUnquoteIdentifier(..., dbQuoteIdentifier(..., x))</code>
+returns <code>list(x)</code>.
+If <code>x</code> is an object of class Id,
+calling <code>dbUnquoteIdentifier(..., x)</code> returns <code>list(x)</code>.
+(For backends it may be most convenient to return Id objects
+to achieve this behavior, but this is not required.)
+</p>
+<p>Plain character vectors can also be passed to <code>dbUnquoteIdentifier()</code>.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised if a character vectors with a missing value is passed
+as the <code>x</code> argument.
+</p>
+<h3>Specification</h3>
+<p>For any character vector of length one, quoting (with <code>dbQuoteIdentifier()</code>)
+then unquoting then quoting the first element is identical to just quoting.
+This is also true for strings that
+contain special characters such as a space,
+a dot,
+a comma,
+or quotes used to mark strings
+or identifiers,
+if the database supports this.
+</p>
+<p>Unquoting simple strings (consisting of only letters) wrapped with <code>SQL()</code> and
+then quoting via <code>dbQuoteIdentifier()</code> gives the same result as just
+quoting the string.
+Similarly, unquoting expressions of the form <code>SQL("schema.table")</code>
+and then quoting gives the same result as quoting the identifier
+constructed by <code>Id("schema", "table")</code>.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R"># Unquoting allows to understand the structure of a
+# possibly complex quoted identifier
+dbUnquoteIdentifier(
+  ANSI(),
+  SQL(c('"Catalog"."Schema"."Table"', '"Schema"."Table"', '"UnqualifiedTable"'))
+)
+
+# The returned object is always a list,
+# also for Id objects
+dbUnquoteIdentifier(ANSI(), Id("Catalog", "Schema", "Table"))
+
+# Quoting and unquoting are inverses
+dbQuoteIdentifier(
+  ANSI(),
+  dbUnquoteIdentifier(ANSI(), SQL("UnqualifiedTable"))[[1]]
+)
+
+dbQuoteIdentifier(
+  ANSI(),
+  dbUnquoteIdentifier(ANSI(), Id("Schema", "Table"))[[1]]
+)
 </code></pre>
 <h2 id="dbReadTable">Read database tables as data frames</h2>
 
@@ -2745,85 +2935,28 @@ dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 dbReadTable(con, "mtcars")
 
 </code></pre>
-<h2 id="dbListTables">List remote tables</h2>
+<h2 id="dbCreateTable">Create a table in the database</h2>
 
-<span id="topic+dbListTables"></span>
+<span id="topic+dbCreateTable"></span>
 <p>This section describes the behavior of the following method:</p>
-<pre class="r"><code class="language-R">dbListTables(conn, ...)
+<pre class="r"><code class="language-R">dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 </code></pre>
 <h3>Description</h3>
-<p>Returns the unquoted names of remote tables accessible through this
-connection.
-This should include views and temporary objects, but not all database backends
-(in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
+<p>The default <code>dbCreateTable()</code> method calls <code>sqlCreateTable()</code> and
+<code>dbExecute()</code>.
+Use <code>dbCreateTableArrow()</code> to create a table from an Arrow schema.
 </p>
 <h3>Arguments</h3>
 <table>
 <tr>
-<td><code id="dbListTables_+3A_conn">conn</code></td>
+<td><code id="dbCreateTable_+3A_conn">conn</code></td>
 <td>
 <p>A DBIConnection object,
 as returned by <code>dbConnect()</code>.</p>
 </td>
 </tr>
 <tr>
-<td><code id="dbListTables_+3A_...">...</code></td>
-<td>
-<p>Other parameters passed on to methods.</p>
-</td>
-</tr>
-</table>
-
-<h3>Value</h3>
-<p><code>dbListTables()</code>
-returns a character vector
-that enumerates all tables
-and views
-in the database.
-Tables added with <code>dbWriteTable()</code> are
-part of the list.
-As soon a table is removed from the database,
-it is also removed from the list of database tables.
-</p>
-<p>The same applies to temporary tables if supported by the database.
-</p>
-<p>The returned names are suitable for quoting with <code>dbQuoteIdentifier()</code>.
-</p>
-<h3>Failure modes</h3>
-<p>An error is raised when calling this method for a closed
-or invalid connection.
-</p>
-<h3>Examples</h3>
-<pre class="r"><code class="language-R">
-con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
-
-dbListTables(con)
-dbWriteTable(con, "mtcars", mtcars)
-dbListTables(con)
-
-dbDisconnect(con)
-
-</code></pre>
-<h2 id="dbExistsTable">Does a table exist?</h2>
-
-<span id="topic+dbExistsTable"></span>
-<p>This section describes the behavior of the following method:</p>
-<pre class="r"><code class="language-R">dbExistsTable(conn, name, ...)
-</code></pre>
-<h3>Description</h3>
-<p>Returns if a table given by name exists in the database.
-</p>
-<h3>Arguments</h3>
-<table>
-<tr>
-<td><code id="dbExistsTable_+3A_conn">conn</code></td>
-<td>
-<p>A DBIConnection object,
-as returned by <code>dbConnect()</code>.</p>
-</td>
-</tr>
-<tr>
-<td><code id="dbExistsTable_+3A_name">name</code></td>
+<td><code id="dbCreateTable_+3A_name">name</code></td>
 <td>
 <p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
 </p>
@@ -2848,25 +2981,49 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
 </td>
 </tr>
 <tr>
-<td><code id="dbExistsTable_+3A_...">...</code></td>
+<td><code id="dbCreateTable_+3A_fields">fields</code></td>
+<td>
+<p>Either a character vector or a data frame.
+</p>
+<p>A named character vector: Names are column names, values are types.
+Names are escaped with <code>dbQuoteIdentifier()</code>.
+Field types are unescaped.
+</p>
+<p>A data frame: field types are generated using
+<code>dbDataType()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTable_+3A_...">...</code></td>
 <td>
 <p>Other parameters passed on to methods.</p>
 </td>
 </tr>
+<tr>
+<td><code id="dbCreateTable_+3A_row.names">row.names</code></td>
+<td>
+<p>Must be <code>NULL</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTable_+3A_temporary">temporary</code></td>
+<td>
+<p>If <code>TRUE</code>, will generate a temporary table.</p>
+</td>
+</tr>
 </table>
 
-<h3>Value</h3>
-<p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
-specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.
+<h3>Additional arguments</h3>
+<p>The following arguments are not part of the <code>dbCreateTable()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
 </p>
-<p>This includes temporary tables if supported by the database.
+<ul><li> <p><code>temporary</code> (default: <code>FALSE</code>)
 </p>
-<h3>Failure modes</h3>
-<p>An error is raised when calling this method for a closed
-or invalid connection.
-An error is also raised
-if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
-if this results in a non-scalar.
+</li></ul>
+
+<p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
 </p>
 <h3>Specification</h3>
 <p>The <code>name</code> argument is processed as follows,
@@ -2874,8 +3031,7 @@ to support databases that allow non-syntactic names for their objects:
 </p>
 <ul>
 <li>
-<p> If an unquoted table name as string: <code>dbExistsTable()</code> will do the
-quoting,
+<p> If an unquoted table name as string: <code>dbCreateTable()</code> will do the quoting,
 perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </p>
 </li>
@@ -2885,16 +3041,309 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
 </li>
 </ul>
 
-<p>For all tables listed by <code>dbListTables()</code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.
+<p>The <code>value</code> argument can be:
+</p>
+<ul>
+<li>
+<p> a data frame,
+</p>
+</li>
+<li>
+<p> a named list of SQL types
+</p>
+</li>
+</ul>
+
+<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection,
+in a pre-existing connection,
+and after reconnecting to the database.
+</p>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, and spaces can also be used  for table names and column names,
+if the database supports non-syntactic identifiers.
+</p>
+<p>The <code>row.names</code> argument must be missing
+or <code>NULL</code>, the default value.
+All other values for the <code>row.names</code> argument
+(in particular <code>TRUE</code>,
+<code>NA</code>,
+and a string)
+raise an error.
+</p>
+<h3>Details</h3>
+<p>Backends compliant to ANSI SQL 99 don't need to override it.
+Backends with a different SQL syntax can override <code>sqlCreateTable()</code>,
+backends with entirely different ways to create tables need to
+override this method.
+</p>
+<p>The <code>row.names</code> argument is not supported by this method.
+Process the values with <code>sqlRownamesToColumn()</code> before calling this method.
+</p>
+<p>The argument order is different from the <code>sqlCreateTable()</code> method, the
+latter will be adapted in a later release of DBI.
+</p>
+<h3>Value</h3>
+<p><code>dbCreateTable()</code> returns <code>TRUE</code>, invisibly.
+</p>
+<h3>Failure modes</h3>
+<p>If the table exists, an error is raised; the remote table remains unchanged.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+Invalid values for the <code>row.names</code> and <code>temporary</code> arguments
+(non-scalars,
+unsupported data types,
+<code>NA</code>,
+incompatible values,
+duplicate names)
+also raise an error.
 </p>
 <h3>Examples</h3>
 <pre class="r"><code class="language-R">
 con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+dbCreateTable(con, "iris", iris)
+dbReadTable(con, "iris")
+dbDisconnect(con)
 
-dbExistsTable(con, "iris")
-dbWriteTable(con, "iris", iris)
-dbExistsTable(con, "iris")
+</code></pre>
+<h2 id="dbAppendTable">Insert rows into a table</h2>
 
+<span id="topic+dbAppendTable"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbAppendTable(conn, name, value, ..., row.names = NULL)
+</code></pre>
+<h3>Description</h3>
+<p>The <code>dbAppendTable()</code> method assumes that the table has been created
+beforehand, e.g. with <code>dbCreateTable()</code>.
+The default implementation calls <code>sqlAppendTableTemplate()</code> and then
+<code>dbExecute()</code> with the <code>param</code> argument.
+Use <code>dbAppendTableArrow()</code> to append data from an Arrow stream.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbAppendTable_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTable_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTable_+3A_value">value</code></td>
+<td>
+<p>A data.frame (or coercible to data.frame).</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTable_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTable_+3A_row.names">row.names</code></td>
+<td>
+<p>Must be <code>NULL</code>.</p>
+</td>
+</tr>
+</table>
+
+<h3>Details</h3>
+<p>Backends compliant to
+ANSI SQL 99 which use <code style="white-space: pre;">⁠?⁠</code> as a placeholder for prepared queries don't need
+to override it. Backends with a different SQL syntax which use <code style="white-space: pre;">⁠?⁠</code>
+as a placeholder for prepared queries can override <code>sqlAppendTable()</code>.
+Other backends (with different placeholders or with entirely different
+ways to create tables) need to override the <code>dbAppendTable()</code> method.
+</p>
+<p>The <code>row.names</code> argument is not supported by this method.
+Process the values with <code>sqlRownamesToColumn()</code> before calling this method.
+</p>
+<h3>Value</h3>
+<p><code>dbAppendTable()</code> returns a
+scalar
+numeric.
+</p>
+<h3>Failure modes</h3>
+<p>If the table does not exist,
+or the new data in <code>values</code> is not a data frame or has different column names,
+an error is raised; the remote table remains unchanged.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+Invalid values for the <code>row.names</code> argument
+(non-scalars,
+unsupported data types,
+<code>NA</code>)
+also raise an error.
+</p>
+<p>Passing a <code>value</code> argument different to <code>NULL</code> to the <code>row.names</code> argument
+(in particular <code>TRUE</code>,
+<code>NA</code>,
+and a string)
+raises an error.
+</p>
+<h3>Specification</h3>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, spaces, and other special characters such as newlines and tabs,
+can also be used in the data,
+and, if the database supports non-syntactic identifiers,
+also for table names
+and column names.
+</p>
+<p>The following data types must be supported at least,
+and be read identically with <code>dbReadTable()</code>:
+</p>
+<ul>
+<li>
+<p> integer
+</p>
+</li>
+<li>
+<p> numeric
+(the behavior for <code>Inf</code> and <code>NaN</code> is not specified)
+</p>
+</li>
+<li>
+<p> logical
+</p>
+</li>
+<li> <p><code>NA</code> as NULL
+</p>
+</li>
+<li>
+<p> 64-bit values (using <code>"bigint"</code> as field type); the result can be
+</p>
+
+<ul>
+<li>
+<p> converted to a numeric, which may lose precision,
+</p>
+</li>
+<li>
+<p> converted a character vector, which gives the full decimal
+representation
+</p>
+</li>
+<li>
+<p> written to another table and read again unchanged
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p> character (in both UTF-8
+and native encodings),
+supporting empty strings
+(before and after non-empty strings)
+</p>
+</li>
+<li>
+<p> factor (returned as character,
+with a warning)
+</p>
+</li>
+<li>
+<p> list of raw
+(if supported by the database)
+</p>
+</li>
+<li>
+<p> objects of type blob::blob
+(if supported by the database)
+</p>
+</li>
+<li>
+<p> date
+(if supported by the database;
+returned as <code>Date</code>)
+also for dates prior to 1970 or 1900 or after 2038
+</p>
+</li>
+<li>
+<p> time
+(if supported by the database;
+returned as objects that inherit from <code>difftime</code>)
+</p>
+</li>
+<li>
+<p> timestamp
+(if supported by the database;
+returned as <code>POSIXct</code>
+respecting the time zone but not necessarily preserving the
+input time zone),
+also for timestamps prior to 1970 or 1900 or after 2038
+respecting the time zone but not necessarily preserving the
+input time zone)
+</p>
+</li>
+</ul>
+
+<p>Mixing column types in the same table is supported.
+</p>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbAppendTable()</code> will do the quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+to support databases that allow non-syntactic names for their objects:
+</p>
+</li>
+</ul>
+
+<p>The <code>row.names</code> argument must be <code>NULL</code>, the default value.
+Row names are ignored.
+</p>
+<p>The <code>value</code> argument must be a data frame
+with a subset of the columns of the existing table.
+The order of the columns does not matter.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+dbCreateTable(con, "iris", iris)
+dbAppendTable(con, "iris", iris)
+dbReadTable(con, "iris")
 dbDisconnect(con)
 
 </code></pre>
@@ -3023,6 +3472,65 @@ dbExistsTable(con, "iris")
 dbDisconnect(con)
 
 </code></pre>
+<h2 id="dbListTables">List remote tables</h2>
+
+<span id="topic+dbListTables"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbListTables(conn, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Returns the unquoted names of remote tables accessible through this
+connection.
+This should include views and temporary objects, but not all database backends
+(in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbListTables_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbListTables_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbListTables()</code>
+returns a character vector
+that enumerates all tables
+and views
+in the database.
+Tables added with <code>dbWriteTable()</code> are
+part of the list.
+As soon a table is removed from the database,
+it is also removed from the list of database tables.
+</p>
+<p>The same applies to temporary tables if supported by the database.
+</p>
+<p>The returned names are suitable for quoting with <code>dbQuoteIdentifier()</code>.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbListTables(con)
+dbWriteTable(con, "mtcars", mtcars)
+dbListTables(con)
+
+dbDisconnect(con)
+
+</code></pre>
 <h2 id="dbListFields">List field names of a remote table</h2>
 
 <span id="topic+dbListFields"></span>
@@ -3118,6 +3626,198 @@ con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
 dbListFields(con, "mtcars")
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbExistsTable">Does a table exist?</h2>
+
+<span id="topic+dbExistsTable"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbExistsTable(conn, name, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Returns if a table given by name exists in the database.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbExistsTable_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbExistsTable_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbExistsTable_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbExistsTable()</code> returns a logical scalar, <code>TRUE</code> if the table or view
+specified by the <code>name</code> argument exists, <code>FALSE</code> otherwise.
+</p>
+<p>This includes temporary tables if supported by the database.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+</p>
+<h3>Specification</h3>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbExistsTable()</code> will do the
+quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+</p>
+</li>
+</ul>
+
+<p>For all tables listed by <code>dbListTables()</code>, <code>dbExistsTable()</code> returns <code>TRUE</code>.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbExistsTable(con, "iris")
+dbWriteTable(con, "iris", iris)
+dbExistsTable(con, "iris")
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbListObjects">List remote objects</h2>
+
+<span id="topic+dbListObjects"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbListObjects(conn, prefix = NULL, ...)
+</code></pre>
+<h3>Description</h3>
+<p>Returns the names of remote objects accessible through this connection
+as a data frame.
+This should include temporary objects, but not all database backends
+(in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
+Compared to <code>dbListTables()</code>, this method also enumerates tables and views
+in schemas, and returns fully qualified identifiers to access these objects.
+This allows exploration of all database objects available to the current
+user, including those that can only be accessed by giving the full
+namespace.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbListObjects_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbListObjects_+3A_prefix">prefix</code></td>
+<td>
+<p>A fully qualified path in the database's namespace, or <code>NULL</code>.
+This argument will be processed with <code>dbUnquoteIdentifier()</code>.
+If given the method will return all objects accessible through this prefix.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbListObjects_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbListObjects()</code>
+returns a data frame
+with columns
+<code>table</code> and <code>is_prefix</code> (in that order),
+optionally with other columns with a dot (<code>.</code>) prefix.
+The <code>table</code> column is of type list.
+Each object in this list is suitable for use as argument in <code>dbQuoteIdentifier()</code>.
+The <code>is_prefix</code> column is a logical.
+This data frame contains one row for each object (schema, table
+and view)
+accessible from the prefix (if passed) or from the global namespace
+(if prefix is omitted).
+Tables added with <code>dbWriteTable()</code> are
+part of the data frame.
+As soon a table is removed from the database,
+it is also removed from the data frame of database objects.
+</p>
+<p>The same applies to temporary objects if supported by the database.
+</p>
+<p>The returned names are suitable for quoting with <code>dbQuoteIdentifier()</code>.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+</p>
+<h3>Specification</h3>
+<p>The <code>prefix</code> column indicates if the <code>table</code> value refers to a table
+or a prefix.
+For a call with the default <code>prefix = NULL</code>, the <code>table</code>
+values that have <code>is_prefix == FALSE</code> correspond to the tables
+returned from <code>dbListTables()</code>,
+</p>
+<p>The <code>table</code> object can be quoted with <code>dbQuoteIdentifier()</code>.
+The result of quoting can be passed to <code>dbUnquoteIdentifier()</code>.
+(For backends it may be convenient to use the Id class, but this is
+not required.)
+</p>
+<p>Values in <code>table</code> column that have <code>is_prefix == TRUE</code> can be
+passed as the <code>prefix</code> argument to another call to <code>dbListObjects()</code>.
+For the data frame returned from a <code>dbListObject()</code> call with the
+<code>prefix</code> argument set, all <code>table</code> values where <code>is_prefix</code> is
+<code>FALSE</code> can be used in a call to <code>dbExistsTable()</code> which returns
+<code>TRUE</code>.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbListObjects(con)
+dbWriteTable(con, "mtcars", mtcars)
+dbListObjects(con)
 
 dbDisconnect(con)
 
@@ -3982,5 +4682,1340 @@ constructs such a list from the return values of the corresponding methods,
 <h3>Examples</h3>
 <pre class="r"><code class="language-R">
 dbGetInfo(RSQLite::SQLite())
+
+</code></pre>
+<h2 id="dbSendQueryArrow">Execute a query on a given database connection for retrieval via Arrow</h2>
+
+<span id="topic+dbSendQueryArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbSendQueryArrow(conn, statement, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>The <code>dbSendQueryArrow()</code> method only submits and synchronously executes the
+SQL query to the database engine.
+It does <em>not</em> extract any
+records — for that you need to use the <code>dbFetchArrow()</code> method, and
+then you must call <code>dbClearResult()</code> when you finish fetching the
+records you need.
+For interactive use, you should almost always prefer <code>dbGetQueryArrow()</code>.
+Use <code>dbSendQuery()</code> or <code>dbGetQuery()</code> instead to retrieve the results
+as a data frame.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbSendQueryArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbSendQueryArrow_+3A_statement">statement</code></td>
+<td>
+<p>a character string containing SQL.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbSendQueryArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Additional arguments</h3>
+<p>The following arguments are not part of the <code>dbSendQueryArrow()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+</p>
+<ul>
+<li> <p><code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+<li> <p><code>immediate</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+
+<p>They must be provided as named arguments.
+See the "Specification" sections for details on their usage.
+</p>
+<h3>Specification</h3>
+<p>No warnings occur under normal conditions.
+When done, the DBIResult object must be cleared with a call to
+<code>dbClearResult()</code>.
+Failure to clear the result set leads to a warning
+when the connection is closed.
+</p>
+<p>If the backend supports only one open result set per connection,
+issuing a second query invalidates an already open result set
+and raises a warning.
+The newly opened result set is valid
+and must be cleared with <code>dbClearResult()</code>.
+</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
+</p>
+<h3>Specification for the <code>immediate</code> argument</h3>
+<p>The <code>immediate</code> argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing <code>immediate = TRUE</code> leads to immediate execution of the
+query or statement, via the "direct" API (if supported by the driver).
+The default <code>NULL</code> means that the backend should choose whatever API
+makes the most sense for the database, and (if relevant) tries the
+other API if the first attempt fails. A successful second attempt
+should result in a message that suggests passing the correct
+<code>immediate</code> argument.
+Examples for possible behaviors:
+</p>
+<ol>
+<li>
+<p> DBI backend defaults to <code>immediate = TRUE</code> internally
+</p>
+
+<ol>
+<li>
+<p> A query without parameters is passed: query is executed
+</p>
+</li>
+<li>
+<p> A query with parameters is passed:
+</p>
+
+<ol>
+<li> <p><code>params</code> not given: rejected immediately by the database
+because of a syntax error in the query, the backend tries
+<code>immediate = FALSE</code> (and gives a message)
+</p>
+</li>
+<li> <p><code>params</code> given: query is executed using <code>immediate = FALSE</code>
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p> DBI backend defaults to <code>immediate = FALSE</code> internally
+</p>
+
+<ol>
+<li>
+<p> A query without parameters is passed:
+</p>
+
+<ol>
+<li>
+<p> simple query: query is executed
+</p>
+</li>
+<li>
+<p> "special" query (such as setting a config options): fails,
+the backend tries <code>immediate = TRUE</code> (and gives a message)
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p> A query with parameters is passed:
+</p>
+
+<ol>
+<li> <p><code>params</code> not given: waiting for parameters via <code>dbBind()</code>
+</p>
+</li>
+<li> <p><code>params</code> given: query is executed
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+<h3>Details</h3>
+<p>This method is for <code>SELECT</code> queries only.  Some backends may
+support data manipulation queries through this method for compatibility
+reasons.  However, callers are strongly encouraged to use
+<code>dbSendStatement()</code> for data manipulation statements.
+</p>
+<h3>Value</h3>
+<p><code>dbSendQueryArrow()</code> returns
+an S4 object that inherits from DBIResultArrow.
+The result set can be used with <code>dbFetchArrow()</code> to extract records.
+Once you have finished using a result, make sure to clear it
+with <code>dbClearResult()</code>.
+</p>
+<h3>The data retrieval flow for Arrow streams</h3>
+<p>This section gives a complete overview over the flow
+for the execution of queries that return tabular data as an Arrow stream.
+</p>
+<p>Most of this flow, except repeated calling of <code>dbBindArrow()</code> or <code>dbBind()</code>,
+is implemented by <code>dbGetQueryArrow()</code>,
+which should be sufficient
+unless you have a parameterized query that you want to reuse.
+This flow requires an active connection established by <code>dbConnect()</code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.
+</p>
+<ol>
+<li>
+<p> Use <code>dbSendQueryArrow()</code> to create a result set object of class
+DBIResultArrow.
+</p>
+</li>
+<li>
+<p> Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
+This is required only if the query contains placeholders
+such as <code style="white-space: pre;">⁠?⁠</code> or <code style="white-space: pre;">⁠\$1⁠</code>, depending on the database backend.
+</p>
+</li>
+<li>
+<p> Use <code>dbFetchArrow()</code> to get a data stream.
+</p>
+</li>
+<li>
+<p> Repeat the last two steps as necessary.
+</p>
+</li>
+<li>
+<p> Use <code>dbClearResult()</code> to clean up the result set object.
+This step is mandatory even if no rows have been fetched
+or if an error has occurred during the processing.
+It is good practice to use <code>on.exit()</code> or <code>withr::defer()</code>
+to ensure that this step is always executed.
+</p>
+</li>
+</ol>
+
+<h3>Failure modes</h3>
+<p>An error is raised when issuing a query over a closed
+or invalid connection,
+or if the query is not a non-<code>NA</code> string.
+An error is also raised if the syntax of the query is invalid
+and all query parameters are given (by passing the <code>params</code> argument)
+or the <code>immediate</code> argument is set to <code>TRUE</code>.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+# Retrieve data as arrow table
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+rs &lt;- dbSendQueryArrow(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetchArrow(rs)
+dbClearResult(rs)
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbFetchArrow">Fetch records from a previously executed query as an Arrow object</h2>
+
+<span id="topic+dbFetchArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbFetchArrow(res, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>Fetch the result set and return it as an Arrow object.
+Use <code>dbFetchArrowChunk()</code> to fetch results in chunks.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbFetchArrow_+3A_res">res</code></td>
+<td>
+<p>An object inheriting from DBIResultArrow,
+created by <code>dbSendQueryArrow()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbFetchArrow_+3A_...">...</code></td>
+<td>
+<p>Other arguments passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbFetchArrow()</code> always returns an object coercible to a data.frame with
+as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+</p>
+<h3>The data retrieval flow for Arrow streams</h3>
+<p>This section gives a complete overview over the flow
+for the execution of queries that return tabular data as an Arrow stream.
+</p>
+<p>Most of this flow, except repeated calling of <code>dbBindArrow()</code> or <code>dbBind()</code>,
+is implemented by <code>dbGetQueryArrow()</code>,
+which should be sufficient
+unless you have a parameterized query that you want to reuse.
+This flow requires an active connection established by <code>dbConnect()</code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.
+</p>
+<ol>
+<li>
+<p> Use <code>dbSendQueryArrow()</code> to create a result set object of class
+DBIResultArrow.
+</p>
+</li>
+<li>
+<p> Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
+This is required only if the query contains placeholders
+such as <code style="white-space: pre;">⁠?⁠</code> or <code style="white-space: pre;">⁠\$1⁠</code>, depending on the database backend.
+</p>
+</li>
+<li>
+<p> Use <code>dbFetchArrow()</code> to get a data stream.
+</p>
+</li>
+<li>
+<p> Repeat the last two steps as necessary.
+</p>
+</li>
+<li>
+<p> Use <code>dbClearResult()</code> to clean up the result set object.
+This step is mandatory even if no rows have been fetched
+or if an error has occurred during the processing.
+It is good practice to use <code>on.exit()</code> or <code>withr::defer()</code>
+to ensure that this step is always executed.
+</p>
+</li>
+</ol>
+
+<h3>Failure modes</h3>
+<p>An attempt to fetch from a closed result set raises an error.
+</p>
+<h3>Specification</h3>
+<p>Fetching multi-row queries with one
+or more columns by default returns the entire result.
+The object returned by <code>dbFetchArrow()</code> can also be passed to
+<code>nanoarrow::as_nanoarrow_array_stream()</code> to create a nanoarrow
+array stream object that can be used to read the result set
+in batches.
+The chunk size is implementation-specific.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+
+# Fetch all results
+rs &lt;- dbSendQueryArrow(con, "SELECT * FROM mtcars WHERE cyl = 4")
+as.data.frame(dbFetchArrow(rs))
+dbClearResult(rs)
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbFetchArrowChunk">Fetch the next batch of records from a previously executed query as an Arrow object</h2>
+
+<span id="topic+dbFetchArrowChunk"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbFetchArrowChunk(res, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>Fetch the next chunk of the result set and return it as an Arrow object.
+The chunk size is implementation-specific.
+Use <code>dbFetchArrow()</code> to fetch all results.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbFetchArrowChunk_+3A_res">res</code></td>
+<td>
+<p>An object inheriting from DBIResultArrow,
+created by <code>dbSendQueryArrow()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbFetchArrowChunk_+3A_...">...</code></td>
+<td>
+<p>Other arguments passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbFetchArrowChunk()</code> always returns an object coercible to a data.frame with
+as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+</p>
+<h3>The data retrieval flow for Arrow streams</h3>
+<p>This section gives a complete overview over the flow
+for the execution of queries that return tabular data as an Arrow stream.
+</p>
+<p>Most of this flow, except repeated calling of <code>dbBindArrow()</code> or <code>dbBind()</code>,
+is implemented by <code>dbGetQueryArrow()</code>,
+which should be sufficient
+unless you have a parameterized query that you want to reuse.
+This flow requires an active connection established by <code>dbConnect()</code>.
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.
+</p>
+<ol>
+<li>
+<p> Use <code>dbSendQueryArrow()</code> to create a result set object of class
+DBIResultArrow.
+</p>
+</li>
+<li>
+<p> Optionally, bind query parameters with <code>dbBindArrow()</code> or <code>dbBind()</code>.
+This is required only if the query contains placeholders
+such as <code style="white-space: pre;">⁠?⁠</code> or <code style="white-space: pre;">⁠\$1⁠</code>, depending on the database backend.
+</p>
+</li>
+<li>
+<p> Use <code>dbFetchArrow()</code> to get a data stream.
+</p>
+</li>
+<li>
+<p> Repeat the last two steps as necessary.
+</p>
+</li>
+<li>
+<p> Use <code>dbClearResult()</code> to clean up the result set object.
+This step is mandatory even if no rows have been fetched
+or if an error has occurred during the processing.
+It is good practice to use <code>on.exit()</code> or <code>withr::defer()</code>
+to ensure that this step is always executed.
+</p>
+</li>
+</ol>
+
+<h3>Failure modes</h3>
+<p>An attempt to fetch from a closed result set raises an error.
+</p>
+<h3>Specification</h3>
+<p>Fetching multi-row queries with one
+or more columns returns the next chunk.
+The size of the chunk is implementation-specific.
+The object returned by <code>dbFetchArrowChunk()</code> can also be passed to
+<code>nanoarrow::as_nanoarrow_array()</code> to create a nanoarrow array object.
+The chunk size is implementation-specific.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+
+# Fetch all results
+rs &lt;- dbSendQueryArrow(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbHasCompleted(rs)
+as.data.frame(dbFetchArrowChunk(rs))
+dbHasCompleted(rs)
+as.data.frame(dbFetchArrowChunk(rs))
+dbClearResult(rs)
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbGetQueryArrow">Retrieve results from a query as an Arrow object</h2>
+
+<span id="topic+dbGetQueryArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbGetQueryArrow(conn, statement, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>Returns the result of a query as an Arrow object.
+<code>dbGetQueryArrow()</code> comes with a default implementation
+(which should work with most backends) that calls
+<code>dbSendQueryArrow()</code>, then <code>dbFetchArrow()</code>, ensuring that
+the result is always freed by <code>dbClearResult()</code>.
+For passing query parameters,
+see <code>dbSendQueryArrow()</code>, in particular
+the "The data retrieval flow for Arrow streams" section.
+For retrieving results as a data frame, see <code>dbGetQuery()</code>.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbGetQueryArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbGetQueryArrow_+3A_statement">statement</code></td>
+<td>
+<p>a character string containing SQL.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbGetQueryArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Additional arguments</h3>
+<p>The following arguments are not part of the <code>dbGetQueryArrow()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+</p>
+<ul>
+<li> <p><code>params</code> (default: <code>NULL</code>)
+</p>
+</li>
+<li> <p><code>immediate</code> (default: <code>NULL</code>)
+</p>
+</li>
+</ul>
+
+<p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
+</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code>dbBind()</code> for details.
+</p>
+<h3>Specification for the <code>immediate</code> argument</h3>
+<p>The <code>immediate</code> argument supports distinguishing between "direct"
+and "prepared" APIs offered by many database drivers.
+Passing <code>immediate = TRUE</code> leads to immediate execution of the
+query or statement, via the "direct" API (if supported by the driver).
+The default <code>NULL</code> means that the backend should choose whatever API
+makes the most sense for the database, and (if relevant) tries the
+other API if the first attempt fails. A successful second attempt
+should result in a message that suggests passing the correct
+<code>immediate</code> argument.
+Examples for possible behaviors:
+</p>
+<ol>
+<li>
+<p> DBI backend defaults to <code>immediate = TRUE</code> internally
+</p>
+
+<ol>
+<li>
+<p> A query without parameters is passed: query is executed
+</p>
+</li>
+<li>
+<p> A query with parameters is passed:
+</p>
+
+<ol>
+<li> <p><code>params</code> not given: rejected immediately by the database
+because of a syntax error in the query, the backend tries
+<code>immediate = FALSE</code> (and gives a message)
+</p>
+</li>
+<li> <p><code>params</code> given: query is executed using <code>immediate = FALSE</code>
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p> DBI backend defaults to <code>immediate = FALSE</code> internally
+</p>
+
+<ol>
+<li>
+<p> A query without parameters is passed:
+</p>
+
+<ol>
+<li>
+<p> simple query: query is executed
+</p>
+</li>
+<li>
+<p> "special" query (such as setting a config options): fails,
+the backend tries <code>immediate = TRUE</code> (and gives a message)
+</p>
+</li>
+</ol>
+</li>
+<li>
+<p> A query with parameters is passed:
+</p>
+
+<ol>
+<li> <p><code>params</code> not given: waiting for parameters via <code>dbBind()</code>
+</p>
+</li>
+<li> <p><code>params</code> given: query is executed
+</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+<h3>Details</h3>
+<p>This method is for <code>SELECT</code> queries only
+(incl. other SQL statements that return a <code>SELECT</code>-alike result,
+e.g., execution of a stored procedure or data manipulation queries
+like <code style="white-space: pre;">⁠INSERT INTO ... RETURNING ...⁠</code>).
+To execute a stored procedure that does not return a result set,
+use <code>dbExecute()</code>.
+</p>
+<p>Some backends may
+support data manipulation statements through this method.
+However, callers are strongly advised to use
+<code>dbExecute()</code> for data manipulation statements.
+</p>
+<h3>Value</h3>
+<p><code>dbGetQueryArrow()</code> always returns an object coercible to a data.frame, with
+as many rows as records were fetched and as many
+columns as fields in the result set,
+even if the result is a single value
+or has one
+or zero rows.
+</p>
+<h3>Implementation notes</h3>
+<p>Subclasses should override this method only if they provide some sort of
+performance optimization.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised when issuing a query over a closed
+or invalid connection,
+if the syntax of the query is invalid,
+or if the query is not a non-<code>NA</code> string.
+The object returned by <code>dbGetQueryArrow()</code> can also be passed to
+<code>nanoarrow::as_nanoarrow_array_stream()</code> to create a nanoarrow
+array stream object that can be used to read the result set
+in batches.
+The chunk size is implementation-specific.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+# Retrieve data as arrow table
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars)
+dbGetQueryArrow(con, "SELECT * FROM mtcars")
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbReadTableArrow">Read database tables as Arrow objects</h2>
+
+<span id="topic+dbReadTableArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbReadTableArrow(conn, name, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>Reads a database table as an Arrow object.
+Use <code>dbReadTable()</code> instead to obtain a data frame.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbReadTableArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbReadTableArrow_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbReadTableArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Details</h3>
+<p>This function returns an Arrow object.
+Convert it to a data frame with <code>as.data.frame()</code> or
+use <code>dbReadTable()</code> to obtain a data frame.
+</p>
+<h3>Value</h3>
+<p><code>dbReadTableArrow()</code> returns an Arrow object that contains the complete data
+from the remote table, effectively the result of calling <code>dbGetQueryArrow()</code> with
+<code style="white-space: pre;">⁠SELECT * FROM &lt;name&gt;⁠</code>.
+</p>
+<p>An empty table is returned as an Arrow object with zero rows.
+</p>
+<h3>Failure modes</h3>
+<p>An error is raised if the table does not exist.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+</p>
+<h3>Specification</h3>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbReadTableArrow()</code> will do the
+quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+</p>
+</li>
+</ul>
+
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+# Read data as Arrow table
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTable(con, "mtcars", mtcars[1:10, ])
+dbReadTableArrow(con, "mtcars")
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbWriteTableArrow">Copy Arrow objects to database tables</h2>
+
+<span id="topic+dbWriteTableArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbWriteTableArrow(conn, name, value, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>Writes, overwrites or appends an Arrow object to a database table.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbWriteTableArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbWriteTableArrow_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbWriteTableArrow_+3A_value">value</code></td>
+<td>
+<p>An nanoarray stream, or an object coercible to a nanoarray stream with
+<code>nanoarrow::as_nanoarrow_array_stream()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbWriteTableArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Additional arguments</h3>
+<p>The following arguments are not part of the <code>dbWriteTableArrow()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+</p>
+<ul>
+<li> <p><code>overwrite</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>append</code> (default: <code>FALSE</code>)
+</p>
+</li>
+<li> <p><code>temporary</code> (default: <code>FALSE</code>)
+</p>
+</li>
+</ul>
+
+<p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
+</p>
+<h3>Specification</h3>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbWriteTableArrow()</code> will do the quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+</p>
+</li>
+</ul>
+
+<p>The <code>value</code> argument must be a data frame
+with a subset of the columns of the existing table if <code>append = TRUE</code>.
+The order of the columns does not matter with <code>append = TRUE</code>.
+</p>
+<p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name
+will be overwritten.
+This argument doesn't change behavior if the table does not exist yet.
+</p>
+<p>If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are
+preserved, and the new data are appended.
+If the table doesn't exist yet, it is created.
+</p>
+<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection,
+in a pre-existing connection,
+and after reconnecting to the database.
+</p>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, spaces, and other special characters such as newlines and tabs,
+can also be used in the data,
+and, if the database supports non-syntactic identifiers,
+also for table names
+and column names.
+</p>
+<p>The following data types must be supported at least,
+and be read identically with <code>dbReadTable()</code>:
+</p>
+<ul>
+<li>
+<p> integer
+</p>
+</li>
+<li>
+<p> numeric
+(the behavior for <code>Inf</code> and <code>NaN</code> is not specified)
+</p>
+</li>
+<li>
+<p> logical
+</p>
+</li>
+<li> <p><code>NA</code> as NULL
+</p>
+</li>
+<li>
+<p> 64-bit values (using <code>"bigint"</code> as field type); the result can be
+</p>
+
+<ul>
+<li>
+<p> converted to a numeric, which may lose precision,
+</p>
+</li>
+<li>
+<p> converted a character vector, which gives the full decimal
+representation
+</p>
+</li>
+<li>
+<p> written to another table and read again unchanged
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p> character (in both UTF-8
+and native encodings),
+supporting empty strings
+before and after a non-empty string
+</p>
+</li>
+<li>
+<p> factor (possibly returned as character)
+</p>
+</li>
+<li>
+<p> objects of type blob::blob
+(if supported by the database)
+</p>
+</li>
+<li>
+<p> date
+(if supported by the database;
+returned as <code>Date</code>),
+also for dates prior to 1970 or 1900 or after 2038
+</p>
+</li>
+<li>
+<p> time
+(if supported by the database;
+returned as objects that inherit from <code>difftime</code>)
+</p>
+</li>
+<li>
+<p> timestamp
+(if supported by the database;
+returned as <code>POSIXct</code>
+respecting the time zone but not necessarily preserving the
+input time zone),
+also for timestamps prior to 1970 or 1900 or after 2038
+respecting the time zone but not necessarily preserving the
+input time zone)
+</p>
+</li>
+</ul>
+
+<p>Mixing column types in the same table is supported.
+</p>
+<h3>Details</h3>
+<p>This function expects an Arrow object.
+Convert a data frame to an Arrow object with <code>nanoarrow::as_nanoarrow_array_stream()</code> or
+use <code>dbWriteTable()</code> to write a data frame.
+</p>
+<p>This function is useful if you want to create and load a table at the same time.
+Use <code>dbAppendTableArrow()</code> for appending data to an existing
+table, <code>dbCreateTableArrow()</code> for creating a table and specifying field types,
+and <code>dbRemoveTable()</code> for overwriting tables.
+</p>
+<h3>Value</h3>
+<p><code>dbWriteTableArrow()</code> returns <code>TRUE</code>, invisibly.
+</p>
+<h3>Failure modes</h3>
+<p>If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset,
+or <code>append = TRUE</code> and the data frame with the new data has different
+column names,
+an error is raised; the remote table remains unchanged.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+Invalid values for the additional arguments
+<code>overwrite</code>, <code>append</code>, and <code>temporary</code>
+(non-scalars,
+unsupported data types,
+<code>NA</code>,
+incompatible values,
+incompatible columns)
+also raise an error.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+
+dbWriteTableArrow(con, "mtcars", nanoarrow::as_nanoarrow_array_stream(mtcars[1:5, ]))
+dbReadTable(con, "mtcars")
+
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbCreateTableArrow">Create a table in the database based on an Arrow object</h2>
+
+<span id="topic+dbCreateTableArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbCreateTableArrow(conn, name, value, ..., temporary = FALSE)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>The default <code>dbCreateTableArrow()</code> method determines the R data types
+of the Arrow schema associated with the Arrow object,
+and calls <code>dbCreateTable()</code>.
+Backends that implement <code>dbAppendTableArrow()</code> should typically
+also implement this generic.
+Use <code>dbCreateTable()</code> to create a table from the column types
+as defined in a data frame.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbCreateTableArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTableArrow_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTableArrow_+3A_value">value</code></td>
+<td>
+<p>An object for which a schema can be determined via
+<code>nanoarrow::infer_nanoarrow_schema()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTableArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbCreateTableArrow_+3A_temporary">temporary</code></td>
+<td>
+<p>If <code>TRUE</code>, will generate a temporary table.</p>
+</td>
+</tr>
+</table>
+
+<h3>Additional arguments</h3>
+<p>The following arguments are not part of the <code>dbCreateTableArrow()</code> generic
+(to improve compatibility across backends)
+but are part of the DBI specification:
+</p>
+<ul><li> <p><code>temporary</code> (default: <code>FALSE</code>)
+</p>
+</li></ul>
+
+<p>They must be provided as named arguments.
+See the "Specification" and "Value" sections for details on their usage.
+</p>
+<h3>Specification</h3>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbCreateTableArrow()</code> will do the quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+</p>
+</li>
+</ul>
+
+<p>The <code>value</code> argument can be:
+</p>
+<ul>
+<li>
+<p> a data frame,
+</p>
+</li>
+<li>
+<p> a nanoarrow array
+</p>
+</li>
+<li>
+<p> a nanoarrow array stream
+(which will still contain the data after the call)
+</p>
+</li>
+<li>
+<p> a nanoarrow schema
+</p>
+</li>
+</ul>
+
+<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
+second connection and is gone after reconnecting.
+Not all backends support this argument.
+A regular, non-temporary table is visible in a second connection,
+in a pre-existing connection,
+and after reconnecting to the database.
+</p>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, and spaces can also be used  for table names and column names,
+if the database supports non-syntactic identifiers.
+</p>
+<h3>Value</h3>
+<p><code>dbCreateTableArrow()</code> returns <code>TRUE</code>, invisibly.
+</p>
+<h3>Failure modes</h3>
+<p>If the table exists, an error is raised; the remote table remains unchanged.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+Invalid values for the <code>temporary</code> argument
+(non-scalars,
+unsupported data types,
+<code>NA</code>,
+incompatible values,
+duplicate names)
+also raise an error.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+ptype &lt;- data.frame(a = numeric())
+dbCreateTableArrow(con, "df", nanoarrow::infer_nanoarrow_schema(ptype))
+dbReadTable(con, "df")
+dbDisconnect(con)
+
+</code></pre>
+<h2 id="dbAppendTableArrow">Insert rows into a table from an Arrow stream</h2>
+
+<span id="topic+dbAppendTableArrow"></span>
+<p>This section describes the behavior of the following method:</p>
+<pre class="r"><code class="language-R">dbAppendTableArrow(conn, name, value, ...)
+</code></pre>
+<h3>Description</h3>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg" alt="[Experimental]"></a>
+</p>
+<p>The <code>dbAppendTableArrow()</code> method assumes that the table has been created
+beforehand, e.g. with <code>dbCreateTableArrow()</code>.
+The default implementation calls <code>dbAppendTable()</code> for each chunk
+of the stream.
+Use <code>dbAppendTable()</code> to append data from a data.frame.
+</p>
+<h3>Arguments</h3>
+<table>
+<tr>
+<td><code id="dbAppendTableArrow_+3A_conn">conn</code></td>
+<td>
+<p>A DBIConnection object,
+as returned by <code>dbConnect()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTableArrow_+3A_name">name</code></td>
+<td>
+<p>The table name, passed on to <code>dbQuoteIdentifier()</code>. Options are:
+</p>
+
+<ul>
+<li>
+<p> a character string with the unquoted DBMS table name,
+e.g. <code>"table_name"</code>,
+</p>
+</li>
+<li>
+<p> a call to <code>Id()</code> with components to the fully qualified table name,
+e.g. <code>Id(schema = "my_schema", table = "table_name")</code>
+</p>
+</li>
+<li>
+<p> a call to <code>SQL()</code> with the quoted and fully qualified table name
+given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code>
+</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTableArrow_+3A_value">value</code></td>
+<td>
+<p>An object coercible with <code>nanoarrow::as_nanoarrow_array_stream()</code>.</p>
+</td>
+</tr>
+<tr>
+<td><code id="dbAppendTableArrow_+3A_...">...</code></td>
+<td>
+<p>Other parameters passed on to methods.</p>
+</td>
+</tr>
+</table>
+
+<h3>Value</h3>
+<p><code>dbAppendTableArrow()</code> returns a
+scalar
+numeric.
+</p>
+<h3>Failure modes</h3>
+<p>If the table does not exist,
+or the new data in <code>values</code> is not a data frame or has different column names,
+an error is raised; the remote table remains unchanged.
+</p>
+<p>An error is raised when calling this method for a closed
+or invalid connection.
+An error is also raised
+if <code>name</code> cannot be processed with <code>dbQuoteIdentifier()</code> or
+if this results in a non-scalar.
+</p>
+<h3>Specification</h3>
+<p>SQL keywords can be used freely in table names, column names, and data.
+Quotes, commas, spaces, and other special characters such as newlines and tabs,
+can also be used in the data,
+and, if the database supports non-syntactic identifiers,
+also for table names
+and column names.
+</p>
+<p>The following data types must be supported at least,
+and be read identically with <code>dbReadTable()</code>:
+</p>
+<ul>
+<li>
+<p> integer
+</p>
+</li>
+<li>
+<p> numeric
+(the behavior for <code>Inf</code> and <code>NaN</code> is not specified)
+</p>
+</li>
+<li>
+<p> logical
+</p>
+</li>
+<li> <p><code>NA</code> as NULL
+</p>
+</li>
+<li>
+<p> 64-bit values (using <code>"bigint"</code> as field type); the result can be
+</p>
+
+<ul>
+<li>
+<p> converted to a numeric, which may lose precision,
+</p>
+</li>
+<li>
+<p> converted a character vector, which gives the full decimal
+representation
+</p>
+</li>
+<li>
+<p> written to another table and read again unchanged
+</p>
+</li>
+</ul>
+</li>
+<li>
+<p> character (in both UTF-8
+and native encodings),
+supporting empty strings
+(before and after non-empty strings)
+</p>
+</li>
+<li>
+<p> factor (possibly returned as character)
+</p>
+</li>
+<li>
+<p> objects of type blob::blob
+(if supported by the database)
+</p>
+</li>
+<li>
+<p> date
+(if supported by the database;
+returned as <code>Date</code>)
+also for dates prior to 1970 or 1900 or after 2038
+</p>
+</li>
+<li>
+<p> time
+(if supported by the database;
+returned as objects that inherit from <code>difftime</code>)
+</p>
+</li>
+<li>
+<p> timestamp
+(if supported by the database;
+returned as <code>POSIXct</code>
+respecting the time zone but not necessarily preserving the
+input time zone),
+also for timestamps prior to 1970 or 1900 or after 2038
+respecting the time zone but not necessarily preserving the
+input time zone)
+</p>
+</li>
+</ul>
+
+<p>Mixing column types in the same table is supported.
+</p>
+<p>The <code>name</code> argument is processed as follows,
+to support databases that allow non-syntactic names for their objects:
+</p>
+<ul>
+<li>
+<p> If an unquoted table name as string: <code>dbAppendTableArrow()</code> will do the quoting,
+perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code>
+</p>
+</li>
+<li>
+<p> If the result of a call to <code>dbQuoteIdentifier()</code>: no more quoting is done
+to support databases that allow non-syntactic names for their objects:
+</p>
+</li>
+</ul>
+
+<p>The <code>value</code> argument must be a data frame
+with a subset of the columns of the existing table.
+The order of the columns does not matter.
+</p>
+<h3>Examples</h3>
+<pre class="r"><code class="language-R">
+con &lt;- dbConnect(RSQLite::SQLite(), ":memory:")
+dbCreateTableArrow(con, "iris", iris[0, ])
+dbAppendTableArrow(con, "iris", iris[1:5, ])
+dbReadTable(con, "iris")
+dbDisconnect(con)
 
 </code></pre>
