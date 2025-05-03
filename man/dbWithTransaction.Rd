@@ -46,7 +46,7 @@ generic only if they implement specialized handling.
 Failure to initiate the transaction
 (e.g., if the connection is closed
 or invalid
-or if \code{\link[DBI:transactions]{DBI::dbBegin()}} has been called already)
+of if \code{\link[DBI:transactions]{DBI::dbBegin()}} has been called already)
 gives an error.
 
 }
