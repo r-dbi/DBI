@@ -101,7 +101,14 @@ It takes as arguments a database connection and a table name and returns a chara
 
 
 ```{r}
-con <- dbConnect(RMariaDB::MariaDB(), username = "guest", password = "relational", host = "db.relational-data.org", port = 3306, dbname = "sakila")
+con <- dbConnect(
+  RMariaDB::MariaDB(),
+  host = "relational.fel.cvut.cz",
+  port = 3306,
+  username = "guest",
+  password = "ctu-relational",
+  dbname = "sakila"
+)
 dbListFields(con, "film")
 ```
 
