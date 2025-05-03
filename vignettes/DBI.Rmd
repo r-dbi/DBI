@@ -54,10 +54,10 @@ library(DBI)
 
 con <- dbConnect(
   RMariaDB::MariaDB(),
-  host = "db.relational-data.org",
+  host = "relational.fel.cvut.cz",
   port = 3306,
   username = "guest",
-  password = "relational",
+  password = "ctu-relational",
   dbname = "sakila"
 )
 
@@ -85,10 +85,10 @@ The code to connect to the database could then look like this:
 ```{r eval = FALSE}
 con <- dbConnect(
   RMariaDB::MariaDB(),
-  host = "db.relational-data.org",
+  host = "relational.fel.cvut.cz",
   port = 3306,
   username = "guest",
-  password = keyring::key_get("db.relational-data.org", "guest"),
+  password = keyring::key_get("relational.fel.cvut.cz", "guest"),
   dbname = "sakila"
 )
 ```
