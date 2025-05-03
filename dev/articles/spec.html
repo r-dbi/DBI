@@ -81,6 +81,7 @@ Müller</h4>
 <div class="section level2">
 <h2 id="dbi-r-database-interface">DBI: R Database Interface<a class="anchor" aria-label="anchor" href="#dbi-r-database-interface"></a>
 </h2>
+<p><span id="topic+DBI"></span> <span id="topic+DBI-package"></span></p>
 <p>DBI defines an interface for communication between R and relational
 database management systems. All classes in this package are virtual and
 need to be extended by the various R/DBMS implementations (so-called
@@ -127,6 +128,7 @@ list.</p>
 <div class="section level2">
 <h2 id="determine-the-sql-data-type-of-an-object">Determine the SQL data type of an object<a class="anchor" aria-label="anchor" href="#determine-the-sql-data-type-of-an-object"></a>
 </h2>
+<p><span id="topic+dbDataType"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDataType.html">dbDataType</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">obj</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -243,6 +245,7 @@ SQL statement of the form <code>"CREATE TABLE test (a ...)"</code>.</p>
 <div class="section level2">
 <h2 id="create-a-connection-to-a-dbms">Create a connection to a DBMS<a class="anchor" aria-label="anchor" href="#create-a-connection-to-a-dbms"></a>
 </h2>
+<p><span id="topic+dbConnect"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="va">drv</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -262,18 +265,18 @@ established.</p>
 </h3>
 <table class="table">
 <colgroup>
-<col width="3%">
-<col width="96%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr class="odd">
 <td><code>drv</code></td>
-<td>an object that inherits from DBIDriver, or an existing DBIConnection
+<td>An object that inherits from DBIDriver, or an existing DBIConnection
 object (in order to clone an existing connection).</td>
 </tr>
 <tr class="even">
 <td><code>...</code></td>
-<td>authentication arguments needed by the DBMS instance; these
+<td>Authentication arguments needed by the DBMS instance; these
 typically include <code>user</code>, <code>password</code>,
 <code>host</code>, <code>port</code>, <code>dbname</code>, etc. For
 details see the appropriate <code>DBIDriver</code>.</td>
@@ -348,6 +351,7 @@ coerced using <code><a href="https://rdrr.io/r/base/integer.html" class="externa
 <div class="section level2">
 <h2 id="disconnect-close-a-connection">Disconnect (close) a connection<a class="anchor" aria-label="anchor" href="#disconnect-close-a-connection"></a>
 </h2>
+<p><span id="topic+dbDisconnect"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -397,6 +401,7 @@ invalid connection.</p>
 <div class="section level2">
 <h2 id="execute-a-query-on-a-given-database-connection">Execute a query on a given database connection<a class="anchor" aria-label="anchor" href="#execute-a-query-on-a-given-database-connection"></a>
 </h2>
+<p><span id="topic+dbSendQuery"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbSendQuery.html">dbSendQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -617,6 +622,7 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <div class="section level2">
 <h2 id="fetch-records-from-a-previously-executed-query">Fetch records from a previously executed query<a class="anchor" aria-label="anchor" href="#fetch-records-from-a-previously-executed-query"></a>
 </h2>
+<p><span id="topic+dbFetch"></span> <span id="topic+fetch"></span></p>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbFetch.html">dbFetch</a></span><span class="op">(</span><span class="va">res</span>, n <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -633,8 +639,8 @@ return them as a data.frame.</p>
 </h3>
 <table class="table">
 <colgroup>
-<col width="4%">
-<col width="95%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -811,6 +817,7 @@ representation of the data</p></li>
 <div class="section level2">
 <h2 id="clear-a-result-set">Clear a result set<a class="anchor" aria-label="anchor" href="#clear-a-result-set"></a>
 </h2>
+<p><span id="topic+dbClearResult"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbClearResult.html">dbClearResult</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -939,6 +946,7 @@ can expect a call to <code><a href="../reference/dbClearResult.html">dbClearResu
 <div class="section level2">
 <h2 id="bind-values-to-a-parameterizedprepared-statement">Bind values to a parameterized/prepared statement<a class="anchor" aria-label="anchor" href="#bind-values-to-a-parameterizedprepared-statement"></a>
 </h2>
+<p><span id="topic+dbBind"></span> <span id="topic+dbBindArrow"></span></p>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbBind.html">dbBind</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">params</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -968,8 +976,8 @@ compatible with <code><a href="../reference/dbBind.html">dbBind()</a></code>.</p
 </h3>
 <table class="table">
 <colgroup>
-<col width="4%">
-<col width="95%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -1284,6 +1292,7 @@ NULL values)</p></li>
 <div class="section level2">
 <h2 id="retrieve-results-from-a-query">Retrieve results from a query<a class="anchor" aria-label="anchor" href="#retrieve-results-from-a-query"></a>
 </h2>
+<p><span id="topic+dbGetQuery"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -1467,6 +1476,7 @@ raised, but a subsequent call to <code><a href="../reference/dbGetQuery.html">db
 <h2 id="execute-a-data-manipulation-statement-on-a-given-database-connection">Execute a data manipulation statement on a given database
 connection<a class="anchor" aria-label="anchor" href="#execute-a-data-manipulation-statement-on-a-given-database-connection"></a>
 </h2>
+<p><span id="topic+dbSendStatement"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbSendStatement.html">dbSendStatement</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -1677,6 +1687,7 @@ the <code>immediate</code> argument is set to <code>TRUE</code>.</p>
 <div class="section level2">
 <h2 id="change-database-state">Change database state<a class="anchor" aria-label="anchor" href="#change-database-state"></a>
 </h2>
+<p><span id="topic+dbExecute"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbExecute.html">dbExecute</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">statement</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -1842,6 +1853,7 @@ statement is not a non-<code>NA</code> string.</p>
 <div class="section level2">
 <h2 id="quote-literal-strings">Quote literal strings<a class="anchor" aria-label="anchor" href="#quote-literal-strings"></a>
 </h2>
+<p><span id="topic+dbQuoteString"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbQuoteString.html">dbQuoteString</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -1930,6 +1942,7 @@ row.</p>
 <div class="section level2">
 <h2 id="quote-identifiers">Quote identifiers<a class="anchor" aria-label="anchor" href="#quote-identifiers"></a>
 </h2>
+<p><span id="topic+dbQuoteIdentifier"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbQuoteIdentifier.html">dbQuoteIdentifier</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2029,6 +2042,7 @@ query, and not by <code><a href="../reference/dbQuoteIdentifier.html">dbQuoteIde
 <div class="section level2">
 <h2 id="read-database-tables-as-data-frames">Read database tables as data frames<a class="anchor" aria-label="anchor" href="#read-database-tables-as-data-frames"></a>
 </h2>
+<p><span id="topic+dbReadTable"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbReadTable.html">dbReadTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2049,9 +2063,9 @@ Arrow object.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbReadTable_:_conn">conn</code>
+<code id="dbReadTable_+3A_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2059,9 +2073,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbReadTable_:_name">name</code>
+<code id="dbReadTable_+3A_name">name</code>
 </td>
 <td>
 <p>
@@ -2090,9 +2104,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbReadTable_:_...">…</code>
+<code id="dbReadTable_+3A_...">…</code>
 </td>
 <td>
 <p>
@@ -2194,6 +2208,7 @@ non-scalar. Unsupported values for <code>row.names</code> and
 <div class="section level2">
 <h2 id="copy-data-frames-to-database-tables">Copy data frames to database tables<a class="anchor" aria-label="anchor" href="#copy-data-frames-to-database-tables"></a>
 </h2>
+<p><span id="topic+dbWriteTable"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbWriteTable.html">dbWriteTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2213,9 +2228,9 @@ types for fields.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbWriteTable_:_conn">conn</code>
+<code id="dbWriteTable_+3A_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2223,9 +2238,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbWriteTable_:_name">name</code>
+<code id="dbWriteTable_+3A_name">name</code>
 </td>
 <td>
 <p>
@@ -2254,9 +2269,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbWriteTable_:_value">value</code>
+<code id="dbWriteTable_+3A_value">value</code>
 </td>
 <td>
 <p>
@@ -2264,9 +2279,9 @@ A data.frame (or coercible to data.frame).
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbWriteTable_:_...">…</code>
+<code id="dbWriteTable_+3A_...">…</code>
 </td>
 <td>
 <p>
@@ -2444,6 +2459,7 @@ or missing names, incompatible columns) also raise an error.</p>
 <div class="section level2">
 <h2 id="list-remote-tables">List remote tables<a class="anchor" aria-label="anchor" href="#list-remote-tables"></a>
 </h2>
+<p><span id="topic+dbListTables"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2505,6 +2521,7 @@ connection.</p>
 <div class="section level2">
 <h2 id="does-a-table-exist">Does a table exist?<a class="anchor" aria-label="anchor" href="#does-a-table-exist"></a>
 </h2>
+<p><span id="topic+dbExistsTable"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbExistsTable.html">dbExistsTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2522,9 +2539,9 @@ connection.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbExistsTable_:_conn">conn</code>
+<code id="dbExistsTable_+3A_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2532,9 +2549,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbExistsTable_:_name">name</code>
+<code id="dbExistsTable_+3A_name">name</code>
 </td>
 <td>
 <p>
@@ -2563,9 +2580,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbExistsTable_:_...">…</code>
+<code id="dbExistsTable_+3A_...">…</code>
 </td>
 <td>
 <p>
@@ -2623,6 +2640,7 @@ more quoting is done</p></li>
 <div class="section level2">
 <h2 id="remove-a-table-from-the-database">Remove a table from the database<a class="anchor" aria-label="anchor" href="#remove-a-table-from-the-database"></a>
 </h2>
+<p><span id="topic+dbRemoveTable"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbRemoveTable.html">dbRemoveTable</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2641,9 +2659,9 @@ from the database.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbRemoveTable_:_conn">conn</code>
+<code id="dbRemoveTable_+3A_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2651,9 +2669,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbRemoveTable_:_name">name</code>
+<code id="dbRemoveTable_+3A_name">name</code>
 </td>
 <td>
 <p>
@@ -2682,9 +2700,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbRemoveTable_:_...">…</code>
+<code id="dbRemoveTable_+3A_...">…</code>
 </td>
 <td>
 <p>
@@ -2766,6 +2784,7 @@ non-scalar.</p>
 <div class="section level2">
 <h2 id="list-field-names-of-a-remote-table">List field names of a remote table<a class="anchor" aria-label="anchor" href="#list-field-names-of-a-remote-table"></a>
 </h2>
+<p><span id="topic+dbListFields"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">name</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2783,9 +2802,9 @@ non-scalar.</p>
 <col style="width: 50%">
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbListFields_:_conn">conn</code>
+<code id="dbListFields_+3A_conn">conn</code>
 </td>
 <td>
 <p>
@@ -2793,9 +2812,9 @@ A DBIConnection object, as returned by <code><a href="../reference/dbConnect.htm
 </p>
 </td>
 </tr>
-<tr class="even">
+<tr>
 <td>
-<code id="dbListFields_:_name">name</code>
+<code id="dbListFields_+3A_name">name</code>
 </td>
 <td>
 <p>
@@ -2824,9 +2843,9 @@ name given verbatim, e.g. <code>SQL(‘“my_schema”.”table_name”’)</cod
 </ul>
 </td>
 </tr>
-<tr class="odd">
+<tr>
 <td>
-<code id="dbListFields_:_...">…</code>
+<code id="dbListFields_+3A_...">…</code>
 </td>
 <td>
 <p>
@@ -2882,6 +2901,7 @@ column.</p>
 <div class="section level2">
 <h2 id="is-this-dbms-object-still-valid">Is this DBMS object still valid?<a class="anchor" aria-label="anchor" href="#is-this-dbms-object-still-valid"></a>
 </h2>
+<p><span id="topic+dbIsValid"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbIsValid.html">dbIsValid</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -2896,8 +2916,8 @@ hasn’t been disconnected or cleared).</p>
 </h3>
 <table class="table">
 <colgroup>
-<col width="9%">
-<col width="90%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -2954,6 +2974,7 @@ failure, etc.), <code><a href="../reference/dbIsValid.html">dbIsValid()</a></cod
 <div class="section level2">
 <h2 id="completion-status">Completion status<a class="anchor" aria-label="anchor" href="#completion-status"></a>
 </h2>
+<p><span id="topic+dbHasCompleted"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbHasCompleted.html">dbHasCompleted</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3065,6 +3086,7 @@ value is unspecified after fetching n rows, but the result value is
 <div class="section level2">
 <h2 id="get-the-statement-associated-with-a-result-set">Get the statement associated with a result set<a class="anchor" aria-label="anchor" href="#get-the-statement-associated-with-a-result-set"></a>
 </h2>
+<p><span id="topic+dbGetStatement"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetStatement.html">dbGetStatement</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3117,6 +3139,7 @@ either <code><a href="../reference/dbSendQuery.html">dbSendQuery()</a></code> or
 <div class="section level2">
 <h2 id="the-number-of-rows-fetched-so-far">The number of rows fetched so far<a class="anchor" aria-label="anchor" href="#the-number-of-rows-fetched-so-far"></a>
 </h2>
+<p><span id="topic+dbGetRowCount"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetRowCount.html">dbGetRowCount</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3183,6 +3206,7 @@ before and after calling <code><a href="../reference/dbFetch.html">dbFetch()</a>
 <div class="section level2">
 <h2 id="the-number-of-rows-affected">The number of rows affected<a class="anchor" aria-label="anchor" href="#the-number-of-rows-affected"></a>
 </h2>
+<p><span id="topic+dbGetRowsAffected"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetRowsAffected.html">dbGetRowsAffected</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3273,6 +3297,7 @@ this step is always executed.</p></li>
 <div class="section level2">
 <h2 id="information-about-result-types">Information about result types<a class="anchor" aria-label="anchor" href="#information-about-result-types"></a>
 </h2>
+<p><span id="topic+dbColumnInfo"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbColumnInfo.html">dbColumnInfo</a></span><span class="op">(</span><span class="va">res</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3383,6 +3408,8 @@ unchanged.</p>
 <div class="section level2">
 <h2 id="begincommitrollback-sql-transactions">Begin/commit/rollback SQL transactions<a class="anchor" aria-label="anchor" href="#begincommitrollback-sql-transactions"></a>
 </h2>
+<p><span id="topic+dbBegin"></span> <span id="topic+dbCommit"></span>
+<span id="topic+dbRollback"></span> <span id="topic+transactions"></span></p>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/transactions.html">dbBegin</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -3501,6 +3528,7 @@ is set.</p>
 <div class="section level2">
 <h2 id="self-contained-sql-transactions">Self-contained SQL transactions<a class="anchor" aria-label="anchor" href="#self-contained-sql-transactions"></a>
 </h2>
+<p><span id="topic+dbWithTransaction"></span> <span id="topic+dbBreak"></span></p>
 <p>This section describes the behavior of the following methods:</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbWithTransaction.html">dbWithTransaction</a></span><span class="op">(</span><span class="va">conn</span>, <span class="va">code</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -3556,7 +3584,7 @@ code.</p>
 <h3 id="failure-modes-23">Failure modes<a class="anchor" aria-label="anchor" href="#failure-modes-23"></a>
 </h3>
 <p>Failure to initiate the transaction (e.g., if the connection is
-closed or invalid of if <code><a href="../reference/transactions.html">dbBegin()</a></code> has been called already)
+closed or invalid or if <code><a href="../reference/transactions.html">dbBegin()</a></code> has been called already)
 gives an error.</p>
 </div>
 <div class="section level3">
@@ -3620,6 +3648,7 @@ environment.</p>
 <div class="section level2">
 <h2 id="get-dbms-metadata">Get DBMS metadata<a class="anchor" aria-label="anchor" href="#get-dbms-metadata"></a>
 </h2>
+<p><span id="topic+dbGetInfo"></span></p>
 <p>This section describes the behavior of the following method:</p>
 <div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbGetInfo.html">dbGetInfo</a></span><span class="op">(</span><span class="va">dbObj</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
@@ -3634,8 +3663,8 @@ DBIResult.</p>
 </h3>
 <table class="table">
 <colgroup>
-<col width="9%">
-<col width="90%">
+<col width="50%">
+<col width="50%">
 </colgroup>
 <tbody>
 <tr class="odd">
@@ -3714,7 +3743,7 @@ methods, <code><a href="../reference/dbGetStatement.html">dbGetStatement()</a></
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.9000.</p>
 </div>
 
     </footer>

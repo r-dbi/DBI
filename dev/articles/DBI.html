@@ -119,18 +119,18 @@ describing films, actors, customers, stores, etc.:</p>
 <span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
 <span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
 <span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
-<span>  password <span class="op">=</span> <span class="st">"relational"</span>,</span>
+<span>  password <span class="op">=</span> <span class="st">"ctu-relational"</span>,</span>
 <span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "actor"         "address"       "category"      "city"         </span></span>
-<span><span class="co">##  [5] "country"       "customer"      "film"          "film_actor"   </span></span>
-<span><span class="co">##  [9] "film_category" "film_text"     "inventory"     "language"     </span></span>
-<span><span class="co">## [13] "payment"       "rental"        "staff"         "store"</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] "country"       "city"          "customer"      "address"      </span></span>
+<span><span class="co">##  [5] "film_actor"    "store"         "film_category" "inventory"    </span></span>
+<span><span class="co">##  [9] "actor"         "film_text"     "payment"       "category"     </span></span>
+<span><span class="co">## [13] "film"          "rental"        "language"      "staff"</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 <p>Connections to databases are created using the
@@ -157,10 +157,10 @@ code to connect to the database could then look like this:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
 <span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
 <span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
-<span>  password <span class="op">=</span> <span class="fu">keyring</span><span class="fu">::</span><span class="fu">key_get</span><span class="op">(</span><span class="st">"db.relational-data.org"</span>, <span class="st">"guest"</span><span class="op">)</span>,</span>
+<span>  password <span class="op">=</span> <span class="fu">keyring</span><span class="fu">::</span><span class="fu">key_get</span><span class="op">(</span><span class="st">"relational.fel.cvut.cz"</span>, <span class="st">"guest"</span><span class="op">)</span>,</span>
 <span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -173,7 +173,14 @@ code to connect to the database could then look like this:</p>
 and a table name and returns a character vector of the column names in
 order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>, username <span class="op">=</span> <span class="st">"guest"</span>, password <span class="op">=</span> <span class="st">"relational"</span>, host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>, port <span class="op">=</span> <span class="fl">3306</span>, dbname <span class="op">=</span> <span class="st">"sakila"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
+<span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
+<span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
+<span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
+<span>  password <span class="op">=</span> <span class="st">"ctu-relational"</span>,</span>
+<span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "film_id"              "title"                "description"         </span></span>
 <span><span class="co">##  [4] "release_year"         "language_id"          "original_language_id"</span></span>
@@ -268,7 +275,7 @@ takes care of the quoting.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">film_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lazy_df</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># Source:   SQL [?? x 3]</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># Database: mysql  [guest@db.relational-data.org:3306/sakila]</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># Database: mysql  [guest@relational.fel.cvut.cz:3306/sakila]</span></span></span>
 <span><span class="co">##   film_id title            description                                          </span></span>
 <span><span class="co">##     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">1</span>       2 ACE GOLDFINGER   A Astounding Epistle of a Database Administrator And…</span></span>
@@ -321,7 +328,7 @@ DBMS</a></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.9000.</p>
 </div>
 
     </footer>
