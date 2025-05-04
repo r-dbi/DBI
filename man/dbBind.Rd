@@ -266,9 +266,9 @@ At least the following data types are accepted on input (including \link{NA}):
 (also with special characters such as spaces, newlines, quotes, and backslashes)
 \item \link{factor} (bound as character,
 with warning)
-\item \link[lubridate:date_utils]{lubridate::Date}
+\item \link[=Dates]{Date}
 (also when stored internally as integer)
-\item \link[lubridate:posix_utils]{lubridate::POSIXct} timestamps
+\item \link[=DateTimeClasses]{POSIXct} timestamps
 \item \link{POSIXlt} timestamps
 \item \link{difftime} values
 (also with units other than seconds
