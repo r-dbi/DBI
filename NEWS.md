@@ -1,5 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9031 (2025-09-05)
+
+## Chore
+
+- Auto-update from GitHub Actions (#525).
+
+
 # DBI 1.2.3.9030 (2025-08-01)
 
 ## Continuous integration
