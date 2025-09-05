@@ -5,6 +5,7 @@ generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbQuoteString("AdbiConnection", "character")
+adbi::dbQuoteString("AdbiConnection", "SQL")
 bigrquery::dbQuoteString("BigQueryConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
@@ -31,6 +32,7 @@ generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
 adbi::dbQuoteString("AdbiConnection", "character")
+adbi::dbQuoteString("AdbiConnection", "SQL")
 bigrquery::dbQuoteString("BigQueryConnection", "character")
 bigrquery::dbQuoteString("BigQueryConnection", "SQL")
 DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")
@@ -59,7 +61,7 @@ sparklyr::dbQuoteString("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9029</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9031</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,6 +95,7 @@ use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
 <h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteString("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteString("AdbiConnection", "SQL")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteString("BigQueryConnection", "SQL")</a></code></p></li>
 <li><p><code>DatabaseConnector::dbQuoteString("DatabaseConnectorConnection", "character")</code></p></li>
