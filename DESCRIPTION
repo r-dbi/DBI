@@ -38,7 +38,8 @@ Suggests:
     RSQLite (>= 1.1-2),
     testthat (>= 3.0.0),
     vctrs,
-    xml2
+    xml2,
+    callr
 VignetteBuilder: 
     knitr
 Config/autostyle/scope: line_breaks
