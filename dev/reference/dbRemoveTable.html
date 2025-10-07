@@ -15,6 +15,7 @@ duckdb::dbRemoveTable("duckdb_connection", "character")
 odbc::dbRemoveTable("OdbcConnection", "character")
 pool::dbRemoveTable("Pool", "ANY")
 RAthena::dbRemoveTable("AthenaConnection", "character")
+RAthena::dbRemoveTable("AthenaConnection", "Id")
 RJDBC::dbRemoveTable("JDBCConnection", "ANY")
 RMariaDB::dbRemoveTable("MariaDBConnection", "character")
 RMySQL::dbRemoveTable("MySQLConnection", "character")
@@ -40,6 +41,7 @@ duckdb::dbRemoveTable("duckdb_connection", "character")
 odbc::dbRemoveTable("OdbcConnection", "character")
 pool::dbRemoveTable("Pool", "ANY")
 RAthena::dbRemoveTable("AthenaConnection", "character")
+RAthena::dbRemoveTable("AthenaConnection", "Id")
 RJDBC::dbRemoveTable("JDBCConnection", "ANY")
 RMariaDB::dbRemoveTable("MariaDBConnection", "character")
 RMySQL::dbRemoveTable("MySQLConnection", "character")
@@ -57,7 +59,7 @@ sparklyr::dbRemoveTable("spark_connection", "character")
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9031</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9032</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -100,7 +102,8 @@ from the database.</p>
 <li><p><code><a href="https://r.duckdb.org/reference/duckdb_connection-class.html" class="external-link">duckdb::dbRemoveTable("duckdb_connection", "character")</a></code></p></li>
 <li><p><code><a href="https://odbc.r-dbi.org/reference/OdbcConnection.html" class="external-link">odbc::dbRemoveTable("OdbcConnection", "character")</a></code></p></li>
 <li><p><code><a href="http://rstudio.github.io/pool/reference/DBI-wrap.html" class="external-link">pool::dbRemoveTable("Pool", "ANY")</a></code></p></li>
-<li><p><code><a href="https://rdrr.io/pkg/RAthena/man/dbRemoveTable.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dyfanjones.github.io/RAthena/reference/AthenaConnection.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://dyfanjones.github.io/RAthena/reference/AthenaConnection.html" class="external-link">RAthena::dbRemoveTable("AthenaConnection", "Id")</a></code></p></li>
 <li><p><code><a href="https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html" class="external-link">RJDBC::dbRemoveTable("JDBCConnection", "ANY")</a></code></p></li>
 <li><p><code><a href="https://rmariadb.r-dbi.org/reference/mariadb-tables.html" class="external-link">RMariaDB::dbRemoveTable("MariaDBConnection", "character")</a></code></p></li>
 <li><p><code><a href="https://r-dbi.r-universe.dev/RMySQL/reference/dbReadTable.html" class="external-link">RMySQL::dbRemoveTable("MySQLConnection", "character")</a></code></p></li>
