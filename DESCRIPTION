@@ -22,6 +22,7 @@ Depends:
 Suggests:
     arrow,
     blob,
+    callr,
     covr,
     DBItest (>= 1.8.2),
     dbplyr,
@@ -38,40 +39,17 @@ Suggests:
     RSQLite (>= 1.1-2),
     testthat (>= 3.0.0),
     vctrs,
-    xml2,
-    callr
+    xml2
 VignetteBuilder: 
     knitr
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
+Config/Needs/website: r-dbi/DBItest, r-dbi/dbitemplate, adbi, AzureKusto,
+    bigrquery, DatabaseConnector, dittodb, duckdb, implyr, lazysf, odbc,
+    pool, RAthena, IMSMWU/RClickhouse, RH2, RJDBC, RMariaDB, RMySQL,
+    RPostgres, RPostgreSQL, RPresto, RSQLite, sergeant, sparklyr, withr
+Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3.9000
-Config/Needs/website: 
-    r-dbi/DBItest,
-    r-dbi/dbitemplate,
-    adbi,
-    AzureKusto,
-    bigrquery,
-    DatabaseConnector,
-    dittodb,
-    duckdb,
-    implyr,
-    lazysf,
-    odbc,
-    pool,
-    RAthena,
-    IMSMWU/RClickhouse,
-    RH2,
-    RJDBC,
-    RMariaDB,
-    RMySQL,
-    RPostgres,
-    RPostgreSQL,
-    RPresto,
-    RSQLite,
-    sergeant,
-    sparklyr,
-    withr
-Config/testthat/edition: 3
