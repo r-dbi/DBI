@@ -34,7 +34,8 @@ dbWithTransaction_DBIConnection <- function(conn, code) {
       res
     },
     dbi_abort = rollback_because,
-    error = rollback_because
+    error = rollback_because,
+    interrupt = rollback_because
   )
 }
 
