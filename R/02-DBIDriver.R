@@ -22,7 +22,9 @@ show_driver <- function(object) {
 findDriver <- function(drvName) {
   # If it exists in the global environment, use that
   d <- get2(drvName, globalenv())
-  if (!is.null(d)) return(d)
+  if (!is.null(d)) {
+    return(d)
+  }
 
   # Otherwise, see if the appropriately named package is available
   if (is_attached(drvName)) {
@@ -39,16 +41,23 @@ findDriver <- function(drvName) {
 
   # Can't find it:
   stop(
-    "Couldn't find driver ", drvName, ". Looked in:\n",
+    "Couldn't find driver ",
+    drvName,
+    ". Looked in:\n",
     "* global namespace\n",
-    "* in package called ", drvName, "\n",
-    "* in package called ", pkgName,
+    "* in package called ",
+    drvName,
+    "\n",
+    "* in package called ",
+    pkgName,
     call. = FALSE
   )
 }
 
 get2 <- function(x, env) {
-  if (!exists(x, envir = env)) return(NULL)
+  if (!exists(x, envir = env)) {
+    return(NULL)
+  }
   get(x, envir = env)
 }
 

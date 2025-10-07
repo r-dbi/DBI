@@ -64,7 +64,8 @@
 #'
 #' dbDisconnect(con)
 #' @export
-setGeneric("dbSendStatement",
+setGeneric(
+  "dbSendStatement",
   def = function(conn, statement, ...) standardGeneric("dbSendStatement"),
   valueClass = "DBIResult"
 )

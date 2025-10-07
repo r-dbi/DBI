@@ -23,7 +23,8 @@ setClass("DBIResultArrow", contains = c("DBIObject", "VIRTUAL"))
 
 #' @rdname DBIResultArrow-class
 #' @export
-setClass("DBIResultArrowDefault",
+setClass(
+  "DBIResultArrowDefault",
   contains = "DBIResultArrow",
   slots = list(
     result = "DBIResult"

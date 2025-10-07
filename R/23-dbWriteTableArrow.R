@@ -36,6 +36,6 @@
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbWriteTableArrow",
-  def = function(conn, name, value, ...) standardGeneric("dbWriteTableArrow")
-)
+setGeneric("dbWriteTableArrow", def = function(conn, name, value, ...) {
+  standardGeneric("dbWriteTableArrow")
+})

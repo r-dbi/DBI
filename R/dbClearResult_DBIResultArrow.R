@@ -5,4 +5,8 @@ dbClearResult_DBIResultArrow <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbClearResult", signature("DBIResultArrow"), dbClearResult_DBIResultArrow)
+setMethod(
+  "dbClearResult",
+  signature("DBIResultArrow"),
+  dbClearResult_DBIResultArrow
+)

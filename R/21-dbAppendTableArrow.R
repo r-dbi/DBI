@@ -28,6 +28,6 @@
 #' dbAppendTableArrow(con, "iris", iris[1:5, ])
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
-setGeneric("dbAppendTableArrow",
-  def = function(conn, name, value, ...) standardGeneric("dbAppendTableArrow")
-)
+setGeneric("dbAppendTableArrow", def = function(conn, name, value, ...) {
+  standardGeneric("dbAppendTableArrow")
+})

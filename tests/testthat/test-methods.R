@@ -8,8 +8,18 @@ expect_ellipsis <- function(name, method) {
 
 test_that("all methods have ellipsis", {
   symbols <- ls(env = asNamespace("DBI"))
-  objects <- mget(symbols, env = asNamespace("DBI"), mode = "function", ifnotfound = rep(list(NULL), length(symbols)))
-  is_method <- vapply(objects, inherits, "standardGeneric", FUN.VALUE = logical(1L))
+  objects <- mget(
+    symbols,
+    env = asNamespace("DBI"),
+    mode = "function",
+    ifnotfound = rep(list(NULL), length(symbols))
+  )
+  is_method <- vapply(
+    objects,
+    inherits,
+    "standardGeneric",
+    FUN.VALUE = logical(1L)
+  )
   methods <- objects[is_method]
   Map(expect_ellipsis, names(methods), methods)
 })

@@ -38,6 +38,6 @@
 #' dbClearResult(rs)
 #'
 #' dbDisconnect(con)
-setGeneric("dbFetchArrowChunk",
-  def = function(res, ...) standardGeneric("dbFetchArrowChunk")
-)
+setGeneric("dbFetchArrowChunk", def = function(res, ...) {
+  standardGeneric("dbFetchArrowChunk")
+})

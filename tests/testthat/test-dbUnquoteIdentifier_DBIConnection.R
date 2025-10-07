@@ -2,7 +2,10 @@ test_that("can unquote any number of components", {
   expect_equal(dbUnquoteIdentifier(ANSI(), "a"), list(Id("a")))
   expect_equal(dbUnquoteIdentifier(ANSI(), "a.b"), list(Id("a", "b")))
   expect_equal(dbUnquoteIdentifier(ANSI(), "a.b.c"), list(Id("a", "b", "c")))
-  expect_equal(dbUnquoteIdentifier(ANSI(), "a.b.c.d"), list(Id("a", "b", "c", "d")))
+  expect_equal(
+    dbUnquoteIdentifier(ANSI(), "a.b.c.d"),
+    list(Id("a", "b", "c", "d"))
+  )
 })
 
 test_that("fail with NA input", {

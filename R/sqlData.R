@@ -28,6 +28,6 @@
 #' sqlData(con, head(mtcars))
 #'
 #' dbDisconnect(con)
-setGeneric("sqlData",
-  def = function(con, value, row.names = NA, ...) standardGeneric("sqlData")
-)
+setGeneric("sqlData", def = function(con, value, row.names = NA, ...) {
+  standardGeneric("sqlData")
+})

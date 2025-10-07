@@ -5,4 +5,8 @@ dbListFields_DBIConnection_character <- function(conn, name, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbListFields", signature("DBIConnection", "character"), dbListFields_DBIConnection_character)
+setMethod(
+  "dbListFields",
+  signature("DBIConnection", "character"),
+  dbListFields_DBIConnection_character
+)

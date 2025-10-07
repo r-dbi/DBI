@@ -53,7 +53,9 @@ sqlRownamesToColumn <- function(df, row.names = NA) {
 #' @rdname rownames
 sqlColumnToRownames <- function(df, row.names = NA) {
   name <- guessColName(df, row.names)
-  if (is.null(name)) return(df)
+  if (is.null(name)) {
+    return(df)
+  }
 
   if (!(name %in% names(df))) {
     stop("Column ", name, " not present in output", call. = FALSE)

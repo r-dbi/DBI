@@ -9,4 +9,8 @@ dbGetQuery_DBIConnection_character <- function(conn, statement, ..., n = -1L) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetQuery", signature("DBIConnection", "character"), dbGetQuery_DBIConnection_character)
+setMethod(
+  "dbGetQuery",
+  signature("DBIConnection", "character"),
+  dbGetQuery_DBIConnection_character
+)

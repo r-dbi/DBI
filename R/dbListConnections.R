@@ -9,6 +9,6 @@
 #' @keywords internal
 #' @export
 #' @return a list
-setGeneric("dbListConnections",
-  def = function(drv, ...) standardGeneric("dbListConnections")
-)
+setGeneric("dbListConnections", def = function(drv, ...) {
+  standardGeneric("dbListConnections")
+})

@@ -31,7 +31,8 @@
 #' dbListObjects(con)
 #'
 #' dbDisconnect(con)
-setGeneric("dbListObjects",
+setGeneric(
+  "dbListObjects",
   def = function(conn, prefix = NULL, ...) standardGeneric("dbListObjects"),
   valueClass = "data.frame"
 )

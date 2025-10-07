@@ -34,7 +34,8 @@
 #' dbReadTable(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbReadTable",
+setGeneric(
+  "dbReadTable",
   def = function(conn, name, ...) standardGeneric("dbReadTable"),
   valueClass = "data.frame"
 )

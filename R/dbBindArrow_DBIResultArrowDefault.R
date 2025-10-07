@@ -6,4 +6,8 @@ dbBindArrow_DBIResultArrowDefault <- function(res, params, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbBindArrow", signature("DBIResultArrowDefault"), dbBindArrow_DBIResultArrowDefault)
+setMethod(
+  "dbBindArrow",
+  signature("DBIResultArrowDefault"),
+  dbBindArrow_DBIResultArrowDefault
+)

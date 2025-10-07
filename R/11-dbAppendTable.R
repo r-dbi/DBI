@@ -36,6 +36,9 @@
 #' dbAppendTable(con, "iris", iris)
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
-setGeneric("dbAppendTable",
-  def = function(conn, name, value, ..., row.names = NULL) standardGeneric("dbAppendTable")
+setGeneric(
+  "dbAppendTable",
+  def = function(conn, name, value, ..., row.names = NULL) {
+    standardGeneric("dbAppendTable")
+  }
 )

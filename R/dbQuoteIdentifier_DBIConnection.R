@@ -2,8 +2,12 @@
 #' @usage NULL
 dbQuoteIdentifier_DBIConnection <- function(conn, x, ...) {
   # Don't support lists, auto-vectorization violates type stability
-  if (is(x, "SQL")) return(x)
-  if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
+  if (is(x, "SQL")) {
+    return(x)
+  }
+  if (!is.character(x)) {
+    stop("x must be character or SQL", call. = FALSE)
+  }
 
   if (any(is.na(x))) {
     stop("Cannot pass NA to dbQuoteIdentifier()", call. = FALSE)
@@ -20,18 +24,34 @@ dbQuoteIdentifier_DBIConnection <- function(conn, x, ...) {
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection"), dbQuoteIdentifier_DBIConnection)
+setMethod(
+  "dbQuoteIdentifier",
+  signature("DBIConnection"),
+  dbQuoteIdentifier_DBIConnection
+)
 
 # Need to keep other method declarations around for now, because clients might
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "character"), dbQuoteIdentifier_DBIConnection)
+setMethod(
+  "dbQuoteIdentifier",
+  signature("DBIConnection", "character"),
+  dbQuoteIdentifier_DBIConnection
+)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "SQL"), dbQuoteIdentifier_DBIConnection)
+setMethod(
+  "dbQuoteIdentifier",
+  signature("DBIConnection", "SQL"),
+  dbQuoteIdentifier_DBIConnection
+)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteIdentifier", signature("DBIConnection", "Id"), dbQuoteIdentifier_DBIConnection_Id)
+setMethod(
+  "dbQuoteIdentifier",
+  signature("DBIConnection", "Id"),
+  dbQuoteIdentifier_DBIConnection_Id
+)

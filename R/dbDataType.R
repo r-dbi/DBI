@@ -63,7 +63,8 @@
 #'
 #' dbDisconnect(con)
 #' @export
-setGeneric("dbDataType",
+setGeneric(
+  "dbDataType",
   def = function(dbObj, obj, ...) standardGeneric("dbDataType"),
   valueClass = "character"
 )

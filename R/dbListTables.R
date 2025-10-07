@@ -22,7 +22,8 @@
 #' dbListTables(con)
 #'
 #' dbDisconnect(con)
-setGeneric("dbListTables",
+setGeneric(
+  "dbListTables",
   def = function(conn, ...) standardGeneric("dbListTables"),
   valueClass = "character"
 )

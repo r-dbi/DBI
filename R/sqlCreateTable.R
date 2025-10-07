@@ -38,6 +38,9 @@
 #' # By default, character row names are converted to a row_names colum
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5])
 #' sqlCreateTable(ANSI(), "mtcars", mtcars[, 1:5], row.names = FALSE)
-setGeneric("sqlCreateTable",
-  def = function(con, table, fields, row.names = NA, temporary = FALSE, ...) standardGeneric("sqlCreateTable")
+setGeneric(
+  "sqlCreateTable",
+  def = function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+    standardGeneric("sqlCreateTable")
+  }
 )

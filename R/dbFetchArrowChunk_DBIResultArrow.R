@@ -7,4 +7,8 @@ dbFetchArrowChunk_DBIResultArrow <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbFetchArrowChunk", signature("DBIResultArrow"), dbFetchArrowChunk_DBIResultArrow)
+setMethod(
+  "dbFetchArrowChunk",
+  signature("DBIResultArrow"),
+  dbFetchArrowChunk_DBIResultArrow
+)

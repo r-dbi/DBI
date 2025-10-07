@@ -21,7 +21,8 @@
 #' dbGetConnectArgs(cnr)
 #' dbGetConnectArgs(cnr, eval = FALSE)
 #' @export
-setGeneric("dbGetConnectArgs",
+setGeneric(
+  "dbGetConnectArgs",
   def = function(drv, eval = TRUE, ...) standardGeneric("dbGetConnectArgs"),
   valueClass = "list"
 )

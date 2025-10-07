@@ -40,7 +40,8 @@ NULL
 #' # Access the database through this connection:
 #' dbGetQuery(con, "SELECT 1 AS a")
 #' dbDisconnect(con)
-setClass("DBIConnector",
+setClass(
+  "DBIConnector",
   slots = c(".drv" = "DBIDriver", ".conn_args" = "list"),
   contains = c("DBIObject")
 )

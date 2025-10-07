@@ -1,3 +1,1 @@
-setGeneric("dbiDataType",
-  def = function(x, ...) standardGeneric("dbiDataType")
-)
+setGeneric("dbiDataType", def = function(x, ...) standardGeneric("dbiDataType"))

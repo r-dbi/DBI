@@ -34,6 +34,6 @@
 #' dbClearResult(rs)
 #'
 #' dbDisconnect(con)
-setGeneric("dbFetchArrow",
-  def = function(res, ...) standardGeneric("dbFetchArrow")
-)
+setGeneric("dbFetchArrow", def = function(res, ...) {
+  standardGeneric("dbFetchArrow")
+})

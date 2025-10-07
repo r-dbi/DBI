@@ -16,19 +16,29 @@ sqlInterpolate_DBIConnection <- function(conn, sql, ..., .dots = list()) {
   values <- c(list(...), .dots)
   if (all(positional_vars)) {
     if (length(vars) != length(values)) {
-      stop("Supplied values don't match positional vars to interpolate", call. = FALSE)
+      stop(
+        "Supplied values don't match positional vars to interpolate",
+        call. = FALSE
+      )
     }
     if (any(names(values) != "")) {
       stop("Positional variables don't take named arguments")
     }
   } else {
     if (!setequal(vars, names(values))) {
-      stop("Supplied values don't match named vars to interpolate", call. = FALSE)
+      stop(
+        "Supplied values don't match named vars to interpolate",
+        call. = FALSE
+      )
     }
     values <- values[vars]
   }
 
-  safe_values <- vapply(values, function(x) dbQuoteLiteral(conn, x), character(1))
+  safe_values <- vapply(
+    values,
+    function(x) dbQuoteLiteral(conn, x),
+    character(1)
+  )
 
   for (i in rev(seq_along(vars))) {
     sql <- paste0(
@@ -42,4 +52,8 @@ sqlInterpolate_DBIConnection <- function(conn, sql, ..., .dots = list()) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlInterpolate", signature("DBIConnection"), sqlInterpolate_DBIConnection)
+setMethod(
+  "sqlInterpolate",
+  signature("DBIConnection"),
+  sqlInterpolate_DBIConnection
+)

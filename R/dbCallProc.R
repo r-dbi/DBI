@@ -12,9 +12,7 @@
 #' @inheritParams dbGetQuery
 #' @keywords internal
 #' @export
-setGeneric("dbCallProc",
-  def = function(conn, ...) {
-    .Deprecated()
-    standardGeneric("dbCallProc")
-  }
-)
+setGeneric("dbCallProc", def = function(conn, ...) {
+  .Deprecated()
+  standardGeneric("dbCallProc")
+})

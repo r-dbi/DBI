@@ -21,7 +21,8 @@
 #' dbListFields(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbListFields",
+setGeneric(
+  "dbListFields",
   def = function(conn, name, ...) standardGeneric("dbListFields"),
   valueClass = "character"
 )

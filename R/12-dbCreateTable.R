@@ -34,6 +34,9 @@
 #' dbCreateTable(con, "iris", iris)
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
-setGeneric("dbCreateTable",
-  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) standardGeneric("dbCreateTable")
+setGeneric(
+  "dbCreateTable",
+  def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+    standardGeneric("dbCreateTable")
+  }
 )

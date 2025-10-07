@@ -49,7 +49,8 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbFetch",
+setGeneric(
+  "dbFetch",
   def = function(res, n = -1, ...) standardGeneric("dbFetch"),
   valueClass = "data.frame"
 )

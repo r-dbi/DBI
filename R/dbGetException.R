@@ -10,6 +10,6 @@
 #'   connection `conn`.
 #' @export
 #' @keywords internal
-setGeneric("dbGetException",
-  def = function(conn, ...) standardGeneric("dbGetException")
-)
+setGeneric("dbGetException", def = function(conn, ...) {
+  standardGeneric("dbGetException")
+})

@@ -15,6 +15,6 @@
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
-setGeneric("dbDisconnect",
-  def = function(conn, ...) standardGeneric("dbDisconnect")
-)
+setGeneric("dbDisconnect", def = function(conn, ...) {
+  standardGeneric("dbDisconnect")
+})

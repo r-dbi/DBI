@@ -11,4 +11,8 @@ dbGetConnectArgs_DBIConnector <- function(drv, eval = TRUE, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetConnectArgs", signature("DBIConnector"), dbGetConnectArgs_DBIConnector)
+setMethod(
+  "dbGetConnectArgs",
+  signature("DBIConnector"),
+  dbGetConnectArgs_DBIConnector
+)

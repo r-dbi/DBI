@@ -39,7 +39,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   # prepare comments & quotes for quicker comparisions
   for (c in seq_along(comments)) {
     comments[[c]][["start"]] <- str_to_vec(comments[[c]][["start"]])
-    comments[[c]][["end"]]   <- str_to_vec(comments[[c]][["end"]])
+    comments[[c]][["end"]] <- str_to_vec(comments[[c]][["end"]])
   }
   for (q in seq_along(quotes)) {
     quotes[[q]][["hasEscape"]] <- nchar(quotes[[q]][["escape"]]) > 0L
@@ -49,7 +49,8 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   i <- 0L
   while (i < length(sql_arr)) {
     i <- i + 1L
-    switch(state,
+    switch(
+      state,
 
       default = {
         #  variable
@@ -67,12 +68,19 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
           }
         }
         # we can abort here if the state has changed
-        if (state != "default") next
+        if (state != "default") {
+          next
+        }
         # starting comment
         for (c in seq_along(comments)) {
           comment_start_arr <- comments[[c]][["start"]]
           comment_start_length <- length(comment_start_arr)
-          if (identical(sql_arr[i:(i + comment_start_length - 1L)], comment_start_arr)) {
+          if (
+            identical(
+              sql_arr[i:(i + comment_start_length - 1L)],
+              comment_start_arr
+            )
+          ) {
             comment_spec_offset <- c
             i <- i + comment_start_length
             state <- "comment"
@@ -94,7 +102,10 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
 
       quote = {
         # if we see backslash-like escapes, ignore next character
-        if (quotes[[quote_spec_offset]][["hasEscape"]] && identical(sql_arr[[i]], quotes[[quote_spec_offset]][[3]])) {
+        if (
+          quotes[[quote_spec_offset]][["hasEscape"]] &&
+            identical(sql_arr[[i]], quotes[[quote_spec_offset]][[3]])
+        ) {
           i <- i + 1L
           next
         }
@@ -109,7 +120,9 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
         # end commented area
         comment_end_arr <- comments[[comment_spec_offset]][["end"]]
         comment_end_length <- length(comment_end_arr)
-        if (identical(sql_arr[i:(i + comment_end_length - 1L)], comment_end_arr)) {
+        if (
+          identical(sql_arr[i:(i + comment_end_length - 1L)], comment_end_arr)
+        ) {
           i <- i + (comment_end_length - 1)
           comment_spec_offset <- 0L
           state <- "default"
@@ -121,7 +134,9 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   if (quote_spec_offset > 0L) {
     stop("Unterminated literal")
   }
-  if (comment_spec_offset > 0L && comments[[comment_spec_offset]][["endRequired"]]) {
+  if (
+    comment_spec_offset > 0L && comments[[comment_spec_offset]][["endRequired"]]
+  ) {
     stop("Unterminated comment")
   }
   list(start = var_pos_start, end = var_pos_end)

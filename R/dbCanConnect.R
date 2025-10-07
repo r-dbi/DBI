@@ -19,7 +19,8 @@
 #' # path that creates an in-memory database.) Other database drivers
 #' # will require more details (like user, password, host, port, etc.)
 #' dbCanConnect(RSQLite::SQLite(), ":memory:")
-setGeneric("dbCanConnect",
+setGeneric(
+  "dbCanConnect",
   def = function(drv, ...) standardGeneric("dbCanConnect"),
   valueClass = "logical"
 )

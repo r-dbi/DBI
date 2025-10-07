@@ -5,4 +5,8 @@ dbExistsTable_DBIConnection_Id <- function(conn, name, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbExistsTable", signature("DBIConnection", "Id"), dbExistsTable_DBIConnection_Id)
+setMethod(
+  "dbExistsTable",
+  signature("DBIConnection", "Id"),
+  dbExistsTable_DBIConnection_Id
+)

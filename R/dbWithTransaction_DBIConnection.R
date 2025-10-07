@@ -9,7 +9,8 @@ dbWithTransaction_DBIConnection <- function(conn, code) {
         paste(
           "Failed to rollback transaction.",
           "Tried to roll back because an error",
-          "occurred:", conditionMessage(e)
+          "occurred:",
+          conditionMessage(e)
         ),
         call. = FALSE
       )
@@ -41,7 +42,11 @@ dbWithTransaction_DBIConnection <- function(conn, code) {
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWithTransaction", signature("DBIConnection"), dbWithTransaction_DBIConnection)
+setMethod(
+  "dbWithTransaction",
+  signature("DBIConnection"),
+  dbWithTransaction_DBIConnection
+)
 
 #' @export
 #' @rdname dbWithTransaction

@@ -60,6 +60,6 @@
 #' )
 #'
 #' dbDisconnect(con)
-setGeneric("dbGetQuery",
-  def = function(conn, statement, ...) standardGeneric("dbGetQuery")
-)
+setGeneric("dbGetQuery", def = function(conn, statement, ...) {
+  standardGeneric("dbGetQuery")
+})

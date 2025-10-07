@@ -53,6 +53,6 @@
 #' dbReadTable(con, "cars")   # there are now 10 rows
 #'
 #' dbDisconnect(con)
-setGeneric("dbExecute",
-  def = function(conn, statement, ...) standardGeneric("dbExecute")
-)
+setGeneric("dbExecute", def = function(conn, statement, ...) {
+  standardGeneric("dbExecute")
+})

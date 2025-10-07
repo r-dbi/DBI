@@ -29,6 +29,6 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbClearResult",
-  def = function(res, ...) standardGeneric("dbClearResult")
-)
+setGeneric("dbClearResult", def = function(res, ...) {
+  standardGeneric("dbClearResult")
+})

@@ -3,6 +3,6 @@
 #' @rdname dbDriver
 #' @family DBIDriver generics
 #' @export
-setGeneric("dbUnloadDriver",
-  def = function(drv, ...) standardGeneric("dbUnloadDriver")
-)
+setGeneric("dbUnloadDriver", def = function(drv, ...) {
+  standardGeneric("dbUnloadDriver")
+})

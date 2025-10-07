@@ -36,4 +36,8 @@ unquote <- function(x, quote_char) {
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbUnquoteIdentifier", signature("DBIConnection"), dbUnquoteIdentifier_DBIConnection)
+setMethod(
+  "dbUnquoteIdentifier",
+  signature("DBIConnection"),
+  dbUnquoteIdentifier_DBIConnection
+)

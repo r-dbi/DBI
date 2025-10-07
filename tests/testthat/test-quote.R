@@ -8,12 +8,24 @@ test_that("identifier", {
 })
 
 test_that("identifier names", {
-  expect_equal(dbQuoteIdentifier(ANSI(), setNames(character(), character())), SQL(character(), names = character()))
+  expect_equal(
+    dbQuoteIdentifier(ANSI(), setNames(character(), character())),
+    SQL(character(), names = character())
+  )
   expect_equal(dbQuoteIdentifier(ANSI(), c(a = "a")), SQL('"a"', names = "a"))
-  expect_equal(dbQuoteIdentifier(ANSI(), c(ab = "a b")), SQL('"a b"', names = "ab"))
+  expect_equal(
+    dbQuoteIdentifier(ANSI(), c(ab = "a b")),
+    SQL('"a b"', names = "ab")
+  )
 
-  expect_equal(dbQuoteIdentifier(ANSI(), SQL('"a"', names = "a")), SQL('"a"', names = "a"))
-  expect_equal(dbQuoteIdentifier(ANSI(), SQL('"a b"', names = "ab")), SQL('"a b"', names = "ab"))
+  expect_equal(
+    dbQuoteIdentifier(ANSI(), SQL('"a"', names = "a")),
+    SQL('"a"', names = "a")
+  )
+  expect_equal(
+    dbQuoteIdentifier(ANSI(), SQL('"a b"', names = "ab")),
+    SQL('"a b"', names = "ab")
+  )
 })
 
 test_that("SQL names", {
@@ -23,8 +35,16 @@ test_that("SQL names", {
 })
 
 test_that("unquote Id", {
-  expect_equal(dbUnquoteIdentifier(ANSI(), Id(table = "a")), list(Id(table = "a")))
-  expect_equal(dbUnquoteIdentifier(ANSI(), Id(table = "a", schema = "b")), list(Id(table = "a", schema = "b")))
-  expect_equal(dbUnquoteIdentifier(ANSI(), Id(table = "a", schema = "b", catalog = "c")),
-    list(Id(table = "a", schema = "b", catalog = "c")))
+  expect_equal(
+    dbUnquoteIdentifier(ANSI(), Id(table = "a")),
+    list(Id(table = "a"))
+  )
+  expect_equal(
+    dbUnquoteIdentifier(ANSI(), Id(table = "a", schema = "b")),
+    list(Id(table = "a", schema = "b"))
+  )
+  expect_equal(
+    dbUnquoteIdentifier(ANSI(), Id(table = "a", schema = "b", catalog = "c")),
+    list(Id(table = "a", schema = "b", catalog = "c"))
+  )
 })

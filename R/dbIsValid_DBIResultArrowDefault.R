@@ -5,4 +5,8 @@ dbIsValid_DBIResultArrowDefault <- function(dbObj, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbIsValid", signature("DBIResultArrowDefault"), dbIsValid_DBIResultArrowDefault)
+setMethod(
+  "dbIsValid",
+  signature("DBIResultArrowDefault"),
+  dbIsValid_DBIResultArrowDefault
+)

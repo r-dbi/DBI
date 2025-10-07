@@ -1,8 +1,12 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbQuoteString_DBIConnection <- function(conn, x, ...) {
-  if (is(x, "SQL")) return(x)
-  if (!is.character(x)) stop("x must be character or SQL", call. = FALSE)
+  if (is(x, "SQL")) {
+    return(x)
+  }
+  if (!is.character(x)) {
+    stop("x must be character or SQL", call. = FALSE)
+  }
 
   # Avoid fixed = TRUE due to https://github.com/r-dbi/DBItest/issues/156
   x <- gsub("'", "''", enc2utf8(x))
@@ -22,12 +26,24 @@ dbQuoteString_DBIConnection <- function(conn, x, ...) {
 # use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", signature("DBIConnection"), dbQuoteString_DBIConnection)
+setMethod(
+  "dbQuoteString",
+  signature("DBIConnection"),
+  dbQuoteString_DBIConnection
+)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", signature("DBIConnection", "character"), dbQuoteString_DBIConnection)
+setMethod(
+  "dbQuoteString",
+  signature("DBIConnection", "character"),
+  dbQuoteString_DBIConnection
+)
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteString", signature("DBIConnection", "SQL"), dbQuoteString_DBIConnection)
+setMethod(
+  "dbQuoteString",
+  signature("DBIConnection", "SQL"),
+  dbQuoteString_DBIConnection
+)

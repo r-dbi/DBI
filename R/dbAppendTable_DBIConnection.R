@@ -1,6 +1,12 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbAppendTable_DBIConnection <- function(conn, name, value, ..., row.names = NULL) {
+dbAppendTable_DBIConnection <- function(
+  conn,
+  name,
+  value,
+  ...,
+  row.names = NULL
+) {
   if (!is.null(row.names)) {
     stop("Can't pass `row.names` to `dbAppendTable()`", call. = FALSE)
   }
@@ -19,4 +25,8 @@ dbAppendTable_DBIConnection <- function(conn, name, value, ..., row.names = NULL
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbAppendTable", signature("DBIConnection"), dbAppendTable_DBIConnection)
+setMethod(
+  "dbAppendTable",
+  signature("DBIConnection"),
+  dbAppendTable_DBIConnection
+)

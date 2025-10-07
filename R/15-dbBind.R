@@ -201,6 +201,4 @@
 #' nrow(dbReadTable(con, "iris"))
 #'
 #' dbDisconnect(con)
-setGeneric("dbBind",
-  def = function(res, params, ...) standardGeneric("dbBind")
-)
+setGeneric("dbBind", def = function(res, params, ...) standardGeneric("dbBind"))

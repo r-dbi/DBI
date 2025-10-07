@@ -47,7 +47,8 @@
 #' dbClearResult(rs)
 #'
 #' dbDisconnect(con)
-setGeneric("dbSendQueryArrow",
+setGeneric(
+  "dbSendQueryArrow",
   def = function(conn, statement, ...) {
     require_arrow()
     standardGeneric("dbSendQueryArrow")

@@ -14,6 +14,8 @@
 #' @export
 #' @examples
 #' dbIsReadOnly(ANSI())
-setGeneric("dbIsReadOnly",
+setGeneric(
+  "dbIsReadOnly",
   def = function(dbObj, ...) standardGeneric("dbIsReadOnly"),
-  valueClass = "logical")
+  valueClass = "logical"
+)

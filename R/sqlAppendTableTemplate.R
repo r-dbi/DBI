@@ -12,9 +12,18 @@
 #'
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars)
 #' sqlAppendTableTemplate(ANSI(), "mtcars", mtcars, row.names = FALSE)
-sqlAppendTableTemplate <- function(con, table, values, row.names = NA, prefix = "?", ..., pattern = "") {
+sqlAppendTableTemplate <- function(
+  con,
+  table,
+  values,
+  row.names = NA,
+  prefix = "?",
+  ...,
+  pattern = ""
+) {
   if (missing(row.names)) {
-    warning("Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.",
+    warning(
+      "Do not rely on the default value of the `row.names` argument to `sqlAppendTableTemplate()`, it will change in the future.",
       call. = FALSE
     )
   }

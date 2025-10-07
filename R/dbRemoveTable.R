@@ -24,6 +24,6 @@
 #' dbExistsTable(con, "iris")
 #'
 #' dbDisconnect(con)
-setGeneric("dbRemoveTable",
-  def = function(conn, name, ...) standardGeneric("dbRemoveTable")
-)
+setGeneric("dbRemoveTable", def = function(conn, name, ...) {
+  standardGeneric("dbRemoveTable")
+})

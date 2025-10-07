@@ -66,7 +66,8 @@ orderIdParams <- function(
   cluster = NULL,
   schema = NULL,
   table = NULL,
-  column = NULL) {
+  column = NULL
+) {
   out <- c(
     database = database,
     db = db,

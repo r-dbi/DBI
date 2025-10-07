@@ -26,6 +26,6 @@
 #'   list(sqlQuoteSpec("'", "'"), sqlQuoteSpec('"', '"')),
 #'   list(sqlCommentSpec("#", "\n", FALSE))
 #' )
-setGeneric("sqlParseVariables",
-  def = function(conn, sql, ...) standardGeneric("sqlParseVariables")
-)
+setGeneric("sqlParseVariables", def = function(conn, sql, ...) {
+  standardGeneric("sqlParseVariables")
+})

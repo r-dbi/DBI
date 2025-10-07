@@ -6,4 +6,8 @@ dbReadTableArrow_DBIConnection <- function(conn, name, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbReadTableArrow", signature("DBIConnection"), dbReadTableArrow_DBIConnection)
+setMethod(
+  "dbReadTableArrow",
+  signature("DBIConnection"),
+  dbReadTableArrow_DBIConnection
+)

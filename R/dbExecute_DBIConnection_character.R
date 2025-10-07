@@ -7,4 +7,8 @@ dbExecute_DBIConnection_character <- function(conn, statement, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbExecute", signature("DBIConnection", "character"), dbExecute_DBIConnection_character)
+setMethod(
+  "dbExecute",
+  signature("DBIConnection", "character"),
+  dbExecute_DBIConnection_character
+)

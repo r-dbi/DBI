@@ -32,6 +32,6 @@
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
-setGeneric("dbQuoteString",
-  def = function(conn, x, ...) standardGeneric("dbQuoteString")
-)
+setGeneric("dbQuoteString", def = function(conn, x, ...) {
+  standardGeneric("dbQuoteString")
+})

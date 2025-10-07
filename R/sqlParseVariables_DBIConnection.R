@@ -15,4 +15,8 @@ sqlParseVariables_DBIConnection <- function(conn, sql, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlParseVariables", signature("DBIConnection"), sqlParseVariables_DBIConnection)
+setMethod(
+  "sqlParseVariables",
+  signature("DBIConnection"),
+  sqlParseVariables_DBIConnection
+)

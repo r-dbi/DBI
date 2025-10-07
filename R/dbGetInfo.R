@@ -18,6 +18,4 @@
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)
 #' dbGetInfo(RSQLite::SQLite())
-setGeneric("dbGetInfo",
-  def = function(dbObj, ...) standardGeneric("dbGetInfo")
-)
+setGeneric("dbGetInfo", def = function(dbObj, ...) standardGeneric("dbGetInfo"))

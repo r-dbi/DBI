@@ -3,12 +3,19 @@ format_hms <- function(x) {
   units(x) <- "secs"
   xx <- decompose(x)
 
-  ifelse(is.na(x), NA_character_, paste0(
-    ifelse(xx$sign, "-", ""),
-    format_hours(xx$hours), ":",
-    format_two_digits(xx$minute_of_hour), ":",
-    format_two_digits(xx$second_of_minute),
-    format_tics(xx$tics)))
+  ifelse(
+    is.na(x),
+    NA_character_,
+    paste0(
+      ifelse(xx$sign, "-", ""),
+      format_hours(xx$hours),
+      ":",
+      format_two_digits(xx$minute_of_hour),
+      ":",
+      format_two_digits(xx$second_of_minute),
+      format_tics(xx$tics)
+    )
+  )
 }
 
 format_hours <- function(x) {

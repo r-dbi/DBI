@@ -57,7 +57,11 @@ test_that("write arrow to sqlite", {
 
   # Implicit test for dbBind()
   tbl <- nanoarrow::as_nanoarrow_array_stream(data["a"])
-  stream <- dbGetQueryArrow(con, "SELECT * FROM data_tbl WHERE a < $a", params = tbl)
+  stream <- dbGetQueryArrow(
+    con,
+    "SELECT * FROM data_tbl WHERE a < $a",
+    params = tbl
+  )
   expect_equal(
     as.data.frame(stream),
     as.data.frame(data[c(1, 1:2), ], row.names = 1:3)

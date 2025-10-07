@@ -8,4 +8,8 @@ dbGetQueryArrow_DBIConnection_character <- function(conn, statement, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetQueryArrow", signature("DBIConnection"), dbGetQueryArrow_DBIConnection_character)
+setMethod(
+  "dbGetQueryArrow",
+  signature("DBIConnection"),
+  dbGetQueryArrow_DBIConnection_character
+)

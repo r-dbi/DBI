@@ -67,6 +67,6 @@
 #' dbReadTable(con, "account")
 #'
 #' dbDisconnect(con)
-setGeneric("dbWithTransaction",
-  def = function(conn, code, ...) standardGeneric("dbWithTransaction")
-)
+setGeneric("dbWithTransaction", def = function(conn, code, ...) {
+  standardGeneric("dbWithTransaction")
+})

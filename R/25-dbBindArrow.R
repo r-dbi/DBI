@@ -1,5 +1,5 @@
 #' @rdname dbBind
 #' @export
-setGeneric("dbBindArrow",
-  def = function(res, params, ...) standardGeneric("dbBindArrow")
-)
+setGeneric("dbBindArrow", def = function(res, params, ...) {
+  standardGeneric("dbBindArrow")
+})

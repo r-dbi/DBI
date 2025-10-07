@@ -13,9 +13,7 @@
 #' @keywords internal
 #' @param flds a field description object as returned by `dbColumnInfo`.
 #' @export
-setGeneric("dbSetDataMappings",
-  def = function(res, flds, ...) {
-    .Deprecated()
-    standardGeneric("dbSetDataMappings")
-  }
-)
+setGeneric("dbSetDataMappings", def = function(res, flds, ...) {
+  .Deprecated()
+  standardGeneric("dbSetDataMappings")
+})

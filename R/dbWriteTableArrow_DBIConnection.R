@@ -1,6 +1,14 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, overwrite = FALSE, ..., temporary = FALSE) {
+dbWriteTableArrow_DBIConnection <- function(
+  conn,
+  name,
+  value,
+  append = FALSE,
+  overwrite = FALSE,
+  ...,
+  temporary = FALSE
+) {
   require_arrow()
 
   stopifnot(is.logical(append))
@@ -36,4 +44,8 @@ dbWriteTableArrow_DBIConnection <- function(conn, name, value, append = FALSE, o
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWriteTableArrow", signature("DBIConnection"), dbWriteTableArrow_DBIConnection)
+setMethod(
+  "dbWriteTableArrow",
+  signature("DBIConnection"),
+  dbWriteTableArrow_DBIConnection
+)

@@ -30,9 +30,7 @@
 #' dbReadTableArrow(con, "mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbReadTableArrow",
-  def = function(conn, name, ...) {
-    require_arrow()
-    standardGeneric("dbReadTableArrow")
-  }
-)
+setGeneric("dbReadTableArrow", def = function(conn, name, ...) {
+  require_arrow()
+  standardGeneric("dbReadTableArrow")
+})

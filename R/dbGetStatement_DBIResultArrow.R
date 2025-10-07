@@ -5,4 +5,8 @@ dbGetStatement_DBIResultArrow <- function(res, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbGetStatement", signature("DBIResultArrow"), dbGetStatement_DBIResultArrow)
+setMethod(
+  "dbGetStatement",
+  signature("DBIResultArrow"),
+  dbGetStatement_DBIResultArrow
+)

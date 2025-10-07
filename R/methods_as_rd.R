@@ -3,8 +3,14 @@ methods_as_rd <- function(method) {
     method <- c("dbBegin", "dbCommit", "dbRollback")
   }
 
-  if (identical(Sys.getenv("IN_PKGDOWN"), "true") && file.exists("DESCRIPTION")) {
-    packages <- strsplit(read.dcf("DESCRIPTION")[, "Config/Needs/website"], ",( |\n)*", perl = TRUE)[[1]]
+  if (
+    identical(Sys.getenv("IN_PKGDOWN"), "true") && file.exists("DESCRIPTION")
+  ) {
+    packages <- strsplit(
+      read.dcf("DESCRIPTION")[, "Config/Needs/website"],
+      ",( |\n)*",
+      perl = TRUE
+    )[[1]]
     packages <- grep("/", packages, invert = TRUE, value = TRUE)
     for (package in packages) {
       stopifnot(requireNamespace(package, quietly = TRUE))
@@ -46,7 +52,11 @@ methods_as_rd <- function(method) {
   items <- items[order(items$call), ]
 
   if (identical(Sys.getenv("IN_PKGDOWN"), "true")) {
-    linked <- ifelse(is.na(items$url), items$call, paste0("\\href{", items$url, "}{", items$call, "}"))
+    linked <- ifelse(
+      is.na(items$url),
+      items$call,
+      paste0("\\href{", items$url, "}{", items$call, "}")
+    )
     item_text <- paste0("\\code{", linked, "}")
   } else {
     item_text <- paste0("\\code{\\link[=", items$topic, "]{", items$call, "}}")

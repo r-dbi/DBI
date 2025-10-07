@@ -32,6 +32,9 @@
 #' dbCreateTableArrow(con, "df", nanoarrow::infer_nanoarrow_schema(ptype))
 #' dbReadTable(con, "df")
 #' dbDisconnect(con)
-setGeneric("dbCreateTableArrow",
-  def = function(conn, name, value, ..., temporary = FALSE) standardGeneric("dbCreateTableArrow")
+setGeneric(
+  "dbCreateTableArrow",
+  def = function(conn, name, value, ..., temporary = FALSE) {
+    standardGeneric("dbCreateTableArrow")
+  }
 )

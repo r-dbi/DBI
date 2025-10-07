@@ -1,6 +1,12 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbCreateTableArrow_DBIConnection <- function(conn, name, value, ..., temporary = FALSE) {
+dbCreateTableArrow_DBIConnection <- function(
+  conn,
+  name,
+  value,
+  ...,
+  temporary = FALSE
+) {
   require_arrow()
 
   # https://github.com/apache/arrow-nanoarrow/issues/347
@@ -14,4 +20,8 @@ dbCreateTableArrow_DBIConnection <- function(conn, name, value, ..., temporary =
 
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbCreateTableArrow", signature("DBIConnection"), dbCreateTableArrow_DBIConnection)
+setMethod(
+  "dbCreateTableArrow",
+  signature("DBIConnection"),
+  dbCreateTableArrow_DBIConnection
+)

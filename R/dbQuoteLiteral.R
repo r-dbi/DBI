@@ -38,6 +38,6 @@
 #'
 #' # This mechanism is used to prevent double escaping
 #' dbQuoteLiteral(ANSI(), dbQuoteLiteral(ANSI(), name))
-setGeneric("dbQuoteLiteral",
-  def = function(conn, x, ...) standardGeneric("dbQuoteLiteral")
-)
+setGeneric("dbQuoteLiteral", def = function(conn, x, ...) {
+  standardGeneric("dbQuoteLiteral")
+})

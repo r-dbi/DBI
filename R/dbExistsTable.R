@@ -20,7 +20,8 @@
 #' dbExistsTable(con, "iris")
 #'
 #' dbDisconnect(con)
-setGeneric("dbExistsTable",
+setGeneric(
+  "dbExistsTable",
   def = function(conn, name, ...) standardGeneric("dbExistsTable"),
   valueClass = "logical"
 )

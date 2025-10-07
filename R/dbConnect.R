@@ -39,7 +39,8 @@
 #' # This code fails when RSQLite isn't loaded yet,
 #' # because dbConnect() doesn't know yet about RSQLite.
 #' dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
-setGeneric("dbConnect",
+setGeneric(
+  "dbConnect",
   def = function(drv, ...) standardGeneric("dbConnect"),
   valueClass = "DBIConnection"
 )

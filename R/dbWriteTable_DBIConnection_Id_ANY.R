@@ -5,4 +5,8 @@ dbWriteTable_DBIConnection_Id_ANY <- function(conn, name, value, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbWriteTable", signature("DBIConnection", "Id", "ANY"), dbWriteTable_DBIConnection_Id_ANY)
+setMethod(
+  "dbWriteTable",
+  signature("DBIConnection", "Id", "ANY"),
+  dbWriteTable_DBIConnection_Id_ANY
+)

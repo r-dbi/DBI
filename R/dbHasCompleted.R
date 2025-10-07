@@ -32,7 +32,8 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbHasCompleted",
+setGeneric(
+  "dbHasCompleted",
   def = function(res, ...) standardGeneric("dbHasCompleted"),
   valueClass = "logical"
 )

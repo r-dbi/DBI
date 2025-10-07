@@ -10,6 +10,6 @@
 #'   a single result is active, a list with one element.
 #' @export
 #' @keywords internal
-setGeneric("dbListResults",
-  def = function(conn, ...) standardGeneric("dbListResults")
-)
+setGeneric("dbListResults", def = function(conn, ...) {
+  standardGeneric("dbListResults")
+})

@@ -25,7 +25,8 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbGetRowsAffected",
+setGeneric(
+  "dbGetRowsAffected",
   def = function(res, ...) standardGeneric("dbGetRowsAffected"),
   valueClass = "numeric"
 )

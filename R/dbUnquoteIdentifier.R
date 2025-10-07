@@ -38,6 +38,6 @@
 #'   ANSI(),
 #'   dbUnquoteIdentifier(ANSI(), Id("Schema", "Table"))[[1]]
 #' )
-setGeneric("dbUnquoteIdentifier",
-  def = function(conn, x, ...) standardGeneric("dbUnquoteIdentifier")
-)
+setGeneric("dbUnquoteIdentifier", def = function(conn, x, ...) {
+  standardGeneric("dbUnquoteIdentifier")
+})

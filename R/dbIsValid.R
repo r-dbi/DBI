@@ -28,7 +28,8 @@
 #'
 #' dbDisconnect(con)
 #' dbIsValid(con)
-setGeneric("dbIsValid",
+setGeneric(
+  "dbIsValid",
   def = function(dbObj, ...) standardGeneric("dbIsValid"),
   valueClass = "logical"
 )

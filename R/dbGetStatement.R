@@ -21,7 +21,8 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbGetStatement",
+setGeneric(
+  "dbGetStatement",
   def = function(res, ...) standardGeneric("dbGetStatement"),
   valueClass = "character"
 )

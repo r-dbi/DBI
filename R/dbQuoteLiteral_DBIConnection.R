@@ -58,4 +58,8 @@ dbQuoteLiteral_DBIConnection <- function(conn, x, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbQuoteLiteral", signature("DBIConnection"), dbQuoteLiteral_DBIConnection)
+setMethod(
+  "dbQuoteLiteral",
+  signature("DBIConnection"),
+  dbQuoteLiteral_DBIConnection
+)

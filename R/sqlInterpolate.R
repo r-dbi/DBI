@@ -73,6 +73,6 @@
 #'   print(dbGetQuery(con, query))
 #'   dbDisconnect(con)
 #' }
-setGeneric("sqlInterpolate",
-  def = function(conn, sql, ..., .dots = list()) standardGeneric("sqlInterpolate")
-)
+setGeneric("sqlInterpolate", def = function(conn, sql, ..., .dots = list()) {
+  standardGeneric("sqlInterpolate")
+})

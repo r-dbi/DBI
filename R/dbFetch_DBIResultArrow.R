@@ -1,7 +1,6 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbFetch_DBIResultArrow <- function(res, n = -1, ...) {
-
   if (is.infinite(n)) {
     n <- -1
   }

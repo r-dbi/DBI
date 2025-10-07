@@ -12,4 +12,8 @@ dbListObjects_DBIConnection_ANY <- function(conn, prefix = NULL, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbListObjects", signature("DBIConnection", "ANY"), dbListObjects_DBIConnection_ANY)
+setMethod(
+  "dbListObjects",
+  signature("DBIConnection", "ANY"),
+  dbListObjects_DBIConnection_ANY
+)

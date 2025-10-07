@@ -2,7 +2,11 @@
 
 # https://github.com/r-lib/pkgload/issues/247
 .onLoad <- function(libname, pkgname) {
-  if ("RSQLite" %in% loadedNamespaces() && identical(Sys.getenv("DEVTOOLS_LOAD"), "DBI")) {
+  if (
+    "RSQLite" %in%
+      loadedNamespaces() &&
+      identical(Sys.getenv("DEVTOOLS_LOAD"), "DBI")
+  ) {
     unloadNamespace("RSQLite")
   }
 }

@@ -38,7 +38,8 @@
 #'
 #' # But better, access the object directly
 #' RSQLite::SQLite()
-setGeneric("dbDriver",
+setGeneric(
+  "dbDriver",
   def = function(drvName, ...) standardGeneric("dbDriver"),
   valueClass = "DBIDriver"
 )

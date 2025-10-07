@@ -54,6 +54,6 @@
 #' dbGetQueryArrow(con, "SELECT * FROM mtcars")
 #'
 #' dbDisconnect(con)
-setGeneric("dbGetQueryArrow",
-  def = function(conn, statement, ...) standardGeneric("dbGetQueryArrow")
-)
+setGeneric("dbGetQueryArrow", def = function(conn, statement, ...) {
+  standardGeneric("dbGetQueryArrow")
+})

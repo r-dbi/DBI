@@ -1,6 +1,12 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbReadTable_DBIConnection_character <- function(conn, name, ..., row.names = FALSE, check.names = TRUE) {
+dbReadTable_DBIConnection_character <- function(
+  conn,
+  name,
+  ...,
+  row.names = FALSE,
+  check.names = TRUE
+) {
   sql_name <- dbReadTable_toSqlName(conn, name, ...)
   if (!is.null(row.names)) {
     stopifnot(length(row.names) == 1L)
@@ -26,4 +32,8 @@ dbReadTable_toSqlName <- function(conn, name, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbReadTable", signature("DBIConnection", "character"), dbReadTable_DBIConnection_character)
+setMethod(
+  "dbReadTable",
+  signature("DBIConnection", "character"),
+  dbReadTable_DBIConnection_character
+)

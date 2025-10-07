@@ -27,7 +27,8 @@
 #'
 #' dbClearResult(rs)
 #' dbDisconnect(con)
-setGeneric("dbGetRowCount",
+setGeneric(
+  "dbGetRowCount",
   def = function(res, ...) standardGeneric("dbGetRowCount"),
   valueClass = "numeric"
 )

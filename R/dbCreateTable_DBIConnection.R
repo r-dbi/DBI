@@ -1,6 +1,13 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-dbCreateTable_DBIConnection <- function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+dbCreateTable_DBIConnection <- function(
+  conn,
+  name,
+  fields,
+  ...,
+  row.names = NULL,
+  temporary = FALSE
+) {
   stopifnot(is.null(row.names))
   stopifnot(is.logical(temporary), length(temporary) == 1L)
 
@@ -17,4 +24,8 @@ dbCreateTable_DBIConnection <- function(conn, name, fields, ..., row.names = NUL
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbCreateTable", signature("DBIConnection"), dbCreateTable_DBIConnection)
+setMethod(
+  "dbCreateTable",
+  signature("DBIConnection"),
+  dbCreateTable_DBIConnection
+)

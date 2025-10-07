@@ -1,8 +1,16 @@
 #' @rdname hidden_aliases
 #' @usage NULL
-sqlCreateTable_DBIConnection <- function(con, table, fields, row.names = NA, temporary = FALSE, ...) {
+sqlCreateTable_DBIConnection <- function(
+  con,
+  table,
+  fields,
+  row.names = NA,
+  temporary = FALSE,
+  ...
+) {
   if (missing(row.names)) {
-    warning("Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.",
+    warning(
+      "Do not rely on the default value of the row.names argument for sqlCreateTable(), it will change in the future.",
       call. = FALSE
     )
   }
@@ -19,10 +27,20 @@ sqlCreateTable_DBIConnection <- function(con, table, fields, row.names = NA, tem
   fields <- paste0(field_names, " ", field_types)
 
   SQL(paste0(
-    "CREATE ", if (temporary) "TEMPORARY ", "TABLE ", table, " (\n",
-    "  ", paste(fields, collapse = ",\n  "), "\n)\n"
+    "CREATE ",
+    if (temporary) "TEMPORARY ",
+    "TABLE ",
+    table,
+    " (\n",
+    "  ",
+    paste(fields, collapse = ",\n  "),
+    "\n)\n"
   ))
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("sqlCreateTable", signature("DBIConnection"), sqlCreateTable_DBIConnection)
+setMethod(
+  "sqlCreateTable",
+  signature("DBIConnection"),
+  sqlCreateTable_DBIConnection
+)

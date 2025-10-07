@@ -5,4 +5,8 @@ dbRemoveTable_DBIConnection_Id <- function(conn, name, ...) {
 }
 #' @rdname hidden_aliases
 #' @export
-setMethod("dbRemoveTable", signature("DBIConnection", "Id"), dbRemoveTable_DBIConnection_Id)
+setMethod(
+  "dbRemoveTable",
+  signature("DBIConnection", "Id"),
+  dbRemoveTable_DBIConnection_Id
+)

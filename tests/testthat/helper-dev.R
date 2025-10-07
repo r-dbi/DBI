@@ -64,7 +64,8 @@ if (Sys.getenv("CI") == "") {
     usage_contents <-
       x %>%
       xml2::xml_find_all(
-        "//h3[.='Usage']/following-sibling::node() [not(self::h3)] [count(preceding-sibling::h3)=2]")
+        "//h3[.='Usage']/following-sibling::node() [not(self::h3)] [count(preceding-sibling::h3)=2]"
+      )
 
     usage_text <-
       usage_contents %>%
@@ -77,15 +78,27 @@ if (Sys.getenv("CI") == "") {
       xml2::read_xml(
         paste0(
           "<p>This section describes the behavior of the following method",
-          if (length(grep("[(]", strsplit(usage_text, "\n")[[1]])) > 1) "s" else "",
-          ":</p>")
+          if (length(grep("[(]", strsplit(usage_text, "\n")[[1]])) > 1) {
+            "s"
+          } else {
+            ""
+          },
+          ":</p>"
+        )
       )
 
     xml2::xml_add_sibling(
       h3,
       intro_text,
-      .where = "before")
-    lapply(usage_contents, xml2::xml_add_sibling, .x = h3, .copy = FALSE, .where = "before")
+      .where = "before"
+    )
+    lapply(
+      usage_contents,
+      xml2::xml_add_sibling,
+      .x = h3,
+      .copy = FALSE,
+      .where = "before"
+    )
 
     x %>% xml2::xml_find_first("//h3[.='Usage']") %>% xml2::xml_remove()
     x
@@ -95,27 +108,43 @@ if (Sys.getenv("CI") == "") {
     # https://stackoverflow.com/a/3839299/946850 and some trial and error
     additional_arguments <- x %>%
       xml2::xml_find_all(
-        "//h3[.='Additional arguments'] | //h3[.='Additional arguments']/following-sibling::node()[following-sibling::h3]")
+        "//h3[.='Additional arguments'] | //h3[.='Additional arguments']/following-sibling::node()[following-sibling::h3]"
+      )
 
-    after_arg <- x %>% xml2::xml_find_first("//h3[text()='Arguments']/following-sibling::h3")
+    after_arg <- x %>%
+      xml2::xml_find_first("//h3[text()='Arguments']/following-sibling::h3")
 
-    lapply(additional_arguments, xml2::xml_add_sibling, .x = after_arg, .copy = FALSE, .where = "before")
+    lapply(
+      additional_arguments,
+      xml2::xml_add_sibling,
+      .x = after_arg,
+      .copy = FALSE,
+      .where = "before"
+    )
 
     x
   }
 
   patch_lifecycle_badges <- function(x) {
     img <-
-      x %>% xml2::xml_find_all("//img[@src='../help/figures/lifecycle-experimental.svg']")
+      x %>%
+      xml2::xml_find_all(
+        "//img[@src='../help/figures/lifecycle-experimental.svg']"
+      )
 
-    xml2::xml_set_attr(img, "src", "https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg")
+    xml2::xml_set_attr(
+      img,
+      "src",
+      "https://dbi.r-dbi.org/reference/figures/lifecycle-experimental.svg"
+    )
   }
 
   remove_see_also_section <- function(x) {
     # https://stackoverflow.com/a/3839299/946850 and some trial and error
     x %>%
       xml2::xml_find_all(
-        "//h3[.='See Also'] | //h3[.='See Also']/following-sibling::node()[following-sibling::h3]") %>%
+        "//h3[.='See Also'] | //h3[.='See Also']/following-sibling::node()[following-sibling::h3]"
+      ) %>%
       xml2::xml_remove()
     x
   }
@@ -124,7 +153,8 @@ if (Sys.getenv("CI") == "") {
     # https://stackoverflow.com/a/3839299/946850 and some trial and error
     x %>%
       xml2::xml_find_all(
-        "//h3[.='Author(s)'] | //h3[.='Author(s)']/following-sibling::node()[following-sibling::h3]") %>%
+        "//h3[.='Author(s)'] | //h3[.='Author(s)']/following-sibling::node()[following-sibling::h3]"
+      ) %>%
       xml2::xml_remove()
     x
   }
