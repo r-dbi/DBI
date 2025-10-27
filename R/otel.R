@@ -8,16 +8,17 @@ otel_tracer_name <- "org.r-dbi.DBI"
 
 otel_local_active_span <- function(
     name,
-    object,
+    con,
+    append = NULL,
     attributes = NULL,
     tracer = get_tracer(),
     activation_scope = parent.frame()
 ) {
   tracer_enabled(tracer) || return()
-  dbname <- attr(class(object), "package")
+  dbname <- attr(class(con), "package")
   if (is.null(dbname)) dbname <- "unknown"
   start_local_active_span(
-    name = sprintf("%s(%s)", name, dbname),
+    name = sprintf("%s(%s)", name, if (is.character(append)) append else dbname),
     attributes = as_attributes(c(attributes, list(db.system.name = dbname))),
     options = list(kind = "client"),
     tracer = tracer,

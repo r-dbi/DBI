@@ -61,5 +61,14 @@
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQuery", def = function(conn, statement, ...) {
+  otel_local_active_span(
+    "dbGetQuery",
+    conn,
+    append = strsplit(statement, " ", fixed = TRUE)[[1L]][1L],
+    attributes = list(
+      db.operation.name = dynGet("append"),
+      db.query.text = if (any(...names() == "params")) statement else "<redacted>"
+    )
+  )
   standardGeneric("dbGetQuery")
 })

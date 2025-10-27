@@ -25,5 +25,14 @@
 #'
 #' dbDisconnect(con)
 setGeneric("dbRemoveTable", def = function(conn, name, ...) {
+  otel_local_active_span(
+    "dbRemoveTable",
+    conn,
+    append = name,
+    attributes = list(
+      db.collection.name = name,
+      db.operation.name = "DROP TABLE"
+    )
+  )
   standardGeneric("dbRemoveTable")
 })
