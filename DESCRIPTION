@@ -19,6 +19,8 @@ BugReports: https://github.com/r-dbi/DBI/issues
 Depends:
     methods,
     R (>= 3.0.0)
+Imports:
+    otel (>= 0.2.0)
 Suggests:
     arrow,
     blob,
