@@ -11,14 +11,27 @@ otel_local_active_span <- function(
     con,
     append = NULL,
     attributes = NULL,
+    statement = NULL,
     tracer = get_tracer(),
     activation_scope = parent.frame()
 ) {
   tracer_enabled(tracer) || return()
   dbname <- attr(class(con), "package")
   if (is.null(dbname)) dbname <- "unknown"
+  if (is.character(statement)) {
+    query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
+    name <- query[1L]
+    append <- query[which(query == "FROM") + 1L]
+    attributes <- c(
+      attributes,
+      list(
+        db.operation.name = name,
+        db.collection.name = append
+      )
+    )
+  }
   start_local_active_span(
-    name = sprintf("%s(%s)", name, if (is.character(append)) append else dbname),
+    name = sprintf("%s %s", name, if (length(append)) append else dbname),
     attributes = as_attributes(c(attributes, list(db.system.name = dbname))),
     options = list(kind = "client"),
     tracer = tracer,

@@ -64,11 +64,13 @@ setGeneric("dbGetQuery", def = function(conn, statement, ...) {
   otel_local_active_span(
     "dbGetQuery",
     conn,
-    append = strsplit(statement, " ", fixed = TRUE)[[1L]][1L],
     attributes = list(
-      db.operation.name = dynGet("append"),
+      # Otel semantic conventions for DB mandates that parameterized queries
+      # should not be sanitized for sensitive information.
+      # https://opentelemetry.io/docs/specs/semconv/database/database-spans/#sanitization-of-dbquerytext
       db.query.text = if (any(...names() == "params")) statement else "<redacted>"
-    )
+    ),
+    statement = statement
   )
   standardGeneric("dbGetQuery")
 })
