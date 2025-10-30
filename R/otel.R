@@ -4,33 +4,18 @@ otel_is_tracing <- FALSE
 
 otel_local_active_span <- function(
     name,
-    con,
+    conn,
     append = NULL,
     attributes = NULL,
-    statement = NULL,
-    tracer = otel_tracer,
     activation_scope = parent.frame()
 ) {
   otel_is_tracing || return()
-  dbname <- attr(class(con), "package")
-  if (is.null(dbname)) dbname <- "unknown"
-  if (is.character(statement)) {
-    query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
-    name <- query[1L]
-    append <- query[which(query == "FROM") + 1L]
-    attributes <- c(
-      attributes,
-      list(
-        db.operation.name = name,
-        db.collection.name = append
-      )
-    )
-  }
+  dbname <- get_dbname(conn)
   otel::start_local_active_span(
     name = sprintf("%s %s", name, if (length(append)) append else dbname),
     attributes = otel::as_attributes(c(attributes, list(db.system.name = dbname))),
     options = list(kind = "client"),
-    tracer = tracer,
+    tracer = otel_tracer,
     activation_scope = activation_scope
   )
 }
@@ -43,4 +28,24 @@ cache_otel_tracer <- function() {
 
 tracer_enabled <- function(tracer) {
   .subset2(tracer, "is_enabled")()
+}
+
+# DBI-specific helpers:
+
+get_dbname <- function(conn) {
+  dbname <- attr(class(conn), "package")
+  is.null(dbname) && return("unknown")
+  dbname
+}
+
+make_query_attributes <- function(statement, ...) {
+  query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
+  list(
+    db.operation.name = query[[1L]],
+    db.collection.name = query[which(query == "FROM") + 1L],
+    # Otel semantic conventions for DB mandates that parameterized queries
+    # should not be sanitized for sensitive information.
+    # https://opentelemetry.io/docs/specs/semconv/database/database-spans/#sanitization-of-dbquerytext
+    db.query.text = if (any(...names() == "params")) statement else "<redacted>"
+  )
 }
