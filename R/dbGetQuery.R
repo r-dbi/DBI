@@ -62,7 +62,7 @@
 #' dbDisconnect(con)
 setGeneric("dbGetQuery", def = function(conn, statement, ...) {
   otel_local_active_span(
-    "dbGetQuery",
+    dynGet("attributes")$db.operation.name,
     conn,
     append = dynGet("attributes")$db.collection.name,
     attributes = make_query_attributes(statement, ...)

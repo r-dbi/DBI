@@ -30,6 +30,18 @@ tracer_enabled <- function(tracer) {
   .subset2(tracer, "is_enabled")()
 }
 
+otel_refresh_tracer <- function(pkgname) {
+  requireNamespace("otel", quietly = TRUE) || return()
+  ns <- getNamespace(pkgname)
+  do.call(unlockBinding, list("otel_is_tracing", ns)) # do.call for R CMD Check
+  do.call(unlockBinding, list("otel_tracer", ns))
+  otel_tracer <- otel::get_tracer()
+  ns[["otel_is_tracing"]] <- tracer_enabled(otel_tracer)
+  ns[["otel_tracer"]] <- otel_tracer
+  lockBinding("otel_is_tracing", ns)
+  lockBinding("otel_tracer", ns)
+}
+
 # DBI-specific helpers:
 
 get_dbname <- function(conn) {
@@ -40,12 +52,16 @@ get_dbname <- function(conn) {
 
 make_query_attributes <- function(statement, ...) {
   query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
+  operation <- query[[1L]]
+  collection <- query[which(query == "FROM") + 1L]
+  if (!length(collection)) collection <- ""
+  # Otel semantic conventions for DB mandates that parameterized queries
+  # should not be sanitized for sensitive information.
+  # https://opentelemetry.io/docs/specs/semconv/database/database-spans/#sanitization-of-dbquerytext
+  text <- if (any(...names() == "params")) statement else "<redacted>"
   list(
-    db.operation.name = query[[1L]],
-    db.collection.name = query[which(query == "FROM") + 1L],
-    # Otel semantic conventions for DB mandates that parameterized queries
-    # should not be sanitized for sensitive information.
-    # https://opentelemetry.io/docs/specs/semconv/database/database-spans/#sanitization-of-dbquerytext
-    db.query.text = if (any(...names() == "params")) statement else "<redacted>"
+    db.operation.name = operation,
+    db.collection.name = collection,
+    db.query.text = text
   )
 }
