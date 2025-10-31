@@ -42,9 +42,9 @@ setGeneric(
     otel_local_active_span(
       "ALTER TABLE",
       conn,
-      append = dbQuoteIdentifier(conn, x = name),
+      label = dbQuoteIdentifier(conn, x = name),
       attributes = list(
-        db.collection.name = dynGet("append"),
+        db.collection.name = dynGet("label"),
         db.operation.name = "ALTER TABLE"
       )
     )

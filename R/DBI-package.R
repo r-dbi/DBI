@@ -30,5 +30,5 @@ require_arrow <- function() {
 }
 
 .onLoad <- function(libname, pkgname) {
-  cache_otel_tracer()
+  otel_cache_tracer()
 }

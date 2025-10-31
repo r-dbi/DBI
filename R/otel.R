@@ -5,14 +5,14 @@ otel_is_tracing <- FALSE
 otel_local_active_span <- function(
     name,
     conn,
-    append = NULL,
+    label = NULL,
     attributes = NULL,
     activation_scope = parent.frame()
 ) {
   otel_is_tracing || return()
   dbname <- get_dbname(conn)
   otel::start_local_active_span(
-    name = sprintf("%s %s", name, if (length(append)) append else dbname),
+    name = sprintf("%s %s", name, if (length(label)) label else dbname),
     attributes = otel::as_attributes(c(attributes, list(db.system.name = dbname))),
     options = list(kind = "client"),
     tracer = otel_tracer,
@@ -20,7 +20,7 @@ otel_local_active_span <- function(
   )
 }
 
-cache_otel_tracer <- function() {
+otel_cache_tracer <- function() {
   requireNamespace("otel", quietly = TRUE) || return()
   otel_tracer <<- otel::get_tracer(otel_tracer_name)
   otel_is_tracing <<- tracer_enabled(otel_tracer)

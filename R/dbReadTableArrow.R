@@ -35,8 +35,8 @@ setGeneric("dbReadTableArrow", def = function(conn, name, ...) {
   otel_local_active_span(
     "dbReadTableArrow",
     conn,
-    append = dbQuoteIdentifier(conn, x = name),
-    attributes = list(db.collection.name = dynGet("append"))
+    label = dbQuoteIdentifier(conn, x = name),
+    attributes = list(db.collection.name = dynGet("label"))
   )
   standardGeneric("dbReadTableArrow")
 })

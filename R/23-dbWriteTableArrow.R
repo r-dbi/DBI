@@ -40,8 +40,8 @@ setGeneric("dbWriteTableArrow", def = function(conn, name, value, ...) {
   otel_local_active_span(
     "dbWriteTableArrow",
     conn,
-    append = dbQuoteIdentifier(conn, x = name),
-    attributes = list(db.collection.name = dynGet("append"))
+    label = dbQuoteIdentifier(conn, x = name),
+    attributes = list(db.collection.name = dynGet("label"))
   )
   standardGeneric("dbWriteTableArrow")
 })

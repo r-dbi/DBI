@@ -40,8 +40,8 @@ setGeneric(
     otel_local_active_span(
       "dbReadTable",
       conn,
-      append = dbQuoteIdentifier(conn, x = name),
-      attributes = list(db.collection.name = dynGet("append"))
+      label = dbQuoteIdentifier(conn, x = name),
+      attributes = list(db.collection.name = dynGet("label"))
     )
     standardGeneric("dbReadTable")
   },
