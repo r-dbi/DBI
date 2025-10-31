@@ -46,5 +46,11 @@
 #' dbWriteTable(con, "mtcars", mtcars[1:10, ], overwrite = TRUE, row.names = FALSE)
 #' dbReadTable(con, "mtcars")
 setGeneric("dbWriteTable", def = function(conn, name, value, ...) {
+  otel_local_active_span(
+    "dbWriteTable",
+    conn,
+    append = dbQuoteIdentifier(conn, x = name),
+    attributes = list(db.collection.name = dynGet("append"))
+  )
   standardGeneric("dbWriteTable")
 })

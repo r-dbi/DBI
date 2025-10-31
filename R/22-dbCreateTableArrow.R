@@ -35,6 +35,15 @@
 setGeneric(
   "dbCreateTableArrow",
   def = function(conn, name, value, ..., temporary = FALSE) {
+    otel_local_active_span(
+      "CREATE TABLE",
+      conn,
+      append = dbQuoteIdentifier(conn, x = name),
+      attributes = list(
+        db.collection.name = dynGet("append"),
+        db.operation.name = "CREATE TABLE"
+      )
+    )
     standardGeneric("dbCreateTableArrow")
   }
 )

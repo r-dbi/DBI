@@ -32,5 +32,11 @@
 #' dbDisconnect(con)
 setGeneric("dbReadTableArrow", def = function(conn, name, ...) {
   require_arrow()
+  otel_local_active_span(
+    "dbReadTableArrow",
+    conn,
+    append = dbQuoteIdentifier(conn, x = name),
+    attributes = list(db.collection.name = dynGet("append"))
+  )
   standardGeneric("dbReadTableArrow")
 })

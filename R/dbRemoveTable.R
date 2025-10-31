@@ -28,9 +28,9 @@ setGeneric("dbRemoveTable", def = function(conn, name, ...) {
   otel_local_active_span(
     "DROP TABLE",
     conn,
-    append = name,
+    append = dbQuoteIdentifier(conn, name),
     attributes = list(
-      db.collection.name = name,
+      db.collection.name = dynGet("append"),
       db.operation.name = "DROP TABLE"
     )
   )
