@@ -1,0 +1,364 @@
+# DBI
+
+The DBI package helps connecting R to database management systems
+(DBMS). DBI separates the connectivity to the DBMS into a “front-end”
+and a “back-end”. The package defines an interface that is implemented
+by *DBI backends* such as:
+
+- [RPostgres](https://rpostgres.r-dbi.org),
+- [RMariaDB](https://rmariadb.r-dbi.org),
+- [RSQLite](https://rsqlite.r-dbi.org),
+- [odbc](https://github.com/r-dbi/odbc),
+- [bigrquery](https://github.com/r-dbi/bigrquery),
+
+and many more, see the [list of
+backends](https://github.com/r-dbi/backends#readme). R scripts and
+packages use DBI to access various databases through their DBI backends.
+
+The interface defines a small set of classes and methods similar in
+spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s JDBC, Python’s
+[DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft’s
+[ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the following
+operations:
+
+- connect/disconnect to the DBMS
+- create and execute statements in the DBMS
+- extract results/output from statements
+- error/exception handling
+- information (meta-data) from database objects
+- transaction management (optional)
+
+## Installation
+
+Most users who want to access a database do not need to install DBI
+directly. It will be installed automatically when you install one of the
+database backends:
+
+- [RPostgres](https://rpostgres.r-dbi.org) for PostgreSQL,
+- [RMariaDB](https://rmariadb.r-dbi.org) for MariaDB or MySQL,
+- [RSQLite](https://rsqlite.r-dbi.org) for SQLite,
+- [odbc](https://github.com/r-dbi/odbc) for databases that you can
+  access via
+  [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
+- [bigrquery](https://github.com/r-dbi/bigrquery),
+- … .
+
+You can install the released version of DBI from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("DBI")
+```
+
+And the development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("r-dbi/DBI")
+```
+
+## Example
+
+The following example illustrates some of the DBI capabilities:
+
+``` r
+library(DBI)
+# Create an ephemeral in-memory RSQLite database
+con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")
+
+dbListTables(con)
+#> character(0)
+dbWriteTable(con, "mtcars", mtcars)
+dbListTables(con)
+#> [1] "mtcars"
+
+dbListFields(con, "mtcars")
+#>  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+#> [11] "carb"
+dbReadTable(con, "mtcars")
+#>    mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#> 1 21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+#> 2 21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+#> 3 22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+#> 4 21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+#> 5 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+#> 6 18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+#> 7 14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+#> 8 24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+#> 9 22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+#>  [ reached 'max' / getOption("max.print") -- omitted 23 rows ]
+
+# You can fetch all results:
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+dbFetch(res)
+#>    mpg cyl  disp hp drat    wt  qsec vs am gear carb
+#> 1 22.8   4 108.0 93 3.85 2.320 18.61  1  1    4    1
+#> 2 24.4   4 146.7 62 3.69 3.190 20.00  1  0    4    2
+#> 3 22.8   4 140.8 95 3.92 3.150 22.90  1  0    4    2
+#> 4 32.4   4  78.7 66 4.08 2.200 19.47  1  1    4    1
+#> 5 30.4   4  75.7 52 4.93 1.615 18.52  1  1    4    2
+#> 6 33.9   4  71.1 65 4.22 1.835 19.90  1  1    4    1
+#> 7 21.5   4 120.1 97 3.70 2.465 20.01  1  0    3    1
+#> 8 27.3   4  79.0 66 4.08 1.935 18.90  1  1    4    1
+#> 9 26.0   4 120.3 91 4.43 2.140 16.70  0  1    5    2
+#>  [ reached 'max' / getOption("max.print") -- omitted 2 rows ]
+dbClearResult(res)
+
+# Or a chunk at a time
+res <- dbSendQuery(con, "SELECT * FROM mtcars WHERE cyl = 4")
+while (!dbHasCompleted(res)) {
+  chunk <- dbFetch(res, n = 5)
+  print(nrow(chunk))
+}
+#> [1] 5
+#> [1] 5
+#> [1] 1
+dbClearResult(res)
+
+dbDisconnect(con)
+```
+
+## Class structure
+
+There are four main DBI classes. Three which are each extended by
+individual database backends:
+
+- `DBIObject`: a common base class for all DBI.
+
+- `DBIDriver`: a base class representing overall DBMS properties.
+  Typically generator functions instantiate the driver objects like
+  `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
+
+- `DBIConnection`: represents a connection to a specific database
+
+- `DBIResult`: the result of a DBMS query or statement.
+
+All classes are *virtual*: they cannot be instantiated directly and
+instead must be subclassed.
+
+## Further Reading
+
+- [Databases using R](https://db.rstudio.com/) describes the tools and
+  best practices in this ecosystem.
+
+- The [DBI project site](https://r-dbi.org/) hosts a blog where recent
+  developments are presented.
+
+- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by
+  David James, the driving force behind the development of DBI, and many
+  of the packages that implement it.
+
+------------------------------------------------------------------------
+
+Please note that the *DBI* project is released with a [Contributor Code
+of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html). By contributing
+to this project, you agree to abide by its terms.
+
+# Package index
+
+## Connecting and disconnecting
+
+Connecting to and disconnecting from databases.
+
+- [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md) :
+  Create a connection to a DBMS
+- [`dbDisconnect()`](https://dbi.r-dbi.org/dev/reference/dbDisconnect.md)
+  : Disconnect (close) a connection
+- [`dbCanConnect()`](https://dbi.r-dbi.org/dev/reference/dbCanConnect.md)
+  : Check if a connection to a DBMS can be established
+- [`dbGetInfo()`](https://dbi.r-dbi.org/dev/reference/dbGetInfo.md) :
+  Get DBMS metadata
+- [`dbIsValid()`](https://dbi.r-dbi.org/dev/reference/dbIsValid.md) : Is
+  this DBMS object still valid?
+- [`dbIsReadOnly()`](https://dbi.r-dbi.org/dev/reference/dbIsReadOnly.md)
+  : Is this DBMS object read only?
+- [`DBIConnector-class`](https://dbi.r-dbi.org/dev/reference/DBIConnector-class.md)
+  : DBIConnector class
+- [`dbGetConnectArgs()`](https://dbi.r-dbi.org/dev/reference/dbGetConnectArgs.md)
+  : Get connection arguments
+
+## Tables
+
+Reading and writing entire tables.
+
+- [`dbReadTable()`](https://dbi.r-dbi.org/dev/reference/dbReadTable.md)
+  : Read database tables as data frames
+- [`dbWriteTable()`](https://dbi.r-dbi.org/dev/reference/dbWriteTable.md)
+  : Copy data frames to database tables
+- [`dbCreateTable()`](https://dbi.r-dbi.org/dev/reference/dbCreateTable.md)
+  : Create a table in the database
+- [`dbAppendTable()`](https://dbi.r-dbi.org/dev/reference/dbAppendTable.md)
+  : Insert rows into a table
+- [`dbRemoveTable()`](https://dbi.r-dbi.org/dev/reference/dbRemoveTable.md)
+  : Remove a table from the database
+- [`dbListTables()`](https://dbi.r-dbi.org/dev/reference/dbListTables.md)
+  : List remote tables
+- [`dbListFields()`](https://dbi.r-dbi.org/dev/reference/dbListFields.md)
+  : List field names of a remote table
+- [`dbExistsTable()`](https://dbi.r-dbi.org/dev/reference/dbExistsTable.md)
+  : Does a table exist?
+- [`dbListObjects()`](https://dbi.r-dbi.org/dev/reference/dbListObjects.md)
+  : List remote objects
+- [`sqlRownamesToColumn()`](https://dbi.r-dbi.org/dev/reference/rownames.md)
+  [`sqlColumnToRownames()`](https://dbi.r-dbi.org/dev/reference/rownames.md)
+  : Convert row names back and forth between columns
+
+## Queries and statements
+
+Communicate with the DBMS.
+
+- [`dbGetQuery()`](https://dbi.r-dbi.org/dev/reference/dbGetQuery.md) :
+  Retrieve results from a query
+- [`dbExecute()`](https://dbi.r-dbi.org/dev/reference/dbExecute.md) :
+  Change database state
+
+## Results
+
+More control for sending queries and executing statements.
+
+- [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
+  : Execute a query on a given database connection
+- [`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
+  : Execute a data manipulation statement on a given database connection
+- [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+  [`dbBindArrow()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+  **\[experimental\]** : Bind values to a parameterized/prepared
+  statement
+- [`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md)
+  [`fetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md) : Fetch
+  records from a previously executed query
+- [`dbGetRowCount()`](https://dbi.r-dbi.org/dev/reference/dbGetRowCount.md)
+  : The number of rows fetched so far
+- [`dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
+  : The number of rows affected
+- [`dbGetStatement()`](https://dbi.r-dbi.org/dev/reference/dbGetStatement.md)
+  : Get the statement associated with a result set
+- [`dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md)
+  : Completion status
+- [`dbColumnInfo()`](https://dbi.r-dbi.org/dev/reference/dbColumnInfo.md)
+  : Information about result types
+- [`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+  : Clear a result set
+
+## Transactions
+
+Ensuring multiple statements are executed together, or not at all.
+
+- [`dbBegin()`](https://dbi.r-dbi.org/dev/reference/transactions.md)
+  [`dbCommit()`](https://dbi.r-dbi.org/dev/reference/transactions.md)
+  [`dbRollback()`](https://dbi.r-dbi.org/dev/reference/transactions.md)
+  : Begin/commit/rollback SQL transactions
+- [`dbWithTransaction()`](https://dbi.r-dbi.org/dev/reference/dbWithTransaction.md)
+  [`dbBreak()`](https://dbi.r-dbi.org/dev/reference/dbWithTransaction.md)
+  : Self-contained SQL transactions
+
+## SQL
+
+Tools for creating and parsing SQL queries.
+
+- [`SQL()`](https://dbi.r-dbi.org/dev/reference/SQL.md) : SQL quoting
+- [`dbDataType()`](https://dbi.r-dbi.org/dev/reference/dbDataType.md) :
+  Determine the SQL data type of an object
+- [`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+  : Quote identifiers
+- [`dbQuoteLiteral()`](https://dbi.r-dbi.org/dev/reference/dbQuoteLiteral.md)
+  : Quote literal values
+- [`dbQuoteString()`](https://dbi.r-dbi.org/dev/reference/dbQuoteString.md)
+  : Quote literal strings
+- [`sqlCreateTable()`](https://dbi.r-dbi.org/dev/reference/sqlCreateTable.md)
+  : Compose query to create a simple table
+- [`sqlAppendTable()`](https://dbi.r-dbi.org/dev/reference/sqlAppendTable.md)
+  [`sqlAppendTableTemplate()`](https://dbi.r-dbi.org/dev/reference/sqlAppendTable.md)
+  : Compose query to insert rows into a table
+- [`sqlData()`](https://dbi.r-dbi.org/dev/reference/sqlData.md) :
+  Convert a data frame into form suitable for upload to an SQL database
+- [`dbUnquoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.md)
+  : Unquote identifiers
+- [`sqlInterpolate()`](https://dbi.r-dbi.org/dev/reference/sqlInterpolate.md)
+  : Safely interpolate values into an SQL string
+
+## Arrow
+
+**experimental lifecycle**
+
+Returning and sending data in the Arrow format.
+
+- [`dbReadTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbReadTableArrow.md)
+  **\[experimental\]** : Read database tables as Arrow objects
+- [`dbWriteTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbWriteTableArrow.md)
+  **\[experimental\]** : Copy Arrow objects to database tables
+- [`dbCreateTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbCreateTableArrow.md)
+  **\[experimental\]** : Create a table in the database based on an
+  Arrow object
+- [`dbAppendTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.md)
+  **\[experimental\]** : Insert rows into a table from an Arrow stream
+- [`dbGetQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbGetQueryArrow.md)
+  **\[experimental\]** : Retrieve results from a query as an Arrow
+  object
+- [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md)
+  **\[experimental\]** : Execute a query on a given database connection
+  for retrieval via Arrow
+- [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+  [`dbBindArrow()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+  **\[experimental\]** : Bind values to a parameterized/prepared
+  statement
+- [`dbFetchArrow()`](https://dbi.r-dbi.org/dev/reference/dbFetchArrow.md)
+  **\[experimental\]** : Fetch records from a previously executed query
+  as an Arrow object
+- [`dbFetchArrowChunk()`](https://dbi.r-dbi.org/dev/reference/dbFetchArrowChunk.md)
+  **\[experimental\]** : Fetch the next batch of records from a
+  previously executed query as an Arrow object
+
+## Classes
+
+S4 classes defined by DBI.
+
+- [`DBI`](https://dbi.r-dbi.org/dev/reference/DBI-package.md)
+  [`DBI-package`](https://dbi.r-dbi.org/dev/reference/DBI-package.md) :
+  DBI: R Database Interface
+- [`DBIObject-class`](https://dbi.r-dbi.org/dev/reference/DBIObject-class.md)
+  : DBIObject class
+- [`DBIDriver-class`](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md)
+  : DBIDriver class
+- [`DBIConnection-class`](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md)
+  : DBIConnection class
+- [`DBIResult-class`](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
+  : DBIResult class
+- [`DBIResultArrow-class`](https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.md)
+  [`DBIResultArrowDefault-class`](https://dbi.r-dbi.org/dev/reference/DBIResultArrow-class.md)
+  **\[experimental\]** : DBIResultArrow class
+- [`DBIConnector-class`](https://dbi.r-dbi.org/dev/reference/DBIConnector-class.md)
+  : DBIConnector class
+- [`Id()`](https://dbi.r-dbi.org/dev/reference/Id.md) : Refer to a table
+  nested in a hierarchy (e.g. within a schema)
+
+## Data
+
+S4 classes defined by DBI.
+
+- [`.SQL92Keywords`](https://dbi.r-dbi.org/dev/reference/dot-SQL92Keywords.md)
+  : Keywords according to the SQL-92 standard
+
+# Articles
+
+### Tutorials
+
+- [Introduction to DBI](https://dbi.r-dbi.org/dev/articles/DBI.md):
+- [Advanced DBI
+  Usage](https://dbi.r-dbi.org/dev/articles/DBI-advanced.md):
+- [Using DBI with
+  Arrow](https://dbi.r-dbi.org/dev/articles/DBI-arrow.md):
+- [Implementing a new
+  backend](https://dbi.r-dbi.org/dev/articles/backend.md):
+
+### Specification
+
+- [DBI specification](https://dbi.r-dbi.org/dev/articles/spec.md):
+
+### Historic
+
+- [A Common Interface to Relational Databases from R and S -- A
+  Proposal](https://dbi.r-dbi.org/dev/articles/DBI-proposal.md):
+- [History of DBI](https://dbi.r-dbi.org/dev/articles/DBI-history.md):
+- [A Common Database Interface
+  (DBI)](https://dbi.r-dbi.org/dev/articles/DBI-1.md):
