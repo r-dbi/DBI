@@ -1,5 +1,18 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9033 (2025-10-31)
+
+## Bug fixes
+
+- `dbWithTransaction()` calls `dbRollback()` also on interrupt (@klin333, #528).
+
+## Chore
+
+- Format with air.
+
+- Tidy description.
+
+
 # DBI 1.2.3.9032 (2025-09-06)
 
 ## Continuous integration
