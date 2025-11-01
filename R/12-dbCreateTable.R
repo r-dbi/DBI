@@ -37,6 +37,15 @@
 setGeneric(
   "dbCreateTable",
   def = function(conn, name, fields, ..., row.names = NULL, temporary = FALSE) {
+    otel_local_active_span(
+      "CREATE TABLE",
+      conn,
+      label = dbQuoteIdentifier(conn, name),
+      attributes = list(
+        db.collection.name = dynGet("label"),
+        db.operation.name = "CREATE TABLE"
+      )
+    )
     standardGeneric("dbCreateTable")
   }
 )

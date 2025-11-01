@@ -39,6 +39,15 @@
 setGeneric(
   "dbAppendTable",
   def = function(conn, name, value, ..., row.names = NULL) {
+    otel_local_active_span(
+      "ALTER TABLE",
+      conn,
+      label = dbQuoteIdentifier(conn, x = name),
+      attributes = list(
+        db.collection.name = dynGet("label"),
+        db.operation.name = "ALTER TABLE"
+      )
+    )
     standardGeneric("dbAppendTable")
   }
 )

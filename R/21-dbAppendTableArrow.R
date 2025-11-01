@@ -29,5 +29,14 @@
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbAppendTableArrow", def = function(conn, name, value, ...) {
+  otel_local_active_span(
+    "ALTER TABLE",
+    conn,
+    label = dbQuoteIdentifier(conn, x = name),
+    attributes = list(
+      db.collection.name = dynGet("label"),
+      db.operation.name = "ALTER TABLE"
+    )
+  )
   standardGeneric("dbAppendTableArrow")
 })
