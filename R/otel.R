@@ -35,15 +35,14 @@ otel_refresh_tracer <- function(pkgname) {
   tracer <- otel::get_tracer()
   modify_binding(
     getNamespace(pkgname),
-    c("otel_tracer", "otel_is_tracing"),
-    list(tracer, tracer_enabled(tracer))
+    list(otel_tracer = tracer, otel_is_tracing = tracer_enabled(tracer))
   )
 }
 
-modify_binding <- function(env, name, object) {
-  lapply(name, unlockBinding, env)
-  list2env(`names<-`(object, name), envir = env)
-  lapply(name, lockBinding, env)
+modify_binding <- function(env, lst) {
+  lapply(names(lst), unlockBinding, env)
+  list2env(lst, envir = env)
+  lapply(names(lst), lockBinding, env)
 }
 
 # DBI-specific helpers:
