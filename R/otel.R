@@ -60,7 +60,7 @@ collection_name <- function(name, conn) {
 make_query_attributes <- function(statement) {
   query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
   list(
-    db.operation.name = query[[1L]],
-    db.collection.name = query[[which(query == "FROM") + 1L]]
+    db.operation.name = query[1L],
+    db.collection.name = query[which(query == "FROM") + 1L]
   )
 }
