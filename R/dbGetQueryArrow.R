@@ -59,7 +59,7 @@ setGeneric("dbGetQueryArrow", def = function(conn, statement, ...) {
     dynGet("attributes")$db.operation.name,
     conn,
     label = dynGet("attributes")$db.collection.name,
-    attributes = make_query_attributes(statement, ...)
+    attributes = make_query_attributes(statement)
   )
   standardGeneric("dbGetQueryArrow")
 })

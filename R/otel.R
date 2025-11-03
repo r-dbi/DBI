@@ -54,18 +54,10 @@ get_dbname <- function(conn) {
   dbname
 }
 
-make_query_attributes <- function(statement, ...) {
+make_query_attributes <- function(statement) {
   query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
-  operation <- query[[1L]]
-  collection <- query[which(query == "FROM") + 1L]
-  if (!length(collection)) collection <- ""
-  # Otel semantic conventions for DB mandates that parameterized queries
-  # should not be sanitized for sensitive information.
-  # https://opentelemetry.io/docs/specs/semconv/database/database-spans/#sanitization-of-dbquerytext
-  text <- if (any(...names() == "params")) statement else "<redacted>"
   list(
-    db.operation.name = operation,
-    db.collection.name = collection,
-    db.query.text = text
+    db.operation.name = query[[1L]],
+    db.collection.name = query[which(query == "FROM") + 1L]
   )
 }
