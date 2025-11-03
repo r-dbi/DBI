@@ -50,14 +50,17 @@ modify_binding <- function(env, name, object) {
 
 get_dbname <- function(conn) {
   dbname <- attr(class(conn), "package")
-  is.null(dbname) && return("unknown")
-  dbname
+  if (is.null(dbname)) "unknown" else dbname
+}
+
+collection_name <- function(name, conn) {
+  if (is.character(name)) name else dbQuoteIdentifier(conn, x = name)
 }
 
 make_query_attributes <- function(statement) {
   query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
   list(
     db.operation.name = query[[1L]],
-    db.collection.name = query[which(query == "FROM") + 1L]
+    db.collection.name = query[[which(query == "FROM") + 1L]]
   )
 }

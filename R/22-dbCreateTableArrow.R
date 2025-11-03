@@ -38,9 +38,9 @@ setGeneric(
     otel_local_active_span(
       "CREATE TABLE",
       conn,
-      label = dbQuoteIdentifier(conn, x = name),
+      label = collection_name(name, conn),
       attributes = list(
-        db.collection.name = dynGet("label"),
+        db.collection.name = collection_name(name, conn),
         db.operation.name = "CREATE TABLE"
       )
     )
