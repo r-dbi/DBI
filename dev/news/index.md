@@ -1,5 +1,23 @@
 # Changelog
 
+## DBI 1.2.3.9033 (2025-11-01)
+
+### Bug fixes
+
+- [`dbWithTransaction()`](https://dbi.r-dbi.org/dev/reference/dbWithTransaction.md)
+  calls
+  [`dbRollback()`](https://dbi.r-dbi.org/dev/reference/transactions.md)
+  also on interrupt ([@klin333](https://github.com/klin333),
+  [\#528](https://github.com/r-dbi/DBI/issues/528)).
+
+### Chore
+
+- Build-ignore `air.toml`.
+
+- Format with air.
+
+- Tidy description.
+
 ## DBI 1.2.3.9032 (2025-09-06)
 
 ### Continuous integration
