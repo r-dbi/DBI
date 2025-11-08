@@ -26,7 +26,7 @@ local({
     dbname <- get_dbname(conn)
     otel::start_local_active_span(
       name = sprintf("%s %s", name, if (length(label)) label else dbname),
-      attributes = otel::as_attributes(c(attributes, list(db.system.name = dbname))),
+      attributes = c(attributes, list(db.system.name = dbname)),
       options = list(kind = "client"),
       tracer = otel_tracer,
       activation_scope = activation_scope
