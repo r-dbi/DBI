@@ -2,24 +2,20 @@ otel_tracer_name <- "org.r-dbi.DBI"
 
 # Generic otel helpers:
 
-otel_cache_tracer <- function() {
-  requireNamespace("otel", quietly = TRUE) || return()
-  tracer <- otel::get_tracer(otel_tracer_name)
-  list2env(
-    list(otel_tracer = tracer, otel_is_tracing = tracer_enabled(tracer)),
-    envir = environment(otel_local_active_span)
-  )
-}
+otel_cache_tracer <- NULL
+otel_local_active_span <- NULL
 
-tracer_enabled <- function(tracer) {
-  .subset2(tracer, "is_enabled")()
-}
-
-otel_local_active_span <- local({
+local({
   otel_tracer <- NULL
   otel_is_tracing <- FALSE
 
-  function(
+  otel_cache_tracer <<- function() {
+    requireNamespace("otel", quietly = TRUE) || return()
+    otel_tracer <<- otel::get_tracer(otel_tracer_name)
+    otel_is_tracing <<- tracer_enabled(otel_tracer)
+  }
+
+  otel_local_active_span <<- function(
     name,
     conn,
     label = NULL,
@@ -37,6 +33,10 @@ otel_local_active_span <- local({
     )
   }
 })
+
+tracer_enabled <- function(tracer) {
+  .subset2(tracer, "is_enabled")()
+}
 
 with_otel_record <- function(expr) {
   on.exit(otel_cache_tracer())
