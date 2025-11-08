@@ -1,8 +1,7 @@
 test_that("OpenTelemetry tracing works", {
   skip_if_not_installed("otelsdk")
 
-  record <- otelsdk::with_otel_record({
-    otel_refresh_tracer()
+  record <- with_otel_record({
 
     con <- dbConnect(RSQLite::SQLite(), ":memory:")
     dbWriteTable(con, "mtcars", mtcars)
@@ -16,8 +15,6 @@ test_that("OpenTelemetry tracing works", {
     dbRemoveTable(con, "mtcars")
     dbDisconnect(con)
   })
-  # reset tracer after tests
-  otel_refresh_tracer()
 
   traces <- record$traces
 
