@@ -1,5 +1,34 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9035 (2025-11-10)
+
+## Continuous integration
+
+- Import from actions-sync, check carefully (#559).
+
+
+# DBI 1.2.3.9034 (2025-11-08)
+
+## Continuous integration
+
+- Import from actions-sync, check carefully (#557).
+
+
+# DBI 1.2.3.9033 (2025-11-01)
+
+## Bug fixes
+
+- `dbWithTransaction()` calls `dbRollback()` also on interrupt (@klin333, #528).
+
+## Chore
+
+- Build-ignore `air.toml`.
+
+- Format with air.
+
+- Tidy description.
+
+
 # DBI 1.2.3.9032 (2025-09-06)
 
 ## Continuous integration
