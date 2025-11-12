@@ -33,6 +33,8 @@ Suggests:
     knitr,
     magrittr,
     nanoarrow (>= 0.3.0.1),
+    otel,
+    otelsdk,
     RMariaDB,
     rmarkdown,
     rprojroot,

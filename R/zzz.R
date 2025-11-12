@@ -2,6 +2,7 @@
 
 # https://github.com/r-lib/pkgload/issues/247
 .onLoad <- function(libname, pkgname) {
+  otel_cache_tracer()
   if (
     "RSQLite" %in%
       loadedNamespaces() &&
