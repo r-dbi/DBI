@@ -17,13 +17,13 @@ Source:
 [`DESCRIPTION`](https://github.com/r-dbi/DBI/blob/main/DESCRIPTION)
 
 R Special Interest Group on Databases (R-SIG-DB), Wickham H, Müller K
-(2025). *DBI: R Database Interface*. R package version 1.2.3.9035,
+(2025). *DBI: R Database Interface*. R package version 1.2.3.9036,
 <https://dbi.r-dbi.org>.
 
     @Manual{,
       title = {DBI: R Database Interface},
       author = {{R Special Interest Group on Databases (R-SIG-DB)} and Hadley Wickham and Kirill Müller},
       year = {2025},
-      note = {R package version 1.2.3.9035},
+      note = {R package version 1.2.3.9036},
       url = {https://dbi.r-dbi.org},
     }
