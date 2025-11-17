@@ -36,6 +36,14 @@
 #' dbDisconnect(con)
 setGeneric(
   "dbReadTable",
-  def = function(conn, name, ...) standardGeneric("dbReadTable"),
+  def = function(conn, name, ...) {
+    otel_local_active_span(
+      "dbReadTable",
+      conn,
+      label = collection_name(name, conn),
+      attributes = list(db.collection.name = collection_name(name, conn))
+    )
+    standardGeneric("dbReadTable")
+  },
   valueClass = "data.frame"
 )

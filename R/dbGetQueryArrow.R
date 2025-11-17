@@ -55,5 +55,11 @@
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQueryArrow", def = function(conn, statement, ...) {
+  otel_local_active_span(
+    dynGet("attributes")$db.operation.name,
+    conn,
+    label = dynGet("attributes")$db.collection.name,
+    attributes = make_query_attributes(statement)
+  )
   standardGeneric("dbGetQueryArrow")
 })

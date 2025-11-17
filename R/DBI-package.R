@@ -28,3 +28,7 @@ require_arrow <- function() {
   }
   stop("The nanoarrow package is required for this functionality.")
 }
+
+.onLoad <- function(libname, pkgname) {
+  otel_cache_tracer()
+}

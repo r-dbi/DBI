@@ -39,6 +39,15 @@
 setGeneric(
   "dbAppendTable",
   def = function(conn, name, value, ..., row.names = NULL) {
+    otel_local_active_span(
+      "INSERT INTO",
+      conn,
+      label = collection_name(name, conn),
+      attributes = list(
+        db.collection.name = collection_name(name, conn),
+        db.operation.name = "INSERT INTO"
+      )
+    )
     standardGeneric("dbAppendTable")
   }
 )
