@@ -2,7 +2,6 @@ test_that("OpenTelemetry tracing works", {
   skip_if_not_installed("otelsdk")
 
   record <- with_otel_record({
-
     con <- dbConnect(RSQLite::SQLite(), ":memory:")
     dbWriteTable(con, "mtcars", mtcars)
     dbGetQuery(con, "SELECT * FROM mtcars")
