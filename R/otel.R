@@ -48,8 +48,8 @@ with_otel_record <- function(expr) {
 
 # DBI-specific helpers:
 
-get_dbname <- function(conn) {
-  dbname <- attr(class(conn), "package")
+get_dbname <- function(obj) {
+  dbname <- attr(class(obj), "package")
   if (is.null(dbname)) "unknown" else dbname
 }
 
