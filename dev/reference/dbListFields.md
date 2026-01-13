@@ -56,8 +56,6 @@ that are implemented in various backend packages.
 
 - [`RPostgreSQL::dbListFields("PostgreSQLResult", "missing")`](https://rdrr.io/pkg/RPostgreSQL/man/dbListTables-methods.html)
 
-- [`RPresto::dbListFields("PrestoConnection", "ANY")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
 - [`RPresto::dbListFields("PrestoConnection", "character")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RPresto::dbListFields("PrestoConnection", "dbplyr_schema")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)

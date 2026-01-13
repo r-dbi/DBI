@@ -572,7 +572,8 @@ withdraw_safely <- function(amount) {
 withdraw_safely(5000)
 ```
 
-    ## Error: Error: insufficient funds
+    ## Error:
+    ## ! Error: insufficient funds
 
 ``` r
 dbReadTable(con, "cash")

@@ -43,6 +43,8 @@ that are implemented in various backend packages.
 
 - [`RPostgreSQL::dbColumnInfo("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
 
+- [`RPresto::dbColumnInfo("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
+
 - [`RSQLite::dbColumnInfo("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 
 - `sparklyr::dbColumnInfo("DBISparkResult")`

@@ -232,9 +232,9 @@ Other DBIResult generics:
 ``` r
 dbGetInfo(RSQLite::SQLite())
 #> $driver.version
-#> [1] ‘2.4.4’
+#> [1] ‘2.4.5’
 #> 
 #> $client.version
-#> [1] ‘3.51.0’
+#> [1] ‘3.51.1’
 #> 
 ```
