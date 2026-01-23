@@ -4,6 +4,7 @@ otel_tracer_name <- "org.r-dbi.DBI"
 
 otel_cache_tracer <- NULL
 otel_local_active_span <- NULL
+otel_query_local_active_span <- NULL
 
 local({
   otel_tracer <- NULL
@@ -32,6 +33,30 @@ local({
       activation_scope = activation_scope
     )
   }
+
+  otel_query_local_active_span <<- function(
+    conn,
+    statement,
+    activation_scope = parent.frame()
+  ) {
+    otel_is_tracing || return()
+    dbname <- get_dbname(conn)
+    tokens <- strsplit(statement, " ", fixed = TRUE)[[1L]]
+    op_name <- tokens[1L]
+    from_idx <- match("FROM", toupper(tokens))
+    collection <- if (!is.na(from_idx)) tokens[from_idx + 1L] else character()
+    otel::start_local_active_span(
+      name = paste(op_name, if (length(collection)) collection else dbname),
+      attributes = list(
+        db.operation.name = op_name,
+        db.collection.name = collection,
+        db.system.name = dbname
+      ),
+      options = list(kind = "client"),
+      tracer = otel_tracer,
+      activation_scope = activation_scope
+    )
+  }
 })
 
 tracer_enabled <- function(tracer) {
@@ -55,12 +80,4 @@ get_dbname <- function(obj) {
 
 collection_name <- function(name, conn) {
   if (is.character(name)) name else dbQuoteIdentifier(conn, x = name)
-}
-
-make_query_attributes <- function(statement) {
-  query <- strsplit(statement, " ", fixed = TRUE)[[1L]]
-  list(
-    db.operation.name = query[1L],
-    db.collection.name = query[which(query == "FROM") + 1L]
-  )
 }
