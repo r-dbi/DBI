@@ -6,10 +6,10 @@ test_that("OpenTelemetry tracing works", {
   record <- with_otel_record({
     con <- dbConnect(RSQLite::SQLite(), ":memory:")
     dbWriteTable(con, "mtcars", mtcars)
-    dbGetQuery(con, "SELECT * FROM mtcars")
+    dbGetQuery(con, "SELECT * FROM `mtcars`")
     dbGetQuery(
       con,
-      "SELECT COUNT(*) FROM mtcars WHERE cyl = ?",
+      "SELECT COUNT(*) FROM \nmtcars WHERE cyl = ?",
       params = list(1:8)
     )
     dbReadTable(con, "mtcars")
@@ -35,7 +35,7 @@ test_that("OpenTelemetry tracing works", {
   expect_equal(traces[[5L]]$attributes$db.collection.name, "mtcars")
   expect_equal(traces[[5L]]$attributes$db.operation.name, "SELECT")
   expect_equal(traces[[6L]]$name, "SELECT mtcars")
-  expect_equal(traces[[7L]]$name, "SELECT `mtcars`")
+  expect_equal(traces[[7L]]$name, "SELECT mtcars")
   expect_equal(traces[[8L]]$name, "dbReadTable mtcars")
   expect_equal(traces[[8L]]$attributes$db.collection.name, "mtcars")
   expect_equal(traces[[9L]]$name, "DROP TABLE mtcars")

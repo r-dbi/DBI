@@ -41,10 +41,26 @@ local({
   ) {
     otel_is_tracing || return()
     dbname <- get_dbname(conn)
-    tokens <- strsplit(statement, " ", fixed = TRUE)[[1L]]
-    op_name <- tokens[1L]
-    from_idx <- match("FROM", toupper(tokens))
-    collection <- if (!is.na(from_idx)) tokens[from_idx + 1L] else character()
+
+    collection <- character()
+    op_name <- "SQL"
+
+    tryCatch(
+      {
+        op_name_matcher <- "^\\s*(\\w+)"
+        op_name_matches <- regexec(op_name_matcher, statement, ignore.case = TRUE)
+        op_name_match <- regmatches(statement, op_name_matches)[[1L]]
+        op_name <- toupper(op_name_match[2L])
+
+        collection_matcher <- "(FROM)\\s+([`\"']?)(\\w+)\\2"
+        # collection_matcher <- "(FROM|INTO|UPDATE|TABLE)\\s+([`\"']?)(\\w+)\\2"
+        collection_matches <- gregexec(collection_matcher, statement, ignore.case = TRUE, perl = TRUE)
+        collection_match <- regmatches(statement, collection_matches)[[1L]]
+        collection <- collection_match[4L, , drop = TRUE]
+      },
+      error = function(e) {}
+    )
+
     otel::start_local_active_span(
       name = paste(op_name, if (length(collection)) collection else dbname),
       attributes = list(
