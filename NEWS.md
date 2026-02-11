@@ -1,6 +1,12 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
-# DBI 1.2.3.9039 (2026-02-11)
+# DBI 1.3.0 (2026-02-11)
+
+## Bug fixes
+
+- `dbWithTransaction()` calls `dbRollback()` also on interrupt (@klin333, #528).
+
+- `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H:%M:%S%z"` which is understood by more databases (#486).
 
 ## Features
 
@@ -10,14 +16,31 @@
 
 - Simplify matching code for otel (#569).
 
-## Documentation
+- Build-ignore `air.toml`.
 
-- Add "Supported By Posit" badge to website (@krlmlr).
+- Format with air.
 
-- Render specification with newest pandoc (#568).
+- Tidy description.
 
+- Auto-update from GitHub Actions (#525).
 
-# DBI 1.2.3.9038 (2026-01-14)
+- Auto-update from GitHub Actions (#519).
+
+- IDE.
+
+- Auto-update from GitHub Actions.
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/10425483242
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/10232551285
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/10224248605
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/10200154953
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/9728444161
+
+  Run: https://github.com/r-dbi/DBI/actions/runs/9692418830
 
 ## Continuous integration
 
@@ -25,173 +48,33 @@
 
 - Import from actions-sync, check carefully (#565).
 
-
-# DBI 1.2.3.9037 (2025-11-17)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#563).
-
-
-# DBI 1.2.3.9036 (2025-11-12)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#561).
 
-
-# DBI 1.2.3.9035 (2025-11-10)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#559).
-
-
-# DBI 1.2.3.9034 (2025-11-08)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#557).
 
-
-# DBI 1.2.3.9033 (2025-11-01)
-
-## Bug fixes
-
-- `dbWithTransaction()` calls `dbRollback()` also on interrupt (@klin333, #528).
-
-## Chore
-
-- Build-ignore `air.toml`.
-
-- Format with air.
-
-- Tidy description.
-
-
-# DBI 1.2.3.9032 (2025-09-06)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#524).
-
-
-# DBI 1.2.3.9031 (2025-09-05)
-
-## Chore
-
-- Auto-update from GitHub Actions (#525).
-
-
-# DBI 1.2.3.9030 (2025-08-01)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#522).
 
-
-# DBI 1.2.3.9029 (2025-05-05)
-
-## Chore
-
-- Auto-update from GitHub Actions (#519).
-
-
-# DBI 1.2.3.9028 (2025-05-04)
-
-## Chore
-
-- IDE.
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#517).
-
-## Documentation
-
-- Add new generics to specification.
-
-- Fix credentails to relational fit database in vignettes.
-
-- Fix credentails to relational fit database in vignettes.
-
-- Sync with DBItest and R updates.
-
-## Performance
-
-- Avoid unnecessary computation in default `dbUnquoteIdentifier()` method (@MichaelChirico, #515).
-
-
-# DBI 1.2.3.9027 (2024-12-09)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#510).
 
-
-# DBI 1.2.3.9026 (2024-12-08)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#506).
-
-## Documentation
-
-- Avoid `\linkS4class{}` in documentation (#508).
-
-
-# DBI 1.2.3.9025 (2024-12-07)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#504).
 
-
-# DBI 1.2.3.9024 (2024-12-01)
-
-## Continuous integration
-
 - Remove Aviator.
-
-
-# DBI 1.2.3.9023 (2024-11-30)
-
-## Continuous integration
-
-- Remove Aviator.
-
-
-# DBI 1.2.3.9022 (2024-11-29)
-
-## Continuous integration
-
-- Remove Aviator.
-
-
-# DBI 1.2.3.9021 (2024-11-28)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#500).
 
-
-# DBI 1.2.3.9020 (2024-11-27)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#499).
 
-
-# DBI 1.2.3.9019 (2024-11-26)
-
-## Continuous integration
-
 - Import from actions-sync, check carefully (#498).
-
-
-# DBI 1.2.3.9018 (2024-11-25)
-
-## Continuous integration
 
 - Import from actions-sync, check carefully (#497).
 
@@ -199,134 +82,23 @@
 
 - Import from actions-sync, check carefully (#495).
 
+- Import from actions-sync, check carefully (#493).
 
-# DBI 1.2.3.9017 (2024-11-22)
+- Import from actions-sync, check carefully (#492).
 
-## Continuous integration
+- Import from actions-sync, check carefully (#491).
 
-  - Import from actions-sync, check carefully (#493).
+- Import from actions-sync, check carefully (#490).
 
-
-# DBI 1.2.3.9016 (2024-11-18)
-
-## Continuous integration
-
-  - Import from actions-sync, check carefully (#492).
-
-
-# DBI 1.2.3.9015 (2024-11-11)
-
-## Continuous integration
-
-  - Import from actions-sync, check carefully (#491).
-
-
-# DBI 1.2.3.9014 (2024-10-28)
-
-## Continuous integration
-
-  - Import from actions-sync, check carefully (#490).
-
-
-# DBI 1.2.3.9013 (2024-09-15)
-
-## Continuous integration
-
-  - Import from actions-sync, check carefully (#489).
-
-
-# DBI 1.2.3.9012 (2024-08-31)
-
-## Continuous integration
-
-  - Import from actions-sync, check carefully.
-
-  - Import from actions-sync, check carefully.
-
-
-# DBI 1.2.3.9011 (2024-08-17)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/10425483242
-
-## Continuous integration
+- Import from actions-sync, check carefully (#489).
 
 - Import from actions-sync, check carefully.
-
-
-# DBI 1.2.3.9010 (2024-08-10)
-
-## Continuous integration
-
-- Import from actions-sync, check carefully.
-
-
-# DBI 1.2.3.9009 (2024-08-06)
-
-## Continuous integration
 
 - Inline action.
 
-
-# DBI 1.2.3.9008 (2024-08-05)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/10232551285
-
-
-# DBI 1.2.3.9007 (2024-08-03)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/10224248605
-
-
-# DBI 1.2.3.9006 (2024-08-02)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/10200154953
-
-## Continuous integration
-
 - Use dev roxygen2 and decor.
 
-
-# DBI 1.2.3.9005 (2024-07-02)
-
-## Continuous integration
-
 - Fix on Windows, tweak lock workflow.
-
-
-# DBI 1.2.3.9004 (2024-07-01)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/9728444161
-
-
-# DBI 1.2.3.9003 (2024-06-28)
-
-## Chore
-
-- Auto-update from GitHub Actions.
-
-  Run: https://github.com/r-dbi/DBI/actions/runs/9692418830
-
-## Continuous integration
 
 - Avoid checking bashisms on Windows.
 
@@ -338,24 +110,29 @@
 
 - Recent updates.
 
+## Documentation
 
-# DBI 1.2.3.9002 (2024-06-27)
+- Add "Supported By Posit" badge to website (@krlmlr).
 
-## Bug fixes
+- Render specification with newest pandoc (#568).
 
-- `dbQuoteLiteral()` uses the format `"%Y-%m-%d %H:%M:%S%z"` which is understood by more databases (#486).
+- Add new generics to specification.
+
+- Fix credentails to relational fit database in vignettes.
+
+- Sync with DBItest and R updates.
+
+- Avoid `\linkS4class{}` in documentation (#508).
+
+## Performance
+
+- Avoid unnecessary computation in default `dbUnquoteIdentifier()` method (@MichaelChirico, #515).
 
 ## Testing
 
 - Bump DBItest version for internal tests (#487).
 
-
-# DBI 1.2.3.9001 (2024-06-02)
-
-- Merge branch 'cran-1.2.3'.
-
-
-# DBI 1.2.3.9000 (2024-06-02)
+## Uncategorized
 
 - Merge branch 'cran-1.2.3'.
 
