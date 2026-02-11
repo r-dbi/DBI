@@ -34,3 +34,4 @@ inst\/doc\/DBI\.b..$
 ^CRAN-SUBMISSION$
 ^R/zzz\.R$
 ^tests/testthat/helper-dev\.R$
+^air\.toml$

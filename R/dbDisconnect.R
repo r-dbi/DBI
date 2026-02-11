@@ -16,5 +16,6 @@
 #' con <- dbConnect(RSQLite::SQLite(), ":memory:")
 #' dbDisconnect(con)
 setGeneric("dbDisconnect", def = function(conn, ...) {
+  otel_local_active_span("dbDisconnect", conn)
   standardGeneric("dbDisconnect")
 })

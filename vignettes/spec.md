@@ -1899,7 +1899,7 @@ to row names and converting the column names to valid R identifiers. Use
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2036,7 +2036,7 @@ types for fields.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2265,7 +2265,7 @@ Arrow schema.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2415,7 +2415,7 @@ stream.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2580,7 +2580,7 @@ database.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2744,7 +2744,7 @@ Returns the field names of a remote table as a character vector.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -2831,7 +2831,7 @@ Returns if a table given by name exists in the database.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -4204,7 +4204,7 @@ to obtain a data frame.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -4299,7 +4299,7 @@ Writes, overwrites or appends an Arrow object to a database table.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -4489,7 +4489,7 @@ table from the column types as defined in a data frame.
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />
@@ -4620,7 +4620,7 @@ implementation calls `dbAppendTable()` for each chunk of the stream. Use
 
 ### Arguments
 
-<table>
+<table role="presentation">
 <colgroup>
 <col style="width: 50%" />
 <col style="width: 50%" />

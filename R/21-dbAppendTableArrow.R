@@ -29,5 +29,14 @@
 #' dbReadTable(con, "iris")
 #' dbDisconnect(con)
 setGeneric("dbAppendTableArrow", def = function(conn, name, value, ...) {
+  otel_local_active_span(
+    "INSERT INTO",
+    conn,
+    label = collection_name(name, conn),
+    attributes = list(
+      db.collection.name = collection_name(name, conn),
+      db.operation.name = "INSERT INTO"
+    )
+  )
   standardGeneric("dbAppendTableArrow")
 })

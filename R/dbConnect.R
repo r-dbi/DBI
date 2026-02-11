@@ -41,6 +41,9 @@
 #' dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 setGeneric(
   "dbConnect",
-  def = function(drv, ...) standardGeneric("dbConnect"),
+  def = function(drv, ...) {
+    otel_local_active_span("dbConnect", drv)
+    standardGeneric("dbConnect")
+  },
   valueClass = "DBIConnection"
 )
