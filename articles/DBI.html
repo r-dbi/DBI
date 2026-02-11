@@ -8,20 +8,26 @@
 <title>Introduction to DBI • DBI</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to DBI">
-<meta name="description" content="DBI">
-<meta property="og:description" content="DBI">
+<script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script>
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+
+
     <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.3</small>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
+
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="active nav-item"><a class="nav-link" href="../articles/DBI.html">Get started</a></li>
@@ -36,22 +42,30 @@
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/r-dbi/DBI/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
+
+
   </div>
 </nav><div class="container template-article">
 
 
 
+
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
+
       <h1>Introduction to DBI</h1>
                         <h4 data-toc-skip class="author">James
 Wondrasek, Katharina Brunner, Kirill Müller</h4>
-                        <h4 data-toc-skip class="date">27 February
-2020</h4>
-            <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/HEAD/vignettes/DBI.Rmd" class="external-link"><code>vignettes/DBI.Rmd</code></a></small>
+            
+            <h4 data-toc-skip class="date">27 February 2020</h4>
+      
+      <small class="dont-index">Source: <a href="https://github.com/r-dbi/DBI/blob/cran-1.3.0/vignettes/DBI.Rmd" class="external-link"><code>vignettes/DBI.Rmd</code></a></small>
       <div class="d-none name"><code>DBI.Rmd</code></div>
     </div>
-        <div class="section level2">
+
+    
+    
+<div class="section level2">
 <h2 id="who-this-tutorial-is-for">Who this tutorial is for<a class="anchor" aria-label="anchor" href="#who-this-tutorial-is-for"></a>
 </h2>
 <p>This tutorial is for you if you want to access or manipulate data in
@@ -105,18 +119,18 @@ describing films, actors, customers, stores, etc.:</p>
 <span></span>
 <span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
 <span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
 <span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
-<span>  password <span class="op">=</span> <span class="st">"relational"</span>,</span>
+<span>  password <span class="op">=</span> <span class="st">"ctu-relational"</span>,</span>
 <span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "actor"         "address"       "category"      "city"         </span></span>
-<span><span class="co">##  [5] "country"       "customer"      "film"          "film_actor"   </span></span>
-<span><span class="co">##  [9] "film_category" "film_text"     "inventory"     "language"     </span></span>
-<span><span class="co">## [13] "payment"       "rental"        "staff"         "store"</span></span></code></pre>
+<pre><code><span><span class="co">##  [1] "country"       "city"          "customer"      "address"      </span></span>
+<span><span class="co">##  [5] "film_actor"    "store"         "film_category" "inventory"    </span></span>
+<span><span class="co">##  [9] "actor"         "film_text"     "payment"       "category"     </span></span>
+<span><span class="co">## [13] "film"          "rental"        "language"      "staff"</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">con</span><span class="op">)</span></span></code></pre></div>
 <p>Connections to databases are created using the
@@ -143,10 +157,10 @@ code to connect to the database could then look like this:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
 <span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
-<span>  host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
 <span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
 <span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
-<span>  password <span class="op">=</span> <span class="fu">keyring</span><span class="fu">::</span><span class="fu">key_get</span><span class="op">(</span><span class="st">"db.relational-data.org"</span>, <span class="st">"guest"</span><span class="op">)</span>,</span>
+<span>  password <span class="op">=</span> <span class="fu">keyring</span><span class="fu">::</span><span class="fu">key_get</span><span class="op">(</span><span class="st">"relational.fel.cvut.cz"</span>, <span class="st">"guest"</span><span class="op">)</span>,</span>
 <span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -159,7 +173,14 @@ code to connect to the database could then look like this:</p>
 and a table name and returns a character vector of the column names in
 order.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>, username <span class="op">=</span> <span class="st">"guest"</span>, password <span class="op">=</span> <span class="st">"relational"</span>, host <span class="op">=</span> <span class="st">"db.relational-data.org"</span>, port <span class="op">=</span> <span class="fl">3306</span>, dbname <span class="op">=</span> <span class="st">"sakila"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">con</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dbConnect.html">dbConnect</a></span><span class="op">(</span></span>
+<span>  <span class="fu">RMariaDB</span><span class="fu">::</span><span class="fu"><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">MariaDB</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  host <span class="op">=</span> <span class="st">"relational.fel.cvut.cz"</span>,</span>
+<span>  port <span class="op">=</span> <span class="fl">3306</span>,</span>
+<span>  username <span class="op">=</span> <span class="st">"guest"</span>,</span>
+<span>  password <span class="op">=</span> <span class="st">"ctu-relational"</span>,</span>
+<span>  dbname <span class="op">=</span> <span class="st">"sakila"</span></span>
+<span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/dbListFields.html">dbListFields</a></span><span class="op">(</span><span class="va">con</span>, <span class="st">"film"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">##  [1] "film_id"              "title"                "description"         </span></span>
 <span><span class="co">##  [4] "release_year"         "language_id"          "original_language_id"</span></span>
@@ -253,8 +274,8 @@ takes care of the quoting.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">release_year</span> <span class="op">==</span> <span class="fl">2006</span> <span class="op">&amp;</span> <span class="va">rating</span> <span class="op">==</span> <span class="st">"G"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">film_id</span>, <span class="va">title</span>, <span class="va">description</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">lazy_df</span>, <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># Source:   SQL [3 x 3]</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># Database: mysql  [guest@db.relational-data.org:3306/sakila]</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># Source:   SQL [?? x 3]</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># Database: mysql  [guest@relational.fel.cvut.cz:3306/sakila]</span></span></span>
 <span><span class="co">##   film_id title            description                                          </span></span>
 <span><span class="co">##     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">1</span>       2 ACE GOLDFINGER   A Astounding Epistle of a Database Administrator And…</span></span>
@@ -299,13 +320,23 @@ DBMS</a></li>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
+
+
+
     <footer><div class="pkgdown-footer-left">
   <p>Developed by R Special Interest Group on Databases (R-SIG-DB), <a href="https://hadley.nz" class="external-link">Hadley Wickham</a>, <a href="https://krlmlr.info" class="external-link">Kirill Müller</a>, R Consortium.</p>
 </div>
+
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.9.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.9000.</p>
 </div>
+
     </footer>
 </div>
+
+
+
+
+
   </body>
 </html>
