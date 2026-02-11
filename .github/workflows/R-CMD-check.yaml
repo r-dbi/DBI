@@ -133,8 +133,13 @@ jobs:
         shell: bash
 
       - id: versions-matrix
-        # Only run for pull requests if the base repo is different from the head repo, not for workflow_dispatch if not requested, always run for other events
-        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'workflow_dispatch' || inputs.versions-matrix)
+        # Only run for:
+        # - pull requests if the base repo is different from the head repo
+        # - pull requests if the branch name starts with "cran-"
+        # Do not run for:
+        # - workflow_dispatch if not requested
+        # Always run for other events.
+        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository || startsWith(github.head_ref, 'cran-')) && (github.event_name != 'workflow_dispatch' || inputs.versions-matrix)
         uses: ./.github/workflows/versions-matrix
 
       - id: dep-suggests-matrix
@@ -142,11 +147,19 @@ jobs:
         if: github.event_name != 'workflow_dispatch' || inputs.dep-suggests-matrix
         uses: ./.github/workflows/dep-suggests-matrix
 
+      - id: repo-state
+        name: Determine repository state
+        uses: ./.github/workflows/repo-state
+
+      # Styling on foreign PRs works through the format-suggest workflow
+      - uses: ./.github/workflows/style
+        if: steps.repo-state.outputs.foreign != 'true' || steps.repo-state.outputs.is_pr != 'true'
+
+      # Snapshot tests can't work in a way similar to format-suggests
+      # because it requires running code which is a security risk on pull_request_target workflows
       - uses: ./.github/workflows/update-snapshots
         with:
           base: ${{ inputs.ref || github.head_ref }}
-
-      - uses: ./.github/workflows/style
 
       - uses: ./.github/workflows/roxygenize
 
@@ -175,7 +188,7 @@ jobs:
           echo -n "${{ steps.commit.outputs.sha }}" > rcc-smoke-sha.txt
         shell: bash
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v5
         with:
           name: rcc-smoke-sha
           path: rcc-smoke-sha.txt
@@ -277,7 +290,7 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    if: ${{ needs.rcc-smoke.outputs.versions-matrix != '' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run-rcc-full)) }}
+    if: ${{ needs.rcc-smoke.outputs.versions-matrix != '' }}
 
     name: 'rcc: ${{ matrix.os }} (${{ matrix.r }}) ${{ matrix.desc }}'
 
@@ -337,7 +350,7 @@ jobs:
     needs:
       - rcc-smoke
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     if: ${{ needs.rcc-smoke.outputs.dep-suggests-matrix != '' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run-rcc-suggests)) }}
 
