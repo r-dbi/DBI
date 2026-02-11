@@ -48,13 +48,22 @@ local({
     tryCatch(
       {
         op_name_matcher <- "^\\s*(\\w+)"
-        op_name_matches <- regexec(op_name_matcher, statement, ignore.case = TRUE)
+        op_name_matches <- regexec(
+          op_name_matcher,
+          statement,
+          ignore.case = TRUE
+        )
         op_name_match <- regmatches(statement, op_name_matches)[[1L]]
         op_name <- toupper(op_name_match[2L])
 
         collection_matcher <- "(FROM)\\s+([`\"']?)(\\w+)\\2"
         # collection_matcher <- "(FROM|INTO|UPDATE|TABLE)\\s+([`\"']?)(\\w+)\\2"
-        collection_matches <- gregexec(collection_matcher, statement, ignore.case = TRUE, perl = TRUE)
+        collection_matches <- gregexec(
+          collection_matcher,
+          statement,
+          ignore.case = TRUE,
+          perl = TRUE
+        )
         collection_match <- regmatches(statement, collection_matches)[[1L]]
         collection <- collection_match[4L, , drop = TRUE]
       },
