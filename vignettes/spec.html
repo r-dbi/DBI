@@ -61,9 +61,9 @@ for data.frame which will return a character vector giving the type for each
 column in the dataframe.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
-<td><code id="dbDataType_+3A_dbobj">dbObj</code></td>
+<td><code id="dbDataType_+3A_dbObj">dbObj</code></td>
 <td>
 <p>A object inheriting from DBIDriver
 or DBIConnection</p>
@@ -190,7 +190,7 @@ documentation of individual drivers for details.
 Use <code>dbCanConnect()</code> to check if a connection can be established.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbConnect_+3A_drv">drv</code></td>
 <td>
@@ -292,7 +292,7 @@ dbListTables(con &lt;- dbConnect(RSQLite::SQLite(), ":memory:"))
 resources (e.g., memory, sockets).
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbDisconnect_+3A_conn">conn</code></td>
 <td>
@@ -342,7 +342,7 @@ Use <code>dbSendQueryArrow()</code> or <code>dbGetQueryArrow()</code> instead to
 as an Arrow object.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbSendQuery_+3A_conn">conn</code></td>
 <td>
@@ -601,7 +601,7 @@ fetch(res, n = -1, ...)
 as a data.frame.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbFetch_+3A_res">res</code></td>
 <td>
@@ -848,7 +848,7 @@ This step is mandatory for all objects obtained by calling
 <code>dbSendQuery()</code> or <code>dbSendStatement()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbClearResult_+3A_res">res</code></td>
 <td>
@@ -1020,7 +1020,7 @@ created by <code>nanoarrow::as_nanoarrow_array_stream()</code>.
 is compatible with <code>dbBind()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbBind_+3A_res">res</code></td>
 <td>
@@ -1475,7 +1475,7 @@ see <code>dbSendQuery()</code>, in particular the "The data retrieval flow" sect
 For retrieving results as an Arrow object, see <code>dbGetQueryArrow()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbGetQuery_+3A_conn">conn</code></td>
 <td>
@@ -1682,7 +1682,7 @@ that. For interactive use, you should almost always prefer
 <code>dbExecute()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbSendStatement_+3A_conn">conn</code></td>
 <td>
@@ -1928,7 +1928,7 @@ For passing query parameters, see <code>dbBind()</code>, in particular
 the "The command execution flow" section.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbExecute_+3A_conn">conn</code></td>
 <td>
@@ -2106,7 +2106,7 @@ use in a query as a string literal, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbQuoteString_+3A_conn">conn</code></td>
 <td>
@@ -2198,7 +2198,7 @@ use in a query as a literal value of the correct type, to make sure that you
 generate valid SQL and protect against SQL injection attacks.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbQuoteLiteral_+3A_conn">conn</code></td>
 <td>
@@ -2296,7 +2296,7 @@ generate valid SQL and protect against SQL injection attacks. The inverse
 operation is <code>dbUnquoteIdentifier()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbQuoteIdentifier_+3A_conn">conn</code></td>
 <td>
@@ -2385,7 +2385,7 @@ dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 back to a list of Id objects.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbUnquoteIdentifier_+3A_conn">conn</code></td>
 <td>
@@ -2480,7 +2480,7 @@ R identifiers.
 Use <code>dbReadTableArrow()</code> instead to obtain an Arrow object.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbReadTable_+3A_conn">conn</code></td>
 <td>
@@ -2640,7 +2640,7 @@ dbDisconnect(con)
 converting row names to a column and specifying SQL data types for fields.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbWriteTable_+3A_conn">conn</code></td>
 <td>
@@ -2947,7 +2947,7 @@ dbReadTable(con, "mtcars")
 Use <code>dbCreateTableArrow()</code> to create a table from an Arrow schema.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbCreateTable_+3A_conn">conn</code></td>
 <td>
@@ -3126,7 +3126,7 @@ The default implementation calls <code>sqlAppendTableTemplate()</code> and then
 Use <code>dbAppendTableArrow()</code> to append data from an Arrow stream.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbAppendTable_+3A_conn">conn</code></td>
 <td>
@@ -3358,7 +3358,7 @@ dbDisconnect(con)
 from the database.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbRemoveTable_+3A_conn">conn</code></td>
 <td>
@@ -3485,7 +3485,7 @@ This should include views and temporary objects, but not all database backends
 (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbListTables_+3A_conn">conn</code></td>
 <td>
@@ -3541,7 +3541,7 @@ dbDisconnect(con)
 <p>Returns the field names of a remote table as a character vector.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbListFields_+3A_conn">conn</code></td>
 <td>
@@ -3640,7 +3640,7 @@ dbDisconnect(con)
 <p>Returns if a table given by name exists in the database.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbExistsTable_+3A_conn">conn</code></td>
 <td>
@@ -3742,7 +3742,7 @@ user, including those that can only be accessed by giving the full
 namespace.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbListObjects_+3A_conn">conn</code></td>
 <td>
@@ -3833,9 +3833,9 @@ dbDisconnect(con)
 been disconnected or cleared).
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
-<td><code id="dbIsValid_+3A_dbobj">dbObj</code></td>
+<td><code id="dbIsValid_+3A_dbObj">dbObj</code></td>
 <td>
 <p>An object inheriting from DBIObject,
 i.e. DBIDriver, DBIConnection,
@@ -3897,7 +3897,7 @@ A <code>SELECT</code> query is completed if all rows have been fetched.
 A data manipulation statement is always completed.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbHasCompleted_+3A_res">res</code></td>
 <td>
@@ -4021,7 +4021,7 @@ dbDisconnect(con)
 or <code>dbSendStatement()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbGetStatement_+3A_res">res</code></td>
 <td>
@@ -4068,7 +4068,7 @@ dbDisconnect(con)
 for this result set.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbGetRowCount_+3A_res">res</code></td>
 <td>
@@ -4134,7 +4134,7 @@ dbDisconnect(con)
 by a data manipulation statement.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbGetRowsAffected_+3A_res">res</code></td>
 <td>
@@ -4235,7 +4235,7 @@ each column in the data.frame describes an aspect of the result set
 field (field name, type, etc.)
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbColumnInfo_+3A_res">res</code></td>
 <td>
@@ -4366,7 +4366,7 @@ have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbBegin_+3A_conn">conn</code></td>
 <td>
@@ -4491,7 +4491,7 @@ The special function <code>dbBreak()</code> allows an early exit with rollback,
 it can be called only inside <code>dbWithTransaction()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbWithTransaction_+3A_conn">conn</code></td>
 <td>
@@ -4594,9 +4594,9 @@ dbDisconnect(con)
 DBIConnection or DBIResult.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
-<td><code id="dbGetInfo_+3A_dbobj">dbObj</code></td>
+<td><code id="dbGetInfo_+3A_dbObj">dbObj</code></td>
 <td>
 <p>An object inheriting from DBIObject,
 i.e. DBIDriver, DBIConnection,
@@ -4704,7 +4704,7 @@ Use <code>dbSendQuery()</code> or <code>dbGetQuery()</code> instead to retrieve 
 as a data frame.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbSendQueryArrow_+3A_conn">conn</code></td>
 <td>
@@ -4923,7 +4923,7 @@ dbDisconnect(con)
 Use <code>dbFetchArrowChunk()</code> to fetch results in chunks.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbFetchArrow_+3A_res">res</code></td>
 <td>
@@ -5028,7 +5028,7 @@ The chunk size is implementation-specific.
 Use <code>dbFetchArrow()</code> to fetch all results.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbFetchArrowChunk_+3A_res">res</code></td>
 <td>
@@ -5141,7 +5141,7 @@ the "The data retrieval flow for Arrow streams" section.
 For retrieving results as a data frame, see <code>dbGetQuery()</code>.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbGetQueryArrow_+3A_conn">conn</code></td>
 <td>
@@ -5319,7 +5319,7 @@ dbDisconnect(con)
 Use <code>dbReadTable()</code> instead to obtain a data frame.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbReadTableArrow_+3A_conn">conn</code></td>
 <td>
@@ -5421,7 +5421,7 @@ dbDisconnect(con)
 <p>Writes, overwrites or appends an Arrow object to a database table.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbWriteTableArrow_+3A_conn">conn</code></td>
 <td>
@@ -5676,7 +5676,7 @@ Use <code>dbCreateTable()</code> to create a table from the column types
 as defined in a data frame.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbCreateTableArrow_+3A_conn">conn</code></td>
 <td>
@@ -5835,7 +5835,7 @@ of the stream.
 Use <code>dbAppendTable()</code> to append data from a data.frame.
 </p>
 <h3>Arguments</h3>
-<table>
+<table role="presentation">
 <tr>
 <td><code id="dbAppendTableArrow_+3A_conn">conn</code></td>
 <td>
