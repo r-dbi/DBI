@@ -1,4 +1,6 @@
 test_that("OpenTelemetry tracing works", {
+  skip_if_not_installed("RSQLite")
+  skip_if_not_installed("otel")
   skip_if_not_installed("otelsdk")
 
   record <- with_otel_record({
