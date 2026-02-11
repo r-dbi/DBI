@@ -1,5 +1,22 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.2.3.9039 (2026-02-11)
+
+## Features
+
+- Add support for OpenTelemetry (@shikokuchuo, #551).
+
+## Chore
+
+- Simplify matching code for otel (#569).
+
+## Documentation
+
+- Add "Supported By Posit" badge to website (@krlmlr).
+
+- Render specification with newest pandoc (#568).
+
+
 # DBI 1.2.3.9038 (2026-01-14)
 
 ## Continuous integration
