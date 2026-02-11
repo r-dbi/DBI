@@ -1,5 +1,15 @@
 # Changelog
 
+## DBI 1.2.3.9038 (2026-01-14)
+
+### Continuous integration
+
+- Import from actions-sync, check carefully
+  ([\#566](https://github.com/r-dbi/DBI/issues/566)).
+
+- Import from actions-sync, check carefully
+  ([\#565](https://github.com/r-dbi/DBI/issues/565)).
+
 ## DBI 1.2.3.9037 (2025-11-17)
 
 ### Continuous integration
