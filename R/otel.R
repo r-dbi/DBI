@@ -45,30 +45,31 @@ local({
     collection <- character()
     op_name <- "SQL"
 
-    tryCatch(
-      {
-        op_name_matcher <- "^\\s*(\\w+)"
-        op_name_matches <- regexec(
-          op_name_matcher,
-          statement,
-          ignore.case = TRUE
-        )
-        op_name_match <- regmatches(statement, op_name_matches)[[1L]]
-        op_name <- toupper(op_name_match[2L])
+    if (length(statement) == 1) {
+      op_name_matcher <- "^\\s*(\\w+)"
+      op_name_matches <- regexec(
+        op_name_matcher,
+        statement,
+        ignore.case = TRUE
+      )
+      op_name_match <- regmatches(statement, op_name_matches)[[1L]]
+      op_name <- toupper(op_name_match[2L])
 
-        collection_matcher <- "(FROM)\\s+([`\"']?)(\\w+)\\2"
-        # collection_matcher <- "(FROM|INTO|UPDATE|TABLE)\\s+([`\"']?)(\\w+)\\2"
-        collection_matches <- gregexec(
-          collection_matcher,
-          statement,
-          ignore.case = TRUE,
-          perl = TRUE
-        )
-        collection_match <- regmatches(statement, collection_matches)[[1L]]
+      collection_matcher <- "(FROM)\\s+([`\"']?)(\\w+)\\2"
+      # collection_matcher <- "(FROM|INTO|UPDATE|TABLE)\\s+([`\"']?)(\\w+)\\2"
+      collection_matches <- gregexec(
+        collection_matcher,
+        statement,
+        ignore.case = TRUE,
+        perl = TRUE
+      )
+      collection_match <- regmatches(statement, collection_matches)[[1L]]
+
+      # Returns an empty character vector if there is no match
+      if (is.matrix(collection_match) && nrow(collection_match) >= 4L) {
         collection <- collection_match[4L, , drop = TRUE]
-      },
-      error = function(e) {}
-    )
+      }
+    }
 
     otel::start_local_active_span(
       name = paste(op_name, if (length(collection)) collection else dbname),
