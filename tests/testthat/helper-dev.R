@@ -236,5 +236,12 @@ if (Sys.getenv("CI") == "") {
 
   writeLines(html, temp_html)
   rmarkdown::pandoc_convert(temp_html, "gfm", verbose = FALSE, output = temp_md)
-  writeLines(readLines(temp_md), temp_md)
+  md <- readLines(temp_md)
+
+  # Revert spurious blank line after ``` r that pandoc adds
+  r_idx <- which(md == "``` r")
+  after_r_idx <- r_idx + 1L
+  in_after_r_idx_empty <- (md[after_r_idx] == "")
+
+  writeLines(md[-after_r_idx[in_after_r_idx_empty]], temp_md)
 }
