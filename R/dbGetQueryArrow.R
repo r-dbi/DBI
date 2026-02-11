@@ -55,5 +55,6 @@
 #'
 #' dbDisconnect(con)
 setGeneric("dbGetQueryArrow", def = function(conn, statement, ...) {
+  otel_query_local_active_span(conn, statement)
   standardGeneric("dbGetQueryArrow")
 })
