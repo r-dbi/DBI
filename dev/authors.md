@@ -14,7 +14,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/r-dbi/DBI/blob/main/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/r-dbi/DBI/blob/docs-spec/DESCRIPTION)
 
 R Special Interest Group on Databases (R-SIG-DB), Wickham H, Müller K
 (2026). *DBI: R Database Interface*. R package version 1.2.3.9038,
