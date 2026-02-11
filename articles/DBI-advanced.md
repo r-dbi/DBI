@@ -179,7 +179,8 @@ list of parameter values. Other DBMS may use named parameters. We
 recommend consulting the documentation for the DBMS you are using. As an
 example, a web search for “mariadb parameterized queries” leads to the
 documentation for the [`PREPARE`
-statement](https://mariadb.com/kb/en/prepare-statement/) which mentions:
+statement](https://mariadb.com/docs/server/reference/sql-statements/prepared-statements/prepare-statement)
+which mentions:
 
 > Within the statement, “?” characters can be used as parameter markers
 > to indicate where data values are to be bound to the query later when

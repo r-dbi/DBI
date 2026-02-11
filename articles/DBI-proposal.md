@@ -532,11 +532,10 @@ www.omegahat.net (link dead now:
 has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
 interface to the [mSQL](https://www.hughes.com.au/) database written by
-Torsten Hothorn;
-[RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
-interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
-Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
-interface to ODBC, and it was written by [Michael
+Torsten Hothorn; [RPgSQL](https://keittlab.org) is an interface to
+[PostgreSQL](https://www.postgreSQL.org) and was written by Timothy H.
+Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an interface to
+ODBC, and it was written by [Michael
 Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see *R Data Import/Export* (2001).)
 

@@ -2,6 +2,12 @@
 
 ## DBI 1.3.0 (2026-02-11)
 
+### Features
+
+- Add support for OpenTelemetry via the otel and otelsdk packages
+  ([@shikokuchuo](https://github.com/shikokuchuo),
+  [\#551](https://github.com/r-dbi/DBI/issues/551)).
+
 ### Bug fixes
 
 - [`dbWithTransaction()`](https://dbi.r-dbi.org/reference/dbWithTransaction.md)
@@ -14,136 +20,6 @@
   uses the format `"%Y-%m-%d %H:%M:%S%z"` which is understood by more
   databases ([\#486](https://github.com/r-dbi/DBI/issues/486)).
 
-### Features
-
-- Add support for OpenTelemetry
-  ([@shikokuchuo](https://github.com/shikokuchuo),
-  [\#551](https://github.com/r-dbi/DBI/issues/551)).
-
-### Chore
-
-- Simplify matching code for otel
-  ([\#569](https://github.com/r-dbi/DBI/issues/569)).
-
-- Build-ignore `air.toml`.
-
-- Format with air.
-
-- Tidy description.
-
-- Auto-update from GitHub Actions
-  ([\#525](https://github.com/r-dbi/DBI/issues/525)).
-
-- Auto-update from GitHub Actions
-  ([\#519](https://github.com/r-dbi/DBI/issues/519)).
-
-- IDE.
-
-- Auto-update from GitHub Actions.
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/10425483242>
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/10232551285>
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/10224248605>
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/10200154953>
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/9728444161>
-
-  Run: <https://github.com/r-dbi/DBI/actions/runs/9692418830>
-
-### Continuous integration
-
-- Import from actions-sync, check carefully
-  ([\#566](https://github.com/r-dbi/DBI/issues/566)).
-
-- Import from actions-sync, check carefully
-  ([\#565](https://github.com/r-dbi/DBI/issues/565)).
-
-- Import from actions-sync, check carefully
-  ([\#563](https://github.com/r-dbi/DBI/issues/563)).
-
-- Import from actions-sync, check carefully
-  ([\#561](https://github.com/r-dbi/DBI/issues/561)).
-
-- Import from actions-sync, check carefully
-  ([\#559](https://github.com/r-dbi/DBI/issues/559)).
-
-- Import from actions-sync, check carefully
-  ([\#557](https://github.com/r-dbi/DBI/issues/557)).
-
-- Import from actions-sync, check carefully
-  ([\#524](https://github.com/r-dbi/DBI/issues/524)).
-
-- Import from actions-sync, check carefully
-  ([\#522](https://github.com/r-dbi/DBI/issues/522)).
-
-- Import from actions-sync, check carefully
-  ([\#517](https://github.com/r-dbi/DBI/issues/517)).
-
-- Import from actions-sync, check carefully
-  ([\#510](https://github.com/r-dbi/DBI/issues/510)).
-
-- Import from actions-sync, check carefully
-  ([\#506](https://github.com/r-dbi/DBI/issues/506)).
-
-- Import from actions-sync, check carefully
-  ([\#504](https://github.com/r-dbi/DBI/issues/504)).
-
-- Remove Aviator.
-
-- Import from actions-sync, check carefully
-  ([\#500](https://github.com/r-dbi/DBI/issues/500)).
-
-- Import from actions-sync, check carefully
-  ([\#499](https://github.com/r-dbi/DBI/issues/499)).
-
-- Import from actions-sync, check carefully
-  ([\#498](https://github.com/r-dbi/DBI/issues/498)).
-
-- Import from actions-sync, check carefully
-  ([\#497](https://github.com/r-dbi/DBI/issues/497)).
-
-- Import from actions-sync, check carefully
-  ([\#496](https://github.com/r-dbi/DBI/issues/496)).
-
-- Import from actions-sync, check carefully
-  ([\#495](https://github.com/r-dbi/DBI/issues/495)).
-
-- Import from actions-sync, check carefully
-  ([\#493](https://github.com/r-dbi/DBI/issues/493)).
-
-- Import from actions-sync, check carefully
-  ([\#492](https://github.com/r-dbi/DBI/issues/492)).
-
-- Import from actions-sync, check carefully
-  ([\#491](https://github.com/r-dbi/DBI/issues/491)).
-
-- Import from actions-sync, check carefully
-  ([\#490](https://github.com/r-dbi/DBI/issues/490)).
-
-- Import from actions-sync, check carefully
-  ([\#489](https://github.com/r-dbi/DBI/issues/489)).
-
-- Import from actions-sync, check carefully.
-
-- Inline action.
-
-- Use dev roxygen2 and decor.
-
-- Fix on Windows, tweak lock workflow.
-
-- Avoid checking bashisms on Windows.
-
-- Better commit message.
-
-- Harmonize workflows.
-
-- Bump versions, better default, consume custom matrix.
-
-- Recent updates.
-
 ### Documentation
 
 - Add “Supported By Posit” badge to website
@@ -154,28 +30,12 @@
 
 - Add new generics to specification.
 
-- Fix credentails to relational fit database in vignettes.
-
-- Sync with DBItest and R updates.
-
-- Avoid `\linkS4class{}` in documentation
-  ([\#508](https://github.com/r-dbi/DBI/issues/508)).
-
 ### Performance
 
 - Avoid unnecessary computation in default
   [`dbUnquoteIdentifier()`](https://dbi.r-dbi.org/reference/dbUnquoteIdentifier.md)
   method ([@MichaelChirico](https://github.com/MichaelChirico),
   [\#515](https://github.com/r-dbi/DBI/issues/515)).
-
-### Testing
-
-- Bump DBItest version for internal tests
-  ([\#487](https://github.com/r-dbi/DBI/issues/487)).
-
-### Uncategorized
-
-- Merge branch ‘cran-1.2.3’.
 
 ## DBI 1.2.3 (2024-06-02)
 
