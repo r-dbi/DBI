@@ -40,8 +40,8 @@ setGeneric(
     otel_local_active_span(
       "dbReadTable",
       conn,
-      label = collection_name(name, conn),
-      attributes = list(db.collection.name = collection_name(name, conn))
+      label = .dbi_get_collection_name(name, conn),
+      attributes = list(db.collection.name = .dbi_get_collection_name(name, conn))
     )
     standardGeneric("dbReadTable")
   },

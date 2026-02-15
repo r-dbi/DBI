@@ -32,9 +32,9 @@ setGeneric("dbAppendTableArrow", def = function(conn, name, value, ...) {
   otel_local_active_span(
     "INSERT INTO",
     conn,
-    label = collection_name(name, conn),
+    label = .dbi_get_collection_name(name, conn),
     attributes = list(
-      db.collection.name = collection_name(name, conn),
+      db.collection.name = .dbi_get_collection_name(name, conn),
       db.operation.name = "INSERT INTO"
     )
   )
