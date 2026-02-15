@@ -41,7 +41,9 @@ setGeneric(
       "dbReadTable",
       conn,
       label = .dbi_get_collection_name(name, conn),
-      attributes = list(db.collection.name = .dbi_get_collection_name(name, conn))
+      attributes = list(
+        db.collection.name = .dbi_get_collection_name(name, conn)
+      )
     )
     standardGeneric("dbReadTable")
   },
