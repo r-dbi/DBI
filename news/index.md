@@ -37,6 +37,17 @@
   method ([@MichaelChirico](https://github.com/MichaelChirico),
   [\#515](https://github.com/r-dbi/DBI/issues/515)).
 
+### Breaking changes
+
+- Many generics in the package are now a `"nonstandardGeneric"` instead
+  of a `"standardGeneric"`: The `def` argument to
+  [`methods::setClass()`](https://rdrr.io/r/methods/setClass.html)
+  changed from a direct call to `methods::standardGeneric()` to a
+  function that wraps `methods::standardGeneric()`. This should not
+  affect most users, but became apparent with the tests in the dittodb
+  package failing and is listed here for completeness. See
+  <https://github.com/ropensci/dittodb/pull/197> for detail.
+
 ## DBI 1.2.3 (2024-06-02)
 
 ### Bug fixes

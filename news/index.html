@@ -55,6 +55,10 @@
 <h3 id="performance-1-3-0">Performance<a class="anchor" aria-label="anchor" href="#performance-1-3-0"></a></h3>
 <ul><li>Avoid unnecessary computation in default <code><a href="../reference/dbUnquoteIdentifier.html">dbUnquoteIdentifier()</a></code> method (<a href="https://github.com/MichaelChirico" class="external-link">@MichaelChirico</a>, <a href="https://github.com/r-dbi/DBI/issues/515" class="external-link">#515</a>).</li>
 </ul></div>
+<div class="section level3">
+<h3 id="breaking-changes-1-3-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-3-0"></a></h3>
+<ul><li>Many generics in the package are now a <code>"nonstandardGeneric"</code> instead of a <code>"standardGeneric"</code>: The <code>def</code> argument to <code><a href="https://rdrr.io/r/methods/setClass.html" class="external-link">methods::setClass()</a></code> changed from a direct call to <code>methods::standardGeneric()</code> to a function that wraps <code>methods::standardGeneric()</code>. This should not affect most users, but became apparent with the tests in the dittodb package failing and is listed here for completeness. See <a href="https://github.com/ropensci/dittodb/pull/197" class="external-link uri">https://github.com/ropensci/dittodb/pull/197</a> for detail.</li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.3" id="dbi-123-2024-06-02">DBI 1.2.3 (2024-06-02)<a class="anchor" aria-label="anchor" href="#dbi-123-2024-06-02"></a></h2>
