@@ -24,6 +24,10 @@
 
 - Avoid unnecessary computation in default `dbUnquoteIdentifier()` method (@MichaelChirico, #515).
 
+## Breaking changes
+
+- Many generics in the package are now a `"nonstandardGeneric"` instead of a `"standardGeneric"`: The `def` argument to `methods::setClass()` changed from a direct call to `methods::standardGeneric()` to a function that wraps `methods::standardGeneric()`. This should not affect most users, but became apparent with the tests in the dittodb package failing and is listed here for completeness. See <https://github.com/ropensci/dittodb/pull/197> for detail.
+
 
 # DBI 1.2.3 (2024-06-02)
 
