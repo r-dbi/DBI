@@ -24,7 +24,7 @@ local({
     activation_scope = parent.frame()
   ) {
     otel_is_tracing || return()
-    dbname <- get_dbname(conn)
+    dbname <- .dbi_get_db_name(conn)
     otel::start_local_active_span(
       name = sprintf("%s %s", name, if (length(label)) label else dbname),
       attributes = c(attributes, list(db.system.name = dbname)),
@@ -40,7 +40,7 @@ local({
     activation_scope = parent.frame()
   ) {
     otel_is_tracing || return()
-    dbname <- get_dbname(conn)
+    dbname <- .dbi_get_db_name(conn)
 
     collection <- character()
     op_name <- "SQL"
@@ -99,11 +99,14 @@ with_otel_record <- function(expr) {
 
 # DBI-specific helpers:
 
-get_dbname <- function(obj) {
+# When this was called `get_dbname()`, it collided with `dittodb::get_dbname()`
+# for some weakly understood reason.
+# The weird name makes collisions more unlikely.
+.dbi_get_db_name <- function(obj) {
   dbname <- attr(class(obj), "package")
   if (is.null(dbname)) "unknown" else dbname
 }
 
-collection_name <- function(name, conn) {
+.dbi_get_collection_name <- function(name, conn) {
   if (is.character(name)) name else dbQuoteIdentifier(conn, x = name)
 }

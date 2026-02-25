@@ -542,7 +542,7 @@ www.omegahat.net (link dead now: `https://www.omegahat.net/contrib/RS-DBI/index.
 The R community has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
 interface to the [mSQL](https://www.hughes.com.au/) database written by
-Torsten Hothorn; [RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
+Torsten Hothorn; [RPgSQL](https://keittlab.org) is an
 interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
 Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
 interface to ODBC, and it was written by [Michael
