@@ -1,5 +1,10 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.3.0.9000 (2026-02-26)
+
+- Switching to development version.
+
+
 # DBI 1.3.0 (2026-02-11)
 
 ## Features
