@@ -147,7 +147,7 @@ dbDisconnect(con)
 \seealso{
 For updates: \code{\link[=dbSendStatement]{dbSendStatement()}} and \code{\link[=dbExecute]{dbExecute()}}.
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},
@@ -177,7 +177,7 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 
-Other data retrieval generics: 
+Other data retrieval generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},

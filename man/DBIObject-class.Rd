@@ -50,7 +50,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBI classes: 
+Other DBI classes:
 \code{\link{DBIConnection-class}},
 \code{\link{DBIConnector-class}},
 \code{\link{DBIDriver-class}},

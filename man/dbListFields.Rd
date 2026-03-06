@@ -77,7 +77,7 @@ dbDisconnect(con)
 \seealso{
 \code{\link[=dbColumnInfo]{dbColumnInfo()}} to get the type of the fields.
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},

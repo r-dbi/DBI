@@ -12,14 +12,14 @@ instance \code{RPostgres}, \code{RMariaDB}, etc. implement these operations in a
 DBMS-specific manner.
 }
 \seealso{
-Other DBI classes: 
+Other DBI classes:
 \code{\link{DBIConnection-class}},
 \code{\link{DBIConnector-class}},
 \code{\link{DBIObject-class}},
 \code{\link{DBIResult-class}},
 \code{\link{DBIResultArrow-class}}
 
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},
 \code{\link{dbDataType}()},

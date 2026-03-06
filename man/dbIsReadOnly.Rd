@@ -22,7 +22,7 @@ This generic tests whether a database object is read only.
 dbIsReadOnly(ANSI())
 }
 \seealso{
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},
@@ -32,7 +32,7 @@ Other DBIDriver generics:
 \code{\link{dbIsValid}()},
 \code{\link{dbListConnections}()}
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},
@@ -62,7 +62,7 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
@@ -77,7 +77,7 @@ Other DBIResult generics:
 \code{\link{dbQuoteLiteral}()},
 \code{\link{dbQuoteString}()}
 
-Other DBIConnector generics: 
+Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
 \code{\link{dbConnect}()},
 \code{\link{dbDataType}()},

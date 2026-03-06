@@ -88,7 +88,7 @@ dbQuoteIdentifier(ANSI(), var_name)
 dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 }
 \seealso{
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},

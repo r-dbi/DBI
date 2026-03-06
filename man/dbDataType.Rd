@@ -121,7 +121,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},
@@ -131,7 +131,7 @@ Other DBIDriver generics:
 \code{\link{dbIsValid}()},
 \code{\link{dbListConnections}()}
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},
@@ -161,7 +161,7 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 
-Other DBIConnector generics: 
+Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
 \code{\link{dbConnect}()},
 \code{\link{dbGetConnectArgs}()},

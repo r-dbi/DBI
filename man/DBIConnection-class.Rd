@@ -28,14 +28,14 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBI classes: 
+Other DBI classes:
 \code{\link{DBIConnector-class}},
 \code{\link{DBIDriver-class}},
 \code{\link{DBIObject-class}},
 \code{\link{DBIResult-class}},
 \code{\link{DBIResultArrow-class}}
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},

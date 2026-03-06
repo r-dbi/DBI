@@ -94,7 +94,7 @@ dbQuoteLiteral(ANSI(), var_name)
 dbQuoteLiteral(ANSI(), dbQuoteLiteral(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},

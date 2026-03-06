@@ -193,7 +193,7 @@ dbDisconnect(con)
 Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
 finish retrieving the records you want.
 
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
@@ -208,7 +208,7 @@ Other DBIResult generics:
 \code{\link{dbQuoteLiteral}()},
 \code{\link{dbQuoteString}()}
 
-Other data retrieval generics: 
+Other data retrieval generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbFetchArrow}()},

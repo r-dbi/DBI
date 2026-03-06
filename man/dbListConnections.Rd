@@ -19,7 +19,7 @@ DEPRECATED, drivers are no longer required to implement this method.
 Keep track of the connections you opened if you require a list.
 }
 \seealso{
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},

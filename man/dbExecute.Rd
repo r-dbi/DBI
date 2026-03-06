@@ -149,7 +149,7 @@ dbDisconnect(con)
 \seealso{
 For queries: \code{\link[=dbSendQuery]{dbSendQuery()}} and \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},
@@ -179,7 +179,7 @@ Other DBIConnection generics:
 \code{\link{dbWriteTable}()},
 \code{\link{dbWriteTableArrow}()}
 
-Other command execution generics: 
+Other command execution generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbGetRowsAffected}()},

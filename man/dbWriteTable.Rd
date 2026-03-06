@@ -214,7 +214,7 @@ dbReadTable(con, "mtcars")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},

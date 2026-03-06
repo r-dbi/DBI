@@ -33,7 +33,7 @@ dbGetConnectArgs(cnr, eval = FALSE)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIConnector generics: 
+Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
 \code{\link{dbConnect}()},
 \code{\link{dbDataType}()},
