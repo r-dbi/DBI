@@ -36,7 +36,7 @@ dbCanConnect(RSQLite::SQLite(), ":memory:")
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbConnect}()},
 \code{\link{dbDataType}()},

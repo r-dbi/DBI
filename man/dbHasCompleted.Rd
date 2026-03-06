@@ -107,7 +107,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
@@ -122,7 +122,7 @@ Other DBIResult generics:
 \code{\link{dbQuoteLiteral}()},
 \code{\link{dbQuoteString}()}
 
-Other DBIResultArrow generics: 
+Other DBIResultArrow generics:
 \code{\link{DBIResultArrow-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
@@ -130,7 +130,7 @@ Other DBIResultArrow generics:
 \code{\link{dbFetchArrowChunk}()},
 \code{\link{dbIsValid}()}
 
-Other data retrieval generics: 
+Other data retrieval generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbFetch}()},

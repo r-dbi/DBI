@@ -55,7 +55,7 @@ RSQLite::SQLite()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},
@@ -65,7 +65,7 @@ Other DBIDriver generics:
 \code{\link{dbIsValid}()},
 \code{\link{dbListConnections}()}
 
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbConnect}()},

@@ -22,7 +22,7 @@ DEPRECATED. Backends should use R's condition system to signal errors and
 warnings.
 }
 \seealso{
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},

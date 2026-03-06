@@ -162,7 +162,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTableArrow}()},
 \code{\link{dbCreateTable}()},

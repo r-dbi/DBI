@@ -89,7 +89,7 @@ dbQuoteString(ANSI(), var_name)
 dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 }
 \seealso{
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},

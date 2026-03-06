@@ -82,7 +82,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{DBIResult-class}},
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
@@ -97,7 +97,7 @@ Other DBIResult generics:
 \code{\link{dbQuoteLiteral}()},
 \code{\link{dbQuoteString}()}
 
-Other command execution generics: 
+Other command execution generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbExecute}()},

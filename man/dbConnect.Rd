@@ -85,7 +85,7 @@ dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 \seealso{
 \code{\link[=dbDisconnect]{dbDisconnect()}} to disconnect from a database.
 
-Other DBIDriver generics: 
+Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
 \code{\link{dbCanConnect}()},
 \code{\link{dbDataType}()},
@@ -95,7 +95,7 @@ Other DBIDriver generics:
 \code{\link{dbIsValid}()},
 \code{\link{dbListConnections}()}
 
-Other DBIConnector generics: 
+Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
 \code{\link{dbDataType}()},
 \code{\link{dbGetConnectArgs}()},

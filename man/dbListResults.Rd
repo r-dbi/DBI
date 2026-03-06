@@ -22,7 +22,7 @@ you need to keep track of the result sets you open if you need this
 functionality.
 }
 \seealso{
-Other DBIConnection generics: 
+Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
 \code{\link{dbAppendTable}()},
 \code{\link{dbAppendTableArrow}()},

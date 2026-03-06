@@ -21,14 +21,14 @@ DBI generics.
 }
 
 \seealso{
-Other DBI classes: 
+Other DBI classes:
 \code{\link{DBIConnection-class}},
 \code{\link{DBIConnector-class}},
 \code{\link{DBIDriver-class}},
 \code{\link{DBIObject-class}},
 \code{\link{DBIResultArrow-class}}
 
-Other DBIResult generics: 
+Other DBIResult generics:
 \code{\link{dbBind}()},
 \code{\link{dbClearResult}()},
 \code{\link{dbColumnInfo}()},
