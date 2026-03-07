@@ -16,11 +16,11 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 }
 \value{
 \code{dbSendStatement()} returns
-an S4 object that inherits from \link[DBI:DBIResult-class]{DBI::DBIResult}.
-The result set can be used with \code{\link[DBI:dbGetRowsAffected]{DBI::dbGetRowsAffected()}} to
+an S4 object that inherits from \link[DBI:DBIResult-class]{DBIResult}.
+The result set can be used with \code{\link[DBI:dbGetRowsAffected]{dbGetRowsAffected()}} to
 determine the number of rows affected by the query.
 Once you have finished using a result, make sure to clear it
-with \code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
 }
 \description{
 The \code{dbSendStatement()} method only submits and synchronously executes the
@@ -103,7 +103,7 @@ See the "Specification" sections for details on their usage.
 
 No warnings occur under normal conditions.
 When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{DBI::dbClearResult()}}.
+\code{\link[DBI:dbClearResult]{dbClearResult()}}.
 Failure to clear the result set leads to a warning
 when the connection is closed.
 If the backend supports only one open result set per connection,
@@ -114,7 +114,7 @@ and must be cleared with \code{dbClearResult()}.
 
 
 
-The \code{param} argument allows passing query parameters, see \code{\link[DBI:dbBind]{DBI::dbBind()}} for details.
+The \code{param} argument allows passing query parameters, see \code{\link[DBI:dbBind]{dbBind()}} for details.
 
 }
 
@@ -154,7 +154,7 @@ the backend tries \code{immediate = TRUE} (and gives a message)
 }
 \item A query with parameters is passed:
 \enumerate{
-\item \code{params} not given: waiting for parameters via \code{\link[DBI:dbBind]{DBI::dbBind()}}
+\item \code{params} not given: waiting for parameters via \code{\link[DBI:dbBind]{dbBind()}}
 \item \code{params} given: query is executed
 }
 }
