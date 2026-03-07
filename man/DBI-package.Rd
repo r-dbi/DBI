@@ -73,6 +73,7 @@ Formal specification (currently work in progress and incomplete):
 
 Authors:
 \itemize{
+  \item Kirill Müller \email{kirill@cynkra.com} (\href{https://orcid.org/0000-0002-1416-3412}{ORCID})
   \item R Special Interest Group on Databases (R-SIG-DB)
   \item Hadley Wickham
 }
