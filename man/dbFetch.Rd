@@ -89,7 +89,7 @@ greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 
 Calling \code{dbFetch()} on a result set from a data manipulation query
-created by \code{\link[DBI:dbSendStatement]{DBI::dbSendStatement()}} can
+created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can
 be fetched and return an empty data frame, with a warning.
 
 }

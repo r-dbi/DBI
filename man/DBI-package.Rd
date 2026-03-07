@@ -29,9 +29,9 @@ to the backend author to adopt this convention or not.
 
 A backend defines three classes,
 which are subclasses of
-\link[DBI:DBIDriver-class]{DBI::DBIDriver},
-\link[DBI:DBIConnection-class]{DBI::DBIConnection},
-and \link[DBI:DBIResult-class]{DBI::DBIResult}.
+\link[DBI:DBIDriver-class]{DBIDriver},
+\link[DBI:DBIConnection-class]{DBIConnection},
+and \link[DBI:DBIResult-class]{DBIResult}.
 The backend provides implementation for all methods
 of these base classes
 that are defined but not implemented by DBI.
@@ -44,7 +44,7 @@ and have an ellipsis \code{...} in their formals for extensibility.
 \section{Construction of the DBIDriver object}{
 
 
-The backend must support creation of an instance of its \link[DBI:DBIDriver-class]{DBI::DBIDriver} subclass
+The backend must support creation of an instance of its \link[DBI:DBIDriver-class]{DBIDriver} subclass
 with a \dfn{constructor function}.
 By default, its name is the package name without the leading \sQuote{R}
 (if it exists), e.g., \code{SQLite} for the \pkg{RSQLite} package.
