@@ -21,7 +21,7 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{value}{An object for which a schema can be determined via
-\code{\link[nanoarrow:as_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}}.}
+\code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 
