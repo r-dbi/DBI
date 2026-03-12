@@ -179,7 +179,7 @@ If a column is missed from \code{field.types}, the type is inferred
 from the input data with \code{\link[DBI:dbDataType]{dbDataType()}}.
 
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
-see \code{\link[DBI:rownames]{sqlRownamesToColumn()}} for details:
+see \code{\link[DBI:sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
 \itemize{
 \item If \code{FALSE} or \code{NULL}, row names are ignored.
 \item If \code{TRUE}, row names are converted to a column named "row_names",

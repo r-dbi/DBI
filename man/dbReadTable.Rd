@@ -30,7 +30,7 @@ from the remote table, effectively the result of calling \code{\link[DBI:dbGetQu
 An empty table is returned as a data frame with zero rows.
 
 The presence of \link{rownames} depends on the \code{row.names} argument,
-see \code{\link[DBI:rownames]{sqlColumnToRownames()}} for details:
+see \code{\link[DBI:sqlColumnToRownames]{sqlColumnToRownames()}} for details:
 \itemize{
 \item If \code{FALSE} or \code{NULL}, the returned data frame doesn't have row names.
 \item If \code{TRUE}, a column named "row_names" is converted to row names.
