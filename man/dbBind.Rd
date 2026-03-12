@@ -208,7 +208,7 @@ recommended.
 It is good practice to register a call to \code{\link[DBI:dbClearResult]{dbClearResult()}} via
 \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
 (see the last enumeration item).
-Until \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBind]{dbBindArrow()}} have been called,
+Until \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}} have been called,
 the returned result set object has the following behavior:
 \itemize{
 \item \code{\link[DBI:dbFetch]{dbFetch()}} raises an error (for \code{dbSendQuery()} and \code{dbSendQueryArrow()})
@@ -217,12 +217,12 @@ the returned result set object has the following behavior:
 \item \code{\link[DBI:dbIsValid]{dbIsValid()}} returns \code{TRUE}
 \item \code{\link[DBI:dbHasCompleted]{dbHasCompleted()}} returns \code{FALSE}
 }
-\item Call \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBind]{dbBindArrow()}}:
+\item Call \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}}:
 \itemize{
 \item For \code{\link[DBI:dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements
 have the same lengths and contain values supported by the backend.
 A \link{data.frame} is internally stored as such a list.
-\item For \code{\link[DBI:dbBind]{dbBindArrow()}}, the \code{params} argument must be a
+\item For \code{\link[DBI:dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a
 nanoarrow array stream, with one column per query parameter.
 }
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
