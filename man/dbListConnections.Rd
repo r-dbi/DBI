@@ -7,7 +7,7 @@
 dbListConnections(drv, ...)
 }
 \arguments{
-\item{drv}{A object inheriting from \linkS4class{DBIDriver}}
+\item{drv}{A object inheriting from \link[=DBIDriver-class]{DBIDriver}}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -21,13 +21,13 @@ Keep track of the connections you opened if you require a list.
 \seealso{
 Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
-\code{\link{dbCanConnect}()},
-\code{\link{dbConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbDriver}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()}
+\code{\link[=dbCanConnect]{dbCanConnect()}},
+\code{\link[=dbConnect]{dbConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbDriver]{dbDriver()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}}
 }
 \concept{DBIDriver generics}
 \keyword{internal}
