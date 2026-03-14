@@ -36,7 +36,7 @@ This helps ensuring consistency of write operations to multiple tables.
 \details{
 Not all database engines implement transaction management, in which case
 these methods should not be implemented for the specific
-\linkS4class{DBIConnection} subclass.
+\link[=DBIConnection-class]{DBIConnection} subclass.
 }
 \section{Failure modes}{
 
