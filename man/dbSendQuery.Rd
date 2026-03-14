@@ -60,7 +60,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\linkS4class{DBIResult}.
+\link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -211,44 +211,44 @@ For updates: \code{\link[=dbSendStatement]{dbSendStatement()}} and \code{\link[=
 
 Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
-\code{\link{dbAppendTable}()},
-\code{\link{dbAppendTableArrow}()},
-\code{\link{dbCreateTable}()},
-\code{\link{dbCreateTableArrow}()},
-\code{\link{dbDataType}()},
-\code{\link{dbDisconnect}()},
-\code{\link{dbExecute}()},
-\code{\link{dbExistsTable}()},
-\code{\link{dbGetException}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetQuery}()},
-\code{\link{dbGetQueryArrow}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbListFields}()},
-\code{\link{dbListObjects}()},
-\code{\link{dbListResults}()},
-\code{\link{dbListTables}()},
-\code{\link{dbQuoteIdentifier}()},
-\code{\link{dbReadTable}()},
-\code{\link{dbReadTableArrow}()},
-\code{\link{dbRemoveTable}()},
-\code{\link{dbSendQueryArrow}()},
-\code{\link{dbSendStatement}()},
-\code{\link{dbUnquoteIdentifier}()},
-\code{\link{dbWriteTable}()},
-\code{\link{dbWriteTableArrow}()}
+\code{\link[=dbAppendTable]{dbAppendTable()}},
+\code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}},
+\code{\link[=dbCreateTable]{dbCreateTable()}},
+\code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbDisconnect]{dbDisconnect()}},
+\code{\link[=dbExecute]{dbExecute()}},
+\code{\link[=dbExistsTable]{dbExistsTable()}},
+\code{\link[=dbGetException]{dbGetException()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbListFields]{dbListFields()}},
+\code{\link[=dbListObjects]{dbListObjects()}},
+\code{\link[=dbListResults]{dbListResults()}},
+\code{\link[=dbListTables]{dbListTables()}},
+\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}},
+\code{\link[=dbReadTable]{dbReadTable()}},
+\code{\link[=dbReadTableArrow]{dbReadTableArrow()}},
+\code{\link[=dbRemoveTable]{dbRemoveTable()}},
+\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}},
+\code{\link[=dbSendStatement]{dbSendStatement()}},
+\code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}},
+\code{\link[=dbWriteTable]{dbWriteTable()}},
+\code{\link[=dbWriteTableArrow]{dbWriteTableArrow()}}
 
 Other data retrieval generics:
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetch}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
-\code{\link{dbGetQuery}()},
-\code{\link{dbGetQueryArrow}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbSendQueryArrow}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}},
+\code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}
 }
 \concept{DBIConnection generics}
 \concept{data retrieval generics}
