@@ -6,7 +6,6 @@
 \alias{isSQLKeyword.default}
 \alias{isSQLKeyword}
 \alias{make.db.names}
-\alias{SQLKeywords}
 \title{Make R identifiers into legal SQL identifiers}
 \usage{
 make.db.names.default(
