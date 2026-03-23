@@ -57,13 +57,13 @@ RSQLite::SQLite()
 \seealso{
 Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
-\code{\link{dbCanConnect}()},
-\code{\link{dbConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbListConnections}()}
+\code{\link[=dbCanConnect]{dbCanConnect()}},
+\code{\link[=dbConnect]{dbConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbListConnections]{dbListConnections()}}
 }
 \concept{DBIDriver generics}
 \keyword{internal}
