@@ -86,7 +86,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\linkS4class{DBIResult}.
+\link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -124,7 +124,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\linkS4class{DBIResultArrow}.
+\link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -152,7 +152,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class
-\linkS4class{DBIResult}.
+\link[=DBIResult-class]{DBIResult}.
 For some queries you need to pass \code{immediate = TRUE}.
 \item Optionally, bind query parameters with\code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
@@ -341,43 +341,43 @@ dbDisconnect(con)
 \seealso{
 Other DBIResult generics:
 \code{\link{DBIResult-class}},
-\code{\link{dbClearResult}()},
-\code{\link{dbColumnInfo}()},
-\code{\link{dbFetch}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()}
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbColumnInfo]{dbColumnInfo()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+\code{\link[=dbGetStatement]{dbGetStatement()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}},
+\code{\link[=dbQuoteString]{dbQuoteString()}}
 
 Other DBIResultArrow generics:
 \code{\link{DBIResultArrow-class}},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsValid}()}
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsValid]{dbIsValid()}}
 
 Other data retrieval generics:
-\code{\link{dbClearResult}()},
-\code{\link{dbFetch}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
-\code{\link{dbGetQuery}()},
-\code{\link{dbGetQueryArrow}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()},
-\code{\link{dbSendQueryArrow}()}
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}},
+\code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbSendQuery]{dbSendQuery()}},
+\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}
 
 Other command execution generics:
-\code{\link{dbClearResult}()},
-\code{\link{dbExecute}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbSendStatement}()}
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbExecute]{dbExecute()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+\code{\link[=dbSendStatement]{dbSendStatement()}}
 }
 \concept{DBIResult generics}
 \concept{DBIResultArrow generics}
