@@ -5,7 +5,7 @@
 \alias{DBIConnector-class}
 \title{DBIConnector class}
 \description{
-Wraps objects of the \linkS4class{DBIDriver} class to include connection options.
+Wraps objects of the \link[=DBIDriver-class]{DBIDriver} class to include connection options.
 The purpose of this class is to store both the driver
 and the connection options.
 A database connection can be established
@@ -46,10 +46,10 @@ Other DBI classes:
 \code{\link{DBIResultArrow-class}}
 
 Other DBIConnector generics:
-\code{\link{dbConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbGetConnectArgs}()},
-\code{\link{dbIsReadOnly}()}
+\code{\link[=dbConnect]{dbConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}}
 }
 \concept{DBI classes}
 \concept{DBIConnector generics}

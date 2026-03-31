@@ -87,19 +87,19 @@ dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 
 Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
-\code{\link{dbCanConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbDriver}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbListConnections}()}
+\code{\link[=dbCanConnect]{dbCanConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbDriver]{dbDriver()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbListConnections]{dbListConnections()}}
 
 Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
-\code{\link{dbDataType}()},
-\code{\link{dbGetConnectArgs}()},
-\code{\link{dbIsReadOnly}()}
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}}
 }
 \concept{DBIConnector generics}
 \concept{DBIDriver generics}
