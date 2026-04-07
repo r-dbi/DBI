@@ -43,7 +43,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\linkS4class{DBIResultArrow}.
+\link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -99,22 +99,22 @@ finish retrieving the records you want.
 
 Other DBIResultArrow generics:
 \code{\link{DBIResultArrow-class}},
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsValid}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsValid]{dbIsValid()}}
 
 Other data retrieval generics:
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetch}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbGetQuery}()},
-\code{\link{dbGetQueryArrow}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbSendQuery}()},
-\code{\link{dbSendQueryArrow}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbSendQuery]{dbSendQuery()}},
+\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}
 }
 \concept{DBIResultArrow generics}
 \concept{data retrieval generics}
