@@ -30,12 +30,12 @@ Other DBI classes:
 \code{\link{DBIResult-class}}
 
 Other DBIResultArrow generics:
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetchArrow}()},
-\code{\link{dbFetchArrowChunk}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsValid}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetchArrow]{dbFetchArrow()}},
+\code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsValid]{dbIsValid()}}
 }
 \concept{DBI classes}
 \concept{DBIResultArrow generics}

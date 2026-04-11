@@ -44,7 +44,7 @@ This flow requires an active connection established by \code{\link[=dbConnect]{d
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\linkS4class{DBIResult}.
+\link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -106,17 +106,17 @@ dbDisconnect(con)
 \seealso{
 Other DBIResult generics:
 \code{\link{DBIResult-class}},
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbFetch}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+\code{\link[=dbGetStatement]{dbGetStatement()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}},
+\code{\link[=dbQuoteString]{dbQuoteString()}}
 }
 \concept{DBIResult generics}
