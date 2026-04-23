@@ -7,9 +7,9 @@
 dbIsReadOnly(dbObj, ...)
 }
 \arguments{
-\item{dbObj}{An object inheriting from \linkS4class{DBIObject},
-i.e. \linkS4class{DBIDriver}, \linkS4class{DBIConnection},
-or a \linkS4class{DBIResult}}
+\item{dbObj}{An object inheriting from \link[=DBIObject-class]{DBIObject},
+i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection},
+or a \link[=DBIResult-class]{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }
@@ -24,64 +24,64 @@ dbIsReadOnly(ANSI())
 \seealso{
 Other DBIDriver generics:
 \code{\link{DBIDriver-class}},
-\code{\link{dbCanConnect}()},
-\code{\link{dbConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbDriver}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbListConnections}()}
+\code{\link[=dbCanConnect]{dbCanConnect()}},
+\code{\link[=dbConnect]{dbConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbDriver]{dbDriver()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbListConnections]{dbListConnections()}}
 
 Other DBIConnection generics:
 \code{\link{DBIConnection-class}},
-\code{\link{dbAppendTable}()},
-\code{\link{dbAppendTableArrow}()},
-\code{\link{dbCreateTable}()},
-\code{\link{dbCreateTableArrow}()},
-\code{\link{dbDataType}()},
-\code{\link{dbDisconnect}()},
-\code{\link{dbExecute}()},
-\code{\link{dbExistsTable}()},
-\code{\link{dbGetException}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetQuery}()},
-\code{\link{dbGetQueryArrow}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbListFields}()},
-\code{\link{dbListObjects}()},
-\code{\link{dbListResults}()},
-\code{\link{dbListTables}()},
-\code{\link{dbQuoteIdentifier}()},
-\code{\link{dbReadTable}()},
-\code{\link{dbReadTableArrow}()},
-\code{\link{dbRemoveTable}()},
-\code{\link{dbSendQuery}()},
-\code{\link{dbSendQueryArrow}()},
-\code{\link{dbSendStatement}()},
-\code{\link{dbUnquoteIdentifier}()},
-\code{\link{dbWriteTable}()},
-\code{\link{dbWriteTableArrow}()}
+\code{\link[=dbAppendTable]{dbAppendTable()}},
+\code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}},
+\code{\link[=dbCreateTable]{dbCreateTable()}},
+\code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbDisconnect]{dbDisconnect()}},
+\code{\link[=dbExecute]{dbExecute()}},
+\code{\link[=dbExistsTable]{dbExistsTable()}},
+\code{\link[=dbGetException]{dbGetException()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetQuery]{dbGetQuery()}},
+\code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbListFields]{dbListFields()}},
+\code{\link[=dbListObjects]{dbListObjects()}},
+\code{\link[=dbListResults]{dbListResults()}},
+\code{\link[=dbListTables]{dbListTables()}},
+\code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}},
+\code{\link[=dbReadTable]{dbReadTable()}},
+\code{\link[=dbReadTableArrow]{dbReadTableArrow()}},
+\code{\link[=dbRemoveTable]{dbRemoveTable()}},
+\code{\link[=dbSendQuery]{dbSendQuery()}},
+\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}},
+\code{\link[=dbSendStatement]{dbSendStatement()}},
+\code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}},
+\code{\link[=dbWriteTable]{dbWriteTable()}},
+\code{\link[=dbWriteTableArrow]{dbWriteTableArrow()}}
 
 Other DBIResult generics:
 \code{\link{DBIResult-class}},
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbColumnInfo}()},
-\code{\link{dbFetch}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbColumnInfo]{dbColumnInfo()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+\code{\link[=dbGetStatement]{dbGetStatement()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}},
+\code{\link[=dbQuoteString]{dbQuoteString()}}
 
 Other DBIConnector generics:
 \code{\link{DBIConnector-class}},
-\code{\link{dbConnect}()},
-\code{\link{dbDataType}()},
-\code{\link{dbGetConnectArgs}()}
+\code{\link[=dbConnect]{dbConnect()}},
+\code{\link[=dbDataType]{dbDataType()}},
+\code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}
 }
 \concept{DBIConnection generics}
 \concept{DBIConnector generics}
