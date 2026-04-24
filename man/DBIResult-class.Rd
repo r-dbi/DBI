@@ -29,19 +29,19 @@ Other DBI classes:
 \code{\link{DBIResultArrow-class}}
 
 Other DBIResult generics:
-\code{\link{dbBind}()},
-\code{\link{dbClearResult}()},
-\code{\link{dbColumnInfo}()},
-\code{\link{dbFetch}()},
-\code{\link{dbGetInfo}()},
-\code{\link{dbGetRowCount}()},
-\code{\link{dbGetRowsAffected}()},
-\code{\link{dbGetStatement}()},
-\code{\link{dbHasCompleted}()},
-\code{\link{dbIsReadOnly}()},
-\code{\link{dbIsValid}()},
-\code{\link{dbQuoteLiteral}()},
-\code{\link{dbQuoteString}()}
+\code{\link[=dbBind]{dbBind()}},
+\code{\link[=dbClearResult]{dbClearResult()}},
+\code{\link[=dbColumnInfo]{dbColumnInfo()}},
+\code{\link[=dbFetch]{dbFetch()}},
+\code{\link[=dbGetInfo]{dbGetInfo()}},
+\code{\link[=dbGetRowCount]{dbGetRowCount()}},
+\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+\code{\link[=dbGetStatement]{dbGetStatement()}},
+\code{\link[=dbHasCompleted]{dbHasCompleted()}},
+\code{\link[=dbIsReadOnly]{dbIsReadOnly()}},
+\code{\link[=dbIsValid]{dbIsValid()}},
+\code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}},
+\code{\link[=dbQuoteString]{dbQuoteString()}}
 }
 \concept{DBI classes}
 \concept{DBIResult generics}
