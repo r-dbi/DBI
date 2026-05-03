@@ -54,4 +54,4 @@ Config/Needs/website: r-dbi/DBItest, r-dbi/dbitemplate, adbi, AzureKusto,
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3.9000
+Config/roxygen2/version: 8.0.0.9000
