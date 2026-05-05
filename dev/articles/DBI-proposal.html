@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.3.9038</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9006</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,9 +135,9 @@ SQL statements and import their output into R and S. The current
 emphasis is on querying databases and not so much in a full low-level
 interface for database development as in JDBC or ODBC, but unlike these,
 we want to approach the interface from the “whole-object” perspective
-<span class="citation">J. M. Chambers (1998)</span> so natural to R/S
-and Python – for instance, by fetching all fields and records
-simultaneously into a single object.</p>
+<span class="citation">Chambers (1998)</span> so natural to R/S and
+Python – for instance, by fetching all fields and records simultaneously
+into a single object.</p>
 <p>The basic idea is to split the interface into a front-end consisting
 of a few classes and generic functions that users invoke and a back-end
 set of database-specific classes and methods that implement the actual
@@ -644,9 +644,8 @@ www.omegahat.net (link dead now:
 <code>https://www.omegahat.net/contrib/RS-DBI/index.html</code>). The R
 community has developed interfaces to some databases: <a href="https://cran.r-project.org/src/contrib/Archive/RmSQL/" class="external-link">RmSQL</a>
 is an interface to the <a href="https://www.hughes.com.au/" class="external-link">mSQL</a>
-database written by Torsten Hothorn; <a href="https://sites.cns.utexas.edu/keittlab/software-0" class="external-link">RPgSQL</a> is an
-interface to <a href="https://www.postgreSQL.org" class="external-link">PostgreSQL</a> and was
-written by Timothy H. Keitt; <a href="https://www.stats.ox.ac.uk/pub/bdr/" class="external-link">RODBC</a> is an interface to
+database written by Torsten Hothorn; <a href="https://keittlab.org" class="external-link">RPgSQL</a> is an interface to <a href="https://www.postgreSQL.org" class="external-link">PostgreSQL</a> and was written by
+Timothy H. Keitt; <a href="https://www.stats.ox.ac.uk/pub/bdr/" class="external-link">RODBC</a> is an interface to
 ODBC, and it was written by <a href="mailto:mlapsley@sthelier.sghms.ac.uk">Michael Lapsley</a>. (For
 more details on all these see <span class="citation"><em><span>R</span>
 Data Import/Export</em> (2001)</span>.)</p>
@@ -833,16 +832,15 @@ inter-class relationships.</p>
 <span>   def <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">object</span>, <span class="va">table</span>, <span class="va">dbname</span>, <span class="va">...</span><span class="op">)</span></span>
 <span>   <span class="fu"><a href="https://rdrr.io/r/base/standardGeneric.html" class="external-link">standardGeneric</a></span><span class="op">(</span><span class="st">"getTableIndices"</span><span class="op">)</span></span>
 <span>   <span class="op">)</span></span></code></pre></div>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-S4" class="csl-entry">
 Chambers, J. M. 1998. <em>Programming with Data: A Guide to the s
-Language</em>. New York: Springer.
+Language</em>. Springer.
 </div>
 <div id="ref-s-corba.98" class="csl-entry">
 Chambers, John M., Mark H. Hansen, David A. James, and Duncan Temple
 Lang. 1998. <span>“Distributed Computing with Data: A CORBA-Based
-Approach.”</span> In <em>Computing Science and Statistics</em>. Inteface
-Foundation of North America.
+Approach.”</span> <em>Computing Science and Statistics</em>.
 </div>
 <div id="ref-odbc.lj" class="csl-entry">
 Harvey, Peter. 1999. <span>“<span>Open Database
@@ -850,17 +848,16 @@ Connectivity</span>.”</span> <em><span>Linux Journal</span></em> Nov.
 (67): 68–72.
 </div>
 <div id="ref-RS-Oracle" class="csl-entry">
-James, David A. In preparation. <span>“An <span>R</span>/<span>S</span>
-Interface to the <span>Oracle</span> Database.”</span> www.omegahat.org:
-Bell Labs, Lucent Technologies.
+James, David A. In preparation. <em>An <span>R</span>/<span>S</span>
+Interface to the <span>Oracle</span> Database</em>. Bell Labs, Lucent
+Technologies.
 </div>
 <div id="ref-R.imp-exp" class="csl-entry">
 <em><span>R</span> Data Import/Export</em>. 2001. R-Development Core
 Team.
 </div>
 <div id="ref-corba:siegel.96" class="csl-entry">
-Siegel, Jon. 1996. <em>CORBA Fundamentals and Programming</em>. New
-York: Wiley.
+Siegel, Jon. 1996. <em>CORBA Fundamentals and Programming</em>. Wiley.
 </div>
 <div id="ref-duncan2000" class="csl-entry">
 Temple Lang, Duncan. 2000. <span>“<span class="nocase">The Omegahat
@@ -873,7 +870,7 @@ R-Developemt Core Team.
 </div>
 <div id="ref-sql92" class="csl-entry">
 <em><span class="nocase">X/Open CAE Specification: SQL and
-RDA</span></em>. 1994. Reading, UK: X/Open Company Ltd.
+RDA</span></em>. 1994. X/Open Company Ltd.
 </div>
 </div>
 </div>

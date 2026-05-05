@@ -180,9 +180,8 @@ and
 `dbClearResult()` frees all resources associated with retrieving the
 result of a query or update operation. The DBI backend can expect a call
 to `dbClearResult()` for each
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
-or
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md) or
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
 call.
 
 ## See also

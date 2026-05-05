@@ -109,25 +109,24 @@ dbIsValid(dbObj, ...)
 
 `dbIsValid()` returns a logical scalar, `TRUE` if the object specified
 by `dbObj` is valid, `FALSE` otherwise. A
-[DBI::DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md)
+[DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md)
 object is initially valid, and becomes invalid after disconnecting with
-[`DBI::dbDisconnect()`](https://dbi.r-dbi.org/dev/reference/dbDisconnect.md).
+[`dbDisconnect()`](https://dbi.r-dbi.org/dev/reference/dbDisconnect.md).
 For an invalid connection object (e.g., for some drivers if the object
 is saved to a file and then restored), the method also returns `FALSE`.
-A
-[DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
+A [DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
 object is valid after a call to
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
 and stays valid even after all rows have been fetched; only clearing it
 with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 invalidates it. A
-[DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
+[DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
 object is also valid after a call to
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md),
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md),
 and stays valid after querying the number of rows affected; only
 clearing it with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 invalidates it. If the connection to the database system is dropped
 (e.g., due to connectivity problems, server failure, etc.),
 `dbIsValid()` should return `FALSE`. This is not tested automatically.

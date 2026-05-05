@@ -117,7 +117,7 @@ This includes temporary tables if supported by the database.
 
 An error is raised when calling this method for a closed or invalid
 connection. An error is also raised if `name` cannot be processed with
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
 or if this results in a non-scalar.
 
 ## Specification
@@ -129,11 +129,11 @@ allow non-syntactic names for their objects:
   quoting, perhaps by calling `dbQuoteIdentifier(conn, x = name)`
 
 - If the result of a call to
-  [`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
+  [`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
   no more quoting is done
 
 For all tables listed by
-[`DBI::dbListTables()`](https://dbi.r-dbi.org/dev/reference/dbListTables.md),
+[`dbListTables()`](https://dbi.r-dbi.org/dev/reference/dbListTables.md),
 `dbExistsTable()` returns `TRUE`.
 
 ## See also

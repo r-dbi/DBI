@@ -61,16 +61,6 @@ Other DBIDriver generics:
 [`dbIsValid()`](https://dbi.r-dbi.org/dev/reference/dbIsValid.md),
 [`dbListConnections()`](https://dbi.r-dbi.org/dev/reference/dbListConnections.md)
 
-Other DBIDriver generics:
-[`DBIDriver-class`](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md),
-[`dbCanConnect()`](https://dbi.r-dbi.org/dev/reference/dbCanConnect.md),
-[`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md),
-[`dbDataType()`](https://dbi.r-dbi.org/dev/reference/dbDataType.md),
-[`dbGetInfo()`](https://dbi.r-dbi.org/dev/reference/dbGetInfo.md),
-[`dbIsReadOnly()`](https://dbi.r-dbi.org/dev/reference/dbIsReadOnly.md),
-[`dbIsValid()`](https://dbi.r-dbi.org/dev/reference/dbIsValid.md),
-[`dbListConnections()`](https://dbi.r-dbi.org/dev/reference/dbListConnections.md)
-
 ## Examples
 
 ``` r

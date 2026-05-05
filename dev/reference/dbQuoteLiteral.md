@@ -60,10 +60,10 @@ time, or blob vector, this function returns a length-0 object.
 
 When passing the returned object again to `dbQuoteLiteral()` as `x`
 argument, it is returned unchanged. Passing objects of class
-[DBI::SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) should also
-return them unchanged. (For backends it may be most convenient to return
-[DBI::SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) objects to
-achieve this behavior, but this is not required.)
+[SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) should also return
+them unchanged. (For backends it may be most convenient to return
+[SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) objects to achieve
+this behavior, but this is not required.)
 
 ## Failure modes
 

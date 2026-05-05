@@ -78,6 +78,7 @@ some data, using the original
 method.
 
 ``` r
+
 library(DBI)
 
 con <- dbConnect(RSQLite::SQLite())
@@ -102,6 +103,7 @@ Arrow objects implement the
 so we can convert the stream to a data frame.
 
 ``` r
+
 stream <- dbReadTableArrow(con, "tbl")
 stream
 ```
@@ -112,6 +114,7 @@ stream
     ##  $ release   :function ()
 
 ``` r
+
 as.data.frame(stream)
 ```
 
@@ -130,6 +133,7 @@ stream can be turned into an
 object and processed further, without bringing it into R.
 
 ``` r
+
 stream <- dbGetQueryArrow(con, "SELECT COUNT(*) AS n FROM tbl WHERE a < 3")
 stream
 ```
@@ -140,6 +144,7 @@ stream
     ##  $ release   :function ()
 
 ``` r
+
 path <- tempfile(fileext = ".parquet")
 arrow::write_parquet(arrow::as_record_batch_reader(stream), path)
 arrow::read_parquet(path)
@@ -156,6 +161,7 @@ method supports prepared queries, using the `params` argument which
 accepts a data frame or a list.
 
 ``` r
+
 params <- data.frame(a = 3L)
 stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", params = params)
 as.data.frame(stream)
@@ -166,6 +172,7 @@ as.data.frame(stream)
     ## 2     3 2 4.5 five
 
 ``` r
+
 params <- data.frame(a = c(2L, 4L))
 # Equivalent to dbBind()
 stream <- dbGetQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a", params = params)
@@ -191,6 +198,7 @@ cleared with
 [`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
 
 ``` r
+
 rs <- dbSendQueryArrow(con, "SELECT $a AS batch, * FROM tbl WHERE a < $a")
 
 in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1L))
@@ -202,6 +210,7 @@ as.data.frame(dbFetchArrow(rs))
     ## <0 rows> (or 0-length row.names)
 
 ``` r
+
 in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 2L))
 dbBindArrow(rs, in_arrow)
 as.data.frame(dbFetchArrow(rs))
@@ -211,6 +220,7 @@ as.data.frame(dbFetchArrow(rs))
     ## 1     2 1 4.5 five
 
 ``` r
+
 in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 3L))
 dbBindArrow(rs, in_arrow)
 as.data.frame(dbFetchArrow(rs))
@@ -221,6 +231,7 @@ as.data.frame(dbFetchArrow(rs))
     ## 2     3 2 4.5 five
 
 ``` r
+
 in_arrow <- nanoarrow::as_nanoarrow_array(data.frame(a = 1:4L))
 dbBindArrow(rs, in_arrow)
 as.data.frame(dbFetchArrow(rs))
@@ -235,6 +246,7 @@ as.data.frame(dbFetchArrow(rs))
     ## 6     4 3 4.5 five
 
 ``` r
+
 dbClearResult(rs)
 ```
 
@@ -248,6 +260,7 @@ can be written to a table using
 [`dbWriteTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbWriteTableArrow.md).
 
 ``` r
+
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
 dbWriteTableArrow(con, "tbl_new", stream)
 dbReadTable(con, "tbl_new")
@@ -265,6 +278,7 @@ and
 [`dbAppendTableArrow()`](https://dbi.r-dbi.org/dev/reference/dbAppendTableArrow.md).
 
 ``` r
+
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a < 3")
 dbCreateTableArrow(con, "tbl_split", stream)
 dbAppendTableArrow(con, "tbl_split", stream)
@@ -273,6 +287,7 @@ dbAppendTableArrow(con, "tbl_split", stream)
     ## [1] 2
 
 ``` r
+
 stream <- dbGetQueryArrow(con, "SELECT * FROM tbl WHERE a >= 3")
 dbAppendTableArrow(con, "tbl_split", stream)
 ```
@@ -280,6 +295,7 @@ dbAppendTableArrow(con, "tbl_split", stream)
     ## [1] 1
 
 ``` r
+
 dbReadTable(con, "tbl_split")
 ```
 
@@ -293,6 +309,7 @@ dbReadTable(con, "tbl_split")
 Do not forget to disconnect from the database when done.
 
 ``` r
+
 dbDisconnect(con)
 ```
 

@@ -91,15 +91,15 @@ dbReadTable(conn, name, ...)
 
 `dbReadTable()` returns a data frame that contains the complete data
 from the remote table, effectively the result of calling
-[`DBI::dbGetQuery()`](https://dbi.r-dbi.org/dev/reference/dbGetQuery.md)
-with `SELECT * FROM <name>`.
+[`dbGetQuery()`](https://dbi.r-dbi.org/dev/reference/dbGetQuery.md) with
+`SELECT * FROM <name>`.
 
 An empty table is returned as a data frame with zero rows.
 
 The presence of
 [rownames](https://dbi.r-dbi.org/dev/reference/rownames.md) depends on
 the `row.names` argument, see
-[`DBI::sqlColumnToRownames()`](https://dbi.r-dbi.org/dev/reference/rownames.md)
+[`sqlColumnToRownames()`](https://dbi.r-dbi.org/dev/reference/rownames.md)
 for details:
 
 - If `FALSE` or `NULL`, the returned data frame doesn't have row names.
@@ -139,7 +139,7 @@ corresponding column exists.
 
 An error is raised when calling this method for a closed or invalid
 connection. An error is raised if `name` cannot be processed with
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
 or if this results in a non-scalar. Unsupported values for `row.names`
 and `check.names` (non-scalars, unsupported data types, `NA` for
 `check.names`) also raise an error.
@@ -166,7 +166,7 @@ allow non-syntactic names for their objects:
   quoting, perhaps by calling `dbQuoteIdentifier(conn, x = name)`
 
 - If the result of a call to
-  [`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
+  [`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
   no more quoting is done
 
 ## See also

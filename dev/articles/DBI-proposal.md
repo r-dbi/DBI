@@ -68,9 +68,9 @@ available databases, tables, etc.) as well as a uniform way to execute
 SQL statements and import their output into R and S. The current
 emphasis is on querying databases and not so much in a full low-level
 interface for database development as in JDBC or ODBC, but unlike these,
-we want to approach the interface from the “whole-object” perspective J.
-M. Chambers (1998) so natural to R/S and Python – for instance, by
-fetching all fields and records simultaneously into a single object.
+we want to approach the interface from the “whole-object” perspective
+Chambers (1998) so natural to R/S and Python – for instance, by fetching
+all fields and records simultaneously into a single object.
 
 The basic idea is to split the interface into a front-end consisting of
 a few classes and generic functions that users invoke and a back-end set
@@ -109,13 +109,12 @@ individual database back-ends (MySQL, Oracle, etc.)
 
 - `dbManager`:
 
-  Virtual class[¹](#fn1) extended by actual database managers, e.g.,
-  Oracle, MySQL, Informix.
+  Virtual class[^1] extended by actual database managers, e.g., Oracle,
+  MySQL, Informix.
 
 - `dbConnection`:
 
-  Virtual class that captures a connection to a database
-  instance[²](#fn2).
+  Virtual class that captures a connection to a database instance[^2].
 
 - `dbResult`:
 
@@ -532,11 +531,10 @@ www.omegahat.net (link dead now:
 has developed interfaces to some databases:
 [RmSQL](https://cran.r-project.org/src/contrib/Archive/RmSQL/) is an
 interface to the [mSQL](https://www.hughes.com.au/) database written by
-Torsten Hothorn;
-[RPgSQL](https://sites.cns.utexas.edu/keittlab/software-0) is an
-interface to [PostgreSQL](https://www.postgreSQL.org) and was written by
-Timothy H. Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an
-interface to ODBC, and it was written by [Michael
+Torsten Hothorn; [RPgSQL](https://keittlab.org) is an interface to
+[PostgreSQL](https://www.postgreSQL.org) and was written by Timothy H.
+Keitt; [RODBC](https://www.stats.ox.ac.uk/pub/bdr/) is an interface to
+ODBC, and it was written by [Michael
 Lapsley](mailto:mlapsley@sthelier.sghms.ac.uk). (For more details on all
 these see *R Data Import/Export* (2001).)
 
@@ -573,6 +571,7 @@ classes and methods that form the RS-DBI, and also to convey the
 inter-class relationships.
 
 ``` r
+
 ## Define all the classes and methods to be used by an
 ## implementation of the RS-DataBase Interface.  Mostly,
 ## these classes are virtual and each driver should extend
@@ -731,23 +730,21 @@ setGeneric("getTableIndices",
 ```
 
 Chambers, J. M. 1998. *Programming with Data: A Guide to the s
-Language*. New York: Springer.
+Language*. Springer.
 
 Chambers, John M., Mark H. Hansen, David A. James, and Duncan Temple
 Lang. 1998. “Distributed Computing with Data: A CORBA-Based Approach.”
-In *Computing Science and Statistics*. Inteface Foundation of North
-America.
+*Computing Science and Statistics*.
 
 Harvey, Peter. 1999. “Open Database Connectivity.” *Linux Journal* Nov.
 (67): 68–72.
 
-James, David A. In preparation. “An R/S Interface to the Oracle
-Database.” www.omegahat.org: Bell Labs, Lucent Technologies.
+James, David A. In preparation. *An R/S Interface to the Oracle
+Database*. Bell Labs, Lucent Technologies.
 
 *R Data Import/Export*. 2001. R-Development Core Team.
 
-Siegel, Jon. 1996. *CORBA Fundamentals and Programming*. New York:
-Wiley.
+Siegel, Jon. 1996. *CORBA Fundamentals and Programming*. Wiley.
 
 Temple Lang, Duncan. 2000. “The Omegahat Environment: New Possibilities
 for Statistical Computing.” *Journal of Computational and Graphical
@@ -756,12 +753,9 @@ Statistics* to appear.
 *Using Relational Database Systems with R*. 2000. R-Developemt Core
 Team.
 
-*X/Open CAE Specification: SQL and RDA*. 1994. Reading, UK: X/Open
-Company Ltd.
+*X/Open CAE Specification: SQL and RDA*. 1994. X/Open Company Ltd.
 
-------------------------------------------------------------------------
-
-1.  A virtual class allows us to group classes that share some common
+[^1]: A virtual class allows us to group classes that share some common
     functionality, e.g., the virtual class “`dbConnection`” groups all
     the connection implementations by Informix, Ingres, DB/2, Oracle,
     etc. Although the details will vary from one RDBMS to another, the
@@ -769,7 +763,7 @@ Company Ltd.
     captures. R and S version 3 do not explicitly define virtual
     classes, but they can easily implement the idea through inheritance.
 
-2.  The term “database” is sometimes (confusingly) used both to denote
+[^2]: The term “database” is sometimes (confusingly) used both to denote
     the RDBMS, such as Oracle, MySQL, and also to denote a particular
     database instance under a RDBMS, such as “opto” or “sales” databases
     under the same RDBMS.

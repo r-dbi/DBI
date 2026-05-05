@@ -71,6 +71,7 @@ you can remove it from the default help listing with
 `@keywords internal`:
 
 ``` r
+
 #' Driver for Kazam database.
 #'
 #' @keywords internal
@@ -86,6 +87,7 @@ should also provide a dummy
 method.
 
 ``` r
+
 #' @export
 #' @rdname Kazam-class
 setMethod("dbUnloadDriver", "KazamDriver", function(drv, ...) {
@@ -99,6 +101,7 @@ If your package needs global setup or tear down, do this in the
 You might also want to add a show method so the object prints nicely:
 
 ``` r
+
 setMethod("show", "KazamDriver", function(object) {
   cat("<KazamDriver>\n")
 })
@@ -107,6 +110,7 @@ setMethod("show", "KazamDriver", function(object) {
 Next create `Kazam()` which instantiates this class.
 
 ``` r
+
 #' @export
 Kazam <- function() {
   new("KazamDriver")
@@ -124,6 +128,7 @@ you’re talking to a C api, this will include a slot that holds an
 external pointer.
 
 ``` r
+
 #' Kazam connection class.
 #'
 #' @export
@@ -147,6 +152,7 @@ use of `@rdname Kazam`. This ensures that `Kazam()` and the connect
 method are documented together.
 
 ``` r
+
 #' @param drv An object created by \code{Kazam()}
 #' @rdname Kazam
 #' @export
@@ -184,6 +190,7 @@ Finally, you’re ready to implement the meat of the system: fetching
 results of a query into a data frame. First define a results class:
 
 ``` r
+
 #' Kazam results class.
 #'
 #' @keywords internal
@@ -201,6 +208,7 @@ a result object. Again `...` is needed for compatibility with the
 generic, but you can add other arguments if you need them.
 
 ``` r
+
 #' Send a query to Kazam.
 #'
 #' @export
@@ -218,6 +226,7 @@ which should close the result set and free all resources associated with
 it:
 
 ``` r
+
 #' @export
 setMethod("dbClearResult", "KazamResult", function(res, ...) {
   # free resources
@@ -234,6 +243,7 @@ database may require a custom implementation of the
 method for your connection class:
 
 ``` r
+
 #' Retrieve records from Kazam query
 #' @export
 setMethod("dbFetch", "KazamResult", function(res, n = -1, ...) {
@@ -255,6 +265,7 @@ which should return a `logical` indicating if there are any rows
 remaining to be fetched.
 
 ``` r
+
 #' @export
 setMethod("dbHasCompleted", "KazamResult", function(res, ...) {})
 ```

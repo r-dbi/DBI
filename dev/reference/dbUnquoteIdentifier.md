@@ -56,11 +56,11 @@ The names of the input argument are preserved in the output. If `x` is a
 value returned by `dbUnquoteIdentifier()`, calling
 `dbUnquoteIdentifier(..., dbQuoteIdentifier(..., x))` returns `list(x)`.
 If `x` is an object of class
-[DBI::Id](https://dbi.r-dbi.org/dev/reference/Id.md), calling
+[Id](https://dbi.r-dbi.org/dev/reference/Id.md), calling
 `dbUnquoteIdentifier(..., x)` returns `list(x)`. (For backends it may be
 most convenient to return
-[DBI::Id](https://dbi.r-dbi.org/dev/reference/Id.md) objects to achieve
-this behavior, but this is not required.)
+[Id](https://dbi.r-dbi.org/dev/reference/Id.md) objects to achieve this
+behavior, but this is not required.)
 
 Plain character vectors can also be passed to `dbUnquoteIdentifier()`.
 
@@ -72,16 +72,16 @@ as the `x` argument.
 ## Specification
 
 For any character vector of length one, quoting (with
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md))
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md))
 then unquoting then quoting the first element is identical to just
 quoting. This is also true for strings that contain special characters
 such as a space, a dot, a comma, or quotes used to mark strings or
 identifiers, if the database supports this.
 
 Unquoting simple strings (consisting of only letters) wrapped with
-[`DBI::SQL()`](https://dbi.r-dbi.org/dev/reference/SQL.md) and then
-quoting via
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+[`SQL()`](https://dbi.r-dbi.org/dev/reference/SQL.md) and then quoting
+via
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
 gives the same result as just quoting the string. Similarly, unquoting
 expressions of the form `SQL("schema.table")` and then quoting gives the
 same result as quoting the identifier constructed by

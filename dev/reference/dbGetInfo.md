@@ -112,7 +112,7 @@ dbGetInfo(dbObj, ...)
 ## Value
 
 For objects of class
-[DBI::DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md),
+[DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md),
 `dbGetInfo()` returns a named list that contains at least the following
 components:
 
@@ -121,7 +121,7 @@ components:
 - `client.version`: the version of the DBMS client library.
 
 For objects of class
-[DBI::DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md),
+[DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md),
 `dbGetInfo()` returns a named list that contains at least the following
 components:
 
@@ -137,28 +137,27 @@ components:
   component. Components that are not applicable should be set to `NA`.
 
 For objects of class
-[DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md),
+[DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md),
 `dbGetInfo()` returns a named list that contains at least the following
 components:
 
 - `statatment`: the statement used with
-  [`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
-  or
-  [`DBI::dbExecute()`](https://dbi.r-dbi.org/dev/reference/dbExecute.md),
+  [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
+  or [`dbExecute()`](https://dbi.r-dbi.org/dev/reference/dbExecute.md),
   as returned by
-  [`DBI::dbGetStatement()`](https://dbi.r-dbi.org/dev/reference/dbGetStatement.md),
+  [`dbGetStatement()`](https://dbi.r-dbi.org/dev/reference/dbGetStatement.md),
 
 - `row.count`: the number of rows fetched so far (for queries), as
   returned by
-  [`DBI::dbGetRowCount()`](https://dbi.r-dbi.org/dev/reference/dbGetRowCount.md),
+  [`dbGetRowCount()`](https://dbi.r-dbi.org/dev/reference/dbGetRowCount.md),
 
 - `rows.affected`: the number of rows affected (for statements), as
   returned by
-  [`DBI::dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
+  [`dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
 
 - `has.completed`: a logical that indicates if the query or statement
   has completed, as returned by
-  [`DBI::dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md).
+  [`dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md).
 
 ## Implementation notes
 

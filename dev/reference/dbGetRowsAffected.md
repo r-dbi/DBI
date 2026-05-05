@@ -60,15 +60,14 @@ dbGetRowsAffected(res, ...)
 
 `dbGetRowsAffected()` returns a scalar number (integer or numeric), the
 number of rows affected by a data manipulation statement issued with
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
 The value is available directly after the call and does not change after
-calling
-[`DBI::dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md).
+calling [`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md).
 `NA_integer_` or `NA_numeric_` are allowed if the number of rows
 affected is not known.
 
 For queries issued with
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
 zero is returned before and after the call to
 [`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md). `NA`
 values are not allowed.
@@ -116,7 +115,7 @@ also `vignette("dbi-advanced")` for a walkthrough.
 ## Failure modes
 
 Attempting to get the rows affected for a result set cleared with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 gives an error.
 
 ## See also

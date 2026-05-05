@@ -47,12 +47,14 @@ You can install the released version of DBI from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
+
 install.packages("DBI")
 ```
 
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("r-dbi/DBI")
 ```
@@ -62,6 +64,7 @@ devtools::install_github("r-dbi/DBI")
 The following example illustrates some of the DBI capabilities:
 
 ``` r
+
 library(DBI)
 # Create an ephemeral in-memory RSQLite database
 con <- dbConnect(RSQLite::SQLite(), dbname = ":memory:")

@@ -84,7 +84,7 @@ unchanged.
 
 An error is raised when calling this method for a closed or invalid
 connection. An error is also raised if `name` cannot be processed with
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
 or if this results in a non-scalar. Invalid values for the additional
 arguments `overwrite`, `append`, and `temporary` (non-scalars,
 unsupported data types, `NA`, incompatible values, incompatible columns)
@@ -114,7 +114,7 @@ allow non-syntactic names for their objects:
   quoting, perhaps by calling `dbQuoteIdentifier(conn, x = name)`
 
 - If the result of a call to
-  [`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
+  [`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md):
   no more quoting is done
 
 The `value` argument must be a data frame with a subset of the columns
@@ -142,7 +142,7 @@ non-syntactic identifiers, also for table names and column names.
 
 The following data types must be supported at least, and be read
 identically with
-[`DBI::dbReadTable()`](https://dbi.r-dbi.org/dev/reference/dbReadTable.md):
+[`dbReadTable()`](https://dbi.r-dbi.org/dev/reference/dbReadTable.md):
 
 - integer
 

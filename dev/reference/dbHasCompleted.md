@@ -68,12 +68,12 @@ dbHasCompleted(res, ...)
 ## Value
 
 `dbHasCompleted()` returns a logical scalar. For a query initiated by
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
 with non-empty result set, `dbHasCompleted()` returns `FALSE` initially
 and `TRUE` after calling
-[`DBI::dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md)
-without limit. For a query initiated by
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md),
+[`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md) without
+limit. For a query initiated by
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md),
 `dbHasCompleted()` always returns `TRUE`.
 
 ## The data retrieval flow
@@ -132,7 +132,7 @@ also `vignette("dbi-advanced")` for a walkthrough.
 ## Failure modes
 
 Attempting to query completion status for a result set cleared with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 gives an error.
 
 ## Specification

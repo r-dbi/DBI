@@ -50,6 +50,7 @@ movie rental business and includes tables describing films, actors,
 customers, stores, etc.:
 
 ``` r
+
 library(DBI)
 
 con <- dbConnect(
@@ -70,6 +71,7 @@ dbListTables(con)
     ## [13] "film"          "rental"        "language"      "staff"
 
 ``` r
+
 dbDisconnect(con)
 ```
 
@@ -103,6 +105,7 @@ and then query it with the
 connect to the database could then look like this:
 
 ``` r
+
 con <- dbConnect(
   RMariaDB::MariaDB(),
   host = "relational.fel.cvut.cz",
@@ -121,6 +124,7 @@ It takes as arguments a database connection and a table name and returns
 a character vector of the column names in order.
 
 ``` r
+
 con <- dbConnect(
   RMariaDB::MariaDB(),
   host = "relational.fel.cvut.cz",
@@ -149,6 +153,7 @@ database backends do their best to coerce data to equivalent R data
 types.
 
 ``` r
+
 df <- dbReadTable(con, "film")
 head(df, 3)
 ```
@@ -187,6 +192,7 @@ and `description`) and which rows (records) we are interested in. Here
 we retrieve films released in the year 2006.
 
 ``` r
+
 df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006")
 head(df, 3)
 ```
@@ -209,6 +215,7 @@ covered in more detail in
 [`vignette("DBI-advanced", package = "DBI")`](https://dbi.r-dbi.org/dev/articles/DBI-advanced.md).
 
 ``` r
+
 df <- dbGetQuery(con, "SELECT film_id, title, description FROM film WHERE release_year = 2006 AND rating = 'G'")
 head(df, 3)
 ```
@@ -232,6 +239,7 @@ the columns we require
 that dplyr takes care of the quoting.
 
 ``` r
+
 library(dplyr)
 
 lazy_df <-
@@ -261,6 +269,7 @@ When finished accessing the DBMS, always close the connection using
 [`dbDisconnect()`](https://dbi.r-dbi.org/dev/reference/dbDisconnect.md).
 
 ``` r
+
 dbDisconnect(con)
 ```
 

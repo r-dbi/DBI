@@ -15,10 +15,9 @@ author to adopt this convention or not.
 ## DBI classes and methods
 
 A backend defines three classes, which are subclasses of
-[DBI::DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md),
-[DBI::DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md),
-and
-[DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md).
+[DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md),
+[DBIConnection](https://dbi.r-dbi.org/dev/reference/DBIConnection-class.md),
+and [DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md).
 The backend provides implementation for all methods of these base
 classes that are defined but not implemented by DBI. All methods defined
 in DBI are reexported (so that the package can be used without having to
@@ -28,7 +27,7 @@ extensibility.
 ## Construction of the DBIDriver object
 
 The backend must support creation of an instance of its
-[DBI::DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md)
+[DBIDriver](https://dbi.r-dbi.org/dev/reference/DBIDriver-class.md)
 subclass with a constructor function. By default, its name is the
 package name without the leading ‘R’ (if it exists), e.g., `SQLite` for
 the RSQLite package. However, backend authors may choose a different
@@ -54,6 +53,9 @@ Formal specification (currently work in progress and incomplete):
 ([ORCID](https://orcid.org/0000-0002-1416-3412))
 
 Authors:
+
+- Kirill Müller <kirill@cynkra.com>
+  ([ORCID](https://orcid.org/0000-0002-1416-3412))
 
 - R Special Interest Group on Databases (R-SIG-DB)
 

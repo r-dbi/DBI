@@ -72,7 +72,7 @@ dbColumnInfo(res, ...)
 and `"type"` (in that order) (and optional columns that start with a
 dot). The `"name"` and `"type"` columns contain the names and types of
 the R columns of the data frame that is returned from
-[`DBI::dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md). The
+[`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md). The
 `"type"` column is of type `character` and only for information. Do not
 compute on the `"type"` column, instead use `dbFetch(res, n = 0)` to
 create a zero-row data frame initialized with the correct data types.

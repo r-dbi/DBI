@@ -21,6 +21,7 @@ invoked automatically by the S language evaluator. The following example
 illustrates some of the DBI capabilities:
 
 ``` r
+
 ## Choose the proper DBMS driver and connect to the server
 
 drv <- dbDriver("ODBC")
@@ -129,7 +130,7 @@ virtual classes above.
 
 - `DBIObject`::
 
-  Virtual class[¹](#fn1) that groups all other DBI classes.
+  Virtual class[^1] that groups all other DBI classes.
 
 - `DBIDriver`::
 
@@ -554,7 +555,7 @@ any locale information). Some RDBMS support the type `CURRENCY` or
 `MONEY` which should be mapped to `numeric` (again with potential round
 off errors). Large objects (character, binary, file, etc.) also need to
 be mapped. User-defined functions may be specified to do the actual
-conversion (as has been done in other inter-systems packages [²](#fn2)).
+conversion (as has been done in other inter-systems packages [^2]).
 
 Specifying user-defined conversion functions still needs to be defined.
 
@@ -685,20 +686,19 @@ In C through the Open Database Connectivity (ODBC)
 ([www.unixodbc.org](https://www.unixodbc.org/)).
 
 Python’s Database Application Programming Interface
-([www.python.org](https://wiki.python.org/moin/DatabaseProgramming)).
+([www.python.org](https://wiki.python.org/python/DatabaseProgramming.html)).
 
 Perl’s Database Interface ([dbi.perl.org](https://dbi.perl.org)).
 
-Chambers, John M. 1991. “Data Management in S.” Bell Labs, Lucent
+Chambers, John M. 1991. *Data Management in S*. Bell Labs, Lucent
 Technologies.
 
-———. 1998. “Database Classes.” Bell Labs, Lucent Technologies.
+Chambers, John M. 1998. *Database Classes*. Bell Labs, Lucent
+Technologies.
 
-------------------------------------------------------------------------
-
-1.  A virtual class allows us to group classes that share some common
+[^1]: A virtual class allows us to group classes that share some common
     characteristics, even if their implementations are radically
     different.
 
-2.  Duncan Temple Lang has volunteered to port the data conversion code
-    found in R-Java, R-Perl, and R-Python packages to the DBI
+[^2]: Duncan Temple Lang has volunteered to port the data conversion
+    code found in R-Java, R-Perl, and R-Python packages to the DBI

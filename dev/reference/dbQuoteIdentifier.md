@@ -100,10 +100,10 @@ as the input. For an empty character vector this function returns a
 length-0 object. The names of the input argument are preserved in the
 output. When passing the returned object again to `dbQuoteIdentifier()`
 as `x` argument, it is returned unchanged. Passing objects of class
-[DBI::SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) should also
-return them unchanged. (For backends it may be most convenient to return
-[DBI::SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) objects to
-achieve this behavior, but this is not required.)
+[SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) should also return
+them unchanged. (For backends it may be most convenient to return
+[SQL](https://dbi.r-dbi.org/dev/reference/SQL.md) objects to achieve
+this behavior, but this is not required.)
 
 ## Failure modes
 
@@ -113,10 +113,10 @@ string.
 ## Specification
 
 Calling
-[`DBI::dbGetQuery()`](https://dbi.r-dbi.org/dev/reference/dbGetQuery.md)
-for a query of the format `SELECT 1 AS ...` returns a data frame with
-the identifier, unquoted, as column name. Quoted identifiers can be used
-as table and column names in SQL queries, in particular in queries like
+[`dbGetQuery()`](https://dbi.r-dbi.org/dev/reference/dbGetQuery.md) for
+a query of the format `SELECT 1 AS ...` returns a data frame with the
+identifier, unquoted, as column name. Quoted identifiers can be used as
+table and column names in SQL queries, in particular in queries like
 `SELECT 1 AS ...` and `SELECT * FROM (SELECT 1) ...`. The method must
 use a quoting mechanism that is unambiguously different from the quoting
 mechanism used for strings, so that a query like

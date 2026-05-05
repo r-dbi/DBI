@@ -71,7 +71,7 @@ dbListTables(conn, ...)
 
 `dbListTables()` returns a character vector that enumerates all tables
 and views in the database. Tables added with
-[`DBI::dbWriteTable()`](https://dbi.r-dbi.org/dev/reference/dbWriteTable.md)
+[`dbWriteTable()`](https://dbi.r-dbi.org/dev/reference/dbWriteTable.md)
 are part of the list. As soon a table is removed from the database, it
 is also removed from the list of database tables.
 

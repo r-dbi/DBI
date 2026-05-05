@@ -60,12 +60,12 @@ dbSendStatement(conn, statement, ...)
 ## Value
 
 `dbSendStatement()` returns an S4 object that inherits from
-[DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md).
-The result set can be used with
-[`DBI::dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
+[DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md). The
+result set can be used with
+[`dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
 to determine the number of rows affected by the query. Once you have
 finished using a result, make sure to clear it with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
 
 ## Details
 
@@ -138,7 +138,7 @@ sections for details on their usage.
 
 No warnings occur under normal conditions. When done, the DBIResult
 object must be cleared with a call to
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
 Failure to clear the result set leads to a warning when the connection
 is closed. If the backend supports only one open result set per
 connection, issuing a second query invalidates an already open result
@@ -147,8 +147,7 @@ be cleared with
 [`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
 
 The `param` argument allows passing query parameters, see
-[`DBI::dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md) for
-details.
+[`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md) for details.
 
 ## Specification for the `immediate` argument
 
@@ -186,7 +185,7 @@ Examples for possible behaviors:
     2.  A query with parameters is passed:
 
         1.  `params` not given: waiting for parameters via
-            [`DBI::dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+            [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
 
         2.  `params` given: query is executed
 

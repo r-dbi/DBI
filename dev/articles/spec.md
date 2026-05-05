@@ -49,6 +49,7 @@ with an empty argument list.
 ### Examples
 
 ``` r
+
 RSQLite::SQLite()
 ```
 
@@ -57,6 +58,7 @@ RSQLite::SQLite()
 This section describes the behavior of the following method:
 
 ``` r
+
 dbDataType(dbObj, obj, ...)
 ```
 
@@ -129,6 +131,7 @@ usable in an SQL statement of the form `"CREATE TABLE test (a ...)"`.
 ### Examples
 
 ``` r
+
 dbDataType(ANSI(), 1:5)
 dbDataType(ANSI(), 1)
 dbDataType(ANSI(), TRUE)
@@ -164,6 +167,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbConnect(drv, ...)
 ```
 
@@ -180,9 +184,9 @@ to check if a connection can be established.
 
 ### Arguments
 
-|       |                                                                                                                                                                               |
-|-------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `drv` | An object that inherits from DBIDriver, or an existing DBIConnection object (in order to clone an existing connection).                                                       |
+|  |  |
+|----|----|
+| `drv` | An object that inherits from DBIDriver, or an existing DBIConnection object (in order to clone an existing connection). |
 | `...` | Authentication arguments needed by the DBMS instance; these typically include `user`, `password`, `host`, `port`, `dbname`, etc. For details see the appropriate `DBIDriver`. |
 
 ### Value
@@ -232,6 +236,7 @@ integer data is returned. The following values are supported:
 ### Examples
 
 ``` r
+
 # SQLite only needs a path to the database. (Here, ":memory:" is a special
 # path that creates an in-memory database.) Other database drivers
 # will require more details (like user, password, host, port, etc.)
@@ -253,6 +258,7 @@ dbListTables(con <- dbConnect(RSQLite::SQLite(), ":memory:"))
 This section describes the behavior of the following method:
 
 ``` r
+
 dbDisconnect(conn, ...)
 ```
 
@@ -263,10 +269,10 @@ resources (e.g., memory, sockets).
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `...`  | Other parameters passed on to methods.                                                                    |
+| `...` | Other parameters passed on to methods. |
 
 ### Value
 
@@ -286,6 +292,7 @@ on an already disconnected or invalid connection.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbDisconnect(con)
 ```
@@ -295,6 +302,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbSendQuery(conn, statement, ...)
 ```
 
@@ -317,11 +325,11 @@ instead to retrieve the results as an Arrow object.
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -484,6 +492,7 @@ is set to `TRUE`.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -516,6 +525,7 @@ dbDisconnect(con)
 This section describes the behavior of the following methods:
 
 ``` r
+
 dbFetch(res, n = -1, ...)
 
 fetch(res, n = -1, ...)
@@ -528,11 +538,11 @@ as a data.frame.
 
 ### Arguments
 
-|       |                                                                                                                                                                      |
-|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `res` | An object inheriting from DBIResult, created by [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md).                                               |
-| `n`   | maximum number of records to retrieve per fetch. Use `n = -1` or `n = Inf` to retrieve all pending records. Some implementations may recognize other special values. |
-| `...` | Other arguments passed on to methods.                                                                                                                                |
+|  |  |
+|----|----|
+| `res` | An object inheriting from DBIResult, created by [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md). |
+| `n` | maximum number of records to retrieve per fetch. Use `n = -1` or `n = Inf` to retrieve all pending records. Some implementations may recognize other special values. |
+| `...` | Other arguments passed on to methods. |
 
 ### Details
 
@@ -694,6 +704,7 @@ the following rules apply:
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -719,6 +730,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbClearResult(res, ...)
 ```
 
@@ -861,6 +873,7 @@ call.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 rs <- dbSendQuery(con, "SELECT 1")
@@ -875,6 +888,7 @@ dbDisconnect(con)
 This section describes the behavior of the following methods:
 
 ``` r
+
 dbBind(res, params, ...)
 
 dbBindArrow(res, params, ...)
@@ -914,11 +928,11 @@ is compatible with
 
 ### Arguments
 
-|          |                                                                                                                                                                                                                                                                                                             |
-|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `res`    | An object inheriting from DBIResult.                                                                                                                                                                                                                                                                        |
+|  |  |
+|----|----|
+| `res` | An object inheriting from DBIResult. |
 | `params` | For [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md), a list of values, named or unnamed, or a data frame, with one element/column per query parameter. For [`dbBindArrow()`](https://dbi.r-dbi.org/dev/reference/dbBind.md), values as a nanoarrow stream, with one column per query parameter. |
-| `...`    | Other arguments passed on to methods.                                                                                                                                                                                                                                                                       |
+| `...` | Other arguments passed on to methods. |
 
 ### Details
 
@@ -1300,6 +1314,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetQuery(conn, statement, ...)
 ```
 
@@ -1322,11 +1337,11 @@ results as an Arrow object, see
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -1438,6 +1453,7 @@ with proper `n` argument succeeds.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -1462,6 +1478,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbSendStatement(conn, statement, ...)
 ```
 
@@ -1480,11 +1497,11 @@ after that. For interactive use, you should almost always prefer
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -1623,6 +1640,7 @@ parameters are given (by passing the `params` argument) or the
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
@@ -1662,6 +1680,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbExecute(conn, statement, ...)
 ```
 
@@ -1682,11 +1701,11 @@ particular the “The command execution flow” section.
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -1778,6 +1797,7 @@ statement is not a non-`NA` string.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cars", head(cars, 3))
@@ -1804,6 +1824,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbQuoteString(conn, x, ...)
 ```
 
@@ -1815,11 +1836,11 @@ protect against SQL injection attacks.
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `x`    | A character vector to quote as string.                                                                    |
-| `...`  | Other arguments passed on to methods.                                                                     |
+| `x` | A character vector to quote as string. |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -1858,6 +1879,7 @@ The strings `"NA"` or `"NULL"` are not treated specially.
 ### Examples
 
 ``` r
+
 # Quoting ensures that arbitrary input is safe for use in a query
 name <- "Robert'); DROP TABLE Students;--"
 dbQuoteString(ANSI(), name)
@@ -1879,6 +1901,7 @@ dbQuoteString(ANSI(), dbQuoteString(ANSI(), name))
 This section describes the behavior of the following method:
 
 ``` r
+
 dbQuoteLiteral(conn, x, ...)
 ```
 
@@ -1890,11 +1913,11 @@ generate valid SQL and protect against SQL injection attacks.
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `x`    | A vector to quote as string.                                                                              |
-| `...`  | Other arguments passed on to methods.                                                                     |
+| `x` | A vector to quote as string. |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -1929,6 +1952,7 @@ equal to `x` for any scalar integer, numeric, string, and logical. If
 ### Examples
 
 ``` r
+
 # Quoting ensures that arbitrary input is safe for use in a query
 name <- "Robert'); DROP TABLE Students;--"
 dbQuoteLiteral(ANSI(), name)
@@ -1956,6 +1980,7 @@ dbQuoteLiteral(ANSI(), dbQuoteLiteral(ANSI(), name))
 This section describes the behavior of the following method:
 
 ``` r
+
 dbQuoteIdentifier(conn, x, ...)
 ```
 
@@ -1968,11 +1993,11 @@ SQL and protect against SQL injection attacks. The inverse operation is
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `x`    | A character vector, SQL or Id object to quote as identifier.                                              |
-| `...`  | Other arguments passed on to methods.                                                                     |
+| `x` | A character vector, SQL or Id object to quote as identifier. |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -2015,6 +2040,7 @@ query, and not by
 ### Examples
 
 ``` r
+
 # Quoting ensures that arbitrary input is safe for use in a query
 name <- "Robert'); DROP TABLE Students;--"
 dbQuoteIdentifier(ANSI(), name)
@@ -2038,6 +2064,7 @@ dbQuoteIdentifier(ANSI(), dbQuoteIdentifier(ANSI(), name))
 This section describes the behavior of the following method:
 
 ``` r
+
 dbUnquoteIdentifier(conn, x, ...)
 ```
 
@@ -2049,11 +2076,11 @@ back to a list of Id objects.
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `x`    | An SQL or Id object.                                                                                      |
-| `...`  | Other arguments passed on to methods.                                                                     |
+| `x` | An SQL or Id object. |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -2097,6 +2124,7 @@ same result as quoting the identifier constructed by
 ### Examples
 
 ``` r
+
 # Unquoting allows to understand the structure of a
 # possibly complex quoted identifier
 dbUnquoteIdentifier(
@@ -2125,6 +2153,7 @@ dbQuoteIdentifier(
 This section describes the behavior of the following method:
 
 ``` r
+
 dbReadTable(conn, name, ...)
 ```
 
@@ -2226,6 +2255,7 @@ and `check.names` (non-scalars, unsupported data types, `NA` for
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:10, ])
@@ -2239,6 +2269,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbWriteTable(conn, name, value, ...)
 ```
 
@@ -2430,6 +2461,7 @@ error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars[1:5, ])
@@ -2451,6 +2483,7 @@ dbReadTable(con, "mtcars")
 This section describes the behavior of the following method:
 
 ``` r
+
 dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 ```
 
@@ -2552,6 +2585,7 @@ incompatible values, duplicate names) also raise an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbCreateTable(con, "iris", iris)
 dbReadTable(con, "iris")
@@ -2563,6 +2597,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbAppendTable(conn, name, value, ..., row.names = NULL)
 ```
 
@@ -2695,6 +2730,7 @@ of the existing table. The order of the columns does not matter.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbCreateTable(con, "iris", iris)
 dbAppendTable(con, "iris", iris)
@@ -2707,6 +2743,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbRemoveTable(conn, name, ...)
 ```
 
@@ -2785,6 +2822,7 @@ or if this results in a non-scalar.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbExistsTable(con, "iris")
@@ -2801,6 +2839,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbListTables(conn, ...)
 ```
 
@@ -2812,10 +2851,10 @@ database backends (in particular RMariaDB and RMySQL) support this.
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `...`  | Other parameters passed on to methods.                                                                    |
+| `...` | Other parameters passed on to methods. |
 
 ### Value
 
@@ -2839,6 +2878,7 @@ connection.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbListTables(con)
@@ -2853,6 +2893,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbListFields(conn, name, ...)
 ```
 
@@ -2897,6 +2938,7 @@ A column named `row_names` is treated like any other column.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -2910,6 +2952,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbExistsTable(conn, name, ...)
 ```
 
@@ -2958,6 +3001,7 @@ returns `TRUE`.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbExistsTable(con, "iris")
@@ -2972,6 +3016,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbListObjects(conn, prefix = NULL, ...)
 ```
 
@@ -2989,11 +3034,11 @@ including those that can only be accessed by giving the full namespace.
 
 ### Arguments
 
-|          |                                                                                                                                                                                                                                                                        |
-|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `conn`   | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md).                                                                                                                                                              |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
 | `prefix` | A fully qualified path in the database’s namespace, or `NULL`. This argument will be processed with [`dbUnquoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.md). If given the method will return all objects accessible through this prefix. |
-| `...`    | Other parameters passed on to methods.                                                                                                                                                                                                                                 |
+| `...` | Other parameters passed on to methods. |
 
 ### Value
 
@@ -3048,6 +3093,7 @@ which returns `TRUE`.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbListObjects(con)
@@ -3062,6 +3108,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbIsValid(dbObj, ...)
 ```
 
@@ -3072,10 +3119,10 @@ hasn’t been disconnected or cleared).
 
 ### Arguments
 
-|         |                                                                                    |
-|---------|------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `dbObj` | An object inheriting from DBIObject, i.e. DBIDriver, DBIConnection, or a DBIResult |
-| `...`   | Other arguments to methods.                                                        |
+| `...` | Other arguments to methods. |
 
 ### Value
 
@@ -3104,6 +3151,7 @@ return `FALSE`. This is not tested automatically.
 ### Examples
 
 ``` r
+
 dbIsValid(RSQLite::SQLite())
 
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -3124,6 +3172,7 @@ dbIsValid(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbHasCompleted(res, ...)
 ```
 
@@ -3229,6 +3278,7 @@ after trying to fetch only one more row.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -3249,6 +3299,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetStatement(res, ...)
 ```
 
@@ -3281,6 +3332,7 @@ gives an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -3296,6 +3348,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetRowCount(res, ...)
 ```
 
@@ -3338,6 +3391,7 @@ gives an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -3359,6 +3413,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetRowsAffected(res, ...)
 ```
 
@@ -3440,6 +3495,7 @@ gives an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -3456,6 +3512,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbColumnInfo(res, ...)
 ```
 
@@ -3558,6 +3615,7 @@ Column names that correspond to SQL or R keywords are left unchanged.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 rs <- dbSendQuery(con, "SELECT 1 AS a, 2 AS b")
@@ -3573,6 +3631,7 @@ dbDisconnect(con)
 This section describes the behavior of the following methods:
 
 ``` r
+
 dbBegin(conn, ...)
 
 dbCommit(conn, ...)
@@ -3595,10 +3654,10 @@ write operations to multiple tables.
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `...`  | Other parameters passed on to methods.                                                                    |
+| `...` | Other parameters passed on to methods. |
 
 ### Details
 
@@ -3696,6 +3755,7 @@ dbDisconnect(con)
 This section describes the behavior of the following methods:
 
 ``` r
+
 dbWithTransaction(conn, code, ...)
 
 dbBreak()
@@ -3722,11 +3782,11 @@ allows an early exit with rollback, it can be called only inside
 
 ### Arguments
 
-|        |                                                                                                           |
-|--------|-----------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `code` | An arbitrary block of R code.                                                                             |
-| `...`  | Other parameters passed on to methods.                                                                    |
+| `code` | An arbitrary block of R code. |
+| `...` | Other parameters passed on to methods. |
 
 ### Details
 
@@ -3813,6 +3873,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetInfo(dbObj, ...)
 ```
 
@@ -3823,10 +3884,10 @@ DBIResult.
 
 ### Arguments
 
-|         |                                                                                    |
-|---------|------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `dbObj` | An object inheriting from DBIObject, i.e. DBIDriver, DBIConnection, or a DBIResult |
-| `...`   | Other arguments to methods.                                                        |
+| `...` | Other arguments to methods. |
 
 ### Value
 
@@ -3888,6 +3949,7 @@ and
 ### Examples
 
 ``` r
+
 dbGetInfo(RSQLite::SQLite())
 ```
 
@@ -3896,6 +3958,7 @@ dbGetInfo(RSQLite::SQLite())
 This section describes the behavior of the following method:
 
 ``` r
+
 dbSendQueryArrow(conn, statement, ...)
 ```
 
@@ -3921,11 +3984,11 @@ instead to retrieve the results as a data frame.
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -4066,6 +4129,7 @@ is set to `TRUE`.
 ### Examples
 
 ``` r
+
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4082,6 +4146,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbFetchArrow(res, ...)
 ```
 
@@ -4095,10 +4160,10 @@ to fetch results in chunks.
 
 ### Arguments
 
-|       |                                                                                                                                       |
-|-------|---------------------------------------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `res` | An object inheriting from DBIResultArrow, created by [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md). |
-| `...` | Other arguments passed on to methods.                                                                                                 |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -4164,6 +4229,7 @@ result set in batches. The chunk size is implementation-specific.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -4181,6 +4247,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbFetchArrowChunk(res, ...)
 ```
 
@@ -4195,10 +4262,10 @@ to fetch all results.
 
 ### Arguments
 
-|       |                                                                                                                                       |
-|-------|---------------------------------------------------------------------------------------------------------------------------------------|
+|  |  |
+|----|----|
 | `res` | An object inheriting from DBIResultArrow, created by [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md). |
-| `...` | Other arguments passed on to methods.                                                                                                 |
+| `...` | Other arguments passed on to methods. |
 
 ### Value
 
@@ -4265,6 +4332,7 @@ implementation-specific.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "mtcars", mtcars)
@@ -4285,6 +4353,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbGetQueryArrow(conn, statement, ...)
 ```
 
@@ -4309,11 +4378,11 @@ For retrieving results as a data frame, see
 
 ### Arguments
 
-|             |                                                                                                           |
-|-------------|-----------------------------------------------------------------------------------------------------------|
-| `conn`      | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
-| `statement` | a character string containing SQL.                                                                        |
-| `...`       | Other parameters passed on to methods.                                                                    |
+|  |  |
+|----|----|
+| `conn` | A DBIConnection object, as returned by [`dbConnect()`](https://dbi.r-dbi.org/dev/reference/dbConnect.md). |
+| `statement` | a character string containing SQL. |
+| `...` | Other parameters passed on to methods. |
 
 ### Additional arguments
 
@@ -4412,6 +4481,7 @@ result set in batches. The chunk size is implementation-specific.
 ### Examples
 
 ``` r
+
 # Retrieve data as arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4426,6 +4496,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbReadTableArrow(conn, name, ...)
 ```
 
@@ -4484,6 +4555,7 @@ allow non-syntactic names for their objects:
 ### Examples
 
 ``` r
+
 # Read data as Arrow table
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -4498,6 +4570,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbWriteTableArrow(conn, name, value, ...)
 ```
 
@@ -4647,6 +4720,7 @@ also raise an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTableArrow(con, "mtcars", nanoarrow::as_nanoarrow_array_stream(mtcars[1:5, ]))
@@ -4660,6 +4734,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbCreateTableArrow(conn, name, value, ..., temporary = FALSE)
 ```
 
@@ -4749,6 +4824,7 @@ values, duplicate names) also raise an error.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 ptype <- data.frame(a = numeric())
 dbCreateTableArrow(con, "df", nanoarrow::infer_nanoarrow_schema(ptype))
@@ -4761,6 +4837,7 @@ dbDisconnect(con)
 This section describes the behavior of the following method:
 
 ``` r
+
 dbAppendTableArrow(conn, name, value, ...)
 ```
 
@@ -4866,6 +4943,7 @@ of the existing table. The order of the columns does not matter.
 ### Examples
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 dbCreateTableArrow(con, "iris", iris[0, ])
 dbAppendTableArrow(con, "iris", iris[1:5, ])

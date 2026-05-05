@@ -97,8 +97,7 @@ They must be provided as named arguments. See the "Specification" and
 "Value" sections for details on their usage.
 
 The `param` argument allows passing query parameters, see
-[`DBI::dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md) for
-details.
+[`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md) for details.
 
 ## Specification for the `immediate` argument
 
@@ -136,7 +135,7 @@ Examples for possible behaviors:
     2.  A query with parameters is passed:
 
         1.  `params` not given: waiting for parameters via
-            [`DBI::dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
+            [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
 
         2.  `params` given: query is executed
 

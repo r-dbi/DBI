@@ -129,7 +129,7 @@ An error is raised for invalid values for the `obj` argument such as a
 
 ## Specification
 
-The backend can override the `DBI::dbDataType()` generic for its driver
+The backend can override the `dbDataType()` generic for its driver
 class.
 
 This generic expects an arbitrary object as second argument. To query

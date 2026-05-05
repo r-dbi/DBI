@@ -128,10 +128,10 @@ The `name` argument can be
 - a string
 
 - the return value of
-  [`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
+  [`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md)
 
 - a value from the `table` column from the return value of
-  [`DBI::dbListObjects()`](https://dbi.r-dbi.org/dev/reference/dbListObjects.md)
+  [`dbListObjects()`](https://dbi.r-dbi.org/dev/reference/dbListObjects.md)
   where `is_prefix` is `FALSE`
 
 A column named `row_names` is treated like any other column.

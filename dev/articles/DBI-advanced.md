@@ -35,6 +35,7 @@ These functions are:
   resources associated with the `result` object.
 
 ``` r
+
 library(DBI)
 
 con <- dbConnect(
@@ -88,6 +89,7 @@ iteration. Again, we call
 at the end to release resources.
 
 ``` r
+
 res <- dbSendQuery(con, "SELECT * FROM film")
 while (!dbHasCompleted(res)) {
   chunk <- dbFetch(res, n = 300)
@@ -101,6 +103,7 @@ while (!dbHasCompleted(res)) {
     ## [1] 100
 
 ``` r
+
 dbClearResult(res)
 ```
 
@@ -115,7 +118,7 @@ parameterized queries.
 
 Quoting of parameter values is performed using the function
 [`dbQuoteLiteral()`](https://dbi.r-dbi.org/dev/reference/dbQuoteLiteral.md),
-which supports many R data types, including date and time.[¹](#fn1)
+which supports many R data types, including date and time.[^1]
 
 In cases where users may be supplying table or column names to use in
 the query for data retrieval, those names or identifiers must also be
@@ -125,6 +128,7 @@ identifiers, DBI provides the function
 to generate a safe string representation.
 
 ``` r
+
 safe_id <- dbQuoteIdentifier(con, "rating")
 safe_param <- dbQuoteLiteral(con, "G")
 
@@ -135,6 +139,7 @@ query
     ## [1] "SELECT title, `rating` FROM film WHERE `rating` = 'G'"
 
 ``` r
+
 res <- dbSendQuery(con, query)
 dbFetch(res)
 ```
@@ -146,6 +151,7 @@ dbFetch(res)
     ## Showing 3 out of 178 rows.
 
 ``` r
+
 dbClearResult(res)
 ```
 
@@ -155,6 +161,7 @@ It performs the same safe quoting on any variable or R statement
 appearing between braces within the query string.
 
 ``` r
+
 id <- "rating"
 param <- "G"
 query <- glue::glue_sql("SELECT title, {`id`} FROM film WHERE {`id`} = {param}", .con = con)
@@ -180,7 +187,8 @@ list of parameter values. Other DBMS may use named parameters. We
 recommend consulting the documentation for the DBMS you are using. As an
 example, a web search for “mariadb parameterized queries” leads to the
 documentation for the [`PREPARE`
-statement](https://mariadb.com/kb/en/prepare-statement/) which mentions:
+statement](https://mariadb.com/docs/server/reference/sql-statements/prepared-statements/prepare-statement)
+which mentions:
 
 > Within the statement, “?” characters can be used as parameter markers
 > to indicate where data values are to be bound to the query later when
@@ -200,6 +208,7 @@ be used. It takes a list and its members are substituted in order for
 the placeholders within the query.
 
 ``` r
+
 params <- list("G")
 safe_id <- dbQuoteIdentifier(con, "rating")
 
@@ -210,6 +219,7 @@ query
     ## [1] "SELECT * FROM film WHERE `rating` = ?"
 
 ``` r
+
 res <- dbSendQuery(con, query, params = params)
 dbFetch(res, n = 3)
 ```
@@ -236,6 +246,7 @@ dbFetch(res, n = 3)
     ## 3 2006-02-15 04:03:42
 
 ``` r
+
 dbClearResult(res)
 ```
 
@@ -244,6 +255,7 @@ driver. The placeholders are supplied as a list of values ordered to
 match the position of the placeholders in the query.
 
 ``` r
+
 q_params <- list("G", 90)
 query <- "SELECT title, rating, length FROM film WHERE rating = ? AND length >= ?"
 
@@ -257,6 +269,7 @@ dbFetch(res, n = 3)
     ## 3  ALAMO VIDEOTAPE      G    126
 
 ``` r
+
 dbClearResult(res)
 ```
 
@@ -267,6 +280,7 @@ used. There are two ways to use
 can be used multiple times with same query.
 
 ``` r
+
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
 dbBind(res, list("G"))
 dbFetch(res, n = 3)
@@ -294,6 +308,7 @@ dbFetch(res, n = 3)
     ## 3 2006-02-15 04:03:42
 
 ``` r
+
 dbBind(res, list("PG"))
 dbFetch(res, n = 3)
 ```
@@ -320,6 +335,7 @@ dbFetch(res, n = 3)
     ## 3 2006-02-15 04:03:42
 
 ``` r
+
 dbClearResult(res)
 ```
 
@@ -327,6 +343,7 @@ Secondly, [`dbBind()`](https://dbi.r-dbi.org/dev/reference/dbBind.md)
 can be used to execute the same statement with multiple values at once.
 
 ``` r
+
 res <- dbSendQuery(con, "SELECT * FROM film WHERE rating = ?")
 dbBind(res, list(c("G", "PG")))
 dbFetch(res, n = 3)
@@ -354,12 +371,14 @@ dbFetch(res, n = 3)
     ## 3 2006-02-15 04:03:42
 
 ``` r
+
 dbClearResult(res)
 ```
 
 Use a list of vectors if your query has multiple parameters:
 
 ``` r
+
 q_params <- list(c("G", "PG"), c(90, 120))
 query <- "SELECT title, rating, length FROM film WHERE rating = ? AND length >= ?"
 
@@ -373,12 +392,14 @@ dbFetch(res, n = 3)
     ## 3  ALAMO VIDEOTAPE      G    126
 
 ``` r
+
 dbClearResult(res)
 ```
 
 Always disconnect from the database when done.
 
 ``` r
+
 dbDisconnect(con)
 ```
 
@@ -413,6 +434,7 @@ because the remote database used in above examples does not allow
 writing.
 
 ``` r
+
 library(DBI)
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
@@ -427,6 +449,7 @@ dbExecute(
     ## [1] 3
 
 ``` r
+
 rs <- dbSendStatement(
   con,
   "INSERT INTO cars (speed, dist) VALUES (4, 4), (5, 5), (6, 6)"
@@ -437,6 +460,7 @@ dbGetRowsAffected(rs)
     ## [1] 3
 
 ``` r
+
 dbClearResult(rs)
 
 dbReadTable(con, "cars")
@@ -451,6 +475,7 @@ dbReadTable(con, "cars")
 Do not forget to disconnect from the database at the end.
 
 ``` r
+
 dbDisconnect(con)
 ```
 
@@ -468,6 +493,7 @@ are updated, or no changes are persisted to the database and an error is
 thrown.
 
 ``` r
+
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbWriteTable(con, "cash", data.frame(amount = 100))
@@ -498,6 +524,7 @@ decreased by this amount. The transaction ensures that either both
 operations succeed, or no change occurs.
 
 ``` r
+
 dbReadTable(con, "cash")
 ```
 
@@ -505,6 +532,7 @@ dbReadTable(con, "cash")
     ## 1    400
 
 ``` r
+
 dbReadTable(con, "account")
 ```
 
@@ -516,6 +544,7 @@ We can roll back changes manually if necessary. Do not forget to call
 case of error, otherwise the transaction remains open indefinitely.
 
 ``` r
+
 withdraw_if_funds <- function(amount) {
   dbBegin(con)
   withdraw(amount)
@@ -538,6 +567,7 @@ withdraw_if_funds(5000)
     ## [1] FALSE
 
 ``` r
+
 dbReadTable(con, "cash")
 ```
 
@@ -545,6 +575,7 @@ dbReadTable(con, "cash")
     ## 1    400
 
 ``` r
+
 dbReadTable(con, "account")
 ```
 
@@ -560,6 +591,7 @@ success and call
 an error is thrown.
 
 ``` r
+
 withdraw_safely <- function(amount) {
   dbWithTransaction(con, {
     withdraw(amount)
@@ -576,6 +608,7 @@ withdraw_safely(5000)
     ## ! Error: insufficient funds
 
 ``` r
+
 dbReadTable(con, "cash")
 ```
 
@@ -583,6 +616,7 @@ dbReadTable(con, "cash")
     ## 1    400
 
 ``` r
+
 dbReadTable(con, "account")
 ```
 
@@ -592,6 +626,7 @@ dbReadTable(con, "account")
 As usual, do not forget to disconnect from the database when done.
 
 ``` r
+
 dbDisconnect(con)
 ```
 
@@ -607,9 +642,7 @@ level of abstraction, check out [dplyr](https://dplyr.tidyverse.org). It
 is a grammar of data manipulation that can work with local dataframes
 and remote databases and uses DBI under the hood.
 
-------------------------------------------------------------------------
-
-1.  An older method,
+[^1]: An older method,
     [`dbQuoteString()`](https://dbi.r-dbi.org/dev/reference/dbQuoteString.md),
     was used to quote string values only. The
     [`dbQuoteLiteral()`](https://dbi.r-dbi.org/dev/reference/dbQuoteLiteral.md)

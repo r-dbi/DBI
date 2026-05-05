@@ -63,8 +63,8 @@ this generic only if they implement specialized handling.
 
 Failure to initiate the transaction (e.g., if the connection is closed
 or invalid or if
-[`DBI::dbBegin()`](https://dbi.r-dbi.org/dev/reference/transactions.md)
-has been called already) gives an error.
+[`dbBegin()`](https://dbi.r-dbi.org/dev/reference/transactions.md) has
+been called already) gives an error.
 
 ## Specification
 
@@ -72,9 +72,9 @@ has been called already) gives an error.
 [`dbBegin()`](https://dbi.r-dbi.org/dev/reference/transactions.md),
 executes the code given in the `code` argument, and commits the
 transaction with
-[`DBI::dbCommit()`](https://dbi.r-dbi.org/dev/reference/transactions.md).
-If the code raises an error, the transaction is instead aborted with
-[`DBI::dbRollback()`](https://dbi.r-dbi.org/dev/reference/transactions.md),
+[`dbCommit()`](https://dbi.r-dbi.org/dev/reference/transactions.md). If
+the code raises an error, the transaction is instead aborted with
+[`dbRollback()`](https://dbi.r-dbi.org/dev/reference/transactions.md),
 and the error is propagated. If the code calls `dbBreak()`, execution of
 the code stops and the transaction is silently aborted. All side effects
 caused by the code (such as the creation of new variables) propagate to

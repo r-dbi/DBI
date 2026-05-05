@@ -75,11 +75,10 @@ dbBindArrow(res, params, ...)
 ## Value
 
 `dbBind()` returns the result set, invisibly, for queries issued by
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
-or
-[`DBI::dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md)
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md) or
+[`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md)
 and also for data manipulation statements issued by
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
 
 ## Details
 
@@ -247,7 +246,7 @@ mixing placeholders of different types (in particular mixing positional
 and named placeholders) is not specified.
 
 Calling `dbBind()` on a result set already cleared by
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 also raises an error.
 
 ## Specification
@@ -255,58 +254,57 @@ also raises an error.
 DBI clients execute parametrized statements as follows:
 
 1.  Call
-    [`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
-    [`DBI::dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md)
+    [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md),
+    [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md)
     or
-    [`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
+    [`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
     with a query or statement that contains placeholders, store the
     returned
-    [DBI::DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
+    [DBIResult](https://dbi.r-dbi.org/dev/reference/DBIResult-class.md)
     object in a variable. Mixing placeholders (in particular, named and
     unnamed ones) is not recommended. It is good practice to register a
     call to
-    [`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+    [`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
     via [`on.exit()`](https://rdrr.io/r/base/on.exit.html) right after
     calling
     [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
     or
     [`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md)
-    (see the last enumeration item). Until `DBI::dbBind()` or
-    `DBI::dbBindArrow()` have been called, the returned result set
-    object has the following behavior:
+    (see the last enumeration item). Until `dbBind()` or `dbBindArrow()`
+    have been called, the returned result set object has the following
+    behavior:
 
-    - [`DBI::dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md)
+    - [`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md)
       raises an error (for
       [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
       and
       [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md))
 
-    - [`DBI::dbGetRowCount()`](https://dbi.r-dbi.org/dev/reference/dbGetRowCount.md)
+    - [`dbGetRowCount()`](https://dbi.r-dbi.org/dev/reference/dbGetRowCount.md)
       returns zero (for
       [`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
       and
       [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md))
 
-    - [`DBI::dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
+    - [`dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md)
       returns an integer `NA` (for
       [`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md))
 
-    - [`DBI::dbIsValid()`](https://dbi.r-dbi.org/dev/reference/dbIsValid.md)
+    - [`dbIsValid()`](https://dbi.r-dbi.org/dev/reference/dbIsValid.md)
       returns `TRUE`
 
-    - [`DBI::dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md)
+    - [`dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md)
       returns `FALSE`
 
-2.  Call `DBI::dbBind()` or `DBI::dbBindArrow()`:
+2.  Call `dbBind()` or `dbBindArrow()`:
 
-    - For `DBI::dbBind()`, the `params` argument must be a list where
-      all elements have the same lengths and contain values supported by
-      the backend. A
-      [data.frame](https://rdrr.io/r/base/data.frame.html) is internally
-      stored as such a list.
+    - For `dbBind()`, the `params` argument must be a list where all
+      elements have the same lengths and contain values supported by the
+      backend. A [data.frame](https://rdrr.io/r/base/data.frame.html) is
+      internally stored as such a list.
 
-    - For `DBI::dbBindArrow()`, the `params` argument must be a
-      nanoarrow array stream, with one column per query parameter.
+    - For `dbBindArrow()`, the `params` argument must be a nanoarrow
+      array stream, with one column per query parameter.
 
 3.  Retrieve the data or the number of affected rows from the
     `DBIResult` object.
@@ -316,17 +314,17 @@ DBI clients execute parametrized statements as follows:
       or
       [`dbSendQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbSendQueryArrow.md),
       call
-      [`DBI::dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md).
+      [`dbFetch()`](https://dbi.r-dbi.org/dev/reference/dbFetch.md).
 
     - For statements issued by `dbSendStatements()`, call
-      [`DBI::dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md).
-      (Execution begins immediately after the `DBI::dbBind()` call, the
+      [`dbGetRowsAffected()`](https://dbi.r-dbi.org/dev/reference/dbGetRowsAffected.md).
+      (Execution begins immediately after the `dbBind()` call, the
       statement is processed entirely before the function returns.)
 
 4.  Repeat 2. and 3. as necessary.
 
 5.  Close the result set via
-    [`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
+    [`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md).
 
 The elements of the `params` argument do not need to be scalars, vectors
 of arbitrary length (including length 0) are supported. For queries,

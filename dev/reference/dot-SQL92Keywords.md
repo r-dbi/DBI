@@ -8,10 +8,6 @@ A character vector of SQL-92 keywords, uppercase.
 .SQL92Keywords
 ```
 
-## Format
-
-An object of class `character` of length 220.
-
 ## Examples
 
 ``` r

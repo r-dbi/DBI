@@ -62,14 +62,13 @@ dbGetStatement(res, ...)
 ## Value
 
 `dbGetStatement()` returns a string, the query used in either
-[`DBI::dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md)
-or
-[`DBI::dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
+[`dbSendQuery()`](https://dbi.r-dbi.org/dev/reference/dbSendQuery.md) or
+[`dbSendStatement()`](https://dbi.r-dbi.org/dev/reference/dbSendStatement.md).
 
 ## Failure modes
 
 Attempting to query the statement for a result set cleared with
-[`DBI::dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
+[`dbClearResult()`](https://dbi.r-dbi.org/dev/reference/dbClearResult.md)
 gives an error.
 
 ## See also

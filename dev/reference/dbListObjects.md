@@ -55,12 +55,12 @@ dbListObjects(conn, prefix = NULL, ...)
 `is_prefix` (in that order), optionally with other columns with a dot
 (`.`) prefix. The `table` column is of type list. Each object in this
 list is suitable for use as argument in
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md).
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md).
 The `is_prefix` column is a logical. This data frame contains one row
 for each object (schema, table and view) accessible from the prefix (if
 passed) or from the global namespace (if prefix is omitted). Tables
 added with
-[`DBI::dbWriteTable()`](https://dbi.r-dbi.org/dev/reference/dbWriteTable.md)
+[`dbWriteTable()`](https://dbi.r-dbi.org/dev/reference/dbWriteTable.md)
 are part of the data frame. As soon a table is removed from the
 database, it is also removed from the data frame of database objects.
 
@@ -80,22 +80,22 @@ The `prefix` column indicates if the `table` value refers to a table or
 a prefix. For a call with the default `prefix = NULL`, the `table`
 values that have `is_prefix == FALSE` correspond to the tables returned
 from
-[`DBI::dbListTables()`](https://dbi.r-dbi.org/dev/reference/dbListTables.md),
+[`dbListTables()`](https://dbi.r-dbi.org/dev/reference/dbListTables.md),
 
 The `table` object can be quoted with
-[`DBI::dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md).
+[`dbQuoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbQuoteIdentifier.md).
 The result of quoting can be passed to
-[`DBI::dbUnquoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.md).
+[`dbUnquoteIdentifier()`](https://dbi.r-dbi.org/dev/reference/dbUnquoteIdentifier.md).
 (For backends it may be convenient to use the
-[DBI::Id](https://dbi.r-dbi.org/dev/reference/Id.md) class, but this is
-not required.)
+[Id](https://dbi.r-dbi.org/dev/reference/Id.md) class, but this is not
+required.)
 
 Values in `table` column that have `is_prefix == TRUE` can be passed as
 the `prefix` argument to another call to `dbListObjects()`. For the data
 frame returned from a `dbListObject()` call with the `prefix` argument
 set, all `table` values where `is_prefix` is `FALSE` can be used in a
 call to
-[`DBI::dbExistsTable()`](https://dbi.r-dbi.org/dev/reference/dbExistsTable.md)
+[`dbExistsTable()`](https://dbi.r-dbi.org/dev/reference/dbExistsTable.md)
 which returns `TRUE`.
 
 ## See also
