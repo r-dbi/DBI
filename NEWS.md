@@ -1,5 +1,20 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.3.0.9007 (2026-05-06)
+
+## Continuous integration
+
+- Cosmetics.
+
+- Bump action versions.
+
+- Install clang-format-21.
+
+- Align fledge workflow.
+
+- Harmonize.
+
+
 # DBI 1.3.0.9006 (2026-05-04)
 
 ## Chore
