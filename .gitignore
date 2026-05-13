@@ -9,3 +9,4 @@ inst/web
 CRAN-RELEASE
 tests/testthat/testthat-problems.rds
 CRAN-SUBMISSION
+.ccache/

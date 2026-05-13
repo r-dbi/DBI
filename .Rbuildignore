@@ -35,3 +35,4 @@ inst\/doc\/DBI\.b..$
 ^R/zzz\.R$
 ^tests/testthat/helper-dev\.R$
 ^air\.toml$
+^\.ccache$
