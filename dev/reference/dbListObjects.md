@@ -22,6 +22,8 @@ that are implemented in various backend packages.
 
 - [`RPostgres::dbListObjects("PqConnection")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 
+- [`RSQLite::dbListObjects("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
+
 ## Usage
 
 ``` r
@@ -136,12 +138,14 @@ Other DBIConnection generics:
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
 
 dbListObjects(con)
-#> [1] table     is_prefix
-#> <0 rows> (or 0-length row.names)
+#>         table is_prefix
+#> 1 <Id> "main"      TRUE
 dbWriteTable(con, "mtcars", mtcars)
 dbListObjects(con)
 #>           table is_prefix
 #> 1 <Id> "mtcars"     FALSE
+#> 2   <Id> "main"      TRUE
+#> 3   <Id> "temp"      TRUE
 
 dbDisconnect(con)
 ```
