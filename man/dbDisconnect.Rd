@@ -21,6 +21,15 @@ resources (e.g., memory, sockets).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbDisconnect")}
 }
+\section{Connection lifetime in packages}{
+
+For package-level connection reuse, consider delegating connection lifetime
+management to the pool package. If a package manages a long-lived connection
+itself, any finalizer that calls \code{dbDisconnect()} should keep the connection
+object reachable until the finalizer runs, and should check \code{\link[=dbIsValid]{dbIsValid()}}
+before disconnecting.
+}
+
 \section{Failure modes}{
 
 
@@ -30,15 +39,6 @@ but this cannot be tested automatically.
 At least one warning is issued immediately when calling \code{dbDisconnect()} on an
 already disconnected
 or invalid connection.
-
-}
-\section{Connection lifetime in packages}{
-
-For package-level connection reuse, consider delegating connection lifetime
-management to the pool package. If a package manages a long-lived connection
-itself, any finalizer that calls \code{dbDisconnect()} should keep the connection
-object reachable until the finalizer runs, and should check \code{\link[=dbIsValid]{dbIsValid()}}
-before disconnecting.
 
 }
 
