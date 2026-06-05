@@ -32,6 +32,15 @@ already disconnected
 or invalid connection.
 
 }
+\section{Connection lifetime in packages}{
+
+For package-level connection reuse, consider delegating connection lifetime
+management to the pool package. If a package manages a long-lived connection
+itself, any finalizer that calls \code{dbDisconnect()} should keep the connection
+object reachable until the finalizer runs, and should check \code{\link[=dbIsValid]{dbIsValid()}}
+before disconnecting.
+
+}
 
 \examples{
 \dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}

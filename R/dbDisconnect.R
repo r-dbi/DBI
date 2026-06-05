@@ -9,6 +9,13 @@
 #' @inherit DBItest::spec_connection_disconnect return
 #' @inheritSection DBItest::spec_connection_disconnect Failure modes
 #'
+#' @section Connection lifetime in packages:
+#' For package-level connection reuse, consider delegating connection lifetime
+#' management to the pool package. If a package manages a long-lived connection
+#' itself, any finalizer that calls `dbDisconnect()` should keep the connection
+#' object reachable until the finalizer runs, and should check [dbIsValid()]
+#' before disconnecting.
+#'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics
 #' @export
