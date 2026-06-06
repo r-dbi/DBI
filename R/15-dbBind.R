@@ -52,7 +52,7 @@
 #' unless you want to access the results in a paged way
 #' or you have a parameterized query that you want to reuse.
 #' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#' See also `vignette("DBI-advanced", package = "DBI")` for a walkthrough.
 #'
 #' 1. Use [dbSendQuery()] to create a result set object of class
 #'    [DBIResult-class].
@@ -87,7 +87,7 @@
 #' which should be sufficient
 #' unless you have a parameterized query that you want to reuse.
 #' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#' See also `vignette("DBI-advanced", package = "DBI")` for a walkthrough.
 #'
 #' 1. Use [dbSendQueryArrow()] to create a result set object of class
 #'    [DBIResultArrow-class].
@@ -112,7 +112,7 @@
 #' is implemented by [dbExecute()], which should be sufficient
 #' for non-parameterized queries.
 #' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#' See also `vignette("DBI-advanced", package = "DBI")` for a walkthrough.
 #'
 #' 1. Use [dbSendStatement()] to create a result set object of class
 #'    [DBIResult-class].
