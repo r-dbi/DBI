@@ -15,7 +15,7 @@
 #' @inheritSection DBItest::spec_sql_quote_string Failure modes
 #' @inheritSection DBItest::spec_sql_quote_string Specification
 #'
-#' @family DBIResult generics
+#' @family DBIConnection generics
 #' @export
 #' @examples
 #' # Quoting ensures that arbitrary input is safe for use in a query

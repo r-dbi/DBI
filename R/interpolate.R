@@ -36,7 +36,7 @@ sqlParseVariablesImpl <- function(sql, quotes, comments) {
   comment_spec_offset <- 0L
   sql_variable_start <- 0L
 
-  # prepare comments & quotes for quicker comparisions
+  # prepare comments & quotes for quicker comparisons
   for (c in seq_along(comments)) {
     comments[[c]][["start"]] <- str_to_vec(comments[[c]][["start"]])
     comments[[c]][["end"]] <- str_to_vec(comments[[c]][["end"]])
