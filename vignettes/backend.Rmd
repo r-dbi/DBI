@@ -217,7 +217,7 @@ With these four methods in place, you can now use the default `dbGetQuery()` to 
 
 You're now on the home stretch, and can make your wrapper substantially more useful by implementing methods that wrap around variations in SQL across databases:
 
-* `dbQuoteString()` and `dbQuoteIdentifer()` are used to safely quote strings
+* `dbQuoteString()` and `dbQuoteIdentifier()` are used to safely quote strings
   and identifiers to avoid SQL injection attacks.  Note that the former must be
   vectorized, but not the latter.
 
@@ -227,7 +227,7 @@ You're now on the home stretch, and can make your wrapper substantially more use
   know if you have problems.
 
 * `dbReadTable()`: a simple wrapper around `SELECT * FROM table`. Use
-  `dbQuoteIdentifer()` to safely quote the table name and prevent mismatches
+  `dbQuoteIdentifier()` to safely quote the table name and prevent mismatches
   between the names allowed by R and the database.
 
 * `dbListTables()` and `dbExistsTable()` let you determine what tables are

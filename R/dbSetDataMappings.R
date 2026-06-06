@@ -1,4 +1,4 @@
-#' Set data mappings between an DBMS and R.
+#' Set data mappings between a DBMS and R.
 #'
 #' This generic is deprecated since no working implementation was ever produced.
 #'

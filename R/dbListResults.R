@@ -1,6 +1,6 @@
 #' A list of all pending results
 #'
-#' DEPRECATED. DBI currenty supports only one open result set per connection,
+#' DEPRECATED. DBI currently supports only one open result set per connection,
 #' you need to keep track of the result sets you open if you need this
 #' functionality.
 #'

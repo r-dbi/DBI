@@ -8,7 +8,7 @@
 #' @template methods
 #' @templateVar method_name dbGetConnectArgs
 #'
-#' @param drv A object inheriting from [DBIConnector-class].
+#' @param drv An object inheriting from [DBIConnector-class].
 #' @param eval Set to `FALSE` to return the functions that generate the argument
 #'   instead of evaluating them.
 #' @param ... Other arguments passed on to methods. Not otherwise used.

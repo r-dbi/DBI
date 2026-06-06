@@ -4,7 +4,7 @@
 #' These methods are deprecated, please consult the documentation of the
 #' individual backends for the construction of driver instances.
 #'
-#' `dbDriver()` is a helper method used to create an new driver object
+#' `dbDriver()` is a helper method used to create a new driver object
 #' given the name of a database or the corresponding R package. It works
 #' through convention: all DBI-extending packages should provide an exported
 #' object with the same name as the package. `dbDriver()` just looks for
@@ -21,7 +21,7 @@
 #' @param drv an object that inherits from `DBIDriver` as created by
 #'   `dbDriver`.
 #' @param ... any other arguments are passed to the driver `drvName`.
-#' @return In the case of `dbDriver`, an driver object whose class extends
+#' @return In the case of `dbDriver`, a driver object whose class extends
 #'   `DBIDriver`. This object may be used to create connections to the
 #'   actual DBMS engine.
 #'

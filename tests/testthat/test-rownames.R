@@ -17,7 +17,7 @@ test_that("no rownames in input gives no rownames in output", {
   expect_equal(sqlRownamesToColumn(df, NA)$row_name, NULL)
 })
 
-test_that("guess identify of row_names columns", {
+test_that("guess identity of row_names columns", {
   df <- data.frame(row_names = "a", x = 1, stringsAsFactors = FALSE)
 
   expect_equal(row.names(sqlColumnToRownames(df, NA)), "a")
@@ -25,7 +25,7 @@ test_that("guess identify of row_names columns", {
   expect_equal(row.names(sqlColumnToRownames(df, FALSE)), "1")
 })
 
-test_that("override identify of row_names column", {
+test_that("override identity of row_names column", {
   df <- data.frame(x = 1, y = "a", stringsAsFactors = FALSE)
 
   expect_equal(row.names(sqlColumnToRownames(df, "y")), "a")
