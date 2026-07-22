@@ -25,10 +25,7 @@
 #'   `.SQL92Keywords` and reflects the SQL ANSI/ISO standard as documented
 #'   in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily
 #'   override or update this vector.
-#' @aliases
-#'    make.db.names
-#'    SQLKeywords
-#'    isSQLKeyword
+#' @aliases make.db.names SQLKeywords isSQLKeyword
 #' @param dbObj any DBI object (e.g., `DBIDriver`).
 #' @param snames a character vector of R identifiers (symbols) from which we
 #'   need to make SQL identifiers.
