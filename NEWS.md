@@ -1,5 +1,58 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.3.0.9011 (2026-09-05)
+
+## Bug fixes
+
+### ci
+
+- Backport kit fixes from `rigraph`, `duckdb-r` and `dm`.
+
+### ci
+
+- Emit empty package matrix when there are no (rev)deps.
+
+## Chore
+
+- Put aliases on the same line.
+
+## Continuous integration
+
+- Wrap the commit status update into an action.
+
+- Route ccache through one-word compiler wrappers on Unix.
+
+- Name every step and restore the log entry `setup-pandoc` swallows.
+
+- Add sharded `revdep2` workflow.
+
+- Remove unused pr-commands workflow.
+
+- Lock down `format-suggest` egress (audit → block).
+
+- Run on Ubuntu 26.04.
+
+- Align workflows with template.
+
+## Uncategorized
+
+- Ci: Harden `workflow_run` workflows against untrusted pull requests (#106).
+
+- Ci: Pin third-party actions to commits and let Renovate keep them pinned (#105).
+
+- Ci: Give every workflow and job an explicit `permissions` block (#103).
+
+- Ci: Pass workflow context through the environment, not into script text (#102).
+
+- Ci: Add a Windows arm64 (`windows-11-arm`) check on R-release (#99).
+
+- Ci: Apply matrix `env` vars in the workflow, not in custom actions (#95).
+
+- Ci: Link the responsible workflow run in snapshot update PRs (#96).
+
+- Ci: Harden `format-suggest` against `pull_request_target` pwn requests (#93).
+
+
 # DBI 1.3.0.9010 (2026-05-24)
 
 ## Continuous integration
