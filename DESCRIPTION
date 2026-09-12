@@ -47,6 +47,16 @@ VignetteBuilder:
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
+Config/gha/extra-packages: arrow=?ignore-build-errors
+Config/comment/gha/extra-packages: arrow ships no aarch64 Windows binary and
+    its configure script downloads the x86_64 libarrow, which the aarch64
+    linker cannot use, so the source build fails on the windows-11-arm entry
+    of the matrix and took the whole entry down with it. The parameter demotes
+    that build failure to a missing optional dependency, which is what the
+    package is: every test guards with skip_if_not_installed(), and the arrow
+    vignette sets knitr's error = TRUE outside pkgdown. Every other runner
+    installs the binary as before -- the parameter only takes effect when a
+    build actually fails. Drop it once arrow builds on aarch64 Windows.
 Config/Needs/website: r-dbi/DBItest, r-dbi/dbitemplate, adbi, AzureKusto,
     bigrquery, DatabaseConnector, dittodb, duckdb, implyr, lazysf, odbc,
     pool, RAthena, IMSMWU/RClickhouse, RH2, RJDBC, RMariaDB, RMySQL,
