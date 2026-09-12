@@ -16,11 +16,23 @@ runs:
     # `ubuntu-26.04` is tested with 12.3 and 11.8, 11.4 and 10.11 only up to
     # `ubuntu-24.04`. 12.3 is the current LTS, what the download page serves for
     # Resolute, and the action's own default.
+    #
+    # MariaDB publishes no ARM64 Windows server at all -- the action downloads
+    # `mariadb-*-winx64.msi` and hands it to `msiexec`, which on
+    # `windows-11-arm` grinds for about four and a half minutes and then throws
+    # out of the action's `index.js`. That took the whole entry down before a
+    # single check ran. Nothing in this package's own test suite connects to
+    # this server (the suite uses RSQLite, and the vignettes connect to a remote
+    # host), so skipping the provisioning there costs no coverage and lets the
+    # entry do what it is for: prove that DBI builds and checks on Windows
+    # aarch64.
     - uses: ankane/setup-mariadb@v1
+      if: runner.os != 'Windows' || runner.arch != 'ARM64'
       with:
         mariadb-version: "12.3"
 
     - name: Create database, set it to UTF-8
+      if: runner.os != 'Windows' || runner.arch != 'ARM64'
       # MariaDB renamed its client binaries to `mariadb*` in 11.0 and keeps the
       # `mysql*` names as deprecated symlinks, so prefer the name the server
       # actually ships and fall back for anything older.
