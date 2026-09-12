@@ -26,8 +26,6 @@ that are implemented in various backend packages.
 
 - [`RAthena::sqlCreateTable("AthenaConnection")`](https://dyfanjones.github.io/RAthena/reference/sqlCreateTable.html)
 
-- [`RPresto::sqlCreateTable("PrestoConnection")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
 ## Usage
 
 ``` r

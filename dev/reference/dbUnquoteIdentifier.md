@@ -12,8 +12,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- `adbi::dbUnquoteIdentifier("AdbiConnection", "ANY")`
-
 - [`odbc::dbUnquoteIdentifier("Microsoft SQL Server", "SQL")`](https://odbc.r-dbi.org/reference/SQLServer.html)
 
 - `pool::dbUnquoteIdentifier("Pool", "ANY")`

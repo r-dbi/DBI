@@ -21,7 +21,7 @@ that are implemented in various backend packages.
 
 - [`DatabaseConnector::dbReadTable("DatabaseConnectorConnection", "character")`](https://ohdsi.github.io/DatabaseConnector/reference/dbReadTable-DatabaseConnectorConnection-character-method.html)
 
-- [`lazysf::dbReadTable("SFSQLConnection", "character")`](https://hypertidy.github.io/lazysf/reference/SFSQLConnection-class.html)
+- [`lazysf::dbReadTable("GDALVectorConnection", "character")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`pool::dbReadTable("Pool", "ANY")`](http://rstudio.github.io/pool/reference/DBI-wrap.md)
 
@@ -36,16 +36,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbReadTable("PqConnection", "character")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 
 - [`RPostgreSQL::dbReadTable("PostgreSQLConnection", "character")`](https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html)
-
-- [`RPresto::dbReadTable("PrestoConnection", "ANY")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbReadTable("PrestoConnection", "character")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbReadTable("PrestoConnection", "dbplyr_schema")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbReadTable("PrestoConnection", "Id")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbReadTable("PrestoConnection", "SQL")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RSQLite::dbReadTable("SQLiteConnection", "character")`](https://rsqlite.r-dbi.org/reference/dbReadTable.html)
 

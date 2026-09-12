@@ -10,10 +10,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbHasCompleted("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbHasCompleted("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbHasCompleted("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbHasCompleted("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbHasCompleted-DatabaseConnectorDbiResult-method.html)
@@ -22,9 +18,11 @@ that are implemented in various backend packages.
 
 - [`dittodb::dbHasCompleted("DBIMockResult")`](https://dittodb.jonkeane.com/reference/mock-db-methods.html)
 
+- [`duckdb::dbHasCompleted("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
+
 - [`duckdb::dbHasCompleted("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
-- [`lazysf::dbHasCompleted("SFSQLResult")`](https://hypertidy.github.io/lazysf/reference/SFSQLResult-class.html)
+- [`lazysf::dbHasCompleted("GDALVectorResult")`](https://hypertidy.github.io/lazysf/reference/GDALVectorResult-class.html)
 
 - [`odbc::dbHasCompleted("OdbcResult")`](https://odbc.r-dbi.org/reference/OdbcResult.html)
 
@@ -39,8 +37,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbHasCompleted("PqResult")`](https://rpostgres.r-dbi.org/reference/postgres-query.html)
 
 - [`RPostgreSQL::dbHasCompleted("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbHasCompleted("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbHasCompleted("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

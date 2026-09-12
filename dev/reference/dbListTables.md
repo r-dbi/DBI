@@ -10,8 +10,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbListTables("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`AzureKusto::dbListTables("AzureKustoConnection")`](https://rdrr.io/pkg/AzureKusto/man/DBI_table.html)
 
 - [`bigrquery::dbListTables("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -22,7 +20,7 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbListTables("duckdb_connection")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
-- [`lazysf::dbListTables("SFSQLConnection")`](https://hypertidy.github.io/lazysf/reference/SFSQLConnection-class.html)
+- [`lazysf::dbListTables("GDALVectorConnection")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`odbc::dbListTables("Microsoft SQL Server")`](https://odbc.r-dbi.org/reference/SQLServer.html)
 
@@ -41,8 +39,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbListTables("PqConnection")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 
 - [`RPostgreSQL::dbListTables("PostgreSQLConnection")`](https://rdrr.io/pkg/RPostgreSQL/man/dbListTables-methods.html)
-
-- [`RPresto::dbListTables("PrestoConnection")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RSQLite::dbListTables("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 

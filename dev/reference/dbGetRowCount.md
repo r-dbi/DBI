@@ -10,15 +10,13 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbGetRowCount("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbGetRowCount("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbGetRowCount("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbGetRowCount("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowCount-DatabaseConnectorDbiResult-method.html)
 
 - [`DatabaseConnector::dbGetRowCount("DatabaseConnectorJdbcResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowCount-DatabaseConnectorJdbcResult-method.html)
+
+- [`duckdb::dbGetRowCount("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
 
 - [`duckdb::dbGetRowCount("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
@@ -31,8 +29,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbGetRowCount("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 
 - [`RPostgreSQL::dbGetRowCount("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbGetRowCount("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbGetRowCount("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

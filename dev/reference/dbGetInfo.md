@@ -11,10 +11,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbGetInfo("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbGetInfo("AdbiDriver")`](https://adbi.r-dbi.org/reference/AdbiDriver-class.html)
-
 - [`bigrquery::dbGetInfo("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbGetInfo("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -33,7 +29,9 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbGetInfo("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
-- [`lazysf::dbGetInfo("SFSQLDriver")`](https://hypertidy.github.io/lazysf/reference/SFSQLDriver-class.html)
+- [`lazysf::dbGetInfo("GDALVectorConnection")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
+
+- [`lazysf::dbGetInfo("GDALVectorDriver")`](https://hypertidy.github.io/lazysf/reference/GDALVectorDriver-class.html)
 
 - [`odbc::dbGetInfo("OdbcConnection")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -70,12 +68,6 @@ that are implemented in various backend packages.
 - [`RPostgreSQL::dbGetInfo("PostgreSQLDriver")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
 
 - [`RPostgreSQL::dbGetInfo("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbGetInfo("PrestoConnection")`](https://rdrr.io/pkg/RPresto/man/dbGetInfo.html)
-
-- [`RPresto::dbGetInfo("PrestoDriver")`](https://rdrr.io/pkg/RPresto/man/dbGetInfo.html)
-
-- [`RPresto::dbGetInfo("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/dbGetInfo.html)
 
 - [`RSQLite::dbGetInfo("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 
@@ -231,9 +223,9 @@ Other DBIResult generics:
 ``` r
 dbGetInfo(RSQLite::SQLite())
 #> $driver.version
-#> [1] ‘3.52.0’
+#> [1] ‘3.53.3’
 #> 
 #> $client.version
-#> [1] ‘3.52.0’
+#> [1] ‘3.53.3’
 #> 
 ```

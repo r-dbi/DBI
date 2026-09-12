@@ -9,8 +9,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- `adbi::dbFetch("AdbiResult", "ANY")`
-
 - `AzureKusto::dbFetch("AzureKustoResult", "ANY")`
 
 - `bigrquery::dbFetch("BigQueryResult", "ANY")`
@@ -23,7 +21,7 @@ that are implemented in various backend packages.
 
 - `duckdb::dbFetch("duckdb_result", "ANY")`
 
-- `lazysf::dbFetch("SFSQLResult", "ANY")`
+- `lazysf::dbFetch("GDALVectorResult", "ANY")`
 
 - `odbc::dbFetch("OdbcResult", "ANY")`
 
@@ -36,10 +34,6 @@ that are implemented in various backend packages.
 - [`RMySQL::dbFetch("MySQLResult", "numeric")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
 
 - `RPostgres::dbFetch("PqResult", "ANY")`
-
-- [`RPresto::dbFetch("PrestoResult", "missing")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
-
-- [`RPresto::dbFetch("PrestoResult", "numeric")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - `RSQLite::dbFetch("SQLiteResult", "ANY")`
 

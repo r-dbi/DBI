@@ -13,12 +13,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbBegin("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbCommit("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbRollback("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`bigrquery::dbBegin("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbCommit("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)

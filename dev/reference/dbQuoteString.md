@@ -10,10 +10,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbQuoteString("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbQuoteString("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`bigrquery::dbQuoteString("BigQueryConnection", "character")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbQuoteString("BigQueryConnection", "SQL")`](https://bigrquery.r-dbi.org/reference/DBI.html)

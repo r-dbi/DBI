@@ -8,12 +8,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbListFields("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbListFields("AdbiConnection", "Id")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbListFields("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`AzureKusto::dbListFields("AzureKustoConnection", "character")`](https://rdrr.io/pkg/AzureKusto/man/DBI_query.html)
 
 - [`bigrquery::dbListFields("BigQueryConnection", "AsIs")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -31,6 +25,8 @@ that are implemented in various backend packages.
 - [`dittodb::dbListFields("DBIMockConnection", "Id")`](https://dittodb.jonkeane.com/reference/mock-db-methods.html)
 
 - [`duckdb::dbListFields("duckdb_connection", "character")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
+
+- [`lazysf::dbListFields("GDALVectorConnection", "character")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`odbc::dbListFields("OdbcConnection", "character")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -55,16 +51,6 @@ that are implemented in various backend packages.
 - [`RPostgreSQL::dbListFields("PostgreSQLConnection", "character")`](https://rdrr.io/pkg/RPostgreSQL/man/dbListTables-methods.html)
 
 - [`RPostgreSQL::dbListFields("PostgreSQLResult", "missing")`](https://rdrr.io/pkg/RPostgreSQL/man/dbListTables-methods.html)
-
-- [`RPresto::dbListFields("PrestoConnection", "character")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbListFields("PrestoConnection", "dbplyr_schema")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbListFields("PrestoConnection", "Id")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbListFields("PrestoConnection", "SQL")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbListFields("PrestoResult", "missing")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`sergeant::dbListFields("DrillConnection", "character")`](https://rdrr.io/pkg/sergeant/man/DrillConnection-class.html)
 

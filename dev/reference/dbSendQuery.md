@@ -20,8 +20,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbSendQuery("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/dbSendQuery.html)
-
 - `AzureKusto::dbSendQuery("AzureKustoConnection", "ANY")`
 
 - [`bigrquery::dbSendQuery("BigQueryConnection", "character")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -36,7 +34,7 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbSendQuery("duckdb_connection", "character")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
-- `lazysf::dbSendQuery("SFSQLConnection", "ANY")`
+- `lazysf::dbSendQuery("GDALVectorConnection", "ANY")`
 
 - [`odbc::dbSendQuery("OdbcConnection", "character")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -55,8 +53,6 @@ that are implemented in various backend packages.
 - `RPostgres::dbSendQuery("PqConnection", "ANY")`
 
 - [`RPostgreSQL::dbSendQuery("PostgreSQLConnection", "character")`](https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html)
-
-- [`RPresto::dbSendQuery("PrestoConnection", "character")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RSQLite::dbSendQuery("SQLiteConnection", "character")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 

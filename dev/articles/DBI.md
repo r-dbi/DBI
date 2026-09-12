@@ -249,7 +249,7 @@ lazy_df <-
 head(lazy_df, 3)
 ```
 
-    ## # Source:   SQL [?? x 3]
+    ## # A query:  ?? x 3
     ## # Database: mysql  [guest@relational.fel.cvut.cz:3306/sakila]
     ##   film_id title            description                                          
     ##     <int> <chr>            <chr>                                                

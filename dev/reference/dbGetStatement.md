@@ -10,15 +10,13 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbGetStatement("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbGetStatement("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbGetStatement("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbGetStatement("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorDbiResult-method.html)
 
 - [`DatabaseConnector::dbGetStatement("DatabaseConnectorJdbcResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorJdbcResult-method.html)
+
+- [`duckdb::dbGetStatement("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
 
 - [`duckdb::dbGetStatement("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
@@ -33,8 +31,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbGetStatement("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 
 - [`RPostgreSQL::dbGetStatement("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbGetStatement("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbGetStatement("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

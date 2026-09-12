@@ -10,12 +10,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbWriteTable("AdbiConnection", "character", "data.frame")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbWriteTable("AdbiConnection", "Id", "data.frame")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbWriteTable("AdbiConnection", "SQL", "data.frame")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - `AzureKusto::dbWriteTable("AzureKustoConnection", "ANY", "ANY")`
 
 - [`bigrquery::dbWriteTable("BigQueryConnection", "AsIs", "data.frame")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -64,15 +58,9 @@ that are implemented in various backend packages.
 
 - [`RPostgreSQL::dbWriteTable("PostgreSQLConnection", "character", "data.frame")`](https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html)
 
-- [`RPresto::dbWriteTable("PrestoConnection", "ANY", "data.frame")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
 - [`RSQLite::dbWriteTable("SQLiteConnection", "character", "character")`](https://rsqlite.r-dbi.org/reference/dbWriteTable.html)
 
 - [`RSQLite::dbWriteTable("SQLiteConnection", "character", "data.frame")`](https://rsqlite.r-dbi.org/reference/dbWriteTable.html)
-
-- [`sf::dbWriteTable("DBIObject", "character", "sf")`](https://r-spatial.github.io/sf/reference/dbWriteTable.html)
-
-- [`sf::dbWriteTable("PostgreSQLConnection", "character", "sf")`](https://r-spatial.github.io/sf/reference/dbWriteTable.html)
 
 - `sparklyr::dbWriteTable("spark_connection", "ANY", "ANY")`
 

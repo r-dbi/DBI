@@ -42,8 +42,6 @@ that are implemented in various backend packages.
 
 - [`RPostgreSQL::dbGetQuery("PostgreSQLConnection", "character")`](https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html)
 
-- [`RPresto::dbGetQuery("PrestoConnection", "character")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
 - `sparklyr::dbGetQuery("spark_connection", "ANY")`
 
 ## Usage

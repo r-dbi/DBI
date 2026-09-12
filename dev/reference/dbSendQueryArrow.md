@@ -22,9 +22,9 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbSendQueryArrow("AdbiConnection")`](https://adbi.r-dbi.org/reference/dbSendQuery.html)
+- [`duckdb::dbSendQueryArrow("duckdb_connection", "character")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
-- [`pool::dbSendQueryArrow("Pool")`](http://rstudio.github.io/pool/reference/DBI-wrap.md)
+- `pool::dbSendQueryArrow("Pool", "ANY")`
 
 ## Usage
 

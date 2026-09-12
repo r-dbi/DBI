@@ -9,10 +9,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbGetRowsAffected("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbGetRowsAffected("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbGetRowsAffected("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbGetRowsAffected("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorDbiResult-method.html)
@@ -20,6 +16,8 @@ that are implemented in various backend packages.
 - [`DatabaseConnector::dbGetRowsAffected("DatabaseConnectorJdbcResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorJdbcResult-method.html)
 
 - [`dittodb::dbGetRowsAffected("DBIMockResult")`](https://dittodb.jonkeane.com/reference/mock-db-methods.html)
+
+- [`duckdb::dbGetRowsAffected("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
 
 - [`duckdb::dbGetRowsAffected("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
@@ -32,8 +30,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbGetRowsAffected("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 
 - [`RPostgreSQL::dbGetRowsAffected("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbGetRowsAffected("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbGetRowsAffected("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

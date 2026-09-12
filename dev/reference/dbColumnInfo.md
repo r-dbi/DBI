@@ -11,10 +11,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbColumnInfo("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbColumnInfo("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`AzureKusto::dbColumnInfo("AzureKustoResult")`](https://rdrr.io/pkg/AzureKusto/man/DBI_query.html)
 
 - [`bigrquery::dbColumnInfo("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -24,6 +20,8 @@ that are implemented in various backend packages.
 - [`DatabaseConnector::dbColumnInfo("DatabaseConnectorJdbcResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbColumnInfo-DatabaseConnectorJdbcResult-method.html)
 
 - [`dittodb::dbColumnInfo("DBIMockResult")`](https://dittodb.jonkeane.com/reference/mock-db-methods.html)
+
+- [`duckdb::dbColumnInfo("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
 
 - [`duckdb::dbColumnInfo("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
@@ -42,8 +40,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbColumnInfo("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 
 - [`RPostgreSQL::dbColumnInfo("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbGetInfo-methods.html)
-
-- [`RPresto::dbColumnInfo("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbColumnInfo("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

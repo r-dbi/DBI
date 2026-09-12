@@ -15,8 +15,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbConnect("AdbiDriver")`](https://adbi.r-dbi.org/reference/dbConnect.html)
-
 - [`AzureKusto::dbConnect("AzureKustoDriver")`](https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html)
 
 - [`bigrquery::dbConnect("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/bigquery.html)
@@ -27,7 +25,7 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbConnect("duckdb_driver")`](https://r.duckdb.org/reference/duckdb.html)
 
-- [`lazysf::dbConnect("SFSQLDriver")`](https://hypertidy.github.io/lazysf/reference/dbConnect-SFSQLDriver-method.html)
+- [`lazysf::dbConnect("GDALVectorDriver")`](https://hypertidy.github.io/lazysf/reference/dbConnect-GDALVectorDriver-method.html)
 
 - [`odbc::dbConnect("DatabricksOdbcDriver")`](https://odbc.r-dbi.org/reference/databricks.html)
 
@@ -58,8 +56,6 @@ that are implemented in various backend packages.
 - [`RPostgreSQL::dbConnect("PostgreSQLConnection")`](https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html)
 
 - [`RPostgreSQL::dbConnect("PostgreSQLDriver")`](https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html)
-
-- [`RPresto::dbConnect("PrestoDriver")`](https://rdrr.io/pkg/RPresto/man/Presto.html)
 
 - [`RSQLite::dbConnect("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLite.html)
 

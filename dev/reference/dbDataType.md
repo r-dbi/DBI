@@ -13,10 +13,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- `adbi::dbDataType("AdbiConnection", "ANY")`
-
-- `adbi::dbDataType("AdbiDriver", "ANY")`
-
 - `bigrquery::dbDataType("BigQueryConnection", "ANY")`
 
 - `bigrquery::dbDataType("BigQueryDriver", "ANY")`
@@ -25,7 +21,7 @@ that are implemented in various backend packages.
 
 - `duckdb::dbDataType("duckdb_driver", "ANY")`
 
-- [`lazysf::dbDataType("SFSQLDriver", "ANY")`](https://hypertidy.github.io/lazysf/reference/SFSQLDriver-class.html)
+- `lazysf::dbDataType("GDALVectorDriver", "ANY")`
 
 - [`odbc::dbDataType("OdbcConnection", "ANY")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -65,17 +61,11 @@ that are implemented in various backend packages.
 
 - `RPostgreSQL::dbDataType("PostgreSQLObject", "ANY")`
 
-- `RPresto::dbDataType("PrestoDriver", "ANY")`
-
 - `RSQLite::dbDataType("SQLiteConnection", "ANY")`
 
 - `RSQLite::dbDataType("SQLiteDriver", "ANY")`
 
 - `sergeant::dbDataType("DrillConnection", "ANY")`
-
-- [`sf::dbDataType("DBIObject", "sf")`](https://r-spatial.github.io/sf/reference/dbDataType.html)
-
-- [`sf::dbDataType("PostgreSQLConnection", "sf")`](https://r-spatial.github.io/sf/reference/dbDataType.html)
 
 - `sparklyr::dbDataType("spark_connection", "ANY")`
 

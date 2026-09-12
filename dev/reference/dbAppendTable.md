@@ -17,8 +17,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- `adbi::dbAppendTable("AdbiConnection", "ANY", "ANY")`
-
 - [`bigrquery::dbAppendTable("BigQueryConnection", "AsIs", "data.frame")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbAppendTable("BigQueryConnection", "character", "data.frame")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -36,8 +34,6 @@ that are implemented in various backend packages.
 - `RMariaDB::dbAppendTable("MariaDBConnection", "ANY", "ANY")`
 
 - `RPostgres::dbAppendTable("PqConnection", "ANY", "ANY")`
-
-- [`RPresto::dbAppendTable("PrestoConnection", "ANY", "data.frame")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - `RSQLite::dbAppendTable("SQLiteConnection", "ANY", "ANY")`
 

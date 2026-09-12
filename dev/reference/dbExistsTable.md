@@ -8,12 +8,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbExistsTable("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbExistsTable("AdbiConnection", "Id")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbExistsTable("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")`](https://rdrr.io/pkg/AzureKusto/man/DBI_table.html)
 
 - [`bigrquery::dbExistsTable("BigQueryConnection", "AsIs")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -30,7 +24,7 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbExistsTable("duckdb_connection", "ANY")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
-- [`lazysf::dbExistsTable("SFSQLConnection", "ANY")`](https://hypertidy.github.io/lazysf/reference/SFSQLConnection-class.html)
+- [`lazysf::dbExistsTable("GDALVectorConnection", "ANY")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`odbc::dbExistsTable("Microsoft SQL Server", "character")`](https://odbc.r-dbi.org/reference/SQLServer.html)
 
@@ -61,8 +55,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbExistsTable("PqConnection", "Id")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 
 - [`RPostgreSQL::dbExistsTable("PostgreSQLConnection", "character")`](https://rdrr.io/pkg/RPostgreSQL/man/dbReadTable-methods.html)
-
-- [`RPresto::dbExistsTable("PrestoConnection", "ANY")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RSQLite::dbExistsTable("SQLiteConnection", "character")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 

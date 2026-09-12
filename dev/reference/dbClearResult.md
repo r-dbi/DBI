@@ -11,10 +11,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbClearResult("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbClearResult("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbClearResult("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbClearResult("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbClearResult-DatabaseConnectorDbiResult-method.html)
@@ -23,9 +19,11 @@ that are implemented in various backend packages.
 
 - [`dittodb::dbClearResult("DBIMockResult")`](https://dittodb.jonkeane.com/reference/mock-db-methods.html)
 
+- [`duckdb::dbClearResult("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
+
 - [`duckdb::dbClearResult("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
-- [`lazysf::dbClearResult("SFSQLResult")`](https://hypertidy.github.io/lazysf/reference/SFSQLResult-class.html)
+- [`lazysf::dbClearResult("GDALVectorResult")`](https://hypertidy.github.io/lazysf/reference/GDALVectorResult-class.html)
 
 - [`odbc::dbClearResult("OdbcResult")`](https://odbc.r-dbi.org/reference/OdbcResult.html)
 
@@ -40,8 +38,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbClearResult("PqResult")`](https://rpostgres.r-dbi.org/reference/postgres-query.html)
 
 - [`RPostgreSQL::dbClearResult("PostgreSQLResult")`](https://rdrr.io/pkg/RPostgreSQL/man/dbSendQuery-methods.html)
-
-- [`RPresto::dbClearResult("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbClearResult("SQLiteResult")`](https://rsqlite.r-dbi.org/reference/SQLiteResult-class.html)
 

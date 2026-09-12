@@ -9,14 +9,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbIsValid("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbIsValid("AdbiDriver")`](https://adbi.r-dbi.org/reference/AdbiDriver-class.html)
-
-- [`adbi::dbIsValid("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
-
-- [`adbi::dbIsValid("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
-
 - [`bigrquery::dbIsValid("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbIsValid("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -31,9 +23,13 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbIsValid("duckdb_driver")`](https://r.duckdb.org/reference/duckdb_driver-class.html)
 
+- [`duckdb::dbIsValid("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
+
 - [`duckdb::dbIsValid("duckdb_result")`](https://r.duckdb.org/reference/duckdb_result-class.html)
 
-- [`lazysf::dbIsValid("SFSQLDriver")`](https://hypertidy.github.io/lazysf/reference/SFSQLDriver-class.html)
+- [`lazysf::dbIsValid("GDALVectorConnection")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
+
+- [`lazysf::dbIsValid("GDALVectorDriver")`](https://hypertidy.github.io/lazysf/reference/GDALVectorDriver-class.html)
 
 - [`odbc::dbIsValid("OdbcConnection")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -68,8 +64,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbIsValid("PqDriver")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 
 - [`RPostgres::dbIsValid("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
-
-- [`RPresto::dbIsValid("PrestoResult")`](https://rdrr.io/pkg/RPresto/man/PrestoResult-class.html)
 
 - [`RSQLite::dbIsValid("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 

@@ -16,8 +16,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbSendStatement("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/dbSendQuery.html)
-
 - [`AzureKusto::dbSendStatement("AzureKustoConnection", "character")`](https://rdrr.io/pkg/AzureKusto/man/DBI_query.html)
 
 - [`DatabaseConnector::dbSendStatement("DatabaseConnectorConnection", "character")`](https://ohdsi.github.io/DatabaseConnector/reference/dbSendStatement-DatabaseConnectorConnection-character-method.html)

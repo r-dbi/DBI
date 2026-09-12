@@ -9,8 +9,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbDisconnect("AdbiConnection")`](https://adbi.r-dbi.org/reference/dbConnect.html)
-
 - [`AzureKusto::dbDisconnect("AzureKustoDriver")`](https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html)
 
 - [`bigrquery::dbDisconnect("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -23,7 +21,7 @@ that are implemented in various backend packages.
 
 - [`implyr::dbDisconnect("src_impala")`](https://rdrr.io/pkg/implyr/man/dbDisconnect-src_impala-method.html)
 
-- [`lazysf::dbDisconnect("SFSQLConnection")`](https://hypertidy.github.io/lazysf/reference/SFSQLConnection-class.html)
+- [`lazysf::dbDisconnect("GDALVectorConnection")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`odbc::dbDisconnect("OdbcConnection")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
 
@@ -40,8 +38,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbDisconnect("PqConnection")`](https://rpostgres.r-dbi.org/reference/Postgres.html)
 
 - [`RPostgreSQL::dbDisconnect("PostgreSQLConnection")`](https://rdrr.io/pkg/RPostgreSQL/man/dbConnect-methods.html)
-
-- [`RPresto::dbDisconnect("PrestoConnection")`](https://rdrr.io/pkg/RPresto/man/Presto.html)
 
 - [`RSQLite::dbDisconnect("SQLiteConnection")`](https://rsqlite.r-dbi.org/reference/SQLite.html)
 

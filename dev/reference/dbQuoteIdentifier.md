@@ -11,10 +11,6 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbQuoteIdentifier("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
-- [`adbi::dbQuoteIdentifier("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
-
 - [`bigrquery::dbQuoteIdentifier("BigQueryConnection", "character")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbQuoteIdentifier("BigQueryConnection", "SQL")`](https://bigrquery.r-dbi.org/reference/DBI.html)
@@ -54,12 +50,6 @@ that are implemented in various backend packages.
 - [`RPostgres::dbQuoteIdentifier("PqConnection", "Id")`](https://rpostgres.r-dbi.org/reference/quote.html)
 
 - [`RPostgres::dbQuoteIdentifier("PqConnection", "SQL")`](https://rpostgres.r-dbi.org/reference/quote.html)
-
-- [`RPresto::dbQuoteIdentifier("PrestoConnection", "AsIs")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_schema")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
-- [`RPresto::dbQuoteIdentifier("PrestoConnection", "dbplyr_table_path")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
 
 - [`RSQLite::dbQuoteIdentifier("SQLiteConnection", "character")`](https://rsqlite.r-dbi.org/reference/SQLiteConnection-class.html)
 

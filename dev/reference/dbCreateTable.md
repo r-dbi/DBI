@@ -21,8 +21,6 @@ that are implemented in various backend packages.
 
 - [`pool::dbCreateTable("Pool")`](http://rstudio.github.io/pool/reference/DBI-wrap.md)
 
-- [`RPresto::dbCreateTable("PrestoConnection")`](https://rdrr.io/pkg/RPresto/man/PrestoConnection-class.html)
-
 ## Usage
 
 ``` r

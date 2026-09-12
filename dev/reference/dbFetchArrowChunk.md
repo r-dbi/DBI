@@ -13,7 +13,7 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
-- [`adbi::dbFetchArrowChunk("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+- [`duckdb::dbFetchArrowChunk("duckdb_result_arrow")`](https://r.duckdb.org/reference/duckdb_result_arrow-class.html)
 
 ## Usage
 
