@@ -13,7 +13,22 @@ methods_as_rd <- function(method) {
     )[[1]]
     packages <- grep("/", packages, invert = TRUE, value = TRUE)
     for (package in packages) {
-      stopifnot(requireNamespace(package, quietly = TRUE))
+      # Loading a backend is what puts its S4 methods in front of
+      # findMethods() below, so a package that is missing costs this page the
+      # methods it implements -- but it must not cost the whole website.
+      # CRAN archives a backend from time to time, `adbi` and `RPresto` in
+      # September 2026, and the workflow then leaves it out of the website
+      # dependencies instead of failing the installation. Match that here:
+      # say which page lost which backend, and carry on.
+      if (!requireNamespace(package, quietly = TRUE)) {
+        message(
+          "methods_as_rd(",
+          paste(method, collapse = ", "),
+          "): ",
+          "not installed, its methods are missing from this page: ",
+          package
+        )
+      }
     }
   }
 
