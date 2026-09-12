@@ -128,6 +128,15 @@ runs:
       id: get-extra
       uses: ./.github/workflows/get-extra
 
+    - name: Resolve `Config/Needs/website` from DESCRIPTION
+      # Expands `needs: website` into refs, dropping the packages that CRAN has
+      # archived, so a website dependency that went away does not fail the solve
+      # for every job that asks for it. See the action for the full reasoning.
+      id: get-website
+      uses: ./.github/workflows/get-website
+      with:
+        needs: ${{ inputs.needs }}
+
     - name: Let sudo keep R library env vars (ubuntu-26.04 forbids `sudo -E`)
       # r-lib/actions/setup-r-dependencies installs pak with
       #   sudo -E --preserve-env=PATH env R -e 'dir.create(Sys.getenv("R_LIB_FOR_PAK"), ...)'
@@ -153,9 +162,9 @@ runs:
         GITHUB_PAT: ${{ inputs.token }}
       with:
         pak-version: stable
-        needs: ${{ inputs.needs }}
+        needs: ${{ steps.get-website.outputs.needs }}
         packages: ${{ inputs.packages }}
-        extra-packages: ${{ inputs.extra-packages }} ${{ ( matrix.covr && 'r-lib/covr xml2' ) || '' }} ${{ steps.get-extra.outputs.packages }}
+        extra-packages: ${{ inputs.extra-packages }} ${{ ( matrix.covr && 'r-lib/covr xml2' ) || '' }} ${{ steps.get-extra.outputs.packages }} ${{ steps.get-website.outputs.packages }}
         cache-version: ${{ inputs.cache-version }}
 
     - name: Add pkg.lock to .gitignore
