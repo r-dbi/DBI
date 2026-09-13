@@ -148,8 +148,3 @@ All classes are *virtual*: they cannot be instantiated directly and instead must
 - The [DBI project site](https://r-dbi.org/) hosts a blog where recent developments are presented.
 
 - [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James, the driving force behind the development of DBI, and many of the packages that implement it.
-
-------------------------------------------------------------------------
-
-Please note that the *DBI* project is released with a [Contributor Code of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
