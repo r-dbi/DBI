@@ -1,7 +1,7 @@
 #' Get DBMS exceptions
 #'
 #' DEPRECATED.
-#'  Backends should use R's condition system to signal errors and warnings.
+#' Backends should use R's condition system to signal errors and warnings.
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics

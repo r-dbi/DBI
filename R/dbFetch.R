@@ -3,8 +3,8 @@
 #' Fetch the next `n` elements (rows) from the result set and return them as a data.frame.
 #'
 #' `fetch()` is provided for compatibility with older DBI clients - for all new code you are strongly encouraged to use `dbFetch()`.
-#'  The default implementation for `dbFetch()` calls `fetch()` so that it is compatible with existing code.
-#'  Modern backends should implement for `dbFetch()` only.
+#' The default implementation for `dbFetch()` calls `fetch()` so that it is compatible with existing code.
+#' Modern backends should implement for `dbFetch()` only.
 #'
 #' @inheritSection dbBind The data retrieval flow
 #'

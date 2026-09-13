@@ -1,11 +1,11 @@
 #' Create a connection to a DBMS
 #'
 #' Connect to a DBMS going through the appropriate authentication procedure.
-#'  Some implementations may allow you to have multiple connections open,
-#'  so you may invoke this function repeatedly assigning its output to different objects.
-#'  The authentication mechanism is left unspecified,
-#'  so check the documentation of individual drivers for details.
-#'  Use [dbCanConnect()] to check if a connection can be established.
+#' Some implementations may allow you to have multiple connections open,
+#' so you may invoke this function repeatedly assigning its output to different objects.
+#' The authentication mechanism is left unspecified,
+#' so check the documentation of individual drivers for details.
+#' Use [dbCanConnect()] to check if a connection can be established.
 #'
 #' @template methods
 #' @templateVar method_name dbConnect

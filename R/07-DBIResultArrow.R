@@ -4,7 +4,7 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query)
-#'  for returning data as an Arrow object.
+#' for returning data as an Arrow object.
 #'
 #' @section Implementation notes:
 #' Individual drivers are free to allow single or multiple active results per connection.

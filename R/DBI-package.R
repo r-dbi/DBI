@@ -1,6 +1,6 @@
 #' @description
 #' DBI defines an interface for communication between R and relational database management systems.
-#'  All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called *DBI backends*).
+#' All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called *DBI backends*).
 #'
 #' @inheritSection DBItest::spec_getting_started Definition
 #' @inheritSection DBItest::spec_compliance_methods DBI classes and methods

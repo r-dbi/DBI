@@ -2,16 +2,16 @@
 #'
 #' @description
 #' These methods are deprecated,
-#'  please consult the documentation of the individual backends for the construction of driver instances.
+#' please consult the documentation of the individual backends for the construction of driver instances.
 #'
 #' `dbDriver()` is a helper method used to create an new driver object given the name of a database or the corresponding R package.
-#'  It works through convention: all DBI-extending packages should provide an exported object with the same name as the package.
-#'  `dbDriver()` just looks for this object in the right places:
-#'  if you know what database you are connecting to, you should call the function directly.
+#' It works through convention: all DBI-extending packages should provide an exported object with the same name as the package.
+#' `dbDriver()` just looks for this object in the right places:
+#' if you know what database you are connecting to, you should call the function directly.
 #'
 #' @details
 #' The client part of the database communication is initialized (typically dynamically loading C code, etc.)
-#'  but note that connecting to the database engine itself needs to be done through calls to `dbConnect`.
+#' but note that connecting to the database engine itself needs to be done through calls to `dbConnect`.
 #'
 #' @param drvName character name of the driver to instantiate.
 #' @param drv an object that inherits from `DBIDriver` as created by `dbDriver`.

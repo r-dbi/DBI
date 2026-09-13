@@ -32,6 +32,6 @@ show_result <- function(object) {
 #' @name dbGetInfo
 #' @section Implementation notes:
 #' The default implementation for `DBIResult objects`
-#'  constructs such a list from the return values of the corresponding methods,
-#'  [dbGetStatement()], [dbGetRowCount()], [dbGetRowsAffected()], and [dbHasCompleted()].
+#' constructs such a list from the return values of the corresponding methods,
+#' [dbGetStatement()], [dbGetRowCount()], [dbGetRowsAffected()], and [dbHasCompleted()].
 NULL

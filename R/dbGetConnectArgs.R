@@ -1,8 +1,8 @@
 #' Get connection arguments
 #'
 #' Returns the arguments stored in a [DBIConnector-class] object for inspection,
-#'  optionally evaluating them.
-#'  This function is called by [dbConnect()] and usually does not need to be called directly.
+#' optionally evaluating them.
+#' This function is called by [dbConnect()] and usually does not need to be called directly.
 #'
 #' @template methods
 #' @templateVar method_name dbGetConnectArgs

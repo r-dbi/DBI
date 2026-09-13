@@ -4,22 +4,22 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' Returns the result of a query as an Arrow object.
-#'  `dbGetQueryArrow()` comes with a default implementation (which should work with most backends)
-#'  that calls [dbSendQueryArrow()], then [dbFetchArrow()],
-#'  ensuring that the result is always freed by [dbClearResult()].
-#'  For passing query parameters,
-#'  see [dbSendQueryArrow()], in particular the "The data retrieval flow for Arrow streams" section.
-#'  For retrieving results as a data frame, see [dbGetQuery()].
+#' `dbGetQueryArrow()` comes with a default implementation (which should work with most backends)
+#' that calls [dbSendQueryArrow()], then [dbFetchArrow()],
+#' ensuring that the result is always freed by [dbClearResult()].
+#' For passing query parameters,
+#' see [dbSendQueryArrow()], in particular the "The data retrieval flow for Arrow streams" section.
+#' For retrieving results as a data frame, see [dbGetQuery()].
 #'
 #' @details
 #' This method is for `SELECT` queries only
-#'  (incl. other SQL statements that return a `SELECT`-alike result,
-#'  e.g., execution of a stored procedure or data manipulation queries like `INSERT INTO ... RETURNING ...`).
-#'  To execute a stored procedure that does not return a result set,
-#'  use [dbExecute()].
+#' (incl. other SQL statements that return a `SELECT`-alike result,
+#' e.g., execution of a stored procedure or data manipulation queries like `INSERT INTO ... RETURNING ...`).
+#' To execute a stored procedure that does not return a result set,
+#' use [dbExecute()].
 #'
 #' Some backends may support data manipulation statements through this method.
-#'  However, callers are strongly advised to use [dbExecute()] for data manipulation statements.
+#' However, callers are strongly advised to use [dbExecute()] for data manipulation statements.
 #'
 #' @template methods
 #' @templateVar method_name dbGetQueryArrow

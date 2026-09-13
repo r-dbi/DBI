@@ -4,12 +4,12 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' Reads a database table as an Arrow object.
-#'  Use [dbReadTable()] instead to obtain a data frame.
+#' Use [dbReadTable()] instead to obtain a data frame.
 #'
 #' @details
 #' This function returns an Arrow object.
-#'  Convert it to a data frame with [as.data.frame()]
-#'  or use [dbReadTable()] to obtain a data frame.
+#' Convert it to a data frame with [as.data.frame()]
+#' or use [dbReadTable()] to obtain a data frame.
 #'
 #' @template methods
 #' @templateVar method_name dbReadTableArrow

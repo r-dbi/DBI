@@ -1,17 +1,17 @@
 #' Insert rows into a table
 #'
 #' The `dbAppendTable()` method assumes that the table has been created
-#'  beforehand, e.g. with [dbCreateTable()].
-#'  The default implementation calls [sqlAppendTableTemplate()] and then [dbExecute()] with the `param` argument.
-#'  Use [dbAppendTableArrow()] to append data from an Arrow stream.
+#' beforehand, e.g. with [dbCreateTable()].
+#' The default implementation calls [sqlAppendTableTemplate()] and then [dbExecute()] with the `param` argument.
+#' Use [dbAppendTableArrow()] to append data from an Arrow stream.
 #'
 #' Backends compliant to ANSI SQL 99 which use `?` as a placeholder for prepared queries don't need to override it.
-#'  Backends with a different SQL syntax which use `?` as a placeholder for prepared queries can override [sqlAppendTable()].
-#'  Other backends (with different placeholders or with entirely different ways to create tables)
-#'  need to override the `dbAppendTable()` method.
+#' Backends with a different SQL syntax which use `?` as a placeholder for prepared queries can override [sqlAppendTable()].
+#' Other backends (with different placeholders or with entirely different ways to create tables)
+#' need to override the `dbAppendTable()` method.
 #'
 #' The `row.names` argument is not supported by this method.
-#'  Process the values with [sqlRownamesToColumn()] before calling this method.
+#' Process the values with [sqlRownamesToColumn()] before calling this method.
 #'
 #' @inheritParams dbReadTable
 #' @param value A [data.frame] (or coercible to data.frame).

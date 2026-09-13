@@ -2,7 +2,7 @@
 #'
 #' @description
 #' Accepts a query string with placeholders for values, and returns a string with the values embedded.
-#'  The function is careful to quote all of its inputs with [dbQuoteLiteral()] to protect against SQL injection attacks.
+#' The function is careful to quote all of its inputs with [dbQuoteLiteral()] to protect against SQL injection attacks.
 #'
 #' Placeholders can be specified with one of two syntaxes:
 #'
@@ -11,13 +11,13 @@
 #'   the names are used to match the values
 #'
 #' Mixing `?` and `?name` syntaxes is an error.
-#'  The number and names of values supplied must correspond to the placeholders used in the query.
+#' The number and names of values supplied must correspond to the placeholders used in the query.
 #'
 #' @section Backend authors:
 #' If you are implementing an SQL backend with non-ANSI quoting rules,
-#'  you'll need to implement a method for [sqlParseVariables()].
-#'  Failure to do so does not expose you to SQL injection attacks,
-#'  but will (rarely) result in errors matching supplied and interpolated variables.
+#' you'll need to implement a method for [sqlParseVariables()].
+#' Failure to do so does not expose you to SQL injection attacks,
+#' but will (rarely) result in errors matching supplied and interpolated variables.
 #'
 #' @inheritParams dbGetQuery
 #' @param sql A SQL string containing variables to interpolate.
