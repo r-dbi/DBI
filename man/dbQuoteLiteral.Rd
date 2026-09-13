@@ -7,8 +7,7 @@
 dbQuoteLiteral(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A vector to quote as string.}
 
@@ -35,9 +34,8 @@ Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 to achieve this behavior, but this is not required.)
 }
 \description{
-Call these methods to generate a string that is suitable for
-use in a query as a literal value of the correct type, to make sure that you
-generate valid SQL and protect against SQL injection attacks.
+Call these methods to generate a string that is suitable for use in a query as a literal value of the correct type,
+to make sure that you generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteLiteral")}
 }

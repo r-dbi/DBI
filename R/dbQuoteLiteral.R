@@ -1,9 +1,8 @@
 #' Quote literal values
 #'
 #' @description
-#' Call these methods to generate a string that is suitable for
-#' use in a query as a literal value of the correct type, to make sure that you
-#' generate valid SQL and protect against SQL injection attacks.
+#' Call these methods to generate a string that is suitable for use in a query as a literal value of the correct type,
+#' to make sure that you generate valid SQL and protect against SQL injection attacks.
 #'
 #' @inheritParams dbQuoteString
 #' @param x A vector to quote as string.

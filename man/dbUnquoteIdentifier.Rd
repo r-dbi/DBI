@@ -7,8 +7,7 @@
 dbUnquoteIdentifier(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{An \link{SQL} or \link{Id} object.}
 
@@ -30,8 +29,7 @@ to achieve this behavior, but this is not required.)
 Plain character vectors can also be passed to \code{dbUnquoteIdentifier()}.
 }
 \description{
-Call this method to convert a \link{SQL} object created by \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}
-back to a list of \link{Id} objects.
+Call this method to convert a \link{SQL} object created by \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} back to a list of \link{Id} objects.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbUnquoteIdentifier")}
 }

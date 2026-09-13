@@ -9,14 +9,14 @@ sqlCreateTable(con, table, fields, row.names = NA, temporary = FALSE, ...)
 \arguments{
 \item{con}{A database connection.}
 
-\item{table}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{table}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{fields}{Either a character vector or a data frame.
@@ -25,17 +25,15 @@ A named character vector: Names are column names, values are types.
 Names are escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
 Field types are unescaped.
 
-A data frame: field types are generated using
-\code{\link[=dbDataType]{dbDataType()}}.}
+A data frame: field types are generated using \code{\link[=dbDataType]{dbDataType()}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
 If \code{TRUE}, always translate row names to a column called "row_names".
-If \code{FALSE}, never translate row names. If \code{NA}, translate
-rownames only if they're a character vector.
+If \code{FALSE}, never translate row names.
+If \code{NA}, translate rownames only if they're a character vector.
 
-A string is equivalent to \code{TRUE}, but allows you to override the
-default name.
+A string is equivalent to \code{TRUE}, but allows you to override the default name.
 
 For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 
@@ -44,15 +42,15 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 \item{...}{Other arguments used by individual methods.}
 }
 \description{
-Exposes an interface to simple \verb{CREATE TABLE} commands. The default
-method is ANSI SQL 99 compliant.
+Exposes an interface to simple \verb{CREATE TABLE} commands.
+The default method is ANSI SQL 99 compliant.
 This method is mostly useful for backend implementers.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlCreateTable")}
 }
 \details{
-The \code{row.names} argument must be passed explicitly in order to avoid
-a compatibility warning.  The default will be changed in a later release.
+The \code{row.names} argument must be passed explicitly
+in order to avoid a compatibility warning.  The default will be changed in a later release.
 }
 \examples{
 sqlCreateTable(ANSI(), "my-table", c(a = "integer", b = "text"))

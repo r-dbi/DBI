@@ -7,8 +7,7 @@
 dbSendQueryArrow(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
@@ -24,39 +23,30 @@ with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-The \code{dbSendQueryArrow()} method only submits and synchronously executes the
-SQL query to the database engine.
-It does \emph{not} extract any
-records --- for that you need to use the \code{\link[=dbFetchArrow]{dbFetchArrow()}} method, and
-then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
-records you need.
+The \code{dbSendQueryArrow()} method only submits and synchronously executes the SQL query to the database engine.
+It does \emph{not} extract any records --- for that you need to use the \code{\link[=dbFetchArrow]{dbFetchArrow()}} method,
+and then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the records you need.
 For interactive use, you should almost always prefer \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}.
-Use \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbGetQuery]{dbGetQuery()}} instead to retrieve the results
-as a data frame.
+Use \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbGetQuery]{dbGetQuery()}} instead to retrieve the results as a data frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbSendQueryArrow")}
 }
 \details{
-This method is for \code{SELECT} queries only.  Some backends may
-support data manipulation queries through this method for compatibility
-reasons.  However, callers are strongly encouraged to use
-\code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
+This method is for \code{SELECT} queries only.  Some backends may support data manipulation queries through this method
+for compatibility reasons.  However, callers are strongly encouraged to use \code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
 }
 \section{The data retrieval flow for Arrow streams}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
-which should be sufficient
+is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\link[=DBIResultArrow-class]{DBIResultArrow}.
+\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.

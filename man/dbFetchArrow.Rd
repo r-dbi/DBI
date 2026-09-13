@@ -7,8 +7,7 @@
 dbFetchArrow(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[=DBIResultArrow-class]{DBI::DBIResultArrow},
-created by \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}.}
+\item{res}{An object inheriting from \link[=DBIResultArrow-class]{DBI::DBIResultArrow}, created by \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -31,18 +30,15 @@ Use \code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}} to fetch results in ch
 \section{The data retrieval flow for Arrow streams}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
-which should be sufficient
+is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\link[=DBIResultArrow-class]{DBIResultArrow}.
+\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -91,8 +87,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
-finish retrieving the records you want.
+Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you finish retrieving the records you want.
 
 Other DBIResultArrow generics:
 \code{\link{DBIResultArrow-class}},

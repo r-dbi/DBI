@@ -8,22 +8,19 @@ dbCanConnect(drv, ...)
 }
 \arguments{
 \item{drv}{An object that inherits from \link[=DBIDriver-class]{DBI::DBIDriver},
-or an existing \link[=DBIConnection-class]{DBI::DBIConnection}
-object (in order to clone an existing connection).}
+or an existing \link[=DBIConnection-class]{DBI::DBIConnection} object (in order to clone an existing connection).}
 
-\item{...}{Authentication arguments needed by the DBMS instance; these
-typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
+\item{...}{Authentication arguments needed by the DBMS instance;
+these typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
 For details see the appropriate \code{DBIDriver}.}
 }
 \value{
-A scalar logical.  If \code{FALSE}, the \code{"reason"} attribute indicates
-a reason for failure.
+A scalar logical.  If \code{FALSE}, the \code{"reason"} attribute indicates a reason for failure.
 }
 \description{
-Like \code{\link[=dbConnect]{dbConnect()}}, but only checks validity without actually returning
-a connection object.  The default implementation opens a connection
-and disconnects on success, but individual backends might implement
-a lighter-weight check.
+Like \code{\link[=dbConnect]{dbConnect()}}, but only checks validity
+without actually returning a connection object.  The default implementation opens a connection and disconnects on success,
+but individual backends might implement a lighter-weight check.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbCanConnect")}
 }

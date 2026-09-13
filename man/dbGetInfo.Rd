@@ -8,8 +8,7 @@ dbGetInfo(dbObj, ...)
 }
 \arguments{
 \item{dbObj}{An object inheriting from \link[=DBIObject-class]{DBIObject},
-i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection},
-or a \link[=DBIResult-class]{DBIResult}}
+i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection}, or a \link[=DBIResult-class]{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }
@@ -51,8 +50,7 @@ as returned by \code{\link[DBI:dbHasCompleted]{dbHasCompleted()}}.
 }
 }
 \description{
-Retrieves information on objects of class \link[=DBIDriver-class]{DBIDriver},
-\link[=DBIConnection-class]{DBIConnection} or \link[=DBIResult-class]{DBIResult}.
+Retrieves information on objects of class \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection} or \link[=DBIResult-class]{DBIResult}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetInfo")}
 }
@@ -60,8 +58,7 @@ Retrieves information on objects of class \link[=DBIDriver-class]{DBIDriver},
 
 The default implementation for \verb{DBIResult objects}
 constructs such a list from the return values of the corresponding methods,
-\code{\link[=dbGetStatement]{dbGetStatement()}}, \code{\link[=dbGetRowCount]{dbGetRowCount()}},
-\code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
+\code{\link[=dbGetStatement]{dbGetStatement()}}, \code{\link[=dbGetRowCount]{dbGetRowCount()}}, \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, and \code{\link[=dbHasCompleted]{dbHasCompleted()}}.
 }
 
 \examples{

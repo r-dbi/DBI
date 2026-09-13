@@ -8,8 +8,7 @@ dbIsValid(dbObj, ...)
 }
 \arguments{
 \item{dbObj}{An object inheriting from \link[=DBIObject-class]{DBIObject},
-i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection},
-or a \link[=DBIResult-class]{DBIResult}}
+i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection}, or a \link[=DBIResult-class]{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }
@@ -32,8 +31,7 @@ connectivity problems, server failure, etc.), \code{dbIsValid()} should return
 \code{FALSE}. This is not tested automatically.
 }
 \description{
-This generic tests whether a database object is still valid (i.e. it hasn't
-been disconnected or cleared).
+This generic tests whether a database object is still valid (i.e. it hasn't been disconnected or cleared).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbIsValid")}
 }

@@ -1,9 +1,8 @@
 #' List remote tables
 #'
-#' Returns the unquoted names of remote tables accessible through this
-#' connection.
-#' This should include views and temporary objects, but not all database backends
-#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+#' Returns the unquoted names of remote tables accessible through this connection.
+#' This should include views and temporary objects,
+#' but not all database backends (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 #'
 #' @template methods
 #' @templateVar method_name dbListTables

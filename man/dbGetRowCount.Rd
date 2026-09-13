@@ -30,8 +30,7 @@ zero is returned before
 and after calling \code{dbFetch()}.
 }
 \description{
-Returns the total number of rows actually fetched with calls to \code{\link[=dbFetch]{dbFetch()}}
-for this result set.
+Returns the total number of rows actually fetched with calls to \code{\link[=dbFetch]{dbFetch()}} for this result set.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetRowCount")}
 }

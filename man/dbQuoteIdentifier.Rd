@@ -7,8 +7,7 @@
 dbQuoteIdentifier(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A character vector, \link{SQL} or \link{Id} object to quote as identifier.}
 
@@ -27,10 +26,9 @@ Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 to achieve this behavior, but this is not required.)
 }
 \description{
-Call this method to generate a string that is suitable for
-use in a query as a column or table name, to make sure that you
-generate valid SQL and protect against SQL injection attacks. The inverse
-operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
+Call this method to generate a string that is suitable for use in a query as a column or table name,
+to make sure that you generate valid SQL and protect against SQL injection attacks.
+The inverse operation is \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteIdentifier")}
 }

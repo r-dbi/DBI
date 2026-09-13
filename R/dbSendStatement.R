@@ -1,16 +1,12 @@
 #' Execute a data manipulation statement on a given database connection
 #'
-#' The `dbSendStatement()` method only submits and synchronously executes the
-#' SQL data manipulation statement (e.g., `UPDATE`, `DELETE`,
-#' `INSERT INTO`, `DROP TABLE`, ...) to the database engine.  To query
-#' the number of affected rows, call [dbGetRowsAffected()] on the
-#' returned result object.  You must also call [dbClearResult()] after
-#' that. For interactive use, you should almost always prefer
-#' [dbExecute()].
+#' The `dbSendStatement()` method only submits and synchronously executes the SQL data manipulation statement
+#' (e.g., `UPDATE`, `DELETE`, `INSERT INTO`, `DROP TABLE`, ...) to the database engine.  To query the number of affected rows,
+#' call [dbGetRowsAffected()] on the returned result object.  You must also call [dbClearResult()] after that.
+#' For interactive use, you should almost always prefer [dbExecute()].
 #'
-#' [dbSendStatement()] comes with a default implementation that simply
-#' forwards to [dbSendQuery()], to support backends that only
-#' implement the latter.
+#' [dbSendStatement()] comes with a default implementation that simply forwards to [dbSendQuery()],
+#' to support backends that only implement the latter.
 #'
 #' @inheritSection dbBind The command execution flow
 #'
