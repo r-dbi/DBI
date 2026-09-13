@@ -1,8 +1,8 @@
 #' Completion status
 #'
 #' This method returns if the operation has completed.
-#' A `SELECT` query is completed if all rows have been fetched.
-#' A data manipulation statement is always completed.
+#'  A `SELECT` query is completed if all rows have been fetched.
+#'  A data manipulation statement is always completed.
 #'
 #' @inheritSection dbBind The data retrieval flow
 #'

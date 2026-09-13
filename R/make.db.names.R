@@ -1,7 +1,7 @@
 #' Make R identifiers into legal SQL identifiers
 #'
 #' These methods are DEPRECATED.
-#' Please use [dbQuoteIdentifier()] (or possibly [dbQuoteString()]) instead.
+#'  Please use [dbQuoteIdentifier()] (or possibly [dbQuoteString()]) instead.
 #'
 #' The algorithm in `make.db.names` first invokes `make.names` and then replaces each occurrence of a dot `.` by an underscore `_`.  If `allow.keywords` is `FALSE` and identifiers collide with SQL keywords, a small integer is appended to the identifier in the form of `"_n"`.
 #'
@@ -9,9 +9,9 @@
 #'
 #' @section Bugs:
 #' The current mapping is not guaranteed to be fully reversible:
-#' some SQL identifiers that get mapped into R identifiers with `make.names` and then back to SQL with [make.db.names()]
-#' will not be equal to the original SQL identifiers
-#' (e.g., compound SQL identifiers of the form `username.tablename` will loose the dot ``.'').
+#'  some SQL identifiers that get mapped into R identifiers with `make.names` and then back to SQL with [make.db.names()]
+#'  will not be equal to the original SQL identifiers
+#'  (e.g., compound SQL identifiers of the form `username.tablename` will loose the dot ``.'').
 #'
 #' @references The set of SQL keywords is stored in the character vector `.SQL92Keywords` and reflects the SQL ANSI/ISO standard as documented in "X/Open SQL and RDA", 1994, ISBN 1-872630-68-8.  Users can easily override or update this vector.
 #' @aliases make.db.names SQLKeywords isSQLKeyword

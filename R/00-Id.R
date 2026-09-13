@@ -7,8 +7,8 @@ setClass("Id", slots = list(name = "character"))
 #'
 #' @description
 #' Objects of class `Id` have a single slot `name`, which is a character vector.
-#' The [dbQuoteIdentifier()] method converts `Id` objects to strings.
-#' Support for `Id` objects depends on the database backend.
+#'  The [dbQuoteIdentifier()] method converts `Id` objects to strings.
+#'  Support for `Id` objects depends on the database backend.
 #'
 #' They can be used in the following methods as `name` or `table` argument:
 #'

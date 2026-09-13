@@ -4,8 +4,8 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' Fetch the next chunk of the result set and return it as an Arrow object.
-#' The chunk size is implementation-specific.
-#' Use [dbFetchArrow()] to fetch all results.
+#'  The chunk size is implementation-specific.
+#'  Use [dbFetchArrow()] to fetch all results.
 #'
 #' @inheritSection dbBind The data retrieval flow for Arrow streams
 #'

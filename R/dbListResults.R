@@ -1,8 +1,8 @@
 #' A list of all pending results
 #'
 #' DEPRECATED.
-#' DBI currenty supports only one open result set per connection,
-#' you need to keep track of the result sets you open if you need this functionality.
+#'  DBI currenty supports only one open result set per connection,
+#'  you need to keep track of the result sets you open if you need this functionality.
 #'
 #' @inheritParams dbGetQuery
 #' @family DBIConnection generics

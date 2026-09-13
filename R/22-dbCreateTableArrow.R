@@ -4,9 +4,9 @@
 #' `r lifecycle::badge('experimental')`
 #'
 #' The default `dbCreateTableArrow()` method determines the R data types of the Arrow schema associated with the Arrow object,
-#' and calls [dbCreateTable()].
-#' Backends that implement [dbAppendTableArrow()] should typically also implement this generic.
-#' Use [dbCreateTable()] to create a table from the column types as defined in a data frame.
+#'  and calls [dbCreateTable()].
+#'  Backends that implement [dbAppendTableArrow()] should typically also implement this generic.
+#'  Use [dbCreateTable()] to create a table from the column types as defined in a data frame.
 #'
 #' @param value An object for which a schema can be determined via [nanoarrow::infer_nanoarrow_schema()].
 #' @inheritParams dbReadTable

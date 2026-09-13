@@ -2,25 +2,25 @@
 #'
 #' @description
 #' For parametrized or prepared statements,
-#' the [dbSendQuery()], [dbSendQueryArrow()], and [dbSendStatement()] functions
-#' can be called with statements that contain placeholders for values.
-#' The `dbBind()` and `dbBindArrow()` functions bind these placeholders to actual values,
-#' and are intended to be called on the result set before calling [dbFetch()] or [dbFetchArrow()].
-#' The values are passed to `dbBind()` as lists or data frames,
-#' and to `dbBindArrow()` as a stream created by [nanoarrow::as_nanoarrow_array_stream()].
+#'  the [dbSendQuery()], [dbSendQueryArrow()], and [dbSendStatement()] functions
+#'  can be called with statements that contain placeholders for values.
+#'  The `dbBind()` and `dbBindArrow()` functions bind these placeholders to actual values,
+#'  and are intended to be called on the result set before calling [dbFetch()] or [dbFetchArrow()].
+#'  The values are passed to `dbBind()` as lists or data frames,
+#'  and to `dbBindArrow()` as a stream created by [nanoarrow::as_nanoarrow_array_stream()].
 #'
 #' `r lifecycle::badge('experimental')`
 #'
 #' `dbBindArrow()` is experimental, as are the other `*Arrow` functions.
-#' `dbSendQuery()` is compatible with `dbBindArrow()`, and `dbSendQueryArrow()` is compatible with `dbBind()`.
+#'  `dbSendQuery()` is compatible with `dbBindArrow()`, and `dbSendQueryArrow()` is compatible with `dbBind()`.
 #'
 #' @details
 #' \pkg{DBI} supports parametrized (or prepared) queries and statements
 #' via the `dbBind()` and `dbBindArrow()` generics.
-#' Parametrized queries are different from normal queries
-#' in that they allow an arbitrary number of placeholders,
-#' which are later substituted by actual values.
-#' Parametrized queries (and statements) serve two purposes:
+#'  Parametrized queries are different from normal queries
+#'  in that they allow an arbitrary number of placeholders,
+#'  which are later substituted by actual values.
+#'  Parametrized queries (and statements) serve two purposes:
 #'
 #' - The same query can be executed more than once with different values.
 #'   The DBMS may cache intermediate information for the query,
@@ -28,10 +28,10 @@
 #' - Separation of query syntax and parameters protects against SQL injection.
 #'
 #' The placeholder format is currently not specified by \pkg{DBI};
-#' in the future, a uniform placeholder syntax may be supported.
-#' Consult the backend documentation for the supported formats.
-#' For automated testing, backend authors specify the placeholder syntax with the `placeholder_pattern` tweak.
-#' Known examples are:
+#'  in the future, a uniform placeholder syntax may be supported.
+#'  Consult the backend documentation for the supported formats.
+#'  For automated testing, backend authors specify the placeholder syntax with the `placeholder_pattern` tweak.
+#'  Known examples are:
 #'
 #' - `?` (positional matching in order of appearance) in \pkg{RMariaDB} and \pkg{RSQLite}
 #' - `$1` (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
@@ -42,11 +42,11 @@
 #' This section gives a complete overview over the flow for the execution of queries that return tabular data as data frames.
 #'
 #' Most of this flow, except repeated calling of [dbBind()] or [dbBindArrow()],
-#' is implemented by [dbGetQuery()], which should be sufficient
-#' unless you want to access the results in a paged way
-#' or you have a parameterized query that you want to reuse.
-#' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#'  is implemented by [dbGetQuery()], which should be sufficient
+#'  unless you want to access the results in a paged way
+#'  or you have a parameterized query that you want to reuse.
+#'  This flow requires an active connection established by [dbConnect()].
+#'  See also `vignette("dbi-advanced")` for a walkthrough.
 #'
 #' 1. Use [dbSendQuery()] to create a result set object of class [DBIResult-class].
 #' 1. Optionally, bind query parameters with [dbBind()] or [dbBindArrow()].
@@ -71,10 +71,10 @@
 #' This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 #'
 #' Most of this flow, except repeated calling of [dbBindArrow()] or [dbBind()],
-#' is implemented by [dbGetQueryArrow()], which should be sufficient
-#' unless you have a parameterized query that you want to reuse.
-#' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#'  is implemented by [dbGetQueryArrow()], which should be sufficient
+#'  unless you have a parameterized query that you want to reuse.
+#'  This flow requires an active connection established by [dbConnect()].
+#'  See also `vignette("dbi-advanced")` for a walkthrough.
 #'
 #' 1. Use [dbSendQueryArrow()] to create a result set object of class [DBIResultArrow-class].
 #' 1. Optionally, bind query parameters with [dbBindArrow()] or [dbBind()].
@@ -91,12 +91,12 @@
 #' @section The command execution flow:
 #'
 #' This section gives a complete overview over the flow for the execution of SQL statements that have side effects
-#' such as stored procedures, inserting or deleting data, or setting database or connection options.
-#' Most of this flow, except repeated calling of [dbBindArrow()],
-#' is implemented by [dbExecute()], which should be sufficient
-#' for non-parameterized queries.
-#' This flow requires an active connection established by [dbConnect()].
-#' See also `vignette("dbi-advanced")` for a walkthrough.
+#'  such as stored procedures, inserting or deleting data, or setting database or connection options.
+#'  Most of this flow, except repeated calling of [dbBindArrow()],
+#'  is implemented by [dbExecute()], which should be sufficient
+#'  for non-parameterized queries.
+#'  This flow requires an active connection established by [dbConnect()].
+#'  See also `vignette("dbi-advanced")` for a walkthrough.
 #'
 #' 1. Use [dbSendStatement()] to create a result set object of class [DBIResult-class].
 #'    For some queries you need to pass `immediate = TRUE`.
