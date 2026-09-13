@@ -58,6 +58,6 @@ dbGetConnectArgs(cnr, eval = FALSE)
 #> $password
 #> function () 
 #> "supersecret"
-#> <environment: 0x5567208479e8>
+#> <environment: 0x5e8cba63faa0>
 #> 
 ```
