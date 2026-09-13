@@ -68,8 +68,7 @@ Use <code><a href="dbFetchArrowChunk.html">dbFetchArrowChunk()</a></code> to fet
 
 
 <dl><dt id="arg-res">res<a class="anchor" aria-label="anchor" href="#arg-res"></a></dt>
-<dd><p>An object inheriting from <a href="DBIResultArrow-class.html">DBI::DBIResultArrow</a>,
-created by <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>.</p></dd>
+<dd><p>An object inheriting from <a href="DBIResultArrow-class.html">DBI::DBIResultArrow</a>, created by <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code>.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -90,15 +89,12 @@ or zero rows.</p>
 
 
 
-<p>This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.</p>
+<p>This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.</p>
 <p>Most of this flow, except repeated calling of <code><a href="dbBind.html">dbBindArrow()</a></code> or <code><a href="dbBind.html">dbBind()</a></code>,
-is implemented by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>,
-which should be sufficient
+is implemented by <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code>, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by <code><a href="dbConnect.html">dbConnect()</a></code>.
-See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object of class
-<a href="DBIResultArrow-class.html">DBIResultArrow</a>.</p></li>
+See also <code>vignette("dbi-advanced")</code> for a walkthrough.</p><ol><li><p>Use <code><a href="dbSendQueryArrow.html">dbSendQueryArrow()</a></code> to create a result set object of class <a href="DBIResultArrow-class.html">DBIResultArrow</a>.</p></li>
 <li><p>Optionally, bind query parameters with <code><a href="dbBind.html">dbBindArrow()</a></code> or <code><a href="dbBind.html">dbBind()</a></code>.
 This is required only if the query contains placeholders
 such as <code>?</code> or <code>$1</code>, depending on the database backend.</p></li>
@@ -132,8 +128,7 @@ The chunk size is implementation-specific.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Close the result set with <code><a href="dbClearResult.html">dbClearResult()</a></code> as soon as you
-finish retrieving the records you want.</p>
+    <div class="dont-index"><p>Close the result set with <code><a href="dbClearResult.html">dbClearResult()</a></code> as soon as you finish retrieving the records you want.</p>
 <p>Other DBIResultArrow generics:
 <code><a href="DBIResultArrow-class.html">DBIResultArrow-class</a></code>,
 <code><a href="dbBind.html">dbBind()</a></code>,

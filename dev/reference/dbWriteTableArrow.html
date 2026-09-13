@@ -65,23 +65,22 @@ pool::dbWriteTableArrow(&quot;Pool&quot;)
 
 
 <dl><dt id="arg-conn">conn<a class="anchor" aria-label="anchor" href="#arg-conn"></a></dt>
-<dd><p>A <a href="DBIConnection-class.html">DBI::DBIConnection</a> object,
-as returned by <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
+<dd><p>A <a href="DBIConnection-class.html">DBI::DBIConnection</a> object, as returned by <code><a href="dbConnect.html">dbConnect()</a></code>.</p></dd>
 
 
 <dt id="arg-name">name<a class="anchor" aria-label="anchor" href="#arg-name"></a></dt>
-<dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>. Options are:</p><ul><li><p>a character string with the unquoted DBMS table name,
-e.g. <code>"table_name"</code>,</p></li>
+<dd><p>The table name, passed on to <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code>.
+Options are:</p><ul><li><p>a character string with the unquoted DBMS table name, e.g. <code>"table_name"</code>,</p></li>
 <li><p>a call to <code><a href="Id.html">Id()</a></code> with components to the fully qualified table name,
 e.g. <code>Id(schema = "my_schema", table = "table_name")</code></p></li>
-<li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name
-given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
+<li><p>a call to <code><a href="SQL.html">SQL()</a></code> with the quoted and fully qualified table name given verbatim,
+e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
 </ul></dd>
 
 
 <dt id="arg-value">value<a class="anchor" aria-label="anchor" href="#arg-value"></a></dt>
-<dd><p>An nanoarray stream, or an object coercible to a nanoarray stream with
-<code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p></dd>
+<dd><p>An nanoarray stream,
+or an object coercible to a nanoarray stream with <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>.</p></dd>
 
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
@@ -95,11 +94,11 @@ given verbatim, e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This function expects an Arrow object.
-Convert a data frame to an Arrow object with <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code> or
-use <code><a href="dbWriteTable.html">dbWriteTable()</a></code> to write a data frame.</p>
+Convert a data frame to an Arrow object with <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>
+or use <code><a href="dbWriteTable.html">dbWriteTable()</a></code> to write a data frame.</p>
 <p>This function is useful if you want to create and load a table at the same time.
-Use <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> for appending data to an existing
-table, <code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> for creating a table and specifying field types,
+Use <code><a href="dbAppendTableArrow.html">dbAppendTableArrow()</a></code> for appending data to an existing table,
+<code><a href="dbCreateTableArrow.html">dbCreateTableArrow()</a></code> for creating a table and specifying field types,
 and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code> for overwriting tables.</p>
     </div>
     <div class="section level2">
