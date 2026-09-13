@@ -23,8 +23,8 @@ or zero rows.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Fetch the next chunk of the result set and return it as an Arrow object.
-The chunk size is implementation-specific.
-Use \code{\link[=dbFetchArrow]{dbFetchArrow()}} to fetch all results.
+ The chunk size is implementation-specific.
+ Use \code{\link[=dbFetchArrow]{dbFetchArrow()}} to fetch all results.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbFetchArrowChunk")}
 }
@@ -36,19 +36,19 @@ This section gives a complete overview over the flow for the execution of querie
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
-This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
-See also \code{vignette("dbi-advanced")} for a walkthrough.
+ This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
-This is required only if the query contains placeholders
+ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Use \code{\link[=dbFetchArrow]{dbFetchArrow()}} to get a data stream.
 \item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
-This step is mandatory even if no rows have been fetched
+ This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
-It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+ It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
 }

@@ -10,7 +10,7 @@ dbReadTable(conn, name, ...)
 \item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Options are:
+ Options are:
 \itemize{
 \item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
@@ -53,13 +53,13 @@ If \code{check.names = FALSE}, the returned table has non-syntactic column names
 \description{
 Reads a database table to a data frame,
 optionally converting a column to row names and converting the column names to valid R identifiers.
-Use \code{\link[=dbReadTableArrow]{dbReadTableArrow()}} instead to obtain an Arrow object.
+ Use \code{\link[=dbReadTableArrow]{dbReadTableArrow()}} instead to obtain an Arrow object.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbReadTable")}
 }
 \details{
 This function returns a data frame.
-Use \code{\link[=dbReadTableArrow]{dbReadTableArrow()}} to obtain an Arrow object.
+ Use \code{\link[=dbReadTableArrow]{dbReadTableArrow()}} to obtain an Arrow object.
 }
 \section{Failure modes}{
 

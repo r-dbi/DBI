@@ -23,12 +23,12 @@ or zero rows.
 }
 \description{
 Returns the result of a query as a data frame.
-\code{dbGetQuery()} comes with a default implementation (which should work with most backends)
+ \code{dbGetQuery()} comes with a default implementation (which should work with most backends)
 that calls \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}},
 ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
-For retrieving chunked/paged results or for passing query parameters,
+ For retrieving chunked/paged results or for passing query parameters,
 see \code{\link[=dbSendQuery]{dbSendQuery()}}, in particular the "The data retrieval flow" section.
-For retrieving results as an Arrow object, see \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}.
+ For retrieving results as an Arrow object, see \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQuery")}
 }
@@ -36,11 +36,11 @@ For retrieving results as an Arrow object, see \code{\link[=dbGetQueryArrow]{dbG
 This method is for \code{SELECT} queries only
 (incl. other SQL statements that return a \code{SELECT}-alike result,
 e.g., execution of a stored procedure or data manipulation queries like \verb{INSERT INTO ... RETURNING ...}).
-To execute a stored procedure that does not return a result set,
+ To execute a stored procedure that does not return a result set,
 use \code{\link[=dbExecute]{dbExecute()}}.
 
 Some backends may support data manipulation statements through this method for compatibility reasons.
-However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
+ However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 

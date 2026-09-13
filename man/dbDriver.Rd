@@ -18,7 +18,7 @@ dbUnloadDriver(drv, ...)
 }
 \value{
 In the case of \code{dbDriver}, an driver object whose class extends \code{DBIDriver}.
-This object may be used to create connections to the actual DBMS engine.
+ This object may be used to create connections to the actual DBMS engine.
 
 In the case of \code{dbUnloadDriver}, a logical indicating whether the operation succeeded or not.
 }
@@ -27,8 +27,8 @@ These methods are deprecated,
 please consult the documentation of the individual backends for the construction of driver instances.
 
 \code{dbDriver()} is a helper method used to create an new driver object given the name of a database or the corresponding R package.
-It works through convention: all DBI-extending packages should provide an exported object with the same name as the package.
-\code{dbDriver()} just looks for this object in the right places:
+ It works through convention: all DBI-extending packages should provide an exported object with the same name as the package.
+ \code{dbDriver()} just looks for this object in the right places:
 if you know what database you are connecting to, you should call the function directly.
 
 \code{dbUnloadDriver()} is not implemented for modern backends.
