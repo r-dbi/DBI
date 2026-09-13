@@ -1,8 +1,6 @@
 #' Check if a connection to a DBMS can be established
 #'
-#' Like [dbConnect()], but only checks validity
-#' without actually returning a connection object.  The default implementation opens a connection and disconnects on success,
-#' but individual backends might implement a lighter-weight check.
+#' Like [dbConnect()], but only checks validity without actually returning a connection object.  The default implementation opens a connection and disconnects on success, but individual backends might implement a lighter-weight check.
 #'
 #' @template methods
 #' @templateVar method_name dbCanConnect
