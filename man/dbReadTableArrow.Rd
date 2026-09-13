@@ -7,17 +7,16 @@
 dbReadTableArrow(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{...}{Other parameters passed on to methods.}
@@ -39,8 +38,8 @@ Use \code{\link[=dbReadTable]{dbReadTable()}} instead to obtain a data frame.
 }
 \details{
 This function returns an Arrow object.
-Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}} or
-use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
+Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}}
+or use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
 }
 \section{Failure modes}{
 

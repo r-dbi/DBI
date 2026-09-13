@@ -7,17 +7,16 @@
 dbReadTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{...}{Other parameters passed on to methods.}
@@ -52,9 +51,8 @@ if the \code{check.names} argument is \code{TRUE},
 If \code{check.names = FALSE}, the returned table has non-syntactic column names without quotes.
 }
 \description{
-Reads a database table to a data frame, optionally converting
-a column to row names and converting the column names to valid
-R identifiers.
+Reads a database table to a data frame,
+optionally converting a column to row names and converting the column names to valid R identifiers.
 Use \code{\link[=dbReadTableArrow]{dbReadTableArrow()}} instead to obtain an Arrow object.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbReadTable")}

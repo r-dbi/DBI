@@ -6,10 +6,8 @@
 \alias{DBI-package}
 \title{DBI: R Database Interface}
 \description{
-DBI defines an interface for communication between R and relational database
-management systems.
-All classes in this package are virtual and need to be extended by
-the various R/DBMS implementations (so-called \emph{DBI backends}).
+DBI defines an interface for communication between R and relational database management systems.
+All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called \emph{DBI backends}).
 }
 \section{Definition}{
 
@@ -62,8 +60,7 @@ RSQLite::SQLite()
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQuery]{dbGetQuery()}},
-\code{\link[=dbReadTable]{dbReadTable()}}, \code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
+Important generics: \code{\link[=dbConnect]{dbConnect()}}, \code{\link[=dbGetQuery]{dbGetQuery()}}, \code{\link[=dbReadTable]{dbReadTable()}}, \code{\link[=dbWriteTable]{dbWriteTable()}}, \code{\link[=dbDisconnect]{dbDisconnect()}}
 
 Formal specification (currently work in progress and incomplete):
 \code{vignette("spec", package = "DBI")}

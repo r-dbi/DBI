@@ -7,8 +7,7 @@
 dbListObjects(conn, prefix = NULL, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{prefix}{A fully qualified path in the database's namespace, or \code{NULL}.
 This argument will be processed with \code{\link[=dbUnquoteIdentifier]{dbUnquoteIdentifier()}}.
@@ -39,15 +38,13 @@ The same applies to temporary objects if supported by the database.
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
-Returns the names of remote objects accessible through this connection
-as a data frame.
-This should include temporary objects, but not all database backends
-(in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
-Compared to \code{\link[=dbListTables]{dbListTables()}}, this method also enumerates tables and views
-in schemas, and returns fully qualified identifiers to access these objects.
-This allows exploration of all database objects available to the current
-user, including those that can only be accessed by giving the full
-namespace.
+Returns the names of remote objects accessible through this connection as a data frame.
+This should include temporary objects,
+but not all database backends (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+Compared to \code{\link[=dbListTables]{dbListTables()}}, this method also enumerates tables and views in schemas,
+and returns fully qualified identifiers to access these objects.
+This allows exploration of all database objects available to the current user,
+including those that can only be accessed by giving the full namespace.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListObjects")}
 }
