@@ -36,3 +36,4 @@ inst\/doc\/DBI\.b..$
 ^tests/testthat/helper-dev\.R$
 ^air\.toml$
 ^\.ccache$
+^index\.md$
