@@ -1,11 +1,9 @@
 #' Get DBMS metadata
 #'
-#' Retrieves information on objects of class [DBIDriver-class],
-#' [DBIConnection-class] or [DBIResult-class].
+#' Retrieves information on objects of class [DBIDriver-class], [DBIConnection-class] or [DBIResult-class].
 #'
 #' @param dbObj An object inheriting from [DBIObject-class],
-#'  i.e. [DBIDriver-class], [DBIConnection-class],
-#'  or a [DBIResult-class]
+#'  i.e. [DBIDriver-class], [DBIConnection-class], or a [DBIResult-class]
 #' @param ... Other arguments to methods.
 #'
 #' @template methods

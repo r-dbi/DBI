@@ -15,8 +15,7 @@ dbCommit(conn, ...)
 dbRollback(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -27,16 +26,14 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
 or undone with \code{dbRollback()}.
-In any case, the DBMS guarantees that either all or none of the statements
-have a permanent effect.
+In any case, the DBMS guarantees that either all or none of the statements have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("transactions")}
 }
 \details{
-Not all database engines implement transaction management, in which case
-these methods should not be implemented for the specific
-\link[=DBIConnection-class]{DBIConnection} subclass.
+Not all database engines implement transaction management,
+in which case these methods should not be implemented for the specific \link[=DBIConnection-class]{DBIConnection} subclass.
 }
 \section{Failure modes}{
 

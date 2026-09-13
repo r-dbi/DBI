@@ -99,8 +99,7 @@ with_otel_record <- function(expr) {
 
 # DBI-specific helpers:
 
-# When this was called `get_dbname()`, it collided with `dittodb::get_dbname()`
-# for some weakly understood reason.
+# When this was called `get_dbname()`, it collided with `dittodb::get_dbname()` for some weakly understood reason.
 # The weird name makes collisions more unlikely.
 .dbi_get_db_name <- function(obj) {
   dbname <- attr(class(obj), "package")

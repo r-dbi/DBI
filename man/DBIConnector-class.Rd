@@ -6,18 +6,15 @@
 \title{DBIConnector class}
 \description{
 Wraps objects of the \link[=DBIDriver-class]{DBIDriver} class to include connection options.
-The purpose of this class is to store both the driver
-and the connection options.
-A database connection can be established
-with a call to \code{\link[=dbConnect]{dbConnect()}}, passing only that object
-without additional arguments.
+The purpose of this class is to store both the driver and the connection options.
+A database connection can be established with a call to \code{\link[=dbConnect]{dbConnect()}},
+passing only that object without additional arguments.
 }
 \details{
 To prevent leakage of passwords and other credentials,
 this class supports delayed evaluation.
 All arguments can optionally be a function (callable without arguments).
-In such a case, the function is evaluated transparently when connecting in
-\code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}.
+In such a case, the function is evaluated transparently when connecting in \code{\link[=dbGetConnectArgs]{dbGetConnectArgs()}}.
 }
 \examples{
 \dontshow{if (requireNamespace("RSQLite", quietly = TRUE)) withAutoprint(\{ # examplesIf}

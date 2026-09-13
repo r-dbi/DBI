@@ -7,17 +7,16 @@
 dbAppendTableArrow(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{value}{An object coercible with \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.}
@@ -34,8 +33,7 @@ numeric.
 
 The \code{dbAppendTableArrow()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}}.
-The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk
-of the stream.
+The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk of the stream.
 Use \code{\link[=dbAppendTable]{dbAppendTable()}} to append data from a data.frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbAppendTableArrow")}

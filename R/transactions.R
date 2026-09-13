@@ -3,13 +3,11 @@
 #' A transaction encapsulates several SQL statements in an atomic unit.
 #' It is initiated with `dbBegin()` and either made persistent with `dbCommit()`
 #' or undone with `dbRollback()`.
-#' In any case, the DBMS guarantees that either all or none of the statements
-#' have a permanent effect.
+#' In any case, the DBMS guarantees that either all or none of the statements have a permanent effect.
 #' This helps ensuring consistency of write operations to multiple tables.
 #'
-#' Not all database engines implement transaction management, in which case
-#' these methods should not be implemented for the specific
-#' [DBIConnection-class] subclass.
+#' Not all database engines implement transaction management,
+#' in which case these methods should not be implemented for the specific [DBIConnection-class] subclass.
 #'
 #' @template methods
 #' @templateVar method_name transactions

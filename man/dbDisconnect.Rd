@@ -7,8 +7,7 @@
 dbDisconnect(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -16,8 +15,7 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 \code{dbDisconnect()} returns \code{TRUE}, invisibly.
 }
 \description{
-This closes the connection, discards all pending work, and frees
-resources (e.g., memory, sockets).
+This closes the connection, discards all pending work, and frees resources (e.g., memory, sockets).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbDisconnect")}
 }

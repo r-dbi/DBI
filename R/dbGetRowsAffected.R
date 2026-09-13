@@ -1,7 +1,6 @@
 #' The number of rows affected
 #'
-#' This method returns the number of rows that were added, deleted, or updated
-#' by a data manipulation statement.
+#' This method returns the number of rows that were added, deleted, or updated by a data manipulation statement.
 #'
 #' @inheritSection dbBind The command execution flow
 #'

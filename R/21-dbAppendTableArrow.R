@@ -5,8 +5,7 @@
 #'
 #' The `dbAppendTableArrow()` method assumes that the table has been created
 #' beforehand, e.g. with [dbCreateTableArrow()].
-#' The default implementation calls [dbAppendTable()] for each chunk
-#' of the stream.
+#' The default implementation calls [dbAppendTable()] for each chunk of the stream.
 #' Use [dbAppendTable()] to append data from a data.frame.
 #'
 #' @inheritParams dbReadTable

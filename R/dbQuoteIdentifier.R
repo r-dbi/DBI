@@ -1,9 +1,8 @@
 #' Quote identifiers
 #'
-#' Call this method to generate a string that is suitable for
-#' use in a query as a column or table name, to make sure that you
-#' generate valid SQL and protect against SQL injection attacks. The inverse
-#' operation is [dbUnquoteIdentifier()].
+#' Call this method to generate a string that is suitable for use in a query as a column or table name,
+#' to make sure that you generate valid SQL and protect against SQL injection attacks.
+#' The inverse operation is [dbUnquoteIdentifier()].
 #'
 #' @inheritParams dbGetQuery
 #' @param x A character vector, [SQL] or [Id] object to quote as identifier.
