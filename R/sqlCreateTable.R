@@ -4,7 +4,8 @@
 #' The default method is ANSI SQL 99 compliant.
 #' This method is mostly useful for backend implementers.
 #'
-#' The `row.names` argument must be passed explicitly in order to avoid a compatibility warning.  The default will be changed in a later release.
+#' The `row.names` argument must be passed explicitly in order to avoid a compatibility warning.
+#' The default will be changed in a later release.
 #'
 #' @param con A database connection.
 #' @param table The table name, passed on to [dbQuoteIdentifier()].

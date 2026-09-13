@@ -2,7 +2,10 @@ NULL
 
 #' DBIResult class
 #'
-#' This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query).  The result set keeps track of whether the statement produces output how many rows were affected by the operation, how many rows have been fetched (if statement is a query), whether there are more rows to fetch, etc.
+#' This virtual class describes the result and state of execution of a DBMS statement (any statement, query or non-query).
+#' The result set keeps track of whether the statement produces output
+#' how many rows were affected by the operation,
+#' how many rows have been fetched (if statement is a query), whether there are more rows to fetch, etc.
 #'
 #' @section Implementation notes:
 #' Individual drivers are free to allow single or multiple active results per connection.

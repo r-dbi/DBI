@@ -18,7 +18,8 @@
 #'
 #' @param res An object inheriting from [DBI::DBIResult][DBIResult-class], created by [dbSendQuery()].
 #' @param n maximum number of records to retrieve per fetch.
-#'   Use `n = -1` or `n = Inf` to retrieve all pending records.  Some implementations may recognize other special values.
+#'   Use `n = -1` or `n = Inf` to retrieve all pending records.
+#'   Some implementations may recognize other special values.
 #' @param ... Other arguments passed on to methods.
 #' @seealso Close the result set with [dbClearResult()] as soon as you finish retrieving the records you want.
 #' @family DBIResult generics

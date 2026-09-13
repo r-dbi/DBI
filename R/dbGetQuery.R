@@ -14,7 +14,8 @@
 #' To execute a stored procedure that does not return a result set,
 #' use [dbExecute()].
 #'
-#' Some backends may support data manipulation statements through this method for compatibility reasons.  However, callers are strongly advised to use [dbExecute()] for data manipulation statements.
+#' Some backends may support data manipulation statements through this method for compatibility reasons.
+#' However, callers are strongly advised to use [dbExecute()] for data manipulation statements.
 #'
 #' @template methods
 #' @templateVar method_name dbGetQuery
