@@ -7,17 +7,16 @@
 dbWriteTable(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{value}{A \link{data.frame} (or coercible to data.frame).}
@@ -28,8 +27,8 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \code{dbWriteTable()} returns \code{TRUE}, invisibly.
 }
 \description{
-Writes, overwrites or appends a data frame to a database table, optionally
-converting row names to a column and specifying SQL data types for fields.
+Writes, overwrites or appends a data frame to a database table,
+optionally converting row names to a column and specifying SQL data types for fields.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWriteTable")}
 }
@@ -38,13 +37,12 @@ This function expects a data frame.
 Use \code{\link[=dbWriteTableArrow]{dbWriteTableArrow()}} to write an Arrow object.
 
 This function is useful if you want to create and load a table at the same time.
-Use \code{\link[=dbAppendTable]{dbAppendTable()}} or \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} for appending data to an existing
-table, \code{\link[=dbCreateTable]{dbCreateTable()}} or \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} for creating a table,
+Use \code{\link[=dbAppendTable]{dbAppendTable()}} or \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} for appending data to an existing table,
+\code{\link[=dbCreateTable]{dbCreateTable()}} or \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} for creating a table,
 and \code{\link[=dbExistsTable]{dbExistsTable()}} and \code{\link[=dbRemoveTable]{dbRemoveTable()}} for overwriting tables.
 
 DBI only standardizes writing data frames with \code{dbWriteTable()}.
-Some backends might implement methods that can consume CSV files
-or other data formats.
+Some backends might implement methods that can consume CSV files or other data formats.
 For details, see the documentation for the individual methods.
 }
 \section{Failure modes}{

@@ -1,9 +1,8 @@
 #' Parse interpolated variables from SQL.
 #'
-#' If you're implementing a backend that uses non-ANSI quoting or commenting
-#' rules, you'll need to implement a method for `sqlParseVariables` that
-#' calls `sqlParseVariablesImpl` with the appropriate quote and
-#' comment specifications.
+#' If you're implementing a backend that uses non-ANSI quoting or commenting rules,
+#' you'll need to implement a method for `sqlParseVariables`
+#' that calls `sqlParseVariablesImpl` with the appropriate quote and comment specifications.
 #'
 #'
 #' @param start,end Start and end characters for quotes and comments

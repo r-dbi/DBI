@@ -1,14 +1,12 @@
 #' List remote objects
 #'
-#' Returns the names of remote objects accessible through this connection
-#' as a data frame.
-#' This should include temporary objects, but not all database backends
-#' (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
-#' Compared to [dbListTables()], this method also enumerates tables and views
-#' in schemas, and returns fully qualified identifiers to access these objects.
-#' This allows exploration of all database objects available to the current
-#' user, including those that can only be accessed by giving the full
-#' namespace.
+#' Returns the names of remote objects accessible through this connection as a data frame.
+#' This should include temporary objects,
+#' but not all database backends (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
+#' Compared to [dbListTables()], this method also enumerates tables and views in schemas,
+#' and returns fully qualified identifiers to access these objects.
+#' This allows exploration of all database objects available to the current user,
+#' including those that can only be accessed by giving the full namespace.
 #'
 #' @template methods
 #' @templateVar method_name dbListObjects

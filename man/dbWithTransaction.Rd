@@ -11,8 +11,7 @@ dbWithTransaction(conn, code, ...)
 dbBreak()
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{code}{An arbitrary block of R code.}
 
@@ -22,23 +21,19 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 \code{dbWithTransaction()} returns the value of the executed code.
 }
 \description{
-Given that \link{transactions} are implemented, this function
-allows you to pass in code that is run in a transaction.
-The default method of \code{dbWithTransaction()} calls \code{\link[=dbBegin]{dbBegin()}}
-before executing the code,
+Given that \link{transactions} are implemented, this function allows you to pass in code that is run in a transaction.
+The default method of \code{dbWithTransaction()} calls \code{\link[=dbBegin]{dbBegin()}} before executing the code,
 and \code{\link[=dbCommit]{dbCommit()}} after successful completion,
 or \code{\link[=dbRollback]{dbRollback()}} in case of an error.
-The advantage is
-that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or
-\code{dbRollback()} -- that is all taken care of.
+The advantage is that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or \code{dbRollback()} -- that is all taken care of.
 The special function \code{dbBreak()} allows an early exit with rollback,
 it can be called only inside \code{dbWithTransaction()}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWithTransaction")}
 }
 \details{
-DBI implements \code{dbWithTransaction()}, backends should need to override this
-generic only if they implement specialized handling.
+DBI implements \code{dbWithTransaction()},
+backends should need to override this generic only if they implement specialized handling.
 }
 \section{Failure modes}{
 

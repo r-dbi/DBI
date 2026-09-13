@@ -7,21 +7,20 @@
 dbWriteTableArrow(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
-\item{value}{An nanoarray stream, or an object coercible to a nanoarray stream with
-\code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.}
+\item{value}{An nanoarray stream,
+or an object coercible to a nanoarray stream with \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -37,12 +36,12 @@ Writes, overwrites or appends an Arrow object to a database table.
 }
 \details{
 This function expects an Arrow object.
-Convert a data frame to an Arrow object with \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}} or
-use \code{\link[=dbWriteTable]{dbWriteTable()}} to write a data frame.
+Convert a data frame to an Arrow object with \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}
+or use \code{\link[=dbWriteTable]{dbWriteTable()}} to write a data frame.
 
 This function is useful if you want to create and load a table at the same time.
-Use \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} for appending data to an existing
-table, \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} for creating a table and specifying field types,
+Use \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} for appending data to an existing table,
+\code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} for creating a table and specifying field types,
 and \code{\link[=dbRemoveTable]{dbRemoveTable()}} for overwriting tables.
 }
 \section{Failure modes}{

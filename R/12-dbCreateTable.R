@@ -1,19 +1,17 @@
 #' Create a table in the database
 #'
-#' The default `dbCreateTable()` method calls [sqlCreateTable()] and
-#' [dbExecute()].
+#' The default `dbCreateTable()` method calls [sqlCreateTable()] and [dbExecute()].
 #' Use [dbCreateTableArrow()] to create a table from an Arrow schema.
 #'
 #' Backends compliant to ANSI SQL 99 don't need to override it.
 #' Backends with a different SQL syntax can override `sqlCreateTable()`,
-#' backends with entirely different ways to create tables need to
-#' override this method.
+#' backends with entirely different ways to create tables need to override this method.
 #'
 #' The `row.names` argument is not supported by this method.
 #' Process the values with [sqlRownamesToColumn()] before calling this method.
 #'
-#' The argument order is different from the `sqlCreateTable()` method, the
-#' latter will be adapted in a later release of DBI.
+#' The argument order is different from the `sqlCreateTable()` method,
+#' the latter will be adapted in a later release of DBI.
 #'
 #' @inheritParams dbReadTable
 #' @param row.names Must be `NULL`.

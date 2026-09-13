@@ -8,11 +8,10 @@ dbConnect(drv, ...)
 }
 \arguments{
 \item{drv}{An object that inherits from \link[=DBIDriver-class]{DBI::DBIDriver},
-or an existing \link[=DBIConnection-class]{DBI::DBIConnection}
-object (in order to clone an existing connection).}
+or an existing \link[=DBIConnection-class]{DBI::DBIConnection} object (in order to clone an existing connection).}
 
-\item{...}{Authentication arguments needed by the DBMS instance; these
-typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
+\item{...}{Authentication arguments needed by the DBMS instance;
+these typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
 For details see the appropriate \code{DBIDriver}.}
 }
 \value{
@@ -24,11 +23,10 @@ It returns a string that consists of a single line of text.
 }
 \description{
 Connect to a DBMS going through the appropriate authentication procedure.
-Some implementations may allow you to have multiple connections open, so you
-may invoke this function repeatedly assigning its output to different
-objects.
-The authentication mechanism is left unspecified, so check the
-documentation of individual drivers for details.
+Some implementations may allow you to have multiple connections open,
+so you may invoke this function repeatedly assigning its output to different objects.
+The authentication mechanism is left unspecified,
+so check the documentation of individual drivers for details.
 Use \code{\link[=dbCanConnect]{dbCanConnect()}} to check if a connection can be established.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbConnect")}

@@ -4,19 +4,15 @@
 #' For parametrized or prepared statements,
 #' the [dbSendQuery()], [dbSendQueryArrow()], and [dbSendStatement()] functions
 #' can be called with statements that contain placeholders for values.
-#' The `dbBind()` and `dbBindArrow()` functions bind these placeholders
-#' to actual values,
-#' and are intended to be called on the result set
-#' before calling [dbFetch()] or [dbFetchArrow()].
+#' The `dbBind()` and `dbBindArrow()` functions bind these placeholders to actual values,
+#' and are intended to be called on the result set before calling [dbFetch()] or [dbFetchArrow()].
 #' The values are passed to `dbBind()` as lists or data frames,
-#' and to `dbBindArrow()` as a stream
-#' created by [nanoarrow::as_nanoarrow_array_stream()].
+#' and to `dbBindArrow()` as a stream created by [nanoarrow::as_nanoarrow_array_stream()].
 #'
 #' `r lifecycle::badge('experimental')`
 #'
 #' `dbBindArrow()` is experimental, as are the other `*Arrow` functions.
-#' `dbSendQuery()` is compatible with `dbBindArrow()`, and `dbSendQueryArrow()`
-#' is compatible with `dbBind()`.
+#' `dbSendQuery()` is compatible with `dbBindArrow()`, and `dbSendQueryArrow()` is compatible with `dbBind()`.
 #'
 #' @details
 #' \pkg{DBI} supports parametrized (or prepared) queries and statements
@@ -34,8 +30,7 @@
 #' The placeholder format is currently not specified by \pkg{DBI};
 #' in the future, a uniform placeholder syntax may be supported.
 #' Consult the backend documentation for the supported formats.
-#' For automated testing, backend authors specify the placeholder syntax with
-#' the `placeholder_pattern` tweak.
+#' For automated testing, backend authors specify the placeholder syntax with the `placeholder_pattern` tweak.
 #' Known examples are:
 #'
 #' - `?` (positional matching in order of appearance) in \pkg{RMariaDB} and \pkg{RSQLite}
@@ -44,8 +39,7 @@
 #'
 #' @section The data retrieval flow:
 #'
-#' This section gives a complete overview over the flow
-#' for the execution of queries that return tabular data as data frames.
+#' This section gives a complete overview over the flow for the execution of queries that return tabular data as data frames.
 #'
 #' Most of this flow, except repeated calling of [dbBind()] or [dbBindArrow()],
 #' is implemented by [dbGetQuery()], which should be sufficient
@@ -54,20 +48,15 @@
 #' This flow requires an active connection established by [dbConnect()].
 #' See also `vignette("dbi-advanced")` for a walkthrough.
 #'
-#' 1. Use [dbSendQuery()] to create a result set object of class
-#'    [DBIResult-class].
+#' 1. Use [dbSendQuery()] to create a result set object of class [DBIResult-class].
 #' 1. Optionally, bind query parameters with [dbBind()] or [dbBindArrow()].
 #'    This is required only if the query contains placeholders
 #'    such as `?` or `$1`, depending on the database backend.
-#' 1. Optionally, use [dbColumnInfo()] to retrieve the structure of the result set
-#'    without retrieving actual data.
-#' 1. Use [dbFetch()] to get the entire result set, a page of results,
-#'    or the remaining rows.
-#'    Fetching zero rows is also possible to retrieve the structure of the result set
-#'    as a data frame.
+#' 1. Optionally, use [dbColumnInfo()] to retrieve the structure of the result set without retrieving actual data.
+#' 1. Use [dbFetch()] to get the entire result set, a page of results, or the remaining rows.
+#'    Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
 #'    This step can be called multiple times.
-#'    Only forward paging is supported, you need to cache previous pages
-#'    if you need to navigate backwards.
+#'    Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
 #' 1. Use [dbHasCompleted()] to tell when you're done.
 #'    This method returns `TRUE` if no more rows are available for fetching.
 #' 1. Repeat the last four steps as necessary.
@@ -79,18 +68,15 @@
 #'
 #' @section The data retrieval flow for Arrow streams:
 #'
-#' This section gives a complete overview over the flow
-#' for the execution of queries that return tabular data as an Arrow stream.
+#' This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 #'
 #' Most of this flow, except repeated calling of [dbBindArrow()] or [dbBind()],
-#' is implemented by [dbGetQueryArrow()],
-#' which should be sufficient
+#' is implemented by [dbGetQueryArrow()], which should be sufficient
 #' unless you have a parameterized query that you want to reuse.
 #' This flow requires an active connection established by [dbConnect()].
 #' See also `vignette("dbi-advanced")` for a walkthrough.
 #'
-#' 1. Use [dbSendQueryArrow()] to create a result set object of class
-#'    [DBIResultArrow-class].
+#' 1. Use [dbSendQueryArrow()] to create a result set object of class [DBIResultArrow-class].
 #' 1. Optionally, bind query parameters with [dbBindArrow()] or [dbBind()].
 #'    This is required only if the query contains placeholders
 #'    such as `?` or `$1`, depending on the database backend.
@@ -104,24 +90,20 @@
 #'
 #' @section The command execution flow:
 #'
-#' This section gives a complete overview over the flow
-#' for the execution of SQL statements that have side effects
-#' such as stored procedures, inserting or deleting data,
-#' or setting database or connection options.
+#' This section gives a complete overview over the flow for the execution of SQL statements that have side effects
+#' such as stored procedures, inserting or deleting data, or setting database or connection options.
 #' Most of this flow, except repeated calling of [dbBindArrow()],
 #' is implemented by [dbExecute()], which should be sufficient
 #' for non-parameterized queries.
 #' This flow requires an active connection established by [dbConnect()].
 #' See also `vignette("dbi-advanced")` for a walkthrough.
 #'
-#' 1. Use [dbSendStatement()] to create a result set object of class
-#'    [DBIResult-class].
+#' 1. Use [dbSendStatement()] to create a result set object of class [DBIResult-class].
 #'    For some queries you need to pass `immediate = TRUE`.
 #' 1. Optionally, bind query parameters with[dbBind()] or [dbBindArrow()].
 #'    This is required only if the query contains placeholders
 #'    such as `?` or `$1`, depending on the database backend.
-#' 1. Optionally, use [dbGetRowsAffected()] to retrieve the number
-#'    of rows affected by the query.
+#' 1. Optionally, use [dbGetRowsAffected()] to retrieve the number of rows affected by the query.
 #' 1. Repeat the last two steps as necessary.
 #' 1. Use [dbClearResult()] to clean up the result set object.
 #'    This step is mandatory even if no rows have been fetched
@@ -137,10 +119,9 @@
 #' @inheritSection DBItest::spec_meta_bind Specification
 #'
 #' @inheritParams dbClearResult
-#' @param params For `dbBind()`, a list of values, named or unnamed,
-#'   or a data frame, with one element/column per query parameter.
-#'   For `dbBindArrow()`, values as a nanoarrow stream,
-#'   with one column per query parameter.
+#' @param params For `dbBind()`, a list of values, named or unnamed, or a data frame,
+#'   with one element/column per query parameter.
+#'   For `dbBindArrow()`, values as a nanoarrow stream, with one column per query parameter.
 #' @family DBIResult generics
 #' @family DBIResultArrow generics
 #' @family data retrieval generics

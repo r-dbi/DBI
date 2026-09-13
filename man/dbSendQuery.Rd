@@ -7,8 +7,7 @@
 dbSendQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
@@ -22,35 +21,28 @@ Once you have finished using a result, make sure to clear it
 with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
 }
 \description{
-The \code{dbSendQuery()} method only submits and synchronously executes the
-SQL query to the database engine.  It does \emph{not} extract any
-records --- for that you need to use the \code{\link[=dbFetch]{dbFetch()}} method, and
-then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
-records you need.
+The \code{dbSendQuery()} method only submits and synchronously executes the SQL query
+to the database engine.  It does \emph{not} extract any records --- for that you need to use the \code{\link[=dbFetch]{dbFetch()}} method,
+and then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the records you need.
 For interactive use, you should almost always prefer \code{\link[=dbGetQuery]{dbGetQuery()}}.
-Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}} instead to retrieve the results
-as an Arrow object.
+Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}} instead to retrieve the results as an Arrow object.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbSendQuery")}
 }
 \details{
-This method is for \code{SELECT} queries only.  Some backends may
-support data manipulation queries through this method for compatibility
-reasons.  However, callers are strongly encouraged to use
-\code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
+This method is for \code{SELECT} queries only.  Some backends may support data manipulation queries through this method
+for compatibility reasons.  However, callers are strongly encouraged to use \code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
 
-The query is submitted to the database server and the DBMS executes it,
-possibly generating vast amounts of data. Where these data live
-is driver-specific: some drivers may choose to leave the output on the server
-and transfer them piecemeal to R, others may transfer all the data to the
-client -- but not necessarily to the memory that R manages. See individual
-drivers' \code{dbSendQuery()} documentation for details.
+The query is submitted to the database server and the DBMS executes it, possibly generating vast amounts of data.
+Where these data live is driver-specific:
+some drivers may choose to leave the output on the server and transfer them piecemeal to R,
+others may transfer all the data to the client -- but not necessarily to the memory that R manages.
+See individual drivers' \code{dbSendQuery()} documentation for details.
 }
 \section{The data retrieval flow}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as data frames.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as data frames.
 
 Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
@@ -59,20 +51,15 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\link[=DBIResult-class]{DBIResult}.
+\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
-\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set
-without retrieving actual data.
-\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results,
-or the remaining rows.
-Fetching zero rows is also possible to retrieve the structure of the result set
-as a data frame.
+\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set without retrieving actual data.
+\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results, or the remaining rows.
+Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
 This step can be called multiple times.
-Only forward paging is supported, you need to cache previous pages
-if you need to navigate backwards.
+Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
 This method returns \code{TRUE} if no more rows are available for fetching.
 \item Repeat the last four steps as necessary.

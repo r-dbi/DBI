@@ -1,12 +1,10 @@
 #' DBIConnection class
 #'
-#' This virtual class encapsulates the connection to a DBMS, and it provides
-#' access to dynamic queries, result sets, DBMS session management
-#' (transactions), etc.
+#' This virtual class encapsulates the connection to a DBMS,
+#' and it provides access to dynamic queries, result sets, DBMS session management (transactions), etc.
 #'
 #' @section Implementation note:
-#' Individual drivers are free to implement single or multiple simultaneous
-#' connections.
+#' Individual drivers are free to implement single or multiple simultaneous connections.
 #'
 #' @docType class
 #' @name DBIConnection-class
