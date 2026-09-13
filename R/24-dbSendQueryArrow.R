@@ -3,21 +3,15 @@
 #' @description
 #' `r lifecycle::badge('experimental')`
 #'
-#' The `dbSendQueryArrow()` method only submits and synchronously executes the
-#' SQL query to the database engine.
-#' It does \emph{not} extract any
-#' records --- for that you need to use the [dbFetchArrow()] method, and
-#' then you must call [dbClearResult()] when you finish fetching the
-#' records you need.
+#' The `dbSendQueryArrow()` method only submits and synchronously executes the SQL query to the database engine.
+#' It does \emph{not} extract any records --- for that you need to use the [dbFetchArrow()] method,
+#' and then you must call [dbClearResult()] when you finish fetching the records you need.
 #' For interactive use, you should almost always prefer [dbGetQueryArrow()].
-#' Use [dbSendQuery()] or [dbGetQuery()] instead to retrieve the results
-#' as a data frame.
+#' Use [dbSendQuery()] or [dbGetQuery()] instead to retrieve the results as a data frame.
 #'
 #' @details
-#' This method is for `SELECT` queries only.  Some backends may
-#' support data manipulation queries through this method for compatibility
-#' reasons.  However, callers are strongly encouraged to use
-#' [dbSendStatement()] for data manipulation statements.
+#' This method is for `SELECT` queries only.  Some backends may support data manipulation queries through this method
+#' for compatibility reasons.  However, callers are strongly encouraged to use [dbSendStatement()] for data manipulation statements.
 #'
 #' @inheritSection dbBindArrow The data retrieval flow for Arrow streams
 #'

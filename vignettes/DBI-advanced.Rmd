@@ -29,13 +29,16 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 
 ## Who this tutorial is for
 
-This tutorial is for you if you need to use a richer set of SQL features such as data manipulation queries, parameterized queries and queries performed using SQL's transaction features.
+This tutorial is for you if you need to use a richer set of SQL features
+such as data manipulation queries, parameterized queries and queries performed using SQL's transaction features.
 See `vignette("DBI", package = "DBI")` for a more basic tutorial covering connecting to DBMS and executing simple queries.
 
 ## How to run more complex queries using DBI
 
 `dbGetQuery()` works by calling a number of functions behind the scenes.
-If you need more control you can manually build your own query, retrieve results at your selected rate, and release the resources involved by calling the same functions.
+If you need more control you can manually build your own query,
+retrieve results at your selected rate,
+and release the resources involved by calling the same functions.
 
 These functions are:
 
@@ -70,7 +73,9 @@ head(df, 3)
 ## How to read part of a table from a database
 
 If your dataset is large you may want to fetch a limited number of rows at a time.
-As demonstrated below, this can be accomplished by using a while loop where the function `dbHasCompleted()` is used to check for ongoing rows, and `dbFetch()` is used with the `n = X` argument, specifying how many rows to return on each iteration.
+As demonstrated below, this can be accomplished by using a while loop
+where the function `dbHasCompleted()` is used to check for ongoing rows,
+and `dbFetch()` is used with the `n = X` argument, specifying how many rows to return on each iteration.
 Again, we call `dbClearResult()` at the end to release resources.
 
 ```{r}
@@ -91,12 +96,17 @@ DBI supports two ways to avoid SQL injection attacks from user-supplied paramete
 
 ### Quoting
 
-Quoting of parameter values is performed using the function `dbQuoteLiteral()`, which supports many R data types, including date and time.[^quote-string]
+Quoting of parameter values is performed using the function `dbQuoteLiteral()`,
+which supports many R data types, including date and time.[^quote-string]
 
-[^quote-string]: An older method, `dbQuoteString()`, was used to quote string values only. The `dbQuoteLiteral()` method forwards to `dbQuoteString()` for character vectors. Users do not need to distinguish between these two cases.
+[^quote-string]: An older method, `dbQuoteString()`, was used to quote string values only.
+    The `dbQuoteLiteral()` method forwards to `dbQuoteString()` for character vectors.
+    Users do not need to distinguish between these two cases.
 
-In cases where users may be supplying table or column names to use in the query for data retrieval, those names or identifiers must also be escaped.
-As there may be DBMS-specific rules for escaping these identifiers, DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
+In cases where users may be supplying table or column names to use in the query for data retrieval,
+those names or identifiers must also be escaped.
+As there may be DBMS-specific rules for escaping these identifiers,
+DBI provides the function `dbQuoteIdentifier()` to generate a safe string representation.
 
 ```{r quote}
 
@@ -126,15 +136,18 @@ head(df, 3)
 
 ### Parameterized queries
 
-Rather than performing the parameter substitution ourselves, we can push it to the DBMS by including placeholders in the query.
+Rather than performing the parameter substitution ourselves,
+we can push it to the DBMS by including placeholders in the query.
 Different DBMS use different placeholder schemes, DBI passes through the SQL expression unchanged.
 
 MariaDB uses a question mark (?) as placeholder and expects an unnamed list of parameter values.
 Other DBMS may use named parameters.
 We recommend consulting the documentation for the DBMS you are using.
-As an example, a web search for "mariadb parameterized queries" leads to the documentation for the [`PREPARE` statement](https://mariadb.com/docs/server/reference/sql-statements/prepared-statements/prepare-statement) which mentions:
+As an example, a web search for "mariadb parameterized queries" leads to the documentation
+for the [`PREPARE` statement](https://mariadb.com/docs/server/reference/sql-statements/prepared-statements/prepare-statement) which mentions:
 
-> Within the statement, "?" characters can be used as parameter markers to indicate where data values are to be bound to the query later when you execute it.
+> Within the statement, "?" characters can be used as parameter markers
+> to indicate where data values are to be bound to the query later when you execute it.
 
 Currently there is no list of which placeholder scheme a particular DBMS supports.
 
@@ -220,7 +233,8 @@ You then need to call `dbClearResult()` with the result object afterwards to rel
 In actuality, `dbExecute()` is a convenience function that calls `dbSendStatement()`, `dbGetRowsAffected()`, and `dbClearResult()`.
 You can use these functions if you need more control over the query process.
 
-The subsequent examples use an in-memory SQL database provided by `RSQLite::SQLite()`, because the remote database used in above examples does not allow writing.
+The subsequent examples use an in-memory SQL database provided by `RSQLite::SQLite()`,
+because the remote database used in above examples does not allow writing.
 
 
 ```{r}
@@ -253,8 +267,10 @@ dbDisconnect(con)
 
 ## SQL transactions with DBI
 
-DBI allows you to group multiple queries into a single atomic transaction. Transactions are initiated with `dbBegin()` and either made persistent with `dbCommit()` or undone with `dbRollback()`.
-The example below updates two tables and ensures that either both tables are updated, or no changes are persisted to the database and an error is thrown.
+DBI allows you to group multiple queries into a single atomic transaction.
+Transactions are initiated with `dbBegin()` and either made persistent with `dbCommit()` or undone with `dbRollback()`.
+The example below updates two tables and ensures that either both tables are updated,
+or no changes are persisted to the database and an error is thrown.
 
 ```{r}
 con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -341,6 +357,8 @@ dbDisconnect(con)
 ## Conclusion
 
 That concludes the major features of DBI.
-For more details on the library functions covered in this tutorial and the `vignette("DBI", package = "DBI")` introductory tutorial see the DBI specification at `vignette("spec", package = "DBI")`.
-If you are after a data manipulation library that works at a higher level of abstraction, check out [dplyr](https://dplyr.tidyverse.org).
+For more details on the library functions covered in this tutorial and the `vignette("DBI", package = "DBI")` introductory tutorial
+see the DBI specification at `vignette("spec", package = "DBI")`.
+If you are after a data manipulation library that works at a higher level of abstraction,
+check out [dplyr](https://dplyr.tidyverse.org).
 It is a grammar of data manipulation that can work with local dataframes and remote databases and uses DBI under the hood.

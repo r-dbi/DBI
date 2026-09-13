@@ -1,20 +1,19 @@
 #' Copy data frames to database tables
 #'
-#' Writes, overwrites or appends a data frame to a database table, optionally
-#' converting row names to a column and specifying SQL data types for fields.
+#' Writes, overwrites or appends a data frame to a database table,
+#' optionally converting row names to a column and specifying SQL data types for fields.
 #'
 #' @details
 #' This function expects a data frame.
 #' Use [dbWriteTableArrow()] to write an Arrow object.
 #'
 #' This function is useful if you want to create and load a table at the same time.
-#' Use [dbAppendTable()] or [dbAppendTableArrow()] for appending data to an existing
-#' table, [dbCreateTable()] or [dbCreateTableArrow()] for creating a table,
+#' Use [dbAppendTable()] or [dbAppendTableArrow()] for appending data to an existing table,
+#' [dbCreateTable()] or [dbCreateTableArrow()] for creating a table,
 #' and [dbExistsTable()] and [dbRemoveTable()] for overwriting tables.
 #'
 #' DBI only standardizes writing data frames with `dbWriteTable()`.
-#' Some backends might implement methods that can consume CSV files
-#' or other data formats.
+#' Some backends might implement methods that can consume CSV files or other data formats.
 #' For details, see the documentation for the individual methods.
 #'
 #' @template methods

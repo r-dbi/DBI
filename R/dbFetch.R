@@ -1,12 +1,10 @@
 #' Fetch records from a previously executed query
 #'
-#' Fetch the next `n` elements (rows) from the result set and return them
-#' as a data.frame.
+#' Fetch the next `n` elements (rows) from the result set and return them as a data.frame.
 #'
-#' `fetch()` is provided for compatibility with older DBI clients - for all
-#' new code you are strongly encouraged to use `dbFetch()`. The default
-#' implementation for `dbFetch()` calls `fetch()` so that it is compatible with
-#' existing code. Modern backends should implement for `dbFetch()` only.
+#' `fetch()` is provided for compatibility with older DBI clients - for all new code you are strongly encouraged to use `dbFetch()`.
+#' The default implementation for `dbFetch()` calls `fetch()` so that it is compatible with existing code.
+#' Modern backends should implement for `dbFetch()` only.
 #'
 #' @inheritSection dbBind The data retrieval flow
 #'
@@ -18,15 +16,11 @@
 #' @inheritSection DBItest::spec_result_fetch Specification
 #' @inheritSection DBItest::spec_result_roundtrip Specification
 #'
-#' @param res An object inheriting from [DBI::DBIResult][DBIResult-class],
-#'   created by [dbSendQuery()].
-#' @param n maximum number of records to retrieve per fetch. Use `n = -1`
-#'   or `n = Inf`
-#'   to retrieve all pending records.  Some implementations may recognize other
-#'   special values.
+#' @param res An object inheriting from [DBI::DBIResult][DBIResult-class], created by [dbSendQuery()].
+#' @param n maximum number of records to retrieve per fetch.
+#'   Use `n = -1` or `n = Inf` to retrieve all pending records.  Some implementations may recognize other special values.
 #' @param ... Other arguments passed on to methods.
-#' @seealso Close the result set with [dbClearResult()] as soon as you
-#'   finish retrieving the records you want.
+#' @seealso Close the result set with [dbClearResult()] as soon as you finish retrieving the records you want.
 #' @family DBIResult generics
 #' @family data retrieval generics
 #' @export

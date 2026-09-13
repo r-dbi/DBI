@@ -1,7 +1,6 @@
 #' The number of rows fetched so far
 #'
-#' Returns the total number of rows actually fetched with calls to [dbFetch()]
-#' for this result set.
+#' Returns the total number of rows actually fetched with calls to [dbFetch()] for this result set.
 #'
 #' @template methods
 #' @templateVar method_name dbGetRowCount

@@ -25,8 +25,7 @@ make.db.names.default <- function(
     )
     out
   }
-  ## Note: SQL identifiers *can* be enclosed in double or single quotes
-  ## when they are equal to reserverd keywords.
+  ## Note: SQL identifiers *can* be enclosed in double or single quotes when they are equal to reserverd keywords.
   fc <- substring(snames, 1, 1)
   lc <- substring(snames, nchar(snames))
   i <- match(fc, c("'", '"'), 0) > 0 & match(lc, c("'", '"'), 0) > 0

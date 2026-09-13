@@ -21,9 +21,8 @@ setClass("Id", slots = list(name = "character"))
 #'
 #' Objects of this class are also returned from [dbListObjects()].
 #'
-#' @param ... Components of the hierarchy, e.g. `cluster`,
-#'  `catalog`, `schema`, or `table`, depending on the database backend. For more
-#'  on these concepts, see <https://stackoverflow.com/questions/7022755/>
+#' @param ... Components of the hierarchy, e.g. `cluster`, `catalog`, `schema`, or `table`, depending on the database backend.
+#'  For more on these concepts, see <https://stackoverflow.com/questions/7022755/>
 #' @export
 #' @examples
 #' # Identifies a table in a specific schema:

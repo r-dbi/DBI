@@ -1,7 +1,6 @@
 #' Get the statement associated with a result set
 #'
-#' Returns the statement that was passed to [dbSendQuery()]
-#' or [dbSendStatement()].
+#' Returns the statement that was passed to [dbSendQuery()] or [dbSendStatement()].
 #'
 #' @template methods
 #' @templateVar method_name dbGetStatement

@@ -1,8 +1,7 @@
 
 <!-- README.md and index.md are generated from README.Rmd.
-     Edit that file and render it the usual way: rmarkdown::render(),
-     devtools::build_readme(), or the Knit button. The cynkratemplate
-     package must be installed; it supplies the output format. -->
+     Edit that file and render it the usual way: rmarkdown::render(), devtools::build_readme(), or the Knit button.
+     The cynkratemplate package must be installed; it supplies the output format. -->
 
 # DBI
 
@@ -28,7 +27,9 @@ The package defines an interface that is implemented by *DBI backends* such as:
 and many more, see the [list of backends](https://github.com/r-dbi/backends#readme).
 R scripts and packages use DBI to access various databases through their DBI backends.
 
-The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/), Java's JDBC, Python's [DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
+The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/),
+Java's JDBC, Python's [DB-API](https://www.python.org/dev/peps/pep-0249/),
+and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
 It supports the following operations:
 
 - connect/disconnect to the DBMS
@@ -132,8 +133,7 @@ Three which are each extended by individual database backends:
 - `DBIObject`: a common base class for all DBI.
 
 - `DBIDriver`: a base class representing overall DBMS properties.
-  Typically generator functions instantiate the driver objects like `RSQLite()`,
-  `RPostgreSQL()`, `RMySQL()` etc.
+  Typically generator functions instantiate the driver objects like `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
 
 - `DBIConnection`: represents a connection to a specific database
 
@@ -147,7 +147,8 @@ All classes are *virtual*: they cannot be instantiated directly and instead must
 
 - The [DBI project site](https://r-dbi.org/) hosts a blog where recent developments are presented.
 
-- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James, the driving force behind the development of DBI, and many of the packages that implement it.
+- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James,
+  the driving force behind the development of DBI, and many of the packages that implement it.
 
 ------------------------------------------------------------------------
 
