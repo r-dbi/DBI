@@ -14,9 +14,8 @@ dbGetQuery(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbGetQuery()} always returns a \link{data.frame}, with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbGetQuery()} always returns a \link{data.frame},
+with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -54,8 +53,7 @@ An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
-If the \code{n} argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
+If the \code{n} argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
 
 }
@@ -86,12 +84,9 @@ A column named \code{row_names} is treated like any other column.
 The \code{n} argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
 or more columns returns the entire result.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched (by passing a too large value for
-\code{n}), the result is returned in full without warning.
-If zero rows are requested, the columns of the data frame are still fully
-typed.
+A value of \link{Inf} for the \code{n} argument is supported and also returns the full result.
+If more rows than available are fetched (by passing a too large value for \code{n}), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.
 
@@ -107,11 +102,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

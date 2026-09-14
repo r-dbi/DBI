@@ -12,9 +12,8 @@ dbFetchArrow(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbFetchArrow()} always returns an object coercible to a \link{data.frame} with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbFetchArrow()} always returns an object coercible to a \link{data.frame} with as many rows as records were fetched
+and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -64,10 +63,8 @@ An attempt to fetch from a closed result set raises an error.
 
 Fetching multi-row queries with one
 or more columns by default returns the entire result.
-The object returned by \code{dbFetchArrow()} can also be passed to
-\code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}} to create a nanoarrow
-array stream object that can be used to read the result set
-in batches.
+The object returned by \code{dbFetchArrow()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}
+to create a nanoarrow array stream object that can be used to read the result set in batches.
 The chunk size is implementation-specific.
 
 }

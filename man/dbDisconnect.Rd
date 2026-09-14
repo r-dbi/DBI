@@ -25,8 +25,7 @@ This closes the connection, discards all pending work, and frees resources (e.g.
 A warning is issued on garbage collection when a connection has been
 released without calling \code{dbDisconnect()},
 but this cannot be tested automatically.
-At least one warning is issued immediately when calling \code{dbDisconnect()} on an
-already disconnected
+At least one warning is issued immediately when calling \code{dbDisconnect()} on an already disconnected
 or invalid connection.
 
 }

@@ -74,8 +74,7 @@ and be read identically with \code{\link[DBI:dbReadTable]{dbReadTable()}}:
 \item 64-bit values (using \code{"bigint"} as field type); the result can be
 \itemize{
 \item converted to a numeric, which may lose precision,
-\item converted a character vector, which gives the full decimal
-representation
+\item converted a character vector, which gives the full decimal representation
 \item written to another table and read again unchanged
 }
 \item character (in both UTF-8
@@ -83,23 +82,17 @@ and native encodings),
 supporting empty strings
 (before and after non-empty strings)
 \item factor (possibly returned as character)
-\item objects of type \link[blob:blob]{blob::blob}
-(if supported by the database)
-\item date
-(if supported by the database;
+\item objects of type \link[blob:blob]{blob::blob} (if supported by the database)
+\item date (if supported by the database;
 returned as \code{Date})
 also for dates prior to 1970 or 1900 or after 2038
-\item time
-(if supported by the database;
+\item time (if supported by the database;
 returned as objects that inherit from \code{difftime})
-\item timestamp
-(if supported by the database;
+\item timestamp (if supported by the database;
 returned as \code{POSIXct}
-respecting the time zone but not necessarily preserving the
-input time zone),
+respecting the time zone but not necessarily preserving the input time zone),
 also for timestamps prior to 1970 or 1900 or after 2038
-respecting the time zone but not necessarily preserving the
-input time zone)
+respecting the time zone but not necessarily preserving the input time zone)
 }
 
 Mixing column types in the same table is supported.

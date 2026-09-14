@@ -44,8 +44,7 @@ as returned by \code{\link[DBI:dbGetStatement]{dbGetStatement()}},
 as returned by \code{\link[DBI:dbGetRowCount]{dbGetRowCount()}},
 \item \code{rows.affected}: the number of rows affected (for statements),
 as returned by \code{\link[DBI:dbGetRowsAffected]{dbGetRowsAffected()}}
-\item \code{has.completed}: a logical that indicates
-if the query or statement has completed,
+\item \code{has.completed}: a logical that indicates if the query or statement has completed,
 as returned by \code{\link[DBI:dbHasCompleted]{dbHasCompleted()}}.
 }
 }

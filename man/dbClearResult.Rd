@@ -12,8 +12,7 @@ dbClearResult(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbClearResult()} returns \code{TRUE}, invisibly, for result sets obtained from
-\code{dbSendQuery()},
+\code{dbClearResult()} returns \code{TRUE}, invisibly, for result sets obtained from \code{dbSendQuery()},
 \code{dbSendStatement()},
 or \code{dbSendQueryArrow()},
 }

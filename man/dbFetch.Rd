@@ -19,14 +19,12 @@ fetch(res, n = -1, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbFetch()} always returns a \link{data.frame} with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbFetch()} always returns a \link{data.frame} with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
-Passing \code{n = NA} is supported and returns an arbitrary number of rows (at least one)
-as specified by the driver, but at most the remaining rows in the result set.
+Passing \code{n = NA} is supported and returns an arbitrary number of rows (at least one) as specified by the driver,
+but at most the remaining rows in the result set.
 }
 \description{
 Fetch the next \code{n} elements (rows) from the result set and return them as a data.frame.
@@ -74,13 +72,11 @@ to ensure that this step is always executed.
 
 
 An attempt to fetch from a closed result set raises an error.
-If the \code{n} argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
+If the \code{n} argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 
-Calling \code{dbFetch()} on a result set from a data manipulation query
-created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can
-be fetched and return an empty data frame, with a warning.
+Calling \code{dbFetch()} on a result set from a data manipulation query created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can be fetched
+and return an empty data frame, with a warning.
 
 }
 
@@ -93,14 +89,10 @@ Multi-row queries can also be fetched progressively
 by passing a whole number (\link{integer} or
 \link{numeric})
 as the \code{n} argument.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If fewer rows than requested are returned, further fetches will
-return a data frame with zero rows.
-If zero rows are fetched, the columns of the data frame are still fully
-typed.
+A value of \link{Inf} for the \code{n} argument is supported and also returns the full result.
+If more rows than available are fetched, the result is returned in full without warning.
+If fewer rows than requested are returned, further fetches will return a data frame with zero rows.
+If zero rows are fetched, the columns of the data frame are still fully typed.
 Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.
 
@@ -132,8 +124,7 @@ with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_timestamp})
 }
 
-If dates and timestamps are supported by the backend, the following R types are
-used:
+If dates and timestamps are supported by the backend, the following R types are used:
 \itemize{
 \item \link[=Dates]{Date} for dates
 (also applies to the return value of the SQL function \code{current_date})
@@ -141,18 +132,15 @@ used:
 (also applies to the return value of the SQL function \code{current_timestamp})
 }
 
-R has no built-in type with lossless support for the full range of 64-bit
-or larger integers. If 64-bit integers are returned from a query,
+R has no built-in type with lossless support for the full range of 64-bit or larger integers.
+If 64-bit integers are returned from a query,
 the following rules apply:
 \itemize{
-\item Values are returned in a container with support for the full range of
-valid 64-bit values (such as the \code{integer64} class of the \pkg{bit64}
-package)
-\item Coercion to numeric always returns a number that is as close as possible
-to the true value
+\item Values are returned in a container with support for the full range of valid 64-bit values
+(such as the \code{integer64} class of the \pkg{bit64} package)
+\item Coercion to numeric always returns a number that is as close as possible to the true value
 \item Loss of precision when converting to numeric gives a warning
-\item Conversion to character always returns a lossless decimal representation
-of the data
+\item Conversion to character always returns a lossless decimal representation of the data
 }
 
 }

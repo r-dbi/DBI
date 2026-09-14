@@ -17,8 +17,7 @@ dbExecute(conn, statement, ...)
 \code{dbExecute()} always returns a
 scalar
 numeric
-that specifies the number of rows affected
-by the statement.
+that specifies the number of rows affected by the statement.
 }
 \description{
 Executes a statement and returns the number of rows affected.
@@ -83,11 +82,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

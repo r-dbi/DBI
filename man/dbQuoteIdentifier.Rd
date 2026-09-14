@@ -18,9 +18,7 @@ dbQuoteIdentifier(conn, x, ...)
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
 The names of the input argument are preserved in the output.
-When passing the returned object again to \code{dbQuoteIdentifier()}
-as \code{x}
-argument, it is returned unchanged.
+When passing the returned object again to \code{dbQuoteIdentifier()} as \code{x} argument, it is returned unchanged.
 Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link[DBI:SQL]{SQL} objects
 to achieve this behavior, but this is not required.)
@@ -49,20 +47,17 @@ returns a data frame with the identifier, unquoted, as column name.
 Quoted identifiers can be used as table and column names in SQL queries,
 in particular in queries like \verb{SELECT 1 AS ...}
 and \verb{SELECT * FROM (SELECT 1) ...}.
-The method must use a quoting mechanism that is unambiguously different
-from the quoting mechanism used for strings, so that a query like
-\verb{SELECT ... FROM (SELECT 1 AS ...)}
+The method must use a quoting mechanism that is unambiguously different from the quoting mechanism used for strings,
+so that a query like \verb{SELECT ... FROM (SELECT 1 AS ...)}
 throws an error if the column names do not match.
 
-The method can quote column names that
-contain special characters such as a space,
+The method can quote column names that contain special characters such as a space,
 a dot,
 a comma,
 or quotes used to mark strings
 or identifiers,
 if the database supports this.
-In any case, checking the validity of the identifier
-should be performed only when executing a query,
+In any case, checking the validity of the identifier should be performed only when executing a query,
 and not by \code{dbQuoteIdentifier()}.
 
 }

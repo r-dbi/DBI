@@ -12,9 +12,8 @@ dbFetchArrowChunk(res, ...)
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbFetchArrowChunk()} always returns an object coercible to a \link{data.frame} with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbFetchArrowChunk()} always returns an object coercible to a \link{data.frame} with as many rows as records were fetched
+and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -66,8 +65,8 @@ An attempt to fetch from a closed result set raises an error.
 Fetching multi-row queries with one
 or more columns returns the next chunk.
 The size of the chunk is implementation-specific.
-The object returned by \code{dbFetchArrowChunk()} can also be passed to
-\code{\link[nanoarrow:as_nanoarrow_array]{nanoarrow::as_nanoarrow_array()}} to create a nanoarrow array object.
+The object returned by \code{dbFetchArrowChunk()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array]{nanoarrow::as_nanoarrow_array()}}
+to create a nanoarrow array object.
 The chunk size is implementation-specific.
 
 }
