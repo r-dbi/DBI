@@ -24,8 +24,7 @@ Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()
 \section{Failure modes}{
 
 
-Attempting to query the statement for a result set cleared with
-\code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
+Attempting to query the statement for a result set cleared with \code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
 
 }
 

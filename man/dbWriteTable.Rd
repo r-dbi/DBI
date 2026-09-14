@@ -49,9 +49,8 @@ For details, see the documentation for the individual methods.
 
 
 If the table exists, and both \code{append} and \code{overwrite} arguments are unset,
-or \code{append = TRUE} and the data frame with the new data has different
-column names,
-an error is raised; the remote table remains unchanged.
+or \code{append = TRUE} and the data frame with the new data has different column names, an error is raised;
+the remote table remains unchanged.
 
 An error is raised when calling this method for a closed
 or invalid connection.
@@ -59,8 +58,7 @@ An error is also raised
 if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}} or
 if this results in a non-scalar.
 Invalid values for the additional arguments \code{row.names},
-\code{overwrite}, \code{append}, \code{field.types}, and \code{temporary}
-(non-scalars,
+\code{overwrite}, \code{append}, \code{field.types}, and \code{temporary} (non-scalars,
 unsupported data types,
 \code{NA},
 incompatible values,
@@ -105,16 +103,13 @@ The \code{value} argument must be a data frame
 with a subset of the columns of the existing table if \code{append = TRUE}.
 The order of the columns does not matter with \code{append = TRUE}.
 
-If the \code{overwrite} argument is \code{TRUE}, an existing table of the same name
-will be overwritten.
+If the \code{overwrite} argument is \code{TRUE}, an existing table of the same name will be overwritten.
 This argument doesn't change behavior if the table does not exist yet.
 
-If the \code{append} argument is \code{TRUE}, the rows in an existing table are
-preserved, and the new data are appended.
+If the \code{append} argument is \code{TRUE}, the rows in an existing table are preserved, and the new data are appended.
 If the table doesn't exist yet, it is created.
 
-If the \code{temporary} argument is \code{TRUE}, the table is not available in a
-second connection and is gone after reconnecting.
+If the \code{temporary} argument is \code{TRUE}, the table is not available in a second connection and is gone after reconnecting.
 Not all backends support this argument.
 A regular, non-temporary table is visible in a second connection,
 in a pre-existing connection,
@@ -138,8 +133,7 @@ and be read identically with \code{\link[DBI:dbReadTable]{dbReadTable()}}:
 \item 64-bit values (using \code{"bigint"} as field type); the result can be
 \itemize{
 \item converted to a numeric, which may lose precision,
-\item converted a character vector, which gives the full decimal
-representation
+\item converted a character vector, which gives the full decimal representation
 \item written to another table and read again unchanged
 }
 \item character (in both UTF-8
@@ -147,34 +141,25 @@ and native encodings),
 supporting empty strings
 before and after a non-empty string
 \item factor (returned as character)
-\item list of raw
-(if supported by the database)
-\item objects of type \link[blob:blob]{blob::blob}
-(if supported by the database)
-\item date
-(if supported by the database;
+\item list of raw (if supported by the database)
+\item objects of type \link[blob:blob]{blob::blob} (if supported by the database)
+\item date (if supported by the database;
 returned as \code{Date}),
 also for dates prior to 1970 or 1900 or after 2038
-\item time
-(if supported by the database;
+\item time (if supported by the database;
 returned as objects that inherit from \code{difftime})
-\item timestamp
-(if supported by the database;
+\item timestamp (if supported by the database;
 returned as \code{POSIXct}
-respecting the time zone but not necessarily preserving the
-input time zone),
+respecting the time zone but not necessarily preserving the input time zone),
 also for timestamps prior to 1970 or 1900 or after 2038
-respecting the time zone but not necessarily preserving the
-input time zone)
+respecting the time zone but not necessarily preserving the input time zone)
 }
 
 Mixing column types in the same table is supported.
 
-The \code{field.types} argument must be a named character vector with at most
-one entry for each column.
+The \code{field.types} argument must be a named character vector with at most one entry for each column.
 It indicates the SQL data type to be used for a new column.
-If a column is missed from \code{field.types}, the type is inferred
-from the input data with \code{\link[DBI:dbDataType]{dbDataType()}}.
+If a column is missed from \code{field.types}, the type is inferred from the input data with \code{\link[DBI:dbDataType]{dbDataType()}}.
 
 The interpretation of \link{rownames} depends on the \code{row.names} argument,
 see \code{\link[DBI:sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
@@ -184,8 +169,7 @@ see \code{\link[DBI:sqlRownamesToColumn]{sqlRownamesToColumn()}} for details:
 even if the input data frame only has natural row names from 1 to \code{nrow(...)}.
 \item If \code{NA}, a column named "row_names" is created if the data has custom row names,
 no extra column is created in the case of natural row names.
-\item If a string, this specifies the name of the column in the remote table
-that contains the row names,
+\item If a string, this specifies the name of the column in the remote table that contains the row names,
 even if the input data frame only has natural row names.
 }
 

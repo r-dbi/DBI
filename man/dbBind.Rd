@@ -22,8 +22,7 @@ For \code{dbBindArrow()}, values as a nanoarrow stream, with one column per quer
 \code{dbBind()} returns the result set,
 invisibly,
 for queries issued by \code{\link[DBI:dbSendQuery]{dbSendQuery()}} or \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} and
-also for data manipulation statements issued by
-\code{\link[DBI:dbSendStatement]{dbSendStatement()}}.
+also for data manipulation statements issued by \code{\link[DBI:dbSendStatement]{dbSendStatement()}}.
 }
 \description{
 For parametrized or prepared statements,
@@ -167,9 +166,7 @@ all parameter values must have names
 or \code{NA}),
 and vice versa,
 otherwise an error is raised.
-The behavior for mixing placeholders of different types
-(in particular mixing positional and named placeholders)
-is not specified.
+The behavior for mixing placeholders of different types (in particular mixing positional and named placeholders) is not specified.
 
 Calling \code{dbBind()} on a result set already cleared by \code{\link[DBI:dbClearResult]{dbClearResult()}}
 also raises an error.
@@ -181,14 +178,11 @@ also raises an error.
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[DBI:dbSendQuery]{dbSendQuery()}}, \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[DBI:dbSendStatement]{dbSendStatement()}}
-with a query or statement that contains placeholders,
+\item Call \code{\link[DBI:dbSendQuery]{dbSendQuery()}}, \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[DBI:dbSendStatement]{dbSendStatement()}} with a query or statement that contains placeholders,
 store the returned \link[DBI:DBIResult-class]{DBIResult} object in a variable.
-Mixing placeholders (in particular, named and unnamed ones) is not
-recommended.
-It is good practice to register a call to \code{\link[DBI:dbClearResult]{dbClearResult()}} via
-\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
-(see the last enumeration item).
+Mixing placeholders (in particular, named and unnamed ones) is not recommended.
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{dbClearResult()}} via \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()}
+or \code{dbSendStatement()} (see the last enumeration item).
 Until \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}} have been called,
 the returned result set object has the following behavior:
 \itemize{
@@ -200,11 +194,10 @@ the returned result set object has the following behavior:
 }
 \item Call \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}}:
 \itemize{
-\item For \code{\link[DBI:dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements
-have the same lengths and contain values supported by the backend.
+\item For \code{\link[DBI:dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements have the same lengths
+and contain values supported by the backend.
 A \link{data.frame} is internally stored as such a list.
-\item For \code{\link[DBI:dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a
-nanoarrow array stream, with one column per query parameter.
+\item For \code{\link[DBI:dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a nanoarrow array stream, with one column per query parameter.
 }
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
@@ -223,11 +216,9 @@ The elements of the \code{params} argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
 are supported.
-For queries, calling \code{dbFetch()} binding such parameters returns
-concatenated results, equivalent to binding and fetching for each set
-of values and connecting via \code{\link[=rbind]{rbind()}}.
-For data manipulation statements, \code{dbGetRowsAffected()} returns the
-total number of rows affected if binding non-scalar parameters.
+For queries, calling \code{dbFetch()} binding such parameters returns concatenated results,
+equivalent to binding and fetching for each set of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the total number of rows affected if binding non-scalar parameters.
 \code{dbBind()} also accepts repeated calls on the same result set
 for both queries
 and data manipulation statements,
