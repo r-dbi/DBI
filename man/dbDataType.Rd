@@ -18,8 +18,7 @@ or \link[=DBIConnection-class]{DBI::DBIConnection}}
 \code{dbDataType()} returns the SQL type that corresponds to the \code{obj} argument
 as a non-empty
 character string.
-For data frames, a character vector with one element per column
-is returned.
+For data frames, a character vector with one element per column is returned.
 }
 \description{
 Returns an SQL string that describes the SQL data type to be used for an object.
@@ -70,8 +69,7 @@ and \link{difftime}.
 If the database supports blobs,
 this method also must accept lists of \link{raw} vectors,
 and \link[blob:blob]{blob::blob} objects.
-As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be
-supported and return the same results as their unwrapped counterparts.
+As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be supported and return the same results as their unwrapped counterparts.
 The SQL data type for \link{factor} and
 \link{ordered} is the same as for character.
 The behavior for other object types is not specified.

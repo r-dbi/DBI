@@ -52,10 +52,8 @@ gives an error.
 \code{dbWithTransaction()} initiates a transaction with \code{dbBegin()}, executes
 the code given in the \code{code} argument, and commits the transaction with
 \code{\link[DBI:dbCommit]{dbCommit()}}.
-If the code raises an error, the transaction is instead aborted with
-\code{\link[DBI:dbRollback]{dbRollback()}}, and the error is propagated.
-If the code calls \code{dbBreak()}, execution of the code stops and the
-transaction is silently aborted.
+If the code raises an error, the transaction is instead aborted with \code{\link[DBI:dbRollback]{dbRollback()}}, and the error is propagated.
+If the code calls \code{dbBreak()}, execution of the code stops and the transaction is silently aborted.
 All side effects caused by the code
 (such as the creation of new variables)
 propagate to the calling environment.

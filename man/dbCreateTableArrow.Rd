@@ -48,8 +48,7 @@ or invalid connection.
 An error is also raised
 if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}} or
 if this results in a non-scalar.
-Invalid values for the \code{temporary} argument
-(non-scalars,
+Invalid values for the \code{temporary} argument (non-scalars,
 unsupported data types,
 \code{NA},
 incompatible values,
@@ -93,8 +92,7 @@ The \code{value} argument can be:
 \item a nanoarrow schema
 }
 
-If the \code{temporary} argument is \code{TRUE}, the table is not available in a
-second connection and is gone after reconnecting.
+If the \code{temporary} argument is \code{TRUE}, the table is not available in a second connection and is gone after reconnecting.
 Not all backends support this argument.
 A regular, non-temporary table is visible in a second connection,
 in a pre-existing connection,

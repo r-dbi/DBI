@@ -16,8 +16,7 @@ dbQuoteLiteral(conn, x, ...)
 \value{
 \code{dbQuoteLiteral()} returns an object that can be coerced to \link{character},
 of the same length as the input.
-For an empty
-integer,
+For an empty integer,
 numeric,
 character,
 logical,
@@ -26,9 +25,7 @@ time,
 or blob vector,
 this function returns a length-0 object.
 
-When passing the returned object again to \code{dbQuoteLiteral()}
-as \code{x}
-argument, it is returned unchanged.
+When passing the returned object again to \code{dbQuoteLiteral()} as \code{x} argument, it is returned unchanged.
 Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link[DBI:SQL]{SQL} objects
 to achieve this behavior, but this is not required.)
@@ -52,9 +49,7 @@ for the \code{x} argument raises an error.
 
 
 The returned expression can be used in a \verb{SELECT ...} query,
-and the value of
-\code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]}
-must be equal to \code{x}
+and the value of \code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]} must be equal to \code{x}
 for any scalar
 integer,
 numeric,
