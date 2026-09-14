@@ -58,8 +58,7 @@ to ensure that this step is always executed.
 \section{Failure modes}{
 
 
-Attempting to get the rows affected for a result set cleared with
-\code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
+Attempting to get the rows affected for a result set cleared with \code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
 
 }
 

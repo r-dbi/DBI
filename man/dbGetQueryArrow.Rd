@@ -14,9 +14,8 @@ dbGetQueryArrow(conn, statement, ...)
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbGetQueryArrow()} always returns an object coercible to a \link{data.frame}, with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbGetQueryArrow()} always returns an object coercible to a \link{data.frame},
+with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -56,10 +55,8 @@ An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
-The object returned by \code{dbGetQueryArrow()} can also be passed to
-\code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}} to create a nanoarrow
-array stream object that can be used to read the result set
-in batches.
+The object returned by \code{dbGetQueryArrow()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}
+to create a nanoarrow array stream object that can be used to read the result set in batches.
 The chunk size is implementation-specific.
 
 }
@@ -90,11 +87,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

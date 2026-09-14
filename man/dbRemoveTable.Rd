@@ -56,13 +56,11 @@ but are part of the DBI specification:
 
 These arguments must be provided as named arguments.
 
-If \code{temporary} is \code{TRUE}, the call to \code{dbRemoveTable()}
-will consider only temporary tables.
+If \code{temporary} is \code{TRUE}, the call to \code{dbRemoveTable()} will consider only temporary tables.
 Not all backends support this argument.
 In particular, permanent tables of the same name are left untouched.
 
-If \code{fail_if_missing} is \code{FALSE}, the call to \code{dbRemoveTable()}
-succeeds if the table does not exist.
+If \code{fail_if_missing} is \code{FALSE}, the call to \code{dbRemoveTable()} succeeds if the table does not exist.
 
 }
 
@@ -78,8 +76,7 @@ This function can also be used to remove a temporary table.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item If an unquoted table name as string: \code{dbRemoveTable()} will do the
-quoting,
+\item If an unquoted table name as string: \code{dbRemoveTable()} will do the quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }

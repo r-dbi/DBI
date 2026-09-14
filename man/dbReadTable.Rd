@@ -22,9 +22,8 @@ e.g. \code{SQL('"my_schema"."table_name"')}
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbReadTable()} returns a data frame that contains the complete data
-from the remote table, effectively the result of calling \code{\link[DBI:dbGetQuery]{dbGetQuery()}} with
-\verb{SELECT * FROM <name>}.
+\code{dbReadTable()} returns a data frame that contains the complete data from the remote table,
+effectively the result of calling \code{\link[DBI:dbGetQuery]{dbGetQuery()}} with \verb{SELECT * FROM <name>}.
 
 An empty table is returned as a data frame with zero rows.
 
@@ -38,15 +37,13 @@ see \code{\link[DBI:sqlColumnToRownames]{sqlColumnToRownames()}} for details:
 \itemize{
 \item If \code{NA}, a column named "row_names" is converted to row names if it exists,
 otherwise no translation occurs.
-\item If a string, this specifies the name of the column in the remote table
-that contains the row names.
+\item If a string, this specifies the name of the column in the remote table that contains the row names.
 }
 
 The default is \code{row.names = FALSE}.
 
 If the database supports identifiers with special characters,
-the columns in the returned data frame are converted to valid R
-identifiers
+the columns in the returned data frame are converted to valid R identifiers
 if the \code{check.names} argument is \code{TRUE},
 If \code{check.names = FALSE}, the returned table has non-syntactic column names without quotes.
 }
@@ -78,8 +75,7 @@ or invalid connection.
 An error is raised
 if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}
 or if this results in a non-scalar.
-Unsupported values for \code{row.names} and \code{check.names}
-(non-scalars,
+Unsupported values for \code{row.names} and \code{check.names} (non-scalars,
 unsupported data types,
 \code{NA} for \code{check.names})
 also raise an error.
@@ -108,8 +104,7 @@ See the "Value" section for details on their usage.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item If an unquoted table name as string: \code{dbReadTable()} will do the
-quoting,
+\item If an unquoted table name as string: \code{dbReadTable()} will do the quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }

@@ -17,8 +17,7 @@ dbSendQueryArrow(conn, statement, ...)
 \code{dbSendQueryArrow()} returns
 an S4 object that inherits from \link[DBI:DBIResultArrow-class]{DBIResultArrow}.
 The result set can be used with \code{\link[DBI:dbFetchArrow]{dbFetchArrow()}} to extract records.
-Once you have finished using a result, make sure to clear it
-with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
+Once you have finished using a result, make sure to clear it with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -67,8 +66,7 @@ to ensure that this step is always executed.
 An error is raised when issuing a query over a closed
 or invalid connection,
 or if the query is not a non-\code{NA} string.
-An error is also raised if the syntax of the query is invalid
-and all query parameters are given (by passing the \code{params} argument)
+An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the \code{params} argument)
 or the \code{immediate} argument is set to \code{TRUE}.
 
 
@@ -95,14 +93,11 @@ See the "Specification" sections for details on their usage.
 
 
 No warnings occur under normal conditions.
-When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{dbClearResult()}}.
-Failure to clear the result set leads to a warning
-when the connection is closed.
+When done, the DBIResult object must be cleared with a call to \code{\link[DBI:dbClearResult]{dbClearResult()}}.
+Failure to clear the result set leads to a warning when the connection is closed.
 
 If the backend supports only one open result set per connection,
-issuing a second query invalidates an already open result set
-and raises a warning.
+issuing a second query invalidates an already open result set and raises a warning.
 The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
@@ -118,11 +113,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally
