@@ -13,12 +13,12 @@ dbListResults(conn, ...)
 }
 \value{
 a list.
-If no results are active, an empty list.
-If only a single result is active, a list with one element.
+ If no results are active, an empty list.
+ If only a single result is active, a list with one element.
 }
 \description{
 DEPRECATED.
-DBI currenty supports only one open result set per connection,
+ DBI currenty supports only one open result set per connection,
 you need to keep track of the result sets you open if you need this functionality.
 }
 \seealso{

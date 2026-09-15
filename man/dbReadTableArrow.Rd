@@ -10,7 +10,7 @@ dbReadTableArrow(conn, name, ...)
 \item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Options are:
+ Options are:
 \itemize{
 \item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
@@ -31,13 +31,13 @@ An empty table is returned as an Arrow object with zero rows.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Reads a database table as an Arrow object.
-Use \code{\link[=dbReadTable]{dbReadTable()}} instead to obtain a data frame.
+ Use \code{\link[=dbReadTable]{dbReadTable()}} instead to obtain a data frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbReadTableArrow")}
 }
 \details{
 This function returns an Arrow object.
-Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}}
+ Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}}
 or use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
 }
 \section{Failure modes}{

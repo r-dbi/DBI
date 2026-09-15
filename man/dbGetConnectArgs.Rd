@@ -16,7 +16,7 @@ dbGetConnectArgs(drv, eval = TRUE, ...)
 \description{
 Returns the arguments stored in a \link[=DBIConnector-class]{DBIConnector} object for inspection,
 optionally evaluating them.
-This function is called by \code{\link[=dbConnect]{dbConnect()}} and usually does not need to be called directly.
+ This function is called by \code{\link[=dbConnect]{dbConnect()}} and usually does not need to be called directly.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetConnectArgs")}
 }

@@ -14,7 +14,7 @@ dbBindArrow(res, params, ...)
 
 \item{params}{For \code{dbBind()}, a list of values, named or unnamed, or a data frame,
 with one element/column per query parameter.
-For \code{dbBindArrow()}, values as a nanoarrow stream, with one column per query parameter.}
+ For \code{dbBindArrow()}, values as a nanoarrow stream, with one column per query parameter.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -28,37 +28,37 @@ also for data manipulation statements issued by \code{\link[DBI:dbSendStatement]
 For parametrized or prepared statements,
 the \code{\link[=dbSendQuery]{dbSendQuery()}}, \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, and \code{\link[=dbSendStatement]{dbSendStatement()}} functions
 can be called with statements that contain placeholders for values.
-The \code{dbBind()} and \code{dbBindArrow()} functions bind these placeholders to actual values,
+ The \code{dbBind()} and \code{dbBindArrow()} functions bind these placeholders to actual values,
 and are intended to be called on the result set before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbFetchArrow]{dbFetchArrow()}}.
-The values are passed to \code{dbBind()} as lists or data frames,
+ The values are passed to \code{dbBind()} as lists or data frames,
 and to \code{dbBindArrow()} as a stream created by \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.
 
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 \code{dbBindArrow()} is experimental, as are the other \verb{*Arrow} functions.
-\code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()} is compatible with \code{dbBind()}.
+ \code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()} is compatible with \code{dbBind()}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbBind")}
 }
 \details{
 \pkg{DBI} supports parametrized (or prepared) queries and statements
 via the \code{dbBind()} and \code{dbBindArrow()} generics.
-Parametrized queries are different from normal queries
+ Parametrized queries are different from normal queries
 in that they allow an arbitrary number of placeholders,
 which are later substituted by actual values.
-Parametrized queries (and statements) serve two purposes:
+ Parametrized queries (and statements) serve two purposes:
 \itemize{
 \item The same query can be executed more than once with different values.
-The DBMS may cache intermediate information for the query,
+ The DBMS may cache intermediate information for the query,
 such as the execution plan, and execute it faster.
 \item Separation of query syntax and parameters protects against SQL injection.
 }
 
 The placeholder format is currently not specified by \pkg{DBI};
 in the future, a uniform placeholder syntax may be supported.
-Consult the backend documentation for the supported formats.
-For automated testing, backend authors specify the placeholder syntax with the \code{placeholder_pattern} tweak.
-Known examples are:
+ Consult the backend documentation for the supported formats.
+ For automated testing, backend authors specify the placeholder syntax with the \code{placeholder_pattern} tweak.
+ Known examples are:
 \itemize{
 \item \verb{?} (positional matching in order of appearance) in \pkg{RMariaDB} and \pkg{RSQLite}
 \item \verb{$1} (positional matching by index) in \pkg{RPostgres} and \pkg{RSQLite}
@@ -74,25 +74,25 @@ Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}} or
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
 unless you want to access the results in a paged way
 or you have a parameterized query that you want to reuse.
-This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
-See also \code{vignette("dbi-advanced")} for a walkthrough.
+ This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
-This is required only if the query contains placeholders
+ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set without retrieving actual data.
 \item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results, or the remaining rows.
-Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
-This step can be called multiple times.
-Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
+ Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
+ This step can be called multiple times.
+ Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
-This method returns \code{TRUE} if no more rows are available for fetching.
+ This method returns \code{TRUE} if no more rows are available for fetching.
 \item Repeat the last four steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
-This step is mandatory even if no rows have been fetched
+ This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
-It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+ It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
 }
@@ -105,19 +105,19 @@ This section gives a complete overview over the flow for the execution of querie
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
 is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
-This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
-See also \code{vignette("dbi-advanced")} for a walkthrough.
+ This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
-This is required only if the query contains placeholders
+ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Use \code{\link[=dbFetchArrow]{dbFetchArrow()}} to get a data stream.
 \item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
-This step is mandatory even if no rows have been fetched
+ This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
-It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+ It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
 }
@@ -127,23 +127,23 @@ to ensure that this step is always executed.
 
 This section gives a complete overview over the flow for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data, or setting database or connection options.
-Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
+ Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
-This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
-See also \code{vignette("dbi-advanced")} for a walkthrough.
+ This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
-For some queries you need to pass \code{immediate = TRUE}.
+ For some queries you need to pass \code{immediate = TRUE}.
 \item Optionally, bind query parameters with\code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
-This is required only if the query contains placeholders
+ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number of rows affected by the query.
 \item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
-This step is mandatory even if no rows have been fetched
+ This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
-It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+ It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
 }

@@ -22,11 +22,11 @@ dbBreak()
 }
 \description{
 Given that \link{transactions} are implemented, this function allows you to pass in code that is run in a transaction.
-The default method of \code{dbWithTransaction()} calls \code{\link[=dbBegin]{dbBegin()}} before executing the code,
+ The default method of \code{dbWithTransaction()} calls \code{\link[=dbBegin]{dbBegin()}} before executing the code,
 and \code{\link[=dbCommit]{dbCommit()}} after successful completion,
 or \code{\link[=dbRollback]{dbRollback()}} in case of an error.
-The advantage is that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or \code{dbRollback()} -- that is all taken care of.
-The special function \code{dbBreak()} allows an early exit with rollback,
+ The advantage is that you don't have to remember to do \code{dbBegin()} and \code{dbCommit()} or \code{dbRollback()} -- that is all taken care of.
+ The special function \code{dbBreak()} allows an early exit with rollback,
 it can be called only inside \code{dbWithTransaction()}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbWithTransaction")}

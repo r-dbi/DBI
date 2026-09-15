@@ -7,7 +7,7 @@
 \title{DBI: R Database Interface}
 \description{
 DBI defines an interface for communication between R and relational database management systems.
-All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called \emph{DBI backends}).
+ All classes in this package are virtual and need to be extended by the various R/DBMS implementations (so-called \emph{DBI backends}).
 }
 \section{Definition}{
 
