@@ -68,6 +68,11 @@ The size of the chunk is implementation-specific.
 The object returned by \code{dbFetchArrowChunk()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array]{nanoarrow::as_nanoarrow_array()}}
 to create a nanoarrow array object.
 The chunk size is implementation-specific.
+Each chunk carries the schema of the result:
+\code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}} applied to the object returned by \code{dbFetchArrowChunk()}
+gives a struct schema with one child per column, named like the columns.
+The names and formats of the children are the same for all chunks of a result,
+including the zero-length chunk returned after \code{\link[DBI:dbHasCompleted]{dbHasCompleted()}} has returned \code{TRUE}.
 
 }
 

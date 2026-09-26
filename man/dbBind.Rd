@@ -236,7 +236,7 @@ At least the following data types are accepted on input (including \link{NA}):
 \item \link{logical} for Boolean values
 \item \link{character}
 (also with special characters such as spaces, newlines, quotes, and backslashes)
-\item \link{factor} (bound as character,
+\item \link[base:factor]{factor} (bound as character,
 with warning)
 \item \link[=Dates]{Date}
 (also when stored internally as integer)
