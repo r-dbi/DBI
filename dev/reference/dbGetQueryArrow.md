@@ -77,11 +77,7 @@ performance optimization.
 
 An error is raised when issuing a query over a closed or invalid
 connection, if the syntax of the query is invalid, or if the query is
-not a non-`NA` string. The object returned by `dbGetQueryArrow()` can
-also be passed to
-[`nanoarrow::as_nanoarrow_array_stream()`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html)
-to create a nanoarrow array stream object that can be used to read the
-result set in batches. The chunk size is implementation-specific.
+not a non-`NA` string.
 
 ## Additional arguments
 

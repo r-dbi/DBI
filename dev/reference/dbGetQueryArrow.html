@@ -126,10 +126,7 @@ However, callers are strongly advised to use <code><a href="dbExecute.html">dbEx
 <p>An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
-or if the query is not a non-<code>NA</code> string.
-The object returned by <code>dbGetQueryArrow()</code> can also be passed to <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>
-to create a nanoarrow array stream object that can be used to read the result set in batches.
-The chunk size is implementation-specific.</p>
+or if the query is not a non-<code>NA</code> string.</p>
     </div>
     <div class="section level2">
     <h2 id="additional-arguments">Additional arguments<a class="anchor" aria-label="anchor" href="#additional-arguments"></a></h2>

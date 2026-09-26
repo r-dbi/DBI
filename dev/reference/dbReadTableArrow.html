@@ -89,7 +89,9 @@ e.g. <code>SQL('"my_schema"."table_name"')</code></p></li>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>dbReadTableArrow()</code> returns an Arrow object that contains the complete data from the remote table,
 effectively the result of calling <code><a href="dbGetQueryArrow.html">dbGetQueryArrow()</a></code> with <code>SELECT * FROM &lt;name&gt;</code>.</p>
-<p>An empty table is returned as an Arrow object with zero rows.</p>
+<p>An empty table is returned as an Arrow object with zero rows.
+A column of type <code>BIGINT</code> is returned as an Arrow column of type <code>int64</code>,
+which converts to <a href="https://bit64.r-lib.org/reference/bit64-package.html" class="external-link">bit64::integer64</a> without loss of precision.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>

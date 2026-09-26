@@ -128,7 +128,12 @@ or more columns returns the next chunk.
 The size of the chunk is implementation-specific.
 The object returned by <code>dbFetchArrowChunk()</code> can also be passed to <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array.html" class="external-link">nanoarrow::as_nanoarrow_array()</a></code>
 to create a nanoarrow array object.
-The chunk size is implementation-specific.</p>
+The chunk size is implementation-specific.
+Each chunk carries the schema of the result:
+<code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html" class="external-link">nanoarrow::infer_nanoarrow_schema()</a></code> applied to the object returned by <code>dbFetchArrowChunk()</code>
+gives a struct schema with one child per column, named like the columns.
+The names and formats of the children are the same for all chunks of a result,
+including the zero-length chunk returned after <code><a href="dbHasCompleted.html">dbHasCompleted()</a></code> has returned <code>TRUE</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

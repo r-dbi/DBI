@@ -92,7 +92,12 @@ the entire result. The object returned by `dbFetchArrow()` can also be
 passed to
 [`nanoarrow::as_nanoarrow_array_stream()`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html)
 to create a nanoarrow array stream object that can be used to read the
-result set in batches. The chunk size is implementation-specific.
+result set in batches. The chunk size is implementation-specific. The
+schema of the result is available before any batch is consumed:
+[`nanoarrow::infer_nanoarrow_schema()`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html)
+applied to the object returned by `dbFetchArrow()` gives a struct schema
+with one child per column, named like the columns. Inspecting the schema
+does not consume the stream.
 
 ## See also
 

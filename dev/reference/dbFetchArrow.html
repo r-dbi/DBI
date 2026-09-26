@@ -124,7 +124,11 @@ to ensure that this step is always executed.</p></li>
 or more columns by default returns the entire result.
 The object returned by <code>dbFetchArrow()</code> can also be passed to <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array_stream.html" class="external-link">nanoarrow::as_nanoarrow_array_stream()</a></code>
 to create a nanoarrow array stream object that can be used to read the result set in batches.
-The chunk size is implementation-specific.</p>
+The chunk size is implementation-specific.
+The schema of the result is available before any batch is consumed:
+<code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html" class="external-link">nanoarrow::infer_nanoarrow_schema()</a></code> applied to the object returned by <code>dbFetchArrow()</code>
+gives a struct schema with one child per column, named like the columns.
+Inspecting the schema does not consume the stream.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

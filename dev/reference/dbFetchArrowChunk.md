@@ -95,7 +95,14 @@ chunk. The size of the chunk is implementation-specific. The object
 returned by `dbFetchArrowChunk()` can also be passed to
 [`nanoarrow::as_nanoarrow_array()`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array.html)
 to create a nanoarrow array object. The chunk size is
-implementation-specific.
+implementation-specific. Each chunk carries the schema of the result:
+[`nanoarrow::infer_nanoarrow_schema()`](https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_schema.html)
+applied to the object returned by `dbFetchArrowChunk()` gives a struct
+schema with one child per column, named like the columns. The names and
+formats of the children are the same for all chunks of a result,
+including the zero-length chunk returned after
+[`dbHasCompleted()`](https://dbi.r-dbi.org/dev/reference/dbHasCompleted.md)
+has returned `TRUE`.
 
 ## See also
 

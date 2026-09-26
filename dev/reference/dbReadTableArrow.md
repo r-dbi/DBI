@@ -57,7 +57,11 @@ data from the remote table, effectively the result of calling
 [`dbGetQueryArrow()`](https://dbi.r-dbi.org/dev/reference/dbGetQueryArrow.md)
 with `SELECT * FROM <name>`.
 
-An empty table is returned as an Arrow object with zero rows.
+An empty table is returned as an Arrow object with zero rows. A column
+of type `BIGINT` is returned as an Arrow column of type `int64`, which
+converts to
+[bit64::integer64](https://bit64.r-lib.org/reference/bit64-package.html)
+without loss of precision.
 
 ## Details
 

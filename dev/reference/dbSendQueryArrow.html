@@ -167,7 +167,11 @@ Failure to clear the result set leads to a warning when the connection is closed
 issuing a second query invalidates an already open result set and raises a warning.
 The newly opened result set is valid
 and must be cleared with <code><a href="dbClearResult.html">dbClearResult()</a></code>.</p>
-<p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
+<p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.
+The schema of the result does not depend on the values bound to a query:
+for a column with a declared type,
+executing the same query with different parameters via <code><a href="dbBind.html">dbBind()</a></code>
+returns chunks whose children have the same names and formats.</p>
     </div>
     <div class="section level2">
     <h2 id="specification-for-the-immediate-argument">Specification for the <code>immediate</code> argument<a class="anchor" aria-label="anchor" href="#specification-for-the-immediate-argument"></a></h2>
