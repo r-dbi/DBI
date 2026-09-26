@@ -11,6 +11,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbClearResult("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbClearResult("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`bigrquery::dbClearResult("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbClearResult("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbClearResult-DatabaseConnectorDbiResult-method.html)

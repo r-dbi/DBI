@@ -8,6 +8,12 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbListFields("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbListFields("AdbiConnection", "Id")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbListFields("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
 - [`AzureKusto::dbListFields("AzureKustoConnection", "character")`](https://rdrr.io/pkg/AzureKusto/man/DBI_query.html)
 
 - [`bigrquery::dbListFields("BigQueryConnection", "AsIs")`](https://bigrquery.r-dbi.org/reference/DBI.html)

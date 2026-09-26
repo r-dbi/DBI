@@ -17,6 +17,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- `adbi::dbAppendTable("AdbiConnection", "ANY", "ANY")`
+
 - [`bigrquery::dbAppendTable("BigQueryConnection", "AsIs", "data.frame")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbAppendTable("BigQueryConnection", "character", "data.frame")`](https://bigrquery.r-dbi.org/reference/DBI.html)

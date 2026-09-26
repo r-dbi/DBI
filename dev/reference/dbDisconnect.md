@@ -9,6 +9,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbDisconnect("AdbiConnection")`](https://adbi.r-dbi.org/reference/dbConnect.html)
+
 - [`AzureKusto::dbDisconnect("AzureKustoDriver")`](https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html)
 
 - [`bigrquery::dbDisconnect("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)

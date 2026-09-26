@@ -3,6 +3,7 @@
 to make sure that you generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteLiteral(&quot;AdbiConnection&quot;, &quot;character&quot;)
 bigrquery::dbQuoteLiteral(&quot;BigQueryConnection&quot;, &quot;logical&quot;)
 duckdb::dbQuoteLiteral(&quot;duckdb_connection&quot;, &quot;ANY&quot;)
 pool::dbQuoteLiteral(&quot;Pool&quot;, &quot;ANY&quot;)
@@ -15,6 +16,7 @@ sparklyr::dbQuoteLiteral(&quot;spark_connection&quot;, &quot;ANY&quot;)
 to make sure that you generate valid SQL and protect against SQL injection attacks.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbQuoteLiteral(&quot;AdbiConnection&quot;, &quot;character&quot;)
 bigrquery::dbQuoteLiteral(&quot;BigQueryConnection&quot;, &quot;logical&quot;)
 duckdb::dbQuoteLiteral(&quot;duckdb_connection&quot;, &quot;ANY&quot;)
 pool::dbQuoteLiteral(&quot;Pool&quot;, &quot;ANY&quot;)
@@ -31,7 +33,7 @@ sparklyr::dbQuoteLiteral(&quot;spark_connection&quot;, &quot;ANY&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +65,8 @@ sparklyr::dbQuoteLiteral(&quot;spark_connection&quot;, &quot;ANY&quot;)
     <p>Call these methods to generate a string that is suitable for use in a query as a literal value of the correct type,
 to make sure that you generate valid SQL and protect against SQL injection attacks.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbQuoteLiteral("AdbiConnection", "character")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")</a></code></p></li>
 <li><p><code>duckdb::dbQuoteLiteral("duckdb_connection", "ANY")</code></p></li>
 <li><p><code>pool::dbQuoteLiteral("Pool", "ANY")</code></p></li>
 <li><p><code>RMariaDB::dbQuoteLiteral("MariaDBConnection", "ANY")</code></p></li>
@@ -98,8 +101,7 @@ to make sure that you generate valid SQL and protect against SQL injection attac
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p><code>dbQuoteLiteral()</code> returns an object that can be coerced to <a href="https://rdrr.io/r/base/character.html" class="external-link">character</a>,
 of the same length as the input.
-For an empty
-integer,
+For an empty integer,
 numeric,
 character,
 logical,
@@ -107,9 +109,7 @@ date,
 time,
 or blob vector,
 this function returns a length-0 object.</p>
-<p>When passing the returned object again to <code>dbQuoteLiteral()</code>
-as <code>x</code>
-argument, it is returned unchanged.
+<p>When passing the returned object again to <code>dbQuoteLiteral()</code> as <code>x</code> argument, it is returned unchanged.
 Passing objects of class <a href="SQL.html">SQL</a> should also return them unchanged.
 (For backends it may be most convenient to return <a href="SQL.html">SQL</a> objects
 to achieve this behavior, but this is not required.)</p>
@@ -129,9 +129,7 @@ for the <code>x</code> argument raises an error.</p>
 
 
 <p>The returned expression can be used in a <code>SELECT ...</code> query,
-and the value of
-<code>dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]</code>
-must be equal to <code>x</code>
+and the value of <code>dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]</code> must be equal to <code>x</code>
 for any scalar
 integer,
 numeric,

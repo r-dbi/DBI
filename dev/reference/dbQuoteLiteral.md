@@ -10,6 +10,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbQuoteLiteral("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
 - [`bigrquery::dbQuoteLiteral("BigQueryConnection", "logical")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - `duckdb::dbQuoteLiteral("duckdb_connection", "ANY")`

@@ -4,6 +4,8 @@ A SELECT query is completed if all rows have been fetched.
 A data manipulation statement is always completed.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbHasCompleted(&quot;AdbiResult&quot;)
+adbi::dbHasCompleted(&quot;AdbiResultArrow&quot;)
 bigrquery::dbHasCompleted(&quot;BigQueryResult&quot;)
 DatabaseConnector::dbHasCompleted(&quot;DatabaseConnectorDbiResult&quot;)
 DatabaseConnector::dbHasCompleted(&quot;DatabaseConnectorJdbcResult&quot;)
@@ -27,6 +29,8 @@ A SELECT query is completed if all rows have been fetched.
 A data manipulation statement is always completed.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbHasCompleted(&quot;AdbiResult&quot;)
+adbi::dbHasCompleted(&quot;AdbiResultArrow&quot;)
 bigrquery::dbHasCompleted(&quot;BigQueryResult&quot;)
 DatabaseConnector::dbHasCompleted(&quot;DatabaseConnectorDbiResult&quot;)
 DatabaseConnector::dbHasCompleted(&quot;DatabaseConnectorJdbcResult&quot;)
@@ -53,7 +57,7 @@ sparklyr::dbHasCompleted(&quot;DBISparkResult&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +90,9 @@ sparklyr::dbHasCompleted(&quot;DBISparkResult&quot;)
 A <code>SELECT</code> query is completed if all rows have been fetched.
 A data manipulation statement is always completed.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbHasCompleted("BigQueryResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbHasCompleted("AdbiResult")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbHasCompleted("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbHasCompleted("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbHasCompleted-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbHasCompleted("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbHasCompleted-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbHasCompleted("DatabaseConnectorJdbcResult")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbHasCompleted("DBIMockResult")</a></code></p></li>
@@ -166,8 +172,7 @@ to ensure that this step is always executed.</p></li>
 
 
 
-<p>Attempting to query completion status for a result set cleared with
-<code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
+<p>Attempting to query completion status for a result set cleared with <code><a href="dbClearResult.html">dbClearResult()</a></code> gives an error.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
@@ -182,8 +187,7 @@ but the result value is <code>TRUE</code> after trying to fetch only one row.</p
 
 <p>Similarly, for a query with a result set of length n,
 the return value is unspecified after fetching n rows,
-but the result value is <code>TRUE</code> after trying to fetch only one more
-row.</p>
+but the result value is <code>TRUE</code> after trying to fetch only one more row.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>

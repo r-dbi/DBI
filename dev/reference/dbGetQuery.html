@@ -51,7 +51,7 @@ sparklyr::dbGetQuery(&quot;spark_connection&quot;, &quot;ANY&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -126,9 +126,8 @@ For retrieving results as an Arrow object, see <code><a href="dbGetQueryArrow.ht
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>, with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+    <p><code>dbGetQuery()</code> always returns a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a>,
+with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.</p>
@@ -158,8 +157,7 @@ However, callers are strongly advised to use <code><a href="dbExecute.html">dbEx
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-<code>NA</code> string.
-If the <code>n</code> argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
+If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbGetQuery()</code> with proper <code>n</code> argument succeeds.</p>
     </div>
     <div class="section level2">
@@ -185,12 +183,9 @@ See the "Specification" and "Value" sections for details on their usage.</p>
 <p>The <code>n</code> argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
 or more columns returns the entire result.
-A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported
-and also returns the full result.
-If more rows than available are fetched (by passing a too large value for
-<code>n</code>), the result is returned in full without warning.
-If zero rows are requested, the columns of the data frame are still fully
-typed.
+A value of <a href="https://rdrr.io/r/base/is.finite.html" class="external-link">Inf</a> for the <code>n</code> argument is supported and also returns the full result.
+If more rows than available are fetched (by passing a too large value for <code>n</code>), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.</p>
 <p>The <code>param</code> argument allows passing query parameters, see <code><a href="dbBind.html">dbBind()</a></code> for details.</p>
@@ -205,11 +200,9 @@ no warning is issued.</p>
 and "prepared" APIs offered by many database drivers.
 Passing <code>immediate = TRUE</code> leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default <code>NULL</code> means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-<code>immediate</code> argument.
+The default <code>NULL</code> means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct <code>immediate</code> argument.
 Examples for possible behaviors:</p><ol><li><p>DBI backend defaults to <code>immediate = TRUE</code> internally</p><ol><li><p>A query without parameters is passed: query is executed</p></li>
 <li><p>A query with parameters is passed:</p><ol><li><p><code>params</code> not given: rejected immediately by the database
 because of a syntax error in the query, the backend tries

@@ -6,6 +6,8 @@ DBI also provides an implementation for data.frame
 which will return a character vector giving the type for each column in the dataframe.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbDataType(&quot;AdbiConnection&quot;, &quot;ANY&quot;)
+adbi::dbDataType(&quot;AdbiDriver&quot;, &quot;ANY&quot;)
 bigrquery::dbDataType(&quot;BigQueryConnection&quot;, &quot;ANY&quot;)
 bigrquery::dbDataType(&quot;BigQueryDriver&quot;, &quot;ANY&quot;)
 duckdb::dbDataType(&quot;duckdb_connection&quot;, &quot;ANY&quot;)
@@ -42,6 +44,8 @@ DBI also provides an implementation for data.frame
 which will return a character vector giving the type for each column in the dataframe.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbDataType(&quot;AdbiConnection&quot;, &quot;ANY&quot;)
+adbi::dbDataType(&quot;AdbiDriver&quot;, &quot;ANY&quot;)
 bigrquery::dbDataType(&quot;BigQueryConnection&quot;, &quot;ANY&quot;)
 bigrquery::dbDataType(&quot;BigQueryDriver&quot;, &quot;ANY&quot;)
 duckdb::dbDataType(&quot;duckdb_connection&quot;, &quot;ANY&quot;)
@@ -79,7 +83,7 @@ sparklyr::dbDataType(&quot;spark_connection&quot;, &quot;ANY&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -114,7 +118,9 @@ which may serve as a starting point for driver implementations.
 DBI also provides an implementation for data.frame
 which will return a character vector giving the type for each column in the dataframe.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>bigrquery::dbDataType("BigQueryConnection", "ANY")</code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code>adbi::dbDataType("AdbiConnection", "ANY")</code></p></li>
+<li><p><code>adbi::dbDataType("AdbiDriver", "ANY")</code></p></li>
+<li><p><code>bigrquery::dbDataType("BigQueryConnection", "ANY")</code></p></li>
 <li><p><code>bigrquery::dbDataType("BigQueryDriver", "ANY")</code></p></li>
 <li><p><code>duckdb::dbDataType("duckdb_connection", "ANY")</code></p></li>
 <li><p><code>duckdb::dbDataType("duckdb_driver", "ANY")</code></p></li>
@@ -172,8 +178,7 @@ or <a href="DBIConnection-class.html">DBI::DBIConnection</a></p></dd>
     <p><code>dbDataType()</code> returns the SQL type that corresponds to the <code>obj</code> argument
 as a non-empty
 character string.
-For data frames, a character vector with one element per column
-is returned.</p>
+For data frames, a character vector with one element per column is returned.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -213,8 +218,7 @@ and <a href="https://rdrr.io/r/base/difftime.html" class="external-link">difftim
 If the database supports blobs,
 this method also must accept lists of <a href="https://rdrr.io/r/base/raw.html" class="external-link">raw</a> vectors,
 and <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a> objects.
-As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be
-supported and return the same results as their unwrapped counterparts.
+As-is objects (i.e., wrapped by <code><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I()</a></code>) must be supported and return the same results as their unwrapped counterparts.
 The SQL data type for <a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a> and
 <a href="https://rdrr.io/r/base/factor.html" class="external-link">ordered</a> is the same as for character.
 The behavior for other object types is not specified.</p>

@@ -8,6 +8,12 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbExistsTable("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbExistsTable("AdbiConnection", "Id")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbExistsTable("AdbiConnection", "SQL")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
 - [`AzureKusto::dbExistsTable("AzureKustoConnection", "ANY")`](https://rdrr.io/pkg/AzureKusto/man/DBI_table.html)
 
 - [`bigrquery::dbExistsTable("BigQueryConnection", "AsIs")`](https://bigrquery.r-dbi.org/reference/DBI.html)

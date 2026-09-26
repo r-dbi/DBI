@@ -11,6 +11,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbColumnInfo("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbColumnInfo("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`AzureKusto::dbColumnInfo("AzureKustoResult")`](https://rdrr.io/pkg/AzureKusto/man/DBI_query.html)
 
 - [`bigrquery::dbColumnInfo("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)

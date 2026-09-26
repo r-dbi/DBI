@@ -9,6 +9,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- `adbi::dbFetch("AdbiResult", "ANY")`
+
 - `AzureKusto::dbFetch("AzureKustoResult", "ANY")`
 
 - `bigrquery::dbFetch("BigQueryResult", "ANY")`

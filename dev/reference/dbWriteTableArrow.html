@@ -19,7 +19,7 @@ pool::dbWriteTableArrow(&quot;Pool&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,17 +107,14 @@ and <code><a href="dbRemoveTable.html">dbRemoveTable()</a></code> for overwritin
 
 
 <p>If the table exists, and both <code>append</code> and <code>overwrite</code> arguments are unset,
-or <code>append = TRUE</code> and the data frame with the new data has different
-column names,
-an error is raised; the remote table remains unchanged.</p>
+or <code>append = TRUE</code> and the data frame with the new data has different column names, an error is raised;
+the remote table remains unchanged.</p>
 <p>An error is raised when calling this method for a closed
 or invalid connection.
 An error is also raised
 if <code>name</code> cannot be processed with <code><a href="dbQuoteIdentifier.html">dbQuoteIdentifier()</a></code> or
 if this results in a non-scalar.
-Invalid values for the additional arguments
-<code>overwrite</code>, <code>append</code>, and <code>temporary</code>
-(non-scalars,
+Invalid values for the additional arguments <code>overwrite</code>, <code>append</code>, and <code>temporary</code> (non-scalars,
 unsupported data types,
 <code>NA</code>,
 incompatible values,
@@ -149,14 +146,11 @@ perhaps by calling <code>dbQuoteIdentifier(conn, x = name)</code></p></li>
 </ul><p>The <code>value</code> argument must be a data frame
 with a subset of the columns of the existing table if <code>append = TRUE</code>.
 The order of the columns does not matter with <code>append = TRUE</code>.</p>
-<p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name
-will be overwritten.
+<p>If the <code>overwrite</code> argument is <code>TRUE</code>, an existing table of the same name will be overwritten.
 This argument doesn't change behavior if the table does not exist yet.</p>
-<p>If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are
-preserved, and the new data are appended.
+<p>If the <code>append</code> argument is <code>TRUE</code>, the rows in an existing table are preserved, and the new data are appended.
 If the table doesn't exist yet, it is created.</p>
-<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a
-second connection and is gone after reconnecting.
+<p>If the <code>temporary</code> argument is <code>TRUE</code>, the table is not available in a second connection and is gone after reconnecting.
 Not all backends support this argument.
 A regular, non-temporary table is visible in a second connection,
 in a pre-existing connection,
@@ -174,8 +168,7 @@ and be read identically with <code><a href="dbReadTable.html">dbReadTable()</a><
 <li><p>logical</p></li>
 <li><p><code>NA</code> as NULL</p></li>
 <li><p>64-bit values (using <code>"bigint"</code> as field type); the result can be</p><ul><li><p>converted to a numeric, which may lose precision,</p></li>
-<li><p>converted a character vector, which gives the full decimal
-representation</p></li>
+<li><p>converted a character vector, which gives the full decimal representation</p></li>
 <li><p>written to another table and read again unchanged</p></li>
 </ul></li>
 <li><p>character (in both UTF-8
@@ -183,23 +176,17 @@ and native encodings),
 supporting empty strings
 before and after a non-empty string</p></li>
 <li><p>factor (possibly returned as character)</p></li>
-<li><p>objects of type <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a>
-(if supported by the database)</p></li>
-<li><p>date
-(if supported by the database;
+<li><p>objects of type <a href="https://blob.tidyverse.org/reference/blob.html" class="external-link">blob::blob</a> (if supported by the database)</p></li>
+<li><p>date (if supported by the database;
 returned as <code>Date</code>),
 also for dates prior to 1970 or 1900 or after 2038</p></li>
-<li><p>time
-(if supported by the database;
+<li><p>time (if supported by the database;
 returned as objects that inherit from <code>difftime</code>)</p></li>
-<li><p>timestamp
-(if supported by the database;
+<li><p>timestamp (if supported by the database;
 returned as <code>POSIXct</code>
-respecting the time zone but not necessarily preserving the
-input time zone),
+respecting the time zone but not necessarily preserving the input time zone),
 also for timestamps prior to 1970 or 1900 or after 2038
-respecting the time zone but not necessarily preserving the
-input time zone)</p></li>
+respecting the time zone but not necessarily preserving the input time zone)</p></li>
 </ul><p>Mixing column types in the same table is supported.</p>
     </div>
     <div class="section level2">

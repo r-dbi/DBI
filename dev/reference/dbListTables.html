@@ -4,6 +4,7 @@ This should include views and temporary objects,
 but not all database backends (in particular RMariaDB and RMySQL) support this.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbListTables(&quot;AdbiConnection&quot;)
 AzureKusto::dbListTables(&quot;AzureKustoConnection&quot;)
 bigrquery::dbListTables(&quot;BigQueryConnection&quot;)
 DatabaseConnector::dbListTables(&quot;DatabaseConnectorConnection&quot;)
@@ -27,6 +28,7 @@ This should include views and temporary objects,
 but not all database backends (in particular RMariaDB and RMySQL) support this.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbListTables(&quot;AdbiConnection&quot;)
 AzureKusto::dbListTables(&quot;AzureKustoConnection&quot;)
 bigrquery::dbListTables(&quot;BigQueryConnection&quot;)
 DatabaseConnector::dbListTables(&quot;DatabaseConnectorConnection&quot;)
@@ -53,7 +55,7 @@ sparklyr::dbListTables(&quot;spark_connection&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +88,8 @@ sparklyr::dbListTables(&quot;spark_connection&quot;)
 This should include views and temporary objects,
 but not all database backends (in particular <span class="pkg">RMariaDB</span> and <span class="pkg">RMySQL</span>) support this.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbListTables("AzureKustoConnection")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiConnection-class.html" class="external-link">adbi::dbListTables("AdbiConnection")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_table.html" class="external-link">AzureKusto::dbListTables("AzureKustoConnection")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbListTables("BigQueryConnection")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbListTables-DatabaseConnectorConnection-method.html" class="external-link">DatabaseConnector::dbListTables("DatabaseConnectorConnection")</a></code></p></li>
 <li><p><code><a href="https://dittodb.jonkeane.com/reference/mock-db-methods.html" class="external-link">dittodb::dbListTables("DBIMockConnection")</a></code></p></li>

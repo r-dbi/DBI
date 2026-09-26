@@ -11,6 +11,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbGetInfo("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbGetInfo("AdbiDriver")`](https://adbi.r-dbi.org/reference/AdbiDriver-class.html)
+
 - [`bigrquery::dbGetInfo("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbGetInfo("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/DBI.html)

@@ -15,6 +15,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbConnect("AdbiDriver")`](https://adbi.r-dbi.org/reference/dbConnect.html)
+
 - [`AzureKusto::dbConnect("AzureKustoDriver")`](https://rdrr.io/pkg/AzureKusto/man/AzureKusto.html)
 
 - [`bigrquery::dbConnect("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/bigquery.html)

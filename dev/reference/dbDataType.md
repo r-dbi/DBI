@@ -13,6 +13,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- `adbi::dbDataType("AdbiConnection", "ANY")`
+
+- `adbi::dbDataType("AdbiDriver", "ANY")`
+
 - `bigrquery::dbDataType("BigQueryConnection", "ANY")`
 
 - `bigrquery::dbDataType("BigQueryDriver", "ANY")`

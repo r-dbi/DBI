@@ -10,6 +10,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbRemoveTable("AdbiConnection", "character")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbRemoveTable("AdbiConnection", "Id")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
 - [`AzureKusto::dbRemoveTable("AzureKustoConnection", "ANY")`](https://rdrr.io/pkg/AzureKusto/man/DBI_table.html)
 
 - [`bigrquery::dbRemoveTable("BigQueryConnection", "AsIs")`](https://bigrquery.r-dbi.org/reference/DBI.html)

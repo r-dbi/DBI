@@ -9,6 +9,14 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbIsValid("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
+- [`adbi::dbIsValid("AdbiDriver")`](https://adbi.r-dbi.org/reference/AdbiDriver-class.html)
+
+- [`adbi::dbIsValid("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbIsValid("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`bigrquery::dbIsValid("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`bigrquery::dbIsValid("BigQueryDriver")`](https://bigrquery.r-dbi.org/reference/DBI.html)

@@ -4,6 +4,8 @@ The data.frame should have as many rows as there are output fields in the result
 and each column in the data.frame describes an aspect of the result set field (field name, type, etc.)
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbColumnInfo(&quot;AdbiResult&quot;)
+adbi::dbColumnInfo(&quot;AdbiResultArrow&quot;)
 AzureKusto::dbColumnInfo(&quot;AzureKustoResult&quot;)
 bigrquery::dbColumnInfo(&quot;BigQueryResult&quot;)
 DatabaseConnector::dbColumnInfo(&quot;DatabaseConnectorDbiResult&quot;)
@@ -27,6 +29,8 @@ The data.frame should have as many rows as there are output fields in the result
 and each column in the data.frame describes an aspect of the result set field (field name, type, etc.)
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbColumnInfo(&quot;AdbiResult&quot;)
+adbi::dbColumnInfo(&quot;AdbiResultArrow&quot;)
 AzureKusto::dbColumnInfo(&quot;AzureKustoResult&quot;)
 bigrquery::dbColumnInfo(&quot;BigQueryResult&quot;)
 DatabaseConnector::dbColumnInfo(&quot;DatabaseConnectorDbiResult&quot;)
@@ -53,7 +57,7 @@ sparklyr::dbColumnInfo(&quot;DBISparkResult&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,7 +90,9 @@ sparklyr::dbColumnInfo(&quot;DBISparkResult&quot;)
 The data.frame should have as many rows as there are output fields in the result set,
 and each column in the data.frame describes an aspect of the result set field (field name, type, etc.)</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbColumnInfo("AzureKustoResult")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResult-class.html" class="external-link">adbi::dbColumnInfo("AdbiResult")</a></code></p></li>
+<li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbColumnInfo("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/pkg/AzureKusto/man/DBI_query.html" class="external-link">AzureKusto::dbColumnInfo("AzureKustoResult")</a></code></p></li>
 <li><p><code><a href="https://bigrquery.r-dbi.org/reference/DBI.html" class="external-link">bigrquery::dbColumnInfo("BigQueryResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbColumnInfo-DatabaseConnectorDbiResult-method.html" class="external-link">DatabaseConnector::dbColumnInfo("DatabaseConnectorDbiResult")</a></code></p></li>
 <li><p><code><a href="https://ohdsi.github.io/DatabaseConnector/reference/dbColumnInfo-DatabaseConnectorJdbcResult-method.html" class="external-link">DatabaseConnector::dbColumnInfo("DatabaseConnectorJdbcResult")</a></code></p></li>
@@ -129,11 +135,10 @@ and each column in the data.frame describes an aspect of the result set field (f
 returns a data frame
 with at least two columns <code>"name"</code> and <code>"type"</code> (in that order)
 (and optional columns that start with a dot).
-The <code>"name"</code> and <code>"type"</code> columns contain the names and types
-of the R columns of the data frame that is returned from <code><a href="dbFetch.html">dbFetch()</a></code>.
+The <code>"name"</code> and <code>"type"</code> columns contain the names and types of the R columns of the data frame that is returned from <code><a href="dbFetch.html">dbFetch()</a></code>.
 The <code>"type"</code> column is of type <code>character</code> and only for information.
-Do not compute on the <code>"type"</code> column, instead use <code>dbFetch(res, n = 0)</code>
-to create a zero-row data frame initialized with the correct data types.</p>
+Do not compute on the <code>"type"</code> column,
+instead use <code>dbFetch(res, n = 0)</code> to create a zero-row data frame initialized with the correct data types.</p>
     </div>
     <div class="section level2">
     <h2 id="the-data-retrieval-flow">The data retrieval flow<a class="anchor" aria-label="anchor" href="#the-data-retrieval-flow"></a></h2>

@@ -10,6 +10,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbHasCompleted("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbHasCompleted("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`bigrquery::dbHasCompleted("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbHasCompleted("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbHasCompleted-DatabaseConnectorDbiResult-method.html)

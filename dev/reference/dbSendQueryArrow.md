@@ -22,6 +22,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- `adbi::dbSendQueryArrow("AdbiConnection", "ANY")`
+
 - [`duckdb::dbSendQueryArrow("duckdb_connection", "character")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
 - `pool::dbSendQueryArrow("Pool", "ANY")`

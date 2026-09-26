@@ -10,6 +10,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbGetStatement("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbGetStatement("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`bigrquery::dbGetStatement("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbGetStatement("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetStatement-DatabaseConnectorDbiResult-method.html)

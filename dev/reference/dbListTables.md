@@ -10,6 +10,8 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbListTables("AdbiConnection")`](https://adbi.r-dbi.org/reference/AdbiConnection-class.html)
+
 - [`AzureKusto::dbListTables("AzureKustoConnection")`](https://rdrr.io/pkg/AzureKusto/man/DBI_table.html)
 
 - [`bigrquery::dbListTables("BigQueryConnection")`](https://bigrquery.r-dbi.org/reference/DBI.html)

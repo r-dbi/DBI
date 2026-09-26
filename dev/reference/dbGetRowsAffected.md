@@ -9,6 +9,10 @@ This documentation page describes the generics. Refer to the
 documentation pages linked below for the documentation for the methods
 that are implemented in various backend packages.
 
+- [`adbi::dbGetRowsAffected("AdbiResult")`](https://adbi.r-dbi.org/reference/AdbiResult-class.html)
+
+- [`adbi::dbGetRowsAffected("AdbiResultArrow")`](https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html)
+
 - [`bigrquery::dbGetRowsAffected("BigQueryResult")`](https://bigrquery.r-dbi.org/reference/DBI.html)
 
 - [`DatabaseConnector::dbGetRowsAffected("DatabaseConnectorDbiResult")`](https://ohdsi.github.io/DatabaseConnector/reference/dbGetRowsAffected-DatabaseConnectorDbiResult-method.html)

@@ -5,6 +5,7 @@ The chunk size is implementation-specific.
 Use dbFetchArrow() to fetch all results.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetchArrowChunk(&quot;AdbiResultArrow&quot;)
 duckdb::dbFetchArrowChunk(&quot;duckdb_result_arrow&quot;)
 
 "><meta property="og:description" content="
@@ -13,6 +14,7 @@ The chunk size is implementation-specific.
 Use dbFetchArrow() to fetch all results.
 
 Methods in other packagesThis documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.
+adbi::dbFetchArrowChunk(&quot;AdbiResultArrow&quot;)
 duckdb::dbFetchArrowChunk(&quot;duckdb_result_arrow&quot;)
 
 "><meta name="robots" content="noindex"><script src="https://cdn.jsdelivr.net/gh/posit-dev/supported-by-posit/js/badge.min.js" data-max-height="43" data-light-bg="#666f76" data-light-fg="#f9f9f9"></script></head><body>
@@ -23,7 +25,7 @@ duckdb::dbFetchArrowChunk(&quot;duckdb_result_arrow&quot;)
 
     <a class="navbar-brand me-2" href="../index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9011</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9013</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +59,8 @@ duckdb::dbFetchArrowChunk(&quot;duckdb_result_arrow&quot;)
 The chunk size is implementation-specific.
 Use <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> to fetch all results.</p>
 <p></p><div class="section">
-<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://r.duckdb.org/reference/duckdb_result_arrow-class.html" class="external-link">duckdb::dbFetchArrowChunk("duckdb_result_arrow")</a></code></p></li>
+<h3 id="methods-in-other-packages">Methods in other packages<a class="anchor" aria-label="anchor" href="#methods-in-other-packages"></a></h3><p>This documentation page describes the generics. Refer to the documentation pages linked below for the documentation for the methods that are implemented in various backend packages.</p><ul><li><p><code><a href="https://adbi.r-dbi.org/reference/AdbiResultArrow-class.html" class="external-link">adbi::dbFetchArrowChunk("AdbiResultArrow")</a></code></p></li>
+<li><p><code><a href="https://r.duckdb.org/reference/duckdb_result_arrow-class.html" class="external-link">duckdb::dbFetchArrowChunk("duckdb_result_arrow")</a></code></p></li>
 </ul></div>
     </div>
 
@@ -80,9 +83,8 @@ Use <code><a href="dbFetchArrow.html">dbFetchArrow()</a></code> to fetch all res
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>dbFetchArrowChunk()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+    <p><code>dbFetchArrowChunk()</code> always returns an object coercible to a <a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a> with as many rows as records were fetched
+and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.</p>
@@ -124,8 +126,8 @@ to ensure that this step is always executed.</p></li>
 <p>Fetching multi-row queries with one
 or more columns returns the next chunk.
 The size of the chunk is implementation-specific.
-The object returned by <code>dbFetchArrowChunk()</code> can also be passed to
-<code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array.html" class="external-link">nanoarrow::as_nanoarrow_array()</a></code> to create a nanoarrow array object.
+The object returned by <code>dbFetchArrowChunk()</code> can also be passed to <code><a href="https://arrow.apache.org/nanoarrow/latest/r/reference/as_nanoarrow_array.html" class="external-link">nanoarrow::as_nanoarrow_array()</a></code>
+to create a nanoarrow array object.
 The chunk size is implementation-specific.</p>
     </div>
     <div class="section level2">
