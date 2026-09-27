@@ -16,7 +16,7 @@ a list
 }
 \description{
 DEPRECATED, drivers are no longer required to implement this method.
-Keep track of the connections you opened if you require a list.
+ Keep track of the connections you opened if you require a list.
 }
 \seealso{
 Other DBIDriver generics:

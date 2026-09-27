@@ -34,23 +34,23 @@ This method returns the number of rows that were added, deleted, or updated by a
 
 This section gives a complete overview over the flow for the execution of SQL statements that have side effects
 such as stored procedures, inserting or deleting data, or setting database or connection options.
-Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
+ Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
-This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
-See also \code{vignette("dbi-advanced")} for a walkthrough.
+ This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
+ See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
 \item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
-For some queries you need to pass \code{immediate = TRUE}.
+ For some queries you need to pass \code{immediate = TRUE}.
 \item Optionally, bind query parameters with\code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
-This is required only if the query contains placeholders
+ This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
 \item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number of rows affected by the query.
 \item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
-This step is mandatory even if no rows have been fetched
+ This step is mandatory even if no rows have been fetched
 or if an error has occurred during the processing.
-It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
+ It is good practice to use \code{\link[=on.exit]{on.exit()}} or \code{\link[withr:defer]{withr::defer()}}
 to ensure that this step is always executed.
 }
 }

@@ -10,7 +10,7 @@ dbAppendTableArrow(conn, name, value, ...)
 \item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Options are:
+ Options are:
 \itemize{
 \item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
@@ -33,8 +33,8 @@ numeric.
 
 The \code{dbAppendTableArrow()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}}.
-The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk of the stream.
-Use \code{\link[=dbAppendTable]{dbAppendTable()}} to append data from a data.frame.
+ The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk of the stream.
+ Use \code{\link[=dbAppendTable]{dbAppendTable()}} to append data from a data.frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbAppendTableArrow")}
 }

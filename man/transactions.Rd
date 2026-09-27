@@ -24,10 +24,10 @@ dbRollback(conn, ...)
 }
 \description{
 A transaction encapsulates several SQL statements in an atomic unit.
-It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
+ It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
 or undone with \code{dbRollback()}.
-In any case, the DBMS guarantees that either all or none of the statements have a permanent effect.
-This helps ensuring consistency of write operations to multiple tables.
+ In any case, the DBMS guarantees that either all or none of the statements have a permanent effect.
+ This helps ensuring consistency of write operations to multiple tables.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("transactions")}
 }

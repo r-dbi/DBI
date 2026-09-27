@@ -10,12 +10,12 @@ Id(...)
 }
 \arguments{
 \item{...}{Components of the hierarchy, e.g. \code{cluster}, \code{catalog}, \code{schema}, or \code{table}, depending on the database backend.
-For more on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
+ For more on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
 Objects of class \code{Id} have a single slot \code{name}, which is a character vector.
-The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
-Support for \code{Id} objects depends on the database backend.
+ The \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} method converts \code{Id} objects to strings.
+ Support for \code{Id} objects depends on the database backend.
 
 They can be used in the following methods as \code{name} or \code{table} argument:
 \itemize{

@@ -21,10 +21,10 @@ sqlParseVariables(conn, sql, ...)
 \item{endRequired}{Is the ending character of a comment required?}
 
 \item{escape}{What character can be used to escape quoting characters?
-Defaults to \code{""}, i.e. nothing.}
+ Defaults to \code{""}, i.e. nothing.}
 
 \item{doubleEscape}{Can quoting characters be escaped by doubling them?
-Defaults to \code{TRUE}.}
+ Defaults to \code{TRUE}.}
 
 \item{sql}{SQL to parse (a character string)}
 

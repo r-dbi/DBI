@@ -17,7 +17,7 @@ describing the last error in the connection \code{conn}.
 }
 \description{
 DEPRECATED.
-Backends should use R's condition system to signal errors and warnings.
+ Backends should use R's condition system to signal errors and warnings.
 }
 \seealso{
 Other DBIConnection generics:
