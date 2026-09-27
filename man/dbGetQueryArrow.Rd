@@ -55,9 +55,6 @@ An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
-The object returned by \code{dbGetQueryArrow()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}
-to create a nanoarrow array stream object that can be used to read the result set in batches.
-The chunk size is implementation-specific.
 
 }
 
