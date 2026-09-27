@@ -22,9 +22,9 @@ For data frames, a character vector with one element per column is returned.
 }
 \description{
 Returns an SQL string that describes the SQL data type to be used for an object.
- The default implementation of this generic determines the SQL type of an R object according to the SQL 92 specification,
+The default implementation of this generic determines the SQL type of an R object according to the SQL 92 specification,
 which may serve as a starting point for driver implementations.
- DBI also provides an implementation for data.frame
+DBI also provides an implementation for data.frame
 which will return a character vector giving the type for each column in the dataframe.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbDataType")}
@@ -70,8 +70,8 @@ If the database supports blobs,
 this method also must accept lists of \link{raw} vectors,
 and \link[blob:blob]{blob::blob} objects.
 As-is objects (i.e., wrapped by \code{\link[=I]{I()}}) must be supported and return the same results as their unwrapped counterparts.
-The SQL data type for \link{factor} and
-\link{ordered} is the same as for character.
+The SQL data type for \link[base:factor]{factor} and
+\link[base:ordered]{ordered} is the same as for character.
 The behavior for other object types is not specified.
 
 

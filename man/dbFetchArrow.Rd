@@ -66,6 +66,10 @@ or more columns by default returns the entire result.
 The object returned by \code{dbFetchArrow()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}
 to create a nanoarrow array stream object that can be used to read the result set in batches.
 The chunk size is implementation-specific.
+The schema of the result is available before any batch is consumed:
+\code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}} applied to the object returned by \code{dbFetchArrow()}
+gives a struct schema with one child per column, named like the columns.
+Inspecting the schema does not consume the stream.
 
 }
 
