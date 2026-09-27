@@ -24,12 +24,12 @@ or zero rows.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Returns the result of a query as an Arrow object.
-\code{dbGetQueryArrow()} comes with a default implementation (which should work with most backends)
+ \code{dbGetQueryArrow()} comes with a default implementation (which should work with most backends)
 that calls \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, then \code{\link[=dbFetchArrow]{dbFetchArrow()}},
 ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
-For passing query parameters,
+ For passing query parameters,
 see \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, in particular the "The data retrieval flow for Arrow streams" section.
-For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery()}}.
+ For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQueryArrow")}
 }
@@ -37,11 +37,11 @@ For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery(
 This method is for \code{SELECT} queries only
 (incl. other SQL statements that return a \code{SELECT}-alike result,
 e.g., execution of a stored procedure or data manipulation queries like \verb{INSERT INTO ... RETURNING ...}).
-To execute a stored procedure that does not return a result set,
+ To execute a stored procedure that does not return a result set,
 use \code{\link[=dbExecute]{dbExecute()}}.
 
 Some backends may support data manipulation statements through this method.
-However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
+ However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 
