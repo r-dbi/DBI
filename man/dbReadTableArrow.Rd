@@ -26,6 +26,8 @@ e.g. \code{SQL('"my_schema"."table_name"')}
 effectively the result of calling \code{\link[DBI:dbGetQueryArrow]{dbGetQueryArrow()}} with \verb{SELECT * FROM <name>}.
 
 An empty table is returned as an Arrow object with zero rows.
+A column of type \code{BIGINT} is returned as an Arrow column of type \code{int64},
+which converts to \link[bit64:integer64]{bit64::integer64} without loss of precision.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
