@@ -134,7 +134,7 @@ Three which are each extended by individual database backends:
 
 - `DBIDriver`: a base class representing overall DBMS properties.
   Typically generator functions instantiate the driver objects,
-  such as `RSQLite::SQLite()`, `RPostgres::Postgres()` and `RMariaDB::MariaDB()`.
+  such as [`RSQLite::SQLite()`](https://rsqlite.r-dbi.org/reference/SQLite.html), [`RPostgres::Postgres()`](https://rpostgres.r-dbi.org/reference/Postgres.html) and [`RMariaDB::MariaDB()`](https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html).
 
 - `DBIConnection`: represents a connection to a specific database
 
