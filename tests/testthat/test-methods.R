@@ -17,7 +17,7 @@ test_that("all methods have ellipsis", {
   is_method <- vapply(
     objects,
     inherits,
-    "standardGeneric",
+    "genericFunction",
     FUN.VALUE = logical(1L)
   )
   methods <- objects[is_method]
