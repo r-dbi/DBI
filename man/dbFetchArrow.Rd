@@ -23,6 +23,10 @@ or zero rows.
 
 Fetch the result set and return it as an Arrow object.
 Use \code{\link[=dbFetchArrowChunk]{dbFetchArrowChunk()}} to fetch results in chunks.
+The default implementation fetches the first chunk to determine the schema.
+If more rows remain and the installed nanoarrow version supports lazy streams,
+the remaining chunks are fetched only when the returned stream is consumed.
+Clear the result with \code{\link[=dbClearResult]{dbClearResult()}} only after consuming the stream.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbFetchArrow")}
 }
