@@ -44,3 +44,58 @@ test_that("OpenTelemetry tracing works", {
   expect_equal(traces[[10L]]$name, "dbDisconnect RSQLite")
   expect_equal(traces[[10L]]$attributes$db.system.name, "RSQLite")
 })
+
+test_that("query span names stay scalar when SQL has several FROM clauses", {
+  skip_if_not_installed("RSQLite")
+  skip_if_not_installed("otel")
+  skip_if_not_installed("otelsdk")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+
+  dbWriteTable(con, "a", data.frame(x = 1:3))
+  dbWriteTable(con, "b", data.frame(x = 2:3))
+  dbWriteTable(con, "c", data.frame(x = 3L))
+
+  record <- expect_no_message(
+    with_otel_record({
+      dbGetQuery(con, "SELECT * FROM a")
+      nested <- dbGetQuery(
+        con,
+        "SELECT * FROM a WHERE x IN (SELECT x FROM b)"
+      )
+      dbGetQuery(con, "SELECT * FROM a JOIN b ON a.x = b.x")
+      dbGetQuery(con, "SELECT 1")
+      dbGetQuery(con, "SELECT * FROM a WHERE EXISTS (SELECT 1 FROM a)")
+      triple <- dbGetQuery(
+        con,
+        paste(
+          "SELECT * FROM a",
+          "WHERE x IN (SELECT x FROM b WHERE x IN (SELECT x FROM c))"
+        )
+      )
+      list(nested = nested, triple = triple)
+    }),
+    class = "otel_error_message"
+  )
+
+  expect_identical(record$value$nested$x, 2:3)
+  expect_identical(record$value$triple$x, 3L)
+
+  traces <- record$traces
+  expect_equal(
+    unname(vapply(traces, function(trace) trace$name, character(1))),
+    c(
+      "SELECT a",
+      "SELECT a",
+      "SELECT a",
+      "SELECT RSQLite",
+      "SELECT a",
+      "SELECT a"
+    )
+  )
+  expect_equal(
+    unname(lapply(traces, function(trace) trace$attributes$db.collection.name)),
+    list("a", "a", "a", character(), "a", "a")
+  )
+})
