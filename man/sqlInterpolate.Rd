@@ -10,21 +10,21 @@ sqlInterpolate(conn, sql, ..., .dots = list())
 \item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{sql}{A SQL string containing variables to interpolate.
-Variables must start with a question mark and can be any valid R identifier,
+ Variables must start with a question mark and can be any valid R identifier,
 i.e. it must start with a letter or \code{.}, and be followed by a letter, digit, \code{.} or \verb{_}.}
 
 \item{..., .dots}{Values (for \code{...}) or a list (for \code{.dots}) to interpolate into a string.
-Names are required if  \code{sql} uses the \code{?name} syntax for placeholders.
-All values will be first escaped with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} prior to interpolation
+ Names are required if  \code{sql} uses the \code{?name} syntax for placeholders.
+ All values will be first escaped with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} prior to interpolation
 to protect against SQL injection attacks.
-Arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
+ Arguments created by \code{\link[=SQL]{SQL()}} or \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}} remain unchanged.}
 }
 \value{
 The \code{sql} query with the values from \code{...} and \code{.dots} safely embedded.
 }
 \description{
 Accepts a query string with placeholders for values, and returns a string with the values embedded.
-The function is careful to quote all of its inputs with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} to protect against SQL injection attacks.
+ The function is careful to quote all of its inputs with \code{\link[=dbQuoteLiteral]{dbQuoteLiteral()}} to protect against SQL injection attacks.
 
 Placeholders can be specified with one of two syntaxes:
 \itemize{
@@ -34,7 +34,7 @@ the names are used to match the values
 }
 
 Mixing \verb{?} and \code{?name} syntaxes is an error.
-The number and names of values supplied must correspond to the placeholders used in the query.
+ The number and names of values supplied must correspond to the placeholders used in the query.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlInterpolate")}
 }
@@ -42,7 +42,7 @@ The number and names of values supplied must correspond to the placeholders used
 
 If you are implementing an SQL backend with non-ANSI quoting rules,
 you'll need to implement a method for \code{\link[=sqlParseVariables]{sqlParseVariables()}}.
-Failure to do so does not expose you to SQL injection attacks,
+ Failure to do so does not expose you to SQL injection attacks,
 but will (rarely) result in errors matching supplied and interpolated variables.
 }
 

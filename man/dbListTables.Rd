@@ -28,7 +28,7 @@ The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
 \description{
 Returns the unquoted names of remote tables accessible through this connection.
-This should include views and temporary objects,
+ This should include views and temporary objects,
 but not all database backends (in particular \pkg{RMariaDB} and \pkg{RMySQL}) support this.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbListTables")}

@@ -10,7 +10,7 @@ dbCreateTable(conn, name, fields, ..., row.names = NULL, temporary = FALSE)
 \item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Options are:
+ Options are:
 \itemize{
 \item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
@@ -22,8 +22,8 @@ e.g. \code{SQL('"my_schema"."table_name"')}
 \item{fields}{Either a character vector or a data frame.
 
 A named character vector: Names are column names, values are types.
-Names are escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Field types are unescaped.
+ Names are escaped with \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+ Field types are unescaped.
 
 A data frame: field types are generated using \code{\link[=dbDataType]{dbDataType()}}.}
 
@@ -38,17 +38,17 @@ A data frame: field types are generated using \code{\link[=dbDataType]{dbDataTyp
 }
 \description{
 The default \code{dbCreateTable()} method calls \code{\link[=sqlCreateTable]{sqlCreateTable()}} and \code{\link[=dbExecute]{dbExecute()}}.
-Use \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} to create a table from an Arrow schema.
+ Use \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}} to create a table from an Arrow schema.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbCreateTable")}
 }
 \details{
 Backends compliant to ANSI SQL 99 don't need to override it.
-Backends with a different SQL syntax can override \code{sqlCreateTable()},
+ Backends with a different SQL syntax can override \code{sqlCreateTable()},
 backends with entirely different ways to create tables need to override this method.
 
 The \code{row.names} argument is not supported by this method.
-Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} before calling this method.
+ Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} before calling this method.
 
 The argument order is different from the \code{sqlCreateTable()} method,
 the latter will be adapted in a later release of DBI.

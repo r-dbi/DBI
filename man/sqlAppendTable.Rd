@@ -21,7 +21,7 @@ sqlAppendTableTemplate(
 \item{con}{A database connection.}
 
 \item{table}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
-Options are:
+ Options are:
 \itemize{
 \item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
@@ -31,14 +31,14 @@ e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{values}{A data frame.
-Factors will be converted to character vectors.
-Character vectors will be escaped with \code{\link[=dbQuoteString]{dbQuoteString()}}.}
+ Factors will be converted to character vectors.
+ Character vectors will be escaped with \code{\link[=dbQuoteString]{dbQuoteString()}}.}
 
 \item{row.names}{Either \code{TRUE}, \code{FALSE}, \code{NA} or a string.
 
 If \code{TRUE}, always translate row names to a column called "row_names".
-If \code{FALSE}, never translate row names.
-If \code{NA}, translate rownames only if they're a character vector.
+ If \code{FALSE}, never translate row names.
+ If \code{NA}, translate rownames only if they're a character vector.
 
 A string is equivalent to \code{TRUE}, but allows you to override the default name.
 
@@ -57,15 +57,15 @@ For backward compatibility, \code{NULL} is equivalent to \code{FALSE}.}
 }
 \description{
 \code{sqlAppendTable()} generates a single SQL string that inserts a data frame into an existing table.
-\code{sqlAppendTableTemplate()} generates a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
-The default methods are ANSI SQL 99 compliant.
-These methods are mostly useful for backend implementers.
+ \code{sqlAppendTableTemplate()} generates a template suitable for use with \code{\link[=dbBind]{dbBind()}}.
+ The default methods are ANSI SQL 99 compliant.
+ These methods are mostly useful for backend implementers.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("sqlAppendTable")}
 }
 \details{
 The \code{row.names} argument must be passed explicitly in order to avoid a compatibility warning.
-The default will be changed in a later release.
+ The default will be changed in a later release.
 }
 \examples{
 sqlAppendTable(ANSI(), "iris", head(iris))
