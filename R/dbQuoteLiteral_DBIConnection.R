@@ -48,6 +48,18 @@ dbQuoteLiteral_DBIConnection <- function(conn, x, ...) {
     return(SQL(blob_data, names = names(x)))
   }
 
+  if (is.double(x)) {
+    out <- as.character(x)
+    # Use a more precise representation only when the default formatting
+    # loses information; general format avoids huge fixed-point edge values.
+    needs_precise <- is.finite(x) & (as.numeric(out) != x)
+    if (any(needs_precise)) {
+      out[needs_precise] <- sprintf("%.17g", x[needs_precise])
+    }
+    out[is.na(out)] <- "NULL"
+    return(SQL(out, names = names(x)))
+  }
+
   if (is.logical(x)) {
     x <- as.numeric(x)
   }
