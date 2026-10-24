@@ -27,6 +27,17 @@ Returns the result of a query as an Arrow object.
 \code{dbGetQueryArrow()} comes with a default implementation (which should work with most backends)
 that calls \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, then \code{\link[=dbFetchArrow]{dbFetchArrow()}},
 ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
+If the result does not fit into one chunk and the installed nanoarrow version
+supports lazy streams, the default implementation fetches the remaining chunks
+only when the returned stream is consumed,
+and frees the result when the stream reaches the end or is released.
+Until then, the result stays open on the connection.
+Backends that support only one active result per connection
+may invalidate the stream when another query is issued on the same connection,
+so consume the stream before using the connection again.
+Set \code{options(DBI.lazy_arrow = FALSE)} to fetch all chunks
+and free the result before the stream is returned,
+see \code{\link[=dbFetchArrow]{dbFetchArrow()}} for details.
 For passing query parameters,
 see \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, in particular the "The data retrieval flow for Arrow streams" section.
 For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery()}}.

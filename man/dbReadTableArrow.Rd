@@ -41,6 +41,8 @@ Use \code{\link[=dbReadTable]{dbReadTable()}} instead to obtain a data frame.
 This function returns an Arrow object.
 Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}}
 or use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
+The default implementation calls \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
+see there for when the result is fetched and freed.
 }
 \section{Failure modes}{
 

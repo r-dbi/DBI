@@ -32,7 +32,7 @@ Suggests:
     hms,
     knitr,
     magrittr,
-    nanoarrow (>= 0.3.0.1),
+    nanoarrow (>= 0.9.0.9000),
     otel,
     otelsdk,
     RMariaDB,
@@ -44,6 +44,8 @@ Suggests:
     xml2
 VignetteBuilder: 
     knitr
+Remotes:
+    nanoarrow=apache/arrow-nanoarrow/r
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/Needs/check: r-dbi/DBItest
