@@ -8,7 +8,7 @@ dbGetQueryArrow_DBIConnection_character <- function(conn, statement, ...) {
   if (uses_default_fetch_arrow(rs)) {
     owned <- FALSE
     on.exit(if (!owned) dbClearResult(rs))
-    stream <- fetch_arrow_stream(rs, owned = TRUE)
+    stream <- fetch_arrow_stream(rs, owned = TRUE, lazy = use_lazy_arrow())
     owned <- TRUE
     return(stream)
   }

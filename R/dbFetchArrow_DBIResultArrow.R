@@ -1,17 +1,20 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbFetchArrow_DBIResultArrow <- function(res, ...) {
-  fetch_arrow_stream(res)
+  fetch_arrow_stream(res, lazy = use_lazy_arrow())
 }
 
 # Returns the remaining rows of `res` as a nanoarrow array stream.
 # The first chunk is fetched eagerly to determine the schema.
-# If more rows remain and nanoarrow supports lazy callbacks,
+# If more rows remain and `lazy` is `TRUE`,
 # the remaining chunks are fetched only when the stream is consumed.
 # With `owned = TRUE`, the result is cleared once it is no longer needed:
 # right away if all rows have been fetched,
 # otherwise when the stream reaches the end or is released.
-fetch_arrow_stream <- function(res, owned = FALSE) {
+fetch_arrow_stream <- function(res, owned = FALSE, lazy) {
+  # Decide before fetching, so that an invalid option leaves the result untouched
+  force(lazy)
+
   chunk <- dbFetchArrowChunk_DBIResultArrow(res)
   schema <- nanoarrow::infer_nanoarrow_schema(chunk)
 
@@ -27,7 +30,7 @@ fetch_arrow_stream <- function(res, owned = FALSE) {
     ))
   }
 
-  if (!dbHasCompleted(res) && has_function_array_stream()) {
+  if (lazy && !dbHasCompleted(res)) {
     return(fetch_arrow_stream_lazy(res, chunk, schema, owned))
   }
 
@@ -106,6 +109,22 @@ fetch_arrow_callbacks <- function(res, chunk, owned) {
 uses_default_fetch_arrow <- function(res) {
   method <- selectMethod("dbFetchArrow", class(res))
   identical(method@.Data, dbFetchArrow_DBIResultArrow)
+}
+
+# Lazy fetching is enabled by default and can be disabled
+# with `options(DBI.lazy_arrow = FALSE)`.
+# It requires a nanoarrow version that provides function_array_stream().
+# The option is read once per operation,
+# so that a stream keeps the behavior it was created with.
+use_lazy_arrow <- function() {
+  lazy <- getOption("DBI.lazy_arrow", TRUE)
+  if (!is.logical(lazy) || length(lazy) != 1 || is.na(lazy)) {
+    stop(
+      "The `DBI.lazy_arrow` option must be `TRUE` or `FALSE`.",
+      call. = FALSE
+    )
+  }
+  lazy && has_function_array_stream()
 }
 
 has_function_array_stream <- function() {

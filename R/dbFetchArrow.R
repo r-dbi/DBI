@@ -8,6 +8,11 @@
 #' The default implementation fetches the first chunk to determine the schema.
 #' If more rows remain and the installed nanoarrow version supports lazy streams,
 #' the remaining chunks are fetched only when the returned stream is consumed.
+#' The `DBI.lazy_arrow` option, `TRUE` (the default) or `FALSE`,
+#' controls this behavior.
+#' Set `options(DBI.lazy_arrow = FALSE)` to fetch all chunks right away.
+#' This option affects only the default implementations in DBI,
+#' not methods provided by backends.
 #' Clear the result with [dbClearResult()] only after consuming the stream.
 #'
 #' @inheritSection dbBind The data retrieval flow for Arrow streams

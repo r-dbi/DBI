@@ -10,6 +10,8 @@
 #' This function returns an Arrow object.
 #' Convert it to a data frame with [as.data.frame()]
 #' or use [dbReadTable()] to obtain a data frame.
+#' The default implementation calls [dbGetQueryArrow()],
+#' see there for when the result is fetched and freed.
 #'
 #' @template methods
 #' @templateVar method_name dbReadTableArrow
