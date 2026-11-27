@@ -47,7 +47,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbQuoteIdentifier("MariaDBConnection", "SQL")`](https://rmariadb.r-dbi.org/reference/mariadb-quoting.html)
 
-- [`RMySQL::dbQuoteIdentifier("MySQLConnection", "character")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbQuoteIdentifier-MySQLConnection-character-method.html)
+- [`RMySQL::dbQuoteIdentifier("MySQLConnection", "character")`](https://rdrr.io/pkg/RMySQL/man/dbQuoteIdentifier-MySQLConnection-character-method.html)
 
 - [`RPostgres::dbQuoteIdentifier("PqConnection", "character")`](https://rpostgres.r-dbi.org/reference/quote.html)
 

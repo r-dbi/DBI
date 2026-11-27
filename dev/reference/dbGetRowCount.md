@@ -28,7 +28,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbGetRowCount("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/result-meta.html)
 
-- [`RMySQL::dbGetRowCount("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/result-meta.html)
+- [`RMySQL::dbGetRowCount("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/result-meta.html)
 
 - [`RPostgres::dbGetRowCount("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 

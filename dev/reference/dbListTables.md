@@ -36,7 +36,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbListTables("MariaDBConnection")`](https://rmariadb.r-dbi.org/reference/mariadb-tables.html)
 
-- [`RMySQL::dbListTables("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbReadTable.html)
+- [`RMySQL::dbListTables("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/dbReadTable.html)
 
 - [`RPostgres::dbListTables("PqConnection")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 

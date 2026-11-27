@@ -57,11 +57,11 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbGetInfo("MariaDBDriver")`](https://rmariadb.r-dbi.org/reference/MariaDBDriver-class.html)
 
-- [`RMySQL::dbGetInfo("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/db-meta.html)
+- [`RMySQL::dbGetInfo("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/db-meta.html)
 
-- [`RMySQL::dbGetInfo("MySQLDriver")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbGetInfo-MySQLDriver-method.html)
+- [`RMySQL::dbGetInfo("MySQLDriver")`](https://rdrr.io/pkg/RMySQL/man/dbGetInfo-MySQLDriver-method.html)
 
-- [`RMySQL::dbGetInfo("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbGetInfo("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
 - [`RPostgres::dbGetInfo("PqConnection")`](https://rpostgres.r-dbi.org/reference/PqConnection-class.html)
 

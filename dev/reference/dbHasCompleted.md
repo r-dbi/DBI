@@ -36,7 +36,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbHasCompleted("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/result-meta.html)
 
-- [`RMySQL::dbHasCompleted("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/result-meta.html)
+- [`RMySQL::dbHasCompleted("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/result-meta.html)
 
 - [`RPostgres::dbHasCompleted("PqResult")`](https://rpostgres.r-dbi.org/reference/postgres-query.html)
 

@@ -37,9 +37,9 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbColumnInfo("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/result-meta.html)
 
-- [`RMySQL::dbColumnInfo("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbColumnInfo-MySQLConnection-method.html)
+- [`RMySQL::dbColumnInfo("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/dbColumnInfo-MySQLConnection-method.html)
 
-- [`RMySQL::dbColumnInfo("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/result-meta.html)
+- [`RMySQL::dbColumnInfo("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/result-meta.html)
 
 - [`RPostgres::dbColumnInfo("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 

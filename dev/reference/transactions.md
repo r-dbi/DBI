@@ -73,11 +73,11 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbRollback("MariaDBConnection")`](https://rmariadb.r-dbi.org/reference/transactions.html)
 
-- [`RMySQL::dbBegin("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/transactions.html)
+- [`RMySQL::dbBegin("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/transactions.html)
 
-- [`RMySQL::dbCommit("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/transactions.html)
+- [`RMySQL::dbCommit("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/transactions.html)
 
-- [`RMySQL::dbRollback("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/transactions.html)
+- [`RMySQL::dbRollback("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/transactions.html)
 
 - [`RPostgres::dbBegin("PqConnection")`](https://rpostgres.r-dbi.org/reference/postgres-transactions.html)
 

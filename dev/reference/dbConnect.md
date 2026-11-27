@@ -45,9 +45,9 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbConnect("MariaDBDriver")`](https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html)
 
-- [`RMySQL::dbConnect("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbConnect-MySQLDriver-method.html)
+- [`RMySQL::dbConnect("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html)
 
-- [`RMySQL::dbConnect("MySQLDriver")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbConnect-MySQLDriver-method.html)
+- [`RMySQL::dbConnect("MySQLDriver")`](https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html)
 
 - [`RPostgres::dbConnect("PqDriver")`](https://rpostgres.r-dbi.org/reference/Postgres.html)
 

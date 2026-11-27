@@ -32,6 +32,8 @@ that are implemented in various backend packages.
 
 - [`duckdb::dbListFields("duckdb_connection", "character")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
 
+- [`duckdb::dbListFields("duckdb_connection", "Id")`](https://r.duckdb.org/reference/duckdb_connection-class.html)
+
 - [`lazysf::dbListFields("GDALVectorConnection", "character")`](https://hypertidy.github.io/lazysf/reference/GDALVectorConnection-class.html)
 
 - [`odbc::dbListFields("OdbcConnection", "character")`](https://odbc.r-dbi.org/reference/OdbcConnection.html)
@@ -46,9 +48,9 @@ that are implemented in various backend packages.
 
 - [`RJDBC::dbListFields("JDBCConnection", "ANY")`](https://rdrr.io/pkg/RJDBC/man/JDBCConnection-methods.html)
 
-- [`RMySQL::dbListFields("MySQLConnection", "character")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbReadTable.html)
+- [`RMySQL::dbListFields("MySQLConnection", "character")`](https://rdrr.io/pkg/RMySQL/man/dbReadTable.html)
 
-- [`RMySQL::dbListFields("MySQLResult", "missing")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbListFields("MySQLResult", "missing")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
 - [`RPostgres::dbListFields("PqConnection", "character")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 

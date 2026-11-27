@@ -54,9 +54,9 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbWriteTable("MariaDBConnection", "character", "data.frame")`](https://rmariadb.r-dbi.org/reference/mariadb-tables.html)
 
-- [`RMySQL::dbWriteTable("MySQLConnection", "character", "character")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbWriteTable.html)
+- [`RMySQL::dbWriteTable("MySQLConnection", "character", "character")`](https://rdrr.io/pkg/RMySQL/man/dbWriteTable.html)
 
-- [`RMySQL::dbWriteTable("MySQLConnection", "character", "data.frame")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbWriteTable.html)
+- [`RMySQL::dbWriteTable("MySQLConnection", "character", "data.frame")`](https://rdrr.io/pkg/RMySQL/man/dbWriteTable.html)
 
 - [`RPostgres::dbWriteTable("PqConnection", "character", "data.frame")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 

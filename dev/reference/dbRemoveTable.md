@@ -40,7 +40,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbRemoveTable("MariaDBConnection", "character")`](https://rmariadb.r-dbi.org/reference/mariadb-tables.html)
 
-- [`RMySQL::dbRemoveTable("MySQLConnection", "character")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbReadTable.html)
+- [`RMySQL::dbRemoveTable("MySQLConnection", "character")`](https://rdrr.io/pkg/RMySQL/man/dbReadTable.html)
 
 - [`RPostgres::dbRemoveTable("PqConnection", "character")`](https://rpostgres.r-dbi.org/reference/postgres-tables.html)
 

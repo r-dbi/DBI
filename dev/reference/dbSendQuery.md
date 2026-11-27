@@ -50,7 +50,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbSendQuery("MariaDBConnection", "character")`](https://rmariadb.r-dbi.org/reference/query.html)
 
-- [`RMySQL::dbSendQuery("MySQLConnection", "character")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbSendQuery("MySQLConnection", "character")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
 - `RPostgres::dbSendQuery("PqConnection", "ANY")`
 

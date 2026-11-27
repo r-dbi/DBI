@@ -35,7 +35,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbDisconnect("MariaDBConnection")`](https://rmariadb.r-dbi.org/reference/MariaDBConnection-class.html)
 
-- [`RMySQL::dbDisconnect("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/dbConnect-MySQLDriver-method.html)
+- [`RMySQL::dbDisconnect("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/dbConnect-MySQLDriver-method.html)
 
 - [`RPostgres::dbDisconnect("PqConnection")`](https://rpostgres.r-dbi.org/reference/Postgres.html)
 

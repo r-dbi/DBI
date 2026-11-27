@@ -30,7 +30,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbGetStatement("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/query.html)
 
-- [`RMySQL::dbGetStatement("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbGetStatement("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
 - [`RPostgres::dbGetStatement("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 

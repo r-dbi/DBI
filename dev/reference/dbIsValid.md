@@ -61,11 +61,11 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbIsValid("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/MariaDBResult-class.html)
 
-- [`RMySQL::dbIsValid("MySQLConnection")`](https://r-dbi.r-universe.dev/RMySQL/reference/isIdCurrent.html)
+- [`RMySQL::dbIsValid("MySQLConnection")`](https://rdrr.io/pkg/RMySQL/man/isIdCurrent.html)
 
-- [`RMySQL::dbIsValid("MySQLDriver")`](https://r-dbi.r-universe.dev/RMySQL/reference/isIdCurrent.html)
+- [`RMySQL::dbIsValid("MySQLDriver")`](https://rdrr.io/pkg/RMySQL/man/isIdCurrent.html)
 
-- [`RMySQL::dbIsValid("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/isIdCurrent.html)
+- [`RMySQL::dbIsValid("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/isIdCurrent.html)
 
 - [`RPostgres::dbIsValid("PqConnection")`](https://rpostgres.r-dbi.org/reference/PqConnection-class.html)
 

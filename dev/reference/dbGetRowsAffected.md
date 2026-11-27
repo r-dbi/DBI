@@ -29,7 +29,7 @@ that are implemented in various backend packages.
 
 - [`RMariaDB::dbGetRowsAffected("MariaDBResult")`](https://rmariadb.r-dbi.org/reference/result-meta.html)
 
-- [`RMySQL::dbGetRowsAffected("MySQLResult")`](https://r-dbi.r-universe.dev/RMySQL/reference/result-meta.html)
+- [`RMySQL::dbGetRowsAffected("MySQLResult")`](https://rdrr.io/pkg/RMySQL/man/result-meta.html)
 
 - [`RPostgres::dbGetRowsAffected("PqResult")`](https://rpostgres.r-dbi.org/reference/PqResult-class.html)
 

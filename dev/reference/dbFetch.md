@@ -31,9 +31,9 @@ that are implemented in various backend packages.
 
 - `RMariaDB::dbFetch("MariaDBResult", "ANY")`
 
-- [`RMySQL::dbFetch("MySQLResult", "missing")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbFetch("MySQLResult", "missing")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
-- [`RMySQL::dbFetch("MySQLResult", "numeric")`](https://r-dbi.r-universe.dev/RMySQL/reference/query.html)
+- [`RMySQL::dbFetch("MySQLResult", "numeric")`](https://rdrr.io/pkg/RMySQL/man/query.html)
 
 - `RPostgres::dbFetch("PqResult", "ANY")`
 
