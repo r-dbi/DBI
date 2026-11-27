@@ -43,7 +43,8 @@ Suggests:
     vctrs,
     xml2
 VignetteBuilder: 
-    knitr
+    knitr,
+    rmarkdown
 Config/autostyle/scope: line_breaks
 Config/autostyle/strict: false
 Config/comment/gha/extra-packages: arrow ships no aarch64 Windows binary
