@@ -177,8 +177,10 @@ to ensure that this step is always executed.</p></li>
 <p>An attempt to fetch from a closed result set raises an error.
 If the <code>n</code> argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to <code>dbFetch()</code> with proper <code>n</code> argument succeeds.</p>
-<p>Calling <code>dbFetch()</code> on a result set from a data manipulation query created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code> can be fetched
-and return an empty data frame, with a warning.</p>
+<p>Calling <code>dbFetch()</code> on a result set from a statement such as <code>CREATE TABLE</code> or <code>INSERT</code> created by <code><a href="dbSendStatement.html">dbSendStatement()</a></code>
+returns an empty data frame, with a warning.
+Such result sets are meant for side effects only and should not be fetched;
+use <code><a href="dbSendQuery.html">dbSendQuery()</a></code> for queries that return data.</p>
     </div>
     <div class="section level2">
     <h2 id="specification">Specification<a class="anchor" aria-label="anchor" href="#specification"></a></h2>
