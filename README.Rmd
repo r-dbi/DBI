@@ -121,7 +121,8 @@ Three which are each extended by individual database backends:
 * `DBIObject`: a common base class for all DBI.
 
 * `DBIDriver`: a base class representing overall DBMS properties.
-  Typically generator functions instantiate the driver objects like `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
+  Typically generator functions instantiate the driver objects,
+  such as `RSQLite::SQLite()`, `RPostgres::Postgres()` and `RMariaDB::MariaDB()`.
 
 * `DBIConnection`: represents a connection to a specific database
 
