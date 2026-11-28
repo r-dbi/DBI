@@ -56,7 +56,7 @@ DBI aims to:
 It is explicitly not trying to:
 
 - Talk to a database itself.
-  All classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.
+  The driver, connection and result classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.
 - Check that a backend conforms to the specification.
   The DBItest package holds the test cases, and the specification vignette is derived from them.
 - Offer a higher level of abstraction than SQL.
