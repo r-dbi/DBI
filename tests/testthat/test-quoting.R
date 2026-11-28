@@ -27,12 +27,10 @@ test_that("double literals round-trip when default formatting loses precision", 
 })
 
 test_that("double literals keep simple exact representations when possible", {
-  x <- c(1, 1e20, 1e-20)
-
-  sql <- dbQuoteLiteral(ANSI(), x)
-
-  expect_identical(as.character(sql), as.character(x))
-  expect_identical(as.character(sql[1]), "1")
+  expect_equal(
+    dbQuoteLiteral(ANSI(), c(1, 1e20, 1e-20)),
+    SQL(c("1", "1e+20", "1e-20"))
+  )
 })
 
 test_that("double literal quoting preserves edge values and names", {
@@ -145,4 +143,8 @@ test_that("classed doubles keep the as.character() representation", {
     as.character(sql),
     c(as.character(unclass(x))[1], "NULL")
   )
+})
+
+test_that("negative zero quotes as 0", {
+  expect_equal(dbQuoteLiteral(ANSI(), -0), SQL("0"))
 })

@@ -54,17 +54,17 @@ dbQuoteLiteral_DBIConnection <- function(conn, x, ...) {
     out <- as.character(x)
     # Use a more precise representation only when the default formatting
     # loses information.
-    # Take the shortest of 15, 16, or 17 significant digits that round-trips;
-    # the general format avoids huge fixed-point edge values.
-    needs_precise <- is.finite(x) & (as.numeric(out) != x)
-    for (digits in 15:17) {
-      if (!any(needs_precise)) {
-        break
-      }
-      precise <- sprintf(paste0("%.", digits, "g"), x[needs_precise])
-      ok <- digits == 17 | as.numeric(precise) == x[needs_precise]
-      out[needs_precise][ok] <- precise[ok]
-      needs_precise[needs_precise] <- !ok
+    # Take 16 significant digits if they round-trip, and 17 otherwise,
+    # which always suffice.
+    # 15 digits never help where as.character() does not round-trip.
+    # The general format avoids huge fixed-point edge values.
+    idx <- which(is.finite(x) & (as.numeric(out) != x))
+    if (length(idx) > 0) {
+      precise <- sprintf("%.16g", x[idx])
+      ok <- as.numeric(precise) == x[idx]
+      out[idx[ok]] <- precise[ok]
+      idx <- idx[!ok]
+      out[idx] <- sprintf("%.17g", x[idx])
     }
     out[is.na(out)] <- "NULL"
     return(SQL(out, names = names(x)))
