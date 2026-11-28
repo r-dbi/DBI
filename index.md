@@ -51,7 +51,7 @@ DBI aims to:
 - Derive as much as possible from a small set of methods a backend has to implement,
   and supply the rest as defaults, such as `dbGetQuery()`, `dbReadTable()` and `dbWithTransaction()`.
   `dbWriteTable()` belongs in that list too, and today it still needs a method from the backend.
-- Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R \>= 3.0.0.
+- Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R.
 - Lower the barrier for new backends, with an implementation guide in `vignette("backend")` and a ready-to-use template package.
 
 It is explicitly not trying to:
@@ -63,7 +63,7 @@ It is explicitly not trying to:
 - Offer a higher level of abstraction than SQL.
   You write the queries; packages that translate R code into SQL, such as dbplyr, build on top of DBI.
 - Require every backend to implement every method.
-  Parts of the interface, transaction management among them, are optional.
+  Parts of the interface such as transaction management are optional.
 
 ## Installation
 
