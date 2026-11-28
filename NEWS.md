@@ -1,5 +1,71 @@
 <!-- NEWS.md is maintained by https://fledge.cynkra.com, contributors should not edit this file -->
 
+# DBI 1.3.0.9017 (2026-11-28)
+
+## Chore
+
+- Declare every vignette builder in DESCRIPTION (#778).
+
+- Tidy DESCRIPTION with usethis::use_tidy_description() (#777).
+
+## Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate (#776).
+
+
+# DBI 1.3.0.9016 (2026-11-27)
+
+## Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate (#774).
+
+
+# DBI 1.3.0.9015 (2026-10-23)
+
+## Chore
+
+- Auto-update from GitHub Actions (#771).
+
+
+# DBI 1.3.0.9014 (2026-09-27)
+
+## Bug fixes
+
+### ci
+
+- Restore the custom `after-install` action (#765).
+
+## Chore
+
+- Auto-update from GitHub Actions (#764).
+
+## Continuous integration
+
+- Run coverage checks after pkgdown push.
+
+## Documentation
+
+- Pin `max.print` so rendering `README.md` is reproducible (#759).
+
+## Uncategorized
+
+- Feat(ci): Render `README.md` and `index.md` in CI (cynkra/cynkratemplate#118).
+
+- Refactor(ci): Serve the revdep scripts with the actions instead of copying them (cynkra/cynkratemplate#149).
+
+- Feat(ci): Run R-hub checks on every `cran-*` push, through `rhub-setup` and `rhub-check` actions (cynkra/cynkratemplate#145).
+
+- Feat(ci): Report coverage on pull requests from this repository (cynkra/cynkratemplate#146).
+
+- Ci: Bound every job with `timeout-minutes` (cynkra/cynkratemplate#144).
+
+- Fix(revdep2): Let a slice with no packages check nothing instead of failing (cynkra/cynkratemplate#150).
+
+- Feat: Build a binary package in every check job and share it as an artifact (cynkra/cynkratemplate#141).
+
+- Fix(ci): Collect the fleet's workflow fixes after the move to central actions (cynkra/cynkratemplate#139).
+
+
 # DBI 1.3.0.9013 (2026-09-14)
 
 ## Chore
