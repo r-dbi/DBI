@@ -23,7 +23,7 @@
 
     <a class="navbar-brand me-2" href="index.html">DBI</a>
 
-    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9016</small>
+    <small class="nav-text text-danger me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9017</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -77,6 +77,25 @@
 <li>information (meta-data) from database objects</li>
 <li>transaction management (optional)</li>
 </ul>
+<div class="section level2">
+<h2 id="goals-and-non-goals">Goals and non-goals<a class="anchor" aria-label="anchor" href="#goals-and-non-goals"></a>
+</h2>
+<p>DBI aims to:</p>
+<ul>
+<li>Define the classes and generics that R code uses to talk to a DBMS: connecting, executing statements, fetching results, querying metadata, and managing transactions.</li>
+<li>Write down what each of those methods must do, in <code><a href="articles/spec.html">vignette("spec")</a></code>, so that calling code can rely on documented behavior rather than on the quirks of one backend.</li>
+<li>Derive as much as possible from a small set of methods a backend has to implement, and supply the rest as defaults, such as <code><a href="reference/dbGetQuery.html">dbGetQuery()</a></code>, <code><a href="reference/dbReadTable.html">dbReadTable()</a></code> and <code><a href="reference/dbWithTransaction.html">dbWithTransaction()</a></code>. <code><a href="reference/dbWriteTable.html">dbWriteTable()</a></code> belongs in that list too, and today it still needs a method from the backend.</li>
+<li>Stay cheap to depend on: DBI imports nothing and depends only on <strong>methods</strong> and R.</li>
+<li>Lower the barrier for new backends, with an implementation guide in <code><a href="articles/backend.html">vignette("backend")</a></code> and a ready-to-use template package.</li>
+</ul>
+<p>It is explicitly not trying to:</p>
+<ul>
+<li>Talk to a database itself. The driver, connection and result classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.</li>
+<li>Check that a backend conforms to the specification. The DBItest package holds the test cases, and the specification vignette is derived from them.</li>
+<li>Offer a higher level of abstraction than SQL. You write the queries; packages that translate R code into SQL, such as dbplyr, build on top of DBI.</li>
+<li>Require every backend to implement every method. Parts of the interface such as transaction management are optional.</li>
+</ul>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -168,7 +187,7 @@
 <p>There are four main DBI classes. Three which are each extended by individual database backends:</p>
 <ul>
 <li><p><code>DBIObject</code>: a common base class for all DBI.</p></li>
-<li><p><code>DBIDriver</code>: a base class representing overall DBMS properties. Typically generator functions instantiate the driver objects like <code>RSQLite()</code>, <code>RPostgreSQL()</code>, <code>RMySQL()</code> etc.</p></li>
+<li><p><code>DBIDriver</code>: a base class representing overall DBMS properties. Typically generator functions instantiate the driver objects, such as <code><a href="https://rsqlite.r-dbi.org/reference/SQLite.html" class="external-link">RSQLite::SQLite()</a></code>, <code><a href="https://rpostgres.r-dbi.org/reference/Postgres.html" class="external-link">RPostgres::Postgres()</a></code> and <code><a href="https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html" class="external-link">RMariaDB::MariaDB()</a></code>.</p></li>
 <li><p><code>DBIConnection</code>: represents a connection to a specific database</p></li>
 <li><p><code>DBIResult</code>: the result of a DBMS query or statement.</p></li>
 </ul>

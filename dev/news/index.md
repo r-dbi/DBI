@@ -1,5 +1,20 @@
 # Changelog
 
+## DBI 1.3.0.9017 (2026-11-28)
+
+### Chore
+
+- Declare every vignette builder in DESCRIPTION
+  ([\#778](https://github.com/r-dbi/DBI/issues/778)).
+
+- Tidy DESCRIPTION with usethis::use_tidy_description()
+  ([\#777](https://github.com/r-dbi/DBI/issues/777)).
+
+### Continuous integration
+
+- Sync the workflows with cynkra/cynkratemplate
+  ([\#776](https://github.com/r-dbi/DBI/issues/776)).
+
 ## DBI 1.3.0.9016 (2026-11-27)
 
 ### Continuous integration
