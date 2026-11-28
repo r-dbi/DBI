@@ -27,10 +27,12 @@ test_that("double literals round-trip when default formatting loses precision", 
 })
 
 test_that("double literals keep simple exact representations when possible", {
-  expect_equal(
-    dbQuoteLiteral(ANSI(), c(1, 1e20, 1e-20)),
-    SQL(c("1", "1e+20", "1e-20"))
-  )
+  x <- c(1, 1e20, 1e-20)
+
+  sql <- dbQuoteLiteral(ANSI(), x)
+
+  expect_identical(as.character(sql), as.character(x))
+  expect_identical(as.character(sql[1]), "1")
 })
 
 test_that("double literal quoting preserves edge values and names", {
@@ -44,10 +46,8 @@ test_that("double literal quoting preserves edge values and names", {
 
   expect_identical(names(sql), names(x))
   expect_identical(as.numeric(as.character(sql[1])), x[[1]])
-  expect_identical(
-    unname(as.character(sql[2])),
-    unname(sprintf("%.17g", x[[2]]))
-  )
+  expect_identical(as.numeric(as.character(sql[2])), x[[2]])
+  expect_identical(unname(as.character(sql[2])), "1.7976931348623157e+308")
   expect_equal(sql[3], SQL("NULL"))
   expect_equal(
     dbQuoteLiteral(ANSI(), c(Inf, -Inf, NaN)),
@@ -60,11 +60,9 @@ test_that("double literals holding integers are exact", {
 
   sql <- dbQuoteLiteral(ANSI(), x)
 
-  expect_equal(
-    sql,
-    SQL(c("1", "9007199254740992", "9007199254740994", "1e+15", "1e+16", "0"))
-  )
   expect_identical(as.numeric(sql), x)
+  expect_identical(as.character(sql[c(1, 6)]), c("1", "0"))
+  expect_false(any(grepl(".", as.character(sql), fixed = TRUE)))
 })
 
 test_that("double literals round-trip subnormal values", {
@@ -85,16 +83,18 @@ test_that("mixed double vectors only reformat values that do not round-trip", {
     unname(as.character(sql)),
     c(
       "0.1",
-      sprintf("%.17g", 1 / 3),
+      "0.3333333333333333",
       "NULL",
       "100",
-      sprintf("%.17g", 2 / 3)
+      "0.6666666666666666"
     )
   )
   expect_identical(as.numeric(unname(sql[-3])), unname(x[-3]))
 })
 
 test_that("double literals do not depend on the decimal separator of the locale", {
+  # R keeps LC_NUMERIC at "C" internally,
+  # so this guards against regressions only.
   old <- Sys.getlocale("LC_NUMERIC")
   on.exit(suppressWarnings(Sys.setlocale("LC_NUMERIC", old)), add = TRUE)
   # R warns when LC_NUMERIC is set,
@@ -109,6 +109,40 @@ test_that("double literals do not depend on the decimal separator of the locale"
 
   expect_identical(
     unname(as.character(sql)),
-    c("1.5", "0.33333333333333331")
+    c("1.5", "0.3333333333333333")
+  )
+})
+
+test_that("double literals use the shortest form that round-trips", {
+  x <- c(1 / 3, 1 - 0.9, 1.1 * 1.1)
+
+  sql <- dbQuoteLiteral(ANSI(), x)
+
+  expect_identical(
+    as.character(sql),
+    c("0.3333333333333333", "0.09999999999999998", "1.2100000000000002")
+  )
+  expect_identical(as.numeric(sql), x)
+})
+
+test_that("integer64 literals keep their exact value", {
+  skip_if_not_installed("bit64")
+
+  x <- bit64::as.integer64(c("9007199254740993", NA))
+
+  expect_equal(
+    dbQuoteLiteral(ANSI(), x),
+    SQL(c("9007199254740993", "NULL"))
+  )
+})
+
+test_that("classed doubles keep the as.character() representation", {
+  x <- structure(c(1 / 3, NA), class = "foo")
+
+  sql <- dbQuoteLiteral(ANSI(), x)
+
+  expect_identical(
+    as.character(sql),
+    c(as.character(unclass(x))[1], "NULL")
   )
 })
