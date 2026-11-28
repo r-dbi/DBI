@@ -1,20 +1,19 @@
 #' @rdname hidden_aliases
 #' @usage NULL
 dbFetchArrow_DBIResultArrow <- function(res, ...) {
-  fetch_arrow_stream(res, lazy = use_lazy_arrow())
+  fetch_arrow_stream(res)
 }
 
 # Returns the remaining rows of `res` as a nanoarrow array stream.
 # The first chunk is fetched eagerly to determine the schema.
-# If more rows remain and `lazy` is `TRUE`,
+# If more rows remain, `lazy` is `TRUE`, and has_lazy_arrow() is `TRUE`,
 # the remaining chunks are fetched only when the stream is consumed.
+# Otherwise, all chunks are fetched right away.
+# Lazy fetching is internal for now and not used by the default methods.
 # With `owned = TRUE`, the result is cleared once it is no longer needed:
 # right away if all rows have been fetched,
 # otherwise when the stream reaches the end or is released.
-fetch_arrow_stream <- function(res, owned = FALSE, lazy) {
-  # Decide before fetching, so that an invalid option leaves the result untouched
-  force(lazy)
-
+fetch_arrow_stream <- function(res, owned = FALSE, lazy = FALSE) {
   chunk <- dbFetchArrowChunk_DBIResultArrow(res)
   schema <- nanoarrow::infer_nanoarrow_schema(chunk)
 
@@ -30,7 +29,7 @@ fetch_arrow_stream <- function(res, owned = FALSE, lazy) {
     ))
   }
 
-  if (lazy && !dbHasCompleted(res)) {
+  if (lazy && !dbHasCompleted(res) && has_lazy_arrow()) {
     return(fetch_arrow_stream_lazy(res, chunk, schema, owned))
   }
 
@@ -57,7 +56,7 @@ fetch_arrow_stream_lazy <- function(res, chunk, schema, owned) {
   # so a reference to the stream would prevent its finalization.
   callbacks <- fetch_arrow_callbacks(res, chunk, owned)
 
-  stream <- nanoarrow::function_array_stream(
+  stream <- nanoarrow_function_array_stream(
     callbacks$next_chunk,
     schema = schema,
     validate = FALSE
@@ -111,24 +110,53 @@ uses_default_fetch_arrow <- function(res) {
   identical(method@.Data, dbFetchArrow_DBIResultArrow)
 }
 
-# Lazy fetching is enabled by default and can be disabled
-# with `options(DBI.lazy_arrow = FALSE)`.
-# It requires a nanoarrow version that provides function_array_stream().
-# The option is read once per operation,
-# so that a stream keeps the behavior it was created with.
-use_lazy_arrow <- function() {
-  lazy <- getOption("DBI.lazy_arrow", TRUE)
-  if (!is.logical(lazy) || length(lazy) != 1 || is.na(lazy)) {
-    stop(
-      "The `DBI.lazy_arrow` option must be `TRUE` or `FALSE`.",
-      call. = FALSE
-    )
+# Lazy fetching requires nanoarrow::function_array_stream(),
+# which is not available in nanoarrow 0.9.0 and earlier.
+# The capability is checked once per session.
+lazy_arrow_cache <- new.env(parent = emptyenv())
+
+has_lazy_arrow <- function() {
+  if (is.null(lazy_arrow_cache$has_lazy_arrow)) {
+    lazy_arrow_cache$has_lazy_arrow <- check_lazy_arrow()
   }
-  lazy && has_function_array_stream()
+  lazy_arrow_cache$has_lazy_arrow
 }
 
-has_function_array_stream <- function() {
-  "function_array_stream" %in% getNamespaceExports("nanoarrow")
+# Checks that function_array_stream() is exported and works,
+# by building a stream with one batch and reading it back.
+check_lazy_arrow <- function() {
+  tryCatch(
+    {
+      if (!("function_array_stream" %in% nanoarrow_exports())) {
+        return(FALSE)
+      }
+      done <- FALSE
+      stream <- nanoarrow_function_array_stream(
+        function() {
+          if (done) {
+            return(NULL)
+          }
+          done <<- TRUE
+          nanoarrow::as_nanoarrow_array(1L)
+        },
+        schema = nanoarrow::na_int32()
+      )
+      batches <- nanoarrow::collect_array_stream(stream)
+      length(batches) == 1 &&
+        identical(nanoarrow::convert_array(batches[[1]]), 1L)
+    },
+    error = function(e) FALSE
+  )
+}
+
+# Wrappers that can be mocked in tests,
+# and that avoid a reference to a function missing from released nanoarrow.
+nanoarrow_exports <- function() {
+  getNamespaceExports("nanoarrow")
+}
+
+nanoarrow_function_array_stream <- function(...) {
+  getExportedValue("nanoarrow", "function_array_stream")(...)
 }
 
 #' @rdname hidden_aliases

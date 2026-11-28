@@ -69,8 +69,8 @@ test_that("write arrow to sqlite", {
   tbl$release()
 })
 
-test_that("dbFetchArrow() fetches chunks after the first one lazily", {
-  skip_if_not_installed("nanoarrow", "0.9.0.9000")
+test_that("dbFetchArrow() fetches all chunks by default", {
+  skip_if_not_installed("nanoarrow")
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -81,6 +81,120 @@ test_that("dbFetchArrow() fetches chunks after the first one lazily", {
   on.exit(dbClearResult(res), add = TRUE, after = FALSE)
 
   stream <- dbFetchArrow(res)
+  expect_true(dbHasCompleted(res))
+  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+})
+
+test_that("a dbFetchArrow() stream can be consumed after clearing the result", {
+  skip_if_not_installed("nanoarrow")
+  skip_if_not_installed("RSQLite")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
+
+  res <- dbSendQueryArrow(con, "SELECT * FROM tbl")
+  stream <- dbFetchArrow(res)
+  dbClearResult(res)
+
+  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+})
+
+test_that("dbGetQueryArrow() clears the result right away by default", {
+  skip_if_not_installed("nanoarrow")
+  skip_if_not_installed("RSQLite")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
+
+  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  # A pending result would trigger a warning from RSQLite
+  expect_no_warning(dbGetQuery(con, "SELECT 1"))
+  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+})
+
+test_that("dbReadTableArrow() output can overwrite the table it reads", {
+  skip_if_not_installed("nanoarrow")
+  skip_if_not_installed("RSQLite")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+  dbWriteTable(con, "t", data.frame(a = 1:1000))
+
+  dbWriteTableArrow(con, "t", dbReadTableArrow(con, "t"), overwrite = TRUE)
+  expect_equal(dbGetQuery(con, "SELECT COUNT(*) AS n FROM t")$n, 1000)
+})
+
+test_that("check_lazy_arrow() is FALSE without function_array_stream()", {
+  skip_if_not_installed("nanoarrow")
+
+  local_mocked_bindings(
+    nanoarrow_exports = function() {
+      setdiff(
+        getNamespaceExports("nanoarrow"),
+        "function_array_stream"
+      )
+    }
+  )
+  expect_false(check_lazy_arrow())
+
+  local_mocked_bindings(nanoarrow_exports = function() stop("not installed"))
+  expect_false(check_lazy_arrow())
+})
+
+test_that("has_lazy_arrow() caches the result of check_lazy_arrow()", {
+  old <- lazy_arrow_cache$has_lazy_arrow
+  on.exit(lazy_arrow_cache$has_lazy_arrow <- old)
+
+  calls <- 0L
+  local_mocked_bindings(
+    check_lazy_arrow = function() {
+      calls <<- calls + 1L
+      FALSE
+    }
+  )
+
+  lazy_arrow_cache$has_lazy_arrow <- NULL
+  expect_false(has_lazy_arrow())
+  expect_false(has_lazy_arrow())
+  expect_equal(calls, 1L)
+})
+
+test_that("requesting lazy fetching without the capability fetches eagerly", {
+  skip_if_not_installed("nanoarrow")
+  skip_if_not_installed("RSQLite")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
+
+  # After on.exit(), which would otherwise discard the restoration of the mock
+  local_mocked_bindings(has_lazy_arrow = function() FALSE)
+
+  res <- dbSendQueryArrow(con, "SELECT * FROM tbl")
+  stream <- fetch_arrow_stream(res, lazy = TRUE)
+  expect_true(dbHasCompleted(res))
+  dbClearResult(res)
+  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
+  expect_no_warning(dbGetQuery(con, "SELECT 1"))
+  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+})
+
+test_that("fetch_arrow_stream() fetches chunks after the first one lazily", {
+  skip_if_no_lazy_arrow()
+  skip_if_not_installed("RSQLite")
+
+  con <- dbConnect(RSQLite::SQLite(), ":memory:")
+  on.exit(dbDisconnect(con))
+  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
+
+  res <- dbSendQueryArrow(con, "SELECT * FROM tbl")
+  on.exit(dbClearResult(res), add = TRUE, after = FALSE)
+
+  stream <- fetch_arrow_stream(res, lazy = TRUE)
   expect_false(dbHasCompleted(res))
   expect_named(nanoarrow::infer_nanoarrow_schema(stream)$children, "a")
 
@@ -88,82 +202,8 @@ test_that("dbFetchArrow() fetches chunks after the first one lazily", {
   expect_true(dbHasCompleted(res))
 })
 
-test_that("dbFetchArrow() fetches all chunks if lazy fetching is disabled", {
-  skip_if_not_installed("nanoarrow")
-  skip_if_not_installed("RSQLite")
-
-  old <- options(DBI.lazy_arrow = FALSE)
-  on.exit(options(old))
-
-  con <- dbConnect(RSQLite::SQLite(), ":memory:")
-  on.exit(dbDisconnect(con), add = TRUE, after = FALSE)
-  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
-
-  res <- dbSendQueryArrow(con, "SELECT * FROM tbl")
-  on.exit(dbClearResult(res), add = TRUE, after = FALSE)
-
-  stream <- dbFetchArrow(res)
-  expect_true(dbHasCompleted(res))
-  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
-})
-
-test_that("dbGetQueryArrow() clears the result right away without lazy fetching", {
-  skip_if_not_installed("nanoarrow")
-  skip_if_not_installed("RSQLite")
-
-  old <- options(DBI.lazy_arrow = FALSE)
-  on.exit(options(old))
-
-  con <- dbConnect(RSQLite::SQLite(), ":memory:")
-  on.exit(dbDisconnect(con), add = TRUE, after = FALSE)
-  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
-
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
-  expect_no_warning(dbGetQuery(con, "SELECT 1"))
-  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
-})
-
-test_that("an invalid DBI.lazy_arrow option is an error", {
-  skip_if_not_installed("nanoarrow")
-  skip_if_not_installed("RSQLite")
-
-  old <- options(DBI.lazy_arrow = NULL)
-  on.exit(options(old))
-
-  con <- dbConnect(RSQLite::SQLite(), ":memory:")
-  on.exit(dbDisconnect(con), add = TRUE, after = FALSE)
-  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
-
-  values <- list("yes", NA, logical(0), c(TRUE, FALSE), 1)
-
-  for (value in values) {
-    options(DBI.lazy_arrow = value)
-    expect_error(
-      dbGetQueryArrow(con, "SELECT * FROM tbl"),
-      "DBI.lazy_arrow"
-    )
-    # The result is cleared
-    expect_no_warning(dbGetQuery(con, "SELECT 1"))
-  }
-
-  res <- dbSendQueryArrow(con, "SELECT * FROM tbl")
-  on.exit(dbClearResult(res), add = TRUE, after = FALSE)
-
-  for (value in values) {
-    options(DBI.lazy_arrow = value)
-    expect_error(dbFetchArrow(res), "DBI.lazy_arrow")
-    # Nothing has been fetched yet
-    expect_equal(dbGetRowCount(res), 0)
-  }
-
-  # Unsetting the option restores the default
-  options(DBI.lazy_arrow = NULL)
-  stream <- dbFetchArrow(res)
-  expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
-})
-
-test_that("a lazy stream keeps fetching lazily after the option changes", {
-  skip_if_not_installed("nanoarrow", "0.9.0.9000")
+test_that("get_query_arrow() clears a lazy result after the last chunk", {
+  skip_if_no_lazy_arrow()
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -179,55 +219,35 @@ test_that("a lazy stream keeps fetching lazily after the option changes", {
     }
   )
 
-  old <- options(DBI.lazy_arrow = TRUE)
-  on.exit(options(old), add = TRUE)
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
   expect_equal(calls, 1L)
-
-  options(DBI.lazy_arrow = FALSE)
-  expect_gt(stream$get_next()$length, 0)
-  expect_gt(stream$get_next()$length, 0)
-  expect_equal(calls, 2L)
-
-  expect_equal(nrow(as.data.frame(stream)), 1000 - 2 * 256)
-  expect_no_warning(dbGetQuery(con, "SELECT 1"))
-})
-
-test_that("dbGetQueryArrow() clears a lazy result after the last chunk", {
-  skip_if_not_installed("nanoarrow", "0.9.0.9000")
-  skip_if_not_installed("RSQLite")
-
-  con <- dbConnect(RSQLite::SQLite(), ":memory:")
-  on.exit(dbDisconnect(con))
-  dbWriteTable(con, "tbl", data.frame(a = 1:1000))
-
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
   expect_equal(as.data.frame(stream), data.frame(a = 1:1000))
+  expect_gt(calls, 1L)
 
   # A pending result would trigger a warning from RSQLite
   expect_no_warning(dbGetQuery(con, "SELECT 1"))
 })
 
-test_that("dbGetQueryArrow() clears a lazy result when the stream is released", {
-  skip_if_not_installed("nanoarrow", "0.9.0.9000")
+test_that("get_query_arrow() clears a lazy result when the stream is released", {
+  skip_if_no_lazy_arrow()
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
   on.exit(dbDisconnect(con))
   dbWriteTable(con, "tbl", data.frame(a = 1:1000))
 
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
   expect_gt(stream$get_next()$length, 0)
   stream$release()
   expect_no_warning(dbGetQuery(con, "SELECT 1"))
 
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
   rm(stream)
   gc()
   expect_no_warning(dbGetQuery(con, "SELECT 1"))
 })
 
-test_that("dbGetQueryArrow() clears a result that fits in one chunk right away", {
+test_that("get_query_arrow() clears a result that fits in one chunk right away", {
   skip_if_not_installed("nanoarrow")
   skip_if_not_installed("RSQLite")
 
@@ -235,13 +255,13 @@ test_that("dbGetQueryArrow() clears a result that fits in one chunk right away",
   on.exit(dbDisconnect(con))
   dbWriteTable(con, "tbl", data.frame(a = 1:3))
 
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
   expect_no_warning(dbGetQuery(con, "SELECT 1"))
   expect_equal(as.data.frame(stream), data.frame(a = 1:3))
 })
 
-test_that("dbGetQueryArrow() clears a lazy result when fetching fails", {
-  skip_if_not_installed("nanoarrow", "0.9.0.9000")
+test_that("get_query_arrow() clears a lazy result when fetching fails", {
+  skip_if_no_lazy_arrow()
   skip_if_not_installed("RSQLite")
 
   con <- dbConnect(RSQLite::SQLite(), ":memory:")
@@ -260,7 +280,7 @@ test_that("dbGetQueryArrow() clears a lazy result when fetching fails", {
     }
   )
 
-  stream <- dbGetQueryArrow(con, "SELECT * FROM tbl")
+  stream <- get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)
   expect_gt(stream$get_next()$length, 0)
   expect_error(stream$get_next(), "injected fetch failure")
 
@@ -269,7 +289,7 @@ test_that("dbGetQueryArrow() clears a lazy result when fetching fails", {
   expect_no_warning(stream$release())
 })
 
-test_that("dbGetQueryArrow() uses a dbFetchArrow() method of a subclass", {
+test_that("get_query_arrow() uses a dbFetchArrow() method of a subclass", {
   skip_if_not_installed("nanoarrow")
   skip_if_not_installed("RSQLite")
 
@@ -317,11 +337,9 @@ test_that("dbGetQueryArrow() uses a dbFetchArrow() method of a subclass", {
   )
   expect_no_warning(dbGetQuery(con, "SELECT 1"))
 
-  # The option applies only to the default method
-  old <- options(DBI.lazy_arrow = "yes")
-  on.exit(options(old), add = TRUE, after = FALSE)
   expect_equal(
-    as.data.frame(dbGetQueryArrow(con, "SELECT * FROM tbl")),
+    as.data.frame(get_query_arrow(con, "SELECT * FROM tbl", lazy = TRUE)),
     data.frame(a = 999L)
   )
+  expect_no_warning(dbGetQuery(con, "SELECT 1"))
 })
