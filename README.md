@@ -39,6 +39,31 @@ It supports the following operations:
 - information (meta-data) from database objects
 - transaction management (optional)
 
+## Goals and non-goals
+
+DBI aims to:
+
+- Define the classes and generics that R code uses to talk to a DBMS:
+  connecting, executing statements, fetching results, querying metadata, and managing transactions.
+- Write down what each of those methods must do, in `vignette("spec")`,
+  so that calling code can rely on documented behavior rather than on the quirks of one backend.
+- Derive as much as possible from a small set of methods a backend has to implement,
+  and supply the rest as defaults, such as [`dbGetQuery()`](https://dbi.r-dbi.org/reference/dbGetQuery.html), [`dbReadTable()`](https://dbi.r-dbi.org/reference/dbReadTable.html) and [`dbWithTransaction()`](https://dbi.r-dbi.org/reference/dbWithTransaction.html).
+  [`dbWriteTable()`](https://dbi.r-dbi.org/reference/dbWriteTable.html) belongs in that list too, and today it still needs a method from the backend.
+- Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R.
+- Lower the barrier for new backends, with an implementation guide in `vignette("backend")` and a ready-to-use template package.
+
+It is explicitly not trying to:
+
+- Talk to a database itself.
+  The driver, connection and result classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.
+- Check that a backend conforms to the specification.
+  The DBItest package holds the test cases, and the specification vignette is derived from them.
+- Offer a higher level of abstraction than SQL.
+  You write the queries; packages that translate R code into SQL, such as dbplyr, build on top of DBI.
+- Require every backend to implement every method.
+  Parts of the interface such as transaction management are optional.
+
 ## Installation
 
 Most users who want to access a database do not need to install DBI directly.
@@ -133,7 +158,8 @@ Three which are each extended by individual database backends:
 - `DBIObject`: a common base class for all DBI.
 
 - `DBIDriver`: a base class representing overall DBMS properties.
-  Typically generator functions instantiate the driver objects like `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
+  Typically generator functions instantiate the driver objects,
+  such as [`RSQLite::SQLite()`](https://rsqlite.r-dbi.org/reference/SQLite.html), [`RPostgres::Postgres()`](https://rpostgres.r-dbi.org/reference/Postgres.html) and [`RMariaDB::MariaDB()`](https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html).
 
 - `DBIConnection`: represents a connection to a specific database
 
