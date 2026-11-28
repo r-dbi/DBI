@@ -65,9 +65,10 @@ local({
       )
       collection_match <- regmatches(statement, collection_matches)[[1L]]
 
-      # Returns an empty character vector if there is no match
+      # Returns an empty character vector if there is no match.
+      # Keep the first match so the span name stays a string scalar.
       if (is.matrix(collection_match) && nrow(collection_match) >= 4L) {
-        collection <- collection_match[4L, , drop = TRUE]
+        collection <- collection_match[4L, 1L]
       }
     }
 
