@@ -75,8 +75,10 @@ An attempt to fetch from a closed result set raises an error.
 If the \code{n} argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 
-Calling \code{dbFetch()} on a result set from a data manipulation query created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can be fetched
-and return an empty data frame, with a warning.
+Calling \code{dbFetch()} on a result set from a statement such as \verb{CREATE TABLE} or \code{INSERT} created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}}
+returns an empty data frame, with a warning.
+Such result sets are meant for side effects only and should not be fetched;
+use \code{\link[DBI:dbSendQuery]{dbSendQuery()}} for queries that return data.
 
 }
 
