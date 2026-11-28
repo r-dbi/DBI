@@ -48,8 +48,8 @@ DBI aims to:
 - Write down what each of those methods must do, in `vignette("spec")`,
   so that calling code can rely on documented behavior rather than on the quirks of one backend.
 - Derive as much as possible from a small set of methods a backend has to implement,
-  and supply the rest as defaults, such as `dbGetQuery()`, `dbReadTable()` and `dbWithTransaction()`.
-  `dbWriteTable()` belongs in that list too, and today it still needs a method from the backend.
+  and supply the rest as defaults, such as [`dbGetQuery()`](https://dbi.r-dbi.org/reference/dbGetQuery.html), [`dbReadTable()`](https://dbi.r-dbi.org/reference/dbReadTable.html) and [`dbWithTransaction()`](https://dbi.r-dbi.org/reference/dbWithTransaction.html).
+  [`dbWriteTable()`](https://dbi.r-dbi.org/reference/dbWriteTable.html) belongs in that list too, and today it still needs a method from the backend.
 - Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R.
 - Lower the barrier for new backends, with an implementation guide in `vignette("backend")` and a ready-to-use template package.
 
