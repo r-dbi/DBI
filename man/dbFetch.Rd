@@ -10,43 +10,36 @@ dbFetch(res, n = -1, ...)
 fetch(res, n = -1, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult},
-created by \code{\link[=dbSendQuery]{dbSendQuery()}}.}
+\item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult}, created by \code{\link[=dbSendQuery]{dbSendQuery()}}.}
 
-\item{n}{maximum number of records to retrieve per fetch. Use \code{n = -1}
-or \code{n = Inf}
-to retrieve all pending records.  Some implementations may recognize other
-special values.}
+\item{n}{maximum number of records to retrieve per fetch.
+Use \code{n = -1} or \code{n = Inf} to retrieve all pending records.
+Some implementations may recognize other special values.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbFetch()} always returns a \link{data.frame} with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbFetch()} always returns a \link{data.frame} with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
-Passing \code{n = NA} is supported and returns an arbitrary number of rows (at least one)
-as specified by the driver, but at most the remaining rows in the result set.
+Passing \code{n = NA} is supported and returns an arbitrary number of rows (at least one) as specified by the driver,
+but at most the remaining rows in the result set.
 }
 \description{
-Fetch the next \code{n} elements (rows) from the result set and return them
-as a data.frame.
+Fetch the next \code{n} elements (rows) from the result set and return them as a data.frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbFetch")}
 }
 \details{
-\code{fetch()} is provided for compatibility with older DBI clients - for all
-new code you are strongly encouraged to use \code{dbFetch()}. The default
-implementation for \code{dbFetch()} calls \code{fetch()} so that it is compatible with
-existing code. Modern backends should implement for \code{dbFetch()} only.
+\code{fetch()} is provided for compatibility with older DBI clients - for all new code you are strongly encouraged to use \code{dbFetch()}.
+The default implementation for \code{dbFetch()} calls \code{fetch()} so that it is compatible with existing code.
+Modern backends should implement for \code{dbFetch()} only.
 }
 \section{The data retrieval flow}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as data frames.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as data frames.
 
 Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
@@ -55,20 +48,15 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\link[=DBIResult-class]{DBIResult}.
+\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
-\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set
-without retrieving actual data.
-\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results,
-or the remaining rows.
-Fetching zero rows is also possible to retrieve the structure of the result set
-as a data frame.
+\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set without retrieving actual data.
+\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results, or the remaining rows.
+Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
 This step can be called multiple times.
-Only forward paging is supported, you need to cache previous pages
-if you need to navigate backwards.
+Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
 This method returns \code{TRUE} if no more rows are available for fetching.
 \item Repeat the last four steps as necessary.
@@ -84,13 +72,11 @@ to ensure that this step is always executed.
 
 
 An attempt to fetch from a closed result set raises an error.
-If the \code{n} argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
+If the \code{n} argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbFetch()} with proper \code{n} argument succeeds.
 
-Calling \code{dbFetch()} on a result set from a data manipulation query
-created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can
-be fetched and return an empty data frame, with a warning.
+Calling \code{dbFetch()} on a result set from a data manipulation query created by \code{\link[DBI:dbSendStatement]{dbSendStatement()}} can be fetched
+and return an empty data frame, with a warning.
 
 }
 
@@ -103,14 +89,10 @@ Multi-row queries can also be fetched progressively
 by passing a whole number (\link{integer} or
 \link{numeric})
 as the \code{n} argument.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched, the result is returned in full
-without warning.
-If fewer rows than requested are returned, further fetches will
-return a data frame with zero rows.
-If zero rows are fetched, the columns of the data frame are still fully
-typed.
+A value of \link{Inf} for the \code{n} argument is supported and also returns the full result.
+If more rows than available are fetched, the result is returned in full without warning.
+If fewer rows than requested are returned, further fetches will return a data frame with zero rows.
+If zero rows are fetched, the columns of the data frame are still fully typed.
 Fetching fewer rows than available is permitted,
 no warning is issued when clearing the result set.
 
@@ -142,8 +124,7 @@ with NA for SQL \code{NULL} values
 (also applies to the return value of the SQL function \code{current_timestamp})
 }
 
-If dates and timestamps are supported by the backend, the following R types are
-used:
+If dates and timestamps are supported by the backend, the following R types are used:
 \itemize{
 \item \link[=Dates]{Date} for dates
 (also applies to the return value of the SQL function \code{current_date})
@@ -151,18 +132,15 @@ used:
 (also applies to the return value of the SQL function \code{current_timestamp})
 }
 
-R has no built-in type with lossless support for the full range of 64-bit
-or larger integers. If 64-bit integers are returned from a query,
+R has no built-in type with lossless support for the full range of 64-bit or larger integers.
+If 64-bit integers are returned from a query,
 the following rules apply:
 \itemize{
-\item Values are returned in a container with support for the full range of
-valid 64-bit values (such as the \code{integer64} class of the \pkg{bit64}
-package)
-\item Coercion to numeric always returns a number that is as close as possible
-to the true value
+\item Values are returned in a container with support for the full range of valid 64-bit values
+(such as the \code{integer64} class of the \pkg{bit64} package)
+\item Coercion to numeric always returns a number that is as close as possible to the true value
 \item Loss of precision when converting to numeric gives a warning
-\item Conversion to character always returns a lossless decimal representation
-of the data
+\item Conversion to character always returns a lossless decimal representation of the data
 }
 
 }
@@ -190,8 +168,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
-finish retrieving the records you want.
+Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you finish retrieving the records you want.
 
 Other DBIResult generics:
 \code{\link{DBIResult-class}},

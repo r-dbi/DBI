@@ -7,8 +7,7 @@
 dbQuoteString(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A character vector to quote as string.}
 
@@ -19,17 +18,14 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 of the same length as the input.
 For an empty character vector this function returns a length-0 object.
 
-When passing the returned object again to \code{dbQuoteString()}
-as \code{x}
-argument, it is returned unchanged.
+When passing the returned object again to \code{dbQuoteString()} as \code{x} argument, it is returned unchanged.
 Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link[DBI:SQL]{SQL} objects
 to achieve this behavior, but this is not required.)
 }
 \description{
-Call this method to generate a string that is suitable for
-use in a query as a string literal, to make sure that you
-generate valid SQL and protect against SQL injection attacks.
+Call this method to generate a string that is suitable for use in a query as a string literal,
+to make sure that you generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteString")}
 }
@@ -50,9 +46,7 @@ for the \code{x} argument raises an error.
 
 
 The returned expression can be used in a \verb{SELECT ...} query,
-and for any scalar character \code{x} the value of
-\code{dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]}
-must be identical to \code{x},
+and for any scalar character \code{x} the value of \code{dbGetQuery(paste0("SELECT ", dbQuoteString(x)))[[1]]} must be identical to \code{x},
 even if \code{x} contains
 spaces,
 tabs,
@@ -61,8 +55,7 @@ or double),
 backticks,
 or newlines
 (in any combination)
-or is itself the result of a \code{dbQuoteString()} call coerced back to
-character (even repeatedly).
+or is itself the result of a \code{dbQuoteString()} call coerced back to character (even repeatedly).
 If \code{x} is \code{NA}, the result must merely satisfy \code{\link[=is.na]{is.na()}}.
 The strings \code{"NA"} or \code{"NULL"} are not treated specially.
 

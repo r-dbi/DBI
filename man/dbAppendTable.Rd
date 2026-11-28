@@ -7,17 +7,16 @@
 dbAppendTable(conn, name, value, ..., row.names = NULL)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{value}{A \link{data.frame} (or coercible to data.frame).}
@@ -34,19 +33,16 @@ numeric.
 \description{
 The \code{dbAppendTable()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTable]{dbCreateTable()}}.
-The default implementation calls \code{\link[=sqlAppendTableTemplate]{sqlAppendTableTemplate()}} and then
-\code{\link[=dbExecute]{dbExecute()}} with the \code{param} argument.
+The default implementation calls \code{\link[=sqlAppendTableTemplate]{sqlAppendTableTemplate()}} and then \code{\link[=dbExecute]{dbExecute()}} with the \code{param} argument.
 Use \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} to append data from an Arrow stream.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbAppendTable")}
 }
 \details{
-Backends compliant to
-ANSI SQL 99 which use \verb{?} as a placeholder for prepared queries don't need
-to override it. Backends with a different SQL syntax which use \verb{?}
-as a placeholder for prepared queries can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}.
-Other backends (with different placeholders or with entirely different
-ways to create tables) need to override the \code{dbAppendTable()} method.
+Backends compliant to ANSI SQL 99 which use \verb{?} as a placeholder for prepared queries don't need to override it.
+Backends with a different SQL syntax which use \verb{?} as a placeholder for prepared queries can override \code{\link[=sqlAppendTable]{sqlAppendTable()}}.
+Other backends (with different placeholders or with entirely different ways to create tables)
+need to override the \code{dbAppendTable()} method.
 
 The \code{row.names} argument is not supported by this method.
 Process the values with \code{\link[=sqlRownamesToColumn]{sqlRownamesToColumn()}} before calling this method.
@@ -63,8 +59,7 @@ or invalid connection.
 An error is also raised
 if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}} or
 if this results in a non-scalar.
-Invalid values for the \code{row.names} argument
-(non-scalars,
+Invalid values for the \code{row.names} argument (non-scalars,
 unsupported data types,
 \code{NA})
 also raise an error.
@@ -99,8 +94,7 @@ and be read identically with \code{\link[DBI:dbReadTable]{dbReadTable()}}:
 \item 64-bit values (using \code{"bigint"} as field type); the result can be
 \itemize{
 \item converted to a numeric, which may lose precision,
-\item converted a character vector, which gives the full decimal
-representation
+\item converted a character vector, which gives the full decimal representation
 \item written to another table and read again unchanged
 }
 \item character (in both UTF-8
@@ -109,25 +103,18 @@ supporting empty strings
 (before and after non-empty strings)
 \item factor (returned as character,
 with a warning)
-\item list of raw
-(if supported by the database)
-\item objects of type \link[blob:blob]{blob::blob}
-(if supported by the database)
-\item date
-(if supported by the database;
+\item list of raw (if supported by the database)
+\item objects of type \link[blob:blob]{blob::blob} (if supported by the database)
+\item date (if supported by the database;
 returned as \code{Date})
 also for dates prior to 1970 or 1900 or after 2038
-\item time
-(if supported by the database;
+\item time (if supported by the database;
 returned as objects that inherit from \code{difftime})
-\item timestamp
-(if supported by the database;
+\item timestamp (if supported by the database;
 returned as \code{POSIXct}
-respecting the time zone but not necessarily preserving the
-input time zone),
+respecting the time zone but not necessarily preserving the input time zone),
 also for timestamps prior to 1970 or 1900 or after 2038
-respecting the time zone but not necessarily preserving the
-input time zone)
+respecting the time zone but not necessarily preserving the input time zone)
 }
 
 Mixing column types in the same table is supported.

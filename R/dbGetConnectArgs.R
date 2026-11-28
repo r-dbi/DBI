@@ -2,15 +2,13 @@
 #'
 #' Returns the arguments stored in a [DBIConnector-class] object for inspection,
 #' optionally evaluating them.
-#' This function is called by [dbConnect()]
-#' and usually does not need to be called directly.
+#' This function is called by [dbConnect()] and usually does not need to be called directly.
 #'
 #' @template methods
 #' @templateVar method_name dbGetConnectArgs
 #'
 #' @param drv A object inheriting from [DBIConnector-class].
-#' @param eval Set to `FALSE` to return the functions that generate the argument
-#'   instead of evaluating them.
+#' @param eval Set to `FALSE` to return the functions that generate the argument instead of evaluating them.
 #' @param ... Other arguments passed on to methods. Not otherwise used.
 #' @family DBIConnector generics
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE)

@@ -7,12 +7,12 @@
 #'
 #' @details
 #' This function expects an Arrow object.
-#' Convert a data frame to an Arrow object with [nanoarrow::as_nanoarrow_array_stream()] or
-#' use [dbWriteTable()] to write a data frame.
+#' Convert a data frame to an Arrow object with [nanoarrow::as_nanoarrow_array_stream()]
+#' or use [dbWriteTable()] to write a data frame.
 #'
 #' This function is useful if you want to create and load a table at the same time.
-#' Use [dbAppendTableArrow()] for appending data to an existing
-#' table, [dbCreateTableArrow()] for creating a table and specifying field types,
+#' Use [dbAppendTableArrow()] for appending data to an existing table,
+#' [dbCreateTableArrow()] for creating a table and specifying field types,
 #' and [dbRemoveTable()] for overwriting tables.
 #'
 #' @template methods
@@ -25,8 +25,8 @@
 #'
 #' @inheritParams dbGetQuery
 #' @inheritParams dbReadTable
-#' @param value An nanoarray stream, or an object coercible to a nanoarray stream with
-#'   [nanoarrow::as_nanoarrow_array_stream()].
+#' @param value An nanoarray stream,
+#'   or an object coercible to a nanoarray stream with [nanoarrow::as_nanoarrow_array_stream()].
 #' @family DBIConnection generics
 #' @export
 #' @examplesIf requireNamespace("RSQLite", quietly = TRUE) && requireNamespace("nanoarrow", quietly = TRUE)

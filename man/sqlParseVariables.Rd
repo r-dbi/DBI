@@ -28,17 +28,14 @@ Defaults to \code{TRUE}.}
 
 \item{sql}{SQL to parse (a character string)}
 
-\item{quotes}{A list of \code{QuoteSpec} calls defining the quoting
-specification.}
+\item{quotes}{A list of \code{QuoteSpec} calls defining the quoting specification.}
 
-\item{comments}{A list of \code{CommentSpec} calls defining the commenting
-specification.}
+\item{comments}{A list of \code{CommentSpec} calls defining the commenting specification.}
 }
 \description{
-If you're implementing a backend that uses non-ANSI quoting or commenting
-rules, you'll need to implement a method for \code{sqlParseVariables} that
-calls \code{sqlParseVariablesImpl} with the appropriate quote and
-comment specifications.
+If you're implementing a backend that uses non-ANSI quoting or commenting rules,
+you'll need to implement a method for \code{sqlParseVariables}
+that calls \code{sqlParseVariablesImpl} with the appropriate quote and comment specifications.
 }
 \examples{
 # Use [] for quoting and no comments

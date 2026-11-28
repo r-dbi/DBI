@@ -1,8 +1,7 @@
 #' Clear a result set
 #'
 #' Frees all resources (local and remote) associated with a result set.
-#' This step is mandatory for all objects obtained by calling
-#' [dbSendQuery()] or [dbSendStatement()].
+#' This step is mandatory for all objects obtained by calling [dbSendQuery()] or [dbSendStatement()].
 #'
 #' @inheritSection dbBind The data retrieval flow
 #' @inheritSection dbBind The command execution flow

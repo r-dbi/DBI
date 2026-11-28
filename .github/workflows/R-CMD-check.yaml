@@ -11,33 +11,57 @@ on:
       - master
       - release
       - next
-      - cran-*
   pull_request:
     branches:
       - main
+      # Release branches such as v2.0-cyanoptera, not their suffixed siblings such as v2.0-cyanoptera-dev
+      - "v[0-9]+.[0-9]+-[a-z]+"
       - master
+  # Dispatchable on any branch, so that a release branch is checked, and its
+  # source tarball uploaded, before the CRAN submission takes it.
   workflow_dispatch:
     inputs:
       ref:
-        description: "Branch, tag, or commit to check out"
+        description: "Branch, tag, or commit to check out; empty for the branch the run is dispatched on"
         required: false
-        default: "main"
+        default: ""
       versions-matrix:
-        description: "Create a matrix of R versions"
-        type: boolean
-        default: false
+        description: "Create a matrix of R versions (auto: unless on the default branch)"
+        # `auto`: on when dispatched on a branch other than the default branch,
+        # such as a release branch, off on the default branch.
+        type: choice
+        options: [auto, "true", "false"]
+        default: auto
       dep-suggests-matrix:
-        description: "Create a matrix of suggested dependencies"
-        type: boolean
-        default: false
+        description: "Create a matrix of suggested dependencies (auto: unless on the default branch)"
+        # `auto`: on when dispatched on a branch other than the default branch,
+        # such as a release branch, off on the default branch.
+        type: choice
+        options: [auto, "true", "false"]
+        default: auto
       run-rcc-full:
         description: "Run rcc-full job"
         type: boolean
         default: false
       run-rcc-suggests:
-        description: "Run rcc-suggests job"
+        description: "Run rcc-suggests job (auto: unless on the default branch)"
+        # `auto`: on when dispatched on a branch other than the default branch,
+        # such as a release branch, off on the default branch.
+        type: choice
+        options: [auto, "true", "false"]
+        default: auto
+      cran-submission:
+        description: "Recompress the source tarball with pigz -11 for a CRAN submission, and fail rather than upload it otherwise"
+        # Only the CRAN submission dispatches with `true`; every other run,
+        # fledge's dispatch included, uploads the tarball as built, without pigz.
         type: boolean
         default: false
+  # SECURITY: a merge-queue run executes the queued pull request's code with
+  # the base repository's token and secrets, unlike `pull_request`, where a
+  # fork only ever gets a read-only token and no secrets. Adding a fork's pull
+  # request to the queue is therefore as much of a trust decision as merging
+  # it; keep "Require merge queue" paired with a branch rule that only lets
+  # maintainers enqueue.
   merge_group:
     types:
       - checks_requested
@@ -50,14 +74,89 @@ concurrency:
 
 name: rcc
 
+# Read-only by default; every job opts back into what it actually needs.
+# Note that for a pull request from a fork GitHub caps the token at read-only
+# regardless of what is requested here.
+permissions:
+  contents: read
+
+# Every job in the workflows of this kit sets `timeout-minutes`,
+# and notes the longest run seen across the fleet next to it.
+# GitHub's default is six hours, so a step that hangs instead of failing
+# keeps the `rcc` status pending and holds a runner until someone cancels the run.
+# Every job that runs R CMD check or builds the pkgdown site gets the same 120 minutes.
+# The other jobs get a limit well above their longest run, because only a hang should reach it.
+# The measurements are from September 2026,
+# over the last 30 to 100 completed runs of each workflow in nine repositories of the fleet.
 jobs:
+  # Pull requests that only touch documentation don't need the checks, but they
+  # still need the "rcc" status to turn green. The workflow therefore always
+  # runs -- skipping it via `paths-ignore` would leave the status pending
+  # forever -- and only the jobs that do the work are skipped.
+  rcc-changes:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10 # a checkout, the classifier's self-test and two API calls; no runs measured yet
+
+    name: "Detect documentation-only changes"
+
+    permissions:
+      contents: read
+      statuses: write
+
+    outputs:
+      # "false" when the classifier did not run, so all checks run
+      docs-only: ${{ steps.docs-only.outputs.docs-only || 'false' }}
+
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.ref }}
+
+      # A manual run with `ref` set to an older tag or release branch
+      # checks out a tree that predates the classifier;
+      # without this guard the job would fail and skip every check.
+      - id: docs-only
+        if: hashFiles('.github/workflows/docs-only/action.yml') != ''
+        uses: ./.github/workflows/docs-only
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # R-CMD-check-status.yaml also turns the status green once the run
+      # completes, this step only makes it green right away, and on the head
+      # commit of the pull request.
+      - name: Update status for rcc (documentation only)
+        if: steps.docs-only.outputs.docs-only == 'true' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+        uses: cynkra/cynkratemplate/.github/actions/commit-status@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: success
+          sha: ${{ github.event.pull_request.head.sha }}
+          description: "${{ github.workflow }} / documentation only"
+
   rcc-smoke:
-    runs-on: ubuntu-24.04
+    needs:
+      - rcc-changes
+
+    # Deliberately amd64. The smoke test is the gate that also styles,
+    # roxygenizes, updates snapshots, commits back and deploys pkgdown, so it
+    # must run on the most stable and available runner. The ubuntu-26.04-arm
+    # image is still in public preview (actions/runner-images#14226 -- possible
+    # instability and queueing), so arm64 is exercised in the full version matrix
+    # (rcc-full) instead, where fail-fast: false isolates failures and jobs don't
+    # mutate the repo. Revisit once the arm image is generally available.
+    runs-on: ubuntu-26.04
+    timeout-minutes: 120 # longest run seen: 28 min
+    # Skip a fork's pull requests against its release branches, and so every job that needs this one: nobody needs them checked there
+    # Skip documentation-only pull requests too, see rcc-changes
+    if: ${{ !(github.event_name == 'pull_request' && github.event.repository.fork && startsWith(github.base_ref, 'v')) && needs.rcc-changes.outputs.docs-only != 'true' }}
 
     outputs:
       sha: ${{ steps.commit.outputs.sha }}
       versions-matrix: ${{ steps.versions-matrix.outputs.matrix }}
       dep-suggests-matrix: ${{ steps.dep-suggests-matrix.outputs.matrix }}
+      binary: ${{ steps.binary.outputs.artifact-name }}
+      # Empty unless uploaded, so that the other jobs then build from the checkout.
+      tarball: ${{ steps.tarball-upload.outcome == 'success' && steps.tarball.outputs.name || '' }}
 
     name: "Smoke test: stock R"
 
@@ -67,224 +166,384 @@ jobs:
       pull-requests: write
       actions: write
 
-    # Begin custom: services
-    # End custom: services
-
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.ref }}
 
-      - name: Update status for rcc
+      - name: Update status for rcc (pending)
         if: github.actor != 'Copilot' && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
-        # FIXME: Wrap into action
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "Actor: ${{ github.actor }}"
+        uses: cynkra/cynkratemplate/.github/actions/commit-status@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: pending
+          sha: ${{ inputs.ref }}
 
-          # Check status of this workflow
-          state="pending"
-          sha=${{ inputs.ref }}
-          if [ -z "${sha}" ]; then
-            sha=${{ github.sha }}
-          fi
-          sha=$(git rev-parse ${sha})
-
-          html_url=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/actions/runs/${{ github.run_id }} | jq -r .html_url)
-
-          description="${{ github.workflow }} / ${{ github.job }}"
-
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/statuses/${sha} \
-            -f "state=${state}" -f "target_url=${html_url}" -f "description=${description}" -f "context=rcc"
-        shell: bash
-
-      - uses: ./.github/workflows/rate-limit
+      - name: Report the GitHub API rate limit
+        uses: cynkra/cynkratemplate/.github/actions/rate-limit@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: ./.github/workflows/git-identity
+      - name: Configure the Git identity
+        uses: cynkra/cynkratemplate/.github/actions/git-identity@main
 
-      - uses: ./.github/workflows/custom/before-install
+      - name: Run the repository-specific before-install steps
+        uses: ./.github/workflows/custom/before-install
         if: hashFiles('.github/workflows/custom/before-install/action.yml') != ''
 
-      - uses: ./.github/workflows/install
+      - name: Install R and the package dependencies
+        uses: cynkra/cynkratemplate/.github/actions/install@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           cache-version: rcc-smoke-2
-          needs: build, check, website
+          needs: build, check, website, roxygen2
           # Beware of using dev pkgdown here, has brought in dev dependencies in the past
-          extra-packages: any::rcmdcheck r-lib/roxygen2 any::decor r-lib/pkgdown deps::.
+          # covr and xml2 are what the covr leg of rcc-full installs, for the coverage step below.
+          # rmarkdown re-renders README.Rmd, in every repository that has one.
+          # It is only a Suggests of most of these packages, and of pkgdown, so
+          # ask for it by name rather than hope it arrives as somebody's
+          # dependency. cynkratemplate supplies the output format those READMEs
+          # declare, so it belongs here rather than in thirty DESCRIPTIONs.
+          extra-packages: any::rcmdcheck r-lib/roxygen2 any::decor r-lib/pkgdown r-lib/covr any::xml2 any::rmarkdown cynkra/cynkratemplate deps::.
 
-      - uses: ./.github/workflows/custom/after-install
+      - name: Run the repository-specific after-install steps
+        uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
-      # Must come after the custom after-install workflow
-      - name: Install package
-        run: |
-          _R_SHLIB_STRIP_=true R CMD INSTALL .
-        shell: bash
+      # Must come after the custom after-install workflow.
+      # Builds the commit as pushed: the styling and roxygenizing below may
+      # push a new commit on top, which this binary does not include.
+      - name: Build, install and upload the binary package
+        id: binary
+        uses: cynkra/cynkratemplate/.github/actions/build-binary@main
+        with:
+          name: ubuntu-26.04-rrelease-smoke
 
-      - id: versions-matrix
+      # From here on, every step is marked `continue-on-error: true` so that a
+      # failing check doesn't hide the results of all the checks that follow.
+      # The "Summarize checks" step at the end fails the job if any of them
+      # did not succeed.
+      - name: Collect the R versions into a matrix
+        id: versions-matrix
+        continue-on-error: true
         # Only run for:
         # - pull requests if the base repo is different from the head repo
-        # - pull requests if the branch name starts with "cran-"
         # Do not run for:
-        # - workflow_dispatch if not requested
+        # - workflow_dispatch if not requested, or by default on the default branch
         # Always run for other events.
-        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository || startsWith(github.head_ref, 'cran-')) && (github.event_name != 'workflow_dispatch' || inputs.versions-matrix)
-        uses: ./.github/workflows/versions-matrix
+        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != github.repository) && (github.event_name != 'workflow_dispatch' || (inputs.versions-matrix == 'true' || (inputs.versions-matrix == 'auto' && github.ref_name != github.event.repository.default_branch)))
+        uses: cynkra/cynkratemplate/.github/actions/versions-matrix@main
 
-      - id: dep-suggests-matrix
-        # Not for workflow_dispatch if not requested, always run for other events
-        if: github.event_name != 'workflow_dispatch' || inputs.dep-suggests-matrix
-        uses: ./.github/workflows/dep-suggests-matrix
+      - name: Collect the suggested dependencies into a matrix
+        id: dep-suggests-matrix
+        continue-on-error: true
+        # Not for workflow_dispatch if not requested, or by default on the default branch;
+        # always run for other events
+        if: github.event_name != 'workflow_dispatch' || (inputs.dep-suggests-matrix == 'true' || (inputs.dep-suggests-matrix == 'auto' && github.ref_name != github.event.repository.default_branch))
+        uses: cynkra/cynkratemplate/.github/actions/dep-suggests-matrix@main
 
-      - id: repo-state
-        name: Determine repository state
-        uses: ./.github/workflows/repo-state
+      - name: Determine repository state
+        id: repo-state
+        uses: cynkra/cynkratemplate/.github/actions/repo-state@main
 
       # Styling on foreign PRs works through the format-suggest workflow
-      - uses: ./.github/workflows/style
+      - name: Style the R sources
+        id: style
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/style@main
         if: steps.repo-state.outputs.foreign != 'true' || steps.repo-state.outputs.is_pr != 'true'
 
       # Snapshot tests can't work in a way similar to format-suggests
       # because it requires running code which is a security risk on pull_request_target workflows
-      - uses: ./.github/workflows/update-snapshots
+      - name: Update the testthat snapshots
+        id: snapshots
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/update-snapshots@main
         with:
           base: ${{ inputs.ref || github.head_ref }}
 
-      - uses: ./.github/workflows/roxygenize
+      - name: Roxygenize the documentation
+        id: roxygenize
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/roxygenize@main
+
+      # After roxygenize, so a README rendering against the installed package
+      # sees documentation that is already up to date, and before the commit
+      # step, so the rendered files ride along in the same commit. The action
+      # is a no-op for a repository that sets `Config/cynkra/render-readme: false`.
+      - name: Re-render the README
+        id: render-readme
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/render-readme@main
 
       - name: Remove config files from previous iteration
         run: |
           rm -f .github/dep-suggests-matrix.json .github/versions-matrix.json
         shell: bash
 
-      - id: commit
-        uses: ./.github/workflows/commit
+      - name: Commit and push the generated changes
+        id: commit
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/commit@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: ./.github/workflows/check
+      # The one commit this job reports on: the commit-back commit if one was
+      # pushed, else the `ref` the run was dispatched with, else the run's own
+      # commit. The final status is set on it, and the tarball is built from it.
+      # A commit-back that went to a pull request (protected branch) or into a
+      # patch (foreign pull request) does not count: its run reports on itself.
+      - name: Determine the commit this job reports on
+        id: status-sha
+        env:
+          SHA: ${{ steps.commit.outputs.sha || inputs.ref || github.sha }}
+        run: |
+          echo "sha=${SHA}" >> "${GITHUB_OUTPUT}"
+        shell: bash
+
+      # The one source tarball of the run, built on R-release after the
+      # generating steps and the commit-back, from exactly the commit the status
+      # is set on: its committed files only, without uncommitted, untracked or
+      # ignored files that the earlier steps left in the checkout. The check
+      # below, the upload guard and the other jobs thus all refer to that
+      # commit. A run that pushed a commit-back commit uploads nothing (see the
+      # guard below), and rcc-full and rcc-suggests build from their checkout
+      # of that commit instead.
+      - name: Build the source tarball
+        id: tarball
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/build-tarball@main
+        with:
+          ref: ${{ steps.status-sha.outputs.sha }}
+          # Recompressed with pigz only for a CRAN submission, see build-tarball.
+          recompress: ${{ inputs.cran-submission == true }}
+
+      - name: Run R CMD check
+        id: check
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/check@main
         with:
           results: ${{ runner.os }}-smoke-test
+          tarball: ${{ steps.tarball.outputs.path }}
 
-      - uses: ./.github/workflows/pkgdown-build
+      # The only upload of the tarball in the run: the raw file, unchanged since
+      # the check above, as the artifact `<package>_<version>.tar.gz`, whose
+      # digest is the file's SHA-256. The other jobs download it from here.
+      # A run dispatched with `ref`, or one that pushed a commit-back commit,
+      # checks a commit other than the one the run is of, so its tarball must
+      # not be taken for that commit.
+      # A run dispatched with `cran-submission` fails here instead of uploading
+      # a tarball that is not recompressed and verified, or uploading nothing.
+      - name: Verify that the check left the source tarball unchanged
+        id: tarball-unchanged
+        continue-on-error: true
+        if: steps.tarball.outcome == 'success'
+        env:
+          TARBALL: ${{ steps.tarball.outputs.path }}
+          SHA256: ${{ steps.tarball.outputs.sha256 }}
+          COMMIT: ${{ steps.tarball.outputs.commit }}
+          RECOMPRESSED: ${{ steps.tarball.outputs.recompressed }}
+          CRAN_SUBMISSION: ${{ inputs.cran-submission == true }}
+        run: |
+          printf '%s  %s\n' "${SHA256}" "${TARBALL}" | sha256sum -c -
+          if [ "${CRAN_SUBMISSION}" = "true" ] && [ "${RECOMPRESSED}" != "true" ]; then
+            echo "::error title=Source tarball not recompressed::A CRAN submission run uploads only a tarball recompressed with pigz and verified."
+            exit 1
+          fi
+          if [ "${COMMIT}" = "${GITHUB_SHA}" ]; then
+            echo "upload=true" >> "${GITHUB_OUTPUT}"
+          elif [ "${CRAN_SUBMISSION}" = "true" ]; then
+            echo "::error title=Source tarball not uploaded::It was built from ${COMMIT}, and this run is of ${GITHUB_SHA}; a CRAN submission run must upload it."
+            exit 1
+          else
+            echo "::notice title=Source tarball not uploaded::It was built from ${COMMIT}, and this run is of ${GITHUB_SHA}."
+            echo "upload=false" >> "${GITHUB_OUTPUT}"
+          fi
+        shell: bash
+
+      - name: Upload the source tarball
+        id: tarball-upload
+        continue-on-error: true
+        if: steps.tarball-unchanged.outputs.upload == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ steps.tarball.outputs.path }}
+          archive: false
+          if-no-files-found: error
+
+      # The sidecar `<package>_<version>.tar.gz.json`, as its own artifact of
+      # that name, since an artifact uploaded with `archive: false` holds one
+      # file: `name`, `sha256`, `commit`, `recompressed` and `compression`, so
+      # that the CRAN submission can check the tarball it takes.
+      - name: Upload the source tarball metadata
+        id: tarball-metadata-upload
+        continue-on-error: true
+        if: steps.tarball-upload.outcome == 'success'
+        uses: actions/upload-artifact@v7
+        with:
+          path: ${{ steps.tarball.outputs.metadata }}
+          archive: false
+          if-no-files-found: error
+
+      - name: Build the pkgdown website
+        id: pkgdown-build
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/pkgdown-build@main
         if: github.event_name != 'push'
 
       # Deliberately deploy only on push
       # Deployment on schedule adds too much noise.
       # Deployment on pull_request is not possible because it requires a token with write permissions, which is not available in pull_request workflows for security reasons.
       # Deployment on workflow_dispatch is available via the pkgdown workflow
-      - uses: ./.github/workflows/pkgdown-deploy
-        if: github.event_name == 'push'
+      # Deploying a broken package's website is worse than not deploying at all,
+      # hence this is the one step that is still gated on a check.
+      - name: Build and deploy the pkgdown website
+        id: pkgdown-deploy
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/pkgdown-deploy@main
+        if: github.event_name == 'push' && steps.check.outcome == 'success'
+
+      # Coverage for every run, from the environment the smoke test already
+      # installed, so that pull requests and the default branch are measured the
+      # same way. The version matrix no longer has a covr entry of its own;
+      # entries a repository adds in .github/versions-matrix.R, such as extra
+      # backends, still run there.
+      # In the smoke test rather than a job of its own, because this job's status
+      # is the `rcc` status of a pull request from this repository: a separate job
+      # would let it turn green, and auto-merge go ahead, while coverage was still
+      # running. After the pkgdown steps, so that a push deploys its site first.
+      - name: Compute and upload the test coverage
+        id: covr
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/covr@main
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       # Upload sha as artifact
-      - run: |
+      - name: Record the commit SHA reached by the smoke test
+        run: |
           echo -n "${{ steps.commit.outputs.sha }}" > rcc-smoke-sha.txt
         shell: bash
 
-      - uses: actions/upload-artifact@v5
+      - name: Upload the commit SHA reached by the smoke test
+        uses: actions/upload-artifact@v7
         with:
           name: rcc-smoke-sha
           path: rcc-smoke-sha.txt
 
-      - name: Update status for rcc
-        # FIXME: Wrap into action
+      # These two steps are what fails the job if any of the checks above failed.
+      #
+      # Those checks run with `continue-on-error`, and GitHub reports such a step
+      # as `conclusion: success` however it ended, so through the API a smoke test
+      # that went red is a job of green steps with one red step at the end of it.
+      # The real result lives in `steps.<id>.outcome`, which no endpoint serves,
+      # so these steps are the only place it can be published, and they publish it
+      # four times over, cheapest lookup first:
+      #
+      #   * in the name of the step that goes red, which the job listing already
+      #     carries, so that naming the failed checks costs nothing beyond
+      #     listing the jobs;
+      #   * as `::error` annotations, which the check-run annotations endpoint
+      #     serves and the pull request shows without anyone opening a log;
+      #   * on stdout, because a log is read from its tail, and on a job this long
+      #     the failure itself scrolled out of the tail an hour ago;
+      #   * in the job summary, for a human.
+      #
+      # Each of them links to the step that failed. The link needs this job's id,
+      # which no context carries, and the step's number, which is what the job
+      # page's `#step:` anchor counts; both come from the run's job listing, and
+      # the links degrade to the job or the run when it cannot be read.
+      #
+      # It takes two steps because a `name` holding a `${{ }}` expression is shown
+      # unevaluated until the step starts, and this one is the last step of a job
+      # that runs for an hour. Naming the checks inline put 908 characters of raw
+      # expression in the job's step list for that whole hour, in the very listing
+      # this is meant to make legible. So the outcomes are collected first and the
+      # name reads one short output of that step instead.
+      - name: Collect the outcomes of the checks
+        id: outcomes
+        if: always()
+        uses: cynkra/cynkratemplate/.github/actions/collect-checks@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # One `<step name>|<label>|<outcome>` per line, in the order the steps
+          # run. The step name is the display name of the step above, which is
+          # how the job listing names it and the only handle on its number. This
+          # stays here because only this workflow can read `steps.<id>.outcome`.
+          checks: |
+            Collect the R versions into a matrix|R versions matrix|${{ steps.versions-matrix.outcome }}
+            Collect the suggested dependencies into a matrix|Suggested dependencies matrix|${{ steps.dep-suggests-matrix.outcome }}
+            Style the R sources|Style|${{ steps.style.outcome }}
+            Update the testthat snapshots|Snapshots|${{ steps.snapshots.outcome }}
+            Roxygenize the documentation|Roxygenize|${{ steps.roxygenize.outcome }}
+            Re-render the README|README|${{ steps.render-readme.outcome }}
+            Commit and push the generated changes|Commit|${{ steps.commit.outcome }}
+            Build the source tarball|Source tarball|${{ steps.tarball.outcome }}
+            Run R CMD check|R CMD check|${{ steps.check.outcome }}
+            Verify that the check left the source tarball unchanged|Tarball unchanged|${{ steps.tarball-unchanged.outcome }}
+            Upload the source tarball|Tarball upload|${{ steps.tarball-upload.outcome }}
+            Upload the source tarball metadata|Tarball metadata upload|${{ steps.tarball-metadata-upload.outcome }}
+            Build the pkgdown website|pkgdown build|${{ steps.pkgdown-build.outcome }}
+            Build and deploy the pkgdown website|pkgdown deploy|${{ steps.pkgdown-deploy.outcome }}
+            Compute and upload the test coverage|Coverage|${{ steps.covr.outcome }}
+
+      # This step stays in the workflow because it is the one that goes red, and
+      # both of the things that makes it worth reading -- the name the job
+      # listing carries, and the log a failure is read from -- belong to a step
+      # of this job and cannot be delegated.
+      - name: >-
+          Summarize checks${{ steps.outcomes.outputs.failed_labels }}
+        if: always()
+        uses: cynkra/cynkratemplate/.github/actions/summarize-checks@main
+        with:
+          failed-count: ${{ steps.outcomes.outputs.failed_count }}
+          report: ${{ steps.outcomes.outputs.report }}
+          summary: ${{ steps.outcomes.outputs.summary }}
+
+      - name: Update status for rcc (final)
         if: always() && (github.actor != 'Copilot') && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Check status of this workflow
-          if [ "${{ job.status }}" == "success" ]; then
-            state="success"
-          else
-            state="failure"
-          fi
-
-          sha=${{ steps.commit.outputs.sha }}
-          if [ -z "${sha}" ]; then
-            sha=${{ inputs.ref }}
-          fi
-          if [ -z "${sha}" ]; then
-            sha=${{ github.sha }}
-          fi
-            sha=$(git rev-parse ${sha})
-
-          html_url=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/actions/runs/${{ github.run_id }} | jq -r .html_url)
-
-          description="${{ github.workflow }} / ${{ github.job }}"
-
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/statuses/${sha} \
-            -f "state=${state}" -f "target_url=${html_url}" -f "description=${description}" -f "context=rcc"
-        shell: bash
+        uses: cynkra/cynkratemplate/.github/actions/commit-status@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: ${{ job.status }}
+          # The commit the tarball was built from, see status-sha; `inputs.ref`
+          # if the job failed before that step
+          sha: ${{ steps.status-sha.outputs.sha || inputs.ref }}
 
       - name: Update status for rcc (Copilot)
         # Update status directly when triggered by Copilot or bots, since they can't dispatch workflows
         if: always() && (github.actor == 'Copilot')
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Set status to success if job succeeded, failure otherwise
-          if [ "${{ job.status }}" == "success" ]; then
-            state="success"
-          else
-            state="failure"
-          fi
-          sha=${{ inputs.ref }}
-          if [ -z "${sha}" ]; then
-            sha=${{ github.sha }}
-          fi
-          sha=$(git rev-parse ${sha})
-
-          html_url=$(gh api \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/actions/runs/${{ github.run_id }} | jq -r .html_url)
-
-          description="${{ github.workflow }} / ${{ github.job }}"
-
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github+json" \
-            -H "X-GitHub-Api-Version: 2022-11-28" \
-            repos/${{ github.repository }}/statuses/${sha} \
-            -f "state=${state}" -f "target_url=${html_url}" -f "description=${description}" -f "context=rcc"
-        shell: bash
+        uses: cynkra/cynkratemplate/.github/actions/commit-status@main
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          state: ${{ job.status }}
+          # As for the final status above
+          sha: ${{ steps.status-sha.outputs.sha || inputs.ref }}
 
   rcc-smoke-check-matrix:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15 # longest run seen: 1 min
 
     name: "Check matrix"
 
     needs:
       - rcc-smoke
 
+    permissions:
+      contents: read
+
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ needs.rcc-smoke.outputs.sha }}
 
-      - uses: ./.github/workflows/matrix-check
+      - name: Show the R versions matrix
+        uses: cynkra/cynkratemplate/.github/actions/matrix-check@main
         with:
           matrix: ${{ needs.rcc-smoke.outputs.versions-matrix }}
 
-      - uses: ./.github/workflows/matrix-check
+      - name: Show the suggested dependencies matrix
+        uses: cynkra/cynkratemplate/.github/actions/matrix-check@main
         with:
           matrix: ${{ needs.rcc-smoke.outputs.dep-suggests-matrix }}
 
@@ -293,62 +552,122 @@ jobs:
       - rcc-smoke
 
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 120 # longest run seen: 99 min
 
     if: ${{ needs.rcc-smoke.outputs.versions-matrix != '' }}
 
     name: 'rcc: ${{ matrix.os }} (${{ matrix.r }}) ${{ matrix.desc }}'
 
-    # Begin custom: services
-    # End custom: services
+    permissions:
+      # Both required by the update-snapshots action, which opens a pull
+      # request with refreshed snapshots. It is skipped for forks, where the
+      # token is read-only anyway.
+      contents: write
+      pull-requests: write
 
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.rcc-smoke.outputs.versions-matrix)}}
 
     steps:
-      - uses: actions/checkout@v6
+      # The commit the smoke test pushed, else the `ref` it was dispatched with,
+      # else checkout's default, the branch rather than a detached commit, which
+      # the snapshot pull request needs.
+      - uses: actions/checkout@v7
         with:
-          ref: ${{ needs.rcc-smoke.outputs.sha }}
+          ref: ${{ needs.rcc-smoke.outputs.sha || inputs.ref }}
 
-      - uses: ./.github/workflows/custom/before-install
+      - name: Apply environment variables from the test matrix
+        # Generic: matrix entries defined in .github/versions-matrix.R can
+        # carry an "env" field (one KEY=VALUE per line).
+        # Write it to $GITHUB_ENV here, in the workflow,
+        # because composite actions cannot read the matrix context.
+        # The variables then reach every subsequent step,
+        # including the custom before-install and after-install actions,
+        # without requiring repos to implement any plumbing of their own.
+        if: matrix.env != ''
+        env:
+          MATRIX_ENV: ${{ matrix.env }}
+        run: |
+          printf '%s\n' "$MATRIX_ENV" | tee -a "$GITHUB_ENV"
+        shell: bash
+
+      - name: Run the repository-specific before-install steps
+        uses: ./.github/workflows/custom/before-install
         if: hashFiles('.github/workflows/custom/before-install/action.yml') != ''
 
-      - uses: ./.github/workflows/install
+      - name: Install R and the package dependencies
+        uses: cynkra/cynkratemplate/.github/actions/install@main
         with:
           r-version: ${{ matrix.r }}
           cache-version: rcc-full-1
           token: ${{ secrets.GITHUB_TOKEN }}
           needs: build, check
 
-      - uses: ./.github/workflows/custom/after-install
+      - name: Run the repository-specific after-install steps
+        uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
-      - name: Must allow NOTEs if packages are missing, even with _R_CHECK_FORCE_SUGGESTS_
-        run: |
-          if (Sys.getenv("RCMDCHECK_ERROR_ON") %in% c("", "note")) {
-            pkgs <- setdiff(desc::desc_get_deps()$package, "R")
-            installable <- vapply(pkgs, FUN.VALUE = logical(1), requireNamespace, quietly = TRUE)
-            if (any(!installable)) {
-              message("Missing packages: ", paste(pkgs[!installable], collapse = ", "))
-              cat('RCMDCHECK_ERROR_ON="warning"\n', file = Sys.getenv("GITHUB_ENV"), append = TRUE)
-            }
-          }
-        shell: Rscript {0}
+      # Before the snapshot tests and the check, which reuse its compilation:
+      # `load_all()` finds the shared object in `src/`, and `R CMD check` hits ccache.
+      - name: Build, install and upload the binary package
+        uses: cynkra/cynkratemplate/.github/actions/build-binary@main
+        # The covr entries run no check and build an instrumented package of their own.
+        if: ${{ ! matrix.covr }}
+        with:
+          # `matrix.os` rather than `runner.os`: ubuntu-24.04 and ubuntu-26.04
+          # are both "Linux", and their binaries differ. `matrix.desc` tells
+          # apart the custom entries that share an OS and an R version, so an
+          # entry that shares both with another one needs a `desc`.
+          name: ${{ matrix.os }}-r${{ matrix.r }}${{ matrix.desc && format('-{0}', matrix.desc) || '' }}
 
-      - uses: ./.github/workflows/update-snapshots
-        if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+      - name: Must allow NOTEs if packages are missing, even with _R_CHECK_FORCE_SUGGESTS_
+        uses: cynkra/cynkratemplate/.github/actions/allow-notes-when-deps-missing@main
+      - name: Update the testthat snapshots
+        id: snapshots
+        continue-on-error: true
+        uses: cynkra/cynkratemplate/.github/actions/update-snapshots@main
+        # Generic escape hatch: a custom action may set SKIP_UPDATE_SNAPSHOTS
+        # to opt out of running the snapshot updater,
+        # which runs tests directly via testthat::test_local()
+        # and is difficult to disable otherwise.
+        if: (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository) && env.SKIP_UPDATE_SNAPSHOTS != 'true'
         with:
           base: ${{ github.head_ref }}
 
-      - uses: ./.github/workflows/check
+      - name: Download the source tarball
+        uses: actions/download-artifact@v8
+        if: ${{ ! matrix.covr && needs.rcc-smoke.outputs.tarball != '' }}
+        with:
+          name: ${{ needs.rcc-smoke.outputs.tarball }}
+          path: ${{ runner.temp }}/tarball
+
+      - name: Run R CMD check
+        uses: cynkra/cynkratemplate/.github/actions/check@main
         if: ${{ ! matrix.covr }}
         with:
-          results: ${{ runner.os }}-r${{ matrix.r }}
+          tarball: ${{ needs.rcc-smoke.outputs.tarball && format('{0}/tarball/{1}', runner.temp, needs.rcc-smoke.outputs.tarball) || '' }}
+          # Include the architecture: the matrix pairs each arm64 runner with an
+          # amd64 one on the same OS and the same R version (ubuntu-26.04-arm /
+          # ubuntu-26.04, windows-11-arm / windows-latest), so `runner.os` alone
+          # yields duplicate artifact names, which upload-artifact rejects.
+          results: ${{ runner.os }}-${{ runner.arch }}-r${{ matrix.r }}
 
-      - uses: ./.github/workflows/covr
+      - name: Compute and upload the test coverage
+        uses: cynkra/cynkratemplate/.github/actions/covr@main
         if: ${{ matrix.covr }}
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Fail if a snapshot pull request was opened
+        if: always() && steps.snapshots.outputs.pull-request-number != ''
+        env:
+          PR_NUMBER: ${{ steps.snapshots.outputs.pull-request-number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          echo "::error::Snapshot pull request #${PR_NUMBER} was opened, see ${RUN_URL}"
+          exit 1
+        shell: bash
 
 # The status update is taken care of by R-CMD-check-status.yaml
 
@@ -356,51 +675,76 @@ jobs:
     needs:
       - rcc-smoke
 
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
+    timeout-minutes: 120 # longest run seen: 16 min
 
-    if: ${{ needs.rcc-smoke.outputs.dep-suggests-matrix != '' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.run-rcc-suggests)) }}
+    if: ${{ needs.rcc-smoke.outputs.dep-suggests-matrix != '' && (github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && (inputs.run-rcc-suggests == 'true' || (inputs.run-rcc-suggests == 'auto' && github.ref_name != github.event.repository.default_branch)))) }}
 
     name: Without ${{ matrix.package }}
 
-    # Begin custom: services
-    # End custom: services
+    permissions:
+      contents: read
 
     strategy:
       fail-fast: false
       matrix: ${{fromJson(needs.rcc-smoke.outputs.dep-suggests-matrix)}}
 
     steps:
-      - uses: actions/checkout@v6
+      # As in rcc-full above.
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.rcc-smoke.outputs.sha || inputs.ref }}
 
-      - uses: ./.github/workflows/custom/before-install
+      - name: Run the repository-specific before-install steps
+        uses: ./.github/workflows/custom/before-install
         if: hashFiles('.github/workflows/custom/before-install/action.yml') != ''
 
-      - uses: ./.github/workflows/install
+      - name: Install R and the package dependencies
+        uses: cynkra/cynkratemplate/.github/actions/install@main
         with:
           cache-version: rcc-dev-${{ matrix.package }}-1
           needs: build, check
-          extra-packages: "any::rcmdcheck any::remotes ."
+          extra-packages: "any::rcmdcheck any::remotes"
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      # Same runner and R version as the smoke test, so its binary fits.
+      - name: Install the package from the smoke test's binary
+        uses: cynkra/cynkratemplate/.github/actions/install-binary@main
+        with:
+          name: ${{ needs.rcc-smoke.outputs.binary }}
 
       - name: Remove ${{ matrix.package }} and all strong dependencies
         run: |
           pkg <- "${{ matrix.package }}"
-          pkgs <- tools::package_dependencies(pkg, reverse = TRUE)[[1]]
+          pkgs <- tools::package_dependencies(pkg, recursive = TRUE, reverse = TRUE)[[1]]
           installed <- rownames(utils::installed.packages())
-          to_remove <- c(pkg, intersect(pkgs, installed))
+          # `pkg` belongs inside the intersect() as much as its reverse
+          # dependencies do. It may legitimately not be installed -- a package
+          # pinned as `<pkg>=?ignore` in Config/gha/extra-packages never is --
+          # and then there is nothing to remove and nothing wrong: the job is
+          # checking that the package builds without it, which already holds.
+          to_remove <- intersect(c(pkg, pkgs), installed)
           print(to_remove)
-          remove.packages(to_remove)
+          # remove.packages() without `lib` looks only in .libPaths()[1] and
+          # errors on anything it does not find there, so name the library
+          # each package actually lives in.
+          # Recommended packages in a read-only system library cannot be
+          # removed, so skip them instead of failing the job.
+          for (p in to_remove) {
+            lib <- dirname(find.package(p))
+            if (file.access(lib, 2) != 0) {
+              message("Skipping ", p, ": library ", lib, " is not writable")
+            } else {
+              remove.packages(p, lib = lib)
+            }
+          }
         shell: Rscript {0}
 
       - name: Session info
-        run: |
-          options(width = 100)
-          if (!requireNamespace("sessioninfo", quietly = TRUE)) install.packages("sessioninfo")
-          pkgs <- installed.packages()[, "Package"]
-          sessioninfo::session_info(pkgs, include_base = TRUE)
-        shell: Rscript {0}
+        uses: cynkra/cynkratemplate/.github/actions/session-info@main
 
-      - uses: ./.github/workflows/custom/after-install
+      - name: Run the repository-specific after-install steps
+        uses: ./.github/workflows/custom/after-install
         if: hashFiles('.github/workflows/custom/after-install/action.yml') != ''
 
       - name: Must allow NOTEs, even with _R_CHECK_FORCE_SUGGESTS_
@@ -416,8 +760,17 @@ jobs:
           print(Sys.getenv('RCMDCHECK_ERROR_ON'))
         shell: Rscript {0}
 
-      - uses: ./.github/workflows/check
+      - name: Download the source tarball
+        uses: actions/download-artifact@v8
+        if: needs.rcc-smoke.outputs.tarball != ''
+        with:
+          name: ${{ needs.rcc-smoke.outputs.tarball }}
+          path: ${{ runner.temp }}/tarball
+
+      - name: Run R CMD check
+        uses: cynkra/cynkratemplate/.github/actions/check@main
         with:
           results: ${{ matrix.package }}
+          tarball: ${{ needs.rcc-smoke.outputs.tarball && format('{0}/tarball/{1}', runner.temp, needs.rcc-smoke.outputs.tarball) || '' }}
 
 # The status update is taken care of by R-CMD-check-status.yaml

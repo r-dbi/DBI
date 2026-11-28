@@ -8,8 +8,7 @@ dbIsValid(dbObj, ...)
 }
 \arguments{
 \item{dbObj}{An object inheriting from \link[=DBIObject-class]{DBIObject},
-i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection},
-or a \link[=DBIResult-class]{DBIResult}}
+i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection}, or a \link[=DBIResult-class]{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }
@@ -19,21 +18,20 @@ or a \link[=DBIResult-class]{DBIResult}}
 \code{FALSE} otherwise.
 A \link[DBI:DBIConnection-class]{DBIConnection} object is initially valid,
 and becomes invalid after disconnecting with \code{\link[DBI:dbDisconnect]{dbDisconnect()}}.
-For an invalid connection object (e.g., for some drivers if the object
-is saved to a file and then restored), the method also returns \code{FALSE}.
+For an invalid connection object (e.g., for some drivers if the object is saved to a file and then restored),
+the method also returns \code{FALSE}.
 A \link[DBI:DBIResult-class]{DBIResult} object is valid after a call to \code{\link[DBI:dbSendQuery]{dbSendQuery()}},
 and stays valid even after all rows have been fetched;
 only clearing it with \code{\link[DBI:dbClearResult]{dbClearResult()}} invalidates it.
 A \link[DBI:DBIResult-class]{DBIResult} object is also valid after a call to \code{\link[DBI:dbSendStatement]{dbSendStatement()}},
 and stays valid after querying the number of rows affected;
 only clearing it with \code{\link[DBI:dbClearResult]{dbClearResult()}} invalidates it.
-If the connection to the database system is dropped (e.g., due to
-connectivity problems, server failure, etc.), \code{dbIsValid()} should return
-\code{FALSE}. This is not tested automatically.
+If the connection to the database system is dropped (e.g., due to connectivity problems, server failure, etc.),
+\code{dbIsValid()} should return \code{FALSE}.
+This is not tested automatically.
 }
 \description{
-This generic tests whether a database object is still valid (i.e. it hasn't
-been disconnected or cleared).
+This generic tests whether a database object is still valid (i.e. it hasn't been disconnected or cleared).
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbIsValid")}
 }

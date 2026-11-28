@@ -1,8 +1,10 @@
 ---
-output: github_document
+output: cynkratemplate::readme_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md and index.md are generated from README.Rmd.
+     Edit that file and render it the usual way: rmarkdown::render(), devtools::build_readme(), or the Knit button.
+     The cynkratemplate package must be installed; it supplies the output format. -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -11,6 +13,12 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
+
+# Pin `max.print` so the rendered output does not depend on the renderer's own
+# option. R's default is 99999, which prints all 32 rows of the `dbReadTable()`
+# result below; the committed README shows the truncated form. Without this, the
+# file changes for whoever re-renders it next, depending on their `.Rprofile`.
+options(max.print = 99)
 ```
 
 # DBI
@@ -18,7 +26,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
-[![Coverage Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://app.codecov.io/github/r-dbi/DBI?branch=main)
+[![Coverage Status](https://codecov.io/gh/r-dbi/DBI/graph/badge.svg)](https://app.codecov.io/gh/r-dbi/DBI/tree/main)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
 <!-- badges: end -->
@@ -36,7 +44,9 @@ The package defines an interface that is implemented by *DBI backends* such as:
 and many more, see the [list of backends](https://github.com/r-dbi/backends#readme).
 R scripts and packages use DBI to access various databases through their DBI backends.
 
-The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/), Java's JDBC, Python's [DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
+The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/),
+Java's JDBC, Python's [DB-API](https://www.python.org/dev/peps/pep-0249/),
+and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
 It supports the following operations:
 
 * connect/disconnect to the DBMS
@@ -45,6 +55,31 @@ It supports the following operations:
 * error/exception handling
 * information (meta-data) from database objects
 * transaction management (optional)
+
+## Goals and non-goals
+
+DBI aims to:
+
+- Define the classes and generics that R code uses to talk to a DBMS:
+  connecting, executing statements, fetching results, querying metadata, and managing transactions.
+- Write down what each of those methods must do, in `vignette("spec")`,
+  so that calling code can rely on documented behavior rather than on the quirks of one backend.
+- Derive as much as possible from a small set of methods a backend has to implement,
+  and supply the rest as defaults, such as `dbGetQuery()`, `dbReadTable()` and `dbWithTransaction()`.
+  `dbWriteTable()` belongs in that list too, and today it still needs a method from the backend.
+- Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R.
+- Lower the barrier for new backends, with an implementation guide in `vignette("backend")` and a ready-to-use template package.
+
+It is explicitly not trying to:
+
+- Talk to a database itself.
+  The driver, connection and result classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.
+- Check that a backend conforms to the specification.
+  The DBItest package holds the test cases, and the specification vignette is derived from them.
+- Offer a higher level of abstraction than SQL.
+  You write the queries; packages that translate R code into SQL, such as dbplyr, build on top of DBI.
+- Require every backend to implement every method.
+  Parts of the interface such as transaction management are optional.
 
 ## Installation
 
@@ -67,8 +102,8 @@ install.packages("DBI")
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("r-dbi/DBI")
+# install.packages("pak")
+pak::pak("r-dbi/DBI")
 ```
 
 ## Example
@@ -111,8 +146,8 @@ Three which are each extended by individual database backends:
 * `DBIObject`: a common base class for all DBI.
 
 * `DBIDriver`: a base class representing overall DBMS properties.
-  Typically generator functions instantiate the driver objects like `RSQLite()`,
-  `RPostgreSQL()`, `RMySQL()` etc.
+  Typically generator functions instantiate the driver objects,
+  such as `RSQLite::SQLite()`, `RPostgres::Postgres()` and `RMariaDB::MariaDB()`.
 
 * `DBIConnection`: represents a connection to a specific database
 
@@ -126,7 +161,8 @@ All classes are _virtual_: they cannot be instantiated directly and instead must
 
 * The [DBI project site](https://r-dbi.org/) hosts a blog where recent developments are presented.
 
-* [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James, the driving force behind the development of DBI, and many of the packages that implement it.
+* [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James,
+  the driving force behind the development of DBI, and many of the packages that implement it.
 
 ---
 

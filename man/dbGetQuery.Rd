@@ -7,27 +7,24 @@
 dbGetQuery(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbGetQuery()} always returns a \link{data.frame}, with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbGetQuery()} always returns a \link{data.frame},
+with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
 }
 \description{
 Returns the result of a query as a data frame.
-\code{dbGetQuery()} comes with a default implementation
-(which should work with most backends) that calls
-\code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}}, ensuring that
-the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
+\code{dbGetQuery()} comes with a default implementation (which should work with most backends)
+that calls \code{\link[=dbSendQuery]{dbSendQuery()}}, then \code{\link[=dbFetch]{dbFetch()}},
+ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
 For retrieving chunked/paged results or for passing query parameters,
 see \code{\link[=dbSendQuery]{dbSendQuery()}}, in particular the "The data retrieval flow" section.
 For retrieving results as an Arrow object, see \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}.
@@ -37,20 +34,16 @@ For retrieving results as an Arrow object, see \code{\link[=dbGetQueryArrow]{dbG
 \details{
 This method is for \code{SELECT} queries only
 (incl. other SQL statements that return a \code{SELECT}-alike result,
-e.g., execution of a stored procedure or data manipulation queries
-like \verb{INSERT INTO ... RETURNING ...}).
+e.g., execution of a stored procedure or data manipulation queries like \verb{INSERT INTO ... RETURNING ...}).
 To execute a stored procedure that does not return a result set,
 use \code{\link[=dbExecute]{dbExecute()}}.
 
-Some backends may
-support data manipulation statements through this method for compatibility
-reasons.  However, callers are strongly advised to use
-\code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
+Some backends may support data manipulation statements through this method for compatibility reasons.
+However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 
-Subclasses should override this method only if they provide some sort of
-performance optimization.
+Subclasses should override this method only if they provide some sort of performance optimization.
 }
 
 \section{Failure modes}{
@@ -60,8 +53,7 @@ An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
-If the \code{n} argument is not an atomic whole number
-greater or equal to -1 or Inf, an error is raised,
+If the \code{n} argument is not an atomic whole number greater or equal to -1 or Inf, an error is raised,
 but a subsequent call to \code{dbGetQuery()} with proper \code{n} argument succeeds.
 
 }
@@ -92,12 +84,9 @@ A column named \code{row_names} is treated like any other column.
 The \code{n} argument specifies the number of rows to be fetched.
 If omitted, fetching multi-row queries with one
 or more columns returns the entire result.
-A value of \link{Inf} for the \code{n} argument is supported
-and also returns the full result.
-If more rows than available are fetched (by passing a too large value for
-\code{n}), the result is returned in full without warning.
-If zero rows are requested, the columns of the data frame are still fully
-typed.
+A value of \link{Inf} for the \code{n} argument is supported and also returns the full result.
+If more rows than available are fetched (by passing a too large value for \code{n}), the result is returned in full without warning.
+If zero rows are requested, the columns of the data frame are still fully typed.
 Fetching fewer rows than available is permitted,
 no warning is issued.
 
@@ -113,11 +102,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

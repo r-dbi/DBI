@@ -7,15 +7,13 @@
 dbFetchArrowChunk(res, ...)
 }
 \arguments{
-\item{res}{An object inheriting from \link[=DBIResultArrow-class]{DBI::DBIResultArrow},
-created by \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}.}
+\item{res}{An object inheriting from \link[=DBIResultArrow-class]{DBI::DBIResultArrow}, created by \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}.}
 
 \item{...}{Other arguments passed on to methods.}
 }
 \value{
-\code{dbFetchArrowChunk()} always returns an object coercible to a \link{data.frame} with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbFetchArrowChunk()} always returns an object coercible to a \link{data.frame} with as many rows as records were fetched
+and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -32,18 +30,15 @@ Use \code{\link[=dbFetchArrow]{dbFetchArrow()}} to fetch all results.
 \section{The data retrieval flow for Arrow streams}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
-which should be sufficient
+is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\link[=DBIResultArrow-class]{DBIResultArrow}.
+\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -70,9 +65,14 @@ An attempt to fetch from a closed result set raises an error.
 Fetching multi-row queries with one
 or more columns returns the next chunk.
 The size of the chunk is implementation-specific.
-The object returned by \code{dbFetchArrowChunk()} can also be passed to
-\code{\link[nanoarrow:as_nanoarrow_array]{nanoarrow::as_nanoarrow_array()}} to create a nanoarrow array object.
+The object returned by \code{dbFetchArrowChunk()} can also be passed to \code{\link[nanoarrow:as_nanoarrow_array]{nanoarrow::as_nanoarrow_array()}}
+to create a nanoarrow array object.
 The chunk size is implementation-specific.
+Each chunk carries the schema of the result:
+\code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}} applied to the object returned by \code{dbFetchArrowChunk()}
+gives a struct schema with one child per column, named like the columns.
+The names and formats of the children are the same for all chunks of a result,
+including the zero-length chunk returned after \code{\link[DBI:dbHasCompleted]{dbHasCompleted()}} has returned \code{TRUE}.
 
 }
 
@@ -94,8 +94,7 @@ dbDisconnect(con)
 \dontshow{\}) # examplesIf}
 }
 \seealso{
-Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you
-finish retrieving the records you want.
+Close the result set with \code{\link[=dbClearResult]{dbClearResult()}} as soon as you finish retrieving the records you want.
 
 Other DBIResultArrow generics:
 \code{\link{DBIResultArrow-class}},

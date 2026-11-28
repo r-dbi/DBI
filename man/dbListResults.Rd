@@ -7,19 +7,19 @@
 dbListResults(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a list. If no results are active, an empty list. If only
-a single result is active, a list with one element.
+a list.
+If no results are active, an empty list.
+If only a single result is active, a list with one element.
 }
 \description{
-DEPRECATED. DBI currenty supports only one open result set per connection,
-you need to keep track of the result sets you open if you need this
-functionality.
+DEPRECATED.
+DBI currenty supports only one open result set per connection,
+you need to keep track of the result sets you open if you need this functionality.
 }
 \seealso{
 Other DBIConnection generics:

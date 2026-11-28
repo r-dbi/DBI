@@ -8,8 +8,7 @@ dbIsReadOnly(dbObj, ...)
 }
 \arguments{
 \item{dbObj}{An object inheriting from \link[=DBIObject-class]{DBIObject},
-i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection},
-or a \link[=DBIResult-class]{DBIResult}}
+i.e. \link[=DBIDriver-class]{DBIDriver}, \link[=DBIConnection-class]{DBIConnection}, or a \link[=DBIResult-class]{DBIResult}}
 
 \item{...}{Other arguments to methods.}
 }

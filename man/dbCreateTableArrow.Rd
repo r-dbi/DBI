@@ -7,21 +7,19 @@
 dbCreateTableArrow(conn, name, value, ..., temporary = FALSE)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
-\item{value}{An object for which a schema can be determined via
-\code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}}.}
+\item{value}{An object for which a schema can be determined via \code{\link[nanoarrow:infer_nanoarrow_schema]{nanoarrow::infer_nanoarrow_schema()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 
@@ -33,13 +31,10 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-The default \code{dbCreateTableArrow()} method determines the R data types
-of the Arrow schema associated with the Arrow object,
+The default \code{dbCreateTableArrow()} method determines the R data types of the Arrow schema associated with the Arrow object,
 and calls \code{\link[=dbCreateTable]{dbCreateTable()}}.
-Backends that implement \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} should typically
-also implement this generic.
-Use \code{\link[=dbCreateTable]{dbCreateTable()}} to create a table from the column types
-as defined in a data frame.
+Backends that implement \code{\link[=dbAppendTableArrow]{dbAppendTableArrow()}} should typically also implement this generic.
+Use \code{\link[=dbCreateTable]{dbCreateTable()}} to create a table from the column types as defined in a data frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbCreateTableArrow")}
 }
@@ -53,8 +48,7 @@ or invalid connection.
 An error is also raised
 if \code{name} cannot be processed with \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}} or
 if this results in a non-scalar.
-Invalid values for the \code{temporary} argument
-(non-scalars,
+Invalid values for the \code{temporary} argument (non-scalars,
 unsupported data types,
 \code{NA},
 incompatible values,
@@ -98,8 +92,7 @@ The \code{value} argument can be:
 \item a nanoarrow schema
 }
 
-If the \code{temporary} argument is \code{TRUE}, the table is not available in a
-second connection and is gone after reconnecting.
+If the \code{temporary} argument is \code{TRUE}, the table is not available in a second connection and is gone after reconnecting.
 Not all backends support this argument.
 A regular, non-temporary table is visible in a second connection,
 in a pre-existing connection,

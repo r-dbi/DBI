@@ -9,9 +9,8 @@
 Id(...)
 }
 \arguments{
-\item{...}{Components of the hierarchy, e.g. \code{cluster},
-\code{catalog}, \code{schema}, or \code{table}, depending on the database backend. For more
-on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
+\item{...}{Components of the hierarchy, e.g. \code{cluster}, \code{catalog}, \code{schema}, or \code{table}, depending on the database backend.
+For more on these concepts, see \url{https://stackoverflow.com/questions/7022755/}}
 }
 \description{
 Objects of class \code{Id} have a single slot \code{name}, which is a character vector.

@@ -7,17 +7,15 @@
 dbGetQueryArrow(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbGetQueryArrow()} always returns an object coercible to a \link{data.frame}, with
-as many rows as records were fetched and as many
-columns as fields in the result set,
+\code{dbGetQueryArrow()} always returns an object coercible to a \link{data.frame},
+with as many rows as records were fetched and as many columns as fields in the result set,
 even if the result is a single value
 or has one
 or zero rows.
@@ -26,13 +24,11 @@ or zero rows.
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 Returns the result of a query as an Arrow object.
-\code{dbGetQueryArrow()} comes with a default implementation
-(which should work with most backends) that calls
-\code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, then \code{\link[=dbFetchArrow]{dbFetchArrow()}}, ensuring that
-the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
+\code{dbGetQueryArrow()} comes with a default implementation (which should work with most backends)
+that calls \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, then \code{\link[=dbFetchArrow]{dbFetchArrow()}},
+ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
 For passing query parameters,
-see \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, in particular
-the "The data retrieval flow for Arrow streams" section.
+see \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, in particular the "The data retrieval flow for Arrow streams" section.
 For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetQueryArrow")}
@@ -40,20 +36,16 @@ For retrieving results as a data frame, see \code{\link[=dbGetQuery]{dbGetQuery(
 \details{
 This method is for \code{SELECT} queries only
 (incl. other SQL statements that return a \code{SELECT}-alike result,
-e.g., execution of a stored procedure or data manipulation queries
-like \verb{INSERT INTO ... RETURNING ...}).
+e.g., execution of a stored procedure or data manipulation queries like \verb{INSERT INTO ... RETURNING ...}).
 To execute a stored procedure that does not return a result set,
 use \code{\link[=dbExecute]{dbExecute()}}.
 
-Some backends may
-support data manipulation statements through this method.
-However, callers are strongly advised to use
-\code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
+Some backends may support data manipulation statements through this method.
+However, callers are strongly advised to use \code{\link[=dbExecute]{dbExecute()}} for data manipulation statements.
 }
 \section{Implementation notes}{
 
-Subclasses should override this method only if they provide some sort of
-performance optimization.
+Subclasses should override this method only if they provide some sort of performance optimization.
 }
 
 \section{Failure modes}{
@@ -63,11 +55,6 @@ An error is raised when issuing a query over a closed
 or invalid connection,
 if the syntax of the query is invalid,
 or if the query is not a non-\code{NA} string.
-The object returned by \code{dbGetQueryArrow()} can also be passed to
-\code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}} to create a nanoarrow
-array stream object that can be used to read the result set
-in batches.
-The chunk size is implementation-specific.
 
 }
 
@@ -97,11 +84,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

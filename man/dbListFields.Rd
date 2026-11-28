@@ -7,17 +7,16 @@
 dbListFields(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{...}{Other parameters passed on to methods.}
@@ -25,8 +24,7 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \value{
 \code{dbListFields()}
 returns a character vector
-that enumerates all fields
-in the table in the correct order.
+that enumerates all fields in the table in the correct order.
 This also works for temporary tables if supported by the database.
 The returned names are suitable for quoting with \code{dbQuoteIdentifier()}.
 }
@@ -39,8 +37,7 @@ Returns the field names of a remote table as a character vector.
 
 
 If the table does not exist, an error is raised.
-Invalid types for the \code{name} argument
-(e.g., \code{character} of length not equal to one,
+Invalid types for the \code{name} argument (e.g., \code{character} of length not equal to one,
 or numeric)
 lead to an error.
 An error is also raised when calling this method for a closed
@@ -56,8 +53,7 @@ The \code{name} argument can be
 \itemize{
 \item a string
 \item the return value of \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}
-\item a value from the \code{table} column from the return value of
-\code{\link[DBI:dbListObjects]{dbListObjects()}} where \code{is_prefix} is \code{FALSE}
+\item a value from the \code{table} column from the return value of \code{\link[DBI:dbListObjects]{dbListObjects()}} where \code{is_prefix} is \code{FALSE}
 }
 
 A column named \code{row_names} is treated like any other column.

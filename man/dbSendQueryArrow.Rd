@@ -7,8 +7,7 @@
 dbSendQueryArrow(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
@@ -18,45 +17,36 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 \code{dbSendQueryArrow()} returns
 an S4 object that inherits from \link[DBI:DBIResultArrow-class]{DBIResultArrow}.
 The result set can be used with \code{\link[DBI:dbFetchArrow]{dbFetchArrow()}} to extract records.
-Once you have finished using a result, make sure to clear it
-with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
+Once you have finished using a result, make sure to clear it with \code{\link[DBI:dbClearResult]{dbClearResult()}}.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
-The \code{dbSendQueryArrow()} method only submits and synchronously executes the
-SQL query to the database engine.
-It does \emph{not} extract any
-records --- for that you need to use the \code{\link[=dbFetchArrow]{dbFetchArrow()}} method, and
-then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the
-records you need.
+The \code{dbSendQueryArrow()} method only submits and synchronously executes the SQL query to the database engine.
+It does \emph{not} extract any records --- for that you need to use the \code{\link[=dbFetchArrow]{dbFetchArrow()}} method,
+and then you must call \code{\link[=dbClearResult]{dbClearResult()}} when you finish fetching the records you need.
 For interactive use, you should almost always prefer \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}.
-Use \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbGetQuery]{dbGetQuery()}} instead to retrieve the results
-as a data frame.
+Use \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbGetQuery]{dbGetQuery()}} instead to retrieve the results as a data frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbSendQueryArrow")}
 }
 \details{
-This method is for \code{SELECT} queries only.  Some backends may
-support data manipulation queries through this method for compatibility
-reasons.  However, callers are strongly encouraged to use
-\code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
+This method is for \code{SELECT} queries only.
+Some backends may support data manipulation queries through this method for compatibility reasons.
+However, callers are strongly encouraged to use \code{\link[=dbSendStatement]{dbSendStatement()}} for data manipulation statements.
 }
 \section{The data retrieval flow for Arrow streams}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
-which should be sufficient
+is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\link[=DBIResultArrow-class]{DBIResultArrow}.
+\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -76,8 +66,7 @@ to ensure that this step is always executed.
 An error is raised when issuing a query over a closed
 or invalid connection,
 or if the query is not a non-\code{NA} string.
-An error is also raised if the syntax of the query is invalid
-and all query parameters are given (by passing the \code{params} argument)
+An error is also raised if the syntax of the query is invalid and all query parameters are given (by passing the \code{params} argument)
 or the \code{immediate} argument is set to \code{TRUE}.
 
 
@@ -104,18 +93,19 @@ See the "Specification" sections for details on their usage.
 
 
 No warnings occur under normal conditions.
-When done, the DBIResult object must be cleared with a call to
-\code{\link[DBI:dbClearResult]{dbClearResult()}}.
-Failure to clear the result set leads to a warning
-when the connection is closed.
+When done, the DBIResult object must be cleared with a call to \code{\link[DBI:dbClearResult]{dbClearResult()}}.
+Failure to clear the result set leads to a warning when the connection is closed.
 
 If the backend supports only one open result set per connection,
-issuing a second query invalidates an already open result set
-and raises a warning.
+issuing a second query invalidates an already open result set and raises a warning.
 The newly opened result set is valid
 and must be cleared with \code{dbClearResult()}.
 
 The \code{param} argument allows passing query parameters, see \code{\link[DBI:dbBind]{dbBind()}} for details.
+The schema of the result does not depend on the values bound to a query:
+for a column with a declared type,
+executing the same query with different parameters via \code{\link[DBI:dbBind]{dbBind()}}
+returns chunks whose children have the same names and formats.
 
 }
 
@@ -127,11 +117,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

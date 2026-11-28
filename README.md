@@ -1,24 +1,22 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- README.md and index.md are generated from README.Rmd.
+     Edit that file and render it the usual way: rmarkdown::render(), devtools::build_readme(), or the Knit button.
+     The cynkratemplate package must be installed; it supplies the output format. -->
 
 # DBI
 
 <!-- badges: start -->
 
-[![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
+[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![rcc](https://github.com/r-dbi/DBI/workflows/rcc/badge.svg)](https://github.com/r-dbi/DBI/actions)
-[![Coverage
-Status](https://codecov.io/gh/r-dbi/DBI/branch/main/graph/badge.svg)](https://app.codecov.io/github/r-dbi/DBI?branch=main)
+[![Coverage Status](https://codecov.io/gh/r-dbi/DBI/graph/badge.svg)](https://app.codecov.io/gh/r-dbi/DBI/tree/main)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/DBI)](https://cran.r-project.org/package=DBI)
-[![CII Best
-Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/1882/badge)](https://bestpractices.coreinfrastructure.org/projects/1882)
 <!-- badges: end -->
 
-The DBI package helps connecting R to database management systems
-(DBMS). DBI separates the connectivity to the DBMS into a “front-end”
-and a “back-end”. The package defines an interface that is implemented
-by *DBI backends* such as:
+The DBI package helps connecting R to database management systems (DBMS).
+DBI separates the connectivity to the DBMS into a "front-end" and a "back-end".
+The package defines an interface that is implemented by *DBI backends* such as:
 
 - [RPostgres](https://rpostgres.r-dbi.org),
 - [RMariaDB](https://rmariadb.r-dbi.org),
@@ -26,15 +24,13 @@ by *DBI backends* such as:
 - [odbc](https://github.com/r-dbi/odbc),
 - [bigrquery](https://github.com/r-dbi/bigrquery),
 
-and many more, see the [list of
-backends](https://github.com/r-dbi/backends#readme). R scripts and
-packages use DBI to access various databases through their DBI backends.
+and many more, see the [list of backends](https://github.com/r-dbi/backends#readme).
+R scripts and packages use DBI to access various databases through their DBI backends.
 
-The interface defines a small set of classes and methods similar in
-spirit to Perl’s [DBI](https://dbi.perl.org/), Java’s JDBC, Python’s
-[DB-API](https://www.python.org/dev/peps/pep-0249/), and Microsoft’s
-[ODBC](https://en.wikipedia.org/wiki/ODBC). It supports the following
-operations:
+The interface defines a small set of classes and methods similar in spirit to Perl's [DBI](https://dbi.perl.org/),
+Java's JDBC, Python's [DB-API](https://www.python.org/dev/peps/pep-0249/),
+and Microsoft's [ODBC](https://en.wikipedia.org/wiki/ODBC).
+It supports the following operations:
 
 - connect/disconnect to the DBMS
 - create and execute statements in the DBMS
@@ -43,23 +39,44 @@ operations:
 - information (meta-data) from database objects
 - transaction management (optional)
 
+## Goals and non-goals
+
+DBI aims to:
+
+- Define the classes and generics that R code uses to talk to a DBMS:
+  connecting, executing statements, fetching results, querying metadata, and managing transactions.
+- Write down what each of those methods must do, in `vignette("spec")`,
+  so that calling code can rely on documented behavior rather than on the quirks of one backend.
+- Derive as much as possible from a small set of methods a backend has to implement,
+  and supply the rest as defaults, such as [`dbGetQuery()`](https://dbi.r-dbi.org/reference/dbGetQuery.html), [`dbReadTable()`](https://dbi.r-dbi.org/reference/dbReadTable.html) and [`dbWithTransaction()`](https://dbi.r-dbi.org/reference/dbWithTransaction.html).
+  [`dbWriteTable()`](https://dbi.r-dbi.org/reference/dbWriteTable.html) belongs in that list too, and today it still needs a method from the backend.
+- Stay cheap to depend on: DBI imports nothing and depends only on **methods** and R.
+- Lower the barrier for new backends, with an implementation guide in `vignette("backend")` and a ready-to-use template package.
+
+It is explicitly not trying to:
+
+- Talk to a database itself.
+  The driver, connection and result classes here are virtual; a backend such as RPostgres, RMariaDB, RSQLite or odbc supplies the implementations.
+- Check that a backend conforms to the specification.
+  The DBItest package holds the test cases, and the specification vignette is derived from them.
+- Offer a higher level of abstraction than SQL.
+  You write the queries; packages that translate R code into SQL, such as dbplyr, build on top of DBI.
+- Require every backend to implement every method.
+  Parts of the interface such as transaction management are optional.
+
 ## Installation
 
-Most users who want to access a database do not need to install DBI
-directly. It will be installed automatically when you install one of the
-database backends:
+Most users who want to access a database do not need to install DBI directly.
+It will be installed automatically when you install one of the database backends:
 
 - [RPostgres](https://rpostgres.r-dbi.org) for PostgreSQL,
 - [RMariaDB](https://rmariadb.r-dbi.org) for MariaDB or MySQL,
 - [RSQLite](https://rsqlite.r-dbi.org) for SQLite,
-- [odbc](https://github.com/r-dbi/odbc) for databases that you can
-  access via
-  [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
+- [odbc](https://github.com/r-dbi/odbc) for databases that you can access via [ODBC](https://en.wikipedia.org/wiki/Open_Database_Connectivity),
 - [bigrquery](https://github.com/r-dbi/bigrquery),
-- … .
+- ... .
 
-You can install the released version of DBI from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the released version of DBI from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("DBI")
@@ -68,8 +85,8 @@ install.packages("DBI")
 And the development version from [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("r-dbi/DBI")
+# install.packages("pak")
+pak::pak("r-dbi/DBI")
 ```
 
 ## Example
@@ -135,36 +152,31 @@ dbDisconnect(con)
 
 ## Class structure
 
-There are four main DBI classes. Three which are each extended by
-individual database backends:
+There are four main DBI classes.
+Three which are each extended by individual database backends:
 
 - `DBIObject`: a common base class for all DBI.
 
 - `DBIDriver`: a base class representing overall DBMS properties.
-  Typically generator functions instantiate the driver objects like
-  `RSQLite()`, `RPostgreSQL()`, `RMySQL()` etc.
+  Typically generator functions instantiate the driver objects,
+  such as [`RSQLite::SQLite()`](https://rsqlite.r-dbi.org/reference/SQLite.html), [`RPostgres::Postgres()`](https://rpostgres.r-dbi.org/reference/Postgres.html) and [`RMariaDB::MariaDB()`](https://rmariadb.r-dbi.org/reference/dbConnect-MariaDBDriver-method.html).
 
 - `DBIConnection`: represents a connection to a specific database
 
 - `DBIResult`: the result of a DBMS query or statement.
 
-All classes are *virtual*: they cannot be instantiated directly and
-instead must be subclassed.
+All classes are *virtual*: they cannot be instantiated directly and instead must be subclassed.
 
 ## Further Reading
 
-- [Databases using R](https://db.rstudio.com/) describes the tools and
-  best practices in this ecosystem.
+- [Databases using R](https://db.rstudio.com/) describes the tools and best practices in this ecosystem.
 
-- The [DBI project site](https://r-dbi.org/) hosts a blog where
-  recent developments are presented.
+- The [DBI project site](https://r-dbi.org/) hosts a blog where recent developments are presented.
 
-- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by
-  David James, the driving force behind the development of DBI, and many
-  of the packages that implement it.
+- [A history of DBI](https://dbi.r-dbi.org/articles/DBI-history.html) by David James,
+  the driving force behind the development of DBI, and many of the packages that implement it.
 
 ------------------------------------------------------------------------
 
-Please note that the *DBI* project is released with a [Contributor Code
-of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html). By contributing
-to this project, you agree to abide by its terms.
+Please note that the *DBI* project is released with a [Contributor Code of Conduct](https://dbi.r-dbi.org/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

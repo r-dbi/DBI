@@ -8,11 +8,10 @@ dbConnect(drv, ...)
 }
 \arguments{
 \item{drv}{An object that inherits from \link[=DBIDriver-class]{DBI::DBIDriver},
-or an existing \link[=DBIConnection-class]{DBI::DBIConnection}
-object (in order to clone an existing connection).}
+or an existing \link[=DBIConnection-class]{DBI::DBIConnection} object (in order to clone an existing connection).}
 
-\item{...}{Authentication arguments needed by the DBMS instance; these
-typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
+\item{...}{Authentication arguments needed by the DBMS instance;
+these typically include \code{user}, \code{password}, \code{host}, \code{port}, \code{dbname}, etc.
 For details see the appropriate \code{DBIDriver}.}
 }
 \value{
@@ -24,11 +23,10 @@ It returns a string that consists of a single line of text.
 }
 \description{
 Connect to a DBMS going through the appropriate authentication procedure.
-Some implementations may allow you to have multiple connections open, so you
-may invoke this function repeatedly assigning its output to different
-objects.
-The authentication mechanism is left unspecified, so check the
-documentation of individual drivers for details.
+Some implementations may allow you to have multiple connections open,
+so you may invoke this function repeatedly assigning its output to different objects.
+The authentication mechanism is left unspecified,
+so check the documentation of individual drivers for details.
 Use \code{\link[=dbCanConnect]{dbCanConnect()}} to check if a connection can be established.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbConnect")}
@@ -47,19 +45,17 @@ parameters, with \code{NULL} default:
 name
 }
 
-The defaults should provide reasonable behavior, in particular a
-local connection for \code{host = NULL}.  For some DBMS (e.g., PostgreSQL),
-this is different to a TCP/IP connection to \code{localhost}.
+The defaults should provide reasonable behavior, in particular a local connection for \code{host = NULL}.
+For some DBMS (e.g., PostgreSQL), this is different to a TCP/IP connection to \code{localhost}.
 
-In addition, DBI supports the \code{bigint} argument that governs how
-64-bit integer data is returned.  The following values are supported:
+In addition, DBI supports the \code{bigint} argument that governs how 64-bit integer data is returned.
+The following values are supported:
 \itemize{
 \item \code{"integer"}: always return as \code{integer}, silently overflow
 \item \code{"numeric"}: always return as \code{numeric}, silently round
 \item \code{"character"}: always return the decimal representation as \code{character}
-\item \code{"integer64"}: return as a data type that can be coerced using
-\code{\link[=as.integer]{as.integer()}} (with warning on overflow), \code{\link[=as.numeric]{as.numeric()}}
-and \code{\link[=as.character]{as.character()}}
+\item \code{"integer64"}: return as a data type that can be coerced using \code{\link[=as.integer]{as.integer()}} (with warning on overflow),
+\code{\link[=as.numeric]{as.numeric()}} and \code{\link[=as.character]{as.character()}}
 }
 
 }

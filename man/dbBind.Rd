@@ -12,10 +12,9 @@ dbBindArrow(res, params, ...)
 \arguments{
 \item{res}{An object inheriting from \link[=DBIResult-class]{DBI::DBIResult}.}
 
-\item{params}{For \code{dbBind()}, a list of values, named or unnamed,
-or a data frame, with one element/column per query parameter.
-For \code{dbBindArrow()}, values as a nanoarrow stream,
-with one column per query parameter.}
+\item{params}{For \code{dbBind()}, a list of values, named or unnamed, or a data frame,
+with one element/column per query parameter.
+For \code{dbBindArrow()}, values as a nanoarrow stream, with one column per query parameter.}
 
 \item{...}{Other arguments passed on to methods.}
 }
@@ -23,26 +22,21 @@ with one column per query parameter.}
 \code{dbBind()} returns the result set,
 invisibly,
 for queries issued by \code{\link[DBI:dbSendQuery]{dbSendQuery()}} or \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} and
-also for data manipulation statements issued by
-\code{\link[DBI:dbSendStatement]{dbSendStatement()}}.
+also for data manipulation statements issued by \code{\link[DBI:dbSendStatement]{dbSendStatement()}}.
 }
 \description{
 For parametrized or prepared statements,
 the \code{\link[=dbSendQuery]{dbSendQuery()}}, \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}}, and \code{\link[=dbSendStatement]{dbSendStatement()}} functions
 can be called with statements that contain placeholders for values.
-The \code{dbBind()} and \code{dbBindArrow()} functions bind these placeholders
-to actual values,
-and are intended to be called on the result set
-before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbFetchArrow]{dbFetchArrow()}}.
+The \code{dbBind()} and \code{dbBindArrow()} functions bind these placeholders to actual values,
+and are intended to be called on the result set before calling \code{\link[=dbFetch]{dbFetch()}} or \code{\link[=dbFetchArrow]{dbFetchArrow()}}.
 The values are passed to \code{dbBind()} as lists or data frames,
-and to \code{dbBindArrow()} as a stream
-created by \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.
+and to \code{dbBindArrow()} as a stream created by \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.
 
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
 
 \code{dbBindArrow()} is experimental, as are the other \verb{*Arrow} functions.
-\code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()}
-is compatible with \code{dbBind()}.
+\code{dbSendQuery()} is compatible with \code{dbBindArrow()}, and \code{dbSendQueryArrow()} is compatible with \code{dbBind()}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbBind")}
 }
@@ -63,8 +57,7 @@ such as the execution plan, and execute it faster.
 The placeholder format is currently not specified by \pkg{DBI};
 in the future, a uniform placeholder syntax may be supported.
 Consult the backend documentation for the supported formats.
-For automated testing, backend authors specify the placeholder syntax with
-the \code{placeholder_pattern} tweak.
+For automated testing, backend authors specify the placeholder syntax with the \code{placeholder_pattern} tweak.
 Known examples are:
 \itemize{
 \item \verb{?} (positional matching in order of appearance) in \pkg{RMariaDB} and \pkg{RSQLite}
@@ -75,8 +68,7 @@ Known examples are:
 \section{The data retrieval flow}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as data frames.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as data frames.
 
 Most of this flow, except repeated calling of \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbGetQuery]{dbGetQuery()}}, which should be sufficient
@@ -85,20 +77,15 @@ or you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class
-\link[=DBIResult-class]{DBIResult}.
+\item Use \code{\link[=dbSendQuery]{dbSendQuery()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
 \item Optionally, bind query parameters with \code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
-\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set
-without retrieving actual data.
-\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results,
-or the remaining rows.
-Fetching zero rows is also possible to retrieve the structure of the result set
-as a data frame.
+\item Optionally, use \code{\link[=dbColumnInfo]{dbColumnInfo()}} to retrieve the structure of the result set without retrieving actual data.
+\item Use \code{\link[=dbFetch]{dbFetch()}} to get the entire result set, a page of results, or the remaining rows.
+Fetching zero rows is also possible to retrieve the structure of the result set as a data frame.
 This step can be called multiple times.
-Only forward paging is supported, you need to cache previous pages
-if you need to navigate backwards.
+Only forward paging is supported, you need to cache previous pages if you need to navigate backwards.
 \item Use \code{\link[=dbHasCompleted]{dbHasCompleted()}} to tell when you're done.
 This method returns \code{TRUE} if no more rows are available for fetching.
 \item Repeat the last four steps as necessary.
@@ -113,18 +100,15 @@ to ensure that this step is always executed.
 \section{The data retrieval flow for Arrow streams}{
 
 
-This section gives a complete overview over the flow
-for the execution of queries that return tabular data as an Arrow stream.
+This section gives a complete overview over the flow for the execution of queries that return tabular data as an Arrow stream.
 
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}},
-is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}},
-which should be sufficient
+is implemented by \code{\link[=dbGetQueryArrow]{dbGetQueryArrow()}}, which should be sufficient
 unless you have a parameterized query that you want to reuse.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class
-\link[=DBIResultArrow-class]{DBIResultArrow}.
+\item Use \code{\link[=dbSendQueryArrow]{dbSendQueryArrow()}} to create a result set object of class \link[=DBIResultArrow-class]{DBIResultArrow}.
 \item Optionally, bind query parameters with \code{\link[=dbBindArrow]{dbBindArrow()}} or \code{\link[=dbBind]{dbBind()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
@@ -141,24 +125,20 @@ to ensure that this step is always executed.
 \section{The command execution flow}{
 
 
-This section gives a complete overview over the flow
-for the execution of SQL statements that have side effects
-such as stored procedures, inserting or deleting data,
-or setting database or connection options.
+This section gives a complete overview over the flow for the execution of SQL statements that have side effects
+such as stored procedures, inserting or deleting data, or setting database or connection options.
 Most of this flow, except repeated calling of \code{\link[=dbBindArrow]{dbBindArrow()}},
 is implemented by \code{\link[=dbExecute]{dbExecute()}}, which should be sufficient
 for non-parameterized queries.
 This flow requires an active connection established by \code{\link[=dbConnect]{dbConnect()}}.
 See also \code{vignette("dbi-advanced")} for a walkthrough.
 \enumerate{
-\item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class
-\link[=DBIResult-class]{DBIResult}.
+\item Use \code{\link[=dbSendStatement]{dbSendStatement()}} to create a result set object of class \link[=DBIResult-class]{DBIResult}.
 For some queries you need to pass \code{immediate = TRUE}.
 \item Optionally, bind query parameters with\code{\link[=dbBind]{dbBind()}} or \code{\link[=dbBindArrow]{dbBindArrow()}}.
 This is required only if the query contains placeholders
 such as \verb{?} or \verb{$1}, depending on the database backend.
-\item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number
-of rows affected by the query.
+\item Optionally, use \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}} to retrieve the number of rows affected by the query.
 \item Repeat the last two steps as necessary.
 \item Use \code{\link[=dbClearResult]{dbClearResult()}} to clean up the result set object.
 This step is mandatory even if no rows have been fetched
@@ -186,9 +166,7 @@ all parameter values must have names
 or \code{NA}),
 and vice versa,
 otherwise an error is raised.
-The behavior for mixing placeholders of different types
-(in particular mixing positional and named placeholders)
-is not specified.
+The behavior for mixing placeholders of different types (in particular mixing positional and named placeholders) is not specified.
 
 Calling \code{dbBind()} on a result set already cleared by \code{\link[DBI:dbClearResult]{dbClearResult()}}
 also raises an error.
@@ -200,14 +178,11 @@ also raises an error.
 
 \pkg{DBI} clients execute parametrized statements as follows:
 \enumerate{
-\item Call \code{\link[DBI:dbSendQuery]{dbSendQuery()}}, \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[DBI:dbSendStatement]{dbSendStatement()}}
-with a query or statement that contains placeholders,
+\item Call \code{\link[DBI:dbSendQuery]{dbSendQuery()}}, \code{\link[DBI:dbSendQueryArrow]{dbSendQueryArrow()}} or \code{\link[DBI:dbSendStatement]{dbSendStatement()}} with a query or statement that contains placeholders,
 store the returned \link[DBI:DBIResult-class]{DBIResult} object in a variable.
-Mixing placeholders (in particular, named and unnamed ones) is not
-recommended.
-It is good practice to register a call to \code{\link[DBI:dbClearResult]{dbClearResult()}} via
-\code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()} or \code{dbSendStatement()}
-(see the last enumeration item).
+Mixing placeholders (in particular, named and unnamed ones) is not recommended.
+It is good practice to register a call to \code{\link[DBI:dbClearResult]{dbClearResult()}} via \code{\link[=on.exit]{on.exit()}} right after calling \code{dbSendQuery()}
+or \code{dbSendStatement()} (see the last enumeration item).
 Until \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}} have been called,
 the returned result set object has the following behavior:
 \itemize{
@@ -219,11 +194,10 @@ the returned result set object has the following behavior:
 }
 \item Call \code{\link[DBI:dbBind]{dbBind()}} or \code{\link[DBI:dbBindArrow]{dbBindArrow()}}:
 \itemize{
-\item For \code{\link[DBI:dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements
-have the same lengths and contain values supported by the backend.
+\item For \code{\link[DBI:dbBind]{dbBind()}}, the \code{params} argument must be a list where all elements have the same lengths
+and contain values supported by the backend.
 A \link{data.frame} is internally stored as such a list.
-\item For \code{\link[DBI:dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a
-nanoarrow array stream, with one column per query parameter.
+\item For \code{\link[DBI:dbBindArrow]{dbBindArrow()}}, the \code{params} argument must be a nanoarrow array stream, with one column per query parameter.
 }
 \item Retrieve the data or the number of affected rows from the \code{DBIResult} object.
 \itemize{
@@ -242,11 +216,9 @@ The elements of the \code{params} argument do not need to be scalars,
 vectors of arbitrary length
 (including length 0)
 are supported.
-For queries, calling \code{dbFetch()} binding such parameters returns
-concatenated results, equivalent to binding and fetching for each set
-of values and connecting via \code{\link[=rbind]{rbind()}}.
-For data manipulation statements, \code{dbGetRowsAffected()} returns the
-total number of rows affected if binding non-scalar parameters.
+For queries, calling \code{dbFetch()} binding such parameters returns concatenated results,
+equivalent to binding and fetching for each set of values and connecting via \code{\link[=rbind]{rbind()}}.
+For data manipulation statements, \code{dbGetRowsAffected()} returns the total number of rows affected if binding non-scalar parameters.
 \code{dbBind()} also accepts repeated calls on the same result set
 for both queries
 and data manipulation statements,
@@ -264,7 +236,7 @@ At least the following data types are accepted on input (including \link{NA}):
 \item \link{logical} for Boolean values
 \item \link{character}
 (also with special characters such as spaces, newlines, quotes, and backslashes)
-\item \link{factor} (bound as character,
+\item \link[base:factor]{factor} (bound as character,
 with warning)
 \item \link[=Dates]{Date}
 (also when stored internally as integer)

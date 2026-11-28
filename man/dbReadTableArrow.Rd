@@ -7,27 +7,27 @@
 dbReadTableArrow(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-\code{dbReadTableArrow()} returns an Arrow object that contains the complete data
-from the remote table, effectively the result of calling \code{\link[DBI:dbGetQueryArrow]{dbGetQueryArrow()}} with
-\verb{SELECT * FROM <name>}.
+\code{dbReadTableArrow()} returns an Arrow object that contains the complete data from the remote table,
+effectively the result of calling \code{\link[DBI:dbGetQueryArrow]{dbGetQueryArrow()}} with \verb{SELECT * FROM <name>}.
 
 An empty table is returned as an Arrow object with zero rows.
+A column of type \code{BIGINT} is returned as an Arrow column of type \code{int64},
+which converts to \link[bit64:integer64]{bit64::integer64} without loss of precision.
 }
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
@@ -39,8 +39,8 @@ Use \code{\link[=dbReadTable]{dbReadTable()}} instead to obtain a data frame.
 }
 \details{
 This function returns an Arrow object.
-Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}} or
-use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
+Convert it to a data frame with \code{\link[=as.data.frame]{as.data.frame()}}
+or use \code{\link[=dbReadTable]{dbReadTable()}} to obtain a data frame.
 }
 \section{Failure modes}{
 
@@ -62,8 +62,7 @@ if this results in a non-scalar.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item If an unquoted table name as string: \code{dbReadTableArrow()} will do the
-quoting,
+\item If an unquoted table name as string: \code{dbReadTableArrow()} will do the quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }

@@ -15,8 +15,7 @@ dbCommit(conn, ...)
 dbRollback(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
@@ -27,16 +26,14 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 A transaction encapsulates several SQL statements in an atomic unit.
 It is initiated with \code{dbBegin()} and either made persistent with \code{dbCommit()}
 or undone with \code{dbRollback()}.
-In any case, the DBMS guarantees that either all or none of the statements
-have a permanent effect.
+In any case, the DBMS guarantees that either all or none of the statements have a permanent effect.
 This helps ensuring consistency of write operations to multiple tables.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("transactions")}
 }
 \details{
-Not all database engines implement transaction management, in which case
-these methods should not be implemented for the specific
-\link[=DBIConnection-class]{DBIConnection} subclass.
+Not all database engines implement transaction management,
+in which case these methods should not be implemented for the specific \link[=DBIConnection-class]{DBIConnection} subclass.
 }
 \section{Failure modes}{
 
@@ -46,8 +43,7 @@ but this is not tested.
 In any way, all generics throw an error with a closed
 or invalid connection.
 In addition, a call to \code{dbCommit()}
-or \code{dbRollback()}
-without a prior call to \code{dbBegin()} raises an error.
+or \code{dbRollback()} without a prior call to \code{dbBegin()} raises an error.
 Nested transactions are not supported by DBI,
 an attempt to call \code{dbBegin()} twice
 yields an error.
@@ -70,21 +66,17 @@ and also in a new connection.
 
 A transaction
 can also be aborted with \code{dbRollback()}.
-All data written in such a transaction must be removed after the
-transaction is rolled back.
+All data written in such a transaction must be removed after the transaction is rolled back.
 For example, a record that is missing when the transaction is started
 but is created during the transaction
 must not exist anymore after the rollback.
 
 Disconnection from a connection with an open transaction
 effectively rolls back the transaction.
-All data written in such a transaction must be removed after the
-transaction is rolled back.
+All data written in such a transaction must be removed after the transaction is rolled back.
 
-The behavior is not specified if other arguments are passed to these
-functions. In particular, \pkg{RSQLite} issues named transactions
-with support for nesting
-if the \code{name} argument is set.
+The behavior is not specified if other arguments are passed to these functions.
+In particular, \pkg{RSQLite} issues named transactions with support for nesting if the \code{name} argument is set.
 
 The transaction isolation level is not specified by DBI.
 

@@ -17,16 +17,14 @@ either \code{\link[DBI:dbSendQuery]{dbSendQuery()}} or
 \code{\link[DBI:dbSendStatement]{dbSendStatement()}}.
 }
 \description{
-Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}}
-or \code{\link[=dbSendStatement]{dbSendStatement()}}.
+Returns the statement that was passed to \code{\link[=dbSendQuery]{dbSendQuery()}} or \code{\link[=dbSendStatement]{dbSendStatement()}}.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbGetStatement")}
 }
 \section{Failure modes}{
 
 
-Attempting to query the statement for a result set cleared with
-\code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
+Attempting to query the statement for a result set cleared with \code{\link[DBI:dbClearResult]{dbClearResult()}} gives an error.
 
 }
 

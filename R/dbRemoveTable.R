@@ -1,7 +1,6 @@
 #' Remove a table from the database
 #'
-#' Remove a remote table (e.g., created by [dbWriteTable()])
-#' from the database.
+#' Remove a remote table (e.g., created by [dbWriteTable()]) from the database.
 #'
 #' @template methods
 #' @templateVar method_name dbRemoveTable

@@ -7,19 +7,17 @@
 dbGetException(conn, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{...}{Other parameters passed on to methods.}
 }
 \value{
-a list with elements \code{errorNum} (an integer error number) and
-\code{errorMsg} (a character string) describing the last error in the
-connection \code{conn}.
+a list with elements \code{errorNum} (an integer error number) and \code{errorMsg} (a character string)
+describing the last error in the connection \code{conn}.
 }
 \description{
-DEPRECATED. Backends should use R's condition system to signal errors and
-warnings.
+DEPRECATED.
+Backends should use R's condition system to signal errors and warnings.
 }
 \seealso{
 Other DBIConnection generics:

@@ -7,8 +7,7 @@
 dbQuoteLiteral(conn, x, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{x}{A vector to quote as string.}
 
@@ -17,8 +16,7 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 \value{
 \code{dbQuoteLiteral()} returns an object that can be coerced to \link{character},
 of the same length as the input.
-For an empty
-integer,
+For an empty integer,
 numeric,
 character,
 logical,
@@ -27,17 +25,14 @@ time,
 or blob vector,
 this function returns a length-0 object.
 
-When passing the returned object again to \code{dbQuoteLiteral()}
-as \code{x}
-argument, it is returned unchanged.
+When passing the returned object again to \code{dbQuoteLiteral()} as \code{x} argument, it is returned unchanged.
 Passing objects of class \link[DBI:SQL]{SQL} should also return them unchanged.
 (For backends it may be most convenient to return \link[DBI:SQL]{SQL} objects
 to achieve this behavior, but this is not required.)
 }
 \description{
-Call these methods to generate a string that is suitable for
-use in a query as a literal value of the correct type, to make sure that you
-generate valid SQL and protect against SQL injection attacks.
+Call these methods to generate a string that is suitable for use in a query as a literal value of the correct type,
+to make sure that you generate valid SQL and protect against SQL injection attacks.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbQuoteLiteral")}
 }
@@ -54,9 +49,7 @@ for the \code{x} argument raises an error.
 
 
 The returned expression can be used in a \verb{SELECT ...} query,
-and the value of
-\code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]}
-must be equal to \code{x}
+and the value of \code{dbGetQuery(paste0("SELECT ", dbQuoteLiteral(x)))[[1]]} must be equal to \code{x}
 for any scalar
 integer,
 numeric,

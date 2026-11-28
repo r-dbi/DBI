@@ -7,8 +7,7 @@
 dbExecute(conn, statement, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
 \item{statement}{a character string containing SQL.}
 
@@ -18,17 +17,14 @@ as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 \code{dbExecute()} always returns a
 scalar
 numeric
-that specifies the number of rows affected
-by the statement.
+that specifies the number of rows affected by the statement.
 }
 \description{
 Executes a statement and returns the number of rows affected.
-\code{dbExecute()} comes with a default implementation
-(which should work with most backends) that calls
-\code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}}, ensuring that
-the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
-For passing query parameters, see \code{\link[=dbBind]{dbBind()}}, in particular
-the "The command execution flow" section.
+\code{dbExecute()} comes with a default implementation (which should work with most backends)
+that calls \code{\link[=dbSendStatement]{dbSendStatement()}}, then \code{\link[=dbGetRowsAffected]{dbGetRowsAffected()}},
+ensuring that the result is always freed by \code{\link[=dbClearResult]{dbClearResult()}}.
+For passing query parameters, see \code{\link[=dbBind]{dbBind()}}, in particular the "The command execution flow" section.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbExecute")}
 }
@@ -41,8 +37,7 @@ such as \verb{INSERT INTO ... RETURNING ...}, use \code{\link[=dbGetQuery]{dbGet
 }
 \section{Implementation notes}{
 
-Subclasses should override this method only if they provide some sort of
-performance optimization.
+Subclasses should override this method only if they provide some sort of performance optimization.
 }
 
 \section{Failure modes}{
@@ -87,11 +82,9 @@ The \code{immediate} argument supports distinguishing between "direct"
 and "prepared" APIs offered by many database drivers.
 Passing \code{immediate = TRUE} leads to immediate execution of the
 query or statement, via the "direct" API (if supported by the driver).
-The default \code{NULL} means that the backend should choose whatever API
-makes the most sense for the database, and (if relevant) tries the
-other API if the first attempt fails. A successful second attempt
-should result in a message that suggests passing the correct
-\code{immediate} argument.
+The default \code{NULL} means that the backend should choose whatever API makes the most sense for the database,
+and (if relevant) tries the other API if the first attempt fails.
+A successful second attempt should result in a message that suggests passing the correct \code{immediate} argument.
 Examples for possible behaviors:
 \enumerate{
 \item DBI backend defaults to \code{immediate = TRUE} internally

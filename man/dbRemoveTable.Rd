@@ -7,17 +7,16 @@
 dbRemoveTable(conn, name, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{...}{Other parameters passed on to methods.}
@@ -26,8 +25,7 @@ given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
 \code{dbRemoveTable()} returns \code{TRUE}, invisibly.
 }
 \description{
-Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}})
-from the database.
+Remove a remote table (e.g., created by \code{\link[=dbWriteTable]{dbWriteTable()}}) from the database.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbRemoveTable")}
 }
@@ -58,13 +56,11 @@ but are part of the DBI specification:
 
 These arguments must be provided as named arguments.
 
-If \code{temporary} is \code{TRUE}, the call to \code{dbRemoveTable()}
-will consider only temporary tables.
+If \code{temporary} is \code{TRUE}, the call to \code{dbRemoveTable()} will consider only temporary tables.
 Not all backends support this argument.
 In particular, permanent tables of the same name are left untouched.
 
-If \code{fail_if_missing} is \code{FALSE}, the call to \code{dbRemoveTable()}
-succeeds if the table does not exist.
+If \code{fail_if_missing} is \code{FALSE}, the call to \code{dbRemoveTable()} succeeds if the table does not exist.
 
 }
 
@@ -80,8 +76,7 @@ This function can also be used to remove a temporary table.
 The \code{name} argument is processed as follows,
 to support databases that allow non-syntactic names for their objects:
 \itemize{
-\item If an unquoted table name as string: \code{dbRemoveTable()} will do the
-quoting,
+\item If an unquoted table name as string: \code{dbRemoveTable()} will do the quoting,
 perhaps by calling \code{dbQuoteIdentifier(conn, x = name)}
 \item If the result of a call to \code{\link[DBI:dbQuoteIdentifier]{dbQuoteIdentifier()}}: no more quoting is done
 }

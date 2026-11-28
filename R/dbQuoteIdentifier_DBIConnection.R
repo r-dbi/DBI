@@ -30,8 +30,8 @@ setMethod(
   dbQuoteIdentifier_DBIConnection
 )
 
-# Need to keep other method declarations around for now, because clients might
-# use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
+# Need to keep other method declarations around for now,
+# because clients might use getMethod(), see e.g. https://github.com/r-dbi/odbc/pull/149
 #' @rdname hidden_aliases
 #' @export
 setMethod(

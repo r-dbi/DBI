@@ -1,19 +1,15 @@
 #' Self-contained SQL transactions
 #'
-#' Given that \link{transactions} are implemented, this function
-#' allows you to pass in code that is run in a transaction.
-#' The default method of `dbWithTransaction()` calls [dbBegin()]
-#' before executing the code,
+#' Given that \link{transactions} are implemented, this function allows you to pass in code that is run in a transaction.
+#' The default method of `dbWithTransaction()` calls [dbBegin()] before executing the code,
 #' and [dbCommit()] after successful completion,
 #' or [dbRollback()] in case of an error.
-#' The advantage is
-#' that you don't have to remember to do `dbBegin()` and `dbCommit()` or
-#' `dbRollback()` -- that is all taken care of.
+#' The advantage is that you don't have to remember to do `dbBegin()` and `dbCommit()` or `dbRollback()` -- that is all taken care of.
 #' The special function `dbBreak()` allows an early exit with rollback,
 #' it can be called only inside `dbWithTransaction()`.
 #'
-#' DBI implements `dbWithTransaction()`, backends should need to override this
-#' generic only if they implement specialized handling.
+#' DBI implements `dbWithTransaction()`,
+#' backends should need to override this generic only if they implement specialized handling.
 #'
 #' @template methods
 #' @templateVar method_name dbWithTransaction

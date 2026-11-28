@@ -7,17 +7,16 @@
 dbAppendTableArrow(conn, name, value, ...)
 }
 \arguments{
-\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object,
-as returned by \code{\link[=dbConnect]{dbConnect()}}.}
+\item{conn}{A \link[=DBIConnection-class]{DBI::DBIConnection} object, as returned by \code{\link[=dbConnect]{dbConnect()}}.}
 
-\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}. Options are:
+\item{name}{The table name, passed on to \code{\link[=dbQuoteIdentifier]{dbQuoteIdentifier()}}.
+Options are:
 \itemize{
-\item a character string with the unquoted DBMS table name,
-e.g. \code{"table_name"},
+\item a character string with the unquoted DBMS table name, e.g. \code{"table_name"},
 \item a call to \code{\link[=Id]{Id()}} with components to the fully qualified table name,
 e.g. \code{Id(schema = "my_schema", table = "table_name")}
-\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name
-given verbatim, e.g. \code{SQL('"my_schema"."table_name"')}
+\item a call to \code{\link[=SQL]{SQL()}} with the quoted and fully qualified table name given verbatim,
+e.g. \code{SQL('"my_schema"."table_name"')}
 }}
 
 \item{value}{An object coercible with \code{\link[nanoarrow:as_nanoarrow_array_stream]{nanoarrow::as_nanoarrow_array_stream()}}.}
@@ -34,8 +33,7 @@ numeric.
 
 The \code{dbAppendTableArrow()} method assumes that the table has been created
 beforehand, e.g. with \code{\link[=dbCreateTableArrow]{dbCreateTableArrow()}}.
-The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk
-of the stream.
+The default implementation calls \code{\link[=dbAppendTable]{dbAppendTable()}} for each chunk of the stream.
 Use \code{\link[=dbAppendTable]{dbAppendTable()}} to append data from a data.frame.
 
 \Sexpr[results=rd,stage=render]{DBI:::methods_as_rd("dbAppendTableArrow")}
@@ -76,8 +74,7 @@ and be read identically with \code{\link[DBI:dbReadTable]{dbReadTable()}}:
 \item 64-bit values (using \code{"bigint"} as field type); the result can be
 \itemize{
 \item converted to a numeric, which may lose precision,
-\item converted a character vector, which gives the full decimal
-representation
+\item converted a character vector, which gives the full decimal representation
 \item written to another table and read again unchanged
 }
 \item character (in both UTF-8
@@ -85,23 +82,17 @@ and native encodings),
 supporting empty strings
 (before and after non-empty strings)
 \item factor (possibly returned as character)
-\item objects of type \link[blob:blob]{blob::blob}
-(if supported by the database)
-\item date
-(if supported by the database;
+\item objects of type \link[blob:blob]{blob::blob} (if supported by the database)
+\item date (if supported by the database;
 returned as \code{Date})
 also for dates prior to 1970 or 1900 or after 2038
-\item time
-(if supported by the database;
+\item time (if supported by the database;
 returned as objects that inherit from \code{difftime})
-\item timestamp
-(if supported by the database;
+\item timestamp (if supported by the database;
 returned as \code{POSIXct}
-respecting the time zone but not necessarily preserving the
-input time zone),
+respecting the time zone but not necessarily preserving the input time zone),
 also for timestamps prior to 1970 or 1900 or after 2038
-respecting the time zone but not necessarily preserving the
-input time zone)
+respecting the time zone but not necessarily preserving the input time zone)
 }
 
 Mixing column types in the same table is supported.

@@ -28,7 +28,8 @@ registerS3method("knit_print", "data.frame", "knit_print.data.frame")
 ## Who this tutorial is for
 
 This tutorial is for you if you want to leverage [Apache Arrow](https://arrow.apache.org/) for accessing and manipulating data on databases.
-See `vignette("DBI", package = "DBI")` and `vignette("DBI-advanced", package = "DBI")` for tutorials on accessing data using R's data frames instead of Arrow's structures.
+See `vignette("DBI", package = "DBI")` and `vignette("DBI-advanced", package = "DBI")`
+for tutorials on accessing data using R's data frames instead of Arrow's structures.
 
 ## Rationale
 
@@ -46,9 +47,11 @@ The aim is to:
 - better support reading and summarizing data from a database that is larger than memory;
 - provide better type fidelity with workflows centered around Arrow.
 
-This allows existing code to be used with Arrow, and it allows new code to be written that is more efficient and more flexible than code that uses R's data frames.
+This allows existing code to be used with Arrow,
+and it allows new code to be written that is more efficient and more flexible than code that uses R's data frames.
 
-The interface is built around the {nanoarrow} R package, with `nanoarrow::as_nanoarrow_array` and `nanoarrow::as_nanoarrow_array_stream` as fundamental data structures.
+The interface is built around the {nanoarrow} R package,
+with `nanoarrow::as_nanoarrow_array` and `nanoarrow::as_nanoarrow_array_stream` as fundamental data structures.
 
 ## New classes and generics
 
@@ -68,8 +71,10 @@ DBI 1.2.0 introduces new classes and generics for working with Arrow data:
 
 Compatibility is important for DBI, and implementing new generics and classes greatly reduces the risk of breaking existing code.
 The DBI package comes with a fully functional fallback implementation for all existing DBI backends.
-The fallback is not improving performance, but it allows existing code to be used with Arrow before switching to a backend with native Arrow support.
-Backends with native support, like the [adbi](https://adbi.r-dbi.org/) package, implement the new generics and classes for direct support and improved performance.
+The fallback is not improving performance,
+but it allows existing code to be used with Arrow before switching to a backend with native Arrow support.
+Backends with native support, like the [adbi](https://adbi.r-dbi.org/) package,
+implement the new generics and classes for direct support and improved performance.
 
 In the remainder of this tutorial, we will demonstrate the new generics and classes using the RSQLite package.
 SQLite is an in-memory database, this code does not need a database server to be installed and running.
@@ -193,4 +198,5 @@ dbDisconnect(con)
 
 That concludes the major features of DBI's new Arrow interface.
 For more details on the library functions covered in this tutorial see the DBI specification at `vignette("spec", package = "DBI")`.
-See the [adbi](https://adbi.r-dbi.org/) package for a backend with native Arrow support, and [nanoarrow](https://github.com/apache/arrow-nanoarrow) and [arrow](https://arrow.apache.org/docs/r/) for packages to work with the Arrow format.
+See the [adbi](https://adbi.r-dbi.org/) package for a backend with native Arrow support,
+and [nanoarrow](https://github.com/apache/arrow-nanoarrow) and [arrow](https://arrow.apache.org/docs/r/) for packages to work with the Arrow format.

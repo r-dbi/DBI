@@ -15,10 +15,8 @@ sqlQuoteSpec <- function(start, end, escape = "", doubleEscape = TRUE) {
 #' @export
 #' @rdname sqlParseVariables
 #' @param sql SQL to parse (a character string)
-#' @param quotes A list of `QuoteSpec` calls defining the quoting
-#'   specification.
-#' @param comments A list of `CommentSpec` calls defining the commenting
-#'   specification.
+#' @param quotes A list of `QuoteSpec` calls defining the quoting specification.
+#' @param comments A list of `CommentSpec` calls defining the commenting specification.
 sqlParseVariablesImpl <- function(sql, quotes, comments) {
   str_to_vec <- function(s) strsplit(s, "", fixed = TRUE)[[1L]]
 

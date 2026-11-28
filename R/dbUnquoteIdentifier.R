@@ -1,7 +1,6 @@
 #' Unquote identifiers
 #'
-#' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()]
-#' back to a list of [Id] objects.
+#' Call this method to convert a [SQL] object created by [dbQuoteIdentifier()] back to a list of [Id] objects.
 #'
 #' @inheritParams dbGetQuery
 #' @param x An [SQL] or [Id] object.
